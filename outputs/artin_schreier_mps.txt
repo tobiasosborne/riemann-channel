@@ -1,0 +1,39 @@
+
+q=3, g(x)=sum a_j x^(1+q^j) with a=[0, 1]: transfer matrix 3x3, |eigenvalues| = [np.float64(1.732051)], sqrt(q)=1.732051
+   n=2: S_n brute force =    -3.000  +0.000i   Tr(E^n) =    +3.000  +0.000i   |S_n|/q^(n/2) = 1.0000
+   n=3: S_n brute force =    -0.000  -5.196i   Tr(E^n) =    -0.000  -5.196i   |S_n|/q^(n/2) = 1.0000
+   n=4: S_n brute force =   -27.000  +0.000i   Tr(E^n) =   +27.000  -0.000i   |S_n|/q^(n/2) = 3.0000
+   n=5: S_n brute force =    -0.000 +15.588i   Tr(E^n) =    +0.000 +15.588i   |S_n|/q^(n/2) = 1.0000
+   n=6: S_n brute force =   -27.000  +0.000i   Tr(E^n) =   +27.000  +0.000i   |S_n|/q^(n/2) = 1.0000
+   n=7: S_n brute force =    -0.000 -46.765i   Tr(E^n) =    -0.000 -46.765i   |S_n|/q^(n/2) = 1.0000
+
+q=3, g(x)=sum a_j x^(1+q^j) with a=[1, 1]: transfer matrix 3x3, |eigenvalues| = [np.float64(1.732051)], sqrt(q)=1.732051
+   n=3: S_n brute force =    -0.000  +5.196i   Tr(E^n) =    -0.000  +5.196i   |S_n|/q^(n/2) = 1.0000
+   n=5: S_n brute force =    -0.000 -15.588i   Tr(E^n) =    -0.000 -15.588i   |S_n|/q^(n/2) = 1.0000
+   n=7: S_n brute force =    -0.000 +46.765i   Tr(E^n) =    +0.000 +46.765i   |S_n|/q^(n/2) = 1.0000
+
+q=5, g(x)=sum a_j x^(1+q^j) with a=[0, 1]: transfer matrix 5x5, |eigenvalues| = [np.float64(2.236068)], sqrt(q)=2.236068
+   n=2: S_n brute force =    -5.000  +0.000i   Tr(E^n) =    +5.000  +0.000i   |S_n|/q^(n/2) = 1.0000
+   n=3: S_n brute force =   +11.180  +0.000i   Tr(E^n) =   +11.180  -0.000i   |S_n|/q^(n/2) = 1.0000
+   n=4: S_n brute force =  -125.000  +0.000i   Tr(E^n) =  +125.000  -0.000i   |S_n|/q^(n/2) = 5.0000
+   n=5: S_n brute force =   +55.902  +0.000i   Tr(E^n) =   +55.902  -0.000i   |S_n|/q^(n/2) = 1.0000
+
+q=3, g(x)=sum a_j x^(1+q^j) with a=[0, 1, 1]: transfer matrix 9x9, |eigenvalues| = [np.float64(1.732051)], sqrt(q)=1.732051
+   n=3: S_n brute force =    -0.000  +5.196i   Tr(E^n) =    +0.000  +5.196i   |S_n|/q^(n/2) = 1.0000
+   n=5: S_n brute force =    -0.000 -15.588i   Tr(E^n) =    -0.000 -15.588i   |S_n|/q^(n/2) = 1.0000
+   n=7: S_n brute force =    -0.000 +46.765i   Tr(E^n) =    +0.000 +46.765i   |S_n|/q^(n/2) = 1.0000
+
+q=3, g(x)=sum a_j x^(1+q^j) with a=[0, 0, 1]: transfer matrix 9x9, |eigenvalues| = [np.float64(1.732051)], sqrt(q)=1.732051
+   n=3: S_n brute force =    -0.000  -5.196i   Tr(E^n) =    -0.000  -5.196i   |S_n|/q^(n/2) = 1.0000
+   n=5: S_n brute force =    -0.000 +15.588i   Tr(E^n) =    +0.000 +15.588i   |S_n|/q^(n/2) = 1.0000
+   n=7: S_n brute force =    -0.000 -46.765i   Tr(E^n) =    -0.000 -46.765i   |S_n|/q^(n/2) = 1.0000
+
+Is the transfer matrix sqrt(q) times a unitary?  ||E E^dag - q I|| :
+  q=3 a=[0, 1]: dim 3, ||EE^dag - qI|| = 1.0e-15, |eig| set = [np.float64(1.732051)]
+  q=3 a=[1, 1]: dim 3, ||EE^dag - qI|| = 1.6e-15, |eig| set = [np.float64(1.732051)]
+  q=5 a=[0, 1]: dim 5, ||EE^dag - qI|| = 1.1e-15, |eig| set = [np.float64(2.236068)]
+  q=3 a=[0, 1, 1]: dim 9, ||EE^dag - qI|| = 1.9e-15, |eig| set = [np.float64(1.732051)]
+  q=3 a=[0, 0, 1]: dim 9, ||EE^dag - qI|| = 1.8e-15, |eig| set = [np.float64(1.732051)]
+  q=3 a=[1, 0, 1]: dim 9, ||EE^dag - qI|| = 2.8e-15, |eig| set = [np.float64(1.732051)]
+  q=5 a=[2, 1, 3]: dim 25, ||EE^dag - qI|| = 2.9e-15, |eig| set = [np.float64(2.236068)]
+  q=7 a=[0, 1, 1]: dim 49, ||EE^dag - qI|| = 5.2e-15, |eig| set = [np.float64(2.645751)]

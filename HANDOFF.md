@@ -44,6 +44,17 @@ yet. The full conversation is in `transcript/transcript.md` (rendered) and
    superoperator for (13,17) has |μ| ∈ {17, √17, 1}, so its quantum Ihara zeta
    satisfies RH exactly. Not done: LMFDB identification of the joint spectrum.
 
+6. **MPS formulation of the Weil conjectures for quadratic Artin–Schreier
+   curves** (2026-09-11, `scripts/artin_schreier_mps.py`,
+   `notes/artin-schreier-mps.md`). In a normal basis Frobenius is the cyclic
+   shift; for g(x) = Σ a_j x^{1+q^j} the exponential sum S_n is Tr(Eⁿ) for a
+   q^J × q^J transfer matrix (odd n exactly; even n with the sign that makes
+   S_n = −Σ α_iⁿ). E E† = q I whenever a_J ≠ 0, so RH is manifest: the
+   transfer matrix is √q times a unitary. Beyond quadratic g the trace form
+   is non-local and n-dependent in the shift basis; the uniform formulation
+   is Dwork's p-adic transfer operator, which gives rationality and the
+   functional equation but not RH.
+
 ### What is NOT established
 
 - RH. Everything above is equivalent to, not a proof of, the uniform-rate
