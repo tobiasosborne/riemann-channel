@@ -57,21 +57,55 @@ yet. The full conversation is in `transcript/transcript.md` (rendered) and
   (archimedean) part + Hamiltonian part. Dilation theorems supply existence
   only; positivity (Weil's criterion) is where RH lives.
 
+## Steering 2026-09-11 (TJO)
+
+TJO's deepest learning from the founding session: **RH is a Ramanujan
+property**, and this gives cautious optimism because the quantum-expander
+literature supplies a wealth of constructions to tinker with. Claude's
+assessment, recorded for the next session:
+
+- The equivalence chain is theorem-level at every link (Ihara/Sunada;
+  quantum Ihara–Bass, to be written as a lemma; Faddeev–Pavlov for ζ).
+- Ramanujan-ness has exactly three known sources: arithmetic (LPS via
+  Deligne), probabilistic-asymptotic (Friedman, Hastings; "nearly", ε → 0),
+  and interlacing families (Marcus–Spielman–Srivastava; real-rootedness of
+  expected characteristic polynomials, no arithmetic). MSS is the one whose
+  shape matches "the Hilbert–Pólya operator H is Hermitian"; Montgomery–
+  Odlyzko is the hint that ξ could be an expected characteristic polynomial.
+- Obstruction: the prime dilations commute, and abelian Cayley graphs are
+  never expanders. LPS resolves the analogous problem: Hecke operators T_q
+  also commute, and expansion comes from the arithmetic quotient. The joint
+  spectrum of the commuting family is the content (Hecke eigenvalues there,
+  zeros here).
+
+**Proposed first tinkering object (Weil–LPS channels).** Harrow's
+construction with G = SL₂(F_p), S = LPS generators for a prime q, π = the
+Weil representation on ℓ²(F_p): Φ_q(ρ) = (1/|S|) Σ_{s∈S} π(s) ρ π(s)†.
+Exactly Ramanujan (LPS + Deligne), commuting for different q, jointly
+diagonal with spectrum given by Hecke eigenvalues of weight-2 forms of
+level p (Eichler–Shimura). Its quantum Ihara zeta is an Artin–Ihara
+L-function twisted by Ad(Weil) and satisfies RH. Compute for p = 5, 7, 11,
+13 and q = 2, 5; verify the Hastings bound numerically; compare the joint
+spectrum with LMFDB Hecke eigenvalues. This lands on the parent campaign's
+SP-WEYL Hilbert space and is the concrete link between the two repos.
+
 ## Next useful steps, in order
 
-1. **The Stinespring question.** Write the compressed semigroup Z(t) on K_S
+1. **Weil–LPS channels** (see Steering above): build, verify Ramanujan
+   numerically, identify the joint spectrum with Hecke data. Self-contained.
+2. **The Stinespring question.** Write the compressed semigroup Z(t) on K_S
    explicitly (functional model, Cauchy kernels) and test whether a generator
    of Holevo jump form with jumps at k log p reproduces it on K_S. A negative
    answer with a reason is a result. Suggested: codex lane, gpt-5.6-sol xhigh,
    blind, with the note as the only input.
-2. **Tighten §4 of the note.** The "bridge" statement (LP = BC at β=1 +
+3. **Tighten §4 of the note.** The "bridge" statement (LP = BC at β=1 +
    Sz.-Nagy–Foias) is stated at the level of the boundary phase. Write the
    innerness argument in full (Phragmén–Lindelöf in Im τ < 0) rather than
    citing Lax–Phillips.
-3. **Decide the repo's rules.** If this becomes more than a notebook, import
+4. **Decide the repo's rules.** If this becomes more than a notebook, import
    the parent's PRD (red-green checkers, claims DAG, definitions file) before
    anything is called a claim.
-4. **Remote.** No git remote yet. `gh repo create tobiasosborne/riemann-channel --private --source=. --push` when wanted.
+5. **Remote.** No git remote yet. `gh repo create tobiasosborne/riemann-channel --private --source=. --push` when wanted.
 
 ## Environment
 
