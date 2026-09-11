@@ -1,0 +1,73 @@
+Weil representation table for SL2(F_19) built: 6840 elements
+
+===== p=19, q=5:  |S|=6 generators in SL2(F_19); Weil intertwiner error 2.4e-14
+Cayley graph on PSL2(F_19): n=3420, lambda_1=6.000000 (q+1=6), lambda_2=4.274917, lambda_min=-4.273531, bound 2sqrt(q)=4.472136  -> Ramanujan: True
+Channel Phi_q^even on M_10: block unitarity dev 5.6e-15, HS-hermitian dev 8.9e-15; top 1.000000 (mult 1); (q+1)*lambda_2=4.243290, (q+1)*lambda_min=-4.000000, bound 4.472136  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(6.0), 1), (np.float64(4.24329), 3), (np.float64(4.093425), 3), (np.float64(3.645751), 1), (np.float64(3.297071), 3), (np.float64(3.0), 3), (np.float64(2.793367), 2), (np.float64(2.682904), 3), (np.float64(2.342923), 3), (np.float64(2.20035), 2), (np.float64(2.0), 3), (np.float64(1.739417), 3), (np.float64(1.532089), 3), (np.float64(0.879385), 3), (np.float64(0.786802), 3), (np.float64(0.470683), 3), (np.float64(0.353025), 3), (np.float64(0.347296), 3), (np.float64(0.282205), 2), (np.float64(0.0), 5), (np.float64(-0.900387), 3), (np.float64(-1.0), 7), (np.float64(-1.282205), 2), (np.float64(-1.347296), 3), (np.float64(-1.645751), 1), (np.float64(-1.813607), 3), (np.float64(-1.879385), 3), (np.float64(-2.342904), 3), (np.float64(-2.532089), 3), (np.float64(-3.083872), 3), (np.float64(-3.20035), 2), (np.float64(-3.422321), 3), (np.float64(-3.44645), 3), (np.float64(-3.793367), 2), (np.float64(-4.0), 4)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 5.0e-07
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(2.236068)]  (RH <=> all equal sqrt(q)=2.236068)
+Channel Phi_q^odd on M_9: block unitarity dev 2.7e-15, HS-hermitian dev 6.8e-15; top 1.000000 (mult 1); (q+1)*lambda_2=4.243290, (q+1)*lambda_min=-4.000000, bound 4.472136  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(6.0), 1), (np.float64(4.24329), 3), (np.float64(4.093425), 3), (np.float64(3.645751), 1), (np.float64(3.0), 3), (np.float64(2.793367), 2), (np.float64(2.682904), 3), (np.float64(2.342923), 3), (np.float64(2.20035), 2), (np.float64(2.0), 3), (np.float64(1.739417), 3), (np.float64(1.532089), 3), (np.float64(0.879385), 3), (np.float64(0.470683), 3), (np.float64(0.353025), 3), (np.float64(0.347296), 3), (np.float64(0.282205), 2), (np.float64(0.0), 1), (np.float64(-0.900387), 3), (np.float64(-1.0), 2), (np.float64(-1.282205), 2), (np.float64(-1.347296), 3), (np.float64(-1.645751), 1), (np.float64(-1.813607), 3), (np.float64(-1.879385), 3), (np.float64(-2.342904), 3), (np.float64(-2.532089), 3), (np.float64(-3.20035), 2), (np.float64(-3.422321), 3), (np.float64(-3.44645), 3), (np.float64(-3.793367), 2), (np.float64(-4.0), 3)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 5.0e-07
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(2.236068)]  (RH <=> all equal sqrt(q)=2.236068)
+
+===== p=19, q=17:  |S|=18 generators in SL2(F_19); Weil intertwiner error 2.4e-14
+Cayley graph on PSL2(F_19): n=3420, lambda_1=18.000000 (q+1=18), lambda_2=7.671379, lambda_min=-7.638156, bound 2sqrt(q)=8.246211  -> Ramanujan: True
+Channel Phi_q^even on M_10: block unitarity dev 5.2e-15, HS-hermitian dev 5.2e-15; top 1.000000 (mult 1); (q+1)*lambda_2=7.128356, (q+1)*lambda_min=-7.638156, bound 8.246211  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(18.0), 1), (np.float64(7.128356), 1), (np.float64(6.719824), 3), (np.float64(6.653782), 2), (np.float64(5.544371), 3), (np.float64(5.196558), 3), (np.float64(5.013913), 3), (np.float64(5.0), 3), (np.float64(4.083872), 3), (np.float64(3.761283), 2), (np.float64(3.0), 4), (np.float64(2.596267), 3), (np.float64(2.389185), 1), (np.float64(2.250348), 3), (np.float64(2.0), 3), (np.float64(1.532089), 3), (np.float64(0.347296), 3), (np.float64(0.213198), 3), (np.float64(0.123177), 3), (np.float64(0.0), 2), (np.float64(-0.533726), 3), (np.float64(-0.916382), 3), (np.float64(-0.958111), 3), (np.float64(-0.960624), 2), (np.float64(-1.879385), 3), (np.float64(-2.297071), 3), (np.float64(-2.725616), 3), (np.float64(-3.0), 2), (np.float64(-3.761369), 3), (np.float64(-3.801225), 2), (np.float64(-3.967795), 3), (np.float64(-4.752108), 2), (np.float64(-4.943303), 3), (np.float64(-5.0), 6), (np.float64(-6.0), 1), (np.float64(-6.517541), 1), (np.float64(-6.901108), 2), (np.float64(-7.638156), 3)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 5.0e-07
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(4.123106)]  (RH <=> all equal sqrt(q)=4.123106)
+Channel Phi_q^odd on M_9: block unitarity dev 2.6e-15, HS-hermitian dev 4.2e-15; top 1.000000 (mult 1); (q+1)*lambda_2=7.128356, (q+1)*lambda_min=-7.638156, bound 8.246211  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(18.0), 1), (np.float64(7.128356), 1), (np.float64(6.719824), 3), (np.float64(6.653782), 2), (np.float64(5.544371), 3), (np.float64(5.196558), 3), (np.float64(5.013913), 3), (np.float64(3.761283), 2), (np.float64(3.0), 2), (np.float64(2.596267), 3), (np.float64(2.389185), 1), (np.float64(2.250348), 3), (np.float64(2.0), 3), (np.float64(1.532089), 3), (np.float64(0.347296), 3), (np.float64(0.123177), 3), (np.float64(0.0), 2), (np.float64(-0.533726), 3), (np.float64(-0.916382), 3), (np.float64(-0.958111), 3), (np.float64(-0.960624), 2), (np.float64(-1.879385), 3), (np.float64(-2.725616), 3), (np.float64(-3.761369), 3), (np.float64(-3.801225), 2), (np.float64(-3.967795), 3), (np.float64(-4.752108), 2), (np.float64(-4.943303), 3), (np.float64(-5.0), 3), (np.float64(-6.0), 1), (np.float64(-6.517541), 1), (np.float64(-6.901108), 2), (np.float64(-7.638156), 3)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 5.0e-07
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(4.123106)]  (RH <=> all equal sqrt(q)=4.123106)
+Hecke relation A_q^2 - q I = A_(q^2):  |A_q^2 - qI - A_(q^2)| = 0.0e+00   (|norm-q^2 set| = 31, expect q^2+q+1 = 31)
+Hecke relation A_q^2 - q I = A_(q^2):  |A_q^2 - qI - A_(q^2)| = 0.0e+00   (|norm-q^2 set| = 307, expect q^2+q+1 = 307)
+
+Commutation [Phi_5^even, Phi_17^even]: ||E1E2 - E2E1|| = 2.8e-15
+
+Commutation [Phi_5^odd, Phi_17^odd]: ||E1E2 - E2E1|| = 2.3e-15
+Hecke multiplicativity A_q1 A_q2 = A_(q1 q2): residual 0.0e+00  (|norm q1q2 set|=108, expect 108)
+Joint spectrum on the even block (a_5, a_17) with multiplicities, adjacency units (bounds 2sqrt: 4.4721, 8.2462):
+   (+6.00000, +18.00000)  x1
+   (+4.24329, -3.96780)  x3
+   (+4.09342, +2.25035)  x3
+   (+3.64575, +0.00000)  x1
+   (+3.29707, +4.08387)  x3
+   (+3.00000, -5.00000)  x3
+   (+2.79337, -0.96062)  x2
+   (+2.68290, +0.12318)  x3
+   (+2.34292, +5.19656)  x3
+   (+2.20035, -6.90111)  x2
+   (+2.00000, -6.51754)  x1
+   (+2.00000, +2.38919)  x1
+   (+2.00000, +7.12836)  x1
+   (+1.73942, +5.01391)  x3
+   (+1.53209, -1.87939)  x3
+   (+0.87939, +2.59627)  x3
+   (+0.78680, -2.29707)  x3
+   (+0.47068, +6.71982)  x3
+   (+0.35302, -0.53373)  x3
+   (+0.34730, +1.53209)  x3
+   (+0.28220, +6.65378)  x2
+   (+0.00000, -6.00000)  x1
+   (-0.00000, -5.00000)  x3
+   (-0.00000, +3.00000)  x1
+   (-0.90039, -3.76137)  x3
+   (-1.00000, -3.00000)  x2
+   (-1.00000, +3.00000)  x2
+   (-1.00000, +5.00000)  x3
+   (-1.28220, -4.75211)  x2
+   (-1.34730, -7.63816)  x3
+   (-1.64575, -0.00000)  x1
+   (-1.81361, -0.91638)  x3
+   (-1.87939, +0.34730)  x3
+   (-2.34290, +5.54437)  x3
+   (-2.53209, -0.95811)  x3
+   (-3.08387, +0.21320)  x3
+   (-3.20035, -3.80123)  x2
+   (-3.42232, -2.72562)  x3
+   (-3.44645, -4.94330)  x3
+   (-3.79337, +3.76128)  x2
+   (-4.00000, +2.00000)  x3
+   (-4.00000, +3.00000)  x1

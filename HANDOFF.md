@@ -32,6 +32,18 @@ yet. The full conversation is in `transcript/transcript.md` (rendered) and
    full Weil explicit formula to 0.2 on a scale of 147; dips at u = log n of
    depth ∝ Λ(n)/√n including prime powers (`scripts/ringnorm.py`).
 
+5. **Weil–LPS channels built and verified** (2026-09-11, `scripts/weil_lps.py`,
+   `notes/weil-lps-channels.md`). For (p; q) in {(5;29), (7;29), (11;5),
+   (13;17,29), (17;13), (19;5,17), (29;5,13)}: the q+1 norm-q quaternions map
+   into SL₂(F_p); the Weil representation is built numerically with the
+   intertwining relation checked to 10⁻¹⁴; the channels on the even and odd
+   Weil blocks are Ramanujan quantum expanders in every case (Hastings bound),
+   with a unique fixed point; Harrow containment in the PSL₂ Cayley spectrum;
+   Hecke relation A_q² − qI = A_{q²} and multiplicativity A_{q1}A_{q2} = A_{q1q2}
+   exact; channels for different q commute to 10⁻¹⁵; the direct edge
+   superoperator for (13,17) has |μ| ∈ {17, √17, 1}, so its quantum Ihara zeta
+   satisfies RH exactly. Not done: LMFDB identification of the joint spectrum.
+
 ### What is NOT established
 
 - RH. Everything above is equivalent to, not a proof of, the uniform-rate
@@ -91,8 +103,11 @@ SP-WEYL Hilbert space and is the concrete link between the two repos.
 
 ## Next useful steps, in order
 
-1. **Weil–LPS channels** (see Steering above): build, verify Ramanujan
-   numerically, identify the joint spectrum with Hecke data. Self-contained.
+1. **Weil–LPS channels, part 2.** Built and verified (item 5 above). Remaining:
+   identify the joint spectra (13;17,29), (19;5,17), (29;5,13) with Hecke
+   eigenvalues of weight-2 forms for the quaternion algebra ramified at {2,∞}
+   via LMFDB; write the quantum Ihara–Bass lemma as a proof; decide what
+   "assemble over p" should mean (the DG-GLOBAL question in this guise).
 2. **The Stinespring question.** Write the compressed semigroup Z(t) on K_S
    explicitly (functional model, Cauchy kernels) and test whether a generator
    of Holevo jump form with jumps at k log p reproduces it on K_S. A negative

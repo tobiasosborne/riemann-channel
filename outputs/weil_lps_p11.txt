@@ -1,0 +1,13 @@
+Weil representation table for SL2(F_11) built: 1320 elements
+
+===== p=11, q=5:  |S|=6 generators in SL2(F_11); Weil intertwiner error 5.9e-15
+Cayley graph on PSL2(F_11): n=660, lambda_1=6.000000 (q+1=6), lambda_2=4.372281, lambda_min=-4.024349, bound 2sqrt(q)=4.472136  -> Ramanujan: True
+Channel Phi_q^even on M_6: block unitarity dev 1.8e-15, HS-hermitian dev 1.9e-15; top 1.000000 (mult 1); (q+1)*lambda_2=3.561553, (q+1)*lambda_min=-4.024349, bound 4.472136  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(6.0), 1), (np.float64(3.561553), 3), (np.float64(3.406315), 3), (np.float64(3.236068), 1), (np.float64(1.781799), 3), (np.float64(0.618034), 5), (np.float64(-0.163765), 3), (np.float64(-0.561553), 3), (np.float64(-1.236068), 1), (np.float64(-1.618034), 5), (np.float64(-3.0), 5), (np.float64(-4.024349), 3)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 4.9e-07
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(2.236068)]  (RH <=> all equal sqrt(q)=2.236068)
+Channel Phi_q^odd on M_5: block unitarity dev 1.4e-15, HS-hermitian dev 1.5e-15; top 1.000000 (mult 1); (q+1)*lambda_2=3.406315, (q+1)*lambda_min=-4.024349, bound 4.472136  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(6.0), 1), (np.float64(3.406315), 3), (np.float64(3.236068), 1), (np.float64(1.781799), 3), (np.float64(0.618034), 5), (np.float64(-0.163765), 3), (np.float64(-1.236068), 1), (np.float64(-1.618034), 5), (np.float64(-4.024349), 3)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 4.9e-07
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(2.236068)]  (RH <=> all equal sqrt(q)=2.236068)
+Hecke relation A_q^2 - q I = A_(q^2):  |A_q^2 - qI - A_(q^2)| = 0.0e+00   (|norm-q^2 set| = 31, expect q^2+q+1 = 31)

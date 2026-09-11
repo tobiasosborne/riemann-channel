@@ -1,0 +1,50 @@
+Weil representation table for SL2(F_13) built: 2184 elements
+
+===== p=13, q=17:  |S|=18 generators in SL2(F_13); Weil intertwiner error 7.2e-15
+Cayley graph on PSL2(F_13): n=1092, lambda_1=18.000000 (q+1=18), lambda_2=6.928199, lambda_min=-7.850855, bound 2sqrt(q)=8.246211  -> Ramanujan: True
+Channel Phi_q^even on M_7: block unitarity dev 2.7e-15, HS-hermitian dev 1.8e-15; top 1.000000 (mult 1); (q+1)*lambda_2=6.000000, (q+1)*lambda_min=-6.684658, bound 8.246211  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(18.0), 1), (np.float64(6.0), 2), (np.float64(5.684658), 3), (np.float64(5.554854), 3), (np.float64(3.561553), 3), (np.float64(3.0), 8), (np.float64(1.773018), 3), (np.float64(-0.561553), 3), (np.float64(-1.773018), 3), (np.float64(-3.0), 8), (np.float64(-5.0), 6), (np.float64(-5.554854), 3), (np.float64(-6.684658), 3)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 4.4e-07
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(4.123106)]  (RH <=> all equal sqrt(q)=4.123106)
+Channel Phi_q^odd on M_6: block unitarity dev 2.7e-15, HS-hermitian dev 1.6e-15; top 1.000000 (mult 1); (q+1)*lambda_2=5.554854, (q+1)*lambda_min=-5.554854, bound 8.246211  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(18.0), 1), (np.float64(5.554854), 3), (np.float64(3.561553), 3), (np.float64(3.0), 8), (np.float64(1.773018), 3), (np.float64(-0.561553), 3), (np.float64(-1.773018), 3), (np.float64(-3.0), 3), (np.float64(-5.0), 6), (np.float64(-5.554854), 3)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 3.1e-07
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(4.123106)]  (RH <=> all equal sqrt(q)=4.123106)
+
+===== p=13, q=29:  |S|=30 generators in SL2(F_13); Weil intertwiner error 7.0e-15
+Cayley graph on PSL2(F_13): n=1092, lambda_1=30.000000 (q+1=30), lambda_2=9.932320, lambda_min=-9.207751, bound 2sqrt(q)=10.770330  -> Ramanujan: True
+Channel Phi_q^even on M_7: block unitarity dev 2.8e-15, HS-hermitian dev 1.3e-15; top 1.000000 (mult 1); (q+1)*lambda_2=9.000000, (q+1)*lambda_min=-9.000000, bound 10.770330  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(30.0), 1), (np.float64(9.0), 2), (np.float64(7.798486), 3), (np.float64(6.0), 1), (np.float64(5.111925), 3), (np.float64(3.123106), 3), (np.float64(3.0), 3), (np.float64(2.0), 3), (np.float64(0.0), 1), (np.float64(-0.334385), 3), (np.float64(-1.0), 3), (np.float64(-2.0), 6), (np.float64(-4.576027), 3), (np.float64(-5.0), 6), (np.float64(-5.123106), 3), (np.float64(-6.0), 3), (np.float64(-9.0), 2)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 3.9e-07
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(5.385165)]  (RH <=> all equal sqrt(q)=5.385165)
+Channel Phi_q^odd on M_6: block unitarity dev 2.5e-15, HS-hermitian dev 1.1e-15; top 1.000000 (mult 1); (q+1)*lambda_2=9.000000, (q+1)*lambda_min=-9.000000, bound 10.770330  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(30.0), 1), (np.float64(9.0), 2), (np.float64(7.798486), 3), (np.float64(5.111925), 3), (np.float64(3.123106), 3), (np.float64(3.0), 3), (np.float64(0.0), 1), (np.float64(-0.334385), 3), (np.float64(-1.0), 3), (np.float64(-4.576027), 3), (np.float64(-5.0), 6), (np.float64(-5.123106), 3), (np.float64(-9.0), 2)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 3.9e-07
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(5.385165)]  (RH <=> all equal sqrt(q)=5.385165)
+Hecke relation A_q^2 - q I = A_(q^2):  |A_q^2 - qI - A_(q^2)| = 0.0e+00   (|norm-q^2 set| = 307, expect q^2+q+1 = 307)
+Hecke relation A_q^2 - q I = A_(q^2):  |A_q^2 - qI - A_(q^2)| = 0.0e+00   (|norm-q^2 set| = 871, expect q^2+q+1 = 871)
+
+Commutation [Phi_17^even, Phi_29^even]: ||E1E2 - E2E1|| = 5.4e-16
+
+Commutation [Phi_17^odd, Phi_29^odd]: ||E1E2 - E2E1|| = 4.5e-16
+Hecke multiplicativity A_q1 A_q2 = A_(q1 q2): residual 0.0e+00  (|norm q1q2 set|=540, expect 540)
+Joint spectrum on the even block (a_17, a_29) with multiplicities, adjacency units (bounds 2sqrt: 8.2462, 10.7703):
+   (+18.00000, +30.00000)  x1
+   (+6.00000, +2.00000)  x2
+   (+5.68466, -2.00000)  x3
+   (+5.55485, -0.33438)  x3
+   (+3.56155, -5.12311)  x3
+   (+3.00000, -1.00000)  x3
+   (+3.00000, +3.00000)  x3
+   (+3.00000, +9.00000)  x2
+   (+1.77302, +5.11192)  x3
+   (-0.56155, +3.12311)  x3
+   (-1.77302, -4.57603)  x3
+   (-3.00000, -9.00000)  x2
+   (-3.00000, -6.00000)  x3
+   (-3.00000, +0.00000)  x1
+   (-3.00000, +2.00000)  x1
+   (-3.00000, +6.00000)  x1
+   (-5.00000, -5.00000)  x6
+   (-5.55485, +7.79849)  x3
+   (-6.68466, -2.00000)  x3

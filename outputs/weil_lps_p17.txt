@@ -1,0 +1,13 @@
+Weil representation table for SL2(F_17) built: 4896 elements
+
+===== p=17, q=13:  |S|=14 generators in SL2(F_17); Weil intertwiner error 2.4e-14
+Cayley graph on PSL2(F_17): n=2448, lambda_1=14.000000 (q+1=14), lambda_2=6.106067, lambda_min=-7.090170, bound 2sqrt(q)=7.211103  -> Ramanujan: True
+Channel Phi_q^even on M_9: block unitarity dev 5.6e-15, HS-hermitian dev 5.0e-15; top 1.000000 (mult 1); (q+1)*lambda_2=6.000000, (q+1)*lambda_min=-6.828427, bound 7.211103  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(14.0), 1), (np.float64(6.0), 1), (np.float64(5.900404), 3), (np.float64(5.464102), 2), (np.float64(5.096251), 3), (np.float64(4.828427), 1), (np.float64(4.605551), 2), (np.float64(4.472136), 3), (np.float64(4.0), 3), (np.float64(3.108595), 3), (np.float64(2.0), 8), (np.float64(1.233642), 3), (np.float64(1.018874), 3), (np.float64(0.0), 6), (np.float64(-0.828427), 1), (np.float64(-1.171573), 2), (np.float64(-1.464102), 2), (np.float64(-2.0), 12), (np.float64(-2.585786), 3), (np.float64(-2.605551), 2), (np.float64(-4.0), 3), (np.float64(-4.357765), 3), (np.float64(-4.472136), 3), (np.float64(-5.414214), 3), (np.float64(-6.0), 3), (np.float64(-6.828427), 2)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 4.9e-07
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(3.605551)]  (RH <=> all equal sqrt(q)=3.605551)
+Channel Phi_q^odd on M_8: block unitarity dev 3.5e-15, HS-hermitian dev 4.9e-15; top 1.000000 (mult 1); (q+1)*lambda_2=6.000000, (q+1)*lambda_min=-6.828427, bound 7.211103  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(14.0), 1), (np.float64(6.0), 1), (np.float64(5.900404), 3), (np.float64(5.096251), 3), (np.float64(4.828427), 1), (np.float64(4.605551), 2), (np.float64(4.0), 3), (np.float64(3.108595), 3), (np.float64(2.0), 4), (np.float64(1.233642), 3), (np.float64(1.018874), 3), (np.float64(0.0), 6), (np.float64(-0.828427), 1), (np.float64(-1.171573), 2), (np.float64(-2.0), 12), (np.float64(-2.585786), 3), (np.float64(-2.605551), 2), (np.float64(-4.0), 3), (np.float64(-4.357765), 3), (np.float64(-5.414214), 3), (np.float64(-6.828427), 2)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 4.9e-07
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(3.605551)]  (RH <=> all equal sqrt(q)=3.605551)
+Hecke relation A_q^2 - q I = A_(q^2):  |A_q^2 - qI - A_(q^2)| = 0.0e+00   (|norm-q^2 set| = 183, expect q^2+q+1 = 183)

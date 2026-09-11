@@ -1,0 +1,6 @@
+p=13, q=17, block=odd: n=6, edge operator dim 648
+  Ihara-Bass at u=0.11: |lhs/rhs - 1| = 2.8e-15
+  Ihara-Bass at u=(0.2+0.07j): |lhs/rhs - 1| = 2.3e-15
+  Ihara-Bass at u=-0.23: |lhs/rhs - 1| = 1.5e-14
+  |mu| spectrum of the edge operator with multiplicities: [(np.float64(17.0), 1), (np.float64(4.12311), 70), (np.float64(1.0), 577)]
+  sqrt(q) = 4.12311;  RH for the quantum Ihara zeta: True

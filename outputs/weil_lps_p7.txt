@@ -1,0 +1,13 @@
+Weil representation table for SL2(F_7) built: 336 elements
+
+===== p=7, q=29:  |S|=30 generators in SL2(F_7); Weil intertwiner error 1.9e-15
+Cayley graph on PSL2(F_7): n=168, lambda_1=30.000000 (q+1=30), lambda_2=8.000000, lambda_min=-6.000000, bound 2sqrt(q)=10.770330  -> Ramanujan: True
+Channel Phi_q^even on M_4: block unitarity dev 2.7e-15, HS-hermitian dev 5.5e-16; top 1.000000 (mult 1); (q+1)*lambda_2=6.000000, (q+1)*lambda_min=-6.000000, bound 10.770330  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(30.0), 1), (np.float64(6.0), 3), (np.float64(2.0), 6), (np.float64(-6.0), 6)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 2.8e-14
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(5.385165)]  (RH <=> all equal sqrt(q)=5.385165)
+Channel Phi_q^odd on M_3: block unitarity dev 1.5e-15, HS-hermitian dev 3.1e-16; top 1.000000 (mult 1); (q+1)*lambda_2=2.000000, (q+1)*lambda_min=-6.000000, bound 10.770330  -> Ramanujan quantum expander: True
+   spectrum (adjacency units) x multiplicity: [(np.float64(30.0), 1), (np.float64(2.0), 3), (np.float64(-6.0), 5)]
+   Harrow containment in the PSL2 Cayley spectrum: max distance = 2.8e-14
+   quantum Ihara zeta: nontrivial |mu| values = [np.float64(5.385165)]  (RH <=> all equal sqrt(q)=5.385165)
+Hecke relation A_q^2 - q I = A_(q^2):  |A_q^2 - qI - A_(q^2)| = 0.0e+00   (|norm-q^2 set| = 871, expect q^2+q+1 = 871)
