@@ -1034,3 +1034,31 @@ I'll set up a neighbouring repo, copy the artifacts, convert this session's tran
 ### Claude — 2026-09-11 10:36 UTC
 
 > *[tool: Bash — Create the new repo skeleton, copy artifacts and transcript, inspect transcript format]*
+
+### Claude — 2026-09-11 10:36 UTC
+
+> *[tool: Bash — Convert transcript to Markdown and repoint the ring-norm script at the data directory]*
+
+### Claude — 2026-09-11 10:37 UTC
+
+> *[tool: Bash — Re-run all four scripts from the new repo root and capture their outputs]*
+
+### Claude — 2026-09-11 10:37 UTC
+
+> *[tool: Write — /home/tobias/Projects/riemann-channel/README.md]*
+
+### Claude — 2026-09-11 10:37 UTC
+
+> *[tool: Write — /home/tobias/Projects/riemann-channel/HANDOFF.md]*
+
+### Claude — 2026-09-11 10:38 UTC
+
+> *[tool: Write — /home/tobias/Projects/riemann-channel/docs/worklog/2026-09-11.md]*
+
+### Claude — 2026-09-11 10:38 UTC
+
+> *[tool: Bash — Check script outputs, render transcript, initialise git and make the founding commit]*
+
+### Claude — 2026-09-11 10:38 UTC
+
+> *[tool: Bash — Add a transcript refresh script, re-sync the session log, and commit]*
