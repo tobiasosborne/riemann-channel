@@ -1,0 +1,21 @@
+--- (a) unimodularity of S on the real line ---
+tau=0.3: |S|-1 = 0.0e+00
+tau=2.0: |S|-1 = 0.0e+00
+tau=7.5: |S|-1 = 0.0e+00
+tau=21.3: |S|-1 = 0.0e+00
+--- (b) zeros of S in the lower half plane vs gamma_n/2 - i/4 ---
+n=1: gamma_n/2 = 7.067363;  zero of S at 7.067363 -0.250000i;  |S(root)|=6.3e-21
+n=2: gamma_n/2 = 10.511020;  zero of S at 10.511020 -0.250000i;  |S(root)|=3.5e-21
+n=3: gamma_n/2 = 12.505429;  zero of S at 12.505429 -0.250000i;  |S(root)|=7.3e-21
+n=4: gamma_n/2 = 15.212438;  zero of S at 15.212438 -0.250000i;  |S(root)|=9.0e-21
+n=5: gamma_n/2 = 16.467531;  zero of S at 16.467531 -0.250000i;  |S(root)|=1.5e-20
+n=6: gamma_n/2 = 18.793089;  zero of S at 18.793089 -0.250000i;  |S(root)|=9.0e-21
+--- (c) is S small inside the lower half plane? (inner-function check at a few points) ---
+tau=(3-0.6j): |S| = 0.9348
+tau=(10-1j): |S| = 0.5393
+tau=(0.5-2j): |S| = 0.8344
+tau=(30-0.3j): |S| = 0.2718
+--- (d) phase of S from the critical (sigma=1) Bost-Connes Levy exponent ---
+tau=0.7: -arg zeta(1+2i tau) exact=0.80572   prime sum (p<3e6)=0.82380
+tau=1.9: -arg zeta(1+2i tau) exact=-0.03879   prime sum (p<3e6)=-0.05607
+tau=4.2: -arg zeta(1+2i tau) exact=-0.17233   prime sum (p<3e6)=-0.18043
