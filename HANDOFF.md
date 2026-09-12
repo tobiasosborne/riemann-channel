@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-11)
+## Current state (2026-09-12)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -80,6 +80,22 @@ yet. The full conversation is in `transcript/transcript.md` (rendered) and
   (archimedean) part + Hamiltonian part. Dilation theorems supply existence
   only; positivity (Weil's criterion) is where RH lives.
 
+7. **Deligne's proof via graphs** (2026-09-12, `notes/deligne-via-graphs.md`,
+   expository). The three ingredients a Hilbert–Pólya approach would have to
+   replace: products (eigenvalues multiply, trivial loss fixed), slicing over
+   a curve (the core theorem is about a curve with matrix coefficients, i.e.
+   a twisted Ihara zeta), and the sign (interesting eigenvalues are zeros,
+   not poles). Deligne exhibits no Hermitian form; Weil and Artin–Schreier do.
+
+### Discussion 2026-09-12: circle flows
+
+Direct sum over $p$ of rotations on circles of circumference $\log p$ has
+trace $\sum_n \Lambda(n)\delta(s - \log n)$ (Poisson), dynamical zeta =
+Euler product; it is side A. For finite sets of primes its spectrum is the
+poles of the partial Euler product; zeros exist only in the infinite
+product. Prime-by-prime ansätze (direct sums, commuting dilations) cannot
+see zeros. See `docs/worklog/2026-09-12.md`.
+
 ## Steering 2026-09-11 (TJO)
 
 TJO's deepest learning from the founding session: **RH is a Ramanujan
@@ -131,7 +147,7 @@ SP-WEYL Hilbert space and is the concrete link between the two repos.
 4. **Decide the repo's rules.** If this becomes more than a notebook, import
    the parent's PRD (red-green checkers, claims DAG, definitions file) before
    anything is called a claim.
-5. **Remote.** No git remote yet. `gh repo create tobiasosborne/riemann-channel --private --source=. --push` when wanted.
+5. **Remote.** Public at github.com/tobiasosborne/riemann-channel (AGPL-3.0), created 2026-09-12.
 
 ## Environment
 
