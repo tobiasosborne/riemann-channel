@@ -1,0 +1,65 @@
+% riemann-channel lab book. Master file: preamble, generated inputs, include order. No prose here.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+
+% ---- status tags (printed inside every theorem-like environment; must equal the derived status)
+\newcommand{\claimstatus}[2]{\hfill{\footnotesize\texttt{[#2]}}}
+
+% ---- theorem-like environments; each is one claim unit with one \label and one \claimstatus
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{citedfact}[theorem]{Cited fact}
+\newtheorem{numerical}[theorem]{Numerical result}
+\crefname{citedfact}{cited fact}{cited facts}\Crefname{citedfact}{Cited fact}{Cited facts}
+\crefname{numerical}{numerical result}{numerical results}\Crefname{numerical}{Numerical result}{Numerical results}
+\crefname{observation}{observation}{observations}\Crefname{observation}{Observation}{Observations}
+\crefname{conjecture}{conjecture}{conjectures}\Crefname{conjecture}{Conjecture}{Conjectures}
+\crefname{assumption}{assumption}{assumptions}\Crefname{assumption}{Assumption}{Assumptions}
+
+% ---- notation: GENERATED from db/notation.tsv (make regen); never hand-edit, never define macros in shards
+\input{report/macros.tex}
+
+\title{riemann-channel: lab book}
+\author{Tobias J.\ Osborne, with Claude (Anthropic)}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\include{report/sections/00_frontmatter_status}
+\include{report/sections/01_conventions_notation}
+\include{report/sections/02_definitions}
+\include{report/sections/02b_definitions_arithmetic}
+\include{report/sections/03_what_rh_has_become}
+\include{report/sections/04_riemann_channel}
+\include{report/sections/05_weil_lps_channels}
+\include{report/sections/06_artin_schreier_mps}
+\include{report/sections/07_deligne_via_graphs}
+\include{report/sections/08_quantum_ihara_general}
+\include{report/sections/09_prior_art}
+\include{report/sections/09b_selberg_dictionary}
+\include{report/sections/09c_selberg_tower_cusp}
+\include{report/sections/10_open_problems_dead_routes}
+\include{report/sections/11_reproducibility_map}
+\include{report/sections/12_lab_log}
+
+\bibliographystyle{plain}
+\bibliography{report/references}
+\end{document}

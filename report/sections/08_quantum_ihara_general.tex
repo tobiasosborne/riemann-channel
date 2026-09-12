@@ -1,0 +1,299 @@
+% SHARD-ID: RC-08-QUANTUM-IHARA-GENERAL
+% SHARD-TITLE: The Ihara--Bass Formula for an Arbitrary Kraus Family
+% SHARD-SUMMARY: States and proves in Lamport structure the Ihara--Bass factorisation of the quantum Hashimoto operator for an arbitrary family of superoperators with a fixed-point-free reversal, assuming no invertibility, positivity or unitarity.
+% SHARD-SUMMARY: Records the three corollaries (Kraus families and trace positivity, the inverse-paired case, which factor carries the spectrum), the numerical checks, and the provenance against Watanabe--Fukumizu and Matsuura--Ohta.
+% SHARD-SUMMARY: Closes with what the general formula does and does not give: the Ramanujan reading survives only in the unitary case, where it is exactly Hastings' bound.
+% SHARD-KEYWORDS: Ihara-Bass, non-backtracking, quantum Hashimoto operator, Kraus family, transfer matrix, Sylvester identity, Ramanujan
+% SHARD-NOTES: notes/quantum-ihara-general.md
+% SHARD-SCRIPTS: scripts/qihara.py, scripts/qihara_general.py
+
+\section{The Ihara--Bass Formula for an Arbitrary Kraus Family}
+\label{sec:quantum-ihara}
+
+This is the load-bearing section of the book. The classical Ihara--Bass formula (\cref{def:ihara-bass}) compresses a determinant on the edge
+space of a regular graph to one on the vertex space, and \cref{def:quantum-hashimoto} lifts the edge operator to superoperators. The
+question the founding session left open, and which TJO steered towards, is whether the compression survives when the Kraus operators are not
+unitary. It does, at the price of two $\uz$-dependent operators in place of the adjacency matrix and the degree.
+
+\emph{Status.} \Cref{thm:qihara-general} and its three corollaries are tagged \texttt{proved}. The author is
+\texttt{claude:\allowbreak fable-5.1}; the reviewers are of a different model, \texttt{claude:opus}; and their reports in
+\texttt{notes/reviews/} --- a round-1 algebra report, a round-1 provenance report, and a round-2 re-verification --- return
+\texttt{VALID} on every verdict. Only one model family was declared for this campaign, so \texttt{proved} here means exactly that:
+author $\ne$ reviewer, inside one family. The two \texttt{numerical} rows are independent evidence.
+
+\subsection{Setting and conventions}
+
+\begin{itemize}
+  \item $\Vsp$ is a finite-dimensional complex vector space, $N = \dim\Vsp$. In the application $\Vsp = \Mn$ with the Hilbert--Schmidt inner
+  product, so $N = n^2$.
+  \item $\Dk = 2\mpairs$ is even, and $\rev$ is a fixed-point-free involution on $[\Dk] = \{1,\dots,\Dk\}$, the \emph{reversal}; we write
+  $\bari{i} = \rev(i)$, so that $\bari{\bari{i}} = i$.
+  \item $\Eop{1},\dots,\Eop{\Dk}\in\operatorname{End}(\Vsp)$ are arbitrary linear maps. No invertibility, positivity or unitarity is assumed.
+  \item The edge space is $\Wsp = \Vsp\otimes\mathbb C^{\Dk}$, with $\mathbb C^{\Dk}$ spanned by $|1\rangle,\dots,|\Dk\rangle$; an element is
+  $x = \sum_i x_i\otimes|i\rangle$ with $x_i\in\Vsp$ its \emph{component} at $i$.
+  \item $\Hash\in\operatorname{End}(\Wsp)$ is the quantum Hashimoto operator of \cref{def:quantum-hashimoto}, $\Hash(v\otimes|i\rangle) =
+  \sum_{j\ne\bari{i}}\Eop{i}v\otimes|j\rangle$, and $\zetaT(\uz) = \det\nolimits_{\Wsp}(1-\uz\Hash)^{-1}$, a rational function of
+  $\uz\in\mathbb C$.
+  \item $\|\cdot\|$ is the operator norm; any submultiplicative norm on $\operatorname{End}(\Vsp)$ would do. Determinants carry the space they
+  are taken over, $\det\nolimits_{\Vsp}$ and $\det\nolimits_{\Wsp}$.
+  \item Sylvester's identity $\det(1-XY) = \det(1-YX)$, for $X\colon\Vsp\to\Wsp$ and $Y\colon\Wsp\to\Vsp$, is used without further comment; so
+  is the block determinant with identity diagonal blocks, $\det\left(\begin{smallmatrix}1 & B\\ C & 1\end{smallmatrix}\right) = \det(1-CB) =
+  \det(1-BC)$ (Schur complement, then Sylvester).
+\end{itemize}
+
+\noindent\textbf{The Kraus case.} $\Vsp = \Mn$; $\Kr{1},\dots,\Kr{\mpairs}\in\Mn$ are arbitrary, $\Kr{\mpairs+k} = \Kr{k}^\dagger$, $\rev(k)
+= \mpairs+k$, and $\Eop{i} = \Ad(\Kr{i})\colon\dm\mapsto \Kr{i}\dm\Kr{i}^\dagger$. With column stacking (\cref{sec:conventions}), $\Ad(A) =
+\bar A\otimes A$ as an $n^2\times n^2$ matrix, so $\Tr_{\Vsp}\Ad(A) = |\Tr A|^2$ and $\Ad(A)\Ad(B) = \Ad(AB)$.
+
+\noindent\textbf{Auxiliary maps.} Three maps do all the work: $\Rmap$ propagates along an edge, $\Smap$ starts along
+every edge, $\Jrev$ is the backtracking term.
+\[
+  \Rmap\colon\Wsp\to\Vsp,\ \ \Rmap(v\otimes|i\rangle) = \Eop{i}v;\qquad
+  \Smap\colon\Vsp\to\Wsp,\ \ \Smap v = \sum_{j=1}^{\Dk} v\otimes|j\rangle;\qquad
+  \Jrev(v\otimes|i\rangle) = \Eop{i}v\otimes|\bari{i}\rangle .
+\]
+The two $\uz$-dependent operators on $\Vsp$ are the \emph{deformed adjacency} and the \emph{deformed degree},
+\[
+  \Aop \;=\; \uz\sum_{i=1}^{\Dk}\Eop{i}\,\big(1-\uz^2\Eop{\bari{i}}\Eop{i}\big)^{-1},\qquad
+  \Dop \;=\; \uz^2\sum_{i=1}^{\Dk}\Eop{\bari{i}}\Eop{i}\,\big(1-\uz^2\Eop{\bari{i}}\Eop{i}\big)^{-1}.
+\]
+The zeta variable is $\uz$ throughout (\cref{sec:conventions}); the channel normalisation $\Sig = \sum_i\Eop{i} =
+\Dk\chan$ is the one fixed there, and nothing below depends on it.
+
+\subsection{Statement}
+
+\begin{theorem}[Ihara--Bass for an arbitrary family of superoperators]
+\label{thm:qihara-general}
+\claimstatus{thm:qihara-general}{proved}
+Let $\uz\in\mathbb C$ be such that $1-\uz^2\Eop{\bari{i}}\Eop{i}$ is invertible for every $i\in[\Dk]$. Then
+\[
+  \det\nolimits_{\Wsp}(1-\uz\Hash) \;=\;
+  \prod_{\{i,\bari{i}\}}\det\nolimits_{\Vsp}\!\big(1-\uz^2\Eop{\bari{i}}\Eop{i}\big)\;\cdot\;
+  \det\nolimits_{\Vsp}\!\big(1+\Dop-\Aop\big),
+\]
+the product being over the $\mpairs$ unordered pairs $\{i,\bari{i}\}$, which is well defined because
+$\det(1-\uz^2\Eop{\bari{i}}\Eop{i}) = \det(1-\uz^2\Eop{i}\Eop{\bari{i}})$. The hypothesis holds for all
+$|\uz| < (\max_i\|\Eop{\bari{i}}\Eop{i}\|)^{-1/2}$, and for all $\uz$ if every $\Eop{\bari{i}}\Eop{i} = 0$; the
+identity holds pointwise at every such $\uz$, and since the left side is a polynomial of degree $\le N\Dk$ and the
+right side is rational, the two sides agree as rational functions.
+\end{theorem}
+
+\begin{corollary}[Kraus families and positivity of side A]
+\label{cor:qihara-kraus}
+\claimstatus{cor:qihara-kraus}{proved}
+For arbitrary $\Kr{1},\dots,\Kr{\mpairs}\in\Mn$ with the adjoint pairing above,
+$\det\nolimits_{\Wsp}(1-\uz\Hash) = \prod_{k=1}^{\mpairs}\det(1-\uz^2\Ad(\Kr{k}^\dagger \Kr{k}))\cdot
+\det(1+\Dop-\Aop)$, valid for $|\uz| < \min_k\|\Kr{k}\|^{-2}$; here $\Eop{\bari{i}}\Eop{i}$ is
+$\Ad(\Kr{k}^\dagger \Kr{k})$ for $i = k\le\mpairs$ and $\Ad(\Kr{k}\Kr{k}^\dagger)$ for $i = \mpairs+k$, both positive
+semidefinite. Moreover, for every $\wl\ge1$,
+\[
+  \Tr\nolimits_{\Wsp}\Hash^{\wl} \;=\;
+  \sum_{\substack{(i_1,\dots,i_{\wl})\in[\Dk]^{\wl}\\ i_{k+1}\ne\bari{i_k}\ (k\in\mathbb Z/\wl)}}
+  \big|\Tr\big(\Kr{i_{\wl}}\cdots \Kr{i_1}\big)\big|^2 \;\ge\;0,
+\]
+so $\zetaT(\uz) = \exp\big(\sum_{\wl}\uz^{\wl}\Tr\Hash^{\wl}/\wl\big)$ has nonnegative Taylor coefficients, and
+$\zetaT(\uz) = \prod_{\pcycle}\det\nolimits_{\Vsp}(1-\uz^{\wl(\pcycle)}\Ad(\Kr{\pcycle}))^{-1}$ over primitive
+cyclically non-backtracking classes $\pcycle$ of length $\wl(\pcycle)$, with $\Kr{\pcycle}$ the ordered product
+along $\pcycle$.
+\end{corollary}
+
+\begin{corollary}[Inverse pairing: the unitary case]
+\label{cor:qihara-unitary}
+\claimstatus{cor:qihara-unitary}{proved}
+If $\Eop{\bari{i}} = \Eop{i}^{-1}$ for all $i$ --- in particular for unitary Kraus operators with
+$\Un{\bari{i}} = \Un{i}^\dagger = \Un{i}^{-1}$ --- then, with $\Sig = \sum_i\Eop{i}$,
+\[
+  \det\nolimits_{\Wsp}(1-\uz\Hash) \;=\;
+  (1-\uz^2)^{N(\Dk-2)/2}\,\det\nolimits_{\Vsp}\!\big(1-\uz\,\Sig+(\Dk-1)\uz^2\big).
+\]
+For $\Vsp = \Mn$ and $\Sig = \Dk\chan$ this is the formula recorded as item~1 of \texttt{HANDOFF.md} and, on the
+bouquet, equation~(2.11) of Matsuura--Ohta \cite{matsuura2022km}.
+\end{corollary}
+
+\begin{corollary}[Which factor carries the spectrum]
+\label{cor:qihara-poles}
+\claimstatus{cor:qihara-poles}{proved}
+The poles of $\zetaT$ lie among the roots of $\det\nolimits_{\Vsp}(1+\Dop-\Aop) = 0$ together with the points
+$\uz^2 = 1/\lambda$ for $\lambda\in\operatorname{spec}(\Eop{\bari{i}}\Eop{i})\setminus\{0\}$; the latter may cancel
+against poles of the second factor, as they do in \cref{cor:qihara-unitary} (exponent $N\Dk/2$ against $-N$, a total
+cancellation when $\Dk = 2$). For $\Dk = 2$ in general, $\Hash = \Eop{1}\oplus\Eop{2}$ on $\Wsp = \Vsp\oplus\Vsp$,
+since the only non-backtracking successor of $i$ is $i$ itself, so $\det\nolimits_{\Wsp}(1-\uz\Hash) =
+\det\nolimits_{\Vsp}(1-\uz\Eop{1})\det\nolimits_{\Vsp}(1-\uz\Eop{2})$. Conversely a pole of the second factor, which
+can only sit where some $1-\uz^2\Eop{\bari{i}}\Eop{i}$ is singular, is not a pole of $\zetaT$ unless it survives
+multiplication by the first.
+\end{corollary}
+
+\subsection{Proof of the theorem}
+
+The proof is written in Lamport structure: each step is a claim followed by its own proof, and the last step assembles them.
+
+\begin{proof}[Proof of \cref{thm:qihara-general}]
+\textsc{Assume}: $\uz\in\mathbb C$ with $1-\uz^2\Eop{\bari{i}}\Eop{i}$ invertible for all $i\in[\Dk]$.
+\textsc{Prove}: the displayed identity.
+\begin{enumerate}
+\item[$\langle1\rangle$1.] \textbf{The decomposition $\Hash = \Smap\Rmap-\Jrev$.} \emph{Proof.} On $v\otimes|i\rangle$,
+$\Smap\Rmap(v\otimes|i\rangle) = \sum_j\Eop{i}v\otimes|j\rangle$ and $\Jrev(v\otimes|i\rangle) = \Eop{i}v\otimes|\bari{i}\rangle$, so
+$(\Smap\Rmap-\Jrev)(v\otimes|i\rangle) = \sum_{j\ne\bari{i}}\Eop{i}v\otimes|j\rangle = \Hash(v\otimes|i\rangle)$. Both sides are linear and
+these vectors span $\Wsp$. $\square$
+\item[$\langle1\rangle$2.] \textbf{Block structure of $\Jrev$.} For each pair $p = \{i,\bari{i}\}$ put
+$\Wsp_p = \Vsp\otimes\operatorname{span}\{|i\rangle,|\bari{i}\rangle\}$. Then $\Wsp = \bigoplus_p\Wsp_p$, $\Jrev\Wsp_p\subseteq\Wsp_p$, and
+in the ordered decomposition $\Wsp_p = \Vsp\oplus\Vsp$ (component at $i$, component at $\bari{i}$), $\Jrev|_{\Wsp_p} =
+\left(\begin{smallmatrix}0 & \Eop{\bari{i}}\\ \Eop{i} & 0\end{smallmatrix}\right)$. \emph{Proof.} $\Jrev$ sends the component at $i$ to the
+component at $\bari{i}$ through $\Eop{i}$, and the component at $\bari{i}$ to the component at $i$ through $\Eop{\bari{i}}$, using
+$\bari{\bari{i}} = i$. The direct sum is the partition of $[\Dk]$ into $\rev$-orbits, which have size two because $\rev$ is
+fixed-point-free. $\square$
+\item[$\langle1\rangle$3.] \textbf{$1+\uz\Jrev$ is invertible, with $\det\nolimits_{\Wsp}(1+\uz\Jrev) =
+\prod_p\det\nolimits_{\Vsp}(1-\uz^2\Eop{\bari{i}}\Eop{i})$.} \emph{Proof.} By $\langle1\rangle$2, $\det\nolimits_{\Wsp}(1+\uz\Jrev) =
+\prod_p\det\left(\begin{smallmatrix}1 & \uz\Eop{\bari{i}}\\ \uz\Eop{i} & 1\end{smallmatrix}\right) =
+\prod_p\det\nolimits_{\Vsp}(1-\uz^2\Eop{i}\Eop{\bari{i}}) = \prod_p\det\nolimits_{\Vsp}(1-\uz^2\Eop{\bari{i}}\Eop{i})$, by the block
+determinant and then Sylvester. Each factor is nonzero by \textsc{Assume}. $\square$
+\item[$\langle1\rangle$4.] \textbf{Explicit inverse on a
+pair.} Write $B = \uz\Eop{\bari{i}}$, $C = \uz\Eop{i}$, $P = (1-BC)^{-1} = (1-\uz^2\Eop{\bari{i}}\Eop{i})^{-1}$ and $Q = (1-CB)^{-1} =
+(1-\uz^2\Eop{i}\Eop{\bari{i}})^{-1}$, both existing by \textsc{Assume} (the second is the hypothesis at the index $\bari{i}$). Then
+$(1+\uz\Jrev)^{-1}|_{\Wsp_p} = \left(\begin{smallmatrix}P & -BQ\\ -CP & Q\end{smallmatrix}\right)$. \emph{Proof.} Multiply out:
+$\left(\begin{smallmatrix}1&B\\C&1\end{smallmatrix}\right) \left(\begin{smallmatrix}P&-BQ\\-CP&Q\end{smallmatrix}\right) =
+\left(\begin{smallmatrix}(1-BC)P & -BQ+BQ\\ CP-CP & (1-CB)Q\end{smallmatrix}\right) =
+\left(\begin{smallmatrix}1&0\\0&1\end{smallmatrix}\right)$. A right inverse of a square operator on a finite-dimensional space is the
+inverse. $\square$
+\item[$\langle1\rangle$5.] \textbf{Sylvester step.} $\det\nolimits_{\Wsp}(1-\uz\Hash) =
+\det\nolimits_{\Wsp}(1+\uz\Jrev)\cdot\det\nolimits_{\Vsp}(1-\uz\,\Rmap(1+\uz\Jrev)^{-1}\Smap)$. \emph{Proof.} By $\langle1\rangle$1,
+$1-\uz\Hash = 1+\uz\Jrev-\uz\Smap\Rmap = (1+\uz\Jrev)(1-\uz(1+\uz\Jrev)^{-1}\Smap\Rmap)$, the inverse existing by $\langle1\rangle$3. Take
+determinants and apply Sylvester with $X = \uz(1+\uz\Jrev)^{-1}\Smap\colon\Vsp\to\Wsp$ and $Y = \Rmap\colon\Wsp\to\Vsp$. $\square$
+\item[$\langle1\rangle$6.] \textbf{Computation of $M(\uz) := \Rmap(1+\uz\Jrev)^{-1}\Smap$.} It equals
+$\sum_{i=1}^{\Dk}(\Eop{i}-\uz\,\Eop{\bari{i}}\Eop{i})(1-\uz^2\Eop{\bari{i}}\Eop{i})^{-1}$. \emph{Proof.} For $v\in\Vsp$, $\Smap v$ has
+component $v$ at every index. By $\langle1\rangle$4, on the pair $p = \{i,\bari{i}\}$ the vector $(1+\uz\Jrev)^{-1}\Smap v$ has component
+$(P-BQ)v$ at $i$ and $(-CP+Q)v$ at $\bari{i}$. Applying $\Rmap$, which applies $\Eop{i}$ to the component at $i$, $\Eop{\bari{i}}$ to the
+component at $\bari{i}$, and sums over all indices, and substituting $B,C,P,Q$, the pair $p$ contributes
+\[
+  \Eop{i}P-\uz\,\Eop{i}\Eop{\bari{i}}Q \;+\; \Eop{\bari{i}}Q-\uz\,\Eop{\bari{i}}\Eop{i}P
+  \;=\; (\Eop{i}-\uz\Eop{\bari{i}}\Eop{i})P \;+\; (\Eop{\bari{i}}-\uz\Eop{i}\Eop{\bari{i}})Q .
+\]
+The first summand is the $i$-th term of the claimed sum and the second is the $\bari{i}$-th, since $Q =
+(1-\uz^2\Eop{\bari{\bari{i}}}\Eop{\bari{i}})^{-1}$. Summing over the $\mpairs$ pairs gives the sum over all $\Dk$ indices. $\square$
+\item[$\langle1\rangle$7.] \textbf{$1-\uz M(\uz) = 1+\Dop-\Aop$.} \emph{Proof.} Expand $\langle1\rangle$6 linearly: $\uz M(\uz) =
+\uz\sum_i\Eop{i}(1-\uz^2\Eop{\bari{i}}\Eop{i})^{-1} - \uz^2\sum_i\Eop{\bari{i}}\Eop{i}(1-\uz^2\Eop{\bari{i}}\Eop{i})^{-1} = \Aop-\Dop$.
+$\square$
+\item[$\langle1\rangle$8.] \textbf{QED.} \emph{Proof.} Combine $\langle1\rangle$5, $\langle1\rangle$3 and $\langle1\rangle$7. Steps
+$\langle1\rangle$1--$\langle1\rangle$7 hold pointwise at every $\uz$ satisfying \textsc{Assume}, with no analyticity used. The bound $|\uz|
+< (\max_i\|\Eop{\bari{i}}\Eop{i}\|)^{-1/2}$ makes $\|\uz^2\Eop{\bari{i}}\Eop{i}\| < 1$, so the Neumann series supplies the inverses and
+\textsc{Assume} holds there. The set of admissible $\uz$ is cofinite: its complement is the zero set of the polynomial
+$\prod_i\det\nolimits_{\Vsp}(1-\uz^2\Eop{\bari{i}}\Eop{i})$, which equals $1$ at $\uz = 0$ and so is not identically zero. Two rational
+functions agreeing on a cofinite set are equal. $\square$
+\end{enumerate}
+\end{proof}
+
+\subsection{Proofs of the corollaries}
+
+\begin{proof}[Proof of \cref{cor:qihara-kraus}]
+$\Eop{\bari{i}}\Eop{i} = \Ad(\Kr{\bari{i}})\Ad(\Kr{i}) = \Ad(\Kr{\bari{i}}\Kr{i})$, which is
+$\Ad(\Kr{k}^\dagger \Kr{k})$ or $\Ad(\Kr{k}\Kr{k}^\dagger)$; for $P\ge0$ with eigenvalues $p_a$, $\Ad(P) = \bar
+P\otimes P$ has spectrum $\{\bar p_a p_b\}\subseteq[0,\infty)$, and $\|\Ad(\Kr{k}^\dagger \Kr{k})\| = \|\Kr{k}\|^4$, so
+the hypothesis of \cref{thm:qihara-general} holds for $|\uz| < \min_k\|\Kr{k}\|^{-2}$; the two orderings of a pair have
+equal determinant by Sylvester, leaving one factor per $k$. For the trace formula, induction on $\wl$ gives
+$\Hash^{\wl}(v\otimes|i_1\rangle) = \sum\Eop{i_{\wl}}\cdots\Eop{i_1}v\otimes|i_{\wl+1}\rangle$, summed over
+$(i_2,\dots,i_{\wl+1})$ with $i_{k+1}\ne\bari{i_k}$ for $k = 1,\dots,\wl$. Tracing over
+$\Wsp = \Vsp\otimes\mathbb C^{\Dk}$ sets $i_{\wl+1} = i_1$, which adds the cyclic condition
+$i_1\ne\bari{i_{\wl}}$, and leaves $\Tr_{\Vsp}\Ad(\Kr{i_{\wl}}\cdots \Kr{i_1}) =
+|\Tr(\Kr{i_{\wl}}\cdots \Kr{i_1})|^2$. Nonnegativity of the coefficients of
+$\log\zetaT = \sum_{\wl}\uz^{\wl}\Tr\Hash^{\wl}/\wl$ implies nonnegativity for $\zetaT = \exp(\cdot)$. The Euler
+product is the standard regrouping of cyclic words into powers of primitive classes, using
+$\sum_{k\ge1}\frac{\uz^{k\wl(\pcycle)}}{k}\Tr\Ad(\Kr{\pcycle})^k = -\log\det(1-\uz^{\wl(\pcycle)}\Ad(\Kr{\pcycle}))$,
+valid for $|\uz|$ small.
+\end{proof}
+
+\begin{proof}[Proof of \cref{cor:qihara-unitary}]
+With $\Eop{\bari{i}}\Eop{i} = 1$ each pair factor is $\det\nolimits_{\Vsp}(1-\uz^2) = (1-\uz^2)^N$, so the product is
+$(1-\uz^2)^{N\Dk/2}$; and $\Aop = \frac{\uz}{1-\uz^2}\Sig$, $\Dop = \frac{\Dk\uz^2}{1-\uz^2}$. Hence
+$1+\Dop-\Aop = \frac{1}{1-\uz^2}(1-\uz\Sig+(\Dk-1)\uz^2)$, whose determinant is
+$(1-\uz^2)^{-N}\det\nolimits_{\Vsp}(1-\uz\Sig+(\Dk-1)\uz^2)$. The total exponent is $N\Dk/2-N = N(\Dk-2)/2$. The
+computation divides by $1-\uz^2$ and so is carried out for $\uz^2\ne1$; both sides are polynomials in $\uz$, so the
+identity extends to $\uz^2 = 1$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{cor:qihara-poles}]
+Immediate from the factorisation: a zero of the polynomial $\det\nolimits_{\Wsp}(1-\uz\Hash)$ is a zero of the product,
+each factor is analytic away from the points named, and a polynomial has no poles, so every pole of the second factor
+is cancelled by a zero of the first.
+\end{proof}
+
+\subsection{Provenance and relation to the literature}
+
+Watanabe and Fukumizu \cite{watanabe2011zeta} prove an Ihara--Bass formula for graph zeta functions with arbitrary matrix weights, in the
+shape $\det(I+\hat{\mathcal D}-\hat{\mathcal A})\prod_{[e]}\det(I-u_eu_{\bar e})$, with $\hat{\mathcal D}$ and $\hat{\mathcal A}$ built from
+$(I-u_eu_{\bar e})^{-1}$ exactly as $\Dop$ and $\Aop$ are; the byte-verified quotes are in \cref{sec:prior-art}. On a one-vertex graph whose
+$2\mpairs$ directed edges are $[\Dk]$ with reversal $\rev$, and with $u_e = \uz\Eop{e}$, their right-hand side becomes the right-hand side
+of \cref{thm:qihara-general} after the push-through identity $\Eop{i}(1-\uz^2\Eop{\bari{i}}\Eop{i})^{-1} =
+(1-\uz^2\Eop{i}\Eop{\bari{i}})^{-1}\Eop{i}$ and the relabelling $i\leftrightarrow\bari{i}$ in the degree term. Two further conventions
+differ and wash out of $\det(1-\uz\,\cdot)$: they compose a prime cycle in the order opposite to our $\Eop{i_{\wl}}\cdots\Eop{i_1}$, and
+their edge operator weights the target edge where $\Hash$ weights the source. Reversal of words is a bijection of cyclically
+non-backtracking words because $\rev$ is an involution, and $\det(1-XY) = \det(1-YX)$.
+
+The framing matters, and was corrected by the round-1 provenance review: their corollary is stated for loopless graphs (their graphs are
+hypergraphs with two-element hyperedges), so a bouquet is not one of their graphs and their corollary does not apply to it.
+\Cref{thm:qihara-general} is therefore the loop-admitting bouquet analogue of their arbitrary-weight corollary, not an instance of it; their
+proof goes through a hypergraph theorem, the proof above is direct. The shape-matching itself is checked numerically only
+(\texttt{notes/reviews/scratch\_wf\_mo\_conventions.py}).
+
+Matsuura and Ohta \cite{matsuura2022km} treat invertible edge weights on a general graph, which is \cref{cor:qihara-unitary} in that
+generality; on a bouquet with $X_e = \Un{e}\otimes\Un{e}^\dagger$ their equation~(2.11) is the formula of \texttt{HANDOFF.md} item~1. No
+local source covers arbitrary weights on a bouquet.
+
+\subsection{Numerical checks}
+
+\begin{numerical}[Ihara--Bass for random unitary Kraus sets]
+\label{num:qihara-unitary}
+\claimstatus{num:qihara-unitary}{numerical}
+For Haar-random unitary Kraus sets closed under adjoint, \cref{cor:qihara-unitary} holds at $\uz\in\{0.13,\,0.29+0.11i,\,-0.4\}$ with
+relative error at most $2.1\cdot10^{-15}$ for $(n,\Dk) = (3,4)$ and at most $3.9\cdot10^{-15}$ for $(n,\Dk) = (4,6)$. The four largest
+eigenvalues of $\Sig = \Dk\chan$ are $1.465,\,1.850,\,3.622,\,4.000$ for $(3,4)$ against the Ramanujan bound $2\sqrt{\qs} = 3.464$, and
+$2.782,\,3.128,\,3.594,\,6.000$ for $(4,6)$ against $4.472$: the first instance violates the bound of \cref{def:ramanujan-channel} and the
+second satisfies it. (\texttt{scripts/qihara.py}, \texttt{outputs/qihara.txt}.)
+\end{numerical}
+
+\begin{numerical}[The general formula in five configurations]
+\label{num:qihara-general}
+\claimstatus{num:qihara-general}{numerical}
+\Cref{thm:qihara-general}, in both the $1-\uz M(\uz)$ and the displayed $1+\Dop-\Aop$ form, at three values of $\uz$ (one complex), with
+maximal relative error per configuration as in the table; the trace formula of \cref{cor:qihara-kraus} for $\wl\le4$ to $5.5\cdot10^{-12}$;
+and exact verification in rational arithmetic (sympy) for $(N,\Dk) = (1,4),\,(2,4),\,(2,6)$. (\texttt{scripts/qihara\_general.py},
+\texttt{outputs/qihara\_general.txt}.)
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+configuration & parameters & max.\ relative error \\
+\midrule
+Gaussian Kraus operators, adjoint pairing & $n=3$, $\Dk=4$ & $2.1\cdot10^{-15}$ \\
+canonical-form MPS tensors and adjoints & $n=3$, $\Dk=4$ & $2.0\cdot10^{-15}$ \\
+generic real superoperators, involution $(1\,2)(3\,4)$ & $n=3$, $\Dk=4$ & $6.7\cdot10^{-16}$ \\
+single Kraus pair, with the direct-sum check & $n=3$, $\Dk=2$ & $1.4\cdot10^{-15}$ \\
+unitary Kraus, against \cref{cor:qihara-unitary} & $n=3$, $\Dk=4$ & $1.3\cdot10^{-15}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{numerical}
+
+\subsection{What this does and does not give}
+
+It gives the compression for \emph{every} matrix product state transfer matrix $\Sig = \sum_i\Ad(\Kr{i})$, with the physical
+index doubled by the adjoints. The price of dropping unitarity is that the degree term $(\Dk-1)\uz^2$ becomes the operator $\Dop$ and the
+adjacency term $\uz\Sig$ becomes the deformed channel $\Aop$, both depending on $\uz$ through $(1-\uz^2\Ad(\Kr{k}^\dagger \Kr{k}))^{-1}$.
+
+It does not give a Ramanujan reading by itself. Without $\Eop{\bari{i}}\Eop{i} = 1$ there is no quadratic relation $\edgeev\edgeev' = \qs$
+pairing the eigenvalues of $\Hash$ with those of $\Sig$. What replaces it, and whether canonical form (\cref{def:canonical-form}) buys
+anything, is \cref{conj:kraus-ramanujan}.
+
+Side A is unconditionally positive: $\Tr\Hash^{\wl} = \sum_{\pcycle}|\Tr \Kr{\pcycle}|^2\ge0$ for any Kraus family, so the primes of this
+zeta are the primitive cyclically non-backtracking words in the $\Kr{k}$ and $\Kr{k}^\dagger$, with real nonnegative multiplicities.
+
+\begin{observation}[RH for the quantum Ihara zeta is Hastings' bound]
+\label{obs:rh-iff-ramanujan-channel}
+\claimstatus{obs:rh-iff-ramanujan-channel}{sketched}
+For unitary Kraus operators closed under adjoint, \cref{cor:qihara-unitary} attaches to each eigenvalue $\lambda$ of $\Sig = \Dk\chan$ the
+quadratic $1-\lambda\uz+\qs\uz^2 = (1-\edgeev\uz)(1-\edgeev'\uz)$ with $\edgeev\edgeev' = \qs = \Dk-1$ and $\edgeev+\edgeev' = \lambda$; the
+eigenvalues $\lambda$ are real because $\Sig$ is Hilbert--Schmidt self-adjoint for an adjoint-closed set. Both roots then have $|\edgeev| =
+\sqrt{\qs}$ exactly when $|\lambda|\le 2\sqrt{\qs}$. Hence every nontrivial pole of $\zetaq$ lies on the circle $|\uz| = \qs^{-1/2}$ if and
+only if $\Dk\lamtwo\le 2\sqrt{\Dk-1}$, which is Hastings' bound $\lamH$ \cite{hastings2007random} in the adjacency units of
+\cref{sec:conventions}: the Riemann hypothesis for this zeta is exactly the statement that $\chan$ is a Ramanujan quantum expander
+(\cref{def:ramanujan-channel}). The note records this as an observation, not found in the literature in this form; it is tagged
+\texttt{sketched} because it has had no reviewer.
+\end{observation}

@@ -1,0 +1,124 @@
+macro	latex	meaning	domain	defined_in	note
+Tr	\operatorname{Tr}	trace	general	RC-01	-
+Ad	\operatorname{Ad}	adjoint action, Ad(A): X -> A X A^dagger	channels	RC-01	column stacking: Ad(A) = bar A (x) A
+re	\operatorname{Re}	real part	general	RC-01	-
+im	\operatorname{Im}	imaginary part	general	RC-01	-
+Mn	M_n	n x n complex matrices with the Hilbert-Schmidt inner product	channels	RC-01	-
+Vsp	\mathcal V	vertex space of the non-backtracking construction (V = M_n in the channel case), N = dim V	quantum Ihara	RC-08	note uses V; renamed to avoid the vertex set V of a graph
+Wsp	\mathcal W	edge space V (x) C^D	quantum Ihara	RC-08	note uses W; renamed to avoid the Weil representation W(g)
+Hash	T	non-backtracking (Hashimoto) edge operator, classical on directed edges or quantum on the edge space	graphs, quantum Ihara	RC-02	T is reserved for this; the flow generator of RC-03 is G
+flowgen	\mathcal G	generator of the length flow whose trace is the prime measure, eigenvalues 1, rho, -2, -4, ...	Riemann channel	RC-03	note what-rh-has-become uses T; renamed
+Eop	\mathcal E_{#1}	i-th superoperator of a family (E_i = Ad(A_i) in the Kraus case)	quantum Ihara	RC-08	-
+Kr	A_{#1}	i-th Kraus operator	channels	RC-01	-
+Un	U_{#1}	i-th unitary Kraus operator	channels	RC-01	-
+Sig	\Sigma	unnormalised transfer matrix sum_i E_i (= D Phi for a unital channel)	channels, MPS	RC-01	Sigma is never a summation sign in this book; sums use \sum
+chan	\Phi	unital channel (1/D) sum_i U_i X U_i^dagger, or a general channel	channels	RC-01	-
+Dk	D	number of Kraus operators (= degree of the bouquet); D = 2m	channels	RC-01	D is never the dilation unitary (\Dil) nor the degree operator (\Dop)
+mpairs	m	number of Kraus pairs, D = 2m	quantum Ihara	RC-08	m is never a walk length (\wl)
+rev	\iota	fixed-point-free reversal involution on the index set [D], bar i = iota(i)	quantum Ihara	RC-08	note uses sigma; renamed since sigma = Re s
+bari	\bar{#1}	reversed index iota(i)	quantum Ihara	RC-08	-
+Jrev	\mathsf J	backtracking operator J(v (x) |i>) = E_i v (x) |bar i>	quantum Ihara	RC-08	sans-serif to avoid the Artin-Schreier range J and the split matrix J
+Rmap	\mathsf R	propagate-along-edge map R: W -> V	quantum Ihara	RC-08	-
+Smap	\mathsf S	start-any-edge map S: V -> W	quantum Ihara	RC-08	sans-serif to avoid the scattering symbol S
+Aop	\mathcal A(u)	deformed adjacency u sum_i E_i (1 - u^2 E_{bar i} E_i)^{-1}	quantum Ihara	RC-08	-
+Dop	\mathcal D(u)	deformed degree u^2 sum_i E_{bar i} E_i (1 - u^2 E_{bar i} E_i)^{-1}	quantum Ihara	RC-08	-
+zetaT	\zeta_{T}	zeta function det(1 - uT)^{-1} of a non-backtracking operator	quantum Ihara	RC-08	-
+zetaq	\zeta_{\Phi}	quantum Ihara zeta of a unital channel with unitary Kraus operators	quantum Ihara	RC-02	the unitary instance of \zetaT
+zetaX	\zeta_{X}	Ihara zeta of a graph X	graphs	RC-02	-
+Aadj	A	adjacency matrix of a graph	graphs	RC-02	-
+Hecke	\mathsf A_{#1}	adjacency operator of the LPS Cayley graph for norm-q quaternions (Hecke operator)	Weil-LPS	RC-05	note uses A_q; sans-serif to avoid the Kraus operators A_i
+qs	q	size parameter: field size (Artin-Schreier), LPS prime (Weil-LPS), and D - 1 = degree - 1 for graphs and channels	all	RC-01	one overloaded symbol by convention; the roles never co-occur, and in every role the critical modulus is sqrt q
+pp	p	a rational prime; the modulus of the Weil representation in RC-05	all	RC-01	-
+lamtwo	\lambda_2	second largest eigenvalue (or singular value) of a channel or graph, normalised to leading eigenvalue 1	expanders	RC-02	-
+lamH	\lambda_H	Hastings bound 2 sqrt(D-1)/D	expanders	RC-02	quoted from Hastings, prov:hastings07-bound
+edgeev	\mu	eigenvalue of the edge operator T; pairs mu mu' = q with an adjacency eigenvalue lambda	graphs	RC-02	-
+wl	\ell	length of a walk, word or prime cycle	graphs, quantum Ihara	RC-02	the Deligne note's m and the notebook's n for walk length are both renamed to ell
+Ncount	N_{#1}	closed non-backtracking walk count of length ell, or point count over F_{q^ell}	graphs, curves	RC-02	-
+pcycle	P	prime cycle of a graph (primitive closed non-backtracking walk up to rotation)	graphs	RC-02	-
+Frob	\mathrm{Fr}	Frobenius	curves	RC-06	note deligne-via-graphs uses F; renamed to avoid the Fourier transform
+hol	\varrho	representation twisting a zeta (holonomy, Artin-Ihara twist, adjoint representation)	graphs, Deligne	RC-07	notes use rho; renamed since rho is a zeta zero
+dm	X	density matrix or general operator input of a channel	channels	RC-01	notes use rho; renamed since rho is a zeta zero
+zero	\rho	nontrivial zero of zeta, rho = sigma + i gamma	number theory	RC-01	notes write rho = beta + i gamma; beta is reserved for inverse temperature
+sigs	\sigma	real part of s (or of a zero)	number theory	RC-01	-
+gam	\gamma_{#1}	imaginary part of the n-th zero	number theory	RC-01	-
+cxi	\xi	completed zeta xi(s) = (1/2) s (s-1) pi^{-s/2} Gamma(s/2) zeta(s)	number theory	RC-04	-
+Ssym	S	Lax-Phillips scattering symbol S(tau) = xi(1 - 2 i tau)/xi(1 + 2 i tau)	Riemann channel	RC-04	-
+tauM	\tau	Mellin variable on the dilation group; dilation by e^t acts as e^{i t tau}	Riemann channel	RC-04	-
+KS	K_S	model space H^2 minus S H^2	Riemann channel	RC-04	-
+Zt	Z(t)	compressed dilation semigroup P_{K_S} e^{i t tau} restricted to K_S	Riemann channel	RC-04	-
+vM	\Lambda	von Mangoldt function	number theory	RC-01	-
+cheb	\psi	Chebyshev function psi(x) = sum_{n <= x} Lambda(n)	number theory	RC-03	psi is never an additive character nor an MPS state in this book
+addch	\mathrm e_q	additive character of F_q composed with the trace	curves	RC-06	note uses psi; renamed
+levy	\kappa_{#1}	Bost-Connes Levy exponent kappa_sigma(tau) = log zeta(sigma - i tau) - log zeta(sigma)	Bost-Connes	RC-04	note uses psi_sigma; renamed
+jump	\nu_{#1}	von Mangoldt jump measure nu_sigma = sum p^{-k sigma}/k delta_{k log p}	Bost-Connes	RC-04	-
+invtemp	\beta	inverse temperature of the Bost-Connes system	Bost-Connes	RC-04	never the real part of a zero
+ringlen	\mathsf L	ring length variable of the length flow (prime powers sit at L = log n)	Riemann channel	RC-03	note ringnorm uses u = t/2; u is reserved for the zeta variable
+Fwin	F	windowed zero sum F(u) of the ring-norm test	Riemann channel	RC-04	-
+Tmat	E	transfer matrix of a matrix product state (the Artin-Schreier transfer matrix is the instance of RC-06)	MPS, curves	RC-02	the superoperators of a Kraus family are \mathcal E_i, a different glyph
+mps	\Psi_{#1}	periodic matrix product state on n sites	MPS	RC-02	note uses psi_n; renamed
+ringnorm	\langle\Psi_{#1}|\Psi_{#1}\rangle	ring norm of the periodic n-site state, = Tr E^n	MPS	RC-02	-
+corrlen	\ell^{\mathrm{c}}_{#1}	k-th correlation length of a transfer matrix	MPS	RC-03	note uses xi_k; renamed since xi is the completed zeta
+ent	h	entropy per site (log of the leading eigenvalue)	MPS	RC-03	-
+Fq	\mathbb F_q	finite field with q elements	curves	RC-01	-
+Fp	\mathbb F_p	finite field with p elements	curves, Weil-LPS	RC-01	-
+Fqn	\mathbb F_{q^{#1}}	extension of degree n	curves	RC-06	-
+expsum	\mathcal S_{#1}	exponential sum S_n(g) = sum_{x in F_{q^n}} e_q(Tr g(x))	curves	RC-06	note uses S_n; renamed to avoid the scattering symbol
+asrange	J	range of the quadratic Artin-Schreier polynomial, dim E = q^J	curves	RC-06	italic J; the reversal operator is sans-serif \mathsf J
+alphaw	\alpha_{#1}	Frobenius eigenvalues (roots of the L-polynomial), |alpha| = sqrt q	curves	RC-06	-
+SL	\mathrm{SL}_2	special linear group	Weil-LPS	RC-05	-
+PSL	\mathrm{PSL}_2	projective special linear group	Weil-LPS	RC-05	-
+Weil	W	Weil representation W(g) of SL_2(F_p) on l^2(F_p)	Weil-LPS	RC-05	-
+Wpm	W_{\pm}	even and odd blocks of the Weil representation, dimensions (p +- 1)/2	Weil-LPS	RC-05	-
+PhiWL	\Phi_{#1}	Weil-LPS channel for the LPS prime q (with superscript pm for the block)	Weil-LPS	RC-05	-
+quat	\alpha	integer quaternion of norm q in the LPS normalisation	Weil-LPS	RC-05	alpha without subscript; the Frobenius eigenvalues carry a subscript
+galpha	g_{\alpha}	image of the quaternion alpha in SL_2(F_p)	Weil-LPS	RC-05	-
+clock	Z	clock operator on l^2(F_p)	Weil-LPS	RC-05	-
+shift	\mathsf X	shift operator on l^2(F_p)	Weil-LPS	RC-05	sans-serif; italic X is a channel input
+Four	\mathcal F	Fourier transform on l^2(F_p)	Weil-LPS	RC-05	note uses F; renamed
+chirp	\mathsf M	chirp operator diag e_p(x^2/2)	Weil-LPS	RC-05	note uses M; renamed
+Dil	\mathsf D	dilation unitary on l^2(F_p)	Weil-LPS	RC-05	note uses D; renamed since D is the number of Kraus operators
+Isplit	\mathbf I	splitting matrix I = ((x, y), (y, -x)) with x^2 + y^2 + 1 = 0 mod p	Weil-LPS	RC-05	-
+Jsplit	\mathbf J	splitting matrix J = ((0, 1), (-1, 0))	Weil-LPS	RC-05	-
+Hei	T(u,v)	Heisenberg-Weyl operator X^u Z^v	Weil-LPS	RC-05	only with two arguments; T alone is the edge operator
+dweight	c	pointwise weight scalar of a twisted coefficient system (|eigenvalue| = c^ell)	Deligne	RC-07	-
+Lcurve	L	L-function (of a curve with coefficients, or Artin-Ihara)	graphs, curves	RC-02	-
+digam	(\Gamma'/\Gamma)	digamma function in the archimedean term of the explicit formula	number theory	RC-04	note uses psi; written as the logarithmic derivative to keep psi for Chebyshev
+wt	w	weight of a pure coefficient system (|Frobenius eigenvalue| = q^{w/2})	Deligne	RC-07	note uses beta; renamed since beta is the inverse temperature
+ftr	\operatorname{tr}_{q^n/q}	field trace from F_{q^n} to F_q	curves	RC-06	lowercase tr; \Tr is the operator trace
+curvezeta	Z_C	zeta function of a curve C over F_q, exp sum_n N_n u^n / n	curves	RC-06	the notes write Z(C,T) and Z_C(t); the zeta variable is always u
+Gwin	G_{\mathrm w}	Gaussian window width of the ring-norm test	Riemann channel	RC-04	note uses G; renamed since G is a group
+Fweil	F_{\mathrm W}	zero-side function sum_rho e^{(rho - 1/2) u} whose positive-definiteness is Weil's criterion	number theory	RC-03	note uses F(u); renamed to avoid the numerical window sum F
+phase	\vartheta_{#1}	k-th oscillation frequency of a transfer matrix, lambda_k = exp(-1/ell^c_k + i vartheta_k)	MPS	RC-03	note uses theta_k; renamed since theta is the normal-basis generator
+nbgen	\theta	generator of a normal basis of F_{q^n}	curves	RC-06	-
+sqrtq	s_q	a square root of q modulo p	Weil-LPS	RC-05	note uses s; renamed since s is the complex variable of zeta(s)
+bciso	\mathsf m_{#1}	Bost-Connes isometry mu_n	Bost-Connes	RC-04	note uses mu_n; renamed since mu is an edge eigenvalue
+shor	\mathsf U_{#1}	Shor's unitary x -> a x mod N, the level-N Galois symmetry of Bost-Connes	Bost-Connes	RC-04	-
+win	\hat g	test window in the explicit formula (Fourier transform g)	number theory	RC-04	g(x) without a hat is the Artin-Schreier polynomial
+tsg	t	semigroup time in Z(t); dilation by e^t	Riemann channel	RC-04	never the zeta variable of a curve (that is u)
+uz	u	the zeta variable, in zeta_X(u), zeta_T(u), Z_C(u), det(1 - uT)	all	RC-01	never t/2 (that is L) and never a Heisenberg-Weyl exponent
+ltwo	\ell^2(#1)	Hilbert space of square-summable functions on a set	general	RC-01	not a walk length
+dwork	\mathcal O_{\mathrm{Dw}}	Dwork's p-adic transfer operator, multiplication by the splitting function then decimation	curves	RC-06	note uses alpha; renamed
+decim	\operatorname{dec}_{\qs}	decimation x^m -> x^{m/q} on p-adic power series	curves	RC-06	note uses psi_q; renamed
+ladic	\ell\text{-adic}	ell-adic (cohomology); this ell is not a walk length	Deligne	RC-06	-
+gflow	\mathcal X	generator of the geodesic flow on Gamma\G, X = H/2 through left-invariant fields; (e^{-tX} f)(m) = f(phi_{-t} m)	Selberg	RC-09B	-
+Hgen	\mathsf H	left-invariant field of H = diag(1,-1)	Selberg	RC-09B	-
+Egen	\mathsf E	left-invariant field of E = ((0,1),(1,0))	Selberg	RC-09B	-
+Wgen	\mathsf W	left-invariant field of W = ((0,1),(-1,0)), the compact direction	Selberg	RC-09B	-
+Cas	\Omega	Casimir (1/4)(H^2 + E^2 - W^2)	Selberg	RC-09B	-
+Lap	\Delta	positive hyperbolic Laplacian -y^2(d_x^2 + d_y^2)	Selberg	RC-09B	sources differ in sign; this book's Delta is positive
+lamj	\lambda_{#1}	j-th Laplace eigenvalue, lambda_j = 1/4 + r_j^2	Selberg	RC-09B	-
+rj	r_{#1}	spectral parameter of lambda_j; r_0 = i/2 for the constant mode, r_j = i nu_j for exceptional eigenvalues	Selberg	RC-09B	-
+Zsel	Z_{\mathrm{Sel}}	Selberg zeta prod_gamma prod_{k>=0} (1 - e^{-(s+k) ell_gamma})	Selberg	RC-09B	-
+Ruelle	\zeta_{R}	Ruelle zeta prod_gamma (1 - e^{-s ell_gamma}) = Z_Sel(s)/Z_Sel(s+1)	Selberg	RC-09B	direct product convention
+Poinc	P_{\gamma}	linearised Poincare map of the closed geodesic gamma	Selberg	RC-09B	-
+flattr	\operatorname{Tr}^{\flat}	Guillemin flat trace	Selberg	RC-09B	-
+lapvar	\varsigma	Laplace variable of the flat trace (the resonance variable), never the Selberg variable s	Selberg	RC-09B	-
+lapfl	\varLambda_{\mathrm{fl}}	Laplace transform of the flat trace, int_0^infty e^{-varsigma t} Tr^flat e^{-tX} dt	Selberg	RC-09B	-
+Dtow	D_{\mathrm{tow}}	the tower prod_{j>=1} Z_Sel(varsigma + j), the flat dynamical determinant	Selberg	RC-09B	-
+firstband	\mathcal B_0	nonconstant first band {-1/2 +- i r_j : j >= 1}	Selberg	RC-09B	-
+scatdet	\varphi	scattering determinant of PSL(2,Z), sqrt(pi) Gamma(s-1/2) zeta(2s-1)/(Gamma(s) zeta(2s))	modular	RC-09B	-
+scmult	m_{\mathrm{sc}}	scattering multiplier -(1/2)(varphi'/varphi)(1/2 + i r)	modular	RC-09B	-
+cuspC	C_{\mathrm{cusp}}	inverse Fourier transform of the scattering multiplier	modular	RC-09B	-
+primeP	P_{+}	positive-time prime measure sum_n Lambda(n)/n delta(t - 2 log n)	modular	RC-09B	-
+primech	P_{\mathrm{ch}}	prime measure sum_n Lambda(n) n^{-1/2} delta(t - 2 log n) of the Riemann-channel note	modular	RC-09B	-
+archA	A_{\mathrm{arch}}	archimedean-plus-boundary distribution 1/2 - 1/(4 sinh(|t|/2)) away from zero	modular	RC-09B	-

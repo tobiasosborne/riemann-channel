@@ -1,0 +1,244 @@
+% SHARD-ID: RC-09B-SELBERG-DICTIONARY
+% SHARD-TITLE: The Continuous Dictionary I: Circle Comb, Lindbladian, Casimir
+% SHARD-SUMMARY: Replaces channels by generators: the circle comb, the Lindbladian built from the sl2 vector fields as the Casimir and the hyperbolic Laplacian, and the flat trace of the geodesic flow as the continuous Ihara--Bass with its Selberg tower.
+% SHARD-SUMMARY: Lists the six standard inputs used as assumptions and the seven cited facts with byte-checked quotes; the geodesic-flow and cusp results continue in the next shard.
+% SHARD-KEYWORDS: Selberg, geodesic flow, Guillemin trace, Casimir, Lindbladian, Ruelle resonances, first band, scattering determinant, cusp, prime comb
+% SHARD-NOTES: notes/selberg-dictionary.md
+% SHARD-SCRIPTS: none
+
+\section{The Continuous Dictionary}
+\label{sec:selberg}
+
+TJO's question: replace channels by Lindblad generators. The simplest
+continuous instance is the generator of rotations on a circle of
+circumference $\log\pp$, whose trace is a Poisson comb at multiples of
+$\log\pp$; the Selberg analogue should be a Lindbladian built from the vector
+fields on $\PSL(\mathbb R)$, with the Laplacian as the small operator, and a
+formal analogue of the comb. This section records what survives when the
+statements are written down and proved. The proofs are in
+\texttt{notes/selberg/astra-proofs.md}, authored by the second model family
+(codex, \texttt{gpt-6-astra}, reasoning effort xhigh) as a constructive
+prover from the brief \texttt{notes/selberg/astra-brief.md}, and reviewed
+adversarially by a Claude Opus refuter; the symbolic and numerical checks are
+in \texttt{scripts/selberg\_lindblad.py}. Conventions:
+\cref{def:geodesic-flow,def:selberg-zeta,def:flat-trace,def:flat-tower,def:scattering-determinant,def:prime-measures};
+$\Lap = -y^2(\partial_x^2+\partial_y^2)$ is positive; $\Gamma$ is
+torsion-free and cocompact except in the modular computation.
+
+\subsection{Standard inputs}
+
+Six facts are used as assumptions, printed as such because no local source
+quotes them in full; every claim below that depends on one prints
+\texttt{-conditional}.
+
+\begin{assumption}[Fuchsian geometry]
+\label{asm:fuchsian-geometry}
+\claimstatus{asm:fuchsian-geometry}{assumed}
+A torsion-free cocompact Fuchsian group acts freely and properly
+discontinuously on $\mathbb H$; primitive hyperbolic conjugacy classes
+correspond to primitive oriented closed geodesics with period equal to
+translation length; hyperbolic balls have area $2\pi(\cosh R-1)$.
+\end{assumption}
+
+\begin{assumption}[Laplace spectrum of a compact surface]
+\label{asm:laplace-spectrum-compact}
+\claimstatus{asm:laplace-spectrum-compact}{assumed}
+$\Lap$ on a connected compact hyperbolic surface has discrete spectrum
+$0 = \lamj{0} < \lamj{1}\le\cdots\to\infty$, written $\lamj{j} = \frac14 +
+\rj{j}^2$ with $\rj{j}\ge0$ real for $\lamj{j}\ge\frac14$, $\rj{j} = i\nu_j$
+with $0<\nu_j<\frac12$ for $0<\lamj{j}<\frac14$, and $\rj{0} = i/2$.
+\end{assumption}
+
+\begin{assumption}[Selberg zeta is entire with known divisor]
+\label{asm:selberg-zeta-entire}
+\claimstatus{asm:selberg-zeta-entire}{assumed}
+$\Zsel$ extends to an entire function with zero divisor
+$\sum_{j\ge0}([\tfrac12+i\rj{j}]+[\tfrac12-i\rj{j}]) +
+(2g-2)\sum_{n\ge0}(2n+1)[-n]$ and no other zeros or poles.
+\end{assumption}
+
+\begin{assumption}[Closed realisations]
+\label{asm:heat-semigroup}
+\claimstatus{asm:heat-semigroup}{assumed}
+Complete volume-preserving flows have skew-adjoint unitary generators, and
+$\Lap$ on a compact manifold has its self-adjoint realisation and heat
+semigroup.
+\end{assumption}
+
+\begin{assumption}[Standard facts about $\zeta$]
+\label{asm:zeta-standard}
+\claimstatus{asm:zeta-standard}{assumed}
+$\zeta$ continues meromorphically with $\zeta(0) = -\tfrac12$,
+$\zeta(1+w) = 1/w + \gamma_E + O(w)$, the functional equation
+$\zeta(z) = \chi(z)\zeta(1-z)$ with $\chi(z) = \pi^{z-1/2}\Gamma((1-z)/2)/\Gamma(z/2)$,
+no zeros on $\re z = 1$, and $|\zeta'/\zeta(1+\epsilon+iv)|\le C\log^2(3+|v|)$
+for $|v|\ge1$, $0\le\epsilon\le\epsilon_0$.
+\end{assumption}
+
+\begin{assumption}[Standard facts about $\Gamma$]
+\label{asm:gamma-standard}
+\claimstatus{asm:gamma-standard}{assumed}
+$\Gamma$ is meromorphic and zero-free with simple poles at the nonpositive
+integers, $\Gamma(\tfrac12) = \sqrt\pi$, and $\digam$ has the Gauss integral
+representation and $O(\log)$ vertical growth in right half-planes.
+\end{assumption}
+
+\subsection{Cited facts}
+
+\begin{citedfact}[Guillemin flat trace formula]
+\label{cit:dz-guillemin}
+\claimstatus{cit:dz-guillemin}{cited}
+Dyatlov and Zworski \cite{dyatlov2016zeta} state, for an Anosov flow,
+\texttt{\detokenize{\label{eq:ABG}  \tr^\flat e^{-it P }  = \sum_{ \gamma} \frac{ T_\gamma^\#     \delta ( t - T_\gamma ) } { | \det ( I - \mathcal P_\gamma ) |} , \ \ t > 0}}
+(\texttt{1306.4203:zeta.tex:260-264}, sum over closed orbits including
+repetitions, $T_\gamma^\#$ the primitive period). In our notation this is
+\cref{def:flat-trace}.
+\end{citedfact}
+
+\begin{citedfact}[Band structure of the resonances]
+\label{cit:dfg-band}
+\claimstatus{cit:dfg-band}{cited}
+Dyatlov, Faure and Guillarmou \cite{dyatlov2015power}, Theorem 1:
+\texttt{\detokenize{Assume that $M$ is a compact hyperbolic surface ($n=1$) and the spectrum of the positive Laplacian on $M$ is (see Figure~\ref{f:dim2}) $$ \Spec(\Delta)=\{s_j(1-s_j)\},\quad s_j\in [0,1]\cup \Big({1\over 2}+i\mathbb R\Big). $$ Then Pollicott--Ruelle resonances for the geodesic flow on $SM$ in $\mathbb C\setminus (-1-{1\over 2}\mathbb N_0)$ are \begin{equation}   \label{e:dim2} \lambda_{j,m}=-m-1+s_j,\quad m\in\mathbb N_0.}} lie on the
+lines $\re = -\tfrac12 - k$ and the first band is in bijection with the
+Laplace spectrum (\texttt{1403.0256:RuelleResonForHn.tex:181-191}).
+\end{citedfact}
+
+\begin{citedfact}[Ruelle zeta is a Selberg quotient]
+\label{cit:dz-ruelle-selberg}
+\claimstatus{cit:dz-ruelle-selberg}{cited}
+Dyatlov and Zworski \cite{dyatlov2017ruelle}:
+\texttt{\detokenize{\zeta_S ( s ) := \prod_{ \gamma \in \mathcal G } \prod_{ m=0}^\infty ( 1 - e^{- ( m + s ) \ell_\gamma } ) , \quad \zeta_R ( s ) = \frac{ \zeta_S ( s  ) }{ \zeta_S ( s + 1  ) } ,}}
+(\texttt{1606.04560:zazi.tex:117-119}).
+\end{citedfact}
+
+\begin{citedfact}[Selberg trace formula, hyperbolic term]
+\label{cit:marklof-trace}
+\claimstatus{cit:marklof-trace}{cited}
+Marklof \cite{marklof2004selberg}:
+\texttt{\detokenize{\sum_{j=0}^\infty  h(\rho_j) = \frac{\Area(\scrM)}{4\pi}  \int_{-\infty}^\infty h(\rho) \tanh(\pi\rho)\,\rho\, d\rho + \sum_{\gamma\in H_*}  \sum_{n=1}^\infty \frac{\ell_{\gamma}\,g(n\ell_{\gamma})}{2\sinh(n\ell_{\gamma}/2)} ,}}
+(\texttt{math/0407288:selberg07.tex:1766-1770}), the hyperbolic term over
+primitive classes with repetition index $n$.
+\end{citedfact}
+
+\begin{citedfact}[Casimir and Laplacian]
+\label{cit:fgkp-casimir-laplacian}
+\claimstatus{cit:fgkp-casimir-laplacian}{cited}
+Fleig, Gustafsson, Kleinschmidt and Persson \cite{fleig2018eisenstein}:
+\texttt{\detokenize{The Casimir operator~\eqref{eq:SL2cas} then becomes a second order differential operator, namely the Laplacian \begin{align} \label{eq:SL2Lapapp} \Delta_{SL(2,\mathbb{R})} = y^2 \left( \partial_x^2 + \partial_y^2 \right) - y \partial_x \partial_\theta.}}
+(\texttt{1511.04265:AutomorphicBook.tex:3107-3110}), with the Casimir
+$\tfrac14 h^2 + \tfrac12(ef+fe)$ in the Chevalley basis (line 2851) reducing
+to $y^2(\partial_x^2+\partial_y^2)$ on $\mathbb H$ (lines 409--411).
+\end{citedfact}
+
+\begin{citedfact}[Scattering determinant of $\PSL(\mathbb Z)$]
+\label{cit:fjs-scattering-det}
+\claimstatus{cit:fjs-scattering-det}{cited}
+Friedman, Jorgenson and Smajlovi\'c \cite{friedman2016central}:
+\texttt{\detokenize{In the case when $\Gamma$ is the modular group $\mathrm{PSL}(2,\mathbb{Z})$, the scattering determinant is given by $$ \phi(s)=\sqrt{\pi}\frac{\Gamma(s-1/2)}{\Gamma(s)} \frac{\zeta(2s-1)}{\zeta(2s)},}}
+(\texttt{1607.08053:main.tex:592-594}).
+\end{citedfact}
+
+\begin{citedfact}[Continuous-spectrum term of the trace formula]
+\label{cit:mv-continuous-term}
+\claimstatus{cit:mv-continuous-term}{cited}
+Momeni and Venkov \cite{momeni2011zeta}:
+\texttt{\detokenize{\begin{equation} C=C(\overset{\sim}{h}(r);\Gamma;\chi)=-\frac{1}{4\pi}\int_{-\infty}^{\infty}\dfrac{\varphi'}{\varphi}(\frac{1}{2}+ir;\Gamma;\chi)h(r^2+\frac{1}{4})dr+\dfrac{K_0}{4} h(\dfrac{1}{4})}}
+(\texttt{1108.5659:main.tex:2128-2129}).
+\end{citedfact}
+
+\subsection{The circle comb and why it is blind to zeros}
+
+\begin{proposition}[One circle]
+\label{prop:circle-comb}
+\claimstatus{prop:circle-comb}{proved}
+For $L>0$ and $U_t$ translation on $L^2(\mathbb R/L\mathbb Z)$, the smeared
+operator $\int h(t)U_t\,dt$ is trace class for Schwartz $h$ and
+$\Tr U(h) = \sum_n\hat h(-2\pi n/L) = L\sum_k h(kL)$; hence $\Tr U_t =
+L\sum_{k\in\mathbb Z}\delta(t-kL)$ as a tempered distribution.
+\end{proposition}
+
+\begin{proposition}[All primes: an orbital trace, not a Hilbert-space trace]
+\label{prop:prime-circles-orbital}
+\claimstatus{prop:prime-circles-orbital}{proved}
+For the direct sum over primes of the circles of circumference $\log\pp$,
+the locally summed component traces give, in $\mathcal D'((0,\infty))$,
+$\sum_{\pp}\sum_{k\ge1}\log\pp\,\delta(t-k\log\pp) = \sum_{n\ge2}\vM(n)\,\delta(t-\log n)$.
+The smeared direct-sum operator is never trace class (the constant modes
+give a nonzero eigenvalue of infinite multiplicity), and the positive prime
+comb is not tempered (its mass $\sum_{\pp}\log\pp/(1+\log\pp)^N$ diverges for
+every $N$).
+\end{proposition}
+
+\begin{proposition}[Finite sets of primes see only Euler poles]
+\label{prop:finite-euler-spectrum}
+\claimstatus{prop:finite-euler-spectrum}{proved-conditional}
+For a finite set $S$ of primes the generator of the direct-sum flow has
+spectrum $\bigcup_{\pp\in S}(2\pi i/\log\pp)\mathbb Z$, exactly the pole set
+of $\prod_{\pp\in S}(1-\pp^{-s})^{-1}$ in the spectral variable $s$; the
+finite product has no zeros, all nonzero poles are simple, and no zero of the
+continued $\zeta$ lies in this spectrum.
+\end{proposition}
+
+The correction to the worklog's wording: the prime comb is an orbital
+(locally finite) trace, and the phrase ``Poisson trace of the direct sum''
+does not name a trace-class operator. The missing ingredient is transverse
+expansion: a circle has no Poincar\'e map, so no Jacobian, so no resonances.
+
+\subsection{The Lindbladian of the vector fields is the Casimir, and the Laplacian on the $K$-invariant sector}
+
+\begin{proposition}[Multiplication observables see a sum of squares]
+\label{prop:lindblad-sum-of-squares}
+\claimstatus{prop:lindblad-sum-of-squares}{proved}
+For real vector fields $X_j$ acting as derivations of a smooth function
+algebra and jump operators $L_j = -iX_j$, on a common invariant domain,
+$\sum_j(L_jM_fL_j - \tfrac12\{L_j^2,M_f\}) = -\tfrac12\sum_j[L_j,[L_j,M_f]] =
+M_{\frac12\sum_jX_j^2f}$; with the plus sign, since the $X_j$ are formally
+anti-self-adjoint.
+\end{proposition}
+
+\begin{proposition}[Casimir on the $K$-invariant sector]
+\label{prop:casimir-laplacian}
+\claimstatus{prop:casimir-laplacian}{proved}
+For right-$K$-invariant $f(g) = F(g\cdot i)$: $\Wgen f = 0$,
+$\Cas f = y^2(F_{xx}+F_{yy})$ (the constant is $c = 1$), and
+$\tfrac12(\Hgen^2+\Egen^2)f = 2\Cas f = -2\Lap F$. On all functions
+$\tfrac12(\Hgen^2+\Egen^2) = 2\Cas + \tfrac12\Wgen^2$: the Casimir carries
+the compact direction with a minus sign and is not a diffusion Lindbladian
+on all of $L^2(\Gamma\backslash G)$; the two-jump Lindbladian with
+$L_1 = -i\Hgen$, $L_2 = -i\Egen$ preserves the $K$-invariant sector and
+equals $-2\Lap$ there.
+\end{proposition}
+
+The second-order computation is the whole content: along
+$g_{x,y}\exp(u\Hgen)\cdot i = x+iye^{2u}$ and $g_{x,y}\exp(u\Egen)\cdot i =
+x + y\tanh 2u + iy\,\mathrm{sech}\,2u$, one finds $\Hgen^2f = 4y^2F_{yy}+4yF_y$
+and $\Egen^2f = 4y^2F_{xx}-4yF_y$, and the first-order drifts cancel.
+Squaring the projected tangent vectors alone would miss the drift and give
+the wrong operator.
+
+\begin{proposition}[The quantum Lindbladian of a representation]
+\label{prop:quantum-lindblad-tensor}
+\claimstatus{prop:quantum-lindblad-tensor}{proved}
+For a unitary representation $\pi$ with anti-self-adjoint generators
+$A_j = d\pi(X_j)$ and jumps $L_j = -iA_j$, on finite-rank smooth operators,
+$\sum_j(L_j\dm L_j - \tfrac12\{L_j^2,\dm\}) = \tfrac12\sum_jB_j^2\dm$ with
+$B_j\dm = [A_j,\dm]$ the generators of $\pi\otimes\bar\pi$ on
+Hilbert--Schmidt operators; for $\mathfrak{sl}_2$ and the two non-compact
+jumps it is $2\Cas_{\pi\otimes\bar\pi} + \tfrac12B_W^2$, equal to
+$2\Cas_{\pi\otimes\bar\pi}$ on diagonal-$K$-invariant operators.
+\end{proposition}
+
+This is the continuous Harrow construction: a channel from a representation
+becomes a Lindbladian from a representation, and its gap is a question about
+$\pi\otimes\bar\pi$.
+
+\begin{conjecture}[Gap of the representation Lindbladian]
+\label{conj:quantum-lindblad-gap}
+\claimstatus{conj:quantum-lindblad-gap}{open}
+For an irreducible unitary $\pi$ of $\SL(\mathbb R)$, or of $\SL(\Fp)$, the
+two-jump Lindbladian $2\Cas_{\pi\otimes\bar\pi}+\tfrac12B_W^2$ has a spectral
+gap governed by the decomposition of $\pi\otimes\bar\pi$; for the Weil
+representation this is the continuous shadow of the Weil--LPS channels of
+\cref{sec:weil-lps}.
+\end{conjecture}

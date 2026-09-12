@@ -1,0 +1,180 @@
+% SHARD-ID: RC-02-DEFINITIONS
+% SHARD-TITLE: Definitions
+% SHARD-SUMMARY: Every concept used in the book defined once, de-duplicated across the seven notes; each carries a row in db/definitions.tsv naming the notes it merges.
+% SHARD-SUMMARY: The definitions are stipulated unless marked quoted, in which case a byte-checked provenance row backs them.
+% SHARD-KEYWORDS: definitions, side A, side B, ring norm, Ramanujan, Ihara zeta, Hashimoto, quantum expander, Riemann channel, Bost-Connes, Weil-LPS, Artin-Schreier
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{Definitions}
+\label{sec:definitions}
+
+Each definition appears exactly once in the book. The column
+\texttt{merged\_from} of \texttt{db/definitions.tsv} lists the notes and
+sections whose wordings were merged; where the wordings differed in
+substance, the difference is stated in the definition.
+
+\subsection{The two sides}
+
+\begin{definition}[Side A and side B]
+\label{def:side-a-side-b}
+For a zeta function written as $\exp\sum_{\wl\ge1}\Ncount{\wl}\uz^{\wl}/\wl$
+with nonnegative counts $\Ncount{\wl}$, \emph{side A} is the gas of rings:
+the counts, their Euler product over primitive closed orbits, and the
+product state they form. \emph{Side B} is a transfer operator whose power
+sums reproduce the counts, $\Ncount{\wl} = \Tr\,\Hash^{\wl}$ (or a
+semigroup $\Tr e^{\ringlen\flowgen}$ in continuous length); its eigenvalues
+are the poles and zeros.
+\end{definition}
+
+\begin{definition}[The one identity]
+\label{def:one-identity}
+For any matrix $M$ with eigenvalues $\lambda_1,\dots,\lambda_N$,
+$1/\det(1-\uz M) = \prod_i(1-\lambda_i\uz)^{-1} =
+\exp\big(\sum_{\wl\ge1}\Tr(M^{\wl})\,\uz^{\wl}/\wl\big)$. The middle term is a
+bosonic partition function with one mode per eigenvector; the right term a
+sum over closed walks with the $1/\wl$ of a ring's rotation symmetry.
+\end{definition}
+
+\begin{definition}[Small matrix]
+\label{def:small-matrix}
+For a shift or permutation with fixed-point counts
+$\operatorname{fix}(\wl)$ of its $\wl$-th power, a \emph{small matrix} is any matrix
+$M_{\mathrm{small}}$ with $\Tr M_{\mathrm{small}}^{\wl} =
+\operatorname{fix}(\wl)$ for all $\wl$. It exists exactly when the
+zeta function is rational, and its eigenvalues are not those of the
+permutation matrix.
+\end{definition}
+
+\begin{definition}[RH analogue, Ramanujan property]
+\label{def:rh-analogue}
+A side-B operator with leading eigenvalue $\lambda_{\max}$ (or leading
+growth $\qs$ per step) satisfies the \emph{RH analogue} when every other
+nonzero eigenvalue has modulus $\sqrt{\lambda_{\max}}$ (respectively
+$\sqrt{\qs}$). In counting terms the fluctuation of the counts is the square
+root of the leading term. For graphs this is the Ramanujan property; for the
+Riemann zeta it is the Riemann hypothesis; for an MPS it is one correlation
+length equal to $2/\ent$.
+\end{definition}
+
+\subsection{Graphs}
+
+\begin{definition}[Non-backtracking walk, prime cycle]
+\label{def:nonbacktracking-walk}
+A walk in a graph is non-backtracking if it never immediately retraces an
+edge; closed in the strong sense means the last step is not the reverse of
+the first. A \emph{prime cycle} $\pcycle$ is a closed non-backtracking walk that
+is not a repetition of a shorter one, taken up to choice of starting point;
+$\wl(\pcycle)$ is its length. On a bouquet with $\Dk/2$ loops the directed edges
+are $[\Dk]$ and a closed non-backtracking walk is a cyclically reduced word.
+\end{definition}
+
+\begin{definition}[Ihara zeta]
+\label{def:ihara-zeta}
+For a finite graph $X$ with $\Ncount{\wl}$ closed non-backtracking walks of
+length $\wl$, $\zetaX(\uz) = \exp\big(\sum_{\wl}\Ncount{\wl}\uz^{\wl}/\wl\big)
+= \prod_{\pcycle}(1-\uz^{\wl(\pcycle)})^{-1}$.
+\end{definition}
+
+\begin{definition}[Hashimoto operator]
+\label{def:hashimoto-operator}
+The \emph{Hashimoto} (non-backtracking edge) operator of a graph is the
+matrix $\Hash$ on directed edges with $\Hash_{ef} = 1$ when $f$ can follow $e$
+without backtracking; then $\Ncount{\wl} = \Tr\Hash^{\wl}$ and
+$\zetaX(\uz) = \det(1-\uz\Hash)^{-1}$.
+\end{definition}
+
+\begin{definition}[Ihara--Bass formula]
+\label{def:ihara-bass}
+For a $(\qs+1)$-regular graph with adjacency matrix $\Aadj$ on $|V|$
+vertices and $|E|$ undirected edges, $\det(1-\uz\Hash) =
+(1-\uz^2)^{|E|-|V|}\det(1-\uz\Aadj+\qs\uz^2)$. Each adjacency eigenvalue
+$\lambda$ produces two eigenvalues $\edgeev,\edgeev'$ of $\Hash$ with $\edgeev\edgeev' = \qs$,
+$\edgeev+\edgeev' = \lambda$; the eigenvalue $\qs+1$ gives $\edgeev\in\{\qs,1\}$.
+\end{definition}
+
+\begin{definition}[Ramanujan graph]
+\label{def:ramanujan-graph}
+A $(\qs+1)$-regular graph is \emph{Ramanujan} when every adjacency eigenvalue
+other than $\pm(\qs+1)$ satisfies $|\lambda|\le2\sqrt{\qs}$, the spectral
+radius of the universal covering tree. Equivalently all nontrivial $\edgeev$
+satisfy $|\edgeev| = \sqrt{\qs}$, which is the RH analogue for $\zetaX$.
+\end{definition}
+
+\begin{definition}[Artin--Ihara $L$-function]
+\label{def:artin-ihara}
+For a graph with a representation $\hol$ of its fundamental group assigned
+to closed walks (a holonomy), $\Lcurve(\uz,\hol) =
+\prod_{\pcycle}\det\big(1-\hol(\pcycle)\uz^{\wl(\pcycle)}\big)^{-1}$, where the
+product is over prime cycles. For a bouquet the fundamental group is free and
+$\hol$ is a choice of one operator per loop.
+\end{definition}
+
+\subsection{Channels and matrix product states}
+
+\begin{definition}[Channel, Kraus operators]
+\label{def:channel}
+A \emph{channel} on $\Mn$ is a completely positive trace-preserving map
+$\chan(\dm) = \sum_i\Kr{i}\dm\Kr{i}^\dagger$ with $\sum_i\Kr{i}^\dagger\Kr{i} =
+1$; the $\Kr{i}$ are its Kraus operators. It is \emph{unital} when
+$\chan(1) = 1$ and \emph{mixed-unitary} when $\Kr{i} = \Dk^{-1/2}\Un{i}$ with
+unitary $\Un{i}$, in which case $\chan(\dm) = \frac1{\Dk}\sum_i\Un{i}\dm
+\Un{i}^\dagger$ and the family is taken closed under adjoint.
+\end{definition}
+
+\begin{definition}[Transfer matrix of an MPS]
+\label{def:transfer-matrix}
+For a matrix product state with local tensors $\Kr{1},\dots,\Kr{d}\in\Mn$
+(physical dimension $d$, bond dimension $n$), the \emph{transfer matrix} is
+$\Tmat = \sum_i\Ad(\Kr{i}) = \Sig$, acting on $\Mn$.
+\end{definition}
+
+\begin{definition}[Ring norm]
+\label{def:ring-norm}
+The \emph{ring norm} of the periodic $n$-site state $\mps{n}$ built from the
+tensors is $\ringnorm{n} = \Tr\,\Tmat^{n}$; the zeta function of the state is
+the generating function $\exp\sum_n\ringnorm{n}\uz^n/n = \det(1-\uz\Tmat)^{-1}$.
+\end{definition}
+
+\begin{definition}[Canonical form]
+\label{def:canonical-form}
+An MPS is in (left) canonical form when $\sum_k\Kr{k}^\dagger\Kr{k} = 1$,
+i.e.\ when $\Tmat$ is the transfer matrix of a channel; then $\Tmat$ has
+leading eigenvalue $1$ and the remaining eigenvalues lie in the closed unit
+disc.
+\end{definition}
+
+\begin{definition}[Correlation length]
+\label{def:correlation-length}
+In canonical form write the subleading eigenvalues as $\lambda_k =
+e^{-1/\corrlen{k}+i\phase{k}}$; the $\corrlen{k}$ are the correlation
+lengths and the $\phase{k}$ the phases. The entropy per site is $\ent =
+\log\lambda_{\max}$ of the unnormalised transfer matrix.
+\end{definition}
+
+\begin{definition}[Quantum expander]
+\label{def:quantum-expander}
+A channel with $\Dk$ Kraus operators is a $(n,\Dk,\lambda)$ \emph{quantum
+expander} when $1$ is its unique fixed point (up to scale) and every other
+eigenvalue has modulus at most $\lambda<1$.
+\end{definition}
+
+\begin{definition}[Ramanujan quantum expander]
+\label{def:ramanujan-channel}
+A quantum expander is \emph{Ramanujan} when $\lamtwo\le\lamH$, where, in
+Hastings' words, \texttt{\textbackslash lambda\_\{H\}=\textbackslash
+frac\{2\textbackslash sqrt\{D-1\}\}\{D\}.} (provenance
+\texttt{prov:hastings07-bound}); in adjacency units, $\Dk\lamtwo\le2\sqrt{\Dk-1}$.
+\end{definition}
+
+\begin{definition}[Quantum Hashimoto operator, quantum Ihara zeta]
+\label{def:quantum-hashimoto}
+For superoperators $\Eop{1},\dots,\Eop{\Dk}$ on $\Vsp$ and a fixed-point-free
+reversal $\rev$ on $[\Dk]$, the \emph{quantum Hashimoto operator} is
+$\Hash$ on $\Wsp = \Vsp\otimes\mathbb C^{\Dk}$, $\Hash(v\otimes|i\rangle) =
+\sum_{j\ne\bari{i}}\Eop{i}v\otimes|j\rangle$, and $\zetaT(\uz) =
+\det(1-\uz\Hash)^{-1}$. For a mixed-unitary channel, $\Eop{i} = \Ad(\Un{i})$
+with $\Un{\bari{i}} = \Un{i}^\dagger$, and the zeta is written $\zetaq$: the
+\emph{quantum Ihara zeta} of the channel. It is the Artin--Ihara $L$-function
+of the bouquet twisted by $\hol = \Ad\circ\Un{}$.
+\end{definition}

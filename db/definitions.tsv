@@ -1,0 +1,42 @@
+id	term	shard	status	provenance	merged_from
+def:side-a-side-b	side A and side B	report/sections/02_definitions.tex	stipulated	-	what-rh-has-become:0; deligne-via-graphs:1; README
+def:one-identity	the one identity	report/sections/02_definitions.tex	stipulated	-	what-rh-has-become:0
+def:ring-norm	ring norm	report/sections/02_definitions.tex	stipulated	-	what-rh-has-become:4; riemann-channel-note:5
+def:transfer-matrix	transfer matrix of an MPS	report/sections/02_definitions.tex	stipulated	-	what-rh-has-become:4; artin-schreier-mps:2
+def:canonical-form	canonical form	report/sections/02_definitions.tex	stipulated	-	what-rh-has-become:4
+def:correlation-length	correlation length	report/sections/02_definitions.tex	stipulated	-	what-rh-has-become:4
+def:small-matrix	small matrix	report/sections/02_definitions.tex	stipulated	-	what-rh-has-become:2
+def:rh-analogue	RH analogue (Ramanujan property)	report/sections/02_definitions.tex	stipulated	-	what-rh-has-become:2,3,4,5; deligne-via-graphs:1; weil-lps-channels:4
+def:nonbacktracking-walk	non-backtracking walk, prime cycle	report/sections/02_definitions.tex	stipulated	-	deligne-via-graphs:1; what-rh-has-become:3
+def:ihara-zeta	Ihara zeta function	report/sections/02_definitions.tex	stipulated	-	deligne-via-graphs:1; what-rh-has-become:3
+def:hashimoto-operator	Hashimoto (non-backtracking edge) operator	report/sections/02_definitions.tex	stipulated	-	deligne-via-graphs:1; quantum-ihara-general:1; transcript 08:15
+def:ihara-bass	Ihara-Bass formula	report/sections/02_definitions.tex	stipulated	-	deligne-via-graphs:1; what-rh-has-become:3
+def:ramanujan-graph	Ramanujan graph	report/sections/02_definitions.tex	stipulated	-	what-rh-has-become:3; deligne-via-graphs:1
+def:channel	quantum channel, Kraus operators, unital, mixed-unitary	report/sections/02_definitions.tex	stipulated	-	riemann-channel-note:3; weil-lps-channels:1; quantum-ihara-general:1
+def:quantum-expander	quantum expander	report/sections/02_definitions.tex	stipulated	-	transcript 08:15; weil-lps-channels:2
+def:ramanujan-channel	Ramanujan quantum expander (Hastings bound)	report/sections/02_definitions.tex	quoted	prov:hastings07-bound	weil-lps-channels:2; quantum-ihara-general:6
+def:quantum-hashimoto	quantum Hashimoto operator and quantum Ihara zeta	report/sections/02_definitions.tex	stipulated	-	quantum-ihara-general:1; weil-lps-channels:2; transcript 08:15
+def:artin-ihara	Artin-Ihara L-function	report/sections/02_definitions.tex	stipulated	-	deligne-via-graphs:5,8; prior-art:2
+def:riemann-channel	Riemann channel	report/sections/02b_definitions_arithmetic.tex	stipulated	-	riemann-channel-note:3; what-rh-has-become:6
+def:scattering-symbol	scattering symbol	report/sections/02b_definitions_arithmetic.tex	stipulated	-	riemann-channel-note:1; what-rh-has-become:6
+def:inner-model-space	inner function, model space, compressed semigroup	report/sections/02b_definitions_arithmetic.tex	stipulated	-	riemann-channel-note:3
+def:explicit-formula	Weil explicit formula	report/sections/02b_definitions_arithmetic.tex	stipulated	-	riemann-channel-note:5; what-rh-has-become:5
+def:bost-connes	Bost-Connes system, KMS state, Levy exponent	report/sections/02b_definitions_arithmetic.tex	stipulated	-	riemann-channel-note:2,4; HANDOFF item 2
+def:prime-chain-mpo	matrix product operator over the prime chain	report/sections/02b_definitions_arithmetic.tex	stipulated	-	HANDOFF item 2; riemann-channel-note:7
+def:hilbert-polya	Hilbert-Polya operator	report/sections/02b_definitions_arithmetic.tex	stipulated	-	what-rh-has-become:7; deligne-via-graphs:9
+def:weil-positivity	Weil positivity criterion	report/sections/02b_definitions_arithmetic.tex	stipulated	-	what-rh-has-become:7
+def:lps-generators	LPS generators	report/sections/02b_definitions_arithmetic.tex	stipulated	-	weil-lps-channels:1
+def:weil-representation	Weil representation	report/sections/02b_definitions_arithmetic.tex	stipulated	-	weil-lps-channels:1
+def:weil-lps-channel	Weil-LPS channel	report/sections/02b_definitions_arithmetic.tex	stipulated	-	weil-lps-channels:1; HANDOFF steering
+def:hecke-relation	Hecke relation	report/sections/02b_definitions_arithmetic.tex	stipulated	-	weil-lps-channels:2
+def:artin-schreier	Artin-Schreier curve, exponential sum	report/sections/02b_definitions_arithmetic.tex	stipulated	-	artin-schreier-mps:2
+def:self-dual-normal-basis	self-dual normal basis	report/sections/02b_definitions_arithmetic.tex	stipulated	-	artin-schreier-mps:2
+def:dwork-operator	Dwork transfer operator	report/sections/02b_definitions_arithmetic.tex	stipulated	-	artin-schreier-mps:4
+def:pure-weight	pure of weight, big monodromy, slicing, the sign	report/sections/02b_definitions_arithmetic.tex	stipulated	-	deligne-via-graphs:5,6,7,8
+def:status-vocabulary	status vocabulary	report/sections/02b_definitions_arithmetic.tex	stipulated	-	quantum-ihara-general:0; RC-00
+def:geodesic-flow	geodesic flow on the unit tangent bundle	report/sections/02b_definitions_arithmetic.tex	stipulated	-	notes/selberg/astra-proofs.md conventions
+def:selberg-zeta	Selberg zeta function, Ruelle zeta	report/sections/02b_definitions_arithmetic.tex	quoted	prov:marklof04-selbergzeta	notes/selberg/astra-proofs.md T4
+def:flat-trace	Guillemin flat trace	report/sections/02b_definitions_arithmetic.tex	quoted	prov:dz13-guillemin	notes/selberg/astra-proofs.md H-GUI
+def:flat-tower	flat dynamical determinant (Selberg tower) and first band	report/sections/02b_definitions_arithmetic.tex	stipulated	-	notes/selberg/astra-proofs.md T4.1, T4.2
+def:scattering-determinant	scattering determinant of the modular group, scattering multiplier	report/sections/02b_definitions_arithmetic.tex	quoted	prov:fjs16-scattering-det	notes/selberg/astra-proofs.md H-PHI
+def:prime-measures	prime comb measures	report/sections/02b_definitions_arithmetic.tex	stipulated	-	notes/selberg/astra-proofs.md T5.2

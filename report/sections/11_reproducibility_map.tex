@@ -1,0 +1,53 @@
+% SHARD-ID: RC-11-REPRO-MAP
+% SHARD-TITLE: Reproducibility Map
+% SHARD-SUMMARY: One row per evidence script: what it checks, its captured output, and which claims it backs.
+% SHARD-SUMMARY: Records the environment, the data files, and the reference-source manifest.
+% SHARD-KEYWORDS: reproducibility, scripts, outputs, data, refs, manifest
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py
+
+\section{Reproducibility Map}
+\label{sec:repro}
+
+Every numerical claim in this book points to a script under
+\texttt{scripts/} whose standard output is captured under
+\texttt{outputs/}. All scripts run from the repository root with
+\texttt{python3} and need only \texttt{numpy}, \texttt{scipy},
+\texttt{mpmath} and \texttt{sympy}. Random data are seeded. The local CI
+re-runs the fast scripts and diffs their output against the captured files.
+
+\begin{center}\small
+\begin{tabular}{p{4.2cm}p{6.4cm}p{4.6cm}}
+\toprule
+script & what it establishes & output, claims \\
+\midrule
+\texttt{qihara.py} & Quantum Ihara--Bass identity for Haar-random unitary Kraus sets, $(n,D) = (3,4),(4,6)$, at complex $u$; Ramanujan check of $\Sig$ & \texttt{outputs/qihara.txt}; \texttt{num:qihara-unitary} \\
+\texttt{bcmpo.py} & Bost--Connes phase operators $e(a/b)$ as MPOs over the prime chain against Hurwitz-zeta sums; character-sector transfer eigenvalues against $L(\invtemp,\bar\chi)/\zeta(\invtemp)$ & \texttt{outputs/bcmpo.txt}; \texttt{num:bc-mpo} \\
+\texttt{scat.py} & Unimodularity of $\Ssym(\tauM)$, its zeros at $\gamma_n/2 - i/4$, contractivity in the lower half plane, prime-phase identity & \texttt{outputs/scat.txt}; \texttt{num:scattering-symbol} \\
+\texttt{ringnorm.py} & Windowed sum over the first $3000$ zeros against the full explicit formula; dips at $\log n$ of depth $\vM(n)/\sqrt n$ & \texttt{outputs/ringnorm.txt}; \texttt{num:ringnorm-3000} \\
+\texttt{weil\_lps.py} & Weil--LPS channels for $(p;q)$ in seven cases: intertwining check, Ramanujan bound, Harrow containment, Hecke relations, commutation, joint spectra & \texttt{outputs/weil\_lps\_p*.txt}; \texttt{num:weil-lps-ramanujan} \\
+\texttt{weil\_lps\_hashimoto.py} & Direct edge superoperator for $(13,17)$, odd block: Ihara--Bass to $10^{-14}$, moduli $\{17,\sqrt{17},1\}$ & \texttt{outputs/weil\_lps\_hashimoto\_p13\_q17\_odd.txt}; \texttt{num:weil-lps-rh} \\
+\texttt{artin\_schreier\_mps.py} & Brute-force exponential sums against $\operatorname{Tr}E^n$ for quadratic Artin--Schreier data; $EE^\dagger = qI$ & \texttt{outputs/artin\_schreier\_mps.txt}; \texttt{num:artin-schreier-mps} \\
+\texttt{qihara\_general.py} & Theorem~\ref{thm:qihara-general} in both forms, five configurations, float to $10^{-15}$ and exact rational arithmetic & \texttt{outputs/qihara\_general.txt}; \texttt{num:qihara-general} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Data}
+
+\texttt{data/zeros3000.npy}: the first $3000$ imaginary parts of the zeta
+zeros, from \texttt{mpmath.zetazero}. \texttt{data/ringnorm.npz}: the arrays
+of the ring-norm test.
+
+\subsection*{Reference sources}
+
+\texttt{refs/fetch\_sources.sh} downloads the arXiv TeX source of every cited
+paper into \texttt{refs/src/<id>/} (not redistributed) and writes
+\texttt{refs/manifest.sha256}. Every quote in \texttt{db/provenance.tsv} is
+byte-checked by the gate at its stated \texttt{<id>:<file>:<line>}.
+
+\subsection*{Reviews}
+
+\texttt{notes/reviews/} holds the adversarial review reports; a
+\texttt{proved} claim names its review file in \texttt{db/claims.tsv} and the
+gate checks that the file contains \texttt{VERDICT <id>: VALID}.

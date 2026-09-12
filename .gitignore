@@ -1,3 +1,16 @@
 __pycache__/
 *.pyc
 transcript/*.jsonl
+refs/src/
+.claude/tools/
+.claude/docs/
+# LaTeX build artifacts (report.pdf is committed as the distributable)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.synctex.gz

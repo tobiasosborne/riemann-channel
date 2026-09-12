@@ -1,0 +1,86 @@
+% SHARD-ID: RC-10-OPEN-DEAD
+% SHARD-TITLE: Open Problems and Dead Routes
+% SHARD-SUMMARY: Lists the open steps in order, each as a tagged conjecture, and the routes known not to work.
+% SHARD-SUMMARY: Mirrors the next-steps list of HANDOFF.md and the dead-route discussion of the worklogs.
+% SHARD-KEYWORDS: open problems, dead routes, next steps, Stinespring, assemble over p, Ramanujan for Kraus
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{Open Problems and Dead Routes}
+\label{sec:open}
+
+Dead routes are results. Both lists mirror \texttt{HANDOFF.md}, which is
+the live version.
+
+\subsection{Open problems, in order}
+
+\begin{conjecture}[Ramanujan without unitarity]
+\label{conj:kraus-ramanujan}
+\claimstatus{conj:kraus-ramanujan}{open}
+There is a Ramanujan-type reading of the poles of $\zetaT$ for non-unitary
+Kraus families, replacing the relation $\edgeev\edgeev' = \qs$ of the unitary case,
+and canonical form $\sum_k \Kr{k}^\dagger \Kr{k} = 1$ constrains the poles.
+\end{conjecture}
+
+What is known: \cref{thm:qihara-general} replaces $\qs\uz^2$ by the
+operator $\Dop$ and $\uz\,\Sig$ by the deformed channel $\Aop$, both
+built from $(1-\uz^2\Ad(\Kr{k}^\dagger \Kr{k}))^{-1}$, so no quadratic relation pairs
+the eigenvalues of $\Hash$ with those of $\Sig$. Cheap next step: a random-MPS
+pole-radius hunt (bond dimension $2$ to $4$, physical dimension $2$) to see
+whether the poles cluster on one circle at all.
+
+\paragraph{Stinespring form of the compressed semigroup.} \Cref{conj:stinespring-jump-form}
+(stated in \cref{sec:riemann-channel}): a Stinespring form of $\Zt$ on $\KS$ whose Kraus
+(jump) operators are the prime dilations.
+
+The single-Kraus lift exists trivially. A Holevo-form covariant Lindbladian
+with the von Mangoldt jump measure lives on the full regular representation,
+has symbol $\zeta^t$, and is not the compressed object. A negative answer with
+a reason is a result. Suggested route (HANDOFF step 2): write $\Zt$ explicitly
+through Cauchy kernels and test a generator of Holevo jump form with jumps at
+$k\log \pp$ on $\KS$, blind, in a second model family.
+
+\paragraph{Hecke identification of the Weil--LPS spectra.} \Cref{conj:weil-lps-hecke}
+(stated in \cref{sec:weil-lps}): the joint spectra of the commuting channels
+$\PhiWL{\qs}^{\pm}$ are Hecke eigenvalues of weight-$2$ forms for the quaternion algebra
+ramified at $\{2,\infty\}$, via Jacquet--Langlands.
+
+Needs LMFDB and the Jacquet--Langlands bookkeeping; the visible structure
+(joint eigenvalue pairs, small-degree algebraic integers, multiplicities equal
+to those of irreducibles of $\PSL(\Fp)$ in $\Wpm\otimes\overline{\Wpm}$)
+is consistent with it.
+
+\begin{conjecture}[Assembling over $\pp$]
+\label{conj:assemble-over-p}
+\claimstatus{conj:assemble-over-p}{open}
+The Weil--LPS channels for different $\pp$ assemble into one object whose rings
+are the primes and whose transfer spectrum is the zeros of $\zeta$.
+\end{conjecture}
+
+This is the parent campaign's DG-GLOBAL question in this guise. Nothing is
+known beyond the obstruction recorded below.
+
+\subsection{Dead routes}
+
+\begin{observation}[Prime-by-prime ans\"atze are blind to zeros]
+\label{obs:prime-by-prime-blind}
+\claimstatus{obs:prime-by-prime-blind}{sketched}
+The direct sum over primes of rotations on circles of circumference $\log \pp$
+has trace $\sum_n\vM(n)\,\delta(s-\log n)$ by Poisson summation and
+dynamical zeta equal to the Euler product; for any finite set $S$ of primes
+its spectrum is the set of poles of the partial Euler product. The same holds
+for product states and commuting dilations. Zeros exist only in the infinite
+product, so no prime-by-prime ansatz can see them.
+\end{observation}
+
+Recorded 2026-09-12 from the circle-flow discussion. Two remarks kept: in the
+Witt convention $L_1 - L_{-1}$ is the dilation flow (source and sink) and
+$L_0$ the rotation; the only relation between primes is additive.
+
+Further routes closed or flagged in the founding session: the functional
+integral framing of Selberg as a continuum limit (TJO: too far); calling
+$-\log \Tmat$ the entanglement Hamiltonian (an error, corrected in
+\cref{obs:hilbert-polya-hermitian}); an algebraic-integer recognition of the
+Weil--LPS joint eigenvalues from five-digit output (tautological, since the
+adjacency matrix is integral); the Dwork transfer operator as a route to the
+Riemann hypothesis for curves (\cref{obs:as-nonquadratic}).

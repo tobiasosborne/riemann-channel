@@ -1,0 +1,211 @@
+% SHARD-ID: RC-06-ARTIN-SCHREIER-MPS
+% SHARD-TITLE: A Matrix-Product Formulation of the Weil Conjectures for Quadratic Artin--Schreier Curves
+% SHARD-SUMMARY: For the quadratic Artin--Schreier family the point count over F_{q^n} is the ring contraction of a fixed local tensor, and the Weil conjectures become statements about a finite transfer matrix: rationality because it is finite, RH because it is a scaled unitary.
+% SHARD-SUMMARY: Records the numerical check of the transfer identity and of E E^dagger = q I, and locates the sharp boundary at degree three, where the shift basis loses locality and the uniform transfer operator becomes Dwork's p-adic one.
+% SHARD-KEYWORDS: Artin--Schreier curve, exponential sum, normal basis, transfer matrix, MPS, Weil bound, Dwork operator
+% SHARD-NOTES: notes/artin-schreier-mps.md
+% SHARD-SCRIPTS: scripts/artin_schreier_mps.py
+
+\section{A Matrix-Product Formulation of the Weil Conjectures for Quadratic Artin--Schreier Curves}
+\label{sec:artin-schreier}
+
+The question the founding session put to this family is narrow and answerable:
+is there an honest matrix product state behind the Weil conjectures for
+curves, meaning a \emph{fixed} local tensor whose $n$-site ring contraction is
+the point count $\Ncount{n}$? In the vocabulary of this book the ingredients
+line up: $\Ncount{n} = \#C(\Fqn{n})$ is a ring norm, the Frobenius
+eigenvalues $\alphaw{i}$ appearing in $\curvezeta(\uz)$ are a transfer
+spectrum, and the Riemann hypothesis for the curve is the RH analogue of
+\cref{def:rh-analogue}. What is at issue is only whether the defining
+equation of the curve is a \emph{local} constraint on the ring. For the
+quadratic Artin--Schreier family the answer is yes, and the answer stops
+exactly at degree three.
+
+\subsection{The shift picture}
+
+By \cref{def:self-dual-normal-basis} the field $\Fqn{n}$ carries a normal
+basis $\{\nbgen,\nbgen^{\qs},\dots,\nbgen^{\qs^{n-1}}\}$ in which Frobenius
+$x\mapsto x^{\qs}$ is the cyclic shift of coordinates. An element of
+$\Fqn{n}$ is then a ring of $n$ sites with alphabet $\Fq$, Frobenius is
+translation by one site, and points over $\Fqn{n}$ are ring configurations.
+This is the matrix-product setting of \cref{def:transfer-matrix} with no
+further choices to make.
+
+For the Artin--Schreier curve $y^{\qs}-y = g(x)$ of \cref{def:artin-schreier},
+Hilbert 90 reduces the affine count to exponential sums,
+\begin{equation}
+\label{eq:as-hilbert90}
+\Ncount{n} = \qs^{n} + \sum_{a\in\Fq^{\times}}\expsum{n}(ag),
+\qquad
+\expsum{n}(g) = \sum_{x\in\Fqn{n}}\addch\big(\ftr\, g(x)\big),
+\end{equation}
+so everything is carried by the $\expsum{n}$. Writing the exponent $m$ of a
+monomial $x^{m}$ in base $\qs$, $m = \sum_j m_j\qs^{j}$, one has
+$x^{m} = \prod_j (x^{\qs^{j}})^{m_j}$: a product of shifted copies of $x$,
+whose range is the number of base-$\qs$ digits. In a self-dual normal basis,
+which exists for $n$ odd, the trace form is the dot product, and so for the
+quadratic family $g(x) = \sum_{j=0}^{\asrange}a_jx^{1+\qs^{j}}$,
+\begin{equation}
+\label{eq:as-local-energy}
+\ftr\, g(x) \;=\; \sum_{j=0}^{\asrange} a_j\sum_{i} x_i\,x_{i+j},
+\end{equation}
+a translation-invariant quadratic spin model of range $\asrange$ on the ring.
+Its partition function is $\Tr\Tmat^{n}$ for the transfer matrix
+\begin{equation}
+\label{eq:as-transfer-entries}
+\Tmat_{(s_1,\dots,s_{\asrange})\to(s_2,\dots,s_{\asrange},x)}
+= \addch\Big(a_0x^{2} + \sum_{j=1}^{\asrange} a_j\,s_{\asrange+1-j}\,x\Big),
+\end{equation}
+of size $\qs^{\asrange}$, with physical index $\Fq$ and bond dimension
+$\qs^{\asrange}$. The spins $s_i$ are the $\asrange$ most recent site values;
+the map reads in the newest value $x$ and forgets the oldest spin $s_1$.
+
+\begin{proposition}[Transfer matrix for the quadratic family]
+\label{prop:as-transfer-matrix}
+\claimstatus{prop:as-transfer-matrix}{sketched}
+For $g(x) = \sum_{j=0}^{\asrange}a_jx^{1+\qs^{j}}$ the exponential sum over
+$\Fqn{n}$ satisfies $\expsum{n}(g) = -\sum_i\alphaw{i}^{\,n}$, where
+$\alphaw{i} = -\lambda_i(\Tmat)$ are minus the eigenvalues of the
+$\qs^{\asrange}\times\qs^{\asrange}$ transfer matrix
+\eqref{eq:as-transfer-entries} of the range-$\asrange$ quadratic spin model on
+a ring of $n$ sites.
+\end{proposition}
+
+Two remarks on the statement. First, the sign convention is the standing one
+of \cref{sec:conventions}: the note observed $\expsum{n} = \Tr\Tmat^{n}$ for
+odd $n$ and $\expsum{n} = -\Tr\Tmat^{n}$ for even $n$, and that apparent
+``sign flip'' is exactly the normalisation $\alphaw{i} = -\lambda_i(\Tmat)$,
+after which $\expsum{n} = -\sum_i\alphaw{i}^{\,n}$ holds uniformly in $n$ and
+$\Lcurve(g,\uz) = \prod_i(1-\alphaw{i}\uz)$ takes the standard shape of the
+$L$-function of an exponential sum. The transfer matrix is minus the Frobenius
+matrix. Second, the self-dual normal basis was needed only to \emph{see} the
+locality \eqref{eq:as-local-energy}, not for the identity itself, which is why
+the check below runs over even $n$ as well.
+
+\subsection{What was computed}
+
+The script brute-forces $\expsum{n}$ in $\Fqn{n}$ in a polynomial basis, with
+the modulus verified irreducible, and compares with $\Tr\Tmat^{n}$.
+
+\begin{center}
+\begin{tabular}{llccl}
+\toprule
+$\qs$ & $a = (a_0,\dots,a_{\asrange})$ & $\dim\Tmat$ & $n$ tested
+  & $\expsum{n}$ against $\Tr\Tmat^{n}$ \\
+\midrule
+$3$ & $(0,1)$   & $3$ & 2--7    & equal for odd $n$, sign flip for even $n$ \\
+$3$ & $(1,1)$   & $3$ & 3, 5, 7 & equal \\
+$5$ & $(0,1)$   & $5$ & 2--5    & equal for odd $n$, sign flip for even $n$ \\
+$3$ & $(0,1,1)$ & $9$ & 3, 5, 7 & equal \\
+$3$ & $(0,0,1)$ & $9$ & 3, 5, 7 & equal \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{numerical}[Transfer identity and unitarity, checked]
+\label{num:artin-schreier-mps}
+\claimstatus{num:artin-schreier-mps}{numerical}
+For the five $(\qs,a)$ of the table above and all $n$ listed, the brute-force
+exponential sum agrees with $\Tr\Tmat^{n}$ up to the sign convention
+$\alphaw{i} = -\lambda_i(\Tmat)$. For eight $(\qs,a)$ with $\qs\in\{3,5,7\}$
+and $\dim\Tmat$ up to $49$, every eigenvalue of $\Tmat$ has modulus
+$\sqrt{\qs}$ and $\|\Tmat\Tmat^{\dagger}-\qs\,I\| \le 5.2\times10^{-15}$.
+\end{numerical}
+
+The ratios $|\expsum{n}|/\qs^{n/2}$ are $1$ at every tested $n$ except
+$n = 4$, where they are $3$ for $\qs=3$ and $5$ for $\qs=5$: the sums
+saturate the Weil bound $|\expsum{n}| \le (\deg g - 1)\,\qs^{n/2}$, the
+maximal-curve phenomenon. The degree of $\Lcurve$ is $\qs^{\asrange} = \deg
+g - 1$, matching Weil's count.
+
+\subsection{RH is unitarity}
+
+\begin{proposition}[Scaled unitarity of the transfer matrix]
+\label{prop:as-unitarity}
+\claimstatus{prop:as-unitarity}{sketched}
+If $a_{\asrange}\ne 0$ then $\Tmat\Tmat^{\dagger} = \qs\,I$. Hence
+$\Tmat/\sqrt{\qs}$ is unitary, every eigenvalue of $\Tmat$ has modulus
+$\sqrt{\qs}$, and the Weil bound $|\alphaw{i}| = \sqrt{\qs}$ holds for the
+whole quadratic Artin--Schreier family.
+\end{proposition}
+
+The note's argument is one line. In $(\Tmat\Tmat^{\dagger})_{s's''}$ the
+oldest spin $s_1$, which is the index summed over, appears only through the
+linear term $a_{\asrange}s_1(x'-x'')$ of \eqref{eq:as-transfer-entries};
+provided $a_{\asrange}\ne 0$ the sum over $s_1$ is therefore
+$\qs\,\delta_{x'x''}$. The hypothesis $a_{\asrange}\ne 0$ is not cosmetic: it
+is what makes $\asrange$ the true range, and without it the same argument
+applies at the largest $j$ with $a_j\ne 0$ and a smaller transfer matrix. This
+is the mechanism already seen for a finite permutation in
+\cref{obs:rh-finite-permutation}: the RH analogue is manifest because the
+transfer matrix is a scaled unitary. In the same terms, rationality of
+$\curvezeta(\uz)$ holds because $\Tmat$ is finite, and the note records that
+the functional equation is the involution $\Tmat\mapsto\qs\,\Tmat^{-\dagger}$,
+which scaled unitarity makes trivial. The status of
+\cref{prop:as-unitarity} is \texttt{sketched}: the argument has not been
+written out as a proof with the index bookkeeping of
+\eqref{eq:as-transfer-entries} made explicit, and that write-up, together with
+the even-$n$ sign convention, is one of the open items of
+\cref{sec:open}.
+
+\subsection{Where it stops, and why that is the right place}
+
+Take a non-quadratic exponent, say $g(x) = x^{3}$ over $\Fq$ with
+$\qs\ge5$. The base-$\qs$ expansion of $3$ has a single digit, so $x^{3}$ is
+an on-site cubic; but in normal-basis coordinates $\ftr(x^{3}) =
+\sum_{ijk}c_{ijk}x_ix_jx_k$, with the multiplication structure constants
+$c_{ijk}$ of the basis, which are non-local and depend on $n$. A self-dual
+normal basis makes the \emph{bilinear} trace form local; it says nothing about
+the trilinear one.
+
+\begin{center}
+\small
+\begin{tabular}{lll l}
+\toprule
+$g$ & locality in the shift basis & transfer matrix & RH \\
+\midrule
+quadratic, $\sum_j a_jx^{1+\qs^{j}}$ & local, range $\asrange$
+  & $\qs^{\asrange}\times\qs^{\asrange}$, $\sqrt{\qs}\cdot$ unitary
+  & manifest \\
+degree $\ge3$ in any digit & non-local, $n$-dependent
+  & none of fixed size in this basis & Weil / Deligne \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{observation}[The non-quadratic case and Dwork's operator]
+\label{obs:as-nonquadratic}
+\claimstatus{obs:as-nonquadratic}{sketched}
+For non-quadratic $g$ the trace form in the shift basis is non-local and
+depends on $n$, so no fixed local tensor represents the ring model. The
+uniform transfer operator that does exist is Dwork's $\pp$-adic operator
+(\cref{def:dwork-operator}, \cite{dwork1960rationality}), which delivers
+rationality and, through Dwork's duality, the functional equation, but which
+sees the $\pp$-adic sizes of its eigenvalues and not their complex absolute
+values.
+\end{observation}
+
+Dwork's operator has exactly the form of a coarse-graining tensor-network
+step, ``local weight, then decimate by $\qs$'': multiplication by a splitting
+function followed by $x^{m}\mapsto x^{m/\qs}$, with infinite but nuclear bond
+dimension, and $\Lcurve$ as a Fredholm determinant. What it cannot deliver is
+the RH analogue, because the Newton polygon it computes is a statement about
+$\pp$-adic valuations. That is the structural reason Deligne's proof
+\cite{deligne1974weil} lives in $\ladic$ cohomology, and the Weil/Deligne
+divide is taken up in \cref{sec:deligne}. The sums that fall on the far side
+of the table, cubic Gauss sums and Kloosterman-type sums, are precisely the
+ones that needed algebraic geometry.
+
+\subsection{Not established}
+
+The note is explicit about what was not shown. No matrix product state with a
+fixed local tensor is known here for a non-quadratic Artin--Schreier curve, or
+for any curve of genus $\ge1$ that is not of this maximal type. Whether a
+\emph{different} basis of $\Fqn{n}$, uniform in $n$, makes cubic traces local
+was neither settled nor searched: no candidate was found. And the unitarity
+argument of \cref{prop:as-unitarity} remains a sketch.
+
+The boundary itself is the result worth keeping, and it is the same boundary
+met for graphs and for the Riemann channel: the Ramanujan bound is either
+manifest, because the transfer matrix is a scaled unitary, or it comes from
+arithmetic input that sits outside the transfer structure altogether.

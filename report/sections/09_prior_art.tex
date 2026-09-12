@@ -1,0 +1,300 @@
+% SHARD-ID: RC-09-PRIOR-ART
+% SHARD-TITLE: Prior Art for the Quantum Ihara Zeta
+% SHARD-SUMMARY: Places the quantum Ihara zeta of a channel in the literature: the Ad-weighted Ihara-Bass formula and the free-group L-function reading are known, the RH-iff-Ramanujan reading and the MPS dictionary were not found.
+% SHARD-SUMMARY: Every load-bearing sentence is a byte-checked quote from the arXiv TeX source under refs/src, with the locus recorded; the searches that returned nothing are listed, with their metadata-only limit.
+% SHARD-KEYWORDS: prior art, Ihara zeta, matrix weights, Artin-Ihara L-function, quantum expanders, Ramanujan, provenance
+% SHARD-NOTES: notes/prior-art-quantum-ihara.md
+% SHARD-SCRIPTS: none
+
+\section{Prior Art for the Quantum Ihara Zeta}
+\label{sec:prior-art}
+
+The search of 2026-09-12 used three literature agents (graph zetas and
+$L$-functions; quantum expanders and free probability; direct phrase search),
+after which every load-bearing sentence was re-checked against the arXiv
+\TeX{} source under \texttt{refs/src/} (fetched by
+\texttt{refs/fetch\_sources.sh}, hashes in \texttt{refs/manifest.sha256}).
+Each quote below is reproduced verbatim from \texttt{db/provenance.tsv} and
+carries its locus; sources with no local \TeX{} are unverified and are used
+for attribution only.
+
+\subsection{The object under examination}
+
+The object is the one fixed in \cref{def:quantum-hashimoto}: for a unital
+channel $\chan(\dm) = \frac1{\Dk}\sum_i \Un{i}\dm\Un{i}^\dagger$ with unitary
+Kraus operators closed under adjoint, the non-backtracking edge superoperator
+$\Hash$ on $\Mn\otimes\mathbb C^{\Dk}$ and the zeta
+$\zetaq(\uz) = \det(1-\uz\Hash)^{-1}$. The founding session made four claims
+about it. First, an Ihara--Bass identity,
+\begin{equation}
+\label{eq:prior-art-ihara-bass}
+\det(1-\uz\Hash) = (1-\uz^2)^{n^2(\Dk-2)/2}\,
+ \det\bigl(1 - \uz\,\Dk\chan + (\Dk-1)\uz^2\bigr).
+\end{equation}
+Second, that all nontrivial poles of $\zetaq$ lie on $|\uz| = (\Dk-1)^{-1/2}$
+if and only if $\chan$ is a Ramanujan quantum expander
+(\cref{def:ramanujan-channel}). Third, that $\zetaq$ is the Artin--Ihara
+$L$-function (\cref{def:artin-ihara}) of the bouquet with $\Dk/2$ loops
+twisted by $\hol\colon g_i\mapsto \Ad(\Un{i})$, with
+$\Tr\Hash^{\wl} = \sum_w |\Tr \Un{w}|^2$ over cyclically reduced words $w$ of
+length $\wl$. Fourth, that the Weil representation of $\SL(\Fp)$ with LPS
+generators gives an instance where the analogue of the Riemann hypothesis holds
+exactly. Alongside these sits the matrix-product-state reading (channel as
+transfer matrix, $\zetaq$ as a generating function of ring norms, one
+correlation length as the Riemann hypothesis, AKLT giving $K_4$).
+
+\subsection{Verdict}
+
+{\small
+\begin{tabular}{@{}p{3.9cm}p{2.5cm}p{7.6cm}@{}}
+\toprule
+claim & status & where \\
+\midrule
+1, Ihara--Bass with $\Ad(\Un{i})$ weights & known &
+Matsuura--Ohta 2022, eqs.\ (2.8) to (2.11) with
+$X_e = \Un{e}\otimes\Un{e}^\dagger$, loops allowed; the arbitrary-weight
+formula of Watanabe--Fukumizu 2011 for loopless graphs; twisted zetas back to
+Sunada 1986 and Hashimoto 1989 (unverified, secondary) \\
+3, trace formula, free-group $L$-function & known &
+Matsuura--Ohta 2022 eq.\ (2.10); Matsuura--Ohta 2026, where the object is
+named an Artin--Ihara $L$-function for a representation extended to $U(N_c)$ \\
+2, poles on the critical circle iff Hastings--Ramanujan & not found &
+zero hits for any zeta or Ihara combined with channel, Kraus, CP map or
+expander; Matsuura--Ohta contain none of the words Ramanujan, expander,
+Riemann hypothesis; Bordenave--Collins have the operator but no determinant
+and no zeta \\
+4, exactly Ramanujan channels from LPS & mechanism known, instance not &
+Harrow 2008 plus LPS; Iyer, Jain, Jordan and Somma (Feb 2026) state it with
+$SU(2)$ irreps and call explicit Ramanujan quantum expanders a longstanding
+open problem; no Weil-representation instance and no zeta \\
+MPS and ring-norm reading, AKLT $= K_4$ & not found &
+no hits for Ihara or zeta combined with matrix product state, transfer matrix
+or AKLT \\
+\bottomrule
+\end{tabular}}
+
+\subsection{Matsuura and Ohta}
+
+\begin{citedfact}[Extended Ihara zeta with invertible matrix weights]
+\label{cit:mo-extended-ihara}
+\claimstatus{cit:mo-extended-ihara}{cited}\sloppy
+{\small\texttt{\detokenize{Suppose $X_{e}$ $(e\in E)$ are invertible matrices of size $K$ living on each edge.}}}
+(\texttt{2204.06424:main.tex:476}), with
+{\small\texttt{\detokenize{\zeta_G(q;X) \equiv \det\Bigl( \bs{1}_{2n_E}\otimes\bs{1}_{K} - q W_X \Bigr)^{-1}}}}
+(\texttt{2204.06424:main.tex:479-482}) for the edge-matrix determinant,
+{\small\texttt{\detokenize{\zeta_G(q;X) = \exp\lrpar{ \sum_{k=1}^\infty \frac{1}{k}\sum_{C\in R_k}\Tr P_{C}(X) }}}}
+(\texttt{2204.06424:main.tex:503-505}) for the trace formula over reduced
+cycles, and the three-term identity
+{\small\texttt{\detokenize{\zeta_G(q;X) = (1-q^2)^{(n_V-n_E)K}\det\Bigl( \bs{1}_{n_V}\otimes\bs{1}_{K} - qA_X + q^2(D-\bs{1}_{n_V})\otimes\bs{1}_K \Bigr)^{-1}}}}
+(\texttt{2204.06424:main.tex:516-519}), proved by the classical route:
+{\small\texttt{\detokenize{The following proof is parallel to the one given in \cite{bass1992ihara} for the original Ihara zeta function}}}
+(\texttt{2204.06424:main.tex:533-534}). This is claim 1 with arbitrary
+invertible matrix weights in place of $\Ad(\Un{i})$, and claim 3 in the shape
+of a sum over cyclically reduced classes.
+\end{citedfact}
+
+\begin{citedfact}[Adjoint weights and the name Artin--Ihara $L$-function]
+\label{cit:mo-adjoint-weights}
+\claimstatus{cit:mo-adjoint-weights}{cited}\sloppy
+The weights they apply the formula to are the adjoint ones,
+{\small\texttt{\detokenize{with $X_e=U_e\otimes U_e^\dagger$}}}
+(\texttt{2204.06424:main.tex:696}); the 2026 paper names the resulting
+object an Artin--Ihara $L$-function for a representation $R$ of a finite group
+extended to $U(N_c)$, taking $R$ to be the adjoint representation with
+$\hol_{\mathrm{adj}}(\Un{e}) = \Un{e}\otimes\Un{e}^\dagger$
+(\texttt{2607.27935:main.tex:508-510}, with the $L$-function at
+\texttt{2607.27935:main.tex:381} and its Bartholdi-deformed three-term formula
+at \texttt{2607.27935:main.tex:401-404}). So the twisting representation of
+claim 3 is theirs, up to the column-stacking convention of
+\cref{sec:conventions}.
+\end{citedfact}
+
+Their construction admits loops and multiple edges: a loop contributes
+$X_e + X_e^{-1}$ to the weighted adjacency matrix and $2$ to the degree.
+Specialising to the bouquet with $n_V = 1$, $n_E = \Dk/2$, $K = n^2$ and graph
+degree $\Dk$, the exponent $(n_V-n_E)K$ of their eq.\ (2.11) becomes
+$-n^2(\Dk-2)/2$, the bracket becomes $1 - \uz A_X + (\Dk-1)\uz^2$ with
+$A_X = \sum_i \bar{\Un{i}}\otimes \Un{i} = \Dk\chan = \Sig$, and inverting
+eq.\ (2.8) turns $\zetaX^{-1}$ into $\det(1-\uz\Hash)$. That is \cref{eq:prior-art-ihara-bass}, so the note records the verdict SAME
+for claims 1 and 3. The companion paper \cite{matsuura2022wilson} carries the
+same adjoint weights into a matrix-weighted Bartholdi zeta, of which the Ihara
+case is one value of the Bartholdi parameter, and is SAME by the same route;
+\cite{matsuura2022km} and \cite{matsuura2026artin} are the loci above.
+
+\subsection{Watanabe and Fukumizu}
+
+\begin{citedfact}[Ihara--Bass for arbitrary matrix weights, loopless]
+\label{cit:wf-arbitrary-weights}
+\claimstatus{cit:wf-arbitrary-weights}{cited}\sloppy
+The edge zeta is built from
+{\small\texttt{\detokenize{matrix weights $\bsu=\{ u_{e} \}_{e \in \vec{E}}$ with $u_e \in \mat{r_{t(e)}}{r_{o(e)}}$,}}}
+with the cycle weight
+{\small\texttt{\detokenize{\pi(\mathfrak{p}):=u_{e_1} \cdots u_{e_k}}}}
+(\texttt{1103.0605:section3.tex:307-310} and
+\texttt{1103.0605:section3.tex:315}), and the corollary
+\texttt{cor:IBfornonhyper} reads
+{\small\texttt{\detokenize{Z_{G}(\bs{u})^{-1}= \det ( I + \hat{\mathcal{D}}(\bsu) - \hat{\mathcal{A}}(\bsu) ) \prod_{[e] \in {E}} \det(I - u_e u_{\bar{e}}),}}}
+(\texttt{1103.0605:section3.tex:333-335}), of which the authors say
+{\small\texttt{\detokenize{Corollary \ref{cor:IBfornonhyper} gives the extension of the result to graphs with arbitrary weights.}}}
+(\texttt{1103.0605:section3.tex:373}). No inverse relation is imposed between
+$u_e$ and $u_{\bar e}$, which is the feature \cref{thm:qihara-general} needs.
+\end{citedfact}
+
+\begin{sloppypar}Their graphs are hypergraphs,
+{\small\texttt{\detokenize{A {\it hypergraph} $H=(V,F)$ consists of a set of {\it vertices} $V$ and a set of {\it hyperedges} $F$.}}}
+(\texttt{1103.0605:section2.tex:17-18}), whose hyperedges are subsets of $V$
+of size two: no loops and no multiple edges, so a bouquet is not one of their
+graphs. \Cref{thm:qihara-general} is the loop-admitting analogue of the
+corollary, of the same shape after $u_e = \uz\Eop{e}$, but the corollary does
+not cover the bouquet and its scalar reduction does not evaluate correctly
+there; the note also records that the hypergraph-free proof it points to (the
+NeurIPS 2009 supplement) was not fetched. Verdict RELATED: the closest prior
+art for arbitrary weights, not a special case, and with no
+representation-theoretic or quantum reading \cite{watanabe2011zeta}.\end{sloppypar}
+
+\subsection{Bordenave and Collins}
+
+\begin{citedfact}[Matrix-valued non-backtracking operator, no zeta]
+\label{cit:bc-nonbacktracking}
+\claimstatus{cit:bc-nonbacktracking}{cited}\sloppy
+The operator is
+{\small\texttt{\detokenize{B = \sum_{j \ne i^*} a_j \otimes S_i \otimes E_{ij},}}}
+(\texttt{1801.00876:tenseur9.tex:784}), introduced because
+{\small\texttt{\detokenize{Our proof relies on the development of a matrix version of the non-backtracking operator theory and a refined trace method.}}}
+(\texttt{1801.00876:tenseur9.tex:158}), and aimed at this application:
+{\small\texttt{\detokenize{This extension is especially relevant in the context of quantum expanders.}}}
+(\texttt{1801.00876:tenseur9.tex:165}). The only place the tradition names
+the identity is in the later work,
+{\small\texttt{\detokenize{This formula is closely related to various spectral identities known as Ihara-Bass identities}}}
+(\texttt{2304.05714:PT-RC\_reloaded.tex:2568}). The same operator as $\Hash$,
+then, and the spectral correspondence, but as a resolvent identity rather
+than a determinant: no zeta and no Riemann hypothesis.
+\end{citedfact}
+
+The verdict is RELATED. The follow-ups are \cite{bordenave2024strong} for
+general unitaries and \cite{bordenave2023norm} for the operator-valued
+identity; \cite{bordenave2019lifts} also records, at
+\texttt{1801.00876:tenseur9.tex:608-610}, that a family of tensor-squared
+permutations is a nearly optimal quantum expander in Hastings' sense.
+
+\subsection{Hastings and Harrow}
+
+\begin{citedfact}[Transfer of the spectral gap from a Cayley graph]
+\label{cit:harrow-transfer}
+\claimstatus{cit:harrow-transfer}{cited}\sloppy
+{\small\texttt{\detokenize{\be \lambda_2(\cE) \leq \lambda_2(W_\Gamma).\label{eq:gap-ineq}\ee}}}
+(\texttt{0709.1142:main.tex:213}), under the dictionary
+{\small\texttt{\detokenize{degree becomes the number of Kraus operators, the spectral gap becomes the gap of the quantum operation}}}
+(\texttt{0709.1142:main.tex:72-73}). Here $\lamtwo$ of the channel is its
+second largest singular value as a map on density matrices and $\lamtwo$ of
+$W_\Gamma$ that of the Cayley graph transition matrix, so taking $\Gamma$ to
+be LPS generators in $\PSL(\Fp)$ gives exactly Ramanujan channels from any
+irreducible representation.
+\end{citedfact}
+
+The bound itself, $\lamH = 2\sqrt{\Dk-1}/\Dk$, is Hastings'
+\cite{hastings2007random}, quoted in \cref{def:ramanujan-channel}; that paper
+has no zeta and no non-backtracking operator, and the word Ramanujan does not
+occur in \cite{harrow2008cayley}. Verdict SAME for the mechanism behind claim
+4, NOT for anything zeta-shaped.
+
+\subsection{Iyer, Jain, Jordan and Somma}
+
+\begin{citedfact}[Exact Ramanujan quantum expanders from LPS]
+\label{cit:iyer-exact-ramanujan}
+\claimstatus{cit:iyer-exact-ramanujan}{cited}\sloppy
+{\small\texttt{\detokenize{it is possible to construct {\em exact} Ramanujan quantum expanders from $SU(2)$ unitaries derived from the LPS construction~\cite{lubotzky1988ramanujan,harrow2007quantum}.}}}
+(\texttt{2602.15180:main.tex:1508}), and, of the explicit construction,
+{\small\texttt{\detokenize{Our quantum circuits can be used to construct explicit Ramanujan quantum expanders, a longstanding open problem.}}}
+(\texttt{2602.15180:main.tex:241}). The mechanism is the one of
+\cref{cit:harrow-transfer}, carried by $SU(2)$ irreducible representations
+rather than by the Weil representation, and no zeta is attached.
+\end{citedfact}
+
+Verdict RELATED for claim 4 \cite{iyer2026ramanujan}. The note records that
+their Appendix C example, $\pp = 5$ and $\Dk = 6$, uses the same norm-$5$
+quaternions as the script behind \cref{sec:weil-lps}. Separately,
+\cite{jeronimo2022almost} amplifies arbitrary expanders to almost Ramanujan
+ones, short of the bound and with no zeta: verdict NOT.
+
+\subsection{Quantum-walk zetas and the secondary sources}
+
+\begin{citedfact}[Attribution of the twisted zeta and of the three-term formula]
+\label{cit:sunada-attribution}
+\claimstatus{cit:sunada-attribution}{cited}\sloppy
+{\small\texttt{\detokenize{A zeta function of a regular graph $G$ associated with a unitary representation of the fundamental group of $G$ was developed by Sunada \cite{Sunada1, Sunada2}.}}}
+(\texttt{2105.02677:main.tex:87-89}); for graph coverings,
+{\small\texttt{\detokenize{Stark and Terras further introduced notions of \emph{Galois coverings} and \emph{Artin-Ihara L-functions} for graphs}}}
+(\texttt{2309.15873:AiM\_Final.tex:131}); and for the determinant,
+{\small\texttt{\detokenize{the three-term determinant formula from \cite[Theorem 18.15]{Terras:2011} applied to the Artin-Ihara $L$-function}}}
+(\texttt{2405.04361:v3.tex:427}). The twisted zeta is therefore Sunada's
+\cite{sunada1986lfunctions}, sharpened by Hashimoto \cite{hashimoto1989zeta}
+and Bass \cite{bass1992ihara}; the $L$-function of a covering is Stark and
+Terras' \cite{stark1996zeta}, with the three-term formula at Theorem 18.15 of
+\cite{terras2010zeta}. None of these primary sources is local.
+\end{citedfact}
+
+In Stark and Terras the representation is one of the Galois group of a
+covering of finite graphs, hence of a finite group, whereas $\Ad(\Un{i})$ for
+generic unitaries generates an infinite group: the object of
+\cref{def:quantum-hashimoto} is not literally a Stark--Terras $L$-function,
+although the determinant formula is the same. The secondary sources
+\cite{eyler2023artin} and \cite{ghosh2024iwasawa} serve this attribution
+only; verdict RELATED.
+
+The quantum-walk zeta line \cite{konno2012zeta}, \cite{komatsu2021walkzeta},
+\cite{komatsu2021scattering} builds zetas from the unitary evolution matrix of
+a quantum walk rather than from Kraus operators, \cite{komatsu2021walkzeta}
+extending to open quantum random walks on the torus by Fourier analysis;
+verdict NOT for claims 1 to 4, the value here being the Sunada pointer. Ben-Aroya, Schwartz and Ta-Shma
+\cite{benaroya2010quantum} is the one unverified source near claim 2: an
+agent read from the publisher PDF that they believe their first construction
+has the potential of being improved to a quantum Ramanujan expander.
+
+\subsection{What was not found, and the limits of the search}
+
+\begin{observation}[Verdict of the prior-art search]
+\label{obs:prior-art-verdict}
+\claimstatus{obs:prior-art-verdict}{sketched}
+No source found attaches a zeta function, or an analogue of the Riemann
+hypothesis, to a quantum channel; none states that the poles of $\zetaq$ lie
+on the critical circle if and only if $\chan$ meets the Hastings bound
+$\lamH$; none gives the matrix-product-state ring-norm reading or the
+identification of AKLT with $K_4$. The $\Ad$-weighted Ihara--Bass formula and
+the free-group $L$-function reading are known
+(\cref{cit:mo-extended-ihara,cit:mo-adjoint-weights}), arbitrary matrix
+weights are known for loopless graphs (\cref{cit:wf-arbitrary-weights}), and
+the matrix-valued non-backtracking operator is known
+(\cref{cit:bc-nonbacktracking}).
+\end{observation}
+
+The consequence for this book: \cite{matsuura2022km}, \cite{watanabe2011zeta}
+and the Sunada--Hashimoto line are cited for the object and the determinant,
+while the Ramanujan reading of \cref{sec:quantum-ihara}, the dictionary of
+\cref{sec:artin-schreier} and the Weil--LPS instance of \cref{sec:weil-lps}
+are this notebook's own. \Cref{thm:qihara-general} is the bouquet analogue of
+\cref{cit:wf-arbitrary-weights}, proved there from scratch; no local source
+covers arbitrary non-invertible weights on a bouquet.
+
+\begin{sloppypar}\small These arXiv metadata queries returned zero hits:
+\texttt{"Ihara zeta" AND "quantum channel"}; \texttt{"Ihara zeta" AND
+"completely positive"}; \texttt{"zeta" AND "quantum expander"};
+\texttt{"zeta" AND "Kraus operators"}; \texttt{abs:"zeta function" AND
+abs:"superoperator"}; \texttt{"Ruelle zeta" AND "quantum channel"};
+\texttt{"Ihara" AND "matrix product state"}; \texttt{"AKLT" AND "zeta"};
+\texttt{"non-backtracking" AND "superoperator"}; \texttt{"Ihara" AND
+("quantum Ramanujan" OR "Ramanujan quantum")}.
+Web and Scholar searches for the phrase quantum Ihara zeta, for Ihara zeta
+with noncommutative or quantum graphs (Weaver, Duan--Severini--Winter), for
+Ihara zeta with matrix product states or tensor networks, and a MathOverflow
+search for Ihara zeta and quantum expanders, returned nothing on point. The
+standing limit: arXiv search is metadata-only, so a formula inside a paper
+body would not surface, and the absence claims of
+\cref{obs:prior-art-verdict} are weaker than its presence claims.\end{sloppypar}
+
+\subsection{Corrections}
+
+One agent attributed arXiv:2309.15873 to Kudo and Li. The \TeX{} header of
+the local source, at \texttt{2309.15873:AiM\_Final.tex:86,90}, gives the
+authors as Mason Eyler and Jaiung Jun; \cite{eyler2023artin} and every
+citation of it were corrected on the evening of 2026-09-12.

@@ -1,0 +1,65 @@
+% SHARD-ID: RC-12-LAB-LOG
+% SHARD-TITLE: Lab Log
+% SHARD-SUMMARY: Chronological record of the sessions, mirroring docs/worklog/.
+% SHARD-SUMMARY: Records corrections TJO made along the way and the infrastructure changes.
+% SHARD-KEYWORDS: lab log, chronology, worklog, handoff
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{Lab Log}
+
+The dated worklogs under \texttt{docs/worklog/} are the primary chronology;
+\texttt{HANDOFF.md} is the live state. This section is their mirror at the
+level of decisions.
+
+\subsection*{2026-09-10/11: founding session}
+
+One conversation in the parent repository
+\texttt{arithmetic-quantum-mechanics}. Trajectory: Bost--Connes basics; why
+not Wick-rotate to Hilbert--P\'olya; an elliptic curve over $\mathbb F_2$ as a
+finite instance; permutations and the one determinant identity; automata and
+rationality; the actual Riemann hypothesis as a flow with orbit periods
+$\log p$; the Ihara zeta of regular graphs as the vestigial Selberg zeta;
+Shor's unitary as the level-$N$ Galois symmetry of Bost--Connes; quantum
+expanders and the quantum Ihara zeta; matrix-product states and the ring-norm
+reading; the Bost--Connes system as a matrix-product operator over the prime
+chain; the Holevo--Werner lift; and the computation of the scattering symbol,
+its zeros, and the $3000$-zero ring-norm test.
+
+Corrections TJO made along the way, kept as working rules: stay elementary,
+no jargon dumps, one step at a time; no curves or field extensions when a
+permutation will do; ``QFT'' did not mean functional integrals; length
+quantisation should come from a flatness-type condition.
+
+Afternoon: the Weil--LPS channels computed for seven primes. Bugs found and
+fixed: quaternion enumeration starting at an odd coordinate (caught by the
+divisor-sum count); parity as a second fixed point on the full space
+(resolved by splitting into the two Weil blocks); the Hecke relation failing
+on $\mathrm{SL}_2$ by signs (resolved on $\mathrm{PSL}_2$).
+
+Evening: the matrix-product formulation of the Weil conjectures for quadratic
+Artin--Schreier curves. Bugs: a wrong irreducibility test for composite $n$;
+the even-$n$ sign, which was the $L$-function normalisation, not a bug.
+
+\subsection*{2026-09-12}
+
+Morning: circle flows discussed (no code); the expository note on Deligne's
+proof written; repository made public under AGPL-3.0.
+
+Afternoon: prior-art search on the quantum Ihara zeta, three Opus literature
+agents, then byte-verification against arXiv TeX sources (\texttt{refs/}).
+Finding: the object and its determinant formula are known
+(Matsuura--Ohta; Watanabe--Fukumizu for loopless graphs; Sunada); the
+RH-for-channels reading, the MPS dictionary and the Weil-representation
+instance were not found. Then the Ihara--Bass formula for arbitrary Kraus
+families proved in Lamport style and taken through two rounds of adversarial
+review by Opus reviewers; promoted to \texttt{proved}. Standing preference
+recorded: TeX source, not PDF, for every quotation.
+
+Evening: this lab book set up following the parent repository's sharded
+pattern, with the notation, definitions, claims and provenance databases
+under \texttt{db/}, the generated macro and status files, the gate
+\texttt{scripts/labbook\_check.py}, the local CI \texttt{scripts/ci\_local.sh}
+and its pre-commit hook. Notation and definitions across the seven notes
+de-duplicated into the databases; the clashes and their resolutions are
+listed in \cref{sec:conventions}.

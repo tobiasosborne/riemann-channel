@@ -1,0 +1,54 @@
+id	key	file	lines	quote	used_by
+prov:mo22-invertible	2204.06424	main.tex	476	Suppose $X_{e}$ $(e\in E)$ are invertible matrices of size $K$ living on each edge.	cit:mo-extended-ihara
+prov:mo22-def	2204.06424	main.tex	479-482	\zeta_G(q;X) \equiv \det\Bigl( \bs{1}_{2n_E}\otimes\bs{1}_{K} - q W_X \Bigr)^{-1}	cit:mo-extended-ihara
+prov:mo22-trace	2204.06424	main.tex	503-505	\zeta_G(q;X) = \exp\lrpar{ \sum_{k=1}^\infty \frac{1}{k}\sum_{C\in R_k}\Tr P_{C}(X) }	cit:mo-extended-ihara
+prov:mo22-bass	2204.06424	main.tex	516-519	\zeta_G(q;X) = (1-q^2)^{(n_V-n_E)K}\det\Bigl( \bs{1}_{n_V}\otimes\bs{1}_{K} - qA_X + q^2(D-\bs{1}_{n_V})\otimes\bs{1}_K \Bigr)^{-1}	cit:mo-extended-ihara
+prov:mo22-parallel-bass	2204.06424	main.tex	533-534	The following proof is parallel to the one given in \cite{bass1992ihara} for the original Ihara zeta function	cit:mo-extended-ihara
+prov:mo22-adjoint	2204.06424	main.tex	696	with $X_e=U_e\otimes U_e^\dagger$	cit:mo-adjoint-weights
+prov:mo26-adjoint	2607.27935	main.tex	508-510	is the model with the representation $R$ being the adjoint representation of $U(N_c)$, \be \rho_{\rm adj}(U_e) = U_e\otimes U_e^\dag\,.	cit:mo-adjoint-weights
+prov:wf11-weights	1103.0605	section3.tex	307-310	matrix weights $\bsu=\{ u_{e} \}_{e \in \vec{E}}$ with $u_e \in \mat{r_{t(e)}}{r_{o(e)}}$,	cit:wf-arbitrary-weights
+prov:wf11-cor	1103.0605	section3.tex	333-335	Z_{G}(\bs{u})^{-1}= \det ( I + \hat{\mathcal{D}}(\bsu) - \hat{\mathcal{A}}(\bsu) ) \prod_{[e] \in {E}} \det(I - u_e u_{\bar{e}}),	cit:wf-arbitrary-weights
+prov:wf11-arbitrary	1103.0605	section3.tex	373	Corollary \ref{cor:IBfornonhyper} gives the extension of the result to graphs with arbitrary weights.	cit:wf-arbitrary-weights
+prov:wf11-hyperedge	1103.0605	section2.tex	17-18	A {\it hypergraph} $H=(V,F)$ consists of a set of {\it vertices} $V$ and a set of {\it hyperedges} $F$.	cit:wf-arbitrary-weights
+prov:wf11-order	1103.0605	section3.tex	315	\pi(\mathfrak{p}):=u_{e_1} \cdots u_{e_k}	cit:wf-arbitrary-weights
+prov:bc19-matrix-nb	1801.00876	tenseur9.tex	158	Our proof relies on the development of a matrix version of the non-backtracking operator theory and a refined trace method.	cit:bc-nonbacktracking
+prov:bc19-qexp	1801.00876	tenseur9.tex	165	This extension is especially relevant in the context of quantum expanders.	cit:bc-nonbacktracking
+prov:bc19-defB	1801.00876	tenseur9.tex	784	B = \sum_{j \ne i^*} a_j \otimes S_i \otimes E_{ij},	cit:bc-nonbacktracking
+prov:bc23-ihara-bass	2304.05714	PT-RC_reloaded.tex	2568	This formula is closely related to various spectral identities known as Ihara-Bass identities	cit:bc-nonbacktracking
+prov:hastings07-bound	0706.0556	sd10.tex	122	\lambda_{H}=\frac{2\sqrt{D-1}}{D}.	def:ramanujan-channel
+prov:harrow08-gap	0709.1142	main.tex	213	\be \lambda_2(\cE) \leq \lambda_2(W_\Gamma).\label{eq:gap-ineq}\ee	cit:harrow-transfer
+prov:harrow08-kraus	0709.1142	main.tex	72-73	degree becomes the number of Kraus operators, the spectral gap becomes the gap of the quantum operation	cit:harrow-transfer
+prov:iyer26-open	2602.15180	main.tex	241	Our quantum circuits can be used to construct explicit Ramanujan quantum expanders, a longstanding open problem.	cit:iyer-exact-ramanujan
+prov:iyer26-exact	2602.15180	main.tex	1508	it is possible to construct {\em exact} Ramanujan quantum expanders from $SU(2)$ unitaries derived from the LPS construction~\cite{lubotzky1988ramanujan,harrow2007quantum}.	cit:iyer-exact-ramanujan
+prov:kks21-sunada	2105.02677	main.tex	87-89	A zeta function of a regular graph $G$ associated with a unitary representation of the fundamental group of $G$ was developed by Sunada \cite{Sunada1, Sunada2}.	cit:sunada-attribution
+prov:eyler23-stark-terras	2309.15873	AiM_Final.tex	131	Stark and Terras further introduced notions of \emph{Galois coverings} and \emph{Artin-Ihara L-functions} for graphs	cit:sunada-attribution
+prov:ghosh24-terras	2405.04361	v3.tex	427	the three-term determinant formula from \cite[Theorem 18.15]{Terras:2011} applied to the Artin-Ihara $L$-function	cit:sunada-attribution
+prov:dz13-guillemin	1306.4203	zeta.tex	260-264	\label{eq:ABG}  \tr^\flat e^{-it P }  = \sum_{ \gamma} \frac{ T_\gamma^\#     \delta ( t - T_\gamma ) } { | \det ( I - \mathcal P_\gamma ) |} , \ \ t > 0	F1
+prov:dz13-guillemin-forms	1306.4203	zeta.tex	500-505	\label{eq:guill}   \tr^\flat e^{-i t\mathbf P } |_{ C^\infty ( X ; \mathcal E^k_0 )} =   \sum_{ \gamma } \frac{ T_\gamma^\#   \tr ( \wedge^k \mathcal P_\gamma ) \,  \delta ( t - T_\gamma ) } { | \det ( I - \mathcal P_\gamma ) |} , \ \  t > 0 , \end{equation}	F1
+prov:dz13-conventions	1306.4203	zeta.tex	506-508	where $\gamma $'s  are periodic orbits,  $ \mathcal P_\gamma:=d\varphi_{-T_\gamma}|_{E_s\oplus E_u} $ is the linearized  Poincar\'e map, $ T_\gamma $ is the period of $ \gamma $, and $ T_\gamma^\# $ is the primitive period. See~\S\ref{tft} for definition and properties	F1
+prov:dz13-ruelle-def	1306.4203	zeta.tex	140-141	\[  \zeta_{\rm{R}} ( \lambda ) = \prod_{\gamma^\sharp } ( 1 - e^{ i \lambda T_\gamma^\sharp } ) , \]	F1,F2
+prov:dfg14-band	1403.0256	RuelleResonForHn.tex	181-191	Assume that $M$ is a compact hyperbolic surface ($n=1$) and the spectrum of the positive Laplacian on $M$ is (see Figure~\ref{f:dim2}) $$ \Spec(\Delta)=\{s_j(1-s_j)\},\quad s_j\in [0,1]\cup \Big({1\over 2}+i\mathbb R\Big). $$ Then Pollicott--Ruelle resonances for the geodesic flow on $SM$ in $\mathbb C\setminus (-1-{1\over 2}\mathbb N_0)$ are \begin{equation}   \label{e:dim2} \lambda_{j,m}=-m-1+s_j,\quad m\in\mathbb N_0.	F2
+prov:dfg14-laplace-transform	1403.0256	RuelleResonForHn.tex	209-211	We use the Laplace transform (which has poles in the left half-plane) rather than the Fourier transform as in~\cite{ruelle,FaSj} to simplify the relation to the parameter $s$ used for Laplacians on hyperbolic manifolds.	F2
+prov:dz16-ruelle-selberg	1606.04560	zazi.tex	117-119	\zeta_S ( s ) := \prod_{ \gamma \in \mathcal G } \prod_{ m=0}^\infty ( 1 - e^{- ( m + s ) \ell_\gamma } ) , \quad \zeta_R ( s ) = \frac{ \zeta_S ( s  ) }{ \zeta_S ( s + 1  ) } ,	F2
+prov:dz16-ruelle-def	1606.04560	zazi.tex	54	\zeta_R ( s ) := \prod_{ \gamma \in \mathcal G } ( 1 - e^{ -s  \ell_\gamma } ) .	F2
+prov:marklof04-hyperbolic	math/0407288	selberg07.tex	1766-1770	\sum_{j=0}^\infty  h(\rho_j) = \frac{\Area(\scrM)}{4\pi}  \int_{-\infty}^\infty h(\rho) \tanh(\pi\rho)\,\rho\, d\rho + \sum_{\gamma\in H_*}  \sum_{n=1}^\infty \frac{\ell_{\gamma}\,g(n\ell_{\gamma})}{2\sinh(n\ell_{\gamma}/2)} ,	F3
+prov:marklof04-selbergzeta	math/0407288	selberg07.tex	2245-2246	Z(s) = \prod_{\gamma\in H_*} \prod_{m=0}^\infty \left( 1-\e^{-\ell_\gamma(s+m)} \right),	F2,F3
+prov:marklof04-primitive	math/0407288	selberg07.tex	1626-1627	If we denote by $H_*\subset H$ the subset of primitive elements, \eqref{kk} equals	F3
+prov:marklof04-gtransform	math/0407288	selberg07.tex	896	g(t)=\frac{1}{2\pi} \int_\RR h(\rho)\, \e^{-\i\rho t} d\rho .	F3
+prov:marklof04-rho	math/0407288	selberg07.tex	1674	\rho_j=\sqrt{\lambda_j-\tfrac14}, \qquad -\pi/2 \leq \arg\rho_j < \pi/2.	F3
+prov:zelditch04-poisson	math/0402356	main.tex	1459-1465	The first result on the wave trace is the Poisson relation on a manifold without boundary, \begin{equation}\label{SS} \mbox{Sing Supp} Tr U(t) \subset \;\; Lsp(M,g), \end{equation} proved by Y. Colin de Verdi\`ere \cite{CdV2, CdV3}, Chazarain \cite{Ch2}, and Duistermaat-Guillemin \cite{DG} (following	F3
+prov:zelditch04-wavegroup	math/0402356	main.tex	1451-1454	wave group $U(t) = e^{i t \sqrt{\Delta}}$ of $(M, g)$. One forms the (distribution) trace \begin{equation} Tr U(t) = \sum_{ \lambda_j \in Sp(\sqrt{\Delta})} e^{i t \lambda_j}. \end{equation} It is a tempered distribution on	F3
+prov:zelditch04-costerm	math/0402356	main.tex	1473-1475	due to these lengths are identical so one often considers the even part of $Tr U(t)$ i.e. $Tr E(t)$ where $E(t)= \cos (t \sqrt{\Delta}).$	F3
+prov:fgkp16-chevalley	1511.04265	AutomorphicBook.tex	2835-2837	e = \begin{pmatrix}0&1\\0&0\end{pmatrix}\,,\quad h = \begin{pmatrix}1&0\\0&-1\end{pmatrix}\,,\quad f = \begin{pmatrix}0&0\\1&0\end{pmatrix}	F4
+prov:fgkp16-casimir	1511.04265	AutomorphicBook.tex	2851	\Omega = \frac14 h^2 + \frac12 ef + \frac12 fe = \frac14 h^2-\frac12 h +ef.	F4
+prov:fgkp16-casimir-laplacian	1511.04265	AutomorphicBook.tex	3107-3110	The Casimir operator~\eqref{eq:SL2cas} then becomes a second order differential operator, namely the Laplacian \begin{align} \label{eq:SL2Lapapp} \Delta_{SL(2,\mathbb{R})} = y^2 \left( \partial_x^2 + \partial_y^2 \right) - y \partial_x \partial_\theta.	F4
+prov:fgkp16-uhp-laplacian	1511.04265	AutomorphicBook.tex	409-411	\Delta = y^2 \left( \partial_x^2 + \partial_y^2\right) \end{align} and corresponds to the Laplace--Beltrami operator on the upper half plane $\UHP$. In group theoretical terms it is the quadratic Casimir operator. Acting with it on the function (\ref{Eisenintro}) one finds	F4
+prov:fgkp16-compact-basis	1511.04265	AutomorphicBook.tex	3115-3117	H=-i(e-f),\quad E= \frac12\left( h +i (e+f) \right),\quad F= \frac12\left( h -i (e+f) \right),	F4
+prov:fgkp16-eigenvalue-sign	1511.04265	AutomorphicBook.tex	414	\Delta f_s(z) = s(s-1) f_s(z)	F4
+prov:fgkp16-constant-term	1511.04265	AutomorphicBook.tex	6196	W_1^\circ(s,g)= |v|^{2s}+\sqrt{\pi}\frac{\Gamma(s-1/2)}{\Gamma(s)}\frac{\zeta(2s-1)}{\zeta(2s)}|v|^{-2s+2}.	F5
+prov:fgkp16-xi-ratio	1511.04265	AutomorphicBook.tex	554	\frac{\xi(2s-1)}{\xi(2s)} = \pi^{1/2}\frac{\Gamma(s-1/2)}{\Gamma(s)} \prod_{p<\infty} \frac{1-p^{-2s}}{1-p^{1-2s}}	F5
+prov:fjs16-scattering-det	1607.08053	main.tex	592-594	In the case when $\Gamma$ is the modular group $\mathrm{PSL}(2,\mathbb{Z})$, the scattering determinant is given by $$ \phi(s)=\sqrt{\pi}\frac{\Gamma(s-1/2)}{\Gamma(s)} \frac{\zeta(2s-1)}{\zeta(2s)},	F5
+prov:mv11-continuous-term	1108.5659	main.tex	2128-2129	\begin{equation} C=C(\overset{\sim}{h}(r);\Gamma;\chi)=-\frac{1}{4\pi}\int_{-\infty}^{\infty}\dfrac{\varphi'}{\varphi}(\frac{1}{2}+ir;\Gamma;\chi)h(r^2+\frac{1}{4})dr+\dfrac{K_0}{4} h(\dfrac{1}{4})	F5
+prov:mv11-traceformula	1108.5659	main.tex	2125	\sum_{k=0}^{\infty}h(\lambda_k)+C=I+H+E+P	F5
+prov:mv11-hyperbolic-term	1108.5659	main.tex	2137	H=H(\overset{\sim}{h}(r);\Gamma;\chi)=\sum_{\left\lbrace P\right\rbrace _\Gamma}\sum_{m=1}^\infty \dfrac{\text{tr}_V\chi^m(P)logN(P)}{N(P)^{\frac{m}{2}}-N(P)^{-\frac{m}{2}}}g(m \ logN(P))	F3,F5
+prov:bp17-psl2z-trace	1710.00603	turing6.tex	350-351	\begin{proposition}[The Selberg trace formula for Maass forms on $\PSL(2,\Z)\backslash\H$]\label{prop:trace}	F5

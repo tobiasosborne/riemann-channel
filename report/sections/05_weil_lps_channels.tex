@@ -1,0 +1,299 @@
+% SHARD-ID: RC-05-WEIL-LPS-CHANNELS
+% SHARD-TITLE: Weil--LPS Channels: Exactly Ramanujan Quantum Expanders
+% SHARD-SUMMARY: Builds the mixed-unitary channels obtained by feeding the LPS generators of PSL_2(F_p) through the Weil representation on l^2(F_p), and records the numerical checks of every construction step.
+% SHARD-SUMMARY: The block channels are exactly Ramanujan by Harrow's transfer inequality plus Lubotzky-Phillips-Sarnak; their commuting joint spectra look like Hecke eigenvalues, which is left open.
+% SHARD-KEYWORDS: Weil representation, LPS generators, quaternions, Ramanujan quantum expander, Hecke relation, joint spectrum, quantum Ihara zeta
+% SHARD-NOTES: notes/weil-lps-channels.md
+% SHARD-SCRIPTS: scripts/weil_lps.py, scripts/weil_lps_hashimoto.py
+
+\section{Weil--LPS Channels: Exactly Ramanujan Quantum Expanders}
+\label{sec:weil-lps}
+
+This is the finite model of the Riemann channel of \cref{sec:riemann-channel}
+with every ingredient present and every claim checkable: commuting dilations
+indexed by primes, an arithmetic quotient supplying the expansion, and the
+Weil representation as the Hilbert space. The construction was proposed in
+the founding session's handoff and computed on 2026-09-11; everything below
+was computed, and every construction step carries its own numerical check.
+The object itself is \cref{def:weil-lps-channel}, its ingredients
+\cref{def:lps-generators} and \cref{def:weil-representation}.
+
+\subsection{The object}
+
+Fix an odd prime $\pp$ and an LPS parameter $\qs\equiv1\pmod4$ with $\qs$ a
+square mod $\pp$. The Weil intertwiner exists only for symplectic
+(determinant one) matrices, and $\qs$ being a square is what lets the norm-$\qs$
+quaternions land in $\SL(\Fp)$ after scaling. The admissible pairs computed
+are these.
+
+\begin{center}
+\begin{tabular}{rrrl}
+\toprule
+$\pp$ & $\qs$ & $\lvert\PSL(\Fp)\rvert$ & Weil blocks $M_{(\pp+1)/2}$, $M_{(\pp-1)/2}$ \\
+\midrule
+$5$  & $29$     & $60$    & $M_3$, $M_2$ \\
+$7$  & $29$     & $168$   & $M_4$, $M_3$ \\
+$11$ & $5$      & $660$   & $M_6$, $M_5$ \\
+$13$ & $17, 29$ & $1092$  & $M_7$, $M_6$ \\
+$17$ & $13$     & $2448$  & $M_9$, $M_8$ \\
+$19$ & $5, 17$  & $3420$  & $M_{10}$, $M_9$ \\
+$29$ & $5, 13$  & $12180$ & $M_{15}$, $M_{14}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Step 1, generators.} The $\qs+1$ integer quaternions
+$\quat = a_0 + a_1 i + a_2 j + a_3 k$ of norm $\qs$ with $a_0>0$ odd and
+$a_1,a_2,a_3$ even. Jacobi's four-square theorem gives exactly $\qs+1$ of
+them; the enumeration was checked against the divisor sum
+$\sum_{d\mid n}d$ for the norms $\qs$, $\qs^2$ and $\qs_1\qs_2$ used below. The same $\pp=5$ quaternions appear in
+Appendix~C of \cite{iyer2026ramanujan}.
+
+\paragraph{Step 2, images in $\SL(\Fp)$.} Split the Hamilton quaternions over
+$\Fp$ by
+\[
+  \Isplit = \begin{pmatrix} x & y \\ y & -x\end{pmatrix},
+  \qquad
+  \Jsplit = \begin{pmatrix} 0 & 1 \\ -1 & 0\end{pmatrix},
+  \qquad x^2+y^2+1\equiv0 \pmod \pp .
+\]
+Then $\quat\mapsto a_0 + a_1\Isplit + a_2\Jsplit + a_3\Isplit\Jsplit$ is a ring
+homomorphism whose determinant is the quaternion norm. Dividing by a square
+root $\sqrtq$ of $\qs$ mod $\pp$ gives $\galpha\in\SL(\Fp)$. Checked:
+$\det\galpha = 1$, $g_{\bar{\quat}} = \galpha^{-1}$, and all $\qs+1$ images
+distinct.
+
+\paragraph{Step 3, the Weil representation, built and checked numerically.}
+On $\wl^2(\Fp)$ take the clock and shift operators $\clock$, $\shift$ and the
+Heisenberg--Weyl operators $\Hei = \shift^u\clock^v$. The Fourier transform
+$\Four$, the chirp $\chirp$ and a dilation $\Dil$ each satisfy an
+intertwining relation of the form
+\[
+  \Weil(g)\,\Hei\,\Weil(g)^\dagger \;\propto\; T(g(u,v)),
+\]
+with a symplectic $g$ that the code \emph{reads off} rather than assumes. A
+breadth-first search over $\SL(\Fp)$ in these three generators assigns a
+unitary $\Weil(g)$ to every group element, projectively; for $\pp=13$ the
+table has the expected $\pp(\pp^2-1)=2184$ entries. The relation above was
+then verified directly for each LPS generator $\galpha$, with error at most
+$4\cdot10^{-14}$ in every case ($7.2\cdot10^{-15}$ for $(\pp,\qs)=(13,17)$,
+$7.0\cdot10^{-15}$ for $(13,29)$). Since only $\Ad\Weil$ enters the channel,
+the projective phases are irrelevant.
+
+\paragraph{Step 4, the two irreducible blocks.} $\Weil(-1)$ is the parity
+operator, so $\Weil$ splits into even and odd functions, of dimensions
+$(\pp\pm1)/2$. Each block $\Wpm$ is irreducible and $-1$ acts on it as a
+scalar, so it is a representation of $\PSL(\Fp)$ up to phase. This matters:
+on the full $M_{\pp}$ the parity operator would be a second fixed point of the
+channel, and Harrow's theorem needs irreducibility. The channels are
+\[
+  \PhiWL{\qs}^{\pm}(\dm)
+  = \frac{1}{\qs+1}\sum_{\quat}\Wpm(\galpha)\,\dm\,\Wpm(\galpha)^\dagger
+  \qquad\text{on } M_{(\pp\pm1)/2},
+\]
+that is, $\Dk = \qs+1$ unitary Kraus operators in the normalisation of
+\cref{sec:conventions}. Block unitarity and Hilbert--Schmidt self-adjointness
+of the superoperator were checked at $10^{-14}$ (for $(13,17)$: deviations
+$2.7\cdot10^{-15}$ and $1.8\cdot10^{-15}$).
+
+\subsection{Exact Ramanujan behaviour}
+
+\begin{proposition}[Weil--LPS channels are exactly Ramanujan]
+\label{prop:weil-lps-exactly-ramanujan}
+\claimstatus{prop:weil-lps-exactly-ramanujan}{sketched}
+For every admissible pair $(\pp;\qs)$, each block channel
+$\PhiWL{\qs}^{\pm}$ is a Ramanujan quantum expander in the sense of
+\cref{def:ramanujan-channel}: $\lamtwo(\PhiWL{\qs}^{\pm})\le\lamH$, equivalently
+$(\qs+1)\,\lamtwo \le 2\sqrt{\qs}$ in adjacency units.
+\end{proposition}
+
+The argument is two lines. Harrow's transfer inequality
+(\cref{cit:harrow-transfer}, \cite{harrow2008cayley}) says that for the channel
+built from an irreducible representation of a group and a symmetric generating
+set, the second singular value of the channel is at most the second singular
+value of the transition matrix of the Cayley graph on that generating set. Here
+the group is $\PSL(\Fp)$, the generating set is the $\qs+1$ images $\galpha$ of
+\cref{def:lps-generators}, and the representation is $\Wpm$, irreducible by
+Step 4; so $(\qs+1)\lamtwo(\PhiWL{\qs}^{\pm})$ is bounded by the largest modulus
+of a nontrivial eigenvalue of the LPS Cayley graph $\Hecke{\qs}$. That graph is
+Ramanujan, $\lvert\lambda\rvert\le2\sqrt{\qs}$, by Lubotzky, Phillips and Sarnak
+\cite{lubotzky1988ramanujan}, and $2\sqrt{\qs} = 2\sqrt{\Dk-1}$ is exactly
+Hastings' bound $\lamH$ in adjacency units \cite{hastings2007random}. The status
+is \texttt{sketched} rather than \texttt{proved} because the Lubotzky--Phillips--Sarnak
+theorem has no byte-verified local source in \texttt{refs/}, and because the
+irreducibility of $\Wpm$ and the projective-phase bookkeeping of Step 4 are
+verified numerically here rather than cited. Iyer, Jain, Jordan and Somma
+\cite{iyer2026ramanujan} state the $\mathrm{SU}(2)$ version of the same
+mechanism and call explicit Ramanujan quantum expanders a longstanding open
+problem; see \cref{sec:prior-art}.
+
+\begin{numerical}[Ramanujan, Harrow containment, Hecke, commutation]
+\label{num:weil-lps-ramanujan}
+\claimstatus{num:weil-lps-ramanujan}{numerical}
+For $(\pp;\qs)$ in $\{(5;29),(7;29),(11;5),(13;17,29),(17;13),(19;5,17),(29;5,13)\}$
+the channels $\PhiWL{\qs}^{\pm}$ on the even and odd Weil blocks satisfy the
+Ramanujan bound of \cref{def:ramanujan-channel} and have a unique fixed point;
+Harrow containment, the Hecke relation of \cref{def:hecke-relation} and
+commutation across $\qs$ hold to $10^{-14}$.
+\end{numerical}
+
+Every entry of the table below is on the correct side of the bound
+$2\sqrt{\qs}$, in adjacency units.
+
+\begin{center}
+\footnotesize
+\begin{tabular}{rr rr rr rr r}
+\toprule
+& & \multicolumn{2}{c}{Cayley $\Hecke{\qs}$}
+  & \multicolumn{2}{c}{$\PhiWL{\qs}^{+}$}
+  & \multicolumn{2}{c}{$\PhiWL{\qs}^{-}$} & \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+$\pp$ & $\qs$ & $\lamtwo$ & $\lambda_{\min}$
+  & $(\qs{+}1)\lamtwo$ & $(\qs{+}1)\lambda_{\min}$
+  & $(\qs{+}1)\lamtwo$ & $(\qs{+}1)\lambda_{\min}$ & $2\sqrt{\qs}$ \\
+\midrule
+$5$  & $29$ & $6.000$ & $-8.000$ & $6.000$ & $-2.000$ & $2.000$ & $2.000$ & $10.770$ \\
+$7$  & $29$ & $8.000$ & $-6.000$ & $6.000$ & $-6.000$ & $2.000$ & $-6.000$ & $10.770$ \\
+$11$ & $5$  & $4.372$ & $-4.024$ & $3.562$ & $-4.024$ & $3.406$ & $-4.024$ & $4.472$ \\
+$13$ & $17$ & $6.928$ & $-7.851$ & $6.000$ & $-6.685$ & $5.555$ & $-5.555$ & $8.246$ \\
+$13$ & $29$ & $9.932$ & $-9.208$ & $9.000$ & $-9.000$ & $9.000$ & $-9.000$ & $10.770$ \\
+$17$ & $13$ & $6.106$ & $-7.090$ & $6.000$ & $-6.828$ & $6.000$ & $-6.828$ & $7.211$ \\
+$19$ & $5$  & $4.275$ & $-4.274$ & $4.243$ & $-4.000$ & $4.243$ & $-4.000$ & $4.472$ \\
+$19$ & $17$ & $7.671$ & $-7.638$ & $7.128$ & $-7.638$ & $7.128$ & $-7.638$ & $8.246$ \\
+$29$ & $5$  & $4.442$ & $-4.411$ & $4.442$ & $-4.049$ & $4.442$ & $-4.049$ & $4.472$ \\
+$29$ & $13$ & $6.765$ & $-6.949$ & $6.765$ & $-6.912$ & $6.579$ & $-6.912$ & $7.211$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The further checks, all passed in every case, are these.
+
+\begin{itemize}
+  \item \textbf{Harrow containment.} Every channel eigenvalue, times $\qs+1$,
+  lies in the spectrum of the $\PSL(\Fp)$ Cayley graph to $5\cdot10^{-7}$
+  (for $(13,17)$: maximum distance $4.4\cdot10^{-7}$ on the even block,
+  $3.1\cdot10^{-7}$ on the odd). The graph spectrum was computed in double
+  precision on up to $3420$ vertices; for $\pp=29$ only the extreme
+  eigenvalues were computed, by Lanczos, which is why this is a containment
+  check and not an equality check.
+  \item \textbf{Unique fixed point.} The eigenvalue $1$ of each block channel
+  has multiplicity one, so the channels are quantum expanders in the sense of
+  \cref{def:quantum-expander} and not merely bounded.
+  \item \textbf{Hecke relation.} $\Hecke{\qs}^2 - \qs\,1 = \Hecke{\qs^2}$ on
+  $\PSL(\Fp)$, with $\Hecke{\qs^2}$ built from the $\qs^2+\qs+1$ normalised
+  quaternions of norm $\qs^2$ ($307$ for $\qs=17$, $871$ for $\qs=29$).
+  Residual exactly $0$. This is the tree relation ``two steps without
+  backtracking''.
+  \item \textbf{Commutation across $\qs$.} For
+  $(\pp;\qs_1,\qs_2) = (13;17,29)$, $(19;5,17)$, $(29;5,13)$ the commutator
+  $\lVert[\PhiWL{\qs_1}^{\pm},\PhiWL{\qs_2}^{\pm}]\rVert$ is at most
+  $3\cdot10^{-15}$ (for $\pp=13$: $5.4\cdot10^{-16}$ even,
+  $4.5\cdot10^{-16}$ odd), and $\Hecke{\qs_1}\Hecke{\qs_2} =
+  \Hecke{\qs_1\qs_2}$ exactly, with the $(\qs_1+1)(\qs_2+1) = 540$ quaternions
+  of norm $\qs_1\qs_2$.
+\end{itemize}
+
+\subsection{The quantum Ihara zeta of these channels}
+
+\begin{numerical}[Edge spectrum and Ihara--Bass for $(\pp,\qs)=(13,17)$]
+\label{num:weil-lps-rh}
+\claimstatus{num:weil-lps-rh}{numerical}
+For $(13,17)$, odd block, the non-backtracking edge superoperator $\Hash$ on
+$M_6\otimes\mathbb C^{18}$, of dimension $648$, has $\lvert\edgeev\rvert$ in
+$\{17,\ \sqrt{17},\ 1\}$ with multiplicities $1$, $70$, $577$, and satisfies
+the Ihara--Bass identity to $10^{-14}$.
+\end{numerical}
+
+The edge superoperator of \cref{def:quantum-hashimoto} was built directly, and
+the Ihara--Bass factorisation of \cref{def:ihara-bass},
+\[
+  \det(1-\uz\Hash) \;=\; (1-\uz^2)^{\,n^2(\Dk-2)/2}\,
+  \det\!\big(1 - \uz\,\Dk\,\PhiWL{\qs}^{-} + \qs\,\uz^2\big),
+  \qquad n=6,\ \Dk=18,
+\]
+holds with relative residuals $2.8\cdot10^{-15}$ at $\uz=0.11$,
+$2.3\cdot10^{-15}$ at $\uz=0.2+0.07i$ and $1.5\cdot10^{-14}$ at $\uz=-0.23$.
+The multiplicities $1+70+577 = 648$ exhaust the edge space, and
+$\sqrt{\qs} = 4.12311$. So the quantum Ihara zeta $\zetaq$ of this channel
+satisfies the RH analogue of \cref{def:rh-analogue} on the nose: every
+nontrivial zero sits on the critical circle. For every other case the same
+conclusion follows from the channel spectrum through the quadratic relation
+$\edgeev^2 - \lambda\,\edgeev + \qs = 0$ that links an edge eigenvalue to an
+adjacency eigenvalue $\lambda$, without building $\Hash$.
+
+\subsection{What the joint spectrum looks like}
+
+For $(13;17,29)$ the even block has $19$ distinct joint eigenvalue pairs
+$(a_{17}, a_{29})$ of the commuting pair $\PhiWL{17}^{+}$, $\PhiWL{29}^{+}$.
+Examples, in adjacency units.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+$(a_{17}, a_{29})$ & multiplicity & remark \\
+\midrule
+$(18, 30)$ & $1$ & trivial: $\qs+1$ \\
+$(6, 2)$ & $2$ & integers \\
+$(3,-1)$, $(3,3)$, $(3,9)$ & $3$, $3$, $2$ & integers \\
+$(-5,-5)$ & $6$ & integers \\
+$\big(\tfrac{3+\sqrt{17}}{2},\ -1-\sqrt{17}\big)$ & $3$ & quadratic, field $\mathbb Q(\sqrt{17})$ \\
+$(5.6847, -2)$, $(5.5549, -0.3344)$, $(1.7730, 5.1119)$, \dots & $3$ each & higher degree \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+That the eigenvalues are algebraic integers is not a test: the Cayley
+adjacency matrix $\Hecke{\qs}$ is an integer matrix by construction. What is
+visible is the structure a Hecke identification would predict, namely joint
+eigenvalue pairs, small-degree algebraic integers, multiplicities equal to the
+multiplicity of the corresponding irreducible representation of $\PSL(\Fp)$ in
+$\Wpm\otimes\overline{\Wpm}$, and every pair inside the box
+$[-2\sqrt{\qs_1},2\sqrt{\qs_1}]\times[-2\sqrt{\qs_2},2\sqrt{\qs_2}]$.
+
+\begin{conjecture}[Hecke identification of the Weil--LPS spectra]
+\label{conj:weil-lps-hecke}
+\claimstatus{conj:weil-lps-hecke}{open}
+The joint spectra of the commuting Weil--LPS channels $\PhiWL{\qs}^{\pm}$ are
+Hecke eigenvalues $a_{\qs}(f)$ of weight-$2$ forms attached to the quaternion
+algebra ramified at $\{2,\infty\}$, with level determined by $\pp$, via
+Jacquet--Langlands.
+\end{conjecture}
+
+The identification was \emph{not} done here; it needs LMFDB and the
+Jacquet--Langlands bookkeeping.
+
+\subsection{Reading}
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Riemann channel & Weil--LPS channel at $\pp$ \\
+\midrule
+commuting dilations by primes & commuting Hecke channels $\PhiWL{\qs}$, one per LPS prime $\qs$ \\
+arithmetic quotient supplying expansion & $\PSL(\Fp)$ as quotient of the $(\qs{+}1)$-regular tree \\
+Weil representation & $\Wpm$ on $\wl^2(\Fp)$, even and odd \\
+joint spectrum $=$ zeros & joint spectrum $=$ Hecke eigenvalues \\
+RH: all modes at $\re = 1/2$ & Ramanujan: all modes at $\lvert\edgeev\rvert = \sqrt{\qs}$ \\
+source of the bound: unknown & source of the bound: Deligne, via LPS \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The last row is the honest one. These channels are exactly Ramanujan because
+Deligne proved the Weil conjectures (\cref{sec:deligne}), not because they are
+channels. What the computation establishes is that the object proposed in the
+founding session's handoff exists, is cheap to build, is self-checking at every
+step, and lands on the parent campaign's Hilbert space with the parent
+campaign's representation.
+
+\subsection{Not established}
+
+\begin{itemize}
+  \item The identification of the joint spectrum with specific modular forms
+  in LMFDB (\cref{conj:weil-lps-hecke}).
+  \item Any statement about $\pp\to\infty$, or about assembling the
+  $\PhiWL{\qs}$ over all $\pp$ into an object whose rings are the primes; that
+  is the parent repository's global question in a new guise, recorded as
+  \cref{conj:assemble-over-p} in \cref{sec:open}.
+  \item Anything about the Riemann hypothesis itself.
+\end{itemize}

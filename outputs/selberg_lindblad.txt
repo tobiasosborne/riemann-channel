@@ -1,0 +1,130 @@
+======================================================================================
+(A) LINDBLAD = SUM OF SQUARES ON A COMMUTATIVE ALGEBRA  (sympy, exact, generic a,b,f,g)
+======================================================================================
+  [L,[L,M_f]] g            = -a(x)**2*g(x, y)*Derivative(f(x, y), (x, 2)) - 2*a(x)*b(y)*g(x, y)*Derivative(f(x, y), x, y) - a(x)*g(x, y)*Derivative(a(x), x)*Derivative(f(x, y), x) - b(y)**2*g(x, y)*Derivative(f(x, y), (y, 2)) - b(y)*g(x, y)*Derivative(b(y), y)*Derivative(f(x, y), y)
+  -X^2(f) . g              = -a(x)**2*g(x, y)*Derivative(f(x, y), (x, 2)) - 2*a(x)*b(y)*g(x, y)*Derivative(f(x, y), x, y) - a(x)*g(x, y)*Derivative(a(x), x)*Derivative(f(x, y), x) - b(y)**2*g(x, y)*Derivative(f(x, y), (y, 2)) - b(y)*g(x, y)*Derivative(b(y), y)*Derivative(f(x, y), y)
+  [L,[L,M_f]] g == -X^2(f) g : True
+  (L M_f L - {L^2,M_f}/2) g = a(x)**2*g(x, y)*Derivative(f(x, y), (x, 2))/2 + a(x)*b(y)*g(x, y)*Derivative(f(x, y), x, y) + a(x)*g(x, y)*Derivative(a(x), x)*Derivative(f(x, y), x)/2 + b(y)**2*g(x, y)*Derivative(f(x, y), (y, 2))/2 + b(y)*g(x, y)*Derivative(b(y), y)*Derivative(f(x, y), y)/2
+  (1/2) X^2(f) . g          = a(x)**2*g(x, y)*Derivative(f(x, y), (x, 2))/2 + a(x)*b(y)*g(x, y)*Derivative(f(x, y), x, y) + a(x)*g(x, y)*Derivative(a(x), x)*Derivative(f(x, y), x)/2 + b(y)**2*g(x, y)*Derivative(f(x, y), (y, 2))/2 + b(y)*g(x, y)*Derivative(b(y), y)*Derivative(f(x, y), y)/2
+  Lindbladian on M_f == M_{(1/2) X^2 f} : True
+  => with jumps L_j = -i X_j the Heisenberg Lindbladian is (1/2) sum_j X_j^2.
+
+======================================================================================
+(B) CASIMIR ON K-INVARIANT FUNCTIONS = HYPERBOLIC LAPLACIAN  (sympy, exact)
+======================================================================================
+  g = n(x)a(y)k(theta) = [[(-x*sin(theta) + y*cos(theta))/sqrt(y), (x*cos(theta) + y*sin(theta))/sqrt(y)], [-sin(theta)/sqrt(y), cos(theta)/sqrt(y)]]
+  exp(tA) closed forms verified (d/dt = A exp(tA), value I at 0): True
+  Iwasawa coordinate map reproduces (x,y) at t=0: True
+   X_H   = (-2*y*sin(2*theta)) d_x + (2*y*cos(2*theta)) d_y + (sin(2*theta)) d_theta
+   X_E   = (2*y*cos(2*theta)) d_x + (2*y*sin(2*theta)) d_y + (-cos(2*theta)) d_theta
+   X_W   = (0) d_x + (0) d_y + (1) d_theta
+   X_{+} = (y*cos(2*theta)) d_x + (y*sin(2*theta)) d_y + (sin(theta)**2) d_theta
+   X_{-} = (y*cos(2*theta)) d_x + (y*sin(2*theta)) d_y + (-cos(theta)**2) d_theta
+  [X_A, X_B] = X_[A,B] for A,B in {H,E,W} (left-invariance): True
+  H f  (theta=0) = 2*y*Derivative(F(x, y), y)
+  E f  (theta=0) = 2*y*Derivative(F(x, y), x)
+  W f            = 0
+  (i)  W f = 0 and W^2 f = 0 on K-invariant f : True
+  H^2 f = 4*y*(y*sin(2*theta)**2*Derivative(F(x, y), (x, 2)) - y*sin(4*theta)*Derivative(F(x, y), x, y) + y*cos(2*theta)**2*Derivative(F(x, y), (y, 2)) - sin(2*theta)**2*Derivative(F(x, y), y) - sin(4*theta)*Derivative(F(x, y), x) + cos(2*theta)**2*Derivative(F(x, y), y))
+  E^2 f = 4*y*(y*sin(2*theta)**2*Derivative(F(x, y), (y, 2)) + y*sin(4*theta)*Derivative(F(x, y), x, y) + y*cos(2*theta)**2*Derivative(F(x, y), (x, 2)) + sin(2*theta)**2*Derivative(F(x, y), y) + sin(4*theta)*Derivative(F(x, y), x) - cos(2*theta)**2*Derivative(F(x, y), y))
+  (H^2 + E^2) f = 4*y**2*(Derivative(F(x, y), (x, 2)) + Derivative(F(x, y), (y, 2)))    <- theta cancels
+  Omega f = (1/4)(H^2+E^2-W^2) f = y**2*(Derivative(F(x, y), (x, 2)) + Derivative(F(x, y), (y, 2)))
+  c  in  Omega f = c * y^2 (F_xx + F_yy)   :  c = 1    (from H^2/4 + (X_+X_-+X_-X_+)/2 : 1 )
+  (ii) Omega f = c y^2(F_xx+F_yy) with |c| = 1 : True   sign of c: +
+  (iii) Lindbladian (1/2)(H^2+E^2) f = 2*y**2*(Derivative(F(x, y), (x, 2)) + Derivative(F(x, y), (y, 2)))
+        (1/2)(H^2+E^2) f = 2 Omega f : True
+        Lindblad-to-Laplacian constant: (1/2)(H^2+E^2) f = 2 * y^2 (F_xx + F_yy)
+
+======================================================================================
+(C) QUANTUM LINDBLADIAN = TENSOR-PRODUCT SUM OF SQUARES  (numerical, seeded)
+======================================================================================
+  random anti-Hermitian X_1..X_3, n = 4
+    max |L_j - L_j^dag| (jumps Hermitian)                 : 0.00e+00
+    max |vec(S(rho)) - S_mat vec(rho)| (vec convention)   : 4.26e-14
+    max |S_mat - (1/2) sum_j (1(x)X + Xbar(x)1)^2|        : 7.11e-15
+  sl(2) 3-dim irrep (unitary normalisation, X_-=X_+^dag): [X_+,X_-]=H, [H,X_+-]=+-2X_+- err 4.44e-16
+  sl(2) generators iH, X_+ - X_-, i(X_+ + X_-) in the 3-dim irrep
+    max |L_j - L_j^dag| (jumps Hermitian)                 : 0.00e+00
+    max |vec(S(rho)) - S_mat vec(rho)| (vec convention)   : 3.58e-15
+    max |S_mat - (1/2) sum_j (1(x)X + Xbar(x)1)^2|        : 1.78e-15
+    spectrum of S  : [-12. -12. -12. -12. -12.  -4.  -4.  -4.  -0.]
+    predicted -2j(j+1), j=2(x5),1(x3),0(x1) (Casimir of V_1 (x) V_1bar = V_2+V_1+V_0):
+                   : [-12. -12. -12. -12. -12.  -4.  -4.  -4.   0.]
+    max |spectrum - prediction| = 1.42e-14   max |Im eigenvalue| = 0.00e+00
+  (C) all errors < 1e-10 : True
+
+======================================================================================
+(D) POINCARE MAP OF A CLOSED GEODESIC  (sympy, exact)
+======================================================================================
+  Ad(a_l) on basis (H, X_+, X_-)  = [[1, 0, 0], [0, exp(ell), 0], [0, 0, exp(-ell)]]
+  Ad(a_l) = diag(1, e^l, e^-l)  (H is the flow direction) : True
+  transverse (Poincare) map P = Ad(a_l)|_{sl(2)/<H>} = [[exp(ell), 0], [0, exp(-ell)]]
+  eigenvalues of P : [exp(-ell), exp(ell)]
+  det(1 - P^k) = 2 - 2*cosh(ell*k)
+  |det(1 - P^k)| = (e^{kl/2}-e^{-kl/2})^2 = 4 sinh^2(kl/2) : True    (det itself is negative: det = 2 - 2*cosh(ell*k) )
+  circle flow, 0-dimensional transverse space: det of the empty matrix = 1  == 1 : True
+
+======================================================================================
+(E) THE CUSP TERM OF THE MODULAR SURFACE IS THE PRIME COMB  (mpmath)
+======================================================================================
+  window G = 40.0, cutoff R = 240.0 = 6.0 G, step dr = 0.05, 4800 r-points (19200 zeta/zeta' calls), tail weight e^(-R^2/2G^2) = 1.52e-08
+  m(r) = -Re (phi'/phi)(1/2+ir),  phi'/phi(s) = psi(s-1/2) - psi(s) + 2 z'/z(2s-1) - 2 z'/z(2s)
+  functional-equation split: max |m(r) - m_arch(r) - 4 Re z'/z(1+2ir)| over 7 sample r = 1.10e-20
+  m(r), m_arch(r) evaluated on the grid in 122.5 s;  m(0.025) = -3.897641,  m(239.97500000000002) = 3.844435
+
+  PREDICTION.  A unit-weight term cos(r t_n) in m(r) contributes to C(t), at t near t_n,
+    (1/2pi)(1/2) G sqrt(2pi) e^(-G^2 (t-t_n)^2/2) = 7.978846 e^(-G^2(t-t_n)^2/2).
+    The weight of n is -4 Lambda(n)/n (2 from -2 z'/z(1+2ir), 2 from its functional-equation
+    mirror 2 z'/z(2ir)), so K = -4 * G/(2 sqrt(2pi)) = -2G/sqrt(2pi) = -31.915382.
+    PLUS a pole term: 2 z'/z(1+-2ir) has a simple pole at r=0 (the pole of zeta at s=1) with
+    residue -+i; splitting m - m_arch into the two Dirichlet halves needs principal values,
+    and each indented contour gives -/+ i pi (residue) = pi, i.e. (1/2pi)(pi + pi) = +1 exactly.
+    So C_arith(t) := C(t) - C_arch(t) = 1 + K sum_n (Lambda(n)/n) e^(-G^2 (t - 2 log n)^2/2).
+  measured pole constant: mean C_arith away from the dips (>6/G) = 1.00000000   sd = 1.58e-08   (predicted exactly 1)
+
+   n  |  t_n = 2 log n |  C_arith(t_n)-1 |  Lambda(n)/n  |   ratio    | midpoint-bkg ratio
+    2 |     1.38629   |     -11.061029  |    0.346574   |  -31.91538 |   -31.71822
+    3 |     2.19722   |     -11.687544  |    0.366204   |  -31.91538 |   -31.84050
+    4 |     2.77259   |      -5.530514  |    0.173287   |  -31.91538 |   -31.86643
+    5 |     3.21888   |     -10.273165  |    0.321888   |  -31.91538 |   -31.92670
+    7 |     3.89182   |      -8.872067  |    0.277987   |  -31.91538 |   -31.88228
+    8 |     4.15888   |      -2.765257  |    0.086643   |  -31.91538 |   -31.90551
+    9 |     4.39445   |      -3.895848  |    0.122068   |  -31.91538 |   -31.93119
+   11 |     4.79579   |      -6.957250  |    0.217990   |  -31.91538 |   -31.90986
+   13 |     5.12990   |      -6.297026  |    0.197304   |  -31.91538 |   -31.91760
+   16 |     5.54518   |      -1.382670  |    0.043322   |  -31.91634 |   -27.77027
+   17 |     5.66643   |      -5.319016  |    0.166660   |  -31.91545 |   -30.85544
+   19 |     5.88888   |      -4.945942  |    0.154970   |  -31.91538 |   -31.91951
+   23 |     6.27099   |      -4.350891  |    0.136326   |  -31.91538 |   -31.81560
+   25 |     6.43775   |      -2.054633  |    0.064378   |  -31.91538 |   -31.49483
+   27 |     6.59167   |      -1.298616  |    0.040689   |  -31.91539 |   -30.01182
+  mean ratio (exact archimedean + pole background) = -31.915451   sd = 2.47e-04   spread (max-min) = 9.58e-04
+  mean ratio (midpoint background, no theory input) = -31.384384   sd = 1.13e+00
+  predicted K = -31.915382    predicted/measured = 0.99999785
+  SIGN CONVENTION: the measured amplitudes and the ratio are NEGATIVE -> the prime powers appear as DIPS in C(t), since Lambda(n)/n > 0.
+  max |C_arith - (1 + comb)| everywhere on [0.5,7]     = 2.902e-08
+  max |C_arith - (1 + comb)| away from the dips (>6/G) = 2.529e-08
+  max |C_arith| overall = 10.688   max |C_arch| = 1.984
+  (E) functional-equation split exact : True;  predicted/measured within 0.1% : True;
+      relative spread < 0.1% : True;  residual < 0.2% of peak : True;  pole constant = 1 : True
+
+======================================================================================
+  A1: True
+  A2: True
+  B0: True
+  B1: True
+  B2: True
+  B3: True
+  B4: True
+  B5: True
+  C: True
+  D1: True
+  D2: True
+  D3: True
+  E0: True
+  E1: True
+  E2: True
+  E3: True
+  E4: True
+  total runtime 125.9 s
+ALL CHECKS PASS

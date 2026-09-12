@@ -74,8 +74,25 @@ semigroup with prime dilations as jump operators; any construction that
 couples the primes non-abelianly on the $\zeta$ side. See `HANDOFF.md`
 for the live list of open steps.
 
+## The lab book
+
+`report.tex` is the pdflatex lab book, sharded under `report/sections/`
+following the parent repository's pattern. Four databases under `db/` are the
+single source of truth: `notation.tsv` (rendered to `report/macros.tex`; no
+shard may define a macro), `definitions.tsv` (each concept defined once, in
+`report/sections/02_definitions.tex`), `claims.tsv` (one row per theorem-like
+environment, with a status derived rk-light style and printed inside the
+environment) and `provenance.tsv` (quotes byte-checked against the arXiv TeX
+sources under `refs/src/`). `make regen` rewrites the generated files,
+`make check` runs the parity gate, `make ci` adds a fresh build and re-runs
+the fast scripts against `outputs/`, and `make hooks` installs `make ci` as
+a git pre-commit hook. See `report/README.md` for the shard map.
+
 ## Contents
 
+    report.tex, report/   the lab book (master, shards, generated files, references.bib)
+    db/                   notation, definitions, claims, provenance databases (TSV)
+    Makefile, scripts/labbook_check.py, scripts/ci_local.sh   gate and local CI
     HANDOFF.md            live state and next steps (read first)
     docs/worklog/         dated session logs
     notes/                write-ups, Markdown and rendered HTML
@@ -83,6 +100,7 @@ for the live list of open steps.
     data/                 first 3000 zeta zeros; ring-norm test arrays
     outputs/              captured stdout of each script
     transcript/           raw session log and a Markdown rendering
+    refs/                 fetch script + sha256 manifest for the arXiv TeX sources quoted in notes/
 
 Notes, in reading order:
 
@@ -101,6 +119,13 @@ Notes, in reading order:
 - `notes/deligne-via-graphs.md`: Deligne's proof explained through regular
   graphs. Isolates the three ingredients (product, slicing over a curve,
   the sign) and what a Hilbert–Pólya approach would need to replace them.
+- `notes/prior-art-quantum-ihara.md`: literature check on the quantum Ihara
+  zeta, with byte-verified quotes. The matrix-weighted Ihara–Bass formula is
+  known (Matsuura–Ohta, Watanabe–Fukumizu, Sunada); the RH-for-channels
+  reading and the MPS dictionary were not found.
+- `notes/quantum-ihara-general.md`: the Ihara–Bass formula for the
+  non-backtracking superoperator of an arbitrary Kraus family, with a
+  structured proof and reviewer verdicts.
 
 ## Reproduce
 
@@ -111,6 +136,8 @@ Notes, in reading order:
     python3 scripts/weil_lps.py            # Weil–LPS channels, all admissible (p; q)
     python3 scripts/weil_lps_hashimoto.py  # direct edge superoperator for (13, 17)
     python3 scripts/artin_schreier_mps.py  # Artin–Schreier transfer matrices
+    python3 scripts/qihara_general.py      # Ihara–Bass for arbitrary Kraus operators (float + exact)
+    refs/fetch_sources.sh                  # re-fetch the quoted arXiv TeX sources
 
 Notes render with `fmd-report notes/<name>.md -o notes/<name>.html`,
 which verifies that every equation typeset.

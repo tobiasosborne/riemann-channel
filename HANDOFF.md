@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-12)
+## Current state (2026-09-12, night)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -87,6 +87,48 @@ the raw session log, which is kept out of the repository).
    a twisted Ihara zeta), and the sign (interesting eigenvalues are zeros,
    not poles). Deligne exhibits no Hermitian form; Weil and Artin–Schreier do.
 
+8. **Prior art and the general Kraus Ihara–Bass formula** (2026-09-12,
+   `notes/prior-art-quantum-ihara.md`, `notes/quantum-ihara-general.md`,
+   `refs/`). Literature check with byte-verified TeX quotes: the
+   Ad(U)-weighted Ihara zeta and its Bass formula are Matsuura–Ohta 2022
+   (arXiv:2204.06424); arbitrary-weight Bass for loopless graphs is
+   Watanabe–Fukumizu 2011; twisted zetas go back to Sunada 1986. NOT found:
+   any zeta of a quantum channel, "RH ⇔ Ramanujan quantum expander", the
+   MPS/ring-norm reading. Exactly-Ramanujan channels from LPS via Harrow are
+   in Iyer–Jain–Jordan–Somma arXiv:2602.15180 (SU(2) irreps); the Weil
+   instance is ours. Then proved: Ihara–Bass for the non-backtracking
+   superoperator of an ARBITRARY Kraus family (Theorem 1, Lamport proof,
+   Corollaries 2–4: adjoint pairing + positive trace formula; unitary case;
+   pole bookkeeping). Numerics float 1e-15 and exact sympy. Adversarial
+   review by Opus (author Fable): round 1 algebra VALID, provenance fixes
+   applied; round 2 receipt in `notes/reviews/round2-2026-09-12.md`.
+   Convention: status `proved` requires a reviewer ≠ author; both are Claude
+   models (single family declared), no codex lane used.
+
+9. **The continuous (Selberg) dictionary** (2026-09-12 night,
+   `notes/selberg-dictionary.md`, `notes/selberg/astra-proofs.md`, lab-book
+   shards 09b/09c, `scripts/selberg_lindblad.py`). Proved by the codex prover
+   (`gpt-6-astra`), reviewed by Opus: circle comb and its blindness to zeros
+   (orbital trace only); Lindbladian of the sl2 vector fields = 2Ω = −2Δ on
+   the K-invariant sector (Casimir has the compact direction with a minus
+   sign); Poincaré Jacobian 4 sinh²(kℓ/2); flat trace ↔ tower
+   D(ς)=∏_{j≥1}Z(ς+j) with Λ_fl = +D'/D; tower zeros in bands −½−k±ir_j,
+   nonconstant first band on Re ς = −½ iff no eigenvalue in (0,¼); Ruelle =
+   Z(s)/Z(s+1); modular cusp term = prime comb with dips Λ(n)/n at 2 log n
+   plus an exact +½ from the pole of ζ; e^{−t/4}·(channel prime measure) =
+   cusp prime measure. Six standard inputs are `assumed` rows (dependants
+   print -conditional). Open: conj:quantum-lindblad-gap (the continuous
+   Harrow construction, gap of 2Ω_{π⊗π̄} + ½B_W²), and an operator-level
+   continuous Ihara–Bass (the tower as a Laplacian determinant). Opus REFUTE
+   review: 13/13 VALID (`notes/reviews/selberg-2026-09-12.md`). Two action
+   items from the review: (a) H-SZ (Selberg zeta entire with full divisor)
+   and H-LAP have no byte-cited quote; fetch a source and convert the
+   `assumed` rows to `cited`, which lifts the -conditional suffix; (b) the
+   reviewer confirms that `notes/riemann-channel-note.md` §5's prime weight
+   +Λ(n)n^{-1/2} is off by a factor −2 against the note's own explicit
+   formula and double-counts the e^{-t/4} damping: correct §5 of that note
+   (shard 04 already carries the corrected statement via prop:damping-identity).
+
 ### Discussion 2026-09-12: circle flows
 
 Direct sum over $p$ of rotations on circles of circumference $\log p$ has
@@ -133,8 +175,30 @@ SP-WEYL Hilbert space and is the concrete link between the two repos.
 1. **Weil–LPS channels, part 2.** Built and verified (item 5 above). Remaining:
    identify the joint spectra (13;17,29), (19;5,17), (29;5,13) with Hecke
    eigenvalues of weight-2 forms for the quaternion algebra ramified at {2,∞}
-   via LMFDB; write the quantum Ihara–Bass lemma as a proof; decide what
-   "assemble over p" should mean (the DG-GLOBAL question in this guise).
+   via LMFDB; decide what "assemble over p" should mean (the DG-GLOBAL
+   question in this guise). The Ihara–Bass lemma is done (item 8), in the
+   general Kraus form; cite Matsuura–Ohta for the unitary case.
+1b. **Continuous Harrow channel (was conj:quantum-lindblad-gap).** Assessment
+   2026-09-12 night: not hard, theorem-shaped. On each constituent σ of π⊗π̄
+   and diagonal K-type m, −𝓛 = 2λ_σ + m²/2 with λ_σ = s_σ(1−s_σ), so
+   gap = min(½, 2·s(1−s) over complementary-series constituents); for
+   tempered π the spherical part of π⊗π̄ is tempered (Cowling–Haagerup–Howe:
+   L^{2+ε} coefficients) and the gap is exactly ½ = 2·¼, the continuous
+   Ramanujan value; e^{t𝓛} is a mixed-unitary channel averaged over the
+   hypoelliptic heat kernel of ½(H²+E²) (Nelson, Hörmander). Complementary
+   π_s: Repka 1978 decides when π_s⊗π_s contains π_{2s−1} (threshold s>¾ from
+   memory, must be byte-checked). The SL(2,F_p) half of the conjecture is
+   void (no vector fields; that case is Harrow + LPS, item 5). To do: fetch
+   Nelson/CHH/Repka TeX, restate as a theorem with the gap formula, run the
+   codex prover, Opus refute. The real difficulty is the lattice version
+   (gap of −2Δ on Γ\H = 2λ₁, Ramanujan ⇔ Selberg ¼), already the first-band
+   criterion of shard 09c; a quantum (operator-level) lattice version is not
+   yet formulated.
+1a. **General Kraus zeta, part 2.** Theorem 1 replaces (D−1)u² by 𝒟(u) and
+   uDΦ by 𝒜(u). Open: what "Ramanujan" means without the relation μμ' = D−1;
+   whether canonical form Σ A_k†A_k = 1 constrains the poles; whether the
+   Bartholdi deformation (Matsuura–Ohta arXiv:2208.14032) helps. A
+   counterexample hunt (random MPS, pole radii of ζ) is cheap.
 2. **The Stinespring question.** Write the compressed semigroup Z(t) on K_S
    explicitly (functional model, Cauchy kernels) and test whether a generator
    of Holevo jump form with jumps at k log p reproduces it on K_S. A negative
@@ -144,9 +208,15 @@ SP-WEYL Hilbert space and is the concrete link between the two repos.
    Sz.-Nagy–Foias) is stated at the level of the boundary phase. Write the
    innerness argument in full (Phragmén–Lindelöf in Im τ < 0) rather than
    citing Lax–Phillips.
-4. **Decide the repo's rules.** If this becomes more than a notebook, import
-   the parent's PRD (red-green checkers, claims DAG, definitions file) before
-   anything is called a claim.
+4. **Repo rules: decided 2026-09-12 evening.** The lab book `report.tex`
+   with shards under `report/sections/`, the four databases under `db/`
+   (notation, definitions, claims, provenance), the gate
+   `scripts/labbook_check.py` and the local CI `scripts/ci_local.sh`
+   (pre-commit via `make hooks`) are the discipline from now on. A statement
+   is a claim only when it has a row in `db/claims.tsv`; `proved` needs a
+   reviewer file; every quote needs a provenance row. Notes under `notes/`
+   stay free-form but every note must be distilled by a shard (the gate
+   checks both directions).
 5. **Remote.** Public at github.com/tobiasosborne/riemann-channel (AGPL-3.0), created 2026-09-12.
 
 ## Environment

@@ -1,0 +1,74 @@
+% SHARD-ID: RC-00-FRONTMATTER
+% SHARD-TITLE: Frontmatter, Status Vocabulary, and Scope
+% SHARD-SUMMARY: States the aim of the notebook and the two-sided (orbit gas / transfer matrix) picture that organises every section.
+% SHARD-SUMMARY: Fixes the status vocabulary and the evidence chain enforced by the lab-book gate.
+% SHARD-KEYWORDS: status, scope, claims, provenance, gate
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{Frontmatter, Status Vocabulary, and Scope}
+
+\subsection{Aim}
+
+This lab book records an attempt to formulate the Riemann hypothesis in the
+language of tensor networks and operational quantum mechanics: channels, Kraus
+operators, transfer matrices, matrix-product states. The aim is a formulation
+that captures the mechanisms of the proofs that exist (Weil for curves,
+Deligne for varieties over finite fields, Ihara--Bass and the Ramanujan
+property for regular graphs) and connects more directly to quantum mechanics
+than the Hilbert--P\'olya programme does. Nothing here proves anything about
+the Riemann hypothesis. The Markdown notes under \texttt{notes/} are the
+exploratory record; this book is their distillation, and every statement here
+is tagged.
+
+\subsection{The organising picture}
+
+Every zeta function in sight has two sides. Side A is a nonnegative count of
+closed orbits (prime cycles of a graph, points of a curve, prime powers with
+weight $\log p$) and its Euler product; it is a product state, the primes do
+not talk to each other. Side B is a small non-Hermitian operator whose power
+sums reproduce the counts; its eigenvalues are the zeros. The Riemann
+hypothesis, in every instance, is the statement that all nontrivial
+eigenvalues of side B share one modulus. \Cref{sec:conventions}
+fixes the notation and \cref{sec:definitions} the definitions used for both
+sides throughout.
+
+\subsection{Status vocabulary}
+
+Every theorem-like environment in this book carries exactly one status tag,
+printed at its right margin, equal to the status derived by
+\texttt{scripts/labbook\_check.py} from \texttt{db/claims.tsv}:
+\begin{itemize}
+  \item \texttt{proved}: a written proof exists under \texttt{notes/} and a
+  reviewer other than the author has returned \texttt{VERDICT <id>: VALID} in a
+  file under \texttt{notes/reviews/}. Both author and reviewers to date are
+  Claude models (single family); no second model family has been used.
+  \item \texttt{sketched}: written by the author, not yet attacked.
+  \item \texttt{numerical}: established by a script whose output is captured
+  under \texttt{outputs/}; never more than numerical evidence.
+  \item \texttt{cited}: a statement of the literature, backed by a quote in
+  \texttt{db/provenance.tsv} that the gate byte-checks against the arXiv TeX
+  source under \texttt{refs/src/}.
+  \item \texttt{conjectured}, \texttt{open}, \texttt{refuted}, \texttt{assumed}:
+  as the words say; a claim that depends on any of the first three prints
+  \texttt{unsupported}, and one that depends on an assumption prints with the
+  suffix \texttt{-conditional}.
+\end{itemize}
+Definitions carry no tag; they are \texttt{stipulated} (ours) or
+\texttt{quoted} (a source's, with provenance) in \texttt{db/definitions.tsv}.
+The derived-status table generated from the claims database is reproduced
+here.
+
+\input{report/generated/status.tex}
+
+\subsection{Lockstep rules}
+
+The gate (\texttt{make check}; \texttt{make ci} adds a fresh build) fails
+unless: every note under \texttt{notes/} is named by a shard header and every
+shard header names an existing note; every evidence script is named by a
+shard and has a captured output; every theorem-like environment has one
+label, one claims row, and one status tag equal to the derived status; every
+definition has one row and appears once; the notation macros are exactly the
+generated image of \texttt{db/notation.tsv} with no duplicate symbols; every
+provenance quote is found whole and contiguous at its stated locus; and the
+build has no undefined references or citations.

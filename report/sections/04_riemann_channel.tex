@@ -1,0 +1,300 @@
+% SHARD-ID: RC-04-RIEMANN-CHANNEL
+% SHARD-TITLE: The Riemann Channel: Bost--Connes at Critical Temperature, Compressed
+% SHARD-SUMMARY: The Lax-Phillips scattering symbol of the modular surface is inner in the lower half plane; its functional model carries a contraction semigroup with one mode per zeta zero, and RH is the statement that every mode decays at rate 1/4.
+% SHARD-SUMMARY: The symbol's boundary phase is the imaginary part of the Bost-Connes Levy exponent at the critical temperature, the distributional trace of the semigroup is the prime measure, and the Bost-Connes phase operators are matrix product operators over the prime chain.
+% SHARD-KEYWORDS: scattering symbol, inner function, functional model, Bost-Connes, Levy exponent, explicit formula, ring norms, prime chain MPO
+% SHARD-NOTES: notes/riemann-channel-note.md
+% SHARD-SCRIPTS: scripts/scat.py, scripts/ringnorm.py, scripts/bcmpo.py
+
+\section{The Riemann Channel: Bost--Connes at Critical Temperature, Compressed}
+\label{sec:riemann-channel}
+
+This section is the lab-book version of \texttt{notes/riemann-channel-note.md}, a scratch
+note of the founding session. It assembles one object out of three standard pieces:
+Lax--Phillips scattering on the modular surface, the Sz.-Nagy--Foias functional model of
+an inner function, and the Bost--Connes system at its phase transition. Nothing here is
+new mathematics; the content is the identification of the three, and the numerical checks
+that it is stated correctly. Everything below is \emph{equivalent to}, never a proof of,
+the Riemann hypothesis. Several statements are theorem-level standard theory
+(Faddeev--Pavlov, Lax--Phillips, Adamyan--Arov, Khinchin) for which this repo holds no
+local source and no written-out argument; they carry the tag \texttt{sketched} for that
+reason, not because their truth is in doubt.
+
+\subsection{Setting}
+
+Let $\tauM$ be the Mellin variable on the dilation group $\mathbb R_+^\times$, so that
+dilation by $e^{\tsg}$ acts on $L^2(\mathbb R_+^\times)$ as the multiplier
+$e^{i\tsg\tauM}$. With the completed zeta
+\[
+  \cxi(s) = \tfrac12\,s(s-1)\,\pi^{-s/2}\,\Gamma(s/2)\,\zeta(s),
+\]
+the scattering symbol of the modular surface in this variable
+(\cref{def:scattering-symbol}) is
+\[
+  \Ssym(\tauM) = \frac{\cxi(1-2i\tauM)}{\cxi(1+2i\tauM)} .
+\]
+Write a nontrivial zero as $\zero_n = \sigs_n + i\gam{n}$, so that the Riemann hypothesis
+is $\sigs_n = \frac12$ for all $n$ (\cref{sec:conventions}).
+
+\subsection{The symbol is inner}
+
+\begin{proposition}[The scattering symbol is inner, with the zeros as its zeros]
+\label{prop:scattering-inner}
+\claimstatus{prop:scattering-inner}{sketched}
+$\Ssym$ is unimodular on the real line, analytic and contractive in the lower half plane
+$\im\tauM<0$, and its zeros there are exactly
+\[
+  \tauM_n = \frac{\gam{n}}{2} - i\,\frac{\sigs_n}{2},
+  \qquad \zero_n = \sigs_n + i\gam{n} \text{ a nontrivial zero of } \zeta .
+\]
+\end{proposition}
+
+The note's argument: $\cxi$ is real on the real axis and satisfies $\cxi(s) = \cxi(1-s)$,
+which gives $|\Ssym| = 1$ for real $\tauM$; for $\im\tauM<0$ the denominator's argument
+$1+2i\tauM$ has real part greater than $1$, inside the Euler product, so $\Ssym$ is
+analytic there. Contractivity in the interior is the Phragm\'en--Lindel\"of step, which
+the note does not write out (step~3 of \texttt{HANDOFF.md}); for the modular surface it is
+classical \cite{faddeev1972scattering,laxphillips1976}. The zeros are a substitution:
+$\cxi(1-2i\tauM) = 0$ iff $1-2i\tauM$ is a nontrivial zero.
+
+\subsection{The compressed semigroup}
+
+Since $\Ssym$ is inner, the model space $\KS = H^2\ominus\Ssym H^2$
+(\cref{def:inner-model-space}) carries the compressed dilation semigroup $\Zt =
+P_{\KS}e^{i\tsg\tauM}|_{\KS}$, $\tsg>0$. By Adamyan--Arov this is unitarily equivalent to
+the Lax--Phillips semigroup of the modular surface with the cusp forms removed; the note
+states this without a written argument, and no local source exists for it here.
+
+\begin{proposition}[One mode per zero; RH as a single decay rate]
+\label{prop:functional-model-modes}
+\claimstatus{prop:functional-model-modes}{sketched}
+For each zero $\lambda$ of $\Ssym$ in the lower half plane the reproducing kernel
+$k_\lambda(\tauM) = (\tauM-\bar\lambda)^{-1}$ lies in $\KS$, and $\Zt^{*}k_\lambda =
+e^{-i\tsg\bar\lambda}k_\lambda$. With $\lambda = \gam{n}/2 - i\sigs_n/2$ the eigenvalue is
+$\exp(-\sigs_n\tsg/2 - i\gam{n}\tsg/2)$: one mode per zero, decay rate $\sigs_n/2$,
+frequency $\gam{n}/2$. Hence the Riemann hypothesis holds if and only if every mode of
+$\Zt$ decays at the single rate $1/4$.
+\end{proposition}
+
+The kernel is orthogonal to $\Ssym H^2$ precisely because $\Ssym(\lambda)=0$. The last
+sentence is the Faddeev--Pavlov / Lax--Phillips reading of RH
+\cite{faddeev1972scattering,laxphillips1976}; it is the ``one correlation length''
+criterion of \cref{sec:what-rh} (\cref{obs:rh-mps-correlation-length}) on an explicit
+Hilbert space, with $\KS$ in the role of the bond space. The completely positive lift is
+immediate and uninformative: $\chan_{\tsg}(\dm) = \Zt^{*}\dm\Zt$ on $B(\KS)$ is the
+Riemann channel of \cref{def:riemann-channel}, a sub-unital semigroup with one Kraus
+operator, whose Stinespring dilation is the automorphic wave group and whose environment
+is the pair of incoming and outgoing subspaces, that is, the cusp. Whether a less trivial
+Kraus decomposition exists is \cref{conj:stinespring-jump-form}.
+
+\subsection{Where the primes are}
+
+Two placements of the primes appear, and the note is explicit that they are different
+objects. The first is a dilation-covariant Markov semigroup on $L^2(\mathbb R_+^\times)$
+in Holevo form, with the von Mangoldt jump measure $\jump{\sigs} =
+\sum_{\pp,k}\frac{\pp^{-k\sigs}}{k}\,\delta_{k\log \pp}$ and symbol
+\[
+  \Big(\frac{\zeta(\sigs-i\tauM)}{\zeta(\sigs)}\Big)^{\tsg}
+  = \exp\Big(\tsg\sum_{\pp,k}\frac{\pp^{-k\sigs}}{k}\big(e^{ik\tauM\log \pp}-1\big)\Big),
+\]
+a genuine Markov semigroup for $\sigs>1$ by Khinchin's theorem that the zeta distribution
+is compound Poisson (standard; no local source). It has no zeros for $\sigs>1$, and at
+$\sigs=\frac12$ it is not a semigroup at all, the symbol being unbounded. The Bost--Connes
+phase transition $\invtemp = 1$ is the finite- versus infinite-activity threshold of
+$\jump{\sigs}$ \cite{bostconnes1995}.
+
+The second is $\Zt$ on $\KS$: the zeros as resonances, no jump structure, the primes
+entering only through $\Ssym$. The bridge between the two is the boundary phase.
+
+\begin{proposition}[The symbol is the phase of the critical L\'evy exponent]
+\label{prop:phase-identity}
+\claimstatus{prop:phase-identity}{sketched}
+For real $\tauM$, $\Ssym(\tauM) = \exp(-2i\arg\cxi(1+2i\tauM))$, and
+\[
+  -\arg\zeta(1+2i\tauM) \;=\; \sum_{\pp}\sum_{k\ge1}\frac{\pp^{-k}}{k}\,
+  \sin(2k\tauM\log \pp),
+\]
+which is the imaginary part of the Bost--Connes L\'evy exponent $\levy{\sigs}(\tauM') =
+\log\zeta(\sigs-i\tauM')-\log\zeta(\sigs)$ at the critical temperature $\sigs=1$,
+$\tauM'=2\tauM$. Hence $\Ssym$ is the phase of the critical L\'evy exponent times the
+Gamma phase.
+\end{proposition}
+
+The real part of $\levy{1}$ diverges, since $\sum_{\pp}\pp^{-1} = \infty$; that divergence
+\emph{is} the Bost--Connes phase transition. The imaginary part converges conditionally,
+at prime-number-theorem strength, i.e.\ by $\zeta(1+it)\ne0$. The bridge the note
+proposes: take the Bost--Connes process at $\invtemp=1$, discard the divergent real part
+of its L\'evy exponent, keep the phase, and use that unimodular function as the
+characteristic function of a contraction semigroup. Symbolically, Lax--Phillips $=$
+(Bost--Connes at $\invtemp=1$) $+$ (Sz.-Nagy--Foias), at the level of boundary phases.
+
+\subsection{Numerical check of the symbol}
+
+\begin{numerical}[Unimodularity, zeros, innerness and the prime phase]
+\label{num:scattering-symbol}
+\claimstatus{num:scattering-symbol}{numerical}
+\texttt{scripts/scat.py} (\texttt{outputs/scat.txt}, mpmath at $20$ digits) reports
+$||\Ssym|-1| = 0$ to machine precision at $\tauM = 0.3,\,2.0,\,7.5,\,21.3$; a root search
+from $\gam{n}/2-\tfrac14 i$ converging for $n=1,\dots,6$ to $\gam{n}/2 - 0.250000\,i$ with
+$|\Ssym| \le 1.5\cdot10^{-20}$; $|\Ssym| = 0.9348,\,0.5393,\,0.8344,\,0.2718$ at the
+interior points $\tauM = 3-0.6i,\,10-i,\,0.5-2i,\,30-0.3i$; and \cref{prop:phase-identity}
+to $1.3\cdot10^{-3}$ or better at five points:
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+$\tauM$ & exact & prime sum $+$ tail & residual \\
+\midrule
+$0.7$  & $+0.80572$ & $+0.80469$ & $-1.0\cdot10^{-3}$ \\
+$1.9$  & $-0.03879$ & $-0.03854$ & $+2.5\cdot10^{-4}$ \\
+$4.2$  & $-0.17233$ & $-0.17306$ & $-7.3\cdot10^{-4}$ \\
+$9.0$  & $+0.06468$ & $+0.06594$ & $+1.3\cdot10^{-3}$ \\
+$15.5$ & $-0.06432$ & $-0.06409$ & $+2.3\cdot10^{-4}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{numerical}
+
+The middle column is the prime sum over $\pp<3\cdot10^6$ truncated at $k\le6$ plus the
+prime-number-theorem tail $\pi/2 - \mathrm{Si}(2\tauM\log X)$, which is what makes the
+residual $10^{-3}$ rather than $10^{-2}$; \texttt{outputs/scat.txt} archives the bare
+prime sums, before the tail, at three of the five points ($0.82380$, $-0.05607$,
+$-0.18043$). The innerness numbers are a check at four points, not a proof.
+
+\subsection{Ring norms: the trace of the semigroup is the prime measure}
+
+Distributionally $\Tr\Zt = \sum_n e^{-\tsg\sigs_n/2 + i\tsg\gam{n}/2}$, under RH
+$e^{-\tsg/4}\sum_n e^{i\tsg\gam{n}/2}$. The Weil explicit formula
+(\cref{def:explicit-formula}) turns that zero sum into a prime sum: in the ring-length
+variable $\ringlen = \tsg/2$, with window $\win$ and transform $g$,
+\[
+  \sum_{\gamma}\win(\gamma) = \win(\tfrac i2)+\win(-\tfrac i2) - g(0)\log\pi
+  + \frac{1}{2\pi}\int\win(r)\,\re\,\digam\!\big(\tfrac14+\tfrac{ir}{2}\big)\,dr
+  - 2\sum_{n}\frac{\vM(n)}{\sqrt n}\,g(\log n).
+\]
+
+\begin{proposition}[The primes are the ring spectrum of the Riemann channel]
+\label{prop:ringnorm-trace}
+\claimstatus{prop:ringnorm-trace}{sketched}
+The distributional trace of $\Zt$ is supported at the ring lengths $\tsg = 2\log n$ with
+weight $\vM(n)\,n^{-1/2}$.
+\end{proposition}
+
+After the $e^{-\tsg/4} = n^{-1/2}$ decay of the modes this is the $\sigs=1$ L\'evy measure
+$\jump{1}$ weighted by jump length, $\vM(n)/n$. In the MPS dictionary of
+\cref{sec:what-rh}: rings of length $\log n$ with weight $\vM(n)$, a transfer generator
+with eigenvalues $-\tfrac12 \pm i\gam{n}$, and a single correlation length iff RH. The
+primes are the ring spectrum, the zeros the transfer spectrum, and one identity, the
+explicit formula, links them (\cref{def:one-identity}).
+
+\begin{numerical}[Windowed zero sum against the full explicit formula]
+\label{num:ringnorm-3000}
+\claimstatus{num:ringnorm-3000}{numerical}
+\texttt{scripts/ringnorm.py} (\texttt{outputs/ringnorm.txt}) sums the first $3000$ zeros
+($\gamma_{\max} = 3533.3$) against the Gaussian window $\win(r) =
+\cos(r\ringlen)e^{-r^2/2\Gwin^2}$ with $\Gwin = 1009.5$, for which the truncation weight
+at $\gamma_{\max}$ is $2.2\cdot10^{-3}$. The numeric side is $\Fwin(\ringlen) =
+\sum_{\gamma>0}e^{-\gamma^2/2\Gwin^2}\cos(\gamma \ringlen)$ on $\ringlen\in[0.3,3.3]$; the
+prediction is every term of the explicit formula above, archimedean digamma integral
+included. The prime terms are Gaussian dips of depth
+$\frac{\Gwin}{2\sqrt{2\pi}}\vM(n)n^{-1/2}$ at $\ringlen = \log n$:
+\begin{center}
+\begin{tabular}{rrrrrr}
+\toprule
+$n$ & $\log n$ & $\Fwin(\ringlen_n)$ & prediction & ratio & $\vM(n)/\sqrt n$ \\
+\midrule
+$2$  & $0.6931$ & $-97.95$  & $-98.13$  & $0.998$ & $0.490$ \\
+$3$  & $1.0986$ & $-126.83$ & $-127.02$ & $0.999$ & $0.634$ \\
+$4$  & $1.3863$ & $-68.77$  & $-68.94$  & $0.998$ & $0.347$ \\
+$5$  & $1.6094$ & $-143.66$ & $-143.86$ & $0.999$ & $0.720$ \\
+$7$  & $1.9459$ & $-146.71$ & $-146.92$ & $0.999$ & $0.736$ \\
+$8$  & $2.0794$ & $-47.87$  & $-48.03$  & $0.997$ & $0.245$ \\
+$9$  & $2.1972$ & $-72.19$  & $-72.36$  & $0.998$ & $0.366$ \\
+$11$ & $2.3979$ & $-143.86$ & $-144.07$ & $0.999$ & $0.723$ \\
+$13$ & $2.5649$ & $-141.21$ & $-141.41$ & $0.999$ & $0.711$ \\
+$16$ & $2.7726$ & $-32.88$  & $-33.03$  & $0.995$ & $0.173$ \\
+$27$ & $3.2958$ & $-39.93$  & $-40.09$  & $0.996$ & $0.211$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The maximum of $|\Fwin - \text{prediction}|$ over the whole interval is $0.20$, against
+dip depths up to $147$; away from the dips it is $0.18$, so the residual is flat and is
+the truncation of the zero sum, not a mismatch of terms. Depths scale as $\vM(n)/\sqrt n$,
+prime powers included. The archived output carries four further rows ($n = 17,19,23,25$)
+with the same ratios; the table above is the note's selection.
+\end{numerical}
+
+\subsection{The Bost--Connes phase operators as an MPO over the prime chain}
+
+Item~2 of \texttt{HANDOFF.md} concerns the Bost--Connes system itself rather than its
+compression. Its Hilbert space factorises over the primes, one oscillator per prime
+(\cref{def:prime-chain-mpo}); the Gibbs state at inverse temperature $\invtemp$ is a
+product state with local weight $(1-\pp^{-\invtemp})\pp^{-\invtemp k}$ at occupation $k$,
+and the isometries $\bciso{n}$ act locally.
+
+\begin{proposition}[The Bost--Connes phase operator is a prime-chain MPO]
+\label{prop:bc-mpo}
+\claimstatus{prop:bc-mpo}{sketched}
+The Bost--Connes phase operator $e(a/b)$ is a matrix product operator over the prime chain
+with bond space $\mathbb Z/b$, the local transfer map being $r\mapsto \pp^k r$, that is,
+Shor's map $\shor{\pp^k}$ at the site $\pp$. In the Dirichlet character basis the transfer
+eigenvalues are $L(\invtemp,\bar\chi)/\zeta(\invtemp)$.
+\end{proposition}
+
+Extremal KMS$_\invtemp$ states differ only by the boundary residue of the chain, and
+$\invtemp\to1^{+}$ kills every nontrivial character sector: the symmetry breaking of
+\cite{bostconnes1995} read as a boundary effect. Shor's unitary $\shor{a}$ is the
+level-$N$ Galois symmetry of the system and a snapshot of the dilation flow.
+
+\begin{numerical}[MPO contraction against Hurwitz zeta and Dirichlet $L$-values]
+\label{num:bc-mpo}
+\claimstatus{num:bc-mpo}{numerical}
+\texttt{scripts/bcmpo.py} (\texttt{outputs/bcmpo.txt}) contracts the chain over all primes
+below $2\cdot10^5$ (occupations $k\le60$) and compares with the Hurwitz-zeta closed form
+$\zeta(\invtemp)^{-1}b^{-\invtemp}\sum_r e^{2\pi i a r/b}\zeta(\invtemp,r/b)$:
+\begin{center}
+\begin{tabular}{lll r}
+\toprule
+$a/b$, $\invtemp$ & MPO & closed form & $|\text{diff}|$ \\
+\midrule
+$1/3$, $2.0$ & $-0.333333+0.411340i$ & $-0.333333+0.411340i$ & $1.6\cdot10^{-7}$ \\
+$1/4$, $2.0$ & $-0.125000+0.556841i$ & $-0.125000+0.556840i$ & $2.1\cdot10^{-7}$ \\
+$2/5$, $1.5$ & $-0.263990+0.143625i$ & $-0.263949+0.143579i$ & $6.1\cdot10^{-5}$ \\
+$1/6$, $1.7$ & $+0.103130+0.502210i$ & $+0.103130+0.502200i$ & $1.0\cdot10^{-5}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+For $b=5$, $\invtemp=1.5$ the contracted transfer operator on the units is diagonal in the
+character basis to a spread of $2.6\cdot10^{-14}$, with eigenvalues $0.910557$,
+$0.354022\mp0.067781i$, $0.225025$ against mpmath $L(\invtemp,\chi)/\zeta(\invtemp)$
+values $0.910557$, $0.353909\pm0.067760i$, $0.224953$: agreement to $1.1\cdot10^{-4}$,
+with the expected conjugation between the two lists.
+\end{numerical}
+
+The residuals are the truncation of the Euler product at $2\cdot10^5$ and grow as
+$\invtemp$ approaches $1$, as they must. The relevance here is structural: the bond space
+of the phase operators is $\mathbb Z/b$, finite and abelian, whereas that of the
+compressed semigroup is $\KS$, and the note offers no map between them.
+
+\subsection{What is not established}
+
+RH itself is not touched; every statement above is an equivalent form of the uniform-rate
+statement. The innerness argument is not written out (\cref{prop:scattering-inner}), the
+Adamyan--Arov identification is quoted without a local source, and the bridge is a
+statement about boundary phases, not about the operators. No identification with the
+$\invtemp>1$ constructions of the parent repository is claimed: those sit above the phase
+transition, the object here is the $\invtemp=1$ phase compressed to a co-invariant
+subspace.
+
+\begin{conjecture}[Stinespring form with prime jumps]
+\label{conj:stinespring-jump-form}
+\claimstatus{conj:stinespring-jump-form}{open}
+There is a Stinespring form of the compressed semigroup $\Zt$ on $\KS$ whose Kraus (jump)
+operators are the prime dilations.
+\end{conjecture}
+
+The single-Kraus lift exists trivially and says nothing; the Holevo-form covariant
+Lindbladian with jump measure $\jump{\sigs}$ lives on the full regular representation and
+is not the compressed object. Whether a jump-type generator on $\KS$ reproduces $\Zt$ is
+the open question this note isolates, and its physical index would be the Stinespring
+environment. A negative answer with a reason is a result; the route is listed in
+\cref{sec:open}.

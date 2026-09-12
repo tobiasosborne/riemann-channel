@@ -1,0 +1,9 @@
+(b) Gaussian Kraus, adjoint pairing, n=3, D=4: max |lhs/rhs - 1| over u = 2.1e-15
+    trace formula m=1..4: max error 5.5e-12
+(b') canonical MPS tensors + adjoints, n=3, D=4: max |lhs/rhs - 1| over u = 2.0e-15
+(d) generic real superoperators, involution (0 1)(2 3), n=3, D=4: max |lhs/rhs - 1| over u = 6.7e-16
+(c) D=2 single Kraus pair, n=3: max |lhs/rhs - 1| over u = 1.4e-15
+    D=2: det(1-uT) = det(1-uE_1) det(1-uE_2): rel err 1.4e-15
+(a) unitary Kraus: new formula vs (1-u^2)^(n^2(D-2)/2) det(1-uDPhi+(D-1)u^2): max rel err 1.3e-15
+exact (sympy, rational entries): N=1,D=4: True  N=2,D=4: True  N=2,D=6: True
+ALL FLOAT CHECKS PASS

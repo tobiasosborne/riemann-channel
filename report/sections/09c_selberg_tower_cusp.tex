@@ -1,0 +1,182 @@
+% SHARD-ID: RC-09C-SELBERG-TOWER-CUSP
+% SHARD-TITLE: The Continuous Dictionary II: Selberg Tower and the Cusp Comb
+% SHARD-SUMMARY: The flat trace of the geodesic flow as the continuous Ihara--Bass: Poincare Jacobian, the tower of shifted Selberg zetas with a plus sign, its divisor and the nonconstant first band, and the graph comparison.
+% SHARD-SUMMARY: The cusp term of the modular surface is the prime comb with weights Lambda(n)/n at 2 log n, dips, plus an exact boundary constant; the damping identity with the Riemann-channel prime measure; the dictionary table and what is not established.
+% SHARD-KEYWORDS: Guillemin trace, Selberg tower, first band, Ruelle zeta, scattering determinant, cusp, prime comb, damping
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/selberg_lindblad.py
+
+\section{The Continuous Dictionary II: Selberg Tower and the Cusp Comb}
+\label{sec:selberg-tower}
+
+Continuation of \cref{sec:selberg}, same conventions and the same proof
+file \texttt{notes/selberg/astra-proofs.md}.
+
+\subsection{The geodesic flow: continuous Ihara--Bass}
+
+\begin{proposition}[Poincar\'e Jacobian]
+\label{prop:poincare-jacobian}
+\claimstatus{prop:poincare-jacobian}{proved}
+For a closed geodesic of length $\wl$ the linearised Poincar\'e map on
+$\mathfrak{sl}_2/\mathbb RH$ is $\operatorname{Ad}(a_\wl^{-1})$ with
+multipliers $e^{\wl}, e^{-\wl}$, so $|\det(1-\Poinc^k)| =
+(e^{k\wl}-1)(1-e^{-k\wl}) = 4\sinh^2(k\wl/2) = e^{k\wl}(1-e^{-k\wl})^2$; the
+circle has an empty transverse space and factor $1$.
+\end{proposition}
+
+\begin{proposition}[Flat trace, Selberg tower, sign]
+\label{prop:flat-tower}
+\claimstatus{prop:flat-tower}{proved-conditional}
+For $\re\lapvar>0$, $\lapfl(\lapvar) = \sum_\gamma\sum_{k\ge1}\wl_\gamma
+e^{-\lapvar k\wl_\gamma}/(4\sinh^2(k\wl_\gamma/2))$ converges absolutely, the
+tower $\Dtow(\lapvar) = \prod_{j\ge1}\Zsel(\lapvar+j) =
+\prod_\gamma\prod_{m\ge0}(1-e^{-(\lapvar+m+1)\wl_\gamma})^{m+1}$ converges
+absolutely without zeros, and
+$\lapfl = +\Dtow'/\Dtow$, equivalently $\Dtow(\lapvar) =
+\exp\big(-\int_0^\infty t^{-1}e^{-\lapvar t}\,\flattr e^{-t\gflow}\,dt\big)$.
+\end{proposition}
+
+The tower comes from $1/(4\sinh^2(x/2)) = \sum_{m\ge0}(m+1)e^{-(m+1)x}$: the
+Jacobian of the two transverse directions is what a graph does not have. The
+sign was drafted as a minus and is a plus; the graph counterpart of $\Dtow$
+is $\det(1-\uz\Hash)$, not the zeta.
+
+\begin{proposition}[Divisor of the tower and the first band]
+\label{prop:tower-divisor-band}
+\claimstatus{prop:tower-divisor-band}{proved-conditional}
+$\Dtow$ continues to an entire function whose zeros are
+$\lapvar = -\tfrac12-k\pm i\rj{j}$ ($k,j\ge0$) and $\lapvar = -N$ ($N\ge1$)
+with order $(2g-2)N^2+2$; $\lapfl$ has simple poles there with residue the
+order. The nonconstant first band $\firstband$ is exactly the pole multiset
+in $-1<\re\lapvar<0$, and
+$\firstband\subset\{\re\lapvar = -\tfrac12\}$ iff every $\rj{j}$, $j\ge1$, is
+real iff $\Lap$ has no eigenvalue in $(0,\tfrac14)$.
+\end{proposition}
+
+The constant mode has $\rj{0} = i/2$ and contributes $\lapvar = 0$ and $-1$;
+it must be removed, exactly as the constant adjacency mode is removed in the
+Ramanujan condition of a graph. With it removed, the continuous Ramanujan
+property is Selberg's $\tfrac14$ property, and the band structure is the one
+Dyatlov, Faure and Guillarmou prove for the operator-theoretic resonances
+(\cref{cit:dfg-band}); \cref{prop:tower-divisor-band} makes no claim about
+operator realisations, only about the poles of the continued $\lapfl$.
+
+\begin{proposition}[Graph comparison and the Ruelle quotient]
+\label{prop:graph-tower-ruelle}
+\claimstatus{prop:graph-tower-ruelle}{proved-conditional}
+For a finite graph with Hashimoto matrix $\Hash$, $\Tr\Hash^m =
+\sum_{\gamma}\sum_{k\wl_\gamma = m}\wl_\gamma$ and $\det(1-\uz\Hash) =
+\prod_\gamma(1-\uz^{\wl_\gamma})$, with no Jacobian and no tower, and
+$\partial_{\lapvar}\log\det(1-e^{-\lapvar}\Hash) = \sum_m\Tr\Hash^m e^{-\lapvar m}$
+has the sign of $\partial_{\lapvar}\log\Dtow$. For the surface,
+$\Ruelle(s) = \Zsel(s)/\Zsel(s+1)$ (telescoping the product) and
+$\Dtow(\lapvar)/\Dtow(\lapvar+1) = \Zsel(\lapvar+1)$.
+\end{proposition}
+
+\subsection{The cusp of the modular surface is the prime comb}
+
+\begin{proposition}[Exact Fourier identity for the scattering multiplier]
+\label{prop:cusp-prime-comb}
+\claimstatus{prop:cusp-prime-comb}{proved-conditional}
+$\scmult$ is real, even, smooth and of polynomial growth, and
+$$
+\cuspC = -P + \archA,\qquad
+P(t) = \sum_{n\ge2}\frac{\vM(n)}{n}\big[\delta(t-2\log n)+\delta(t+2\log n)\big],
+$$
+where $\langle\archA,h\rangle = \tfrac12\int h - (\gamma_E+\log\pi)h(0) +
+\int_0^\infty\frac{e^{-u}h(0)-\frac12e^{-u/2}(h(u)+h(-u))}{1-e^{-u}}\,du$,
+so $\archA(t) = \tfrac12 - 1/(4\sinh(|t|/2))$ away from $0$. The prime atoms
+are dips; the constant $\tfrac12$ is the pole of $\zeta$ at $1$ (the ordinary
+boundary value of $\zeta'/\zeta(1+2ir)+\zeta'/\zeta(1-2ir)$ differs from its
+Abel boundary distribution by $\pi\delta_0$), not a digamma term.
+\end{proposition}
+
+The route: $\scatdet'/\scatdet(s) = \digam(s-\tfrac12)-\digam(s) +
+2\zeta'/\zeta(2s-1) - 2\zeta'/\zeta(2s)$; the functional equation moves
+$\zeta'/\zeta(2ir)$ to $-\zeta'/\zeta(1-2ir)$ plus Gamma terms, and the
+$\digam(ir)$ terms cancel exactly, leaving $\scmult = a + b$ with
+$b(r) = \zeta'/\zeta(1+2ir)+\zeta'/\zeta(1-2ir)$; the Dirichlet series of $b$
+at $1+\epsilon$ transforms termwise to the comb, and the $\epsilon\downarrow0$
+limit produces $-\pi\delta_0$ on the frequency side.
+
+\begin{numerical}[Symbolic and numerical checks]
+\label{num:selberg-lindblad}
+\claimstatus{num:selberg-lindblad}{numerical}
+\texttt{scripts/selberg\_lindblad.py} (output \texttt{outputs/selberg\_lindblad.txt}):
+exact sympy, Lindbladian $= \tfrac12X^2$; the left-invariant fields derived
+from the Iwasawa coordinates satisfy the $\mathfrak{sl}_2$ brackets, and on
+$K$-invariant $F$: $\Hgen f = 2yF_y$, $\Egen f = 2yF_x$, $\Wgen f = 0$,
+$(\Hgen^2+\Egen^2)f = 4y^2(F_{xx}+F_{yy})$, constant $c = +1$, Lindblad
+constant $2$; quantum tensor identity to $7\cdot10^{-15}$, and for the
+three-dimensional $\mathfrak{sl}_2$ irrep the Lindbladian spectrum is
+$\{0,-4^{\times3},-12^{\times5}\} = -2j(j+1)$; Poincar\'e determinant
+$2-2\cosh(k\wl)$, absolute value $4\sinh^2(k\wl/2)$; cusp transform with a
+Gaussian window ($\Gwin = 40$, $R = 6\Gwin$): dips at $2\log n$ with amplitude
+ratio to $\vM(n)/n$ of mean $-31.91545$, spread $10^{-3}$, against the
+predicted $-2\Gwin/\sqrt{2\pi} = -31.91538$; residual after the exact
+archimedean background and the additive constant is $3\cdot10^{-8}$ over
+$t\in[0.5,7]$. The constant came out as $1$ because the script's multiplier is
+$-\re(\scatdet'/\scatdet)$, twice $\scmult$.
+\end{numerical}
+
+\begin{proposition}[What the rate-$\tfrac14$ damping identifies]
+\label{prop:damping-identity}
+\claimstatus{prop:damping-identity}{proved-conditional}
+On $(0,\infty)$, $e^{-t/4}\primech = \primeP = -(\cuspC-\archA)|_{(0,\infty)}$.
+This is an equality of prime atomic measures after subtracting $\archA$ and
+choosing positive weights; it is not an equality of the full cusp
+distribution with a semigroup trace, nor of operators or spectra, and it
+implies nothing about the Riemann hypothesis.
+\end{proposition}
+
+The sentence in the previous session, ``the cusp term of the modular trace
+formula is the trace of the Riemann channel damped at rate $\tfrac14$'', is
+therefore corrected: what is proved is that the prime measure written in the
+Riemann-channel note, damped at rate $\tfrac14$, is the prime part of the cusp
+distribution. The full trace of $\Zt$ is not established as a pure prime comb
+(its own explicit formula has pole, archimedean and sign bookkeeping), and
+the rate $\tfrac14$ is the uniform rate only under the Riemann hypothesis.
+
+\subsection{The dictionary}
+
+\begin{observation}[Continuous dictionary]
+\label{obs:continuous-dictionary}
+\claimstatus{obs:continuous-dictionary}{sketched-conditional}
+Row by row: edge space $\leftrightarrow$ $\Gamma\backslash G$; Hashimoto
+operator $\Hash$ $\leftrightarrow$ geodesic generator $\gflow$; adjacency
+$\Aadj$ $\leftrightarrow$ Casimir $\Cas$, equal to $-\Lap$ on the
+$K$-invariant sector; Ihara--Bass $\det(1-\uz\Hash) = (1-\uz^2)^{|E|-|V|}
+\det(1-\uz\Aadj+\qs\uz^2)$ $\leftrightarrow$ the tower
+$\Dtow = \prod_{j\ge1}\Zsel(\lapvar+j)$ with zeros in the bands
+$-\tfrac12-k\pm i\rj{j}$; Ramanujan $\leftrightarrow$ no eigenvalue in
+$(0,\tfrac14)$; the primes of $\zeta$ enter only through the cusp of the
+modular surface, as the scattering term, not as closed geodesics.
+\end{observation}
+
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+discrete & continuous & where \\
+\midrule
+edge space $\Wsp$ & $\Gamma\backslash\PSL(\mathbb R)$ & \cref{def:geodesic-flow} \\
+$\Hash$ & $\gflow = \Hgen/2$ & \cref{def:geodesic-flow} \\
+$\Tr\Hash^m$ (no Jacobian) & $\flattr e^{-t\gflow}$, weights $1/4\sinh^2$ & \cref{prop:poincare-jacobian,prop:graph-tower-ruelle} \\
+$\Aadj$, $\Sig = \Dk\chan$ & $\Cas$, $-2\Lap$ on $K$-invariants & \cref{prop:casimir-laplacian} \\
+$\det(1-\uz\Hash)$ & $\Dtow(\lapvar)$, sign $+\Dtow'/\Dtow$ & \cref{prop:flat-tower} \\
+$\edgeev\edgeev' = \qs$ & bands $-\tfrac12-k\pm i\rj{j}$ & \cref{prop:tower-divisor-band} \\
+Ramanujan & $\operatorname{spec}\Lap\cap(0,\tfrac14) = \varnothing$ & \cref{prop:tower-divisor-band} \\
+mixed-unitary channel & two-jump Lindbladian of $\pi\otimes\bar\pi$ & \cref{prop:quantum-lindblad-tensor} \\
+primes as rings & cusp term, dips $\vM(n)/n$ at $2\log n$ & \cref{prop:cusp-prime-comb} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Not established}
+
+A literal operator-theoretic compression from $\Gamma\backslash G$ to the
+$K$-invariant sector that turns $\Dtow$ into a Laplacian determinant (the
+continuous Ihara--Bass as an identity of operators rather than of divisors);
+an anisotropic-space realisation of the trace resonances; a trace formula
+for the full compressed semigroup $\Zt$; any gap for
+\cref{conj:quantum-lindblad-gap}; anything about the Riemann hypothesis or
+the $\tfrac14$ property of a given surface.

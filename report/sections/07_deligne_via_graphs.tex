@@ -1,0 +1,297 @@
+% SHARD-ID: RC-07-DELIGNE-VIA-GRAPHS
+% SHARD-TITLE: Deligne's Proof, Told Through Regular Graphs
+% SHARD-SUMMARY: Reads the Riemann hypothesis over finite fields with the Ihara zeta of a regular graph as the running model, separating what is cheap (rationality, duality, the Perron bound) from what is not (the square-root bound itself).
+% SHARD-SUMMARY: States Deligne's pointwise theorem in twisted-graph language with the two-loop bouquet counterexample, and records the three ingredients a variety has and a graph lacks: products, slicing, and the sign.
+% SHARD-KEYWORDS: Deligne, Ihara zeta, Ramanujan graph, pointwise purity, big monodromy, tensor powers, the sign, abelian obstruction
+% SHARD-NOTES: notes/deligne-via-graphs.md
+% SHARD-SCRIPTS: none
+
+\section{Deligne's Proof, Told Through Regular Graphs}
+\label{sec:deligne}
+
+Expository. Nothing here is new; the point is to isolate what is actually hard in the proof of the Riemann
+hypothesis over finite fields \cite{deligne1974weil}, using the Ihara zeta \cite{ihara1966discrete} of a
+regular graph as the running model, and to read off which ingredients this project has and which it does
+not.
+
+\subsection{One graph, two sides}
+
+Fix a finite connected $(\qs+1)$-regular graph $X$. The objects are those of \cref{sec:definitions}:
+non-backtracking walks and prime cycles (\cref{def:nonbacktracking-walk}), the count $\Ncount{\wl}\ge0$ of
+closed non-backtracking walks of length $\wl$, the Ihara zeta with its Euler product
+(\cref{def:ihara-zeta}), the Hashimoto operator with $\Ncount{\wl} = \Tr\Hash^{\wl}$ and $\zetaX(\uz) =
+\det(1-\uz\Hash)^{-1}$ (\cref{def:hashimoto-operator}), and its compression to the adjacency matrix $\Aadj$
+by Ihara--Bass (\cref{def:ihara-bass}, \cite{bass1992ihara}). Side A is the orbit side, side B the small
+matrix (\cref{def:side-a-side-b}); passing between them is bookkeeping.
+
+Call $\pm1$ and the pair $\edgeev\in\{\qs,1\}$ from the adjacency eigenvalue $\lambda = \qs+1$ the
+\emph{trivial} eigenvalues of $\Hash$, everything else nontrivial. Then
+\[
+  \Ncount{\wl} \;=\; \qs^{\wl} + 1 + \!\!\sum_{\edgeev\ \mathrm{nontrivial}}\!\! \edgeev^{\wl}
+  \;+\; (|E|-|V|)\bigl(1+(-1)^{\wl}\bigr),\]
+with extra terms if $X$ is bipartite: the leading term is the growth rate of the $(\qs+1)$-regular tree, and
+the nontrivial eigenvalues are the error. Since $\edgeev\edgeev' = \qs$, a pair either has both members of
+modulus $\sqrt{\qs}$ (when $|\lambda|\le2\sqrt{\qs}$, where they are complex conjugates) or is real with one
+member larger. So all nontrivial $|\edgeev| = \sqrt{\qs}$ iff all nontrivial $|\lambda| \le 2\sqrt{\qs}$ iff
+the error in $\Ncount{\wl}$ is $O(\qs^{\wl/2})$: the Ramanujan property (\cref{def:ramanujan-graph}) and the
+RH analogue (\cref{def:rh-analogue}) are the same statement, that closed walks spread as evenly as they
+possibly could.
+
+Two examples from the founding session. $K_4$ has $\qs=2$, adjacency spectrum $3,-1,-1,-1$, hence $\edgeev =
+(-1\pm i\sqrt7)/2$ with $|\edgeev|^2 = 2$: Ramanujan, with $\Ncount{3} = 8+1+6\cdot\tfrac52 = 24$, the
+oriented pointed triangles. The prism $C_{16}\times K_2$ has an eigenvalue $2\cos(\pi/8)+1 \approx 2.848 >
+2\sqrt2$: a real pole inside the circle and an error growing faster than $2^{\wl/2}$. A long thin graph
+always fails: a bottleneck gives a real $\edgeev$ near $\qs$, and walks pile up on one side of it.
+
+\subsection{The same statement for a curve, with one sign changed}
+
+A curve $C$ over $\Fq$ has $\Ncount{\wl}$ points over $\Fqn{\wl}$: again a nonnegative count, again a
+generating function $\curvezeta(\uz)$ with an Euler product, now over closed points, the orbits of Frobenius
+$\Frob$ on the points over the algebraic closure. Side A is identical in form; side B gives a $2g\times2g$
+matrix ($g$ the genus) with
+\[
+\Ncount{\wl} = \qs^{\wl} + 1 - \Tr\Frob^{\wl} = \qs^{\wl} + 1 - \sum_{i=1}^{2g}\alphaw{i}^{\wl}, \qquad
+\curvezeta(\uz) = \frac{\det(1-\uz\Frob)}{(1-\uz)(1-\qs\uz)} .
+\]
+
+\begin{center}\begin{tabular}{lll}\toprule
+ & graph & curve \\
+\midrule
+count & closed non-backtracking walks & points over $\Fqn{\wl}$ \\
+leading term & $\qs^{\wl}+1$ & $\qs^{\wl}+1$ \\
+error term & $+\sum\edgeev^{\wl}$ & $-\sum\alphaw{i}^{\wl}$ \\
+pairing & $\edgeev\leftrightarrow\qs/\edgeev$ & $\alphaw{i}\leftrightarrow\qs/\alphaw{i}$ \\
+interesting eigenvalues are & poles of $\zetaX$ & zeros of $\curvezeta$ \\
+RH & $|\edgeev| = \sqrt{\qs}$ & $|\alphaw{i}| = \sqrt{\qs}$ \\
+\bottomrule\end{tabular}\end{center}
+
+Everything matches except the sign of the error term, hence whether the interesting eigenvalues are poles or
+zeros. For the graph $\zetaX$ is the reciprocal of a polynomial and every eigenvalue is a pole; for the
+curve the trivial eigenvalues $1$ and $\qs$ are poles and the interesting ones are zeros. This is the sign
+fixed in \cref{sec:conventions}, $\expsum{n} = -\sum_i\alphaw{i}^n$, and the sign of the explicit formula.
+For a variety of dimension $n$ the pattern repeats as an alternating sum over $n+1$ blocks, block $i$ of
+modulus $\qs^{i/2}$; the one that matters is the middle, $i=n$.
+
+\subsection{What is cheap and what is not}
+
+\begin{center}\begin{tabular}{lll}\toprule
+ingredient & graph & variety \\
+\midrule
+side B exists & $\Hash$ plus Ihara--Bass & Grothendieck's trace formula \\
+the pairing & $\edgeev\edgeev' = \qs$ from Ihara--Bass & Poincar\'e duality \\
+trivial bound & Perron: $|\edgeev|\le\qs$ & $|\alphaw{i}|\le\qs$ \\
+the bound $\sqrt{\qs}$ & \emph{false in general} & Deligne's theorem \\
+\bottomrule\end{tabular}\end{center}
+
+The first three rows are cheap. Rationality of the zeta function is the first row and nothing more; the
+trace formula is heavy technology but the same move, that the count is the trace of a power of a finite
+matrix. The pairing turns the one-sided bound into equality, so the whole problem is one-sided; and the
+trivial bound is just convergence of the Euler product for $|\uz| < 1/\qs$. The gap between $\qs$ and
+$\sqrt{\qs}$ is the entire content.
+
+The last row is where graph and variety part. There is no theorem that a $(\qs+1)$-regular graph is
+Ramanujan; most are not, the prism is a counterexample, and each Ramanujan construction carries its own
+proof: arithmetic (Lubotzky--Phillips--Sarnak \cite{lubotzky1988ramanujan}, through RH for a modular
+curve), probabilistic (Friedman), or interlacing (Marcus--Spielman--Srivastava). So the right question is
+not how one proves the bound but
+what varieties have that graphs lack, which makes every one of them Ramanujan. Three things: varieties can
+be \emph{multiplied}, \emph{sliced} over a curve, and their interesting eigenvalues enter the count with a
+\emph{minus sign}. A graph has none of the three.
+
+\subsection{The engine: power up, dominate, take roots}
+
+The trick the proof is built on, in its purest graph form: why the Ramanujan bound is $2\sqrt{\qs}$. On the
+infinite $(\qs+1)$-regular tree let $c_{2k}$ count closed ordinary walks of length $2k$ from a root, so the
+spectral radius of the tree's adjacency operator is $\lim_k c_{2k}^{1/2k}$. Such a walk is a Dyck path
+(about $4^k$, up to a polynomial factor) together with a fresh neighbour at each of the $k$ outward steps
+($\qs$ choices, $\qs+1$ at the root), so $c_{2k} = 4^k\qs^k$ times a bounded factor times a polynomial in
+$k$, and $c_{2k}^{1/2k}\to2\sqrt{\qs}$. Three moves: a nonnegative count dominates a power of an eigenvalue,
+$c_{2k} = \langle\delta_{\mathrm{root}},\Aadj^{2k}\delta_{\mathrm{root}}\rangle$; the count is known up to a
+loss that does not grow exponentially in $k$; and the $2k$-th root as $k\to\infty$ kills every fixed loss.
+This computation is the tree side of the Ramanujan comparison. Deligne makes the same three moves twice; the
+nontrivial content is entirely in the second.
+
+\subsection{The pointwise theorem, in twisted-graph language}
+
+Deligne's core theorem is not about a variety but about a curve carrying matrix-valued coefficients. A
+\emph{twist} on a base graph $B$ assigns to each directed edge $e$ an invertible $d\times d$ matrix
+$\hol(e)$ with $\hol(\bari{e}) = \hol(e)^{-1}$; a closed walk $w$ has holonomy $\hol(w)$, the ordered
+product along it, and the twisted zeta is the Artin--Ihara $\Lcurve$-function of \cref{def:artin-ihara},
+\[
+\Lcurve(\uz,\hol) = \prod_{\pcycle}\det\bigl(1-\uz^{\wl(\pcycle)}\hol(\pcycle)\bigr)^{-1} =
+\exp\Bigl(\sum_{w}\tfrac{1}{\wl(w)}\Tr\hol(w)\,\uz^{\wl(w)}\Bigr) = \det(1-\uz\Hash_{\hol})^{-1}.
+\]
+The quantum Ihara zeta of \cref{sec:quantum-ihara} is this with $B$ a bouquet of $\Dk$ loops and $\hol =
+\Ad(\Un{i})$ on the $i$-th loop; a quantum expander is a Ramanujan twist of a bouquet. Two kinds of
+eigenvalue now live on side B: the \emph{global} ones, the eigenvalues of $\Hash_{\hol}$ and poles of
+$\Lcurve$, analogues of the $\edgeev$; and the \emph{pointwise} ones, the eigenvalues of each
+$\hol(\pcycle)$. The twist is \emph{pure with constant $\dweight$} when every eigenvalue of every
+$\hol(\pcycle)$ has modulus $\dweight^{\wl(\pcycle)}$: a unitary twist is pure with $\dweight=1$, Deligne's
+coefficient systems with $\dweight = \qs^{\wt/2}$ for an integer weight $\wt$ (\cref{def:pure-weight}).
+
+Deligne's pointwise theorem (his Theorem 3.2, in this language): if (a) all traces $\Tr\hol(w)$ are real, in
+fact rational; (b) $\hol$ preserves an alternating pairing up to the scalar $\dweight^{2\wl(w)}$, so
+eigenvalues of $\hol(\pcycle)$ come in pairs $\alphaw{i}$ and $\dweight^{2\wl(\pcycle)}/\alphaw{i}$; and (c)
+the holonomies generate a group as large as (b) permits; then $\hol$ is pure with constant $\dweight$.
+
+The note argues in four steps, for a fixed prime cycle $\pcycle$ and eigenvalue $\alphaw{1}$ of
+$\hol(\pcycle)$, the target being $|\alphaw{1}| \le \dweight^{\wl(\pcycle)}$ with (b) supplying equality.
+\emph{Power up}: replace $\hol$ by $\hol^{\otimes2k}$, so traces become $(\Tr\hol(w))^{2k}$ and
+$\alphaw{1}^{2k}$ is an eigenvalue at $\pcycle$. \emph{Dominate}: by (a) those traces are nonnegative, so
+every Euler factor of $\Lcurve_{2k} := \Lcurve(\uz,\hol^{\otimes2k})$ has nonnegative coefficients and
+constant term $1$, the product dominates any single factor coefficientwise, and the factor at $\pcycle$ has
+a pole at $|\uz| = |\alphaw{1}|^{-2k/\wl(\pcycle)}$ which a dominated series cannot outrun. \emph{The known
+pole}: suppose the only poles of $\Lcurve_{2k}$ were the trivial ones, at $|\uz| = 1/(\qs\,\dweight^{2k})$;
+then
+\[
+|\alphaw{1}|^{-2k/\wl(\pcycle)} \;\ge\; 1/(\qs\,\dweight^{2k}) \iff |\alphaw{1}| \;\le\;
+\dweight^{\wl(\pcycle)}\,\qs^{\wl(\pcycle)/2k}.
+\]
+\emph{Take roots}: as $k\to\infty$ the loss $\qs^{\wl(\pcycle)/2k}$ vanishes. The fixed loss is the single
+factor $\qs$ in the trivial pole, paid once by the base curve however large $k$ is.
+
+A graph breaks the third step, and must, since the theorem is false for graphs. Take $B$ a bouquet of
+two loops with $\hol(a) = \left(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right)$, $\hol(b) =
+\left(\begin{smallmatrix}1&1\\1&2\end{smallmatrix}\right)$: traces are integers, so (a); determinants
+are $1$, so (b) with $\dweight=1$; and the two generate a group as large as $\SL(\mathbb Z)$ permits, so
+(c). Yet $\hol(a)$ has eigenvalue $(3+\sqrt5)/2 > 1$, so the twist is not pure: $\Lcurve_{2k} =
+\det(1-\uz\Hash_{\hol^{\otimes2k}})^{-1}$ has a pole at $|\uz| = ((3+\sqrt5)/2)^{-2k}$, far inside $1/\qs$,
+from a nontrivial eigenvalue of the twisted edge operator. For a graph every side-B eigenvalue is a pole, so
+nothing forces the poles to the trivial place. What makes the third step true for a curve is one hypothesis
+and one structural fact.
+
+\subsection{Big monodromy, and the abelian failure}
+
+The trivial poles of $\Lcurve_{2k}$ come from invariant vectors: a vector in the $d^{2k}$-dimensional
+coefficient space fixed by every holonomy. On such a vector the twist acts like no twist, so $\Lcurve_{2k}$
+acquires a copy of the untwisted zeta with its pole at $1/\qs$, rescaled by the scalar the twist puts on the
+vector; if that scalar is known, so is the pole. The pairing (b) supplies invariants for free, by
+contracting the $2k$ tensor slots in pairs, each contraction giving a pole at exactly
+$1/(\qs\dweight^{2k})$. Hypothesis (c), \emph{big monodromy}, says these are the only invariants: if the
+holonomies fill out the whole group preserving the pairing, invariant theory makes every invariant of
+$\hol^{\otimes2k}$ a combination of pairwise contractions, so no other trivial pole appears.
+
+\begin{observation}[The abelian obstruction is inside Deligne's proof]
+\label{obs:abelian-obstruction}
+\claimstatus{obs:abelian-obstruction}{sketched}
+Commuting holonomies produce uncontrolled invariants in tensor powers, exactly as commuting Kraus unitaries
+never give an expander: commuting $\hol(w)$ have common eigenvectors, and a common eigenvector with
+eigenvalue $\chi(w)$ becomes invariant in $\hol^{\otimes N}$ as soon as $\chi^N = 1$, carrying an unknown
+$\chi$-dependent scalar, so the trivial poles sit where the argument cannot control them. Any Ramanujan lift
+of the prime dilations must break the commutativity by a quotient, as \cite{lubotzky1988ramanujan} does with
+the arithmetic lattice and as Deligne does with the shears of a generic slicing.
+\end{observation}
+
+In Deligne's setting the commuting case is a coefficient system with abelian monodromy, which can have
+arbitrary pointwise weights; (c) excludes it. In this project it is the observation of the founding session
+that commuting Kraus unitaries never give an expander, the adjoint action of an abelian group having as many
+invariants as it has joint eigenprojectors: the same obstruction on both sides of the dictionary.
+Geometrically, big monodromy is verified through shears. The holonomy around each bad slice is the identity
+plus a rank-one nilpotent along one vector, those vectors are carried to one another by the holonomy group,
+and a theorem of Kazhdan and Margulis says a group generated by one conjugacy class of shears and acting
+without invariant subspaces is automatically as large as the pairing allows. Big monodromy is the statement
+that the bad slices are all alike, which holds because they are generic.
+
+\subsection{The sign}
+
+For a graph, side B is the one matrix $\Hash_{\hol}$ and every eigenvalue is a pole. For a curve with
+coefficients the trace formula has two blocks of opposite sign,
+\[
+\sum_{w:\,\wl(w)=\wl}\!\!\Tr\hol(w) = \Tr\bigl(\Frob^{\wl}\,\big|\,\text{invariant}\bigr) -
+\Tr\bigl(\Frob^{\wl}\,\big|\,\text{interesting}\bigr), \quad
+  \Lcurve(\uz,\hol) = \frac{\det(1-\uz\Frob\mid\text{interesting})}{\det(1-\uz\Frob\mid\text{invariant})}.\]
+The invariant block is the one big monodromy computes, and it produces the poles; the interesting block
+produces zeros, and zeros do not obstruct convergence, so the radius of convergence of $\Lcurve_{2k}$ is set
+by the invariant block alone. That is the third step, and it is the minus sign of the table above:
+positivity of counts is available on both sides, but on the graph side it constrains the sum of everything,
+which is the Perron bound and no more, while on the curve side the interesting eigenvalues are subtracted,
+so positivity bounds them above by the trivial ones and even tensor powers squeeze the bound to equality.
+The two-loop bouquet is not a curve because its walk counts cannot be written with the interesting part
+subtracted.
+
+\subsection{From pointwise to global: slice, bound, multiply}
+
+\emph{Slice.} Take a one-parameter family of hyperplane sections of a variety $X$ of dimension $n$; the
+parameter runs over a curve and all but finitely many slices are smooth of dimension $n-1$. Up to pieces
+already understood, the middle block of $X$ is the interesting block of that base curve with coefficients,
+the coefficient at a parameter value being the middle block of the slice there. In graph terms this is the
+Artin--Ihara factorisation (\cref{def:artin-ihara}) used in \cref{sec:quantum-ihara}, with the fibre
+replaced by a variety of one dimension less. The coefficients satisfy (a), (b), (c): the pairing is
+Poincar\'e duality on the slice, big monodromy is the shear argument, and the traces are rational because
+the zeta of a slice is rational with rational coefficients, off which the blocks known by induction are
+peeled. So they are pure with $\dweight = \qs^{(n-1)/2}$.
+
+\emph{Bound.} With pure coefficients the Euler product over the base converges absolutely for $|\uz| <
+1/(\qs\dweight)$, there being about $\qs^{\wl}/\wl$ prime cycles of length $\wl$ each with holonomy of norm
+$\dweight^{\wl}$. So the interesting block has no eigenvalue larger than $\qs\dweight = \qs^{(n+1)/2}$,
+where RH wants $\qs^{n/2}$: a loss of one factor $\sqrt{\qs}$, paid by the base being a curve, independent
+of $n$.
+
+\emph{Multiply.} The product $X^k$ has dimension $nk$ and its middle block contains the $k$-fold tensor
+products of the middle block of $X$, so the products $\alphaw{1}\cdots\alphaw{k}$ are among its eigenvalues.
+The bound applied to $X^k$ still loses one factor $\sqrt{\qs}$, because the base of a slicing is always a
+curve, whence
+\[
+  |\alphaw{i}|^k \le \qs^{(nk+1)/2} \implies
+  |\alphaw{i}| \le \qs^{n/2}\,\qs^{1/2k} \xrightarrow{\ k\to\infty\ } \qs^{n/2},\]
+with duality giving the reverse inequality: the engine a second time, count, fixed loss, roots. The
+pointwise theorem is what makes the last move legitimate, since the slices of $X^k$ have dimension $nk-1$,
+far above anything the induction on dimension knows, so their purity must come from rationality and big
+monodromy alone. That is why the core theorem is stated for coefficients on a curve: it certifies
+coefficients in any dimension at the price of one curve. Even for a curve $C$ the argument passes through
+$C^k$ for all $k$; the surface $C\times C$ is where Weil's proof lived, and the products are the mechanism.
+The blocks $i\ne n$ follow by induction from lower-dimensional sections and from duality.
+
+\subsection{What the proof does not do}
+
+It never exhibits a Hermitian structure. Weil's proof for curves does: by the Hodge index theorem the
+intersection form on $C\times C$ is definite on the relevant part, which makes $\Frob/\sqrt{\qs}$ unitary
+for an explicit positive inner product on the middle block and produces a Hilbert--P\'olya operator
+(\cref{def:hilbert-polya}). In graph terms, on the nontrivial part $\Hash$ is $\sqrt{\qs}$ times a unitary
+in some inner product, which for the block
+$\left(\begin{smallmatrix}\lambda&-\qs\\1&0\end{smallmatrix}\right)$ holds exactly when $|\lambda| <
+2\sqrt{\qs}$. Grothendieck's plan was to prove a definite form in all dimensions, the standard conjectures,
+and deduce RH as Weil had; that plan is still open. Deligne bypassed it: no form, no operator, only
+positivity and a limit. RH over finite fields is therefore a theorem, while in dimension above one the inner
+product that would make Frobenius normal is not known to exist.
+
+The Artin--Schreier computation of \cref{sec:artin-schreier} sits on the Weil side of this divide:
+$\Tmat\Tmat^\dagger = \qs I$ is manifest from Parseval for the additive characters
+(\cref{prop:as-unitarity}), an explicit inner product. Deligne's proof is what one has when no such
+structure is in sight. Two honesty notes the note records: the Ramanujan property of the LPS graphs of
+\cref{sec:weil-lps} needs only the curve case, since Eichler--Shimura transports Hecke eigenvalues to
+Frobenius eigenvalues of a modular curve, so Weil's theorem suffices there and Deligne's method is what
+extends it to higher weight; and the technology behind ``side B exists'' is the largest single piece of the
+proof by page count, though not by idea.
+
+\subsection{What this says for the project}
+
+\begin{observation}[The three ingredients, and no Hermitian form]
+\label{obs:deligne-ingredients}
+\claimstatus{obs:deligne-ingredients}{sketched}
+Deligne's proof uses three ingredients that a Hilbert--P\'olya approach would have to replace: products,
+under which eigenvalues multiply while the trivial loss stays fixed; slicing over a curve, which keeps that
+loss at one factor $\sqrt{\qs}$ in every dimension; and the sign, which makes the interesting eigenvalues
+zeros rather than poles, so that positivity of the counts bounds them. It exhibits no Hermitian form and no
+operator.
+\end{observation}
+
+\begin{itemize}
+  \item \textbf{Which ingredients $\zeta$ has.} The zeros are subtracted from the prime count, so
+$\zeta$ is on the curve side of the table, not the graph side, and the positivity $\vM(n)\ge0$ is the right
+kind. The sign and the positivity are present; the product is absent, since there is no $X\times X$ with
+$\zeta$ as its slice, so the multiply step has nothing to act on. This is the standard diagnosis, stated in
+the terms of this section.
+  \item \textbf{The number-field shadow of the pointwise theorem is Rankin--Selberg.} For a modular
+form the Euler product of $\Lcurve(f\times\bar f)$ has nonnegative coefficients and a known pole, and
+dominating one local factor gives $|a_\pp| \le \pp^{(k-1)/2}\cdot\pp^{1/2}$, the same fixed loss; each
+symmetric-power $\Lcurve$-function whose poles are known shaves it (Kim--Sarnak's $7/64$ is the current
+state). Knowing the poles of all the tensor-power $\Lcurve$-functions is the analogue of big monodromy; over
+number fields that is Langlands functoriality, unproved.
+  \item \textbf{The abelian obstruction is inside the proof} (\cref{obs:abelian-obstruction}), on
+  both sides of the dictionary.
+  \item \textbf{Ramanujan without Hermiticity is possible.} Deligne's route and the interlacing
+route both reach the spectral bound with no Hilbert--P\'olya operator. For the steering question of where
+Hermiticity enters, this is the cleanest evidence that it need not enter at all; what must enter is a
+positivity plus an operation under which eigenvalues multiply at fixed loss.
+\end{itemize}

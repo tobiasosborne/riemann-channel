@@ -1,0 +1,298 @@
+% SHARD-ID: RC-03-WHAT-RH-HAS-BECOME
+% SHARD-TITLE: What the Riemann Hypothesis Has Become
+% SHARD-SUMMARY: Translates the Riemann hypothesis through the one determinant identity into four equivalent costumes: counting fluctuations, subleading moduli of a small matrix, the Ramanujan property of a graph, and one correlation length of a transfer semigroup.
+% SHARD-SUMMARY: Separates what the translation settles (the semigroup exists, the zeros are its modes, the functional equation is the pairing of its rates) from what it does not (a mechanism forcing each pair to be degenerate), and records the erratum on the words "entanglement Hamiltonian".
+% SHARD-KEYWORDS: one identity, side A, side B, small matrix, Ramanujan, correlation length, explicit formula, pairing, Hilbert-Polya, erratum
+% SHARD-NOTES: notes/what-rh-has-become.md
+% SHARD-SCRIPTS: none
+
+\section{What the Riemann Hypothesis Has Become}
+\label{sec:what-rh}
+
+Nothing here is new mathematics; it is a translation, written for TJO after the
+founding session from the ingredients built up there. Its point is one sentence,
+isolated in \cref{obs:rh-small-matrix} and repeated in every later costume: the
+Riemann hypothesis says certain counts fluctuate no more than a random sequence would.
+
+\subsection{The one identity, and its two readings}
+
+\begin{observation}[The one identity]
+\label{obs:one-identity}
+\claimstatus{obs:one-identity}{sketched}
+For any matrix $M$ with eigenvalues $\lambda_1,\dots,\lambda_N$,
+\[
+\frac{1}{\det(1-\uz M)} \;=\; \prod_i\frac1{1-\lambda_i\uz}
+\;=\; \exp\Big(\sum_{\wl\ge1}\frac{\Tr(M^{\wl})}{\wl}\,\uz^{\wl}\Big).
+\]
+The middle expression is a bosonic partition function, one mode per eigenvector with
+Boltzmann factor $\lambda_i\uz$; the right expression is a sum over closed walks of
+length $\wl$, carrying the $1/\wl$ of a ring's rotation symmetry. One object, two
+descriptions: a gas of modes and a gas of rings
+(\cref{def:side-a-side-b,def:one-identity}).
+\end{observation}
+
+The whole subject is the tension between the two sides. For a permutation matrix the
+ring side is concrete: $\Tr(M^{\wl})$ counts the fixed points of the $\wl$-th power,
+the closed walks are the cycles and their repeats, and the identity
+collapses to $\det(1-\uz M)^{-1} = \prod_{c}(1-\uz^{|c|})^{-1}$ over cycles $c$: a
+Bose gas with one mode per cycle, energy the cycle length. That product is the Euler
+product, and the primes will be the cycles.
+
+\subsection{A finite permutation: the analogue is free}
+
+\begin{observation}[RH for a finite permutation]
+\label{obs:rh-finite-permutation}
+\claimstatus{obs:rh-finite-permutation}{sketched}
+A permutation matrix permutes an orthonormal basis, hence is unitary, hence has every
+eigenvalue on the unit circle. The RH analogue at this level costs nothing.
+\end{observation}
+
+\subsection{An infinite permutation: a statement about a different matrix}
+
+For infinitely many cycles the permutation matrix is still unitary and still useless,
+its spectrum being roots of unity with infinite multiplicity. The count
+$\operatorname{fix}(\wl) = \sum_{d\mid\wl}d\,c_d$ of fixed points of the $\wl$-th
+power, with $c_d$ the number of $d$-cycles, remains meaningful, and the
+interesting object is a \emph{small matrix} (\cref{def:small-matrix}) reproducing
+them.
+
+\begin{observation}[RH for the small matrix]
+\label{obs:rh-small-matrix}
+\claimstatus{obs:rh-small-matrix}{sketched}
+A small matrix $M_{\mathrm{small}}$ with $\Tr M_{\mathrm{small}}^{\wl} =
+\operatorname{fix}(\wl)$ for all $\wl$ exists exactly when the zeta function is
+rational, and then its eigenvalues are new numbers, off the unit circle. Writing
+$\operatorname{fix}(\wl) = \lambda_{\max}^{\wl} + \sum_{i\ge2}\lambda_i^{\wl}$,
+the RH analogue is that every other nonzero $\lambda_i$ has $|\lambda_i| =
+\sqrt{\lambda_{\max}}$ (\cref{def:rh-analogue}), so that the fluctuation has size
+$\sqrt{\lambda_{\max}^{\wl}}$: the square root of the leading term, which is the
+fluctuation of a sum of $\lambda_{\max}^{\wl}$ independent coin tosses. In counting
+language, RH says the cycle counts fluctuate no more than a random sequence would.
+\end{observation}
+
+So the RH analogue is here a property some systems have and others do not. The note
+records two shift examples, both perfectly good infinite permutations.
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+shift & eigenvalues of the small matrix & RH analogue \\
+\midrule
+$4$-symbol cyclic rule & $2,\ 1+i,\ 1-i,\ 0$ & holds \\
+golden-mean shift & $\phi,\ -1/\phi$ & fails \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{A graph: Ramanujan}
+
+\begin{observation}[RH for a graph is the Ramanujan property]
+\label{obs:rh-graph-ramanujan}
+\claimstatus{obs:rh-graph-ramanujan}{sketched}
+For a $(\qs+1)$-regular graph the permutation is the shift on non-backtracking closed
+walks, the small matrix is the adjacency matrix $\Aadj$, and the Ihara--Bass formula
+(\cref{def:ihara-bass}) compresses one to the other: each eigenvalue $\lambda$ of
+$\Aadj$ produces a pair $\edgeev,\edgeev'$ of eigenvalues of the edge operator $\Hash$
+through
+\[
+\edgeev^2 - \lambda\edgeev + \qs = 0,\qquad\text{so}\qquad
+\edgeev\edgeev' = \qs .
+\]
+The leading $\lambda = \qs+1$ gives $\edgeev = \qs$, $\edgeev' = 1$. For the rest,
+$\lambda^2 < 4\qs$ forces a complex conjugate pair with $|\edgeev| = |\edgeev'| =
+\sqrt{\qs}$, on the critical circle, while $\lambda^2 > 4\qs$ gives a real pair, one
+factor above $\sqrt{\qs}$ and one below. Hence RH for $\zetaX$ holds if and only if
+$|\lambda|\le2\sqrt{\qs}$ for every nontrivial $\lambda$, i.e.\ iff the graph is
+Ramanujan (\cref{def:ramanujan-graph}), and the closed non-backtracking walk counts
+are $\Ncount{\wl} = \qs^{\wl} + O(\qs^{\wl/2})$.
+\end{observation}
+
+Three remarks carry over to the primes. First, \textbf{the pairing comes from a
+symmetry, the hypothesis from a bound}: $\edgeev\edgeev' = \qs$ is a functional
+equation pairing eigenvalues symmetrically about $\sqrt{\qs}$ on a logarithmic scale,
+and RH is the extra statement that each pair is degenerate in modulus, which happens
+exactly when it is a conjugate pair. Second, \textbf{self-adjointness is not enough}:
+$\Aadj$ is symmetric, so $\lambda$ is real, which guarantees the pairing but not the
+bound; the prism graph $C_{16}\times K_2$ is symmetric and fails it. Third,
+\textbf{the bound is geometric}: $[-2\sqrt{\qs},2\sqrt{\qs}\,]$ is the spectrum of the
+infinite tree covering the graph, so RH says the graph has no eigenvalue outside the
+spectrum of its universal cover; the word is tempered.
+
+\subsection{A matrix product state: one correlation length}
+
+Let $\Tmat = \Sig$ be the transfer matrix of a matrix product state
+(\cref{def:transfer-matrix}), so that $\Tr\Tmat^{n} = \ringnorm{n}$ is the ring norm
+of the periodic state on $n$ sites (\cref{def:ring-norm}) and the zeta function of
+\cref{obs:one-identity} is the generating function of ring norms. In canonical form
+(\cref{def:canonical-form}) the leading eigenvalue is $1$ and the rest lie inside the
+unit disc, $\lambda_k = e^{-1/\corrlen{k}+i\phase{k}}$
+(\cref{def:correlation-length}), so $\ringnorm{n} = 1 + \sum_k
+e^{-n/\corrlen{k}}e^{in\phase{k}}$.
+
+\begin{observation}[RH for an MPS]
+\label{obs:rh-mps-correlation-length}
+\claimstatus{obs:rh-mps-correlation-length}{sketched}
+Translating \cref{obs:rh-graph-ramanujan}, where the leading growth is $\qs$ per step
+and the subleading modulus $\sqrt{\qs}$: in normalised units the subleading modulus is
+$\qs^{-1/2}$, so $e^{-1/\corrlen{k}} = \qs^{-1/2}$ and $\corrlen{k} = 2/\log\qs =
+2/\ent$ for every $k$. The RH analogue for an MPS reads: all correlation lengths are
+equal, and equal to twice the inverse entropy rate. The phases $\phase{k}$ are
+unconstrained and there may be infinitely many of them; only the moduli are pinned.
+\end{observation}
+
+The hierarchy this sits in has three levels, and each has a classical number-theoretic
+counterpart, anticipating \cref{obs:rh-flow-pairing} below.
+
+\begin{center}
+\begin{tabular}{@{}p{3.1cm}p{2.5cm}p{4.0cm}p{4.7cm}@{}}
+\toprule
+statement about $\Tmat$ (or $\flowgen$) & name & counting meaning & number theory \\
+\midrule
+a unique eigenvalue on the unit circle &
+primitivity (Perron--Frobenius) &
+ring norms follow the leading term &
+$\zeta(1+it)\ne0$, the prime number theorem \\
+all others inside a smaller circle &
+spectral gap &
+fluctuation exponentially smaller than the leading term &
+the zero-free region, $\cheb(x) = x + O(x e^{-c\sqrt{\log x}})$ \\
+all others on \emph{one} circle of radius $e^{-1/\corrlen{k}}$ with
+$\corrlen{k} = 2/\ent$ &
+Ramanujan / RH &
+fluctuation is the square root of the leading term &
+all zeros on $\re s = \tfrac12$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The primes: continuous length, and the sign}
+
+For the primes the cycle lengths are $\log\pp$, rationally independent, so the matrix
+powers become a semigroup $e^{\ringlen\flowgen}$ in a continuous length $\ringlen$ and
+the ring norms become a measure in $\ringlen$. Start from the Riemann--von Mangoldt
+formula for $\cheb$, valid for $x$ not a prime power, put $x = e^{\ringlen}$ and
+differentiate in $\ringlen$: the left side becomes a sum of delta functions, one per
+prime power, of weight $\log\pp$, and the right side a sum of exponentials.
+
+\begin{observation}[The explicit formula as a trace, and the pairing]
+\label{obs:rh-flow-pairing}
+\claimstatus{obs:rh-flow-pairing}{sketched}
+With $\cheb(x) = x - \sum_{\zero}x^{\zero}/\zero - \log2\pi - \tfrac12\log(1-x^{-2})$,
+\[
+\sum_n \vM(n)\,\delta(\ringlen-\log n) \;=\; e^{\ringlen}
+\;-\; \sum_{\zero}e^{\zero\ringlen}
+\;-\; \big(e^{-2\ringlen}+e^{-4\ringlen}+\cdots\big),
+\]
+which is $\Tr e^{\ringlen\flowgen}$ for a generator $\flowgen$ whose eigenvalues are
+$1$ (the pole of $\zeta$, the leading term, entropy $1$), every zero $\zero$, and the
+trivial zeros $-2,-4,\dots$: the trace identity of \cref{obs:one-identity} with $M^{\wl}$
+replaced by $e^{\ringlen\flowgen}$, ring side the prime powers at lengths $\log n$,
+mode side the zeros. The functional equation $\cxi(s) = \cxi(1-s)$ makes $\zero$ and
+$1-\zero$ both zeros, so after dividing by the leading $e^{\ringlen}$ the normalised
+decay rates come in pairs $(1-\sigs,\sigs)$ summing to $1$, exactly as
+$\edgeev\edgeev' = \qs$ paired the graph eigenvalues around $\sqrt{\qs}$. That pairing
+is a theorem; RH is the extra statement that every pair is degenerate, $\sigs =
+1-\sigs = \tfrac12$.
+\end{observation}
+
+Two features of this trace identity are visible immediately. The first is \emph{the
+sign}: the zeros enter with a minus sign relative to the leading term, the same minus
+sign that marks the fermionic $H^1$ block in the elliptic-curve case
+(\cref{sec:deligne}) and the absorption spectrum in Connes's language. The total
+measure stays positive because $\vM(n)\ge0$, but the subleading sector of the bond
+space contributes negatively, so whatever state this is, its bond space is graded, not
+plainly bosonic. The second is the pairing just stated. The numerical check against
+several thousand zeros is recorded in \cref{sec:riemann-channel}. Collecting the
+costumes:
+
+\begin{center}
+\begin{tabular}{@{}p{2.4cm}p{11.6cm}@{}}
+\toprule
+language & the Riemann hypothesis says \\
+\midrule
+counting & $\cheb(x) = x + O(x^{1/2+\epsilon})$: the prime powers fluctuate like coin tosses \\
+small matrix & every subleading mode has modulus the square root of the leading one \\
+MPS & the state whose rings are the primes has \emph{one} correlation length, $\corrlen{k} = 2$ since $\ent = 1$, and an infinite tower of frequencies $\gamma_n$ \\
+channel & the transfer semigroup $e^{\ringlen\flowgen}$ has a single uniform decay rate $\tfrac12$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The Hilbert space where this is literally true}
+
+The channel version is not only an analogy. It is a theorem on a concrete Hilbert
+space: the model space $\KS$ of the scattering symbol $\Ssym$ of the modular surface,
+on which the compressed dilation semigroup $\Zt$ has one mode per zero, with decay
+rate and frequency read off from that zero. This is Lax--Phillips
+\cite{laxphillips1976}, and ``RH iff every mode of $\Zt$ decays at the same rate'' is
+Faddeev--Pavlov \cite{faddeev1972scattering}. What the founding session added is where
+$\Ssym$ comes from: its phase is the imaginary part of the Bost--Connes Lévy exponent
+at the critical temperature $\invtemp = 1$ \cite{bostconnes1995}, so the ring gas and
+the transfer semigroup are one object seen from its two ends, bridged by the critical
+phase. Construction, normalisations (the factor $\tfrac12$ from the doubled variable)
+and numerics are in \cref{sec:riemann-channel};
+\cref{def:scattering-symbol,def:inner-model-space,def:riemann-channel} fix the
+objects.
+
+\subsection{Why it is still hard, in this language}
+
+The graph case is the honest guide. There side B exists, the trace identity holds and
+the small matrix is symmetric for every graph, and most graphs fail the bound. Being
+Ramanujan is never a consequence of the structure; it is an extra fact, and in every
+known case it comes from arithmetic input of Deligne's type \cite{deligne1974weil}.
+For Selberg's surfaces the same statement, no Laplace eigenvalue below $\tfrac14$, is
+open.
+
+What the translation settles: RH is a statement about the \emph{sizes} of the
+subleading modes of a transfer semigroup, not about its existence. The semigroup
+exists, the zeros are its modes, the primes are its rings, the functional equation is
+the pairing of its rates. What it does not settle: a mechanism forcing the pairs to be
+degenerate. In positivity form (\cref{def:weil-positivity}), RH holds iff $\Fweil$ is
+positive-definite on the dilation group, iff its spectral measure is positive on the
+real line, which by Bochner is the same as all its atoms being real.
+
+\begin{observation}[Hermiticity of the Hilbert--P\'olya operator]
+\label{obs:hilbert-polya-hermitian}
+\claimstatus{obs:hilbert-polya-hermitian}{sketched}
+Write the length-flow generator on the subleading sector as $\flowgen = -\tfrac12 +
+iH$ (\cref{def:hilbert-polya}); then $H$ has eigenvalues $\gamma_n -
+i(\sigs_n-\tfrac12)$, and RH says exactly that $H$ is Hermitian, i.e.\ that the
+transfer semigroup is a uniform damping times an oscillation with real frequencies.
+$H$ is the Hilbert--P\'olya operator. The non-Hermitian generator carries the complex
+pairs and the Hermitian operator their symmetric combination, here $\zero(1-\zero) =
+\sigs(1-\sigs) + \gamma^2 + i\gamma(1-2\sigs)$, which is real iff $\sigs = \tfrac12$;
+$\flowgen$ is to $H$ what the Hashimoto edge operator $\Hash$ is to the adjacency
+matrix $\Aadj$ of a graph. For graphs the Hermitian object is given and its reality is
+a theorem; for the primes it is the conjecture.
+\end{observation}
+
+Proving it would mean exhibiting that state, or a Stinespring form of $\Zt$ with the
+prime dilations as Kraus operators, in a way that makes the positivity manifest; that
+is \cref{conj:stinespring-jump-form}. The graph lesson says the Kraus structure alone
+will not do it, and that some arithmetic rigidity has to enter, playing the role that
+weights play for curves (\cref{sec:deligne}).
+
+\subsection{Erratum on words}
+
+An earlier draft, and the founding session, called $-\log\Tmat$ the entanglement
+Hamiltonian. That is wrong: the entanglement Hamiltonian of an MPS is $-\log$ of a
+reduced density matrix built from the fixed points of $\Tmat$ alone, is Hermitian by
+construction, and does not see the subleading spectrum. The operator whose spectrum
+contains the zeros is the transfer generator, non-Hermitian in general, whose
+eigenvalue phases are the oscillation frequencies of the ring norms.
+\cref{obs:hilbert-polya-hermitian} states the correct relation; the route is listed
+among the dead ones in \cref{sec:open}.
+
+\subsection{Summary}
+
+A zeta function is one partition function with two Fock-space descriptions: a gas of
+rings (cycles, closed walks, prime powers) and a gas of modes (eigenvalues of a small
+transfer matrix); the trace identity links them. For the primes the rings have lengths
+$\log n$ and weights $\vM(n)$, the modes are the zeros of $\zeta$ plus the pole, and
+the functional equation pairs the modes' decay rates as $(\sigs,1-\sigs)$. The Riemann
+hypothesis says every pair is degenerate at $\tfrac12$: the transfer semigroup has one
+correlation length, $\corrlen{k} = 2$, so the ring counts fluctuate by no more than
+the square root of their size, so the primes are as regular as coin tosses. That
+semigroup exists explicitly, its scattering symbol is the phase of the Bost--Connes
+system at its critical temperature, and RH is the statement that this channel is
+Ramanujan.
