@@ -1,0 +1,188 @@
+% SHARD-ID: RC-08B-WEIL-POSITIVITY
+% SHARD-TITLE: Weil Positivity for an Arbitrary Transfer Operator
+% SHARD-SUMMARY: Proves, for any finite-dimensional transfer operator, that positive definiteness of the rescaled trace sequence is exactly the one-sided bound on the retained spectrum, and that a duality of the spectrum turns it into "every mode is its own partner" and the Weil form into a mode-pairing form (the inflow identity).
+% SHARD-SUMMARY: Sorts Kraus families by which half of RH each pairing buys: any Ad-family has positive rings and a conjugation symmetry; inverse pairing gives the functional equation; adjoint pairing gives reality of the transfer spectrum; both together is unitarity, where the criterion is Hastings' bound.
+% SHARD-SUMMARY: Continuous (cMPS/Lindblad) version via Bochner with the Dyson-expansion ring norms; the Hilbert-Polya inner product exists iff semisimple on the circle; Weil positivity is blind to Jordan blocks; the zeta instance as a conditional dictionary; prior art (Weil, Li, Huang, Suzuki).
+% SHARD-KEYWORDS: Weil positivity, explicit formula, inflow identity, functional equation, mode pairing, Herglotz, Bochner, Toeplitz, Hastings bound, inverse pairing, Hilbert-Polya, Jordan block, Li criterion, Huang criterion
+% SHARD-NOTES: notes/weil-positivity.md
+% SHARD-SCRIPTS: scripts/weil_positivity.py
+
+\section{Weil Positivity for an Arbitrary Transfer Operator}
+\label{sec:weil-positivity}
+
+This section answers the question TJO put on 2026-09-12: the reflection
+$\zero\mapsto1-\bar\zero$ pairs the mode of the Riemann channel at a zero with the
+mode at its mirror image, RH says every mode is its own partner, and Weil's
+criterion is the positivity of that pairing written on the primes. What does this mean
+for a completely arbitrary Kraus family, finite-dimensional or continuous? The answer is
+in three layers. Without any duality, Weil positivity of the rescaled ring norms is
+exactly a one-sided bound, the spectral-gap half of RH. A duality of the spectrum, the
+functional equation, turns the bound into a circle and the Weil form into the pairing of
+each mode with its reflected partner; this identity is the finite form of the inflow
+identity. For Kraus families the two pairings of the Kraus index buy the two halves
+separately: inverse pairing gives the functional equation, adjoint pairing gives reality
+of the transfer spectrum, and only unitarity gives both.
+
+\emph{Status.} The theorems are the prover's, \texttt{codex:gpt-6-astra}
+(\texttt{notes/weil-positivity/astra-proofs.md}, Lamport structure, correction ledger in
+its T7), reviewed adversarially by \texttt{claude:opus}
+(\texttt{notes/reviews/weil-positivity-2026-09-12.md}); two model families; all verdicts
+\texttt{VALID}, two wording items fixed. The orchestrator's two observations in
+\cref{sec:weil-positivity-continuous} were reviewed in the same file. Independent
+numerics by a third agent (\cref{num:weil-positivity}) found the same three drafting
+errors the prover corrected.
+
+\subsection{Setting}
+
+\Cref{def:rescaled-trace-sequence,def:weil-form} fix the objects: an operator $X$ on a
+finite-dimensional space, a trivial sub-multiset $\trivS$ of its spectrum, the retained
+multiset $\retA$, a critical radius $\critr$, the rescaled trace sequence
+$\nuseq{\wl} = \sum_{\edgeev\in\retA}(\edgeev/\critr)^{\wl}$ with $\nuseq{-\wl} =
+\overline{\nuseq{\wl}}$, the Weil form $\Wform(c) = \sum c_{\wl}\bar c_k\nuseq{\wl-k}$, the
+reflection $\reflJ(\edgeev) = \critr^2/\bar\edgeev$ and the mode-pairing form $\Mform$. In
+the Kraus case $X = \Hash$ and $\Tr\Hash^{\wl} = \sum_w|\Tr\Kr{w}|^2$ is the ring-norm sum
+of \cref{cor:qihara-kraus}, so $\nuseq{\wl}$ is side A rescaled and with the trivial modes
+subtracted, and $\Wform$ is a form on rings. Nothing below assumes diagonalisability
+until \cref{prop:hp-inner-product-discrete}.
+
+\subsection{Positivity is the one-sided bound}
+
+\begin{theorem}[Finite Weil positivity]
+\label{thm:weil-positivity-finite}
+\claimstatus{thm:weil-positivity-finite}{proved}
+For any $X$, any $\trivS$ and any $\critr>0$, the sequence $\nuseq{\wl}$ is positive definite
+if and only if $|\edgeev|\le\critr$ for every $\edgeev\in\retA$, algebraic multiplicities
+included and zero eigenvalues allowed.
+\end{theorem}
+
+The proof is the Poisson kernel and a growth lemma. A retained $z = \edgeev/\critr$
+with $|z|<1$ contributes to $\Wform(c)$ the integral of $|\fcpoly{c}(e^{i\vartheta})|^2$
+against the Poisson kernel $(1-|z|^2)/|1-ze^{-i\vartheta}|^2>0$, a point $|z| = 1$
+contributes $|\fcpoly{c}(z)|^2$, and $z = 0$ contributes $\sum|c_{\wl}|^2$; so the bound
+gives positivity. Conversely a positive definite sequence has $|\nuseq{\wl}|\le\nuseq{0}$
+from its $2\times2$ minors, while a retained mode outside the disc makes the sequence
+unbounded, because the modes of maximal modulus $R>\critr$ contribute $R^{\wl}$ times a
+trigonometric sum whose mean square over $\wl<L$ tends to the sum of squared
+multiplicities. The point of the theorem is what it does not say: an eigenvalue inside the
+disc passes. Weil positivity alone is a spectral-gap statement, and the circle needs a
+second input.
+
+\subsection{A duality makes it two-sided: the inflow identity}
+
+\begin{theorem}[Reflection duality and the inflow identity]
+\label{thm:weil-duality-pairing}
+\claimstatus{thm:weil-duality-pairing}{proved}
+If $\retA$ is invariant under $\reflJ$ (multiplicities preserved; in particular
+$0\notin\retA$), then $\Wform(c) = \Mform(c)$ for every finitely supported $c$, and the
+following are equivalent: $\Wform\ge0$; $|\edgeev| = \critr$ for every $\edgeev\in\retA$;
+$\reflJ(\edgeev) = \edgeev$ for every $\edgeev\in\retA$.
+\end{theorem}
+
+The identity $\Wform = \Mform$ is the finite inflow identity: the left side is built
+from traces, i.e.\ from rings, the right side pairs each mode with its partner under the
+reflection. It holds whether or not the modes are on the circle; what the circle adds is
+that every partner is the mode itself, so $\Mform(c) = \sum|\fcpoly{c}(\edgeev/\critr)|^2$.
+The equivalence follows from \cref{thm:weil-positivity-finite}: $|\edgeev|\le\critr$ and
+$|\reflJ(\edgeev)|\le\critr$ force $|\edgeev| = \critr$. This is exactly how RH follows
+from the one-sided bound $\re\zero\le\frac12$ together with the functional equation.
+
+\begin{proposition}[Orbit contributions; an off-circle pair makes the form negative]
+\label{prop:weil-orbit-negative}
+\claimstatus{prop:weil-orbit-negative}{proved}
+Under the hypotheses of \cref{thm:weil-duality-pairing}, a $\reflJ$-fixed mode $z$ of
+multiplicity $m$ contributes $m|\fcpoly{c}(z)|^2$ to $\Wform(c)$ and a two-element orbit
+$\{z,\reflJ z\}$ contributes $2m\,\re\big(\fcpoly{c}(z)\overline{\fcpoly{c}(\reflJ z)}\big)$;
+if any two-element orbit exists there is a $c$ with $\Wform(c)<0$.
+\end{proposition}
+
+This is Weil's off-line pair argument in finite form; the prover's proof interpolates
+$\fcpoly{c}$ to vanish at every other retained value, which is what makes the single
+negative orbit dominate the whole form.
+
+\begin{proposition}[Reciprocal symmetry without conjugation]
+\label{prop:weil-reciprocal-only}
+\claimstatus{prop:weil-reciprocal-only}{proved}
+If $\retA$ contains no zero and is invariant under the reciprocal map
+$\edgeev\mapsto\critr^2/\edgeev$ alone, positivity is still equivalent to $|\edgeev| =
+\critr$ throughout $\retA$. If $\retA$ is also closed under complex conjugation it is
+$\reflJ$-invariant and $\Wform = \Mform$; without conjugation symmetry $\Wform = \Mform$
+can fail. The reciprocal map is holomorphic on $\mathbb C^\times$, not linear.
+\end{proposition}
+
+\subsection{Kraus families: which pairing buys which half}
+
+\begin{proposition}[Conjugation symmetry needs no pairing]
+\label{prop:kraus-conjugation-symmetry}
+\claimstatus{prop:kraus-conjugation-symmetry}{proved}
+For any family $\Eop{i} = \Ad(B_i)$ with arbitrary $B_i\in\Mn$ and any fixed-point-free
+reversal, the antiunitary involution $x\mapsto x^\dagger$ on $\Vsp = \Mn$, and its
+componentwise version on $\Wsp$, commute with $\Sig$ and with $\Hash$. Hence
+$\operatorname{spec}(\Sig)$ and $\operatorname{spec}(\Hash)$ are closed under complex
+conjugation with multiplicities. The nonnegative ring trace $\Tr\Hash^{\wl} =
+\sum_w|\Tr B_w|^2$ of \cref{cor:qihara-kraus} likewise holds for every such family, with
+no pairing hypothesis: its proof uses only $\Ad(A)\Ad(B) = \Ad(AB)$ and $\Tr\Ad(A) =
+|\Tr A|^2$.
+\end{proposition}
+
+The draft sent to the prover asked for an inverse-paired counterexample to conjugation
+closure; none exists inside the Kraus class, and the independent numerics found the same.
+Likewise the trace formula $\Tr\Hash^{\wl} = \sum_w|\Tr B_w|^2$ of \cref{cor:qihara-kraus}
+never used the pairing: it is a property of the $\Ad$ form. So every Kraus-type family,
+however paired, has a positive side A and a real-structured side B.
+
+\begin{theorem}[Inverse pairing gives the functional equation]
+\label{thm:kraus-inverse-pairing-duality}
+\claimstatus{thm:kraus-inverse-pairing-duality}{proved}
+Let $\Eop{\bari{i}} = \Eop{i}^{-1}$ on an $N$-dimensional space, $\Dk = 2\mpairs\ge4$,
+$\qs = \Dk-1$, $k = N(\Dk-2)/2$. Then $\operatorname{spec}(\Hash)$ is the multiset
+$\{+1^{[k]},-1^{[k]}\}$ together with, for each eigenvalue $\sigev$ of $\Sig$ of
+multiplicity $a_\sigev$, the two roots of $\edgeev^2-\sigev\edgeev+\qs$ counted $a_\sigev$
+times. The retained multiset after removing $\{+1^{[k]},-1^{[k]}\}$ has $2N$ elements,
+no zero, and is invariant under $\edgeev\mapsto\qs/\edgeev$; it is conjugation-invariant
+iff $\operatorname{spec}(\Sig)$ is. For inverse-paired Kraus matrices both hold, so the
+retained multiset is $\reflJ$-invariant for $\critr = \sqrt{\qs}$.
+\end{theorem}
+
+The bookkeeping is where the draft was loose: a double root at $\sigev = \pm2\sqrt{\qs}$
+gives $2a_\sigev$ copies of $\pm\sqrt{\qs}$, and $\sigev = \pm\Dk$ gives extra copies of
+$\pm1$ beyond the $k$ from the $(1-\uz^2)$ factor.
+
+\begin{proposition}[Both pairings at once is unitarity]
+\label{prop:kraus-both-pairings-unitary}
+\claimstatus{prop:kraus-both-pairings-unitary}{proved}
+$\Ad(B^\dagger) = \Ad(B)^{-1}$ iff $B^\dagger B = 1$ iff $B$ is unitary; a family is
+simultaneously adjoint-paired and inverse-paired iff every $B_i$ is unitary. A scalar
+$B^\dagger B = \kappa1$ gives only $\Ad(B^\dagger) = \kappa^2\Ad(B)^{-1}$; $B = 2$ disproves
+``unitary up to a scalar''.
+\end{proposition}
+
+\begin{theorem}[The Weil criterion for Kraus families]
+\label{thm:kraus-weil-criterion}
+\claimstatus{thm:kraus-weil-criterion}{proved}
+(i) For an adjoint-paired Kraus family, any $\trivS$ and any $\critr$, Weil positivity of
+$\nuseq{\wl}(\Hash;\trivS,\critr)$ is exactly the one-sided bound $|\edgeev|\le\critr$ off
+$\trivS$; nonnegativity of the ring traces alone does not give it. (ii) For unitary,
+adjoint-paired $B_i$ with $\Dk\ge4$, $\critr = \sqrt{\Dk-1}$, $\chan = \Sig/\Dk$, and
+$\trivS = \{+1^{[k]},-1^{[k]}\}$ together with $\{\qs,1\}$ once for each eigenvalue $+1$
+of $\chan$ and $\{-\qs,-1\}$ once for each eigenvalue $-1$: Weil positivity holds iff every
+other eigenvalue $\lambda$ of $\chan$ satisfies $|\lambda|\le2\sqrt{\Dk-1}/\Dk$ iff every
+retained mode is $\reflJ$-fixed. Here $\lambda$ is real because $\chan$ is Hilbert--Schmidt
+self-adjoint.
+\end{theorem}
+
+Part (ii) is Hastings' bound (\cref{cit:hastings-bound}) recovered as Weil positivity, and
+it is the quantum-channel case of \cref{obs:rh-iff-ramanujan-channel}: the Ramanujan
+property is the statement that the rescaled ring norms form a positive definite sequence.
+
+\begin{proposition}[An adjoint-paired family with no duality]
+\label{prop:kraus-no-duality-example}
+\claimstatus{prop:kraus-no-duality-example}{proved}
+For $n = 2$, $\Dk = 4$, $B_1 = B_3 = \operatorname{diag}(1,2)$, $B_2 = B_4 = 1$, the
+retained spectrum of $\Hash$ is invariant under $\edgeev\mapsto c/\edgeev$ for no nonzero
+$c$. The Weil form is nevertheless defined and its positivity is the one-sided bound.
+\end{proposition}
+
+So for a general channel ``every mode is its own partner'' has, literally, no partner to
+refer to: the reflection exists on the punctured plane but need not send a mode to a mode.
+What remains is \cref{thm:weil-positivity-finite}: a spectral-gap statement, the analogue
+of $\re\zero\le\frac12$ without the functional equation.

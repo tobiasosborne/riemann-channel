@@ -19,9 +19,11 @@ quotes in `db/provenance.tsv`. `make check` is the gate, `make ci` the local CI 
 | 7 | `RC-06-ARTIN-SCHREIER-MPS` | `report/sections/06_artin_schreier_mps.tex` | A Matrix-Product Formulation of the Weil Conjectures for Quadratic Artin--Schreier Curves | notes/artin-schreier-mps.md | scripts/artin_schreier_mps.py |
 | 8 | `RC-07-DELIGNE-VIA-GRAPHS` | `report/sections/07_deligne_via_graphs.tex` | Deligne's Proof, Told Through Regular Graphs | notes/deligne-via-graphs.md | none |
 | 9 | `RC-08-QUANTUM-IHARA-GENERAL` | `report/sections/08_quantum_ihara_general.tex` | The Ihara--Bass Formula for an Arbitrary Kraus Family | notes/quantum-ihara-general.md | scripts/qihara.py, scripts/qihara_general.py |
-| 10 | `RC-09-PRIOR-ART` | `report/sections/09_prior_art.tex` | Prior Art for the Quantum Ihara Zeta | notes/prior-art-quantum-ihara.md | none |
-| 11 | `RC-09B-SELBERG-DICTIONARY` | `report/sections/09b_selberg_dictionary.tex` | The Continuous Dictionary I: Circle Comb, Lindbladian, Casimir | notes/selberg-dictionary.md | none |
-| 12 | `RC-09C-SELBERG-TOWER-CUSP` | `report/sections/09c_selberg_tower_cusp.tex` | The Continuous Dictionary II: Selberg Tower and the Cusp Comb | none | scripts/selberg_lindblad.py |
-| 13 | `RC-10-OPEN-DEAD` | `report/sections/10_open_problems_dead_routes.tex` | Open Problems and Dead Routes | none | none |
-| 14 | `RC-11-REPRO-MAP` | `report/sections/11_reproducibility_map.tex` | Reproducibility Map | none | scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py |
-| 15 | `RC-12-LAB-LOG` | `report/sections/12_lab_log.tex` | Lab Log | none | none |
+| 10 | `RC-08B-WEIL-POSITIVITY` | `report/sections/08b_weil_positivity.tex` | Weil Positivity for an Arbitrary Transfer Operator | notes/weil-positivity.md | scripts/weil_positivity.py |
+| 11 | `RC-08C-WEIL-POSITIVITY-CONTINUOUS` | `report/sections/08c_weil_positivity_continuous.tex` | Weil Positivity, Continued: Continuous Time, Hilbert--P\'olya, the Zeta Entry, Prior Art | none | scripts/weil_positivity.py |
+| 12 | `RC-09-PRIOR-ART` | `report/sections/09_prior_art.tex` | Prior Art for the Quantum Ihara Zeta | notes/prior-art-quantum-ihara.md | none |
+| 13 | `RC-09B-SELBERG-DICTIONARY` | `report/sections/09b_selberg_dictionary.tex` | The Continuous Dictionary I: Circle Comb, Lindbladian, Casimir | notes/selberg-dictionary.md | none |
+| 14 | `RC-09C-SELBERG-TOWER-CUSP` | `report/sections/09c_selberg_tower_cusp.tex` | The Continuous Dictionary II: Selberg Tower and the Cusp Comb | none | scripts/selberg_lindblad.py |
+| 15 | `RC-10-OPEN-DEAD` | `report/sections/10_open_problems_dead_routes.tex` | Open Problems and Dead Routes | none | none |
+| 16 | `RC-11-REPRO-MAP` | `report/sections/11_reproducibility_map.tex` | Reproducibility Map | none | scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py |
+| 17 | `RC-12-LAB-LOG` | `report/sections/12_lab_log.tex` | Lab Log | none | none |

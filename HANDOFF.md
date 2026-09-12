@@ -2,13 +2,76 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-12, night)
+## Current state (2026-09-12, evening)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
 is exploratory. No claims are registered, no checker discipline is in force
 yet. The full conversation is in `transcript/transcript.md` (rendered from
 the raw session log, which is kept out of the repository).
+
+### CENTRAL PRIORITY (set by TJO, 2026-09-12 evening): the Bost–Connes reframe
+
+Bost–Connes as used so far is side A only: a product state over primes,
+ζ(β) a partition function, the dilation flow's spectrum the ring lengths
+log n. The reframe (transcript and worklog, evening): **dilation time is the
+one-dimensional space of a cMPS; the bond carries the Riemann Lindbladian;
+its unique fixed point is the pole at s = 1, i.e. the critical KMS₁ state;
+the zeros are its relaxation modes; the physical cMPS is pure and the KMS
+state is its entanglement spectrum.** The Gibbs states at β > 1 are the
+symmetry-broken steady-state manifold labelled by the Galois group, and the
+BC phase transition is ergodicity breaking of the Lindbladian. RH is the
+Ramanujan statement that all relaxation modes share one rate after the
+e^{-t/4} rescaling (uniform gap = extremal object, "Riemann quantum
+expander").
+
+**Forced consequence (the fermionic zeros).** A cMPS ring norm is a positive
+sum of squares (thm:cmps-ring-norms), while the zeros enter the explicit
+formula with a minus sign (Deligne's third ingredient in shard 07; the
+dips −2Λ(n)n^{-1/2} confirmed by review item X3). So the bond must be
+Z₂-graded: the pole is the bosonic sector and carries the fixed point, the
+zeros are fermionic modes, and the ring norm is a supertrace, which is the
+ordinary norm of a fermionic ring with its parity insertion. This is the
+curve picture (H¹ odd, counts 1 + qⁿ − Σαⁿ) and the Artin–Schreier lane
+already carries the sign (S_n = −Σαⁿ). TJO: the Weil conjectures should
+have the same fermionic interpretation; pursue the analogies concretely and
+rigorously.
+
+**Programme, in order.**
+0a. **Artin–Schreier as the prototype.** Make the graded bond explicit in
+    `scripts/artin_schreier_mps.py`: a super-transfer matrix whose
+    supertrace is the point count, bosonic sector {1, q}, fermionic sector
+    the Frobenius eigenvalues; verify ring norm = count for all n; state as
+    a proposition in shard 06. Then the same for the Weil–LPS channels
+    (compact, no cusp: where is the pole/fixed point, where the sign?).
+0b. **Define the Riemann Lindbladian.** Graded bond; even sector fixed point
+    = KMS₁; the existing Riemann channel Z(t) is the no-event part with no
+    fixed point (Z → 0), so a fixed point needs SHW reinsertion at the cusp
+    with rebound state Ω, and demanding the critical BC state as steady
+    state is the equation ρ_∞ ∝ ∫₀^∞ Z(t)ΩZ(t)^* dt. Write this as a
+    conjecture with the rebound state as the unknown; prover lane.
+0c. **Sides made explicit in shard 04.** Distil the reframe into the
+    Riemann-channel section (framing paragraph, definitions of the graded
+    bond and the supertrace ring norm, the ergodicity-breaking reading of
+    the BC transition); restate prop:ringnorm-trace with the sign (1c).
+0d. **Mayer cusp tail** (`notes/resonances/astra-freeassoc.md` §3, both
+    lanes' first pick): the cusp-return transfer operator, exact Hurwitz
+    tail, Schur complement separating the cusp coordinate; explicit Taylor
+    entries given there.
+0e. **Suzuki's prime-defined screw kernel** (`astra-freeassoc.md` §16.3):
+    enlarge the interval, kernel always prime-defined; Kotani's Zeta string
+    (Suzuki 2206.03682 §9) as the target object; fetch Suzuki 2021 JFA
+    "Hamiltonians arising from L-functions in the Selberg class".
+0f. **Literature:** Bonthonneau–Weich, Ruelle resonances on cusped
+    manifolds (arXiv API was rate-limited; fetch TeX); Lewis–Zagier and
+    Chang–Mayer for the Eisenstein period functions at ρ/2 (from memory).
+
+Dead routes recorded today: SPT protection (signs, not moduli);
+PSL(2,Z)-generator channels (expanders, not Ramanujan); "GUE positions with
+equal widths is the fingerprint of scalar loss" (false: one-port inverse
+design realises any equal-width poles; the information is in the couplings,
+`astra-freeassoc.md` §1); a bounded renorming of K_S (Riesz-basis
+obstruction: Gram condition number 10 → 700 across the 3000 zeros).
 
 ### What was established (standard theory, numerically confirmed)
 
@@ -129,6 +192,36 @@ the raw session log, which is kept out of the repository).
    formula and double-counts the e^{-t/4} damping: correct §5 of that note
    (shard 04 already carries the corrected statement via prop:damping-identity).
 
+10. **Weil positivity for an arbitrary transfer operator** (2026-09-12
+   afternoon, lab-book shards 08b/08c, `notes/weil-positivity.md`,
+   `notes/weil-positivity/astra-proofs.md`, `scripts/weil_positivity.py`).
+   TJO's question: what does "the reflection pairs the mode at ρ with the
+   mode at 1−ρ̄, RH says every mode is its own partner" mean for an arbitrary
+   Kraus family? Proved by the codex prover (gpt-6-astra), Opus refute
+   review: (i) for any finite-dimensional X, trivial set and radius r,
+   positive definiteness of the rescaled trace sequence
+   r^{-l}(Tr X^l − trivial) is exactly the one-sided bound |μ| ≤ r
+   (Poisson kernel + growth lemma), modes inside the disc pass; (ii) if the
+   retained spectrum is invariant under J(μ) = r²/μ̄ the Weil form equals
+   the mode-pairing form (the finite inflow identity) and positivity ⇔ every
+   mode J-fixed ⇔ all on the circle; (iii) Kraus dichotomy: ANY Ad-family
+   has nonnegative ring traces and conjugation-closed spectrum (the adjoint
+   pairing was never needed for either; two drafted claims corrected by
+   prover and numerics independently); inverse pairing B_ī = B_i^{-1} gives
+   the functional equation μ ↦ (D−1)/μ, so its RH reads "every nontrivial
+   eigenvalue of Σ is real with |α| ≤ 2√(D−1)"; adjoint pairing gives
+   HS-self-adjointness of Σ, i.e. reality for free (the Hilbert–Pólya half);
+   both iff unitary, where the criterion is Hastings' bound alone;
+   (iv) Bochner version for Lindblad-type generators, Dyson-expansion ring
+   norms with the free propagators between jumps; (v) a Hilbert–Pólya inner
+   product exists iff semisimple on the circle; Weil positivity is blind to
+   Jordan blocks. Prior art found: Huang 2019 (Ramanujan ⇔ h_k ≥ 0 termwise,
+   the boundedness form), Suzuki 2022 (kernel form), Weil/Li (Connes–Consani,
+   Lagarias). Not found: the arbitrary-operator statement, the separation
+   of bound from duality, the Kraus dichotomy. SPT side quest recorded as a
+   dead route (obs:spt-protection-is-sign-data); PSL(2,Z)-generator channels
+   parked (expanders, not Ramanujan for p ≥ 11).
+
 ### Discussion 2026-09-12: circle flows
 
 Direct sum over $p$ of rotations on circles of circumference $\log p$ has
@@ -172,6 +265,8 @@ SP-WEYL Hilbert space and is the concrete link between the two repos.
 
 ## Next useful steps, in order
 
+0. **The Bost–Connes reframe, items 0a–0f above. Central priority.**
+
 1. **Weil–LPS channels, part 2.** Built and verified (item 5 above). Remaining:
    identify the joint spectra (13;17,29), (19;5,17), (29;5,13) with Hecke
    eigenvalues of weight-2 forms for the quaternion algebra ramified at {2,∞}
@@ -194,11 +289,21 @@ SP-WEYL Hilbert space and is the concrete link between the two repos.
    (gap of −2Δ on Γ\H = 2λ₁, Ramanujan ⇔ Selberg ¼), already the first-band
    criterion of shard 09c; a quantum (operator-level) lattice version is not
    yet formulated.
-1a. **General Kraus zeta, part 2.** Theorem 1 replaces (D−1)u² by 𝒟(u) and
-   uDΦ by 𝒜(u). Open: what "Ramanujan" means without the relation μμ' = D−1;
-   whether canonical form Σ A_k†A_k = 1 constrains the poles; whether the
-   Bartholdi deformation (Matsuura–Ohta arXiv:2208.14032) helps. A
-   counterexample hunt (random MPS, pole radii of ζ) is cheap.
+1a. **General Kraus zeta, part 2 (sharpened 2026-09-12 by item 10).** For
+   adjoint-paired non-unitary families "Ramanujan" can only be the one-sided
+   bound |μ| ≤ r (Weil positivity), there being no duality
+   (prop:kraus-no-duality-example). The new class to study is the
+   INVERSE-paired non-unitary families B_ī = B_i^{-1}: positive rings,
+   functional equation, RH ⇔ Σ has real spectrum in [−2√(D−1), 2√(D−1)],
+   a PT-symmetric-type reality statement. Cheap experiments: B_i = G U_i G^{-1}
+   (Σ similar to Hermitian, reality free); random invertible B_i (does
+   reality fail generically? does the bound?); whether canonical form or the
+   Bartholdi deformation (Matsuura–Ohta arXiv:2208.14032) singles out a
+   duality for adjoint-paired families.
+1c. **Restate prop:ringnorm-trace.** The Selberg review and the codex prover
+   (T6) agree the prime weight of the centred trace is −2Λ(n)n^{-1/2} at
+   ±2 log n (obs:ringnorm-sign-correction, shard 04); the review's X3 checks
+   it; rewrite the proposition and §5 of notes/riemann-channel-note.md.
 2. **The Stinespring question.** Write the compressed semigroup Z(t) on K_S
    explicitly (functional model, Cauchy kernels) and test whether a generator
    of Holevo jump form with jumps at k log p reproduces it on K_S. A negative

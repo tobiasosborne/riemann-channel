@@ -40,3 +40,7 @@ def:flat-trace	Guillemin flat trace	report/sections/02b_definitions_arithmetic.t
 def:flat-tower	flat dynamical determinant (Selberg tower) and first band	report/sections/02b_definitions_arithmetic.tex	stipulated	-	notes/selberg/astra-proofs.md T4.1, T4.2
 def:scattering-determinant	scattering determinant of the modular group, scattering multiplier	report/sections/02b_definitions_arithmetic.tex	quoted	prov:fjs16-scattering-det	notes/selberg/astra-proofs.md H-PHI
 def:prime-measures	prime comb measures	report/sections/02b_definitions_arithmetic.tex	stipulated	-	notes/selberg/astra-proofs.md T5.2
+def:rescaled-trace-sequence	trivial set, critical radius, rescaled trace sequence, positive definite sequence	report/sections/02b_definitions_arithmetic.tex	stipulated	-	weil-positivity:1
+def:weil-form	Weil form, reflection in the critical circle, mode-pairing form	report/sections/02b_definitions_arithmetic.tex	stipulated	-	weil-positivity:1
+def:kraus-pairings	adjoint pairing and inverse pairing of a Kraus family	report/sections/02b_definitions_arithmetic.tex	stipulated	-	weil-positivity:2
+def:continuous-rescaled-trace	rescaled continuous trace and positive definite function	report/sections/02b_definitions_arithmetic.tex	stipulated	-	weil-positivity:3

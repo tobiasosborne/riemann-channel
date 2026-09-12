@@ -126,6 +126,11 @@ Notes, in reading order:
 - `notes/quantum-ihara-general.md`: the Ihara–Bass formula for the
   non-backtracking superoperator of an arbitrary Kraus family, with a
   structured proof and reviewer verdicts.
+- `notes/weil-positivity.md`: Weil positivity for an arbitrary transfer
+  operator (one-sided bound without a duality, mode pairing with one, the
+  Kraus dichotomy: inverse pairing buys the functional equation, adjoint
+  pairing buys reality, unitarity buys both); proofs by the codex prover in
+  `notes/weil-positivity/`, sources in `notes/extract/`.
 
 ## Reproduce
 
@@ -137,6 +142,7 @@ Notes, in reading order:
     python3 scripts/weil_lps_hashimoto.py  # direct edge superoperator for (13, 17)
     python3 scripts/artin_schreier_mps.py  # Artin–Schreier transfer matrices
     python3 scripts/qihara_general.py      # Ihara–Bass for arbitrary Kraus operators (float + exact)
+    python3 scripts/weil_positivity.py     # Weil positivity: one-sided bound, duality, Kraus dichotomy, Bochner
     refs/fetch_sources.sh                  # re-fetch the quoted arXiv TeX sources
 
 Notes render with `fmd-report notes/<name>.md -o notes/<name>.html`,

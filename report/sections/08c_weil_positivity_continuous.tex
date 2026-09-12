@@ -1,0 +1,282 @@
+% SHARD-ID: RC-08C-WEIL-POSITIVITY-CONTINUOUS
+% SHARD-TITLE: Weil Positivity, Continued: Continuous Time, Hilbert--P\'olya, the Zeta Entry, Prior Art
+% SHARD-SUMMARY: Continuous (cMPS/Lindblad) version of Weil positivity via Bochner with the Dyson-expansion ring norms and the exact line-duality pairing identity.
+% SHARD-SUMMARY: The Hilbert-Polya inner product exists iff the retained part is semisimple on the circle or line; Weil positivity is blind to Jordan blocks; the zeta instance as a conditional dictionary; prior art (Weil, Li, Huang, Suzuki, Hastings, Herglotz, Bochner, PT symmetry); the orchestrator's two observations and the numerics.
+% SHARD-KEYWORDS: Bochner, Lorentzian, Dyson expansion, cMPS, Lindblad, Hilbert-Polya, Jordan block, Weil criterion, Li criterion, Huang criterion, screw function, PT symmetry, Kraus dichotomy
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/weil_positivity.py
+
+\section{Weil Positivity, Continued: Continuous Time, Hilbert--P\'olya, the Zeta Entry, Prior Art}
+\label{sec:weil-positivity-continuous}
+
+This section continues \cref{sec:weil-positivity} with the same objects
+(\cref{def:continuous-rescaled-trace}); the status paragraph there applies.
+
+\subsection{Continuous time: cMPS and Lindblad generators}
+
+\begin{theorem}[Continuous Weil positivity is a half-plane bound]
+\label{thm:weil-positivity-continuous}
+\claimstatus{thm:weil-positivity-continuous}{proved}
+For a linear operator $\Lgen$ on a finite-dimensional space, a trivial set $\trivS$ and
+$\alev\in\mathbb R$, the rescaled continuous trace $\Fresc$ of
+\cref{def:continuous-rescaled-trace} is continuous on $\mathbb R$ and positive definite iff
+$\re\lmode\le\alev$ for every retained $\lmode$. A retained mode with $\re(\lmode-\alev) = -b<0$
+and $\im\lmode = \omega$ contributes the Lorentzian $2b/(b^2+(x-\omega)^2)$ to the
+spectral measure, a mode on the line a point mass, and positive definiteness forces
+$|\Fresc|\le\Fresc(0)$, which a mode to the right of the line violates by continuous
+mean-square growth.
+\end{theorem}
+
+\begin{theorem}[Line duality and the exact continuous pairing]
+\label{thm:weil-line-duality}
+\claimstatus{thm:weil-line-duality}{proved}
+If the retained multiset is invariant under $\Rrefl{\alev}(\lmode) = 2\alev-\bar\lmode$, then
+for $g = \sum_jc_j\delta_{\tsg_j}$ and $\hat g_{\Lgen}(\lmode) = \sum_jc_je^{\tsg_j(\lmode-\alev)}$,
+\[
+  \sum_{j,k}c_j\bar c_k\,\Fresc(\tsg_j-\tsg_k)
+  \;=\; \sum_{\lmode\in\retA}\hat g_{\Lgen}(\lmode)\,\overline{\hat g_{\Lgen}(2\alev-\bar\lmode)} ,
+\]
+and $\Fresc$ is positive definite iff $\re\lmode = \alev$ for every retained $\lmode$.
+\end{theorem}
+
+This is the continuous inflow identity: the autocorrelation of the rescaled trace equals
+the pairing of each mode with its reflection in the line, Weil's form in the form
+$\sum_\lmode\hat g(\lmode)\overline{\hat g(1-\bar\lmode)}$.
+
+\begin{theorem}[Dyson expansion as continuous ring norms]
+\label{thm:cmps-ring-norms}
+\claimstatus{thm:cmps-ring-norms}{proved}
+For $\Lgen(x) = Kx+xK^\dagger+\sum_jR_jxR_j^\dagger$ on $\Mn$, with no trace
+preservation assumed,
+\[
+  \Tr\nolimits_{\Mn}e^{\tsg\Lgen} \;=\; \sum_{k\ge0}\sum_{j_1,\dots,j_k}
+  \int_{0<\tsg_1<\dots<\tsg_k<\tsg}
+  \Big|\Tr\big(e^{(\tsg-\tsg_k)K}R_{j_k}e^{(\tsg_k-\tsg_{k-1})K}\cdots R_{j_1}e^{\tsg_1K}\big)\Big|^2
+  \,d\tsg_1\cdots d\tsg_k \;\ge\;0,
+\]
+absolutely convergent, the $k = 0$ term being $|\Tr e^{\tsg K}|^2$. Moreover $\Lgen$
+commutes with $x\mapsto x^\dagger$, so $\operatorname{spec}(\Lgen)$ is conjugation-closed.
+\end{theorem}
+
+The free propagators between jumps were missing from the draft; without them the product
+is wrong for noncommuting $K$ and $R_j$. This is the continuous side A: a cMPS with
+matrices $K$, $R_j$ has ring norms given by this sum, and the transfer generator $\Lgen$
+is its side B. For a Hamiltonian generator $\Lgen = -i[H,\cdot]$ with $H = H^\dagger$ every
+eigenvalue is purely imaginary and the line statement with $\alev = 0$ is trivial; that is
+the Hilbert--P\'olya situation, and the content of RH in this language is the existence of
+a presentation in which the transfer generator is a scalar plus $i$ times a Hermitian
+operator, which the next two propositions make precise.
+
+\subsection{The Hilbert--P\'olya inner product, and what positivity does not see}
+
+\begin{proposition}[Unitarisability on the retained space]
+\label{prop:hp-inner-product-discrete}
+\claimstatus{prop:hp-inner-product-discrete}{proved}
+Let $\trivS$ be a union of full eigenvalue classes, $V'$ the sum of the generalised
+eigenspaces of the retained classes, $X' = X|_{V'}$. Then $X'$ is diagonalisable with all
+eigenvalues of modulus $\critr$ iff there is an inner product on $V'$ in which $X'/\critr$
+is unitary.
+\end{proposition}
+
+\begin{proposition}[Skew-adjoint realisation]
+\label{prop:hp-inner-product-continuous}
+\claimstatus{prop:hp-inner-product-continuous}{proved}
+With the same convention, $\Lgen'-\alev$ is skew-adjoint in some inner product on $V'$ iff
+$\Lgen'$ is diagonalisable with all eigenvalues on $\re\lmode = \alev$; equivalently $\Lgen'
+= \alev+iH$ with $H$ Hermitian in that inner product.
+\end{proposition}
+
+\begin{proposition}[Weil forms do not see Jordan blocks]
+\label{prop:weil-blind-jordan}
+\claimstatus{prop:weil-blind-jordan}{proved}
+For the Jordan block $X = \critr\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)$
+with $\trivS = \varnothing$, $\nuseq{\wl} = 2$ for all $\wl$ and the sequence is positive
+definite, although $X/\critr$ is not unitarisable; likewise $\Lgen = \alev+
+\left(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\right)$. Weil positivity holds with
+multiplicities and is blind to Jordan structure; a Hilbert--P\'olya inner product needs
+semisimplicity in addition.
+\end{proposition}
+
+This separates two statements that are usually run together. ``All modes on the critical
+circle'' is a statement about the characteristic polynomial and is equivalent to Weil
+positivity. ``There is a Hilbert space in which the transfer operator is $\critr$ times a
+unitary'' is stronger by exactly the absence of Jordan blocks. For the Riemann channel the
+distinction is the multiplicity of the zeros: a multiple zero of $\Ssym$ gives a Jordan
+block of $\Zt$ on $\KS$.
+
+\subsection{The zeta instance and the prior art}
+
+\begin{observation}[The zeta dictionary entry]
+\label{obs:weil-zeta-dictionary}
+\claimstatus{obs:weil-zeta-dictionary}{sketched}
+For the compressed semigroup $\Zt$ with modes $\eta = -\bar\zero/2$, the critical real
+part is $\alev = -\frac14$, the reflection $\zero\mapsto1-\bar\zero$ becomes
+$\eta\mapsto-\frac12-\bar\eta$, the transform is $\hat g_\zeta(s) = \int g(\tsg)
+e^{(s-1/2)\tsg/2}d\tsg$, and Weil's form $\sum_\zero\hat g(\zero)\overline{\hat g(1-\bar\zero)}$
+is the autocorrelation of the centred trace distribution, whose full-line extension is
+$\mathrm{T}_Z(-u) = e^{u/2}\overline{\mathrm{T}_Z(u)}$. The trivial modes at $0$ and $-\frac12$ and the
+Gamma-factor terms are not eigenmodes of $\Zt$; they stay on the geometric side of the
+explicit formula. The passage from finitely many modes to $\zeta$ needs the completed-zeta
+data, a distributional trace realisation, the full explicit formula and the infinite Weil
+converse, with Bochner--Schwartz in place of Bochner.
+\end{observation}
+
+The prover's T6 also derives that in the explicit-formula convention of
+\cref{sec:riemann-channel} the prime part of the centred trace carries weight
+$-2\vM(n)n^{-1/2}$ at $\pm2\log n$; this is \cref{obs:ringnorm-sign-correction}.
+
+\begin{citedfact}[Weil's criterion]
+\label{cit:weil-criterion}
+\claimstatus{cit:weil-criterion}{cited}
+RH holds iff the Weil scalar product $\sum_\zero F(\zero)\overline{G(1-\bar\zero)}$ is
+positive on the admissible test class \cite{connesconsani2020weil,lagarias2005li}.
+
+\par\noindent Quoted (\texttt{prov:cc20-weilcrit}, \texttt{prov:lagarias05-weil-scalar-product}):
+{\small\texttt{\detokenize{In fact, following \cite{yoshida}, it is enough to prove the negativity of the right-hand side of \eqref{explicit form} for functions $g$ with compact support in the (locally compact) multiplicative group $\R_+^*=(0,\infty)$. Furthermore, given any finite set of complex numbers $F\supset \{0,1\}$, $F\cap Z=\emptyset$, using the notation $g^\sharp(x):=x^{-1}g(x^{-1}), \ \bar g(x)=\overline{g(x)}$, one has (Appendix \ref{apppositivity}, Proposition~\ref{mainprop}) \begin{equation}\label{weilnegav} RH \iff \sum_v {\mathcal W}_v(g*\bar g^\sharp)\leq 0, \quad \forall g\in C_c^\infty(\R_+^*)\mid \tilde g(z)=0,\ \forall z\in F. \end{equation}}}}
+
+{\small\texttt{\detokenize{Given $F(s), G(s) \in \sA$ we define the {\em Weil scalar product} associated to the automorphic representation $\pi$ by \beql{301} \langle F, G \rangle_{\sW(\pi)} := \sum_{ \rho \in Z(\pi) } F(\rho) \overline{G( 1 - \bar{\rho})}. \eeq The sum on the right counts zeros with}}}
+\end{citedfact}
+
+\begin{citedfact}[Li's criterion]
+\label{cit:li-criterion}
+\claimstatus{cit:li-criterion}{cited}
+RH iff $\lambda_n\ge0$ for all $n\ge1$; each condition $\lambda_n\ge0$ encodes Weil
+positivity for one test function \cite{voros2006li,lagarias2005li}.
+
+\par\noindent Quoted (\texttt{prov:voros06-li-criterion}, \texttt{prov:lagarias05-li-is-weil}):
+{\small\texttt{\detokenize{\emph{Li's criterion} for the Riemann Hypothesis (RH) states that the latter is true if and only if a specific real sequence $\{ \lambda_n \}_{n=1,2,\ldots}$ has \emph{all its terms positive} \cite{LI1,BL}.}}}
+
+{\small\texttt{\detokenize{\begin{theorem}~\label{th31} Let $\pi$ be an irreducible cuspidal unitary automorphic representation of $GL(N)$, with associated $\xi$-function $\xi(s, \pi)$ and with Weil scalar product $\langle \cdot, \cdot \rangle_{\sW(\pi)}$. For the Li test functions $G_n(s) = 1 - (1 - \frac{1}{s})^n$ there holds \beql{304} \langle G_n, G_m \rangle_{\sW(\pi)} = \lambda_n(\pi) + \lambda_{-m}(\pi) - \lambda_{n-m}(\pi). \eeq}}}
+\end{citedfact}
+
+\begin{citedfact}[Huang's criterion for regular graphs]
+\label{cit:huang-graph-criterion}
+\claimstatus{cit:huang-graph-criterion}{cited}
+A connected $(\qs+1)$-regular graph on $n$ vertices is Ramanujan iff $h_k\ge0$ for all
+$k\ge1$, where for odd $k$, $h_k = 2(n-1)+\qs^{k/2}+\qs^{-k/2}-\qs^{-k/2}N_k$ with $N_k$ the
+number of cyclically non-backtracking closed walks of length $k$ \cite{huang2019ihara}.
+
+\par\noindent Quoted (\texttt{prov:huang19-ramanujan-iff-positive}, \texttt{prov:huang19-hk-cycle-formula}):
+{\small\texttt{\detokenize{\begin{thm}\label{thm:Li} The following are equivalent: \begin{enumerate} \item $X$ is Ramanujan. \item $h_k\geq 0$ for all $k\geq 1$. \item $h_k\geq 0$ for infinitely many even $k\geq 2$. \end{enumerate} \end{thm}}}}
+
+{\small\texttt{\detokenize{2(n-1) + q^{\frac{k}{2}} +q^{-\frac{k}{2}} -q^{-\frac{k}{2}} N_k \qquad &\hbox{for all odd $k$},}}}
+\end{citedfact}
+
+\begin{citedfact}[Hastings' bound]
+\label{cit:hastings-bound}
+\claimstatus{cit:hastings-bound}{cited}
+For a quantum expander with $\Dk$ unitary Kraus operators the Ramanujan value of the
+second largest eigenvalue modulus is $\lambda_H = 2\sqrt{\Dk-1}/\Dk$ \cite{hastings2007random}.
+
+\par\noindent Quoted (\texttt{prov:hastings07-lambdaH}):
+{\small\texttt{\detokenize{Let $\lambda_2$ be the eigenvalue with the second largest absolute value of all eigenvalues other than $\lambda_1$. Let \be \lambda_{H}=\frac{2\sqrt{D-1}}{D}. \ee The main result of this paper is that, in the Hermitian case, for any $\epsilon>0$ the probability that $|\lambda_2|$ is within $\epsilon$ of $\lambda_{H}$ approaches unity as $N\rightarrow \infty$. Interestingly, this is the same as the recently proven tight bound\cite{fried} in the classical case, but the proof in the quantum case is much simpler.}}}
+\end{citedfact}
+
+\begin{citedfact}[Herglotz and Bochner]
+\label{cit:herglotz-bochner}
+\claimstatus{cit:herglotz-bochner}{cited}
+A sequence is positive definite iff its Toeplitz matrices are positive semidefinite iff it
+is the Fourier coefficient sequence of a positive measure on the circle
+\cite{alpay2014herglotz}; a continuous positive definite function on $\mathbb R$ is the
+Fourier transform of a finite positive measure \cite{norvidas2020bochner}.
+
+\par\noindent Quoted (\texttt{prov:acks14-herglotz}, \texttt{prov:norvidas20-bochner}):
+{\small\texttt{\detokenize{A result of Herglotz, also known as Bochner's theorem, asserts that: \begin{Tm} \label{Tm:Oct27yt1} The function $n \mapsto r(n)$ from $\mathbb Z$ into $\mathbb C^{s \times s}$ is positive definite if and only if there exists a unique positive $\mathbb C^{s \times s}$-valued measure $\mu$ on $[0, 2\pi ]$ such that \begin{equation} \label{eq:Oct27nv1} r(n) = \int_0^{2\pi} e^{i n t} d\mu(t), \quad n \in \mathbb Z. \end{equation} \end{Tm}}}}
+
+{\small\texttt{\detokenize{A function $f:\R\to\Co$ is said to be positive definite if \begin{equation}\label{1.1} \sum_{j, k=1}^n f(x_j-x_k)c_j{\overline{c}}_k\ge 0 \end{equation} holds for all finite sets of complex numbers $c_1,\dots, c_n$ and points $x_1,\dots,x_n\in\R$. A survey about positive definite functions and its generalizations can be found in \cite{9}. The Bochner theorem states that a continuous function $f$ on $\R$ is positive definite if and only if it is the Fourier transform of a finite nonnegative measure $\mu$ on $\R$, i.e. \[ f(x)= \hat{\mu}(x)=\int_{-\infty}^{\infty}e^{-ixt}\,d\mu(t), \]}}}
+\end{citedfact}
+
+\begin{citedfact}[Suzuki's kernel form]
+\label{cit:suzuki-kernel}
+\claimstatus{cit:suzuki-kernel}{cited}
+RH is equivalent to nonnegative definiteness of the kernel $G(t,u) =
+g(t-u)-g(t)-g(-u)+g(0)$ built from a screw function of $\zeta$, in the
+Herglotz--Nevanlinna framework, with Li's criterion as a case of Weil positivity
+\cite{suzuki2022screw}.
+
+\par\noindent Quoted (\texttt{prov:suzuki22-rh-iff-nnd}, \texttt{prov:suzuki22-weil-positivity}):
+{\small\texttt{\detokenize{\begin{theorem} \label{Thm_1_3} The RH is true if and only if the hermitian form $\langle \cdot,\cdot \rangle_{G_g,a}$ is non-negative definite on $\mathfrak{C}_0(a)$, that is, $\langle \phi,\phi \rangle_{G_g,a} \geq 0$ for all $\phi \in \mathfrak{C}_0(a)$ for every $0<a<\infty$. Moreover, assuming that the RH is true, $\langle \cdot,\cdot \rangle_{G_g,a}$ is positive definite on $L^2(-a,a)$, that is, $\langle \phi,\phi \rangle_{G_g,a}>0$ for all non-zero $\phi \in L^2(-a,a)$ for every $0<a<\infty$. \end{theorem}}}}
+
+{\small\texttt{\detokenize{showed that the RH is true if and only if the distribution $W$ is non-negative definite, that is,}}}
+\end{citedfact}
+
+\begin{citedfact}[PT symmetry and real spectrum]
+\label{cit:pt-real-spectrum}
+\claimstatus{cit:pt-real-spectrum}{cited}
+A PT-symmetric non-Hermitian Hamiltonian has real spectrum when the symmetry is unbroken,
+i.e.\ its eigenstates are also PT eigenstates \cite{bender2017hamiltonian}.
+
+\par\noindent Quoted (\texttt{prov:bbm17-pt-real}):
+{\small\texttt{\detokenize{(iii) Although $\hat H$ is not Hermitian, $\ri{\hat H}$ is $\cPT$ symmetric; that is, $\ri{\hat H}$ is invariant under parity-time reflection (in the sense to be defined), which means that the eigenvalues of $\ri{\hat H}$ are either real or else occur in complex-conjugate pairs. If $\ri{\hat H}$ has {\it maximally broken} $\cPT$ symmetry; that is, if all of its eigenvalues are {\it pure-imaginary complex-conjugate pairs}, then the eigenvalues of ${\hat H}$ are real and the Riemann hypothesis follows. (iv) While ${\hat H}$ is not Hermitian (symmetric)}}}
+\end{citedfact}
+
+Positivity criteria for RH are old (Weil; Li; the kernel form of Suzuki), and Huang's
+criterion is the graph case. What is not in the literature found is the statement for an
+arbitrary transfer operator, the separation of the one-sided bound from the duality, and
+the Kraus dichotomy. Huang's criterion is termwise rather than Toeplitz; the next
+observation reconciles the two.
+
+\subsection{Two observations by the orchestrator}
+
+\begin{observation}[Huang's criterion is the boundedness form]
+\label{obs:huang-boundedness}
+\claimstatus{obs:huang-boundedness}{proved}
+In finite dimensions, for a conjugation-closed retained multiset, the following are
+equivalent: positive definiteness of $\nuseq{\wl}$; boundedness; $|\nuseq{\wl}|\le\nuseq{0}$
+for all $\wl$; and the termwise criterion $\re\nuseq{\wl}\le\nuseq{0}$ for all $\wl\ge1$.
+For a connected non-bipartite $(\qs+1)$-regular graph with $\critr = \sqrt{\qs}$ and
+$\trivS = \{+1^{[m-n]},-1^{[m-n]},\qs,1\}$ ($m$ edges, $n$ vertices), Huang's sequence is
+exactly $h_k = \nuseq{0}-\nuseq{k}$ with $\nuseq{0} = 2(n-1)$, so Huang's criterion is the
+boundedness form of Weil positivity. The Toeplitz form is what survives when the trace is
+a distribution and boundedness has no meaning.
+\end{observation}
+
+\begin{observation}[The Kraus dichotomy]
+\label{obs:kraus-dichotomy}
+\claimstatus{obs:kraus-dichotomy}{proved}
+For any $\Ad$-type family the rings are positive and $\operatorname{spec}(\Sig)$ and
+$\operatorname{spec}(\Hash)$ are conjugation-closed. (b) Inverse pairing buys the functional
+equation: with $\trivS = \{+1^{[k]},-1^{[k]}\}$ and $\critr = \sqrt{\Dk-1}$, ``all retained
+modes on the circle'' is equivalent to: every eigenvalue $\sigev$ of $\Sig$ is real with
+$|\sigev|\le2\sqrt{\Dk-1}$. (c) Adjoint pairing buys Hilbert--Schmidt self-adjointness of
+$\Sig$, so $\operatorname{spec}(\Sig)$ is real for free; $\operatorname{spec}(\Hash)$ need
+not be real, and in general there is no functional equation
+(\cref{prop:kraus-no-duality-example}). (d) A family with both pairings is unitary; there
+the eigenvalue $\sigev = \Dk$ of $\Sig$ (from $\chan(1) = 1$) always violates the band, so
+(b) is applied with the enlarged trivial set of \cref{thm:kraus-weil-criterion}(ii),
+$\trivS = \{+1^{[k]},-1^{[k]}\}\uplus\{\qs^{[d_+]},1^{[d_+]}\}\uplus\{(-\qs)^{[d_-]},(-1)^{[d_-]}\}$,
+and reduces to Hastings' bound alone. Reality of $\operatorname{spec}(\Sig)$ is the
+Hilbert--P\'olya half; the functional equation is the other half; a Kraus family gets the
+two from two different pairings, and gets both only by being unitary.
+\end{observation}
+
+The dichotomy reopens \cref{conj:kraus-ramanujan} in a sharper form: inverse-paired
+non-unitary families (for instance $B_i = GU_iG^{-1}$ with a common similarity $G$, which
+keeps $\Sig$ similar to a self-adjoint operator) have a genuine two-sided Ramanujan
+property with a positive side A, and their non-Hermitian $\Sig$ with real spectrum is the
+transfer-matrix version of an unbroken PT symmetry (\cref{cit:pt-real-spectrum}).
+
+\begin{numerical}[Numerical checks]
+\label{num:weil-positivity}
+\claimstatus{num:weil-positivity}{numerical}
+\texttt{scripts/weil\_positivity.py} (\texttt{outputs/weil\_positivity.txt}): random
+adjoint-paired families ($n = 2,3$; $\Dk = 4,6$; 300 cases) satisfy ``one-sided bound
+$\Rightarrow$ Toeplitz positivity at $L = 40$'' without exception, the threshold radius
+approaches $\max|\edgeev|$ off $\trivS$ from below like $L^{-3/2}$ (relative gap
+$3\cdot10^{-2}$, $5\cdot10^{-3}$, $4.7\cdot10^{-4}$ at $L = 40, 160, 640$), the retained
+spectra are conjugation-closed to $10^{-14}$ and not reciprocal-invariant; Haar-unitary
+families reproduce \cref{cor:qihara-unitary} to $10^{-15}$, the $\reflJ$-invariance, and
+``Weil positivity iff Hastings' bound'' on four passing and two violating families, with
+$\Wform = \Mform$ to $10^{-14}$; an inverse-paired non-unitary family has reciprocal-invariant,
+conjugation-closed spectrum and nonnegative ring traces to $10^{-15}$; random
+Lindblad-type generators have $\Tr e^{\tsg\Lgen}\ge0$ matching the Dyson expansion to
+$10^{-7}$ and Gram positivity iff $\max\re\lmode\le\alev$; the Jordan block passes with
+$\nuseq{\wl}$ identical to its diagonal companion. Three of thirty checks fail: they are the
+three drafted statements the prover corrected.
+\end{numerical}
+
+Two remarks on the numerics. Positivity at a fixed finite $L$ is weaker than the theorem:
+a mode slightly outside the circle is masked by the positive contribution of the interior
+modes until $L$ is large. And the $\Dk = 4$ Pauli family $\{X,Z,X^\dagger,Z^\dagger\}$ is an
+exact Ramanujan example with $\chan$-spectrum $\{1,0,0,-1\}$, exercising the $-1$ branch
+of the trivial set with retained modes $\pm i\sqrt3$.

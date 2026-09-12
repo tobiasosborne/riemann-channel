@@ -28,7 +28,7 @@ hooks:
 
 # Re-run every evidence script and refresh outputs/ (slow: weil_lps p=29 is minutes).
 scripts-run:
-	for s in scripts/qihara.py scripts/bcmpo.py scripts/scat.py scripts/ringnorm.py scripts/artin_schreier_mps.py scripts/qihara_general.py; do \
+	for s in scripts/qihara.py scripts/bcmpo.py scripts/scat.py scripts/ringnorm.py scripts/artin_schreier_mps.py scripts/qihara_general.py scripts/weil_positivity.py; do \
 	  n=$$(basename $$s .py); timeout 1800 $(PY) $$s > outputs/$$n.txt 2>&1 || exit 1; done
 
 refs:

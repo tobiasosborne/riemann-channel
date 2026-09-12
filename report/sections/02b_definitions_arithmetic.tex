@@ -229,3 +229,51 @@ locally finite measures; $\archA$ is the archimedean-plus-boundary
 distribution of \cref{prop:cusp-prime-comb}, equal to
 $\tfrac12 - 1/(4\sinh(|t|/2))$ away from $t = 0$.
 \end{definition}
+
+\begin{definition}[Trivial set, critical radius, rescaled trace sequence]
+\label{def:rescaled-trace-sequence}
+For a linear operator $X$ on a finite-dimensional complex space, $\operatorname{spec}(X)$ is
+its spectrum as a multiset with algebraic multiplicities, so $\Tr X^{\wl} =
+\sum_{\edgeev\in\operatorname{spec}(X)}\edgeev^{\wl}$. A \emph{trivial set} $\trivS$ is a
+sub-multiset of $\operatorname{spec}(X)$; the \emph{retained multiset} is $\retA =
+\operatorname{spec}(X)\setminus\trivS$ (multiplicities subtracted). For a \emph{critical
+radius} $\critr>0$ the \emph{rescaled trace sequence} is
+$\nuseq{\wl} = \critr^{-\wl}\big(\Tr X^{\wl} - \sum_{\edgeev\in\trivS}\edgeev^{\wl}\big)
+= \sum_{\edgeev\in\retA}(\edgeev/\critr)^{\wl}$ for $\wl\ge0$ (with $0^0 = 1$), extended
+by $\nuseq{-\wl} = \overline{\nuseq{\wl}}$. A sequence with this symmetry is
+\emph{positive definite} if $\sum_{\wl,k=0}^{L}c_{\wl}\bar c_k\,\nuseq{\wl-k}\ge0$ for
+every $L$ and every $c\in\mathbb C^{L+1}$.
+\end{definition}
+
+\begin{definition}[Weil form, reflection, mode-pairing form]
+\label{def:weil-form}
+With the data of \cref{def:rescaled-trace-sequence}, the \emph{Weil form} of $X$ is the
+Toeplitz form $\Wform(c) = \sum_{\wl,k}c_{\wl}\bar c_k\,\nuseq{\wl-k}$ on finitely supported
+coefficient vectors $c$, and $\fcpoly{c}(z) = \sum_{\wl}c_{\wl}z^{\wl}$. The
+\emph{reflection in the critical circle} is $\reflJ(\edgeev) = \critr^2/\bar\edgeev$ on
+$\mathbb C^\times$; its fixed points are the circle $|\edgeev| = \critr$. When $0\notin\retA$
+the \emph{mode-pairing form} is $\Mform(c) = \sum_{\edgeev\in\retA}
+\fcpoly{c}(\edgeev/\critr)\,\overline{\fcpoly{c}(\reflJ(\edgeev)/\critr)}$: each mode paired
+with its reflected partner.
+\end{definition}
+
+\begin{definition}[Adjoint pairing and inverse pairing]
+\label{def:kraus-pairings}
+A family $\Eop{i} = \Ad(B_i)$, $i\in[\Dk]$, with reversal $\rev$ is \emph{adjoint-paired}
+if $B_{\bari{i}} = B_i^\dagger$ and \emph{inverse-paired} if every $B_i$ is invertible and
+$B_{\bari{i}} = B_i^{-1}$ (so $\Eop{\bari{i}} = \Eop{i}^{-1}$, the hypothesis of
+\cref{cor:qihara-unitary}). The Kraus families of \cref{def:quantum-hashimoto} are the
+adjoint-paired ones.
+\end{definition}
+
+\begin{definition}[Rescaled continuous trace]
+\label{def:continuous-rescaled-trace}
+For a linear operator $\Lgen$ on a finite-dimensional complex space, a trivial set
+$\trivS\subseteq\operatorname{spec}(\Lgen)$ and a real number $\alev$, the \emph{rescaled
+continuous trace} is $\Fresc(\tsg) = e^{-\alev\tsg}\big(\Tr e^{\tsg\Lgen} -
+\sum_{\lmode\in\trivS}e^{\tsg\lmode}\big) = \sum_{\lmode\in\retA}e^{\tsg(\lmode-\alev)}$ for
+$\tsg\ge0$, extended by $\Fresc(-\tsg) = \overline{\Fresc(\tsg)}$. A function with this
+symmetry is \emph{positive definite} if $\sum_{j,k}c_j\bar c_k\,\Fresc(\tsg_j-\tsg_k)\ge0$
+for all finite families of real times and complex coefficients. The \emph{reflection in
+the line} $\re\lmode = \alev$ is $\Rrefl{\alev}(\lmode) = 2\alev-\bar\lmode$.
+\end{definition}

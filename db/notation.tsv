@@ -122,3 +122,17 @@ cuspC	C_{\mathrm{cusp}}	inverse Fourier transform of the scattering multiplier	m
 primeP	P_{+}	positive-time prime measure sum_n Lambda(n)/n delta(t - 2 log n)	modular	RC-09B	-
 primech	P_{\mathrm{ch}}	prime measure sum_n Lambda(n) n^{-1/2} delta(t - 2 log n) of the Riemann-channel note	modular	RC-09B	-
 archA	A_{\mathrm{arch}}	archimedean-plus-boundary distribution 1/2 - 1/(4 sinh(|t|/2)) away from zero	modular	RC-09B	-
+trivS	S_{\mathrm{triv}}	trivial sub-multiset of the spectrum, removed before rescaling	Weil positivity	RC-08B	the prover's S; renamed since S is the scattering symbol
+critr	r	critical radius; sqrt(D-1) in the unitary Kraus case	Weil positivity	RC-08B	-
+retA	\mathcal A_{\mathrm{ret}}	retained multiset spec(X) minus S_triv (algebraic multiplicities)	Weil positivity	RC-08B	-
+nuseq	\mathsf n_{#1}	rescaled trace sequence n_l = r^{-l}(Tr X^l - sum_{S_triv} mu^l), n_{-l} = conj(n_l)	Weil positivity	RC-08B	the prover's nu_l; renamed since nu_sigma is the Levy jump measure
+Wform	\mathrm{W}	Weil (Toeplitz) form sum_{l,m} c_l conj(c_m) nu_{l-m}	Weil positivity	RC-08B	upright; sans-serif W is the compact field, calligraphic W the edge space
+Mform	\mathrm{M}	mode-pairing form sum_mu f_c(mu/r) conj(f_c(J(mu)/r))	Weil positivity	RC-08B	upright; sans-serif M is the chirp
+reflJ	\mathrm{J}	reflection in the critical circle, J(mu) = r^2/conj(mu); fixed points |mu| = r	Weil positivity	RC-08B	upright; italic J is the Artin-Schreier range, sans-serif J the backtracking operator
+Lgen	\mathcal L	Lindblad-type generator K x + x K^dagger + sum_j R_j x R_j^dagger on M_n	Weil positivity	RC-08B	-
+Fresc	\mathrm{F}	rescaled continuous trace F(t) = e^{-at}(Tr e^{tL} - trivial part), F(-t) = conj(F(t))	Weil positivity	RC-08B	upright; italic F is the ring-norm window sum
+alev	a	critical real part, the line Re rho = a; a = -1/4 for the Riemann channel	Weil positivity	RC-08B	-
+fcpoly	f_{#1}	polynomial f_c(z) = sum_l c_l z^l of a finitely supported coefficient vector c	Weil positivity	RC-08B	-
+Rrefl	\mathrm{R}_{#1}	reflection in the line Re rho = a, R_a(rho) = 2a - conj(rho)	Weil positivity	RC-08B	-
+lmode	\varpi	generic eigenvalue (mode) of a continuous transfer generator L	Weil positivity	RC-08C	the prover's rho; renamed since rho is a zeta zero
+sigev	\varkappa	eigenvalue of the unnormalised transfer matrix Sigma (the prover's alpha); pairs with the two roots of mu^2 - alpha mu + q	Weil positivity	RC-08B	renamed since alpha is a quaternion
