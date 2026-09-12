@@ -60,27 +60,28 @@ of size $\qs^{\asrange}$, with physical index $\Fq$ and bond dimension
 $\qs^{\asrange}$. The spins $s_i$ are the $\asrange$ most recent site values;
 the map reads in the newest value $x$ and forgets the oldest spin $s_1$.
 
-\begin{proposition}[Transfer matrix for the quadratic family]
+\begin{proposition}[Transfer matrix for the quadratic family: the two forms]
 \label{prop:as-transfer-matrix}
-\claimstatus{prop:as-transfer-matrix}{sketched}
-For $g(x) = \sum_{j=0}^{\asrange}a_jx^{1+\qs^{j}}$ the exponential sum over
-$\Fqn{n}$ satisfies $\expsum{n}(g) = -\sum_i\alphaw{i}^{\,n}$, where
-$\alphaw{i} = -\lambda_i(\Tmat)$ are minus the eigenvalues of the
-$\qs^{\asrange}\times\qs^{\asrange}$ transfer matrix
-\eqref{eq:as-transfer-entries} of the range-$\asrange$ quadratic spin model on
-a ring of $n$ sites.
+\claimstatus{prop:as-transfer-matrix}{proved-conditional}
+For $g(x) = \sum_{j=0}^{\asrange}a_jx^{1+\qs^{j}}$ and every $n\ge1$, including
+$n\le\asrange$: $\Tr\Tmat_g^{\,n} = \sum_{x\in\Fq^n}\addch(\Qring{g}(x))$ with $\Qring{g}$
+the ring form of matrix $\Ppoly{g}(\cshift)$, and $\expsum{n}(g) =
+\sum_{x}\addch(\Qtrace{g}(x))$ with $\Qtrace{g}$ the trace form of matrix
+$C\,\Ppoly{g}(\cshift)$ in normal-basis coordinates (\cref{def:as-ring-forms}). The two
+forms have the same radical $\radn{n}$, so $|\expsum{n}(g)| = |\Tr\Tmat_g^n|$ and
+$\log_{\qs}(|\expsum{n}|^2/\qs^n) = \dfix{n}$ is a nonnegative integer.
 \end{proposition}
 
-Two remarks on the statement. First, the sign convention is the standing one
-of \cref{sec:conventions}: the note observed $\expsum{n} = \Tr\Tmat^{n}$ for
-odd $n$ and $\expsum{n} = -\Tr\Tmat^{n}$ for even $n$, and that apparent
-``sign flip'' is exactly the normalisation $\alphaw{i} = -\lambda_i(\Tmat)$,
-after which $\expsum{n} = -\sum_i\alphaw{i}^{\,n}$ holds uniformly in $n$ and
-$\Lcurve(g,\uz) = \prod_i(1-\alphaw{i}\uz)$ takes the standard shape of the
-$L$-function of an exponential sum. The transfer matrix is minus the Frobenius
-matrix. Second, the self-dual normal basis was needed only to \emph{see} the
-locality \eqref{eq:as-local-energy}, not for the identity itself, which is why
-the check below runs over even $n$ as well.
+Two remarks on the statement, both corrected on 2026-09-12 night. First, the founding
+session's reading of the even-$n$ sign flip as the normalisation $\alphaw{i} =
+-\lambda_i(\Tmat)$, ``uniformly in $n$'', is false in general: it holds exactly when
+$\Ppoly{g}(-1)\ne0$, and the exact law $\expsum{n} = (-1)^{n-1}\dsign{n}\Tr\Tmat_g^n$ with
+the radical sign $\dsign{n}$ is \cref{thm:as-sign-law} of \cref{sec:artin-schreier-super},
+where the corrected Frobenius block is built. Second, a self-dual normal basis exists only
+for odd $n$; in a general normal basis the trace form is $C\,\Ppoly{g}(\cshift)$, not
+$\Ppoly{g}(\cshift)$, and the discrepancy between the two Gauss sums is precisely the
+discriminant of $C$ on the complement of the radical, which is Stickelberger's sign
+$(-1)^{n-1}$ corrected on the radical.
 
 \subsection{What was computed}
 
@@ -122,10 +123,12 @@ g - 1$, matching Weil's count.
 
 \begin{proposition}[Scaled unitarity of the transfer matrix]
 \label{prop:as-unitarity}
-\claimstatus{prop:as-unitarity}{sketched}
-If $a_{\asrange}\ne 0$ then $\Tmat\Tmat^{\dagger} = \qs\,I$. Hence
-$\Tmat/\sqrt{\qs}$ is unitary, every eigenvalue of $\Tmat$ has modulus
-$\sqrt{\qs}$, and the Weil bound $|\alphaw{i}| = \sqrt{\qs}$ holds for the
+\claimstatus{prop:as-unitarity}{proved}
+If $a_{\asrange}\ne 0$ then $\Tmat\Tmat^{\dagger} = \qs\,I$ on the
+$\qs^{\asrange}$-dimensional bond (the scalar quadratic Gauss sum when $\asrange = 0$).
+Hence $\Tmat/\sqrt{\qs}$ is unitary, every eigenvalue of $\Tmat$ is nonzero, semisimple
+and of modulus $\sqrt{\qs}$, and, through the corrected Frobenius block of
+\cref{thm:as-frobenius-block}, the Weil bound $|\alphaw{i}| = \sqrt{\qs}$ holds for the
 whole quadratic Artin--Schreier family.
 \end{proposition}
 
@@ -141,12 +144,9 @@ is the mechanism already seen for a finite permutation in
 transfer matrix is a scaled unitary. In the same terms, rationality of
 $\curvezeta(\uz)$ holds because $\Tmat$ is finite, and the note records that
 the functional equation is the involution $\Tmat\mapsto\qs\,\Tmat^{-\dagger}$,
-which scaled unitarity makes trivial. The status of
-\cref{prop:as-unitarity} is \texttt{sketched}: the argument has not been
-written out as a proof with the index bookkeeping of
-\eqref{eq:as-transfer-entries} made explicit, and that write-up, together with
-the even-$n$ sign convention, is one of the open items of
-\cref{sec:open}.
+which scaled unitarity makes trivial. The proof with the output-row index bookkeeping of
+\eqref{eq:as-transfer-entries} made explicit is the prover's T7.6
+(\cref{sec:artin-schreier-super}); the even-$n$ sign is settled there as well.
 
 \subsection{Where it stops, and why that is the right place}
 
@@ -203,7 +203,8 @@ fixed local tensor is known here for a non-quadratic Artin--Schreier curve, or
 for any curve of genus $\ge1$ that is not of this maximal type. Whether a
 \emph{different} basis of $\Fqn{n}$, uniform in $n$, makes cubic traces local
 was neither settled nor searched: no candidate was found. And the unitarity
-argument of \cref{prop:as-unitarity} remains a sketch.
+argument of \cref{prop:as-unitarity} is now proved, and the transfer unitary is
+identified as a Weil-representation operator in \cref{sec:artin-schreier-super}.
 
 The boundary itself is the result worth keeping, and it is the same boundary
 met for graphs and for the Riemann channel: the Ramanujan bound is either

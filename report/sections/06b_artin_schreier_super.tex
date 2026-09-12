@@ -1,0 +1,222 @@
+% SHARD-ID: RC-06B-ARTIN-SCHREIER-SUPER
+% SHARD-TITLE: Artin--Schreier II: the Sign Law, the Super-Transfer Matrix, and the Weil Representation
+% SHARD-SUMMARY: Corrects the earlier claim that the Frobenius eigenvalues are minus the transfer eigenvalues: the exact law is S_n = (-1)^{n-1} delta_n Tr E^n with delta_n the determinant of the Frobenius shift on the radical of the ring form, a periodic sign flipping exactly when 2h divides n; both drafted universal laws are refuted by exact counterexamples and the endpoint criteria are proved.
+% SHARD-SUMMARY: Builds the corrected Frobenius block by a roots-of-unity filter, proves the point count of the projective curve is the supertrace of the super-transfer matrix with even block the trivial-character sector and odd block the nontrivial-character blocks, and shows the transfer unitary is a Weil-representation operator of an explicit symplectic map, so the rank deficiency of the exponential sum is the fixed space of the symplectic map and the Weil bound is saturated iff that map has finite order dividing n.
+% SHARD-KEYWORDS: Artin-Schreier, sign law, radical, Stickelberger, permutation sign, Frobenius block, super-transfer, supertrace, Weil representation, Clifford, symplectic, character formula, Weil bound
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/artin_schreier_super.py
+
+\section{Artin--Schreier II: the Sign Law, the Super-Transfer Matrix, and the Weil Representation}
+\label{sec:artin-schreier-super}
+
+\Cref{sec:artin-schreier} recorded that $\expsum{n}(g) = \Tr\Tmat_g^n$ for odd $n$ and
+guessed that the even-$n$ sign flip was the normalisation $\alphaw{i} = -\lambda_i(\Tmat_g)$.
+That guess is false in general. The numerics lane found the failures, the orchestrator's
+replacement (a conjugated law) failed in two further cases, and the codex prover found
+and proved the exact law; the numerics lane then confirmed it in $624$ further checks.
+This shard is the corrected account, with the prototype now carrying, explicitly, every
+feature the Phantasm is supposed to have: a graded bond, a supertrace count, a fermionic
+sign that is a permutation sign, and a transfer unitary from a Weil representation.
+Throughout $\qs$ is an odd prime and the notation is that of \cref{def:as-ring-forms}.
+
+\subsection{The two quadratic forms and the exact sign law}
+
+\begin{lemma}[Gauss sums of quadratic forms]
+\label{lem:gauss-quadratic-form}
+\claimstatus{lem:gauss-quadratic-form}{proved}
+For a quadratic form $Q$ on $\Fq^n$ of rank $r$ with nondegenerate part $Q_{\mathrm{nd}}$,
+$\sum_x\addch(Q(x)) = \qs^{n-r}\eta(\det Q_{\mathrm{nd}})\,\mathfrak g^{\,r}$ with $\mathfrak g
+= \sum_c\addch(c^2)$, $\mathfrak g^2 = \eta(-1)\qs$ and $\overline{\mathfrak g} = \eta(-1)\mathfrak g$;
+every such sum is nonzero, has $|\cdot|^2 = \qs^{n+(n-r)}$, and its conjugate is
+$\eta(-1)^r$ times itself.
+\end{lemma}
+
+\begin{assumption}[Normal bases]
+\label{asm:normal-basis}
+\claimstatus{asm:normal-basis}{assumed}
+$\Fqn{n}$ has a normal basis over $\Fq$; for $n$ odd it can be chosen self-dual
+\cite{lidl1997finite,lempel1988selfdual}.
+\end{assumption}
+
+\begin{theorem}[The sign law]
+\label{thm:as-sign-law}
+\claimstatus{thm:as-sign-law}{proved-conditional}
+For every $n\ge1$, including $\qs\mid n$,
+\[
+  \expsum{n}(g) \;=\; (-1)^{n-1}\,\dsign{n}\,\Tr\Tmat_g^{\,n},
+  \qquad
+  \dsign{n} = \det\big(\cshift|_{\radn{n}}\big)\in\{\pm1\},
+\]
+equivalently $\expsum{n}(g) = (-1)^{n-1}\dsign{n}\eta(-1)^{n-\dfix{n}}\Tr\Tmat_{-g}^{\,n}$.
+\end{theorem}
+
+The proof builds a square root of the Gram matrix over $\overline{\Fq}$: the
+conjugate-embedding matrix $A_{ri} = \nbgen^{\qs^{r+i}}$ satisfies $A^t = A$, $A^2 = C$,
+$A^{[\qs]} = \cshift A$, so $\eta(\det(C|_R)) = \det(\cshift|_R)$ for every
+$\cshift$-invariant subspace $R$ on which the identities restrict. Applied to the whole
+space this is Stickelberger's theorem, $\eta(\operatorname{disc}) = (-1)^{n-1}$, the sign
+of the $n$-cycle by which Frobenius permutes the conjugates; applied to the radical it
+gives the correction $\dsign{n}$. Both Gauss sums have the same rank and the same power
+of $\mathfrak g$; only the discriminants of their nondegenerate parts differ, by
+$\det C/\det(C|_{\radn{n}})$.
+
+\begin{assumption}[Polynomiality of the character $L$-function]
+\label{asm:as-lpolynomial}
+\claimstatus{asm:as-lpolynomial}{assumed}
+For $\deg g = \qs^{\asrange}+1$ and every $a\in\Fq^\times$, $\Lcurve(ag,\uz) =
+\exp(\sum_n\expsum{n}(ag)\uz^n/n)$ is a polynomial of degree exactly $\qs^{\asrange}$ with
+constant term $1$. Root sizes are not assumed.
+\end{assumption}
+
+\begin{corollary}[The periodic sign and the endpoint criteria]
+\label{cor:as-periodic-sign}
+\claimstatus{cor:as-periodic-sign}{proved-conditional}
+With $f(z) = z^{\asrange}\Ppoly{g}(z)$, $v_-$ its order of vanishing at $-1$ (always even)
+and $\hper$ the period parameter: $\dsign{n} = 1$ for $n$ odd and
+$(-1)^{\min(v_-,\,\qs^{v_{\qs}(n)})}$ for $n$ even, so
+\[
+  \expsum{n}(g) = \big(1 - 2\cdot\mathbf 1_{2\hper\mid n}\big)\Tr\Tmat_g^{\,n}.
+\]
+The claim $\alphaw{i} = -\lambda_i(\Tmat_g)$ of \cref{sec:artin-schreier} holds for all $n$
+iff $\Ppoly{g}(-1)\ne0$; the conjugated law $\expsum{n} = -(-\eta(-1))^n\overline{\Tr\Tmat_g^n}$
+holds for all $n$ iff $\Ppoly{g}(-\eta(-1))\ne0$.
+\end{corollary}
+
+\begin{proposition}[Both drafted laws fail]
+\label{prop:as-sign-counterexamples}
+\claimstatus{prop:as-sign-counterexamples}{proved-conditional}
+For $\qs=3$, $g = 2x^2+x^4$, $n=1$: $\expsum{1} = \Tr\Tmat_g = 3$, while the conjugated law
+predicts $-3$ ($\Ppoly{g}(1)=0$). For $\qs=5$, $g = x^2+x^6$, $n=2$: $\expsum{2} =
+\Tr\Tmat_g^2 = 5\sqrt5$, while both laws predict $-5\sqrt5$ ($\Ppoly{g}(-1)=0$). The
+failures occur at $n$ prime to $\qs$.
+\end{proposition}
+
+\begin{center}\small
+\begin{tabular}{llrrrrll}
+\toprule
+$\qs$ & $a$ & $\Ppoly{g}(1)$ & $\Ppoly{g}(-1)$ & $v_-$ & $\hper$ & $\alphaw{}=-\lambda(\Tmat)$ & conjugated law \\
+\midrule
+3 & $(0,1)$   & 1 & 2 & 0 & 1 & holds & holds \\
+3 & $(1,1)$   & 2 & 0 & 2 & 3 & fails & holds \\
+3 & $(0,1,1)$ & 2 & 0 & 4 & 9 & fails & holds \\
+3 & $(2,1)$   & 0 & 1 & 0 & 1 & holds & fails \\
+5 & $(1,2)$   & 3 & 4 & 0 & 1 & holds & holds \\
+5 & $(0,1,1)$ & 2 & 0 & 2 & 5 & fails & fails \\
+7 & $(1,1)$   & 2 & 0 & 2 & 7 & fails & holds \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The Frobenius block and the super-transfer matrix}
+
+\begin{theorem}[The corrected Frobenius block]
+\label{thm:as-frobenius-block}
+\claimstatus{thm:as-frobenius-block}{proved-conditional}
+$\Lcurve(g,\uz)^{\hper} = \prod_{\omega^{2\hper}=1}\Dg{g}(\omega\uz)\big/\Dg{g}(\uz)^{\hper}$;
+the reciprocal-root multiplicity of $\Lcurve(g,\uz)$ at $z$ is
+$m_F(z) = \frac1{\hper}\sum_{\omega^{2\hper}=1}m_E(\omega^{-1}z) - m_E(z)$, a nonnegative
+integer, and the diagonal $\qs^{\asrange}\times\qs^{\asrange}$ matrix $\Fodd{g}$ with these
+multiplicities satisfies $\Fodd{g}\Fodd{g}^\dagger = \qs$, $\Lcurve(g,\uz) =
+\det(1-\uz\Fodd{g})$ and $\expsum{n}(g) = -\Tr\Fodd{g}^{\,n}$ for all $n$. If
+$\Ppoly{g}(-1)\ne0$ one may take $\Fodd{g} = -\Tmat_g$; if $\Ppoly{g}(-\eta(-1))\ne0$,
+$\Fodd{g} = -\eta(-1)\Tmat_{-g}$.
+\end{theorem}
+
+\begin{assumption}[Frobenius semisimplicity]
+\label{asm:frobenius-semisimple}
+\claimstatus{asm:frobenius-semisimple}{assumed}
+The Frobenius action on $H^1$ of a smooth projective curve over a finite field is
+semisimple over an algebraic closure of the coefficient field. Used only for operator
+similarity, never for net spectra.
+\end{assumption}
+
+\begin{theorem}[The point count is a supertrace]
+\label{thm:as-super-transfer}
+\claimstatus{thm:as-super-transfer}{proved-conditional}
+The projective curve $y^{\qs}-y = g(x)$ has one point at infinity; $\Ncount{n} = 1 + \qs^n +
+\sum_{a\ne0}\expsum{n}(ag)$ (additive Hilbert~90); $\Tr E_0^n = \qs^n$; and the
+super-transfer matrix $\Etr$ of \cref{def:super-transfer} satisfies
+$\Ncount{n} = \str\Etr^{n}$ for all $n\ge1$. Its odd block $F$ has $FF^\dagger = \qs$, and
+its multiset is the $2g = (\qs-1)\qs^{\asrange}$ Frobenius eigenvalues with no even--odd
+cancellation; under \cref{asm:frobenius-semisimple} it is similar to Frobenius on $H^1$.
+The simpler odd block $-\eta(-1)\bigoplus_a\Tmat_{ag}$ is correct iff
+$\Ppoly{g}(-\eta(-1))\ne0$: for $\qs=3$, $g = 2x^2+x^4$ it gives $-2$ against $\Ncount{1} = 10$.
+\end{theorem}
+
+The even block is the trivial-character sector and the odd block the nontrivial
+characters: this is the grading observation of \cref{obs:character-sector-grading}. The
+count is a supertrace because, by \cref{cor:curve-counts-graded}, it cannot be a trace.
+
+\subsection{The transfer unitary is a Weil-representation operator}
+
+\begin{citedfact}[Uniqueness of Weil implementers]
+\label{cit:weil-egorov-uniqueness}
+\claimstatus{cit:weil-egorov-uniqueness}{cited}
+Gurevich and Hadani \cite{gurevich2007geometric}: the intertwiner of the Heisenberg
+representation with its twist by $g\in\Sp$ ``is determined up to scalar'' by the Egorov
+relation.
+Verbatim: \texttt{\detokenize{satisfies and in fact is determined up to scalar by the following equation}} (\texttt{math/0610818:main.tex:422}); \texttt{\detokenize{\rho (g)\pi (h)\rho (g)^{-1}=\pi (g\cdot h),  \label{Egorov2}}} (\texttt{math/0610818:main.tex:425}).
+\end{citedfact}
+
+\begin{citedfact}[Character of the Weil representation]
+\label{cit:weil-character-formula}
+\claimstatus{cit:weil-character-formula}{cited}
+Thomas \cite{thomas2008character}: for a finite field $F$ the trace of the Weil
+representation at $g\in\Sp(V)$ is $|F|^{\frac12\dim\ker(g-1)}$ times a product of Weil-index
+phases; in particular its modulus squared is $|F|^{\dim\ker(g-1)}$ (Howe
+\cite{howe1973character}).
+Verbatim: \texttt{\detokenize{\Tr\rho(g)=|F|^{\tfrac12\dim\ker(g-1)}\gamma(1)^{\dim V-\dim\ker(g-1)-1}\gamma(\det\sigma_g).}} (\texttt{math/0610644:ArxivThomasWeil3.tex:196}).
+\end{citedfact}
+
+\begin{assumption}[Exact centred Weil implementers exist]
+\label{asm:weil-implementer-exact}
+\claimstatus{asm:weil-implementer-exact}{assumed}
+There is a genuine unitary representation $\Weil$ of $\Sp(2\asrange,\Fq)$, $\qs$ odd,
+with $\Weil(M)\Weyl{u,v}\Weil(M)^{-1} = \Weyl{M(u,v)}$ exactly for the centred Weyl
+operators.
+\end{assumption}
+
+\begin{theorem}[The symplectic transfer map]
+\label{thm:as-symplectic-map}
+\claimstatus{thm:as-symplectic-map}{proved-conditional}
+$\Ugu{g} = \Tmat_g/\sqrt{\qs}$ factors as the Fourier transform on the retiring register
+(scaled by $a_{\asrange}$), then the quadratic phases, then the cyclic relabelling, and
+$\Ugu{g}\Weyl{u,v}\Ugu{g}^{-1} = \Weyl{\Msymp{g}(u,v)}$ exactly, where
+\[
+  u'_k = u_{k+1},\quad u'_{\asrange} = -v_1/a_{\asrange},\qquad
+  v'_k = v_{k+1} + a_{\asrange-k}u'_{\asrange}\ (k<\asrange),\quad
+  v'_{\asrange} = a_{\asrange}u_1 + \sum_{k\ge2}a_{\asrange+1-k}u_k + 2a_0u'_{\asrange},
+\]
+a symplectic map. Hence $\Ugu{g} = e^{i\phase{g}}\Weil(\Msymp{g})$.
+\end{theorem}
+
+\begin{corollary}[Fixed spaces, the Weil bound, and the permutation sign]
+\label{cor:as-weil-bound-fixed-space}
+\claimstatus{cor:as-weil-bound-fixed-space}{proved-conditional}
+$|\Tr\Tmat_g^n|^2 = \qs^{\,n+\dim\ker(\Msymp{g}^n-1)}$ (from $\Tr\Ad(\Ugu{g}^n) =$ the number
+of fixed Weyl labels), so $\dfix{n} = \dim\ker(\Msymp{g}^n-1)\le2\asrange$;
+$|\expsum{n}(g)|\le\qs^{\asrange}\qs^{n/2}$ with equality iff $\Msymp{g}^n = 1$; and when
+$\dfix{n} = 0$, $\expsum{n}(g) = (-1)^{n-1}\Tr\Tmat_g^n$, the sign of the Frobenius
+$n$-cycle. For $\qs=3$, $g = x^4$: $\Msymp{g} = \big(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\big)$
+of order $4$, $\dfix{2} = 0$, $\dfix{4} = 2$.
+\end{corollary}
+
+So the maximal-curve phenomenon of \cref{sec:artin-schreier} ($|\expsum{4}|/\qs^2 = \qs$ for
+$g = x^4$) is the statement $\Msymp{g}^4 = 1$, and the Weil bound for the whole quadratic
+family is Howe's character bound for the Weil representation. The fermionic sign of the
+count on a ring of $n$ sites is the sign of the Frobenius permutation, corrected on the
+fixed space of $\Msymp{g}^n$ by the radical sign.
+
+\begin{numerical}[The corrected account, checked]
+\label{num:artin-schreier-super}
+\claimstatus{num:artin-schreier-super}{numerical}
+\texttt{scripts/artin\_schreier\_super.py} (\texttt{outputs/artin\_schreier\_super.txt};
+$1969$ checks, of which the $24$ failures are exactly the refutation of the two drafted
+laws): eleven $(\qs,g)$ over $\mathbb F_3,\mathbb F_5,\mathbb F_7$, $n\le9$; the exact sign
+law and its periodic form and endpoint criteria ($624/624$); the corrected Frobenius
+blocks and $\str\Etr^n = \Ncount{n}$ against direct point counts in every case; the
+Clifford property of $\Tmat_g/\sqrt{\qs}$ with symplectic matrices matching the explicit
+formula matrix for matrix (orders $4$, $3$, $30$); the character formula in $258/258$
+cases; and Prony on the genus-$3$ counts recovering the Frobenius eigenvalues with
+coefficient $-1$.
+\end{numerical}

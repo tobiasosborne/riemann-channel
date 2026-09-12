@@ -12,7 +12,7 @@ id & kind & derived status & assumptions \\ \midrule\endhead
 \texttt{num:scattering-symbol} & numerical & \texttt{numerical} & \texttt{--} \\
 \texttt{prop:functional-model-modes} & proposition & \texttt{sketched} & \texttt{--} \\
 \texttt{prop:phase-identity} & proposition & \texttt{sketched} & \texttt{--} \\
-\texttt{prop:ringnorm-trace} & proposition & \texttt{sketched} & \texttt{--} \\
+\texttt{prop:ringnorm-trace} & proposition & \texttt{proved-conditional} & \texttt{asm:explicit-formula-trace, asm:lax-phillips-modes, asm:zero-count-location} \\
 \texttt{num:ringnorm-3000} & numerical & \texttt{numerical} & \texttt{--} \\
 \texttt{prop:bc-mpo} & proposition & \texttt{sketched} & \texttt{--} \\
 \texttt{num:bc-mpo} & numerical & \texttt{numerical} & \texttt{--} \\
@@ -21,8 +21,8 @@ id & kind & derived status & assumptions \\ \midrule\endhead
 \texttt{num:weil-lps-rh} & numerical & \texttt{numerical} & \texttt{--} \\
 \texttt{prop:weil-lps-exactly-ramanujan} & proposition & \texttt{sketched} & \texttt{--} \\
 \texttt{conj:weil-lps-hecke} & conjecture & \texttt{open} & \texttt{--} \\
-\texttt{prop:as-transfer-matrix} & proposition & \texttt{sketched} & \texttt{--} \\
-\texttt{prop:as-unitarity} & proposition & \texttt{sketched} & \texttt{--} \\
+\texttt{prop:as-transfer-matrix} & proposition & \texttt{proved-conditional} & \texttt{asm:normal-basis} \\
+\texttt{prop:as-unitarity} & proposition & \texttt{proved} & \texttt{--} \\
 \texttt{num:artin-schreier-mps} & numerical & \texttt{numerical} & \texttt{--} \\
 \texttt{obs:as-nonquadratic} & observation & \texttt{sketched} & \texttt{--} \\
 \texttt{obs:deligne-ingredients} & observation & \texttt{sketched} & \texttt{--} \\
@@ -100,5 +100,64 @@ id & kind & derived status & assumptions \\ \midrule\endhead
 \texttt{cit:herglotz-bochner} & citedfact & \texttt{cited} & \texttt{--} \\
 \texttt{cit:suzuki-kernel} & citedfact & \texttt{cited} & \texttt{--} \\
 \texttt{cit:pt-real-spectrum} & citedfact & \texttt{cited} & \texttt{--} \\
-\texttt{obs:ringnorm-sign-correction} & observation & \texttt{sketched} & \texttt{--} \\
+\texttt{obs:ringnorm-sign-correction} & observation & \texttt{sketched-conditional} & \texttt{asm:explicit-formula-trace, asm:lax-phillips-modes, asm:zero-count-location} \\
+\texttt{asm:explicit-formula-trace} & assumption & \texttt{assumed} & \texttt{--} \\
+\texttt{asm:zero-count-location} & assumption & \texttt{assumed} & \texttt{--} \\
+\texttt{asm:positive-distributions} & assumption & \texttt{assumed} & \texttt{--} \\
+\texttt{asm:landau-laplace} & assumption & \texttt{assumed} & \texttt{--} \\
+\texttt{asm:lax-phillips-modes} & assumption & \texttt{assumed} & \texttt{--} \\
+\texttt{asm:weil-curves} & assumption & \texttt{assumed} & \texttt{--} \\
+\texttt{cit:lidskii-trace} & citedfact & \texttt{cited} & \texttt{--} \\
+\texttt{cit:landau-dirichlet} & citedfact & \texttt{cited} & \texttt{--} \\
+\texttt{cit:deninger-graded-lefschetz} & citedfact & \texttt{cited} & \texttt{--} \\
+\texttt{cit:connes-absorption} & citedfact & \texttt{cited} & \texttt{--} \\
+\texttt{lem:supertrace-distribution} & lemma & \texttt{proved} & \texttt{--} \\
+\texttt{thm:supertrace-rigidity} & theorem & \texttt{proved} & \texttt{--} \\
+\texttt{cor:forced-net-spectrum} & corollary & \texttt{proved-conditional} & \texttt{asm:explicit-formula-trace, asm:zero-count-location} \\
+\texttt{thm:parity-forced-finite} & theorem & \texttt{proved-conditional} & \texttt{asm:explicit-formula-trace, asm:positive-distributions, asm:zero-count-location} \\
+\texttt{prop:parity-infinite-dominated} & proposition & \texttt{proved-conditional} & \texttt{asm:explicit-formula-trace, asm:landau-laplace, asm:positive-distributions, asm:zero-count-location} \\
+\texttt{obs:parity-infinite-open} & observation & \texttt{sketched} & \texttt{--} \\
+\texttt{thm:no-ungraded-trace} & theorem & \texttt{proved} & \texttt{--} \\
+\texttt{prop:trace-supertrace-criterion} & proposition & \texttt{proved} & \texttt{--} \\
+\texttt{cor:curve-counts-graded} & corollary & \texttt{proved-conditional} & \texttt{asm:weil-curves} \\
+\texttt{prop:riemann-graded-generator} & proposition & \texttt{proved-conditional} & \texttt{asm:explicit-formula-trace, asm:lax-phillips-modes, asm:zero-count-location} \\
+\texttt{prop:ladder-parity-free} & proposition & \texttt{proved-conditional} & \texttt{asm:explicit-formula-trace, asm:lax-phillips-modes, asm:zero-count-location} \\
+\texttt{obs:phantasm-scope} & observation & \texttt{sketched} & \texttt{--} \\
+\texttt{cit:fmps-supertrace} & citedfact & \texttt{cited} & \texttt{--} \\
+\texttt{cit:fcmps-graded-bond} & citedfact & \texttt{cited} & \texttt{--} \\
+\texttt{cit:cmps-schmidt-fixed-point} & citedfact & \texttt{cited} & \texttt{--} \\
+\texttt{cit:bc-kms-unique} & citedfact & \texttt{cited} & \texttt{--} \\
+\texttt{thm:vacuum-decay-finite} & theorem & \texttt{proved} & \texttt{--} \\
+\texttt{cor:vacuum-decay-traces} & corollary & \texttt{proved} & \texttt{--} \\
+\texttt{prop:absorbing-vacuum-channel} & proposition & \texttt{proved-conditional} & \texttt{asm:lax-phillips-modes} \\
+\texttt{obs:zero-coherences-populations} & observation & \texttt{sketched} & \texttt{--} \\
+\texttt{prop:vacuum-renewal-trivial-entanglement} & proposition & \texttt{proved} & \texttt{--} \\
+\texttt{prop:normal-kms-gibbs} & proposition & \texttt{proved} & \texttt{--} \\
+\texttt{lem:mm1-spectrum} & lemma & \texttt{proved} & \texttt{--} \\
+\texttt{prop:prime-chain-lindbladian} & proposition & \texttt{proved} & \texttt{--} \\
+\texttt{prop:prime-chain-offdiagonal} & proposition & \texttt{proved} & \texttt{--} \\
+\texttt{cor:gibbs-delocalisation} & corollary & \texttt{proved} & \texttt{--} \\
+\texttt{num:riemann-graded-trace} & numerical & \texttt{numerical} & \texttt{--} \\
+\texttt{num:bc-entropy} & numerical & \texttt{numerical} & \texttt{--} \\
+\texttt{obs:gibbs-entanglement-hagedorn} & observation & \texttt{sketched} & \texttt{--} \\
+\texttt{obs:character-sector-grading} & observation & \texttt{sketched-conditional} & \texttt{asm:as-lpolynomial, asm:frobenius-semisimple, asm:normal-basis, asm:weil-curves} \\
+\texttt{obs:complementary-halves} & observation & \texttt{sketched} & \texttt{--} \\
+\texttt{obs:phantasm-established-scope} & observation & \texttt{sketched} & \texttt{--} \\
+\texttt{conj:phantasm-both-halves} & conjecture & \texttt{open} & \texttt{--} \\
+\texttt{conj:galois-graded-bond} & conjecture & \texttt{open} & \texttt{--} \\
+\texttt{asm:normal-basis} & assumption & \texttt{assumed} & \texttt{--} \\
+\texttt{asm:as-lpolynomial} & assumption & \texttt{assumed} & \texttt{--} \\
+\texttt{asm:weil-implementer-exact} & assumption & \texttt{assumed} & \texttt{--} \\
+\texttt{asm:frobenius-semisimple} & assumption & \texttt{assumed} & \texttt{--} \\
+\texttt{cit:weil-character-formula} & citedfact & \texttt{cited} & \texttt{--} \\
+\texttt{cit:weil-egorov-uniqueness} & citedfact & \texttt{cited} & \texttt{--} \\
+\texttt{lem:gauss-quadratic-form} & lemma & \texttt{proved} & \texttt{--} \\
+\texttt{thm:as-sign-law} & theorem & \texttt{proved-conditional} & \texttt{asm:normal-basis} \\
+\texttt{cor:as-periodic-sign} & corollary & \texttt{proved-conditional} & \texttt{asm:as-lpolynomial, asm:normal-basis} \\
+\texttt{prop:as-sign-counterexamples} & proposition & \texttt{proved-conditional} & \texttt{asm:normal-basis} \\
+\texttt{thm:as-frobenius-block} & theorem & \texttt{proved-conditional} & \texttt{asm:as-lpolynomial, asm:normal-basis} \\
+\texttt{thm:as-super-transfer} & theorem & \texttt{proved-conditional} & \texttt{asm:as-lpolynomial, asm:frobenius-semisimple, asm:normal-basis, asm:weil-curves} \\
+\texttt{thm:as-symplectic-map} & theorem & \texttt{proved-conditional} & \texttt{asm:weil-implementer-exact} \\
+\texttt{cor:as-weil-bound-fixed-space} & corollary & \texttt{proved-conditional} & \texttt{asm:normal-basis, asm:weil-implementer-exact} \\
+\texttt{num:artin-schreier-super} & numerical & \texttt{numerical} & \texttt{--} \\
 \bottomrule\end{longtable}}

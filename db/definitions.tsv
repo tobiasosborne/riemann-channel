@@ -44,3 +44,12 @@ def:rescaled-trace-sequence	trivial set, critical radius, rescaled trace sequenc
 def:weil-form	Weil form, reflection in the critical circle, mode-pairing form	report/sections/02b_definitions_arithmetic.tex	stipulated	-	weil-positivity:1
 def:kraus-pairings	adjoint pairing and inverse pairing of a Kraus family	report/sections/02b_definitions_arithmetic.tex	stipulated	-	weil-positivity:2
 def:continuous-rescaled-trace	rescaled continuous trace and positive definite function	report/sections/02b_definitions_arithmetic.tex	stipulated	-	weil-positivity:3
+def:graded-spectral-datum	graded spectral datum, supertrace distribution, net multiplicity, cancelling pairs	report/sections/02c_definitions_phantasm.tex	stipulated	-	notes/riemann-cmps/astra-proofs.md T1
+def:distributional-trace	distributional trace of the compressed semigroup, prime comb	report/sections/02c_definitions_phantasm.tex	stipulated	-	notes/riemann-cmps/astra-proofs.md H-TRACE
+def:riemann-graded-bond	Riemann graded bond and generator	report/sections/02c_definitions_phantasm.tex	stipulated	-	notes/riemann-cmps/astra-proofs.md T4
+def:vacuum-decay	vacuum-decay Lindbladian, absorbing-vacuum channel	report/sections/02c_definitions_phantasm.tex	stipulated	-	notes/riemann-cmps/astra-proofs.md T5
+def:prime-chain-lindbladian	prime-chain detailed-balance Lindbladian	report/sections/02c_definitions_phantasm.tex	stipulated	-	notes/riemann-cmps/astra-proofs.md T6
+def:bond-entanglement	entanglement Hamiltonian and entanglement entropy of a bond density	report/sections/02c_definitions_phantasm.tex	quoted	prov:vc10-schmidt	scripts/bc_entropy.py
+def:as-ring-forms	ring form, trace form, radical, radical sign, period parameter	report/sections/02c_definitions_phantasm.tex	stipulated	-	notes/riemann-cmps/astra-proofs.md T7.2-T7.4
+def:super-transfer	super-transfer matrix of an Artin-Schreier curve	report/sections/02c_definitions_phantasm.tex	stipulated	-	notes/riemann-cmps/astra-proofs.md T7.8
+def:weyl-symplectic	centred Weyl operators, symplectic transfer map, Weil implementer	report/sections/02c_definitions_phantasm.tex	quoted	prov:gh07-egorov	notes/riemann-cmps/astra-proofs.md T7.9

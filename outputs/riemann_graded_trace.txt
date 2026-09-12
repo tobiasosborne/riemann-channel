@@ -1,0 +1,272 @@
+
+==============================================================================
+SETUP
+==============================================================================
+  zeros loaded              : 3000   gamma_1 = 14.134725   gamma_max = 3533.3282
+  window G = gamma_max/3.5  : 1009.522355      (same rule as scripts/ringnorm.py)
+  truncation weight at g_max: 2.187491e-03   = exp(-3.5^2/2); the 3000-zero cut-off is
+                              the window itself, so the sum is converged by construction.
+  Gaussian width in t       : s = 2/G = 1.981135e-03   (= 1/G in the variable u = t/2)
+  amplitude corr e^(s^2/32) : 1.000000122653    max phase shift gamma/(2G^2) = 1.733493e-03
+  grid                      : t in [1.0, 6.6], dt = 0.0004, 14001 points  (0.202 sigma per step)
+  prime powers in 2 P_+     : n = 2 .. 200 (60 terms)
+
+==============================================================================
+TASK 1  WINDOWED SUPERTRACE   str e^{tG}  vs  2 P_+(t)
+==============================================================================
+
+  F(t) := 1 - 2 sum_{gamma>0} w(gamma) e^{-t/4} cos(gamma t/2 - phi(gamma)) * e^{s^2/32}
+              - sum_{k>=1} e^{-(k+1/2)t + (k+1/2)^2 s^2/2}
+  compared with   2 sum_n (Lambda(n)/n) k_s(t - 2 log n).
+  Both sides carry the SAME Gaussian window; the factor 2 in front of P_+ is the u = t/2
+  Jacobian delta(t/2 - log n) = 2 delta(t - 2 log n).  Table evaluated exactly at t = 2 log n
+  (not at a grid point) so the ratio is free of grid-offset bias.
+
+   n    2 log n     str e^{tG} (num)     2 P_+ (pred)      ratio      Lambda(n)/n
+   2   1.386294           139.5183          139.5794    0.99956   0.346574
+   3   2.197225           147.4184          147.4855    0.99955   0.366204
+   4   2.772589            69.7570           69.7897    0.99953   0.173287
+   5   3.218876           129.5777          129.6374    0.99954   0.321888
+   7   3.891820           111.9057          111.9569    0.99954   0.277987
+   8   4.158883            34.8804           34.8949    0.99959   0.086643
+   9   4.394449            49.1394           49.1618    0.99954   0.122068
+  11   4.795791            87.7527           87.7937    0.99953   0.217990
+  13   5.129899            79.4248           79.4624    0.99953   0.197304
+  16   5.545177            17.4385           17.4474    0.99949   0.043322
+  25   6.437752            25.9146           25.9275    0.99950   0.064378
+  27   6.591674            16.3816           16.3873    0.99965   0.040689
+
+  ratio: min 0.99949  max 0.99965  max |ratio - 1| = 0.00051
+    [PASS] T1.ratios  all 12 dip ratios within 1 +/- 0.02   max |ratio-1| = 0.00051
+
+  max |str - 2P_+| away from dips (>4 sigma, ringnorm convention) : 0.046417
+  max |str - 2P_+| away from dips (>8 sigma)                      : 0.027639
+  max |str - 2P_+| over the whole grid                            : 0.066994
+  peak height of str e^{tG} on the grid                           : 147.4071
+  (the 4-sigma figure is dominated by Gaussian tail leakage from the dips themselves:
+   e^-8 * peak = 0.0494.  The 8-sigma figure 0.0276 is the genuine
+   3000-zero truncation error; ringnorm.py reports 0.180 for the bare zero sum in u.)
+    [PASS] T1.residual  max |str - 2P_+| away from dips < 1.0 (peak ~ 140)   0.046417  (0.7% of the n=2 dip height)
+
+  POSITIVITY: min_t str e^{tG} on the grid = -0.040977 at t = 2.18720
+              epsilon = 0.040977   (str e^{tG} >= -epsilon everywhere on the grid)
+              epsilon / peak = 2.780e-04, and epsilon is of the same size
+              as the truncation residual, i.e. consistent with exact positivity.
+    [PASS] T1.positivity  str e^{tG} >= -epsilon with epsilon < 1.0   epsilon = 0.040977 at t = 2.18720
+
+==============================================================================
+TASK 2  LADDER PARITY
+==============================================================================
+
+  (a) ladder dropped   : 1 - Tr Z(t)                       vs  2 P_+ + e^{-t/2}/(e^t - 1)
+  (b) ladder counted even: 1 - Tr Z + sum_k e^{-(k+1/2)t}  vs  2 P_+ + 2 e^{-t/2}/(e^t - 1)
+  Both are identities (they are (*) plus 0, resp. plus twice the ladder), and both right-hand
+  sides are positive measures, so POSITIVITY ALONE DOES NOT FIX THE LADDER PARITY.
+
+
+  2a  C (+) K_S only        
+     n    2 log n        numeric          prediction       ratio
+     2   1.386294          139.6850          139.7461    0.99956
+     3   2.197225          147.4600          147.5271    0.99955
+     4   2.772589           69.7737           69.8064    0.99953
+     5   3.218876          129.5860          129.6457    0.99954
+     7   3.891820          111.9087          111.9598    0.99954
+     8   4.158883           34.8824           34.8968    0.99959
+     9   4.394449           49.1407           49.1632    0.99954
+    11   4.795791           87.7534           87.7945    0.99953
+    13   5.129899           79.4252           79.4628    0.99953
+    16   5.545177           17.4388           17.4477    0.99949
+    25   6.437752           25.9146           25.9275    0.99950
+    27   6.591674           16.3816           16.3873    0.99965
+     max |ratio - 1| = 0.00051   max residual away from dips = 0.046417   min over grid = -0.028517
+    [PASS] T2a.match   max |ratio-1| = 0.00051, residual = 0.046417
+    [PASS] T2a.positivity   min = -0.028517
+
+  2b  ladder counted even   
+     n    2 log n        numeric          prediction       ratio
+     2   1.386294          139.8516          139.9128    0.99956
+     3   2.197225          147.5017          147.5688    0.99955
+     4   2.772589           69.7903           69.8231    0.99953
+     5   3.218876          129.5943          129.6540    0.99954
+     7   3.891820          111.9117          111.9628    0.99954
+     8   4.158883           34.8844           34.8988    0.99959
+     9   4.394449           49.1421           49.1646    0.99954
+    11   4.795791           87.7542           87.7953    0.99953
+    13   5.129899           79.4257           79.4633    0.99953
+    16   5.545177           17.4390           17.4479    0.99949
+    25   6.437752           25.9147           25.9276    0.99950
+    27   6.591674           16.3817           16.3874    0.99965
+     max |ratio - 1| = 0.00051   max residual away from dips = 0.046417   min over grid = -0.024670
+    [PASS] T2b.match   max |ratio-1| = 0.00051, residual = 0.046417
+    [PASS] T2b.positivity   min = -0.024670
+
+  (c) flip ONE pair of nontrivial zeros (gamma_1 = 14.134725...) from odd to even, i.e. add
+      + 4 e^{-t/4} cos(gamma_1 t/2)  to the supertrace.  If positivity survived this, the
+      grading of the zero modes would be undetermined; it does not.
+
+    gamma_1 = 14.134725142,  window weight w(gamma_1) = 0.999901985
+    most negative value of the flipped smoothed supertrace: -2.878957  at t = 1.33040
+    (naive envelope -4 e^(-t/4) at that t: -2.868228)
+    fraction of grid points where the flipped supertrace is negative: 0.4852
+    [PASS] T2c.flip destroys positivity (min < -1.0)   min = -2.878957 at t = 1.33040
+
+==============================================================================
+TASK 3  VACUUM-DECAY LINDBLADIAN ON B(C (+) C^D)
+==============================================================================
+
+  H Hermitian Gaussian on C^D, j a random vector, B = -i H - (1/2)|j><j|  so -(B+B^*) = |j><j|.
+  bB = 0 (+) B on C (+) C^D,  J = |vac><j|,  L(x) = bB x + x bB^* + J x J^*.
+  Predicted spectrum: {0} u spec(B) u conj(spec B) u {b_n + conj(b_m)}.
+
+
+  --- D = 3  (N = 4, superoperator dimension 16) ---
+    [PASS] T3.D3.dissipator  -(B+B^*) = |j><j|   dev = 1.298e-16
+    [PASS] T3.D3.trace preservation  Tr L(x) = 0   max |Tr L(x)| over 20 random x = 3.580e-15
+    [PASS] T3.D3.complete positivity of e^{0.7 L} (Choi PSD)   min Choi eigenvalue = -2.976e-16  (largest = 2.8836)
+    [PASS] T3.D3.spec(L) = {0} u spec(B) u conj spec(B) u {b_n + conj b_m}   max matching deviation = 4.804e-15  (16 eigenvalues)
+      max Re spec(B) = -3.432615e-02   (strictly negative => vacuum is globally attracting)
+    [PASS] T3.D3.unique fixed point = |vac><vac|   dim ker = 1, ||fp - |vac><vac||| = 0.000e+00, next |eigenvalue| = 0.0687
+    [PASS] T3.D3.coherence block  e^{tL}|vac><psi| = |vac><e^{tB}psi|   max ||diff|| over t in {0.13,0.7,2.5} = 3.614e-16
+
+  --- D = 5  (N = 6, superoperator dimension 36) ---
+    [PASS] T3.D5.dissipator  -(B+B^*) = |j><j|   dev = 6.592e-16
+    [PASS] T3.D5.trace preservation  Tr L(x) = 0   max |Tr L(x)| over 20 random x = 1.068e-14
+    [PASS] T3.D5.complete positivity of e^{0.7 L} (Choi PSD)   min Choi eigenvalue = -1.429e-15  (largest = 4.8252)
+    [PASS] T3.D5.spec(L) = {0} u spec(B) u conj spec(B) u {b_n + conj b_m}   max matching deviation = 5.718e-14  (36 eigenvalues)
+      max Re spec(B) = -1.298685e-03   (strictly negative => vacuum is globally attracting)
+    [PASS] T3.D5.unique fixed point = |vac><vac|   dim ker = 1, ||fp - |vac><vac||| = 0.000e+00, next |eigenvalue| = 0.0026
+    [PASS] T3.D5.coherence block  e^{tL}|vac><psi| = |vac><e^{tB}psi|   max ||diff|| over t in {0.13,0.7,2.5} = 5.800e-15
+
+  --- D = 8  (N = 9, superoperator dimension 81) ---
+    [PASS] T3.D8.dissipator  -(B+B^*) = |j><j|   dev = 1.375e-15
+    [PASS] T3.D8.trace preservation  Tr L(x) = 0   max |Tr L(x)| over 20 random x = 2.313e-14
+    [PASS] T3.D8.complete positivity of e^{0.7 L} (Choi PSD)   min Choi eigenvalue = -2.479e-15  (largest = 7.3216)
+    [PASS] T3.D8.spec(L) = {0} u spec(B) u conj spec(B) u {b_n + conj b_m}   max matching deviation = 7.185e-14  (81 eigenvalues)
+      max Re spec(B) = -1.650931e-02   (strictly negative => vacuum is globally attracting)
+    [PASS] T3.D8.unique fixed point = |vac><vac|   dim ker = 1, ||fp - |vac><vac||| = 0.000e+00, next |eigenvalue| = 0.0330
+    [PASS] T3.D8.coherence block  e^{tL}|vac><psi| = |vac><e^{tB}psi|   max ||diff|| over t in {0.13,0.7,2.5} = 3.474e-15
+
+==============================================================================
+TASK 4  PRIME-CHAIN DETAILED-BALANCE LINDBLADIAN (CLASSICAL PART)
+==============================================================================
+
+  Birth-death chain on occupations k = 0..K (K = 60) for a prime p at inverse temperature beta:
+  up-rate  k -> k+1 :  r      = p^{-beta}
+  down-rate k -> k-1:  r p^beta = 1.
+  Detailed balance forces pi_{k+1}/pi_k = r/(r p^beta) = p^{-beta}, i.e. the Gibbs weight
+  pi_k ~ p^{-beta k}.  The symmetrised generator S = diag(pi)^{1/2} Q diag(pi)^{-1/2} is the
+  Jacobi matrix with constant off-diagonal sqrt(r * r p^beta); its bulk spectrum is the M/M/1
+  band  [ -(sqrt(r p^beta) + sqrt(r))^2 , -(sqrt(r p^beta) - sqrt(r))^2 ].
+
+
+  ---- beta = 1.5 ----
+    p = 2:  r = p^-beta = 0.353553,  down-rate r p^beta = 1.000000
+       Gibbs pi_k ~ p^(-beta k):  max |pi^T Q| = 5.551e-17   (similarity check 1.443e-15)
+       M/M/1 band = [-2.542761, -0.164346]   width 2.378414
+       zero eigenvalue = -1.897e-17;  spectral gap = 0.165923  (band edge 0.164346, rel. dev 9.594e-03)
+       eigenvalues inside the band: 60/60 = 1.0000   most negative = -2.541184
+       eigenvalues of the SYMMETRISED S are real by construction (eigh); the naive
+       non-symmetric eig(Q) gives max |Im| = 0.000e+00, a pure numerical artefact:
+       the similarity diag(pi)^(1/2) has condition number (p^beta)^(K/2) = 3.518e+13,
+       so eig(Q) in the unsymmetrised basis is hopelessly ill-conditioned.
+    [PASS] T4.beta1.5.p2.Gibbs stationary   max |pi^T Q| = 5.551e-17
+    [PASS] T4.beta1.5.p2.band containment   60/60 inside [-2.54276, -0.16435], gap = 0.165923
+    p = 3:  r = p^-beta = 0.192450,  down-rate r p^beta = 1.000000
+       Gibbs pi_k ~ p^(-beta k):  max |pi^T Q| = 8.674e-19   (similarity check 2.442e-15)
+       M/M/1 band = [-2.069833, -0.315067]   width 1.754765
+       zero eigenvalue = 4.490e-17;  spectral gap = 0.316231  (band edge 0.315067, rel. dev 3.692e-03)
+       eigenvalues inside the band: 60/60 = 1.0000   most negative = -2.068669
+       eigenvalues of the SYMMETRISED S are real by construction (eigh); the naive
+       non-symmetric eig(Q) gives max |Im| = 1.728e-01, a pure numerical artefact:
+       the similarity diag(pi)^(1/2) has condition number (p^beta)^(K/2) = 2.954e+21,
+       so eig(Q) in the unsymmetrised basis is hopelessly ill-conditioned.
+    [PASS] T4.beta1.5.p3.Gibbs stationary   max |pi^T Q| = 8.674e-19
+    [PASS] T4.beta1.5.p3.band containment   60/60 inside [-2.06983, -0.31507], gap = 0.316231
+    p = 5:  r = p^-beta = 0.089443,  down-rate r p^beta = 1.000000
+       Gibbs pi_k ~ p^(-beta k):  max |pi^T Q| = 2.776e-17   (similarity check 2.609e-15)
+       M/M/1 band = [-1.687582, -0.491303]   width 1.196279
+       zero eigenvalue = 4.014e-17;  spectral gap = 0.492096  (band edge 0.491303, rel. dev 1.614e-03)
+       eigenvalues inside the band: 60/60 = 1.0000   most negative = -1.686789
+       eigenvalues of the SYMMETRISED S are real by construction (eigh); the naive
+       non-symmetric eig(Q) gives max |Im| = 2.984e-01, a pure numerical artefact:
+       the similarity diag(pi)^(1/2) has condition number (p^beta)^(K/2) = 2.842e+31,
+       so eig(Q) in the unsymmetrised basis is hopelessly ill-conditioned.
+    [PASS] T4.beta1.5.p5.Gibbs stationary   max |pi^T Q| = 2.776e-17
+    [PASS] T4.beta1.5.p5.band containment   60/60 inside [-1.68758, -0.49130], gap = 0.492096
+
+    product chain over p = 2,3,5 (Minkowski sum, 226981 points):
+       top eigenvalue = 6.606e-17  (the product Gibbs state)
+       total spectral gap = 0.165923   = min over p of the single-prime gaps (0.165923)
+       full range = [-6.296642, 6.606092e-17]
+       Every point is real: the generator is self-adjoint after the detailed-balance
+       similarity transform, so the spectrum is a union of REAL intervals (the three
+       M/M/1 bands and their sum-sets).  No imaginary parts anywhere, hence NO ZETA
+       ZEROS: this classical prime chain does not see the critical line.
+    [PASS] T4.beta1.5.product gap = min single-prime gap   gap = 0.165923
+    [PASS] T4.beta1.5.product spectrum real (symmetrised generator)   all sum-set points real; no imaginary parts
+
+  ---- beta = 2.0 ----
+    p = 2:  r = p^-beta = 0.250000,  down-rate r p^beta = 1.000000
+       Gibbs pi_k ~ p^(-beta k):  max |pi^T Q| = 6.939e-18   (similarity check 2.665e-15)
+       M/M/1 band = [-2.250000, -0.250000]   width 2.000000
+       zero eigenvalue = -1.063e-17;  spectral gap = 0.251326  (band edge 0.250000, rel. dev 5.304e-03)
+       eigenvalues inside the band: 60/60 = 1.0000   most negative = -2.248674
+       eigenvalues of the SYMMETRISED S are real by construction (eigh); the naive
+       non-symmetric eig(Q) gives max |Im| = 8.532e-02, a pure numerical artefact:
+       the similarity diag(pi)^(1/2) has condition number (p^beta)^(K/2) = 1.153e+18,
+       so eig(Q) in the unsymmetrised basis is hopelessly ill-conditioned.
+    [PASS] T4.beta2.0.p2.Gibbs stationary   max |pi^T Q| = 6.939e-18
+    [PASS] T4.beta2.0.p2.band containment   60/60 inside [-2.25000, -0.25000], gap = 0.251326
+    p = 3:  r = p^-beta = 0.111111,  down-rate r p^beta = 1.000000
+       Gibbs pi_k ~ p^(-beta k):  max |pi^T Q| = 1.735e-18   (similarity check 1.610e-15)
+       M/M/1 band = [-1.777778, -0.444444]   width 1.333333
+       zero eigenvalue = -1.549e-17;  spectral gap = 0.445328  (band edge 0.444444, rel. dev 1.989e-03)
+       eigenvalues inside the band: 60/60 = 1.0000   most negative = -1.776894
+       eigenvalues of the SYMMETRISED S are real by construction (eigh); the naive
+       non-symmetric eig(Q) gives max |Im| = 2.603e-01, a pure numerical artefact:
+       the similarity diag(pi)^(1/2) has condition number (p^beta)^(K/2) = 4.239e+28,
+       so eig(Q) in the unsymmetrised basis is hopelessly ill-conditioned.
+    [PASS] T4.beta2.0.p3.Gibbs stationary   max |pi^T Q| = 1.735e-18
+    [PASS] T4.beta2.0.p3.band containment   60/60 inside [-1.77778, -0.44444], gap = 0.445328
+    p = 5:  r = p^-beta = 0.040000,  down-rate r p^beta = 1.000000
+       Gibbs pi_k ~ p^(-beta k):  max |pi^T Q| = 6.939e-18   (similarity check 2.304e-15)
+       M/M/1 band = [-1.440000, -0.640000]   width 0.800000
+       zero eigenvalue = 3.365e-18;  spectral gap = 0.640530  (band edge 0.640000, rel. dev 8.287e-04)
+       eigenvalues inside the band: 60/60 = 1.0000   most negative = -1.439470
+       eigenvalues of the SYMMETRISED S are real by construction (eigh); the naive
+       non-symmetric eig(Q) gives max |Im| = 3.199e-01, a pure numerical artefact:
+       the similarity diag(pi)^(1/2) has condition number (p^beta)^(K/2) = 8.674e+41,
+       so eig(Q) in the unsymmetrised basis is hopelessly ill-conditioned.
+    [PASS] T4.beta2.0.p5.Gibbs stationary   max |pi^T Q| = 6.939e-18
+    [PASS] T4.beta2.0.p5.band containment   60/60 inside [-1.44000, -0.64000], gap = 0.640530
+
+    product chain over p = 2,3,5 (Minkowski sum, 226981 points):
+       top eigenvalue = -2.275e-17  (the product Gibbs state)
+       total spectral gap = 0.251326   = min over p of the single-prime gaps (0.251326)
+       full range = [-5.465038, -2.275468e-17]
+       Every point is real: the generator is self-adjoint after the detailed-balance
+       similarity transform, so the spectrum is a union of REAL intervals (the three
+       M/M/1 bands and their sum-sets).  No imaginary parts anywhere, hence NO ZETA
+       ZEROS: this classical prime chain does not see the critical line.
+    [PASS] T4.beta2.0.product gap = min single-prime gap   gap = 0.251326
+    [PASS] T4.beta2.0.product spectrum real (symmetrised generator)   all sum-set points real; no imaginary parts
+
+==============================================================================
+SUMMARY
+==============================================================================
+  checks run : 42
+  PASS       : 42
+  FAIL       : 0
+
+  no failures.
+
+  Headline numbers
+    Claim A (str e^{tG} = 2 P_+) : max |ratio - 1| over the 12 prime-power dips = 0.00051
+    truncation residual away from dips                                  = 0.046417
+    positivity epsilon (min of the smoothed supertrace, sign flipped)   = 0.040977
+    flipped-pair supertrace minimum                                     = -2.878957 at t = 1.33040
+  Ladder parity is NOT fixed by positivity: dropping the ladder and counting it even both give
+  positive measures (2 P_+ + e^{-t/2}/(e^t-1) and 2 P_+ + 2 e^{-t/2}/(e^t-1)).  What positivity
+  does fix is the grading of the ZERO modes: flipping a single pair to even goes negative.
+
+  runtime: 1.0 s

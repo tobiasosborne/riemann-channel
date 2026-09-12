@@ -1,0 +1,43 @@
+(1) uncut Gibbs state: S(beta) = log zeta - beta zeta'/zeta   vs  1/(beta-1) + log(1/(beta-1))
+  beta=3      S=    0.6785   leading=   -0.1931   S-leading=+0.8716
+  beta=2      S=    1.6376   leading=    1.0000   S-leading=+0.6376
+  beta=1.5    S=    3.2181   leading=    2.6931   S-leading=+0.5250
+  beta=1.2    S=    7.0713   leading=    6.6094   S-leading=+0.4618
+  beta=1.1    S=   12.7445   leading=   12.3026   S-leading=+0.4419
+  beta=1.05   S=   23.4280   leading=   22.9957   S-leading=+0.4323
+  beta=1.01   S=  105.0298   leading=  104.6052   S-leading=+0.4247
+  beta=1.001  S= 1007.3307   leading= 1006.9078   S-leading=+0.4230
+  cross-check beta=1.5: sum_p S_p over p<2e6 = 3.2159  vs closed form 3.2181
+
+(2) prime cutoff p <= P, beta = 1:  S_P = sum_{p<=P} S_p   vs  log P + log log P
+  P=10       S_P=   3.4450   pred=   3.1366   diff=+0.3084
+  P=100      S_P=   6.2325   pred=   6.1323   diff=+0.1002
+  P=1000     S_P=   8.8776   pred=   8.8404   diff=+0.0372
+  P=10000    S_P=  11.4449   pred=  11.4307   diff=+0.0142
+  P=100000   S_P=  13.9606   pred=  13.9564   diff=+0.0042
+  P=1000000  S_P=  16.4420   pred=  16.4413   diff=+0.0007
+  P=2000000  S_P=  17.1843   pred=  17.1834   diff=+0.0009
+    beta < 1 (power law): S_P / [beta P^(1-beta)/(1-beta)]
+  beta=0.5 P=10000    S_P=    132.19   ratio=1.3219
+  beta=0.5 P=100000   S_P=    389.93   ratio=1.2331
+  beta=0.5 P=1000000  S_P=   1180.33   ratio=1.1803
+  beta=0.8 P=10000    S_P=     26.74   ratio=1.0593
+  beta=0.8 P=100000   S_P=     43.21   ratio=1.0804
+  beta=0.8 P=1000000  S_P=     68.88   ratio=1.0864
+    beta > 1 (saturation): S_P for beta=2
+  P=10       S_P=1.418857
+  P=100      S_P=1.616019
+  P=10000    S_P=1.637414
+  P=1000000  S_P=1.637620
+
+(3) bond cutoff n <= N:  S_N/log N  (beta = 0.5, 1, 2); at beta=1 also vs (1/2)log N + log log N
+  N=1000     S/logN: beta=0.5 0.9653  beta=1 0.7515  beta=2 0.2357   | beta=1: S_N=5.1910  (1/2)logN+loglogN=5.3865
+  N=10000    S/logN: beta=0.5 0.9698  beta=1 0.7174  beta=2 0.1777   | beta=1: S_N=6.6073  (1/2)logN+loglogN=6.8255
+  N=100000   S/logN: beta=0.5 0.9744  beta=1 0.6921  beta=2 0.1422   | beta=1: S_N=7.9680  (1/2)logN+loglogN=8.1999
+  N=1000000  S/logN: beta=0.5 0.9781  beta=1 0.6726  beta=2 0.1185   | beta=1: S_N=9.2924  (1/2)logN+loglogN=9.5335
+  N=10000000 S/logN: beta=0.5 0.9811  beta=1 0.6571  beta=2 0.1016   | beta=1: S_N=10.5912  (1/2)logN+loglogN=10.8390
+
+(4) entanglement-level counting: #{n : log n <= E} = floor(e^E)  (Hagedorn density e^E, beta_H = 1)
+  E=2.0: count=7   Cardy growth for a CFT would be exp(2 pi sqrt(c E/6)), i.e. sub-exponential
+  E=5.0: count=148   Cardy growth for a CFT would be exp(2 pi sqrt(c E/6)), i.e. sub-exponential
+  E=10.0: count=22026   Cardy growth for a CFT would be exp(2 pi sqrt(c E/6)), i.e. sub-exponential

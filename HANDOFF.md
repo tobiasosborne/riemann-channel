@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-12, evening)
+## Current state (2026-09-12, night)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -37,34 +37,54 @@ already carries the sign (S_n = −Σαⁿ). TJO: the Weil conjectures should
 have the same fermionic interpretation; pursue the analogies concretely and
 rigorously.
 
-**Programme, in order.**
-0a. **Artin–Schreier as the prototype.** Make the graded bond explicit in
-    `scripts/artin_schreier_mps.py`: a super-transfer matrix whose
-    supertrace is the point count, bosonic sector {1, q}, fermionic sector
-    the Frobenius eigenvalues; verify ring norm = count for all n; state as
-    a proposition in shard 06. Then the same for the Weil–LPS channels
-    (compact, no cusp: where is the pole/fixed point, where the sign?).
-0b. **Define the Riemann Lindbladian.** Graded bond; even sector fixed point
-    = KMS₁; the existing Riemann channel Z(t) is the no-event part with no
-    fixed point (Z → 0), so a fixed point needs SHW reinsertion at the cusp
-    with rebound state Ω, and demanding the critical BC state as steady
-    state is the equation ρ_∞ ∝ ∫₀^∞ Z(t)ΩZ(t)^* dt. Write this as a
-    conjecture with the rebound state as the unknown; prover lane.
-0c. **Sides made explicit in shard 04.** Distil the reframe into the
-    Riemann-channel section (framing paragraph, definitions of the graded
-    bond and the supertrace ring norm, the ergodicity-breaking reading of
-    the BC transition); restate prop:ringnorm-trace with the sign (1c).
-0d. **Mayer cusp tail** (`notes/resonances/astra-freeassoc.md` §3, both
-    lanes' first pick): the cusp-return transfer operator, exact Hurwitz
-    tail, Schur complement separating the cusp coordinate; explicit Taylor
-    entries given there.
-0e. **Suzuki's prime-defined screw kernel** (`astra-freeassoc.md` §16.3):
-    enlarge the interval, kernel always prime-defined; Kotani's Zeta string
-    (Suzuki 2206.03682 §9) as the target object; fetch Suzuki 2021 JFA
-    "Hamiltonians arising from L-functions in the Selberg class".
-0f. **Literature:** Bonthonneau–Weich, Ruelle resonances on cusped
-    manifolds (arXiv API was rate-limited; fetch TeX); Lewis–Zagier and
-    Chang–Mayer for the Eisenstein period functions at ρ/2 (from memory).
+**Programme status after the night campaign (2026-09-12, "riemann-cmps").**
+Items 0a–0c are done in the lab book (shards 02c, 04b, 04c, 06b; worklog
+"Night: the Phantasm campaign"). What is now established, with proofs by the
+codex prover and an Opus REFUTE review (0 INVALID, 5 MINOR, all applied): (i) rigidity, the supertrace of a
+graded generator determines its net graded spectrum, and the explicit formula
+forces the pole even and the zeros odd (finite parity flips excluded by
+positivity; infinite flips open); (ii) the no-go, no finite or trace-class
+operator has a genus ≥ 1 point count as trace sequence, so no bosonic MPS ring
+norm can, and a zeta numerator is exactly an odd sector; (iii) the realisation,
+on C_+ ⊕ (K_S ⊕ ladder)_- the generator 0 ⊕ B ⊕ diag(−(k+½)) has supertrace
+exactly 2P_+, with Tr_dist Z(t) = 1 − 2P_+ − e^{−t/2}/(e^t − 1) (item 1c done);
+(iv) the vacuum-decay Lindbladian on B(C ⊕ K_S): a genuine CPTP semigroup, zeros
+as odd coherences, pair sums as even populations, PURE stationary vacuum, the
+vacuum absorbing (renewal integral diverges) — so the SHW rebound state cannot
+be the vacuum; (v) the prime-chain detailed-balance Lindbladian: Gibbs fixed
+point, real spectrum (Minkowski sums of M/M/1 bands), no zeros; normal KMS
+states only for β > 1; (vi) Artin–Schreier: the exact sign law
+S_n = (−1)^{n−1} det(S|ker P_g(S)) Tr E^n (the founding α = −λ(E) claim was
+FALSE in general; so was the orchestrator's conjugated replacement), the
+corrected Frobenius block, N_n = str of the super-transfer matrix with even =
+trivial character and odd = nontrivial characters, and E_g/√q = a
+Weil-representation operator of an explicit symplectic M_g with
+|S_n|² = q^{n + dim ker(M_g^n − 1)}. The two Lindbladians are complementary
+halves (obs:complementary-halves); the Phantasm needs both
+(conj:phantasm-both-halves, which replaces 0b).
+
+TJO's steering in the campaign: the bond fixed point IS the entanglement
+spectrum (so the Gibbs entropy and its cutoff laws are entanglement data;
+`scripts/bc_entropy.py`; Hagedorn level density, no CFT reading); and the
+Phantasm must carry Ẑ^× = Gal(Q^ab/Q), which gives the trivial-vs-nontrivial
+character reading of the grading and conj:galois-graded-bond.
+
+**Programme, next, in order.**
+0a'. **Γ_0(N) model space** (conj:galois-graded-bond): compute the scattering
+    determinant of Γ_0(N) (Dirichlet L-functions by character), the exit space
+    C^h, and check that the Shor map acts on the bond as the level-N Galois
+    symmetry with the L(s,χ) zeros in the χ-sectors. Numerics first (small N),
+    then prover.
+0b'. **Both halves** (conj:phantasm-both-halves): the SHW renewal equation with
+    a MIXED rebound state Ω on K_S; the obstacle is the missing identification of
+    K_S with the Bost–Connes bond (shard 04). Try the character decomposition of
+    0a' as the identification.
+0c'. **Infinite parity rigidity** (obs:parity-infinite-open): the prover
+    isolated the missing step (negative mass at prime-power atoms of μ − comb);
+    a positivity-alone argument or a counterexample-shaped obstruction.
+0d. **Mayer cusp tail** (`notes/resonances/astra-freeassoc.md` §3): unchanged.
+0e. **Suzuki's prime-defined screw kernel** (§16.3): unchanged.
+0f. **Literature:** Bonthonneau–Weich; Lewis–Zagier, Chang–Mayer: unchanged.
 
 Dead routes recorded today: SPT protection (signs, not moduli);
 PSL(2,Z)-generator channels (expanders, not Ramanujan); "GUE positions with
@@ -300,10 +320,10 @@ SP-WEYL Hilbert space and is the concrete link between the two repos.
    reality fail generically? does the bound?); whether canonical form or the
    Bartholdi deformation (Matsuura–Ohta arXiv:2208.14032) singles out a
    duality for adjoint-paired families.
-1c. **Restate prop:ringnorm-trace.** The Selberg review and the codex prover
-   (T6) agree the prime weight of the centred trace is −2Λ(n)n^{-1/2} at
-   ±2 log n (obs:ringnorm-sign-correction, shard 04); the review's X3 checks
-   it; rewrite the proposition and §5 of notes/riemann-channel-note.md.
+1c. **Restate prop:ringnorm-trace.** DONE 2026-09-12 night in shard 04
+   (Tr_dist Z(t) = 1 − 2P_+ − e^{−t/2}/(e^t − 1), proved-conditional). §5 of
+   notes/riemann-channel-note.md still carries the old weight; notes are
+   free-form and the shard is authoritative.
 2. **The Stinespring question.** Write the compressed semigroup Z(t) on K_S
    explicitly (functional model, Cauchy kernels) and test whether a generator
    of Holevo jump form with jumps at k log p reproduces it on K_S. A negative

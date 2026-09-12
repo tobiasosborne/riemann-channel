@@ -1,0 +1,114 @@
+% SHARD-ID: RC-02C-DEFINITIONS-PHANTASM
+% SHARD-TITLE: Definitions, Continued: Graded Bonds, Vacuum Decay, Prime Chain, Super-Transfer
+% SHARD-SUMMARY: Third definitions shard (split for length): the graded spectral data and supertraces of the Phantasm campaign, the Riemann graded bond, the vacuum-decay and prime-chain Lindbladians, bond entanglement, and the Artin--Schreier ring/trace forms, super-transfer matrix and symplectic transfer map.
+% SHARD-SUMMARY: Every row of db/definitions.tsv still appears exactly once across the three definitions shards.
+% SHARD-KEYWORDS: definitions, graded, supertrace, net multiplicity, vacuum decay, prime chain, entanglement Hamiltonian, ring form, trace form, radical sign, super-transfer, Weyl operators, symplectic
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{Definitions, Continued: the Phantasm Campaign}
+\label{sec:definitions-c}
+
+Continuation of \cref{sec:definitions-b}; split for length only.
+
+\begin{definition}[Graded spectral datum, supertrace distribution, net multiplicity]
+\label{def:graded-spectral-datum}
+A \emph{graded spectral datum} is a countable multiset of pairs $(\lambda,\epsilon)$,
+$\lambda\in\mathbb C$, $\epsilon\in\{+1,-1\}$ the \emph{parity}, with multiplicities
+$m(\lambda,\epsilon)\in\mathbb N$, such that $\re\lambda\le c$ for some real $c$ and
+$\sum m(\lambda,\epsilon)(1+|\lambda|)^{-N}<\infty$ for some $N$. Its \emph{supertrace
+distribution} is $\str e^{\tsg\Ggr} := \sum\epsilon\,m(\lambda,\epsilon)\,e^{\lambda\tsg}$
+on $(0,\infty)$, and its \emph{net multiplicity} is $\netmult(\lambda) = m(\lambda,+1) -
+m(\lambda,-1)$. Two data with the same $\netmult$ are \emph{equivalent up to cancelling
+pairs}. For a $\mathbb Z_2$-graded operator the supertrace is the trace on the even part
+minus the trace on the odd part.
+\end{definition}
+
+\begin{definition}[Distributional trace of the compressed semigroup, prime comb]
+\label{def:distributional-trace}
+$\Trd\Zt := \sum_{\zero}e^{-\bar\zero\tsg/2}$, the sum over all nontrivial zeros with
+multiplicity, is a distribution on $(0,\infty)$ (\cref{lem:supertrace-distribution}); this
+is a definition by fiat, not an application of a trace theorem to $\Zt$. The \emph{prime
+comb} is $\combP(u) = \sum_{n\ge2}\vM(n)\,\delta(u-\log n)$, so that $e^{-\tsg/2}\combP(\tsg/2)
+= 2\primeP(\tsg)$.
+\end{definition}
+
+\begin{definition}[Riemann graded bond and generator]
+\label{def:riemann-graded-bond}
+$\gbond = \mathbb C_{+}\oplus\big(\KS\oplus\ltwo{\mathbb N_{\ge1}}\big)_{-}$, the even line
+spanned by the fixed vector and the odd part the model space together with an
+\emph{archimedean ladder}; $\Ggr = 0\oplus\Bgen\oplus\operatorname{diag}(-(k+\tfrac12))_{k\ge1}$,
+where $\Zt = e^{\tsg\Bgen}$ is the compressed semigroup.
+\end{definition}
+
+\begin{definition}[Vacuum-decay Lindbladian, absorbing-vacuum channel]
+\label{def:vacuum-decay}
+For a Hilbert space $H$, $\Bgen$ on $H$ and an exit vector $j$ with
+$-(\Bgen+\Bgen^\dagger) = |j\rangle\langle j|$, the \emph{vacuum-decay Lindbladian} on
+$B(\mathbb C\vac\oplus H)$ is $\Lvac(x) = \bar B x + x\bar B^\dagger + JxJ^\dagger$ with
+$\bar B = 0\oplus\Bgen$ and $J = |\vac\rangle\langle j|$; $\Omvac = |\vac\rangle\langle\vac|$.
+The grading is $\vac$ even, $H$ odd. The \emph{absorbing-vacuum channel} of a strongly
+stable contraction semigroup $Z_\tsg$ is $x\mapsto(1\oplus Z_\tsg)x(1\oplus Z_\tsg)^\dagger +
+\Tr[(1-Z_\tsg^\dagger Z_\tsg)X]\,\Omvac$, $X$ the $H$-block of $x$.
+\end{definition}
+
+\begin{definition}[Prime-chain detailed-balance Lindbladian]
+\label{def:prime-chain-lindbladian}
+With $\bciso{\pp}|n\rangle = |\pp n\rangle$ the isometries of the Bost--Connes
+representation and rates $r_{\pp}>0$,
+\[
+  \Lpc{\invtemp}(x) = \sum_{\pp}r_{\pp}\big(\bciso{\pp}x\bciso{\pp}^\dagger - \tfrac12\{\bciso{\pp}^\dagger\bciso{\pp},x\}\big)
+  + \sum_{\pp}r_{\pp}\pp^{\invtemp}\big(\bciso{\pp}^\dagger x\bciso{\pp} - \tfrac12\{\bciso{\pp}\bciso{\pp}^\dagger,x\}\big),
+\]
+in the Schr\"odinger convention; its diagonal part is the multiplicative birth--death
+process $n\to\pp n$ at rate $r_{\pp}$, $n\to n/\pp$ at rate $r_{\pp}\pp^{\invtemp}$. The
+Gibbs density is $\gibbs{\invtemp} = N^{-\invtemp}/\zeta(\invtemp)$.
+\end{definition}
+
+\begin{definition}[Entanglement Hamiltonian and entropy of a bond density]
+\label{def:bond-entanglement}
+For a bond density $\dm$ (the fixed point of a cMPS transfer generator, which by
+\cref{cit:cmps-schmidt-fixed-point} carries the squared Schmidt coefficients of a
+bipartition) the \emph{entanglement Hamiltonian} is $-\log\dm$, its spectrum the
+\emph{entanglement spectrum}, and the \emph{entanglement entropy} is $\entS(\dm) =
+-\Tr\dm\log\dm$; $\TFD{\invtemp}$ denotes the thermofield-double purification of
+$\gibbs{\invtemp}$.
+\end{definition}
+
+\begin{definition}[Ring form, trace form, radical, radical sign, period parameter]
+\label{def:as-ring-forms}
+For $g(x) = \sum_{j=0}^{\asrange}a_jx^{1+\qs^j}$ over $\Fq$, $\qs$ an odd prime, on
+$V = \Fq^n$ with cyclic indices let $\cshift$ be the shift $(\cshift x)_i = x_{i+1}$ and
+$\Ppoly{g}(z) = \sum_j\tfrac{a_j}{2}(z^j+z^{-j})$. The \emph{ring form} is
+$\Qring{g}(x) = \sum_ja_j\sum_{i}x_ix_{i+j} = x^{t}\Ppoly{g}(\cshift)x$; the \emph{trace form}
+in the coordinates of a normal basis $\nbgen$ is $\Qtrace{g}(x) = \ftr g(x) =
+x^{t}C\,\Ppoly{g}(\cshift)x$ with $C_{ik} = \ftr(\nbgen^{\qs^{i}}\nbgen^{\qs^{k}})$ the
+(symmetric, invertible, circulant) Gram matrix. The \emph{radical} is $\radn{n} =
+\ker\Ppoly{g}(\cshift)$, the \emph{radical sign} $\dsign{n} = \det(\cshift|_{\radn{n}})\in\{\pm1\}$
+($=1$ if $\radn{n}=0$), $\dfix{n} = \dim\radn{n}$, and the \emph{period parameter}
+$\hper$ is the smallest power of $\qs$ strictly greater than the order of vanishing of
+$z^{\asrange}\Ppoly{g}(z)$ at $z=-1$.
+\end{definition}
+
+\begin{definition}[Super-transfer matrix of an Artin--Schreier curve]
+\label{def:super-transfer}
+$\Etr = (E_0\oplus1)_{+}\oplus\big(\bigoplus_{a\in\Fq^\times}\Fodd{ag}\big)_{-}$, where $E_0$
+is the transfer matrix of the zero polynomial (the de~Bruijn adjacency matrix of memory
+$\asrange$, or the scalar $\qs$ when $\asrange=0$), the summand $1$ is the point at
+infinity, and $\Fodd{g}$ is the \emph{Frobenius block} of the character sum: the diagonal
+$\qs^{\asrange}\times\qs^{\asrange}$ matrix with $\Lcurve(g,\uz) = \det(1-\uz\Fodd{g})$
+(\cref{thm:as-frobenius-block}). The point count is its supertrace,
+$\Ncount{n} = \str\Etr^{n}$.
+\end{definition}
+
+\begin{definition}[Centred Weyl operators, symplectic transfer map, Weil implementer]
+\label{def:weyl-symplectic}
+On $\ltwo{\Fq^{\asrange}}$ the \emph{centred Weyl operators} are
+$\Weyl{u,v}|s\rangle = \addch\big(v\cdot(s+u/2)\big)|s+u\rangle$, $(u,v)\in\Fq^{2\asrange}$.
+The \emph{transfer unitary} is $\Ugu{g} = \Tmat_g/\sqrt{\qs}$; its \emph{symplectic
+transfer map} $\Msymp{g}\in\Sp(2\asrange,\Fq)$ is defined by
+$\Ugu{g}\Weyl{u,v}\Ugu{g}^{-1} = \Weyl{\Msymp{g}(u,v)}$ (\cref{thm:as-symplectic-map}). A
+\emph{Weil implementer} of $M\in\Sp(2\asrange,\Fq)$ is a unitary $\Weil(M)$ with
+$\Weil(M)\Weyl{u,v}\Weil(M)^{-1} = \Weyl{M(u,v)}$; it is determined up to a scalar
+(\cref{cit:weil-egorov-uniqueness}), and $\Dg{g}(\uz) = \det(1-\uz\Tmat_g)$.
+\end{definition}

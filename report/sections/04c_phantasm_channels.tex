@@ -1,0 +1,265 @@
+% SHARD-ID: RC-04C-PHANTASM-CHANNELS
+% SHARD-TITLE: The Phantasm II: Vacuum Decay, the Prime Chain, and the Two Halves
+% SHARD-SUMMARY: Two genuine Lindbladians are built and analysed: the vacuum-decay channel on C (+) K_S, whose odd coherences are exactly the Riemann channel (zeros once each) but whose stationary state is the pure vacuum, and the prime-chain detailed-balance Lindbladian, whose stationary state is the Bost--Connes Gibbs density but whose spectrum is a real union of M/M/1 bands with no zeros.
+% SHARD-SUMMARY: Normal KMS states of the prime chain exist only for beta > 1, with entanglement Hamiltonian beta log N and a purification that is a product over primes; the entropy and its cutoff scalings (log P, half log N at criticality, Hagedorn level density) are recorded, and the fermionic MPS and cMPS prior art is cited.
+% SHARD-SUMMARY: The two constructions are complementary halves of the Phantasm; the object with both is the open problem, and the character-sector reading of the grading (trivial character even, nontrivial characters odd) is recorded as the guiding observation.
+% SHARD-KEYWORDS: vacuum decay, absorbing vacuum, coherences, populations, prime chain, detailed balance, M/M/1, KMS, Gibbs, entanglement Hamiltonian, Hagedorn, fermionic MPS, fermionic cMPS, character sectors, complementary halves
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/riemann_graded_trace.py, scripts/bc_entropy.py
+
+\section{The Phantasm II: Vacuum Decay, the Prime Chain, and the Two Halves}
+\label{sec:phantasm-channels}
+
+\Cref{sec:phantasm-forced} realised the forced graded spectrum by a Hilbert-space
+semigroup. The reframe asks for more: a Lindbladian on operators, with a fixed point that
+is a state and the zeros as relaxation modes. This shard records the two Lindbladians
+that can actually be built, and why each is only half of what is wanted.
+
+\subsection{Prior art on graded bonds}
+
+\begin{citedfact}[Fermionic matrix product states contract by a supertrace]
+\label{cit:fmps-supertrace}
+\claimstatus{cit:fmps-supertrace}{cited}
+Bultinck, Williamson, Haegeman and Verstraete \cite{bultinck2017fermionic} contract
+fermionic MPS with the graded contraction $\mathcal C(|i\rangle\otimes\langle j|) =
+(-1)^{|i|}\delta_{ij}$, so a closed ring of a $\mathbb Z_2$-graded bond is a supertrace,
+with a parity insertion in the odd sector.
+Verbatim: \texttt{\detokenize{\mathcal{C}(\ket{i} \otimesg \bra{j}) = (-1)^{|i||j|} \mathcal{C}(\bra{j} \otimesg \ket{i}) = (-1)^{|i|} \delta_{i,j}.}} (\texttt{1610.07849:FermionicMPS.tex:132}).
+\end{citedfact}
+
+\begin{citedfact}[The fermionic cMPS already has the graded bond]
+\label{cit:fcmps-graded-bond}
+\claimstatus{cit:fcmps-graded-bond}{cited}
+Haegeman, Cirac, Osborne and Verstraete \cite{haegeman2013calculus} give the fermionic
+cMPS: a $\mathbb Z_2$-graded bond with block-diagonal $Q$, block-off-diagonal $R$ for
+fermionic species, and parity-graded boundary matrices.
+Verbatim: \texttt{\detokenize{R_{\alpha}&=\begin{bmatrix} 0_{D^{(+)}\times D^{(+)}} & R_{\alpha}^{(+-)} \\ R_{\alpha}^{(-+)} & 0_{D^{(-)}\times D^{(-)}}\end{bmatrix}\qquad \text{(particle species $\alpha$ is fermionic)}.}} (\texttt{1211.3935:calculus.tex:327}).
+\end{citedfact}
+
+\begin{citedfact}[The transfer fixed point is the half-line reduced state]
+\label{cit:cmps-schmidt-fixed-point}
+\claimstatus{cit:cmps-schmidt-fixed-point}{cited}
+Verstraete and Cirac \cite{verstraete2010cmps}: the eigenvalues of the fixed point of the
+cMPS transfer Lindbladian are the squared Schmidt coefficients of a bipartition.
+Verbatim: \texttt{\detokenize{the eigenvalues of the matrix $\rho(x)$ would exactly correspond to the squares of the Schmidt coefficients when considering a bipartition at site $x$}} (\texttt{1002.1824:mpsQFT4.tex:81}).
+\end{citedfact}
+
+So the graded bond with a supertrace ring contraction is not new as a tensor-network
+construction; the arithmetic reading is what this book proposes.
+
+\subsection{Vacuum decay: the zeros as odd coherences, the vacuum as fixed point}
+
+\begin{theorem}[The finite vacuum-decay model]
+\label{thm:vacuum-decay-finite}
+\claimstatus{thm:vacuum-decay-finite}{proved}
+For finite-dimensional $H$, $\Bgen$ with $-(\Bgen+\Bgen^\dagger) = |j\rangle\langle j|$
+and $e^{\tsg\Bgen}\to0$, the vacuum-decay Lindbladian $\Lvac$ of \cref{def:vacuum-decay}
+is a trace-preserving GKLS generator with unique stationary density $\Omvac$; in the block
+decomposition of $B(\mathbb C\oplus H)$ it is triangular, the coherence blocks evolve
+exactly by $e^{\tsg\Bgen}$, and
+\[
+  \operatorname{spec}\Lvac = \{0\}\uplus\operatorname{spec}\Bgen\uplus
+  \overline{\operatorname{spec}\Bgen}\uplus\{b_i+\bar b_j\},
+\]
+ordered pairs with multiplicities; the coherences are odd and the populations even.
+\end{theorem}
+
+Explicitly $e^{\tsg\Lvac}$ is conjugation by $1\oplus e^{\tsg\Bgen}$ plus the completely
+positive feed $X\mapsto\Tr[(1-e^{\tsg\Bgen^\dagger}e^{\tsg\Bgen})X]\,\Omvac$.
+
+\begin{corollary}[Traces of the vacuum-decay semigroup]
+\label{cor:vacuum-decay-traces}
+\claimstatus{cor:vacuum-decay-traces}{proved}
+$\Tr e^{\tsg\Lvac} = |1+\Tr e^{\tsg\Bgen}|^2$ and $\str e^{\tsg\Lvac} = |1-\Tr e^{\tsg\Bgen}|^2$:
+the vacuum-decay transfer carries both coherence lists and all pair sums, and is not the
+single-particle generator $\Ggr$.
+\end{corollary}
+
+\begin{proposition}[The absorbing-vacuum channel]
+\label{prop:absorbing-vacuum-channel}
+\claimstatus{prop:absorbing-vacuum-channel}{proved-conditional}
+For any strongly continuous contraction semigroup $Z_\tsg\to0$ (strongly) on a separable
+Hilbert space, the absorbing-vacuum channel of \cref{def:vacuum-decay} is a strongly
+continuous CPTP semigroup on trace-class operators on $\mathbb C\oplus H$ with unique
+stationary density $\Omvac$ and exact odd coherence evolution by $Z_\tsg$. For $H = \KS$ it
+realises the Riemann channel as its odd coherence sector.
+\end{proposition}
+
+\begin{observation}[Zeros in the coherences, pair sums in the populations]
+\label{obs:zero-coherences-populations}
+\claimstatus{obs:zero-coherences-populations}{sketched}
+For $H=\KS$ each zero appears once as an odd coherence mode $-\bar\zero/2$ and once as its
+conjugate (odd multiplicity $2m_\zero$), the even populations carry the pair sums
+$-(\bar\zero_n+\zero_m)/2$, and their formal trace $|\Trd\Zt|^2$ is not a defined product
+of distributions; no pair-correlation statement follows.
+\end{observation}
+
+\begin{proposition}[The vacuum is absorbing, and the entanglement is trivial]
+\label{prop:vacuum-renewal-trivial-entanglement}
+\claimstatus{prop:vacuum-renewal-trivial-entanglement}{proved}
+The jump reinserts into the vacuum, but the renewal integral
+$\int_0^T e^{\tsg\bar B}\Omvac e^{\tsg\bar B^\dagger}d\tsg = T\Omvac$ diverges: the vacuum is
+absorbing, not a rebound state of finite holding time, so this model does not solve the
+renewal equation of the SHW picture with a rebound inside $\KS$. The canonical cMPS
+selected by the stationary bond density has a single nonzero Schmidt weight: its
+half-line entanglement is trivial.
+\end{proposition}
+
+This is the first half: side B without side A. The construction has the right relaxation
+modes and no entanglement.
+
+\subsection{The prime chain: the Gibbs fixed point, and no zeros}
+
+\begin{citedfact}[Bost--Connes KMS classification]
+\label{cit:bc-kms-unique}
+\claimstatus{cit:bc-kms-unique}{cited}
+For $0<\invtemp\le1$ the Bost--Connes system has a unique KMS$_\invtemp$ state; for
+$\invtemp>1$ the extremal KMS states are the Gibbs states with partition function
+$\zeta(\invtemp)$, labelled by embeddings of $\mathbb Q^{\mathrm{ab}}$
+\cite{connesmarcolli2004physics,bostconnes1995}.
+Verbatim: \texttt{\detokenize{For $0 < \beta \leqq 1$ there exists a unique ${\rm KMS}_{\beta}$ state $\varphi_{\beta}$ for the above system.}} (\texttt{math/0404128:houcheschapter1final7.tex:1820-1821}).
+\end{citedfact}
+
+\begin{proposition}[Normal KMS states are the Gibbs densities, only above the transition]
+\label{prop:normal-kms-gibbs}
+\claimstatus{prop:normal-kms-gibbs}{proved}
+For the dynamics $\Ad(N^{i\tsg})$ on $B(\ltwo{\mathbb N})$ a normal KMS$_\invtemp$ state
+exists iff $\invtemp>1$, and then it is $\gibbs{\invtemp}$; the spectrum of
+$-\log\gibbs{\invtemp}$ is $\{\invtemp\log n + \log\zeta(\invtemp)\}$; and $\TFD{\invtemp}$
+factorises over the prime sites, with bond dimension one along the prime chain. The
+unique critical KMS state of the Bost--Connes algebra is not a normal density in this
+representation.
+\end{proposition}
+
+\begin{lemma}[M/M/1 spectrum]
+\label{lem:mm1-spectrum}
+\claimstatus{lem:mm1-spectrum}{proved}
+The birth--death generator on $\mathbb N_0$ with constant up-rate $\lambda$ and down-rate
+$\lambda'>\lambda$, on $L^2$ of its geometric stationary law, has spectrum $\{0\}\cup
+[-(\sqrt\lambda+\sqrt{\lambda'})^2,-(\sqrt\lambda-\sqrt{\lambda'})^2]$, the zero simple.
+\end{lemma}
+
+\begin{proposition}[The classical prime-chain dynamics]
+\label{prop:prime-chain-lindbladian}
+\claimstatus{prop:prime-chain-lindbladian}{proved}
+The diagonal part of $\Lpc{\invtemp}$ ($\sum_{\pp}r_{\pp}<\infty$, $\invtemp>1$) is a
+nonexplosive product of independent birth--death chains, one per prime, with unique
+stationary law $n^{-\invtemp}/\zeta(\invtemp)$; its self-adjoint generator on $L^2$ of
+that law has spectrum the closure of $\{0\}$ and the finite Minkowski sums of the bands
+$[-r_{\pp}(\pp^{\invtemp/2}+1)^2,-r_{\pp}(\pp^{\invtemp/2}-1)^2]$. It is real, and contains
+no zero of $\zeta$.
+\end{proposition}
+
+\begin{proposition}[Off-diagonal sectors]
+\label{prop:prime-chain-offdiagonal}
+\claimstatus{prop:prime-chain-offdiagonal}{proved}
+If $\sum_{\pp}r_{\pp}\pp^{\invtemp}<\infty$, $\Lpc{\invtemp}$ generates a bounded CPTP
+semigroup with $\gibbs{\invtemp}$ stationary, and on the weighted Hilbert space with norm
+$\|{\gibbs{\invtemp}}^{-1/4}x{\gibbs{\invtemp}}^{-1/4}\|_{\mathrm{HS}}$ it is bounded,
+self-adjoint and nonpositive, off-diagonal sectors included: its spectrum is real.
+\end{proposition}
+
+\begin{corollary}[Delocalisation at the transition]
+\label{cor:gibbs-delocalisation}
+\claimstatus{cor:gibbs-delocalisation}{proved}
+As $\invtemp\downarrow1$ the Gibbs density has no trace-norm limit and its mass on every
+finite-rank projection tends to zero; for $0<\invtemp\le1$ the prime occupation process
+has no stationary probability on finite-support configurations. This is the precise
+content available for the Bost--Connes transition; it is not a proof of ergodicity
+breaking of a Riemann Lindbladian.
+\end{corollary}
+
+This is the second half: side A without side B. The stationary state is right and the
+spectrum is blind to the zeros, as every prime-by-prime construction is
+(\cref{obs:prime-by-prime-blind}).
+
+\subsection{Entropy of the bond state and its cutoffs}
+
+\begin{numerical}[Entropy of the Gibbs density under cutoffs]
+\label{num:bc-entropy}
+\claimstatus{num:bc-entropy}{numerical}
+\texttt{scripts/bc\_entropy.py} (\texttt{outputs/bc\_entropy.txt}): $\entS(\gibbs{\invtemp})
+= \log\zeta(\invtemp) - \invtemp\zeta'(\invtemp)/\zeta(\invtemp)$ against the prime-product
+sum; with the prime cutoff $\pp\le P$ at $\invtemp=1$ the entropy follows $\log P +
+\log\log P$ to $10^{-3}$ at $P=10^6$, grows like $\invtemp P^{1-\invtemp}/(1-\invtemp)$
+for $\invtemp<1$ and saturates for $\invtemp>1$; with the bond cutoff $n\le N$ at
+$\invtemp=1$ the ratio $\entS/\log N$ falls towards $\tfrac12$ ($0.657$ at $N=10^7$)
+against $1$ for $\invtemp<1$ and $0$ for $\invtemp>1$; the number of entanglement levels
+below $E$ is $\lfloor e^E\rfloor$. Constants fixed by the review: $\entS = 1/(\invtemp-1)
++ \log(1/(\invtemp-1)) + (1-\gamma_E) + o(1)$; the prime-cutoff constant is exactly $0$,
+the two Mertens constants cancelling; the bond-cutoff constant is $-\gamma_E/2$.
+\end{numerical}
+
+\begin{observation}[The entanglement Hamiltonian is free and Hagedorn]
+\label{obs:gibbs-entanglement-hagedorn}
+\claimstatus{obs:gibbs-entanglement-hagedorn}{sketched}
+If the Phantasm's bond fixed point is $\gibbs{\invtemp}$, then by
+\cref{cit:cmps-schmidt-fixed-point} its entanglement Hamiltonian is the Bost--Connes
+Hamiltonian $\invtemp\log N$, free over the primes with single-particle levels $\log\pp$;
+the entanglement entropy is finite for $\invtemp>1$, grows like $\log P$ (prime cutoff)
+or $\tfrac12\log N$ (bond cutoff) at $\invtemp=1$, and like a power of the cutoff for
+$\invtemp<1$: gapped, critical, and not a cMPS at all. The level density $e^E$ is
+Hagedorn growth with $\invtemp_H = 1$ (Julia's reading of the transition
+\cite{julia1990statistical}), not Cardy growth, so the finite-entanglement scaling law of
+critical CFTs does not apply to this state.
+\end{observation}
+
+\subsection{The two halves, and the guiding observation}
+
+\begin{observation}[Complementary halves]
+\label{obs:complementary-halves}
+\claimstatus{obs:complementary-halves}{sketched}
+The vacuum-decay channel has the zeros as odd relaxation modes (each zero twice, as a
+coherence and its conjugate, plus an even pair-sum sector) but a pure stationary state,
+hence trivial entanglement. The prime-chain Gibbs Lindbladian, for $\invtemp>1$, has
+$\gibbs{\invtemp}$ as stationary state, with entanglement spectrum $\invtemp\log n +
+\log\zeta(\invtemp)$, proportional to the ring lengths $2\log n$, but a real spectrum with
+no zeros: unconditionally for its classical part, and on the weighted space of
+\cref{prop:prime-chain-offdiagonal} for the full generator when $\sum r_{\pp}\pp^{\invtemp}
+<\infty$. No construction in this book has both, and the Phantasm would need both
+(\cref{conj:phantasm-both-halves}).
+\end{observation}
+
+\begin{observation}[The grading is trivial versus nontrivial characters]
+\label{obs:character-sector-grading}
+\claimstatus{obs:character-sector-grading}{sketched-conditional}
+In the Artin--Schreier super-transfer matrix (\cref{thm:as-super-transfer}) the even
+block is the trivial additive-character sector, the de Bruijn count $\qs^n$ (the pole at
+$\uz=1/\qs$), together with the point at infinity (the pole at $\uz=1$, not a character
+sector), and the odd block is the direct sum of the corrected Frobenius blocks
+$\Fodd{ag}$ over the nontrivial characters, which carries the zeros as its net spectrum. By analogy, a Galois-symmetric
+Riemann bond decomposed under $\hat{\mathbb Z}^\times$ would have as even sector the pole
+of $\zeta$, the trivial Dirichlet character being the only one with a pole, and as odd
+sector the zeros of every $L(s,\chi)$: the graded object would compute the zeta of the
+cover, the Dedekind zeta of the cyclotomic field at level $N$, not $\zeta$ alone. This is
+consistent with the character-basis transfer eigenvalues $L(\invtemp,\bar\chi)/\zeta(\invtemp)$
+of \cref{prop:bc-mpo}, which by \cref{prop:prime-chain-lindbladian} is nevertheless not
+that object, and it is where Connes's trace formula lands (all $L$-functions with
+Gr\"ossencharakter). It is an
+analogy, not a theorem; its finite-level test is \cref{conj:galois-graded-bond}.
+\end{observation}
+
+\begin{numerical}[Supertrace, vacuum decay and prime-chain bands, checked]
+\label{num:riemann-graded-trace}
+\claimstatus{num:riemann-graded-trace}{numerical}
+\texttt{scripts/riemann\_graded\_trace.py} (\texttt{outputs/riemann\_graded\_trace.txt},
+$42/42$ checks): the windowed supertrace of $\Ggr$ with $3000$ zeros against $2\primeP$ has
+ratio $1-5\cdot10^{-4}$ at twelve prime powers and is positive to within truncation
+(minimum $-0.041$ against peaks of $147$); both ladder alternatives match and are
+positive; flipping the first zero pair to even gives $-2.88$; the finite vacuum-decay
+spectral multiset matches \cref{thm:vacuum-decay-finite} to $7\cdot10^{-14}$ for
+$D = 3, 5, 8$ with CPTP and coherence checks; single-prime birth--death spectra lie in
+the M/M/1 bands and the product gap equals the $\pp=2$ gap.
+\end{numerical}
+
+\begin{observation}[Established scope]
+\label{obs:phantasm-established-scope}
+\claimstatus{obs:phantasm-established-scope}{sketched}
+Established: the forced graded net spectrum and its realisation by a graded contraction
+semigroup with one even fixed line; the no-go for ungraded trace-class realisations; a
+genuine absorbing-vacuum channel with the Riemann channel as its odd coherences; the
+normal-Gibbs classification and the prime-chain spectra. Not established: unrestricted
+infinite parity rigidity, the analytic realisation of the Lax--Phillips input, a cMPS
+whose Hilbert norm is the prime measure, and a stationary entangled bond with the
+critical arithmetic state.
+\end{observation}

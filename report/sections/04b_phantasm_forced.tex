@@ -1,0 +1,292 @@
+% SHARD-ID: RC-04B-PHANTASM-FORCED
+% SHARD-TITLE: The Phantasm I: What the Prime Measure Forces, and What Cannot Exist
+% SHARD-SUMMARY: The Bost--Connes reframe asks for a cMPS whose bond carries a Riemann Lindbladian; this shard proves what the prime measure forces of such an object: the supertrace of a graded generator determines its spectrum up to cancelling pairs, the explicit formula then fixes the pole even and the zeros odd, and positivity of the supertrace forces those parities (finite flips proved, infinite flips open).
+% SHARD-SUMMARY: The no-go: no finite matrix and no trace-class operator has the point counts of a curve of genus at least one as its trace sequence, so no bosonic MPS ring norm can; the numerator of a zeta function is exactly the odd sector. Then the concrete realisation: the compressed semigroup is the odd sector of a graded contraction semigroup on C (+) (K_S (+) ladder) whose supertrace is exactly twice the positive-time prime measure.
+% SHARD-SUMMARY: Prior art recorded with byte-cited quotes: the graded reading is Deninger's dynamical cohomology and the minus sign is Connes's absorption spectrum; what is new is the tensor-network reading and the rigidity, no-go and realisation statements.
+% SHARD-KEYWORDS: Phantasm, graded bond, supertrace, net multiplicity, rigidity, parity, Lidskii, no-go, odd sector, Riemann channel, Deninger, Connes, absorption spectrum
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{The Phantasm I: What the Prime Measure Forces}
+\label{sec:phantasm-forced}
+
+\emph{Phantasm} is the name used in this book for the object the Bost--Connes reframe
+chases (\texttt{HANDOFF.md}, central priority of 2026-09-12): a continuous matrix product
+state whose one-dimensional space is dilation time, whose bond carries a ``Riemann
+Lindbladian'' with the pole of $\zeta$ at $s=1$ as fixed point and the zeros as relaxation
+modes, and whose ring norm is the prime measure. Because the ring norms of an ordinary
+cMPS are sums of squares (\cref{thm:cmps-ring-norms}) while the zeros enter the explicit
+formula with a minus sign, the bond was expected to be $\mathbb Z_2$-graded, the zeros odd,
+the pole even, and the ring norm a supertrace. This shard and the next record what can
+be proved about that object from the data at hand: what is forced, what cannot exist,
+and what exists. The proofs are the codex prover's (\texttt{notes/riemann-cmps/astra-proofs.md},
+Lamport style, labels T1--T8), reviewed adversarially by an Opus reviewer
+(\texttt{notes/reviews/riemann-cmps-2026-09-12.md}); the brief that drafted the
+statements, several of which the prover corrected, is
+\texttt{notes/riemann-cmps/astra-brief.md}.
+
+\subsection{Prior art: the grading is Deninger's, the sign is Connes's}
+
+\begin{citedfact}[Deninger's graded dynamical cohomology]
+\label{cit:deninger-graded-lefschetz}
+\claimstatus{cit:deninger-graded-lefschetz}{cited}
+In Deninger's conjectural picture \cite{deninger2005foliated} the completed zeta is an
+alternating product of regularised determinants over $H^0$, $H^1$, $H^2$ of a flow
+$\Theta$: $H^0 = \mathbb R$ with $\Theta = 0$; $H^1$ infinite dimensional, ``the spectrum
+of $\Theta$ consisting of the non-trivial zeroes $\zero$ of $\zeta_K(s)$ with their
+multiplicities''; $H^2\cong\mathbb R$ ``but with $\Theta = \mathrm{id}$''; and on
+$\mathbb R^{>0}$ the Lefschetz formula reads $\sum_i(-1)^i\Tr(\phi^*|H^i) = 1 - \sum_\zero
+e^{t\zero} + e^t$, equal to the prime comb plus archimedean terms.
+Verbatim: \texttt{\detokenize{$H^1_{\dyn} ( \overline{\spec \eo}  , \Rh)$ is infinite dimensional, the spectrum of $\Theta$ consisting of the non-trivial zeroes $\rho$ of $\zeta_K (s)$ with their multiplicities,}} (\texttt{math/0505354:main.tex:323}); \texttt{\detokenize{$H^2_{\dyn} ( \overline{\spec \eo}  , \Rh) \cong \R$ but with $\Theta = \id$.}} (\texttt{math/0505354:main.tex:324}); \texttt{\detokenize{\lefteqn{\sum^2_{i=0} (-1)^i \Tr (\phi^* \tei H^i_{\dyn} (\overline{\spec \eo} , \Rh)) = 1 - \sum_{\hat{\zeta}_K (\rho) = 0} e^{t\rho} + e^t }}} (\texttt{math/0505354:main.tex:878}).
+\end{citedfact}
+
+\begin{citedfact}[Connes: the zeros as an absorption spectrum]
+\label{cit:connes-absorption}
+\claimstatus{cit:connes-absorption}{cited}
+Connes \cite{connes1998trace}: ``the spectral interpretation of the zeros of the Riemann
+zeta function should be as an absorption spectrum rather than as an emission spectrum,
+to borrow the language of spectroscopy''; the minus sign is that of $H^1$ in the
+Lefschetz formula.
+Verbatim: \texttt{\detokenize{the spectral interpretation of the zeros of the Riemann zeta function should be as an absorption spectrum rather than as an emission spectrum, to borrow the language of spectroscopy.}} (\texttt{math/9811068:main.tex:579-581}).
+\end{citedfact}
+
+So the forced part of the Phantasm, a graded operator with the pole even and the zeros
+odd whose Lefschetz trace is the explicit formula, is Deninger's programme, and the sign
+is Connes's. What this book adds is the reading through ring norms and transfer
+operators: which data are forced by the ring norms alone, which realisations cannot
+exist, and which exist concretely.
+
+\subsection{Rigidity: the supertrace determines the graded spectrum}
+
+\begin{lemma}[Existence of the supertrace distribution]
+\label{lem:supertrace-distribution}
+\claimstatus{lem:supertrace-distribution}{proved}
+For a graded spectral datum (\cref{def:graded-spectral-datum}) the series
+$\sum\epsilon\,m\,e^{\lambda\tsg}$ converges absolutely after pairing with every test
+function in $C_c^\infty(0,\infty)$ and defines a distribution there, independently of the
+order of summation.
+\end{lemma}
+
+The estimate integrates by parts in the full complex parameter $\lambda$, not only in its
+imaginary part (the draft's version was corrected there).
+
+\begin{theorem}[Rigidity up to cancelling pairs]
+\label{thm:supertrace-rigidity}
+\claimstatus{thm:supertrace-rigidity}{proved}
+Two graded spectral data with the same supertrace distribution on $(0,\infty)$ have the
+same net multiplicity $\netmult(\lambda)$ at every $\lambda\in\mathbb C$.
+\end{theorem}
+
+The proof pairs the supertrace with cut-off versions of $\tsg^ke^{-s\tsg}$, $k$ large, the
+cutoffs nonnegative and monotone in both parameters (which is what part (i) of
+\cref{prop:parity-infinite-dominated} later needs),
+shows the limit is $k!\sum_\lambda\netmult(\lambda)(s-\lambda)^{-k-1}$, meromorphic on
+$\mathbb C$ with principal part $k!\netmult(\lambda)(s-\lambda)^{-k-1}$ at each $\lambda$,
+and compares principal parts. Ring norms therefore see exactly the net graded spectrum and
+nothing else: not Jordan blocks, not the Hilbert-space geometry, not the operator domain.
+
+\begin{assumption}[Explicit formula in trace form]
+\label{asm:explicit-formula-trace}
+\claimstatus{asm:explicit-formula-trace}{assumed}
+For $u>0$, as distributions on $(0,\infty)$, $\sum_\zero e^{\zero u} = e^u - \combP(u) -
+1/(e^{2u}-1)$, the zero sum in symmetric order; equivalently the $x$-derivative of
+$\cheb_0(x) = x - \sum_\zero x^\zero/\zero - \log2\pi - \tfrac12\log(1-x^{-2})$ at $x = e^u$.
+\end{assumption}
+
+\begin{assumption}[Zero count and location]
+\label{asm:zero-count-location}
+\claimstatus{asm:zero-count-location}{assumed}
+$N(T) = \frac{T}{2\pi}\log\frac{T}{2\pi e} + O(\log T)$; every nontrivial zero has
+$0<\re\zero<1$ and $\im\zero\ne0$; the zero multiset is locally finite and invariant, with
+multiplicity, under conjugation and $\zero\mapsto1-\zero$. No RH input.
+\end{assumption}
+
+\begin{corollary}[The forced net spectrum]
+\label{cor:forced-net-spectrum}
+\claimstatus{cor:forced-net-spectrum}{proved-conditional}
+A graded datum whose supertrace on $(0,\infty)$ is $\combP(u)$ has
+$\netmult(1) = 1$, $\netmult(\zero) = -m_\zero$ at each nontrivial zero, $\netmult(-2k) =
+-1$ for $k\ge1$, and $\netmult = 0$ elsewhere. One whose supertrace is $2\primeP(\tsg)$ has
+$\netmult(0) = 1$, $\netmult(-\bar\zero/2) = -m_\zero$, $\netmult(-(k+\tfrac12)) = -1$, and
+$0$ elsewhere.
+\end{corollary}
+
+The second datum is the first transported by $\lambda\mapsto(\lambda-1)/2$ and the
+symmetry $\zero\mapsto1-\zero$, with the half-time Jacobian $\combP(\tsg/2) =
+2\sum\vM(n)\delta(\tsg-2\log n)$; the archimedean term $1/(e^{2u}-1) = \sum_{k\ge1}e^{-2ku}$
+becomes the odd ladder $-(k+\tfrac12)$.
+
+\subsection{Positivity forces the parities}
+
+\begin{assumption}[Positive distributions]
+\label{asm:positive-distributions}
+\claimstatus{asm:positive-distributions}{assumed}
+A distribution on $(0,\infty)$ that is nonnegative on nonnegative test functions is
+integration against a unique positive Radon measure, and conversely.
+\end{assumption}
+
+\begin{theorem}[Finite parity changes]
+\label{thm:parity-forced-finite}
+\claimstatus{thm:parity-forced-finite}{proved-conditional}
+Assign one parity per value of $\{1\}\cup\{\zero\}\cup\{-2k\}$ and let $F_Z$ be the
+nontrivial zeros whose parity differs from the reference (pole even, everything else odd),
+$F_T$ the flipped trivial zeros, $b$ the pole flag. If $F_Z$ is finite, the supertrace is a
+positive distribution iff $b=0$ and $F_Z=\varnothing$, while $F_T$ may be any set, even
+infinite. The supertrace is real iff the flipped set is conjugation-invariant.
+\end{theorem}
+
+The flipped part is then a real-analytic function; positivity of comb plus a continuous
+function forces the function nonnegative; a flipped pole gives $-2e^u$, and a flipped set
+of zeros gives a leading trigonometric polynomial with zero mean and positive mean square,
+which is negative on an unbounded set. The draft's ``a cosine is negative somewhere'' was
+replaced by this argument on the whole leading-frequency sum.
+
+\begin{assumption}[Landau's theorem, Laplace form]
+\label{asm:landau-laplace}
+\claimstatus{asm:landau-laplace}{assumed}
+The Laplace transform of a positive measure on $(0,\infty)$ with finite abscissa of
+convergence $\sigs_c$ has a singularity at $s=\sigs_c$.
+\end{assumption}
+
+\begin{citedfact}[Landau's theorem, Dirichlet form]
+\label{cit:landau-dirichlet}
+\claimstatus{cit:landau-dirichlet}{cited}
+A Dirichlet series with nonnegative coefficients does not extend holomorphically to a
+neighbourhood of its abscissa of absolute convergence \cite{maurizi2010landau}.
+Verbatim: \texttt{\detokenize{Suppose that $f(s)= \sum a_n n^{-s}$ has abscissa of absolute convergence equal to $0$.  If $a_n \in \mathbb{R}, a_n \ge 0$ for all $n$ then $f$ does not extend holomorphically to a neighborhood of $s = 0$.}} (\texttt{1009.0228:main.tex:177}).
+\end{citedfact}
+
+\begin{proposition}[Infinite flips: the pole, and the zeros under domination]
+\label{prop:parity-infinite-dominated}
+\claimstatus{prop:parity-infinite-dominated}{proved-conditional}
+With $F_Z$ possibly infinite: (i) positivity of the supertrace alone forces $b=0$, the
+pole even, by monotone convergence of the cutoff pairings, with no domination premise and
+no Landau input; (ii) if moreover the supertrace dominates the comb as measures then
+$F_Z=\varnothing$. In both parts $F_T$ remains arbitrary.
+\end{proposition}
+
+Part (i) is the reviewer's strengthening of the prover's statement; part (ii) cannot be
+freed of its premise by the same route, because for infinite $F_Z$ the flipped subseries
+is only a distribution and can carry negative mass at the prime-power atoms.
+
+\begin{observation}[The unrestricted infinite case is open]
+\label{obs:parity-infinite-open}
+\claimstatus{obs:parity-infinite-open}{sketched}
+Under positivity alone, with infinitely many zero parities flipped, the difference
+between the supertrace and the comb is a signed measure whose atoms at the prime powers
+can be negative, so the Laplace-transform argument does not close; whether positivity
+alone forces every parity is open here. Exact equality to the prime measure is rigid by
+\cref{thm:supertrace-rigidity} regardless.
+\end{observation}
+
+\subsection{The no-go: numerators are odd}
+
+\begin{citedfact}[Lidskii's theorem]
+\label{cit:lidskii-trace}
+\claimstatus{cit:lidskii-trace}{cited}
+The trace of a trace-class operator on a Hilbert space coincides with its spectral trace,
+the sum of its eigenvalues counted with algebraic multiplicity \cite{reinov2011lidskii,simon2005trace}.
+Verbatim: \texttt{\detokenize{V.B. Lidski\v{\i} [2], in 1959, proved his famous theorem on the coincidence of the trace of the $S_1$-operator in an (infinite dimensional) Hilbert space with its spectral trace $\sum_{k=1}^\infty \mu_k(T).$}} (\texttt{1105.2914:main.tex:119-121}).
+\end{citedfact}
+
+\begin{theorem}[No ungraded realisation of a numerator]
+\label{thm:no-ungraded-trace}
+\claimstatus{thm:no-ungraded-trace}{proved}
+Let $\Ncount{n} = \sum_ib_i^n - \sum_j\alphaw{j}^n$ with nonzero $b_i$, $\alphaw{j}$, the two
+multisets disjoint after cancellation and at least one $\alphaw{j}$. Then no finite matrix
+and no trace-class operator on a separable Hilbert space has $\Tr E^n = \Ncount{n}$ for
+all $n\ge1$.
+\end{theorem}
+
+At $u = 1/\alphaw{j}$ the generating function $\sum_n\Ncount{n}u^n$ has residue
+$+m_j/\alphaw{j}$, whereas $\sum_\lambda m_E(\lambda)\lambda u/(1-\lambda u)$ has residue
+$-m_E(\alphaw{j})/\alphaw{j}$ with $m_E\ge0$; a numerator root needs a negative multiplicity.
+
+\begin{proposition}[Trace and supertrace criteria]
+\label{prop:trace-supertrace-criterion}
+\claimstatus{prop:trace-supertrace-criterion}{proved}
+$(\Ncount{n})$ is the trace sequence of a trace-class operator iff
+$\exp(\sum_n\Ncount{n}\uz^n/n) = \prod_i(1-\lambda_i\uz)^{-1}$ with $\sum|\lambda_i|<\infty$;
+it is the supertrace sequence of a finite graded matrix iff that germ is a rational
+function with value $1$ at $0$, the even net spectrum being the reciprocal poles and the
+odd net spectrum the reciprocal zeros after cancellation. Eigenvalue $0$ and nilpotent
+blocks are invisible to all positive powers.
+\end{proposition}
+
+\begin{assumption}[Weil's theorem for curves]
+\label{asm:weil-curves}
+\claimstatus{asm:weil-curves}{assumed}
+For a smooth projective geometrically connected curve $C$ of genus $g$ over $\Fq$ there
+are $2g$ nonzero algebraic numbers $\alphaw{j}$, $|\alphaw{j}| = \sqrt{\qs}$, the
+Frobenius eigenvalues on $H^1$, with $\#C(\Fqn{n}) = 1 + \qs^n - \sum_j\alphaw{j}^n$.
+\end{assumption}
+
+\begin{corollary}[Curves need the grading; graphs do not]
+\label{cor:curve-counts-graded}
+\claimstatus{cor:curve-counts-graded}{proved-conditional}
+For a curve of genus $g\ge1$ the counts $\Ncount{n}$ are not the trace sequence of any
+finite matrix or trace-class operator, hence not the ring norms $\Tr(\sum_s\Kr{s}\otimes
+\overline{\Kr{s}})^n$ of any translation-invariant bosonic MPS with a fixed local tensor;
+they are the supertrace sequence of $\operatorname{diag}(\qs,1)_+\oplus(\Frob|H^1)_-$, and
+the odd net spectrum is forced to be the Frobenius eigenvalues. Non-backtracking graph
+counts $\Tr\Hash^{\wl}$ are ordinary trace sequences, and the Ihara zeta
+$\det(1-\uz\Hash)^{-1}$ has no finite zeros.
+\end{corollary}
+
+This is the precise content of ``the sign'' of \cref{sec:deligne}: a zeta function with
+a numerator has its interesting eigenvalues as negative net multiplicities, and the grading
+is the only way to write them as a trace. It is also why the quadratic Artin--Schreier
+transfer matrix of \cref{sec:artin-schreier}, whose trace is an exponential sum, is a
+complex partition-function transfer and not the norm transfer of a state (a point the
+prover insisted on): the honest state, the uniform superposition over the points of the
+curve, has no fixed-tensor MPS with those norms.
+
+\subsection{What exists: the compressed semigroup is the odd sector}
+
+\begin{assumption}[Lax--Phillips modes of the compressed semigroup]
+\label{asm:lax-phillips-modes}
+\claimstatus{asm:lax-phillips-modes}{assumed}
+$\Zt = e^{\tsg\Bgen}$ is a strongly continuous contraction semigroup on $\KS$ whose
+generator has pure point spectrum $\{-\bar\zero/2\}$, one eigenvector per zero with
+multiplicity $m_\zero$, and $\Zt\to0$ strongly. (The book's own sketch of this standard
+input is \cref{prop:functional-model-modes}.)
+\end{assumption}
+
+\begin{proposition}[The Riemann graded generator]
+\label{prop:riemann-graded-generator}
+\claimstatus{prop:riemann-graded-generator}{proved-conditional}
+On $\gbond$ (\cref{def:riemann-graded-bond}), $e^{\tsg\Ggr} = 1\oplus\Zt\oplus
+\operatorname{diag}(e^{-(k+1/2)\tsg})$ is a strongly continuous contraction semigroup
+whose fixed vectors are exactly the even line, and for $\tsg>0$
+\[
+  \str e^{\tsg\Ggr} \;=\; 1 - \Trd\Zt - \sum_{k\ge1}e^{-(k+1/2)\tsg}
+  \;=\; 2\primeP(\tsg) \;=\; 2\sum_{n\ge2}\frac{\vM(n)}{n}\,\delta(\tsg-2\log n).
+\]
+\end{proposition}
+
+The single-particle graded spectrum is thus forced (\cref{cor:forced-net-spectrum}) and
+realised. Its odd $\KS$ part is the Riemann channel of \cref{sec:riemann-channel}; the
+missing even fixed line is the pole; the ladder is the archimedean place. The
+uncentred trace of $\Zt$ alone is restated as \cref{prop:ringnorm-trace}.
+
+\begin{proposition}[The ladder parity is free; all-even is impossible]
+\label{prop:ladder-parity-free}
+\claimstatus{prop:ladder-parity-free}{proved-conditional}
+Over the even line plus odd $\KS$ alone the supertrace is $2\primeP + e^{-\tsg/2}/(e^\tsg-1)$;
+with the ladder counted even it is $2\primeP + 2e^{-\tsg/2}/(e^\tsg-1)$; both are positive,
+so positivity does not fix the ladder parity. Exact equality to $2\primeP$ forces the net
+spectrum of $\Ggr$, and no all-even graded datum has supertrace $2\primeP$ or $\combP$.
+\end{proposition}
+
+\begin{observation}[Scope of the interpretation]
+\label{obs:phantasm-scope}
+\claimstatus{obs:phantasm-scope}{sketched}
+RH is the statement that every odd $\KS$ mode of $\Ggr$ has real part $-\tfrac14$; the
+even line represents the pole of $\zeta$ (the constant function on the modular surface,
+the residue of the Eisenstein series at $s=1$), an identification not constructed here;
+$\Zt$ is not trace class for $\tsg>0$; and the identity above is a spectral identity, not
+a cMPS tensor whose Hilbert norm is the prime measure.
+\end{observation}
+
+The numerical check of the supertrace identity, with $3000$ zeros, is
+\cref{num:riemann-graded-trace} in the next shard.

@@ -174,13 +174,18 @@ variable $\ringlen = \tsg/2$, with window $\win$ and transform $g$,
 
 \begin{proposition}[The primes are the ring spectrum of the Riemann channel]
 \label{prop:ringnorm-trace}
-\claimstatus{prop:ringnorm-trace}{sketched}
-The distributional trace of $\Zt$ is supported at the ring lengths $\tsg = 2\log n$ with
-weight $\vM(n)\,n^{-1/2}$.
+\claimstatus{prop:ringnorm-trace}{proved-conditional}
+For $\tsg>0$ the distributional trace of \cref{def:distributional-trace} is
+\[
+  \Trd\Zt \;=\; 1 - 2\primeP(\tsg) - \frac{e^{-\tsg/2}}{e^{\tsg}-1}
+  \;=\; 1 - 2\sum_{n\ge2}\frac{\vM(n)}{n}\,\delta(\tsg-2\log n) - \sum_{k\ge1}e^{-(k+1/2)\tsg}:
+\]
+the primes are dips of weight $-2\vM(n)/n$ at the ring lengths $\tsg = 2\log n$, the
+constant $1$ is the pole, the smooth term the archimedean ladder.
 \end{proposition}
 
-After the $e^{-\tsg/4} = n^{-1/2}$ decay of the modes this is the $\sigs=1$ L\'evy measure
-$\jump{1}$ weighted by jump length, $\vM(n)/n$. In the MPS dictionary of
+Restated 2026-09-12 night from the prover's T4.1; the founding version had weight
+$+\vM(n)n^{-1/2}$ and no pole term (see \cref{prop:riemann-graded-generator}). In the MPS dictionary of
 \cref{sec:what-rh}: rings of length $\log n$ with weight $\vM(n)$, a transfer generator
 with eigenvalues $-\tfrac12 \pm i\gam{n}$, and a single correlation length iff RH. The
 primes are the ring spectrum, the zeros the transfer spectrum, and one identity, the
@@ -188,11 +193,12 @@ explicit formula, links them (\cref{def:one-identity}).
 
 \begin{observation}[Sign and factor of the prime weight]
 \label{obs:ringnorm-sign-correction}
-\claimstatus{obs:ringnorm-sign-correction}{sketched}
+\claimstatus{obs:ringnorm-sign-correction}{sketched-conditional}
 In the convention of the explicit formula displayed above, the prime part of the centred
 trace of $\Zt$ carries weight $-2\vM(n)n^{-1/2}$ at $\tsg = \pm2\log n$ (dips), and the
-positive-time uncentred prime part is $-2\vM(n)/n$. \Cref{prop:ringnorm-trace} is right
-about the support and off by the factor $-2$ in the weight; it is to be restated.
+positive-time uncentred prime part is $-2\vM(n)/n$. \Cref{prop:ringnorm-trace} was right
+about the support and off by the factor $-2$ in the weight; it has since been restated
+in the form printed above.
 \end{observation}
 
 Recorded 2026-09-12 from the Selberg review's action item (b) and, independently, from

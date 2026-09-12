@@ -4,7 +4,7 @@
 % SHARD-SUMMARY: Records the environment, the data files, and the reference-source manifest.
 % SHARD-KEYWORDS: reproducibility, scripts, outputs, data, refs, manifest
 % SHARD-NOTES: none
-% SHARD-SCRIPTS: scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py
+% SHARD-SCRIPTS: scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py, scripts/artin_schreier_super.py, scripts/riemann_graded_trace.py, scripts/bc_entropy.py
 
 \section{Reproducibility Map}
 \label{sec:repro}
@@ -29,6 +29,9 @@ script & what it establishes & output, claims \\
 \texttt{weil\_lps\_hashimoto.py} & Direct edge superoperator for $(13,17)$, odd block: Ihara--Bass to $10^{-14}$, moduli $\{17,\sqrt{17},1\}$ & \texttt{outputs/weil\_lps\_hashimoto\_p13\_q17\_odd.txt}; \texttt{num:weil-lps-rh} \\
 \texttt{artin\_schreier\_mps.py} & Brute-force exponential sums against $\operatorname{Tr}E^n$ for quadratic Artin--Schreier data; $EE^\dagger = qI$ & \texttt{outputs/artin\_schreier\_mps.txt}; \texttt{num:artin-schreier-mps} \\
 \texttt{qihara\_general.py} & Theorem~\ref{thm:qihara-general} in both forms, five configurations, float to $10^{-15}$ and exact rational arithmetic & \texttt{outputs/qihara\_general.txt}; \texttt{num:qihara-general} \\
+\texttt{artin\_schreier\_super.py} & Sign law, endpoint criteria, corrected Frobenius blocks, super-transfer supertraces against point counts, symplectic matrices and the Weil character formula, Prony on the counts; $1969$ checks & \texttt{outputs/artin\_schreier\_super.txt}; \texttt{num:artin-schreier-super} \\
+\texttt{riemann\_graded\_trace.py} & Windowed supertrace of the Riemann graded generator against $2\primeP$ with $3000$ zeros; ladder alternatives; flipped-pair negativity; finite vacuum-decay spectra; prime-chain M/M/1 bands & \texttt{outputs/riemann\_graded\_trace.txt}; \texttt{num:riemann-graded-trace} \\
+\texttt{bc\_entropy.py} & Entropy of the Bost--Connes Gibbs density and its prime and bond cutoffs; Hagedorn level count & \texttt{outputs/bc\_entropy.txt}; \texttt{num:bc-entropy} \\
 \bottomrule
 \end{tabular}
 \end{center}

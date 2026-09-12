@@ -1,0 +1,1423 @@
+
+========================================================================================================
+SETUP
+========================================================================================================
+  cases: 11
+  brute-force range (q^n <= 40000):  q=3: n=1..9 (q^n=19683),  q=5: n=1..6 (q^n=15625),  q=7: n=1..5 (q^n=16807)
+  eta(-1):  q=3: -1,  q=5: +1,  q=7: -1
+
+========================================================================================================
+TASK 1 : SIGN LAW    S_n(g) = -(-eta(-1))^n conj(Tr E_g^n) = (-1)^(n+1) eta(-1)^(d_n) Tr(E_g^n)
+========================================================================================================
+  columns:  S_n (brute force over all q^n field elements) | Tr(E_g^n) | d_n = log_q(|S_n|^2/q^n)
+            law1 = -(-eta(-1))^n conj(Tr E_g^n) ;  law2 = (-1)^(n+1) eta(-1)^(d_n) Tr(E_g^n)
+
+  q=3  a=[0, 1]  J=1  dim E_g = 3  eta(-1)=-1
+    [PASS] E_(-g) == conj(E_g) entrywise   (max dev 7.45e-16)
+    n=1: S_n=   +0.000   +1.732i  Tr(E^n)=   +0.000   +1.732i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+5.1e-16i (law wants -1)  law1 rel=5.13e-16 [PASS]  d_n int [PASS]  law2 rel=0.00e+00 [PASS]
+    n=2: S_n=   -3.000   +0.000i  Tr(E^n)=   +3.000   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000-8.9e-17i (law wants -1)  law1 rel=3.09e-16 [PASS]  d_n int [PASS]  law2 rel=1.02e-15 [PASS]
+    n=3: S_n=   -0.000   -5.196i  Tr(E^n)=   -0.000   -5.196i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+2.1e-15i (law wants -1)  law1 rel=2.08e-15 [PASS]  d_n int [PASS]  law2 rel=7.64e-16 [PASS]  <<< n = 0 mod q
+    n=4: S_n=  -27.000   +0.000i  Tr(E^n)=  +27.000   -0.000i  d_n=2  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.0e-15i (law wants -1)  law1 rel=1.08e-15 [PASS]  d_n int [PASS]  law2 rel=3.67e-16 [PASS]
+    n=5: S_n=   -0.000  +15.588i  Tr(E^n)=   +0.000  +15.588i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+7.4e-16i (law wants -1)  law1 rel=1.36e-15 [PASS]  d_n int [PASS]  law2 rel=2.01e-15 [PASS]
+    n=6: S_n=  -27.000   +0.000i  Tr(E^n)=  +27.000   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.6e-15i (law wants -1)  law1 rel=1.75e-15 [PASS]  d_n int [PASS]  law2 rel=4.82e-15 [PASS]  <<< n = 0 mod q
+    n=7: S_n=   -0.000  -46.765i  Tr(E^n)=   -0.000  -46.765i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+7.0e-15i (law wants -1)  law1 rel=7.40e-15 [PASS]  d_n int [PASS]  law2 rel=2.45e-15 [PASS]
+    n=8: S_n= -243.000   +0.000i  Tr(E^n)= +243.000   -0.000i  d_n=2  zeta_n=S_n/conj(Tr E^n)=-1.000000+4.1e-15i (law wants -1)  law1 rel=4.62e-15 [PASS]  d_n int [PASS]  law2 rel=2.59e-15 [PASS]
+    n=9: S_n=   -0.000 +140.296i  Tr(E^n)=   +0.000 +140.296i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000-7.5e-15i (law wants -1)  law1 rel=1.39e-14 [PASS]  d_n int [PASS]  law2 rel=1.68e-14 [PASS]  <<< n = 0 mod q
+    [PASS] S_bruteforce(q,n,a)=   +0.000   +1.732i  vs vectorised    +0.000   +1.732i  dev=0.00e+00
+    [PASS] S_bruteforce(q,n,a)=   -3.000   +0.000i  vs vectorised    -3.000   +0.000i  dev=2.22e-16
+    [PASS] S_bruteforce(q,n,a)=   -0.000   -5.196i  vs vectorised    -0.000   -5.196i  dev=9.93e-16
+    [PASS] S_bruteforce(q,n,a)=  -27.000   +0.000i  vs vectorised   -27.000   +0.000i  dev=7.19e-15
+    [PASS] S_bruteforce(q,n,a)=   -0.000  +15.588i  vs vectorised    -0.000  +15.588i  dev=5.03e-14
+    [PASS] S_bruteforce(q,n,a)=  -27.000   +0.000i  vs vectorised   -27.000   +0.000i  dev=6.14e-14
+    [PASS] S_bruteforce(q,n,a)=   -0.000  -46.765i  vs vectorised    -0.000  -46.765i  dev=1.99e-13
+
+  q=3  a=[1, 1]  J=1  dim E_g = 3  eta(-1)=-1
+    [PASS] E_(-g) == conj(E_g) entrywise   (max dev 7.45e-16)
+    n=1: S_n=   -0.000   -1.732i  Tr(E^n)=   -0.000   -1.732i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.0e-15i (law wants -1)  law1 rel=1.03e-15 [PASS]  d_n int [PASS]  law2 rel=0.00e+00 [PASS]
+    n=2: S_n=   +0.000   +5.196i  Tr(E^n)=   +0.000   +5.196i  d_n=1  zeta_n=S_n/conj(Tr E^n)=-1.000000+7.7e-16i (law wants -1)  law1 rel=7.88e-16 [PASS]  d_n int [PASS]  law2 rel=3.08e-16 [PASS]
+    n=3: S_n=   +0.000   +5.196i  Tr(E^n)=   -0.000   +5.196i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000-1.7e-16i (law wants -1)  law1 rel=1.21e-15 [PASS]  d_n int [PASS]  law2 rel=1.21e-15 [PASS]  <<< n = 0 mod q
+    n=4: S_n=   +0.000  +15.588i  Tr(E^n)=   +0.000  +15.588i  d_n=1  zeta_n=S_n/conj(Tr E^n)=-1.000000+3.2e-17i (law wants -1)  law1 rel=3.43e-16 [PASS]  d_n int [PASS]  law2 rel=3.43e-16 [PASS]
+    n=5: S_n=   -0.000  -15.588i  Tr(E^n)=   -0.000  -15.588i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+3.0e-15i (law wants -1)  law1 rel=3.96e-15 [PASS]  d_n int [PASS]  law2 rel=2.71e-15 [PASS]
+    n=6: S_n=  +81.000   +0.000i  Tr(E^n)=  -81.000   +0.000i  d_n=2  zeta_n=S_n/conj(Tr E^n)=-1.000000+2.7e-16i (law wants -1)  law1 rel=5.91e-16 [PASS]  d_n int [PASS]  law2 rel=1.75e-15 [PASS]  <<< n = 0 mod q
+    n=7: S_n=   -0.000  +46.765i  Tr(E^n)=   +0.000  +46.765i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+9.9e-16i (law wants -1)  law1 rel=6.91e-15 [PASS]  d_n int [PASS]  law2 rel=9.00e-15 [PASS]
+    n=8: S_n=   -0.000 -140.296i  Tr(E^n)=   -0.000 -140.296i  d_n=1  zeta_n=S_n/conj(Tr E^n)=-1.000000+5.1e-15i (law wants -1)  law1 rel=8.60e-15 [PASS]  d_n int [PASS]  law2 rel=7.02e-15 [PASS]
+    n=9: S_n=   -0.000 -140.296i  Tr(E^n)=   +0.000 -140.296i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+9.6e-15i (law wants -1)  law1 rel=1.46e-14 [PASS]  d_n int [PASS]  law2 rel=1.47e-14 [PASS]  <<< n = 0 mod q
+    [PASS] S_bruteforce(q,n,a)=   -0.000   -1.732i  vs vectorised    -0.000   -1.732i  dev=0.00e+00
+    [PASS] S_bruteforce(q,n,a)=   +0.000   +5.196i  vs vectorised    +0.000   +5.196i  dev=4.44e-16
+    [PASS] S_bruteforce(q,n,a)=   -0.000   +5.196i  vs vectorised    +0.000   +5.196i  dev=1.33e-15
+    [PASS] S_bruteforce(q,n,a)=   -0.000  +15.588i  vs vectorised    +0.000  +15.588i  dev=7.23e-15
+    [PASS] S_bruteforce(q,n,a)=   -0.000  -15.588i  vs vectorised    -0.000  -15.588i  dev=1.90e-14
+    [PASS] S_bruteforce(q,n,a)=  +81.000   +0.000i  vs vectorised   +81.000   +0.000i  dev=4.52e-14
+    [PASS] S_bruteforce(q,n,a)=   -0.000  +46.765i  vs vectorised    -0.000  +46.765i  dev=1.13e-13
+
+  q=3  a=[0, 1, 1]  J=2  dim E_g = 9  eta(-1)=-1
+    [PASS] E_(-g) == conj(E_g) entrywise   (max dev 7.45e-16)
+    n=1: S_n=   -0.000   -1.732i  Tr(E^n)=   -0.000   -1.732i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.0e-15i (law wants -1)  law1 rel=1.03e-15 [PASS]  d_n int [PASS]  law2 rel=0.00e+00 [PASS]
+    n=2: S_n=   +0.000   +5.196i  Tr(E^n)=   +0.000   +5.196i  d_n=1  zeta_n=S_n/conj(Tr E^n)=-1.000000+7.7e-16i (law wants -1)  law1 rel=7.88e-16 [PASS]  d_n int [PASS]  law2 rel=3.08e-16 [PASS]
+    n=3: S_n=   +0.000   +5.196i  Tr(E^n)=   +0.000   +5.196i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.0e-15i (law wants -1)  law1 rel=1.04e-15 [PASS]  d_n int [PASS]  law2 rel=1.04e-15 [PASS]  <<< n = 0 mod q
+    n=4: S_n=   +0.000  +15.588i  Tr(E^n)=   +0.000  +15.588i  d_n=1  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.0e-15i (law wants -1)  law1 rel=1.06e-15 [PASS]  d_n int [PASS]  law2 rel=1.06e-15 [PASS]
+    n=5: S_n=   -0.000  -15.588i  Tr(E^n)=   -0.000  -15.588i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+3.5e-15i (law wants -1)  law1 rel=4.29e-15 [PASS]  d_n int [PASS]  law2 rel=2.51e-15 [PASS]
+    n=6: S_n=   -0.000 -140.296i  Tr(E^n)=   -0.000 -140.296i  d_n=3  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.6e-15i (law wants -1)  law1 rel=1.72e-15 [PASS]  d_n int [PASS]  law2 rel=7.22e-16 [PASS]  <<< n = 0 mod q
+    n=7: S_n=   -0.000  +46.765i  Tr(E^n)=   +0.000  +46.765i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000-7.2e-16i (law wants -1)  law1 rel=4.02e-15 [PASS]  d_n int [PASS]  law2 rel=5.72e-15 [PASS]
+    n=8: S_n=   -0.000 -140.296i  Tr(E^n)=   +0.000 -140.296i  d_n=1  zeta_n=S_n/conj(Tr E^n)=-1.000000+3.2e-15i (law wants -1)  law1 rel=6.50e-15 [PASS]  d_n int [PASS]  law2 rel=6.57e-15 [PASS]
+    n=9: S_n=   -0.000 -140.296i  Tr(E^n)=   +0.000 -140.296i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+7.5e-15i (law wants -1)  law1 rel=1.71e-14 [PASS]  d_n int [PASS]  law2 rel=1.95e-14 [PASS]  <<< n = 0 mod q
+    [PASS] S_bruteforce(q,n,a)=   -0.000   -1.732i  vs vectorised    -0.000   -1.732i  dev=0.00e+00
+    [PASS] S_bruteforce(q,n,a)=   +0.000   +5.196i  vs vectorised    +0.000   +5.196i  dev=4.44e-16
+    [PASS] S_bruteforce(q,n,a)=   -0.000   +5.196i  vs vectorised    +0.000   +5.196i  dev=9.16e-16
+    [PASS] S_bruteforce(q,n,a)=   +0.000  +15.588i  vs vectorised    +0.000  +15.588i  dev=1.60e-14
+    [PASS] S_bruteforce(q,n,a)=   -0.000  -15.588i  vs vectorised    -0.000  -15.588i  dev=2.21e-14
+    [PASS] S_bruteforce(q,n,a)=   -0.000 -140.296i  vs vectorised    -0.000 -140.296i  dev=6.09e-14
+    [PASS] S_bruteforce(q,n,a)=   -0.000  +46.765i  vs vectorised    -0.000  +46.765i  dev=1.10e-13
+
+  q=3  a=[0, 0, 1]  J=2  dim E_g = 9  eta(-1)=-1
+    [PASS] E_(-g) == conj(E_g) entrywise   (max dev 7.45e-16)
+    n=1: S_n=   +0.000   +1.732i  Tr(E^n)=   +0.000   +1.732i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+5.1e-16i (law wants -1)  law1 rel=5.13e-16 [PASS]  d_n int [PASS]  law2 rel=0.00e+00 [PASS]
+    n=2: S_n=   +3.000   +0.000i  Tr(E^n)=   -3.000   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.9e-16i (law wants -1)  law1 rel=4.81e-16 [PASS]  d_n int [PASS]  law2 rel=7.70e-16 [PASS]
+    n=3: S_n=   -0.000   -5.196i  Tr(E^n)=   -0.000   -5.196i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+2.2e-15i (law wants -1)  law1 rel=2.27e-15 [PASS]  d_n int [PASS]  law2 rel=9.40e-16 [PASS]  <<< n = 0 mod q
+    n=4: S_n=   -9.000   +0.000i  Tr(E^n)=   +9.000   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000-2.6e-16i (law wants -1)  law1 rel=3.24e-16 [PASS]  d_n int [PASS]  law2 rel=1.85e-15 [PASS]
+    n=5: S_n=   -0.000  +15.588i  Tr(E^n)=   +0.000  +15.588i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+8.4e-16i (law wants -1)  law1 rel=1.24e-15 [PASS]  d_n int [PASS]  law2 rel=1.97e-15 [PASS]
+    n=6: S_n=  +27.000   +0.000i  Tr(E^n)=  -27.000   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.1e-15i (law wants -1)  law1 rel=1.06e-15 [PASS]  d_n int [PASS]  law2 rel=5.26e-15 [PASS]  <<< n = 0 mod q
+    n=7: S_n=   -0.000  -46.765i  Tr(E^n)=   -0.000  -46.765i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+7.4e-15i (law wants -1)  law1 rel=7.86e-15 [PASS]  d_n int [PASS]  law2 rel=2.74e-15 [PASS]
+    n=8: S_n= -729.000   +0.000i  Tr(E^n)= +729.000   -0.000i  d_n=4  zeta_n=S_n/conj(Tr E^n)=-1.000000+2.5e-15i (law wants -1)  law1 rel=2.71e-15 [PASS]  d_n int [PASS]  law2 rel=9.37e-16 [PASS]
+    n=9: S_n=   -0.000 +140.296i  Tr(E^n)=   +0.000 +140.296i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000-7.6e-15i (law wants -1)  law1 rel=1.37e-14 [PASS]  d_n int [PASS]  law2 rel=1.64e-14 [PASS]  <<< n = 0 mod q
+    [PASS] S_bruteforce(q,n,a)=   +0.000   +1.732i  vs vectorised    +0.000   +1.732i  dev=0.00e+00
+    [PASS] S_bruteforce(q,n,a)=   +3.000   +0.000i  vs vectorised    +3.000   +0.000i  dev=4.44e-16
+    [PASS] S_bruteforce(q,n,a)=   -0.000   -5.196i  vs vectorised    -0.000   -5.196i  dev=9.93e-16
+    [PASS] S_bruteforce(q,n,a)=   -9.000   +0.000i  vs vectorised    -9.000   +0.000i  dev=2.09e-15
+    [PASS] S_bruteforce(q,n,a)=   -0.000  +15.588i  vs vectorised    -0.000  +15.588i  dev=4.15e-14
+    [PASS] S_bruteforce(q,n,a)=  +27.000   +0.000i  vs vectorised   +27.000   +0.000i  dev=5.16e-14
+    [PASS] S_bruteforce(q,n,a)=   -0.000  -46.765i  vs vectorised    -0.000  -46.765i  dev=1.96e-13
+
+  q=3  a=[1, 0, 1]  J=2  dim E_g = 9  eta(-1)=-1
+    [PASS] E_(-g) == conj(E_g) entrywise   (max dev 7.45e-16)
+    n=1: S_n=   -0.000   -1.732i  Tr(E^n)=   -0.000   -1.732i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.0e-15i (law wants -1)  law1 rel=1.03e-15 [PASS]  d_n int [PASS]  law2 rel=0.00e+00 [PASS]
+    n=2: S_n=   +3.000   +0.000i  Tr(E^n)=   -3.000   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+8.5e-16i (law wants -1)  law1 rel=9.01e-16 [PASS]  d_n int [PASS]  law2 rel=1.33e-15 [PASS]
+    n=3: S_n=   +0.000   +5.196i  Tr(E^n)=   -0.000   +5.196i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000-1.7e-16i (law wants -1)  law1 rel=1.21e-15 [PASS]  d_n int [PASS]  law2 rel=1.21e-15 [PASS]  <<< n = 0 mod q
+    n=4: S_n=  +27.000   +0.000i  Tr(E^n)=  -27.000   +0.000i  d_n=2  zeta_n=S_n/conj(Tr E^n)=-1.000000+8.5e-16i (law wants -1)  law1 rel=1.00e-15 [PASS]  d_n int [PASS]  law2 rel=1.36e-15 [PASS]
+    n=5: S_n=   -0.000  -15.588i  Tr(E^n)=   -0.000  -15.588i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+3.1e-15i (law wants -1)  law1 rel=3.90e-15 [PASS]  d_n int [PASS]  law2 rel=2.46e-15 [PASS]
+    n=6: S_n=  +27.000   +0.000i  Tr(E^n)=  -27.000   -0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000-2.4e-15i (law wants -1)  law1 rel=2.49e-15 [PASS]  d_n int [PASS]  law2 rel=1.85e-15 [PASS]  <<< n = 0 mod q
+    n=7: S_n=   -0.000  +46.765i  Tr(E^n)=   +0.000  +46.765i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.1e-15i (law wants -1)  law1 rel=6.93e-15 [PASS]  d_n int [PASS]  law2 rel=9.07e-15 [PASS]
+    n=8: S_n= +243.000   +0.000i  Tr(E^n)= -243.000   +0.000i  d_n=2  zeta_n=S_n/conj(Tr E^n)=-1.000000-2.8e-15i (law wants -1)  law1 rel=3.56e-15 [PASS]  d_n int [PASS]  law2 rel=3.60e-15 [PASS]
+    n=9: S_n=   -0.000 -140.296i  Tr(E^n)=   +0.000 -140.296i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+8.9e-15i (law wants -1)  law1 rel=1.41e-14 [PASS]  d_n int [PASS]  law2 rel=1.52e-14 [PASS]  <<< n = 0 mod q
+    [PASS] S_bruteforce(q,n,a)=   -0.000   -1.732i  vs vectorised    -0.000   -1.732i  dev=0.00e+00
+    [PASS] S_bruteforce(q,n,a)=   +3.000   +0.000i  vs vectorised    +3.000   +0.000i  dev=4.44e-16
+    [PASS] S_bruteforce(q,n,a)=   -0.000   +5.196i  vs vectorised    +0.000   +5.196i  dev=1.33e-15
+    [PASS] S_bruteforce(q,n,a)=  +27.000   +0.000i  vs vectorised   +27.000   +0.000i  dev=7.14e-15
+    [PASS] S_bruteforce(q,n,a)=   -0.000  -15.588i  vs vectorised    -0.000  -15.588i  dev=3.03e-14
+    [PASS] S_bruteforce(q,n,a)=  +27.000   +0.000i  vs vectorised   +27.000   +0.000i  dev=4.16e-14
+    [PASS] S_bruteforce(q,n,a)=   -0.000  +46.765i  vs vectorised    -0.000  +46.765i  dev=8.99e-14
+
+  q=3  a=[2, 1]  J=1  dim E_g = 3  eta(-1)=-1
+    [PASS] E_(-g) == conj(E_g) entrywise   (max dev 7.45e-16)
+    n=1: S_n=   +3.000   +0.000i  Tr(E^n)=   +3.000   +0.000i  d_n=1  zeta_n=S_n/conj(Tr E^n)=+1.000000+0.0e+00i (law wants -1)  law1 rel=2.00e+00 [FAIL]  d_n int [PASS]  law2 rel=2.00e+00 [FAIL]
+      *** FAILURE at q=3 a=[2, 1] n=1:  S_n=(3+0j)  Tr(E^n)=(3+0j)  law1=(-3+0j)  law2=(-3+0j)  d_n(float)=1.0
+    n=2: S_n=   +0.000   +5.196i  Tr(E^n)=   -0.000   -5.196i  d_n=1  zeta_n=S_n/conj(Tr E^n)=+1.000000-7.3e-16i (law wants -1)  law1 rel=2.00e+00 [FAIL]  d_n int [PASS]  law2 rel=2.00e+00 [FAIL]
+      *** FAILURE at q=3 a=[2, 1] n=2:  S_n=(1.3322676295501878e-15+5.196152422706632j)  Tr(E^n)=(-2.4424906541753444e-15-5.19615242270663j)  law1=(2.4424906541753444e-15-5.19615242270663j)  law2=(-2.4424906541753444e-15-5.19615242270663j)  d_n(float)=1.0
+    n=3: S_n=   -0.000  -15.588i  Tr(E^n)=   -0.000  -15.588i  d_n=2  zeta_n=S_n/conj(Tr E^n)=-1.000000+9.7e-16i (law wants -1)  law1 rel=1.03e-15 [PASS]  d_n int [PASS]  law2 rel=3.47e-16 [PASS]  <<< n = 0 mod q
+    n=4: S_n=   +0.000  +15.588i  Tr(E^n)=   -0.000  -15.588i  d_n=1  zeta_n=S_n/conj(Tr E^n)=+1.000000-5.1e-17i (law wants -1)  law1 rel=2.00e+00 [FAIL]  d_n int [PASS]  law2 rel=2.00e+00 [FAIL]
+      *** FAILURE at q=3 a=[2, 1] n=4:  S_n=15.588457268119901j  Tr(E^n)=(-7.88420942189951e-16-15.588457268119896j)  law1=(7.88420942189951e-16-15.588457268119896j)  law2=(-7.88420942189951e-16-15.588457268119896j)  d_n(float)=1.0000000000000007
+    n=5: S_n=  -27.000   +0.000i  Tr(E^n)=  -27.000   +0.000i  d_n=1  zeta_n=S_n/conj(Tr E^n)=+1.000000-2.2e-15i (law wants -1)  law1 rel=2.00e+00 [FAIL]  d_n int [PASS]  law2 rel=2.00e+00 [FAIL]
+      *** FAILURE at q=3 a=[2, 1] n=5:  S_n=(-27.00000000000002+2.842170943040401e-14j)  Tr(E^n)=(-26.99999999999998+3.197442310920451e-14j)  law1=(26.99999999999998+3.197442310920451e-14j)  law2=(26.99999999999998-3.197442310920451e-14j)  d_n(float)=1.0000000000000013
+    n=6: S_n=  +81.000   +0.000i  Tr(E^n)=  -81.000   +0.000i  d_n=2  zeta_n=S_n/conj(Tr E^n)=-1.000000+3.5e-16i (law wants -1)  law1 rel=6.30e-16 [PASS]  d_n int [PASS]  law2 rel=1.83e-15 [PASS]  <<< n = 0 mod q
+    n=7: S_n=  -81.000   +0.000i  Tr(E^n)=  -81.000   +0.000i  d_n=1  zeta_n=S_n/conj(Tr E^n)=+1.000000-2.9e-15i (law wants -1)  law1 rel=2.00e+00 [FAIL]  d_n int [PASS]  law2 rel=2.00e+00 [FAIL]
+      *** FAILURE at q=3 a=[2, 1] n=7:  S_n=(-81.00000000000017+2.2737367544323206e-13j)  Tr(E^n)=(-81+8.5703417468894e-15j)  law1=(81+8.5703417468894e-15j)  law2=(81-8.5703417468894e-15j)  d_n(float)=1.0000000000000036
+    n=8: S_n=   -0.000 -140.296i  Tr(E^n)=   +0.000 +140.296i  d_n=1  zeta_n=S_n/conj(Tr E^n)=+1.000000-5.1e-15i (law wants -1)  law1 rel=2.00e+00 [FAIL]  d_n int [PASS]  law2 rel=2.00e+00 [FAIL]
+      *** FAILURE at q=3 a=[2, 1] n=8:  S_n=(-4.547473508864641e-13-140.29611541307827j)  Tr(E^n)=(2.6535549654685574e-13+140.2961154130789j)  law1=(-2.6535549654685574e-13+140.2961154130789j)  law2=(2.6535549654685574e-13+140.2961154130789j)  d_n(float)=0.9999999999999897
+    n=9: S_n=   -0.000 +420.888i  Tr(E^n)=   +0.000 +420.888i  d_n=2  zeta_n=S_n/conj(Tr E^n)=-1.000000-1.7e-15i (law wants -1)  law1 rel=6.05e-15 [PASS]  d_n int [PASS]  law2 rel=7.53e-15 [PASS]  <<< n = 0 mod q
+    [PASS] S_bruteforce(q,n,a)=   +3.000   +0.000i  vs vectorised    +3.000   +0.000i  dev=0.00e+00
+    [PASS] S_bruteforce(q,n,a)=   +0.000   +5.196i  vs vectorised    +0.000   +5.196i  dev=0.00e+00
+    [PASS] S_bruteforce(q,n,a)=   -0.000  -15.588i  vs vectorised    -0.000  -15.588i  dev=5.40e-15
+    [PASS] S_bruteforce(q,n,a)=   +0.000  +15.588i  vs vectorised    +0.000  +15.588i  dev=1.07e-14
+    [PASS] S_bruteforce(q,n,a)=  -27.000   +0.000i  vs vectorised   -27.000   +0.000i  dev=1.46e-14
+    [PASS] S_bruteforce(q,n,a)=  +81.000   +0.000i  vs vectorised   +81.000   +0.000i  dev=4.45e-14
+    [PASS] S_bruteforce(q,n,a)=  -81.000   +0.000i  vs vectorised   -81.000   +0.000i  dev=1.64e-13
+
+  q=5  a=[0, 1]  J=1  dim E_g = 5  eta(-1)=+1
+    [PASS] E_(-g) == conj(E_g) entrywise   (max dev 3.14e-16)
+    n=1: S_n=   +2.236   -0.000i  Tr(E^n)=   +2.236   -0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=+1.000000-2.0e-16i (law wants +1)  law1 rel=1.99e-16 [PASS]  d_n int [PASS]  law2 rel=0.00e+00 [PASS]
+    n=2: S_n=   -5.000   +0.000i  Tr(E^n)=   +5.000   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000-2.3e-16i (law wants -1)  law1 rel=4.23e-16 [PASS]  d_n int [PASS]  law2 rel=4.23e-16 [PASS]
+    n=3: S_n=  +11.180   +0.000i  Tr(E^n)=  +11.180   -0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=+1.000000-4.0e-16i (law wants +1)  law1 rel=4.28e-16 [PASS]  d_n int [PASS]  law2 rel=4.28e-16 [PASS]
+    n=4: S_n= -125.000   +0.000i  Tr(E^n)= +125.000   -0.000i  d_n=2  zeta_n=S_n/conj(Tr E^n)=-1.000000+3.7e-16i (law wants -1)  law1 rel=4.37e-16 [PASS]  d_n int [PASS]  law2 rel=4.37e-16 [PASS]
+    n=5: S_n=  +55.902   +0.000i  Tr(E^n)=  +55.902   -0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=+1.000000+3.6e-15i (law wants +1)  law1 rel=3.87e-15 [PASS]  d_n int [PASS]  law2 rel=4.82e-15 [PASS]  <<< n = 0 mod q
+    n=6: S_n= -125.000   +0.000i  Tr(E^n)= +125.000   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+6.6e-15i (law wants -1)  law1 rel=7.13e-15 [PASS]  d_n int [PASS]  law2 rel=8.42e-15 [PASS]
+    [PASS] S_bruteforce(q,n,a)=   +2.236   -0.000i  vs vectorised    +2.236   -0.000i  dev=0.00e+00
+    [PASS] S_bruteforce(q,n,a)=   -5.000   +0.000i  vs vectorised    -5.000   +0.000i  dev=2.36e-15
+    [PASS] S_bruteforce(q,n,a)=  +11.180   +0.000i  vs vectorised   +11.180   +0.000i  dev=1.33e-14
+    [PASS] S_bruteforce(q,n,a)= -125.000   +0.000i  vs vectorised  -125.000   +0.000i  dev=3.06e-14
+
+  q=5  a=[1, 2]  J=1  dim E_g = 5  eta(-1)=+1
+    [PASS] E_(-g) == conj(E_g) entrywise   (max dev 3.14e-16)
+    n=1: S_n=   -2.236   +0.000i  Tr(E^n)=   -2.236   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=+1.000000-4.0e-16i (law wants +1)  law1 rel=3.97e-16 [PASS]  d_n int [PASS]  law2 rel=0.00e+00 [PASS]
+    n=2: S_n=   +5.000   +0.000i  Tr(E^n)=   -5.000   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+8.9e-17i (law wants -1)  law1 rel=5.40e-16 [PASS]  d_n int [PASS]  law2 rel=5.96e-16 [PASS]
+    n=3: S_n=  +55.902   -0.000i  Tr(E^n)=  +55.902   -0.000i  d_n=2  zeta_n=S_n/conj(Tr E^n)=+1.000000-3.9e-16i (law wants +1)  law1 rel=4.08e-16 [PASS]  d_n int [PASS]  law2 rel=1.84e-16 [PASS]
+    n=4: S_n=  +25.000   +0.000i  Tr(E^n)=  -25.000   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+3.2e-16i (law wants -1)  law1 rel=9.11e-16 [PASS]  d_n int [PASS]  law2 rel=1.69e-15 [PASS]
+    n=5: S_n=  -55.902   +0.000i  Tr(E^n)=  -55.902   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=+1.000000-6.0e-16i (law wants +1)  law1 rel=2.37e-15 [PASS]  d_n int [PASS]  law2 rel=2.37e-15 [PASS]  <<< n = 0 mod q
+    n=6: S_n= -625.000   +0.000i  Tr(E^n)= +625.000   -0.000i  d_n=2  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.3e-15i (law wants -1)  law1 rel=1.80e-15 [PASS]  d_n int [PASS]  law2 rel=1.29e-15 [PASS]
+    [PASS] S_bruteforce(q,n,a)=   -2.236   +0.000i  vs vectorised    -2.236   +0.000i  dev=0.00e+00
+    [PASS] S_bruteforce(q,n,a)=   +5.000   +0.000i  vs vectorised    +5.000   +0.000i  dev=8.95e-16
+    [PASS] S_bruteforce(q,n,a)=  +55.902   -0.000i  vs vectorised   +55.902   -0.000i  dev=8.53e-14
+    [PASS] S_bruteforce(q,n,a)=  +25.000   +0.000i  vs vectorised   +25.000   +0.000i  dev=3.64e-14
+
+  q=5  a=[0, 1, 1]  J=2  dim E_g = 25  eta(-1)=+1
+    [PASS] E_(-g) == conj(E_g) entrywise   (max dev 3.14e-16)
+    n=1: S_n=   -2.236   +0.000i  Tr(E^n)=   -2.236   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=+1.000000-4.0e-16i (law wants +1)  law1 rel=3.97e-16 [PASS]  d_n int [PASS]  law2 rel=0.00e+00 [PASS]
+    n=2: S_n=  +11.180   -0.000i  Tr(E^n)=  +11.180   -0.000i  d_n=1  zeta_n=S_n/conj(Tr E^n)=+1.000000-3.2e-16i (law wants -1)  law1 rel=2.00e+00 [FAIL]  d_n int [PASS]  law2 rel=2.00e+00 [FAIL]
+      *** FAILURE at q=5 a=[0, 1, 1] n=2:  S_n=(11.180339887498947-1.7763568394002505e-15j)  Tr(E^n)=(11.180339887498949-1.7763568394002505e-15j)  law1=(-11.180339887498949-1.7763568394002505e-15j)  law2=(-11.180339887498949+1.7763568394002505e-15j)  d_n(float)=1.0
+    n=3: S_n=  -11.180   +0.000i  Tr(E^n)=  -11.180   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=+1.000000-6.3e-16i (law wants +1)  law1 rel=7.08e-16 [PASS]  d_n int [PASS]  law2 rel=3.18e-16 [PASS]
+    n=4: S_n=  -55.902   +0.000i  Tr(E^n)=  -55.902   +0.000i  d_n=1  zeta_n=S_n/conj(Tr E^n)=+1.000000-9.3e-16i (law wants -1)  law1 rel=2.00e+00 [FAIL]  d_n int [PASS]  law2 rel=2.00e+00 [FAIL]
+      *** FAILURE at q=5 a=[0, 1, 1] n=4:  S_n=(-55.901699437494756+1.4210854715202004e-14j)  Tr(E^n)=(-55.901699437494734+3.774758283725532e-14j)  law1=(55.901699437494734+3.774758283725532e-14j)  law2=(55.901699437494734-3.774758283725532e-14j)  d_n(float)=1.0000000000000002
+    n=5: S_n=  -55.902   +0.000i  Tr(E^n)=  -55.902   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=+1.000000-7.5e-16i (law wants +1)  law1 rel=2.41e-15 [PASS]  d_n int [PASS]  law2 rel=2.41e-15 [PASS]  <<< n = 0 mod q
+    n=6: S_n=+1397.542   +0.000i  Tr(E^n)=+1397.542   -0.000i  d_n=3  zeta_n=S_n/conj(Tr E^n)=+1.000000-4.5e-16i (law wants -1)  law1 rel=2.00e+00 [FAIL]  d_n int [PASS]  law2 rel=2.00e+00 [FAIL]
+      *** FAILURE at q=5 a=[0, 1, 1] n=6:  S_n=(1397.5424859373682+0j)  Tr(E^n)=(1397.5424859373686-6.263578380649591e-13j)  law1=(-1397.5424859373686-6.263578380649591e-13j)  law2=(-1397.5424859373686+6.263578380649591e-13j)  d_n(float)=3.0
+    [PASS] S_bruteforce(q,n,a)=   -2.236   +0.000i  vs vectorised    -2.236   +0.000i  dev=0.00e+00
+    [PASS] S_bruteforce(q,n,a)=  +11.180   -0.000i  vs vectorised   +11.180   -0.000i  dev=5.37e-15
+    [PASS] S_bruteforce(q,n,a)=  -11.180   +0.000i  vs vectorised   -11.180   +0.000i  dev=7.78e-15
+    [PASS] S_bruteforce(q,n,a)=  -55.902   +0.000i  vs vectorised   -55.902   +0.000i  dev=1.01e-13
+
+  q=7  a=[0, 1]  J=1  dim E_g = 7  eta(-1)=-1
+    [PASS] E_(-g) == conj(E_g) entrywise   (max dev 2.50e-16)
+    n=1: S_n=   +0.000   +2.646i  Tr(E^n)=   +0.000   +2.646i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+2.1e-16i (law wants -1)  law1 rel=2.10e-16 [PASS]  d_n int [PASS]  law2 rel=4.20e-17 [PASS]
+    n=2: S_n=   -7.000   -0.000i  Tr(E^n)=   +7.000   +0.000i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000-3.9e-16i (law wants -1)  law1 rel=6.38e-16 [PASS]  d_n int [PASS]  law2 rel=5.25e-16 [PASS]
+    n=3: S_n=   +0.000  -18.520i  Tr(E^n)=   -0.000  -18.520i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+3.8e-16i (law wants -1)  law1 rel=8.58e-16 [PASS]  d_n int [PASS]  law2 rel=8.58e-16 [PASS]
+    n=4: S_n= -343.000   -0.000i  Tr(E^n)= +343.000   -0.000i  d_n=2  zeta_n=S_n/conj(Tr E^n)=-1.000000+2.7e-17i (law wants -1)  law1 rel=4.98e-16 [PASS]  d_n int [PASS]  law2 rel=8.51e-16 [PASS]
+    n=5: S_n=   +0.000 +129.642i  Tr(E^n)=   +0.000 +129.642i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+6.6e-16i (law wants -1)  law1 rel=1.28e-15 [PASS]  d_n int [PASS]  law2 rel=1.28e-15 [PASS]
+    [PASS] S_bruteforce(q,n,a)=   +0.000   +2.646i  vs vectorised    +0.000   +2.646i  dev=0.00e+00
+    [PASS] S_bruteforce(q,n,a)=   -7.000   +0.000i  vs vectorised    -7.000   -0.000i  dev=1.78e-15
+    [PASS] S_bruteforce(q,n,a)=   -0.000  -18.520i  vs vectorised    +0.000  -18.520i  dev=2.60e-14
+    [PASS] S_bruteforce(q,n,a)= -343.000   +0.000i  vs vectorised  -343.000   -0.000i  dev=7.96e-12
+
+  q=7  a=[1, 1]  J=1  dim E_g = 7  eta(-1)=-1
+    [PASS] E_(-g) == conj(E_g) entrywise   (max dev 2.50e-16)
+    n=1: S_n=   +0.000   +2.646i  Tr(E^n)=   +0.000   +2.646i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+1.7e-16i (law wants -1)  law1 rel=1.68e-16 [PASS]  d_n int [PASS]  law2 rel=0.00e+00 [PASS]
+    n=2: S_n=   +0.000  +18.520i  Tr(E^n)=   +0.000  +18.520i  d_n=1  zeta_n=S_n/conj(Tr E^n)=-1.000000+2.9e-16i (law wants -1)  law1 rel=3.51e-16 [PASS]  d_n int [PASS]  law2 rel=2.17e-16 [PASS]
+    n=3: S_n=   +0.000  -18.520i  Tr(E^n)=   -0.000  -18.520i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+2.4e-16i (law wants -1)  law1 rel=8.04e-16 [PASS]  d_n int [PASS]  law2 rel=8.04e-16 [PASS]
+    n=4: S_n=   -0.000 -129.642i  Tr(E^n)=   -0.000 -129.642i  d_n=1  zeta_n=S_n/conj(Tr E^n)=-1.000000+9.1e-16i (law wants -1)  law1 rel=1.01e-15 [PASS]  d_n int [PASS]  law2 rel=4.40e-16 [PASS]
+    n=5: S_n=   +0.000 +129.642i  Tr(E^n)=   +0.000 +129.642i  d_n=0  zeta_n=S_n/conj(Tr E^n)=-1.000000+6.0e-16i (law wants -1)  law1 rel=1.06e-15 [PASS]  d_n int [PASS]  law2 rel=1.06e-15 [PASS]
+    [PASS] S_bruteforce(q,n,a)=   +0.000   +2.646i  vs vectorised    +0.000   +2.646i  dev=0.00e+00
+    [PASS] S_bruteforce(q,n,a)=   +0.000  +18.520i  vs vectorised    +0.000  +18.520i  dev=3.72e-15
+    [PASS] S_bruteforce(q,n,a)=   -0.000  -18.520i  vs vectorised    +0.000  -18.520i  dev=2.94e-14
+    [PASS] S_bruteforce(q,n,a)=   -0.000 -129.642i  vs vectorised    -0.000 -129.642i  dev=4.26e-13
+
+========================================================================================================
+TASK 1D (DIAGNOSTIC) : Gauss-sum normal form of the two quadratic forms
+========================================================================================================
+  tr g(x) is a quadratic form on F_q^n.  In the POLYNOMIAL basis its Gram matrix is
+  B = sum_j a_j B_j and  S_n = q^(n-r) eta(Delta) G^r,  r = rank(B), Delta = disc(B),
+  G = sum_t psi(t^2)  (= sqrt(q) if q = 1 mod 4, i sqrt(q) if q = 3 mod 4).
+  Tr(E_g^n) is the Gauss sum of the CIRCULANT form Q_C(x) = sum_i (a_0 x_i^2 + sum_j a_j x_(i-j) x_i),
+  i.e. of tr g(x) written in a normal basis PRETENDING that basis is self-dual.  A self-dual normal
+  basis of F_(q^n)/F_q exists only for n odd, so B and C need not be congruent; when their
+  discriminants differ by a non-square the conjectured sign law picks up an extra factor -1.
+  CORRECTED LAW tested below:  S_n = zeta_n conj(Tr E_g^n)  with
+      zeta_n = eta(Delta_B) eta(Delta_C) eta(-1)^r,   r = rank = n - d_n,
+  (because G/conj(G) = eta(-1)).  The conjectured law asserts zeta_n = -(-eta(-1))^n.
+  G(3) = +0.000000+1.732051i   (|G|=1.732051, sqrt(q)=1.732051)
+  G(5) = +2.236068-0.000000i   (|G|=2.236068, sqrt(q)=2.236068)
+  G(7) = +0.000000+2.645751i   (|G|=2.645751, sqrt(q)=2.645751)
+
+  q=3  a=[0, 1]  J=1
+    n=1: rank(B)=1 eta(Delta_B)=+1 | rank(C)=1 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=0.0e+00 [PASS]  Tr(E^n) Gauss rel=0.0e+00 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=2: rank(B)=2 eta(Delta_B)=+1 | rank(C)=2 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=1.6e-16 [PASS]  Tr(E^n) Gauss rel=1.1e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=3: rank(B)=3 eta(Delta_B)=+1 | rank(C)=3 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=8.6e-16 [PASS]  Tr(E^n) Gauss rel=1.3e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=4: rank(B)=2 eta(Delta_B)=+1 | rank(C)=2 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=1.8e-16 [PASS]  Tr(E^n) Gauss rel=1.9e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=5: rank(B)=5 eta(Delta_B)=+1 | rank(C)=5 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=2.0e-15 [PASS]  Tr(E^n) Gauss rel=2.4e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=6: rank(B)=6 eta(Delta_B)=+1 | rank(C)=6 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=2.3e-15 [PASS]  Tr(E^n) Gauss rel=3.2e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=7: rank(B)=7 eta(Delta_B)=+1 | rank(C)=7 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=5.8e-15 [PASS]  Tr(E^n) Gauss rel=3.4e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=8: rank(B)=6 eta(Delta_B)=+1 | rank(C)=6 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=1.9e-15 [PASS]  Tr(E^n) Gauss rel=7.4e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=9: rank(B)=9 eta(Delta_B)=+1 | rank(C)=9 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=1.6e-14 [PASS]  Tr(E^n) Gauss rel=6.1e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+
+  q=3  a=[1, 1]  J=1
+    n=1: rank(B)=1 eta(Delta_B)=-1 | rank(C)=1 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=4.6e-16 [PASS]  Tr(E^n) Gauss rel=4.6e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=2: rank(B)=1 eta(Delta_B)=+1 | rank(C)=1 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=0.0e+00 [PASS]  Tr(E^n) Gauss rel=3.1e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=3: rank(B)=3 eta(Delta_B)=-1 | rank(C)=3 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=7.9e-16 [PASS]  Tr(E^n) Gauss rel=1.4e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=4: rank(B)=3 eta(Delta_B)=-1 | rank(C)=3 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=7.8e-16 [PASS]  Tr(E^n) Gauss rel=7.7e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=5: rank(B)=5 eta(Delta_B)=-1 | rank(C)=5 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=2.3e-15 [PASS]  Tr(E^n) Gauss rel=3.7e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=6: rank(B)=4 eta(Delta_B)=+1 | rank(C)=4 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=1.9e-15 [PASS]  Tr(E^n) Gauss rel=3.6e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=7: rank(B)=7 eta(Delta_B)=-1 | rank(C)=7 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=6.0e-15 [PASS]  Tr(E^n) Gauss rel=3.1e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=8: rank(B)=7 eta(Delta_B)=+1 | rank(C)=7 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=6.4e-15 [PASS]  Tr(E^n) Gauss rel=6.2e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=9: rank(B)=9 eta(Delta_B)=-1 | rank(C)=9 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=1.7e-14 [PASS]  Tr(E^n) Gauss rel=4.6e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+
+  q=3  a=[0, 1, 1]  J=2
+    n=1: rank(B)=1 eta(Delta_B)=-1 | rank(C)=1 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=4.6e-16 [PASS]  Tr(E^n) Gauss rel=4.6e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=2: rank(B)=1 eta(Delta_B)=+1 | rank(C)=1 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=0.0e+00 [PASS]  Tr(E^n) Gauss rel=3.1e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=3: rank(B)=3 eta(Delta_B)=-1 | rank(C)=3 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=7.9e-16 [PASS]  Tr(E^n) Gauss rel=4.3e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=4: rank(B)=3 eta(Delta_B)=-1 | rank(C)=3 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=7.8e-16 [PASS]  Tr(E^n) Gauss rel=4.4e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=5: rank(B)=5 eta(Delta_B)=-1 | rank(C)=5 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=2.3e-15 [PASS]  Tr(E^n) Gauss rel=4.3e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=6: rank(B)=3 eta(Delta_B)=+1 | rank(C)=3 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=1.0e-15 [PASS]  Tr(E^n) Gauss rel=4.6e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=7: rank(B)=7 eta(Delta_B)=-1 | rank(C)=7 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=6.0e-15 [PASS]  Tr(E^n) Gauss rel=3.2e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=8: rank(B)=7 eta(Delta_B)=+1 | rank(C)=7 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=6.4e-15 [PASS]  Tr(E^n) Gauss rel=2.0e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=9: rank(B)=9 eta(Delta_B)=-1 | rank(C)=9 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=1.7e-14 [PASS]  Tr(E^n) Gauss rel=4.6e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+
+  q=3  a=[0, 0, 1]  J=2
+    n=1: rank(B)=1 eta(Delta_B)=+1 | rank(C)=1 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=0.0e+00 [PASS]  Tr(E^n) Gauss rel=0.0e+00 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=2: rank(B)=2 eta(Delta_B)=-1 | rank(C)=2 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=8.6e-16 [PASS]  Tr(E^n) Gauss rel=1.1e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=3: rank(B)=3 eta(Delta_B)=+1 | rank(C)=3 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=8.6e-16 [PASS]  Tr(E^n) Gauss rel=1.4e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=4: rank(B)=4 eta(Delta_B)=-1 | rank(C)=4 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=4.6e-16 [PASS]  Tr(E^n) Gauss rel=2.2e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=5: rank(B)=5 eta(Delta_B)=+1 | rank(C)=5 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=2.0e-15 [PASS]  Tr(E^n) Gauss rel=1.1e-17 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=6: rank(B)=6 eta(Delta_B)=-1 | rank(C)=6 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=4.2e-15 [PASS]  Tr(E^n) Gauss rel=2.8e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=7: rank(B)=7 eta(Delta_B)=+1 | rank(C)=7 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=5.8e-15 [PASS]  Tr(E^n) Gauss rel=3.3e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=8: rank(B)=4 eta(Delta_B)=-1 | rank(C)=4 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=5.2e-16 [PASS]  Tr(E^n) Gauss rel=5.4e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=9: rank(B)=9 eta(Delta_B)=+1 | rank(C)=9 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=1.6e-14 [PASS]  Tr(E^n) Gauss rel=2.7e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+
+  q=3  a=[1, 0, 1]  J=2
+    n=1: rank(B)=1 eta(Delta_B)=-1 | rank(C)=1 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=4.6e-16 [PASS]  Tr(E^n) Gauss rel=4.6e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=2: rank(B)=2 eta(Delta_B)=-1 | rank(C)=2 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=8.6e-16 [PASS]  Tr(E^n) Gauss rel=9.3e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=3: rank(B)=3 eta(Delta_B)=-1 | rank(C)=3 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=7.9e-16 [PASS]  Tr(E^n) Gauss rel=1.4e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=4: rank(B)=2 eta(Delta_B)=-1 | rank(C)=2 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=8.1e-16 [PASS]  Tr(E^n) Gauss rel=5.5e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=5: rank(B)=5 eta(Delta_B)=-1 | rank(C)=5 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=2.3e-15 [PASS]  Tr(E^n) Gauss rel=1.2e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=6: rank(B)=6 eta(Delta_B)=-1 | rank(C)=6 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=4.2e-15 [PASS]  Tr(E^n) Gauss rel=3.2e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=7: rank(B)=7 eta(Delta_B)=-1 | rank(C)=7 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=6.0e-15 [PASS]  Tr(E^n) Gauss rel=3.1e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=8: rank(B)=6 eta(Delta_B)=-1 | rank(C)=6 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=4.9e-15 [PASS]  Tr(E^n) Gauss rel=1.5e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=9: rank(B)=9 eta(Delta_B)=-1 | rank(C)=9 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=1.7e-14 [PASS]  Tr(E^n) Gauss rel=5.0e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+
+  q=3  a=[2, 1]  J=1
+    n=1: rank(B)=0 eta(Delta_B)=+1 | rank(C)=0 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=0.0e+00 [PASS]  Tr(E^n) Gauss rel=0.0e+00 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law -1 *** DISAGREE ***
+    n=2: rank(B)=1 eta(Delta_B)=+1 | rank(C)=1 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=0.0e+00 [PASS]  Tr(E^n) Gauss rel=4.0e-16 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law -1 *** DISAGREE ***
+    n=3: rank(B)=1 eta(Delta_B)=-1 | rank(C)=1 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=4.0e-16 [PASS]  Tr(E^n) Gauss rel=2.6e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=4: rank(B)=3 eta(Delta_B)=-1 | rank(C)=3 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=7.8e-16 [PASS]  Tr(E^n) Gauss rel=7.5e-16 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law -1 *** DISAGREE ***
+    n=5: rank(B)=4 eta(Delta_B)=-1 | rank(C)=4 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=4.0e-16 [PASS]  Tr(E^n) Gauss rel=1.2e-15 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law -1 *** DISAGREE ***
+    n=6: rank(B)=4 eta(Delta_B)=+1 | rank(C)=4 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=1.9e-15 [PASS]  Tr(E^n) Gauss rel=3.5e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=7: rank(B)=6 eta(Delta_B)=+1 | rank(C)=6 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=2.0e-15 [PASS]  Tr(E^n) Gauss rel=1.5e-15 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law -1 *** DISAGREE ***
+    n=8: rank(B)=7 eta(Delta_B)=+1 | rank(C)=7 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=6.4e-15 [PASS]  Tr(E^n) Gauss rel=1.8e-15 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law -1 *** DISAGREE ***
+    n=9: rank(B)=7 eta(Delta_B)=-1 | rank(C)=7 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=7.2e-15 [PASS]  Tr(E^n) Gauss rel=7.2e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+
+  q=5  a=[0, 1]  J=1
+    n=1: rank(B)=1 eta(Delta_B)=+1 | rank(C)=1 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=0.0e+00 [PASS]  Tr(E^n) Gauss rel=0.0e+00 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law +1 AGREE
+    n=2: rank(B)=2 eta(Delta_B)=-1 | rank(C)=2 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=7.4e-16 [PASS]  Tr(E^n) Gauss rel=5.6e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=3: rank(B)=3 eta(Delta_B)=+1 | rank(C)=3 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=3.0e-16 [PASS]  Tr(E^n) Gauss rel=1.9e-16 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law +1 AGREE
+    n=4: rank(B)=2 eta(Delta_B)=-1 | rank(C)=2 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=6.0e-16 [PASS]  Tr(E^n) Gauss rel=3.8e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=5: rank(B)=5 eta(Delta_B)=+1 | rank(C)=5 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=4.8e-15 [PASS]  Tr(E^n) Gauss rel=1.3e-16 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law +1 AGREE
+    n=6: rank(B)=6 eta(Delta_B)=-1 | rank(C)=6 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=7.7e-15 [PASS]  Tr(E^n) Gauss rel=1.6e-15 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+
+  q=5  a=[1, 2]  J=1
+    n=1: rank(B)=1 eta(Delta_B)=-1 | rank(C)=1 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=2.2e-16 [PASS]  Tr(E^n) Gauss rel=2.2e-16 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law +1 AGREE
+    n=2: rank(B)=2 eta(Delta_B)=+1 | rank(C)=2 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=2.9e-16 [PASS]  Tr(E^n) Gauss rel=5.3e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=3: rank(B)=1 eta(Delta_B)=+1 | rank(C)=1 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=2.8e-17 [PASS]  Tr(E^n) Gauss rel=2.0e-16 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law +1 AGREE
+    n=4: rank(B)=4 eta(Delta_B)=+1 | rank(C)=4 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=9.8e-16 [PASS]  Tr(E^n) Gauss rel=8.6e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=5: rank(B)=5 eta(Delta_B)=-1 | rank(C)=5 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=3.7e-15 [PASS]  Tr(E^n) Gauss rel=1.4e-15 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law +1 AGREE
+    n=6: rank(B)=4 eta(Delta_B)=-1 | rank(C)=4 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=2.0e-15 [PASS]  Tr(E^n) Gauss rel=7.4e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+
+  q=5  a=[0, 1, 1]  J=2
+    n=1: rank(B)=1 eta(Delta_B)=-1 | rank(C)=1 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=2.2e-16 [PASS]  Tr(E^n) Gauss rel=2.2e-16 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law +1 AGREE
+    n=2: rank(B)=1 eta(Delta_B)=+1 | rank(C)=1 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=6.0e-17 [PASS]  Tr(E^n) Gauss rel=1.7e-16 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law -1 *** DISAGREE ***
+    n=3: rank(B)=3 eta(Delta_B)=-1 | rank(C)=3 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=7.9e-16 [PASS]  Tr(E^n) Gauss rel=4.8e-16 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law +1 AGREE
+    n=4: rank(B)=3 eta(Delta_B)=-1 | rank(C)=3 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=6.4e-16 [PASS]  Tr(E^n) Gauss rel=4.5e-16 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law -1 *** DISAGREE ***
+    n=5: rank(B)=5 eta(Delta_B)=-1 | rank(C)=5 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=3.7e-15 [PASS]  Tr(E^n) Gauss rel=1.4e-15 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law +1 AGREE
+    n=6: rank(B)=3 eta(Delta_B)=+1 | rank(C)=3 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=3.4e-16 [PASS]  Tr(E^n) Gauss rel=5.1e-16 [PASS]  d_n=n-r [PASS]  zeta_n=+1 [PASS]  corrected law +1 [PASS]  conjectured law -1 *** DISAGREE ***
+
+  q=7  a=[0, 1]  J=1
+    n=1: rank(B)=1 eta(Delta_B)=+1 | rank(C)=1 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=0.0e+00 [PASS]  Tr(E^n) Gauss rel=4.2e-17 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=2: rank(B)=2 eta(Delta_B)=+1 | rank(C)=2 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=3.2e-16 [PASS]  Tr(E^n) Gauss rel=5.7e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=3: rank(B)=3 eta(Delta_B)=+1 | rank(C)=3 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=9.9e-16 [PASS]  Tr(E^n) Gauss rel=2.3e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=4: rank(B)=2 eta(Delta_B)=+1 | rank(C)=2 eta(Delta_C)=-1 [PASS] | S_n Gauss rel=6.0e-16 [PASS]  Tr(E^n) Gauss rel=2.5e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=5: rank(B)=5 eta(Delta_B)=+1 | rank(C)=5 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=9.7e-16 [PASS]  Tr(E^n) Gauss rel=3.2e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+
+  q=7  a=[1, 1]  J=1
+    n=1: rank(B)=1 eta(Delta_B)=+1 | rank(C)=1 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=0.0e+00 [PASS]  Tr(E^n) Gauss rel=0.0e+00 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=2: rank(B)=1 eta(Delta_B)=+1 | rank(C)=1 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=1.2e-17 [PASS]  Tr(E^n) Gauss rel=2.2e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=3: rank(B)=3 eta(Delta_B)=+1 | rank(C)=3 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=9.9e-16 [PASS]  Tr(E^n) Gauss rel=1.9e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=4: rank(B)=3 eta(Delta_B)=+1 | rank(C)=3 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=2.9e-16 [PASS]  Tr(E^n) Gauss rel=3.1e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+    n=5: rank(B)=5 eta(Delta_B)=+1 | rank(C)=5 eta(Delta_C)=+1 [PASS] | S_n Gauss rel=9.7e-16 [PASS]  Tr(E^n) Gauss rel=1.8e-16 [PASS]  d_n=n-r [PASS]  zeta_n=-1 [PASS]  corrected law -1 [PASS]  conjectured law -1 AGREE
+
+========================================================================================================
+TASK 2 : L-POLYNOMIAL  L(g,T) = exp(sum_n S_n T^n/n)  and  Frobenius eigenvalues
+========================================================================================================
+  expected:  L(g,T) = prod_i (1 - alpha_i T) of degree q^J,  alpha_i = -eta(-1) conj(lambda_i(E_g)),
+             L(g,T) = det(1 + eta(-1) T E_(-g)).
+  S_n needed for n = 1..q^J; where q^n exceeds the budget (1.2e6 elements) the check is PARTIAL.
+
+  q=3  a=[0, 1]  J=1  deg L = q^J = 3   S_n available for n=1..3
+    L coefficients (from S_n, ascending, n<= 3):  +1.000 +0.000i  +0.000 +1.732i  -3.000 +0.000i  -0.000 -5.196i
+    det(1+eta(-1) T E_(-g))  same range        :  +1.000 +0.000i  +0.000 +1.732i  -3.000 +0.000i  -0.000 -5.196i
+    [PASS] coefficientwise agreement up to degree 3: max abs dev 2.89e-15, relative 5.57e-16
+    alpha_i (from L)          :  -1.7321 +0.0000i  -0.0000 -1.7321i  +1.7321 -0.0000i
+    -eta(-1) conj(lambda_i(E)):  -1.7321 -0.0000i  +0.0000 -1.7321i  +1.7321 -0.0000i
+    [PASS] multiset match, max distance 2.05e-15
+    naive claim {alpha_i} == {-lambda_i(E_g)} : HOLDS  (max distance 1.55e-15)   [recorded, not a PASS/FAIL check]
+    |alpha_i| = 1.732051 1.732051 1.732051   sqrt(q)=1.732051
+
+  q=3  a=[1, 1]  J=1  deg L = q^J = 3   S_n available for n=1..3
+    L coefficients (from S_n, ascending, n<= 3):  +1.000 +0.000i  -0.000 -1.732i  -1.500 +2.598i  +4.500 +2.598i
+    det(1+eta(-1) T E_(-g))  same range        :  +1.000 +0.000i  -0.000 -1.732i  -1.500 +2.598i  +4.500 +2.598i
+    [PASS] coefficientwise agreement up to degree 3: max abs dev 1.83e-15, relative 3.52e-16
+    alpha_i (from L)          :  -1.5000 +0.8660i  +0.0000 +1.7321i  +1.5000 -0.8660i
+    -eta(-1) conj(lambda_i(E)):  -1.5000 +0.8660i  -0.0000 +1.7321i  +1.5000 -0.8660i
+    [PASS] multiset match, max distance 1.88e-15
+    naive claim {alpha_i} == {-lambda_i(E_g)} : FAILS  (max distance 1.73e+00)   [recorded, not a PASS/FAIL check]
+    |alpha_i| = 1.732051 1.732051 1.732051   sqrt(q)=1.732051
+
+  q=3  a=[0, 1, 1]  J=2  deg L = q^J = 9   S_n available for n=1..9
+    L coefficients (from S_n, ascending, n<= 9):  +1.000 +0.000i  -0.000 -1.732i  -1.500 +2.598i  +4.500 +2.598i  -0.000 +0.000i  -0.000 +0.000i -13.500-23.383i -40.500+23.383i +81.000 +0.000i ...
+    det(1+eta(-1) T E_(-g))  same range        :  +1.000 +0.000i  -0.000 -1.732i  -1.500 +2.598i  +4.500 +2.598i  -0.000 +0.000i  +0.000 -0.000i -13.500-23.383i -40.500+23.383i +81.000 -0.000i ...
+    [PASS] coefficientwise agreement up to degree 9: max abs dev 3.19e-13, relative 2.28e-15
+    alpha_i (from L)          :  -1.7057 -0.3008i  -1.5000 +0.8660i  -1.1133 +1.3268i  -0.5924 -1.6276i  +0.0000 +1.7321i  +0.5924 +1.6276i  +1.1133 -1.3268i  +1.5000 -0.8660i  +1.7057 +0.3008i
+    -eta(-1) conj(lambda_i(E)):  -1.7057 -0.3008i  -1.5000 +0.8660i  -1.1133 +1.3268i  -0.5924 -1.6276i  -0.0000 +1.7321i  +0.5924 +1.6276i  +1.1133 -1.3268i  +1.5000 -0.8660i  +1.7057 +0.3008i
+    [PASS] multiset match, max distance 7.05e-15
+    naive claim {alpha_i} == {-lambda_i(E_g)} : FAILS  (max distance 6.02e-01)   [recorded, not a PASS/FAIL check]
+    |alpha_i| = 1.732051 1.732051 1.732051 1.732051 1.732051 1.732051 1.732051 1.732051 1.732051   sqrt(q)=1.732051
+
+  q=3  a=[0, 0, 1]  J=2  deg L = q^J = 9   S_n available for n=1..9
+    L coefficients (from S_n, ascending, n<= 9):  +1.000 +0.000i  +0.000 +1.732i  -0.000 +0.000i  -0.000 +0.000i  -0.000 -0.000i  -0.000 +0.000i  -0.000 +0.000i  -0.000 +0.000i -81.000 +0.000i ...
+    det(1+eta(-1) T E_(-g))  same range        :  +1.000 +0.000i  +0.000 +1.732i  +0.000 +0.000i  -0.000 +0.000i  -0.000 -0.000i  -0.000 +0.000i  -0.000 +0.000i  -0.000 +0.000i -81.000 +0.000i ...
+    [PASS] coefficientwise agreement up to degree 9: max abs dev 2.57e-13, relative 1.83e-15
+    alpha_i (from L)          :  -1.7321 +0.0000i  -1.2247 -1.2247i  -1.2247 +1.2247i  -0.0000 -1.7321i  +0.0000 -1.7321i  +0.0000 +1.7321i  +1.2247 -1.2247i  +1.2247 +1.2247i  +1.7321 -0.0000i
+    -eta(-1) conj(lambda_i(E)):  -1.7321 -0.0000i  -1.2247 -1.2247i  -1.2247 +1.2247i  -0.0000 -1.7321i  +0.0000 -1.7321i  -0.0000 +1.7321i  +1.2247 -1.2247i  +1.2247 +1.2247i  +1.7321 +0.0000i
+    [PASS] multiset match, max distance 3.23e-08
+    naive claim {alpha_i} == {-lambda_i(E_g)} : HOLDS  (max distance 3.23e-08)   [recorded, not a PASS/FAIL check]
+    |alpha_i| = 1.732051 1.732051 1.732051 1.732051 1.732051 1.732051 1.732051 1.732051 1.732051   sqrt(q)=1.732051
+
+  q=3  a=[1, 0, 1]  J=2  deg L = q^J = 9   S_n available for n=1..9
+    L coefficients (from S_n, ascending, n<= 9):  +1.000 +0.000i  -0.000 -1.732i  +0.000 +0.000i  +0.000 +0.000i  +9.000 +0.000i  -0.000-15.588i  +0.000 +0.000i  +0.000 +0.000i +81.000 +0.000i ...
+    det(1+eta(-1) T E_(-g))  same range        :  +1.000 +0.000i  -0.000 -1.732i  +0.000 +0.000i  +0.000 -0.000i  +9.000 -0.000i  -0.000-15.588i  -0.000 -0.000i  -0.000 +0.000i +81.000 -0.000i ...
+    [PASS] coefficientwise agreement up to degree 9: max abs dev 6.97e-13, relative 4.97e-15
+    alpha_i (from L)          :  -1.5000 -0.8660i  -1.5000 +0.8660i  -0.8660 -1.5000i  -0.8660 +1.5000i  +0.0000 +1.7321i  +0.8660 -1.5000i  +0.8660 +1.5000i  +1.5000 -0.8660i  +1.5000 +0.8660i
+    -eta(-1) conj(lambda_i(E)):  -1.5000 -0.8660i  -1.5000 +0.8660i  -0.8660 -1.5000i  -0.8660 +1.5000i  -0.0000 +1.7321i  +0.8660 -1.5000i  +0.8660 +1.5000i  +1.5000 -0.8660i  +1.5000 +0.8660i
+    [PASS] multiset match, max distance 4.04e-15
+    naive claim {alpha_i} == {-lambda_i(E_g)} : HOLDS  (max distance 3.38e-15)   [recorded, not a PASS/FAIL check]
+    |alpha_i| = 1.732051 1.732051 1.732051 1.732051 1.732051 1.732051 1.732051 1.732051 1.732051   sqrt(q)=1.732051
+
+  q=3  a=[2, 1]  J=1  deg L = q^J = 3   S_n available for n=1..3
+    L coefficients (from S_n, ascending, n<= 3):  +1.000 +0.000i  +3.000 +0.000i  +4.500 +2.598i  +4.500 +2.598i
+    det(1+eta(-1) T E_(-g))  same range        :  +1.000 +0.000i  -3.000 -0.000i  +4.500 -2.598i  -4.500 +2.598i
+    [FAIL] coefficientwise agreement up to degree 3: max abs dev 9.00e+00, relative 1.73e+00
+    alpha_i (from L)          :  -1.5000 +0.8660i  -1.5000 +0.8660i  -0.0000 -1.7321i
+    -eta(-1) conj(lambda_i(E)):  +0.0000 -1.7321i  +1.5000 +0.8660i  +1.5000 +0.8660i
+    [FAIL] multiset match, max distance 3.00e+00
+    naive claim {alpha_i} == {-lambda_i(E_g)} : HOLDS  (max distance 1.05e-08)   [recorded, not a PASS/FAIL check]
+    |alpha_i| = 1.732051 1.732051 1.732051   sqrt(q)=1.732051
+
+  q=5  a=[0, 1]  J=1  deg L = q^J = 5   S_n available for n=1..5
+    L coefficients (from S_n, ascending, n<= 5):  +1.000 +0.000i  +2.236 -0.000i  -0.000 -0.000i  -0.000 +0.000i -25.000 +0.000i -55.902 +0.000i
+    det(1+eta(-1) T E_(-g))  same range        :  +1.000 +0.000i  +2.236 +0.000i  -0.000 +0.000i  -0.000 -0.000i -25.000 -0.000i -55.902 +0.000i
+    [PASS] coefficientwise agreement up to degree 5: max abs dev 6.81e-14, relative 1.22e-15
+    alpha_i (from L)          :  -2.2361 +0.0000i  -2.2361 -0.0000i  -0.0000 -2.2361i  +0.0000 +2.2361i  +2.2361 +0.0000i
+    -eta(-1) conj(lambda_i(E)):  -2.2361 +0.0000i  -2.2361 -0.0000i  -0.0000 -2.2361i  -0.0000 +2.2361i  +2.2361 +0.0000i
+    [PASS] multiset match, max distance 5.11e-08
+    naive claim {alpha_i} == {-lambda_i(E_g)} : HOLDS  (max distance 5.11e-08)   [recorded, not a PASS/FAIL check]
+    |alpha_i| = 2.236068 2.236068 2.236068 2.236068 2.236068   sqrt(q)=2.236068
+
+  q=5  a=[1, 2]  J=1  deg L = q^J = 5   S_n available for n=1..5
+    L coefficients (from S_n, ascending, n<= 5):  +1.000 +0.000i  -2.236 +0.000i  +5.000 -0.000i +11.180 -0.000i -25.000 +0.000i +55.902 -0.000i
+    det(1+eta(-1) T E_(-g))  same range        :  +1.000 +0.000i  -2.236 -0.000i  +5.000 -0.000i +11.180 -0.000i -25.000 -0.000i +55.902 -0.000i
+    [PASS] coefficientwise agreement up to degree 5: max abs dev 7.82e-14, relative 1.40e-15
+    alpha_i (from L)          :  -2.2361 +0.0000i  +1.1180 -1.9365i  +1.1180 -1.9365i  +1.1180 +1.9365i  +1.1180 +1.9365i
+    -eta(-1) conj(lambda_i(E)):  -2.2361 +0.0000i  +1.1180 -1.9365i  +1.1180 -1.9365i  +1.1180 +1.9365i  +1.1180 +1.9365i
+    [PASS] multiset match, max distance 2.90e-08
+    naive claim {alpha_i} == {-lambda_i(E_g)} : HOLDS  (max distance 2.90e-08)   [recorded, not a PASS/FAIL check]
+    |alpha_i| = 2.236068 2.236068 2.236068 2.236068 2.236068   sqrt(q)=2.236068
+
+  q=5  a=[0, 1, 1]  J=2  deg L = q^J = 25   S_n available for n=1..8   (PARTIAL: truncated coefficient check only)
+    L coefficients (from S_n, ascending, n<= 8):  +1.000 +0.000i  -2.236 +0.000i  +8.090 -0.000i -18.090 +0.000i +25.000 -0.000i -55.902 +0.000i +279.508 -0.000i -625.000 +0.000i +2261.271 -0.000i
+    det(1+eta(-1) T E_(-g))  same range        :  +1.000 +0.000i  -2.236 +0.000i  -3.090 +0.000i  +6.910 -0.000i +25.000 +0.000i -55.902 -0.000i -279.508 +0.000i +625.000 -0.000i +863.729 +0.000i
+    [FAIL] coefficientwise agreement up to degree 8: max abs dev 1.40e+03, relative 6.18e-01
+    (reciprocal-root extraction skipped: L is degree 25 but only 8 power sums are affordable)
+
+  q=7  a=[0, 1]  J=1  deg L = q^J = 7   S_n available for n=1..7
+    L coefficients (from S_n, ascending, n<= 7):  +1.000 +0.000i  +0.000 +2.646i  -7.000 +0.000i  -0.000-18.520i -49.000 -0.000i  +0.000-129.642i +343.000 +0.000i  -0.000+907.493i
+    det(1+eta(-1) T E_(-g))  same range        :  +1.000 +0.000i  +0.000 +2.646i  -7.000 +0.000i  +0.000-18.520i -49.000 +0.000i  -0.000-129.642i +343.000 -0.000i  +0.000+907.493i
+    [PASS] coefficientwise agreement up to degree 7: max abs dev 5.68e-12, relative 6.26e-15
+    alpha_i (from L)          :  -2.6458 -0.0000i  -2.6458 +0.0000i  +0.0000 -2.6458i  -0.0000 -2.6458i  -0.0000 +2.6458i  +2.6458 +0.0000i  +2.6458 -0.0000i
+    -eta(-1) conj(lambda_i(E)):  -2.6458 -0.0000i  -2.6458 -0.0000i  +0.0000 -2.6458i  +0.0000 -2.6458i  +0.0000 +2.6458i  +2.6458 -0.0000i  +2.6458 +0.0000i
+    [PASS] multiset match, max distance 7.69e-08
+    naive claim {alpha_i} == {-lambda_i(E_g)} : HOLDS  (max distance 7.69e-08)   [recorded, not a PASS/FAIL check]
+    |alpha_i| = 2.645751 2.645751 2.645751 2.645751 2.645751 2.645751 2.645751   sqrt(q)=2.645751
+
+  q=7  a=[1, 1]  J=1  deg L = q^J = 7   S_n available for n=1..7
+    L coefficients (from S_n, ascending, n<= 7):  +1.000 +0.000i  +0.000 +2.646i  -3.500 +9.260i -24.500 -9.260i -24.500-64.821i +171.500-64.821i +343.000 +0.000i  -0.000+907.493i
+    det(1+eta(-1) T E_(-g))  same range        :  +1.000 +0.000i  +0.000 +2.646i  -3.500 +9.260i -24.500 -9.260i -24.500-64.821i +171.500-64.821i +343.000 +0.000i  -0.000+907.493i
+    [PASS] coefficientwise agreement up to degree 7: max abs dev 2.39e-12, relative 2.63e-15
+    alpha_i (from L)          :  -2.5794 -0.5887i  -2.0685 +1.6496i  -1.1479 +2.3837i  +0.0000 -2.6458i  +1.1479 -2.3837i  +2.0685 -1.6496i  +2.5794 +0.5887i
+    -eta(-1) conj(lambda_i(E)):  -2.5794 -0.5887i  -2.0685 +1.6496i  -1.1479 +2.3837i  +0.0000 -2.6458i  +1.1479 -2.3837i  +2.0685 -1.6496i  +2.5794 +0.5887i
+    [PASS] multiset match, max distance 7.77e-15
+    naive claim {alpha_i} == {-lambda_i(E_g)} : FAILS  (max distance 4.77e+00)   [recorded, not a PASS/FAIL check]
+    |alpha_i| = 2.645751 2.645751 2.645751 2.645751 2.645751 2.645751 2.645751   sqrt(q)=2.645751
+
+========================================================================================================
+TASK 3 : SUPER-TRANSFER MATRIX   str(bbE^n) = Tr(E_0^n) + 1 - Tr(F^n) =?= N_n
+========================================================================================================
+  even block = E_0 (+) [1];  odd block F = -eta(-1) * directsum_{a=1..q-1} E_(a g)
+
+  q=3 J=1: E_0 is 3x3 all-ones-on-allowed-transitions; Tr(E_0^n) for n=1..7 = [3, 9, 27, 81, 243, 729, 2187]
+    [PASS] Tr(E_0^n) == q^n, max dev 0.00e+00
+
+  q=3 J=2: E_0 is 9x9 all-ones-on-allowed-transitions; Tr(E_0^n) for n=1..7 = [3, 9, 27, 81, 243, 729, 2187]
+    [PASS] Tr(E_0^n) == q^n, max dev 0.00e+00
+
+  q=5 J=1: E_0 is 5x5 all-ones-on-allowed-transitions; Tr(E_0^n) for n=1..7 = [5, 25, 125, 625, 3125, 15625, 78125]
+    [PASS] Tr(E_0^n) == q^n, max dev 0.00e+00
+
+  q=5 J=2: E_0 is 25x25 all-ones-on-allowed-transitions; Tr(E_0^n) for n=1..7 = [5, 25, 125, 625, 3125, 15625, 78125]
+    [PASS] Tr(E_0^n) == q^n, max dev 0.00e+00
+
+  q=7 J=1: E_0 is 7x7 all-ones-on-allowed-transitions; Tr(E_0^n) for n=1..7 = [7, 49, 343, 2401, 16807, 117649, 823543]
+    [PASS] Tr(E_0^n) == q^n, max dev 0.00e+00
+
+  q=3  a=[0, 1]  J=1:  even block 4x4,  odd block F 6x6,  genus g_C=(q-1)q^J/2=3,  2g_C=6
+    [PASS] F F^dagger = q I, max dev 5.19e-16
+    [PASS] all |eigenvalues of F| = sqrt(q)=1.732051, max dev 4.44e-16
+    [PASS] degree of det(1-TF) is 6 = 2 g_C = 6
+    [PASS] det(1-TF) == prod_{a in F_q^*} L(ag,T) coefficientwise: max abs dev 3.56e-15, relative 1.32e-16 (largest coefficient 2.700e+01)
+    det(1-TF) leading coefficients (ascending):   +1.000  +0.000i   +0.000  -0.000i   -3.000  -0.000i   +0.000  +0.000i   -9.000  +0.000i   -0.000  +0.000i
+    n=1: N_n(char sums)=       4.000+6.7e-16i   str(bbE^n)=       4.000-6.7e-16i   dev=1.40e-15 [PASS]   1+q#{tr g=0}=       4 [PASS]   direct count=       4 [PASS]
+    n=2: N_n(char sums)=       4.000+2.7e-15i   str(bbE^n)=       4.000-3.2e-15i   dev=5.91e-15 [PASS]   1+q#{tr g=0}=       4 [PASS]   direct count=       4 [PASS]
+    n=3: N_n(char sums)=      28.000+5.3e-15i   str(bbE^n)=      28.000-4.9e-15i   dev=1.24e-14 [PASS]   1+q#{tr g=0}=      28 [PASS]   direct count=      28 [PASS]
+    n=4: N_n(char sums)=      28.000+2.1e-14i   str(bbE^n)=      28.000+3.5e-14i   dev=2.00e-14 [PASS]   1+q#{tr g=0}=      28 [PASS]   direct count=      28 [PASS]
+    n=5: N_n(char sums)=     244.000+5.0e-14i   str(bbE^n)=     244.000-3.6e-14i   dev=1.02e-13 [PASS]   1+q#{tr g=0}=     244 [PASS]   direct count=     244 [PASS]
+    n=6: N_n(char sums)=     676.000+1.7e-13i   str(bbE^n)=     676.000-8.6e-14i   dev=2.56e-13 [PASS]   1+q#{tr g=0}=     676 [PASS]
+    n=7: N_n(char sums)=    2188.000+4.5e-13i   str(bbE^n)=    2188.000-1.0e-13i   dev=7.20e-13 [PASS]   1+q#{tr g=0}=    2188 [PASS]
+    n=8: N_n(char sums)=    6076.000+1.4e-12i   str(bbE^n)=    6076.000+6.4e-13i   dev=1.16e-12 [PASS]   1+q#{tr g=0}=    6076 [PASS]
+    n=9: N_n(char sums)=   19684.000+3.6e-12i   str(bbE^n)=   19684.000-5.3e-13i   dev=5.53e-12 [PASS]   1+q#{tr g=0}=   19684 [PASS]
+
+  q=3  a=[1, 1]  J=1:  even block 4x4,  odd block F 6x6,  genus g_C=(q-1)q^J/2=3,  2g_C=6
+    [PASS] F F^dagger = q I, max dev 9.99e-16
+    [PASS] all |eigenvalues of F| = sqrt(q)=1.732051, max dev 1.11e-15
+    [PASS] degree of det(1-TF) is 6 = 2 g_C = 6
+    [PASS] det(1-TF) == prod_{a in F_q^*} L(ag,T) coefficientwise: max abs dev 7.94e-15, relative 2.94e-16 (largest coefficient 2.700e+01)
+    det(1-TF) leading coefficients (ascending):   +1.000  +0.000i   -0.000  +0.000i   +0.000  -0.000i   +0.000  +0.000i   -0.000  -0.000i   +0.000  +0.000i
+    n=1: N_n(char sums)=       4.000+6.7e-16i   str(bbE^n)=       4.000-6.7e-16i   dev=1.40e-15 [PASS]   1+q#{tr g=0}=       4 [PASS]   direct count=       4 [PASS]
+    n=2: N_n(char sums)=      10.000+1.8e-15i   str(bbE^n)=      10.000-2.7e-15i   dev=4.78e-15 [PASS]   1+q#{tr g=0}=      10 [PASS]   direct count=      10 [PASS]
+    n=3: N_n(char sums)=      28.000+5.3e-15i   str(bbE^n)=      28.000+5.6e-15i   dev=1.07e-14 [PASS]   1+q#{tr g=0}=      28 [PASS]   direct count=      28 [PASS]
+    n=4: N_n(char sums)=      82.000+1.6e-14i   str(bbE^n)=      82.000+0.0e+00i   dev=2.14e-14 [PASS]   1+q#{tr g=0}=      82 [PASS]   direct count=      82 [PASS]
+    n=5: N_n(char sums)=     244.000+5.0e-14i   str(bbE^n)=     244.000-8.9e-16i   dev=5.81e-14 [PASS]   1+q#{tr g=0}=     244 [PASS]   direct count=     244 [PASS]
+    n=6: N_n(char sums)=     892.000+1.1e-13i   str(bbE^n)=     892.000-1.6e-13i   dev=2.97e-13 [PASS]   1+q#{tr g=0}=     892 [PASS]
+    n=7: N_n(char sums)=    2188.000+4.5e-13i   str(bbE^n)=    2188.000+1.4e-13i   dev=5.56e-13 [PASS]   1+q#{tr g=0}=    2188 [PASS]
+    n=8: N_n(char sums)=    6562.000+1.4e-12i   str(bbE^n)=    6562.000+2.9e-13i   dev=1.41e-12 [PASS]   1+q#{tr g=0}=    6562 [PASS]
+    n=9: N_n(char sums)=   19684.000+3.6e-12i   str(bbE^n)=   19684.000-5.1e-13i   dev=5.52e-12 [PASS]   1+q#{tr g=0}=   19684 [PASS]
+
+  q=3  a=[0, 1, 1]  J=2:  even block 10x10,  odd block F 18x18,  genus g_C=(q-1)q^J/2=9,  2g_C=18
+    [PASS] F F^dagger = q I, max dev 5.57e-16
+    [PASS] all |eigenvalues of F| = sqrt(q)=1.732051, max dev 3.11e-15
+    [PASS] degree of det(1-TF) is 18 = 2 g_C = 18
+    [PASS] det(1-TF) == prod_{a in F_q^*} L(ag,T) coefficientwise: max abs dev 1.17e-10, relative 5.93e-15 (largest coefficient 1.968e+04)
+    det(1-TF) leading coefficients (ascending):   +1.000  +0.000i   -0.000  -0.000i   -0.000  -0.000i   +0.000  -0.000i   -0.000  -0.000i   +0.000  +0.000i
+    n=1: N_n(char sums)=       4.000+6.7e-16i   str(bbE^n)=       4.000-6.7e-16i   dev=1.40e-15 [PASS]   1+q#{tr g=0}=       4 [PASS]   direct count=       4 [PASS]
+    n=2: N_n(char sums)=      10.000+1.8e-15i   str(bbE^n)=      10.000-2.9e-15i   dev=4.99e-15 [PASS]   1+q#{tr g=0}=      10 [PASS]   direct count=      10 [PASS]
+    n=3: N_n(char sums)=      28.000+5.3e-15i   str(bbE^n)=      28.000-6.9e-15i   dev=1.22e-14 [PASS]   1+q#{tr g=0}=      28 [PASS]   direct count=      28 [PASS]
+    n=4: N_n(char sums)=      82.000+1.6e-14i   str(bbE^n)=      82.000-2.2e-14i   dev=4.03e-14 [PASS]   1+q#{tr g=0}=      82 [PASS]   direct count=      82 [PASS]
+    n=5: N_n(char sums)=     244.000+5.0e-14i   str(bbE^n)=     244.000+3.3e-14i   dev=5.93e-14 [PASS]   1+q#{tr g=0}=     244 [PASS]   direct count=     244 [PASS]
+    n=6: N_n(char sums)=     730.000+1.7e-13i   str(bbE^n)=     730.000+7.1e-15i   dev=1.63e-13 [PASS]   1+q#{tr g=0}=     730 [PASS]
+    n=7: N_n(char sums)=    2188.000+4.5e-13i   str(bbE^n)=    2188.000+1.8e-15i   dev=6.42e-13 [PASS]   1+q#{tr g=0}=    2188 [PASS]
+    n=8: N_n(char sums)=    6562.000+1.4e-12i   str(bbE^n)=    6562.000+2.5e-14i   dev=1.62e-12 [PASS]   1+q#{tr g=0}=    6562 [PASS]
+    n=9: N_n(char sums)=   19684.000+3.6e-12i   str(bbE^n)=   19684.000-3.8e-14i   dev=5.17e-12 [PASS]   1+q#{tr g=0}=   19684 [PASS]
+
+  q=3  a=[0, 0, 1]  J=2:  even block 10x10,  odd block F 18x18,  genus g_C=(q-1)q^J/2=9,  2g_C=18
+    [PASS] F F^dagger = q I, max dev 5.19e-16
+    [PASS] all |eigenvalues of F| = sqrt(q)=1.732051, max dev 8.88e-16
+    [PASS] degree of det(1-TF) is 18 = 2 g_C = 18
+    [PASS] det(1-TF) == prod_{a in F_q^*} L(ag,T) coefficientwise: max abs dev 3.66e-11, relative 1.86e-15 (largest coefficient 1.968e+04)
+    det(1-TF) leading coefficients (ascending):   +1.000  +0.000i   +0.000  +0.000i   +3.000  -0.000i   +0.000  -0.000i   -0.000  -0.000i   +0.000  -0.000i
+    n=1: N_n(char sums)=       4.000+6.7e-16i   str(bbE^n)=       4.000-6.7e-16i   dev=1.40e-15 [PASS]   1+q#{tr g=0}=       4 [PASS]   direct count=       4 [PASS]
+    n=2: N_n(char sums)=      16.000+1.3e-15i   str(bbE^n)=      16.000-4.4e-15i   dev=5.77e-15 [PASS]   1+q#{tr g=0}=      16 [PASS]   direct count=      16 [PASS]
+    n=3: N_n(char sums)=      28.000+5.3e-15i   str(bbE^n)=      28.000-6.7e-15i   dev=1.39e-14 [PASS]   1+q#{tr g=0}=      28 [PASS]   direct count=      28 [PASS]
+    n=4: N_n(char sums)=      64.000+1.4e-14i   str(bbE^n)=      64.000-1.9e-14i   dev=3.31e-14 [PASS]   1+q#{tr g=0}=      64 [PASS]   direct count=      64 [PASS]
+    n=5: N_n(char sums)=     244.000+5.0e-14i   str(bbE^n)=     244.000-2.7e-14i   dev=9.55e-14 [PASS]   1+q#{tr g=0}=     244 [PASS]   direct count=     244 [PASS]
+    n=6: N_n(char sums)=     784.000+1.1e-13i   str(bbE^n)=     784.000-1.2e-13i   dev=2.59e-13 [PASS]   1+q#{tr g=0}=     784 [PASS]
+    n=7: N_n(char sums)=    2188.000+4.5e-13i   str(bbE^n)=    2188.000-1.4e-13i   dev=7.48e-13 [PASS]   1+q#{tr g=0}=    2188 [PASS]
+    n=8: N_n(char sums)=    5104.000+1.8e-12i   str(bbE^n)=    5104.000+1.9e-12i   dev=1.82e-12 [PASS]   1+q#{tr g=0}=    5104 [PASS]
+    n=9: N_n(char sums)=   19684.000+3.6e-12i   str(bbE^n)=   19684.000-4.8e-13i   dev=5.50e-12 [PASS]   1+q#{tr g=0}=   19684 [PASS]
+
+  q=3  a=[1, 0, 1]  J=2:  even block 10x10,  odd block F 18x18,  genus g_C=(q-1)q^J/2=9,  2g_C=18
+    [PASS] F F^dagger = q I, max dev 9.99e-16
+    [PASS] all |eigenvalues of F| = sqrt(q)=1.732051, max dev 2.22e-15
+    [PASS] degree of det(1-TF) is 18 = 2 g_C = 18
+    [PASS] det(1-TF) == prod_{a in F_q^*} L(ag,T) coefficientwise: max abs dev 5.09e-11, relative 2.59e-15 (largest coefficient 1.968e+04)
+    det(1-TF) leading coefficients (ascending):   +1.000  +0.000i   +0.000  -0.000i   +3.000  +0.000i   +0.000  -0.000i  +18.000  -0.000i   +0.000  -0.000i
+    n=1: N_n(char sums)=       4.000+6.7e-16i   str(bbE^n)=       4.000-6.7e-16i   dev=1.40e-15 [PASS]   1+q#{tr g=0}=       4 [PASS]   direct count=       4 [PASS]
+    n=2: N_n(char sums)=      16.000+1.3e-15i   str(bbE^n)=      16.000-4.4e-15i   dev=5.77e-15 [PASS]   1+q#{tr g=0}=      16 [PASS]   direct count=      16 [PASS]
+    n=3: N_n(char sums)=      28.000+5.3e-15i   str(bbE^n)=      28.000+6.7e-15i   dev=1.07e-14 [PASS]   1+q#{tr g=0}=      28 [PASS]   direct count=      28 [PASS]
+    n=4: N_n(char sums)=     136.000+1.1e-14i   str(bbE^n)=     136.000-5.4e-14i   dev=6.42e-14 [PASS]   1+q#{tr g=0}=     136 [PASS]   direct count=     136 [PASS]
+    n=5: N_n(char sums)=     244.000+5.0e-14i   str(bbE^n)=     244.000-4.4e-15i   dev=6.12e-14 [PASS]   1+q#{tr g=0}=     244 [PASS]   direct count=     244 [PASS]
+    n=6: N_n(char sums)=     784.000+1.1e-13i   str(bbE^n)=     784.000-4.3e-14i   dev=1.93e-13 [PASS]   1+q#{tr g=0}=     784 [PASS]
+    n=7: N_n(char sums)=    2188.000+4.5e-13i   str(bbE^n)=    2188.000+1.3e-13i   dev=5.60e-13 [PASS]   1+q#{tr g=0}=    2188 [PASS]
+    n=8: N_n(char sums)=    7048.000+1.4e-12i   str(bbE^n)=    7048.000-8.8e-15i   dev=1.65e-12 [PASS]   1+q#{tr g=0}=    7048 [PASS]
+    n=9: N_n(char sums)=   19684.000+3.6e-12i   str(bbE^n)=   19684.000-5.1e-13i   dev=5.52e-12 [PASS]   1+q#{tr g=0}=   19684 [PASS]
+
+  q=3  a=[2, 1]  J=1:  even block 4x4,  odd block F 6x6,  genus g_C=(q-1)q^J/2=3,  2g_C=6
+    [PASS] F F^dagger = q I, max dev 9.99e-16
+    [PASS] all |eigenvalues of F| = sqrt(q)=1.732051, max dev 6.66e-16
+    [PASS] degree of det(1-TF) is 6 = 2 g_C = 6
+    [PASS] det(1-TF) == prod_{a in F_q^*} L(ag,T) coefficientwise: max abs dev 1.42e-14, relative 2.63e-16 (largest coefficient 5.400e+01)
+    det(1-TF) leading coefficients (ascending):   +1.000  +0.000i   -6.000  +0.000i  +18.000  -0.000i  -36.000  +0.000i  +54.000  -0.000i  -54.000  +0.000i
+    n=1: N_n(char sums)=      10.000+0.0e+00i   str(bbE^n)=      -2.000+0.0e+00i   dev=1.20e+01 [FAIL]   1+q#{tr g=0}=      10 [PASS]   direct count=      10 [PASS]
+    n=2: N_n(char sums)=      10.000+1.8e-15i   str(bbE^n)=      10.000-3.1e-15i   dev=5.20e-15 [PASS]   1+q#{tr g=0}=      10 [PASS]   direct count=      10 [PASS]
+    n=3: N_n(char sums)=      28.000+5.3e-15i   str(bbE^n)=      28.000+0.0e+00i   dev=6.40e-15 [PASS]   1+q#{tr g=0}=      28 [PASS]   direct count=      28 [PASS]
+    n=4: N_n(char sums)=      82.000+1.6e-14i   str(bbE^n)=      82.000+1.8e-15i   dev=2.01e-14 [PASS]   1+q#{tr g=0}=      82 [PASS]   direct count=      82 [PASS]
+    n=5: N_n(char sums)=     190.000+5.7e-14i   str(bbE^n)=     298.000-6.1e-14i   dev=1.08e+02 [FAIL]   1+q#{tr g=0}=     190 [PASS]   direct count=     190 [PASS]
+    n=6: N_n(char sums)=     892.000+1.1e-13i   str(bbE^n)=     892.000-1.6e-13i   dev=2.92e-13 [PASS]   1+q#{tr g=0}=     892 [PASS]
+    n=7: N_n(char sums)=    2026.000+4.5e-13i   str(bbE^n)=    2350.000-9.8e-15i   dev=3.24e+02 [FAIL]   1+q#{tr g=0}=    2026 [PASS]
+    n=8: N_n(char sums)=    6562.000+1.4e-12i   str(bbE^n)=    6562.000+3.1e-13i   dev=1.39e-12 [PASS]   1+q#{tr g=0}=    6562 [PASS]
+    n=9: N_n(char sums)=   19684.000+4.5e-12i   str(bbE^n)=   19684.000+2.8e-14i   dev=5.80e-12 [PASS]   1+q#{tr g=0}=   19684 [PASS]
+
+  q=5  a=[0, 1]  J=1:  even block 6x6,  odd block F 20x20,  genus g_C=(q-1)q^J/2=10,  2g_C=20
+    [PASS] F F^dagger = q I, max dev 4.70e-16
+    [PASS] all |eigenvalues of F| = sqrt(q)=2.236068, max dev 1.78e-15
+    [PASS] degree of det(1-TF) is 20 = 2 g_C = 20
+    [PASS] det(1-TF) == prod_{a in F_q^*} L(ag,T) coefficientwise: max abs dev 5.02e-09, relative 5.14e-16 (largest coefficient 9.766e+06)
+    det(1-TF) leading coefficients (ascending):   +1.000  +0.000i   -0.000  +0.000i  -10.000  -0.000i   +0.000  -0.000i  -75.000  +0.000i   +0.000  -0.000i
+    n=1: N_n(char sums)=       6.000+4.4e-16i   str(bbE^n)=       6.000+4.4e-16i   dev=0.00e+00 [PASS]   1+q#{tr g=0}=       6 [PASS]   direct count=       6 [PASS]
+    n=2: N_n(char sums)=       6.000+0.0e+00i   str(bbE^n)=       6.000-4.2e-15i   dev=8.25e-15 [PASS]   1+q#{tr g=0}=       6 [PASS]   direct count=       6 [PASS]
+    n=3: N_n(char sums)=     126.000+1.1e-14i   str(bbE^n)=     126.000+8.9e-15i   dev=1.78e-15 [PASS]   1+q#{tr g=0}=     126 [PASS]   direct count=     126 [PASS]
+    n=4: N_n(char sums)=     126.000+2.8e-14i   str(bbE^n)=     126.000+1.8e-13i   dev=1.90e-13 [PASS]   1+q#{tr g=0}=     126 [PASS]
+    n=5: N_n(char sums)=    3126.000+5.7e-13i   str(bbE^n)=    3126.000+5.7e-14i   dev=6.84e-13 [PASS]   1+q#{tr g=0}=    3126 [PASS]
+    n=6: N_n(char sums)=   15126.000+3.2e-12i   str(bbE^n)=   15126.000-3.1e-13i   dev=3.94e-12 [PASS]   1+q#{tr g=0}=   15126 [PASS]
+
+  q=5  a=[1, 2]  J=1:  even block 6x6,  odd block F 20x20,  genus g_C=(q-1)q^J/2=10,  2g_C=20
+    [PASS] F F^dagger = q I, max dev 4.87e-16
+    [PASS] all |eigenvalues of F| = sqrt(q)=2.236068, max dev 1.78e-15
+    [PASS] degree of det(1-TF) is 20 = 2 g_C = 20
+    [PASS] det(1-TF) == prod_{a in F_q^*} L(ag,T) coefficientwise: max abs dev 2.06e-08, relative 2.11e-15 (largest coefficient 9.766e+06)
+    det(1-TF) leading coefficients (ascending):   +1.000  +0.000i   +0.000  +0.000i  +10.000  -0.000i   +0.000  +0.000i  +75.000  -0.000i   -0.000  +0.000i
+    n=1: N_n(char sums)=       6.000+4.4e-16i   str(bbE^n)=       6.000+5.6e-16i   dev=1.11e-16 [PASS]   1+q#{tr g=0}=       6 [PASS]   direct count=       6 [PASS]
+    n=2: N_n(char sums)=      46.000+2.2e-15i   str(bbE^n)=      46.000-5.3e-15i   dev=1.04e-14 [PASS]   1+q#{tr g=0}=      46 [PASS]   direct count=      46 [PASS]
+    n=3: N_n(char sums)=     126.000+7.1e-15i   str(bbE^n)=     126.000-4.2e-16i   dev=1.61e-14 [PASS]   1+q#{tr g=0}=     126 [PASS]   direct count=     126 [PASS]
+    n=4: N_n(char sums)=     726.000+4.3e-14i   str(bbE^n)=     726.000-7.1e-14i   dev=1.61e-13 [PASS]   1+q#{tr g=0}=     726 [PASS]
+    n=5: N_n(char sums)=    3126.000+3.4e-13i   str(bbE^n)=    3126.000+3.6e-15i   dev=5.66e-13 [PASS]   1+q#{tr g=0}=    3126 [PASS]
+    n=6: N_n(char sums)=   13126.000+1.4e-12i   str(bbE^n)=   13126.000+1.4e-12i   dev=3.64e-12 [PASS]   1+q#{tr g=0}=   13126 [PASS]
+
+  q=5  a=[0, 1, 1]  J=2:  even block 26x26,  odd block F 100x100,  genus g_C=(q-1)q^J/2=50,  2g_C=100
+    [PASS] F F^dagger = q I, max dev 5.70e-16
+    [PASS] all |eigenvalues of F| = sqrt(q)=2.236068, max dev 9.33e-15
+    [PASS] degree of det(1-TF) is 100 = 2 g_C = 100
+    [PASS] det(1-TF) == prod_{a in F_q^*} L(ag,T) coefficientwise: max abs dev 8.86e+20, relative 9.97e-15 (largest coefficient 8.882e+34)
+    det(1-TF) leading coefficients (ascending):   +1.000  +0.000i   +0.000  +0.000i   -0.000  +0.000i   -0.000  -0.000i   -0.000  +0.000i   +0.000  +0.000i
+    n=1: N_n(char sums)=       6.000+4.4e-16i   str(bbE^n)=       6.000+5.6e-16i   dev=1.11e-16 [PASS]   1+q#{tr g=0}=       6 [PASS]   direct count=       6 [PASS]
+    n=2: N_n(char sums)=      26.000+1.8e-15i   str(bbE^n)=      26.000-3.1e-15i   dev=6.04e-15 [PASS]   1+q#{tr g=0}=      26 [PASS]   direct count=      26 [PASS]
+    n=3: N_n(char sums)=     126.000+8.9e-15i   str(bbE^n)=     126.000+6.8e-15i   dev=1.44e-14 [PASS]   1+q#{tr g=0}=     126 [PASS]   direct count=     126 [PASS]
+    n=4: N_n(char sums)=     626.000+3.6e-14i   str(bbE^n)=     626.000-5.3e-14i   dev=1.44e-13 [PASS]   1+q#{tr g=0}=     626 [PASS]
+    n=5: N_n(char sums)=    3126.000+3.4e-13i   str(bbE^n)=    3126.000-1.8e-14i   dev=5.79e-13 [PASS]   1+q#{tr g=0}=    3126 [PASS]
+    n=6: N_n(char sums)=   15626.000+1.4e-12i   str(bbE^n)=   15626.000-2.1e-13i   dev=2.40e-12 [PASS]   1+q#{tr g=0}=   15626 [PASS]
+
+  q=7  a=[0, 1]  J=1:  even block 8x8,  odd block F 42x42,  genus g_C=(q-1)q^J/2=21,  2g_C=42
+    [PASS] F F^dagger = q I, max dev 5.00e-16
+    [PASS] all |eigenvalues of F| = sqrt(q)=2.645751, max dev 3.11e-15
+    [PASS] degree of det(1-TF) is 42 = 2 g_C = 42
+    [PASS] det(1-TF) == prod_{a in F_q^*} L(ag,T) coefficientwise: max abs dev 3.32e+03, relative 5.94e-15 (largest coefficient 5.585e+17)
+    det(1-TF) leading coefficients (ascending):   +1.000  +0.000i   +0.000  +0.000i  -21.000  -0.000i   -0.000  -0.000i -294.000  +0.000i   -0.000  +0.000i
+    n=1: N_n(char sums)=       8.000+4.4e-16i   str(bbE^n)=       8.000-6.7e-16i   dev=1.42e-15 [PASS]   1+q#{tr g=0}=       8 [PASS]
+    n=2: N_n(char sums)=       8.000+3.6e-15i   str(bbE^n)=       8.000-1.1e-14i   dev=1.63e-14 [PASS]   1+q#{tr g=0}=       8 [PASS]
+    n=3: N_n(char sums)=     344.000+5.0e-14i   str(bbE^n)=     344.000-6.2e-15i   dev=7.98e-14 [PASS]   1+q#{tr g=0}=     344 [PASS]
+    n=4: N_n(char sums)=     344.000+0.0e+00i   str(bbE^n)=     344.000+7.3e-13i   dev=8.62e-13 [PASS]   1+q#{tr g=0}=     344 [PASS]
+    n=5: N_n(char sums)=   16808.000+8.0e-13i   str(bbE^n)=   16808.000-2.0e-13i   dev=9.95e-13 [PASS]   1+q#{tr g=0}=   16808 [PASS]
+
+  q=7  a=[1, 1]  J=1:  even block 8x8,  odd block F 42x42,  genus g_C=(q-1)q^J/2=21,  2g_C=42
+    [PASS] F F^dagger = q I, max dev 9.93e-16
+    [PASS] all |eigenvalues of F| = sqrt(q)=2.645751, max dev 3.55e-15
+    [PASS] degree of det(1-TF) is 42 = 2 g_C = 42
+    [PASS] det(1-TF) == prod_{a in F_q^*} L(ag,T) coefficientwise: max abs dev 1.02e+03, relative 1.82e-15 (largest coefficient 5.585e+17)
+    det(1-TF) leading coefficients (ascending):   +1.000  +0.000i   +0.000  +0.000i   -0.000  -0.000i   -0.000  -0.000i   -0.000  -0.000i   +0.000  -0.000i
+    n=1: N_n(char sums)=       8.000+4.4e-16i   str(bbE^n)=       8.000-7.8e-16i   dev=1.51e-15 [PASS]   1+q#{tr g=0}=       8 [PASS]
+    n=2: N_n(char sums)=      50.000+1.4e-14i   str(bbE^n)=      50.000-4.4e-15i   dev=2.00e-14 [PASS]   1+q#{tr g=0}=      50 [PASS]
+    n=3: N_n(char sums)=     344.000+5.0e-14i   str(bbE^n)=     344.000-4.4e-16i   dev=7.58e-14 [PASS]   1+q#{tr g=0}=     344 [PASS]
+    n=4: N_n(char sums)=    2402.000+1.7e-13i   str(bbE^n)=    2402.000-7.1e-14i   dev=5.15e-13 [PASS]   1+q#{tr g=0}=    2402 [PASS]
+    n=5: N_n(char sums)=   16808.000+8.0e-13i   str(bbE^n)=   16808.000-5.7e-14i   dev=8.53e-13 [PASS]   1+q#{tr g=0}=   16808 [PASS]
+
+========================================================================================================
+TASK 4 : WEIL REPRESENTATION.  U = E_g/sqrt(q) is Clifford; read off M in Sp(2J,F_q)
+========================================================================================================
+  Weyl operators W(u,v) = kron_k ( X_k^{u_k} Z_k^{v_k} ),  X|i>=|i+1>,  Z|i>=omega^i|i>.
+  M columns = images of e_k (X_k) then f_k (Z_k) as exponent vectors (x-part; z-part) mod q.
+  Omega = [[0,I],[-I,0]].  Character formula tested: |Tr E_g^n|^2 = q^(n + d'_n), d'_n = dim ker(M^n - 1) over F_q.
+
+  q=3  a=[0, 1]  J=1  dim=3
+    [PASS] U = E_g/sqrt(q) unitary, max dev 2.22e-16
+    U X_1 U^dag = (+1.000000+0.000000i) * W(u=(0,), v=(1,))   |overlap|=1.0000000000
+    U Z_1 U^dag = (+1.000000-0.000000i) * W(u=(2,), v=(0,))   |overlap|=1.0000000000
+    [PASS] every generator maps to a phase times a Weyl operator
+    M (2x2 over F_3), columns = images of e_1..e_J (X), f_1..f_J (Z):
+        [ 0  2]
+        [ 1  0]
+    [PASS] M is symplectic mod 3
+    [PASS] conjugation action agrees with M on all 9 phase-space points
+    order of M in Sp(2,F_3) = 4
+    d'_n for n=1..12: [0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2]
+    n= 1: |Tr E^n|^2=        3.000000   q^(n+d'_n)=        3.000000   rel=1.48e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 2: |Tr E^n|^2=        9.000000   q^(n+d'_n)=        9.000000   rel=1.18e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 3: |Tr E^n|^2=       27.000000   q^(n+d'_n)=       27.000000   rel=1.97e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 4: |Tr E^n|^2=      729.000000   q^(n+d'_n)=      729.000000   rel=0.00e+00 [PASS]   d'_n=2   d_n(task1)=2 [PASS]
+    n= 5: |Tr E^n|^2=      243.000000   q^(n+d'_n)=      243.000000   rel=4.68e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 6: |Tr E^n|^2=      729.000000   q^(n+d'_n)=      729.000000   rel=2.65e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 7: |Tr E^n|^2=     2187.000000   q^(n+d'_n)=     2187.000000   rel=4.78e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 8: |Tr E^n|^2=    59049.000000   q^(n+d'_n)=    59049.000000   rel=4.93e-16 [PASS]   d'_n=2   d_n(task1)=2 [PASS]
+    n= 9: |Tr E^n|^2=    19683.000000   q^(n+d'_n)=    19683.000000   rel=9.24e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n=10: |Tr E^n|^2=    59049.000000   q^(n+d'_n)=    59049.000000   rel=4.19e-15 [PASS]   d'_n=0
+    n=11: |Tr E^n|^2=   177147.000000   q^(n+d'_n)=   177147.000000   rel=7.72e-15 [PASS]   d'_n=0
+    n=12: |Tr E^n|^2=  4782969.000000   q^(n+d'_n)=  4782969.000000   rel=7.79e-16 [PASS]   d'_n=2
+
+  q=3  a=[1, 1]  J=1  dim=3
+    [PASS] U = E_g/sqrt(q) unitary, max dev 3.33e-16
+    U X_1 U^dag = (+1.000000+0.000000i) * W(u=(0,), v=(1,))   |overlap|=1.0000000000
+    U Z_1 U^dag = (-0.500000+0.866025i) * W(u=(2,), v=(1,))   |overlap|=1.0000000000
+    [PASS] every generator maps to a phase times a Weyl operator
+    M (2x2 over F_3), columns = images of e_1..e_J (X), f_1..f_J (Z):
+        [ 0  2]
+        [ 1  1]
+    [PASS] M is symplectic mod 3
+    [PASS] conjugation action agrees with M on all 9 phase-space points
+    order of M in Sp(2,F_3) = 6
+    d'_n for n=1..12: [0, 1, 0, 1, 0, 2, 0, 1, 0, 1, 0, 2]
+    n= 1: |Tr E^n|^2=        3.000000   q^(n+d'_n)=        3.000000   rel=5.92e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 2: |Tr E^n|^2=       27.000000   q^(n+d'_n)=       27.000000   rel=3.95e-16 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 3: |Tr E^n|^2=       27.000000   q^(n+d'_n)=       27.000000   rel=1.71e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 4: |Tr E^n|^2=      243.000000   q^(n+d'_n)=      243.000000   rel=0.00e+00 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 5: |Tr E^n|^2=      243.000000   q^(n+d'_n)=      243.000000   rel=1.64e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 6: |Tr E^n|^2=     6561.000000   q^(n+d'_n)=     6561.000000   rel=0.00e+00 [PASS]   d'_n=2   d_n(task1)=2 [PASS]
+    n= 7: |Tr E^n|^2=     2187.000000   q^(n+d'_n)=     2187.000000   rel=3.95e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 8: |Tr E^n|^2=    19683.000000   q^(n+d'_n)=    19683.000000   rel=2.40e-15 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 9: |Tr E^n|^2=    19683.000000   q^(n+d'_n)=    19683.000000   rel=5.54e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n=10: |Tr E^n|^2=   177147.000000   q^(n+d'_n)=   177147.000000   rel=0.00e+00 [PASS]   d'_n=1
+    n=11: |Tr E^n|^2=   177147.000000   q^(n+d'_n)=   177147.000000   rel=3.29e-15 [PASS]   d'_n=0
+    n=12: |Tr E^n|^2=  4782969.000000   q^(n+d'_n)=  4782969.000000   rel=0.00e+00 [PASS]   d'_n=2
+
+  q=3  a=[0, 1, 1]  J=2  dim=9
+    [PASS] U = E_g/sqrt(q) unitary, max dev 2.79e-16
+    U X_1 U^dag = (+1.000000+0.000000i) * W(u=(0, 0), v=(0, 1))   |overlap|=1.0000000000
+    U X_2 U^dag = (+1.000000+0.000000i) * W(u=(1, 0), v=(0, 1))   |overlap|=1.0000000000
+    U Z_1 U^dag = (+1.000000+0.000000i) * W(u=(0, 2), v=(2, 0))   |overlap|=1.0000000000
+    U Z_2 U^dag = (+1.000000-0.000000i) * W(u=(0, 0), v=(1, 0))   |overlap|=1.0000000000
+    [PASS] every generator maps to a phase times a Weyl operator
+    M (4x4 over F_3), columns = images of e_1..e_J (X), f_1..f_J (Z):
+        [ 0  1  0  0]
+        [ 0  0  2  0]
+        [ 0  0  2  1]
+        [ 1  1  0  0]
+    [PASS] M is symplectic mod 3
+    [PASS] conjugation action agrees with M on all 81 phase-space points
+    order of M in Sp(4,F_3) = 18
+    d'_n for n=1..12: [0, 1, 0, 1, 0, 3, 0, 1, 0, 1, 0, 3]
+    n= 1: |Tr E^n|^2=        3.000000   q^(n+d'_n)=        3.000000   rel=5.92e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 2: |Tr E^n|^2=       27.000000   q^(n+d'_n)=       27.000000   rel=3.95e-16 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 3: |Tr E^n|^2=       27.000000   q^(n+d'_n)=       27.000000   rel=1.05e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 4: |Tr E^n|^2=      243.000000   q^(n+d'_n)=      243.000000   rel=1.17e-15 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 5: |Tr E^n|^2=      243.000000   q^(n+d'_n)=      243.000000   rel=1.40e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 6: |Tr E^n|^2=    19683.000000   q^(n+d'_n)=    19683.000000   rel=3.70e-16 [PASS]   d'_n=3   d_n(task1)=3 [PASS]
+    n= 7: |Tr E^n|^2=     2187.000000   q^(n+d'_n)=     2187.000000   rel=1.87e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 8: |Tr E^n|^2=    19683.000000   q^(n+d'_n)=    19683.000000   rel=0.00e+00 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 9: |Tr E^n|^2=    19683.000000   q^(n+d'_n)=    19683.000000   rel=3.33e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n=10: |Tr E^n|^2=   177147.000000   q^(n+d'_n)=   177147.000000   rel=0.00e+00 [PASS]   d'_n=1
+    n=11: |Tr E^n|^2=   177147.000000   q^(n+d'_n)=   177147.000000   rel=3.78e-15 [PASS]   d'_n=0
+    n=12: |Tr E^n|^2= 14348907.000000   q^(n+d'_n)= 14348907.000000   rel=6.49e-16 [PASS]   d'_n=3
+
+  q=3  a=[0, 0, 1]  J=2  dim=9
+    [PASS] U = E_g/sqrt(q) unitary, max dev 2.79e-16
+    U X_1 U^dag = (+1.000000+0.000000i) * W(u=(0, 0), v=(0, 1))   |overlap|=1.0000000000
+    U X_2 U^dag = (+1.000000-0.000000i) * W(u=(1, 0), v=(0, 0))   |overlap|=1.0000000000
+    U Z_1 U^dag = (+1.000000-0.000000i) * W(u=(0, 2), v=(0, 0))   |overlap|=1.0000000000
+    U Z_2 U^dag = (+1.000000+0.000000i) * W(u=(0, 0), v=(1, 0))   |overlap|=1.0000000000
+    [PASS] every generator maps to a phase times a Weyl operator
+    M (4x4 over F_3), columns = images of e_1..e_J (X), f_1..f_J (Z):
+        [ 0  1  0  0]
+        [ 0  0  2  0]
+        [ 0  0  0  1]
+        [ 1  0  0  0]
+    [PASS] M is symplectic mod 3
+    [PASS] conjugation action agrees with M on all 81 phase-space points
+    order of M in Sp(4,F_3) = 8
+    d'_n for n=1..12: [0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0]
+    n= 1: |Tr E^n|^2=        3.000000   q^(n+d'_n)=        3.000000   rel=1.48e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 2: |Tr E^n|^2=        9.000000   q^(n+d'_n)=        9.000000   rel=3.95e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 3: |Tr E^n|^2=       27.000000   q^(n+d'_n)=       27.000000   rel=1.97e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 4: |Tr E^n|^2=       81.000000   q^(n+d'_n)=       81.000000   rel=1.93e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 5: |Tr E^n|^2=      243.000000   q^(n+d'_n)=      243.000000   rel=9.36e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 6: |Tr E^n|^2=      729.000000   q^(n+d'_n)=      729.000000   rel=3.43e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 7: |Tr E^n|^2=     2187.000000   q^(n+d'_n)=     2187.000000   rel=4.16e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 8: |Tr E^n|^2=   531441.000000   q^(n+d'_n)=   531441.000000   rel=0.00e+00 [PASS]   d'_n=4   d_n(task1)=4 [PASS]
+    n= 9: |Tr E^n|^2=    19683.000000   q^(n+d'_n)=    19683.000000   rel=1.66e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n=10: |Tr E^n|^2=    59049.000000   q^(n+d'_n)=    59049.000000   rel=2.34e-15 [PASS]   d'_n=0
+    n=11: |Tr E^n|^2=   177147.000000   q^(n+d'_n)=   177147.000000   rel=6.74e-15 [PASS]   d'_n=0
+    n=12: |Tr E^n|^2=   531441.000000   q^(n+d'_n)=   531441.000000   rel=5.91e-15 [PASS]   d'_n=0
+
+  q=3  a=[1, 0, 1]  J=2  dim=9
+    [PASS] U = E_g/sqrt(q) unitary, max dev 3.33e-16
+    U X_1 U^dag = (+1.000000+0.000000i) * W(u=(0, 0), v=(0, 1))   |overlap|=1.0000000000
+    U X_2 U^dag = (+1.000000-0.000000i) * W(u=(1, 0), v=(0, 0))   |overlap|=1.0000000000
+    U Z_1 U^dag = (-0.500000+0.866025i) * W(u=(0, 2), v=(0, 1))   |overlap|=1.0000000000
+    U Z_2 U^dag = (+1.000000-0.000000i) * W(u=(0, 0), v=(1, 0))   |overlap|=1.0000000000
+    [PASS] every generator maps to a phase times a Weyl operator
+    M (4x4 over F_3), columns = images of e_1..e_J (X), f_1..f_J (Z):
+        [ 0  1  0  0]
+        [ 0  0  2  0]
+        [ 0  0  0  1]
+        [ 1  0  1  0]
+    [PASS] M is symplectic mod 3
+    [PASS] conjugation action agrees with M on all 81 phase-space points
+    order of M in Sp(4,F_3) = 12
+    d'_n for n=1..12: [0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 4]
+    n= 1: |Tr E^n|^2=        3.000000   q^(n+d'_n)=        3.000000   rel=5.92e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 2: |Tr E^n|^2=        9.000000   q^(n+d'_n)=        9.000000   rel=1.18e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 3: |Tr E^n|^2=       27.000000   q^(n+d'_n)=       27.000000   rel=1.71e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 4: |Tr E^n|^2=      729.000000   q^(n+d'_n)=      729.000000   rel=4.68e-16 [PASS]   d'_n=2   d_n(task1)=2 [PASS]
+    n= 5: |Tr E^n|^2=      243.000000   q^(n+d'_n)=      243.000000   rel=1.17e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 6: |Tr E^n|^2=      729.000000   q^(n+d'_n)=      729.000000   rel=4.21e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 7: |Tr E^n|^2=     2187.000000   q^(n+d'_n)=     2187.000000   rel=3.95e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 8: |Tr E^n|^2=    59049.000000   q^(n+d'_n)=    59049.000000   rel=7.39e-16 [PASS]   d'_n=2   d_n(task1)=2 [PASS]
+    n= 9: |Tr E^n|^2=    19683.000000   q^(n+d'_n)=    19683.000000   rel=5.54e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n=10: |Tr E^n|^2=    59049.000000   q^(n+d'_n)=    59049.000000   rel=1.85e-15 [PASS]   d'_n=0
+    n=11: |Tr E^n|^2=   177147.000000   q^(n+d'_n)=   177147.000000   rel=2.14e-15 [PASS]   d'_n=0
+    n=12: |Tr E^n|^2= 43046721.000000   q^(n+d'_n)= 43046721.000000   rel=5.19e-16 [PASS]   d'_n=4
+
+  q=3  a=[2, 1]  J=1  dim=3
+    [PASS] U = E_g/sqrt(q) unitary, max dev 2.22e-16
+    U X_1 U^dag = (+1.000000+0.000000i) * W(u=(0,), v=(1,))   |overlap|=1.0000000000
+    U Z_1 U^dag = (-0.500000-0.866025i) * W(u=(2,), v=(2,))   |overlap|=1.0000000000
+    [PASS] every generator maps to a phase times a Weyl operator
+    M (2x2 over F_3), columns = images of e_1..e_J (X), f_1..f_J (Z):
+        [ 0  2]
+        [ 1  2]
+    [PASS] M is symplectic mod 3
+    [PASS] conjugation action agrees with M on all 9 phase-space points
+    order of M in Sp(2,F_3) = 3
+    d'_n for n=1..12: [1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2]
+    n= 1: |Tr E^n|^2=        9.000000   q^(n+d'_n)=        9.000000   rel=0.00e+00 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 2: |Tr E^n|^2=       27.000000   q^(n+d'_n)=       27.000000   rel=6.58e-16 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 3: |Tr E^n|^2=      243.000000   q^(n+d'_n)=      243.000000   rel=0.00e+00 [PASS]   d'_n=2   d_n(task1)=2 [PASS]
+    n= 4: |Tr E^n|^2=      243.000000   q^(n+d'_n)=      243.000000   rel=0.00e+00 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 5: |Tr E^n|^2=      729.000000   q^(n+d'_n)=      729.000000   rel=1.56e-15 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 6: |Tr E^n|^2=     6561.000000   q^(n+d'_n)=     6561.000000   rel=0.00e+00 [PASS]   d'_n=2   d_n(task1)=2 [PASS]
+    n= 7: |Tr E^n|^2=     6561.000000   q^(n+d'_n)=     6561.000000   rel=0.00e+00 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 8: |Tr E^n|^2=    19683.000000   q^(n+d'_n)=    19683.000000   rel=2.40e-15 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 9: |Tr E^n|^2=   177147.000000   q^(n+d'_n)=   177147.000000   rel=1.64e-16 [PASS]   d'_n=2   d_n(task1)=2 [PASS]
+    n=10: |Tr E^n|^2=   177147.000000   q^(n+d'_n)=   177147.000000   rel=0.00e+00 [PASS]   d'_n=1
+    n=11: |Tr E^n|^2=   531441.000000   q^(n+d'_n)=   531441.000000   rel=3.50e-15 [PASS]   d'_n=1
+    n=12: |Tr E^n|^2=  4782969.000000   q^(n+d'_n)=  4782969.000000   rel=3.89e-16 [PASS]   d'_n=2
+
+  q=5  a=[0, 1]  J=1  dim=5
+    [PASS] U = E_g/sqrt(q) unitary, max dev 1.12e-16
+    U X_1 U^dag = (+1.000000+0.000000i) * W(u=(0,), v=(1,))   |overlap|=1.0000000000
+    U Z_1 U^dag = (+1.000000-0.000000i) * W(u=(4,), v=(0,))   |overlap|=1.0000000000
+    [PASS] every generator maps to a phase times a Weyl operator
+    M (2x2 over F_5), columns = images of e_1..e_J (X), f_1..f_J (Z):
+        [ 0  4]
+        [ 1  0]
+    [PASS] M is symplectic mod 5
+    [PASS] conjugation action agrees with M on all 25 phase-space points
+    order of M in Sp(2,F_5) = 4
+    d'_n for n=1..12: [0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2]
+    n= 1: |Tr E^n|^2=        5.000000   q^(n+d'_n)=        5.000000   rel=3.55e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 2: |Tr E^n|^2=       25.000000   q^(n+d'_n)=       25.000000   rel=0.00e+00 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 3: |Tr E^n|^2=      125.000000   q^(n+d'_n)=      125.000000   rel=5.68e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 4: |Tr E^n|^2=    15625.000000   q^(n+d'_n)=    15625.000000   rel=0.00e+00 [PASS]   d'_n=2   d_n(task1)=2 [PASS]
+    n= 5: |Tr E^n|^2=     3125.000000   q^(n+d'_n)=     3125.000000   rel=1.60e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 6: |Tr E^n|^2=    15625.000000   q^(n+d'_n)=    15625.000000   rel=0.00e+00 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 7: |Tr E^n|^2=    78125.000000   q^(n+d'_n)=    78125.000000   rel=2.05e-15 [PASS]   d'_n=0
+    n= 8: |Tr E^n|^2=  9765625.000000   q^(n+d'_n)=  9765625.000000   rel=0.00e+00 [PASS]   d'_n=2
+    n= 9: |Tr E^n|^2=  1953125.000000   q^(n+d'_n)=  1953125.000000   rel=2.86e-15 [PASS]   d'_n=0
+    n=10: |Tr E^n|^2=  9765625.000000   q^(n+d'_n)=  9765625.000000   rel=0.00e+00 [PASS]   d'_n=0
+    n=11: |Tr E^n|^2= 48828125.000000   q^(n+d'_n)= 48828125.000000   rel=2.75e-15 [PASS]   d'_n=0
+    n=12: |Tr E^n|^2=6103515625.000000   q^(n+d'_n)=6103515625.000000   rel=0.00e+00 [PASS]   d'_n=2
+
+  q=5  a=[1, 2]  J=1  dim=5
+    [PASS] U = E_g/sqrt(q) unitary, max dev 1.11e-16
+    U X_1 U^dag = (+1.000000+0.000000i) * W(u=(0,), v=(2,))   |overlap|=1.0000000000
+    U Z_1 U^dag = (+0.309017-0.951057i) * W(u=(2,), v=(4,))   |overlap|=1.0000000000
+    [PASS] every generator maps to a phase times a Weyl operator
+    M (2x2 over F_5), columns = images of e_1..e_J (X), f_1..f_J (Z):
+        [ 0  2]
+        [ 2  4]
+    [PASS] M is symplectic mod 5
+    [PASS] conjugation action agrees with M on all 25 phase-space points
+    order of M in Sp(2,F_5) = 3
+    d'_n for n=1..12: [0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0, 2]
+    n= 1: |Tr E^n|^2=        5.000000   q^(n+d'_n)=        5.000000   rel=1.78e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 2: |Tr E^n|^2=       25.000000   q^(n+d'_n)=       25.000000   rel=4.26e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 3: |Tr E^n|^2=     3125.000000   q^(n+d'_n)=     3125.000000   rel=0.00e+00 [PASS]   d'_n=2   d_n(task1)=2 [PASS]
+    n= 4: |Tr E^n|^2=      625.000000   q^(n+d'_n)=      625.000000   rel=0.00e+00 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 5: |Tr E^n|^2=     3125.000000   q^(n+d'_n)=     3125.000000   rel=1.02e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 6: |Tr E^n|^2=   390625.000000   q^(n+d'_n)=   390625.000000   rel=0.00e+00 [PASS]   d'_n=2   d_n(task1)=2 [PASS]
+    n= 7: |Tr E^n|^2=    78125.000000   q^(n+d'_n)=    78125.000000   rel=0.00e+00 [PASS]   d'_n=0
+    n= 8: |Tr E^n|^2=   390625.000000   q^(n+d'_n)=   390625.000000   rel=1.49e-15 [PASS]   d'_n=0
+    n= 9: |Tr E^n|^2= 48828125.000000   q^(n+d'_n)= 48828125.000000   rel=1.53e-16 [PASS]   d'_n=2
+    n=10: |Tr E^n|^2=  9765625.000000   q^(n+d'_n)=  9765625.000000   rel=3.81e-16 [PASS]   d'_n=0
+    n=11: |Tr E^n|^2= 48828125.000000   q^(n+d'_n)= 48828125.000000   rel=2.44e-15 [PASS]   d'_n=0
+    n=12: |Tr E^n|^2=6103515625.000000   q^(n+d'_n)=6103515625.000000   rel=0.00e+00 [PASS]   d'_n=2
+
+  q=5  a=[0, 1, 1]  J=2  dim=25
+    [PASS] U = E_g/sqrt(q) unitary, max dev 2.22e-16
+    U X_1 U^dag = (+1.000000+0.000000i) * W(u=(0, 0), v=(0, 1))   |overlap|=1.0000000000
+    U X_2 U^dag = (+1.000000+0.000000i) * W(u=(1, 0), v=(0, 1))   |overlap|=1.0000000000
+    U Z_1 U^dag = (+1.000000+0.000000i) * W(u=(0, 4), v=(4, 0))   |overlap|=1.0000000000
+    U Z_2 U^dag = (+1.000000+0.000000i) * W(u=(0, 0), v=(1, 0))   |overlap|=1.0000000000
+    [PASS] every generator maps to a phase times a Weyl operator
+    M (4x4 over F_5), columns = images of e_1..e_J (X), f_1..f_J (Z):
+        [ 0  1  0  0]
+        [ 0  0  4  0]
+        [ 0  0  4  1]
+        [ 1  1  0  0]
+    [PASS] M is symplectic mod 5
+    [PASS] conjugation action agrees with M on all 625 phase-space points
+    order of M in Sp(4,F_5) = 30
+    d'_n for n=1..12: [0, 1, 0, 1, 0, 3, 0, 1, 0, 2, 0, 3]
+    n= 1: |Tr E^n|^2=        5.000000   q^(n+d'_n)=        5.000000   rel=1.78e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 2: |Tr E^n|^2=      125.000000   q^(n+d'_n)=      125.000000   rel=1.14e-16 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 3: |Tr E^n|^2=      125.000000   q^(n+d'_n)=      125.000000   rel=1.14e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 4: |Tr E^n|^2=     3125.000000   q^(n+d'_n)=     3125.000000   rel=2.91e-16 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 5: |Tr E^n|^2=     3125.000000   q^(n+d'_n)=     3125.000000   rel=1.02e-15 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 6: |Tr E^n|^2=  1953125.000000   q^(n+d'_n)=  1953125.000000   rel=1.19e-16 [PASS]   d'_n=3   d_n(task1)=3 [PASS]
+    n= 7: |Tr E^n|^2=    78125.000000   q^(n+d'_n)=    78125.000000   rel=1.12e-15 [PASS]   d'_n=0
+    n= 8: |Tr E^n|^2=  1953125.000000   q^(n+d'_n)=  1953125.000000   rel=2.38e-16 [PASS]   d'_n=1
+    n= 9: |Tr E^n|^2=  1953125.000000   q^(n+d'_n)=  1953125.000000   rel=7.15e-16 [PASS]   d'_n=0
+    n=10: |Tr E^n|^2=244140625.000000   q^(n+d'_n)=244140625.000000   rel=0.00e+00 [PASS]   d'_n=2
+    n=11: |Tr E^n|^2= 48828125.000000   q^(n+d'_n)= 48828125.000000   rel=1.37e-15 [PASS]   d'_n=0
+    n=12: |Tr E^n|^2=30517578125.000000   q^(n+d'_n)=30517578125.000000   rel=0.00e+00 [PASS]   d'_n=3
+
+  q=7  a=[0, 1]  J=1  dim=7
+    [PASS] U = E_g/sqrt(q) unitary, max dev 3.33e-16
+    U X_1 U^dag = (+1.000000+0.000000i) * W(u=(0,), v=(1,))   |overlap|=1.0000000000
+    U Z_1 U^dag = (+1.000000-0.000000i) * W(u=(6,), v=(0,))   |overlap|=1.0000000000
+    [PASS] every generator maps to a phase times a Weyl operator
+    M (2x2 over F_7), columns = images of e_1..e_J (X), f_1..f_J (Z):
+        [ 0  6]
+        [ 1  0]
+    [PASS] M is symplectic mod 7
+    [PASS] conjugation action agrees with M on all 49 phase-space points
+    order of M in Sp(2,F_7) = 4
+    d'_n for n=1..12: [0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2]
+    n= 1: |Tr E^n|^2=        7.000000   q^(n+d'_n)=        7.000000   rel=1.27e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 2: |Tr E^n|^2=       49.000000   q^(n+d'_n)=       49.000000   rel=4.35e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 3: |Tr E^n|^2=      343.000000   q^(n+d'_n)=      343.000000   rel=1.66e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 4: |Tr E^n|^2=   117649.000000   q^(n+d'_n)=   117649.000000   rel=0.00e+00 [PASS]   d'_n=2   d_n(task1)=2 [PASS]
+    n= 5: |Tr E^n|^2=    16807.000000   q^(n+d'_n)=    16807.000000   rel=0.00e+00 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 6: |Tr E^n|^2=   117649.000000   q^(n+d'_n)=   117649.000000   rel=1.61e-15 [PASS]   d'_n=0
+    n= 7: |Tr E^n|^2=   823543.000000   q^(n+d'_n)=   823543.000000   rel=5.65e-16 [PASS]   d'_n=0
+    n= 8: |Tr E^n|^2=282475249.000000   q^(n+d'_n)=282475249.000000   rel=0.00e+00 [PASS]   d'_n=2
+    n= 9: |Tr E^n|^2= 40353607.000000   q^(n+d'_n)= 40353607.000000   rel=3.69e-16 [PASS]   d'_n=0
+    n=10: |Tr E^n|^2=282475248.999999   q^(n+d'_n)=282475249.000000   rel=2.95e-15 [PASS]   d'_n=0
+    n=11: |Tr E^n|^2=1977326742.999998   q^(n+d'_n)=1977326743.000000   rel=9.65e-16 [PASS]   d'_n=0
+    n=12: |Tr E^n|^2=678223072849.000000   q^(n+d'_n)=678223072849.000000   rel=0.00e+00 [PASS]   d'_n=2
+
+  q=7  a=[1, 1]  J=1  dim=7
+    [PASS] U = E_g/sqrt(q) unitary, max dev 3.33e-16
+    U X_1 U^dag = (+1.000000+0.000000i) * W(u=(0,), v=(1,))   |overlap|=1.0000000000
+    U Z_1 U^dag = (+0.623490+0.781831i) * W(u=(6,), v=(5,))   |overlap|=1.0000000000
+    [PASS] every generator maps to a phase times a Weyl operator
+    M (2x2 over F_7), columns = images of e_1..e_J (X), f_1..f_J (Z):
+        [ 0  6]
+        [ 1  5]
+    [PASS] M is symplectic mod 7
+    [PASS] conjugation action agrees with M on all 49 phase-space points
+    order of M in Sp(2,F_7) = 14
+    d'_n for n=1..12: [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+    n= 1: |Tr E^n|^2=        7.000000   q^(n+d'_n)=        7.000000   rel=1.27e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 2: |Tr E^n|^2=      343.000000   q^(n+d'_n)=      343.000000   rel=1.66e-16 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 3: |Tr E^n|^2=      343.000000   q^(n+d'_n)=      343.000000   rel=1.66e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 4: |Tr E^n|^2=    16807.000000   q^(n+d'_n)=    16807.000000   rel=4.33e-16 [PASS]   d'_n=1   d_n(task1)=1 [PASS]
+    n= 5: |Tr E^n|^2=    16807.000000   q^(n+d'_n)=    16807.000000   rel=4.33e-16 [PASS]   d'_n=0   d_n(task1)=0 [PASS]
+    n= 6: |Tr E^n|^2=   823543.000000   q^(n+d'_n)=   823543.000000   rel=4.24e-16 [PASS]   d'_n=1
+    n= 7: |Tr E^n|^2=   823543.000000   q^(n+d'_n)=   823543.000000   rel=1.27e-15 [PASS]   d'_n=0
+    n= 8: |Tr E^n|^2= 40353607.000000   q^(n+d'_n)= 40353607.000000   rel=3.69e-16 [PASS]   d'_n=1
+    n= 9: |Tr E^n|^2= 40353607.000000   q^(n+d'_n)= 40353607.000000   rel=3.14e-15 [PASS]   d'_n=0
+    n=10: |Tr E^n|^2=1977326742.999998   q^(n+d'_n)=1977326743.000000   rel=9.65e-16 [PASS]   d'_n=1
+    n=11: |Tr E^n|^2=1977326743.000002   q^(n+d'_n)=1977326743.000000   rel=9.65e-16 [PASS]   d'_n=0
+    n=12: |Tr E^n|^2=96889010406.999969   q^(n+d'_n)=96889010407.000000   rel=3.15e-16 [PASS]   d'_n=1
+
+========================================================================================================
+TASK 1E : EXACT SIGN LAW.  S_n(g) = (-1)^(n-1) delta_n Tr(E_g^n),  delta_n = det(S|_{ker P(S)})
+========================================================================================================
+  (placed after tasks 2-4 because parts (iv) and (v) reuse the L-polynomials, N_n and M from them)
+  S = cyclic shift (S x)_i = x_(i+1) on F_q^n;   P(z) = sum_j (a_j/2)(z^j + z^-j);   M = P(S);
+  R_n = ker M;   f(z) = z^J P(z), degree 2J;   v_- = ord_(z=-1) f;   h = least power of q > v_-.
+
+  --------------------------------------------------------------------------------------------------
+  case               P(1)  P(-1)   v_-   h   2h | naive law S_n=(-1)^(n-1)TrE^n  | conjugated law
+  --------------------------------------------------------------------------------------------------
+  q=3 a=[0, 1]        1      2     0   1    2 | observed HOLDS, P(-1)!=0 predicts HOLDS [PASS] | observed HOLDS, P(+1)!=0 predicts HOLDS [PASS]
+  q=3 a=[1, 1]        2      0     2   3    6 | observed FAILS, P(-1)!=0 predicts FAILS [PASS] | observed HOLDS, P(+1)!=0 predicts HOLDS [PASS]
+  q=3 a=[0, 1, 1]     2      0     4   9   18 | observed FAILS, P(-1)!=0 predicts FAILS [PASS] | observed HOLDS, P(+1)!=0 predicts HOLDS [PASS]
+  q=3 a=[0, 0, 1]     1      1     0   1    2 | observed HOLDS, P(-1)!=0 predicts HOLDS [PASS] | observed HOLDS, P(+1)!=0 predicts HOLDS [PASS]
+  q=3 a=[1, 0, 1]     2      2     0   1    2 | observed HOLDS, P(-1)!=0 predicts HOLDS [PASS] | observed HOLDS, P(+1)!=0 predicts HOLDS [PASS]
+  q=3 a=[2, 1]        0      1     0   1    2 | observed HOLDS, P(-1)!=0 predicts HOLDS [PASS] | observed FAILS, P(+1)!=0 predicts FAILS [PASS]
+  q=5 a=[0, 1]        1      4     0   1    2 | observed HOLDS, P(-1)!=0 predicts HOLDS [PASS] | observed HOLDS, P(-1)!=0 predicts HOLDS [PASS]
+  q=5 a=[1, 2]        3      4     0   1    2 | observed HOLDS, P(-1)!=0 predicts HOLDS [PASS] | observed HOLDS, P(-1)!=0 predicts HOLDS [PASS]
+  q=5 a=[0, 1, 1]     2      0     2   5   10 | observed FAILS, P(-1)!=0 predicts FAILS [PASS] | observed FAILS, P(-1)!=0 predicts FAILS [PASS]
+  q=7 a=[0, 1]        1      6     0   1    2 | observed HOLDS, P(-1)!=0 predicts HOLDS [PASS] | observed HOLDS, P(+1)!=0 predicts HOLDS [PASS]
+  q=7 a=[1, 1]        2      0     2   7   14 | observed FAILS, P(-1)!=0 predicts FAILS [PASS] | observed HOLDS, P(+1)!=0 predicts HOLDS [PASS]
+  --------------------------------------------------------------------------------------------------
+  (the criteria are "for all n"; "observed" means over the n actually computed in task 1)
+
+  (1e-i) exact law  S_n = (-1)^(n-1) delta_n Tr(E_g^n),  delta_n = det(S|R_n) computed exactly mod q
+  (1e-ii) periodic form  S_n = (1 - 2[2h|n]) Tr(E_g^n);  delta_n = 1 (n odd), (-1)^min(v_-,q^v_q(n)) (n even);  dim R_n = d_n
+
+  q=3  a=[0, 1]   v_-=0  h=1  2h=2
+    n=1: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=0.0e+00 [PASS]  law(ii) rel=0.0e+00 [PASS]
+    n=2: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=1.0e-15 [PASS]  law(ii) rel=1.0e-15 [PASS]
+    n=3: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=7.6e-16 [PASS]  law(ii) rel=7.6e-16 [PASS]
+    n=4: dim R_n=2 (d_n=2) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=3.7e-16 [PASS]  law(ii) rel=3.7e-16 [PASS]
+    n=5: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=2.0e-15 [PASS]  law(ii) rel=2.0e-15 [PASS]
+    n=6: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=4.8e-15 [PASS]  law(ii) rel=4.8e-15 [PASS]
+    n=7: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=2.4e-15 [PASS]  law(ii) rel=2.4e-15 [PASS]
+    n=8: dim R_n=2 (d_n=2) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=2.6e-15 [PASS]  law(ii) rel=2.6e-15 [PASS]
+    n=9: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=1.7e-14 [PASS]  law(ii) rel=1.7e-14 [PASS]
+
+  q=3  a=[1, 1]   v_-=2  h=3  2h=6
+    n=1: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=0.0e+00 [PASS]  law(ii) rel=0.0e+00 [PASS]
+    n=2: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=2 -> delta_n=-1 [PASS] (closed form -1 [PASS])  2h|n=False  law(i) rel=3.1e-16 [PASS]  law(ii) rel=3.1e-16 [PASS]
+    n=3: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=1.2e-15 [PASS]  law(ii) rel=1.2e-15 [PASS]
+    n=4: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=2 -> delta_n=-1 [PASS] (closed form -1 [PASS])  2h|n=False  law(i) rel=3.4e-16 [PASS]  law(ii) rel=3.4e-16 [PASS]
+    n=5: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=2.7e-15 [PASS]  law(ii) rel=2.7e-15 [PASS]
+    n=6: dim R_n=2 (d_n=2) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=1.8e-15 [PASS]  law(ii) rel=1.8e-15 [PASS]
+    n=7: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=9.0e-15 [PASS]  law(ii) rel=9.0e-15 [PASS]
+    n=8: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=2 -> delta_n=-1 [PASS] (closed form -1 [PASS])  2h|n=False  law(i) rel=7.0e-15 [PASS]  law(ii) rel=7.0e-15 [PASS]
+    n=9: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=1.5e-14 [PASS]  law(ii) rel=1.5e-14 [PASS]
+
+  q=3  a=[0, 1, 1]   v_-=4  h=9  2h=18
+    n=1: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=0.0e+00 [PASS]  law(ii) rel=0.0e+00 [PASS]
+    n=2: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=2 -> delta_n=-1 [PASS] (closed form -1 [PASS])  2h|n=False  law(i) rel=3.1e-16 [PASS]  law(ii) rel=3.1e-16 [PASS]
+    n=3: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=1.0e-15 [PASS]  law(ii) rel=1.0e-15 [PASS]
+    n=4: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=2 -> delta_n=-1 [PASS] (closed form -1 [PASS])  2h|n=False  law(i) rel=1.1e-15 [PASS]  law(ii) rel=1.1e-15 [PASS]
+    n=5: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=2.5e-15 [PASS]  law(ii) rel=2.5e-15 [PASS]
+    n=6: dim R_n=3 (d_n=3) [PASS]  det(S|R_n)=2 -> delta_n=-1 [PASS] (closed form -1 [PASS])  2h|n=False  law(i) rel=7.2e-16 [PASS]  law(ii) rel=7.2e-16 [PASS]
+    n=7: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=5.7e-15 [PASS]  law(ii) rel=5.7e-15 [PASS]
+    n=8: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=2 -> delta_n=-1 [PASS] (closed form -1 [PASS])  2h|n=False  law(i) rel=6.6e-15 [PASS]  law(ii) rel=6.6e-15 [PASS]
+    n=9: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=2.0e-14 [PASS]  law(ii) rel=2.0e-14 [PASS]
+
+  q=3  a=[0, 0, 1]   v_-=0  h=1  2h=2
+    n=1: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=0.0e+00 [PASS]  law(ii) rel=0.0e+00 [PASS]
+    n=2: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=7.7e-16 [PASS]  law(ii) rel=7.7e-16 [PASS]
+    n=3: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=9.4e-16 [PASS]  law(ii) rel=9.4e-16 [PASS]
+    n=4: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=1.8e-15 [PASS]  law(ii) rel=1.8e-15 [PASS]
+    n=5: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=2.0e-15 [PASS]  law(ii) rel=2.0e-15 [PASS]
+    n=6: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=5.3e-15 [PASS]  law(ii) rel=5.3e-15 [PASS]
+    n=7: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=2.7e-15 [PASS]  law(ii) rel=2.7e-15 [PASS]
+    n=8: dim R_n=4 (d_n=4) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=9.4e-16 [PASS]  law(ii) rel=9.4e-16 [PASS]
+    n=9: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=1.6e-14 [PASS]  law(ii) rel=1.6e-14 [PASS]
+
+  q=3  a=[1, 0, 1]   v_-=0  h=1  2h=2
+    n=1: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=0.0e+00 [PASS]  law(ii) rel=0.0e+00 [PASS]
+    n=2: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=1.3e-15 [PASS]  law(ii) rel=1.3e-15 [PASS]
+    n=3: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=1.2e-15 [PASS]  law(ii) rel=1.2e-15 [PASS]
+    n=4: dim R_n=2 (d_n=2) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=1.4e-15 [PASS]  law(ii) rel=1.4e-15 [PASS]
+    n=5: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=2.5e-15 [PASS]  law(ii) rel=2.5e-15 [PASS]
+    n=6: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=1.9e-15 [PASS]  law(ii) rel=1.9e-15 [PASS]
+    n=7: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=9.1e-15 [PASS]  law(ii) rel=9.1e-15 [PASS]
+    n=8: dim R_n=2 (d_n=2) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=3.6e-15 [PASS]  law(ii) rel=3.6e-15 [PASS]
+    n=9: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=1.5e-14 [PASS]  law(ii) rel=1.5e-14 [PASS]
+
+  q=3  a=[2, 1]   v_-=0  h=1  2h=2
+    n=1: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=0.0e+00 [PASS]  law(ii) rel=0.0e+00 [PASS]
+    n=2: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=4.0e-16 [PASS]  law(ii) rel=4.0e-16 [PASS]
+    n=3: dim R_n=2 (d_n=2) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=3.5e-16 [PASS]  law(ii) rel=3.5e-16 [PASS]
+    n=4: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=3.5e-16 [PASS]  law(ii) rel=3.5e-16 [PASS]
+    n=5: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=1.6e-15 [PASS]  law(ii) rel=1.6e-15 [PASS]
+    n=6: dim R_n=2 (d_n=2) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=1.8e-15 [PASS]  law(ii) rel=1.8e-15 [PASS]
+    n=7: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=3.4e-15 [PASS]  law(ii) rel=3.4e-15 [PASS]
+    n=8: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=4.7e-15 [PASS]  law(ii) rel=4.7e-15 [PASS]
+    n=9: dim R_n=2 (d_n=2) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=7.5e-15 [PASS]  law(ii) rel=7.5e-15 [PASS]
+
+  q=5  a=[0, 1]   v_-=0  h=1  2h=2
+    n=1: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=0.0e+00 [PASS]  law(ii) rel=0.0e+00 [PASS]
+    n=2: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=4.2e-16 [PASS]  law(ii) rel=4.2e-16 [PASS]
+    n=3: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=4.3e-16 [PASS]  law(ii) rel=4.3e-16 [PASS]
+    n=4: dim R_n=2 (d_n=2) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=4.4e-16 [PASS]  law(ii) rel=4.4e-16 [PASS]
+    n=5: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=4.8e-15 [PASS]  law(ii) rel=4.8e-15 [PASS]
+    n=6: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=8.4e-15 [PASS]  law(ii) rel=8.4e-15 [PASS]
+
+  q=5  a=[1, 2]   v_-=0  h=1  2h=2
+    n=1: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=0.0e+00 [PASS]  law(ii) rel=0.0e+00 [PASS]
+    n=2: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=6.0e-16 [PASS]  law(ii) rel=6.0e-16 [PASS]
+    n=3: dim R_n=2 (d_n=2) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=1.8e-16 [PASS]  law(ii) rel=1.8e-16 [PASS]
+    n=4: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=1.7e-15 [PASS]  law(ii) rel=1.7e-15 [PASS]
+    n=5: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=2.4e-15 [PASS]  law(ii) rel=2.4e-15 [PASS]
+    n=6: dim R_n=2 (d_n=2) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=1.3e-15 [PASS]  law(ii) rel=1.3e-15 [PASS]
+
+  q=5  a=[0, 1, 1]   v_-=2  h=5  2h=10
+    n=1: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=0.0e+00 [PASS]  law(ii) rel=0.0e+00 [PASS]
+    n=2: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=4 -> delta_n=-1 [PASS] (closed form -1 [PASS])  2h|n=False  law(i) rel=1.6e-16 [PASS]  law(ii) rel=1.6e-16 [PASS]
+    n=3: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=3.2e-16 [PASS]  law(ii) rel=3.2e-16 [PASS]
+    n=4: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=4 -> delta_n=-1 [PASS] (closed form -1 [PASS])  2h|n=False  law(i) rel=5.7e-16 [PASS]  law(ii) rel=5.7e-16 [PASS]
+    n=5: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=2.4e-15 [PASS]  law(ii) rel=2.4e-15 [PASS]
+    n=6: dim R_n=3 (d_n=3) [PASS]  det(S|R_n)=4 -> delta_n=-1 [PASS] (closed form -1 [PASS])  2h|n=False  law(i) rel=5.5e-16 [PASS]  law(ii) rel=5.5e-16 [PASS]
+
+  q=7  a=[0, 1]   v_-=0  h=1  2h=2
+    n=1: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=4.2e-17 [PASS]  law(ii) rel=4.2e-17 [PASS]
+    n=2: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=5.2e-16 [PASS]  law(ii) rel=5.2e-16 [PASS]
+    n=3: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=8.6e-16 [PASS]  law(ii) rel=8.6e-16 [PASS]
+    n=4: dim R_n=2 (d_n=2) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=True  law(i) rel=8.5e-16 [PASS]  law(ii) rel=8.5e-16 [PASS]
+    n=5: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=1.3e-15 [PASS]  law(ii) rel=1.3e-15 [PASS]
+
+  q=7  a=[1, 1]   v_-=2  h=7  2h=14
+    n=1: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=0.0e+00 [PASS]  law(ii) rel=0.0e+00 [PASS]
+    n=2: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=6 -> delta_n=-1 [PASS] (closed form -1 [PASS])  2h|n=False  law(i) rel=2.2e-16 [PASS]  law(ii) rel=2.2e-16 [PASS]
+    n=3: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=8.0e-16 [PASS]  law(ii) rel=8.0e-16 [PASS]
+    n=4: dim R_n=1 (d_n=1) [PASS]  det(S|R_n)=6 -> delta_n=-1 [PASS] (closed form -1 [PASS])  2h|n=False  law(i) rel=4.4e-16 [PASS]  law(ii) rel=4.4e-16 [PASS]
+    n=5: dim R_n=0 (d_n=0) [PASS]  det(S|R_n)=1 -> delta_n=+1 [PASS] (closed form +1 [PASS])  2h|n=False  law(i) rel=1.1e-15 [PASS]  law(ii) rel=1.1e-15 [PASS]
+
+  (1e-iv) CORRECTED FROBENIUS BLOCK  m_F(z) = (1/h) sum_{omega^(2h)=1} m_E(omega^-1 z) - m_E(z)
+
+  q=3  a=[0, 1]  J=1  h=1  (2h = 2 roots of unity)
+    [PASS] all m_F(z) are nonnegative integers
+    [PASS] sum of multiplicities = 3, q^J = 3
+    spec F_g (value : multiplicity):  -1.732 +0.000i:1   -0.000 -1.732i:1   +1.732 +0.000i:1
+    [PASS] F_g F_g^dagger = q I, max dev 1.78e-15
+    [PASS] L(g,T) (Newton identities) == det(I - T F_g) to degree 3: abs dev 2.71e-15, relative 5.21e-16
+    [PASS] S_n = -Tr(F_g^n) for n=1..9, worst relative dev 2.18e-14
+
+  q=3  a=[1, 1]  J=1  h=3  (2h = 6 roots of unity)
+    [PASS] all m_F(z) are nonnegative integers
+    [PASS] sum of multiplicities = 3, q^J = 3
+    spec F_g (value : multiplicity):  -1.500 +0.866i:1   +0.000 +1.732i:1   +1.500 -0.866i:1
+    [PASS] F_g F_g^dagger = q I, max dev 8.88e-16
+    [PASS] L(g,T) (Newton identities) == det(I - T F_g) to degree 3: abs dev 1.99e-15, relative 3.82e-16
+    [PASS] S_n = -Tr(F_g^n) for n=1..9, worst relative dev 1.64e-14
+
+  q=3  a=[0, 1, 1]  J=2  h=9  (2h = 18 roots of unity)
+    [PASS] all m_F(z) are nonnegative integers
+    [PASS] sum of multiplicities = 9, q^J = 9
+    spec F_g (value : multiplicity):  -1.706 -0.301i:1   -1.500 +0.866i:1   -1.113 +1.327i:1   -0.592 -1.628i:1   +0.000 +1.732i:1   +0.592 +1.628i:1   +1.113 -1.327i:1   +1.500 -0.866i:1   +1.706 +0.301i:1
+    [PASS] F_g F_g^dagger = q I, max dev 7.11e-15
+    [PASS] L(g,T) (Newton identities) == det(I - T F_g) to degree 9: abs dev 4.30e-13, relative 3.07e-15
+    [PASS] S_n = -Tr(F_g^n) for n=1..9, worst relative dev 2.05e-14
+
+  q=3  a=[0, 0, 1]  J=2  h=1  (2h = 2 roots of unity)
+    [PASS] all m_F(z) are nonnegative integers
+    [PASS] sum of multiplicities = 9, q^J = 9
+    spec F_g (value : multiplicity):  -1.732 +0.000i:1   -1.225 -1.225i:1   -1.225 +1.225i:1   -0.000 -1.732i:2   +0.000 +1.732i:1   +1.225 -1.225i:1   +1.225 +1.225i:1   +1.732 +0.000i:1
+    [PASS] F_g F_g^dagger = q I, max dev 4.00e-15
+    [PASS] L(g,T) (Newton identities) == det(I - T F_g) to degree 9: abs dev 3.56e-13, relative 2.54e-15
+    [PASS] S_n = -Tr(F_g^n) for n=1..9, worst relative dev 1.96e-14
+
+  q=3  a=[1, 0, 1]  J=2  h=1  (2h = 2 roots of unity)
+    [PASS] all m_F(z) are nonnegative integers
+    [PASS] sum of multiplicities = 9, q^J = 9
+    spec F_g (value : multiplicity):  -1.500 -0.866i:1   -1.500 +0.866i:1   -0.866 -1.500i:1   -0.866 +1.500i:1   +0.000 +1.732i:1   +0.866 -1.500i:1   +0.866 +1.500i:1   +1.500 -0.866i:1   +1.500 +0.866i:1
+    [PASS] F_g F_g^dagger = q I, max dev 7.55e-15
+    [PASS] L(g,T) (Newton identities) == det(I - T F_g) to degree 9: abs dev 4.42e-13, relative 3.15e-15
+    [PASS] S_n = -Tr(F_g^n) for n=1..9, worst relative dev 2.99e-14
+
+  q=3  a=[2, 1]  J=1  h=1  (2h = 2 roots of unity)
+    [PASS] all m_F(z) are nonnegative integers
+    [PASS] sum of multiplicities = 3, q^J = 3
+    spec F_g (value : multiplicity):  -1.500 +0.866i:2   -0.000 -1.732i:1
+    [PASS] F_g F_g^dagger = q I, max dev 8.88e-16
+    [PASS] L(g,T) (Newton identities) == det(I - T F_g) to degree 3: abs dev 6.40e-15, relative 1.23e-15
+    [PASS] S_n = -Tr(F_g^n) for n=1..9, worst relative dev 7.52e-15
+
+  q=5  a=[0, 1]  J=1  h=1  (2h = 2 roots of unity)
+    [PASS] all m_F(z) are nonnegative integers
+    [PASS] sum of multiplicities = 5, q^J = 5
+    spec F_g (value : multiplicity):  -2.236 +0.000i:2   +0.000 -2.236i:1   +0.000 +2.236i:1   +2.236 -0.000i:1
+    [PASS] F_g F_g^dagger = q I, max dev 4.44e-15
+    [PASS] L(g,T) (Newton identities) == det(I - T F_g) to degree 5: abs dev 7.14e-14, relative 1.28e-15
+    [PASS] S_n = -Tr(F_g^n) for n=1..6, worst relative dev 1.04e-14
+
+  q=5  a=[1, 2]  J=1  h=1  (2h = 2 roots of unity)
+    [PASS] all m_F(z) are nonnegative integers
+    [PASS] sum of multiplicities = 5, q^J = 5
+    spec F_g (value : multiplicity):  -2.236 -0.000i:1   +1.118 -1.936i:2   +1.118 +1.936i:2
+    [PASS] F_g F_g^dagger = q I, max dev 2.66e-15
+    [PASS] L(g,T) (Newton identities) == det(I - T F_g) to degree 5: abs dev 5.78e-14, relative 1.03e-15
+    [PASS] S_n = -Tr(F_g^n) for n=1..6, worst relative dev 3.33e-15
+
+  q=5  a=[0, 1, 1]  J=2  h=5  (2h = 10 roots of unity)
+    [PASS] all m_F(z) are nonnegative integers
+    [PASS] sum of multiplicities = 25, q^J = 25
+    spec F_g (value : multiplicity):  -2.043 -0.909i:2   -2.043 +0.909i:2   -1.809 -1.314i:1   -1.809 +1.314i:1   -1.118 -1.936i:1   -1.118 +1.936i:1   -0.234 -2.224i:2   -0.234 +2.224i:2   +0.234 -2.224i:2   +0.234 +2.224i:2   +1.118 -1.936i:1   +1.118 +1.936i:1   +1.809 -1.314i:1   +1.809 +1.314i:1   +2.043 -0.909i:2   +2.043 +0.909i:2   +2.236 +0.000i:1
+    [PASS] F_g F_g^dagger = q I, max dev 2.58e-14
+    [PASS] L(g,T) (Newton identities) == det(I - T F_g) to degree 8: abs dev 9.70e-12, relative 4.29e-15 [partial]
+    [PASS] S_n = -Tr(F_g^n) for n=1..6, worst relative dev 2.57e-14
+
+  q=7  a=[0, 1]  J=1  h=1  (2h = 2 roots of unity)
+    [PASS] all m_F(z) are nonnegative integers
+    [PASS] sum of multiplicities = 7, q^J = 7
+    spec F_g (value : multiplicity):  -2.646 +0.000i:2   +0.000 -2.646i:2   +0.000 +2.646i:1   +2.646 -0.000i:2
+    [PASS] F_g F_g^dagger = q I, max dev 4.44e-15
+    [PASS] L(g,T) (Newton identities) == det(I - T F_g) to degree 7: abs dev 5.11e-12, relative 5.63e-15
+    [PASS] S_n = -Tr(F_g^n) for n=1..5, worst relative dev 4.53e-15
+
+  q=7  a=[1, 1]  J=1  h=7  (2h = 14 roots of unity)
+    [PASS] all m_F(z) are nonnegative integers
+    [PASS] sum of multiplicities = 7, q^J = 7
+    spec F_g (value : multiplicity):  -2.579 -0.589i:1   -2.069 +1.650i:1   -1.148 +2.384i:1   -0.000 -2.646i:1   +1.148 -2.384i:1   +2.069 -1.650i:1   +2.579 +0.589i:1
+    [PASS] F_g F_g^dagger = q I, max dev 9.77e-15
+    [PASS] L(g,T) (Newton identities) == det(I - T F_g) to degree 7: abs dev 4.56e-12, relative 5.03e-15
+    [PASS] S_n = -Tr(F_g^n) for n=1..5, worst relative dev 4.56e-15
+
+  (1e-iv, continued) SUPER-TRANSFER MATRIX REBUILT with odd block directsum_a F_(a g)
+
+  q=3  a=[0, 1]:  odd block dimension 6 (2 g_C = 6) [PASS]
+    n=1: N_n=         4.000   rebuilt str=         4.000-4.4e-16i   dev=1.40e-15 [PASS]
+    n=2: N_n=         4.000   rebuilt str=         4.000-4.8e-15i   dev=7.19e-15 [PASS]
+    n=3: N_n=        28.000   rebuilt str=        28.000-6.2e-15i   dev=1.23e-14 [PASS]
+    n=4: N_n=        28.000   rebuilt str=        28.000+4.4e-14i   dev=6.13e-14 [PASS]
+    n=5: N_n=       244.000   rebuilt str=       244.000-2.8e-14i   dev=6.36e-14 [PASS]
+    n=6: N_n=       676.000   rebuilt str=       676.000-1.3e-13i   dev=2.62e-13 [PASS]
+    n=7: N_n=      2188.000   rebuilt str=      2188.000-1.2e-13i   dev=4.71e-13 [PASS]
+    n=8: N_n=      6076.000   rebuilt str=      6076.000+7.9e-13i   dev=1.21e-12 [PASS]
+    n=9: N_n=     19684.000   rebuilt str=     19684.000-4.5e-13i   dev=3.67e-12 [PASS]
+    [PASS] all |eigenvalues| = sqrt(q), max dev 4.44e-16
+
+  q=3  a=[1, 1]:  odd block dimension 6 (2 g_C = 6) [PASS]
+    n=1: N_n=         4.000   rebuilt str=         4.000-2.2e-15i   dev=2.39e-15 [PASS]
+    n=2: N_n=        10.000   rebuilt str=        10.000+2.2e-15i   dev=2.82e-15 [PASS]
+    n=3: N_n=        28.000   rebuilt str=        28.000+8.9e-16i   dev=3.66e-15 [PASS]
+    n=4: N_n=        82.000   rebuilt str=        82.000+2.4e-14i   dev=3.73e-14 [PASS]
+    n=5: N_n=       244.000   rebuilt str=       244.000-8.0e-14i   dev=1.39e-13 [PASS]
+    n=6: N_n=       892.000   rebuilt str=       892.000-3.2e-13i   dev=3.43e-13 [PASS]
+    n=7: N_n=      2188.000   rebuilt str=      2188.000+4.4e-13i   dev=1.01e-12 [PASS]
+    n=8: N_n=      6562.000   rebuilt str=      6562.000-2.4e-13i   dev=9.39e-13 [PASS]
+    n=9: N_n=     19684.000   rebuilt str=     19684.000+8.5e-14i   dev=3.64e-12 [PASS]
+    [PASS] all |eigenvalues| = sqrt(q), max dev 1.33e-15
+
+  q=3  a=[0, 1, 1]:  odd block dimension 18 (2 g_C = 18) [PASS]
+    n=1: N_n=         4.000   rebuilt str=         4.000+1.1e-15i   dev=6.75e-15 [PASS]
+    n=2: N_n=        10.000   rebuilt str=        10.000+4.4e-16i   dev=1.83e-15 [PASS]
+    n=3: N_n=        28.000   rebuilt str=        28.000-6.9e-14i   dev=7.79e-14 [PASS]
+    n=4: N_n=        82.000   rebuilt str=        82.000-9.4e-14i   dev=1.03e-13 [PASS]
+    n=5: N_n=       244.000   rebuilt str=       244.000-4.1e-14i   dev=9.45e-14 [PASS]
+    n=6: N_n=       730.000   rebuilt str=       730.000-3.2e-13i   dev=3.39e-13 [PASS]
+    n=7: N_n=      2188.000   rebuilt str=      2188.000-3.1e-13i   dev=9.62e-13 [PASS]
+    n=8: N_n=      6562.000   rebuilt str=      6562.000-9.4e-13i   dev=9.38e-13 [PASS]
+    n=9: N_n=     19684.000   rebuilt str=     19684.000-1.2e-12i   dev=3.82e-12 [PASS]
+    [PASS] all |eigenvalues| = sqrt(q), max dev 2.22e-15
+
+  q=3  a=[0, 0, 1]:  odd block dimension 18 (2 g_C = 18) [PASS]
+    n=1: N_n=         4.000   rebuilt str=         4.000-3.6e-15i   dev=7.55e-15 [PASS]
+    n=2: N_n=        16.000   rebuilt str=        16.000-5.8e-15i   dev=1.06e-14 [PASS]
+    n=3: N_n=        28.000   rebuilt str=        28.000-9.8e-15i   dev=1.21e-14 [PASS]
+    n=4: N_n=        64.000   rebuilt str=        64.000-3.2e-14i   dev=7.17e-14 [PASS]
+    n=5: N_n=       244.000   rebuilt str=       244.000+9.1e-14i   dev=1.24e-13 [PASS]
+    n=6: N_n=       784.000   rebuilt str=       784.000+3.6e-14i   dev=3.55e-14 [PASS]
+    n=7: N_n=      2188.000   rebuilt str=      2188.000+5.1e-13i   dev=1.04e-12 [PASS]
+    n=8: N_n=      5104.000   rebuilt str=      5104.000+2.0e-12i   dev=4.13e-12 [PASS]
+    n=9: N_n=     19684.000   rebuilt str=     19684.000-2.9e-12i   dev=7.84e-12 [PASS]
+    [PASS] all |eigenvalues| = sqrt(q), max dev 2.00e-15
+
+  q=3  a=[1, 0, 1]:  odd block dimension 18 (2 g_C = 18) [PASS]
+    n=1: N_n=         4.000   rebuilt str=         4.000+2.4e-15i   dev=2.60e-15 [PASS]
+    n=2: N_n=        16.000   rebuilt str=        16.000-4.8e-15i   dev=1.33e-14 [PASS]
+    n=3: N_n=        28.000   rebuilt str=        28.000-3.5e-14i   dev=3.48e-14 [PASS]
+    n=4: N_n=       136.000   rebuilt str=       136.000-8.6e-14i   dev=9.04e-14 [PASS]
+    n=5: N_n=       244.000   rebuilt str=       244.000-2.6e-13i   dev=3.48e-13 [PASS]
+    n=6: N_n=       784.000   rebuilt str=       784.000-2.5e-13i   dev=6.22e-13 [PASS]
+    n=7: N_n=      2188.000   rebuilt str=      2188.000-5.7e-14i   dev=9.11e-13 [PASS]
+    n=8: N_n=      7048.000   rebuilt str=      7048.000+4.7e-13i   dev=1.02e-12 [PASS]
+    n=9: N_n=     19684.000   rebuilt str=     19684.000+2.5e-12i   dev=2.53e-12 [PASS]
+    [PASS] all |eigenvalues| = sqrt(q), max dev 2.22e-15
+
+  q=3  a=[2, 1]:  odd block dimension 6 (2 g_C = 6) [PASS]
+    n=1: N_n=        10.000   rebuilt str=        10.000-1.8e-15i   dev=1.78e-15 [PASS]
+    n=2: N_n=        10.000   rebuilt str=        10.000+5.2e-16i   dev=5.24e-16 [PASS]
+    n=3: N_n=        28.000   rebuilt str=        28.000+0.0e+00i   dev=3.55e-15 [PASS]
+    n=4: N_n=        82.000   rebuilt str=        82.000+1.3e-15i   dev=2.85e-14 [PASS]
+    n=5: N_n=       190.000   rebuilt str=       190.000+6.9e-14i   dev=6.93e-14 [PASS]
+    n=6: N_n=       892.000   rebuilt str=       892.000-2.7e-13i   dev=3.51e-13 [PASS]
+    n=7: N_n=      2026.000   rebuilt str=      2026.000+3.3e-13i   dev=3.98e-13 [PASS]
+    n=8: N_n=      6562.000   rebuilt str=      6562.000-5.8e-14i   dev=9.11e-13 [PASS]
+    n=9: N_n=     19684.000   rebuilt str=     19684.000+1.1e-13i   dev=3.64e-12 [PASS]
+    [PASS] all |eigenvalues| = sqrt(q), max dev 4.44e-16
+
+  q=5  a=[0, 1]:  odd block dimension 20 (2 g_C = 20) [PASS]
+    n=1: N_n=         6.000   rebuilt str=         6.000-2.7e-15i   dev=5.96e-15 [PASS]
+    n=2: N_n=         6.000   rebuilt str=         6.000-7.6e-15i   dev=1.04e-14 [PASS]
+    n=3: N_n=       126.000   rebuilt str=       126.000+3.2e-14i   dev=5.33e-14 [PASS]
+    n=4: N_n=       126.000   rebuilt str=       126.000+1.8e-13i   dev=4.36e-13 [PASS]
+    n=5: N_n=      3126.000   rebuilt str=      3126.000-5.0e-13i   dev=1.04e-12 [PASS]
+    n=6: N_n=     15126.000   rebuilt str=     15126.000-5.7e-13i   dev=1.91e-12 [PASS]
+    [PASS] all |eigenvalues| = sqrt(q), max dev 1.78e-15
+
+  q=5  a=[1, 2]:  odd block dimension 20 (2 g_C = 20) [PASS]
+    n=1: N_n=         6.000   rebuilt str=         6.000-1.8e-15i   dev=6.47e-15 [PASS]
+    n=2: N_n=        46.000   rebuilt str=        46.000-1.4e-14i   dev=1.42e-14 [PASS]
+    n=3: N_n=       126.000   rebuilt str=       126.000+4.7e-14i   dev=8.52e-14 [PASS]
+    n=4: N_n=       726.000   rebuilt str=       726.000-1.6e-13i   dev=1.99e-13 [PASS]
+    n=5: N_n=      3126.000   rebuilt str=      3126.000-1.1e-13i   dev=9.17e-13 [PASS]
+    n=6: N_n=     13126.000   rebuilt str=     13126.000+3.5e-12i   dev=3.53e-12 [PASS]
+    [PASS] all |eigenvalues| = sqrt(q), max dev 1.33e-15
+
+  q=5  a=[0, 1, 1]:  odd block dimension 100 (2 g_C = 100) [PASS]
+    n=1: N_n=         6.000   rebuilt str=         6.000+1.2e-14i   dev=2.74e-14 [PASS]
+    n=2: N_n=        26.000   rebuilt str=        26.000-1.2e-13i   dev=1.33e-13 [PASS]
+    n=3: N_n=       126.000   rebuilt str=       126.000-3.6e-15i   dev=4.28e-14 [PASS]
+    n=4: N_n=       626.000   rebuilt str=       626.000+2.1e-14i   dev=2.13e-14 [PASS]
+    n=5: N_n=      3126.000   rebuilt str=      3126.000-6.3e-13i   dev=1.92e-12 [PASS]
+    n=6: N_n=     15626.000   rebuilt str=     15626.000+3.2e-12i   dev=3.15e-12 [PASS]
+    [PASS] all |eigenvalues| = sqrt(q), max dev 7.11e-15
+
+  q=7  a=[0, 1]:  odd block dimension 42 (2 g_C = 42) [PASS]
+    n=1: N_n=         8.000   rebuilt str=         8.000+8.9e-16i   dev=1.51e-14 [PASS]
+    n=2: N_n=         8.000   rebuilt str=         8.000+2.2e-14i   dev=3.04e-14 [PASS]
+    n=3: N_n=       344.000   rebuilt str=       344.000-7.8e-14i   dev=4.06e-13 [PASS]
+    n=4: N_n=       344.000   rebuilt str=       344.000+9.6e-13i   dev=1.06e-12 [PASS]
+    n=5: N_n=     16808.000   rebuilt str=     16808.000+5.7e-13i   dev=3.68e-12 [PASS]
+    [PASS] all |eigenvalues| = sqrt(q), max dev 1.78e-15
+
+  q=7  a=[1, 1]:  odd block dimension 42 (2 g_C = 42) [PASS]
+    n=1: N_n=         8.000   rebuilt str=         8.000-4.4e-16i   dev=2.70e-15 [PASS]
+    n=2: N_n=        50.000   rebuilt str=        50.000-2.3e-14i   dev=8.83e-14 [PASS]
+    n=3: N_n=       344.000   rebuilt str=       344.000-1.4e-14i   dev=2.28e-13 [PASS]
+    n=4: N_n=      2402.000   rebuilt str=      2402.000-2.0e-13i   dev=9.31e-13 [PASS]
+    n=5: N_n=     16808.000   rebuilt str=     16808.000-2.4e-12i   dev=2.36e-12 [PASS]
+    [PASS] all |eigenvalues| = sqrt(q), max dev 2.22e-15
+
+  (1e-v) SYMPLECTIC MAP: prover's explicit formula vs the M read off from U W U^dagger
+    u'_k = u_(k+1) (k<J),  u'_J = -v_1/c;   v'_k = v_(k+1) + a_(J-k) u'_J (k<J),
+    v'_J = c u_1 + sum_(k=2..J) a_(J+1-k) u_k + 2 a_0 u'_J,   c = a_J.
+
+  q=3  a=[0, 1]  J=1   prover M:            mine (task 4):
+      [ 0  2]        [ 0  2]
+      [ 1  0]        [ 1  0]
+    [PASS] M_prover^T Omega M_prover = Omega mod 3
+    [PASS] identical
+    [PASS] M re-extracted with the CENTRED Weyl convention equals the prover matrix (yes); it also equals the non-centred M: yes
+
+  q=3  a=[1, 1]  J=1   prover M:            mine (task 4):
+      [ 0  2]        [ 0  2]
+      [ 1  1]        [ 1  1]
+    [PASS] M_prover^T Omega M_prover = Omega mod 3
+    [PASS] identical
+    [PASS] M re-extracted with the CENTRED Weyl convention equals the prover matrix (yes); it also equals the non-centred M: yes
+
+  q=3  a=[0, 1, 1]  J=2   prover M:            mine (task 4):
+      [ 0  1  0  0]        [ 0  1  0  0]
+      [ 0  0  2  0]        [ 0  0  2  0]
+      [ 0  0  2  1]        [ 0  0  2  1]
+      [ 1  1  0  0]        [ 1  1  0  0]
+    [PASS] M_prover^T Omega M_prover = Omega mod 3
+    [PASS] identical
+    [PASS] M re-extracted with the CENTRED Weyl convention equals the prover matrix (yes); it also equals the non-centred M: yes
+
+  q=3  a=[0, 0, 1]  J=2   prover M:            mine (task 4):
+      [ 0  1  0  0]        [ 0  1  0  0]
+      [ 0  0  2  0]        [ 0  0  2  0]
+      [ 0  0  0  1]        [ 0  0  0  1]
+      [ 1  0  0  0]        [ 1  0  0  0]
+    [PASS] M_prover^T Omega M_prover = Omega mod 3
+    [PASS] identical
+    [PASS] M re-extracted with the CENTRED Weyl convention equals the prover matrix (yes); it also equals the non-centred M: yes
+
+  q=3  a=[1, 0, 1]  J=2   prover M:            mine (task 4):
+      [ 0  1  0  0]        [ 0  1  0  0]
+      [ 0  0  2  0]        [ 0  0  2  0]
+      [ 0  0  0  1]        [ 0  0  0  1]
+      [ 1  0  1  0]        [ 1  0  1  0]
+    [PASS] M_prover^T Omega M_prover = Omega mod 3
+    [PASS] identical
+    [PASS] M re-extracted with the CENTRED Weyl convention equals the prover matrix (yes); it also equals the non-centred M: yes
+
+  q=3  a=[2, 1]  J=1   prover M:            mine (task 4):
+      [ 0  2]        [ 0  2]
+      [ 1  2]        [ 1  2]
+    [PASS] M_prover^T Omega M_prover = Omega mod 3
+    [PASS] identical
+    [PASS] M re-extracted with the CENTRED Weyl convention equals the prover matrix (yes); it also equals the non-centred M: yes
+
+  q=5  a=[0, 1]  J=1   prover M:            mine (task 4):
+      [ 0  4]        [ 0  4]
+      [ 1  0]        [ 1  0]
+    [PASS] M_prover^T Omega M_prover = Omega mod 5
+    [PASS] identical
+    [PASS] M re-extracted with the CENTRED Weyl convention equals the prover matrix (yes); it also equals the non-centred M: yes
+
+  q=5  a=[1, 2]  J=1   prover M:            mine (task 4):
+      [ 0  2]        [ 0  2]
+      [ 2  4]        [ 2  4]
+    [PASS] M_prover^T Omega M_prover = Omega mod 5
+    [PASS] identical
+    [PASS] M re-extracted with the CENTRED Weyl convention equals the prover matrix (yes); it also equals the non-centred M: yes
+
+  q=5  a=[0, 1, 1]  J=2   prover M:            mine (task 4):
+      [ 0  1  0  0]        [ 0  1  0  0]
+      [ 0  0  4  0]        [ 0  0  4  0]
+      [ 0  0  4  1]        [ 0  0  4  1]
+      [ 1  1  0  0]        [ 1  1  0  0]
+    [PASS] M_prover^T Omega M_prover = Omega mod 5
+    [PASS] identical
+    [PASS] M re-extracted with the CENTRED Weyl convention equals the prover matrix (yes); it also equals the non-centred M: yes
+
+  q=7  a=[0, 1]  J=1   prover M:            mine (task 4):
+      [ 0  6]        [ 0  6]
+      [ 1  0]        [ 1  0]
+    [PASS] M_prover^T Omega M_prover = Omega mod 7
+    [PASS] identical
+    [PASS] M re-extracted with the CENTRED Weyl convention equals the prover matrix (yes); it also equals the non-centred M: yes
+
+  q=7  a=[1, 1]  J=1   prover M:            mine (task 4):
+      [ 0  6]        [ 0  6]
+      [ 1  5]        [ 1  5]
+    [PASS] M_prover^T Omega M_prover = Omega mod 7
+    [PASS] identical
+    [PASS] M re-extracted with the CENTRED Weyl convention equals the prover matrix (yes); it also equals the non-centred M: yes
+
+  NOTE: the centred operator X_(u,v) = omega^((u.v)/2) * (kron_k X^u_k Z^v_k) differs from the
+  non-centred one only by a scalar phase, so the phase-space label (u,v) - and hence M - is
+  convention independent.  The two extractions agree, and both agree with the prover formula.
+
+========================================================================================================
+TASK 5 : NO-GO.  q=3, a=[0,1]:  N_n = sum_k c_k mu_k^n has NEGATIVE coefficients c_k
+========================================================================================================
+  genus g_C = (q-1)q^J/2 = 3;  N_n = str(bbE^n) for n=1..12:
+    [4, 4, 28, 28, 244, 676, 2188, 6076, 19684, 58564, 177148, 527068]
+  (imaginary parts of str(bbE^n): max 8.59e-12)
+
+  Hankel matrix H[i][j] = N_(i+j+1)/q^((i+j+1)/2), 6x6 (uses N_1..N_11):
+    singular values: 6.250983e+02 1.099836e+01 5.629666e+00 4.989788e+00 4.210409e+00 8.490792e-02
+    numerical rank = 6  -> the sequence N_n satisfies a linear recurrence of order 6
+
+  Prony (blind): recurrence of order 6 fitted on n=1..12, residual 4.55e-13
+    recovered mu_k:  -1.7321 +0.0000i  +0.0000 -1.7321i  +0.0000 +1.7321i  +1.0000 +0.0000i  +1.7321 +0.0000i  +3.0000 +0.0000i
+    |mu_k|        : 1.732051 1.732051 1.732051 1.000000 1.732051 3.000000
+
+  Frobenius eigenvalues alpha_i of C (eigenvalues of F, 2g_C = 6 of them):
+     -1.7321 +0.0000i  -1.7321 +0.0000i  -0.0000 -1.7321i  +0.0000 +1.7321i  +1.7321 +0.0000i  +1.7321 +0.0000i
+    [PASS] recovered mu_k match {q,1} U {alpha_i} (distinct values), max distance 7.31e-13
+
+  Least squares  N_n = sum_k c_k mu_k^n  on n=1..12 (Vandermonde with the known mu_k):
+    mu =  -1.73205 +0.00000i  |mu|=1.732051  multiplicity 2  (Frobenius)   c = -2.000000000-2.41e-15i   predicted -2.0
+    mu =  -0.00000 -1.73205i  |mu|=1.732051  multiplicity 1  (Frobenius)   c = -1.000000000-9.16e-15i   predicted -1.0
+    mu =  +0.00000 +1.73205i  |mu|=1.732051  multiplicity 1  (Frobenius)   c = -1.000000000+3.77e-15i   predicted -1.0
+    mu =  +1.00000 +0.00000i  |mu|=1.000000  multiplicity 1  (1        )   c = +1.000000000-6.40e-15i   predicted +1.0
+    mu =  +1.73205 +0.00000i  |mu|=1.732051  multiplicity 2  (Frobenius)   c = -2.000000000+1.28e-15i   predicted -2.0
+    mu =  +3.00000 +0.00000i  |mu|=3.000000  multiplicity 1  (q        )   c = +1.000000000-4.41e-18i   predicted +1.0
+    residual of the fit: 1.74e-13
+    [PASS] recovered coefficients match the prediction, max dev 2.87e-13
+    [PASS] 4 of the 6 coefficients are negative
+
+  CONCLUSION: N_n = 1 + q^n - sum_{i=1}^{2g_C} alpha_i^n.  The exponential-sum decomposition of N_n
+  carries coefficient -1 for every Frobenius eigenvalue, i.e. negative multiplicities.  A trace
+  Tr(E^n) of a single matrix E has N_n = sum_i lambda_i^n with multiplicities in Z_{>=0}, so no
+  ordinary matrix E can have Tr(E^n) = N_n for all n: the grading (supertrace) is unavoidable.
+
+========================================================================================================
+SUMMARY
+========================================================================================================
+  TASK 1  :   301 PASS     18 FAIL   (319 checks)
+  TASK 1D :   492 PASS      0 FAIL   (492 checks)
+  TASK 1E :   624 PASS      0 FAIL   (624 checks)
+  TASK 2  :    18 PASS      3 FAIL   (21 checks)
+  TASK 3  :   249 PASS      3 FAIL   (252 checks)
+  TASK 4  :   258 PASS      0 FAIL   (258 checks)
+  TASK 5  :     3 PASS      0 FAIL   (3 checks)
+  TOTAL :  1945 PASS     24 FAIL   (1969 checks)
+
+  FAILURES (restated):
+    [task 1] q=3 a=[2, 1] n=1: sign law (conjugate form)   rel=2.000e+00
+    [task 1] q=3 a=[2, 1] n=1: sign law (real form)   rel=2.000e+00
+    [task 1] q=3 a=[2, 1] n=2: sign law (conjugate form)   rel=2.000e+00
+    [task 1] q=3 a=[2, 1] n=2: sign law (real form)   rel=2.000e+00
+    [task 1] q=3 a=[2, 1] n=4: sign law (conjugate form)   rel=2.000e+00
+    [task 1] q=3 a=[2, 1] n=4: sign law (real form)   rel=2.000e+00
+    [task 1] q=3 a=[2, 1] n=5: sign law (conjugate form)   rel=2.000e+00
+    [task 1] q=3 a=[2, 1] n=5: sign law (real form)   rel=2.000e+00
+    [task 1] q=3 a=[2, 1] n=7: sign law (conjugate form)   rel=2.000e+00
+    [task 1] q=3 a=[2, 1] n=7: sign law (real form)   rel=2.000e+00
+    [task 1] q=3 a=[2, 1] n=8: sign law (conjugate form)   rel=2.000e+00
+    [task 1] q=3 a=[2, 1] n=8: sign law (real form)   rel=2.000e+00
+    [task 1] q=5 a=[0, 1, 1] n=2: sign law (conjugate form)   rel=2.000e+00
+    [task 1] q=5 a=[0, 1, 1] n=2: sign law (real form)   rel=2.000e+00
+    [task 1] q=5 a=[0, 1, 1] n=4: sign law (conjugate form)   rel=2.000e+00
+    [task 1] q=5 a=[0, 1, 1] n=4: sign law (real form)   rel=2.000e+00
+    [task 1] q=5 a=[0, 1, 1] n=6: sign law (conjugate form)   rel=2.000e+00
+    [task 1] q=5 a=[0, 1, 1] n=6: sign law (real form)   rel=2.000e+00
+    [task 2] q=3 a=[2, 1]: L(g,T) == det(1+eta(-1) T E_(-g))   rel maxdev=1.73e+00
+    [task 2] q=3 a=[2, 1]: alpha_i == -eta(-1) conj(lambda_i)   maxdist=3.00e+00
+    [task 2] q=5 a=[0, 1, 1]: L(g,T) == det(1+eta(-1) T E_(-g)) [partial]   rel maxdev=6.18e-01
+    [task 3] q=3 a=[2, 1] n=1: str(bbE^n) == N_n (char sums)   dev=1.20e+01
+    [task 3] q=3 a=[2, 1] n=5: str(bbE^n) == N_n (char sums)   dev=1.08e+02
+    [task 3] q=3 a=[2, 1] n=7: str(bbE^n) == N_n (char sums)   dev=3.24e+02
+
+  All failures above are refutations of the CONJECTURED sign law of task 1 (and its two
+  consequences in tasks 2 and 3), not defects of the computation: the brute-force S_n are
+  cross-checked against artin_schreier_mps.S_bruteforce and against a direct count of the
+  points (x,y) of the curve.  They occur exactly at the two cases q=3 a=[2,1] and
+  q=5 a=[0,1,1], which are exactly the cases with P(-eta(-1)) = 0 (task 1E table), and every
+  one of them is reproduced by the exact law of task 1E, which passes with no failures.
+
+  runtime: 37.7 s
