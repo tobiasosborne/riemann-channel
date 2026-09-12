@@ -7,8 +7,8 @@
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
 is exploratory. No claims are registered, no checker discipline is in force
-yet. The full conversation is in `transcript/transcript.md` (rendered) and
-`transcript/session-2026-09-10-be21a927.jsonl` (raw).
+yet. The full conversation is in `transcript/transcript.md` (rendered from
+the raw session log, which is kept out of the repository).
 
 ### What was established (standard theory, numerically confirmed)
 

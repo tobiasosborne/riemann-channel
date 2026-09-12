@@ -410,7 +410,7 @@ span.math {
 <body>
 <main class="fmd">
 <h1 id="session-transcript-arithmetic-quantum-mechanics-2026-09-1011">Session transcript — arithmetic-quantum-mechanics, 2026-09-10/11</h1>
-<p>Converted from the Claude Code session log <code>session-2026-09-10-be21a927.jsonl</code> (kept verbatim alongside). Tool results and model reasoning are omitted; tool calls appear as one-line markers.</p>
+<p>Converted from the Claude Code session log (not included in the repository). Tool results and model reasoning are omitted; tool calls appear as one-line markers.</p>
 <hr>
 <h2 id="tjo-2026-09-10-2009-utc">TJO — 2026-09-10 20:09 UTC</h2>
 <p><code>/familiarize-project</code> (skill invocation)</p>
@@ -1174,6 +1174,274 @@ Fock energy = sum_p k_p log p = log n
 <blockquote>
 <p><em>[tool: Bash — Add a transcript refresh script, re-sync the session log, and commit]</em></p>
 </blockquote>
+<h3 id="claude-2026-09-11-1038-utc-4">Claude — 2026-09-11 10:38 UTC</h3>
+<p>The repo exists at <code>~/Projects/riemann-channel</code>, two commits, working tree clean, no remote yet.</p>
+<p><strong>What is in it</strong></p>
+<ul>
+<li><code>transcript/</code> holds the raw session log and a rendered Markdown and HTML version. Tool calls appear as one-line markers; model reasoning and tool output are omitted from the rendering but remain in the raw file. The copy runs up to the end of the "go hard" report. This final exchange lands in the log only after the turn ends, so <code>scripts/refresh-transcript.sh</code> re-copies and re-renders it whenever you want the tail included.</li>
+<li><code>notes/riemann-channel-note.md</code> and its HTML, the write-up with the established / not-established split.</li>
+<li><code>scripts/</code> with the four checked computations, all re-run from the repo root with outputs captured in <code>outputs/</code>, plus the transcript converter.</li>
+<li><code>data/</code> with the first 3000 zeros and the ring-norm arrays.</li>
+<li><code>HANDOFF.md</code> with state, what is and is not established, ideas raised but not pursued, and next steps in order. The first next step is the Stinespring question, suggested as a blind codex lane with the note as its only input.</li>
+<li><code>docs/worklog/2026-09-11.md</code> with the fifteen-stage trajectory of the discussion and your corrections along the way.</li>
+<li><code>README.md</code> stating the question, the working conclusion, and that the parent project's laws are not yet in force here.</li>
+</ul>
+<p><strong>Two things to decide</strong></p>
+<ul>
+<li>Remote. Nothing is pushed. The handoff records the command for a private GitHub repo if you want one.</li>
+<li>Rules. The repo is a research notebook. If it grows, the handoff suggests importing the parent PRD before anything is called a claim.</li>
+</ul>
+<hr>
+<h2 id="tjo-2026-09-11-1042-utc">TJO — 2026-09-11 10:42 UTC</h2>
+<p>so can you please explain what RH has become in this new language? Please provide a lot of additional details (look at my responses in this conversation to get a sense of what level you need to pitch it).</p>
+<h3 id="claude-2026-09-11-1043-utc">Claude — 2026-09-11 10:43 UTC</h3>
+<p>I'll write this as a proper document, pitched at the level of the permutation and MPS steps, render it, and file it in the new repo.</p>
+<h3 id="claude-2026-09-11-1045-utc">Claude — 2026-09-11 10:45 UTC</h3>
+<blockquote>
+<p><em>[tool: Write — /home/tobias/Projects/riemann-channel/notes/what-rh-has-become.md]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1045-utc-2">Claude — 2026-09-11 10:45 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Render the RH translation note, open it, and commit it to the new repo]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1045-utc-3">Claude — 2026-09-11 10:45 UTC</h3>
+<p>The document is open in your browser and committed to the new repo at <code>notes/what-rh-has-become.md</code>, with 144 equations rendered and none broken.</p>
+<p><strong>The short version, in the order the document builds it.</strong></p>
+<ul>
+<li><strong>One identity, two gases.</strong> A zeta function is one partition function with two Fock-space readings: a gas of rings (cycles, closed walks, prime powers) and a gas of modes (eigenvalues of a small transfer matrix). The trace identity links them.</li>
+<li><strong>Finite permutation.</strong> RH says "eigenvalues on the unit circle" and is automatic because the matrix is unitary.</li>
+<li><strong>Infinite permutation.</strong> RH is about a <em>different</em> small matrix with the same fixed-point counts, and says every subleading eigenvalue has modulus √(leading). On the counting side that means the cycle counts fluctuate like coin tosses, square-root of the leading term. Every later version is this sentence in another costume.</li>
+<li><strong>Graph.</strong> The functional equation μμ′ = q pairs the eigenvalues symmetrically; RH is the extra fact that each pair is degenerate in modulus, which happens iff it is a conjugate pair. Self-adjointness gives the pairing, not the bound. The prism graph is the counterexample.</li>
+<li><strong>MPS.</strong> RH says the state has one correlation length, equal to twice the inverse entropy rate, with an unconstrained tower of oscillation frequencies. Primitivity is the prime number theorem, a spectral gap is the zero-free region, one circle is RH.</li>
+<li><strong>Primes.</strong> Differentiating the Riemann–von Mangoldt formula in log x gives the trace identity directly: the prime-power measure equals e^L minus a sum over zeros of e^{ρL}. The zeros are the modes of the transfer generator, entering with a minus sign, the fermionic or absorption sign. The functional equation pairs the decay rates as (β, 1−β). RH says every pair sits at 1/2.</li>
+<li><strong>Where it is literally true.</strong> The Lax–Phillips semigroup on the model space of the scattering symbol has one mode per zero, and RH is the statement that all modes decay at one rate. The symbol's phase is the Bost–Connes Lévy exponent at the critical temperature.</li>
+<li><strong>Why it is still hard.</strong> The graph lesson: side B, the trace identity, and self-adjointness exist for every graph, and most graphs fail RH anyway. In positivity form, RH says the entanglement Hamiltonian of the state whose rings are the primes is Hermitian. Exhibiting that state, or a Kraus form of the semigroup with the prime dilations as jumps, is the open question, and some arithmetic rigidity has to enter beyond the channel structure itself.</li>
+</ul>
+<hr>
+<h2 id="tjo-2026-09-11-1046-utc">TJO — 2026-09-11 10:46 UTC</h2>
+<p>please use fmd to render the md bettter</p>
+<h3 id="claude-2026-09-11-1046-utc">Claude — 2026-09-11 10:46 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Inspect fmd options and local notes for rendering choices]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1046-utc-2">Claude — 2026-09-11 10:46 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Inspect fmd render options, active config, and how fmd-report invokes fmd]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1046-utc-3">Claude — 2026-09-11 10:46 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Re-render both notes with fmd directly using TOC, serif font, larger scale and the math theme, then verify]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1046-utc-4">Claude — 2026-09-11 10:46 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Confirm the math theme and TOC are embedded, open the page, and commit the re-rendered notes]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1047-utc">Claude — 2026-09-11 10:47 UTC</h3>
+<p>Re-rendered both notes with fmd directly rather than the wrapper's defaults, and the new page is open in your browser.</p>
+<p>What changed in the rendering:</p>
+<ul>
+<li>Table of contents at the top, two levels deep.</li>
+<li>Serif body font at the larger type scale.</li>
+<li>Your math theme from <code>~/.config/fmd/math-theme.css</code> is embedded, so display blocks use true display style rather than cramped text style.</li>
+<li>Every equation still renders as MathML, zero fallbacks in either note.</li>
+</ul>
+<p>Files, both committed in <code>~/Projects/riemann-channel</code>:</p>
+<pre><code>notes/what-rh-has-become.html
+notes/riemann-channel-note.html
+</code></pre>
+<p>If the look is still not what you want, the two remaining knobs are <code>--font sans</code> and <code>--font-scale</code> (presets from <code>xs</code> to <code>huge</code>). A PDF with typeset math is not possible with fmd, so print from the browser if you need one.</p>
+<hr>
+<h2 id="tjo-2026-09-11-1105-utc">TJO — 2026-09-11 11:05 UTC</h2>
+<p>I am a bit confused, entanglement hamiltonians are always hermitian, where did we lose that?</p>
+<h3 id="claude-2026-09-11-1106-utc">Claude — 2026-09-11 11:06 UTC</h3>
+<p>You are right, and the slip is mine. Two different operators got one name. Let me separate them, then fix the notes.</p>
+<p><strong>The entanglement Hamiltonian is Hermitian and does not contain the zeros.</strong> For an MPS, the reduced density matrix of a half chain is built from the left and right fixed points of the transfer matrix, the leading eigenvector only. Its minus-log is the entanglement Hamiltonian: Hermitian, positive, and blind to the subleading spectrum of E. It knows the Schmidt values, not the correlation lengths.</p>
+<p><strong>The object carrying the zeros is the transfer matrix itself, and it is genuinely non-Hermitian.</strong> E = Σ A_i ⊗ Ā_i has complex eigenvalues in general, and that is essential: modulus gives the correlation length, phase gives the oscillation frequency of the ring norms. The examples in the conversation already showed this. The 4-symbol shift had eigenvalues 1 ± i, the golden-mean shift had φ and −1/φ. For the primes the transfer generator has eigenvalues ρ − 1 = −(1 − β) + iγ, and the imaginary parts γ are the oscillation frequencies of the prime counts. A Hermitian operator has no room for them. When I said "entanglement Hamiltonian" for −log E, I was borrowing the PEPS boundary-Hamiltonian language of Cirac, Poilblanc, Schuch and Verstraete, where the transfer operator does define a boundary Hamiltonian, but that is a different object from the 1D reduced density matrix, and I should not have used the word.</p>
+<p><strong>Where Hermiticity actually enters RH.</strong> Write the transfer generator on the subleading sector as</p>
+<pre><code>T = −1/2 + i H
+</code></pre>
+<p>Then the eigenvalues of H are −i(ρ − 1 + 1/2) = γ − i(β − 1/2). So H is Hermitian, meaning every eigenvalue is real, exactly when every β equals 1/2. That is the correct slogan: RH says the transfer generator is a uniform damping plus i times a Hermitian operator. The Hermitian operator H is Hilbert–Pólya's, with eigenvalues γ_n. It is not the entanglement Hamiltonian; it is the transfer generator with the damping removed and rotated by i. The graph case has the same structure. The non-Hermitian object is the Hashimoto edge matrix with the complex pairs μ, μ′. The Hermitian object is the adjacency matrix with λ = μ + μ′. For the primes the analogous symmetric combination of the pair (ρ, 1 − ρ) is ρ(1 − ρ) = β(1 − β) + γ² + iγ(1 − 2β), which is real iff β = 1/2. For graphs the reality of λ is a theorem because A is given and symmetric. For the primes nobody has the symmetric operator, so its reality is the conjecture.</p>
+<p>One caveat on the "damping times unitary" form: on the Lax–Phillips model space the eigenvectors are Cauchy kernels and are not orthogonal, so RH gives the spectrum on a circle, not literally Z(t) = e^{−t/4}U(t) with U unitary. A self-adjoint Hilbert–Pólya operator would give the stronger form.</p>
+<p>Now correcting the two notes and the worklog.</p>
+<h3 id="claude-2026-09-11-1106-utc-2">Claude — 2026-09-11 11:06 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Find every place the notes use 'entanglement Hamiltonian' or 'Hermitian']</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1107-utc">Claude — 2026-09-11 11:07 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Patch the notes and worklog with the correction, re-render the RH note, and commit]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1107-utc-2">Claude — 2026-09-11 11:07 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Fix the remaining worklog wording and commit]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1107-utc-3">Claude — 2026-09-11 11:07 UTC</h3>
+<p>Corrected in the repo and committed. The RH note now has an erratum section and the accurate statement in section 7, the worklog no longer calls the transfer matrix an entanglement Hamiltonian, and the page is re-rendered.</p>
+<p>The correction, in one line: the zeros live in the spectrum of the transfer generator, which is non-Hermitian and must be, since the imaginary parts of the zeros are oscillation frequencies of the prime counts. RH says that generator equals a uniform damping of 1/2 plus i times a Hermitian operator, and that Hermitian operator is Hilbert–Pólya's, not the entanglement Hamiltonian of the state.</p>
+<hr>
+<h2 id="tjo-2026-09-11-1113-utc">TJO — 2026-09-11 11:13 UTC</h2>
+<p>ok. For me the deepest learning, and the point that gives me cautious optimism is the observation connecting RH with Ramanujan property. If this is really correct then we have a wealth of constructions coming from quantum expanders we can access to start tinkering with.</p>
+<h3 id="claude-2026-09-11-1114-utc">Claude — 2026-09-11 11:14 UTC</h3>
+<p>Your reading is correct, and the chain is stronger than an analogy. It is worth stating exactly what is a theorem, then what "tinkering" can and cannot buy.</p>
+<p><strong>What is a theorem.</strong></p>
+<ul>
+<li>Ihara zeta of a regular graph: RH ⇔ Ramanujan (Ihara, Sunada).</li>
+<li>Quantum Ihara zeta of a mixed-unitary channel: RH ⇔ Hastings-Ramanujan. Verified numerically; it follows from Bass's proof verbatim and should be written up as a lemma, a short task.</li>
+<li>Riemann: RH ⇔ uniform decay rate of the Lax–Phillips semigroup (Faddeev–Pavlov). That is the Ramanujan property of one specific contraction semigroup.</li>
+</ul>
+<p>So "RH is a Ramanujan property" is not loose. The caution is about where Ramanujan-ness comes from, and here the graph literature is precise. There are exactly three known routes:</p>
+<ol>
+<li><strong>Arithmetic.</strong> Lubotzky–Phillips–Sarnak, via Deligne. Every Riemann-relevant instance so far is this route.</li>
+<li><strong>Probabilistic and asymptotic.</strong> Friedman for random regular graphs, Hastings for random unitaries: nearly Ramanujan, defect ε → 0 with size. Since the zeros are symmetric under β ↔ 1−β, "nearly" with ε → 0 along an approximating family would be exact for ζ. So a sequence of finite Ramanujan channels converging to the Riemann channel would be a genuine strategy, and the convergence is where all the difficulty would sit.</li>
+<li><strong>Interlacing families.</strong> Marcus–Spielman–Srivastava: exactly Ramanujan bipartite graphs of every degree, proved by real-rootedness of expected characteristic polynomials, with no arithmetic input. This is the one I would watch. Real-rootedness of an expected characteristic polynomial is the same shape of statement as "H is Hermitian" from the last message, and the Montgomery–Odlyzko fact that the zeros look like eigenvalues of a random Hermitian matrix is the hint that ξ might be an expected characteristic polynomial of something.</li>
+</ol>
+<p><strong>The one obstruction to naive tinkering, and why it is not fatal.</strong> The prime dilations commute. A Cayley graph of a free abelian group is a lattice, never an expander, so no channel whose Kraus operators are commuting dilations on a plain space is Ramanujan. The LPS graphs show how the arithmetic examples get around this: their generators are the Hecke operators T_q, which also commute for different q, and expansion comes from the space being an arithmetic quotient. The joint spectrum of the commuting Ramanujan family is the Hecke eigenvalue system of modular forms, and "Ramanujan for all q simultaneously" is Deligne. The Riemann channel has the same shape: commuting dilations, an arithmetic quotient, joint spectrum the zeros.</p>
+<p><strong>The concrete object to tinker with, and it lands on the project's Hilbert space.</strong> Harrow's construction turns any Cayley expander of a group G into a quantum expander by pushing the generators through an irreducible representation π: the channel ρ ↦ (1/|S|) Σ_s π(s) ρ π(s)† has second eigenvalue bounded by that of the Cayley graph, because π ⊗ π̄ contains the trivial representation once. Take G = SL₂(F_p), S the LPS generators for a prime q, and π the Weil representation. Then:</p>
+<ul>
+<li>The Kraus operators are explicit p × p matrices on ℓ²(F_p), the SP-WEYL objects of the parent campaign.</li>
+<li>The channel is <em>exactly</em> Ramanujan, by LPS and Deligne, not nearly.</li>
+<li>For different q the channels commute and are jointly diagonal, with joint spectrum given by Hecke eigenvalues of weight-2 forms of level p, through Eichler–Shimura.</li>
+<li>Its quantum Ihara zeta is an Artin–Ihara L-function of SL₂(F_p) twisted by the adjoint of the Weil representation, and it satisfies RH.</li>
+</ul>
+<p>This is a finite, computable model in which every ingredient of the Riemann channel is present: commuting dilation-like generators, an arithmetic quotient, a Weil representation, a Ramanujan bound with a known origin. Computing it for p = 5, 7, 11, 13 and q = 2, 5 is a few hundred lines and would give the campaign its first concrete Ramanujan object.</p>
+<p>Recording this steering in the new repo's handoff.</p>
+<h3 id="claude-2026-09-11-1114-utc-2">Claude — 2026-09-11 11:14 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Add the steering section and reorder next steps in the new repo handoff, then commit]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1115-utc">Claude — 2026-09-11 11:15 UTC</h3>
+<p>The handoff in <code>~/Projects/riemann-channel</code> now records your steering and the assessment above, with the Weil–LPS channel promoted to the first next step. Committed, tree clean.</p>
+<p>To summarise where the optimism is justified and where it needs care:</p>
+<ul>
+<li><strong>Justified.</strong> RH ⇔ Ramanujan is a theorem at every link, not an analogy. Any channel you build has a zeta function whose RH is a checkable spectral condition, so the expander literature is genuinely a laboratory for the same statement.</li>
+<li><strong>Care.</strong> In every case relevant to Riemann, Ramanujan-ness has come from Deligne. The only non-arithmetic routes are Friedman/Hastings genericity, which gives "nearly" along a family, and Marcus–Spielman–Srivastava interlacing, which gives exact and is the one whose shape resembles Hermiticity of the Hilbert–Pólya operator.</li>
+<li><strong>The concrete object.</strong> Weil–LPS channels: Harrow's construction with the Weil representation of SL₂(F_p) and LPS generators. Exactly Ramanujan, commuting across primes q, joint spectrum given by Hecke eigenvalues, living on the parent campaign's F_p Hilbert space. Building and checking it for small p and q is self-contained and would give the first computable Ramanujan object with all the Riemann-channel ingredients present.</li>
+</ul>
+<hr>
+<h2 id="tjo-2026-09-11-1120-utc">TJO — 2026-09-11 11:20 UTC</h2>
+<p>ok go ahead and totally compute the suggested object for  a couple of primes and qs as suggested</p>
+<h3 id="claude-2026-09-11-1123-utc">Claude — 2026-09-11 11:23 UTC</h3>
+<p>I'll build the full object: LPS generators, their images in SL₂(F_p), the Weil representation constructed numerically with self-checking intertwining relations, the Cayley graph and channel spectra, the Ramanujan checks, the Hecke relations, commutation across q, and the quantum Ihara zeta. First the admissible (p, q) pairs, since the Weil intertwiner exists only when q is a square mod p.</p>
+<h3 id="claude-2026-09-11-1123-utc-2">Claude — 2026-09-11 11:23 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — List primes p and LPS parameters q with q a quadratic residue mod p]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1124-utc">Claude — 2026-09-11 11:24 UTC</h3>
+<blockquote>
+<p><em>[tool: Write — /home/tobias/Projects/riemann-channel/scripts/weil_lps.py]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1124-utc-2">Claude — 2026-09-11 11:24 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Run the Weil–LPS construction for the smallest case p=5, q=29]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1125-utc">Claude — 2026-09-11 11:25 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Switch the Cayley graph to PSL2, split the channel into the two irreducible Weil blocks, rerun p=5]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1125-utc-2">Claude — 2026-09-11 11:25 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Run Weil–LPS construction for p = 7, 11, 13, 17, 19 in sequence]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1125-utc-3">Claude — 2026-09-11 11:25 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Run Weil–LPS construction for p = 29 with q = 5 and 13]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1126-utc">Claude — 2026-09-11 11:26 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Save p=5 output and directly verify the quantum Hashimoto operator for p=13, q=17 on the odd block]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1126-utc-2">Claude — 2026-09-11 11:26 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Fix the even-coordinate enumeration bug and check quaternion counts against sigma(n)]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1126-utc-3">Claude — 2026-09-11 11:26 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Rerun Weil–LPS for p = 11, 13, 19 after the enumeration fix]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1126-utc-4">Claude — 2026-09-11 11:26 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Rerun Weil–LPS for p = 29 with q = 5, 13 after the fix]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1126-utc-5">Claude — 2026-09-11 11:26 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Run the direct edge-operator check for p=13, q=17 and show the already-valid p=7 and p=17 results]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1127-utc">Claude — 2026-09-11 11:27 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Wait for the p = 11, 13, 19 reruns and print their results without the long spectrum lists]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1128-utc">Claude — 2026-09-11 11:28 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Wait for the p = 29 run and show its results]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1128-utc-2">Claude — 2026-09-11 11:28 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Recognise joint eigenvalues as algebraic integers via integer polynomial fitting]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1128-utc-3">Claude — 2026-09-11 11:28 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Collect the headline numbers from all runs for the results table]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1129-utc">Claude — 2026-09-11 11:29 UTC</h3>
+<blockquote>
+<p><em>[tool: Write — /home/tobias/Projects/riemann-channel/notes/weil-lps-channels.md]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1130-utc">Claude — 2026-09-11 11:30 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Update handoff and worklog, render the Weil–LPS note, open it, and commit everything]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1130-utc-2">Claude — 2026-09-11 11:30 UTC</h3>
+<p>Done. The object exists, it is cheap, and it is Ramanujan in every case computed. The write-up is open in your browser and committed at <code>notes/weil-lps-channels.md</code> in the new repo.</p>
+<p><strong>What was built.</strong> For each admissible pair, the q+1 norm-q quaternions with the LPS sign convention, mapped into SL₂(F_p) through a splitting of the Hamilton quaternions, then pushed through the Weil representation on ℓ²(F_p). The Weil representation was constructed numerically from the Fourier, chirp and dilation unitaries by a breadth-first search over the group, and for every generator the intertwining relation with the clock-and-shift operators was checked directly, to 10⁻¹⁴. Two adjustments were forced by the mathematics and are worth knowing: q must be a square mod p, because the intertwiner exists only for determinant one; and the channel must be taken on the even and odd Weil blocks separately, because on the full space the parity operator is a second fixed point and Harrow's theorem needs irreducibility.</p>
+<p><strong>Cases.</strong> p = 5, 7, 11, 13, 17, 19, 29 with q from {5, 13, 17, 29}, ten pairs in all, three of them commuting pairs on one p.</p>
+<p><strong>Every check passed, in every case.</strong></p>
+<ul>
+<li>The PSL₂(F_p) Cayley graph is Ramanujan.</li>
+<li>Both block channels are Ramanujan quantum expanders with a unique fixed point.</li>
+<li>Every channel eigenvalue lies in the Cayley graph spectrum, Harrow's containment.</li>
+<li>The Hecke relation for two non-backtracking steps and multiplicativity across q hold with residual exactly zero.</li>
+<li>Channels for different q commute to 10⁻¹⁵, and their joint spectrum consists of pairs of algebraic integers inside the Ramanujan box, some rational, some in ℚ(√17), some of higher degree.</li>
+<li>For p = 13, q = 17 the quantum Hashimoto operator was built directly, dimension 648. The Ihara–Bass factorisation holds to 10⁻¹⁴ and its eigenvalue moduli are exactly 17, √17 and 1. The quantum Ihara zeta of that channel satisfies RH on the nose.</li>
+</ul>
+<p><strong>Two bugs caught by the built-in checks.</strong> The quaternion enumeration started at an odd coordinate for some q, caught by the σ(n) count. The Hecke relation failed by signs on SL₂ and was fixed by passing to PSL₂. Both are recorded in the worklog.</p>
+<p><strong>What was not done.</strong> Identifying the joint spectra with named modular forms needs LMFDB and the Jacquet–Langlands bookkeeping. And the honest last row of the note stands: these channels are Ramanujan because of Deligne, not because they are channels. What the computation establishes is that the proposed finite model of the Riemann channel exists with all ingredients present, on the parent campaign's Hilbert space with its Weil representation, and that nothing in it is hidden.</p>
+<hr>
+<h2 id="tjo-2026-09-11-1133-utc">TJO — 2026-09-11 11:33 UTC</h2>
+<p>so can we find a matrix product state formulation of the weil conjectures this way</p>
+<h3 id="claude-2026-09-11-1136-utc">Claude — 2026-09-11 11:36 UTC</h3>
+<p>This one deserves a precise answer, and there is a small computation that makes it concrete. Let me run the computation first, then give the assessment.</p>
+<h3 id="claude-2026-09-11-1136-utc-2">Claude — 2026-09-11 11:36 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Test the transfer-matrix formulation of Artin–Schreier character sums against brute force]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1136-utc-3">Claude — 2026-09-11 11:36 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Rerun the Artin–Schreier transfer-matrix test with n from 2 upward, including even n]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1136-utc-4">Claude — 2026-09-11 11:36 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Use a correct irreducibility test and rerun the Artin–Schreier transfer-matrix check]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1137-utc">Claude — 2026-09-11 11:37 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Check whether each Artin–Schreier transfer matrix is sqrt(q) times a unitary]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1138-utc">Claude — 2026-09-11 11:38 UTC</h3>
+<blockquote>
+<p><em>[tool: Write — /home/tobias/Projects/riemann-channel/notes/artin-schreier-mps.md]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1138-utc-2">Claude — 2026-09-11 11:38 UTC</h3>
+<blockquote>
+<p><em>[tool: Bash — Update handoff and worklog, render the Artin–Schreier note, open it, and commit]</em></p>
+</blockquote>
+<h3 id="claude-2026-09-11-1138-utc-3">Claude — 2026-09-11 11:38 UTC</h3>
+<p>Yes, with a sharp boundary, and I computed it rather than argued it. The write-up is open in your browser and committed at <code>notes/artin-schreier-mps.md</code>.</p>
+<p><strong>The MPS picture.</strong> In a normal basis of F_{q^n}, Frobenius is the cyclic shift of coordinates. So an element of F_{q^n} is a ring of n sites with alphabet F_q, and Frobenius is translation by one site. Points over F_{q^n} are ring configurations, and the only question is whether the curve's equation is a local constraint on the ring.</p>
+<p><strong>Where it works exactly.</strong> For Artin–Schreier curves y^q − y = g(x), the point count reduces to exponential sums over F_{q^n}. Write the exponent of a monomial in base q: x^m is a product of shifted copies of x, one per digit. For the quadratic family, g a sum of terms x^{1+q^j}, the trace form in a self-dual normal basis is the dot product, and the sum becomes a translation-invariant quadratic spin model of range J on the ring. That is an MPS with bond dimension q^J. Checked by brute force in F_{q^n} against the transfer matrix for five families up to bond dimension 9 and n up to 7: exact agreement for odd n, and for even n a sign that is precisely the L-function normalisation S_n = −Σα_iⁿ. The transfer matrix is minus the Frobenius matrix, uniformly in n.</p>
+<p><strong>RH is unitarity.</strong> In every case the transfer matrix satisfies E E† = qI, checked to 10⁻¹⁵ up to dimension 49, so all its eigenvalues have modulus exactly √q. The reason is one line: the oldest spin in the bond couples linearly to the newest, so summing it out gives q times a delta. This is the Weil bound for the whole quadratic Artin–Schreier family, proved by the same mechanism as RH for a finite permutation: the transfer matrix is a scaled unitary. Rationality is finiteness of E, and the functional equation is E ↦ qE^{−†}.</p>
+<p><strong>Where it stops.</strong> For a cubic or higher digit in g, the trace of a product of three or more ring elements involves the basis's structure constants, which are non-local and depend on n. The shift basis loses locality, there is no fixed local tensor, and those are exactly the sums, cubic Gauss and Kloosterman-type, where Weil needed algebraic geometry. The uniform object beyond quadratic is Dwork's p-adic transfer operator, which is a "local weight then decimate by q" coarse-graining step with nuclear bond dimension. It delivers rationality and the functional equation and cannot see RH, because it knows the p-adic sizes of the eigenvalues, not the complex ones.</p>
+<p>So the answer has the same shape as for graphs and for the Riemann channel: the Ramanujan bound is either manifest because the transfer matrix is a scaled unitary, or it comes from arithmetic input outside the transfer structure. The quadratic Artin–Schreier family is the first case, and it is the first genuinely exact MPS instance of the Weil conjectures in the repo.</p>
+<p>Not established: any fixed-tensor MPS for a non-quadratic curve, whether some other n-uniform basis makes cubic traces local, and the unitarity argument written as a lemma with its exact hypotheses. All three are recorded in the note and handoff.</p>
 </main>
 </body>
 </html>
