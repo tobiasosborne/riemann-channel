@@ -1,0 +1,38 @@
+1. BC phase marginals and matrix-state extensions
+  p=3 beta=1: mass(0)=0.333333; diagonal Fourier defect=0.000000; Weil-extension min eigenvalue=0.333333
+  p=3 beta=2: mass(0)=0.111111; diagonal Fourier defect=0.384900; Weil-extension min eigenvalue=0.111111
+  p=5 beta=1: mass(0)=0.200000; diagonal Fourier defect=0.000000; Weil-extension min eigenvalue=0.200000
+  p=5 beta=2: mass(0)=0.040000; diagonal Fourier defect=0.252982; Weil-extension min eigenvalue=0.040000
+  p=7 beta=1: mass(0)=0.142857; diagonal Fourier defect=0.000000; Weil-extension min eigenvalue=0.142857
+  p=7 beta=2: mass(0)=0.020408; diagonal Fourier defect=0.187044; Weil-extension min eigenvalue=0.020408
+  Noncritical coherent extensions are state-extension examples, not BC bond identifications.
+
+2. Exact real dimensions at the critical tracial extension (time scale included)
+  p | Galois | Weil-SL2 | Weyl+Galois | Weyl+SL2
+  3 |     32 |        4 |           4 |        1
+  5 |    144 |        8 |           6 |        1
+  7 |    384 |       12 |           8 |        1
+
+3. Full linear-symplectic covariance leaves odd spectral freedom
+  p=3; shear class size=4; odd spectrum: -0.950000-0.433013i x2; -0.950000+0.433013i x2
+    with H=0.37 parity: -0.950000-0.306987i x2; -0.950000+0.306987i x2
+    interior scalar-orbit perturbation: -1.027778+0.000000i x4
+  p=5; shear class size=12; odd spectrum: -1.033333+0.000000i x12
+    with H=0.37 parity: -1.033333-0.740000i x6; -1.033333+0.740000i x6
+    interior scalar-orbit perturbation: -1.000000-0.010000i x6; -1.000000+0.010000i x6
+  p=7; shear class size=24; odd spectrum: -1.075000-0.330719i x4; -1.075000+0.000000i x16; -1.075000+0.330719i x4
+    with H=0.37 parity: -1.075000-1.070719i x4; -1.075000-0.740000i x8; -1.075000+0.740000i x8; -1.075000+1.070719i x4
+    interior scalar-orbit perturbation: -1.005102+0.000000i x8; -0.997449-0.004418i x8; -0.997449+0.004418i x8
+
+4. Additional Weyl covariance: real Galois spectrum and depolarizing SL2 ray
+  p=3: 4 nonnegative Galois orbit rates, real spectrum; full SL2 leaves one rate.
+  p=5: 6 nonnegative Galois orbit rates, real spectrum; full SL2 leaves one rate.
+  p=7: 8 nonnegative Galois orbit rates, real spectrum; full SL2 leaves one rate.
+
+5. Two-prime coupling with unchanged one-prime restrictions
+  c=0.0: p-only=-0.700; q-only=-0.900; joint traceless=-1.600; additive defect=0.000
+  c=0.2: p-only=-0.700; q-only=-0.900; joint traceless=-1.400; additive defect=0.200
+  c=0.6: p-only=-0.700; q-only=-0.900; joint traceless=-1.000; additive defect=0.600
+
+ALL 427 CHECKS PASS
+Scope: finite phase-marginal models only; no adelic limit, scattering identification, or RH claim.

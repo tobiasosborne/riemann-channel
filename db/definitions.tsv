@@ -1,4 +1,8 @@
 id	term	shard	status	provenance	merged_from
+def:bc-finite-phase	finite BC phase marginal and matrix extension	report/sections/02e_definitions_symmetry.tex	stipulated	-	notes/bc-symmetry-generators.md B0
+def:finite-arithmetic-covariance	local Galois, linear symplectic and Weyl-translation covariance	report/sections/02e_definitions_symmetry.tex	stipulated	-	notes/bc-symmetry-generators.md B1
+def:stationary-covariant-cone	stationary covariant finite GKLS cone	report/sections/02e_definitions_symmetry.tex	stipulated	-	notes/bc-symmetry-generators.md B2
+def:generator-choi	conditional Choi matrix and depolarizing channel	report/sections/02e_definitions_symmetry.tex	stipulated	-	notes/bc-symmetry-generators.md B2
 def:side-a-side-b	side A and side B	report/sections/02_definitions.tex	stipulated	-	what-rh-has-become:0; deligne-via-graphs:1; README
 def:one-identity	the one identity	report/sections/02_definitions.tex	stipulated	-	what-rh-has-become:0
 def:ring-norm	ring norm	report/sections/02_definitions.tex	stipulated	-	what-rh-has-become:4; riemann-channel-note:5

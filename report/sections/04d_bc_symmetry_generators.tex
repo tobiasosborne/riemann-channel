@@ -1,0 +1,236 @@
+% SHARD-ID: RC-04D-BC-SYMMETRY-GENERATORS
+% SHARD-TITLE: The Phantasm III: BC Stationarity, Arithmetic Symmetry, and the Remaining Generator Cone
+% SHARD-SUMMARY: Formulates the finite inverse problem with the BC phase state and Galois/Weil covariance, distinguishing matrix-state extensions from representations of the full BC algebra.
+% SHARD-SUMMARY: Computes the exact generator-cone dimensions, proves the extra Weyl-covariance collapse, and gives a symplectic odd-sector counterexample and compatible two-prime couplings.
+% SHARD-SUMMARY: Records deterministic numerical checks and the missing representation/intertwiner input needed before any adelic or scattering identification.
+% SHARD-KEYWORDS: Bost-Connes, Galois, symplectic, adeles, Weyl, Weil, GKLS, cone, Choi, parity, coupling
+% SHARD-NOTES: notes/bc-symmetry-generators.md
+% SHARD-SCRIPTS: scripts/bc_symmetry_generators.py
+
+\section{The Phantasm III: Stationarity, Symmetry, and Generator Freedom}
+\label{sec:bc-symmetry-generators}
+
+TJO's specification is an unknown Lindbladian with the BC state stationary,
+Galois symmetry, and compatible adelic symplectic structure. The no-event
+generator and the jumps are both unknown. This section completes a finite
+constraint calculation, not the construction of the adelic bond. Detailed
+arguments B0--B6 are in \texttt{notes/bc-symmetry-generators.md}; source loci
+are in \texttt{notes/extract/bc-symmetry-sources.md}. These arguments have not
+had an independent review and therefore carry \texttt{sketched}, including
+the statements with complete written derivations. Numerical evidence is
+separately tagged. No claim of novelty is made for the general GKLS machinery.
+
+\subsection{The state on the finite phase algebra}
+
+\begin{proposition}[Residue probabilities]
+\label{prop:bc-residue-state}
+\claimstatus{prop:bc-residue-state}{sketched}
+For the state of \cref{def:bc-finite-phase},
+\[
+ w_{\invtemp}(0)=\pp^{-\invtemp},\qquad
+ w_{\invtemp}(x)=\frac{1-\pp^{-\invtemp}}{\pp-1}\quad(x\ne0).
+\]
+At criticality the phase marginal is uniform at every integer level $N$,
+compatible under reduction, and $\BCres{\pp,1}=I/\pp$.
+\end{proposition}
+
+This is finite Fourier inversion of the BC KMS formula
+\cite{connesmarcolli2004physics}; for $\invtemp>1$ it also follows by averaging
+the residue-class Gibbs sums over the Galois action. A single extremal state
+is generally not invariant. Uniform phase probabilities fix the diagonal
+of a matrix extension, not its off-diagonal entries. The full critical BC
+state is not a normal density in the standard representation
+(\cref{prop:normal-kms-gibbs}).
+
+\begin{proposition}[Finite representations collapse the BC phases]
+\label{prop:bc-no-finite-phase-representation}
+\claimstatus{prop:bc-no-finite-phase-representation}{sketched}
+Every finite-dimensional unital $*$-representation of the full BC algebra
+sends all $e(r)$, $r\in\mathbb Q/\mathbb Z$, to $I$.
+Consequently it cannot realise the nontrivial critical finite phase marginal.
+\end{proposition}
+
+Indeed, $\bciso{n}^*\bciso{n}=I$ makes $\bciso{n}$ unitary in finite dimension.
+The BC relation gives
+$I=\bciso{n}\bciso{n}^*=n^{-1}\sum_{k=0}^{n-1}e(k/n)$,
+the spectral projection onto the eigenvalue $1$ of $e(1/n)$.
+Thus $e(1/n)=I$ for every $n$. This excludes an exact finite representation;
+it does not exclude restrictions, CP compressions, or asymptotic models.
+
+\begin{proposition}[Invariant state extensions]
+\label{prop:bc-symmetry-state-extension}
+\claimstatus{prop:bc-symmetry-state-extension}{sketched}
+A unique stationary density of a covariant semigroup is invariant under
+its symmetry group. The diagonal extension $\BCres{\pp,\invtemp}$ is
+Galois invariant, and is Weil invariant iff $\invtemp=1$.
+The same phase marginal has a unique Weil-invariant matrix extension,
+when it is positive:
+\[
+ \BCbond=aI+(r-a)\Par,\qquad
+ r=\pp^{-\invtemp},\qquad a=\frac{1-r}{\pp-1}.
+\]
+Its parity-block eigenvalues are $r$ and $2a-r$, so positivity holds iff
+$r\le2/(\pp+1)$. Full Weyl invariance forces $I/\pp$.
+\end{proposition}
+
+The Weil-invariant operator space is $\operatorname{span}\{I,\Par\}$:
+the symplectic group is transitive on the nonzero Weyl labels and
+$\sum_v\Weyl{v}=\pp\Par$. The diagonal fixes the two coefficients.
+These coherent extensions are explicit state-extension examples, not an
+identification with the full BC bond. Above the transition, covariance can
+instead act on a family of stationary extremal states; uniqueness is the
+premise of the first assertion.
+
+\subsection{The complete finite feasibility problem}
+
+\begin{theorem}[A linear section of the conditional Choi cone]
+\label{thm:bc-covariant-gks-cone}
+\claimstatus{thm:bc-covariant-gks-cone}{sketched}
+The cone $\Gcone_U(\BCbond)$ consists exactly of complex-linear maps $L$ with
+\[
+ \begin{gathered}
+ L(X^*)=L(X)^*,\quad \Tr L(X)=0,\quad L(\BCbond)=0,\\
+ [L,\Ad(U_g)]=0\quad\hbox{for every }g,\qquad Q\Choi_LQ\ge0.
+ \end{gathered}
+\]
+Equivalently, in an orthonormal traceless operator basis $F_i$,
+\[
+ L(X)=-i[H,X]+\sum_{i,j}A_{ij}
+ \left(F_iXF_j^*-\tfrac12\{F_j^*F_i,X\}\right),\qquad A\ge0,\quad H=H^*.
+\]
+With $\Tr H=0$, covariance requires $H$ invariant and $A$ commuting with
+the induced representation on traceless operators. If that representation
+is $\bigoplus_\lambda V_\lambda\otimes\mathbb C^{m_\lambda}$, then
+$A=\bigoplus_\lambda I_{V_\lambda}\otimes A_\lambda$, $A_\lambda\ge0$;
+stationarity supplies further linear equations. Every invariant faithful
+$\BCbond$ has an interior feasible generator $X\mapsto\BCbond\Tr X-X$.
+\end{theorem}
+
+Necessity follows by differentiating a positive channel Choi matrix on
+the complement of the maximally entangled vector. For sufficiency, the
+positive matrix $Q\Choi_LQ$ supplies the traceless Kraus part; the remainder
+is the Choi matrix of $KX+XK^*$, and trace annihilation fixes its Hermitian
+part. This yields the bounded GKLS form recalled in
+\cite{siemon2017unbounded}. The reset generator has conditional Choi matrix
+$Q(I\otimes\BCbond)Q$, strictly positive on the range of $Q$.
+
+\begin{theorem}[Dimensions at the critical tracial extension]
+\label{thm:bc-critical-cone-dimensions}
+\claimstatus{thm:bc-critical-cone-dimensions}{sketched}
+For odd prime $\pp$, at stationary density $I/\pp$, the real dimensions
+of the generator cones' linear spans are
+\[
+\begin{array}{c|c}
+\text{commuting actions}&\text{dimension, including time scale}\\ \hline
+\text{Galois torus}&(\pp-1)(\pp+1)^2\\
+\text{full linear Weil action}&2\pp-2\\
+\text{Weyl translations and Galois torus}&\pp+1\\
+\text{Weyl translations and full Weil action}&1.
+\end{array}
+\]
+\end{theorem}
+
+In Weyl coordinates, trace annihilation and stationarity remove the
+identity row and column. The first two dimensions count simultaneous
+group orbits on ordered pairs of nonzero vectors. The torus acts freely;
+the symplectic orbits are $w=av$ ($a\ne0$) and
+$\det(v,w)=b$ ($b\ne0$), giving $2(\pp-1)$. Since $-I$ belongs to both
+groups, Hermiticity makes the orbit coefficients real. The depolarizing
+generator is an interior point of the conditional Choi cone, so positivity
+does not reduce these dimensions. Orbit coefficients are not independent
+nonnegative rates in the first two rows.
+
+\begin{proposition}[The cost of extra Weyl covariance]
+\label{prop:bc-weyl-covariance-collapse}
+\claimstatus{prop:bc-weyl-covariance-collapse}{sketched}
+All Weyl-covariant generators are
+$L(X)=\sum_{v\ne0}c_v(\Weyl{v}X\Weyl{v}^*-X)$, $c_v\ge0$.
+Galois covariance makes the rates constant on the two punctured axes and
+the $\pp-1$ sets $xy=b\ne0$. In particular $c_v=c_{-v}$, making every
+Weyl eigenvalue real and nonpositive. Full symplectic covariance makes
+all the rates equal and gives exactly
+$L=\gamma(\Dep_{\pp}-\mathrm{id})$, $\gamma\ge0$.
+\end{proposition}
+
+This extra commuting symmetry removes the oscillatory zero-like modes in
+this model. It is not a consequence of merely requiring a symplectic
+representation or an adelic structure.
+
+\subsection{Odd spectral freedom and coupling freedom}
+
+\begin{proposition}[A symplectic odd-sector counterexample]
+\label{prop:bc-symplectic-odd-counterexample}
+\claimstatus{prop:bc-symplectic-odd-counterexample}{sketched}
+Let $a$ be a primitive root modulo $\pp$ and set $R_a(I)=0$,
+$R_a(\Weyl{v})=\Weyl{av}$ for $v\ne0$. Then
+\[
+ L=\Dep_{\pp}-\mathrm{id}+\varepsilon R_a,
+ \qquad\varepsilon=\frac1{4\pp^2}
+\]
+is a CPTP generator with unique stationary state $I/\pp$ and full
+Weil, Galois and parity covariance. For $\pp=7$ its odd eigenvalues are
+$-1-\varepsilon$ and $-1+\varepsilon/2\pm i\sqrt3\varepsilon/2$, each
+with multiplicity $8$. The odd decay rates are unequal.
+\end{proposition}
+
+The map $R_a$ is Hermiticity preserving and equivariant, but need not itself
+be positive. Its Choi operator norm is bounded by its Frobenius norm
+$\sqrt{\pp^2-1}<\pp$, whereas the depolarizer's conditional Choi matrix
+is $Q/\pp$; the specified perturbation therefore remains strictly positive
+on the range of $Q$. At $\pp=7$, scalar multiplication has eight cycles of
+length six, and the odd sector selects the roots whose cube is $-1$.
+Thus the counterexample does not fit any input zero positions.
+
+\begin{proposition}[Couplings invisible to the one-prime restrictions]
+\label{prop:bc-compatible-prime-coupling}
+\claimstatus{prop:bc-compatible-prime-coupling}{sketched}
+For distinct primes $p,q$, fixed positive rates $a,b$, and
+$0\le c\le\min(a,b)$, let
+\[
+ \begin{split}
+ L_c={}&(a-c)(\Dep_p-\mathrm{id})\otimes\mathrm{id}
+ +(b-c)\mathrm{id}\otimes(\Dep_q-\mathrm{id})\\
+ &+c(\Dep_p\otimes\Dep_q-\mathrm{id}).
+ \end{split}
+\]
+These CPTP generators have the unique stationary state $I/(pq)$ and full
+local Weyl/Weil covariance. Their restrictions on the one-prime observable
+algebras are independent of $c$, with rates $a$ and $b$, while the rate on
+the joint traceless sector is $a+b-c$.
+\end{proposition}
+
+Each summand is a nonnegative multiple of a channel minus the identity.
+The four tensor sectors give the eigenvalues $0,-a,-b,-a-b+c$ directly.
+This supplies compatible two-prime residue dynamics under CRT with a
+variable coupling; it is not an infinite adelic construction.
+
+\begin{numerical}[Finite arithmetic symmetry checks]
+\label{num:bc-symmetry-generators}
+\claimstatus{num:bc-symmetry-generators}{numerical}
+The script \path{scripts/bc_symmetry_generators.py} passes $427$ checks;
+its output is \path{outputs/bc_symmetry_generators.txt}. The checks cover
+$p=3,5,7$: BC residue probabilities against Hurwitz sums, invariant matrix
+extensions, orbit dimensions against independent Burnside counts,
+conditional and finite-time Choi positivity, trace preservation,
+stationarity and uniqueness, covariance, Egorov, odd-sector spectra, and
+two-prime restrictions. The four cone dimensions are respectively
+$(32,4,4,1)$, $(144,8,6,1)$, and $(384,12,8,1)$.
+\end{numerical}
+
+\subsection{What is still missing}
+
+The finite inverse problem is now a concrete positive-semidefinite cone.
+The missing input is a representation or CP comparison map connecting the
+full BC algebra, including its prime isometries, to the scattering bond,
+with compatible local Weil data. It must select the permitted commuting
+symmetries and constrain the generator blocks and the inter-prime couplings.
+The $\Gamma_0(N)$ character/scattering computation of
+\cref{conj:galois-graded-bond} remains open. Prime-power levels, the real
+place, metaplectic compatibility and the critical operator-algebra limit
+have not been constructed. A chosen graded transfer spectrum alone does
+not identify a physical cMPS norm.
+
+The earlier reset test $-(B\BCbond+\BCbond B^*)\ge0$ is a criterion for a fixed
+finite no-event generator $B$ and scalar reset, when its exit flux is
+positive. It is not a no-go criterion for the full cone in
+\cref{thm:bc-covariant-gks-cone}, where $B$ and all jumps may vary.

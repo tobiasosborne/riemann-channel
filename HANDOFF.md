@@ -2,12 +2,12 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-13, midday)
+## Current state (2026-09-13, session close: finite symmetry and graded cMPS)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
-is exploratory. No claims are registered, no checker discipline is in force
-yet. The full conversation is in `transcript/transcript.md` (rendered from
+is exploratory. The lab book, claim databases, and parity/CI gate described
+below are in force. The founding conversation is in `transcript/transcript.md` (rendered from
 the raw session log, which is kept out of the repository).
 
 ### CENTRAL PRIORITY (set by TJO, 2026-09-12 evening): the Bost–Connes reframe
@@ -85,6 +85,118 @@ character reading of the grading and conj:galois-graded-bond.
 0d. **Mayer cusp tail** (`notes/resonances/astra-freeassoc.md` §3): unchanged.
 0e. **Suzuki's prime-defined screw kernel** (§16.3): unchanged.
 0f. **Literature:** Bonthonneau–Weich; Lewis–Zagier, Chang–Mayer: unchanged.
+
+### Finite BC symmetry calculation (2026-09-13, Codex)
+
+TJO clarified the inverse problem: the BC state is the stationary state of an
+unknown Lindbladian, constrained by Galois symmetry and adelic symplectic
+structure. The no-event generator and the jumps are BOTH unknown. The
+fixed-B scalar-reset positivity test is one ansatz, not the whole problem.
+
+First finite constraint calculation completed: `notes/bc-symmetry-generators.md`
+(full arguments B0–B6), shards 02e/04d, `scripts/bc_symmetry_generators.py`,
+captured output, four source quotes reused from local TeX. New arguments
+are **unreviewed**, hence `sketched` in the database; no independent review
+was performed or implied. Nine new claim rows, four definitions.
+
+- The critical BC restriction to finite phases is uniform. Extending those
+  probabilities to M_p adds state data. No finite-dimensional unital
+  representation of the full BC algebra retains its nontrivial phase
+  observables: finite isometries are unitary, forcing e(r)=I.
+- At odd prime p and the critical tracial extension I/p, the exact real
+  span dimensions of GKLS cones are (p−1)(p+1)^2 for Galois covariance,
+  2p−2 for full linear Weil covariance, p+1 for Weyl+Galois covariance,
+  and 1 for Weyl+Weil covariance. The cone is linear constraints plus
+  conditional Choi positivity; positivity has an interior point.
+- Full Weyl-translation covariance is an EXTRA assumption, not synonymous
+  with carrying the symplectic structure. With Galois it makes the spectrum
+  real; with full Weil it leaves only depolarization.
+- Full linear Weil covariance alone permits unequal odd decay rates:
+  an explicit p=7 conditional-Choi-positive perturbation has odd
+  eigenvalues −1−epsilon and −1+epsilon/2 ± i sqrt(3)epsilon/2,
+  epsilon=1/196, each eight times. No zero positions were fitted.
+- Two-prime covariant CP couplings can vary while both one-prime dynamics
+  remain fixed. CRT marginal compatibility does not select the coupling.
+- 427 numerical checks at p=3,5,7, including independent orbit/Burnside
+  counts, actual finite-time Choi positivity, state extensions, odd spectra,
+  and two-prime restrictions. The script is included in local CI.
+
+**Next:** an arithmetic representation or CP comparison map connecting the
+finite phase/Weil data and the full BC prime isometries to the scattering
+bond. This should specify which symmetries commute with the dynamics and
+which act covariantly on the construction, and constrain the Kossakowski
+blocks and inter-prime couplings. The Gamma_0(N) scattering/character
+calculation above remains OPEN; this finite matrix calculation does not
+complete it. Prime powers, the real place, metaplectic compatibility,
+the critical operator-algebra limit, and the physical cMPS remain open.
+The new statements should receive independent review before promotion.
+
+### Latest discussion: Ramanujan conditions in Q and R (2026-09-13)
+
+TJO asked for the shape of the Ramanujan property directly in the matrices
+of a boson–fermion cMPS. The response is preserved in
+`outputs/ramanujan-boson-fermion-cmps.md`; the human-readable deliverable is
+`outputs/ramanujan-boson-fermion-cmps-fmd.pdf`, with its self-contained HTML
+at the same stem. This is an unreviewed discussion export, not a new set of
+registered/proved lab-book claims.
+
+**Refinement of the preceding calculation:** the finite covariant-GKLS
+cone did NOT impose regular mixed-cMPS relations. For the standard
+finite-kinetic-energy regularity condition, Q is even, R_b even, R_f odd,
+and R_alpha R_beta = (−1)^(p_alpha p_beta) R_beta R_alpha; in particular
+R_f^2=0. Canonical normalisation is Q = −iH − (1/2) sum R_alpha^dag R_alpha.
+Thus parity covariance alone does not make a generator a regular cMPS of
+the specified species. Source: the existing local cMPS calculus paper,
+1211.3935, `calculus.tex`, regularity and transfer sections.
+
+The observable-convention fermionic correlation transfer is
+K_f(X) = Q^dag X + XQ + sum_b R_b^dag X R_b − sum_f R_f^dag X R_f.
+The ordinary norm-transfer generator has PLUS signs for every species and
+generates a CP semigroup; multiplication X -> PX intertwines it with K_f.
+The candidate arithmetic sector E must be identified separately from the
+entire odd operator space. For A = K_f restricted to E, the one-sided
+bound is Re spec A <= −Delta; an additional reflection
+lambda -> −2Delta − conjugate(lambda) makes this a line condition.
+In the Riemann convention Delta=1/4. For a finite block, the concrete test
+A^dag G + G A = −2Delta G with G>0 is equivalent to the line spectrum AND
+diagonalizability. The metric G is additional structure; it is not
+automatically the inner product from the BC stationary state.
+
+A regular two-fermion example was checked in-session, numerically and by
+an exact SymPy characteristic polynomial: R_j=sqrt(kappa)c_j,
+H=g(c_1^dag c_2^dag+c_2c_1), Q=−iH−(kappa/2)(n_1+n_2).
+The elementary odd span of c_j,c_j^dag has rates −kappa/2 ± ig;
+the full odd space also has −3kappa/2 ± ig. The exact full odd polynomial
+is [((z+kappa/2)^2+g^2)((z+3kappa/2)^2+g^2)]^2.
+These scratch checks are described in the export, not yet a registered
+evidence script or independently reviewed theorem.
+
+The stationary-state Dirichlet identity for K_f uses commutators with R_b
+and anticommutators with R_f. Regularity makes it vanish at X=R_f, so a
+strict instantaneous coercivity bound in that metric cannot hold on a
+sector containing an R_f with nonzero stationary-state norm (in particular
+for a nonzero R_f and faithful stationary density). A spectral gap or a
+different positive metric can still exist.
+
+**Next mathematical work, when requested:** impose the regular graded
+Q,R algebra together with BC stationarity and the arithmetic covariance;
+identify the sector E from the explicit formula/scattering comparison;
+seek the positive metric or the one-sided bound plus arithmetic duality.
+The full adelic representation, domains and metric completion remain open.
+The finite-GKLS counterexample above must not be presented as a
+counterexample within the narrower regular mixed-cMPS class.
+
+**Export tooling:** at TJO's request a Luna subagent installed the official
+checksum-verified `fmd` 0.4.2 at `/home/tobiasosborne/.local/bin/fmd`.
+This version takes `$...$` / `$$...$$` math delimiters. Its HTML renders
+MathML, but native PDF leaves LaTeX as text, so the delivered PDF was made
+by rendering HTML with fmd and printing it with headless Chromium. The
+unsupported decorative `\\boxed` wrapper was removed without changing its
+equation. A wording correction distinguishes the CP semigroup from its
+generator. All 37 expressions were rendered and the two-page PDF inspected.
+
+TJO's closing instruction is to update this handoff, commit and push the
+session changes, then stop work. Do not autonomously resume the research.
 
 ### Sidequest 2026-09-13: Ihara zeta functions of simplicial complexes (done)
 

@@ -131,6 +131,12 @@ Notes, in reading order:
   Kraus dichotomy: inverse pairing buys the functional equation, adjoint
   pairing buys reality, unitarity buys both); proofs by the codex prover in
   `notes/weil-positivity/`, sources in `notes/extract/`.
+- `notes/bc-symmetry-generators.md`: the finite inverse problem with the BC
+  phase state stationary and Galois/Weil covariance; the exact GKLS cone,
+  remaining dimensions, the extra Weyl-covariance collapse, a symplectic
+  odd-sector counterexample, and compatible two-prime couplings. Written
+  arguments await independent review; these are finite models, not the
+  adelic bond or a scattering identification.
 
 ## Reproduce
 
@@ -143,6 +149,7 @@ Notes, in reading order:
     python3 scripts/artin_schreier_mps.py  # Artin–Schreier transfer matrices
     python3 scripts/qihara_general.py      # Ihara–Bass for arbitrary Kraus operators (float + exact)
     python3 scripts/weil_positivity.py     # Weil positivity: one-sided bound, duality, Kraus dichotomy, Bochner
+    python3 scripts/bc_symmetry_generators.py # finite BC state/symmetry generator cones and obstructions
     refs/fetch_sources.sh                  # re-fetch the quoted arXiv TeX sources
 
 Notes render with `fmd-report notes/<name>.md -o notes/<name>.html`,
@@ -150,10 +157,11 @@ which verifies that every equation typeset.
 
 ## Conventions
 
-Sober and accretive. Statements in `notes/` are labelled established or
-not established; numerical checks are not proofs; no claims are
-registered and no checker discipline is in force. The transcript is the
-primary record and the notes are its distillation.
+Sober and accretive. Notes remain exploratory; numerical checks are not
+proofs. The sharded lab book and databases carry the current claim statuses,
+with independent review required for `proved` and the gate enforcing their
+consistency. The transcript records the founding discussion; dated worklogs
+and `HANDOFF.md` record subsequent work and corrections.
 
 ## Authorship and license
 

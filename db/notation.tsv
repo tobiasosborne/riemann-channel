@@ -1,4 +1,10 @@
 macro	latex	meaning	domain	defined_in	note
+BCbond	\varrho_{\mathrm b}	prescribed stationary density in a finite BC bond model	finite BC states	RC-02E	distinct from the arbitrary channel input X
+BCres	\varrho^{\mathrm{res}}_{#1}	diagonal matrix extension of a finite BC phase marginal	finite BC states	RC-02E	not a representation of the full BC algebra
+Par	\mathsf P	local parity operator x -> -x on l^2(F_p)	finite Weil model	RC-02E	operator parity is conjugation by this involution
+Gcone	\mathfrak C	cone of stationary covariant finite GKLS generators	finite channels	RC-02E	dimension means real linear-span dimension
+Choi	\mathsf C	unnormalised Choi matrix of a linear map	finite channels	RC-02E	conditional positivity on the maximally entangled vector complement
+Dep	\mathcal D	completely depolarizing channel D_d(X) = Tr(X) I/d	finite channels	RC-02E	distinct from the deformed degree operator Dop(u)
 Tr	\operatorname{Tr}	trace	general	RC-01	-
 Ad	\operatorname{Ad}	adjoint action, Ad(A): X -> A X A^dagger	channels	RC-01	column stacking: Ad(A) = bar A (x) A
 re	\operatorname{Re}	real part	general	RC-01	-

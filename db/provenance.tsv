@@ -1,4 +1,8 @@
 id	key	file	lines	quote	used_by
+prov:bcsym-bc-phase	math/0404128	houcheschapter1final7.tex	1824-1827	\varphi_{\beta} \left( e(a/b) \right) = b^{-\beta} \prod_{p \, {\rm prime,} \, p \mid b} \left( \frac{1 - p^{\beta - 1}}{1 - p^{-1}} \right) \, .	prop:bc-residue-state
+prov:bcsym-bc-isometry	math/0404128	houcheschapter1final7.tex	1767	\mu_n^*\mu_n =1	prop:bc-no-finite-phase-representation
+prov:bcsym-bc-transfer	math/0404128	houcheschapter1final7.tex	1773	\mu_n\, e(r)\, \mu_n^* = \frac{1}{n} \sum_{ns=r} e(s).	prop:bc-no-finite-phase-representation
+prov:bcsym-gkls-form	1707.02266	TORUN.tex	160	\gen\rho&=&K\rho+\rho K^*+\sum_\alpha L_\alpha\rho L_\alpha^*\qquad\mbox{with}\\	thm:bc-covariant-gks-cone
 prov:mo22-invertible	2204.06424	main.tex	476	Suppose $X_{e}$ $(e\in E)$ are invertible matrices of size $K$ living on each edge.	cit:mo-extended-ihara
 prov:mo22-def	2204.06424	main.tex	479-482	\zeta_G(q;X) \equiv \det\Bigl( \bs{1}_{2n_E}\otimes\bs{1}_{K} - q W_X \Bigr)^{-1}	cit:mo-extended-ihara
 prov:mo22-trace	2204.06424	main.tex	503-505	\zeta_G(q;X) = \exp\lrpar{ \sum_{k=1}^\infty \frac{1}{k}\sum_{C\in R_k}\Tr P_{C}(X) }	cit:mo-extended-ihara
