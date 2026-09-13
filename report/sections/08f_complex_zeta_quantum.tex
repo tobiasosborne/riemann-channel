@@ -1,0 +1,271 @@
+% SHARD-ID: RC-08F-COMPLEX-ZETA-QUANTUM
+% SHARD-TITLE: An Ihara Zeta for Simplicial Complexes III: Voltage Twists, Quantum Expanders, and the A-tilde-2 Numerics
+% SHARD-SUMMARY: The quantum layer of the complex-zeta campaign: a representation connection on the full Cayley complex is pure gauge, so the genuine Artin object is the voltage quotient and its blocks; Harrow-type transfer makes every Ramanujan complex yield Ramanujan quantum expanders of type A-tilde automatically, with the exceptional space, not the fixed-point space, as the right thing to remove.
+% SHARD-SUMMARY: Higher-rank RH is one-sided in the correct variable, the interior of the band is genuinely occupied, and no universal duality closes it, so what remains is Weil-positivity-as-bound applied block by block.
+% SHARD-SUMMARY: Exact numerics on the smallest A-tilde-2 Ramanujan complex, the LSV Cayley complex of PGL_3(F_3) on 5616 vertices: the corrected Kang-Li-Wang identity to u^18 on the base and its type-preserving cover, the three spectral circles exactly on two blocks, and the 12-dimensional quantum twist inside the deltoid.
+% SHARD-KEYWORDS: voltage quotient, Artin block, pure gauge, Euler factor bookkeeping, Ramanujan quantum expander, Harrow transfer, one-sided RH, Weil positivity, PGL_3(F_3), LSV Cayley complex, deltoid
+% SHARD-NOTES: notes/complex-zeta.md
+% SHARD-SCRIPTS: scripts/a2_complex_zeta.py
+
+\section{An Ihara Zeta for Complexes III: Twists, Quantum Expanders, Numerics}
+\label{sec:complex-zeta-quantum}
+
+The twisted layer of \cref{sec:complex-zeta-graded}. Arbitrary weights already
+keep the compression (\cref{thm:twisted-bass-schur}) and already give
+nonnegative ring traces (\cref{thm:kraus-ring-positivity}); what needs care is
+\emph{which} twisted object is the Artin one, and what a Ramanujan complex buys
+for a channel.
+
+\subsection{Gauge triviality and the voltage quotient}
+\begin{proposition}[A representation connection on the full complex is pure gauge]
+\label{prop:pure-gauge-full-complex}
+\claimstatus{prop:pure-gauge-full-complex}{proved}
+On a Cayley complex the forward weights $E_{(g,gs)} = \hol(s)$ are generally
+\emph{not} flat (flatness asks $\hol(t)\hol(s) = \hol(st)$); the covariant
+convention is $\hol(s^{-1})$, and those weights are pure gauge, $F_g =
+\hol(g^{-1})$, so $\det(I-\uz T^E_k) = \det(I-\uz T_k)^{\dim V}$: every closed
+straight walk of the full complex has identity holonomy. The four-cycle with
+$G = \mathbb Z/4$ and one-dimensional $\pi$ separates the full twist
+$(1-\uz^4)^2$ from the trivial-block determinant $(1-\uz)^2$, refuting the
+draft's claim that the full twist is a representation block.
+\end{proposition}
+
+\begin{theorem}[The Artin decomposition of a voltage quotient]
+\label{thm:artin-voltage-decomposition}
+\claimstatus{thm:artin-voltage-decomposition}{proved}
+With the data of \cref{def:voltage-quotient} and a free action on states,
+$\det(I-s_k\mathsf T_k(\uz)) = \prod_{\hol}
+\det(I-s_k\mathsf T_{k,\hol}(\uz))^{d_\hol}$. For
+$R = \bigoplus_\hol a_\hol\hol$ the Artin determinant has exponents
+$a_\hol$, not $d_\hol$: $R = \pi\otimes\bar\pi$ need not embed in a single
+regular representation (for $\pi = 1\oplus1$, $R = 1^{\oplus4}$). What always
+transfers is spectral support. An equivariant \emph{matrix} identity restricts
+to every block; a scalar determinant equality need not.
+\end{theorem}
+
+\begin{theorem}[Exact Euler-factor bookkeeping on finite-group blocks]
+\label{thm:euler-block-bookkeeping}
+\claimstatus{thm:euler-block-bookkeeping}{proved-conditional}
+Under H-KY and H-KY-LOCAL, with $w_{i,\hol} = \det(W_i|C_{i,\hol})$,
+$\gzeta_\hol(\uz) = F_\hol(\uz)/\det(P_n|C_{0,\hol})$ where
+$F_\hol = c^{m_{0,\hol}}\prod_{i\ge1}w_{i,\hol}^{(-1)^i}$ and
+$\prod_\hol F_\hol^{d_\hol} = c^{\chi(X)}$. Only if the action is free
+on \emph{unpointed} simplices does this collapse to
+$F_\hol = c^{d_\hol\chi/|G|}$; with simplex stabilisers the fractional
+power is not a rational determinant and must not be asserted.
+\end{theorem}
+
+\subsection{Quantum expanders of type $\tilde A_{n-1}$}
+\begin{theorem}[Harrow-type transfer, with the correct exceptional space]
+\label{thm:quantum-vertex-transfer}
+\claimstatus{thm:quantum-vertex-transfer}{proved-conditional}
+Under H-LSV, for every finite-dimensional unitary $\pi$: (i) the $\chan_k$ are
+commuting normal unital trace-preserving channels with $\chan_k^* =
+\chan_{n-k}$, whose common fixed space is the commutant $\pi(G)'$, of dimension
+one exactly when $\pi$ is irreducible; (ii) they satisfy
+\cref{def:ramanujan-quantum-expander-a2} relative to $\mathcal E_R$; (iii)
+$P_{n,R}(\uz)$ restricted to $\mathcal E_R^{\perp}$ has all zeros on
+$|\uz| = \qs^{-(n-1)/2}$; (iv) under H-KL the rank-three quotient Artin flow
+factors inherit the radii of \cref{cit:kl-rh-four-way}; (v) under H-KY, H-STRONG
+and H-LLP, general rank gives only the one-sided bound of
+\cref{prop:one-sided-rh-variable}. Removing only the channel fixed points, as
+the draft did, leaves type characters that violate the tempered bound.
+\end{theorem}
+
+\begin{proposition}[The exact converse criterion; one faithful $\pi$ is not enough]
+\label{prop:coverage-converse}
+\claimstatus{prop:coverage-converse}{proved}
+Let $\mathcal B_X$ be the irreducibles with a nonexceptional joint eigenvalue
+outside $\mathrm{Aspec}_n$. Then $R$ is Ramanujan iff
+$\mathcal B_X\cap\operatorname{supp}(R) = \varnothing$, and $X$ is
+vertex-Ramanujan iff $\mathcal B_X = \varnothing$; coverage of every
+nonexceptional irreducible by $\pi\otimes\bar\pi$ is sufficient for the
+converse. Faithfulness is not: for $G = \mathbb Z/28$, $S = \{\pm1,\pm3\}$, the
+Cayley graph is not Ramanujan yet a faithful character has
+$\pi\otimes\bar\pi = 1$ and a vacuous quantum condition.
+\end{proposition}
+
+\begin{proposition}[One-sided RH, in the correct variable]
+\label{prop:one-sided-rh-variable}
+\claimstatus{prop:one-sided-rh-variable}{proved-conditional}
+Under H-LLP, for a $b$-regular flow with zeta $\det(I-\uz T)^{-1}$, a pole at
+$\uz = b^{-s}$ has $\re s = 1$ when $|\lambda| = b$ and $\re s\le\frac12$ when
+$|\lambda|\le\sqrt b$, the imaginary part being defined only modulo
+$2\pi/\log b$; the source's printed $|s| = 1$ cannot literally replace
+$\re s = 1$. Under H-KAMBER the actual nontrivial pole radii satisfy
+$|\uz|\ge\qs^{-(p-1)/p}$: the quoted eigenvalue bound inverts.
+\end{proposition}
+
+\begin{proposition}[Which rank-three factors have a duality]
+\label{prop:rank-three-dualities}
+\claimstatus{prop:rank-three-dualities}{proved-conditional}
+With $A_2 = A_1^*$ and $p_a(\uz) = 1-a\uz+\qs\bar a\uz^2-\qs^3\uz^3$, the zero
+multiset is invariant under $\uz\mapsto\qs^{-2}/\bar\uz$, before imposing
+Ramanujan; the principal-series parts of the edge and chamber factors inherit
+dualities at $\qs^{-2}$ and $\qs^{-1}$. The \emph{full} edge and chamber factors
+do not: a tempered nonspherical block has one root at radius $\qs^{-1/2}$ and
+two at $\qs^{-1/4}$, so no $\uz\mapsto c/\bar\uz$ or $\uz\mapsto c/\uz$ can fix
+or exchange them. Higher-rank RH has no universal functional equation.
+\end{proposition}
+
+\begin{proposition}[Weil positivity on a retained block is a bound until a duality is supplied]
+\label{prop:weil-positivity-blocks}
+\claimstatus{prop:weil-positivity-blocks}{proved}
+For a retained finite block $M$ with algebraic eigenvalue multiset $\{\mu_j\}$ % bare-ok
+and $r>0$, the sequence $\nu_m = \sum_j(\mu_j/r)^m$ is positive definite exactly % bare-ok
+when $|\mu_j|\le r$ throughout; invariance of the multiset under % bare-ok
+$\mu\mapsto r^2/\bar\mu$ then forces $|\mu| = r$. This is the finite statement % bare-ok
+of \cref{thm:weil-positivity-finite}, applied to each retained \emph{ordinary}
+block, and it does not transfer automatically to an alternating product with
+negative spectral multiplicities.
+\end{proposition}
+
+\subsection{Numerics on the smallest $\tilde A_2$ Ramanujan complex}
+\begin{numerical}[The smallest $\tilde A_2$ Ramanujan complex]
+\label{num:a2-complex}
+\claimstatus{num:a2-complex}{numerical}
+\texttt{scripts/a2\_complex\_zeta.py} (\texttt{outputs/a2\_complex\_zeta.txt}),
+LSV algorithm at $\qs = 3$, $d = 3$, $e = 1$: $|S_1| = 13$,
+$\langle S_1\rangle = \mathrm{PGL}_3(\Fq[3])$ of order $5616$, $S_2 = S_1^{-1}$,
+$f = (5616, 73008, 97344)$, $\chi = 29952 = |G|\cdot16/3$, every vertex link the
+incidence graph of $\mathrm{PG}(2,3)$ ($26$ vertices, $4$-regular, bipartite,
+girth $6$). Two facts not anticipated in the brief: the complex is \emph{not}
+$3$-colourable ($\mathrm{PGL}_3(\Fq[3])$ is simple), so Kang--Li's
+type-preservation hypothesis (I) fails on it; and all $13$ generators have order
+$3$, so the $24336$ triangles carry $\mathbb Z/3$ stabilisers and $G$ is not
+free on unpointed $2$-cells. A type-preserving $3$-fold cover with
+$f_0 = 16848$, $\chi = 89856$ is built alongside.
+\end{numerical}
+
+\begin{numerical}[The vertex spectrum is tempered]
+\label{num:a2-vertex-spectrum}
+\claimstatus{num:a2-vertex-spectrum}{numerical}
+$A_2 = A_1^t$ exactly, $A_1$ normal, $[A_1,A_2] = 0$ (exact sparse check). Of
+the $5616$ eigenvalues of $A_1$ exactly one is trivial ($\lambda = 13$); all
+$5615$ others are tempered by Cohn's self-inversive criterion, maximum defect
+$2.0\cdot10^{-14}$, and $\max|\lambda| = 7.126860684 < 3\qs = 9$. So the complex
+is Ramanujan and \cref{cit:kl-rh-four-way}(2) holds outright.
+\end{numerical}
+
+\begin{numerical}[The corrected identity, and the drafted one failing]
+\label{num:a2-identity}
+\claimstatus{num:a2-identity}{numerical}
+Traces computed exactly as integers by the free $G$-action: $\Tr L_E^m = 0$ for
+$m\le5$, then $657072$ at $m = 6$ up to $1.5\cdot10^{17}$ at $m = 18$;
+$\Tr L_B^m = 0$ for $m\le14$, then $16426800$ at $m = 15$. Verified exactly to
+$\uz^{18}$, on the $5616$-vertex base \emph{and} on the $16848$-vertex
+type-preserving cover:
+$\det P_3(\uz)\det(I+\uz L_B) = (1-\uz^3)^{\chi}\det(I-\uz L_E)\det(I-\uz^2L_E^t)$,
+with degree $308880$ on both sides and the residual fitting $\chi$ exactly
+($29952$, resp.\ $89856$) at every order. The placement written in the
+orchestrator's brief fails at $\uz^3$ (residual $-59904$) and fails the degree
+count ($398736$ against $219024$); $\det(I-\uz L_B)$ in place of
+$\det(I+\uz L_B)$ first fails at $\uz^{15}$. The identity holds on the base even
+though type preservation fails there.
+\end{numerical}
+
+\begin{numerical}[Flow operators: the prover's cross-checks]
+\label{num:a2-flow-operators}
+\claimstatus{num:a2-flow-operators}{numerical}
+$L_E$ has outdegree exactly $\qs^2 = 9$ and $L_B$ outdegree $\qs = 3$, whereas
+the unrestricted ordered edge rule has outdegree $2\qs^2+\qs = 21$: it is not
+Kang--Li's operator. On all six orderings of a chamber,
+$\Tr T_2^m = 2\Tr L_B^m$ for $m = 1,\dots,18$, i.e.
+$\det(I+\uz T_2) = \det(I+\uz L_B)^2$. On $\partial\Delta^3$, $T_1 = 0$ and % bare-ok
+$T_2$ is a permutation of cycle type $4^6$. All three confirm
+\cref{thm:ordered-vs-building,prop:tetrahedron-obstruction}.
+\end{numerical}
+
+\begin{numerical}[The three circles, exactly, on two blocks]
+\label{num:a2-block-spectra}
+\claimstatus{num:a2-block-spectra}{numerical}
+Trivial block: $|\lambda(L_E)|\in\{9\ (\times1),\sqrt3\ (\times12)\}$ and
+$|\lambda(L_B)|\in\{3,\sqrt3\ (\times12),3^{1/4}\ (\times24),1\ (\times15)\}$.
+Twelve-dimensional block: $|\lambda(L_E)|\in\{3\ (\times36),\sqrt3\
+(\times120)\}$ and $|\lambda(L_B)|\in\{\sqrt3\ (\times192),3^{1/4}\
+(\times240),1\ (\times192)\}$. Exactly the radii $\{1,3^{1/4},3^{1/2}\}$ for
+$L_B$ and $\{3,\sqrt3\}$ for $L_E$ predicted by \cref{cit:kl-rh-four-way}, and
+nothing else; on the full space ARPACK's forty largest moduli for $L_E$ are $9$
+once and $3$ forty times.
+\end{numerical}
+
+\begin{numerical}[The twelve-dimensional quantum twist]
+\label{num:a2-quantum-twist}
+\claimstatus{num:a2-quantum-twist}{numerical}
+$\pi$ the $12$-dimensional irrep (the permutation action on the $13$ points of
+$\mathbb P^2(\Fq[3])$ minus the constant). The channels
+$\chan_k(\dm) = \frac1{13}\sum_{s\in S_k}\pi(s)\dm\pi(s)^\dagger$ on $\Mn[12]$
+are unital, trace-preserving and commuting, with exactly one eigenvalue $1$;
+the largest nontrivial $|13\mu| = 6.481723$, below the classical deltoid radius % bare-ok
+$3\qs = 9$ and below Hastings' bound $2\sqrt{\Dk-1} = 6.928203$ at $\Dk = 13$.
+All $143$ nontrivial joint eigenvalues lie inside the tempered deltoid (Cohn
+defect $2.2\cdot10^{-15}$). This is a Ramanujan quantum expander of type
+$\tilde A_2$, and it cannot fail: $\chan_1 = A_1^{(\pi\otimes\bar\pi)}/13$, so
+its spectrum is a sub-multiset of $\operatorname{spec}(A_1)$.
+\end{numerical}
+
+\begin{numerical}[Gauge triviality, voltage blocks, and the Euler bookkeeping]
+\label{num:a2-voltage-euler}
+\claimstatus{num:a2-voltage-euler}{numerical}
+The forward weights $\pi(s)$ are not flat ($39$ of the $52$ chambers fail
+$\pi(t)\pi(s) = \pi(st)$); the covariant weights $\pi(s^{-1})$ on the full
+complex are pure gauge, $\det(I-\uz T^\pi_E) = \det(I-\uz L_E)^{12}$. The
+genuine Artin object is the voltage quotient --- $13$ states, $9$ voltaged
+successors each --- whose block traces match the character sums and differ from
+the gauge-trivial twist, confirming
+\cref{prop:pure-gauge-full-complex,thm:artin-voltage-decomposition}. Writing the
+residual as $(1-\uz)^a(1-\uz^3)^c$: trivial block $(13,1)$, $\nu = 1\oplus\pi$
+block $(13,65)$, $\pi$ block $(0,64)$ --- so for $\pi$ the naive
+$c = \chi\dim\pi/|G| = 64$ is exactly right, while the whole anomaly sits in the
+trivial block, where $\chi/|G| = 16/3$ is replaced by
+$(1-\uz)^{13}(1-\uz^3)^1$. For the trivial block this is an exact polynomial
+identity of degree $55$ on both sides. This is
+\cref{thm:euler-block-bookkeeping}'s stabiliser caveat, seen.
+\end{numerical}
+
+\subsection{What this does and does not give}
+
+The natural object is \cref{def:graded-geodesic-determinant}: a graded geodesic
+determinant of a complex \emph{with specified geodesic data} --- states,
+successor incidences, algebraic lengths, transports --- and not an unqualified
+``Ihara zeta of every complex''. On an arbitrary complex what is universal is
+\cref{thm:universal-bass-schur}, a rational compression that still mentions the
+forbidden transitions; the polynomial vertex collapse is a \emph{building}
+phenomenon, and \cref{prop:tetrahedron-obstruction} shows it fails on a
+four-vertex sphere. Opposition, not non-incidence, is the building's successor
+rule (\cref{thm:ordered-vs-building}), and the $\uz^2$ is a length.
+
+The odd sector is real as a graded \emph{presentation} and unreal as a divisor:
+\cref{thm:graded-superdeterminant} is exact, but on the building vertex side the
+chamber factor cancels completely (\cref{prop:vertex-l-no-zeros}), so ``fermionic
+zeros'' names a net odd multiplicity that must be checked after cancellation.
+The parallel with the continuous Ruelle picture (\cref{cit:dz-order-chi}) and
+with Knill's supertrace (\cref{cit:knill-sdet}) is parity and alternating
+structure, not an identification of spaces or weights
+(\cref{prop:parity-only,prop:three-circles}).
+
+The quantum version is the voltage-quotient Artin block, not a connection on the
+full cover, which is pure gauge (\cref{prop:pure-gauge-full-complex}). Harrow
+transfer then gives Ramanujan quantum expanders of type $\tilde A_2$ for free
+from a Ramanujan complex (\cref{thm:quantum-vertex-transfer},
+\cref{num:a2-quantum-twist}) --- the channel adds no spectral values. But
+higher-rank RH is one-sided (\cref{prop:one-sided-rh-variable}), the interior of
+the band is genuinely occupied (\cref{cit:llp-one-sided-rh}), and there is no
+universal duality to close it (\cref{prop:rank-three-dualities}): what one has is
+Weil-positivity-as-bound, \cref{thm:weil-positivity-finite} applied block by
+block (\cref{prop:weil-positivity-blocks}). None of this touches the Riemann
+side directly. It is a supply of exactly-solvable graded transfer operators with
+a Ramanujan property, not a channel whose zeta is $\zeta(s)$.
+
+\begin{conjecture}[Characterising vertex collapse for a general complex]
+\label{conj:vertex-collapse-characterisation}
+\claimstatus{conj:vertex-collapse-characterisation}{conjectured}
+There is a combinatorial characterisation of the finite complexes $X$ for which
+$B_X(\uz) = (1-\uz^{d+1})^{\chi(X)}/\gzeta_{\mathrm{ord}}(X,\uz)$ is the
+determinant of a matrix polynomial $I-\uz A+\sum_{j\ge2}\uz^jQ_{j-1}$ with
+$Q_{j-1}$ built from local link data. Building quotients are sufficient
+(H-KY); \cref{prop:tetrahedron-obstruction} gives a necessary polynomiality
+condition; matching generalised-polygon link parameters is \emph{not} known to
+suffice, and no recognition theorem for Bruhat--Tits universal covers is assumed
+here.
+\end{conjecture}

@@ -1,0 +1,320 @@
+% SHARD-ID: RC-08D-COMPLEX-ZETA
+% SHARD-TITLE: An Ihara Zeta for Simplicial Complexes I: What the Literature Has, and the Two Flows
+% SHARD-SUMMARY: Settles the grounding question of 2026-09-13: an Ihara-type zeta with a Bass identity and an RH-iff-Ramanujan theorem exists for finite quotients of affine buildings and nowhere else; the byte-cited record runs from Kang-Li's PGL_3 identity and its four-way RH through Kang-Yu's all-rank alternating product to Kamber's L_p criterion, with Storm's hypergraph zeta collapsing to a bipartite graph zeta and the combinatorial Ruelle zeta of a triangulation carrying no Ramanujan notion at all.
+% SHARD-SUMMARY: Records the graded reading as the literature states it (Deitmar's alternating product, Dyatlov-Zworski's order minus chi, Knill's super pseudodeterminant, Matsuura-Ohta's fermionic Bass proof), then the prover's hypothesis register as assumption rows, and proves the exact comparison between the ordered-cell flow of an arbitrary complex and the pointed opposition flow of a building.
+% SHARD-KEYWORDS: complex zeta, Bruhat-Tits building, Kang-Li, Kang-Yu, geodesic flow, Ramanujan complex, hypergraph zeta, combinatorial Ruelle zeta, analytic torsion, opposition, algebraic length, hypothesis register
+% SHARD-NOTES: notes/complex-zeta.md
+% SHARD-SCRIPTS: scripts/a2_complex_zeta.py
+
+\section{An Ihara Zeta for Complexes I: the Literature and the Two Flows}
+\label{sec:complex-zeta}
+
+TJO's question of 2026-09-13 was whether the Hashimoto operator, the Bass
+identity and ``RH $\Leftrightarrow$ Ramanujan'' survive when a graph becomes a
+finite simplicial complex, and whether the answer grades by cell dimension into
+an even and an odd sector. The literature answer is negative in that generality
+and positive on a thin class: finite quotients of affine buildings.
+
+\emph{Status.} The theorems here and in
+\cref{sec:complex-zeta-graded,sec:complex-zeta-quantum} are the
+prover's, \texttt{codex:gpt-6-astra}
+(\texttt{notes/complex-zeta/astra-proofs.md}, correction ledger T8.2, hypothesis
+register T8.3), carried as \texttt{sketched} pending the adversarial review; the
+numerics are an independent third agent's. Each \texttt{asm:} row is an external
+theorem used but not reproved, byte-cited in \texttt{db/claims.tsv}.
+
+\subsection{The prototype: $\mathrm{PGL}_3$}
+
+\begin{citedfact}[Kang--Li: the $\mathrm{PGL}_3$ complex zeta and its Bass identity]
+\label{cit:kl-identity}
+\claimstatus{cit:kl-identity}{cited}\sloppy
+For a torsion-free cocompact type-preserving $\Gamma\subset\mathrm{PGL}_3(F)$,
+the zeta of $X_\Gamma$ counts tailless primitive closed geodesics made of
+same-type edges, by algebraic length (\texttt{0804.2305:main.tex:215-220}), and
+{\small\texttt{\detokenize{Z(X_\G, u) = \frac{(1-u^3)^{\chi(X_\G)}}{\det(I-A_1u+qA_2u^2-q^3 u^3I)\det(I + L_Bu)},}}}
+(\texttt{0804.2305:main.tex:236-239}); equivalently $1/D_E$ with
+$D_E = \det(I-L_E\uz)\det(I-L_E^t\uz^2)$ (\texttt{:247-248}). Kang--Li--Wang
+remove the regularity hypothesis and clear denominators
+(\texttt{0809.1401v1:main.tex:1414-1416}; operators at \texttt{:342-368}). Note
+the base $(1-\uz^3)$, the \emph{plus} sign in $\det(I+L_B\uz)$ and the $\uz^2$ on
+the transposed edge factor \cite{kangli2014zeta,kangliwang2010zeta}.
+\end{citedfact}
+
+\begin{citedfact}[Kang--Li--Wang: RH is four-way equivalent to Ramanujan, on three circles]
+\label{cit:kl-rh-four-way}
+\claimstatus{cit:kl-rh-four-way}{cited}\sloppy
+{\small\texttt{\detokenize{$X_\G$ is a Ramanujan complex; \item[(2)] The nontrivial zeros of $\det(I-A_1u+qA_2u^2-q^3 u^3I)$ have absolute value $q^{-1}$; \item[(3)] The nontrivial zeros of $\det(I + L_Bu)$ have absolute values $1$, $q^{-1/2}$ and $q^{-1/4}$; and \item[(4)] The nontrivial zeros of $\det(I - L_E u)$ have absolute values $q^{-1}$ and $q^{-1/2}$.}}}
+(\texttt{0804.2305:main.tex:285-295}). Unlike the graph case RH is not a single
+circle: three for the chamber factor, two for the edge factor. In type
+$\tilde C_2$ it degrades to bands, $|\uz| = \qs^{\alpha}$ with $-2\le\alpha\le-1$ % bare-ok
+(\texttt{1109.3854:zetagsp4-final.tex:145-157}) \cite{fangliwang2013zeta}.
+\end{citedfact}
+
+\subsection{All ranks: an alternating product over facet dimension}
+
+\begin{citedfact}[Kang--Yu: the uniform $\mathrm{PGL}_n$ identity is a torsion]
+\label{cit:kangyu-alternating}
+\claimstatus{cit:kangyu-alternating}{cited}\sloppy
+{\small\texttt{\detokenize{(1-u^n)^{\chi(\X)}\,L(\Gamma,q^{(n-1)/2}u) = \prod_{k=1}^{n-1}Z_k^\epsilon(\X,u)^{(-1)^{k+1}},}}}
+(\texttt{2607.21262:main.tex:2019-2023}), each factor a reciprocal determinant
+$\det(I-(-1)^{k+1}T_k)^{-1}$ of a successor operator (\texttt{:2304-2312}) with
+the parity sign $\epsilon = (-1)^{(k+1)l_G}$ (\texttt{:1971-1981}). The Euler
+factor is literally a torsion: the alternating product of $\det\Phi_i$ on % bare-ok
+cochains equals the same on cohomology, where $\Phi_i$ acts by $1-\uz^n$ % bare-ok
+(\texttt{:2463-2470}), a strategy that
+{\small\texttt{\detokenize{It is inspired instead by Hoffman's reformulation of Bass's proof of the Ihara identity in terms of torsion of complexes~\cite{Hof}.}}}
+(\texttt{:354-356}). The source states \emph{no} RH \cite{kangyu2026zeta}.
+\end{citedfact}
+
+\begin{citedfact}[Lubetzky--Lubotzky--Parzanchevski: the branching geodesic flow]
+\label{cit:llp-geodesic-flow}
+\claimstatus{cit:llp-geodesic-flow}{cited}\sloppy
+The higher-dimensional Hashimoto operator is multi-valued:
+{\small\texttt{\detokenize{The geodesic flow $T$ on $UT^{j}\mathcal{B}$ is defined as follows: $T(\sigma)$ for $\sigma=\left(v_{0},\left\{ v_{0},\ldots,v_{j}\right\} \right)\in UT^{j}\mathcal{B}$, with $\col\left(v_{i}\right)\equiv\col\left(v_{0}\right)+i$, consists of all the cells $\sigma'=\left(v_{1},\left\{ v_{1},\ldots,v_{j},w\right\} \right)\in UT^{j}\mathcal{B}$ such that}}}
+(\texttt{1702.05452:rw\_ramanujan\_complex.tex:1009-1019}), the two conditions
+being consecutive colours and geodicity (the union must not be a cell); in
+dimension one this is non-backtracking. A $k$-out-regular digraph is Ramanujan
+when every eigenvalue has $|\lambda|\le\sqrt k$ or $|\lambda| = k$
+(\texttt{:333-336}) \cite{lubetzky2017random}.
+\end{citedfact}
+
+\begin{citedfact}[The higher-rank RH is one-sided, and the interior really is occupied]
+\label{cit:llp-one-sided-rh}
+\claimstatus{cit:llp-one-sided-rh}{cited}\sloppy
+{\small\texttt{\detokenize{Then $Z_{\cY_{T,\fX}}(u)$ satisfies the Riemann Hypothesis; that is, if $Z_{\cY_{T,\fX}}\left(u\right)$ has a pole at $k^{-s}$ then $|s|=1$ or $\Re\left(s\right)\leq\frac{1}{2}$.}}}
+(\texttt{1702.05452:rw\_ramanujan\_complex.tex:410-416}), for \emph{every}
+building. The inequality is not an equality: the source states that poles with
+$|\re s|<\frac12$ occur, already with $|\re s| = 0$ in the graph case and with
+$0<|\re s|<\frac12$ in higher dimension (\texttt{:1420-1424}).
+\end{citedfact}
+
+\begin{citedfact}[Kamber: the converse, as an $L_p$ criterion]
+\label{cit:kamber-lp}
+\claimstatus{cit:kamber-lp}{cited}\sloppy
+With one Bernstein--Lusztig operator $h_{\beta_i}$ per simple coweight and % bare-ok
+$\zeta = \prod_i\det(1-h_{\beta_i}\uz^{l(\beta_i)})^{-1}$ % bare-ok
+(\texttt{1701.00154:L\_p\_Expander\_Complexes.tex:352-358}) one gets an
+if-and-only-if:
+{\small\texttt{\detokenize{The complex $X$ is an $L_{p}$-expander if and only if every pole $\lambda$ of $\zeta_{\hat{B}_{\phi}}(u)$ satisfies $\left|\lambda\right|\le q^{(p-1)/p}$ or $\left|\lambda\right|=q$.}}}
+(\texttt{:359-363}), Ramanujan meaning $L_2$-expander. ``Any complex'' there
+means any quotient of an affine building \cite{kamber2017lp}.
+\end{citedfact}
+
+\subsection{What happens off the buildings}
+
+\begin{citedfact}[Storm: the hypergraph zeta is a bipartite graph zeta]
+\label{cit:storm-reduction}
+\claimstatus{cit:storm-reduction}{cited}\sloppy
+Reading a complex as a hypergraph does give a zeta
+(\texttt{math/0608761:Ihara-SelbergofHypergraph.tex:173-174}), with a Bass
+identity (\texttt{:463}) and an if-and-only-if Ramanujan theorem
+(\texttt{:627-630}) --- but all of it because
+{\small\texttt{\detokenize{\[ \zeta_\hyperH(u) = Z_{B_\hyperH}(\sqrt{u}).\]}}}
+(\texttt{:430}): it is the Ihara zeta of the incidence bipartite graph in
+$\sqrt{\uz}$, blind to the simplicial structure beyond incidence
+\cite{storm2006hypergraph}.
+\end{citedfact}
+
+\begin{citedfact}[Benard--Chaubet--Dang--Schick: a general triangulation has a zeta, but no Ramanujan]
+\label{cit:bcds-triangulation}
+\claimstatus{cit:bcds-triangulation}{cited}\sloppy
+On any triangulation of a compact oriented $n$-manifold the geodicity rule is
+exactly LLP's --- consecutive $(n-1)$-simplices must not bound a common
+$n$-simplex (\texttt{2303.11226:zeta\_triangulations9.tex:165-172}) --- and
+{\small\texttt{\detokenize{The combinatorial zeta function $$ \zeta_\mathscr T(z) = \prod_{\gamma\in \mathcal{P}}\left(1-\varepsilon_\gamma z^{|\gamma|}\right), $$}}}
+is a polynomial of degree $|\mathcal T^{(n-1)}|$ vanishing to order $b_1(M)$ at
+$z = (n+2)^{-1}$ (\texttt{:192-205}). A Fried-type torsion theorem: that point
+is not $\qs^{-1/2}$, and there is no spectral-gap statement
+\cite{benard2023combinatorial}.
+\end{citedfact}
+
+\begin{citedfact}[No Ihara-type zeta of a general finite complex exists]
+\label{cit:no-general-complex-zeta}
+\claimstatus{cit:no-general-complex-zeta}{cited}\sloppy
+Four sources say so in their own words:
+{\small\texttt{\detokenize{There is no Ihara-formula for higher rank up to date.}}}
+(\texttt{math/0407509:main.tex:174}, 2004); Lubotzky's 2018 ICM survey still
+calls attaching zetas to high-dimensional complexes a direction of research
+``with the hope that'' Ramanujanness can be read off RH
+(\texttt{1712.02526:main.tex:497}); Hong--Kwon name ``the lack of a unified zeta
+function'' in higher rank (\texttt{2411.15489:main.tex:354}); and Kang--Yu claim
+only that theirs is
+{\small\texttt{\detokenize{To our knowledge, it is the first Ihara-type identity uniform in \(n\) for this family.}}}
+(\texttt{2607.21262:main.tex:249-250}). This is a record of what was searched,
+not an impossibility theorem
+\cite{deitmarhoffman2006ihara,lubotzky2018hde,hongkwon2024edge}.
+\end{citedfact}
+
+\subsection{The graded reading, in the literature's own words}
+\begin{citedfact}[Deitmar: a Deligne-type alternating product, and a positive Euler exponent]
+\label{cit:deitmar-alternating}
+\claimstatus{cit:deitmar-alternating}{cited}\sloppy
+For locally symmetric spaces the Ruelle zeta is an alternating product over
+exterior degree,
+{\small\texttt{\detokenize{Z_{P,\ph}^R(s) \= \prod_{l=0}^{\dim N} Z_{P,\sigma_l,\ph}(s+l|\alpha |)^{(-1)^l},}}}
+(\texttt{dg-ga/9511006:main.tex:1153-1168}), and the divisor is a
+\emph{degree-weighted} alternating sum $-\sum_pp(-1)^p\dim H^p$
+(\texttt{:1194-1212}), the plain Euler sum vanishing identically. Deitmar and
+Kang take the Euler factors with a positive exponent, because that exponent
+\emph{is} an Euler number (\texttt{1303.6848:main.tex:803})
+\cite{deitmar1996geometric,deitmarkang2014geometric}.
+\end{citedfact}
+
+\begin{citedfact}[Dyatlov--Zworski: odd upstairs, even downstairs, order $-\chi$]
+\label{cit:dz-order-chi}
+\claimstatus{cit:dz-order-chi}{cited}\sloppy
+For a negatively curved oriented surface,
+{\small\texttt{\detokenize{\zeta_R(s)={\zeta_1(s )\over \zeta_0( s )\zeta_2(s )},\quad s\in\mathbb C.}}}
+so that the order at $0$ is $m_1(0)-m_0(0)-m_2(0)$
+(\texttt{1606.04560:zazi.tex:843-855}), and $s^{\chi(\Sigma)}\zeta_R(s)$ is % bare-ok
+holomorphic and nonzero at $s=0$ (\texttt{:68-77}). Even sectors contribute $1$
+each, the odd sector $b_1$: the continuous prototype of the graded reading
+\cite{dyatlov2017ruelle}.
+\end{citedfact}
+
+\begin{citedfact}[Hashimoto's special value: the trees sit in the vertex determinant]
+\label{cit:hashimoto-hprime}
+\claimstatus{cit:hashimoto-hprime}{cited}\sloppy
+With $h_X(\uz) = \det(I-A\uz+(D-I)\uz^2)$ and $\kappa(X)$ the tree number,
+{\small\texttt{\detokenize{h_{X}'(1) = -2 \chi(X) \kappa(X),}}}
+(\texttt{2310.15619:main.tex:950-955}). The complexity is carried by the
+Laplacian factor, not by the Euler factor $(1-\uz^2)^{\chi}$, whose role is to
+cancel its zero at $\uz = 1$ \cite{vallieres2023spanning}.
+\end{citedfact}
+
+\begin{citedfact}[Knill: graph analytic torsion is a super pseudodeterminant]
+\label{cit:knill-sdet}
+\claimstatus{cit:knill-sdet}{cited}\sloppy
+{\small\texttt{\detokenize{Torsion $A(G)$ agrees with the super pseudo determinant ${\rm SDet}(D) = \prod_k {\rm Det}(D_k)^{(-1)^k}$ of the Dirac blocks $D_k=d_k^* d_k$ of the Dirac operator $D=d+d^*$}}}
+and is the ratio of rooted spanning trees on even-dimensional simplices to those
+on odd simplices (\texttt{2201.09412:reidemeister.tex:42-52}). Knill never
+mentions the Ihara zeta, nor the Ihara literature $\mathrm{SDet}$
+\cite{knill2022torsion}.
+\end{citedfact}
+
+\begin{citedfact}[Matsuura--Ohta: a fermionic proof of Bass's identity on a graph]
+\label{cit:mo-dirac}
+\claimstatus{cit:mo-dirac}{cited}\sloppy
+One Grassmann field on vertices and two per oriented edge, a Dirac operator
+off-diagonal between them, and two Schur evaluations of one determinant give
+$(1-t^2)^{n_E-n_V}\det\Delta$ (\texttt{2501.08803:main.tex:750-755}) and % bare-ok
+{\small\texttt{\detokenize{\zeta_\Gamma(q,u)^{-1}&= (1-t^2)^{n_E-n_V}\det \Delta_{q,u}\\ &=\det\left(I_{2n_E}-qB_u\right)\, .}}}
+(\texttt{:811-826}). The Euler exponent is the fermionic determinant of the
+edge-reversal involution, $\det(I-tJ) = (1-t^2)^{n_E}$
+\cite{matsuura2025fermions}.
+\end{citedfact}
+
+\subsection{Hypothesis register}
+\begin{assumption}[H-POINT: building successor conventions]
+\label{asm:h-point}
+\claimstatus{asm:h-point}{assumed}
+Pointed facets, cyclically increasing ordered type, algebraic step length
+$\lambda_0$, link opposition, and quotient incidences, as in
+\cref{def:pointed-opposition-flow}.
+\end{assumption}
+
+\begin{assumption}[H-LLP: branching flows and the digraph bound]
+\label{asm:h-llp}
+\claimstatus{asm:h-llp}{assumed}
+$UT^j$ with consecutive colours and the geodicity exclusion; and, for an
+equivariant collision-free $b$-regular branching operator on a Ramanujan
+complex, $|\lambda|\le\sqrt b$ off the peripheral $|\lambda| = b$, with interior
+radii genuinely occurring (\cref{cit:llp-geodesic-flow,cit:llp-one-sided-rh}).
+\end{assumption}
+
+\begin{assumption}[H-KL: the rank-three identity and its four-way RH]
+\label{asm:h-kl}
+\claimstatus{asm:h-kl}{assumed}
+With $P_3(\uz) = I-A_1\uz+\qs A_2\uz^2-\qs^3\uz^3I$,
+$D_E = \det(I-\uz L_E)\det(I-\uz^2L_E^t)$, $D_B = \det(I+\uz L_B)$:
+$D_B/D_E = (1-\uz^3)^{\chi}/\det P_3$, the four-way equivalence of
+\cref{cit:kl-identity,cit:kl-rh-four-way}, and the $L$-normalisation of
+Kang--Li--Wang \cite{kangliwang2018zeta}.
+\end{assumption}
+
+\begin{assumption}[H-KY: the all-rank pointed cochain identity]
+\label{asm:h-ky}
+\claimstatus{asm:h-ky}{assumed}
+The deformed pointed cochains carry $d(\uz)$, a degree $-1$ map $\delta(\uz)$
+and $\Phi_i = (1-\uz^n)I+d_{i-1}\delta_i+\delta_{i+1}d_i$, with % bare-ok
+$\det\Phi_0 = \det P_n = \det\sum_j(-1)^j\qs^{j(j-1)/2}\uz^jA_j$ and % bare-ok
+$\det\Phi_i = (1-\uz^n)^{if_i}\det(I-s_i\mathsf T_i(\uz))$, $i\ge1$ % bare-ok
+(\cref{cit:kangyu-alternating}).
+\end{assumption}
+
+\begin{assumption}[H-KY-LOCAL: the local factorisation behind equivariant use]
+\label{asm:h-ky-local}
+\claimstatus{asm:h-ky-local}{assumed}
+$\Phi_i = cW_i^{-1}J_i(I-s_i\Sigma_i)J_i^{-1}Q_i^{-1}$ with $Q_i$ unipotent in % bare-ok
+the ordered-type filtration, $J_i$ cyclic rotation, $\Sigma_i$ carrying the same % bare-ok
+weighted closed paths as $\mathsf T_i$, and $\Phi_0 = P_n$ as an \emph{operator} % bare-ok
+(\texttt{2607.21262:main.tex:2516-2576, 2586-2640, 2930-2968, 2973-3091}).
+\end{assumption}
+
+\begin{assumption}[H-KL-TABLE: the Iwahori-spherical constituents]
+\label{asm:h-kl-table}
+\claimstatus{asm:h-kl-table}{assumed}
+The unitary Iwahori-spherical types, their fixed-space dimensions and
+determinant roots, the Steinberg multiplicity $3\chi-3$, and the
+representation-wise conjugate-pair cancellations
+(\texttt{0809.1401v1:main.tex:391-424, 1132-1154, 1171-1209, 1425-1461}).
+\end{assumption}
+
+\begin{assumption}[H-LSV: the joint Hecke spectrum and the explicit complexes]
+\label{asm:h-lsv}
+\claimstatus{asm:h-lsv}{assumed}
+The colour-shift convention, commuting normality with $A_k^* = A_{n-k}$, the
+tempered joint spectrum $\mathrm{Aspec}_n$ with its type-trivial exceptions, and
+the explicit Ramanujan Cayley clique complexes on $\mathrm{PGL}_n(\Fqn{e})$
+(\cref{def:bruhat-tits-building,def:cayley-complex}).
+\end{assumption}
+
+\begin{assumption}[H-STRONG: Iwahori-spherical temperedness]
+\label{asm:h-strong}
+\claimstatus{asm:h-strong}{assumed}
+LLP's Ramanujan condition asks every infinite-dimensional
+\emph{Iwahori-spherical} constituent of $\ltwo{\Gamma\backslash G}$ to be
+tempered; this can be strictly stronger than the vertex condition, and the LSV
+examples satisfy it (\texttt{1702.05452:rw\_ramanujan\_complex.tex:196-214,
+674-701}).
+\end{assumption}
+
+\begin{assumption}[H-KAMBER: the normalised one-sided criterion]
+\label{asm:h-kamber}
+\claimstatus{asm:h-kamber}{assumed}
+$p$-temperedness is equivalent to $|\theta|\le\qs^{l(\beta_i)(p-1)/p}$ for every % bare-ok
+eigenvalue $\theta$ of $h_{\beta_i}$ (\cref{cit:kamber-lp}); the bound is on % bare-ok
+eigenvalues, so it inverts to a \emph{lower} bound $|\uz|\ge\qs^{-(p-1)/p}$ on
+pole radii.
+\end{assumption}
+
+\subsection{The two flows are not the same flow}
+\begin{theorem}[Ordered flow versus building flow, exactly, in rank three]
+\label{thm:ordered-vs-building}
+\claimstatus{thm:ordered-vs-building}{proved-conditional}
+Let $X$ be a simplicial type-preserving torsion-free finite quotient of the
+$\mathrm{PGL}_3$ building. Then (i) the colour-1 restriction of the edge
+successor relation is $L_E$ and the colour-2 one is conjugate by edge reversal
+to $L_E^t$, so $\mathsf T_1(\uz) = \uz L_E\oplus\uz^2L_E^t$ and
+$D_E(\uz) = \det(I-\uz L_E)\det(I-\uz^2L_E^t)$; (ii)
+$\mathsf T_2(\uz) = \uz L_B$ on the $3f_2$ cyclically ordered pointed chambers;
+(iii) the \emph{unrestricted} $T_1$ of \cref{def:ordered-geodesic-flow} is not
+this block sum even after replacing $\uz^2$ by $\uz$ --- its outdegree is
+$2\qs^2+\qs$ against $\qs^2$ for $L_E$, and its directed-colour classes are not
+invariant; (iv) $T_2$ has two invariant cyclic orientations of dimension $3f_2$,
+transposes of one another, so $\det_{H_2}(I+\uz T_2) = D_B(\uz)^2$. The $\uz^2$
+is an algebraic length, not a matrix square, and the $3!$ orderings do not
+realise $L_B$ once.
+\end{theorem}
+
+\begin{theorem}[Which zeta reduces to which]
+\label{thm:total-zeta-vertex-l}
+\claimstatus{thm:total-zeta-vertex-l}{proved-conditional}
+With the pointed data of \cref{def:pointed-opposition-flow},
+$\gzeta_{\mathrm{pt}} = D_B/D_E = (1-\uz^3)^{\chi}L_{\mathrm{vertex}}$, while
+$Z_{\mathrm{KL}} = 1/D_E$ and $L_{\mathrm{vertex}} = 1/\det P_3$. The graded
+total is therefore the \emph{completed vertex $L$-function}, not Kang--Li's
+edge-only zeta; with the unrestricted ordered operators it is neither. The
+orchestrator's draft asserted that the total graded zeta equals Kang--Li's
+$Z(X_\Gamma,\uz)$; the prover refuted that, and the above is the correction.
+\end{theorem}

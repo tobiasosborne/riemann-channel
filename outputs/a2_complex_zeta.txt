@@ -1,0 +1,330 @@
+
+==============================================================================
+STEP 1.  The complex: LSV math/0406217 sec:explicit, q=3, d=3, e=1, s=1
+==============================================================================
+F_27 = F_3[v]/(v^3+2v+2);  normal basis zeta_i = phi^i(theta), theta = (0, 0, 1)
+matrix of phi in the normal basis (a 3-cycle): [0, 0, 1, 1, 0, 0, 0, 1, 0]
+beta = (0, 0, 1)  tr(beta) = 2  alpha = 1  gamma = y(alpha) = 1
+rho(z) det = 2 ;  b = 1 - rho(z)^{-1}, det(b) = 2
+|S_1| = 13  (= [3,1]_3 = q^2+q+1)
+group order |G| = <S_1> = 5616    (|PGL_3(F_3)| = 5616)
+  -> G = PGL_3(F_3) = PSL_3(F_3): True
+S_1 cap S_1^{-1} = empty: True
+|P| = #{(u,v,w) : b_u b_v b_w = 1 in PGL_3(F_3)} = 52   (expect (q^2+q+1)(q+1) = 52)
+|S_2| = 13 ;  S_2 == S_1^{-1}: True
+LSV whatisr: r = ord of y/(1+y) in L^*/(L^*)^3 = 1  =>  Gamma_I = PSL_3(L),
+  and there is NO well-defined 3-colouring of the quotient (see below).
+global 3-colouring of the Cayley graph consistent: False  (False is expected: G is simple, so no epimorphism G -> Z/3)
+link of a vertex: 26 vertices, degrees [4], bipartite True, girth 6
+  any two 'points' lie on exactly one common 'line': True ; each point is on q+1 = 4 lines
+  => the point-line incidence graph of PG(2,3) (the unique (4,6)-cage).
+V = 5616, E = 73008, F = 97344  (triangles per vertex = 52)
+chi = V - E + F = 29952   (= |G| * 16/3)
+clique complex is 2-dimensional (link triangle-free): True
+orders of the 13 generators b_u in PGL_3(F_3): [3]
+generators with b_u^3 = 1 (so the triangle {g,gb,gb^2} has a Z/3 stabiliser): 13
+=> G acts freely on vertices and on edges, but NOT on the 2-cells:
+   24336 of the 97344 triangles are stabilised by an order-3 element.
+   This is exactly the caveat in T5.7 (no free action on unpointed simplices),
+   and it is why the per-block Euler factor is not (1-u^3)^{chi*dim/|G|}.
+
+==============================================================================
+STEP 2.  Vertex level: the spectrum of A_1 and the temperedness test
+==============================================================================
+A_2 == A_1^T : True
+A_1 normal (A_1 A_1^T = A_1^T A_1): True
+[A_1, A_2] = 0 : True
+dense eigvals(A_1) of size 5616 took 39.9 s
+largest |lambda|: [13.0, 7.12686068, 7.12686068, 7.12686068, 7.12686068, 7.12686068]
+lambda with |lambda| > q^2+q+1-1e-6 : [(13+0j)]
+number of trivial eigenvalues (|lambda| = q^2+q+1 = 13): 1
+nontrivial eigenvalues: 5615
+max temperedness defect (Cohn) over nontrivial eigenvalues: 2.021e-14
+fraction of nontrivial eigenvalues passing (defect < 1e-10): 1.000000000
+number failing at tolerance 1e-10: 0
+max |lambda| over nontrivial eigenvalues: 7.126860684   (deltoid bound 3q = 9)
+joint spectrum: A_1 normal and real => A_2 v = conj(lambda) v on every
+  simultaneous eigenvector, so (lambda_1, lambda_2) = (lambda, conj lambda).
+Ramanujan (all nontrivial (l_1,l_2) in q*{z1+z2+z3 : |z_i|=1, z1z2z3=1}): True
+distinct |lambda| values (rounded to 1e-6), with multiplicities:
+    [(13.0, 1), (7.126861, 96), (6.481723, 156), (6.249615, 156), (5.728582, 194), (5.629398, 234), (5.372674, 234), (4.690416, 104), (4.60454, 156), (4.552683, 96), (4.026301, 96), (4.0, 78)]
+sample nontrivial eigenvalues: [(7.126861+0j), (7.126861+0j), (7.126861+0j), (7.126861+0j), (7.126861+0j)]
+
+==============================================================================
+STEP 3.  Edge / chamber operators and exact integer closed-walk counts
+==============================================================================
+straight-flow successors of a directed colour-1 edge: [9]  (expect q^2 = 9)
+  rule (LLP 1702.05452:1009-1027 / Kang-Li 0804.2305:210):
+  (x,y)->(y,z) allowed iff {x,y,z} is NOT a 2-cell; equivalently s_u s_t not in S_2.
+L_E: 73008 x 73008, 657072 nonzeros, out-degree 9
+L_B: 292032 x 292032 (directed chambers = 3F), 876096 nonzeros, out-degree 3
+exact traces computed in 1.4 s
+Tr((L_E^t)^m) == Tr(L_E^m) for all m: True
+
+ m :          Tr(L_E^m)                 Tr(L_B^m)
+ 1 :                        0                        0
+ 2 :                        0                        0
+ 3 :                        0                        0
+ 4 :                        0                        0
+ 5 :                        0                        0
+ 6 :                   657072                        0
+ 7 :                  1533168                        0
+ 8 :                 36796032                        0
+ 9 :                359418384                        0
+10 :               3531762000                        0
+11 :              31686640128                        0
+12 :             282029757984                        0
+13 :            2542424897376                        0
+14 :           22890084785568                        0
+15 :          205914931747200                 16426800
+16 :         1853110568391264                 22778496
+17 :        16677363472645824                145212912
+18 :       150094642133807280                342991584
+exact n(a,b) = (A_1^a A_2^b)[e,e] computed in 0.3 s
+n(1,1) = 13  (expect 13), n(3,0) = 52, n(0,3) = 52, n(2,2) = 325
+
+==============================================================================
+STEP 3b.  The cleared Kang-Li / Kang-Li-Wang identity
+==============================================================================
+Source form (0809.1401v1:main.tex:1410-1418, Theorem 3):
+   (1-u^3)^chi = det(I - A_1 u + q A_2 u^2 - q^3 u^3 I) det(I + L_B u)
+                 / [ det(I - L_E u) det(I - (L_E)^t u^2) ]
+i.e.  det(cubic) * det(I + L_B u)
+         =  (1-u^3)^chi * det(I - L_E u) * det(I - (L_E)^t u^2).
+Degree check for X_Gamma: LHS 3|G| + 3F = 308880 ; RHS 3chi + |E_1| + 2|E_1| = 308880
+
+==============================================================================
+STEP 3c.  Test on X_Gamma = Cayley complex of PGL_3(F_3)  (5616 vertices)
+==============================================================================
+NOTE: Kang-Li hypothesis (I), ord_pi det Gamma subset 3Z (= type preservation),
+      FAILS here, because r = 1 above: Gamma(I) is not contained in Gamma_1.
+  det(cubic)*det(I+L_B u) = (1-u^3)^chi det det              HOLDS to order u^18
+  variant: det(I - L_B u) instead of det(I + L_B u)          FAILS; first bad coefficients:
+      u^15  residual = -2190240
+      u^17  residual = -17083872
+  variant: (1-u^3)^chi on the A/L_B side (prompt's form)     FAILS; first bad coefficients:
+      u^3   residual = -59904
+      u^6   residual = -29952
+      u^9   residual = -19968
+      u^12  residual = -14976
+      u^15  residual = -59904/5
+      u^18  residual = -9984
+  residual det(cubic)det(I+L_Bu)/[det(I-L_Eu)det(I-L_E^t u^2)] as a log-series:
+   coefficients of u^1..u^6: ['0', '0', '-29952', '0', '0', '-14976']
+   fit residual = a*log(1-u) + c*log(1-u^3):  a = 0, c = 29952, consistent to u^18: True
+   (chi = 29952; a = 0 and c = chi is the Kang-Li-Wang statement)
+
+==============================================================================
+STEP 3d.  Test on the type-preserving 3-fold cover  (16848 vertices)
+==============================================================================
+Gamma~ = Gamma(I) cap Gamma_1 is type preserving and torsion free, and
+Gamma/Gamma~ = PGL_3(F_3) x Z/3 (Goursat, since delta(Gamma(I)) = Z/3).
+Closed-walk counts on the cover = 3 * (base counts with total colour shift = 0).
+cover: V = 16848, E = 219024, F = 292032, chi = 89856
+  cover: det(cubic)*det(I+L_B u) = (1-u^3)^chi det det       HOLDS to order u^18
+  cover variant: det(I - L_B u)                              FAILS; first bad coefficients:
+      u^15  residual = -6570720
+  cover fit: a = 0, c = 89856, consistent: True   (chi_cover = 89856)
+
+==============================================================================
+STEP 3e.  Cross-checks requested by the prover (T0.3/T0.4, T2.4)
+==============================================================================
+(i) the UNRESTRICTED ordered edge rule is not Kang-Li's L_E.
+    out-degree of the unrestricted rule (z any neighbour of y, {x,y,z} not a cell): [21]  (2q^2+q = 21)
+    Kang-Li's rule keeps only colour-1 continuations: out-degree q^2 = 9 (above).
+    Colour-2 edges are the reversals of colour-1 edges and have algebraic length 2,
+    which is the det(I - (L_E)^t u^2) factor.
+
+(ii) all 6 orderings of a chamber: T_2 = L_B (+) L_B-reversed, so
+     det(I + u T_2) = det(I + u L_B)^2.
+     ordered pointed 2-cells per vertex: 104  (= 6F/|G| = 104)
+     T_2: 584064 states, out-degree 3
+     Tr(T_2^m) == 2 Tr(L_B^m) for m = 1..18: True
+     => det(I + u T_2) = det(I + u L_B)^2  (verified through u^18)
+
+(iii) T2.4: the boundary of a tetrahedron (not a building quotient).
+     T_1 has 0 transitions (every triple of distinct vertices is a 2-cell): True
+     ordered 2-cells: 24, out-degree [1]
+     T_2 is a permutation with cycle type [4, 4, 4, 4, 4, 4] => det(I + u T_2) = (1 - u^4)^6
+     matches the prover's (1-u^4)^6: True
+
+==============================================================================
+STEP 4.  RH by factor
+==============================================================================
+Kang-Li-Wang Thm 2 (0809.1401v1:1352-1370): X Ramanujan <=>
+  nontrivial zeros of det(I-A_1u+qA_2u^2-q^3u^3) on |u| = q^{-1}
+  <=> nontrivial zeros of det(I-L_E u) on |u| in {q^{-1}, q^{-1/2}}
+  <=> nontrivial zeros of det(I+L_B u) on |u| in {1, q^{-1/2}, q^{-1/4}}.
+In eigenvalue terms: |lambda(L_E)| in {q, q^{1/2}} = {3, 1.7320508} (nontrivial),
+and |lambda(L_B)| in {1, q^{1/4}, q^{1/2}} = {1, 1.3160740, 1.7320508}  [u = -1/lambda].
+
+(a) growth of the exact traces (verified numbers, indicated conclusion):
+   m= 6  |Tr L_E^m|^(1/m) = 9.323998    |Tr L_B^m|^(1/m) =   0
+   m= 7  |Tr L_E^m|^(1/m) = 7.649899    |Tr L_B^m|^(1/m) =   0
+   m= 8  |Tr L_E^m|^(1/m) = 8.825212    |Tr L_B^m|^(1/m) =   0
+   m= 9  |Tr L_E^m|^(1/m) = 8.925288    |Tr L_B^m|^(1/m) =   0
+   m=10  |Tr L_E^m|^(1/m) = 9.011543    |Tr L_B^m|^(1/m) =   0
+   m=11  |Tr L_E^m|^(1/m) = 9.007932    |Tr L_B^m|^(1/m) =   0
+   m=12  |Tr L_E^m|^(1/m) = 8.998938    |Tr L_B^m|^(1/m) =   0
+   m=13  |Tr L_E^m|^(1/m) = 9.000152    |Tr L_B^m|^(1/m) =   0
+   m=14  |Tr L_E^m|^(1/m) = 9.000373    |Tr L_B^m|^(1/m) =   0
+   m=15  |Tr L_E^m|^(1/m) = 9.000069    |Tr L_B^m|^(1/m) = 3.027170
+   m=16  |Tr L_E^m|^(1/m) = 9.000027    |Tr L_B^m|^(1/m) = 2.883004
+   m=17  |Tr L_E^m|^(1/m) = 9.000006    |Tr L_B^m|^(1/m) = 3.020772
+   m=18  |Tr L_E^m|^(1/m) = 9.000000    |Tr L_B^m|^(1/m) = 2.979768
+
+(b) sub-leading exponent for L_E.  X_Gamma has exactly one trivial eigenvalue
+    of A_1, so L_E has exactly one eigenvalue of modulus q^2 = 9.  Subtract it
+    and divide by q^m = 3^m: a bounded, oscillating sequence <=> |lambda| = q
+    is the sub-leading modulus, i.e. the RH exponent 1/2 in |u| = q^{-1}.
+    m= 6  (Tr L_E^m - q^{2m}) / q^m =         172.333333   |.|^(1/m) = 2.359001
+    m= 7  (Tr L_E^m - q^{2m}) / q^m =       -1485.962963   |.|^(1/m) = 2.838860
+    m= 8  (Tr L_E^m - q^{2m}) / q^m =        -952.703704   |.|^(1/m) = 2.357055
+    m= 9  (Tr L_E^m - q^{2m}) / q^m =       -1422.654321   |.|^(1/m) = 2.240497
+    m=10  (Tr L_E^m - q^{2m}) / q^m =         761.699588   |.|^(1/m) = 1.941683
+    m=11  (Tr L_E^m - q^{2m}) / q^m =        1725.010974   |.|^(1/m) = 1.969037
+    m=12  (Tr L_E^m - q^{2m}) / q^m =        -752.253772   |.|^(1/m) = 1.736589
+    m=13  (Tr L_E^m - q^{2m}) / q^m =         350.662348   |.|^(1/m) = 1.569498
+    m=14  (Tr L_E^m - q^{2m}) / q^m =        2779.096124   |.|^(1/m) = 1.761948
+    m=15  (Tr L_E^m - q^{2m}) / q^m =        1658.638707   |.|^(1/m) = 1.639269
+    m=16  (Tr L_E^m - q^{2m}) / q^m =        2099.568500   |.|^(1/m) = 1.612995
+    m=17  (Tr L_E^m - q^{2m}) / q^m =        1407.563496   |.|^(1/m) = 1.531807
+    m=18  (Tr L_E^m - q^{2m}) / q^m =          17.646997   |.|^(1/m) = 1.172896
+
+(c) largest-modulus eigenvalues of L_E and L_B (ARPACK, verified numerically):
+   |lambda(L_E)| top 40: [9.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]
+   (36.3 s)
+   (ARPACK is not used for L_B: its spectrum sits on circles of radius 1,
+    q^{1/2} and q^{1/4} with enormous degeneracies and it does not converge.
+    L_B is handled exactly, block by block, in step 5b below.)
+   reference moduli: q^2 = 9, q = 3, q^{1/2} = 1.732051, q^{1/4} = 1.316074, 1
+
+==============================================================================
+STEP 5.  The twisted (quantum) version: pi = 12-dim irrep of PGL_3(F_3)
+==============================================================================
+|P^2(F_3)| = 13
+pi(s) orthogonal to 1e-12: True
+[Phi_1, Phi_2] = 0 : True
+unital  (Phi_k(I) = I): True True
+trace preserving (Phi_k^dagger(I) = I): True True
+Phi_1 spectrum: largest |mu| = [1.0, 0.49859409, 0.49859409, 0.49859409, 0.49859409, 0.49859409]
+number of eigenvalues equal to 1: 1
+largest nontrivial |mu| = 0.498594095   ->  |13 mu| = 6.481723233
+classical Ramanujan bound for A_1 on \tilde A_2 (deltoid radius) 3q = 9
+Hastings / quantum-Ramanujan bound 2 sqrt(D-1)/D with D = 13: 0.532938710  (|13 mu| <= 6.928203)
+max temperedness defect of (13 mu, 13 conj mu) over the 143 nontrivial modes: 2.220e-15
+=> Ramanujan quantum expander of type \tilde A_2 (all joint eigenvalues in the deltoid): True
+NOTE: Phi_1 = (1/13) sum_s pi(s) (x) conj(pi(s)) is exactly A_1^{(pi (x) pi-bar)}/13,
+  so 13*spec(Phi_1) is a sub-multiset of spec(A_1) on C[G]: Ramanujan complex
+  => Ramanujan quantum expander, automatically.
+  check: every 13*mu is an eigenvalue of A_1 on C[G]: True
+
+==============================================================================
+STEP 5b.  Blockwise (representation-twisted) Kang-Li identity
+==============================================================================
+|lines of P^2(F_3)| = 13, each with 4 points
+point-rep and line-rep characters equal (so pi ~ pi'): True
+
+Bookkeeping (prover T5.5/T5.6, folded in):
+  * The full-complex twist E_{(g,gs)} = rho(s) is NOT flat: flatness on the
+    triangle g,gs,gst asks rho(t)rho(s) = rho(st).  Checked on a sample:
+    chambers (g,gs,gst) where rho(t)rho(s) != rho(st), out of 52: 39
+  * The covariant weights E_{(g,gs)} = rho(s^{-1}) ARE pure gauge (F_g = rho(g^{-1})),
+    so det(I - u T_E^rho) = det(I - u L_E)^{dim rho} on the FULL complex.  Reason,
+    verified structurally: every closed straight walk of the full complex returns
+    to its own directed edge, hence s_1...s_m = e and the holonomy is trivial;
+    this is exactly the condition our trace computation enumerates.
+  * The genuine Artin object is the VOLTAGE QUOTIENT (T5.6): states = the 13
+    colour-1 edges at the identity vertex, arrow (e,u) -> (e,t) with voltage
+    h = b_u and a fibre weight rho(h^{+-1}) (sign fixed by the composition order,
+    see the convention note below).  That is what the blocks below are.
+  * These blocks ARE the isotypic blocks: for rho = the regular representation
+    the construction returns L_E itself (index identity (u,g),(t,h) <-> (g,u),(h,t)),
+    so Tr(L_E^m) = sum_rho dim(rho) Tr(L_E^{(rho)m}).
+  * Convention: in our matrix layout the weights are multiplied in PATH order,
+    so the fibre weight of the arrow with voltage h must be rho(h); the trace of
+    a closed quotient walk is then chi_rho(holonomy), a class function, which is
+    the Artin/Ihara L-function.  T5.6's rho(h^{-1}) is the same block written for
+    the opposite composition order (equivalently for rho^vee); nu has a real
+    character, so the two give the same determinant.  We verify the block
+    construction directly against the holonomy sum below.
+  * check Tr(T_nu^m) = sum_{closed quotient walks} chi_nu(holonomy), m = 1..8:
+      holonomy sum : [0, 78, 897, 6630, 57915, 521157, 4768218, 42966846]
+      block trace  : [0, 78, 897, 6630, 57915, 521157, 4768218, 42966846]
+      agree: True
+  * same for the chamber operator, m = 1..9:
+      holonomy sum : [0, 0, 39, 156, 195, 429, 2184, 7332, 14196]
+      block trace  : [0, 0, 39, 156, 195, 429, 2184, 7332, 14196]
+      agree: True
+  * contrast with the gauge-trivial FULL twist, whose trace is dim(rho)*Tr(L_E^m):
+      dim(nu)*Tr(L_E^m)/|G| , m=1..8 : [0, 0, 0, 0, 0, 1521, 3549, 85176]
+      nu-block (voltage quotient), m=1..8 : [0, 78, 897, 6630, 57915, 521157, 4768218, 42966846]
+    they differ, as they must: the quotient carries nontrivial holonomy.
+
+--- block: trivial rep, dim 1
+    Tr(L_E^m), m=1..8: [0, 78, 702, 6630, 59085, 531258, 4782960, 43046718]
+    Tr(L_B^m), m=1..8: [0, 0, 39, 156, 195, 507, 2184, 6708]
+    Euler factor F_rho(u) = (1-u)^a (1-u^3)^c :  a = 13, c = 1, consistent: True
+    naive fractional guess (chi/|G|)*dim = 16/3 (T5.7 says it must NOT be asserted
+     when the deck group has 2-cell stabilisers, which it does here)
+    residual series (u^1..u^9): ['-13', '-13/2', '-16/3', '-13/4', '-13/5', '-8/3', '-13/7', '-13/8', '-16/9']
+    (0.0 s)
+
+--- block: nu = 1 + pi (points), dim 13
+    Tr(L_E^m), m=1..8: [0, 78, 897, 6630, 57915, 521157, 4768218, 42966846]
+    Tr(L_B^m), m=1..8: [0, 0, 39, 156, 195, 429, 2184, 7332]
+    Euler factor F_rho(u) = (1-u)^a (1-u^3)^c :  a = 13, c = 65, consistent: True
+    naive fractional guess (chi/|G|)*dim = 208/3 (T5.7 says it must NOT be asserted
+     when the deck group has 2-cell stabilisers, which it does here)
+    residual series (u^1..u^9): ['-13', '-13/2', '-208/3', '-13/4', '-13/5', '-104/3', '-13/7', '-13/8', '-208/9']
+    (3.7 s)
+
+--- block: nu' = 1 + pi' (lines), dim 13
+    Tr(L_E^m), m=1..8: [0, 78, 897, 6630, 57915, 521157, 4768218, 42966846]
+    Tr(L_B^m), m=1..8: [0, 0, 39, 156, 195, 429, 2184, 7332]
+    Euler factor F_rho(u) = (1-u)^a (1-u^3)^c :  a = 13, c = 65, consistent: True
+    naive fractional guess (chi/|G|)*dim = 208/3 (T5.7 says it must NOT be asserted
+     when the deck group has 2-cell stabilisers, which it does here)
+    residual series (u^1..u^9): ['-13', '-13/2', '-208/3', '-13/4', '-13/5', '-104/3', '-13/7', '-13/8', '-208/9']
+    (3.8 s)
+
+pi-block (dim 12) = nu-block minus trivial block (T5.6 convention):
+   trivial:  a = 13, c = 1
+   nu:       a = 13, c = 65
+   pi:       a = 0, c = 64
+   naive (chi/|G|)*12 = 64
+   Consistency with the full complex requires sum_rho d_rho a_rho = 0 and
+   sum_rho d_rho c_rho = chi = 29952; the two blocks we can build give partial sums
+   d_1 a_1 + d_pi a_pi = 13, d_1 c_1 + d_pi c_pi = 769
+   point-rep and line-rep blocks agree: True
+
+Exact polynomial check on the trivial block (no truncation):
+   deg LHS = 55, deg RHS = 55
+   det(P_3) det(I+uL_B) = (1-u)^13 (1-u^3)^1 det(I-uL_E) det(I-u^2 L_E^t)  EXACTLY: True
+
+==============================================================================
+STEP 5c.  RH by factor, verified exactly on the blocks we can build
+==============================================================================
+  trivial: A_1 block 1x1
+     |lambda(A_1)| = [13.0]
+     |lambda(L_E)| (nonzero) values/multiplicities: [(1.732051, 12), (9.0, 1)]
+        predicted: q^2 = 9 (trivial), then q = 3 and q^{1/2} = 1.732051
+     |lambda(L_B)| (nonzero) values/multiplicities: [(1.0, 15), (1.316074, 24), (1.732051, 12), (3.0, 1)]
+        predicted (KLW Thm 2(4), |u| in {1, q^{-1/2}, q^{-1/4}}):
+        1, q^{1/4} = 1.316074, q^{1/2} = 1.732051  (+ the trivial q = 3)
+  pi (12-dim): A_1 block 12x12
+     |lambda(A_1)| = [2.881454, 2.881454, 2.881454, 2.881454, 2.881454, 2.881454, 2.167308, 2.167308, 2.167308, 2.167308, 2.167308, 2.167308]
+     max temperedness defect (nontrivial): -2.778e-01
+     |lambda(L_E)| (nonzero) values/multiplicities: [(1.732051, 120), (3.0, 36)]
+        predicted: q^2 = 9 (trivial), then q = 3 and q^{1/2} = 1.732051
+     |lambda(L_B)| (nonzero) values/multiplicities: [(1.0, 192), (1.316074, 240), (1.732051, 192)]
+        predicted (KLW Thm 2(4), |u| in {1, q^{-1/2}, q^{-1/4}}):
+        1, q^{1/4} = 1.316074, q^{1/2} = 1.732051  (+ the trivial q = 3)
+
+These are exact spectra of genuine isotypic blocks, so the radii above are
+VERIFIED for the trivial and the 12-dimensional isotypic components of
+L^2(edges) and L^2(directed chambers); for the remaining components they are
+INDICATED by the full-space ARPACK run on L_E and by KLW Theorem 2 applied to
+the fully verified statement (2) about the A_1 spectrum.
+
+Total elapsed: 102.4 s

@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-12, night)
+## Current state (2026-09-13, midday)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -85,6 +85,67 @@ character reading of the grading and conj:galois-graded-bond.
 0d. **Mayer cusp tail** (`notes/resonances/astra-freeassoc.md` §3): unchanged.
 0e. **Suzuki's prime-defined screw kernel** (§16.3): unchanged.
 0f. **Literature:** Bonthonneau–Weich; Lewis–Zagier, Chang–Mayer: unchanged.
+
+### Sidequest 2026-09-13: Ihara zeta functions of simplicial complexes (done)
+
+TJO's question: the fermion–zeros connection for graphs looks central and the
+zeros seem to carry "surface-like" qualities, so is there a natural Ihara-type
+result for simplicial complexes, and what is its quantum generalisation?
+Answered in one day (four Opus lanes, one codex `gpt-6-astra` prover, Opus
+REFUTE review: round 1 0 INVALID / 3 MINOR / 44 VALID, MINOR items applied, round 2 47/47 VALID). Lab book: shards 02d,
+08d, 08e, 08f; note `notes/complex-zeta.md`; sources
+`notes/extract/complex-zeta-sources.md`, `notes/extract/cohomological-zeta-sources.md`;
+proofs `notes/complex-zeta/astra-proofs.md`; numerics `scripts/a2_complex_zeta.py`.
+
+- **Literature.** The result exists for building quotients only: Kang–Li
+  (PGL_3), Fang–Li–Wang (Sp_4), Kang–Yu (PGL_n, July 2026): an alternating
+  product over cell dimension of geodesic-flow determinants equals
+  (1−u^n)^χ times the vertex Hecke L-function, χ-factor a cochain torsion,
+  RH ⇔ Ramanujan with each factor's zeros on prescribed circles. LLP: the
+  higher Hashimoto operator is the geodesic flow; higher-rank RH is the
+  one-sided band Re s ≤ 1/2 with interior poles present (Kamber: L_p-expander
+  ⇔ one-sided bound). No Ihara zeta for a general complex exists and four
+  papers say so. Storm's hypergraph zeta is a graph zeta. Cohomological side:
+  Deitmar (degree-weighted supertrace), Dyatlov–Zworski, Knill's graph
+  torsion (never joined to Ihara), Matsuura–Ohta's Berezin proof of Bass
+  (chirality vertex/edge, not Grassmann parity). Quantum side: empty.
+- **Prover (astra), all reviewed VALID.** The object that "wants to exist" is
+  the graded geodesic determinant with SPECIFIED data (states, successors,
+  algebraic lengths, transports; parity k+1). Corrections to the drafted
+  statements: the rule "add a vertex not closing a cell" gives outdegree
+  2q²+q on the Ã_2 building, Kang–Li's L_E needs link OPPOSITION (q²), a
+  building notion; the graded total is the completed vertex L-function
+  D_B/D_E = (1−u³)^χ/det P_3, not Kang–Li's 1/D_E; a universal Bass–Schur
+  identity holds for every complex and arbitrary weights (rational
+  compression by one dimension) but the vertex-level polynomial identity is a
+  building phenomenon (∂Δ³: 𝒵 = (1−u⁴)⁶, no matrix polynomial works); on the
+  building vertex side every chamber root cancels, the reduced vertex
+  L-function is a reciprocal polynomial with NO finite zeros, so "fermionic
+  zeros" is net odd multiplicity in a graded presentation, to be checked after
+  cancellation; the k-cells ↔ H^{k−1} dictionary is parity only (one tempered
+  constituent feeds two circles); Tr Ad(B_w) = |Tr B_w|² needs no pairing; the
+  no-go's operative hypothesis is "honest trace", not positivity; chronological
+  weights π(s) are not flat, the covariant twist on the full Cayley complex is
+  pure gauge, the genuine Artin block is the voltage quotient with
+  det(1−uT) = ∏_ρ det(1−uT_ρ)^{dim ρ}; Harrow transfer gives Ramanujan quantum
+  expanders of type Ã_{d−1} for every representation, with an exceptional
+  space and an exact converse criterion.
+- **Numerics (PGL_3(F_3), 5616 vertices, LSV generators).** Link = PG(2,3),
+  χ = 29952, NOT 3-colourable (Kang–Li's type hypothesis fails) yet the
+  corrected identity holds exactly to u^18 on the base and on the 16848-vertex
+  type-preserving cover; all 5615 nontrivial vertex eigenvalues tempered;
+  block radii {3, √3} for L_E and {1, 3^{1/4}, √3} for L_B; the 12-dim twist is
+  a Ramanujan quantum expander of type Ã_2 (|13μ| ≤ 6.4817 < 2√12, all 143
+  joint eigenvalues in the deltoid); Euler-factor bookkeeping per block.
+- **Bearing on the programme.** None of this touches the Riemann side. It
+  sharpens the graph/complex half of the fermionic analogy: the odd sector of
+  a complex is real as a graded presentation and cancels on the vertex side;
+  the surviving "surface-like" fact is the alternating structure over cell
+  dimension with its χ-torsion. Open (conj:vertex-collapse-characterisation):
+  which complexes beyond buildings admit a vertex-level collapse. Possible
+  follow-ups, not scheduled: the Knill-SDet ↔ Ihara join; a voltage-quotient
+  channel zeta for the Weil–LPS channels (shard 05) to compare with the Ã_2
+  case; Ã_3 numerics (PGL_4(F_2), LSV e > 1 needed for q = 2).
 
 Dead routes recorded today: SPT protection (signs, not moduli);
 PSL(2,Z)-generator channels (expanders, not Ramanujan); "GUE positions with

@@ -1,0 +1,211 @@
+% SHARD-ID: RC-08E-COMPLEX-ZETA-GRADED
+% SHARD-TITLE: An Ihara Zeta for Simplicial Complexes II: the Graded Geodesic Determinant
+% SHARD-SUMMARY: The prover's construction on top of the literature of RC-08D: a universal arbitrary-weight Bass-Schur compression valid on every finite complex, the cochain determinant cancellation that produces the Euler factor, and the tetrahedron obstruction that kills any universal cubic vertex collapse.
+% SHARD-SUMMARY: Then the superdeterminant reading and exactly what it does and does not say about zeros (the chamber factor cancels on the building vertex side), an incidence matrix with two Schur evaluations whose total is a Berezinian rather than an ordinary fermion determinant, and arbitrary Kraus weights, which keep the compression and give nonnegative ring traces with no pairing hypothesis.
+% SHARD-KEYWORDS: Bass-Schur compression, cochain torsion, tetrahedron obstruction, superdeterminant, Berezinian, Kraus weights, ring traces, parity dictionary, three circles
+% SHARD-NOTES: notes/complex-zeta.md
+% SHARD-SCRIPTS: none
+
+\section{An Ihara Zeta for Complexes II: the Graded Geodesic Determinant}
+\label{sec:complex-zeta-graded}
+
+What survives on an arbitrary finite complex is a rational compression, not a
+polynomial Bass identity; what survives on a building is the full Hecke and
+torsion apparatus. Notation and the hypothesis rows \texttt{asm:h-*} are those
+of \cref{sec:complex-zeta}; \cref{sec:complex-zeta-quantum} carries the twisted
+and quantum layer, which sits on the building side, not the general one.
+
+\subsection{Torsion, compression, and the obstruction}
+\begin{theorem}[Finite cochain determinant cancellation]
+\label{thm:cochain-cancellation}
+\claimstatus{thm:cochain-cancellation}{proved}
+Let $(C^\bullet,d)$ be a bounded finite-dimensional cochain complex over
+$K = \mathbb C(\uz)$, $h$ any degree $-1$ map, $c\in K^\times$, and suppose each
+$F_i = cI+d_{i-1}h_i+h_{i+1}d_i$ is invertible. Then
+$\prod_i\det(F_i|C^i)^{(-1)^i} = \prod_i\det(F_i|H^i)^{(-1)^i}
+= c^{\sum_i(-1)^i\dim C^i}$. Neither $h^2 = 0$ nor $h = d^*$ is required. The
+exponent is the dimension count of the complex used: $\chi(X)$ for ordinary
+cochains, $\sum_i(-1)^i(i+1)!f_i$ for all ordered cells, $\sum_i(-1)^i(i+1)f_i$
+for pointed cochains --- already $\chi = 1$ against $0$ on a single edge.
+\end{theorem}
+
+\begin{theorem}[The ordinary Euler factor is a difference of two weighted sums]
+\label{thm:pointed-euler-exponent}
+\claimstatus{thm:pointed-euler-exponent}{proved-conditional}
+Under H-KY, $\prod_{i}\det\Phi_i^{(-1)^i} = (1-\uz^n)^{\chi_{\mathrm{pt}}}$ with % bare-ok
+$\chi_{\mathrm{pt}} = \sum_i(-1)^i(i+1)f_i$, and subtracting the local
+$\sum_{i\ge1}(-1)^iif_i$ contributions leaves
+$\gzeta_{\mathrm{pt}}(X,\uz) = (1-\uz^n)^{\chi(X)}/\det P_n(\uz)$. The bare
+cochain superdeterminant carries the \emph{weighted} exponent; only the final
+flow/vertex comparison carries the ordinary $\chi$. The draft's identification
+of the cochain product's exponent with $\chi$ was wrong.
+\end{theorem}
+
+\begin{theorem}[Universal ordered-cell Bass--Schur identity]
+\label{thm:universal-bass-schur}
+\claimstatus{thm:universal-bass-schur}{proved}
+For every finite abstract simplicial complex and every $1\le k\le d$, with
+$R_k$ the first-vertex deletion, $S_k$ the append map, $C_k$ cyclic rotation,
+$F_k = C_k+R_{k+1}S_{k+1}$ and $K_k(z) = I+zF_k$: $T_k = S_kR_k-F_k$ and
+\[
+ \det_{H_k}(I-zT_k) = \det_{H_k}K_k(z)\,
+ \det_{H_{k-1}}\bigl(I-zR_kK_k(z)^{-1}S_k\bigr) .
+\]
+This is an explicit \emph{rational} compression by one dimension, retaining
+vertices, ordered edges and the upper-cell cyclic factor; it is not a
+degree-$(d+1)$ polynomial on vertices.
+\end{theorem}
+
+\begin{corollary}[Bass for every graph, with no regularity assumption]
+\label{cor:bass-every-graph}
+\claimstatus{cor:bass-every-graph}{proved}
+If $d = 1$ then $F_1 = J$ is edge reversal, $\det(I+\uz J) = (1-\uz^2)^{f_1}$,
+$R_1S_1 = A$, $R_1JS_1 = \operatorname{Deg}$, and
+$\det(I-\uz T_1) = (1-\uz^2)^{f_1-f_0}\det_{H_0}(I-\uz A+\uz^2(\operatorname{Deg}-I))$.
+Isolated vertices and trees are included by rational cancellation.
+\end{corollary}
+
+\begin{proposition}[The tetrahedron obstruction: no universal cubic collapse]
+\label{prop:tetrahedron-obstruction}
+\claimstatus{prop:tetrahedron-obstruction}{proved}
+On $X = \partial\Delta^3$, $(f_0,f_1,f_2) = (4,6,4)$, $\chi = 2$, $T_1 = 0$, % bare-ok
+$\det(I+\uz T_2) = (1-\uz^4)^6$ and $\gzeta_{\mathrm{ord}} = (1-\uz^4)^6$. There
+is \emph{no} matrix polynomial $P(\uz)$ of any size or degree with
+$\gzeta_{\mathrm{ord}} = (1-\uz^3)^{\chi}/\det P(\uz)$: that would force
+$\det P = (1-\uz^3)^2/(1-\uz^4)^6$, which has poles at $\uz = -1,\pm i$. The
+orchestrator's draft asked for a universal cubic vertex Bass identity on every
+$2$-complex with local coefficients $Q_1,Q_2$; the prover refuted it here, and
+\cref{thm:universal-bass-schur} is the surviving universal replacement.
+\end{proposition}
+
+\subsection{The graded reading and what it does not say}
+\begin{theorem}[The exact graded identity]
+\label{thm:graded-superdeterminant}
+\claimstatus{thm:graded-superdeterminant}{proved}
+With odd part $\bigoplus_{k\ \mathrm{odd}}H_k$, even part
+$\bigoplus_{k\ \mathrm{even},k\ge2}H_k$ and $\Theta = \bigoplus_ks_kT_k$,
+$\gzeta_{\mathrm{ord}}(X,\uz) = \sdet(I-\uz\Theta)^{-1}$ and
+$\log\gzeta_{\mathrm{ord}} = \sum_m\frac{\uz^m}{m}\str(\Theta^m)
+= \sum_m\frac{\uz^m}{m}\sum_ks_k^{m+1}\Tr(T_k^m)$. The order at $\uz_0\ne0$ is
+the odd minus the even algebraic multiplicity of $\uz_0^{-1}$; zero eigenvalues
+give no finite zero or pole, and common even/odd factors cancel. The draft's
+``the zeros are exactly the odd eigenvalues'' is false without the reciprocal,
+sign, multiplicity and cancellation qualifications.
+\end{theorem}
+
+\begin{proposition}[Cancellation: the reduced vertex $L$-function has no finite zeros]
+\label{prop:vertex-l-no-zeros}
+\claimstatus{prop:vertex-l-no-zeros}{proved-conditional}
+Under H-KL, $L_{\mathrm{vertex}}(\uz) = D_B/((1-\uz^3)^{\chi}D_E) = 1/\det
+P_3(\uz)$. In the \emph{factorised} expression the chamber determinant is a
+numerator and the edge determinants denominators, but the reduced function is a
+reciprocal polynomial: every finite zero of $D_B$ cancels, with multiplicity,
+against an edge or Euler factor. Calling the chamber zeros uncancelled zeros of
+$L_{\mathrm{vertex}}$, as the draft did, is therefore wrong.
+\end{proposition}
+
+\begin{proposition}[The cohomology dictionary is parity only]
+\label{prop:parity-only}
+\claimstatus{prop:parity-only}{proved}
+The reindexing $i = k-1$ matches the exponents of the Grothendieck--Lefschetz
+convention $\prod_i\det(I-\uz\Frob|H^i)^{(-1)^{i+1}}$, but does not identify
+$H_k$ or $\mathbb C^{P_k}$ with cohomology of $X$, nor assign Weil weight $k-1$:
+a $3$-cycle has six ordered-edge states and one-dimensional $H^0$, and the
+chamber radii are not those of a single pure weight.
+\end{proposition}
+
+\begin{proposition}[Which constituents supply the three chamber circles]
+\label{prop:three-circles}
+\claimstatus{prop:three-circles}{proved-conditional}
+Under H-KL and H-KL-TABLE, on a Ramanujan quotient: tempered principal series
+give chamber roots $\pm\qs^{-1/2}\alpha_i^{-1/2}$ and edge roots % bare-ok
+$\qs^{-1}\alpha_i^{-1}$; the tempered nonspherical type gives one chamber root % bare-ok
+at $\qs^{-1/2}$ and two at $\qs^{-1/4}$; Steinberg twists give the unit circle;
+one-dimensional constituents give \emph{trivial} roots at $\qs^{-1}$. So the
+circle $\qs^{-1/2}$ is not ``the odd sector'', and a single constituent can
+contribute to two circles at once.
+\end{proposition}
+
+\subsection{An incidence matrix, and why the total is a Berezinian}
+\begin{theorem}[One explicit incidence matrix with two Schur evaluations]
+\label{thm:incidence-two-schur}
+\claimstatus{thm:incidence-two-schur}{proved}
+On $H_{k-1}\oplus H_k\oplus H_{k+1}$ let $\mathbb D_k(z)$ have diagonal
+$(I,\,I+zC_k,\,I)$ and off-diagonal couplings $-R_k$, $-zS_k$, $zR_{k+1}$,
+$-S_{k+1}$ between adjacent dimensions. Then
+$\det\mathbb D_k(z) = \det_{H_k}(I-zT_k) = \det K_k(z)\det_{H_{k-1}}M_k(z)$.
+Eliminating the edge mass first instead gives an honest coupled
+vertex/triangle block, which disappears when there are no triangles.
+\end{theorem}
+
+\begin{theorem}[The total object needs a ratio, not one fermion determinant]
+\label{thm:berezinian-total}
+\claimstatus{thm:berezinian-total}{proved}
+Giving the whole auxiliary space of $\mathbb D_k(s_k\uz)$ parity $k+1$ and
+setting $\mathbb D_{\mathrm{flow}} = \bigoplus_k\mathbb D_k(s_k\uz)$ gives
+$\sdet\mathbb D_{\mathrm{flow}}(\uz) = \gzeta_{\mathrm{ord}}(X,\uz)^{-1}$. An
+ordinary Berezin integral gives $\det D$, not a reciprocal or a superdeterminant
+merely because $D$ has chiral blocks; the construction uses separate auxiliary
+copies of some cell spaces, so cell chirality and flow superparity are distinct
+gradings. The draft's universal ordinary fermion determinant with flow parity
+equal to cell chirality does not exist.
+\end{theorem}
+
+\subsection{Arbitrary weights and Kraus rings}
+\begin{theorem}[Arbitrary weights preserve the compression]
+\label{thm:twisted-bass-schur}
+\claimstatus{thm:twisted-bass-schur}{proved}
+With the connection of \cref{def:kraus-connection} and $S_k,C_k$ replaced by
+their weighted versions, $T^E_k = S^E_kR_k-F^E_k$ and the identity of
+\cref{thm:universal-bass-schur} holds verbatim over $V\otimes H_k$, with no
+positivity, pairing, invertibility or flatness hypothesis and no inverse of any
+$E_e$. Any other successor rule with the same overlap admits the same
+construction, by letting $F$ be the sum of its forbidden weighted transitions.
+\end{theorem}
+
+\begin{theorem}[Ring traces, primitive product, and positivity without pairing]
+\label{thm:kraus-ring-positivity}
+\claimstatus{thm:kraus-ring-positivity}{proved}
+$\Tr(T^E_k)^m = \sum\Tr_V(E_m\cdots E_1)$ over based closed walks in the state
+digraph; for $V = \Mn$ and $E_e = \Ad(B_e)$ this is
+$\sum|\Tr(B_m\cdots B_1)|^2\ge0$. \emph{Adjoint pairing is not needed}: complete
+positivity of the step maps suffices, as in \cref{cor:qihara-kraus}. The
+unsigned factor is
+$\prod_{[\gamma]}\det_V(I-\uz^{|\gamma|}E_\gamma)^{-1}$ over primitive classes;
+for the signed factor replace $E_\gamma$ by $s_k^{|\gamma|}E_\gamma$.
+\end{theorem}
+
+\begin{proposition}[The scope of the positive-ring no-go]
+\label{prop:positivity-no-go-scope}
+\claimstatus{prop:positivity-no-go-scope}{proved}
+A single finite transfer matrix contributes a reciprocal polynomial, so it has
+no nonconstant reduced numerator; in this finite model a numerator comes from
+net odd multiplicity between sectors. Positivity of a numerical ring sequence
+alone does not force this: $(1-\uz)/(1-2\uz)$ has nonnegative coefficients and
+positive logarithmic coefficients $(2^m-1)/m$, yet a genuine numerator.
+\end{proposition}
+
+\begin{observation}[The natural object, and what ``natural'' means here]
+\label{obs:graded-determinant-natural}
+\claimstatus{obs:graded-determinant-natural}{proved}
+\cref{def:graded-geodesic-determinant} is functorial under isomorphisms
+preserving states, lengths, successor incidences and transports; it is not
+proved unique among possible choices of higher-dimensional geodesic. For a
+graph the default is Hashimoto's operator and there is only an even flow sector;
+for a building quotient it is the completed vertex product of
+\cref{thm:pointed-euler-exponent}; the Kang--Li zeta is obtained by retaining
+only the edge factor.
+\end{observation}
+
+\subsection{The three smallest exact tests}
+\begin{numerical}[Three smallest exact tests, on the ordered default]
+\label{num:small-complex-tests}
+\claimstatus{num:small-complex-tests}{numerical}
+$C_3$ (unfilled): $\det(I-\uz T_1) = (1-\uz^3)^2$, no chamber factor, total
+$(1-\uz^3)^{-2}$. Filled $\Delta^2$: both flows vanish, total $1$ --- there is % bare-ok
+no forced $(1-\uz^3)$ factor. $\partial\Delta^3$: $T_1 = 0$, % bare-ok
+$\det(I+\uz T_2) = (1-\uz^4)^6$, total $(1-\uz^4)^6$. The optional clique-only
+fourth test, the octahedron $K_{2,2,2}$, gives
+$(1-\uz^6)^8/(1-\uz^4)^6$, again with a pole at $\uz = -1$ in the would-be
+vertex expression. Checked exactly with \texttt{sympy}.
+\end{numerical}

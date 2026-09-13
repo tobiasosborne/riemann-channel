@@ -165,3 +165,5 @@ Weyl	\mathrm{X}_{#1}	centred Weyl operator X_{u,v}|s> = e_q(v.(s + u/2))|s + u> 
 Ugu	\mathcal U_{#1}	transfer unitary E_g/sqrt q	curves	RC-06B	-
 Sp	\mathrm{Sp}	symplectic group	curves	RC-06B	-
 Dg	\mathsf D_{#1}	transfer determinant D_g(T) = det(1 - T E_g)	curves	RC-06B	-
+gzeta	\mathcal Z	graded geodesic determinant (total zeta) of a complex with specified geodesic data	complexes	RC-02D	subscripts ord and pt select the ordered-cell and pointed-opposition data
+sdet	\operatorname{sdet}	superdeterminant (Berezinian) of an even operator on a Z_2-graded space	graded, complexes	RC-02D	sdet = det on the even part divided by det on the odd part

@@ -14,20 +14,24 @@ quotes in `db/provenance.tsv`. `make check` is the gate, `make ci` the local CI 
 | 2 | `RC-02-DEFINITIONS` | `report/sections/02_definitions.tex` | Definitions | none | none |
 | 3 | `RC-02B-DEFINITIONS-ARITHMETIC` | `report/sections/02b_definitions_arithmetic.tex` | Definitions, Continued: Riemann Channel, Weil--LPS, Curves | none | none |
 | 4 | `RC-02C-DEFINITIONS-PHANTASM` | `report/sections/02c_definitions_phantasm.tex` | Definitions, Continued: Graded Bonds, Vacuum Decay, Prime Chain, Super-Transfer | none | none |
-| 5 | `RC-03-WHAT-RH-HAS-BECOME` | `report/sections/03_what_rh_has_become.tex` | What the Riemann Hypothesis Has Become | notes/what-rh-has-become.md | none |
-| 6 | `RC-04-RIEMANN-CHANNEL` | `report/sections/04_riemann_channel.tex` | The Riemann Channel: Bost--Connes at Critical Temperature, Compressed | notes/riemann-channel-note.md | scripts/scat.py, scripts/ringnorm.py, scripts/bcmpo.py |
-| 7 | `RC-04B-PHANTASM-FORCED` | `report/sections/04b_phantasm_forced.tex` | The Phantasm I: What the Prime Measure Forces, and What Cannot Exist | none | none |
-| 8 | `RC-04C-PHANTASM-CHANNELS` | `report/sections/04c_phantasm_channels.tex` | The Phantasm II: Vacuum Decay, the Prime Chain, and the Two Halves | none | scripts/riemann_graded_trace.py, scripts/bc_entropy.py |
-| 9 | `RC-05-WEIL-LPS-CHANNELS` | `report/sections/05_weil_lps_channels.tex` | Weil--LPS Channels: Exactly Ramanujan Quantum Expanders | notes/weil-lps-channels.md | scripts/weil_lps.py, scripts/weil_lps_hashimoto.py |
-| 10 | `RC-06-ARTIN-SCHREIER-MPS` | `report/sections/06_artin_schreier_mps.tex` | A Matrix-Product Formulation of the Weil Conjectures for Quadratic Artin--Schreier Curves | notes/artin-schreier-mps.md | scripts/artin_schreier_mps.py |
-| 11 | `RC-06B-ARTIN-SCHREIER-SUPER` | `report/sections/06b_artin_schreier_super.tex` | Artin--Schreier II: the Sign Law, the Super-Transfer Matrix, and the Weil Representation | none | scripts/artin_schreier_super.py |
-| 12 | `RC-07-DELIGNE-VIA-GRAPHS` | `report/sections/07_deligne_via_graphs.tex` | Deligne's Proof, Told Through Regular Graphs | notes/deligne-via-graphs.md | none |
-| 13 | `RC-08-QUANTUM-IHARA-GENERAL` | `report/sections/08_quantum_ihara_general.tex` | The Ihara--Bass Formula for an Arbitrary Kraus Family | notes/quantum-ihara-general.md | scripts/qihara.py, scripts/qihara_general.py |
-| 14 | `RC-08B-WEIL-POSITIVITY` | `report/sections/08b_weil_positivity.tex` | Weil Positivity for an Arbitrary Transfer Operator | notes/weil-positivity.md | scripts/weil_positivity.py |
-| 15 | `RC-08C-WEIL-POSITIVITY-CONTINUOUS` | `report/sections/08c_weil_positivity_continuous.tex` | Weil Positivity, Continued: Continuous Time, Hilbert--P\'olya, the Zeta Entry, Prior Art | none | scripts/weil_positivity.py |
-| 16 | `RC-09-PRIOR-ART` | `report/sections/09_prior_art.tex` | Prior Art for the Quantum Ihara Zeta | notes/prior-art-quantum-ihara.md | none |
-| 17 | `RC-09B-SELBERG-DICTIONARY` | `report/sections/09b_selberg_dictionary.tex` | The Continuous Dictionary I: Circle Comb, Lindbladian, Casimir | notes/selberg-dictionary.md | none |
-| 18 | `RC-09C-SELBERG-TOWER-CUSP` | `report/sections/09c_selberg_tower_cusp.tex` | The Continuous Dictionary II: Selberg Tower and the Cusp Comb | none | scripts/selberg_lindblad.py |
-| 19 | `RC-10-OPEN-DEAD` | `report/sections/10_open_problems_dead_routes.tex` | Open Problems and Dead Routes | none | none |
-| 20 | `RC-11-REPRO-MAP` | `report/sections/11_reproducibility_map.tex` | Reproducibility Map | none | scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py, scripts/artin_schreier_super.py, scripts/riemann_graded_trace.py, scripts/bc_entropy.py |
-| 21 | `RC-12-LAB-LOG` | `report/sections/12_lab_log.tex` | Lab Log | none | none |
+| 5 | `RC-02D-DEFINITIONS-COMPLEXES` | `report/sections/02d_definitions_complexes.tex` | Definitions, Continued: Ordered and Pointed Geodesic Flows, Buildings, Twisted Complexes | none | none |
+| 6 | `RC-03-WHAT-RH-HAS-BECOME` | `report/sections/03_what_rh_has_become.tex` | What the Riemann Hypothesis Has Become | notes/what-rh-has-become.md | none |
+| 7 | `RC-04-RIEMANN-CHANNEL` | `report/sections/04_riemann_channel.tex` | The Riemann Channel: Bost--Connes at Critical Temperature, Compressed | notes/riemann-channel-note.md | scripts/scat.py, scripts/ringnorm.py, scripts/bcmpo.py |
+| 8 | `RC-04B-PHANTASM-FORCED` | `report/sections/04b_phantasm_forced.tex` | The Phantasm I: What the Prime Measure Forces, and What Cannot Exist | none | none |
+| 9 | `RC-04C-PHANTASM-CHANNELS` | `report/sections/04c_phantasm_channels.tex` | The Phantasm II: Vacuum Decay, the Prime Chain, and the Two Halves | none | scripts/riemann_graded_trace.py, scripts/bc_entropy.py |
+| 10 | `RC-05-WEIL-LPS-CHANNELS` | `report/sections/05_weil_lps_channels.tex` | Weil--LPS Channels: Exactly Ramanujan Quantum Expanders | notes/weil-lps-channels.md | scripts/weil_lps.py, scripts/weil_lps_hashimoto.py |
+| 11 | `RC-06-ARTIN-SCHREIER-MPS` | `report/sections/06_artin_schreier_mps.tex` | A Matrix-Product Formulation of the Weil Conjectures for Quadratic Artin--Schreier Curves | notes/artin-schreier-mps.md | scripts/artin_schreier_mps.py |
+| 12 | `RC-06B-ARTIN-SCHREIER-SUPER` | `report/sections/06b_artin_schreier_super.tex` | Artin--Schreier II: the Sign Law, the Super-Transfer Matrix, and the Weil Representation | none | scripts/artin_schreier_super.py |
+| 13 | `RC-07-DELIGNE-VIA-GRAPHS` | `report/sections/07_deligne_via_graphs.tex` | Deligne's Proof, Told Through Regular Graphs | notes/deligne-via-graphs.md | none |
+| 14 | `RC-08-QUANTUM-IHARA-GENERAL` | `report/sections/08_quantum_ihara_general.tex` | The Ihara--Bass Formula for an Arbitrary Kraus Family | notes/quantum-ihara-general.md | scripts/qihara.py, scripts/qihara_general.py |
+| 15 | `RC-08B-WEIL-POSITIVITY` | `report/sections/08b_weil_positivity.tex` | Weil Positivity for an Arbitrary Transfer Operator | notes/weil-positivity.md | scripts/weil_positivity.py |
+| 16 | `RC-08C-WEIL-POSITIVITY-CONTINUOUS` | `report/sections/08c_weil_positivity_continuous.tex` | Weil Positivity, Continued: Continuous Time, Hilbert--P\'olya, the Zeta Entry, Prior Art | none | scripts/weil_positivity.py |
+| 17 | `RC-08D-COMPLEX-ZETA` | `report/sections/08d_complex_zeta.tex` | An Ihara Zeta for Simplicial Complexes I: What the Literature Has, and the Two Flows | notes/complex-zeta.md | scripts/a2_complex_zeta.py |
+| 18 | `RC-08E-COMPLEX-ZETA-GRADED` | `report/sections/08e_complex_zeta_graded.tex` | An Ihara Zeta for Simplicial Complexes II: the Graded Geodesic Determinant | notes/complex-zeta.md | none |
+| 19 | `RC-08F-COMPLEX-ZETA-QUANTUM` | `report/sections/08f_complex_zeta_quantum.tex` | An Ihara Zeta for Simplicial Complexes III: Voltage Twists, Quantum Expanders, and the A-tilde-2 Numerics | notes/complex-zeta.md | scripts/a2_complex_zeta.py |
+| 20 | `RC-09-PRIOR-ART` | `report/sections/09_prior_art.tex` | Prior Art for the Quantum Ihara Zeta | notes/prior-art-quantum-ihara.md | none |
+| 21 | `RC-09B-SELBERG-DICTIONARY` | `report/sections/09b_selberg_dictionary.tex` | The Continuous Dictionary I: Circle Comb, Lindbladian, Casimir | notes/selberg-dictionary.md | none |
+| 22 | `RC-09C-SELBERG-TOWER-CUSP` | `report/sections/09c_selberg_tower_cusp.tex` | The Continuous Dictionary II: Selberg Tower and the Cusp Comb | none | scripts/selberg_lindblad.py |
+| 23 | `RC-10-OPEN-DEAD` | `report/sections/10_open_problems_dead_routes.tex` | Open Problems and Dead Routes | none | none |
+| 24 | `RC-11-REPRO-MAP` | `report/sections/11_reproducibility_map.tex` | Reproducibility Map | none | scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py, scripts/artin_schreier_super.py, scripts/riemann_graded_trace.py, scripts/bc_entropy.py |
+| 25 | `RC-12-LAB-LOG` | `report/sections/12_lab_log.tex` | Lab Log | none | none |

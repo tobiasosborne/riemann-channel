@@ -53,3 +53,11 @@ def:bond-entanglement	entanglement Hamiltonian and entanglement entropy of a bon
 def:as-ring-forms	ring form, trace form, radical, radical sign, period parameter	report/sections/02c_definitions_phantasm.tex	stipulated	-	notes/riemann-cmps/astra-proofs.md T7.2-T7.4
 def:super-transfer	super-transfer matrix of an Artin-Schreier curve	report/sections/02c_definitions_phantasm.tex	stipulated	-	notes/riemann-cmps/astra-proofs.md T7.8
 def:weyl-symplectic	centred Weyl operators, symplectic transfer map, Weil implementer	report/sections/02c_definitions_phantasm.tex	quoted	prov:gh07-egorov	notes/riemann-cmps/astra-proofs.md T7.9
+def:ordered-geodesic-flow	ordered k-cell and ordered geodesic flow	report/sections/02d_definitions_complexes.tex	stipulated	-	notes/complex-zeta/astra-proofs.md T0.1
+def:pointed-opposition-flow	pointed facet, opposition successor, algebraic length	report/sections/02d_definitions_complexes.tex	stipulated	-	notes/complex-zeta/astra-proofs.md T0.2
+def:graded-geodesic-determinant	graded geodesic determinant, total zeta of a complex	report/sections/02d_definitions_complexes.tex	stipulated	-	notes/complex-zeta/astra-proofs.md T7.1
+def:bruhat-tits-building	Bruhat-Tits building of PGL_n, colour-shift Hecke operators, Ramanujan complex	report/sections/02d_definitions_complexes.tex	quoted	prov:lsv05-ramdef	math/0406208; prov:lsv05-Ak
+def:cayley-complex	Cayley complex	report/sections/02d_definitions_complexes.tex	quoted	prov:lsv05e-cayley	math/0406217
+def:kraus-connection	Kraus connection on the 1-skeleton; flat, pure gauge, paired	report/sections/02d_definitions_complexes.tex	stipulated	-	notes/complex-zeta/astra-proofs.md T5.1, T5.5
+def:voltage-quotient	voltage quotient and Artin block	report/sections/02d_definitions_complexes.tex	stipulated	-	notes/complex-zeta/astra-proofs.md T5.6
+def:ramanujan-quantum-expander-a2	Ramanujan quantum expander of type A-tilde, exceptional space	report/sections/02d_definitions_complexes.tex	stipulated	-	notes/complex-zeta/astra-proofs.md T6.1

@@ -1,0 +1,151 @@
+% SHARD-ID: RC-02D-DEFINITIONS-COMPLEXES
+% SHARD-TITLE: Definitions, Continued: Ordered and Pointed Geodesic Flows, Buildings, Twisted Complexes
+% SHARD-SUMMARY: Fourth definitions shard (split for length): the two competing higher-dimensional non-backtracking flows -- the ordered-cell flow of an arbitrary complex and the pointed opposition flow of a building -- the graded geodesic determinant that grades them by cell dimension, and the building vocabulary (colour-shift Hecke operators, Ramanujan complex, Cayley complex).
+% SHARD-SUMMARY: Then the twisting data: an arbitrary Kraus connection on the 1-skeleton with its flatness and pairing conditions, the voltage quotient and its Artin block, and the quantum vertex property of type A-tilde with its exceptional space.
+% SHARD-SUMMARY: Every row of db/definitions.tsv still appears exactly once across the four definitions shards.
+% SHARD-KEYWORDS: definitions, ordered cell, geodesic flow, pointed facet, opposition, algebraic length, graded geodesic determinant, superdeterminant, Bruhat-Tits building, Hecke operator, Ramanujan complex, Cayley complex, voltage, Artin block, quantum expander
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{Definitions, Continued: Flows on Complexes and their Twists}
+\label{sec:definitions-d}
+
+Continuation of \cref{sec:definitions-c}; split for length only. Throughout,
+$X$ is a finite abstract simplicial complex of dimension $d$ with face numbers
+$f_0,\dots,f_d$ and Euler characteristic $\chi(X) = \sum_i(-1)^if_i$, and
+$s_k = (-1)^{k+1}$.
+
+\begin{definition}[Ordered $k$-cell, ordered geodesic flow]
+\label{def:ordered-geodesic-flow}
+An \emph{ordered $k$-cell} of $X$ is a tuple $[v_0,\dots,v_k]$ of distinct
+vertices whose underlying set is a $k$-simplex of $X$. Write $\mathcal O_k$ for
+the set of ordered $k$-cells, so $|\mathcal O_k| = (k+1)!\,f_k$, and
+$H_k = \mathbb C^{\mathcal O_k}$. The \emph{ordered geodesic flow} is the
+operator $T_k$ on $H_k$, $1\le k\le d$,
+\[
+ T_k[v_0,\dots,v_k] \;=\; \sum_{\substack{w\notin\{v_0,\dots,v_k\}\\
+ \{v_1,\dots,v_k,w\}\in X,\;\{v_0,\dots,v_k,w\}\notin X}} [v_1,\dots,v_k,w] :
+\]
+drop the oldest vertex, append a new one keeping the ordered overlap, and forbid
+the step that a $(k+1)$-cell would short-cut. For $d=1$ this is exactly the
+Hashimoto operator of \cref{def:hashimoto-operator}, and the excluded vertex is
+the immediately previous one.
+\end{definition}
+
+\begin{definition}[Pointed facet, opposition successor, algebraic length]
+\label{def:pointed-opposition-flow}
+Let $X$ be a finite quotient of the Bruhat--Tits building $\mathcal B$ of
+$\mathrm{PGL}_n$ over a local field with residue order $\qs$, carrying the
+cyclic type structure of the affine diagram $\tilde A_{n-1}$. A \emph{pointed
+$k$-facet} is a $k$-simplex with a distinguished vertex; ordering it cyclically
+in increasing type from that vertex gives its \emph{ordered type}, a positive
+composition $(\lambda_0,\dots,\lambda_k)$ of $n$, and its \emph{algebraic step
+length} is $\lambda_0$. Write $P_k$ for the set of pointed $k$-facets, so
+$|P_k| = (k+1)f_k$. A \emph{successor} shifts the ordering and crosses to a
+vertex \emph{opposite} in the spherical link of the common $(k-1)$-facet; the
+\emph{pointed opposition flow} is
+\[
+ \mathsf T_k(\uz)[\sigma] \;=\; \uz^{\lambda_0(\sigma)} % bare-ok
+ \sum_{\tau\in\operatorname{Succ}(\sigma)}[\tau] \qquad\text{on }\mathbb C^{P_k}. % bare-ok
+\]
+Opposition is strictly stronger than the non-cell condition of
+\cref{def:ordered-geodesic-flow}, and the exponent $\uz^{\lambda_0}$ is a
+\emph{length}, never a matrix power or a multiplicity.
+\end{definition}
+
+\begin{definition}[Graded geodesic determinant, total zeta of a complex]
+\label{def:graded-geodesic-determinant}
+\emph{Geodesic data} $\mathfrak g$ on $X$ is, in each degree $1\le k\le d$: a
+finite state set $\mathcal S_k$, a successor relation with incidence
+multiplicities, a positive integer algebraic length $\wl_k(\sigma)$, and a step % bare-ok
+transport $U_{\sigma\tau}$ on a finite-dimensional fibre $V$. Give the whole % bare-ok
+degree-$k$ space $V\otimes\mathbb C^{\mathcal S_k}$ parity $k+1$, put
+$\mathsf T^U_k(\uz)(v\otimes[\sigma]) = \sum_{\sigma\rightsquigarrow\tau} % bare-ok
+\uz^{\wl_k(\sigma)}U_{\sigma\tau}v\otimes[\tau]$, and let % bare-ok
+$W = \bigoplus_{k=1}^d V\otimes\mathbb C^{\mathcal S_k}$. The \emph{graded
+geodesic determinant} (the total zeta) is
+\[
+ \gzeta(X,\mathfrak g,U;\uz)
+ \;=\; \sdet_W\Bigl(I - \bigoplus_{k=1}^d s_k\mathsf T^U_k(\uz)\Bigr)^{-1}
+ \;=\; \prod_{k=1}^d\det\bigl(I - s_k\mathsf T^U_k(\uz)\bigr)^{(-1)^k},
+\]
+with the sign $s_k = (-1)^{k+1}$ inserted once per successor arrow. Odd $k$
+(edges) sits in the denominator, even $k$ (chambers) in the numerator. The
+intrinsic default for an arbitrary complex is $\mathcal S_k = \mathcal O_k$,
+unit length, the rule of \cref{def:ordered-geodesic-flow} and $V=\mathbb C$,
+written $\gzeta_{\mathrm{ord}}(X,\uz)$; the building default is
+\cref{def:pointed-opposition-flow}, written $\gzeta_{\mathrm{pt}}(X,\uz)$.
+\end{definition}
+
+\begin{definition}[Bruhat--Tits building of $\mathrm{PGL}_n$, colour-shift Hecke operators, Ramanujan complex]
+\label{def:bruhat-tits-building}
+The vertices of $\mathcal B$ carry a colour (type) function with values in
+$\mathbb Z/n\mathbb Z$, and the \emph{colour-shift Hecke operators} $A_k$,
+$1\le k\le n-1$, sum a function over the neighbours of colour shift $k$:
+{\small\texttt{\detokenize{we may look at the $d-1$ colored adjacency operators $A_k$, $k = 1,\dots,d-1$ on $\L2{\B^0}$, called the Hecke operators.}}}
+(\texttt{math/0406208:main.tex:541-549}). They commute, are normal, and satisfy
+$A_k^* = A_{n-k}$. A finite quotient is a \emph{Ramanujan complex} when its
+nontrivial joint spectrum lies in the tempered set
+$\mathrm{Aspec}_n = \{(\qs^{k(n-k)/2}e_k(z))_k : |z_i| = 1,\ \prod_iz_i = 1\}$:
+{\small\texttt{\detokenize{A finite quotient $X$ of $\B$ is called a Ramanujan complex if the eigenvalues of every non-trivial simultanenous eigenvector $v \in \L2{X}$, $A_k v = \lam_k v$, satisfy $(\lam_1,\dots,\lam_{d-1}) \in \Aspec_d$.}}}
+(\texttt{math/0406208:main.tex:564-572}). The condition is on the \emph{joint}
+spectrum, which is strictly smaller than the product of the separate spectra.
+\end{definition}
+
+\begin{definition}[Cayley complex]
+\label{def:cayley-complex}
+For a finite group $G$ with generating set $S$, the \emph{Cayley complex} is the
+clique complex of the Cayley graph:
+{\small\texttt{\detokenize{The Cayley complex of $G$ with respect to a set of generators $S$ is the simplicial complex whose $1$-skeleton is the Cayley graph $\Cayley{G}{S}$, where a subset of $i+1$ vertices is an $i$-cell iff every two vertices comprise an edge.}}}
+(\texttt{math/0406217:main.tex:497-515}). Lubotzky, Samuels and Vishne give
+explicit $S$, graded into colour classes $S_1,\dots,S_{n-1}$ with
+$|S_k| = \binom{n}{k}_{\qs}$ and $S_k^{-1} = S_{n-k}$, for which this complex is
+a Ramanujan complex covered by $\mathcal B$.
+\end{definition}
+
+\begin{definition}[Kraus connection on the 1-skeleton; flat, pure gauge, paired]
+\label{def:kraus-connection}
+A \emph{connection} on the 1-skeleton of $X$ with fibre $V$ assigns to each
+directed edge $(x,y)$ an arbitrary $E_{(x,y)}\in\operatorname{End}(V)$; it is a
+\emph{Kraus connection} when $V = \Mn$ and each $E_e$ is completely positive,
+for instance $E_e = \Ad(B_e)$. Twist \cref{def:ordered-geodesic-flow} by
+anchoring the fibre at the \emph{last} vertex,
+$T^E_k(v\otimes[\sigma]) = \sum E_{(v_k,w)}v\otimes[\tau]$. The connection is % bare-ok
+\emph{flat} when $E_{yx} = E_{xy}^{-1}$ and $E_{yz}E_{xy} = E_{xz}$ on every
+$2$-cell, and \emph{pure gauge} when $E_{(x,y)} = F_yF_x^{-1}$ for some
+invertible $F$. It is \emph{adjoint-paired} when $E_{\bar e} = E_e^\dagger$ and
+\emph{inverse-paired} when $E_{\bar e} = E_e^{-1}$
+(\cref{def:kraus-pairings}). No positivity, invertibility, pairing or flatness
+is assumed unless said.
+\end{definition}
+
+\begin{definition}[Voltage quotient and Artin block]
+\label{def:voltage-quotient}
+Let a finite group $G$ act on $X$ preserving the successor and length data and
+freely on the state set $\mathcal S_k$. Choose orbit representatives $\sigma_a$ % bare-ok
+and encode each transition $\sigma_a\to h\sigma_b$ by its \emph{voltage} % bare-ok
+$h\in G$; this is the \emph{voltage quotient}, a digraph on the orbits with a
+group label on every arrow. For a unitary $\hol$ of $G$, the
+\emph{$\hol$-block} $\mathsf T_{k,\hol}(\uz)$ replaces that arrow by
+$\hol(h^{-1})$ on the fibre, keeping the length weight. For
+$R = \pi\otimes\bar\pi = \bigoplus_\hol a_\hol\hol$ the \emph{Artin
+determinant} is $D_{k,R}(\uz) = \prod_\hol
+\det(I-s_k\mathsf T_{k,\hol}(\uz))^{a_\hol}$. This is not the same object
+as the connection of \cref{def:kraus-connection} on the full cover.
+\end{definition}
+
+\begin{definition}[Ramanujan quantum expander of type $\tilde A_{n-1}$; exceptional space]
+\label{def:ramanujan-quantum-expander-a2}
+Let $X = \operatorname{Cay}(G,S)$ have the colour classes of
+\cref{def:cayley-complex}, let $\pi\colon G\to U(N)$ be unitary and
+$R = \Ad\pi$ on $\Mn$. Put
+$\chan_k(\dm) = |S_k|^{-1}\sum_{s\in S_k}\pi(s)\dm\pi(s)^\dagger$ and
+$\hat A_k = |S_k|\chan_k = \sum_{s\in S_k}R(s)$. Let $\mathcal F_R$ be the
+common fixed space and let $\mathcal E_R\supseteq\mathcal F_R$ be the sum,
+inside $R$, of the type-character subrepresentations excluded by the convention
+of \cref{def:bruhat-tits-building}. The tuple $(\chan_1,\dots,\chan_{n-1})$ is
+\emph{Ramanujan of type $\tilde A_{n-1}$ relative to $\mathcal E_R$} when its
+joint spectrum on $\mathcal E_R^{\perp}$ lies in $\mathrm{Aspec}_n$. Only when
+$\mathcal E_R = \mathcal F_R$ is this the fixed-point-complement condition; on a
+partite complex $\mathcal E_R$ can be strictly larger.
+\end{definition}
