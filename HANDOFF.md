@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-14, night: back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-14, night: the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -121,6 +121,31 @@ all rows sketched/numerical, author claude:fable-5.1, unreviewed. Worklog "Night
   coherences is pure dephasing. **Next:** test (e) in the finite covariant cones of shard 04d
   (does Galois covariance + a character-dephasing Kossakowski block + BC stationarity leave
   exactly an even-odd Hamiltonian free?); review shard 03b.
+
+### The yolo Lindbladian and its audit (2026-09-14, night; shard 04g) — NEGATIVE
+
+TJO asked for a bold guess of the Riemann Lindbladian from the circumstantial evidence, then had
+two codex gpt-6-astra xhigh lanes investigate it (`notes/yolo-lindblad/`). The guess: bond
+L2(Zhat) (x) L2(R_+^*), grading by the profinite Fourier mode, one prime jump V_p per prime at
+rate 1/p (a Galois unit away from p, the shift at p), Galois dephasing at 1/4, archimedean
+ladder + dilation Hamiltonian; the Ramanujan-sum sector as the K_S identification (0b').
+
+- **Holds (exact):** the V_p isometries and their Galois covariance; the Ramanujan-shell
+  formulas (the vacuum leaks into shell p); <c_b>_beta -> 0 iff b > 1; the inverse multiset sum
+  prod_p (1 - p^-w V_p) has vacuum element 1/zeta(w+1/2); uniform Galois dephasing.
+- **Fails (exact counterexamples):** the grading is not invariant; vacuum-character coherences
+  are not modes; the vacuum generating functions are 1/(1 - S_P(s+beta+1)) and zeta_P(s+beta+1),
+  shifted, with no singularity in the strip at any cutoff; shell Gibbs weights are not
+  stationary; rates 1/p define no normal semigroup; the parity ring trace is not a trace at a
+  prime cutoff; parity closure is not the Q^x quotient.
+- **Orchestrator corrected:** inversion-asymmetric Galois rates DO produce frequencies (shard 03b
+  obs:jump-operator-guidance (b) amended); "fermionic primes: zeros on Re s = 0" is per finite
+  factor only (cor:moebius-fermion-parity amended).
+- **Bearing:** phase-side prime jumps are side A (Euler product) with the Fourier side included;
+  0b' unchanged; the Ramanujan-sum sector + prime jumps alone is ruled out. Unreviewed by a
+  second family (both lanes codex). **Next, if pursued:** Opus REFUTE review of 04g; a
+  summable-rate or radial local model with a genuine bond cutoff (lane A §8.4–8.6) before any
+  metric question.
 
 ### The ring-norm-tensor campaign (2026-09-14, afternoon; shards 02g, 06c--06f)
 

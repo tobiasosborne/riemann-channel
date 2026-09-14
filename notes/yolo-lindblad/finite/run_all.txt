@@ -1,0 +1,9 @@
+finite lane; fixed seed=20260914
+verify_phase.py: 93 checks passed
+verify_characters.py: 149 checks passed
+verify_ramanujan.py: 576 checks passed
+hunt.py: 357 checks passed
+spectrum.py: 87 checks passed
+balance.py: 89 checks passed
+render_report.py: 20 generated sections; 3 integrity checks passed
+all 1351 scientific checks passed; report rendered

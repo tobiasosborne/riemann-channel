@@ -1,0 +1,579 @@
+verify_ramanujan; seed=20260914
+  ok    1  b=1, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok    2  b=1, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok    3  b=1, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok    4  b=1, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok    5  b=1, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok    6  b=1, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok    7  b=1, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok    8  b=1: c_b(1)=mu(b), exact
+  ok    9  b=1, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok   10  b=1, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok   11  b=2, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok   12  b=2, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok   13  b=2, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok   14  b=2, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok   15  b=2, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok   16  b=2, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok   17  b=2, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok   18  b=2: c_b(1)=mu(b), exact
+  ok   19  b=2, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok   20  b=2, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok   21  b=3, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok   22  b=3, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok   23  b=3, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok   24  b=3, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok   25  b=3, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok   26  b=3, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok   27  b=3, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok   28  b=3: c_b(1)=mu(b), exact
+  ok   29  b=3, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok   30  b=3, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok   31  b=4, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok   32  b=4, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok   33  b=4, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok   34  b=4, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok   35  b=4, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok   36  b=4, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok   37  b=4, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok   38  b=4: c_b(1)=mu(b), exact
+  ok   39  b=4, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok   40  b=4, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok   41  b=5, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok   42  b=5, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok   43  b=5, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok   44  b=5, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok   45  b=5, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok   46  b=5, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok   47  b=5, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok   48  b=5: c_b(1)=mu(b), exact
+  ok   49  b=5, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok   50  b=5, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok   51  b=6, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok   52  b=6, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok   53  b=6, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok   54  b=6, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok   55  b=6, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok   56  b=6, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok   57  b=6, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok   58  b=6: c_b(1)=mu(b), exact
+  ok   59  b=6, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok   60  b=6, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok   61  b=7, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok   62  b=7, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok   63  b=7, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok   64  b=7, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok   65  b=7, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok   66  b=7, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok   67  b=7, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok   68  b=7: c_b(1)=mu(b), exact
+  ok   69  b=7, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok   70  b=7, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok   71  b=8, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok   72  b=8, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok   73  b=8, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok   74  b=8, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok   75  b=8, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok   76  b=8, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok   77  b=8, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok   78  b=8: c_b(1)=mu(b), exact
+  ok   79  b=8, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok   80  b=8, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok   81  b=10, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok   82  b=10, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok   83  b=10, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok   84  b=10, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok   85  b=10, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok   86  b=10, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok   87  b=10, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok   88  b=10: c_b(1)=mu(b), exact
+  ok   89  b=10, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok   90  b=10, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok   91  b=12, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok   92  b=12, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok   93  b=12, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok   94  b=12, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok   95  b=12, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok   96  b=12, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok   97  b=12, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok   98  b=12: c_b(1)=mu(b), exact
+  ok   99  b=12, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  100  b=12, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  101  b=14, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  102  b=14, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  103  b=14, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  104  b=14, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  105  b=14, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  106  b=14, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  107  b=14, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  108  b=14: c_b(1)=mu(b), exact
+  ok  109  b=14, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  110  b=14, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  111  b=15, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  112  b=15, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  113  b=15, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  114  b=15, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  115  b=15, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  116  b=15, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  117  b=15, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  118  b=15: c_b(1)=mu(b), exact
+  ok  119  b=15, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  120  b=15, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  121  b=20, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  122  b=20, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  123  b=20, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  124  b=20, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  125  b=20, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  126  b=20, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  127  b=20, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  128  b=20: c_b(1)=mu(b), exact
+  ok  129  b=20, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  130  b=20, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  131  b=21, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  132  b=21, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  133  b=21, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  134  b=21, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  135  b=21, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  136  b=21, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  137  b=21, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  138  b=21: c_b(1)=mu(b), exact
+  ok  139  b=21, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  140  b=21, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  141  b=24, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  142  b=24, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  143  b=24, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  144  b=24, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  145  b=24, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  146  b=24, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  147  b=24, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  148  b=24: c_b(1)=mu(b), exact
+  ok  149  b=24, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  150  b=24, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  151  b=28, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  152  b=28, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  153  b=28, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  154  b=28, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  155  b=28, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  156  b=28, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  157  b=28, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  158  b=28: c_b(1)=mu(b), exact
+  ok  159  b=28, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  160  b=28, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  161  b=30, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  162  b=30, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  163  b=30, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  164  b=30, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  165  b=30, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  166  b=30, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  167  b=30, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  168  b=30: c_b(1)=mu(b), exact
+  ok  169  b=30, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  170  b=30, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  171  b=35, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  172  b=35, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  173  b=35, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  174  b=35, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  175  b=35, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  176  b=35, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  177  b=35, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  178  b=35: c_b(1)=mu(b), exact
+  ok  179  b=35, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  180  b=35, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  181  b=40, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  182  b=40, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  183  b=40, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  184  b=40, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  185  b=40, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  186  b=40, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  187  b=40, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  188  b=40: c_b(1)=mu(b), exact
+  ok  189  b=40, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  190  b=40, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  191  b=42, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  192  b=42, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  193  b=42, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  194  b=42, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  195  b=42, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  196  b=42, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  197  b=42, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  198  b=42: c_b(1)=mu(b), exact
+  ok  199  b=42, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  200  b=42, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  201  b=56, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  202  b=56, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  203  b=56, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  204  b=56, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  205  b=56, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  206  b=56, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  207  b=56, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  208  b=56: c_b(1)=mu(b), exact
+  ok  209  b=56, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  210  b=56, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  211  b=60, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  212  b=60, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  213  b=60, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  214  b=60, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  215  b=60, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  216  b=60, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  217  b=60, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  218  b=60: c_b(1)=mu(b), exact
+  ok  219  b=60, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  220  b=60, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  221  b=70, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  222  b=70, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  223  b=70, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  224  b=70, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  225  b=70, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  226  b=70, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  227  b=70, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  228  b=70: c_b(1)=mu(b), exact
+  ok  229  b=70, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  230  b=70, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  231  b=84, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  232  b=84, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  233  b=84, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  234  b=84, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  235  b=84, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  236  b=84, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  237  b=84, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  238  b=84: c_b(1)=mu(b), exact
+  ok  239  b=84, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  240  b=84, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  241  b=105, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  242  b=105, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  243  b=105, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  244  b=105, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  245  b=105, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  246  b=105, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  247  b=105, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  248  b=105: c_b(1)=mu(b), exact
+  ok  249  b=105, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  250  b=105, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  251  b=120, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  252  b=120, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  253  b=120, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  254  b=120, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  255  b=120, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  256  b=120, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  257  b=120, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  258  b=120: c_b(1)=mu(b), exact
+  ok  259  b=120, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  260  b=120, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  261  b=140, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  262  b=140, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  263  b=140, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  264  b=140, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  265  b=140, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  266  b=140, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  267  b=140, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  268  b=140: c_b(1)=mu(b), exact
+  ok  269  b=140, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  270  b=140, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  271  b=168, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  272  b=168, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  273  b=168, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  274  b=168, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  275  b=168, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  276  b=168, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  277  b=168, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  278  b=168: c_b(1)=mu(b), exact
+  ok  279  b=168, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  280  b=168, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  281  b=210, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  282  b=210, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  283  b=210, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  284  b=210, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  285  b=210, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  286  b=210, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  287  b=210, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  288  b=210: c_b(1)=mu(b), exact
+  ok  289  b=210, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  290  b=210, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  291  b=280, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  292  b=280, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  293  b=280, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  294  b=280, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  295  b=280, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  296  b=280, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  297  b=280, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  298  b=280: c_b(1)=mu(b), exact
+  ok  299  b=280, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  300  b=280, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  301  b=420, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  302  b=420, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  303  b=420, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  304  b=420, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  305  b=420, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  306  b=420, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  307  b=420, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  308  b=420: c_b(1)=mu(b), exact
+  ok  309  b=420, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  310  b=420, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  311  b=840, n=1: Fourier Ramanujan sum = divisor formula, exact
+  ok  312  b=840, n=2: Fourier Ramanujan sum = divisor formula, exact
+  ok  313  b=840, n=3: Fourier Ramanujan sum = divisor formula, exact
+  ok  314  b=840, n=5: Fourier Ramanujan sum = divisor formula, exact
+  ok  315  b=840, n=6: Fourier Ramanujan sum = divisor formula, exact
+  ok  316  b=840, n=12: Fourier Ramanujan sum = divisor formula, exact
+  ok  317  b=840, n=30: Fourier Ramanujan sum = divisor formula, exact
+  ok  318  b=840: c_b(1)=mu(b), exact
+  ok  319  b=840, beta=2: Haar-Gibbs phase expectation, exact rational
+  ok  320  b=840, beta=3: Haar-Gibbs phase expectation, exact rational
+  ok  321  P=5, n=1, s=2: complete smooth b-series, 8 exact terms
+  ok  322  P=5, n=1, s=3: complete smooth b-series, 8 exact terms
+  ok  323  P=5, n=2, s=2: complete smooth b-series, 12 exact terms
+  ok  324  P=5, n=2, s=3: complete smooth b-series, 12 exact terms
+  ok  325  P=5, n=3, s=2: complete smooth b-series, 12 exact terms
+  ok  326  P=5, n=3, s=3: complete smooth b-series, 12 exact terms
+  ok  327  P=5, n=4, s=2: complete smooth b-series, 16 exact terms
+  ok  328  P=5, n=4, s=3: complete smooth b-series, 16 exact terms
+  ok  329  P=5, n=5, s=2: complete smooth b-series, 12 exact terms
+  ok  330  P=5, n=5, s=3: complete smooth b-series, 12 exact terms
+  ok  331  P=5, n=6, s=2: complete smooth b-series, 18 exact terms
+  ok  332  P=5, n=6, s=3: complete smooth b-series, 18 exact terms
+  ok  333  P=5, n=7, s=2: complete smooth b-series, 8 exact terms
+  ok  334  P=5, n=7, s=3: complete smooth b-series, 8 exact terms
+  ok  335  P=5, n=8, s=2: complete smooth b-series, 20 exact terms
+  ok  336  P=5, n=8, s=3: complete smooth b-series, 20 exact terms
+  ok  337  P=5, n=9, s=2: complete smooth b-series, 16 exact terms
+  ok  338  P=5, n=9, s=3: complete smooth b-series, 16 exact terms
+  ok  339  P=5, n=10, s=2: complete smooth b-series, 18 exact terms
+  ok  340  P=5, n=10, s=3: complete smooth b-series, 18 exact terms
+  ok  341  P=5, n=11, s=2: complete smooth b-series, 8 exact terms
+  ok  342  P=5, n=11, s=3: complete smooth b-series, 8 exact terms
+  ok  343  P=5, n=12, s=2: complete smooth b-series, 24 exact terms
+  ok  344  P=5, n=12, s=3: complete smooth b-series, 24 exact terms
+  ok  345  P=5, n=13, s=2: complete smooth b-series, 8 exact terms
+  ok  346  P=5, n=13, s=3: complete smooth b-series, 8 exact terms
+  ok  347  P=5, n=14, s=2: complete smooth b-series, 12 exact terms
+  ok  348  P=5, n=14, s=3: complete smooth b-series, 12 exact terms
+  ok  349  P=5, n=15, s=2: complete smooth b-series, 18 exact terms
+  ok  350  P=5, n=15, s=3: complete smooth b-series, 18 exact terms
+  ok  351  P=5, n=16, s=2: complete smooth b-series, 24 exact terms
+  ok  352  P=5, n=16, s=3: complete smooth b-series, 24 exact terms
+  ok  353  P=5, n=17, s=2: complete smooth b-series, 8 exact terms
+  ok  354  P=5, n=17, s=3: complete smooth b-series, 8 exact terms
+  ok  355  P=5, n=18, s=2: complete smooth b-series, 24 exact terms
+  ok  356  P=5, n=18, s=3: complete smooth b-series, 24 exact terms
+  ok  357  P=5, n=19, s=2: complete smooth b-series, 8 exact terms
+  ok  358  P=5, n=19, s=3: complete smooth b-series, 8 exact terms
+  ok  359  P=5, n=20, s=2: complete smooth b-series, 24 exact terms
+  ok  360  P=5, n=20, s=3: complete smooth b-series, 24 exact terms
+  ok  361  P=5, n=21, s=2: complete smooth b-series, 12 exact terms
+  ok  362  P=5, n=21, s=3: complete smooth b-series, 12 exact terms
+  ok  363  P=5, n=22, s=2: complete smooth b-series, 12 exact terms
+  ok  364  P=5, n=22, s=3: complete smooth b-series, 12 exact terms
+  ok  365  P=5, n=23, s=2: complete smooth b-series, 8 exact terms
+  ok  366  P=5, n=23, s=3: complete smooth b-series, 8 exact terms
+  ok  367  P=5, n=24, s=2: complete smooth b-series, 30 exact terms
+  ok  368  P=5, n=24, s=3: complete smooth b-series, 30 exact terms
+  ok  369  P=5, n=25, s=2: complete smooth b-series, 16 exact terms
+  ok  370  P=5, n=25, s=3: complete smooth b-series, 16 exact terms
+  ok  371  P=5, n=26, s=2: complete smooth b-series, 12 exact terms
+  ok  372  P=5, n=26, s=3: complete smooth b-series, 12 exact terms
+  ok  373  P=5, n=27, s=2: complete smooth b-series, 20 exact terms
+  ok  374  P=5, n=27, s=3: complete smooth b-series, 20 exact terms
+  ok  375  P=5, n=28, s=2: complete smooth b-series, 16 exact terms
+  ok  376  P=5, n=28, s=3: complete smooth b-series, 16 exact terms
+  ok  377  P=5, n=29, s=2: complete smooth b-series, 8 exact terms
+  ok  378  P=5, n=29, s=3: complete smooth b-series, 8 exact terms
+  ok  379  P=5, n=30, s=2: complete smooth b-series, 27 exact terms
+  ok  380  P=5, n=30, s=3: complete smooth b-series, 27 exact terms
+  ok  381  P=7, n=1, s=2: complete smooth b-series, 16 exact terms
+  ok  382  P=7, n=1, s=3: complete smooth b-series, 16 exact terms
+  ok  383  P=7, n=2, s=2: complete smooth b-series, 24 exact terms
+  ok  384  P=7, n=2, s=3: complete smooth b-series, 24 exact terms
+  ok  385  P=7, n=3, s=2: complete smooth b-series, 24 exact terms
+  ok  386  P=7, n=3, s=3: complete smooth b-series, 24 exact terms
+  ok  387  P=7, n=4, s=2: complete smooth b-series, 32 exact terms
+  ok  388  P=7, n=4, s=3: complete smooth b-series, 32 exact terms
+  ok  389  P=7, n=5, s=2: complete smooth b-series, 24 exact terms
+  ok  390  P=7, n=5, s=3: complete smooth b-series, 24 exact terms
+  ok  391  P=7, n=6, s=2: complete smooth b-series, 36 exact terms
+  ok  392  P=7, n=6, s=3: complete smooth b-series, 36 exact terms
+  ok  393  P=7, n=7, s=2: complete smooth b-series, 24 exact terms
+  ok  394  P=7, n=7, s=3: complete smooth b-series, 24 exact terms
+  ok  395  P=7, n=8, s=2: complete smooth b-series, 40 exact terms
+  ok  396  P=7, n=8, s=3: complete smooth b-series, 40 exact terms
+  ok  397  P=7, n=9, s=2: complete smooth b-series, 32 exact terms
+  ok  398  P=7, n=9, s=3: complete smooth b-series, 32 exact terms
+  ok  399  P=7, n=10, s=2: complete smooth b-series, 36 exact terms
+  ok  400  P=7, n=10, s=3: complete smooth b-series, 36 exact terms
+  ok  401  P=7, n=11, s=2: complete smooth b-series, 16 exact terms
+  ok  402  P=7, n=11, s=3: complete smooth b-series, 16 exact terms
+  ok  403  P=7, n=12, s=2: complete smooth b-series, 48 exact terms
+  ok  404  P=7, n=12, s=3: complete smooth b-series, 48 exact terms
+  ok  405  P=7, n=13, s=2: complete smooth b-series, 16 exact terms
+  ok  406  P=7, n=13, s=3: complete smooth b-series, 16 exact terms
+  ok  407  P=7, n=14, s=2: complete smooth b-series, 36 exact terms
+  ok  408  P=7, n=14, s=3: complete smooth b-series, 36 exact terms
+  ok  409  P=7, n=15, s=2: complete smooth b-series, 36 exact terms
+  ok  410  P=7, n=15, s=3: complete smooth b-series, 36 exact terms
+  ok  411  P=7, n=16, s=2: complete smooth b-series, 48 exact terms
+  ok  412  P=7, n=16, s=3: complete smooth b-series, 48 exact terms
+  ok  413  P=7, n=17, s=2: complete smooth b-series, 16 exact terms
+  ok  414  P=7, n=17, s=3: complete smooth b-series, 16 exact terms
+  ok  415  P=7, n=18, s=2: complete smooth b-series, 48 exact terms
+  ok  416  P=7, n=18, s=3: complete smooth b-series, 48 exact terms
+  ok  417  P=7, n=19, s=2: complete smooth b-series, 16 exact terms
+  ok  418  P=7, n=19, s=3: complete smooth b-series, 16 exact terms
+  ok  419  P=7, n=20, s=2: complete smooth b-series, 48 exact terms
+  ok  420  P=7, n=20, s=3: complete smooth b-series, 48 exact terms
+  ok  421  P=7, n=21, s=2: complete smooth b-series, 36 exact terms
+  ok  422  P=7, n=21, s=3: complete smooth b-series, 36 exact terms
+  ok  423  P=7, n=22, s=2: complete smooth b-series, 24 exact terms
+  ok  424  P=7, n=22, s=3: complete smooth b-series, 24 exact terms
+  ok  425  P=7, n=23, s=2: complete smooth b-series, 16 exact terms
+  ok  426  P=7, n=23, s=3: complete smooth b-series, 16 exact terms
+  ok  427  P=7, n=24, s=2: complete smooth b-series, 60 exact terms
+  ok  428  P=7, n=24, s=3: complete smooth b-series, 60 exact terms
+  ok  429  P=7, n=25, s=2: complete smooth b-series, 32 exact terms
+  ok  430  P=7, n=25, s=3: complete smooth b-series, 32 exact terms
+  ok  431  P=7, n=26, s=2: complete smooth b-series, 24 exact terms
+  ok  432  P=7, n=26, s=3: complete smooth b-series, 24 exact terms
+  ok  433  P=7, n=27, s=2: complete smooth b-series, 40 exact terms
+  ok  434  P=7, n=27, s=3: complete smooth b-series, 40 exact terms
+  ok  435  P=7, n=28, s=2: complete smooth b-series, 48 exact terms
+  ok  436  P=7, n=28, s=3: complete smooth b-series, 48 exact terms
+  ok  437  P=7, n=29, s=2: complete smooth b-series, 16 exact terms
+  ok  438  P=7, n=29, s=3: complete smooth b-series, 16 exact terms
+  ok  439  P=7, n=30, s=2: complete smooth b-series, 54 exact terms
+  ok  440  P=7, n=30, s=3: complete smooth b-series, 54 exact terms
+  ok  441  P=13, n=1, s=2: complete smooth b-series, 64 exact terms
+  ok  442  P=13, n=1, s=3: complete smooth b-series, 64 exact terms
+  ok  443  P=13, n=2, s=2: complete smooth b-series, 96 exact terms
+  ok  444  P=13, n=2, s=3: complete smooth b-series, 96 exact terms
+  ok  445  P=13, n=3, s=2: complete smooth b-series, 96 exact terms
+  ok  446  P=13, n=3, s=3: complete smooth b-series, 96 exact terms
+  ok  447  P=13, n=4, s=2: complete smooth b-series, 128 exact terms
+  ok  448  P=13, n=4, s=3: complete smooth b-series, 128 exact terms
+  ok  449  P=13, n=5, s=2: complete smooth b-series, 96 exact terms
+  ok  450  P=13, n=5, s=3: complete smooth b-series, 96 exact terms
+  ok  451  P=13, n=6, s=2: complete smooth b-series, 144 exact terms
+  ok  452  P=13, n=6, s=3: complete smooth b-series, 144 exact terms
+  ok  453  P=13, n=7, s=2: complete smooth b-series, 96 exact terms
+  ok  454  P=13, n=7, s=3: complete smooth b-series, 96 exact terms
+  ok  455  P=13, n=8, s=2: complete smooth b-series, 160 exact terms
+  ok  456  P=13, n=8, s=3: complete smooth b-series, 160 exact terms
+  ok  457  P=13, n=9, s=2: complete smooth b-series, 128 exact terms
+  ok  458  P=13, n=9, s=3: complete smooth b-series, 128 exact terms
+  ok  459  P=13, n=10, s=2: complete smooth b-series, 144 exact terms
+  ok  460  P=13, n=10, s=3: complete smooth b-series, 144 exact terms
+  ok  461  P=13, n=11, s=2: complete smooth b-series, 96 exact terms
+  ok  462  P=13, n=11, s=3: complete smooth b-series, 96 exact terms
+  ok  463  P=13, n=12, s=2: complete smooth b-series, 192 exact terms
+  ok  464  P=13, n=12, s=3: complete smooth b-series, 192 exact terms
+  ok  465  P=13, n=13, s=2: complete smooth b-series, 96 exact terms
+  ok  466  P=13, n=13, s=3: complete smooth b-series, 96 exact terms
+  ok  467  P=13, n=14, s=2: complete smooth b-series, 144 exact terms
+  ok  468  P=13, n=14, s=3: complete smooth b-series, 144 exact terms
+  ok  469  P=13, n=15, s=2: complete smooth b-series, 144 exact terms
+  ok  470  P=13, n=15, s=3: complete smooth b-series, 144 exact terms
+  ok  471  P=13, n=16, s=2: complete smooth b-series, 192 exact terms
+  ok  472  P=13, n=16, s=3: complete smooth b-series, 192 exact terms
+  ok  473  P=13, n=17, s=2: complete smooth b-series, 64 exact terms
+  ok  474  P=13, n=17, s=3: complete smooth b-series, 64 exact terms
+  ok  475  P=13, n=18, s=2: complete smooth b-series, 192 exact terms
+  ok  476  P=13, n=18, s=3: complete smooth b-series, 192 exact terms
+  ok  477  P=13, n=19, s=2: complete smooth b-series, 64 exact terms
+  ok  478  P=13, n=19, s=3: complete smooth b-series, 64 exact terms
+  ok  479  P=13, n=20, s=2: complete smooth b-series, 192 exact terms
+  ok  480  P=13, n=20, s=3: complete smooth b-series, 192 exact terms
+  ok  481  P=13, n=21, s=2: complete smooth b-series, 144 exact terms
+  ok  482  P=13, n=21, s=3: complete smooth b-series, 144 exact terms
+  ok  483  P=13, n=22, s=2: complete smooth b-series, 144 exact terms
+  ok  484  P=13, n=22, s=3: complete smooth b-series, 144 exact terms
+  ok  485  P=13, n=23, s=2: complete smooth b-series, 64 exact terms
+  ok  486  P=13, n=23, s=3: complete smooth b-series, 64 exact terms
+  ok  487  P=13, n=24, s=2: complete smooth b-series, 240 exact terms
+  ok  488  P=13, n=24, s=3: complete smooth b-series, 240 exact terms
+  ok  489  P=13, n=25, s=2: complete smooth b-series, 128 exact terms
+  ok  490  P=13, n=25, s=3: complete smooth b-series, 128 exact terms
+  ok  491  P=13, n=26, s=2: complete smooth b-series, 144 exact terms
+  ok  492  P=13, n=26, s=3: complete smooth b-series, 144 exact terms
+  ok  493  P=13, n=27, s=2: complete smooth b-series, 160 exact terms
+  ok  494  P=13, n=27, s=3: complete smooth b-series, 160 exact terms
+  ok  495  P=13, n=28, s=2: complete smooth b-series, 192 exact terms
+  ok  496  P=13, n=28, s=3: complete smooth b-series, 192 exact terms
+  ok  497  P=13, n=29, s=2: complete smooth b-series, 64 exact terms
+  ok  498  P=13, n=29, s=3: complete smooth b-series, 64 exact terms
+  ok  499  P=13, n=30, s=2: complete smooth b-series, 216 exact terms
+  ok  500  P=13, n=30, s=3: complete smooth b-series, 216 exact terms
+  ok  501  P=31, n=1, s=2: complete smooth b-series, 2048 exact terms
+  ok  502  P=31, n=1, s=3: complete smooth b-series, 2048 exact terms
+  ok  503  P=31, n=2, s=2: complete smooth b-series, 3072 exact terms
+  ok  504  P=31, n=2, s=3: complete smooth b-series, 3072 exact terms
+  ok  505  P=31, n=3, s=2: complete smooth b-series, 3072 exact terms
+  ok  506  P=31, n=3, s=3: complete smooth b-series, 3072 exact terms
+  ok  507  P=31, n=4, s=2: complete smooth b-series, 4096 exact terms
+  ok  508  P=31, n=4, s=3: complete smooth b-series, 4096 exact terms
+  ok  509  P=31, n=5, s=2: complete smooth b-series, 3072 exact terms
+  ok  510  P=31, n=5, s=3: complete smooth b-series, 3072 exact terms
+  ok  511  P=31, n=6, s=2: complete smooth b-series, 4608 exact terms
+  ok  512  P=31, n=6, s=3: complete smooth b-series, 4608 exact terms
+  ok  513  P=31, n=7, s=2: complete smooth b-series, 3072 exact terms
+  ok  514  P=31, n=7, s=3: complete smooth b-series, 3072 exact terms
+  ok  515  P=31, n=8, s=2: complete smooth b-series, 5120 exact terms
+  ok  516  P=31, n=8, s=3: complete smooth b-series, 5120 exact terms
+  ok  517  P=31, n=9, s=2: complete smooth b-series, 4096 exact terms
+  ok  518  P=31, n=9, s=3: complete smooth b-series, 4096 exact terms
+  ok  519  P=31, n=10, s=2: complete smooth b-series, 4608 exact terms
+  ok  520  P=31, n=10, s=3: complete smooth b-series, 4608 exact terms
+  ok  521  P=31, n=11, s=2: complete smooth b-series, 3072 exact terms
+  ok  522  P=31, n=11, s=3: complete smooth b-series, 3072 exact terms
+  ok  523  P=31, n=12, s=2: complete smooth b-series, 6144 exact terms
+  ok  524  P=31, n=12, s=3: complete smooth b-series, 6144 exact terms
+  ok  525  P=31, n=13, s=2: complete smooth b-series, 3072 exact terms
+  ok  526  P=31, n=13, s=3: complete smooth b-series, 3072 exact terms
+  ok  527  P=31, n=14, s=2: complete smooth b-series, 4608 exact terms
+  ok  528  P=31, n=14, s=3: complete smooth b-series, 4608 exact terms
+  ok  529  P=31, n=15, s=2: complete smooth b-series, 4608 exact terms
+  ok  530  P=31, n=15, s=3: complete smooth b-series, 4608 exact terms
+  ok  531  P=31, n=16, s=2: complete smooth b-series, 6144 exact terms
+  ok  532  P=31, n=16, s=3: complete smooth b-series, 6144 exact terms
+  ok  533  P=31, n=17, s=2: complete smooth b-series, 3072 exact terms
+  ok  534  P=31, n=17, s=3: complete smooth b-series, 3072 exact terms
+  ok  535  P=31, n=18, s=2: complete smooth b-series, 6144 exact terms
+  ok  536  P=31, n=18, s=3: complete smooth b-series, 6144 exact terms
+  ok  537  P=31, n=19, s=2: complete smooth b-series, 3072 exact terms
+  ok  538  P=31, n=19, s=3: complete smooth b-series, 3072 exact terms
+  ok  539  P=31, n=20, s=2: complete smooth b-series, 6144 exact terms
+  ok  540  P=31, n=20, s=3: complete smooth b-series, 6144 exact terms
+  ok  541  P=31, n=21, s=2: complete smooth b-series, 4608 exact terms
+  ok  542  P=31, n=21, s=3: complete smooth b-series, 4608 exact terms
+  ok  543  P=31, n=22, s=2: complete smooth b-series, 4608 exact terms
+  ok  544  P=31, n=22, s=3: complete smooth b-series, 4608 exact terms
+  ok  545  P=31, n=23, s=2: complete smooth b-series, 3072 exact terms
+  ok  546  P=31, n=23, s=3: complete smooth b-series, 3072 exact terms
+  ok  547  P=31, n=24, s=2: complete smooth b-series, 7680 exact terms
+  ok  548  P=31, n=24, s=3: complete smooth b-series, 7680 exact terms
+  ok  549  P=31, n=25, s=2: complete smooth b-series, 4096 exact terms
+  ok  550  P=31, n=25, s=3: complete smooth b-series, 4096 exact terms
+  ok  551  P=31, n=26, s=2: complete smooth b-series, 4608 exact terms
+  ok  552  P=31, n=26, s=3: complete smooth b-series, 4608 exact terms
+  ok  553  P=31, n=27, s=2: complete smooth b-series, 5120 exact terms
+  ok  554  P=31, n=27, s=3: complete smooth b-series, 5120 exact terms
+  ok  555  P=31, n=28, s=2: complete smooth b-series, 6144 exact terms
+  ok  556  P=31, n=28, s=3: complete smooth b-series, 6144 exact terms
+  ok  557  P=31, n=29, s=2: complete smooth b-series, 3072 exact terms
+  ok  558  P=31, n=29, s=3: complete smooth b-series, 3072 exact terms
+  ok  559  P=31, n=30, s=2: complete smooth b-series, 6912 exact terms
+  ok  560  P=31, n=30, s=3: complete smooth b-series, 6912 exact terms
+  ok  561  b=1: critical expectation limit
+  ok  562  b=2: critical expectation limit
+  ok  563  b=3: critical expectation limit
+  ok  564  b=4: critical expectation limit
+  ok  565  b=5: critical expectation limit
+  ok  566  b=6: critical expectation limit
+  ok  567  b=8: critical expectation limit
+  ok  568  b=10: critical expectation limit
+  ok  569  b=12: critical expectation limit
+  ok  570  b=15: critical expectation limit
+  ok  571  b=20: critical expectation limit
+  ok  572  b=24: critical expectation limit
+  ok  573  b=30: critical expectation limit
+  ok  574  b=40: critical expectation limit
+  ok  575  b=60: critical expectation limit
+  ok  576  b=120: critical expectation limit
+selected exact rows: [{'P': 5, 'n': 1, 'nP': 1, 's': 2, 'terms': 8, 'value': '16/25'}, {'P': 5, 'n': 1, 'nP': 1, 's': 3, 'terms': 8, 'value': '2821/3375'}, {'P': 5, 'n': 6, 'nP': 6, 's': 2, 'terms': 18, 'value': '32/25'}, {'P': 5, 'n': 6, 'nP': 6, 's': 3, 'terms': 18, 'value': '2821/2430'}, {'P': 5, 'n': 29, 'nP': 1, 's': 2, 'terms': 8, 'value': '16/25'}, {'P': 5, 'n': 29, 'nP': 1, 's': 3, 'terms': 8, 'value': '2821/3375'}, {'P': 5, 'n': 30, 'nP': 30, 's': 2, 'terms': 27, 'value': '192/125'}, {'P': 5, 'n': 30, 'nP': 30, 's': 3, 'terms': 27, 'value': '36673/30375'}, {'P': 7, 'n': 1, 'nP': 1, 's': 2, 'terms': 16, 'value': '768/1225'}, {'P': 7, 'n': 1, 'nP': 1, 's': 3, 'terms': 16, 'value': '15314/18375'}, {'P': 7, 'n': 6, 'nP': 6, 's': 2, 'terms': 36, 'value': '1536/1225'}, {'P': 7, 'n': 6, 'nP': 6, 's': 3, 'terms': 36, 'value': '7657/6615'}, {'P': 7, 'n': 29, 'nP': 1, 's': 2, 'terms': 16, 'value': '768/1225'}, {'P': 7, 'n': 29, 'nP': 1, 's': 3, 'terms': 16, 'value': '15314/18375'}, {'P': 7, 'n': 30, 'nP': 30, 's': 2, 'terms': 54, 'value': '9216/6125'}, {'P': 7, 'n': 30, 'nP': 30, 's': 3, 'terms': 54, 'value': '199082/165375'}, {'P': 13, 'n': 1, 'nP': 1, 's': 2, 'terms': 64, 'value': '442368/715715'}, {'P': 13, 'n': 1, 'nP': 1, 's': 3, 'terms': 64, 'value': '32767248/39364325'}, {'P': 13, 'n': 6, 'nP': 6, 's': 2, 'terms': 144, 'value': '884736/715715'}, {'P': 13, 'n': 6, 'nP': 6, 's': 3, 'terms': 144, 'value': '5461208/4723719'}, {'P': 13, 'n': 29, 'nP': 1, 's': 2, 'terms': 64, 'value': '442368/715715'}, {'P': 13, 'n': 29, 'nP': 1, 's': 3, 'terms': 64, 'value': '32767248/39364325'}, {'P': 13, 'n': 30, 'nP': 30, 's': 2, 'terms': 216, 'value': '5308416/3578575'}, {'P': 13, 'n': 30, 'nP': 30, 's': 3, 'terms': 216, 'value': '10922416/9084075'}, {'P': 31, 'n': 1, 'nP': 1, 's': 2, 'terms': 2048, 'value': '50722704772300800/82920037520482019'}, {'P': 31, 'n': 1, 'nP': 1, 's': 3, 'terms': 2048, 'value': '174187638420315512832/209363023479599225665'}, {'P': 31, 'n': 6, 'nP': 6, 's': 2, 'terms': 4608, 'value': '101445409544601600/82920037520482019'}, {'P': 31, 'n': 6, 'nP': 6, 's': 3, 'terms': 4608, 'value': '48385455116754309120/41872604695919845133'}, {'P': 31, 'n': 29, 'nP': 29, 's': 2, 'terms': 3072, 'value': '1521681143169024000/2404681088093978551'}, {'P': 31, 'n': 29, 'nP': 29, 's': 3, 'terms': 3072, 'value': '146665991549905661804544/176074302746342948784265'}, {'P': 31, 'n': 30, 'nP': 30, 's': 2, 'terms': 6912, 'value': '121734491453521920/82920037520482019'}, {'P': 31, 'n': 30, 'nP': 30, 's': 3, 'terms': 6912, 'value': '19354182046701723648/16104847959969171205'}]
+all 576 checks passed

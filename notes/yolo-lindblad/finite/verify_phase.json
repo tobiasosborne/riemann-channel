@@ -1,0 +1,98 @@
+{
+  "seed": 20260914,
+  "checks": 93,
+  "errors": {
+    "isometry": 0.0,
+    "fourier": 1.459567244438734e-14,
+    "shell_forward": 2.2227989561097204e-16,
+    "shell_adjoint": 2.2291747901057766e-16,
+    "covariance": 0.0,
+    "commute": 0.0
+  },
+  "truncation": [
+    {
+      "B": 30,
+      "states": 8,
+      "p": 2,
+      "max_loss": 1.0,
+      "mean_loss": 0.5
+    },
+    {
+      "B": 30,
+      "states": 8,
+      "p": 3,
+      "max_loss": 1.0,
+      "mean_loss": 0.5
+    },
+    {
+      "B": 30,
+      "states": 8,
+      "p": 5,
+      "max_loss": 1.0,
+      "mean_loss": 0.5
+    },
+    {
+      "B": 30,
+      "states": 8,
+      "p": 7,
+      "max_loss": 0.8571428571428571,
+      "mean_loss": 0.8571428571428571
+    },
+    {
+      "B": 120,
+      "states": 16,
+      "p": 2,
+      "max_loss": 1.0,
+      "mean_loss": 0.25
+    },
+    {
+      "B": 120,
+      "states": 16,
+      "p": 3,
+      "max_loss": 1.0,
+      "mean_loss": 0.5
+    },
+    {
+      "B": 120,
+      "states": 16,
+      "p": 5,
+      "max_loss": 1.0,
+      "mean_loss": 0.5
+    },
+    {
+      "B": 120,
+      "states": 16,
+      "p": 7,
+      "max_loss": 0.8571428571428571,
+      "mean_loss": 0.8571428571428571
+    },
+    {
+      "B": 420,
+      "states": 24,
+      "p": 2,
+      "max_loss": 1.0,
+      "mean_loss": 0.3333333333333333
+    },
+    {
+      "B": 420,
+      "states": 24,
+      "p": 3,
+      "max_loss": 1.0,
+      "mean_loss": 0.5
+    },
+    {
+      "B": 420,
+      "states": 24,
+      "p": 5,
+      "max_loss": 1.0,
+      "mean_loss": 0.5
+    },
+    {
+      "B": 420,
+      "states": 24,
+      "p": 7,
+      "max_loss": 1.0,
+      "mean_loss": 0.5
+    }
+  ]
+}

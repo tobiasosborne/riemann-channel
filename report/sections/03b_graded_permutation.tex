@@ -141,8 +141,9 @@ circle coincide; the critical-line separation needs weights $\sqrt{\qs}$ on the 
 \claimstatus{cor:moebius-fermion-parity}{sketched}
 Grading every cycle odd gives $\zeta^{\mathrm{gr}}_\pi = \det(1-uP) = 1/\zeta_\pi$. In the
 arithmetic gas, grading every prime odd gives $\prod_p(1-p^{-s}) = 1/\zeta(s) = \sum_n\operatorname{M\ddot ob}(n)n^{-s}$:
-the squarefree gas with $\operatorname{M\ddot ob}(n) = (-1)^{\#\text{primes}}$ its fermion parity; the zeros of the
-fermionic-prime factors lie on $\re s = 0$, not on the critical line.
+the squarefree gas with $\operatorname{M\ddot ob}(n) = (-1)^{\#\text{primes}}$ its fermion parity; each finite factor
+$1-p^{-s}$ vanishes on $\re s = 0$; this says nothing about the continued product $1/\zeta$, whose poles in
+the strip are the zeros of $\zeta$ (\cref{obs:phase-side-verdict}).
 \end{corollary}
 
 \begin{proof}
@@ -270,8 +271,8 @@ norms and hence the explicit formula see the jumps only through the Lindbladian
 question is about $\Tcm$, not about unravellings. (b) Galois jumps are diagonal in the character
 grading of \cref{conj:galois-graded-bond} ($U_a = \sum_\chi\chi(a)\Pi_\chi$); by
 \cref{prop:parity-jump-uniform-shift}(iii) their dissipator is character dephasing: it sets one
-uniform rate on every trivial--nontrivial coherence, leaves the trivial (pole) sector alone, and can
-produce no frequency; taken as a full average per step it is a character measurement and removes the
+uniform rate on every trivial--nontrivial coherence, leaves the trivial (pole) sector alone, and with inversion-symmetric rates produces no
+frequency (\cref{prop:galois-dephasing-rates}); taken as a full average per step it is a character measurement and removes the
 zeros. They are the natural carrier of the $e^{-t/4}$, i.e.\ of the rate half of the Ramanujan
 statement, not of the zeros' positions. (c) Prime jumps act on every character sector
 ($\chi\mapsto\chi(p\,\cdot)$), so they do not separate the sectors, and they carry the lengths: they

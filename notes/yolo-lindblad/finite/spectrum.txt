@@ -1,0 +1,91 @@
+spectrum; seed=20260914
+  ok    1  odd coherences NOT invariant; Gamma_b does NOT commute with T
+  ok    2  requested truncated T is trace decreasing, not trace preserving
+  ok    3  explicit odd compression eigenspectrum agrees with triangular diagonal
+  ok    4  full finite doubled T also has entirely real spectrum
+  ok    5  P=5, Bmax=64, beta=1.0: exact triangular odd compression
+  ok    6  P=5, Bmax=256, beta=1.0: exact triangular odd compression
+  ok    7  P=5, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok    8  P=5, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok    9  P=7, Bmax=64, beta=1.0: exact triangular odd compression
+  ok   10  P=7, Bmax=256, beta=1.0: exact triangular odd compression
+  ok   11  P=7, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok   12  P=7, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok   13  P=11, Bmax=64, beta=1.0: exact triangular odd compression
+  ok   14  P=11, Bmax=256, beta=1.0: exact triangular odd compression
+  ok   15  P=11, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok   16  P=11, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok   17  P=13, Bmax=64, beta=1.0: exact triangular odd compression
+  ok   18  P=13, Bmax=256, beta=1.0: exact triangular odd compression
+  ok   19  P=13, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok   20  P=13, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok   21  P=17, Bmax=64, beta=1.0: exact triangular odd compression
+  ok   22  P=17, Bmax=256, beta=1.0: exact triangular odd compression
+  ok   23  P=17, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok   24  P=17, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok   25  P=19, Bmax=64, beta=1.0: exact triangular odd compression
+  ok   26  P=19, Bmax=256, beta=1.0: exact triangular odd compression
+  ok   27  P=19, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok   28  P=19, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok   29  P=23, Bmax=64, beta=1.0: exact triangular odd compression
+  ok   30  P=23, Bmax=256, beta=1.0: exact triangular odd compression
+  ok   31  P=23, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok   32  P=23, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok   33  P=29, Bmax=64, beta=1.0: exact triangular odd compression
+  ok   34  P=29, Bmax=256, beta=1.0: exact triangular odd compression
+  ok   35  P=29, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok   36  P=29, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok   37  P=31, Bmax=64, beta=1.0: exact triangular odd compression
+  ok   38  P=31, Bmax=256, beta=1.0: exact triangular odd compression
+  ok   39  P=31, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok   40  P=31, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok   41  P=37, Bmax=64, beta=1.0: exact triangular odd compression
+  ok   42  P=37, Bmax=256, beta=1.0: exact triangular odd compression
+  ok   43  P=37, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok   44  P=37, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok   45  P=41, Bmax=64, beta=1.0: exact triangular odd compression
+  ok   46  P=41, Bmax=256, beta=1.0: exact triangular odd compression
+  ok   47  P=41, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok   48  P=41, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok   49  P=43, Bmax=64, beta=1.0: exact triangular odd compression
+  ok   50  P=43, Bmax=256, beta=1.0: exact triangular odd compression
+  ok   51  P=43, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok   52  P=43, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok   53  P=47, Bmax=64, beta=1.0: exact triangular odd compression
+  ok   54  P=47, Bmax=64, beta=1.05: exact triangular odd compression
+  ok   55  P=47, Bmax=64, beta=1.2: exact triangular odd compression
+  ok   56  P=47, Bmax=256, beta=1.0: exact triangular odd compression
+  ok   57  P=47, Bmax=256, beta=1.05: exact triangular odd compression
+  ok   58  P=47, Bmax=256, beta=1.2: exact triangular odd compression
+  ok   59  P=47, Bmax=1024, beta=1.0: exact triangular odd compression
+  ok   60  P=47, Bmax=1024, beta=1.05: exact triangular odd compression
+  ok   61  P=47, Bmax=1024, beta=1.2: exact triangular odd compression
+  ok   62  P=47, Bmax=3072, beta=1.0: exact triangular odd compression
+  ok   63  P=47, Bmax=3072, beta=1.05: exact triangular odd compression
+  ok   64  P=47, Bmax=3072, beta=1.2: exact triangular odd compression
+  ok   65  complete Gauss-character basis at B=120
+  ok   66  total-rate gamma Galois dissipator: exactly -gamma across characters, zero within
+  ok   67  every Ramanujan shell is Galois trivial: their doubled sector has zero shift
+  ok   68  p=2: finite phase compression preserves every Galois-character sector
+  ok   69  p=3: finite phase compression preserves every Galois-character sector
+  ok   70  p=5: finite phase compression preserves every Galois-character sector
+  ok   71  p=7: finite phase compression preserves every Galois-character sector
+  ok   72  p=11: finite phase compression preserves every Galois-character sector
+  ok   73  p=13: finite phase compression preserves every Galois-character sector
+  ok   74  coherence 0,1: explicit group average shift 0
+  ok   75  coherence 0,0: explicit group average shift 0
+  ok   76  coherence 77,24: explicit group average shift -0.125
+  ok   77  coherence 108,55: explicit group average shift -0.125
+  ok   78  coherence 0,91: explicit group average shift -0.125
+  ok   79  coherence 69,110: explicit group average shift -0.125
+  ok   80  coherence 36,76: explicit group average shift -0.125
+  ok   81  coherence 97,71: explicit group average shift -0.125
+  ok   82  coherence 98,80: explicit group average shift -0.125
+  ok   83  coherence 84,39: explicit group average shift -0.125
+  ok   84  coherence 78,28: explicit group average shift -0.125
+  ok   85  coherence 38,35: explicit group average shift -0.125
+  ok   86  coherence 98,88: explicit group average shift -0.125
+  ok   87  coherence 39,57: explicit group average shift -0.125
+leakage/commutator max: 0.3535533905932738 0.7071067811865476
+Bmax=3072 spectra: [{'P': 5, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.0333333333333332, 'max_real': -0.632222222222222, 'max_abs_imag': 0.0, 'distinct_real': 8}, {'P': 7, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.1761904761904762, 'max_real': -0.7546712018140589, 'max_abs_imag': 0.0, 'distinct_real': 16}, {'P': 11, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.267099567099567, 'max_real': -0.8373158299132324, 'max_abs_imag': 0.0, 'distinct_real': 32}, {'P': 13, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.3381054842593303, 'max_real': -0.9083217470729956, 'max_abs_imag': 0.0, 'distinct_real': 58}, {'P': 17, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.3934688060586382, 'max_real': -0.9636850688723037, 'max_abs_imag': 0.0, 'distinct_real': 90}, {'P': 19, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.4433303019035137, 'max_real': -1.013546564717179, 'max_abs_imag': 0.0, 'distinct_real': 127}, {'P': 23, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.484918203604837, 'max_real': -1.0551344664185023, 'max_abs_imag': 0.0, 'distinct_real': 168}, {'P': 29, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.5182119015834339, 'max_real': -1.0884281643970992, 'max_abs_imag': 0.0, 'distinct_real': 207}, {'P': 31, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.549429383373236, 'max_real': -1.1196456461869015, 'max_abs_imag': 0.0, 'distinct_real': 247}, {'P': 37, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.5757259502103436, 'max_real': -1.145942213024009, 'max_abs_imag': 0.0, 'distinct_real': 285}, {'P': 41, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.5995213101151622, 'max_real': -1.1697375729288275, 'max_abs_imag': 0.0, 'distinct_real': 323}, {'P': 43, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.622236291186011, 'max_real': -1.1924525539996764, 'max_abs_imag': 0.0, 'distinct_real': 361}, {'P': 47, 'Bmax': 3072, 'beta': 1.0, 'dimension': 6142, 'min_real': -1.6430601934042095, 'max_real': -1.2132764562178748, 'max_abs_imag': 0.0, 'distinct_real': 397}, {'P': 47, 'Bmax': 3072, 'beta': 1.05, 'dimension': 6142, 'min_real': -1.5145114619899767, 'max_real': -1.1051010616712698, 'max_abs_imag': 0.0, 'distinct_real': 397}, {'P': 47, 'Bmax': 3072, 'beta': 1.2, 'dimension': 6142, 'min_real': -1.2018277592977717, 'max_real': -0.8470605654531577, 'max_abs_imag': 0.0, 'distinct_real': 397}]
+all 87 checks passed

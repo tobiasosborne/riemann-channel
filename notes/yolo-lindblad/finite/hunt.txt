@@ -1,0 +1,362 @@
+hunt; seed=20260914
+  ok    1  S1/S2 verified before shell construction
+  ok    2  Bmax=12: doubled jumps 2,2 commute after truncation
+  ok    3  Bmax=12: doubled jumps 2,3 commute after truncation
+  ok    4  Bmax=12: doubled jumps 2,5 commute after truncation
+  ok    5  Bmax=12: doubled jumps 3,2 commute after truncation
+  ok    6  Bmax=12: doubled jumps 3,3 commute after truncation
+  ok    7  Bmax=12: doubled jumps 3,5 commute after truncation
+  ok    8  Bmax=12: doubled jumps 5,2 commute after truncation
+  ok    9  Bmax=12: doubled jumps 5,3 commute after truncation
+  ok   10  Bmax=12: doubled jumps 5,5 commute after truncation
+  ok   11  Bmax=12, beta=1.0, s=(0.3+0j): doubled resolvent and Euler product match reduced overlaps
+  ok   12  Bmax=12, beta=1.0, s=(0.5+9.25j): doubled resolvent and Euler product match reduced overlaps
+  ok   13  Bmax=12, beta=1.0, s=(1.2+37.5j): doubled resolvent and Euler product match reduced overlaps
+  ok   14  Bmax=12, beta=1.05, s=(0.3+0j): doubled resolvent and Euler product match reduced overlaps
+  ok   15  Bmax=12, beta=1.05, s=(0.5+9.25j): doubled resolvent and Euler product match reduced overlaps
+  ok   16  Bmax=12, beta=1.05, s=(1.2+37.5j): doubled resolvent and Euler product match reduced overlaps
+  ok   17  Bmax=12, beta=1.2, s=(0.3+0j): doubled resolvent and Euler product match reduced overlaps
+  ok   18  Bmax=12, beta=1.2, s=(0.5+9.25j): doubled resolvent and Euler product match reduced overlaps
+  ok   19  Bmax=12, beta=1.2, s=(1.2+37.5j): doubled resolvent and Euler product match reduced overlaps
+  ok   20  Bmax=30: doubled jumps 2,2 commute after truncation
+  ok   21  Bmax=30: doubled jumps 2,3 commute after truncation
+  ok   22  Bmax=30: doubled jumps 2,5 commute after truncation
+  ok   23  Bmax=30: doubled jumps 3,2 commute after truncation
+  ok   24  Bmax=30: doubled jumps 3,3 commute after truncation
+  ok   25  Bmax=30: doubled jumps 3,5 commute after truncation
+  ok   26  Bmax=30: doubled jumps 5,2 commute after truncation
+  ok   27  Bmax=30: doubled jumps 5,3 commute after truncation
+  ok   28  Bmax=30: doubled jumps 5,5 commute after truncation
+  ok   29  Bmax=30, beta=1.0, s=(0.3+0j): doubled resolvent and Euler product match reduced overlaps
+  ok   30  Bmax=30, beta=1.0, s=(0.5+9.25j): doubled resolvent and Euler product match reduced overlaps
+  ok   31  Bmax=30, beta=1.0, s=(1.2+37.5j): doubled resolvent and Euler product match reduced overlaps
+  ok   32  Bmax=30, beta=1.05, s=(0.3+0j): doubled resolvent and Euler product match reduced overlaps
+  ok   33  Bmax=30, beta=1.05, s=(0.5+9.25j): doubled resolvent and Euler product match reduced overlaps
+  ok   34  Bmax=30, beta=1.05, s=(1.2+37.5j): doubled resolvent and Euler product match reduced overlaps
+  ok   35  Bmax=30, beta=1.2, s=(0.3+0j): doubled resolvent and Euler product match reduced overlaps
+  ok   36  Bmax=30, beta=1.2, s=(0.5+9.25j): doubled resolvent and Euler product match reduced overlaps
+  ok   37  Bmax=30, beta=1.2, s=(1.2+37.5j): doubled resolvent and Euler product match reduced overlaps
+  ok   38  Bmax=64: doubled jumps 2,2 commute after truncation
+  ok   39  Bmax=64: doubled jumps 2,3 commute after truncation
+  ok   40  Bmax=64: doubled jumps 2,5 commute after truncation
+  ok   41  Bmax=64: doubled jumps 3,2 commute after truncation
+  ok   42  Bmax=64: doubled jumps 3,3 commute after truncation
+  ok   43  Bmax=64: doubled jumps 3,5 commute after truncation
+  ok   44  Bmax=64: doubled jumps 5,2 commute after truncation
+  ok   45  Bmax=64: doubled jumps 5,3 commute after truncation
+  ok   46  Bmax=64: doubled jumps 5,5 commute after truncation
+  ok   47  Bmax=64, beta=1.0, s=(0.3+0j): doubled resolvent and Euler product match reduced overlaps
+  ok   48  Bmax=64, beta=1.0, s=(0.5+9.25j): doubled resolvent and Euler product match reduced overlaps
+  ok   49  Bmax=64, beta=1.0, s=(1.2+37.5j): doubled resolvent and Euler product match reduced overlaps
+  ok   50  Bmax=64, beta=1.05, s=(0.3+0j): doubled resolvent and Euler product match reduced overlaps
+  ok   51  Bmax=64, beta=1.05, s=(0.5+9.25j): doubled resolvent and Euler product match reduced overlaps
+  ok   52  Bmax=64, beta=1.05, s=(1.2+37.5j): doubled resolvent and Euler product match reduced overlaps
+  ok   53  Bmax=64, beta=1.2, s=(0.3+0j): doubled resolvent and Euler product match reduced overlaps
+  ok   54  Bmax=64, beta=1.2, s=(0.5+9.25j): doubled resolvent and Euler product match reduced overlaps
+  ok   55  Bmax=64, beta=1.2, s=(1.2+37.5j): doubled resolvent and Euler product match reduced overlaps
+  ok   56  P=5, Bmax=64: all shell jumps commute
+  ok   57  P=5, Bmax=64, p=2: boundary norm deficit
+  ok   58  P=5, Bmax=64, p=3: boundary norm deficit
+  ok   59  P=5, Bmax=64, p=5: boundary norm deficit
+  ok   60  P=5, beta=1.0: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok   61  P=5, Bmax=64, beta=1.0, b=1: zero winding on both boundary meshes
+  ok   62  P=5, beta=1.0, b=1: interior mesh contains no sampled zero
+  ok   63  P=5, Bmax=64, beta=1.0, b=2: zero winding on both boundary meshes
+  ok   64  P=5, beta=1.0, b=2: interior mesh contains no sampled zero
+  ok   65  P=5, Bmax=64, beta=1.0, b=4: zero winding on both boundary meshes
+  ok   66  P=5, beta=1.0, b=4: interior mesh contains no sampled zero
+  ok   67  P=5, Bmax=64, beta=1.0, b=6: zero winding on both boundary meshes
+  ok   68  P=5, beta=1.0, b=6: interior mesh contains no sampled zero
+  ok   69  P=5, Bmax=64, beta=1.0, b=12: zero winding on both boundary meshes
+  ok   70  P=5, beta=1.0, b=12: interior mesh contains no sampled zero
+  ok   71  P=5, Bmax=64, beta=1.0, b=30: zero winding on both boundary meshes
+  ok   72  P=5, beta=1.0, b=30: interior mesh contains no sampled zero
+  ok   73  P=5, beta=1.0: real ordered pole s=-0.967187734228
+  ok   74  full doubled diagonal bound on seeded shell pairs
+  ok   75  P=5, beta=1.05: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok   76  P=5, Bmax=64, beta=1.05, b=1: zero winding on both boundary meshes
+  ok   77  P=5, beta=1.05, b=1: interior mesh contains no sampled zero
+  ok   78  P=5, Bmax=64, beta=1.05, b=2: zero winding on both boundary meshes
+  ok   79  P=5, beta=1.05, b=2: interior mesh contains no sampled zero
+  ok   80  P=5, Bmax=64, beta=1.05, b=4: zero winding on both boundary meshes
+  ok   81  P=5, beta=1.05, b=4: interior mesh contains no sampled zero
+  ok   82  P=5, Bmax=64, beta=1.05, b=6: zero winding on both boundary meshes
+  ok   83  P=5, beta=1.05, b=6: interior mesh contains no sampled zero
+  ok   84  P=5, Bmax=64, beta=1.05, b=12: zero winding on both boundary meshes
+  ok   85  P=5, beta=1.05, b=12: interior mesh contains no sampled zero
+  ok   86  P=5, Bmax=64, beta=1.05, b=30: zero winding on both boundary meshes
+  ok   87  P=5, beta=1.05, b=30: interior mesh contains no sampled zero
+  ok   88  P=5, beta=1.05: real ordered pole s=-1.017187734228
+  ok   89  full doubled diagonal bound on seeded shell pairs
+  ok   90  P=5, beta=1.2: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok   91  P=5, Bmax=64, beta=1.2, b=1: zero winding on both boundary meshes
+  ok   92  P=5, beta=1.2, b=1: interior mesh contains no sampled zero
+  ok   93  P=5, Bmax=64, beta=1.2, b=2: zero winding on both boundary meshes
+  ok   94  P=5, beta=1.2, b=2: interior mesh contains no sampled zero
+  ok   95  P=5, Bmax=64, beta=1.2, b=4: zero winding on both boundary meshes
+  ok   96  P=5, beta=1.2, b=4: interior mesh contains no sampled zero
+  ok   97  P=5, Bmax=64, beta=1.2, b=6: zero winding on both boundary meshes
+  ok   98  P=5, beta=1.2, b=6: interior mesh contains no sampled zero
+  ok   99  P=5, Bmax=64, beta=1.2, b=12: zero winding on both boundary meshes
+  ok  100  P=5, beta=1.2, b=12: interior mesh contains no sampled zero
+  ok  101  P=5, Bmax=64, beta=1.2, b=30: zero winding on both boundary meshes
+  ok  102  P=5, beta=1.2, b=30: interior mesh contains no sampled zero
+  ok  103  P=5, beta=1.2: real ordered pole s=-1.167187734228
+  ok  104  full doubled diagonal bound on seeded shell pairs
+  ok  105  P=7, Bmax=256: all shell jumps commute
+  ok  106  P=7, Bmax=256, p=2: boundary norm deficit
+  ok  107  P=7, Bmax=256, p=3: boundary norm deficit
+  ok  108  P=7, Bmax=256, p=5: boundary norm deficit
+  ok  109  P=7, Bmax=256, p=7: boundary norm deficit
+  ok  110  P=7, beta=1.0: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok  111  P=7, Bmax=256, beta=1.0, b=1: zero winding on both boundary meshes
+  ok  112  P=7, beta=1.0, b=1: interior mesh contains no sampled zero
+  ok  113  P=7, Bmax=256, beta=1.0, b=2: zero winding on both boundary meshes
+  ok  114  P=7, beta=1.0, b=2: interior mesh contains no sampled zero
+  ok  115  P=7, Bmax=256, beta=1.0, b=4: zero winding on both boundary meshes
+  ok  116  P=7, beta=1.0, b=4: interior mesh contains no sampled zero
+  ok  117  P=7, Bmax=256, beta=1.0, b=6: zero winding on both boundary meshes
+  ok  118  P=7, beta=1.0, b=6: interior mesh contains no sampled zero
+  ok  119  P=7, Bmax=256, beta=1.0, b=12: zero winding on both boundary meshes
+  ok  120  P=7, beta=1.0, b=12: interior mesh contains no sampled zero
+  ok  121  P=7, Bmax=256, beta=1.0, b=30: zero winding on both boundary meshes
+  ok  122  P=7, beta=1.0, b=30: interior mesh contains no sampled zero
+  ok  123  P=7, Bmax=256, beta=1.0, b=210: zero winding on both boundary meshes
+  ok  124  P=7, beta=1.0, b=210: interior mesh contains no sampled zero
+  ok  125  P=7, beta=1.0: real ordered pole s=-0.852661588211
+  ok  126  full doubled diagonal bound on seeded shell pairs
+  ok  127  P=7, beta=1.05: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok  128  P=7, Bmax=256, beta=1.05, b=1: zero winding on both boundary meshes
+  ok  129  P=7, beta=1.05, b=1: interior mesh contains no sampled zero
+  ok  130  P=7, Bmax=256, beta=1.05, b=2: zero winding on both boundary meshes
+  ok  131  P=7, beta=1.05, b=2: interior mesh contains no sampled zero
+  ok  132  P=7, Bmax=256, beta=1.05, b=4: zero winding on both boundary meshes
+  ok  133  P=7, beta=1.05, b=4: interior mesh contains no sampled zero
+  ok  134  P=7, Bmax=256, beta=1.05, b=6: zero winding on both boundary meshes
+  ok  135  P=7, beta=1.05, b=6: interior mesh contains no sampled zero
+  ok  136  P=7, Bmax=256, beta=1.05, b=12: zero winding on both boundary meshes
+  ok  137  P=7, beta=1.05, b=12: interior mesh contains no sampled zero
+  ok  138  P=7, Bmax=256, beta=1.05, b=30: zero winding on both boundary meshes
+  ok  139  P=7, beta=1.05, b=30: interior mesh contains no sampled zero
+  ok  140  P=7, Bmax=256, beta=1.05, b=210: zero winding on both boundary meshes
+  ok  141  P=7, beta=1.05, b=210: interior mesh contains no sampled zero
+  ok  142  P=7, beta=1.05: real ordered pole s=-0.902661588211
+  ok  143  full doubled diagonal bound on seeded shell pairs
+  ok  144  P=7, beta=1.2: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok  145  P=7, Bmax=256, beta=1.2, b=1: zero winding on both boundary meshes
+  ok  146  P=7, beta=1.2, b=1: interior mesh contains no sampled zero
+  ok  147  P=7, Bmax=256, beta=1.2, b=2: zero winding on both boundary meshes
+  ok  148  P=7, beta=1.2, b=2: interior mesh contains no sampled zero
+  ok  149  P=7, Bmax=256, beta=1.2, b=4: zero winding on both boundary meshes
+  ok  150  P=7, beta=1.2, b=4: interior mesh contains no sampled zero
+  ok  151  P=7, Bmax=256, beta=1.2, b=6: zero winding on both boundary meshes
+  ok  152  P=7, beta=1.2, b=6: interior mesh contains no sampled zero
+  ok  153  P=7, Bmax=256, beta=1.2, b=12: zero winding on both boundary meshes
+  ok  154  P=7, beta=1.2, b=12: interior mesh contains no sampled zero
+  ok  155  P=7, Bmax=256, beta=1.2, b=30: zero winding on both boundary meshes
+  ok  156  P=7, beta=1.2, b=30: interior mesh contains no sampled zero
+  ok  157  P=7, Bmax=256, beta=1.2, b=210: zero winding on both boundary meshes
+  ok  158  P=7, beta=1.2, b=210: interior mesh contains no sampled zero
+  ok  159  P=7, beta=1.2: real ordered pole s=-1.052661588211
+  ok  160  full doubled diagonal bound on seeded shell pairs
+  ok  161  P=13, Bmax=1024: all shell jumps commute
+  ok  162  P=13, Bmax=1024, p=2: boundary norm deficit
+  ok  163  P=13, Bmax=1024, p=3: boundary norm deficit
+  ok  164  P=13, Bmax=1024, p=5: boundary norm deficit
+  ok  165  P=13, Bmax=1024, p=7: boundary norm deficit
+  ok  166  P=13, Bmax=1024, p=11: boundary norm deficit
+  ok  167  P=13, Bmax=1024, p=13: boundary norm deficit
+  ok  168  P=13, beta=1.0: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok  169  P=13, Bmax=1024, beta=1.0, b=1: zero winding on both boundary meshes
+  ok  170  P=13, beta=1.0, b=1: interior mesh contains no sampled zero
+  ok  171  P=13, Bmax=1024, beta=1.0, b=2: zero winding on both boundary meshes
+  ok  172  P=13, beta=1.0, b=2: interior mesh contains no sampled zero
+  ok  173  P=13, Bmax=1024, beta=1.0, b=4: zero winding on both boundary meshes
+  ok  174  P=13, beta=1.0, b=4: interior mesh contains no sampled zero
+  ok  175  P=13, Bmax=1024, beta=1.0, b=6: zero winding on both boundary meshes
+  ok  176  P=13, beta=1.0, b=6: interior mesh contains no sampled zero
+  ok  177  P=13, Bmax=1024, beta=1.0, b=12: zero winding on both boundary meshes
+  ok  178  P=13, beta=1.0, b=12: interior mesh contains no sampled zero
+  ok  179  P=13, Bmax=1024, beta=1.0, b=30: zero winding on both boundary meshes
+  ok  180  P=13, beta=1.0, b=30: interior mesh contains no sampled zero
+  ok  181  P=13, Bmax=1024, beta=1.0, b=210: zero winding on both boundary meshes
+  ok  182  P=13, beta=1.0, b=210: interior mesh contains no sampled zero
+  ok  183  P=13, beta=1.0: real ordered pole s=-0.761991339646
+  ok  184  full doubled diagonal bound on seeded shell pairs
+  ok  185  P=13, beta=1.05: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok  186  P=13, Bmax=1024, beta=1.05, b=1: zero winding on both boundary meshes
+  ok  187  P=13, beta=1.05, b=1: interior mesh contains no sampled zero
+  ok  188  P=13, Bmax=1024, beta=1.05, b=2: zero winding on both boundary meshes
+  ok  189  P=13, beta=1.05, b=2: interior mesh contains no sampled zero
+  ok  190  P=13, Bmax=1024, beta=1.05, b=4: zero winding on both boundary meshes
+  ok  191  P=13, beta=1.05, b=4: interior mesh contains no sampled zero
+  ok  192  P=13, Bmax=1024, beta=1.05, b=6: zero winding on both boundary meshes
+  ok  193  P=13, beta=1.05, b=6: interior mesh contains no sampled zero
+  ok  194  P=13, Bmax=1024, beta=1.05, b=12: zero winding on both boundary meshes
+  ok  195  P=13, beta=1.05, b=12: interior mesh contains no sampled zero
+  ok  196  P=13, Bmax=1024, beta=1.05, b=30: zero winding on both boundary meshes
+  ok  197  P=13, beta=1.05, b=30: interior mesh contains no sampled zero
+  ok  198  P=13, Bmax=1024, beta=1.05, b=210: zero winding on both boundary meshes
+  ok  199  P=13, beta=1.05, b=210: interior mesh contains no sampled zero
+  ok  200  P=13, beta=1.05: real ordered pole s=-0.811991339646
+  ok  201  full doubled diagonal bound on seeded shell pairs
+  ok  202  P=13, beta=1.2: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok  203  P=13, Bmax=1024, beta=1.2, b=1: zero winding on both boundary meshes
+  ok  204  P=13, beta=1.2, b=1: interior mesh contains no sampled zero
+  ok  205  P=13, Bmax=1024, beta=1.2, b=2: zero winding on both boundary meshes
+  ok  206  P=13, beta=1.2, b=2: interior mesh contains no sampled zero
+  ok  207  P=13, Bmax=1024, beta=1.2, b=4: zero winding on both boundary meshes
+  ok  208  P=13, beta=1.2, b=4: interior mesh contains no sampled zero
+  ok  209  P=13, Bmax=1024, beta=1.2, b=6: zero winding on both boundary meshes
+  ok  210  P=13, beta=1.2, b=6: interior mesh contains no sampled zero
+  ok  211  P=13, Bmax=1024, beta=1.2, b=12: zero winding on both boundary meshes
+  ok  212  P=13, beta=1.2, b=12: interior mesh contains no sampled zero
+  ok  213  P=13, Bmax=1024, beta=1.2, b=30: zero winding on both boundary meshes
+  ok  214  P=13, beta=1.2, b=30: interior mesh contains no sampled zero
+  ok  215  P=13, Bmax=1024, beta=1.2, b=210: zero winding on both boundary meshes
+  ok  216  P=13, beta=1.2, b=210: interior mesh contains no sampled zero
+  ok  217  P=13, beta=1.2: real ordered pole s=-0.961991339646
+  ok  218  full doubled diagonal bound on seeded shell pairs
+  ok  219  P=31, Bmax=2048: all shell jumps commute
+  ok  220  P=31, Bmax=2048, p=2: boundary norm deficit
+  ok  221  P=31, Bmax=2048, p=3: boundary norm deficit
+  ok  222  P=31, Bmax=2048, p=5: boundary norm deficit
+  ok  223  P=31, Bmax=2048, p=7: boundary norm deficit
+  ok  224  P=31, Bmax=2048, p=11: boundary norm deficit
+  ok  225  P=31, Bmax=2048, p=13: boundary norm deficit
+  ok  226  P=31, Bmax=2048, p=17: boundary norm deficit
+  ok  227  P=31, Bmax=2048, p=19: boundary norm deficit
+  ok  228  P=31, Bmax=2048, p=23: boundary norm deficit
+  ok  229  P=31, Bmax=2048, p=29: boundary norm deficit
+  ok  230  P=31, Bmax=2048, p=31: boundary norm deficit
+  ok  231  P=31, beta=1.0: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok  232  P=31, Bmax=2048, beta=1.0, b=1: zero winding on both boundary meshes
+  ok  233  P=31, beta=1.0, b=1: interior mesh contains no sampled zero
+  ok  234  P=31, Bmax=2048, beta=1.0, b=2: zero winding on both boundary meshes
+  ok  235  P=31, beta=1.0, b=2: interior mesh contains no sampled zero
+  ok  236  P=31, Bmax=2048, beta=1.0, b=4: zero winding on both boundary meshes
+  ok  237  P=31, beta=1.0, b=4: interior mesh contains no sampled zero
+  ok  238  P=31, Bmax=2048, beta=1.0, b=6: zero winding on both boundary meshes
+  ok  239  P=31, beta=1.0, b=6: interior mesh contains no sampled zero
+  ok  240  P=31, Bmax=2048, beta=1.0, b=12: zero winding on both boundary meshes
+  ok  241  P=31, beta=1.0, b=12: interior mesh contains no sampled zero
+  ok  242  P=31, Bmax=2048, beta=1.0, b=30: zero winding on both boundary meshes
+  ok  243  P=31, beta=1.0, b=30: interior mesh contains no sampled zero
+  ok  244  P=31, Bmax=2048, beta=1.0, b=210: zero winding on both boundary meshes
+  ok  245  P=31, beta=1.0, b=210: interior mesh contains no sampled zero
+  ok  246  P=31, beta=1.0: real ordered pole s=-0.687557486611
+  ok  247  full doubled diagonal bound on seeded shell pairs
+  ok  248  P=31, beta=1.05: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok  249  P=31, Bmax=2048, beta=1.05, b=1: zero winding on both boundary meshes
+  ok  250  P=31, beta=1.05, b=1: interior mesh contains no sampled zero
+  ok  251  P=31, Bmax=2048, beta=1.05, b=2: zero winding on both boundary meshes
+  ok  252  P=31, beta=1.05, b=2: interior mesh contains no sampled zero
+  ok  253  P=31, Bmax=2048, beta=1.05, b=4: zero winding on both boundary meshes
+  ok  254  P=31, beta=1.05, b=4: interior mesh contains no sampled zero
+  ok  255  P=31, Bmax=2048, beta=1.05, b=6: zero winding on both boundary meshes
+  ok  256  P=31, beta=1.05, b=6: interior mesh contains no sampled zero
+  ok  257  P=31, Bmax=2048, beta=1.05, b=12: zero winding on both boundary meshes
+  ok  258  P=31, beta=1.05, b=12: interior mesh contains no sampled zero
+  ok  259  P=31, Bmax=2048, beta=1.05, b=30: zero winding on both boundary meshes
+  ok  260  P=31, beta=1.05, b=30: interior mesh contains no sampled zero
+  ok  261  P=31, Bmax=2048, beta=1.05, b=210: zero winding on both boundary meshes
+  ok  262  P=31, beta=1.05, b=210: interior mesh contains no sampled zero
+  ok  263  P=31, beta=1.05: real ordered pole s=-0.737557486611
+  ok  264  full doubled diagonal bound on seeded shell pairs
+  ok  265  P=31, beta=1.2: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok  266  P=31, Bmax=2048, beta=1.2, b=1: zero winding on both boundary meshes
+  ok  267  P=31, beta=1.2, b=1: interior mesh contains no sampled zero
+  ok  268  P=31, Bmax=2048, beta=1.2, b=2: zero winding on both boundary meshes
+  ok  269  P=31, beta=1.2, b=2: interior mesh contains no sampled zero
+  ok  270  P=31, Bmax=2048, beta=1.2, b=4: zero winding on both boundary meshes
+  ok  271  P=31, beta=1.2, b=4: interior mesh contains no sampled zero
+  ok  272  P=31, Bmax=2048, beta=1.2, b=6: zero winding on both boundary meshes
+  ok  273  P=31, beta=1.2, b=6: interior mesh contains no sampled zero
+  ok  274  P=31, Bmax=2048, beta=1.2, b=12: zero winding on both boundary meshes
+  ok  275  P=31, beta=1.2, b=12: interior mesh contains no sampled zero
+  ok  276  P=31, Bmax=2048, beta=1.2, b=30: zero winding on both boundary meshes
+  ok  277  P=31, beta=1.2, b=30: interior mesh contains no sampled zero
+  ok  278  P=31, Bmax=2048, beta=1.2, b=210: zero winding on both boundary meshes
+  ok  279  P=31, beta=1.2, b=210: interior mesh contains no sampled zero
+  ok  280  P=31, beta=1.2: real ordered pole s=-0.887557486611
+  ok  281  full doubled diagonal bound on seeded shell pairs
+  ok  282  P=47, Bmax=3072: all shell jumps commute
+  ok  283  P=47, Bmax=3072, p=2: boundary norm deficit
+  ok  284  P=47, Bmax=3072, p=3: boundary norm deficit
+  ok  285  P=47, Bmax=3072, p=5: boundary norm deficit
+  ok  286  P=47, Bmax=3072, p=7: boundary norm deficit
+  ok  287  P=47, Bmax=3072, p=11: boundary norm deficit
+  ok  288  P=47, Bmax=3072, p=13: boundary norm deficit
+  ok  289  P=47, Bmax=3072, p=17: boundary norm deficit
+  ok  290  P=47, Bmax=3072, p=19: boundary norm deficit
+  ok  291  P=47, Bmax=3072, p=23: boundary norm deficit
+  ok  292  P=47, Bmax=3072, p=29: boundary norm deficit
+  ok  293  P=47, Bmax=3072, p=31: boundary norm deficit
+  ok  294  P=47, Bmax=3072, p=37: boundary norm deficit
+  ok  295  P=47, Bmax=3072, p=41: boundary norm deficit
+  ok  296  P=47, Bmax=3072, p=43: boundary norm deficit
+  ok  297  P=47, Bmax=3072, p=47: boundary norm deficit
+  ok  298  P=47, beta=1.0: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok  299  P=47, Bmax=3072, beta=1.0, b=1: zero winding on both boundary meshes
+  ok  300  P=47, beta=1.0, b=1: interior mesh contains no sampled zero
+  ok  301  P=47, Bmax=3072, beta=1.0, b=2: zero winding on both boundary meshes
+  ok  302  P=47, beta=1.0, b=2: interior mesh contains no sampled zero
+  ok  303  P=47, Bmax=3072, beta=1.0, b=4: zero winding on both boundary meshes
+  ok  304  P=47, beta=1.0, b=4: interior mesh contains no sampled zero
+  ok  305  P=47, Bmax=3072, beta=1.0, b=6: zero winding on both boundary meshes
+  ok  306  P=47, beta=1.0, b=6: interior mesh contains no sampled zero
+  ok  307  P=47, Bmax=3072, beta=1.0, b=12: zero winding on both boundary meshes
+  ok  308  P=47, beta=1.0, b=12: interior mesh contains no sampled zero
+  ok  309  P=47, Bmax=3072, beta=1.0, b=30: zero winding on both boundary meshes
+  ok  310  P=47, beta=1.0, b=30: interior mesh contains no sampled zero
+  ok  311  P=47, Bmax=3072, beta=1.0, b=210: zero winding on both boundary meshes
+  ok  312  P=47, beta=1.0, b=210: interior mesh contains no sampled zero
+  ok  313  P=47, beta=1.0: real ordered pole s=-0.666449308434
+  ok  314  full doubled diagonal bound on seeded shell pairs
+  ok  315  P=47, beta=1.05: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok  316  P=47, Bmax=3072, beta=1.05, b=1: zero winding on both boundary meshes
+  ok  317  P=47, beta=1.05, b=1: interior mesh contains no sampled zero
+  ok  318  P=47, Bmax=3072, beta=1.05, b=2: zero winding on both boundary meshes
+  ok  319  P=47, beta=1.05, b=2: interior mesh contains no sampled zero
+  ok  320  P=47, Bmax=3072, beta=1.05, b=4: zero winding on both boundary meshes
+  ok  321  P=47, beta=1.05, b=4: interior mesh contains no sampled zero
+  ok  322  P=47, Bmax=3072, beta=1.05, b=6: zero winding on both boundary meshes
+  ok  323  P=47, beta=1.05, b=6: interior mesh contains no sampled zero
+  ok  324  P=47, Bmax=3072, beta=1.05, b=12: zero winding on both boundary meshes
+  ok  325  P=47, beta=1.05, b=12: interior mesh contains no sampled zero
+  ok  326  P=47, Bmax=3072, beta=1.05, b=30: zero winding on both boundary meshes
+  ok  327  P=47, beta=1.05, b=30: interior mesh contains no sampled zero
+  ok  328  P=47, Bmax=3072, beta=1.05, b=210: zero winding on both boundary meshes
+  ok  329  P=47, beta=1.05, b=210: interior mesh contains no sampled zero
+  ok  330  P=47, beta=1.05: real ordered pole s=-0.716449308434
+  ok  331  full doubled diagonal bound on seeded shell pairs
+  ok  332  P=47, beta=1.2: analytic diagonal bound excludes ALL resolvent poles in rectangle
+  ok  333  P=47, Bmax=3072, beta=1.2, b=1: zero winding on both boundary meshes
+  ok  334  P=47, beta=1.2, b=1: interior mesh contains no sampled zero
+  ok  335  P=47, Bmax=3072, beta=1.2, b=2: zero winding on both boundary meshes
+  ok  336  P=47, beta=1.2, b=2: interior mesh contains no sampled zero
+  ok  337  P=47, Bmax=3072, beta=1.2, b=4: zero winding on both boundary meshes
+  ok  338  P=47, beta=1.2, b=4: interior mesh contains no sampled zero
+  ok  339  P=47, Bmax=3072, beta=1.2, b=6: zero winding on both boundary meshes
+  ok  340  P=47, beta=1.2, b=6: interior mesh contains no sampled zero
+  ok  341  P=47, Bmax=3072, beta=1.2, b=12: zero winding on both boundary meshes
+  ok  342  P=47, beta=1.2, b=12: interior mesh contains no sampled zero
+  ok  343  P=47, Bmax=3072, beta=1.2, b=30: zero winding on both boundary meshes
+  ok  344  P=47, beta=1.2, b=30: interior mesh contains no sampled zero
+  ok  345  P=47, Bmax=3072, beta=1.2, b=210: zero winding on both boundary meshes
+  ok  346  P=47, beta=1.2, b=210: interior mesh contains no sampled zero
+  ok  347  P=47, beta=1.2: real ordered pole s=-0.866449308434
+  ok  348  full doubled diagonal bound on seeded shell pairs
+  ok  349  fixed P=47, Bmax=64: overlaps exactly cutoff-independent once shell is present
+  ok  350  fixed P=47, Bmax=256: overlaps exactly cutoff-independent once shell is present
+  ok  351  fixed P=47, Bmax=1024: overlaps exactly cutoff-independent once shell is present
+  ok  352  fixed P=47, Bmax=3072: overlaps exactly cutoff-independent once shell is present
+  ok  353  P=5: F is regular at s=1, F(1)=1.204873042081
+  ok  354  P=7: F is regular at s=1, F(1)=1.209120378960
+  ok  355  P=13: F is regular at s=1, F(1)=1.210886797234
+  ok  356  P=31: F is regular at s=1, F(1)=1.211629311395
+  ok  357  P=47: F is regular at s=1, F(1)=1.211712204122
+operator max error: 2.224846524846907e-16
+hunt cases: [{'P': 5, 'Bmax': 64, 'beta': 1.0, 'ordered_real_pole': -0.9671877342281168, 'euler_pole_real': -2.0, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.30765813063395536}, {'P': 5, 'Bmax': 64, 'beta': 1.05, 'ordered_real_pole': -1.0171877342281168, 'euler_pole_real': -2.05, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.2945613939899106}, {'P': 5, 'Bmax': 64, 'beta': 1.2, 'ordered_real_pole': -1.1671877342281167, 'euler_pole_real': -2.2, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.25881526902659363}, {'P': 7, 'Bmax': 256, 'beta': 1.0, 'ordered_real_pole': -0.8526615882106481, 'euler_pole_real': -2.0, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.31904159645647057}, {'P': 7, 'Bmax': 256, 'beta': 1.05, 'ordered_real_pole': -0.9026615882106481, 'euler_pole_real': -2.05, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.30488947429205265}, {'P': 7, 'Bmax': 256, 'beta': 1.2, 'ordered_real_pole': -1.052661588210648, 'euler_pole_real': -2.2, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.2665288297002513}, {'P': 13, 'Bmax': 1024, 'beta': 1.0, 'ordered_real_pole': -0.761991339646177, 'euler_pole_real': -2.0, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.32580801735685494}, {'P': 13, 'Bmax': 1024, 'beta': 1.05, 'ordered_real_pole': -0.8119913396461771, 'euler_pole_real': -2.05, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.3108711584760437}, {'P': 13, 'Bmax': 1024, 'beta': 1.2, 'ordered_real_pole': -0.961991339646177, 'euler_pole_real': -2.2, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.27066178383518547}, {'P': 31, 'Bmax': 2048, 'beta': 1.0, 'ordered_real_pole': -0.6875574866108269, 'euler_pole_real': -2.0, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.3299745439387623}, {'P': 31, 'Bmax': 2048, 'beta': 1.05, 'ordered_real_pole': -0.737557486610827, 'euler_pole_real': -2.05, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.31445279083640787}, {'P': 31, 'Bmax': 2048, 'beta': 1.2, 'ordered_real_pole': -0.8875574866108269, 'euler_pole_real': -2.2, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.2729383724262846}, {'P': 47, 'Bmax': 3072, 'beta': 1.0, 'ordered_real_pole': -0.6664493084339127, 'euler_pole_real': -2.0, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.33073465847197925}, {'P': 47, 'Bmax': 3072, 'beta': 1.05, 'ordered_real_pole': -0.7164493084339127, 'euler_pole_real': -2.05, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.3150840016316582}, {'P': 47, 'Bmax': 3072, 'beta': 1.2, 'ordered_real_pole': -0.8664493084339127, 'euler_pole_real': -2.2, 'rectangle_poles': 0, 'rectangle_overlap_zeros': 0, 'vacuum_diagonal_bound': 0.2732998729923529}]
+first three zero comparisons at P=47: [{'P': 47, 'n': 1, 'gamma': 14.134725141734695, 'abs_F': 0.7997027501094709, 'abs_E': 0.7894137636929923, 'abs_ordered_denominator': 1.2504646255913343}, {'P': 47, 'n': 2, 'gamma': 21.022039638771556, 'abs_F': 0.8848698376901292, 'abs_E': 0.8747396463241531, 'abs_ordered_denominator': 1.130109714904971}, {'P': 47, 'n': 3, 'gamma': 25.01085758014569, 'abs_F': 0.9430780150011538, 'abs_E': 0.9340326403951954, 'abs_ordered_denominator': 1.0603576629858946}]
+all 357 checks passed

@@ -1,0 +1,153 @@
+verify_characters; seed=20260914
+  ok    1  b=1: all 1 characters, orthonormality
+  ok    2  b=1: U_a g_chi = chi(a) g_chi for every unit
+  ok    3  b=1, p=2: S3 adjoint scalar for all characters
+  ok    4  b=1, p=3: S3 adjoint scalar for all characters
+  ok    5  b=1, p=5: S3 adjoint scalar for all characters
+  ok    6  b=1, p=7: S3 adjoint scalar for all characters
+  ok    7  b=1, p=11: S3 adjoint scalar for all characters
+  ok    8  b=1, p=13: S3 adjoint scalar for all characters
+  ok    9  b=1: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   10  b=2: all 1 characters, orthonormality
+  ok   11  b=2: U_a g_chi = chi(a) g_chi for every unit
+  ok   12  b=2, p=3: S3 adjoint scalar for all characters
+  ok   13  b=2, p=5: S3 adjoint scalar for all characters
+  ok   14  b=2, p=7: S3 adjoint scalar for all characters
+  ok   15  b=2, p=11: S3 adjoint scalar for all characters
+  ok   16  b=2, p=13: S3 adjoint scalar for all characters
+  ok   17  b=2: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   18  b=3: all 2 characters, orthonormality
+  ok   19  b=3: U_a g_chi = chi(a) g_chi for every unit
+  ok   20  b=3, p=2: S3 adjoint scalar for all characters
+  ok   21  b=3, p=5: S3 adjoint scalar for all characters
+  ok   22  b=3, p=7: S3 adjoint scalar for all characters
+  ok   23  b=3, p=11: S3 adjoint scalar for all characters
+  ok   24  b=3, p=13: S3 adjoint scalar for all characters
+  ok   25  b=3: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   26  b=4: all 2 characters, orthonormality
+  ok   27  b=4: U_a g_chi = chi(a) g_chi for every unit
+  ok   28  b=4, p=3: S3 adjoint scalar for all characters
+  ok   29  b=4, p=5: S3 adjoint scalar for all characters
+  ok   30  b=4, p=7: S3 adjoint scalar for all characters
+  ok   31  b=4, p=11: S3 adjoint scalar for all characters
+  ok   32  b=4, p=13: S3 adjoint scalar for all characters
+  ok   33  b=4: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   34  b=5: all 4 characters, orthonormality
+  ok   35  b=5: U_a g_chi = chi(a) g_chi for every unit
+  ok   36  b=5, p=2: S3 adjoint scalar for all characters
+  ok   37  b=5, p=3: S3 adjoint scalar for all characters
+  ok   38  b=5, p=7: S3 adjoint scalar for all characters
+  ok   39  b=5, p=11: S3 adjoint scalar for all characters
+  ok   40  b=5, p=13: S3 adjoint scalar for all characters
+  ok   41  b=5: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   42  b=6: all 2 characters, orthonormality
+  ok   43  b=6: U_a g_chi = chi(a) g_chi for every unit
+  ok   44  b=6, p=5: S3 adjoint scalar for all characters
+  ok   45  b=6, p=7: S3 adjoint scalar for all characters
+  ok   46  b=6, p=11: S3 adjoint scalar for all characters
+  ok   47  b=6, p=13: S3 adjoint scalar for all characters
+  ok   48  b=6: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   49  b=8: all 4 characters, orthonormality
+  ok   50  b=8: U_a g_chi = chi(a) g_chi for every unit
+  ok   51  b=8, p=3: S3 adjoint scalar for all characters
+  ok   52  b=8, p=5: S3 adjoint scalar for all characters
+  ok   53  b=8, p=7: S3 adjoint scalar for all characters
+  ok   54  b=8, p=11: S3 adjoint scalar for all characters
+  ok   55  b=8, p=13: S3 adjoint scalar for all characters
+  ok   56  b=8: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   57  b=10: all 4 characters, orthonormality
+  ok   58  b=10: U_a g_chi = chi(a) g_chi for every unit
+  ok   59  b=10, p=3: S3 adjoint scalar for all characters
+  ok   60  b=10, p=7: S3 adjoint scalar for all characters
+  ok   61  b=10, p=11: S3 adjoint scalar for all characters
+  ok   62  b=10, p=13: S3 adjoint scalar for all characters
+  ok   63  b=10: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   64  b=12: all 4 characters, orthonormality
+  ok   65  b=12: U_a g_chi = chi(a) g_chi for every unit
+  ok   66  b=12, p=5: S3 adjoint scalar for all characters
+  ok   67  b=12, p=7: S3 adjoint scalar for all characters
+  ok   68  b=12, p=11: S3 adjoint scalar for all characters
+  ok   69  b=12, p=13: S3 adjoint scalar for all characters
+  ok   70  b=12: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   71  b=15: all 8 characters, orthonormality
+  ok   72  b=15: U_a g_chi = chi(a) g_chi for every unit
+  ok   73  b=15, p=2: S3 adjoint scalar for all characters
+  ok   74  b=15, p=7: S3 adjoint scalar for all characters
+  ok   75  b=15, p=11: S3 adjoint scalar for all characters
+  ok   76  b=15, p=13: S3 adjoint scalar for all characters
+  ok   77  b=15: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   78  b=20: all 8 characters, orthonormality
+  ok   79  b=20: U_a g_chi = chi(a) g_chi for every unit
+  ok   80  b=20, p=3: S3 adjoint scalar for all characters
+  ok   81  b=20, p=7: S3 adjoint scalar for all characters
+  ok   82  b=20, p=11: S3 adjoint scalar for all characters
+  ok   83  b=20, p=13: S3 adjoint scalar for all characters
+  ok   84  b=20: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   85  b=24: all 8 characters, orthonormality
+  ok   86  b=24: U_a g_chi = chi(a) g_chi for every unit
+  ok   87  b=24, p=5: S3 adjoint scalar for all characters
+  ok   88  b=24, p=7: S3 adjoint scalar for all characters
+  ok   89  b=24, p=11: S3 adjoint scalar for all characters
+  ok   90  b=24, p=13: S3 adjoint scalar for all characters
+  ok   91  b=24: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   92  b=30: all 8 characters, orthonormality
+  ok   93  b=30: U_a g_chi = chi(a) g_chi for every unit
+  ok   94  b=30, p=7: S3 adjoint scalar for all characters
+  ok   95  b=30, p=11: S3 adjoint scalar for all characters
+  ok   96  b=30, p=13: S3 adjoint scalar for all characters
+  ok   97  b=30: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok   98  b=40: all 16 characters, orthonormality
+  ok   99  b=40: U_a g_chi = chi(a) g_chi for every unit
+  ok  100  b=40, p=3: S3 adjoint scalar for all characters
+  ok  101  b=40, p=7: S3 adjoint scalar for all characters
+  ok  102  b=40, p=11: S3 adjoint scalar for all characters
+  ok  103  b=40, p=13: S3 adjoint scalar for all characters
+  ok  104  b=40: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok  105  b=60: all 16 characters, orthonormality
+  ok  106  b=60: U_a g_chi = chi(a) g_chi for every unit
+  ok  107  b=60, p=7: S3 adjoint scalar for all characters
+  ok  108  b=60, p=11: S3 adjoint scalar for all characters
+  ok  109  b=60, p=13: S3 adjoint scalar for all characters
+  ok  110  b=60: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok  111  b=120: all 32 characters, orthonormality
+  ok  112  b=120: U_a g_chi = chi(a) g_chi for every unit
+  ok  113  b=120, p=7: S3 adjoint scalar for all characters
+  ok  114  b=120, p=11: S3 adjoint scalar for all characters
+  ok  115  b=120, p=13: S3 adjoint scalar for all characters
+  ok  116  b=120: bcmpo.transfer units block has L_P(beta,conj chi)/zeta_P(beta)
+  ok  117  sum_{b|120} phi(b)=120: complete Gauss basis of L2(Z/120)
+  ok  118  chi=(0,), beta=1.0: projected scalar corrected; coherence is NOT an eigenvector
+  ok  119  chi=(0,), beta=1.0: exact Euler log with bad primes and prime powers
+  ok  120  chi=(0,), beta=1.05: projected scalar corrected; coherence is NOT an eigenvector
+  ok  121  chi=(0,), beta=1.05: exact Euler log with bad primes and prime powers
+  ok  122  chi=(0,), beta=1.2: projected scalar corrected; coherence is NOT an eigenvector
+  ok  123  chi=(0,), beta=1.2: exact Euler log with bad primes and prime powers
+  ok  124  chi=(0,), beta=2.0: projected scalar corrected; coherence is NOT an eigenvector
+  ok  125  chi=(0,), beta=2.0: exact Euler log with bad primes and prime powers
+  ok  126  chi=(1,), beta=1.0: projected scalar corrected; coherence is NOT an eigenvector
+  ok  127  chi=(1,), beta=1.0: exact Euler log with bad primes and prime powers
+  ok  128  chi=(1,), beta=1.05: projected scalar corrected; coherence is NOT an eigenvector
+  ok  129  chi=(1,), beta=1.05: exact Euler log with bad primes and prime powers
+  ok  130  chi=(1,), beta=1.2: projected scalar corrected; coherence is NOT an eigenvector
+  ok  131  chi=(1,), beta=1.2: exact Euler log with bad primes and prime powers
+  ok  132  chi=(1,), beta=2.0: projected scalar corrected; coherence is NOT an eigenvector
+  ok  133  chi=(1,), beta=2.0: exact Euler log with bad primes and prime powers
+  ok  134  chi=(2,), beta=1.0: projected scalar corrected; coherence is NOT an eigenvector
+  ok  135  chi=(2,), beta=1.0: exact Euler log with bad primes and prime powers
+  ok  136  chi=(2,), beta=1.05: projected scalar corrected; coherence is NOT an eigenvector
+  ok  137  chi=(2,), beta=1.05: exact Euler log with bad primes and prime powers
+  ok  138  chi=(2,), beta=1.2: projected scalar corrected; coherence is NOT an eigenvector
+  ok  139  chi=(2,), beta=1.2: exact Euler log with bad primes and prime powers
+  ok  140  chi=(2,), beta=2.0: projected scalar corrected; coherence is NOT an eigenvector
+  ok  141  chi=(2,), beta=2.0: exact Euler log with bad primes and prime powers
+  ok  142  chi=(3,), beta=1.0: projected scalar corrected; coherence is NOT an eigenvector
+  ok  143  chi=(3,), beta=1.0: exact Euler log with bad primes and prime powers
+  ok  144  chi=(3,), beta=1.05: projected scalar corrected; coherence is NOT an eigenvector
+  ok  145  chi=(3,), beta=1.05: exact Euler log with bad primes and prime powers
+  ok  146  chi=(3,), beta=1.2: projected scalar corrected; coherence is NOT an eigenvector
+  ok  147  chi=(3,), beta=1.2: exact Euler log with bad primes and prime powers
+  ok  148  chi=(3,), beta=2.0: projected scalar corrected; coherence is NOT an eigenvector
+  ok  149  chi=(3,), beta=2.0: exact Euler log with bad primes and prime powers
+max adjoint/Galois/BC errors: 9.255948710593722e-16 1.6024563894412172e-15 5.551115123125783e-16
+sample rows: [{'chi': [1], 'beta': 1.0, 'projected_real': -1.655705731226517, 'projected_imag': -0.15559206166885908, 'nonscalar_residual': 0.6107188167309844, 'proposed_real': -1.6012034552561953, 'log_difference_real': 2.0886510644761063, 'prime_power_correction_real': 0.48744760921991137, 'bc_real': 0.12008396331878456, 'bc_imag': -0.030326200656777786}, {'chi': [1], 'beta': 1.05, 'projected_real': -1.5252276315120694, 'projected_imag': -0.15154511442035512, 'nonscalar_residual': 0.5780667469929978, 'proposed_real': -1.4770355915059556, 'log_difference_real': 1.9165768476503302, 'prime_power_correction_real': 0.4395412561443745, 'bc_real': 0.14288168505299784, 'bc_imag': -0.03501545429885571}, {'chi': [1], 'beta': 1.2, 'projected_real': -1.2083339052720006, 'projected_imag': -0.13999348369004255, 'nonscalar_residual': 0.49475074150046444, 'proposed_real': -1.174790946428518, 'log_difference_real': 1.5016377180798346, 'prime_power_correction_real': 0.32684677165131676, 'bc_real': 0.21731147592161829, 'bc_imag': -0.04898962354518224}, {'chi': [1], 'beta': 2.0, 'projected_real': -0.44775746538511024, 'projected_imag': -0.09056139725313105, 'nonscalar_residual': 0.2449214179424224, 'proposed_real': -0.44242927500864265, 'log_difference_real': 0.5245236417814668, 'prime_power_correction_real': 0.08209436677282393, 'bc_real': 0.585100849588626, 'bc_imag': -0.08904097501461543}]
+all 149 checks passed

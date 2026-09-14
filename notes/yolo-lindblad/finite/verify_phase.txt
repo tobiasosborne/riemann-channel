@@ -1,0 +1,96 @@
+verify_phase; seed=20260914
+  ok    1  N=12, p=2: direct isometry and both Fourier formulas
+  ok    2  N=12, p=2: V_p U_a = U_a V_p for every unit
+  ok    3  N=12, p=3: direct isometry and both Fourier formulas
+  ok    4  N=12, p=3: V_p U_a = U_a V_p for every unit
+  ok    5  N=30, p=2: direct isometry and both Fourier formulas
+  ok    6  N=30, p=2: V_p U_a = U_a V_p for every unit
+  ok    7  N=30, p=3: direct isometry and both Fourier formulas
+  ok    8  N=30, p=3: V_p U_a = U_a V_p for every unit
+  ok    9  N=30, p=5: direct isometry and both Fourier formulas
+  ok   10  N=30, p=5: V_p U_a = U_a V_p for every unit
+  ok   11  N=60, p=2: direct isometry and both Fourier formulas
+  ok   12  N=60, p=2: V_p U_a = U_a V_p for every unit
+  ok   13  N=60, p=3: direct isometry and both Fourier formulas
+  ok   14  N=60, p=3: V_p U_a = U_a V_p for every unit
+  ok   15  N=60, p=5: direct isometry and both Fourier formulas
+  ok   16  N=60, p=5: V_p U_a = U_a V_p for every unit
+  ok   17  N=84, p=2: direct isometry and both Fourier formulas
+  ok   18  N=84, p=2: V_p U_a = U_a V_p for every unit
+  ok   19  N=84, p=3: direct isometry and both Fourier formulas
+  ok   20  N=84, p=3: V_p U_a = U_a V_p for every unit
+  ok   21  N=84, p=7: direct isometry and both Fourier formulas
+  ok   22  N=84, p=7: V_p U_a = U_a V_p for every unit
+  ok   23  N=120, p=2: direct isometry and both Fourier formulas
+  ok   24  N=120, p=2: V_p U_a = U_a V_p for every unit
+  ok   25  N=120, p=3: direct isometry and both Fourier formulas
+  ok   26  N=120, p=3: V_p U_a = U_a V_p for every unit
+  ok   27  N=120, p=5: direct isometry and both Fourier formulas
+  ok   28  N=120, p=5: V_p U_a = U_a V_p for every unit
+  ok   29  b=1, p=2: S2 and its adjoint in position space
+  ok   30  b=2, p=2: S2 and its adjoint in position space
+  ok   31  b=3, p=2: S2 and its adjoint in position space
+  ok   32  b=4, p=2: S2 and its adjoint in position space
+  ok   33  b=5, p=2: S2 and its adjoint in position space
+  ok   34  b=6, p=2: S2 and its adjoint in position space
+  ok   35  b=10, p=2: S2 and its adjoint in position space
+  ok   36  b=12, p=2: S2 and its adjoint in position space
+  ok   37  b=15, p=2: S2 and its adjoint in position space
+  ok   38  b=20, p=2: S2 and its adjoint in position space
+  ok   39  b=30, p=2: S2 and its adjoint in position space
+  ok   40  b=60, p=2: S2 and its adjoint in position space
+  ok   41  b=1, p=3: S2 and its adjoint in position space
+  ok   42  b=2, p=3: S2 and its adjoint in position space
+  ok   43  b=3, p=3: S2 and its adjoint in position space
+  ok   44  b=4, p=3: S2 and its adjoint in position space
+  ok   45  b=5, p=3: S2 and its adjoint in position space
+  ok   46  b=6, p=3: S2 and its adjoint in position space
+  ok   47  b=10, p=3: S2 and its adjoint in position space
+  ok   48  b=12, p=3: S2 and its adjoint in position space
+  ok   49  b=15, p=3: S2 and its adjoint in position space
+  ok   50  b=20, p=3: S2 and its adjoint in position space
+  ok   51  b=30, p=3: S2 and its adjoint in position space
+  ok   52  b=60, p=3: S2 and its adjoint in position space
+  ok   53  b=1, p=5: S2 and its adjoint in position space
+  ok   54  b=2, p=5: S2 and its adjoint in position space
+  ok   55  b=3, p=5: S2 and its adjoint in position space
+  ok   56  b=4, p=5: S2 and its adjoint in position space
+  ok   57  b=5, p=5: S2 and its adjoint in position space
+  ok   58  b=6, p=5: S2 and its adjoint in position space
+  ok   59  b=10, p=5: S2 and its adjoint in position space
+  ok   60  b=12, p=5: S2 and its adjoint in position space
+  ok   61  b=15, p=5: S2 and its adjoint in position space
+  ok   62  b=20, p=5: S2 and its adjoint in position space
+  ok   63  b=30, p=5: S2 and its adjoint in position space
+  ok   64  b=60, p=5: S2 and its adjoint in position space
+  ok   65  b=1, p=7: S2 and its adjoint in position space
+  ok   66  b=2, p=7: S2 and its adjoint in position space
+  ok   67  b=3, p=7: S2 and its adjoint in position space
+  ok   68  b=4, p=7: S2 and its adjoint in position space
+  ok   69  b=5, p=7: S2 and its adjoint in position space
+  ok   70  b=6, p=7: S2 and its adjoint in position space
+  ok   71  b=10, p=7: S2 and its adjoint in position space
+  ok   72  b=12, p=7: S2 and its adjoint in position space
+  ok   73  b=15, p=7: S2 and its adjoint in position space
+  ok   74  b=20, p=7: S2 and its adjoint in position space
+  ok   75  b=30, p=7: S2 and its adjoint in position space
+  ok   76  b=60, p=7: S2 and its adjoint in position space
+  ok   77  N=60: V_2 V_3 = V_3 V_2, compatible quotients
+  ok   78  N=210: V_3 V_7 = V_7 V_3, compatible quotients
+  ok   79  N=420: V_5 V_7 = V_7 V_5, compatible quotients
+  ok   80  N=120: V_2 V_2 = V_2 V_2, compatible quotients
+  ok   81  B=30, p=2: exact dropped-column norm formula
+  ok   82  B=30, p=3: exact dropped-column norm formula
+  ok   83  B=30, p=5: exact dropped-column norm formula
+  ok   84  B=30, p=7: exact dropped-column norm formula
+  ok   85  B=120, p=2: exact dropped-column norm formula
+  ok   86  B=120, p=3: exact dropped-column norm formula
+  ok   87  B=120, p=5: exact dropped-column norm formula
+  ok   88  B=120, p=7: exact dropped-column norm formula
+  ok   89  B=420, p=2: exact dropped-column norm formula
+  ok   90  B=420, p=3: exact dropped-column norm formula
+  ok   91  B=420, p=5: exact dropped-column norm formula
+  ok   92  B=420, p=7: exact dropped-column norm formula
+maximum errors: {'isometry': 0.0, 'fourier': 1.459567244438734e-14, 'shell_forward': 2.2227989561097204e-16, 'shell_adjoint': 2.2291747901057766e-16, 'covariance': 0.0, 'commute': 0.0}
+  ok   93  all S1/S2 errors below 1e-12
+all 93 checks passed

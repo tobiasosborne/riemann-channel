@@ -4,7 +4,7 @@
 % SHARD-SUMMARY: Records the environment, the data files, and the reference-source manifest.
 % SHARD-KEYWORDS: reproducibility, scripts, outputs, data, refs, manifest
 % SHARD-NOTES: none
-% SHARD-SCRIPTS: scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py, scripts/artin_schreier_super.py, scripts/riemann_graded_trace.py, scripts/bc_entropy.py, scripts/cmps_parity_supertrace.py, scripts/weil_ring_norm_check.py, scripts/ring_norm_tensor.py, scripts/ring_norm_certificate.py, scripts/ring_norm_examples.py, scripts/graded_permutation.py
+% SHARD-SCRIPTS: scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py, scripts/artin_schreier_super.py, scripts/riemann_graded_trace.py, scripts/bc_entropy.py, scripts/cmps_parity_supertrace.py, scripts/weil_ring_norm_check.py, scripts/ring_norm_tensor.py, scripts/ring_norm_certificate.py, scripts/ring_norm_examples.py, scripts/graded_permutation.py, scripts/phase_side_lindbladian.py
 
 \section{Reproducibility Map}
 \label{sec:repro}
@@ -38,6 +38,7 @@ script & what it establishes & output, claims \\
 \texttt{ring\_norm\_certificate.py} & Exact rational contraction certificate of the $\mathbb F_5$ three-letter genus-two tensor; nine-letter tensor at $\qs = 25,17,16$; Jordan--Wigner norms & \texttt{outputs/ring\_norm\_certificate.txt}; \texttt{num:ring-norm-certificate} \\
 \texttt{ring\_norm\_examples.py} & One explicit MPS per genus $0$--$3$: spectra, correlation lengths, block Schmidt spectra (Gram formula, explicit and Jordan--Wigner vectors), injectivity, parent Hamiltonians with twisted and untwisted boundary terms & \texttt{outputs/ring\_norm\_examples.txt}; \texttt{num:ring-norm-examples} \\
 \texttt{graded\_permutation.py} & The permutation $(1\,2)(3\,4\,5)$: ring norms, the two-oscillator gas and bond Fock trace, the graded closures and holonomies, fermionic cycles and M\"obius, the letter ladder (Kraus ranks $1,2,5$), parity-dephasing shifts ($46$ checks) & \texttt{outputs/graded\_permutation.txt}; \texttt{num:graded-permutation} \\
+\texttt{phase\_side\_lindbladian.py} & The phase-side Lindbladian guess: shell formulas from $L^2(\mathbb Z/360)$, grading non-invariance, shifted vacuum generating functions, $1/\zeta_P(w+\tfrac12)$, Gibbs and parity-closure counterexamples, Galois rates ($30$ checks; the two lane suites live under \texttt{notes/yolo-lindblad/finite/}) & \texttt{outputs/phase\_side\_lindbladian.txt}; \texttt{num:phase-side-lindbladian} \\
 \bottomrule
 \end{tabular}
 \end{center}

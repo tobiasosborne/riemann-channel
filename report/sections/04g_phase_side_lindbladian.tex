@@ -1,0 +1,189 @@
+% SHARD-ID: RC-04G-PHASE-SIDE-LINDBLADIAN
+% SHARD-TITLE: The Phase-Side Lindbladian Guess: Two Prover Lanes, a Clean Negative, and What Survived
+% SHARD-SUMMARY: Records TJO's request for a bold guess of the Riemann Lindbladian assembled from the notebook's constraints (bond L2(Zhat) (x) L2(R_+^*), grading by the profinite Fourier mode, one prime jump V_p per prime at rate 1/p, Galois dephasing, an archimedean dilation Hamiltonian) and the two codex gpt-6-astra lanes that audited it.
+% SHARD-SUMMARY: What holds: the prime isometries, their Galois covariance, the Ramanujan-shell formulas, the exact reciprocal-zeta matrix element of the inverse multiset sum, uniform Galois dephasing. What fails: the grading is not preserved (the vacuum leaks into shell p), vacuum-character coherences are not scalar modes, the vacuum generating functions are shifted partial zeta functions with no singularity in the strip, shell Gibbs weights are not stationary, the rates 1/p define no normal semigroup, the parity closure is not the quotient by Q^x; two of the orchestrator's earlier claims are corrected.
+% SHARD-KEYWORDS: Bost-Connes, phases, profinite, Ramanujan sums, prime jump, Shor map, Galois dephasing, Euler product, word multiplicities, Gibbs, detailed balance, adele class space, Connes trace formula, negative result, correction ledger
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/phase_side_lindbladian.py
+
+\section{The Phase-Side Lindbladian Guess: A Clean Negative and What Survived}
+\label{sec:phase-side-lindbladian}
+
+\emph{Question (TJO, 2026-09-14, night).} ``Can we yolo guess the right Lindblad given the
+circumstantial info we have found in this project so far?'' and then ``dispatch two super smart
+codex astra xhighs to investigate this''. The orchestrator's guess (Fable, discussion) and the two
+lanes' briefs are in \texttt{notes/yolo-lindblad/astra-brief-A.md} (structure: prove or correct
+eight drafted statements S1--S8) and \texttt{astra-brief-B.md} (finite model, zero hunt); the reports
+are \texttt{astra-structure.md} (896 lines, correction ledger of 58 rows) and
+\texttt{astra-finite-model.md} (1351 checks, scripts under \texttt{notes/yolo-lindblad/finite/}).
+The orchestrator re-ran both suites (1351 and 492 checks) and re-derived the decisive facts in
+\texttt{scripts/phase\_side\_lindbladian.py}. Everything here is unreviewed by a second model family
+(both lanes are codex; the orchestrator is Claude), hence \texttt{sketched}.
+
+\begin{definition}[The phase-side guess]
+\label{def:phase-side-guess}
+$\hat{\mathbb Z} = \prod_{l}\mathbb Z_{l}$ with Haar probability measure; $L^2(\hat{\mathbb Z})$ with
+the orthonormal Fourier basis $e_r(x) = e^{2\pi irx}$, $r\in\mathbb Q/\mathbb Z$; the vacuum $v = e_0$.
+Prime jump $(V_pf)(x) = \sqrt p\,f(x/p)\,1_{p\hat{\mathbb Z}}(x)$; Galois unitaries
+$(U_af)(x) = f(a^{-1}x)$, $a\in\hat{\mathbb Z}^\times$. Ramanujan sums $c_b = \sum_{a\in(\mathbb Z/b)^\times}
+e_{a/b}$, shells $|b\rangle = c_b/\sqrt{\phi(b)}$, $\mathcal G = \overline{\operatorname{span}}\{|b\rangle\}$.
+Grading $\Pi = +1$ on $\mathbb Cv$, $-1$ on $v^\perp$; $\Gdb = \Pi\otimes\bar\Pi$. The guess: jumps
+$R_p = \sqrt{\lambda_p}\,V_p\otimes T_{\log p}$ on $L^2(\hat{\mathbb Z})\otimes L^2(\mathbb R_+^*)$ with
+$\lambda_p = 1/p$, a Gamma-factor ladder and a dilation Hamiltonian on the archimedean line, Galois
+dephasing at rate $\tfrac14$ on vacuum--odd coherences; the physical cMPS along the archimedean
+coordinate with the primes as letters. Finite model: shells $b\le B_{\max}$, primes $p\le P$,
+$T = \sum_p\lambda_p(V_p\otimes\bar V_p - 1)$, $K(s) = \sum_p\lambda_pp^{-s}V_p\otimes\bar V_p$.
+\end{definition}
+
+\subsection{What holds}
+
+\begin{proposition}[Prime jumps, Galois covariance, Ramanujan shells]
+\label{prop:phase-jumps-shells}
+\claimstatus{prop:phase-jumps-shells}{sketched}
+(i) $V_p$ is an isometry, $V_p^*e_r = p^{-1/2}e_{pr}$, $V_pe_r = p^{-1/2}\sum_{ps = r}e_s$ ($p$ preimages),
+$V_pV_q = V_qV_p$, $V_pU_a = U_aV_p$; on $\hat{\mathbb Z} = \prod\mathbb Z_l$ multiplication by $p$ is a unit at
+every $l\ne p$ and the valuation shift at $p$; on a level $b$ coprime to $p$, $\sqrt p\,V_p^*$ restricted
+to that level is the Shor permutation $r\mapsto pr$, while $V_p$ itself leaves the level. (ii) $\mathcal G$
+is the Galois-trivial sector and reduces every $V_p, V_p^*$, with $V_p|b\rangle = p^{-1/2}(|b\rangle +
+\sqrt{p-1}\,|pb\rangle)$ for $p\nmid b$, $V_p|b\rangle = |pb\rangle$ for $p\mid b$, $V_p^*|b\rangle =
+p^{-1/2}|b\rangle$ for $p\nmid b$, $V_p^*|b\rangle = \sqrt{\phi(b)/(p\phi(b/p))}\,|b/p\rangle$ for
+$p\mid b$; in particular $V_pv = p^{-1/2}(v + \sqrt{p-1}|p\rangle)$, the vacuum is not invariant.
+(iii) For a Gauss vector $g_\chi = \sum_a\chi(a)e_{a/b}$ and $p\nmid b$: $V_p^*g_\chi = p^{-1/2}\bar\chi(p)g_\chi$;
+for $p\mid b$ the image is zero or a lower-level Gauss vector. (iv) $\langle c_b\rangle_\invtemp =
+\sum_{d\mid b}\operatorname{M\ddot ob}(b/d)d^{1-\invtemp} = b^{1-\invtemp}\prod_{p\mid b}(1-p^{\invtemp-1})\to0$ as
+$\invtemp\to1^+$ iff $b>1$; the Haar state is the vector state of $v$ but is mixed on $C(\hat{\mathbb Z})$.
+\end{proposition}
+
+\begin{proof}
+Lane A \S1--\S4 (PROVED rows of the ledger), verified on $L^2(\mathbb Z/N)$, $N = 360$, by lane B and
+by \texttt{scripts/phase\_side\_lindbladian.py} \S1.
+\end{proof}
+
+\begin{proposition}[An exact reciprocal-zeta matrix element, and the actual generating functions]
+\label{prop:phase-vacuum-generating-functions}
+\claimstatus{prop:phase-vacuum-generating-functions}{sketched}
+(i) For $\re w>1$, $\mathcal A(w) = \sum_nn^{-w}V_n = \prod_p(1-p^{-w}V_p)^{-1}$ converges in operator norm,
+$\mathcal A(w)^{-1} = \sum_n\operatorname{M\ddot ob}(n)n^{-w}V_n$, and $\langle v,\mathcal A(w)^{-1}v\rangle = 1/\zeta(w+\tfrac12)$,
+$\langle v,\mathcal A(w)v\rangle = \zeta(w+\tfrac12)$: an exact operator statement derived from the
+jumps, with zeta in the denominator, but of a specified sum over one copy of each integer, not a
+resolvent of the generator. (ii) The finite-cutoff objects are instead exact and shifted: the ordered
+vacuum resolvent is $\langle1,1|(1-K(s))^{-1}|1,1\rangle = 1/(1 - \sum_{p\le P}p^{-(s+\invtemp+1)})$,
+the multiset version is $\zeta_P(s+\invtemp+1)$, the vacuum-to-shell overlaps are $\sqrt{\phi(b)}\,
+b^{-(s+\invtemp+1)}\zeta_P(s+\invtemp+1)$ (zeta in the numerator), and the continuous-time resolvent is
+$1/(z+\sum_{p\le P}\lambda_p-\sum_p\lambda_pp^{-s-1})$; word sums retain the multinomial multiplicities
+$(\sum_pk_p)!/\prod_pk_p!$ despite commutation, and neither the shell stay term nor the parity closure
+divides them out. (iii) On $\re s\in[0.3,1.2]$ at $\invtemp\ge1$ these have no pole at any finite
+cutoff, uniformly in $P$ (the diagonal of $K$ is bounded by $\sum_{n\ge2}n^{-2.3}<1$); no tested shell
+overlap has a zero there. The zeros of $\zeta$ appear only through the meromorphic continuation of the
+scalar $\zeta(s+\invtemp+1)$, at $s = \zero-\invtemp-1$.
+\end{proposition}
+
+\begin{proof}
+Lane A (5.7)--(5.14); lane B \S N4 (formulas checked against sparse doubled solves to $2\cdot10^{-16}$,
+argument-principle windings zero at two refinements, pole bound analytic); orchestrator script \S3--\S4.
+\end{proof}
+
+\begin{proposition}[Galois dephasing, symmetric and asymmetric rates]
+\label{prop:galois-dephasing-rates}
+\claimstatus{prop:galois-dephasing-rates}{sketched}
+For a finite abelian group of character-diagonal unitaries with rates $\lambda_a$, the dissipator acts
+on $|\chi\rangle\langle\chi'|$ as the scalar $\sum_a\lambda_a\chi(a)\bar\chi'(a)-\sum_a\lambda_a$: zero
+for $\chi = \chi'$; for uniform rates $-\gamma$ on every cross-character coherence, real; for rates
+symmetric under $a\mapsto a^{-1}$ real; for asymmetric rates it acquires an imaginary part, a
+frequency. Verified on $L^2(\mathbb Z/120)$ with all $770+13630$ coherences (lane B) and on $(\mathbb Z/5)^\times$
+(orchestrator).
+\end{proposition}
+
+\begin{proof}
+Orthogonality of characters; the imaginary part is $\sum_a\lambda_a\operatorname{Im}(\chi\bar\chi^{\prime})(a)$ for
+$\chi\bar\chi'$, which vanishes iff the odd part of $\lambda$ under inversion pairs to zero.
+\end{proof}
+
+\subsection{What fails}
+
+\begin{proposition}[The grading is not preserved and the coherences are not modes]
+\label{prop:phase-grading-not-invariant}
+\claimstatus{prop:phase-grading-not-invariant}{sketched}
+$\mathcal L_{\{p\}}(|v\rangle\langle v|) = \lambda_p[-\tfrac{p-1}p|1\rangle\langle1| + \tfrac{p-1}p|p\rangle\langle p|
++ \tfrac{\sqrt{p-1}}p(|1\rangle\langle p| + |p\rangle\langle1|)]$: a $\Gdb$-even input acquires odd terms,
+so $[\mathcal L,\Gdb]\ne0$ for every nonempty positive-rate prime set, and no restriction to ``the
+even--odd coherences'' is defined. The vacuum--character coherence $|v\rangle\langle g_\chi|$ is not an
+eigenoperator (explicit modulo-$3$, prime-$2$ counterexample; Hilbert--Schmidt residual $0.61$ at $P = 47$);
+its projection back onto itself has coefficient $\sum_pp^{-\invtemp}(\bar\chi(p)/p-1)$, with an extra $1/p$
+against the drafted $\sum_pp^{-\invtemp}(\bar\chi(p)-1)$. Vacuum coherences leak out of the odd block
+and retain the conserved lower bound $\|e^{t\mathcal L}|1\rangle\langle b|\|_1\ge\sqrt{\phi(b)/b}$.
+\end{proposition}
+
+\begin{proof}
+Lane A (2.4), \S3.2, (8.13)--(8.17); lane B \S N2, N5; orchestrator script \S2.
+\end{proof}
+
+\begin{proposition}[No Gibbs fixed point, no normal critical semigroup, no ring trace]
+\label{prop:phase-no-gibbs-no-trace}
+\claimstatus{prop:phase-no-gibbs-no-trace}{sketched}
+(i) With forward jumps $V_p$ at rate $\lambda_p$ and reverse jumps $V_p^*$ at rate $\lambda_pp^{-\invtemp}$,
+the shell weights $b^{-\invtemp}$ are not stationary: exact counterexample on shells $\{1,2\}$,
+$\invtemp = 2$, $\lambda_2 = \tfrac12$, $\mathcal L(\operatorname{diag}(\tfrac45,\tfrac15)) =
+\bigl(\begin{smallmatrix}-3/16&27/160\\27/160&3/16\end{smallmatrix}\bigr)$; population balance needs the
+ratio down/up $= p^{\invtemp}$, and even then the vacuum stay term creates coherences. Resolving each
+edge into its own jump $|pb\rangle\langle b|$ restores a Gibbs fixed point but changes the model.
+(ii) At $\lambda_p = 1/p$ the no-jump quadratic form $\sum R_p^*R_p = (\sum1/p)\,1$ is infinite; the
+finite-prime semigroups applied to $|v\rangle\langle v|$ have no trace-norm limit at any positive time
+(vacuum survival $\exp[-t\sum_{p\le P}(1-1/p)/p]\to0$, every shell diagonal $\to0$). (iii) Even at a finite
+prime cutoff the doubled-bond exponential is invertible, hence not compact, so $\Tr[\Gdb e^{t\mathcal L}]$
+is not an ordinary trace: a prime cutoff is not a bond cutoff. (iv) A single forward prime has
+Hilbert--Schmidt spectrum the full disc $\lambda_p(z-1)$, $|z|\le1$, not isolated real modes.
+\end{proposition}
+
+\begin{proof}
+Lane A \S0.1, \S5.4--5.6, \S8.1--8.3; lane B \S N6 (SymPy rationals) and truncation table;
+orchestrator script \S5.
+\end{proof}
+
+\begin{proposition}[A parity closure is not a quotient by $\mathbb Q^\times$]
+\label{prop:parity-closure-not-quotient}
+\claimstatus{prop:parity-closure-not-quotient}{sketched}
+Multiplication by $q\in\mathbb Q^\times$ is unitary on $L^2(\mathbb A_{\mathbb Q})$ by the product formula $|q|_{\mathbb A} = 1$
+and acts as the identity on functions of classes in $\mathbb A_{\mathbb Q}/\mathbb Q^\times$; the periods
+$\log p$ arise from the stabiliser of $x^{(p)}$ and the norm-kernel quotient $\mathbb R_+/p^{\mathbb Z}$.
+Closing a ring with $\Pi$ changes the boundary functional $\Tr A_w\mapsto\Tr(\Pi A_w)$ and imposes nothing
+of this: with $W_p = \operatorname{diag}(1,e^{i\vartheta})$ and $\Pi = \operatorname{diag}(1,-1)$ the parity-closed
+norm of the word $W_p$ is $|1-e^{i\vartheta}|^2$ while that of the identity is $0$. The identification of
+the guess's ring norm with an adelic periodic-orbit trace needs a quotient, an intertwiner and a
+regularised trace, none of which the guess supplies; Connes' 1999 paper proves local and finite-place
+cutoff trace formulas and does not supply them either.
+\end{proposition}
+
+\begin{proof}
+Lane A \S6.1--6.5 (source scope of Connes verified from the arXiv PDF by the lane); orchestrator script \S6.
+\end{proof}
+
+\begin{observation}[Verdict on the guess, and the orchestrator's corrections]
+\label{obs:phase-side-verdict}
+\claimstatus{obs:phase-side-verdict}{sketched}
+The phase-side prime jumps reproduce side A: their vacuum generating functions are the Euler product,
+shifted, and nothing else; the reciprocal zeta of the Ramanujan sums is an arithmetic evaluation, not
+a dynamical overlap (the overlaps are positive divisor sums with zeta in the numerator). The guess
+supplies neither the pole at $1$ nor the critical-line modes, and its three structural premises fail:
+the grading is not invariant, the rates $1/p$ define no normal semigroup, the parity closure is not
+the rational quotient. What survives is the exact kinematics (\cref{prop:phase-jumps-shells}), the
+inverse multiset element $1/\zeta(w+\tfrac12)$, and uniform Galois dephasing. Two claims of
+\cref{sec:graded-permutation} are corrected: Galois-diagonal jumps produce no frequency only for
+inversion-symmetric rates (\cref{prop:galois-dephasing-rates}); and ``fermionic primes give zeros on
+$\re s = 0$'' is a statement about each finite factor $1-p^{-s}$, not about the continued product
+$1/\zeta$, whose poles inside the strip are exactly the zeros of $\zeta$ with their orders. The
+open item 0b' (identify $K_S$ with a Bost--Connes bond) is unchanged; the negative rules out the
+Ramanujan-sum sector with prime jumps alone as that identification.
+\end{observation}
+
+\begin{numerical}[Two lanes, three suites]
+\label{num:phase-side-lindbladian}
+\claimstatus{num:phase-side-lindbladian}{numerical}
+Lane B: $1351$ checks (\texttt{notes/yolo-lindblad/finite/run\_all.py}, seed $20260914$, re-run by the
+orchestrator: all pass); lane A: $492$ exact finite checks (\texttt{structure\_checks.py}, re-run: pass);
+orchestrator: \texttt{scripts/phase\_side\_lindbladian.py} (\texttt{outputs/phase\_side\_lindbladian.txt}),
+$30$ checks: shell formulas from $L^2(\mathbb Z/360)$, the Shor permutation at level $15$, the odd part of
+$\mathcal L_p(|v\rangle\langle v|)$, the shifted vacuum generating functions at three complex $s$ against
+sparse doubled solves, the pole bound, $1/\zeta_P(w+\tfrac12)$, the exact $2\times2$ Gibbs counterexample,
+the parity-closure counterexample, and the symmetric/asymmetric Galois rates.
+\end{numerical}

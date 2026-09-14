@@ -75,3 +75,4 @@ def:genus-two-bond	genus-two bond and block notation	report/sections/02g_definit
 def:nine-letter-tensor	nine-letter tensor	report/sections/02g_definitions_ring_norm_tensor.tex	stipulated	-	astra-proofs T4.3
 def:example-states	the five example states (genus 0 to 3)	report/sections/06g_ring_norm_examples.tex	stipulated	-	session 2026-09-14 evening
 def:graded-permutation-mps	graded permutation matrix product state (letter assignment, grading, holonomy, closures)	report/sections/03b_graded_permutation.tex	stipulated	-	session 2026-09-14 night
+def:phase-side-guess	the phase-side Lindbladian guess (profinite phases, Fourier grading, prime jumps V_p, Galois unitaries, Ramanujan shells, finite model)	report/sections/04g_phase_side_lindbladian.tex	stipulated	-	session 2026-09-14 night, yolo guess

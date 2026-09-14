@@ -1,0 +1,19 @@
+{
+  "seed": 20260914,
+  "tallies": {
+    "verify_phase": 93,
+    "verify_characters": 149,
+    "verify_ramanujan": 576,
+    "hunt": 357,
+    "spectrum": 87,
+    "balance": 89
+  },
+  "total": 1351,
+  "versions": {
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "scipy": "1.11.4",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0"
+  }
+}

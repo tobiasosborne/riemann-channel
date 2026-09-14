@@ -14,3 +14,8 @@ refs/src/
 *.out
 *.toc
 *.synctex.gz
+
+# codex lane transcripts (large; the reports are committed)
+notes/yolo-lindblad/*.log
+notes/yolo-lindblad/*.stdout
+notes/yolo-lindblad/finite/__pycache__/
