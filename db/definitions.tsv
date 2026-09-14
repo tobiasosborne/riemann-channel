@@ -68,3 +68,8 @@ def:ramanujan-quantum-expander-a2	Ramanujan quantum expander of type A-tilde, ex
 def:graded-fock	graded Fock space, fermion parity, periodic and antiperiodic translations	report/sections/02f_definitions_graded_cmps.tex	stipulated	-	session 2026-09-13 (cMPS parity calculation)
 def:cmps-ring-vector	boson-fermion cMPS ring vector, boundary matrix, bond grading, twisted and untwisted rings	report/sections/02f_definitions_graded_cmps.tex	stipulated	-	session 2026-09-13; state of 1211.3935 made rigorous via J
 def:cmps-transfer-generators	sign-twisted transfer generators, doubled-bond parity, graded supertrace and superdeterminant on the doubled bond	report/sections/02f_definitions_graded_cmps.tex	stipulated	-	session 2026-09-13
+def:graded-lattice-tensor	graded lattice tensor, doubled transfer matrix, P-closed ring norm, ring zeta, even gauge	report/sections/02g_definitions_ring_norm_tensor.tex	stipulated	-	campaign ring-norm-tensor 2026-09-14; lattice version of def:cmps-transfer-generators
+def:lifted-frobenius-torus	lifted Frobenius of an ordinary elliptic curve, integral matrix, toral endomorphism, Hodge ket bond	report/sections/02g_definitions_ring_norm_tensor.tex	stipulated	-	astra-proofs T1
+def:elliptic-norm-tensor	elliptic norm tensor	report/sections/02g_definitions_ring_norm_tensor.tex	stipulated	-	astra-proofs T1.3
+def:genus-two-bond	genus-two bond and block notation	report/sections/02g_definitions_ring_norm_tensor.tex	stipulated	-	astra-proofs T4.1
+def:nine-letter-tensor	nine-letter tensor	report/sections/02g_definitions_ring_norm_tensor.tex	stipulated	-	astra-proofs T4.3

@@ -1,0 +1,294 @@
+% SHARD-ID: RC-06F-RING-NORM-GENUS-TWO
+% SHARD-TITLE: Curve Counts as Twisted Ring Norms IV: Genus Two, the Rosati Metric, and the Phantasm
+% SHARD-SUMMARY: On the genus-two bond C (+) H^{1,0} the block equations are derived, the literal geometric placement and the vacuum ansatz are proved impossible, an explicit nine-letter tensor is constructed for q + 1 >= 4 sqrt q (depolarising even block, diagonal odd block, normal transfer), and a two-even, one-odd tensor is certified for the ordinary curve y^2 = x^5 + x^3 + x^2 - 2 over F_5 by an exact rational contraction argument.
+% SHARD-SUMMARY: The Jacobian is the bosonic product of two genus-one rings and the curve's cohomology sits inside it as a non-product boundary; Rosati positivity forces complex conjugation at every CM place, proving the moduli and supplying the Polya--Hilbert metric; CM types are markings, not gauge; the numerics lane found the CM-diagonal ansatz with two odd letters; the Phantasm assessment is labelled observation.
+% SHARD-KEYWORDS: genus two, CM type, Hodge metric, Rosati, nine-letter tensor, depolarising channel, rational certificate, contraction mapping, Jacobian, polarisation, projector, gauge, Phantasm, fermionic jumps, Dwork
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/ring_norm_certificate.py, scripts/ring_norm_tensor.py
+
+\section{Curve Counts as Twisted Ring Norms IV: Genus Two}
+\label{sec:ring-norm-genus-two}
+
+Tier B of the campaign of \cref{sec:ring-norm-genus-one}: the first case where fermionic
+letters are forced (\cref{prop:odd-species-cancellation}). Notation of
+\cref{def:genus-two-bond,def:nine-letter-tensor}; proofs in
+\texttt{notes/ring-norm-tensor/astra-proofs.md} T4--T5.
+
+\subsection{Inputs}
+
+\begin{citedfact}[Rosati positivity and $\pi\pi^\dagger = \qs$]
+\label{cit:rosati-positive}
+\claimstatus{cit:rosati-positive}{cited}
+Milne \cite{milne2015rh}, Theorem: the Rosati involution on $\operatorname{End}^0(A)$ is positive,
+$(\alpha,\beta)\mapsto\Tr_{E/\mathbb Q}(\alpha\circ\beta^\dagger)$ positive definite; and % bare-ok
+$\pi\circ\pi^\dagger = q_A$.
+Verbatim: \texttt{\detokenize{{=}\End^{0}(A)$ is positive, i.e., the pairing}} (\texttt{1509.00797:pRH.tex:1559});
+\texttt{\detokenize{This will follow from (\ref{r39}) once we show that $\pi\circ\pi^{\dagger }=q_{A}$. This can be proved by a direct calculation, but it is more}} (\texttt{1509.00797:pRH.tex:1647-1648}).
+\end{citedfact}
+
+\begin{citedfact}[CM lift: eigenvalues of modulus $\sqrt{\qs}$, CM type with positivity; $\mathbb Q(\pi)$ is CM]
+\label{cit:cm-lift-frobenius}
+\claimstatus{cit:cm-lift-frobenius}{cited}
+Goresky and Tai \cite{goreskytai2017ordinary}: the lifted Frobenius is semisimple with
+eigenvalues of magnitude $\sqrt q$, and the lift carries a CM type $\Phi$ on $\mathbb Q[F]$ with % bare-ok
+a positivity condition; Dupuy, Kedlaya, Roe and Vincent \cite{dupuy2020lmfdb}: $\mathbb Q(\pi)$ is
+a CM field.
+Verbatim: \texttt{\detokenize{\item The mapping $F$ is semisimple and all of its eigenvalues in $\CC$ have magnitude}}
+(\texttt{1701.07742:main.tex:565}); \texttt{\detokenize{and where $\Phi$ is a CM type on $\QQ[F]$ such that the following {\em positivity condition} holds:}}
+(\texttt{1701.07742:main.tex:604-605}); \texttt{\detokenize{\item $\QQ(\pi)$ is a CM-field with maximal totally real subfield $\QQ(\beta)$, and $\pi$ has no real embeddings;}}
+(\texttt{2003.05380:weil.tex:332}).
+\end{citedfact}
+
+\begin{citedfact}[Positivity of the Hodge form on holomorphic one-forms]
+\label{cit:hodge-positive-forms}
+\claimstatus{cit:hodge-positive-forms}{cited}
+Lesfari \cite{lesfari2009surfaces}: for a holomorphic one-form $\omega = f\,dz$ on a compact
+Riemann surface, $\omega\wedge\bar\omega = -2i|f|^2dx\wedge dy$ and $i\int\omega\wedge\bar\omega>0$
+for $\omega\ne0$.
+Verbatim: \texttt{\detokenize{$$\omega\wedge \overline{\omega}=-2i|f|^2dx\wedge dy.$$}} (\texttt{0903.2156:main.tex:1254});
+\texttt{\detokenize{&=&\int_X|f|^2dx\wedge dy > 0, \quad \omega\neq 0,\nonumber}} (\texttt{0903.2156:main.tex:1262}).
+\end{citedfact}
+
+\begin{assumption}[CM type and the Hodge decomposition of the canonical lift]
+\label{asm:cm-hodge-type}
+\claimstatus{asm:cm-hodge-type}{assumed}
+For a simple ordinary abelian variety $A/\Fq$ of dimension $g$ with Frobenius $\pi$,
+$K = \mathbb Q(\pi)$ is a CM field of degree $2g$, $\operatorname{End}(A)\otimes\mathbb Q = K$, and
+$H^1(\tilde A(\mathbb C),\mathbb C) = \bigoplus_{\phi\colon K\to\mathbb C}\mathbb C_\phi$ with
+$H^{1,0} = \bigoplus_{\phi\in\Phi}\mathbb C_\phi$ for a CM type $\Phi$, $\tilde\pi$ acting on % bare-ok
+$\mathbb C_\phi$ by $\phi(\pi)$ (Shimura--Taniyama; the eigenspace statement is not quotable from
+the fetched TeX, cf.\ \cref{cit:cm-lift-frobenius}).
+\end{assumption}
+
+\begin{assumption}[Polarised lift, Hodge adjunction, Jacobian comparison; abelian cohomology; real closed transfer; functoriality]
+\label{asm:cm-polarised-lift}
+\claimstatus{asm:cm-polarised-lift}{assumed}
+(i) A polarisation lifts along the canonical lift and identifies Rosati adjunction with
+adjunction for the positive Hodge form on $H^{1,0}$; for $i\colon C\hookrightarrow J$,
+$i^*\colon H^1(J)\to H^1(C)$ is an isomorphism, $[C]$ is the principal polarisation in dimension
+two, $\int_Ci^*\xi = \int_J\xi\smile[C]$ and $\int_J\theta^2 = 2$. (ii) $H^*(A) = \Lambda^*H^1(A)$ % bare-ok
+with Frobenius acting by exterior powers and $\#A(\Fqn{n}) = \det(1-F^n|H^1)$. (iii) A finite
+system of real polynomial equalities and inequalities over the real algebraic numbers with a
+real solution has a real algebraic solution. (iv) Frobenius characteristic polynomials are
+multiplicative in exact sequences of abelian varieties; ordinarity is preserved by finite base
+extension.
+\end{assumption}
+
+\subsection{The block equations and two impossibilities}
+
+\begin{lemma}[Block equations on $\mathbb C^{1|2}$]
+\label{lem:genus-two-blocks}
+\claimstatus{lem:genus-two-blocks}{proved}
+In the notation of \cref{def:genus-two-bond},
+${\Edb}_{\mathrm{odd}} = \bigl(\begin{smallmatrix}M&N\\ \bar N&\bar M\end{smallmatrix}\bigr)$ and
+${\Edb}_{\mathrm{even}} = \bigl(\begin{smallmatrix}t&u\\ v&W\end{smallmatrix}\bigr)$; equivalently the
+complete positive map is $x\oplus X\mapsto(tx+\sum_fc_fXc_f^*)\oplus(\sum_fd_fxd_f^*+\sum_sB_sXB_s^*)$
+on even operators, with no Koszul sign.
+\end{lemma}
+
+\begin{proposition}[The literal placement and the vacuum ansatz are impossible]
+\label{prop:vacuum-ansatz-impossible}
+\claimstatus{prop:vacuum-ansatz-impossible}{proved-conditional}
+If the odd spectrum is the four Frobenius values and the even spectrum $\{1,\qs,0,0,0\}$, then
+the pure trace line $0\oplus1_2$ is not a $\qs$-eigenvector and the vacuum line is not
+invariant (either would force all $c_f = 0$ or all $d_f = 0$, delete the odd letters without
+changing the spectra, and contradict \cref{thm:bosonic-genus-bound}); both coupling directions
+must occur. The drafted ansatz $a_1 = 1,B_1 = 0,a_2 = 0,B_2 = B$ makes $M = 0$, so one odd letter
+gives rank $\le2$ and any number gives a spectrum symmetric under $z\mapsto-z$ with zero trace;
+it fails for every curve with $e_1\ne0$.
+\end{proposition}
+
+\subsection{Existence}
+
+\begin{theorem}[The nine-letter tensor for $\qs+1\ge4\sqrt{\qs}$]
+\label{thm:nine-letter-tensor}
+\claimstatus{thm:nine-letter-tensor}{proved-conditional}
+For $|\pi_j|^2 = \qs$ and $\qs+1\ge4\sqrt{\qs}$ (every prime power $\qs\ge16$) the nine-letter
+tensor of \cref{def:nine-letter-tensor} has $\operatorname{spec}{\Edb}_{\mathrm{even}} = \{1,\qs,0,0,0\}$
+with the three zero modes the traceless $2\times2$ operators killed in one step,
+${\Edb}_{\mathrm{odd}} = \operatorname{diag}(\bar D,D)$, a normal transfer in an orthonormal doubled
+basis, and $\str\Edb^n = 1+\qs^n-\sum_j(\pi_j^n+\bar\pi_j^n) = \Ncount{n}(C)$ for every $n$, ring
+zeta $Z(C,\uz)$. The even letters realise the depolarising map $\sum_\ell B_\ell XB_\ell^* = % bare-ok
+w\Tr(X)1_2$, the odd letters couple vacuum and trace, and on $\operatorname{span}(\mathrm{vac},1_2/\sqrt2)$
+the even block is $\bigl(\begin{smallmatrix}(\qs+1)/2&(\qs-1)/2\\(\qs-1)/2&(\qs+1)/2\end{smallmatrix}\bigr)$
+with eigenvalues $\qs,1$ and eigenvectors $(\pm\sqrt2,1_2)$: neither is the pure vacuum nor the
+pure polarisation line. On $\mathbb C^{1|g}$ the same works with $w = (\qs+1)/(2g)$,
+$h = (\qs-1)/(2\sqrt g)$ whenever $\qs+1\ge2g\sqrt{\qs}$. Entries are algebraic over
+$\mathbb Q(\pi_1,\pi_2)$; the letters have no equation-local meaning and their number is not
+claimed minimal.
+\end{theorem}
+
+\begin{proposition}[Base change of the $\mathbb F_5$ curve to $\mathbb F_{25}$]
+\label{prop:f5-base-change}
+\claimstatus{prop:f5-base-change}{proved-conditional}
+For $C\colon y^2 = x^5+x^3+x^2-2$ over $\mathbb F_5$, $\chi_F = z^4-3z^3+7z^2-15z+25$ (matching the
+counts $3,31,117,619$); over $\mathbb F_{25}$, $\chi_{F^2} = z^4+5z^3+9z^2+125z+625$, the nine-letter
+tensor applies, and the first six norms are $31,619,15991,390739,9759526,244128859$. Both
+quartics are irreducible over $\mathbb Q$ (reduction mod $2$), so both Jacobians are simple over
+their fields; ordinarity is preserved.
+\end{proposition}
+
+\begin{proposition}[The three-letter problem is a finite real feasibility problem]
+\label{prop:three-letter-feasibility}
+\claimstatus{prop:three-letter-feasibility}{proved-conditional}
+Two even and one odd letter on $\mathbb C^{1|2}$ realise $\Ncount{n}(C)$ for all $n$ iff
+$\det(z-{\Edb}_{\mathrm{even}}) = z^3(z-1)(z-\qs)$ and $\det(z-{\Edb}_{\mathrm{odd}}) = \chi_F(z)$
+($28$ real unknowns; \cref{prop:euler-bookkeeping} forbids cancellation on this bond), and then
+an algebraic solution exists. Least-squares residuals and four-digit printouts certify
+nothing; only \cref{thm:f5-certified-tensor} does.
+\end{proposition}
+
+\begin{theorem}[A certified two-even, one-odd tensor for the $\mathbb F_5$ curve]
+\label{thm:f5-certified-tensor}
+\claimstatus{thm:f5-certified-tensor}{proved-conditional}
+There are two even and one odd letter on $\mathbb C^{1|2}$ with
+$\chi_e = z^3(z-1)(z-5)$ and $\chi_o = z^4-3z^3+7z^2-15z+25$, hence $P$-closed ring norm
+$\Ncount{n}(C)$ for every $n\ge1$. The entries are the unique zero, in the box
+$\|y-y_0\|_\infty\le10^{-30}$ around a rational centre $y_0$ (nine free real coordinates, the
+other nineteen frozen rationals), of the nine power-trace equations
+$f(y) = (\Tr{\Edb}_{\mathrm{even}}^n-(1+5^n))_{n\le5},(\Tr{\Edb}_{\mathrm{odd}}^n-p_n)_{n\le4}$; a
+rational approximate inverse $B$ of $Df(y_0)$ satisfies, by exact rational comparison,
+$\|B\|_\infty<2$, $\|Bf(y_0)\|_\infty<10^{-70}$, $\|1-BDf(y_0)\|_\infty<10^{-50}$, and with the
+uniform Hessian bound $10^{16}$ the map $y\mapsto y-Bf(y)$ contracts the box into itself.
+Newton's identities turn the nine traces into the two characteristic polynomials. The entries
+are algebraic (unique real point of a rational semialgebraic set). This is a computer-assisted
+existence proof for one curve, not a formula.
+\end{theorem}
+
+\begin{conjecture}[Universal three-letter tensor]
+\label{conj:three-letter-universal}
+\claimstatus{conj:three-letter-universal}{conjectured}
+For every ordinary simple genus-two curve the feasibility problem of
+\cref{prop:three-letter-feasibility} has a solution; and some solution is selected naturally
+by the equation or the polarised CM data. Both parts are open; failed smaller-alphabet
+searches prove no lower bound on the number of letters.
+\end{conjecture}
+
+\begin{numerical}[Certificate, nine-letter tensor, Fock-vector norms]
+\label{num:ring-norm-certificate}
+\claimstatus{num:ring-norm-certificate}{numerical}
+\texttt{scripts/ring\_norm\_certificate.py} (\texttt{outputs/ring\_norm\_certificate.txt}, $65$ checks):
+the rational certificate of \cref{thm:f5-certified-tensor} re-run in exact arithmetic
+($\|B\|_\infty = 1.499$, residual $1.0\times10^{-90}$, inverse defect $3.5\times10^{-58}$,
+$\kappa = 1.2\times10^{-12}$); the certified centre in floating point gives $\chi_e,\chi_o$ to
+$10^{-9}$, $\str\Edb^n = \Ncount{n}$ for $n\le12$, and the explicit Jordan--Wigner Fock vector has
+norm $\Ncount{n}$ and periodic-translation invariance for $n = 2,\dots,5$; the nine-letter tensor
+at $\qs = 25$ (the base change), $17$, $16$ has even spectrum $\{1,\qs,0,0,0\}$, odd spectrum the
+four inputs, normality $10^{-15}$, $\str\Edb^n = \Ncount{n}$ to $10^{-15}$ for $n\le8$, and fails at
+$\qs = 13$ exactly as $\qs+1<4\sqrt{\qs}$.
+\end{numerical}
+
+\begin{numerical}[Structured genus-two solutions: the CM-diagonal ansatz]
+\label{num:genus-two-cm-diagonal}
+\claimstatus{num:genus-two-cm-diagonal}{numerical}
+\texttt{scripts/ring\_norm\_tensor.py}, N3: on the $\mathbb F_5$ curve, two even and one odd letter
+reach residual $10^{-24}$ (the seed of \cref{thm:f5-certified-tensor}); a vacuum letter with one
+odd letter never converges (every search stalls at $t\to\qs$, $\operatorname{spec}M\to\{\bar\pi_j\}$);
+a vacuum letter with two odd letters, and the \emph{CM-diagonal} ansatz
+$A_s = \operatorname{diag}(a_s,b_{s,1},b_{s,2})$ (all even letters simultaneously diagonal, the direct
+lift of \cref{def:elliptic-norm-tensor}) with two odd letters, both solve it to $10^{-25}$ with
+even spectrum $\{1,5,0,0,0\}$; in every solution $M\ne\operatorname{diag}(\bar\pi_j)$ and
+$|m_i|^2\ne\qs$, and the solution set is positive dimensional ($t = \sum|a_s|^2$ varies between
+restarts; only $t+\Tr W = 1+\qs$ and $2\operatorname{Re}\Tr M = e_1$ are pinned). The three nilpotent
+modes appear numerically at $|z|\sim10^{-4}$, the cube root of the residual. The Jacobian
+identity and the curve subspace of \cref{prop:jacobian-curve-projector} check for $n\le6$.
+\end{numerical}
+
+\begin{corollary}[The genus-two ring norms are Hilbert norms of fermionic ring states]
+\label{cor:genus-two-physical-norm}
+\claimstatus{cor:genus-two-physical-norm}{sketched-conditional}
+By \cref{thm:cmps-twisted-supertrace} on the lattice, the supertraces of
+\cref{thm:nine-letter-tensor,thm:f5-certified-tensor} are the squared norms of the physical
+periodic-fermion rings built from the letters; the explicit Jordan--Wigner check of
+\cref{num:ring-norm-certificate} confirms this for $n\le5$. The count of a genus-two curve is
+therefore literally the norm of a graded matrix product state with a three-dimensional bond
+and a fermionic letter.
+\end{corollary}
+
+\subsection{Jacobian, Rosati metric, gauge}
+
+\begin{proposition}[Jacobian product states and the curve projector]
+\label{prop:jacobian-curve-projector}
+\claimstatus{prop:jacobian-curve-projector}{proved-conditional}
+The tensor product of two elliptic norm tensors $\operatorname{diag}(1,\pi_j)$ on the ket
+$V_J = \Lambda^*H^{1,0} = \mathbb C^{2|2}$ has $P$-closed ring norm $\prod_j|1-\pi_j^n|^2 = \#J(\Fqn{n})$ % bare-ok
+and double $H^*(J) = \Lambda^*H^1(J)$. Inside it the Frobenius-invariant graded subspace % bare-ok
+$\mathcal S = \mathbb C1\oplus H^1(J)\oplus\mathbb C\omega$, $\omega = e_1\wedge f_1+e_2\wedge f_2$ a
+polarisation class with $F\omega = \qs\omega$, has $\str F^n|_{\mathcal S} = \Ncount{n}(C)$; the
+principal class restricts to $2[\mathrm{pt}]$ on $C$. The projector onto $\mathcal S$ (rank six) is
+not of the form $B\otimes\bar B'$ (a product range would have dimension $\ge9$): extracting the
+curve from the Jacobian ring needs a non-product boundary, which the single fermionic rings
+above avoid. This does not say every boundary with the same scalar counts is that projector.
+\end{proposition}
+
+\begin{theorem}[Rosati positivity gives the moduli and the Polya--Hilbert metric]
+\label{thm:rosati-ph-genus-two}
+\claimstatus{thm:rosati-ph-genus-two}{proved-conditional}
+For a simple ordinary polarised abelian variety, the Rosati involution acts as complex
+conjugation on each factor of $K\otimes_{\mathbb Q}\mathbb R\cong\prod_{j\le g}\mathbb C$ (a primitive
+idempotent sent elsewhere or $ie_j$ fixed would contradict $\Tr(xx^\dagger)>0$), so
+$\pi\pi^\dagger = \qs$ gives $|\phi_j(\pi)|^2 = \qs$ at every place and $\qs^{-1/2}\tilde\pi^*$ is
+unitary on $H^{1,0}$ and on $H^1(\tilde J,\mathbb C)$ with their Hodge metrics: the ordinary simple
+instance of the root sizes from positivity, with no use of \cref{asm:weil-curves}. The PH
+models $H^1(\tilde J,\mathbb R)$, $K\otimes\mathbb R$ with the Rosati trace form, and the realification
+of $H^{1,0}$ agree up to positive weights and the CM type. In \cref{thm:nine-letter-tensor} the
+odd block is $\sqrt{\qs}$ times a unitary by construction, so RH is manifest only after the
+moduli are supplied; the arithmetic proof of those moduli is Rosati (Hodge index on $C\times C$),
+not complete positivity of a transfer. For the certified tensor the distinct odd roots give
+complex similarity to $\sqrt5$ times a unitary; whether that similarity is an even ket gauge
+carrying the arithmetic Hodge metric is not determined by the count equations.
+\end{theorem}
+
+\begin{proposition}[Gauge and the CM-type marking]
+\label{prop:cm-type-gauge}
+\claimstatus{prop:cm-type-gauge}{proved-conditional}
+The even gauge $G = \operatorname{diag}(g_0,H)$, $H\in\mathrm{GL}_2(\mathbb C)$, acts by $B_s\mapsto HB_sH^{-1}$,
+$c_f\mapsto g_0c_fH^{-1}$, $d_f\mapsto Hd_fg_0^{-1}$ and fixes all ring norms; same-parity unitary
+rotations of the letters fix $\Edb$ itself. The CM type is a marking: replacing a selected
+$\pi_j$ by $\bar\pi_j$ changes the mixed-sector eigenvalues of \cref{thm:nine-letter-tensor} and
+is not an even gauge; a coupled solution with $N\ne0$ mixes the two coherences and its counts do
+not recover a marked half. The unitary gauge is an orthonormal Hodge basis.
+\end{proposition}
+
+\subsection{Assessment for the Phantasm (observations, not theorems)}
+
+\begin{observation}[Candidate bond; conjugation is not the functional equation]
+\label{obs:phantasm-bond-candidate}
+\claimstatus{obs:phantasm-bond-candidate}{sketched-conditional}
+A plausible ket is $\mathbb C\oplus H_{>0}$ with one odd mode per positive-height zero, the bra
+supplying conjugates; its $(-,-)$ sector is far larger than the pole sector and what kills or
+regularises those modes is unspecified. Ket/bra exchange is complex conjugation; the functional
+equation also involves $\zero\mapsto1-\zero$, which coincides with conjugation on each pair only on
+the critical line, so reading the functional equation as ket/bra exchange would assume RH.
+\end{observation}
+
+\begin{observation}[Fermionic jumps are necessary in the stated setting; sufficiency open]
+\label{obs:fermionic-jumps-necessary}
+\claimstatus{obs:fermionic-jumps-necessary}{sketched-conditional}
+\Cref{thm:infinite-bond-bosonic-nogo} excludes the all-even Kraus class under
+\cref{asm:kraus-hs-setting}. It does not follow that odd jumps suffice, that finitely many do, or
+that a distributional regularisation is a Hilbert norm; \cref{thm:cmps-twisted-supertrace} is a
+finite-bond statement.
+\end{observation}
+
+\begin{observation}[What the toral example contributes and where the analogy breaks]
+\label{obs:toral-contribution}
+\claimstatus{obs:toral-contribution}{sketched-conditional}
+For an ordinary elliptic curve the lifted Frobenius is an injective Fourier shift whose only
+finite cycle is the zero label and the flat Lefschetz supertrace sits in that fibre; the
+physical state is one configuration. This is no principle that every variety's tensor is a
+permutation: the shift is not surjective, and for an abelian surface the torus counts the
+Jacobian, not the curve. No lifted Riemann dynamics, positive Hodge/Rosati metric or
+physical-label construction is established; that missing dynamics and positivity is the
+substantive break.
+\end{observation}
+
+\begin{observation}[The locality dichotomy must be restricted]
+\label{obs:locality-dichotomy-restricted}
+\claimstatus{obs:locality-dichotomy-restricted}{sketched-conditional}
+``Fixed finite lattice tensors give only supersingular zetas'' is false: \cref{thm:hodge-doubling-tensor}
+and \cref{thm:nine-letter-tensor} are finite ordinary norm tensors. Only the equation-local
+amplitude question survives as \cref{conj:amplitude-locality}. Infinitely many zeros and
+dilation time motivate an infinite-bond cMPS, but supply none of the domains, regularised
+trace, tensor factorisation or positivity it would need.
+\end{observation}

@@ -1,0 +1,130 @@
+% SHARD-ID: RC-06D-RING-NORM-ELLIPTIC
+% SHARD-TITLE: Curve Counts as Twisted Ring Norms II: the Ordinary Elliptic Curve
+% SHARD-SUMMARY: The natural tensor of an ordinary elliptic curve is its lifted Frobenius acting on the flat torus: the count is a Lefschetz number, the grading is form degree, the ket/bra doubling is the Hodge decomposition, the Polya--Hilbert unitary is the pullback on harmonic one-forms, the Ramanujan property is the degree of the lift, and the gauge freedom is the lattice basis whose classes are ideal classes.
+% SHARD-SUMMARY: The Fourier pullback is an injection whose only finite orbit is the zero mode; digit expansions in base pi have bounded cyclic carries yet no nonnegative automaton counts the points.
+% SHARD-KEYWORDS: ordinary elliptic curve, Deuring lift, toral endomorphism, Lefschetz number, Hodge decomposition, ring norm, supertrace, Polya-Hilbert, Hasse bound, gauge, ideal class, Fourier shift, digit expansion, carry automaton
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/ring_norm_tensor.py
+
+\section{Curve Counts as Twisted Ring Norms II: the Ordinary Elliptic Curve}
+\label{sec:ring-norm-genus-one-tier-a}
+
+Tier A of the campaign of \cref{sec:ring-norm-genus-one}; notation of
+\cref{def:lifted-frobenius-torus,def:elliptic-norm-tensor}; proofs in
+\texttt{notes/ring-norm-tensor/astra-proofs.md} T1--T2.
+
+\subsection{Tier A: the ordinary elliptic curve}
+
+\begin{theorem}[Frobenius on the lifted torus; the count is a ring norm]
+\label{thm:toral-frobenius-count}
+\claimstatus{thm:toral-frobenius-count}{proved-conditional}
+With $M$ the integral matrix of \cref{def:lifted-frobenius-torus}, $\chi_M(X) = X^2-aX+\qs$
+and for every $n\ge1$ the toral endomorphism $M^n$ has exactly $\det(1-M^n) = |1-\pi^n|^2 =
+N_{K/\mathbb Q}(1-\pi^n) = \Ncount{n}$ fixed points, all nondegenerate of index $+1$, so that
+$\Ncount{n} = 1-\Tr M^n+\det M^n$ is the Lefschetz number; moreover $\Ncount{n} = |O/(\pi^n-1)O|$,
+the index of the principal ideal $(1-\pi^n)$ in the ring $O$, which under
+\cref{cit:lenstra-structure} is the point group $E(\Fqn{n})$ itself as an $O$-module.
+\end{theorem}
+
+\begin{proof}
+Sketch (T1.1). $\pi$ preserves $\Lambda$, so $M$ is integral with eigenvalues $\pi,\bar\pi$, % bare-ok
+determinant $|\pi|^2 = \qs$ by \cref{cit:degree-norm-index,cit:hasse-degree-bound} and trace $a$
+by \cref{cit:frob-count-formula}. The fixed points of $M^n$ form $\mathbb Z^2/(M^n-1)\mathbb Z^2$ of
+order $|\det(M^n-1)|$; $\det(1-M^n) = (1-\pi^n)(1-\bar\pi^n)>0$ gives the index. Lefschetz
+(\cref{cit:toral-lefschetz}) with the actions $1,M^T,\qs$ in degrees $0,1,2$ gives the count.
+\end{proof}
+
+\begin{proposition}[Dynamical zeta equals Hasse--Weil zeta]
+\label{prop:toral-zeta}
+\claimstatus{prop:toral-zeta}{proved-conditional}
+$\exp\bigl(\sum_n\#\operatorname{Fix}(M^n)\uz^n/n\bigr) = (1-a\uz+\qs\uz^2)/((1-\uz)(1-\qs\uz))
+= Z(E,\uz)$; by M\"obius inversion the primitive periodic orbits of $M$ on $\mathbb T^2$ of each
+length are equinumerous with the closed points of $E$ of each degree, so the gas side and the
+transfer side are both carried by the dynamical system $(\mathbb T^2,M)$; the bijection is
+noncanonical.
+\end{proposition}
+
+\begin{theorem}[Hodge doubling and the elliptic norm tensor]
+\label{thm:hodge-doubling-tensor}
+\claimstatus{thm:hodge-doubling-tensor}{proved-conditional}
+On $\mathbb C/\Lambda$, $M^*dz = \pi dz$ and $M^*d\bar z = \bar\pi d\bar z$. The double of the % bare-ok
+Hodge ket bond is $H^*(\mathbb T^2,\mathbb C)$ graded by form degree, with transfer
+$\Edb = \operatorname{diag}(1,\bar\pi,\pi,\qs)$ in the basis $(1,d\bar z,dz,dz\wedge d\bar z)$ and
+$\Gdb = \operatorname{diag}(1,-1,-1,1)$: $(+,+) = H^0$, the mixed lines are $H^{0,1},H^{1,0}$, and
+$(-,-) = H^2$ with eigenvalue $\pi\bar\pi = \qs$, the degree. The elliptic norm tensor
+(\cref{def:elliptic-norm-tensor}) is all-even, $\Psi_P(n) = (1-\pi^n)\phi^{\otimes n}$,
+$\|\Psi_P(n)\|^2 = \Ncount{n}$, the untwisted norm is $|1+\pi^n|^2$, and the ring zeta is
+$Z(E,\uz)$. The fermionic modes are the odd-degree forms; the physical letters are bosonic;
+the physical state has Schmidt rank one and its configurations do not enumerate points.
+\end{theorem}
+
+\begin{proposition}[Fourier pullback is an injection with one finite orbit; the flat supertrace]
+\label{prop:fourier-shift-flat-trace}
+\claimstatus{prop:fourier-shift-flat-trace}{proved-conditional}
+The pullback $U = M^*$ on $L^2(\mathbb T^2)\otimes\Lambda^*(\mathbb C^2)$ sends $e_k\otimes\omega$ to % bare-ok
+$e_{M^Tk}\otimes\Lambda^*(M^T)\omega$; $k\mapsto M^Tk$ is injective of index $\qs$ on $\mathbb Z^2$ % bare-ok
+(not a permutation), its only finite orbit is $\{0\}$, and the Fourier-diagonal flat supertrace
+$\sum_{M^{nT}k = k}\str\Lambda^*(M^{nT}) = \det(1-M^{nT}) = \Ncount{n}$ is contributed by $k = 0$ % bare-ok
+alone. The infinite-label tensor $\mathsf A_k = |M^Tk\rangle\langle k|\otimes\operatorname{diag}(1,\pi)$
+has $P$-closed ring vector $(1-\pi^n)|0,\dots,0\rangle$: an honest but redundant physical
+index; every closed ring except the vacuum mode vanishes.
+\end{proposition}
+
+\begin{theorem}[The Polya--Hilbert unitary and the ordinary Hasse bound]
+\label{thm:elliptic-ph-unitary}
+\claimstatus{thm:elliptic-ph-unitary}{proved-conditional}
+On the flat torus the Hodge (L$^2$) metric on harmonic one-forms is scaled by $|\pi|^2$ under
+$M^*$ on both $H^{1,0}$ and $H^{0,1}$, so $U_{\mathrm{PH}} = \qs^{-1/2}M^*|_{H^1}$ is unitary iff
+$|\pi|^2 = \qs$, which is derived, not assumed: the lifted Frobenius is a conformal similarity
+whose oriented area ratio is its covering degree $[\Lambda:\pi\Lambda] = |\pi|^2$ (\cref{cit:degree-norm-index}), % bare-ok
+and degree is preserved under good reduction with $\deg\Frob = \qs$ (the clause $d = \deg(\pi) = \qs$ of
+\cref{cit:hasse-degree-bound}, not its inequality; review m1).
+Hence the two nontrivial eigenvalues of $\Edb$ have modulus $\sqrt{\qs}$ (the Ramanujan
+property here) and $a^2<4\qs$, from the positive definite degree form $\deg(m+n\pi) =
+m^2+amn+\qs n^2$; no root-size input is used. The real PH model $K\otimes_{\mathbb Q}\mathbb R\cong\mathbb C$
+with $\operatorname{Re}(x\bar y)$ (the Rosati trace form up to the factor $2$) is the real form of
+$H^1(\mathbb T^2,\mathbb R)$, not the complex $H^1$; a self-adjoint logarithm needs a phase branch
+the curve does not specify.
+\end{theorem}
+
+\begin{proposition}[Integral markings versus MPS gauge]
+\label{prop:integral-marking-gauge}
+\claimstatus{prop:integral-marking-gauge}{proved-conditional}
+The integral matrix $M$ changes by $\mathrm{GL}_2(\mathbb Z)$ conjugacy under a change of lattice
+basis; its class is an ideal-lattice class of $\mathbb Z[\pi]$ (\cref{cit:latimer-macduffee}, all
+full ideal lattices, not only invertible ones) whose multiplier order is the endomorphism
+order, and the ordinary classification is recovered as Waterhouse's torsor (indexed by
+$j$-invariants, up to quadratic twist; review m4). Complex spectral
+data forget these classes: all matrices in the isogeny class are $\mathrm{GL}_2(\mathbb C)$-conjugate,
+the cohomology matrix is $M^T$ on the dual lattice, and the unitary gauge is the Hodge basis.
+The even ket gauge $G\in\mathrm{GL}(1|1)$ acts on $\Edb$ by $G\otimes\bar G$ and fixes all ring
+norms; exchanging the two Hodge embeddings is not an even gauge.
+\end{proposition}
+
+\subsection{Digits in base $\pi$}
+
+\begin{proposition}[Ordinary digit expansions, cyclic fibres, bounded carries]
+\label{prop:cyclic-digits-carries}
+\claimstatus{prop:cyclic-digits-carries}{proved}
+With $D$ a residue system of $O/\pi O$ ($|D| = \qs$), every class of $O/\pi^nO$ has a unique
+expansion $\sum_{i<n}d_i\pi^i$. The cyclic map $D^n\to O/(\pi^n-1)O$ need not be onto (for
+$O = \mathbb Z[i]$, $\pi = 1+2i$, $D = \{0,\pm1,\pm2\}$ the target $O/(2i)$ has four classes and the
+digits hit two; $|1-\pi^2|^2 = 32>25$ excludes surjectivity at $n = 2$ for any five digits; this
+is $y^2 = x^3+x$ over $\mathbb F_5$). Two words have the same image iff they admit integral cyclic
+carries $d_i-e_i = \pi c_{i+1}-c_i$, $c_n = c_0$, which are unique and bounded by
+$|c_i|\le\max_{d,e}|d-e|/(\sqrt{\qs}-1)$: the cyclic equivalence relation has a finite carry
+automaton.
+\end{proposition}
+
+\begin{proposition}[What finite carries do not count]
+\label{prop:carry-automaton-no-count}
+\claimstatus{prop:carry-automaton-no-count}{proved}
+No finite weighted adjacency matrix and no trace-class operator has power traces
+$\Ncount{n}$ (\cref{thm:no-ungraded-trace}), so no automaton with nonnegative transition counts
+counts the classes of $O/(\pi^n-1)$ by its unweighted rings; the carry automaton recognises
+equality of represented words and does not count classes with weight one. A graded signed
+transfer ($\operatorname{diag}(1,\qs)$ even, $M$ odd) has supertrace $\Ncount{n}$ but is not by itself a
+doubled-Kraus factorisation; the elliptic norm tensor supplies that. The drafted ``carries must
+be unbounded'' was wrong: cyclic carries are bounded here.
+\end{proposition}
+

@@ -1,0 +1,86 @@
+% SHARD-ID: RC-02G-DEFINITIONS-RING-NORM
+% SHARD-TITLE: Definitions, Continued: Graded Lattice Tensors, the Lifted Frobenius of an Ordinary Elliptic Curve, the Genus-Two Bond
+% SHARD-SUMMARY: Fifth definitions shard: graded lattice tensors on a bond C^{m|k}, their doubled transfer matrix, doubled parity, P-closed ring norm and ring zeta, and the even gauge group.
+% SHARD-SUMMARY: The lifted Frobenius of an ordinary elliptic curve as an integral matrix and a toral endomorphism, the Hodge ket bond, the elliptic norm tensor, the genus-two bond with its block notation, and the nine-letter tensor of the ring-norm-tensor campaign.
+% SHARD-KEYWORDS: definitions, graded bond, lattice tensor, doubled transfer, P-closed ring norm, ring zeta, gauge, ordinary elliptic curve, Deuring lift, toral endomorphism, Hodge bond, CM type, genus two, nine-letter tensor
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{Definitions, Continued: Graded Lattice Tensors and Lifted Frobenius}
+\label{sec:definitions-g}
+
+Continuation of \cref{sec:definitions-graded-cmps}; lattice (discrete-site) versions of the
+graded cMPS objects, and the arithmetic objects of the ring-norm-tensor campaign
+(\cref{sec:ring-norm-genus-one,sec:ring-norm-genus-two}).
+
+\begin{definition}[Graded lattice tensor, doubled transfer matrix, $P$-closed ring norm, ring zeta, gauge]
+\label{def:graded-lattice-tensor}
+A \emph{graded bond} is $V = V_+\oplus V_- = \mathbb C^{m|k}$ with parity $P = 1_m\oplus(-1_k)$.
+A \emph{graded lattice tensor} is a finite family $A_s\in\operatorname{End}(V)$, $s$ in a finite
+alphabet (the \emph{letters} or physical species), each homogeneous: \emph{even} ($PA_sP = A_s$,
+block diagonal, $A_s = a_s\oplus B_s$) or \emph{odd} ($PA_sP = -A_s$, block off-diagonal,
+$A_s = \bigl(\begin{smallmatrix}0&c_s\\ d_s&0\end{smallmatrix}\bigr)$). Its \emph{doubled transfer
+matrix} is $\Edb = \sum_s A_s\otimes\bar A_s$ on $V\otimes\bar V$ (ordinary Kronecker product,
+no statistics sign), graded by the doubled parity $\Gdb = P\otimes\bar P$ of
+\cref{def:cmps-transfer-generators}: the \emph{even sector} is $(+,+)\oplus(-,-)$ and the
+\emph{odd sector} $(+,-)\oplus(-,+)$; $\Edb$ commutes with $\Gdb$. The \emph{$P$-closed ring norm}
+of length $n$ is $\|\Psi_P(n)\|^2 := \str_{\Gdb}\Edb^n = \sum_{s_1\dots s_n}|\Tr(PA_{s_1}\cdots
+A_{s_n})|^2$ (the second equality is an unconditional identity, since $\Edb^n = \sum_wA_w\otimes\bar A_w$ by
+Kronecker multiplicativity; its identification with the Fock norm of the physical fermion ring
+is \cref{thm:cmps-twisted-supertrace}), the
+\emph{ring zeta} is $\exp\bigl(\sum_n\str\Edb^n\uz^n/n\bigr) = 1/\sdet(1-\uz\Edb) =
+\det(1-\uz\Edb|_{\mathrm{odd}})/\det(1-\uz\Edb|_{\mathrm{even}})$, and an \emph{even gauge}
+is $A_s\mapsto GA_sG^{-1}$ with $G$ even and invertible, which conjugates $\Edb$ by
+$G\otimes\bar G$ and fixes every ring norm. \emph{Net spectrum} means after cancelling common
+even and odd eigenvalues; eigenvalue $0$ and nilpotent blocks are invisible to all positive
+powers.
+\end{definition}
+
+\begin{definition}[Lifted Frobenius of an ordinary elliptic curve; toral endomorphism; Hodge ket bond]
+\label{def:lifted-frobenius-torus}
+Let $E/\Fq$ be an ordinary elliptic curve with Frobenius endomorphism $\pi$, trace
+$a = \qs+1-\Ncount{1}$, endomorphism order $O = \operatorname{End}(E)$ in the imaginary
+quadratic field $K = \mathbb Q(\pi)$. The \emph{lifted Frobenius} is the pair $(\Lambda,\pi)$ of % bare-ok
+\cref{asm:deuring-lift}: a lattice $\Lambda\subset\mathbb C$ that is a proper $O$-ideal, on % bare-ok
+which $\pi$ acts by multiplication. Its \emph{integral matrix} $M\in M_2(\mathbb Z)$ is the matrix
+of $z\mapsto\pi z$ on a $\mathbb Z$-basis of $\Lambda$, and the \emph{toral endomorphism} is the % bare-ok
+induced map $M\colon\mathbb T^2 = \mathbb R^2/\mathbb Z^2\to\mathbb T^2$. The \emph{Hodge ket bond}
+is $V = \Lambda^*(H^{1,0}) = \mathbb C\oplus\mathbb C\,dz = \mathbb C^{1|1}$ with $P = (-1)^{\deg}$; % bare-ok
+its double $V\otimes\bar V = \Lambda^*(\mathbb C dz\oplus\mathbb C d\bar z) = H^*(\mathbb T^2,\mathbb C)$ % bare-ok
+is graded by total form degree.
+\end{definition}
+
+\begin{definition}[Elliptic norm tensor]
+\label{def:elliptic-norm-tensor}
+For a unit vector $\phi = \sum_s a_s|s\rangle$, $\sum_s|a_s|^2 = 1$, the \emph{elliptic norm
+tensor} of $E$ is the all-even graded lattice tensor $A_s = a_s\operatorname{diag}(1,\pi)$ on the
+Hodge ket bond, with $P$-closed ring vector $\Psi_P(n) = (1-\pi^n)\,\phi^{\otimes n}$. The
+singleton alphabet $a_0 = 1$ is allowed.
+\end{definition}
+
+\begin{definition}[Genus-two bond and block notation]
+\label{def:genus-two-bond}
+For a genus-two curve $C/\Fq$ with simple ordinary Jacobian $J$, Frobenius $\pi$, quartic CM
+field $K = \mathbb Q(\pi)$, Frobenius eigenvalues $\{\pi_1,\bar\pi_1,\pi_2,\bar\pi_2\}$ and CM type
+$\Phi = \{\phi_1,\phi_2\}$ with $\phi_j(\pi) = \pi_j$ (\cref{asm:cm-hodge-type}), the % bare-ok
+\emph{genus-two bond} is $V = \mathbb C\oplus H^{1,0}(\tilde J) = \mathbb C^{1|2}$, $P = (-1)^{\deg}$,
+with $D = \operatorname{diag}(\pi_1,\pi_2)$ on $H^{1,0}$. For a graded lattice tensor on
+$\mathbb C^{1|2}$ with even letters $a_s\oplus B_s$ and odd letters $(c_f, d_f)$ ($c_f$ a row,
+$d_f$ a column) the \emph{block notation} is $M = \sum_s a_s\bar B_s$, $N = \sum_f\bar d_fc_f$,
+$t = \sum_s|a_s|^2$, $u = \sum_fc_f\otimes\bar c_f$, $v = \sum_fd_f\otimes\bar d_f$,
+$W = \sum_sB_s\otimes\bar B_s$, in the ordered odd basis $(|0\rangle\otimes|\bar j\rangle)_j,
+(|i\rangle\otimes|\bar0\rangle)_i$ and row-major vectorisation of the $(-,-)$ block
+(\cref{lem:genus-two-blocks}).
+\end{definition}
+
+\begin{definition}[Nine-letter tensor]
+\label{def:nine-letter-tensor}
+For $\qs>1$ and $\pi_1,\pi_2$ with $|\pi_j|^2 = \qs$ and $\qs+1\ge4\sqrt{\qs}$, put
+$t = (\qs+1)/2$, $w = (\qs+1)/4$, $h = (\qs-1)/(2\sqrt2)$, $B_0 = D/\sqrt t$, $b_0 = \operatorname{vec}B_0$,
+$\nu = b_0^*b_0 = 2\qs/t$, $S = \sqrt w\,1_4 + \nu^{-1}(\sqrt{w-\nu}-\sqrt w)\,b_0b_0^*$ (the positive
+square root of $w1_4 - b_0b_0^*$) and $B_\ell = \operatorname{unvec}(Se_\ell)$, $\ell = 1,\dots,4$. The % bare-ok
+\emph{nine-letter tensor} on $\mathbb C^{1|2}$ has even letters $A_0 = \sqrt t\oplus B_0$,
+$A_\ell = 0\oplus B_\ell$ and odd letters $A_{\uparrow j} = \bigl(\begin{smallmatrix}0&\sqrt h\,e_j^T\\0&0\end{smallmatrix}\bigr)$, % bare-ok
+$A_{\downarrow j} = \bigl(\begin{smallmatrix}0&0\\ \sqrt h\,e_j&0\end{smallmatrix}\bigr)$, $j = 1,2$
+(\cref{thm:nine-letter-tensor}).
+\end{definition}

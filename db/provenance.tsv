@@ -127,3 +127,21 @@ prov:lsv05e-cayley	math/0406217	main.tex	497-515	The Cayley complex of $G$ with 
 prov:flw13-rh	1109.3854	zetagsp4-final.tex	145-157	$(4)$ All the nontrivial zeros of $\det(I - L_{P_{2}} u)$ have absolute values $q^{\alpha}$, where $-2 \le \alpha \le -1$.	cit:kl-rh-four-way
 prov:hcov13-transfer-plus	1211.3935	calculus.tex	378	\voperator{T}(x)=Q(x)\otimes \one_{D}+\one_{D}\otimes \overline{Q(x)} + \sum_{\alpha=1}^{N} R_{\alpha}(x)\otimes \overline{R_{\alpha}(x)}.	cit:hcov-overlap-parity
 prov:hcov13-parity-action	1211.3935	calculus.tex	319	Since $\operator{P}\ket{\Psi[Q,\{R_{\alpha}\}]}=\ket{\Psi[Q,\{\eta_{\alpha,\alpha} R_{\alpha}\}]}$	cit:hcov-overlap-parity
+prov:milne-count-formula	1509.00797	pRH.tex	176	N_{n}=1+q^{n}-(a_{1}^{n}+\cdots+a_{2g}^{n}).	cit:frob-count-formula
+prov:sutherland-frobenius-quadratic	1208.5370	IsogenyVolcanoes.tex	351	and $\pi_E$ satisfies the characteristic equation $\pi_E^2-t\pi_E+q=0$.	cit:frob-count-formula
+prov:milne-degree-nonnegative	1509.00797	pRH.tex	241-242	The right hand side is the degree of the map $m-n\alpha$, which is always nonnegative, and so the discriminant $c^{2}-4d\leq0$, i.e., $c^{2}\leq4d$.	cit:hasse-degree-bound
+prov:milne-deg-pi-q	1509.00797	pRH.tex	248-249	Then $d=\deg(\pi )=q$, and $c^{2}\leq4d=4q$.	cit:hasse-degree-bound
+prov:goreskytai-frobenius-lift	1701.07742	main.tex	583-584	The geometric action of $F$ on $A$ lifts to an automorphism $F_A$ on \[ T = T_A = H_1(A_{\CC},\ZZ).\]	cit:serre-tate-lift
+prov:sutherland-degree-norm	1208.5370	IsogenyVolcanoes.tex	273	we have $\deg \varphi_\fa = N(\fa)=[\O:\fa]$.	cit:degree-norm-index
+prov:baake-fixcount	0810.1855	main.tex	98	a^{}_{m} = \lvert \ts \det(\one - M^m) \rvert \ts .	cit:toral-lefschetz
+prov:baake-zeta	0810.1855	main.tex	199-200	\widetilde{\zeta}^{}_{M} (z) = \prod_{k=0}^{d} \det \bigl( \one - z \ep^k (M) \bigr)^{(-1)^{k+1}}$.	cit:toral-lefschetz
+prov:springer-lenstra	2006.00637	main.tex	103	E(\FF_{q^n}) \cong R/(\pi^n - 1)R.	cit:lenstra-structure
+prov:knight-latimer	2205.02094	main.tex	97	and the ideal classes of the order $\Z[x]/(f(x))$.	cit:latimer-macduffee
+prov:sutherland-torsor	1208.5370	IsogenyVolcanoes.tex	283	Provided it is non-empty, the set $\Ell_\O(k)$ is thus a principal homogeneous space, a \emph{torsor}, for the group $\cl(\O)$.	cit:latimer-macduffee
+prov:milne-rosati-positive	1509.00797	pRH.tex	1559	{=}\End^{0}(A)$ is positive, i.e., the pairing	cit:rosati-positive
+prov:milne-pi-pidagger	1509.00797	pRH.tex	1647-1648	This will follow from (\ref{r39}) once we show that $\pi\circ\pi^{\dagger }=q_{A}$. This can be proved by a direct calculation, but it is more	cit:rosati-positive
+prov:goreskytai-eigen-sqrtq	1701.07742	main.tex	565	\item The mapping $F$ is semisimple and all of its eigenvalues in $\CC$ have magnitude	cit:cm-lift-frobenius
+prov:goreskytai-cm-type	1701.07742	main.tex	604-605	and where $\Phi$ is a CM type on $\QQ[F]$ such that the following {\em positivity condition} holds:	cit:cm-lift-frobenius
+prov:dupuy-cm-field	2003.05380	weil.tex	332	\item $\QQ(\pi)$ is a CM-field with maximal totally real subfield $\QQ(\beta)$, and $\pi$ has no real embeddings;	cit:cm-lift-frobenius
+prov:lesfari-wedge	0903.2156	main.tex	1254	$$\omega\wedge \overline{\omega}=-2i|f|^2dx\wedge dy.$$	cit:hodge-positive-forms
+prov:lesfari-positive	0903.2156	main.tex	1262	&=&\int_X|f|^2dx\wedge dy > 0, \quad \omega\neq 0,\nonumber	cit:hodge-positive-forms

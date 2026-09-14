@@ -1,0 +1,72 @@
+Part A: exact residual and inverse defect (rational arithmetic)
+  ||B|| = 1.499130, ||B f(y0)|| = 1.006e-90, ||1 - BJ|| = 3.516e-58, kappa = 1.214e-12
+PASS   A1 all centre coordinates have |.| < 2
+PASS   A2 ||B||_inf < 2
+PASS   A3 ||B f(y0)||_inf < 1e-70
+PASS   A4 ||1 - B J||_inf < 1e-50
+PASS   A5 contraction constant kappa < 1/4
+PASS   A6 the box of radius 1e-30 maps into itself: CERTIFIED
+Part C: the certified centre in floating point
+  chi_e coefficients [ 1. -6.  5. -0.  0. -0.]   chi_o coefficients [  1.  -3.   7. -15.  25.]
+PASS   C1 chi_e = z^3 (z-1)(z-5)
+PASS   C2 chi_o = z^4 - 3 z^3 + 7 z^2 - 15 z + 25
+PASS   C3 str E^1 = N_1 = 3
+PASS   C3 str E^2 = N_2 = 31
+PASS   C3 str E^3 = N_3 = 117
+PASS   C3 str E^4 = N_4 = 619
+PASS   C3 str E^5 = N_5 = 3318
+PASS   C3 str E^6 = N_6 = 15991
+PASS   C3 str E^7 = N_7 = 77997
+PASS   C3 str E^8 = N_8 = 390739
+PASS   C3 str E^9 = N_9 = 1955043
+PASS   C3 str E^10 = N_10 = 9759526
+PASS   C3 str E^11 = N_11 = 48801327
+PASS   C3 str E^12 = N_12 = 244128859
+PASS   C4 explicit Jordan-Wigner Fock vector: ||Psi_P||^2 = 31.000000 = N_2 = 31
+PASS   C5 n=2: Psi_P invariant under the periodic fermion translation
+PASS   C4 explicit Jordan-Wigner Fock vector: ||Psi_P||^2 = 117.000000 = N_3 = 117
+PASS   C5 n=3: Psi_P invariant under the periodic fermion translation
+PASS   C4 explicit Jordan-Wigner Fock vector: ||Psi_P||^2 = 619.000000 = N_4 = 619
+PASS   C5 n=4: Psi_P invariant under the periodic fermion translation
+PASS   C4 explicit Jordan-Wigner Fock vector: ||Psi_P||^2 = 3318.000000 = N_5 = 3318
+PASS   C5 n=5: Psi_P invariant under the periodic fermion translation
+Part B: the nine-letter tensor
+PASS   B0 q=25 (F_25 base change of the F_5 curve): q + 1 >= 4 sqrt q, construction exists
+PASS   B1 q=25 (F_25 base change of the F_5 curve): even spectrum {1, q, 0, 0, 0}
+PASS   B2 q=25 (F_25 base change of the F_5 curve): odd spectrum = the four Frobenius values
+PASS   B3 q=25 (F_25 base change of the F_5 curve): doubled transfer is normal
+PASS   B4 q=25 (F_25 base change of the F_5 curve): str E^1 = N_1
+PASS   B4 q=25 (F_25 base change of the F_5 curve): str E^2 = N_2
+PASS   B4 q=25 (F_25 base change of the F_5 curve): str E^3 = N_3
+PASS   B4 q=25 (F_25 base change of the F_5 curve): str E^4 = N_4
+PASS   B4 q=25 (F_25 base change of the F_5 curve): str E^5 = N_5
+PASS   B4 q=25 (F_25 base change of the F_5 curve): str E^6 = N_6
+PASS   B4 q=25 (F_25 base change of the F_5 curve): str E^7 = N_7
+PASS   B4 q=25 (F_25 base change of the F_5 curve): str E^8 = N_8
+PASS   B0 q=17 generic phases: q + 1 >= 4 sqrt q, construction exists
+PASS   B1 q=17 generic phases: even spectrum {1, q, 0, 0, 0}
+PASS   B2 q=17 generic phases: odd spectrum = the four Frobenius values
+PASS   B3 q=17 generic phases: doubled transfer is normal
+PASS   B4 q=17 generic phases: str E^1 = N_1
+PASS   B4 q=17 generic phases: str E^2 = N_2
+PASS   B4 q=17 generic phases: str E^3 = N_3
+PASS   B4 q=17 generic phases: str E^4 = N_4
+PASS   B4 q=17 generic phases: str E^5 = N_5
+PASS   B4 q=17 generic phases: str E^6 = N_6
+PASS   B4 q=17 generic phases: str E^7 = N_7
+PASS   B4 q=17 generic phases: str E^8 = N_8
+PASS   B0 q=16 generic phases: q + 1 >= 4 sqrt q, construction exists
+PASS   B1 q=16 generic phases: even spectrum {1, q, 0, 0, 0}
+PASS   B2 q=16 generic phases: odd spectrum = the four Frobenius values
+PASS   B3 q=16 generic phases: doubled transfer is normal
+PASS   B4 q=16 generic phases: str E^1 = N_1
+PASS   B4 q=16 generic phases: str E^2 = N_2
+PASS   B4 q=16 generic phases: str E^3 = N_3
+PASS   B4 q=16 generic phases: str E^4 = N_4
+PASS   B4 q=16 generic phases: str E^5 = N_5
+PASS   B4 q=16 generic phases: str E^6 = N_6
+PASS   B4 q=16 generic phases: str E^7 = N_7
+PASS   B4 q=16 generic phases: str E^8 = N_8
+PASS   B5 q=13: construction fails (w < nu), as q + 1 < 4 sqrt q
+
+65 checks, 0 failures

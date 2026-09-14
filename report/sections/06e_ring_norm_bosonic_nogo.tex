@@ -1,0 +1,129 @@
+% SHARD-ID: RC-06E-RING-NORM-BOSONIC-NOGO
+% SHARD-TITLE: Curve Counts as Twisted Ring Norms III: the Bosonic No-Go and Its Bookkeeping
+% SHARD-SUMMARY: The orchestrator's drafted Hilbert--Schmidt/trace bound for bosonic tensors is false (exact counterexample, found independently by the prover and the numerics lane); the genus bound g <= 1 without cancellation is proved instead by the all-power word-trace inequality and a Cesaro argument.
+% SHARD-SUMMARY: Euler-characteristic bookkeeping of zero modes and the minimal bond, how odd letters and cancellation evade the bound, the infinite-bond obstruction forcing fermionic jumps under explicit analytic hypotheses, and the two numerical rows of the campaign.
+% SHARD-KEYWORDS: bosonic no-go, Cauchy-Schwarz, Schur inequality, word traces, Cesaro, Euler characteristic, minimal bond, cancellation, Kraus, infinite bond, fermionic jumps
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/weil_ring_norm_check.py, scripts/ring_norm_tensor.py
+
+\section{Curve Counts as Twisted Ring Norms III: the Bosonic No-Go}
+\label{sec:ring-norm-bosonic-nogo}
+
+Notation of \cref{def:graded-lattice-tensor}; proofs in
+\texttt{notes/ring-norm-tensor/astra-proofs.md} T3.
+
+\subsection{The bosonic no-go and its bookkeeping}
+
+\begin{observation}[The orchestrator's drafted bound was false]
+\label{obs:drafted-hs-bound-false}
+\claimstatus{obs:drafted-hs-bound-false}{sketched}
+The 2026-09-14 morning draft claimed $\sum_{\mathrm{odd}}|\mu|^2\le2\Tr{\Edb}_{++}\Tr{\Edb}_{--}$ for % bare-ok
+bosonic tensors, and its script computed $\sum_s\|a_s\|_{\mathrm{HS}}^2$ while calling it a trace.
+Since $\Tr(A\otimes\bar A) = |\Tr A|^2$, one even letter $a = B = \operatorname{diag}(1,-1)$ on
+$\mathbb C^{2|2}$ has both traces zero and odd squared eigenvalue sum $8$; the prover and the
+numerics lane found the error independently (173 of 400 random instances violate it). The
+genus bound survives by \cref{thm:bosonic-genus-bound}.
+\end{observation}
+
+\begin{theorem}[Block structure and the correct Hilbert--Schmidt bounds]
+\label{thm:bosonic-blocks-hs}
+\claimstatus{thm:bosonic-blocks-hs}{proved}
+For all-even tensors $A_s = a_s\oplus B_s$ on $\mathbb C^{m|k}$: ${\Edb}_{\mathrm{even}} = S_+\oplus S_-$
+with $S_+ = \sum a_s\otimes\bar a_s$, $S_- = \sum B_s\otimes\bar B_s$, and
+${\Edb}_{\mathrm{odd}} = M\oplus\bar M$ with $M = \sum_sa_s\otimes\bar B_s$. Then
+$\sum_{\mathrm{odd}}|\mu|^2 = 2\sum_{\operatorname{spec}M}|\mu|^2\le2\|M\|_{\mathrm{HS}}^2\le % bare-ok
+2\bigl(\sum_s\|a_s\|_{\mathrm{HS}}^2\bigr)\bigl(\sum_s\|B_s\|_{\mathrm{HS}}^2\bigr)$ and
+$\|M\|_{\mathrm{HS}}^2\le\|S_+\|_{\mathrm{HS}}\|S_-\|_{\mathrm{HS}}$ (Gram-matrix Cauchy--Schwarz);
+$\Tr S_\pm = \sum_s|\Tr a_s|^2,\sum_s|\Tr B_s|^2$. Schur's inequality is proved from
+triangularisation.
+\end{theorem}
+
+\begin{lemma}[All-power word-trace inequality]
+\label{lem:word-trace-cs}
+\claimstatus{lem:word-trace-cs}{proved}
+With $s_\pm(n) = \Tr S_\pm^n = \sum_w|\Tr a_w|^2,\sum_w|\Tr B_w|^2$ over words $w$ of length $n$
+and $\Tr M^n = \sum_w\Tr a_w\overline{\Tr B_w}$: $s_\pm(n)\ge0$ and $|\Tr M^n|^2\le s_+(n)s_-(n)$
+for every $n$, with equality iff the two word-trace vectors are proportional.
+\end{lemma}
+
+\begin{theorem}[Bosonic species cannot pass genus one]
+\label{thm:bosonic-genus-bound}
+\claimstatus{thm:bosonic-genus-bound}{proved-conditional}
+If the nonzero even spectrum is exactly $\{1,\qs\}$ with no even--odd cancellation and the odd
+spectrum is $2g$ values of modulus $\sqrt{\qs}$, $g\ge1$, then $g\le1$ and
+$\{\Tr S_+,\Tr S_-\} = \{1,\qs\}$. For $m = k = 1$ and $g = 1$ the two coefficient vectors are
+proportional, giving \cref{def:elliptic-norm-tensor}; for larger $m,k$ literal matrix
+proportionality and normality are false (nilpotent transients, nonunitary gauges).
+\end{theorem}
+
+\begin{proof}
+Sketch (T3.3). A block with no nonzero eigenvalue has $s_\pm(n) = 0$ for all $n$, so
+\cref{lem:word-trace-cs} makes $\Tr M^n = 0$ for all $n$ and $M$ nilpotent, contradicting the
+nonempty odd spectrum; so each block carries one of $1,\qs$ and $s_+(n)s_-(n) = \qs^n$. Writing
+the $g$ eigenvalues of $M$ as $\sqrt{\qs}\beta_j$, $|\beta_j| = 1$, the inequality reads % bare-ok
+$|\sum_j\beta_j^n|^2\le1$; the Ces\`aro mean of the left side over $n\le N$ tends to % bare-ok
+$\sum_im_i^2\ge g$, so $g\le1$.
+\end{proof}
+
+\begin{proposition}[Euler characteristic bookkeeping and the minimal bond]
+\label{prop:euler-bookkeeping}
+\claimstatus{prop:euler-bookkeeping}{proved}
+If a graded tensor on $\mathbb C^{m|k}$ has $\str\Edb^n = \Ncount{n}$ for all $n$ with net spectrum
+$\{1,\qs\}_+-\{\alphaw{1..2g}\}_-$, and $z_e,z_o$ count zero eigenvalues, then
+$(m-k)^2-(z_e-z_o) = 2-2g$; necessarily $mk\ge g$; if the odd dimension is exactly $2g$ then
+$mk = g$, no odd zero modes, no cancellation, and $m^2+k^2-2$ nilpotent even modes ($g^2-1$ on
+$\mathbb C^{1|g}$). The minimal bond dimension is $\min\{m+k: mk\ge g\}$, not generally $g+1$;
+at genus two it is three.
+\end{proposition}
+
+\begin{proposition}[Odd species and cancellation evade the bound]
+\label{prop:odd-species-cancellation}
+\claimstatus{prop:odd-species-cancellation}{proved}
+Odd letters add blocks $\sum_fc_f\otimes\bar c_f$, $\sum_fd_f\otimes\bar d_f$ between $(+,+)$ and
+$(-,-)$ (zero trace at length one, nonzero in higher powers) and $\sum_fc_f\otimes\bar d_f$
+between the mixed sectors, so ${\Edb}_{\mathrm{odd}}$ is no longer $M\oplus\bar M$. With all-even
+letters and a cancelling multiset $X$: $s_+(n)+s_-(n) = 1+\qs^n+\sum_Xx^n$ and
+$|\sum_j\alphaw{j}^n+\sum_Xx^n|\le2\sqrt{s_+(n)s_-(n)}$, which bounds nothing independent of
+$X$. Fermionic letters are therefore necessary on the minimal genus-two bond $\mathbb C^{1|2}$
+(no room to cancel), not on every larger bond; the failed bosonic $\mathbb C^{2|2}$ search is
+no certificate.
+\end{proposition}
+
+\begin{theorem}[Infinite bond: bosonic species cannot carry the zeros]
+\label{thm:infinite-bond-bosonic-nogo}
+\claimstatus{thm:infinite-bond-bosonic-nogo}{proved-conditional}
+Under \cref{asm:kraus-hs-setting} and \cref{asm:zero-count-location}, if the odd eigenmodes at
+time $t$ include $e^{t\mu_{\zero}}$ over the nontrivial zeros (with $\mu_{\zero} = \zero$ or % bare-ok
+$-\bar{\zero}/2$), then $\sum_{\zero}e^{2t\operatorname{Re}\mu_{\zero}}\le\|{\Edb}_{\mathrm{odd}}(t)\|_{\mathrm{HS}}^2 % bare-ok
+\le2\|S_+(t)\|_{\mathrm{HS}}\|S_-(t)\|_{\mathrm{HS}}<\infty$, which is impossible because the
+left side diverges; hence such a purely bosonic Kraus realisation does not exist and fermionic
+jumps are necessary in that setting. The trace version $2\Tr S_+\Tr S_-$ needs $S_\pm$ positive
+on the Hilbert--Schmidt spaces, which complete positivity alone does not give.
+\end{theorem}
+
+\begin{numerical}[Ring norms of real curves; the false bound; the repaired chain]
+\label{num:weil-ring-norm-check}
+\claimstatus{num:weil-ring-norm-check}{numerical}
+\texttt{scripts/weil\_ring\_norm\_check.py} (\texttt{outputs/weil\_ring\_norm\_check.txt}, $135$ checks,
+author claude:fable-5.1): brute-force counts of four elliptic curves over $\mathbb F_5,\mathbb F_7,\mathbb F_{11}$
+against $|1-\pi^n|^2$, $\str\Edb^n$, the explicit vector $\Psi_P = \Psi_+-\Psi_-$ with
+$\Psi_- = \pi^n\Psi_+$ (Schmidt rank one), the untwisted $|1+\pi^n|^2$; the
+decoupled-block Cauchy--Schwarz statement; the Hilbert--Schmidt chain of
+\cref{thm:bosonic-blocks-hs} on random $\mathbb C^{m|k}$ (its printed labels are the
+Hilbert--Schmidt sums, see the docstring); the genus-two searches of \cref{sec:ring-norm-genus-two};
+the $y^3-y = x^2$ indicator state matching the count only at odd $n$.
+\end{numerical}
+
+\begin{numerical}[Toral Frobenius, Lenstra structure, gauge and dichotomy]
+\label{num:ring-norm-tensor}
+\claimstatus{num:ring-norm-tensor}{numerical}
+\texttt{scripts/ring\_norm\_tensor.py} (\texttt{outputs/ring\_norm\_tensor.txt}, $193$ checks,
+author claude:opus-5, $562$ s): for four ordinary curves, $\Ncount{n} = |\det(M^n-1)| =
+1-\Tr M^n+\det M^n$, the fixed points enumerated by Smith normal form all of index $+1$,
+$k\mapsto M^Tk$ with no periodic point but $0$ in $[-50,50]^2$ up to period $12$, the dynamical
+zeta to order $\uz^8$, $|\pi|^2 = \qs$ and $M^\dagger GM = \qs G$ in the Hodge basis; the group
+structure of $E(\Fqn{n})$ by brute force against the invariant factors of $O_K/(\pi^n-1)$ for
+$n\le3$; the refutation of the drafted trace bound and the validity of the Hilbert--Schmidt
+chain on $400$ random instances; the genus-two items of \cref{num:genus-two-cm-diagonal}; the
+supersingularity and cut-rank items of \cref{num:cut-rank-binary}.
+\end{numerical}

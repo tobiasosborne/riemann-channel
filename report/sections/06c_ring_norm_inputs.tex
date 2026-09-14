@@ -1,0 +1,199 @@
+% SHARD-ID: RC-06C-RING-NORM-INPUTS
+% SHARD-TITLE: Curve Counts as Twisted Ring Norms I: Question, Inputs, and Where the Obvious Polya--Hilbert Hamiltonian Stops
+% SHARD-SUMMARY: TJO's five-item wish list for the MPS tensor of the simplest variety without an obvious Polya--Hilbert Hamiltonian, the byte-cited inputs (count formula, degree, canonical lift, toral Lefschetz, Lenstra, Latimer--MacDuffee, Waterhouse) and the assumptions (Deuring, Newton supersingularity, the Kraus setting).
+% SHARD-SUMMARY: The quadratic Artin--Schreier family, the only place where the notebook had a manifestly unitary transfer matrix, is supersingular in every characteristic; the transfer unitary has finite order; the cut-rank bound is D^2 across a ring cut; the amplitude-locality dichotomy survives only as a restricted conjecture.
+% SHARD-KEYWORDS: ordinary elliptic curve, Deuring lift, toral endomorphism, Lefschetz number, Hodge decomposition, ring norm, supertrace, Polya-Hilbert, Hasse bound, gauge, ideal class, digit expansion, carry automaton, bosonic no-go, Cauchy-Schwarz, Euler characteristic, Kraus, supersingular, cut rank
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/ring_norm_tensor.py
+
+\section{Curve Counts as Twisted Ring Norms I: Inputs and the Supersingular Boundary}
+\label{sec:ring-norm-genus-one}
+
+\emph{Question (TJO, 2026-09-14).} The previous session realised the elliptic-curve count
+$\Ncount{n} = 1+\qs^n-\pi^n-\bar\pi^n$ as the $P$-closed ring norm of a bosonic
+tensor on $\mathbb C^{1|1}$ with $\pi$ put in by hand. Wanted: for the absolute simplest
+variety without an \emph{obvious} Polya--Hilbert (PH) Hamiltonian, (1) a natural tensor
+determined by the variety, (2) the graded decomposition of the bond and why, (3) a theorem
+that the ring norms are the counts, (4) the PH operator, (5) the Ramanujan property, all modulo
+gauge. In this notebook the obvious PH Hamiltonian is the quadratic Artin--Schreier transfer
+matrix (\cref{sec:artin-schreier-super}); \cref{thm:as-quadratic-supersingular} shows that
+family is supersingular, so the first ordinary variety is an elliptic curve. Genus one is
+\cref{sec:ring-norm-genus-one-tier-a}, the bosonic no-go \cref{sec:ring-norm-bosonic-nogo}, genus two
+\cref{sec:ring-norm-genus-two}. Proofs by the codex prover
+(\texttt{notes/ring-norm-tensor/astra-proofs.md}, sections T0--T5), Opus REFUTE review
+(\texttt{notes/reviews/ring-norm-tensor-2026-09-14.md}: $0$ INVALID, $3$ MINOR, $2$ MAJOR, all applied
+in these shards; the prover's file is kept as written). The finite-bond input ``the $P$-closed ring
+norm is $\str\Edb^n$'' is used in two halves (review MAJ-2): the algebraic identity
+$\str_{\Gdb}\Edb^n = \sum_w|\Tr(PA_w)|^2$, which is a two-line theorem for any letters (Kronecker multiplicativity) and is
+built into \cref{def:graded-lattice-tensor}, and the identification with the Fock norm of the
+physical fermion ring, which is \cref{thm:cmps-twisted-supertrace} (sketched) and enters only
+\cref{cor:genus-two-physical-norm}; independent numerics in two scripts; sources byte-cited in
+\texttt{notes/ring-norm-tensor/sources.md}. Definitions in \cref{sec:definitions-g}.
+
+\subsection{Inputs}
+
+\begin{citedfact}[Point counts and the Frobenius quadratic, without the root sizes]
+\label{cit:frob-count-formula}
+\claimstatus{cit:frob-count-formula}{cited}
+Milne \cite{milne2015rh}: for a curve of genus $g$, $\Ncount{n} = 1+\qs^n-\sum_{j\le2g}\alphaw{j}^n$
+with the $\alphaw{j}$ nonzero algebraic; Sutherland \cite{sutherland2012volcanoes}: for an
+elliptic curve the Frobenius satisfies $\pi^2-t\pi+\qs = 0$ with $t = \qs+1-\#E(\Fq)$.
+Verbatim: \texttt{\detokenize{N_{n}=1+q^{n}-(a_{1}^{n}+\cdots+a_{2g}^{n}).}} (\texttt{1509.00797:pRH.tex:176});
+\texttt{\detokenize{and $\pi_E$ satisfies the characteristic equation $\pi_E^2-t\pi_E+q=0$.}}
+(\texttt{1208.5370:IsogenyVolcanoes.tex:351}).
+\end{citedfact}
+
+\begin{citedfact}[Degree is a nonnegative quadratic form; $\deg\pi = \qs$; Hasse's bound]
+\label{cit:hasse-degree-bound}
+\claimstatus{cit:hasse-degree-bound}{cited}
+Milne \cite{milne2015rh}: the degree of $m-n\alpha$ is nonnegative, so the discriminant of the % bare-ok
+Frobenius quadratic is $\le0$; $d = \deg\pi = \qs$; $|\#E(k)-\qs-1|\le2\qs^{1/2}$.
+Verbatim: \texttt{\detokenize{The right hand side is the degree of the map $m-n\alpha$, which is always nonnegative, and so the discriminant $c^{2}-4d\leq0$, i.e., $c^{2}\leq4d$.}}
+(\texttt{1509.00797:pRH.tex:241-242}); \texttt{\detokenize{Then $d=\deg(\pi )=q$, and $c^{2}\leq4d=4q$.}}
+(\texttt{1509.00797:pRH.tex:248-249}).
+\end{citedfact}
+
+\begin{citedfact}[Serre--Tate canonical lift and the lifted Frobenius on $H_1$]
+\label{cit:serre-tate-lift}
+\claimstatus{cit:serre-tate-lift}{cited}
+Goresky and Tai \cite{goreskytai2017ordinary}: an ordinary abelian variety over $\Fq$ has a
+canonical lift over $W(k)$, hence a complex variety, and the Frobenius lifts to an
+endomorphism of $T = H_1(A_{\mathbb C},\mathbb Z)$.
+Verbatim: \texttt{\detokenize{The geometric action of $F$ on $A$ lifts to an automorphism $F_A$ on \[ T = T_A = H_1(A_{\CC},\ZZ).\]}} (\texttt{1701.07742:main.tex:583-584}).
+\end{citedfact}
+
+\begin{assumption}[Deuring lifting]
+\label{asm:deuring-lift}
+\claimstatus{asm:deuring-lift}{assumed}
+For $E/\Fq$ ordinary with Frobenius $\pi$ and $\operatorname{End}(E) = O$ there is an elliptic
+curve over a number field with good reduction to $E$ at a prime above $p$, endomorphism ring
+$O$, reduction map an isomorphism on endomorphisms taking $\tilde\pi$ to $\pi$; over $\mathbb C$
+it is $\mathbb C/\Lambda$ with $\Lambda$ a proper $O$-ideal and $\tilde\pi$ multiplication by the % bare-ok
+complex number $\pi$ (Deuring 1941; the Serre--Tate form is \cref{cit:serre-tate-lift}).
+\end{assumption}
+
+\begin{citedfact}[Degree of an ideal isogeny is the norm, i.e. the lattice index]
+\label{cit:degree-norm-index}
+\claimstatus{cit:degree-norm-index}{cited}
+Sutherland \cite{sutherland2012volcanoes}.
+Verbatim: \texttt{\detokenize{we have $\deg \varphi_\fa = N(\fa)=[\O:\fa]$.}} (\texttt{1208.5370:IsogenyVolcanoes.tex:273}).
+\end{citedfact}
+
+\begin{citedfact}[Toral Lefschetz count and dynamical zeta]
+\label{cit:toral-lefschetz}
+\claimstatus{cit:toral-lefschetz}{cited}
+Baake, Lau and Paskunas \cite{baake2008toral}: for $M\in\operatorname{Mat}(d,\mathbb Z)$ the
+number of isolated fixed points of $M^m$ on $\mathbb T^d$ is $|\det(1-M^m)|$ and the dynamical
+zeta is the alternating product of $\det(1-z\Lambda^kM)$. % bare-ok
+Verbatim: \texttt{\detokenize{a^{}_{m} = \lvert \ts \det(\one - M^m) \rvert \ts .}} (\texttt{0810.1855:main.tex:98});
+\texttt{\detokenize{\widetilde{\zeta}^{}_{M} (z) = \prod_{k=0}^{d} \det \bigl( \one - z \ep^k (M) \bigr)^{(-1)^{k+1}}$.}}
+(\texttt{0810.1855:main.tex:199-200}).
+\end{citedfact}
+
+\begin{citedfact}[Lenstra's structure theorem]
+\label{cit:lenstra-structure}
+\claimstatus{cit:lenstra-structure}{cited}
+Springer \cite{springer2020cm}, quoting Lenstra 1996, Theorem 1(a): for $\pi\notin\mathbb Z$,
+$R = \operatorname{End}_{\Fq}(E)$ has rank $2$ and $E(\Fqn{n})\cong R/(\pi^n-1)R$ as $R$-modules.
+Verbatim: \texttt{\detokenize{E(\FF_{q^n}) \cong R/(\pi^n - 1)R.}} (\texttt{2006.00637:main.tex:103}).
+\end{citedfact}
+
+\begin{citedfact}[Latimer--MacDuffee; Waterhouse's torsor]
+\label{cit:latimer-macduffee}
+\claimstatus{cit:latimer-macduffee}{cited}
+Knight and Stasinski \cite{knightstasinski2022latimer}: $\mathrm{GL}_n(\mathbb Z)$-similarity
+classes of integer matrices with irreducible characteristic polynomial $f$ are in bijection
+with the ideal classes of $\mathbb Z[x]/(f)$. Sutherland \cite{sutherland2012volcanoes}: the
+$j$-invariants of curves with $\operatorname{End}\cong O$ form a torsor for $\operatorname{cl}(O)$.
+Verbatim: \texttt{\detokenize{and the ideal classes of the order $\Z[x]/(f(x))$.}} (\texttt{2205.02094:main.tex:97});
+\texttt{\detokenize{Provided it is non-empty, the set $\Ell_\O(k)$ is thus a principal homogeneous space, a \emph{torsor}, for the group $\cl(\O)$.}}
+(\texttt{1208.5370:IsogenyVolcanoes.tex:283}).
+\end{citedfact}
+
+\begin{assumption}[Spectral versus Newton supersingularity]
+\label{asm:supersingular-newton}
+\claimstatus{asm:supersingular-newton}{assumed}
+An abelian variety over a finite field has all Newton slopes $\tfrac12$ iff all its Frobenius
+eigenvalues are $\sqrt{\qs}$ times roots of unity; a curve is supersingular when its Jacobian
+is.
+\end{assumption}
+
+\begin{assumption}[Analytic setting for the infinite-bond obstruction]
+\label{asm:kraus-hs-setting}
+\claimstatus{asm:kraus-hs-setting}{assumed}
+$H_\pm$ separable Hilbert spaces; at each $t>0$ a normal completely positive map on
+$B(H_+\oplus H_-)$ with a countable bounded block-diagonal Kraus family $K_s = a_s\oplus B_s$
+and weakly convergent expansion, whose blocks on Hilbert--Schmidt operators extend to bounded
+$S_\pm(t)$, $M(t)$ with $S_\pm$ trace class; compression to finite bond subspaces agrees with
+compression of the Kraus expansion; the odd semigroup has the zeros as eigenmodes with
+multiplicity. Not established for any Riemann cMPS.
+\end{assumption}
+
+\subsection{Where the obvious Polya--Hilbert Hamiltonian lives, and why it stops}
+
+\begin{theorem}[The quadratic Artin--Schreier family is supersingular]
+\label{thm:as-quadratic-supersingular}
+\claimstatus{thm:as-quadratic-supersingular}{proved}
+For $\qs = p^r$, $J\ge0$, $a_J\ne0$, $g = \sum_{j\le J}a_jx^{1+\qs^j}$, every Frobenius
+eigenvalue of the smooth model of $y^{\qs}-y = g(x)$ is $\sqrt{\qs}$ times a root of unity, for
+every $p$ including $p = 2$; for $J = 0$ likewise in odd characteristic, while in
+characteristic two the $J = 0$ curve has genus zero.
+\end{theorem}
+
+\begin{proof}
+Sketch (T0.2). $\Tr_{\Fqn{n}/\mathbb F_p}(bg(x))$ is a quadratic form on $\mathbb F_p^{rn}$ whose
+polar radical has dimension $\le2rJ$ (its kernel is the root set of a fixed $\qs$-linearised
+polynomial of degree $\qs^{2J}$, using that $b,a_j\in\Fq$ are fixed by $x\mapsto x^{\qs}$; review items m2, m3). Quadratic Gauss sums are $0$ or of modulus $p^{(m+d)/2}$ with a
+phase in $\{\pm1,\pm i\}$, so $S_{b,n}/\qs^{n/2}$ ranges over a finite set independent of $n$;
+by Hilbert 90 so do the normalised Frobenius power sums, which then satisfy a linear recurrence
+with finitely many state vectors, hence are eventually periodic; a Vandermonde argument gives
+$(\alphaw{j}/\sqrt{\qs})^h = 1$. No root size is assumed.
+\end{proof}
+
+\begin{proposition}[Finite order of the quadratic transfer unitary]
+\label{prop:as-finite-order}
+\claimstatus{prop:as-finite-order}{proved-conditional}
+For $\qs$ an odd prime, $E_g/\sqrt{\qs}$ has finite order: its Fourier factor has determinant a
+fourth root of unity, the phases and the register permutation have root-of-unity determinants,
+$W(M_g)^h = 1$ for $M_g$ in the finite group $\operatorname{Sp}(2J,\Fq)$, so the scalar $c_g$ in
+$E_g/\sqrt{\qs} = c_gW(M_g)$ is a root of unity. Hence all eigenvalues of $E_g$ are
+$\sqrt{\qs}$ times roots of unity (the orchestrator's drafted argument ``the entries are roots
+of unity'' was insufficient: zero entries and the normalisation).
+\end{proposition}
+
+\begin{proposition}[Cut rank of a ring amplitude]
+\label{prop:ring-cut-rank}
+\claimstatus{prop:ring-cut-rank}{proved}
+For $A_s\in M_D(\mathbb C)$ the flattening rank of $\Tr(A_{s_1}\cdots A_{s_n})$ across two
+contiguous arcs is at most $D^2$, sharply (matrix units at $n = 2$), and at most $D^b$ across a
+bipartition cutting $b$ virtual edges; the drafted bound $D$ is the open-chain bound.
+\end{proposition}
+
+\begin{numerical}[Binary cut ranks; supersingularity of the tested family; basis dependence]
+\label{num:cut-rank-binary}
+\claimstatus{num:cut-rank-binary}{numerical}
+\texttt{scripts/ring\_norm\_tensor.py} (\texttt{outputs/ring\_norm\_tensor.txt}, N4; the
+prover's kernel is reproduced in \texttt{notes/ring-norm-tensor/scratch/t04\_cutrank.py}). For all
+eleven $(\qs,a)$ cases of \cref{sec:artin-schreier-super} every eigenvalue of $E_g/\sqrt{\qs}$ is a
+root of unity. Over $\mathbb F_2$, $x^3 = x^{1+2}$ is a quadratic Frobenius form: in a self-dual
+normal basis ($n$ odd) its cut rank stays $\le4$ while the cubic $\Tr(x^{1+2+4})$ has ranks
+$2,4,8,16$ at $n = 3,5,7,9$ (over $\mathbb F_3$: $\le9$ versus $1,9,27$); in a plain normal basis
+even the quadratic amplitude grows ($16$ at $n = 10$). The prover's table with an
+$n$-dependent basis prescription reaches $16$ at $n = 8$ for the quadratic form and left
+boundedness open; the reviewer closed it (MAJ-1): in a self-dual normal basis
+$\Tr(x^3) = \Tr(x\cdot x^2) = \sum_ix_ix_{i-1}$ is a cyclic nearest-neighbour form, so the
+contiguous-cut rank is at most $4 = D^2$ for every $n$ (checked for $n = 3,5,6,7,9,10,11$; no
+self-dual normal basis exists over $\mathbb F_2$ for $n = 4,8$). Cut rank is basis dependent.
+\end{numerical}
+
+\begin{conjecture}[Restricted amplitude locality]
+\label{conj:amplitude-locality}
+\claimstatus{conj:amplitude-locality}{conjectured}
+With a self-dual normal-basis prescription for every $n$ and trace-invisible Artin--Schreier
+coboundaries quotiented out, a fixed finite lattice tensor with amplitudes $\psi(\Tr g(x))$ for % bare-ok
+all $n$ exists only when the trace function has quadratic degree over the prime field. This is a
+necessity conjecture about equation-local amplitudes; it says nothing against the finite
+ordinary \emph{norm} tensors below, and the broad slogan ``finite tensors give only
+supersingular zetas'' is false (\cref{obs:locality-dichotomy-restricted}).
+\end{conjecture}
+

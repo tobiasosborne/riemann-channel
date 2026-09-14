@@ -4,7 +4,7 @@
 % SHARD-SUMMARY: Records the environment, the data files, and the reference-source manifest.
 % SHARD-KEYWORDS: reproducibility, scripts, outputs, data, refs, manifest
 % SHARD-NOTES: none
-% SHARD-SCRIPTS: scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py, scripts/artin_schreier_super.py, scripts/riemann_graded_trace.py, scripts/bc_entropy.py, scripts/cmps_parity_supertrace.py
+% SHARD-SCRIPTS: scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py, scripts/artin_schreier_super.py, scripts/riemann_graded_trace.py, scripts/bc_entropy.py, scripts/cmps_parity_supertrace.py, scripts/weil_ring_norm_check.py, scripts/ring_norm_tensor.py, scripts/ring_norm_certificate.py
 
 \section{Reproducibility Map}
 \label{sec:repro}
@@ -33,6 +33,9 @@ script & what it establishes & output, claims \\
 \texttt{riemann\_graded\_trace.py} & Windowed supertrace of the Riemann graded generator against $2\primeP$ with $3000$ zeros; ladder alternatives; flipped-pair negativity; finite vacuum-decay spectra; prime-chain M/M/1 bands & \texttt{outputs/riemann\_graded\_trace.txt}; \texttt{num:riemann-graded-trace} \\
 \texttt{bc\_entropy.py} & Entropy of the Bost--Connes Gibbs density and its prime and bond cutoffs; Hagedorn level count & \texttt{outputs/bc\_entropy.txt}; \texttt{num:bc-entropy} \\
 \texttt{cmps\_parity\_supertrace.py} & Explicit Jordan--Wigner Fock vectors of lattice boson--fermion MPS rings against the overlap, parity and twisted-supertrace formulas; translations; continuum Dyson, Laplace and Frullani identities; $89$ checks & \texttt{outputs/cmps\_parity\_supertrace.txt}; \texttt{num:cmps-parity-supertrace} \\
+\texttt{weil\_ring\_norm\_check.py} & Elliptic-curve counts as twisted ring norms of the $\mathbb C^{1|1}$ tensor, explicit vectors, Hilbert--Schmidt chain, genus-two searches, the $y^3-y = x^2$ indicator state & \texttt{outputs/weil\_ring\_norm\_check.txt}; \texttt{num:weil-ring-norm-check} \\
+\texttt{ring\_norm\_tensor.py} & Toral Frobenius counts, Lefschetz, Fourier orbits, Lenstra structure, refutation of the drafted trace bound, structured genus-two solutions, supersingularity of the quadratic family, cut ranks ($562$ s) & \texttt{outputs/ring\_norm\_tensor.txt}; \texttt{num:ring-norm-tensor}, \texttt{num:cut-rank-binary}, \texttt{num:genus-two-cm-diagonal} \\
+\texttt{ring\_norm\_certificate.py} & Exact rational contraction certificate of the $\mathbb F_5$ three-letter genus-two tensor; nine-letter tensor at $\qs = 25,17,16$; Jordan--Wigner norms & \texttt{outputs/ring\_norm\_certificate.txt}; \texttt{num:ring-norm-certificate} \\
 \bottomrule
 \end{tabular}
 \end{center}

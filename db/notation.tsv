@@ -185,3 +185,4 @@ camp	c^{#1}	n-particle amplitude c^B_n of a cMPS ring vector	cMPS	RC-02F	-
 Tcm	\mathbb T	cMPS transfer generator Q(x)1 + 1(x)conj Q + sum_a s_a R_a (x) conj R_a on the doubled bond (subscript eta: fermionic signs)	cMPS	RC-02F	-
 Gdb	\Gamma_{\mathrm b}	doubled-bond parity P (x) conj P	cMPS	RC-02F	-
 Pisec	\Pi_{#1}	bond parity sector projections (1 +- P)/2	cMPS	RC-02F	-
+Edb	\mathcal E_{\mathrm d}	doubled transfer matrix sum_s A_s (x) conj A_s of a graded lattice tensor	MPS, graded	RC-02G	the continuum generator is Tcm

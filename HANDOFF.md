@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-14, session close: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-14, second session: the ring-norm-tensor campaign; earlier today: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -85,6 +85,56 @@ character reading of the grading and conj:galois-graded-bond.
 0d. **Mayer cusp tail** (`notes/resonances/astra-freeassoc.md` §3): unchanged.
 0e. **Suzuki's prime-defined screw kernel** (§16.3): unchanged.
 0f. **Literature:** Bonthonneau–Weich; Lewis–Zagier, Chang–Mayer: unchanged.
+
+### The ring-norm-tensor campaign (2026-09-14, afternoon; shards 02g, 06c--06f)
+
+TJO asked for an educated guess for the MPS tensor of the absolute simplest variety
+without an obvious Polya--Hilbert Hamiltonian, with the wish list (1) natural tensor
+from the variety, (2) graded decomposition and why, (3) ring norms = counts as a
+theorem, (4) the PH operator, (5) Ramanujan, modulo gauge. Reading: in this notebook
+the obvious PH Hamiltonian is the quadratic Artin--Schreier unitary E_g; that family
+is supersingular (proved, every characteristic), so Tier A is the ordinary elliptic
+curve and Tier B is ordinary genus two, where fermionic letters are forced. Lanes:
+codex gpt-6-astra prover (`notes/ring-norm-tensor/astra-proofs.md`), Opus numerics
+(`scripts/ring_norm_tensor.py`), Opus sources (`notes/ring-norm-tensor/sources.md`,
+nine new TeX e-prints), Opus REFUTE review (`notes/reviews/ring-norm-tensor-2026-09-14.md`).
+Full account: `docs/worklog/2026-09-14.md`.
+
+- **Tier A answers all five items** (conditional on Deuring lifting, degree = norm,
+  toral Lefschetz, all byte-cited or assumed): the natural tensor is the lifted
+  Frobenius as a toral endomorphism M of C/Lambda; N_n = det(1 - M^n) = |1 - pi^n|^2 =
+  |O/(pi^n - 1)| is literally a ring norm and a Lefschetz number; ket bond
+  Lambda^*(H^{1,0}) = C^{1|1}, double = H^*(T^2), grading = form degree, ket/bra =
+  Hodge decomposition, (-,-) = H^2 with eigenvalue q = the degree; PH unitary =
+  q^{-1/2} M^* on harmonic one-forms, unitary because the lift is a conformal
+  similarity of degree q (positivity = the degree form, Hasse's bound follows); gauge
+  = lattice basis, classes = ideal classes (Latimer--MacDuffee, Waterhouse), unitary
+  gauge = Hodge basis. The physical state is a product state; the Fourier pullback is
+  an injection whose only finite orbit is the zero mode.
+- **Correction of the orchestrator.** The morning's drafted bound
+  sum_odd |mu|^2 <= 2 Tr(E_++) Tr(E_--) is false (Tr(A (x) conj A) = |Tr A|^2); both
+  the prover and the numerics lane caught it. The genus bound g <= 1 for bosonic
+  letters without cancellation is proved instead by |Tr M^n|^2 <= Tr S_+^n Tr S_-^n
+  for all n plus a Cesaro argument. Infinite-bond version: fermionic jumps are forced
+  under explicit Hilbert--Schmidt hypotheses (`asm:kraus-hs-setting`).
+- **Tier B.** The literal geometric placement and the drafted vacuum ansatz are
+  impossible; an explicit nine-letter tensor exists for q + 1 >= 4 sqrt q
+  (depolarising even block, diagonal odd block, normal transfer); a two-even, one-odd
+  tensor for y^2 = x^5 + x^3 + x^2 - 2 over F_5 is certified by an exact rational
+  contraction argument (`scripts/ring_norm_certificate.py`); the Jacobian is the
+  bosonic product of two genus-one rings with the curve a rank-six non-product
+  boundary inside it; Rosati positivity forces conjugation at every CM place and is
+  the PH metric; CM type is a marking, not a gauge. Numerics: the CM-diagonal ansatz
+  with two odd letters solves genus two; no closed form is pinned by the counts.
+- **Open:** universal three-letter tensor and its natural selection
+  (`conj:three-letter-universal`); bosonic cancellation on larger bonds; whether the
+  certified tensor's unitary similarity is an even gauge carrying the Hodge metric;
+  the amplitude-locality conjecture (`conj:amplitude-locality`).
+- **Next rung, if TJO meant a Deligne-type variety:** the simplest is a curve with
+  coefficients (an elliptic surface over F_q(t) with degree-2 L-function, a K3 with
+  Picard number 20). Note: a surface's middle cohomology is EVEN, so its interesting
+  eigenvalues are bosonic and the Ramanujan shape is the graph one (trivial q^2,
+  nontrivial |beta| = q); the fermion enters as odd(base) (x) odd(fibre) = even.
 
 ### Finite BC symmetry calculation (2026-09-13, Codex)
 

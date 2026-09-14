@@ -1,0 +1,450 @@
+
+========================================================================================================
+N1   FROBENIUS AS A TORAL ENDOMORPHISM (ordinary elliptic curves)
+========================================================================================================
+Curves y^2 = x^3 + A x + B over F_q.  M = [[0,-q],[1,a]] is multiplication by pi on
+the Z-basis {1, pi} of Z[pi] (equivalently the matrix of the lifted Frobenius on the
+lattice Lambda of the Deuring lift).  Checks: N_n = |det(M^n - 1)| = 1 - Tr M^n + det M^n;
+the permutation k -> M^T k of Z^2 has no nonzero periodic point; the torus fixed points of
+M^n are the group Z^2/(M^n - 1)Z^2 and number |det(M^n - 1)|, all of index +1; the
+dynamical zeta is the Hasse-Weil zeta; M/sqrt(q) is unitary in the Hodge eigenbasis.
+
+--------------------------------------------------------------------------------------------------------
+curve  y^2 = x^3 + 1 x + 1  over F_5    a = -3   N_n (n<=5) = [9, 27, 108, 675, 3069]   [0.4s]
+--------------------------------------------------------------------------------------------------------
+PASS  p=5 A=1 B=1: ordinary (a = -3 not divisible by p = 5)
+PASS  p=5 A=1 B=1: Hasse bound a^2 = 9 <= 4q = 20
+PASS  p=5 a=-3: N_n = |det(M^n - 1)| for n = 1..5
+PASS  p=5 a=-3: N_n = 1 - Tr(M^n) + det(M^n)  (Lefschetz) for n = 1..5
+PASS  p=5 a=-3: det(M^n - 1) != 0 for n = 1..12 (ker(M^n-1) = 0 over Q)
+PASS  p=5 a=-3: the permutation k -> M^T k of [-50,50]^2 in Z^2 has no periodic point except 0 for periods <= 12  (0 found)
+PASS  p=5 a=-3: #Fix(M^n on R^2/Z^2) = |det(M^n-1)| for n = 1..6 (enumerated Z^2/(M^n-1)Z^2)
+PASS  p=5 a=-3: det(1 - M^n) > 0 for n = 1..6 (every fixed point has index +1)
+        n=1: |det(M^n-1)|=9, #fixed=9;  n=2: |det(M^n-1)|=27, #fixed=27;  n=3: |det(M^n-1)|=108, #fixed=108;  n=4: |det(M^n-1)|=675, #fixed=675;  n=5: |det(M^n-1)|=3069, #fixed=3069;  n=6: |det(M^n-1)|=15552, #fixed=15552
+PASS  p=5 a=-3: the Lefschetz sequence reproduces the brute-force counts
+PASS  p=5 a=-3: exp(sum N_n u^n/n) = (1 - a u + q u^2)/((1-u)(1-qu)) to order u^8
+PASS  p=5 a=-3: |pi|^2 = q  (5.000000000000 vs 5)
+PASS  p=5 a=-3: eigenvalues of M are pi, conj(pi)  (-1.500000+1.658312j, -1.500000-1.658312j)
+PASS  p=5 a=-3: the Hodge eigenbasis diagonalises M
+PASS  p=5 a=-3: M/sqrt(q) is unitary in the Hodge basis
+PASS  p=5 a=-3: M^dag G M = q G for the Hodge metric G = (V V^dag)^{-1}
+        gauge: cond(V) = 3.316625   (V = [v_pi, v_conj(pi)]), pi = -1.50000000+1.65831240j, disc = -11
+
+--------------------------------------------------------------------------------------------------------
+curve  y^2 = x^3 + 2 x + 1  over F_5    a = -1   N_n (n<=5) = [7, 35, 112, 595, 3227]   [0.1s]
+--------------------------------------------------------------------------------------------------------
+PASS  p=5 A=2 B=1: ordinary (a = -1 not divisible by p = 5)
+PASS  p=5 A=2 B=1: Hasse bound a^2 = 1 <= 4q = 20
+PASS  p=5 a=-1: N_n = |det(M^n - 1)| for n = 1..5
+PASS  p=5 a=-1: N_n = 1 - Tr(M^n) + det(M^n)  (Lefschetz) for n = 1..5
+PASS  p=5 a=-1: det(M^n - 1) != 0 for n = 1..12 (ker(M^n-1) = 0 over Q)
+PASS  p=5 a=-1: the permutation k -> M^T k of [-50,50]^2 in Z^2 has no periodic point except 0 for periods <= 12  (0 found)
+PASS  p=5 a=-1: #Fix(M^n on R^2/Z^2) = |det(M^n-1)| for n = 1..6 (enumerated Z^2/(M^n-1)Z^2)
+PASS  p=5 a=-1: det(1 - M^n) > 0 for n = 1..6 (every fixed point has index +1)
+        n=1: |det(M^n-1)|=7, #fixed=7;  n=2: |det(M^n-1)|=35, #fixed=35;  n=3: |det(M^n-1)|=112, #fixed=112;  n=4: |det(M^n-1)|=595, #fixed=595;  n=5: |det(M^n-1)|=3227, #fixed=3227;  n=6: |det(M^n-1)|=15680, #fixed=15680
+PASS  p=5 a=-1: the Lefschetz sequence reproduces the brute-force counts
+PASS  p=5 a=-1: exp(sum N_n u^n/n) = (1 - a u + q u^2)/((1-u)(1-qu)) to order u^8
+PASS  p=5 a=-1: |pi|^2 = q  (5.000000000000 vs 5)
+PASS  p=5 a=-1: eigenvalues of M are pi, conj(pi)  (-0.500000+2.179449j, -0.500000-2.179449j)
+PASS  p=5 a=-1: the Hodge eigenbasis diagonalises M
+PASS  p=5 a=-1: M/sqrt(q) is unitary in the Hodge basis
+PASS  p=5 a=-1: M^dag G M = q G for the Hodge metric G = (V V^dag)^{-1}
+        gauge: cond(V) = 2.322400   (V = [v_pi, v_conj(pi)]), pi = -0.50000000+2.17944947j, disc = -19
+
+--------------------------------------------------------------------------------------------------------
+curve  y^2 = x^3 + 1 x + 1  over F_7    a = 3   N_n (n<=4) = [5, 55, 380, 2475]   [0.1s]
+--------------------------------------------------------------------------------------------------------
+PASS  p=7 A=1 B=1: ordinary (a = 3 not divisible by p = 7)
+PASS  p=7 A=1 B=1: Hasse bound a^2 = 9 <= 4q = 28
+PASS  p=7 a=3: N_n = |det(M^n - 1)| for n = 1..4
+PASS  p=7 a=3: N_n = 1 - Tr(M^n) + det(M^n)  (Lefschetz) for n = 1..4
+PASS  p=7 a=3: det(M^n - 1) != 0 for n = 1..12 (ker(M^n-1) = 0 over Q)
+PASS  p=7 a=3: the permutation k -> M^T k of [-50,50]^2 in Z^2 has no periodic point except 0 for periods <= 12  (0 found)
+PASS  p=7 a=3: #Fix(M^n on R^2/Z^2) = |det(M^n-1)| for n = 1..5 (enumerated Z^2/(M^n-1)Z^2)
+PASS  p=7 a=3: det(1 - M^n) > 0 for n = 1..5 (every fixed point has index +1)
+        n=1: |det(M^n-1)|=5, #fixed=5;  n=2: |det(M^n-1)|=55, #fixed=55;  n=3: |det(M^n-1)|=380, #fixed=380;  n=4: |det(M^n-1)|=2475, #fixed=2475;  n=5: |det(M^n-1)|=16775, #fixed=16775
+PASS  p=7 a=3: the Lefschetz sequence reproduces the brute-force counts
+PASS  p=7 a=3: exp(sum N_n u^n/n) = (1 - a u + q u^2)/((1-u)(1-qu)) to order u^8
+PASS  p=7 a=3: |pi|^2 = q  (7.000000000000 vs 7)
+PASS  p=7 a=3: eigenvalues of M are pi, conj(pi)  (1.500000+2.179449j, 1.500000-2.179449j)
+PASS  p=7 a=3: the Hodge eigenbasis diagonalises M
+PASS  p=7 a=3: M/sqrt(q) is unitary in the Hodge basis
+PASS  p=7 a=3: M^dag G M = q G for the Hodge metric G = (V V^dag)^{-1}
+        gauge: cond(V) = 3.374293   (V = [v_pi, v_conj(pi)]), pi = 1.50000000+2.17944947j, disc = -19
+
+--------------------------------------------------------------------------------------------------------
+curve  y^2 = x^3 + 2 x + 3  over F_7    a = 2   N_n (n<=4) = [6, 60, 378, 2400]   [0.1s]
+--------------------------------------------------------------------------------------------------------
+PASS  p=7 A=2 B=3: ordinary (a = 2 not divisible by p = 7)
+PASS  p=7 A=2 B=3: Hasse bound a^2 = 4 <= 4q = 28
+PASS  p=7 a=2: N_n = |det(M^n - 1)| for n = 1..4
+PASS  p=7 a=2: N_n = 1 - Tr(M^n) + det(M^n)  (Lefschetz) for n = 1..4
+PASS  p=7 a=2: det(M^n - 1) != 0 for n = 1..12 (ker(M^n-1) = 0 over Q)
+PASS  p=7 a=2: the permutation k -> M^T k of [-50,50]^2 in Z^2 has no periodic point except 0 for periods <= 12  (0 found)
+PASS  p=7 a=2: #Fix(M^n on R^2/Z^2) = |det(M^n-1)| for n = 1..5 (enumerated Z^2/(M^n-1)Z^2)
+PASS  p=7 a=2: det(1 - M^n) > 0 for n = 1..5 (every fixed point has index +1)
+        n=1: |det(M^n-1)|=6, #fixed=6;  n=2: |det(M^n-1)|=60, #fixed=60;  n=3: |det(M^n-1)|=378, #fixed=378;  n=4: |det(M^n-1)|=2400, #fixed=2400;  n=5: |det(M^n-1)|=16566, #fixed=16566
+PASS  p=7 a=2: the Lefschetz sequence reproduces the brute-force counts
+PASS  p=7 a=2: exp(sum N_n u^n/n) = (1 - a u + q u^2)/((1-u)(1-qu)) to order u^8
+PASS  p=7 a=2: |pi|^2 = q  (7.000000000000 vs 7)
+PASS  p=7 a=2: eigenvalues of M are pi, conj(pi)  (1.000000+2.449490j, 1.000000-2.449490j)
+PASS  p=7 a=2: the Hodge eigenbasis diagonalises M
+PASS  p=7 a=2: M/sqrt(q) is unitary in the Hodge basis
+PASS  p=7 a=2: M^dag G M = q G for the Hodge metric G = (V V^dag)^{-1}
+        gauge: cond(V) = 2.923988   (V = [v_pi, v_conj(pi)]), pi = 1.00000000+2.44948974j, disc = -24
+
+--------------------------------------------------------------------------------------------------------
+curve  y^2 = x^3 + 1 x + 1  over F_11    a = -2   N_n (n<=4) = [14, 140, 1274, 14560]   [0.3s]
+--------------------------------------------------------------------------------------------------------
+PASS  p=11 A=1 B=1: ordinary (a = -2 not divisible by p = 11)
+PASS  p=11 A=1 B=1: Hasse bound a^2 = 4 <= 4q = 44
+PASS  p=11 a=-2: N_n = |det(M^n - 1)| for n = 1..4
+PASS  p=11 a=-2: N_n = 1 - Tr(M^n) + det(M^n)  (Lefschetz) for n = 1..4
+PASS  p=11 a=-2: det(M^n - 1) != 0 for n = 1..12 (ker(M^n-1) = 0 over Q)
+PASS  p=11 a=-2: the permutation k -> M^T k of [-50,50]^2 in Z^2 has no periodic point except 0 for periods <= 12  (0 found)
+PASS  p=11 a=-2: #Fix(M^n on R^2/Z^2) = |det(M^n-1)| for n = 1..4 (enumerated Z^2/(M^n-1)Z^2)
+PASS  p=11 a=-2: det(1 - M^n) > 0 for n = 1..4 (every fixed point has index +1)
+        n=1: |det(M^n-1)|=14, #fixed=14;  n=2: |det(M^n-1)|=140, #fixed=140;  n=3: |det(M^n-1)|=1274, #fixed=1274;  n=4: |det(M^n-1)|=14560, #fixed=14560
+PASS  p=11 a=-2: the Lefschetz sequence reproduces the brute-force counts
+PASS  p=11 a=-2: exp(sum N_n u^n/n) = (1 - a u + q u^2)/((1-u)(1-qu)) to order u^8
+PASS  p=11 a=-2: |pi|^2 = q  (11.000000000000 vs 11)
+PASS  p=11 a=-2: eigenvalues of M are pi, conj(pi)  (-1.000000+3.162278j, -1.000000-3.162278j)
+PASS  p=11 a=-2: the Hodge eigenbasis diagonalises M
+PASS  p=11 a=-2: M/sqrt(q) is unitary in the Hodge basis
+PASS  p=11 a=-2: M^dag G M = q G for the Hodge metric G = (V V^dag)^{-1}
+        gauge: cond(V) = 3.509818   (V = [v_pi, v_conj(pi)]), pi = -1.00000000+3.16227766j, disc = -40
+
+========================================================================================================
+N2   LENSTRA: E(F_{q^n}) vs O/(pi^n - 1)
+========================================================================================================
+E ordinary with End(E) = O.  When the conductor f of Z[pi] in O_K is 1 we have
+Z[pi] = O_K = O and O/(pi^n - 1) = Z^2/(M^n - 1)Z^2, so its invariant factors are the
+Smith normal form of M^n - 1.  The group E(F_{q^n}) is computed by brute force
+(enumerate points, group law in F_{q^n}, exponent from point orders).
+      curve y^2 = x^3 + 1x + 1 over F_5:  a = -3, disc(Z[pi]) = -11 = 1^2 * -11, conductor f = 1
+PASS  p=5 n=1: #E(F_{q^n}) = 9 equals the brute-force point count 9
+PASS  p=5 n=1: E(F_{q^n}) = Z/1 x Z/9  =  O/(pi^n - 1) = Z/1 x Z/9  [0.0s]
+PASS  p=5 n=1: the omega-basis matrix of pi has char poly x^2 - -3x + 5 and the same invariant factors Z/1 x Z/9
+PASS  p=5 n=2: #E(F_{q^n}) = 27 equals the brute-force point count 27
+PASS  p=5 n=2: E(F_{q^n}) = Z/3 x Z/9  =  O/(pi^n - 1) = Z/3 x Z/9  [0.0s]
+PASS  p=5 n=2: the omega-basis matrix of pi has char poly x^2 - -3x + 5 and the same invariant factors Z/3 x Z/9
+PASS  p=5 n=3: #E(F_{q^n}) = 108 equals the brute-force point count 108
+PASS  p=5 n=3: E(F_{q^n}) = Z/2 x Z/54  =  O/(pi^n - 1) = Z/2 x Z/54  [0.0s]
+PASS  p=5 n=3: the omega-basis matrix of pi has char poly x^2 - -3x + 5 and the same invariant factors Z/2 x Z/54
+      curve y^2 = x^3 + 2x + 1 over F_5:  a = -1, disc(Z[pi]) = -19 = 1^2 * -19, conductor f = 1
+PASS  p=5 n=1: #E(F_{q^n}) = 7 equals the brute-force point count 7
+PASS  p=5 n=1: E(F_{q^n}) = Z/1 x Z/7  =  O/(pi^n - 1) = Z/1 x Z/7  [0.0s]
+PASS  p=5 n=1: the omega-basis matrix of pi has char poly x^2 - -1x + 5 and the same invariant factors Z/1 x Z/7
+PASS  p=5 n=2: #E(F_{q^n}) = 35 equals the brute-force point count 35
+PASS  p=5 n=2: E(F_{q^n}) = Z/1 x Z/35  =  O/(pi^n - 1) = Z/1 x Z/35  [0.0s]
+PASS  p=5 n=2: the omega-basis matrix of pi has char poly x^2 - -1x + 5 and the same invariant factors Z/1 x Z/35
+PASS  p=5 n=3: #E(F_{q^n}) = 112 equals the brute-force point count 112
+PASS  p=5 n=3: E(F_{q^n}) = Z/4 x Z/28  =  O/(pi^n - 1) = Z/4 x Z/28  [0.0s]
+PASS  p=5 n=3: the omega-basis matrix of pi has char poly x^2 - -1x + 5 and the same invariant factors Z/4 x Z/28
+      curve y^2 = x^3 + 1x + 1 over F_7:  a = 3, disc(Z[pi]) = -19 = 1^2 * -19, conductor f = 1
+PASS  p=7 n=1: #E(F_{q^n}) = 5 equals the brute-force point count 5
+PASS  p=7 n=1: E(F_{q^n}) = Z/1 x Z/5  =  O/(pi^n - 1) = Z/1 x Z/5  [0.0s]
+PASS  p=7 n=1: the omega-basis matrix of pi has char poly x^2 - 3x + 7 and the same invariant factors Z/1 x Z/5
+PASS  p=7 n=2: #E(F_{q^n}) = 55 equals the brute-force point count 55
+PASS  p=7 n=2: E(F_{q^n}) = Z/1 x Z/55  =  O/(pi^n - 1) = Z/1 x Z/55  [0.0s]
+PASS  p=7 n=2: the omega-basis matrix of pi has char poly x^2 - 3x + 7 and the same invariant factors Z/1 x Z/55
+PASS  p=7 n=3: #E(F_{q^n}) = 380 equals the brute-force point count 380
+PASS  p=7 n=3: E(F_{q^n}) = Z/2 x Z/190  =  O/(pi^n - 1) = Z/2 x Z/190  [0.2s]
+PASS  p=7 n=3: the omega-basis matrix of pi has char poly x^2 - 3x + 7 and the same invariant factors Z/2 x Z/190
+      curve y^2 = x^3 + 2x + 3 over F_7:  a = 2, disc(Z[pi]) = -24 = 1^2 * -24, conductor f = 1
+      curve y^2 = x^3 + 1x + 1 over F_11:  a = -2, disc(Z[pi]) = -40 = 1^2 * -40, conductor f = 1
+
+========================================================================================================
+N3   GENUS 2 ON C^{1|2}:  y^2 = x^5 + x^3 + x^2 - 2 over F_5
+========================================================================================================
+      brute-force counts N_n, n = 1..4: [3, 31, 117, 619]   [0.0s]
+PASS  genus 2: brute-force N_n = [3, 31, 117, 619] equals the brief's [3, 31, 117, 619]
+PASS  genus 2: L(u) = 1 - 3u + 7u^2 - 15u^3 + 25u^4 (brief: 1 - 3u + 7u^2 - 15u^3 + 25u^4)
+PASS  genus 2: |alpha_j|^2 = q for all four Frobenius eigenvalues
+      alphas = 1.89564392+1.18597391j, 1.89564392-1.18597391j, -0.39564392+2.20078756j, -0.39564392-2.20078756j
+PASS  genus 2: N_n = 1 + q^n - sum_j alpha_j^n for n = 1..4
+PASS  genus 2: the CM type representatives pi_1, pi_2 match the brief
+
+--------------------------------------------------------------------------------------------------------
+N3(a)  existence: two even + one odd species on C^{1|2}, then the explicit JW Fock norm
+--------------------------------------------------------------------------------------------------------
+        C^{1|2}, 2 even + 1 odd (free): best cost 1.070e-26  (1 restarts, 5.0s)
+PASS  N3(a): least squares reaches str E^n = N_n for n <= 10 (cost 1.07e-26 < 1e-20)
+PASS  N3(a): str E^n = N_n through n = 20, max |dev|/q^(n/2) = 6.42e-09
+        even spectrum: -0.000033-0.000057j, -0.000033+0.000057j, +0.000066+0.000000j, +1.000000+0.000000j, +5.000000-0.000000j
+        odd  spectrum: -0.395644-2.200788j, -0.395644+2.200788j, +1.895644-1.185974j, +1.895644+1.185974j
+        alphas       : -0.395644-2.200788j, -0.395644+2.200788j, +1.895644-1.185974j, +1.895644+1.185974j
+PASS  N3(a): the even doubled spectrum is {1, q, 0, 0, 0} -- three nilpotent modes (T3(c)); the three "zero" eigenvalues come out at |z| ~ 6.6e-05, the cube root of the least-squares residual, i.e. a genuine 3x3 nilpotent Jordan block
+PASS  N3(a): the odd doubled spectrum is exactly the four Frobenius eigenvalues (max deviation 1.98e-14) -- no even/odd cancellation
+PASS  N3(a): n=2  ||Psi_P||^2 (explicit JW Fock vector) = 31.00000000 = N_n = 31.00000000
+PASS  N3(a): n=2  Psi_P is invariant under the periodic translation (||T Psi - Psi|| = 3.3e-16)
+PASS  N3(a): n=3  ||Psi_P||^2 (explicit JW Fock vector) = 117.00000000 = N_n = 117.00000000
+PASS  N3(a): n=3  Psi_P is invariant under the periodic translation (||T Psi - Psi|| = 1.9e-15)
+PASS  N3(a): n=4  ||Psi_P||^2 (explicit JW Fock vector) = 619.00000000 = N_n = 619.00000000
+PASS  N3(a): n=4  Psi_P is invariant under the periodic translation (||T Psi - Psi|| = 5.7e-15)
+PASS  N3(a): n=5  ||Psi_P||^2 (explicit JW Fock vector) = 3318.00000000 = N_n = 3318.00000000
+PASS  N3(a): n=5  Psi_P is invariant under the periodic translation (||T Psi - Psi|| = 1.2e-14)
+
+--------------------------------------------------------------------------------------------------------
+N3(c)  block formulas of T4(a) verified on the found tensors
+--------------------------------------------------------------------------------------------------------
+        even index order (bond pairs): [(0, 0), (1, 1), (1, 2), (2, 1), (2, 2)]
+        odd  index order (bond pairs): [(0, 1), (0, 2), (1, 0), (2, 0)]
+PASS  N3(c): E_even = [[t, u],[v, W]] with t = sum|a_s|^2, u = sum_f c (x) conj(c), v = sum_f d (x) conj(d), W = sum_s B (x) conj(B)   (max dev 4.4e-16)
+PASS  N3(c): E_odd = [[M, N],[conj N, conj M]] with M = sum_s a_s conj(B_s), N_{ji} = sum_f conj(d_j) c_i   (max dev 1.1e-16)
+        t = 2.58388759   Tr W (superoperator) = 3.41611241-0.00000000j   rank N = 1
+PASS  N3(c): t + Tr W = 6.0000000000 = 1 + q  (Tr E_even = sum of its spectrum)
+PASS  N3(c): 2 Re Tr M = 3.0000000000 = e_1 = 3  (Tr E_odd = sum_j alpha_j)
+PASS  N3(c): B_1 and B_2 are linearly independent (rank 2), so NO unitary mixing of the two even species produces a vacuum species B = 0: the solution found has no vacuum
+        spec M = -0.423775-2.403639j, +1.923775+1.234290j
+        spec W = -0.782773-1.340777j, -0.782773+1.340777j, +0.561574+0.000000j, +4.420085-0.000000j
+        gauge invariants:  c.d = 0.51140905+0.81173609j  |c.d| = 0.95940330   (q = 5, sqrt q = 2.23606798)
+        gauge invariant  c B_2^1 d = -0.46779754+0.60428170j   |.| = 0.76419298
+        gauge invariant  c B_2^2 d = 0.19098893+1.80758081j   |.| = 1.81764275
+        C^{1|2} 2e+1o, seed 11: best cost 1.930e-26  (2 restarts, 11.2s)
+        C^{1|2} 2e+1o, seed 12: best cost 1.129e-27  (1 restarts, 6.6s)
+        C^{1|2} 2e+1o, seed 13: best cost 2.323e-25  (2 restarts, 14.2s)
+        seed 11: t = 3.537957, spec M = -0.066013+2.372036j, +1.566013-1.447322j, c.d = -0.261620+1.641980j, Tr W = 2.462043+0.000000j
+        seed 12: t = 3.368145, spec M = -0.338196-2.159541j, +1.838196+1.674217j, c.d = -1.079880+0.554199j, Tr W = 2.631855+0.000000j
+        seed 13: t = 4.011531, spec M = -0.192742-2.263698j, +1.692742+1.414821j, c.d = 0.073784+1.310755j, Tr W = 1.988469+0.000000j
+PASS  N3(c): independent restarts also converge (3/3 seeds reached cost < 1e-20)
+PASS  N3(c): [observation] t = sum|a_s|^2 is NOT fixed by the equations: values ['3.5380', '3.3681', '4.0115'] (spread 0.6434) -- the solution set is a positive-dimensional family, so individual entries carry no invariant meaning
+
+--------------------------------------------------------------------------------------------------------
+N3(b)  STRUCTURED ansaetze on C^{1|2}
+--------------------------------------------------------------------------------------------------------
+Gauge: G = 1 (+) g with g in GL(2,C) acts by B_s -> g B_s g^-1, c -> c g^-1, d -> g d, and the
+physical index may be mixed by a unitary.  So "B_1 = 0" (a vacuum species) and "all B_s diagonal"
+are genuine restrictions, not gauge choices.  Each ansatz is fitted to str E^n = N_n, n <= 10.
+        S1  vacuum, a_2 = 0, B_2 free (the brief's suggested ansatz): best cost 7.225e+00  (6 restarts, 5.4s)
+          -> NOT SOLVED;  t = 1.000000, spec M = +0.000000+0.000000j, +0.000000+0.000000j, rank N = 1
+        S2  vacuum, 2 even + 1 odd (a_2, B_2 free): best cost 1.673e-01  (10 restarts, 40.0s)
+          -> NOT SOLVED;  t = 4.999936, spec M = -0.395548+2.186889j, +1.889361-1.144006j, rank N = 1
+        S3  vacuum, 2 even + 1 odd, B_2 diagonal: best cost 1.673e-01  (8 restarts, 21.4s)
+          -> NOT SOLVED;  t = 4.999936, spec M = -0.395548+2.186889j, +1.889361-1.144006j, rank N = 1
+        S4  vacuum, B_2 = z diag(pi_1, pi_2)/sqrt(q), 1 odd: best cost 5.673e-01  (8 restarts, 14.6s)
+          -> NOT SOLVED;  t = 4.990525, spec M = -0.370981-2.187148j, +1.892159-1.158007j, rank N = 1
+        S5  vacuum, B_2 = z diag(conj pi_1, conj pi_2)/sqrt(q), 1 odd: best cost 5.673e-01  (8 restarts, 13.1s)
+          -> NOT SOLVED;  t = 4.990525, spec M = -0.370981+2.187148j, +1.892159+1.158007j, rank N = 1
+        S6  vacuum, M = diag(conj pi_1, conj pi_2) exactly, 1 odd: best cost 5.974e-01  (8 restarts, 3.2s)
+          -> NOT SOLVED;  t = 4.988426, spec M = -0.395644-2.200788j, +1.895644-1.185974j, rank N = 1
+        S7  vacuum, 3 even + 1 odd (free): best cost 2.053e-02  (6 restarts, 60.5s)
+          -> NOT SOLVED;  t = 4.016815, spec M = -0.392475-2.186365j, +1.900935+1.295811j, rank N = 1
+        S8  vacuum, 2 even + 2 odd (free): best cost 6.267e-02  (6 restarts, 55.9s)
+          -> NOT SOLVED;  t = 4.577505, spec M = -0.396999+2.198743j, +1.885572-1.161972j, rank N = 2
+        S9  vacuum, 3 even + 2 odd (free): best cost 1.819e-25  (3 restarts, 36.7s)
+          -> SOLVED;  t = 1.766627, spec M = +0.334927+0.545891j, +1.165073-0.007403j, rank N = 2
+            even spectrum -0.000041-0.000071j, -0.000041+0.000071j, +0.000082-0.000000j, +1.000000-0.000000j, +5.000000+0.000000j
+            odd  spectrum -0.395644-2.200788j, -0.395644+2.200788j, +1.895644-1.185974j, +1.895644+1.185974j
+            t = sum|a_s|^2 = 1.76662723;  Tr W = 4.23337277;  t + Tr W = 6.00000000  (1 + q = 6)
+            spec M = +0.334927+0.545891j, +1.165073-0.007403j;  2 Re Tr M = 3.000000 (e_1 = 3);  |det M| = 0.746184;  ||M||_HS^2 = 1.864584  (q = 5, 2q = 10)
+            u_ii = sum_f |c_i|^2 = 3.617399, 3.251573;  v_ii = sum_f |d_i|^2 = 1.350456, 1.849336
+            diagonal-torus invariants  u_11 v_11 = 4.885138, u_22 v_22 = 6.013251,  |N_11| = 0.932948, |N_22| = 1.572465,  N_12 N_21 = -3.377729+3.447606j   (q = 5)
+            tensor 0 (even):
+        [[1.+0.j 0.+0.j 0.+0.j]
+         [0.+0.j 0.+0.j 0.+0.j]
+         [0.+0.j 0.+0.j 0.+0.j]]
+            tensor 1 (even):
+        [[0.5672163 +0.47129412j 0.        +0.j         0.        +0.j        ]
+         [0.        +0.j         0.51694806-0.01021856j 0.44440298+0.84498294j]
+         [0.        +0.j         0.36653103+0.06598073j 0.43355701+0.36980202j]]
+            tensor 2 (even):
+        [[ 0.11909226-0.4567185j   0.        +0.j          0.        +0.j        ]
+         [ 0.        +0.j         -0.22410027-0.6820207j  -0.01617113+0.23175265j]
+         [ 0.        +0.j          0.65127881+0.11831494j  0.0434362 -1.09785938j]]
+            tensor 3 (odd):
+        [[ 0.        +0.j         -0.84607835-1.62867927j -0.58303918-1.03364836j]
+         [-0.48528847-0.4471855j   0.        +0.j          0.        +0.j        ]
+         [-0.29314389+1.2809608j   0.        +0.j          0.        +0.j        ]]
+            tensor 4 (odd):
+        [[ 0.        +0.j         -0.46775959-0.17365149j  1.14410036+0.73091975j]
+         [ 0.67638385+0.67637368j  0.        +0.j          0.        +0.j        ]
+         [-0.32390683+0.13276461j  0.        +0.j          0.        +0.j        ]]
+        D21  CM-diagonal (all B_s diagonal), 2 even + 1 odd: best cost 4.197e-02  (8 restarts, 60.8s)
+          -> NOT SOLVED;  t = 4.999975, spec M = -0.396634-2.196075j, +1.894747+1.169702j, rank N = 1
+        D31  CM-diagonal (all B_s diagonal), 3 even + 1 odd: best cost 4.197e-02  (8 restarts, 90.0s)
+          -> NOT SOLVED;  t = 4.999975, spec M = -0.396634-2.196075j, +1.894747+1.169702j, rank N = 1
+        D22  CM-diagonal (all B_s diagonal), 2 even + 2 odd: best cost 5.102e-26  (5 restarts, 55.9s)
+          -> SOLVED;  t = 2.175182, spec M = +0.491011-1.066166j, +1.008989-0.101111j, rank N = 2
+            even spectrum -0.000133+0.000000j, +0.000066-0.000115j, +0.000066+0.000115j, +1.000000+0.000000j, +5.000000-0.000000j
+            odd  spectrum -0.395644-2.200788j, -0.395644+2.200788j, +1.895644-1.185974j, +1.895644+1.185974j
+            t = sum|a_s|^2 = 2.17518246;  Tr W = 3.82481754;  t + Tr W = 6.00000000  (1 + q = 6)
+            spec M = +0.491011-1.066166j, +1.008989-0.101111j;  2 Re Tr M = 3.000000 (e_1 = 3);  |det M| = 1.190281;  ||M||_HS^2 = 2.406084  (q = 5, 2q = 10)
+            u_ii = sum_f |c_i|^2 = 1.854525, 1.438927;  v_ii = sum_f |d_i|^2 = 5.469213, 4.154824
+            diagonal-torus invariants  u_11 v_11 = 10.142790, u_22 v_22 = 5.978490,  |N_11| = 1.050575, |N_22| = 1.987647,  N_12 N_21 = 4.545745-3.828669j   (q = 5)
+            Gram matrix of (a, b_1, b_2) in the species index  (<x,y> = sum_s conj(x_s) y_s):
+              +2.175182+0.000000j   +1.008989+0.101111j   +0.491011+1.066166j
+              +1.008989-0.101111j   +1.802520+0.000000j   +0.626051+0.226228j
+              +0.491011-1.066166j   +0.626051-0.226228j   +0.770196+0.000000j
+            m_i = <b_i, a> (= the diagonal of M) = 1.00898868-0.10111084j, 0.49101132-1.06616619j;  |m_i|^2 = 1.028282, 1.377802   (q = 5)
+            tensor 0 (even):
+        [[0.94752458-1.00588513j 0.        +0.j         0.        +0.j        ]
+         [0.        +0.j         0.08340629-0.42966754j 0.        +0.j        ]
+         [0.        +0.j         0.        +0.j         0.59995741+0.30987879j]]
+            tensor 1 (even):
+        [[-0.3426928 -0.38488489j  0.        +0.j          0.        +0.j        ]
+         [ 0.        +0.j         -0.02733676-1.26893749j  0.        +0.j        ]
+         [ 0.        +0.j          0.        +0.j         -0.05724732-0.55762424j]]
+            tensor 2 (odd):
+        [[ 0.        +0.j          0.35780746+0.67294578j  0.12985382+0.19672877j]
+         [ 1.24943936-0.76913627j  0.        +0.j          0.        +0.j        ]
+         [-0.53586806-1.04314512j  0.        +0.j          0.        +0.j        ]]
+            tensor 3 (odd):
+        [[ 0.        +0.j          0.86809116+0.72115193j -0.58682308-1.01931436j]
+         [-1.47576528+1.0670805j   0.        +0.j          0.        +0.j        ]
+         [-1.5080581 +0.7108295j   0.        +0.j          0.        +0.j        ]]
+        B3  purely bosonic, 3 even species (no fermion): best cost 4.149e-02  (5 restarts, 17.4s)
+          -> NOT SOLVED;  t = 4.999974, spec M = -0.396388+2.196149j, +1.894647-1.169148j, rank N = 0
+        B4  purely bosonic, 4 even species (no fermion): best cost 4.149e-02  (5 restarts, 46.4s)
+          -> NOT SOLVED;  t = 4.999974, spec M = -0.396388+2.196149j, +1.894647-1.169148j, rank N = 0
+PASS  N3(b): the brief's suggested ansatz (a_1 = 1, B_1 = 0, a_2 = 0) FAILS -- best cost 7.225e+00 after 6 restarts
+PASS  N3(b): reason -- a_1 = 1, B_1 = 0 and a_2 = 0 force M = sum_s a_s conj(B_s) = 0 identically
+PASS  N3(b): with M = 0 the odd spectrum is symmetric under lambda -> -lambda (max deviation 1.4e-14); the Frobenius multiset of this curve is not, min_{j,k} |alpha_j + alpha_k| = 0.791288 > 0, so no M = 0 tensor can ever work
+PASS  N3(b): NO vacuum-species ansatz with a SINGLE odd species solves, for 2 or 3 even species and for each of the structured B_2 forms tried: ['S1:7.2e+00', 'S2:1.7e-01', 'S3:1.7e-01', 'S4:5.7e-01', 'S5:5.7e-01', 'S6:6.0e-01', 'S7:2.1e-02']
+        [observation] every vacuum + 1-odd-species search stalls at t = sum|a_s|^2 -> q = 5 with spec M -> {conj pi_1, conj pi_2}: the optimiser is driven to the Hodge-natural M and then cannot fix the even sector (t + Tr W must be 1 + q).
+        vacuum + 2 odd species: S8 not solved (cost 6.3e-02), S9 SOLVED (cost 1.8e-25)
+PASS  N3(b): a vacuum species IS possible once there are TWO odd species: S9 cost 1.8e-25
+PASS  N3(b): the CM-diagonal ansatz (all even tensors simultaneously diagonal) FAILS with one odd species, for 2 and for 3 even species (costs 4.2e-02, 4.2e-02)
+PASS  N3(b): *** the CM-DIAGONAL ansatz SOLVES with 2 even + 2 odd species: every even tensor is A_s = diag(a_s, b_{s,1}, b_{s,2}), the direct generalisation of the genus-1 tensor diag(a_s, alpha a_s)  (cost 5.1e-26)
+PASS  N3(b): B3  purely bosonic, 3 even species (no fermion) FAILS (best cost 4.149e-02) -- fermionic species are needed
+PASS  N3(b): B4  purely bosonic, 4 even species (no fermion) FAILS (best cost 4.149e-02) -- fermionic species are needed
+        SOLVED ansaetze: D22  CM-diagonal (all B_s diagonal), 2 even + 2 odd, S9  vacuum, 3 even + 2 odd (free)
+
+--------------------------------------------------------------------------------------------------------
+N3(b')  the drafted T3(a) chain  sum_{odd}|mu|^2 <= 2 Tr(E_++) Tr(E_--)
+--------------------------------------------------------------------------------------------------------
+        Tr(E_++) and Tr(E_--) are SUPEROPERATOR traces: Tr(E_--) = sum_s |Tr B_s|^2.
+PASS  N3(b'): COUNTEREXAMPLE to T3(a) as drafted: one even species a=1, B=diag(1,-1) on C^{1|2} gives sum_odd |mu|^2 = 4.000000 > 2 Tr(E_++) Tr(E_--) = 0.000000 (Tr B = 0 kills the right-hand side)
+PASS  N3(b'): the repaired chain sum_odd |mu|^2 <= 2 (sum_s ||a_s||_HS^2)(sum_s ||B_s||_HS^2) = 4.000000 does hold here
+PASS  N3(b'): the drafted bound fails on 173/400 random purely bosonic C^{1|2} instances (it is not a theorem as stated)
+PASS  N3(b'): the repaired bound 2 (sum||a_s||_HS^2)(sum||B_s||_HS^2) held on all 400 random instances
+
+--------------------------------------------------------------------------------------------------------
+N3(d)  Jacobian: str Lambda^*(Frob^n) = prod_j |1 - pi_j^n|^2 ; the curve subspace gives N_n
+--------------------------------------------------------------------------------------------------------
+        n=1: str Lambda^*(Frob^n) = 15.000000  prod_j |1-pi_j^n|^2 = 15.000000   curve subspace supertrace = 3.000000   N_n(C) = 3.000000
+        n=2: str Lambda^*(Frob^n) = 765.000000  prod_j |1-pi_j^n|^2 = 765.000000   curve subspace supertrace = 31.000000   N_n(C) = 31.000000
+        n=3: str Lambda^*(Frob^n) = 14715.000000  prod_j |1-pi_j^n|^2 = 14715.000000   curve subspace supertrace = 117.000000   N_n(C) = 117.000000
+        n=4: str Lambda^*(Frob^n) = 386325.000000  prod_j |1-pi_j^n|^2 = 386325.000000   curve subspace supertrace = 619.000000   N_n(C) = 619.000000
+        n=5: str Lambda^*(Frob^n) = 10381200.000000  prod_j |1-pi_j^n|^2 = 10381200.000000   curve subspace supertrace = 3318.000000   N_n(C) = 3318.000000
+        n=6: str Lambda^*(Frob^n) = 249904845.000002  prod_j |1-pi_j^n|^2 = 249904845.000002   curve subspace supertrace = 15991.000000   N_n(C) = 15991.000000
+PASS  N3(d): str Lambda^*(Frob^n) over the full exterior algebra = prod_j |1 - pi_j^n|^2 = #Jac(F_{q^n}) for n <= 6
+PASS  N3(d): the supertrace on span{1} (+) Lambda^1 (+) C omega (omega = e_1^e_1' + e_2^e_2', Frob omega = q omega) equals N_n(C) for n <= 6
+PASS  N3(d): pi_j conj(pi_j) = q, so Frob omega = q omega for omega = e_1^e_1' + e_2^e_2'
+
+========================================================================================================
+N4   THE DICHOTOMY
+========================================================================================================
+
+--------------------------------------------------------------------------------------------------------
+N4(a)  every eigenvalue of E_g / sqrt(q) is a root of unity (supersingularity)
+--------------------------------------------------------------------------------------------------------
+        cases imported from scripts/artin_schreier_super.py: [(3, [0, 1]), (3, [1, 1]), (3, [0, 1, 1]), (3, [0, 0, 1]), (3, [1, 0, 1]), (3, [2, 1]), (5, [0, 1]), (5, [1, 2]), (5, [0, 1, 1]), (7, [0, 1]), (7, [1, 1])]
+PASS  N4(a): q=3 a=[0, 1]: E_g E_g^dag = q  (E_g/sqrt q is unitary)
+PASS  N4(a): q=3 a=[0, 1]: all 3 eigenvalues of E_g/sqrt(q) are roots of unity, orders [1, 2, 4], lcm = 4  -> the curve is supersingular
+PASS  N4(a): q=3 a=[1, 1]: E_g E_g^dag = q  (E_g/sqrt q is unitary)
+PASS  N4(a): q=3 a=[1, 1]: all 3 eigenvalues of E_g/sqrt(q) are roots of unity, orders [4, 12], lcm = 12  -> the curve is supersingular
+PASS  N4(a): q=3 a=[0, 1, 1]: E_g E_g^dag = q  (E_g/sqrt q is unitary)
+PASS  N4(a): q=3 a=[0, 1, 1]: all 9 eigenvalues of E_g/sqrt(q) are roots of unity, orders [4, 12, 36], lcm = 36  -> the curve is supersingular
+PASS  N4(a): q=3 a=[0, 0, 1]: E_g E_g^dag = q  (E_g/sqrt q is unitary)
+PASS  N4(a): q=3 a=[0, 0, 1]: all 9 eigenvalues of E_g/sqrt(q) are roots of unity, orders [1, 2, 4, 8], lcm = 8  -> the curve is supersingular
+PASS  N4(a): q=3 a=[1, 0, 1]: E_g E_g^dag = q  (E_g/sqrt q is unitary)
+PASS  N4(a): q=3 a=[1, 0, 1]: all 9 eigenvalues of E_g/sqrt(q) are roots of unity, orders [3, 4, 6, 12], lcm = 12  -> the curve is supersingular
+PASS  N4(a): q=3 a=[2, 1]: E_g E_g^dag = q  (E_g/sqrt q is unitary)
+PASS  N4(a): q=3 a=[2, 1]: all 3 eigenvalues of E_g/sqrt(q) are roots of unity, orders [4, 12], lcm = 12  -> the curve is supersingular
+PASS  N4(a): q=5 a=[0, 1]: E_g E_g^dag = q  (E_g/sqrt q is unitary)
+PASS  N4(a): q=5 a=[0, 1]: all 5 eigenvalues of E_g/sqrt(q) are roots of unity, orders [1, 2, 4], lcm = 4  -> the curve is supersingular
+PASS  N4(a): q=5 a=[1, 2]: E_g E_g^dag = q  (E_g/sqrt q is unitary)
+PASS  N4(a): q=5 a=[1, 2]: all 5 eigenvalues of E_g/sqrt(q) are roots of unity, orders [1, 3], lcm = 3  -> the curve is supersingular
+PASS  N4(a): q=5 a=[0, 1, 1]: E_g E_g^dag = q  (E_g/sqrt q is unitary)
+PASS  N4(a): q=5 a=[0, 1, 1]: all 25 eigenvalues of E_g/sqrt(q) are roots of unity, orders [2, 3, 5, 6, 10, 15, 30], lcm = 30  -> the curve is supersingular
+PASS  N4(a): q=7 a=[0, 1]: E_g E_g^dag = q  (E_g/sqrt q is unitary)
+PASS  N4(a): q=7 a=[0, 1]: all 7 eigenvalues of E_g/sqrt(q) are roots of unity, orders [1, 2, 4], lcm = 4  -> the curve is supersingular
+PASS  N4(a): q=7 a=[1, 1]: E_g E_g^dag = q  (E_g/sqrt q is unitary)
+PASS  N4(a): q=7 a=[1, 1]: all 7 eigenvalues of E_g/sqrt(q) are roots of unity, orders [4, 28], lcm = 28  -> the curve is supersingular
+        (q, a, eigenvalue orders, lcm):
+          (3, (0, 1), [1, 2, 4], 4)
+          (3, (1, 1), [4, 12], 12)
+          (3, (0, 1, 1), [4, 12, 36], 36)
+          (3, (0, 0, 1), [1, 2, 4, 8], 8)
+          (3, (1, 0, 1), [3, 4, 6, 12], 12)
+          (3, (2, 1), [4, 12], 12)
+          (5, (0, 1), [1, 2, 4], 4)
+          (5, (1, 2), [1, 3], 3)
+          (5, (0, 1, 1), [2, 3, 5, 6, 10, 15, 30], 30)
+          (7, (0, 1), [1, 2, 4], 4)
+          (7, (1, 1), [4, 28], 28)
+
+--------------------------------------------------------------------------------------------------------
+N4(b)  cut rank of exponential-sum amplitudes
+--------------------------------------------------------------------------------------------------------
+For a quadratic form Q over F_2 the amplitude (-1)^{Q(x)} has cut rank
+2^{rank_{F_2}(C_AB)} across a bipartition, C_AB the off-diagonal block of the Gram matrix.
+In a SELF-DUAL normal basis (exists for F_{2^n}/F_2 iff n is odd) tr(x^{1+2}) = sum_i x_i x_{i+1}
+is nearest-neighbour, so the cut rank of the quadratic amplitude is bounded (4 on a ring cut
+into two arcs).  The cubic tr(x^{1+2+4}) = sum over triples with a 2-index circulant coefficient
+tensor is not made local by self-duality.  Both bases are reported; the basis matters.
+
+--------------------------------------------------------------------------------------------------------
+     q = 2:  quadratic control tr(x^3) = tr(x^{1+2})  vs  cubic tr(x^7) = tr(x^{1+2+4})
+--------------------------------------------------------------------------------------------------------
+        n= 2  plain normal basis: quadratic rank    1, cubic rank    1   self-dual normal basis: none (n even)
+        n= 3  plain normal basis: quadratic rank    2, cubic rank    2   self-dual normal basis: quadratic rank    2, cubic rank    2
+        n= 4  plain normal basis: quadratic rank    4, cubic rank    3   self-dual normal basis: none (n even)
+        n= 5  plain normal basis: quadratic rank    2, cubic rank    4   self-dual normal basis: quadratic rank    4, cubic rank    4
+        n= 6  plain normal basis: quadratic rank    4, cubic rank    8   self-dual normal basis: none (n even)
+        n= 7  plain normal basis: quadratic rank    8, cubic rank    8   self-dual normal basis: quadratic rank    4, cubic rank    8
+        n= 8  plain normal basis: quadratic rank    4, cubic rank   15   self-dual normal basis: none (n even)
+        n= 9  plain normal basis: quadratic rank    8, cubic rank   16   self-dual normal basis: quadratic rank    4, cubic rank   16
+        n=10  plain normal basis: quadratic rank   16, cubic rank   32   self-dual normal basis: none (n even)
+PASS  N4(b): q=2, SELF-DUAL normal basis: the QUADRATIC amplitude (-1)^{tr x^3} has cut rank <= 4 for all odd n tested ([(3, 2), (5, 4), (7, 4), (9, 4)]) -- BOUNDED
+PASS  N4(b): q=2, SELF-DUAL normal basis: the CUBIC amplitude (-1)^{tr x^7} has cut rank [(3, 2), (5, 4), (7, 8), (9, 16)] -- GROWING with n
+PASS  N4(b): in a PLAIN (non-self-dual) normal basis even the quadratic amplitude has growing cut rank: the bounded-bond-dimension statement is basis dependent, and the self-dual normal basis is the right one
+
+--------------------------------------------------------------------------------------------------------
+     q = 3:  psi(tr(x^{1+3+9})), psi = exp(2 pi i c / 3)
+--------------------------------------------------------------------------------------------------------
+        n= 2  plain: quadratic rank    1, cubic rank    3   self-dual: none found
+        n= 3  plain: quadratic rank    3, cubic rank    1   self-dual: quadratic rank    3, cubic rank    1
+        n= 4  plain: quadratic rank    9, cubic rank    7   self-dual: none found
+        n= 5  plain: quadratic rank    1, cubic rank    9   self-dual: quadratic rank    9, cubic rank    9
+        n= 6  plain: quadratic rank    9, cubic rank   27   self-dual: none found
+        n= 7  plain: quadratic rank   27, cubic rank   27   self-dual: quadratic rank    9, cubic rank   27
+PASS  N4(b): q=3, self-dual normal basis: the quadratic amplitude psi(tr x^{1+3}) has cut rank <= 9 ([(3, 3), (5, 9), (7, 9)]) -- BOUNDED
+PASS  N4(b): q=3, self-dual normal basis: the cubic amplitude psi(tr x^{1+3+9}) has cut rank [(3, 1), (5, 9), (7, 27)] -- GROWING
+        PLAIN STATEMENT: the quadratic (Artin-Schreier, supersingular) amplitude has BOUNDED cut rank in the self-dual normal basis; the cubic amplitude has cut rank GROWING with n, so no fixed finite lattice tensor reproduces it.
+
+========================================================================================================
+N5   SUMMARY: verdicts on the drafted statements of astra-brief.md
+========================================================================================================
+PASS  N5  [consistent                      ] T1(a) M = [[0,-q],[1,a]]; N_n = |det(M^n-1)| = 1 - Tr M^n + det M^n; every torus fixed point nondegenerate of index +1; #Fix(M^n) enumerated as Z^2/(M^n-1)Z^2
+PASS  N5  [consistent                      ] T1(a) N_n = N_{K/Q}(1 - pi^n) = |O/(pi^n - 1)| (O = Z[pi] = O_K when the conductor is 1)
+PASS  N5  [consistent                      ] T1(b) dynamical zeta of (T^2, M) = (1 - a u + q u^2)/((1-u)(1-qu)) = Z(E,u), to order u^8
+PASS  N5  [consistent (box [-50,50]^2, periods <= 12)] T1(d) the permutation k -> M^T k of Z^2 has exactly one finite orbit, {0}
+PASS  N5  [consistent                      ] T1(e) |pi|^2 = q and M/sqrt(q) is unitary in the Hodge basis; M^dag G M = q G
+PASS  N5  [consistent                      ] T1(f) the "gauge" is the change of Z-basis; cond(V) of the Hodge diagonaliser reported
+PASS  N5  [consistent                      ] H-LENSTRA  E(F_{q^n}) = O/(pi^n - 1) as abelian groups, invariant factors, n = 1,2,3
+PASS  N5  [REFUTED                         ] T3(a) sum_{odd eig}|mu|^2 <= 2 Tr(E_++) Tr(E_--)  [SUPEROPERATOR traces]
+PASS  N5  [consistent                      ] T3(a) repaired: sum_{odd eig}|mu|^2 <= 2 (sum_s ||a_s||_HS^2)(sum_s ||B_s||_HS^2)
+PASS  N5  [consistent (numerically)        ] T3(b) purely bosonic species cannot reach genus 2 (3 and 4 even species on C^{1|2} searched)
+PASS  N5  [consistent                      ] T3(c) minimal bond C^{1|g}: even spectrum {1, q} plus g^2 - 1 nilpotent modes
+PASS  N5  [consistent                      ] T4(a) E_even = [[t,u],[v,W]], E_odd = [[M,N],[conj N, conj M]] with the stated blocks; N has rank <= (number of odd species)
+PASS  N5  [consistent                      ] T4(a) existence on C^{1|2} with 2 even + 1 odd species; str E^n = N_n to n = 20; explicit Jordan-Wigner Fock norm for n = 2..5; translation invariant
+PASS  N5  [REFUTED (it forces M = 0)       ] T4(a) the SUGGESTED ansatz a_1 = 1, B_1 = 0, a_2 = 0, B_2 = diag(pi)/sqrt(q)-type
+PASS  N5  [REFUTED (numerically)           ] T4(a) a vacuum species (a_1 = 1, B_1 = 0) with ONE odd species, any number of even species
+PASS  N5  [consistent (SOLVED)             ] T4(a) a vacuum species with TWO odd species (3 even + 2 odd)
+PASS  N5  [consistent (SOLVED)             ] T4(a) NEW: CM-diagonal ansatz A_s = diag(a_s, b_{s,1}, b_{s,2}) (all even tensors simultaneously diagonal), 2 even + 2 odd species
+PASS  N5  [REFUTED (numerically)           ] T4(a) CM-diagonal with a single odd species (2 or 3 even species)
+PASS  N5  [not supported                   ] T4(a) entries "recognisable" as moduli/phases of pi_j and sqrt(q): the solution set is a positive-dimensional family (t = sum|a_s|^2 varies between restarts); only t + Tr W = 1 + q and 2 Re Tr M = e_1 are pinned
+PASS  N5  [consistent                      ] T4(b) str Lambda^*(Frob^n) = prod_j |1 - pi_j^n|^2 = #Jac(F_{q^n}); the curve subspace 1 (+) Lambda^1 (+) C omega gives N_n(C), n <= 6
+PASS  N5  [consistent                      ] T0(a) every eigenvalue of E_g/sqrt(q) is a root of unity (supersingularity of the quadratic Artin-Schreier family), all 11 cases of scripts/artin_schreier_super.py
+PASS  N5  [consistent ONLY in a self-dual normal basis] T0(b) bounded cut rank for the quadratic amplitude, growing for the cubic one
+PASS  N5  [not tested                      ] T2 (finite-state ring model / carry automaton)
+PASS  N5  [not tested                      ] T5 (Phantasm assessment)
+
+========================================================================================================
+RESULT
+========================================================================================================
+checks run : 193
+failures   : 0
+wall time  : 561.7 s

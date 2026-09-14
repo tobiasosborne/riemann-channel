@@ -32,7 +32,7 @@ step "refs manifest"
 if [ -d refs/src ]; then (cd refs && timeout 120 sha256sum -c --quiet manifest.sha256); else echo "refs/src absent (run refs/fetch_sources.sh); provenance quotes were checked only if present"; fi
 
 step "evidence scripts smoke (fast ones)"
-for s in scripts/qihara.py scripts/qihara_general.py scripts/weil_positivity.py scripts/bc_entropy.py scripts/bc_symmetry_generators.py scripts/cmps_parity_supertrace.py; do
+for s in scripts/qihara.py scripts/qihara_general.py scripts/weil_positivity.py scripts/bc_entropy.py scripts/bc_symmetry_generators.py scripts/cmps_parity_supertrace.py scripts/ring_norm_certificate.py; do
   n="$(basename "$s" .py)"
   timeout 600 python3 "$s" > "$tmp/$n.txt" 2>&1
   if ! diff -q <(grep -v '^\s*$' "outputs/$n.txt") <(grep -v '^\s*$' "$tmp/$n.txt") >/dev/null; then

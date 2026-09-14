@@ -1,0 +1,200 @@
+
+====================================================================================================
+C1/C2  Elliptic curves: brute-force counts vs |1 - alpha^n|^2 vs explicit MPS norms
+====================================================================================================
+
+y^2 = x^3 + 1 x + 1 over F_5:  N_n = [9, 27, 108, 675, 3069],  alpha = -1.500000+1.658312j, |alpha|^2 = 5.000000
+PASS   |alpha|^2 = q  (Hasse, p=5)
+PASS   N_n = |1 - alpha^n|^2 for n<=(5)  (p=5)
+PASS   str E^n = N_n on the doubled C^(1|1) bond  (p=5)
+PASS   Tr E^n = 1 + q^n + alpha^n + conj  (untwisted, p=5)
+PASS   Tr E^n != N_n  (untwisted closure is not the count, p=5)
+PASS   ||Psi_P||^2 = N_1 as an explicit vector in C^3  (p=5)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=1, p=5)
+PASS   Psi_P = Psi_+ - Psi_-  (n=1)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=1)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=1)
+PASS   ||Psi_P||^2 = N_2 as an explicit vector in C^9  (p=5)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=2, p=5)
+PASS   Psi_P = Psi_+ - Psi_-  (n=2)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=2)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=2)
+PASS   ||Psi_P||^2 = N_3 as an explicit vector in C^27  (p=5)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=3, p=5)
+PASS   Psi_P = Psi_+ - Psi_-  (n=3)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=3)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=3)
+PASS   ||Psi_P||^2 = N_4 as an explicit vector in C^81  (p=5)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=4, p=5)
+PASS   Psi_P = Psi_+ - Psi_-  (n=4)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=4)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=4)
+
+y^2 = x^3 + 1 x + 1 over F_7:  N_n = [5, 55, 380, 2475, 16775],  alpha = 1.500000+2.179449j, |alpha|^2 = 7.000000
+PASS   |alpha|^2 = q  (Hasse, p=7)
+PASS   N_n = |1 - alpha^n|^2 for n<=(5)  (p=7)
+PASS   str E^n = N_n on the doubled C^(1|1) bond  (p=7)
+PASS   Tr E^n = 1 + q^n + alpha^n + conj  (untwisted, p=7)
+PASS   Tr E^n != N_n  (untwisted closure is not the count, p=7)
+PASS   ||Psi_P||^2 = N_1 as an explicit vector in C^3  (p=7)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=1, p=7)
+PASS   Psi_P = Psi_+ - Psi_-  (n=1)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=1)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=1)
+PASS   ||Psi_P||^2 = N_2 as an explicit vector in C^9  (p=7)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=2, p=7)
+PASS   Psi_P = Psi_+ - Psi_-  (n=2)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=2)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=2)
+PASS   ||Psi_P||^2 = N_3 as an explicit vector in C^27  (p=7)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=3, p=7)
+PASS   Psi_P = Psi_+ - Psi_-  (n=3)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=3)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=3)
+PASS   ||Psi_P||^2 = N_4 as an explicit vector in C^81  (p=7)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=4, p=7)
+PASS   Psi_P = Psi_+ - Psi_-  (n=4)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=4)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=4)
+
+y^2 = x^3 + 1 x + 1 over F_11:  N_n = [14, 140, 1274],  alpha = -1.000000+3.162278j, |alpha|^2 = 11.000000
+PASS   |alpha|^2 = q  (Hasse, p=11)
+PASS   N_n = |1 - alpha^n|^2 for n<=(3)  (p=11)
+PASS   str E^n = N_n on the doubled C^(1|1) bond  (p=11)
+PASS   Tr E^n = 1 + q^n + alpha^n + conj  (untwisted, p=11)
+PASS   Tr E^n != N_n  (untwisted closure is not the count, p=11)
+PASS   ||Psi_P||^2 = N_1 as an explicit vector in C^3  (p=11)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=1, p=11)
+PASS   Psi_P = Psi_+ - Psi_-  (n=1)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=1)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=1)
+PASS   ||Psi_P||^2 = N_2 as an explicit vector in C^9  (p=11)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=2, p=11)
+PASS   Psi_P = Psi_+ - Psi_-  (n=2)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=2)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=2)
+PASS   ||Psi_P||^2 = N_3 as an explicit vector in C^27  (p=11)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=3, p=11)
+PASS   Psi_P = Psi_+ - Psi_-  (n=3)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=3)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=3)
+
+y^2 = x^3 + 2 x + 3 over F_7:  N_n = [6, 60, 378, 2400, 16566],  alpha = 1.000000+2.449490j, |alpha|^2 = 7.000000
+PASS   |alpha|^2 = q  (Hasse, p=7)
+PASS   N_n = |1 - alpha^n|^2 for n<=(5)  (p=7)
+PASS   str E^n = N_n on the doubled C^(1|1) bond  (p=7)
+PASS   Tr E^n = 1 + q^n + alpha^n + conj  (untwisted, p=7)
+PASS   Tr E^n != N_n  (untwisted closure is not the count, p=7)
+PASS   ||Psi_P||^2 = N_1 as an explicit vector in C^3  (p=7)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=1, p=7)
+PASS   Psi_P = Psi_+ - Psi_-  (n=1)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=1)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=1)
+PASS   ||Psi_P||^2 = N_2 as an explicit vector in C^9  (p=7)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=2, p=7)
+PASS   Psi_P = Psi_+ - Psi_-  (n=2)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=2)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=2)
+PASS   ||Psi_P||^2 = N_3 as an explicit vector in C^27  (p=7)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=3, p=7)
+PASS   Psi_P = Psi_+ - Psi_-  (n=3)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=3)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=3)
+PASS   ||Psi_P||^2 = N_4 as an explicit vector in C^81  (p=7)
+PASS   ||Psi_1||^2 = 1+q^n+alpha^n+conj  (n=4, p=7)
+PASS   Psi_P = Psi_+ - Psi_-  (n=4)
+PASS   Psi_- = alpha^n Psi_+ : the two closures are parallel  (n=4)
+PASS   Psi_P is a product state (Schmidt rank 1)  (n=4)
+
+====================================================================================================
+C3  Decoupled bosonic C^(1|1): str E^n = ||a||^{2n} + ||b||^{2n} - <a,b>^n - conj, |<a,b>| <= ||a|| ||b||
+====================================================================================================
+PASS   trial 0: str E^n = 1 + q^n - <a,b>^n - conj
+PASS   trial 0: |<a,b>|^2 = 0.2917 < q = 5 strictly (blocks not proportional)
+PASS   trial 1: str E^n = 1 + q^n - <a,b>^n - conj
+PASS   trial 1: |<a,b>|^2 = 1.3073 < q = 5 strictly (blocks not proportional)
+PASS   trial 2: str E^n = 1 + q^n - <a,b>^n - conj
+PASS   trial 2: |<a,b>|^2 = 1.5126 < q = 5 strictly (blocks not proportional)
+  Reading: the functional equation alpha*conj(alpha) = q is exactly equality in Cauchy-Schwarz,
+  i.e. b = c a; then |alpha| = sqrt(q) is automatic (RH manifest) but alpha = c is put in by hand.
+
+====================================================================================================
+C4a  Bosonic block-diagonal C^(m|k): sum_odd |mu|^2 <= ||odd||_HS^2 <= 2 (sum||a_s||^2)(sum||B_s||^2)  (Schur + Cauchy-Schwarz), random instances
+====================================================================================================
+PASS   C^(1|1), d=3: sum|mu|^2=0.067 <= ||odd||_HS^2=0.067 <= 2 t+ t- = 45.273
+PASS   C^(1|2), d=4: sum|mu|^2=146.549 <= ||odd||_HS^2=190.327 <= 2 t+ t- = 627.926
+PASS   C^(2|2), d=3: sum|mu|^2=122.340 <= ||odd||_HS^2=321.201 <= 2 t+ t- = 865.703
+PASS   C^(1|3), d=5: sum|mu|^2=195.299 <= ||odd||_HS^2=225.837 <= 2 t+ t- = 1707.534
+PASS   C^(3|2), d=4: sum|mu|^2=1212.340 <= ||odd||_HS^2=2019.047 <= 2 t+ t- = 7577.236
+  NOTE: t+ t- are Hilbert-Schmidt sums of the tensors, not traces of the doubled blocks; the genus bound
+  g <= 1 follows from the all-power inequality |Tr M^n|^2 <= Tr(E_++^n) Tr(E_--^n) (astra-proofs T3.2-T3.3), not from here.
+  Odd (fermionic) species add Hilbert-Schmidt mass to the odd block but NO trace to the even block,
+  so the bound is void for them; cancellation (extra even-odd pairs) also evades it.
+
+====================================================================================================
+C4b  A genus-2 curve over F_5: brute-force counts, L-polynomial, Frobenius eigenvalues
+====================================================================================================
+y^2 = x**5 + 2*x + 1 over F_5: N_n = [6, 26, 126, 726]
+L-polynomial 1 - 0 u + 0 u^2 - 0 u^3 + 25 u^4 ; alphas = [-1.58114+1.58114j -1.58114-1.58114j  1.58114+1.58114j  1.58114-1.58114j]
+PASS   all |alpha_j|^2 = q (RH for the curve)
+PASS   N_3, N_4 predicted from N_1, N_2 agree with brute force
+  #Jac(F_{5^n}) = prod_j (1 - alpha_j^n) = [   26.   676. 15626.]
+PASS   str over the product bond C^(1|1)(x)C^(1|1) = #Jac(F_{q^n})  (doubled bond = Lambda* H^1 = H*(Jac))
+
+====================================================================================================
+C4c  Search for a single P-closed ring norm with str E^n = N_n (genus 2), three tensor classes
+====================================================================================================
+  bosonic only, C^(1|2), 3 species: best cost 1.248e-01 after 12 restarts (121.4s)
+PASS   bosonic-only C^(1|2) does not reach the count in this search (consistent with the no-go, not a proof)
+  bosonic only, C^(2|2), 3 species (cancellation allowed): best cost 4.228e-09 after 8 restarts (352.2s)
+  (bosonic-only C^(2|2) residual 4.228e-09: not reached within the budget)
+  C^(1|2), 2 even + 2 odd (fermionic) species: best cost 9.503e-26 after 4 restarts (72.2s)
+PASS   a genus-2 count IS a single P-closed ring norm with fermionic tensors on C^(1|2)
+  fermionic C^(1|2): even eigenvalues [-0.e+00-0.0001j -0.e+00+0.0001j  1.e-04-0.j      1.e+00+0.j
+  5.e+00-0.j    ]
+  fermionic C^(1|2): odd  eigenvalues [-1.5811+1.5811j -1.5811-1.5811j  1.5811+1.5811j  1.5811-1.5811j]
+  fermionic C^(1|2): target alphas    [-1.5811-1.5811j -1.5811+1.5811j  1.5811-1.5811j  1.5811+1.5811j]
+  fermionic C^(1|2): max |str E^n - N_n| / q^(n/2), n<=20: 3.33e-10
+
+====================================================================================================
+C4d  The found genus-2 tensors: ||Psi_P||^2 as the norm of an explicit Jordan-Wigner Fock vector
+====================================================================================================
+PASS   n=2: ||Psi_P||^2 = 26.000000 = N_2 = 26.000000 (explicit Fock vector, JW signs)
+PASS   n=2: ||Psi_1||^2 = 26.000000 = Tr E^n (untwisted ring)
+PASS   n=2: Psi_P is invariant under the periodic fermion translation
+PASS   n=2: Psi_1 is invariant under the antiperiodic translation
+PASS   n=3: ||Psi_P||^2 = 126.000000 = N_3 = 126.000000 (explicit Fock vector, JW signs)
+PASS   n=3: ||Psi_1||^2 = 126.000000 = Tr E^n (untwisted ring)
+PASS   n=3: Psi_P is invariant under the periodic fermion translation
+PASS   n=3: Psi_1 is invariant under the antiperiodic translation
+PASS   n=4: ||Psi_P||^2 = 726.000000 = N_4 = 726.000000 (explicit Fock vector, JW signs)
+PASS   n=4: ||Psi_1||^2 = 526.000000 = Tr E^n (untwisted ring)
+PASS   n=4: Psi_P is invariant under the periodic fermion translation
+PASS   n=4: Psi_1 is invariant under the antiperiodic translation
+
+====================================================================================================
+C5  y^3 - y = x^2 over F_3 (genus 1, supersingular): the honest indicator MPS vs the count
+====================================================================================================
+  n=1: N_n =   4; twisted 1+q^n-a^n-conj =      4; untwisted 1+q^n+a^n+conj =      4; 1 + 3 * #{sum x_i^2 = 0} =    4
+PASS   n=1: N_n = twisted (P-closed) formula
+PASS   n=1: the periodic bosonic indicator MPS matches iff n is odd
+  n=2: N_n =  16; twisted 1+q^n-a^n-conj =     16; untwisted 1+q^n+a^n+conj =      4; 1 + 3 * #{sum x_i^2 = 0} =    4
+PASS   n=2: N_n = twisted (P-closed) formula
+PASS   n=2: the periodic bosonic indicator MPS matches iff n is odd
+  n=3: N_n =  28; twisted 1+q^n-a^n-conj =     28; untwisted 1+q^n+a^n+conj =     28; 1 + 3 * #{sum x_i^2 = 0} =   28
+PASS   n=3: N_n = twisted (P-closed) formula
+PASS   n=3: the periodic bosonic indicator MPS matches iff n is odd
+  n=4: N_n =  64; twisted 1+q^n-a^n-conj =     64; untwisted 1+q^n+a^n+conj =    100; 1 + 3 * #{sum x_i^2 = 0} =  100
+PASS   n=4: N_n = twisted (P-closed) formula
+PASS   n=4: the periodic bosonic indicator MPS matches iff n is odd
+  n=5: N_n = 244; twisted 1+q^n-a^n-conj =    244; untwisted 1+q^n+a^n+conj =    244; 1 + 3 * #{sum x_i^2 = 0} =  244
+PASS   n=5: N_n = twisted (P-closed) formula
+PASS   n=5: the periodic bosonic indicator MPS matches iff n is odd
+  n=6: N_n = 784; twisted 1+q^n-a^n-conj =    784; untwisted 1+q^n+a^n+conj =    676; 1 + 3 * #{sum x_i^2 = 0} =  676
+PASS   n=6: N_n = twisted (P-closed) formula
+PASS   n=6: the periodic bosonic indicator MPS matches iff n is odd
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+135 checks, 0 failures
