@@ -1,0 +1,334 @@
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS TTT FE classification
+PASS TTT RH classification
+PASS TTT unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS TTF FE classification
+PASS TTF RH classification
+PASS TTF unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS TFT FE classification
+PASS TFT RH classification
+PASS TFT unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS TFF FE classification
+PASS TFF RH classification
+PASS TFF unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS FTT FE classification
+PASS FTT RH classification
+PASS FTT unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS FTF FE classification
+PASS FTF RH classification
+PASS FTF unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS FFT FE classification
+PASS FFT RH classification
+PASS FFT unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS FFF FE classification
+PASS FFF RH classification
+PASS FFF unique stationary state classification
+PASS periodic channel still has one stationary state
+PASS periodic channel has another peripheral eigenvalue
+PASS off-circle reciprocal pair has a negative Weil form
+TTT_A_0
+[5/2, 0]
+[0, 5/2]
+TTT_A_1
+[3/2, 0]
+[0, -3/2]
+TTT_A_2
+[0, sqrt(15)/2]
+[sqrt(15)/2, 0]
+TTT_A_3
+[0, -sqrt(15)*I/2]
+[sqrt(15)*I/2, 0]
+TTT_Pi
+[1, 0]
+[0, -1]
+TTF_A_0
+[5/2, 0, 0, 0]
+[0, 5/2, 0, 0]
+[0, 0, 5/2, 0]
+[0, 0, 0, 5/2]
+TTF_A_1
+[3/2, 0, 0, 0]
+[0, 3/2, 0, 0]
+[0, 0, -3/2, 0]
+[0, 0, 0, -3/2]
+TTF_A_2
+[0, 0, sqrt(15)/2, 0]
+[0, 0, 0, sqrt(15)/2]
+[sqrt(15)/2, 0, 0, 0]
+[0, sqrt(15)/2, 0, 0]
+TTF_A_3
+[0, 0, -sqrt(15)*I/2, 0]
+[0, 0, 0, -sqrt(15)*I/2]
+[sqrt(15)*I/2, 0, 0, 0]
+[0, sqrt(15)*I/2, 0, 0]
+TTF_Pi
+[1, 0, 0, 0]
+[0, 1, 0, 0]
+[0, 0, -1, 0]
+[0, 0, 0, -1]
+TFT_A_0
+[3*sqrt(3)/2, 0]
+[0, 3*sqrt(3)/2]
+TFT_A_1
+[sqrt(7)/2, 0]
+[0, -sqrt(7)/2]
+TFT_A_2
+[0, sqrt(21)/2]
+[sqrt(21)/2, 0]
+TFT_A_3
+[0, -3*I/2]
+[3*I/2, 0]
+TFT_Pi
+[1, 0]
+[0, -1]
+TFF_A_0
+[3*sqrt(3)/2, 0, 0, 0]
+[0, 3*sqrt(3)/2, 0, 0]
+[0, 0, 3*sqrt(3)/2, 0]
+[0, 0, 0, 3*sqrt(3)/2]
+TFF_A_1
+[sqrt(7)/2, 0, 0, 0]
+[0, sqrt(7)/2, 0, 0]
+[0, 0, -sqrt(7)/2, 0]
+[0, 0, 0, -sqrt(7)/2]
+TFF_A_2
+[0, 0, sqrt(21)/2, 0]
+[0, 0, 0, sqrt(21)/2]
+[sqrt(21)/2, 0, 0, 0]
+[0, sqrt(21)/2, 0, 0]
+TFF_A_3
+[0, 0, -3*I/2, 0]
+[0, 0, 0, -3*I/2]
+[3*I/2, 0, 0, 0]
+[0, 3*I/2, 0, 0]
+TFF_Pi
+[1, 0, 0, 0]
+[0, 1, 0, 0]
+[0, 0, -1, 0]
+[0, 0, 0, -1]
+FTT_A_0
+[sqrt(6), 0]
+[0, sqrt(6)]
+FTT_A_1
+[sqrt(2), 0]
+[0, -sqrt(2)]
+FTT_A_2
+[0, 2]
+[2, 0]
+FTT_A_3
+[0, -2*I]
+[2*I, 0]
+FTT_Pi
+[1, 0]
+[0, -1]
+FTF_A_0
+[sqrt(6), 0, 0, 0]
+[0, sqrt(6), 0, 0]
+[0, 0, sqrt(6), 0]
+[0, 0, 0, sqrt(6)]
+FTF_A_1
+[sqrt(2), 0, 0, 0]
+[0, sqrt(2), 0, 0]
+[0, 0, -sqrt(2), 0]
+[0, 0, 0, -sqrt(2)]
+FTF_A_2
+[0, 0, 2, 0]
+[0, 0, 0, 2]
+[2, 0, 0, 0]
+[0, 2, 0, 0]
+FTF_A_3
+[0, 0, -2*I, 0]
+[0, 0, 0, -2*I]
+[2*I, 0, 0, 0]
+[0, 2*I, 0, 0]
+FTF_Pi
+[1, 0, 0, 0]
+[0, 1, 0, 0]
+[0, 0, -1, 0]
+[0, 0, 0, -1]
+FFT_A_0
+[sqrt(23)/2, 0]
+[0, sqrt(23)/2]
+FFT_A_1
+[sqrt(11)/2, 0]
+[0, -sqrt(11)/2]
+FFT_A_2
+[0, sqrt(15)/2]
+[sqrt(15)/2, 0]
+FFT_A_3
+[0, -sqrt(15)*I/2]
+[sqrt(15)*I/2, 0]
+FFT_Pi
+[1, 0]
+[0, -1]
+FFF_A_0
+[sqrt(23)/2, 0, 0, 0]
+[0, sqrt(23)/2, 0, 0]
+[0, 0, sqrt(23)/2, 0]
+[0, 0, 0, sqrt(23)/2]
+FFF_A_1
+[sqrt(11)/2, 0, 0, 0]
+[0, sqrt(11)/2, 0, 0]
+[0, 0, -sqrt(11)/2, 0]
+[0, 0, 0, -sqrt(11)/2]
+FFF_A_2
+[0, 0, sqrt(15)/2, 0]
+[0, 0, 0, sqrt(15)/2]
+[sqrt(15)/2, 0, 0, 0]
+[0, sqrt(15)/2, 0, 0]
+FFF_A_3
+[0, 0, -sqrt(15)*I/2, 0]
+[0, 0, 0, -sqrt(15)*I/2]
+[sqrt(15)*I/2, 0, 0, 0]
+[0, sqrt(15)*I/2, 0, 0]
+FFF_Pi
+[1, 0, 0, 0]
+[0, 1, 0, 0]
+[0, 0, -1, 0]
+[0, 0, 0, -1]
+periodic_A_0
+[0, sqrt(2)]
+[0, 0]
+periodic_A_1
+[0, 0]
+[sqrt(2), 0]
+periodic_Pi
+[1, 0]
+[0, -1]
+TFT_Weil_minor
+[2, 5/2]
+[5/2, 2]
+TFT_Weil_witness
+[1]
+[-1]
+TTT_N_1..6 ['9', '225', '3969', '65025', '1046529', '16769025']
+TTT_a_1..6 ['9', '108', '1320', '16200', '209304', '2794140']
+TTF_N_1..6 ['36', '900', '15876', '260100', '4186116', '67076100']
+TTF_a_1..6 ['36', '432', '5280', '64800', '837216', '11176560']
+TFT_N_1..6 ['7', '189', '3577', '61425', '1015777', '16515009']
+TFT_a_1..6 ['7', '91', '1190', '15309', '203154', '2751875']
+TFF_N_1..6 ['28', '756', '14308', '245700', '4063108', '66060036']
+TFF_a_1..6 ['28', '364', '4760', '61236', '812616', '11007500']
+FTT_N_1..6 ['8', '224', '3968', '65024', '1046528', '16769024']
+FTT_a_1..6 ['8', '108', '1320', '16200', '209304', '2794140']
+FTF_N_1..6 ['32', '896', '15872', '260096', '4186112', '67076096']
+FTF_a_1..6 ['32', '432', '5280', '64800', '837216', '11176560']
+FFT_N_1..6 ['11', '239', '4043', '65375', '1048091', '16775759']
+FFT_a_1..6 ['11', '114', '1344', '16284', '209616', '2795248']
+FFF_N_1..6 ['44', '956', '16172', '261500', '4192364', '67103036']
+FFF_a_1..6 ['44', '456', '5376', '65136', '838464', '11180992']
+periodic_N_1..6 ['0', '8', '0', '32', '0', '128']
+periodic_a_1..6 ['0', '4', '0', '6', '0', '20']
+TTT_Z = (4*u - 1)**2/((u - 1)*(16*u - 1))
+TTF_Z = (4*u - 1)**8/((u - 1)**4*(16*u - 1)**4)
+TFT_Z = (2*u - 1)*(8*u - 1)/((u - 1)*(16*u - 1))
+TFF_Z = (2*u - 1)**4*(8*u - 1)**4/((u - 1)**4*(16*u - 1)**4)
+FTT_Z = -(4*u - 1)**2/(16*u - 1)
+FTF_Z = (4*u - 1)**8/(16*u - 1)**4
+FFT_Z = (3*u - 1)**2/((u - 1)*(16*u - 1))
+FFF_Z = (3*u - 1)**8/((u - 1)**4*(16*u - 1)**4)
+periodic_Z = -1/((2*u - 1)*(2*u + 1))
+TALLY independence: 131/131 PASS; 0 FAIL

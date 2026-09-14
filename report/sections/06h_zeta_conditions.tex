@@ -1,0 +1,211 @@
+% SHARD-ID: RC-06H-ZETA-CONDITIONS
+% SHARD-TITLE: The Zeta Conditions Imposed Factor by Factor on Graded Ring Norms: A Ledger and a Catalogue of Concrete Tensors
+% SHARD-SUMMARY: Lines up ten conditions a zeta function should obey (positivity and integrality, genuine gas, rationality, functional equation, RH, unique fixed point, Galois grading with L-functions, sign structure, physical realisability, continuum) as exact algebraic statements on a graded lattice tensor and on a cMPS pair, and records which are automatic, which are constraints, and which are independent.
+% SHARD-SUMMARY: Catalogue of explicit tensors with their matrices: the pair shift minus its diagonal (one zero, one pole), four-letter trace-preserving elliptic tensors (affine, projective, supersingular) with the functional equation and RH by visible mechanisms and a unique maximally mixed fixed point, a Pauli-letter family proving FE, RH and mixing mutually independent, tiny Dirichlet L-functions over F_2[x] and F_3[x] from the Horner transfer, Gauss and Kloosterman factors, a graph-cover Artin decomposition, and two cMPS (half entropy, and amplitude damping with an additive functional equation); a correction ledger and what a finite bond cannot reach.
+% SHARD-KEYWORDS: zeta conditions, functional equation, Ramanujan, unique fixed point, mixing, Euler product, prime counts, elliptic curve, supersingular, Dirichlet L-function, Horner, Gauss sum, Kloosterman sum, Artin L-function, graph cover, cMPS, amplitude damping, independence, no-go
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/zeta_conditions.py
+
+\section{The Zeta Conditions Factor by Factor: Ledger and Catalogue}
+\label{sec:zeta-conditions}
+
+\emph{Question (TJO, 2026-09-14, night).} Line up all the conditions we want a zeta to obey
+(functional equation, RH/Ramanujan, unique fixed point, \dots) and impose them factor by factor on
+the cMPS ring norm, including tiny $L$-functions; the deliverable is completely concrete MPS/cMPS
+that any practitioner would understand. One codex \texttt{gpt-6-astra} lane
+(\texttt{notes/zeta-conditions/astra-brief.md}, report \texttt{astra-constructions.md}, 1882 lines,
+13 scripts under \texttt{notes/zeta-conditions/finite/}, 461 checks re-run by the orchestrator);
+the orchestrator re-derived the central constructions in \texttt{scripts/zeta\_conditions.py}
+($26$ checks). Unreviewed by a second family; all rows \texttt{sketched}/\texttt{numerical}.
+Conventions as in \cref{def:graded-lattice-tensor} and \cref{sec:graded-permutation}: letters
+$\Kr{s}$ on $\mathbb C^{D_+|D_-}$, $\Edb$, $\Gdb$, Ramond norm $N_n = \Tr[\Gdb\Edb^n]$,
+$Z(u) = \exp\sum N_nu^n/n = \det(1-u\Edb|_-)/\det(1-u\Edb|_+)$; cMPS $(Q,R)$, $\Tcm$,
+$N(L) = \Tr[\Gdb e^{L\Tcm}]$, ring zeta $\det(z-\Tcm_-)/\det(z-\Tcm_+)$.
+
+\subsection{The ledger}
+
+\begin{observation}[Ten conditions, their exact forms, and their status]
+\label{obs:zeta-condition-ledger}
+\claimstatus{obs:zeta-condition-ledger}{sketched}
+(C1) $N_n = \sum_w|\Tr(\Pi\Kr{w})|^2\ge0$ is automatic; integrality is a separate arithmetic constraint;
+for cMPS $N(L)\ge0$ is automatic and integrality is void. (C2) Genuine gas: $a_d = \frac1d\sum_{e\mid d}
+\operatorname{M\ddot ob}(d/e)N_e\in\mathbb Z_{\ge0}$, not automatic (the single letter $\operatorname{diag}(1,-1)$
+has $N = 4,0,4,0,\dots$ and $a_2 = -2$); no intrinsic $a_d$ exists for continuous $L$, and no
+finite constant cMPS has an atomic prime comb. (C3) Rationality is automatic; poles are net even,
+zeros net odd multiplicities; in cMPS a zero eigenvalue is not invisible (it contributes a constant
+to $N(L)$), and the degree difference is $(D_+-D_-)^2 = N(0)$. (C4) FE: parity-preserving
+invariance of the reduced spectrum under $\lambda\mapsto q/\lambda$, giving $Z(1/(qu)) =
+\pm q^{\chi/2}u^{\chi}Z(u)$; a sufficient visible mechanism is $J\Gdb = \Gdb J$, $J\Edb J^{-1} =
+q\Edb^{-1}$ on the support; for cMPS the symmetry is additive, $\lambda\mapsto\kappa-\lambda$.
+Correction to the reading of \cref{sec:weil-positivity}: inverse-closed letters do \emph{not}
+give the FE for the raw doubled transfer ($B = \operatorname{diag}(1,2)$, $B^{-1}$: even $\{2,17/4\}$,
+odd $\{5/2,5/2\}$); the reciprocal quadratics arise in the non-backtracking construction after the
+Bass factors are removed. (C5) RH: $|\lambda|^2 = q$ on the retained odd spectrum; a sufficient
+mechanism is a positive metric $M$ with $\Edb|_-^\dagger M\,\Edb|_- = qM$, necessary if semisimple;
+Weil positivity of the rescaled trace sequence gives $|\lambda|\le\sqrt q$ and reciprocity the
+equality; for cMPS $\re\lambda = \kappa/2$. (C6) Three separate requirements: a simple uncancelled
+Perron root $q$; a strictly positive even $h$ with $\mathcal E^\dagger(h) = qh$ (a trace-preserving
+gauge on the whole bond); a one-dimensional fixed space spanned by a density with every other
+eigenvalue inside the unit circle (mixing; uniqueness alone allows periodic modes). The product
+tensor $\operatorname{diag}(1,\pi)$ of \cref{sec:ring-norm-examples} has a rank-one Perron eigenmatrix
+and no whole-bond gauge; the four-letter tensors below fix this without changing $Z$. (C7) A unitary
+$G$-action commuting with $\Pi$ and permuting letters splits $\Edb = \oplus_\chi1\otimes E_\chi$,
+$N_n = \sum_\chi\dim\chi\,N_n^\chi$, $Z = \prod L(u,\chi)^{\dim\chi}$; calling a factor an Artin
+$L$-function needs an actual cover with Frobenius weights on primitive orbits; ``even = trivial,
+odd = nontrivial'' is geometric input (curves), not a theorem about group actions (the Ihara cover
+below has every mode even). (C8) automatic once the parity closure is fixed: the minus sign lives in
+the $(+,-)$ coherences. (C9) Choi positivity per parity block plus parity covariance gives
+homogeneous Kraus letters; a literal count state needs $\Tr(\Pi\Kr{w})\in\{0,1\}$; the curve
+tensors are weighted norms, not point enumerations; cMPS kinetic regularity ($R_aR_b =
+\pm R_bR_a$, $R_f^2 = 0$) is a further condition. (C10) Exact embedding of a lattice channel in a
+cMPS needs $\Edb = e^{h\Tcm}$ with Choi conditional positivity; singular $\Edb$ (the affine tensor)
+has none; Poissonisation $Q = -c/2$, $R_s = \Kr{s}$ always exists but changes FE/RH.
+\end{observation}
+
+\subsection{The catalogue}
+
+\begin{proposition}[E0: remove a full subshift]
+\label{prop:e0-pair-shift}
+\claimstatus{prop:e0-pair-shift}{sketched}
+Letters $\Kr{(a,b)} = \operatorname{diag}(1,[a = b])$ on $\mathbb C^{1|1}$, $a,b\in\{1,\dots,m\}$. The Ramond
+ring is the indicator of the words with at least one off-diagonal pair, $N_n = m^{2n}-m^n$,
+$Z = (1-mu)/(1-m^2u)$: one pole at $1/m^2$, one zero at $1/m = q^{-1/2}$ (RH by half entropy), a genuine
+gas (primitive diagonal necklaces are a subset of primitive pair necklaces; $a_d = 2,5,18,57,198,661$
+for $m = 2$), no FE, no whole-bond channel gauge. For $m = 2$ it equals
+$Z(\mathbb A^1/\mathbb F_4)/Z(\mathbb A^1/\mathbb F_2)$ in an identified degree variable; the swap is a symmetry
+with fixed letters, not an Artin cover.
+\end{proposition}
+
+\begin{proof}
+$\Tr(\Pi\Kr{w}) = 1-\prod_i[a_i = b_i]$; the words are orthonormal. Orbit inclusion gives $a_d\ge0$.
+\end{proof}
+
+\begin{proposition}[Four-letter trace-preserving elliptic tensors on $\mathbb C^{1|1}$]
+\label{prop:four-letter-elliptic}
+\claimstatus{prop:four-letter-elliptic}{sketched-conditional}
+Let $E/\mathbb F_q$ have trace $a$ and Frobenius $\pi$, $\pi\bar\pi = q$; put $r\in\{0,1\}$ (affine,
+projective), $t = (q+r)/2$, $h = (q-r)/2$, and
+$\Kr{0} = \operatorname{diag}(\sqrt t,\pi/\sqrt t)$, $\Kr{1} = \operatorname{diag}(0,\sqrt{t-q/t})$,
+$\Kr{2} = \sqrt h\,|0\rangle\langle1|$, $\Kr{3} = \sqrt h\,|1\rangle\langle0|$. Then
+$\sum\Kr{s}^\dagger\Kr{s} = q\,1$ (a trace-preserving channel after $/\sqrt q$ on the whole bond),
+the even spectrum is $\{q,r\}$, the odd spectrum $\{\pi,\bar\pi\}$, and the Ramond norm is
+$r+q^n-\pi^n-\bar\pi^n$: the point count of the affine ($r = 0$) or projective ($r = 1$) curve.
+For $r = 1$: FE by the duality $J = \operatorname{diag}(1,-1)_{\text{even}}\oplus\text{swap}_{\text{odd}}$
+with $J\Edb J^{-1} = q\Edb^{-1}$; RH because $\Edb|_-^\dagger\Edb|_- = q$; the normalised channel is
+mixing with the maximally mixed state as its unique fixed point; the $H^0$ eigenvalue $1$ is a
+decaying population-difference mode, not a decoupled block. Example $y^2 = x^3+x+1/\mathbb F_5$:
+$a = -3$, $\pi = (-3+i\sqrt{11})/2$, $N_n = 9,27,108,675,3069,15552$. Example $y^2+y = x^3/\mathbb F_4$:
+$a = -4$, $\pi = -2$, $P = (1+2u)^2$, a real double zero at $u = -1/2$, FE and RH hold, the
+Artin--Schreier involution is $U = \Pi$.
+\end{proposition}
+
+\begin{proof}
+Direct: the even block of $\Edb$ is $t\,1+h\,X$ with eigenvalues $t\pm h = q, r$; the odd block is
+$\operatorname{diag}(\bar\pi,\pi)$; $3\cdot1+2X\mapsto3\cdot1-2X$ under $Z$-conjugation gives the duality.
+Verified in \texttt{scripts/zeta\_conditions.py} (explicit words for $n\le3$) and lane script
+\texttt{curve\_projective.py} ($46$ checks).
+\end{proof}
+
+\begin{proposition}[FE, RH and mixing are mutually independent]
+\label{prop:fe-rh-mixing-independent}
+\claimstatus{prop:fe-rh-mixing-independent}{sketched}
+With Pauli letters $\sqrt{c_0}\,1,\sqrt{c_1}Z,\sqrt{c_2}X,\sqrt{c_3}Y$ on $\mathbb C^{1|1}$,
+$c = \tfrac14(16+r+x+y,\ 16+r-x-y,\ 16-r+x-y,\ 16-r-x+y)$, the even spectrum is $\{16,r\}$ and the
+odd $\{x,y\}$, the family is trace preserving after $/4$, and every $a_d$ is a nonnegative integer.
+$(r;x,y) = (1;4,4), (1;8,2), (0;4,4), (1;3,3)$ realise (FE, RH, mixing) $=$ (Y,Y,Y), (Y,N,Y), (N,Y,Y),
+(N,N,Y); tensoring with an idle even qubit keeps FE and RH and destroys uniqueness. The one
+excluded combination is (FE $=$ N, RH $=$ Y) with the exact projective pair $\{1,q\}$, since RH
+already makes the odd multiset reciprocal. Positivity of norms plus FE does not force RH.
+\end{proposition}
+
+\begin{proof}
+The channel action of Pauli letters on $1, X, Y, Z$ is diagonal with the stated eigenvalues; orbit
+embeddings give $a_d\ge0$. \texttt{independence.py} ($131$ checks), orchestrator script.
+\end{proof}
+
+\begin{proposition}[Tiny $L$-functions as MPS: Horner Dirichlet, Gauss, Kloosterman, a graph cover]
+\label{prop:tiny-l-functions}
+\claimstatus{prop:tiny-l-functions}{sketched}
+(i) Horner MPS: bond $\mathbb F_q[x]/M$, letters $H_c$, $f\mapsto xf+c$ ($c\in\mathbb F_q$), initial vector the
+residue $1$, closing row $(\chi(f))_f$; the open-chain amplitude $b_n = \chi^{\mathsf T}(\sum_cH_c)^n|1\rangle$
+gives $L(u,\chi) = \sum b_nu^n$. Over $\mathbb F_2$, $M = x^3+x+1$, $\chi(x) = w = e^{2\pi i/7}$:
+$L = 1+(w+w^3)u-(1+w+w^3)u^2 = (1-u)(1-\lambda u)$, $|\lambda|^2 = 2$. Over $\mathbb F_3$, $M = x^2+1$,
+$\chi(1+x) = e^{2\pi i/8}$: $L = 1-\lambda u$, $\lambda = -\sqrt2+i$, $|\lambda|^2 = 3$, for the odd characters.
+These are amplitudes, not norms (C1, C2 fail for an individual factor); the physical open norm counts
+monics coprime to $M$; the ring presentation is the Euler product over prime polynomials with
+$\chi(P)^k$ on repetitions, not the closed Horner automaton (closing $H_c$ into a trace imposes a
+return condition and is wrong); the completed factor obeys the dual-character FE
+$L^*(1/(qu),\chi) = -(\lambda/qu)L^*(u,\bar\chi)$. (ii) Gauss: for the quadratic character over $\mathbb F_3$
+the standard convention gives $1+Gu$, $G = i\sqrt3$; a single Gauss factor is not a norm.
+(iii) Kloosterman over $\mathbb F_4$: $S_n = \sum_{x\ne0}(-1)^{\operatorname{tr}(x+x^{-1})}$, $S_1 = 3$,
+$L = 1+3u+4u^2 = (1-\pi u)(1-\bar\pi u)$, $\pi = (-3+i\sqrt7)/2$; the norm $4^n+S_n$ on $\mathbb C^{1|1}$
+is the affine count of $y^2+xy = x^3+1$, with the sign fixed by the raw-sum convention.
+(iv) Graph cover: the rose with two loops and $\mathbb Z/2$ voltages $0,1$; eight row letters on bond
+dimension $8$ form a count MPS; $L_1 = 1/((1-u^2)(1-u)(1-3u))$, $L_{\mathrm{sgn}} = 1/((1-u^2)(1+3u^2))$,
+every root a pole, the reduced Bass quadratics $1-4u+3u^2$ and $1+3u^2$ reciprocal at $q = 3$ (the
+actual inverse-pairing mechanism); the ratio of reduced determinants $(1+3u^2)/((1-u)(1-3u))$ has a
+graded $\mathbb C^{1|1}$ norm realisation. The correct tiny $\mathbb Z/2$ Artin example is a directed
+voltage cover with $L(u,1) = 1/(1-3u)$, $L(u,\mathrm{sgn}) = 1/(1+u)$, not the drafted square root for the
+pair shift.
+\end{proposition}
+
+\begin{proof}
+Lane scripts \texttt{dirichlet\_f2.py}, \texttt{dirichlet\_f3.py}, \texttt{gauss.py}, \texttt{kloosterman.py},
+\texttt{graph\_artin.py}, \texttt{z2\_shift\_cover.py}; the $\mathbb F_2$ Horner MPS re-derived by the orchestrator.
+\end{proof}
+
+\begin{proposition}[Two cMPS on $\mathbb C^{1|1}$]
+\label{prop:cmps-half-and-fe}
+\claimstatus{prop:cmps-half-and-fe}{sketched}
+(i) Half entropy: $Q = \tfrac12\,1$, $R = \operatorname{diag}(1,0)$ give $\Tcm = \operatorname{diag}(2,1,1,1)$,
+$N(L) = e^{2L}-e^{L}$, ring zeta $(z-1)/(z-2)$; a normalised finite-norm alternative
+($R_f = |0\rangle\langle1|$, $R_b = \operatorname{diag}(\tfrac12,-\tfrac12)$, $Q = \operatorname{diag}(-\tfrac18,-\tfrac58)$) has
+$N(L) = 1-e^{-L}$ but fails kinetic regularity; on homogeneous regular $\mathbb C^{1|1}$ data,
+regularity, Lindblad normalisation, uniqueness and the exact half difference cannot all hold.
+(ii) Functional equation: one lowering fermion $R = \sqrt2\,|0\rangle\langle1|$, $H = \operatorname{diag}(0,1)$,
+$Q = -iH-\tfrac12R^\dagger R$: normalised spectrum even $\{0,-2\}$, odd $\{-1\pm i\}$, unique pure
+vacuum fixed point; in the growth convention $N(L) = |1-e^{(1+i)L}|^2 = 1+e^{2L}-2e^L\cos L$ and
+ring zeta $((z-1)^2+1)/(z(z-2))$ with the additive FE $\mathcal Z(2-z) = \mathcal Z(z)$ and both zeros on
+$\re z = 1$: FE, RH and the unique fixed point by one visible mechanism (odd damping is half the
+population decay, the frequency comes from $H$). The ring vector has only its vacuum amplitude:
+the zeta data sit in the length-dependent vacuum normalisation, and no nontrivial entanglement
+spectrum is produced.
+\end{proposition}
+
+\begin{proof}
+Direct diagonalisation of $\Tcm$; \texttt{cmps\_half.py}, \texttt{cmps\_fe.py}, orchestrator script.
+\end{proof}
+
+\begin{observation}[What factor by factor reaches, and what a finite bond cannot]
+\label{obs:factor-by-factor-limits}
+\claimstatus{obs:factor-by-factor-limits}{sketched-conditional}
+A practitioner can build tonight: E0 (a zero from destructive interference with a subshift), the
+four-letter elliptic channels (RH, then FE on completion, with a unique mixing fixed point), the
+Pauli family (break RH keeping FE and mixing; add an idle qubit to break uniqueness without moving
+any divisor point), the Horner tensors (tiny Dirichlet polynomials), the graph cover (an Artin
+decomposition whose nontrivial factors have poles), the damping cMPS (additive FE, uniform odd
+rate, unique vacuum). A finite bond can have infinitely many Euler primes (E0 does) but cannot
+produce a nonrational $Z$, an atomic prime comb, or infinitely many distinct divisor points:
+$u = q^{-s}$ gives periodic copies of finitely many points, not Riemann's zeros. The no-go of
+\cref{sec:ring-norm-bosonic-nogo} concerns plain power traces; graded norms evade it by negative net
+coherence multiplicities. A single simple pole at $1/q$ is incompatible with the uncompleted
+self-reciprocal FE: the completion must be declared. Factor by factor constructs and tests local
+spectra, characters, primes, normalisations and dualities; it does not make an infinite product
+converge, supply the continuation or the archimedean factor, select an entanglement spectrum, or
+prove RH for an unidentified infinite object. The corrections to the orchestrator's drafts are in
+the lane's ledger (D1--D8): inverse pairing alone gives no FE; the swap $L$-function was not an
+Artin factor; unique stationarity, gauge and mixing are three conditions; the affine rung needs its
+own tensor.
+\end{observation}
+
+\begin{numerical}[Zeta conditions: one lane, two suites]
+\label{num:zeta-conditions}
+\claimstatus{num:zeta-conditions}{numerical}
+Lane: $461$ checks over $13$ scripts (\texttt{notes/zeta-conditions/finite/run\_all.py}, re-run by the
+orchestrator, all pass; every matrix printed in the report's generated catalogue). Orchestrator:
+\texttt{scripts/zeta\_conditions.py} (\texttt{outputs/zeta\_conditions.txt}), $26$ checks: E0 counts, gas
+and zeta; the $\mathbb F_5$ curve count, the four-letter TP tensor, its spectra, Ramond norm by explicit
+words, the duality $J$, the unitary odd block, the unique mixing fixed point; the four Pauli
+families with their FE/RH/gas verdicts; the FE cMPS spectrum, $N(L)$ at six lengths, and the
+additive FE; the $\mathbb F_2$ Horner $L$-function and $|\lambda|^2 = 2$; the $\mathbb F_4$ supersingular count.
+\end{numerical}

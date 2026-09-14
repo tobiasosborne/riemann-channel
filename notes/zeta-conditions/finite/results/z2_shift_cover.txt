@@ -1,0 +1,71 @@
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS letter 4 homogeneous
+PASS letter 5 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS Kraus completeness on the entire bond
+PASS unique stationary cover channel
+PASS trivial Artin trace n=1
+PASS sign Artin trace n=1
+PASS trivial Artin trace n=2
+PASS sign Artin trace n=2
+PASS trivial Artin trace n=3
+PASS sign Artin trace n=3
+PASS trivial Artin trace n=4
+PASS sign Artin trace n=4
+PASS trivial Artin trace n=5
+PASS sign Artin trace n=5
+PASS trivial Artin trace n=6
+PASS sign Artin trace n=6
+PASS deck transformation commutes with path transfer
+A_0
+[1, 0]
+[0, 0]
+A_1
+[0, 0]
+[1, 0]
+A_2
+[0, 0]
+[1, 0]
+A_3
+[0, 0]
+[0, 1]
+A_4
+[0, 1]
+[0, 0]
+A_5
+[0, 1]
+[0, 0]
+Pi
+[1, 0]
+[0, 1]
+deck_X
+[0, 1]
+[1, 0]
+path_C
+[1, 2]
+[2, 1]
+Artin_trivial_amplitude_letter
+[3]
+Artin_sign_amplitude_letter
+[-1]
+N_1..6 ['2', '10', '26', '82', '242', '730']
+a_1..6 ['2', '4', '8', '18', '48', '116']
+deck_twisted_traces ['4', '8', '28', '80', '244', '728']
+N_sign_1..6 ['-1', '1', '-1', '1', '-1', '1']
+a_sign_1..6 ['-1', '1', '0', '0', '0', '0']
+Z_cover = 1/((1 - 3*u)*(u + 1))
+L_trivial = 1/(1 - 3*u)
+L_sign = 1/(u + 1)
+TALLY z2_shift_cover: 31/31 PASS; 0 FAIL

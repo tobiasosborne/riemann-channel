@@ -1,0 +1,62 @@
+{
+  "name": "gauss",
+  "checks": 14,
+  "failed": [],
+  "matrices": {
+    "open_A_0": [
+      [
+        "1"
+      ]
+    ],
+    "open_A_1": [
+      [
+        "-1/2 + sqrt(3)*I/2"
+      ]
+    ],
+    "open_A_2": [
+      [
+        "-1/2 + sqrt(3)*I/2"
+      ]
+    ],
+    "open_boundary": [
+      [
+        "1"
+      ]
+    ],
+    "amplitude_F": [
+      [
+        "-sqrt(3)*I"
+      ]
+    ],
+    "Pi_amplitude": [
+      [
+        "-1"
+      ]
+    ]
+  },
+  "sequences": {
+    "log_N_1..6": [
+      "sqrt(3)*I",
+      "3",
+      "-3*sqrt(3)*I",
+      "-9",
+      "9*sqrt(3)*I",
+      "27"
+    ],
+    "formal_a_1..6": [
+      "sqrt(3)*I",
+      "3/2 - sqrt(3)*I/2",
+      "-4*sqrt(3)*I/3",
+      "-3",
+      "8*sqrt(3)*I/5",
+      "4 + 2*sqrt(3)*I/3"
+    ]
+  },
+  "formulas": {
+    "G_standard_sum": "sqrt(3)*I",
+    "L_standard": "sqrt(3)*I*u + 1",
+    "L_if_G_means_Frobenius_alpha": "sqrt(3)*I*u + 1",
+    "physical_open_norm_degree_n": "3**n"
+  },
+  "facts": []
+}

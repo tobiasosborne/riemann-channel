@@ -1,0 +1,62 @@
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS Kraus completeness on the entire bond
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS y^2+y=x^3 over F_2^2
+PASS y^2+y=x^3 over F_2^4
+PASS y^2+y=x^3 over F_2^6
+PASS y^2+y=x^3 over F_2^8
+PASS y^2+y=x^3 over F_2^10
+PASS y^2+y=x^3 over F_2^12
+PASS functional equation
+PASS double real root derived from finite field count
+A_0
+[sqrt(10)/2, 0]
+[0, -2*sqrt(10)/5]
+A_1
+[0, 0]
+[0, 3*sqrt(10)/10]
+A_2
+[0, sqrt(6)/2]
+[0, 0]
+A_3
+[0, 0]
+[sqrt(6)/2, 0]
+Pi
+[1, 0]
+[0, -1]
+E_d
+[5/2, 0, 0, 3/2]
+[0, -2, 0, 0]
+[0, 0, -2, 0]
+[3/2, 0, 0, 5/2]
+product_A
+[1, 0]
+[0, -2]
+N_1..6 ['9', '9', '81', '225', '1089', '3969']
+a_1..6 ['9', '0', '24', '54', '216', '648']
+Z = (2*u + 1)**2/((u - 1)*(4*u - 1))
+pi from N1 = -2
+TALLY curve_supersingular: 34/34 PASS; 0 FAIL

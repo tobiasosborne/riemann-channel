@@ -1,0 +1,49 @@
+PASS Lindblad completeness
+PASS single fermion regularity
+PASS unique stationary vacuum
+PASS positive growth obtained by scalar Q shift
+PASS FE cMPS norm L=1
+PASS FE cMPS norm L=2
+PASS FE cMPS norm L=3
+PASS FE cMPS norm L=4
+PASS FE cMPS norm L=5
+PASS FE cMPS norm L=6
+PASS additive functional equation
+PASS odd frequencies are Hamiltonian input, no zero table
+PASS sampled CPTP Kraus completeness t=0.125
+PASS sampled CPTP Kraus completeness t=0.5
+PASS sampled CPTP Kraus completeness t=1.0
+PASS sampled CPTP Kraus completeness t=2.0
+PASS sampled CPTP Kraus completeness t=3.0
+PASS sampled CPTP Kraus completeness t=6.0
+Pi
+[1, 0]
+[0, -1]
+H
+[0, 0]
+[0, 1]
+R
+[0, sqrt(2)]
+[0, 0]
+Q_normalized
+[0, 0]
+[0, -1 - I]
+Q_growth
+[1, 0]
+[0, -I]
+T_normalized
+[0, 0, 0, 2]
+[0, -1 + I, 0, 0]
+[0, 0, -1 - I, 0]
+[0, 0, 0, -2]
+T_growth
+[2, 0, 0, 2]
+[0, 1 + I, 0, 0]
+[0, 0, 1 - I, 0]
+[0, 0, 0, 0]
+N_L=1..6 ['5.451668219098879', '61.748014674422954', '444.19785518102907', '3053.333452001966', '21943.267392681642', '161981.07073842204']
+N_exact_L=1..6 ['-2*E*cos(1) + 1 + exp(2)', '1 - 2*exp(2)*cos(2) + exp(4)', '1 - 2*exp(3)*cos(3) + exp(6)', '1 - 2*exp(4)*cos(4) + exp(8)', '-2*exp(5)*cos(5) + 1 + exp(10)', '-2*exp(6)*cos(6) + 1 + exp(12)']
+N = 1+exp(2L)-2exp(L)cos(L)
+Z_growth = ((z - 1)**2 + 1)/(z*(z - 2))
+Z_normalized = ((z + 1)**2 + 1)/(z*(z + 2))
+TALLY cmps_fe: 18/18 PASS; 0 FAIL

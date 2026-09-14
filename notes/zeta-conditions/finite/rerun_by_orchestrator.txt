@@ -1,0 +1,1342 @@
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS net cancellation gives E0
+PASS bosonic primes degree 1
+PASS bosonic primes degree 2
+PASS bosonic primes degree 3
+PASS bosonic primes degree 4
+PASS bosonic primes degree 5
+PASS bosonic primes degree 6
+PASS positive integral norm has a_2=-2
+PASS counterexample letters are inverse paired
+PASS inverse pairing does not give raw-transfer FE
+PASS fake swap L has nonintegral degree-two exponent
+PASS equal weighted sub-sums do not ensure a genuine gas
+A_00
+[1, 0]
+[0, 1]
+A_01
+[1, 0]
+[0, 0]
+A_10
+[1, 0]
+[0, 0]
+A_11
+[1, 0]
+[0, 1]
+Pi
+[1, 0]
+[0, -1]
+E_d
+[4, 0, 0, 0]
+[0, 2, 0, 0]
+[0, 0, 2, 0]
+[0, 0, 0, 2]
+counterexample_C2_A
+[1, 0]
+[0, -1]
+inverse_B
+[1, 0]
+[0, 2]
+inverse_Binv
+[1, 0]
+[0, 1/2]
+inverse_E_d
+[2, 0, 0, 0]
+[0, 5/2, 0, 0]
+[0, 0, 5/2, 0]
+[0, 0, 0, 17/4]
+weighted_subset_A_0
+[1/2, 0]
+[0, 1/2]
+weighted_subset_A_1
+[1/2, 0]
+[0, 0]
+N_1..6 ['2', '12', '56', '240', '992', '4032']
+a_1..6 ['2', '5', '18', '57', '198', '661']
+C2_counterexample_N ['4', '0', '4', '0', '4', '0']
+C2_counterexample_a ['4', '-2', '0', '0', '0', '0']
+fake_swap_N ['1', '6', '28', '120', '496', '2016']
+fake_swap_a ['1', '5/2', '9', '57/2', '99', '661/2']
+weighted_subset_N ['1/4', '3/16', '7/64', '15/256', '31/1024', '63/4096']
+weighted_subset_a ['1/4', '-1/32', '-3/64', '-33/1024', '-45/1024', '-43/8192']
+inverse_counterexample_N ['5/4', '153/16', '3425/64', '67617/256', '1252625/1024', '22399713/4096']
+inverse_counterexample_a ['5/4', '133/32', '1115/64', '65169/1024', '250269/1024', '7382155/8192']
+Z = (2*u - 1)/(4*u - 1)
+C2_counterexample_Z = (u + 1)**2/(u - 1)**2
+weighted_subset_Z = (u - 4)/(2*(u - 2))
+inverse_counterexample_Z = (5*u - 2)**2/((2*u - 1)*(17*u - 4))
+TALLY e0_pair_shift: 26/26 PASS; 0 FAIL
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS Kraus completeness on the entire bond
+PASS independent F_5^1 point enumeration minus infinity
+PASS independent F_5^2 point enumeration minus infinity
+PASS independent F_5^3 point enumeration minus infinity
+PASS prime count degree 1
+PASS prime count degree 2
+PASS prime count degree 3
+PASS prime count degree 4
+PASS prime count degree 5
+PASS prime count degree 6
+PASS affine zeta
+PASS odd block divided by sqrt(5) unitary
+A_0
+[sqrt(10)/2, 0]
+[0, sqrt(10)*(-3 + sqrt(11)*I)/10]
+A_1
+[0, 0]
+[0, sqrt(2)/2]
+A_2
+[0, sqrt(10)/2]
+[0, 0]
+A_3
+[0, 0]
+[sqrt(10)/2, 0]
+Pi
+[1, 0]
+[0, -1]
+E_d
+[5/2, 0, 0, 5/2]
+[0, -3/2 - sqrt(11)*I/2, 0, 0]
+[0, 0, -3/2 + sqrt(11)*I/2, 0]
+[5/2, 0, 0, 5/2]
+N_1..6 ['8', '26', '107', '674', '3068', '15551']
+a_1..6 ['8', '9', '33', '162', '612', '2571']
+Z = -(5*u**2 + 3*u + 1)/(5*u - 1)
+pi from N1 = -3/2 + sqrt(11)*I/2
+TALLY curve_affine: 26/26 PASS; 0 FAIL
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS Kraus completeness on the entire bond
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS independent point enumeration n=1
+PASS independent point enumeration n=2
+PASS independent point enumeration n=3
+PASS genus-one functional equation
+PASS visible Hodge duality
+PASS product tensor has singular left Perron matrix
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS Kraus completeness on the entire bond
+A_0
+[sqrt(3), 0]
+[0, sqrt(3)*(-3 + sqrt(11)*I)/6]
+A_1
+[0, 0]
+[0, 2*sqrt(3)/3]
+A_2
+[0, sqrt(2)]
+[0, 0]
+A_3
+[0, 0]
+[sqrt(2), 0]
+Pi
+[1, 0]
+[0, -1]
+E_d
+[3, 0, 0, 2]
+[0, -3/2 - sqrt(11)*I/2, 0, 0]
+[0, 0, -3/2 + sqrt(11)*I/2, 0]
+[2, 0, 0, 3]
+product_A_0
+[sqrt(2)/2, 0]
+[0, sqrt(2)*(-3 + sqrt(11)*I)/4]
+product_A_1
+[sqrt(2)/2, 0]
+[0, sqrt(2)*(-3 + sqrt(11)*I)/4]
+product_E_d
+[1, 0, 0, 0]
+[0, -3/2 - sqrt(11)*I/2, 0, 0]
+[0, 0, -3/2 + sqrt(11)*I/2, 0]
+[0, 0, 0, 5]
+Hodge_J
+[0, 0, 0, 1]
+[0, 0, 1, 0]
+[0, 1, 0, 0]
+[1, 0, 0, 0]
+damping_A_0
+[-3/2 + sqrt(11)*I/2, 0]
+[0, 1]
+damping_A_1
+[0, 2]
+[0, 0]
+N_1..6 ['9', '27', '108', '675', '3069', '15552']
+a_1..6 ['9', '9', '33', '162', '612', '2571']
+Z = (5*u**2 + 3*u + 1)/((u - 1)*(5*u - 1))
+pi from N1 = -3/2 + sqrt(11)*I/2
+TALLY curve_projective: 46/46 PASS; 0 FAIL
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS Kraus completeness on the entire bond
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS y^2+y=x^3 over F_2^2
+PASS y^2+y=x^3 over F_2^4
+PASS y^2+y=x^3 over F_2^6
+PASS y^2+y=x^3 over F_2^8
+PASS y^2+y=x^3 over F_2^10
+PASS y^2+y=x^3 over F_2^12
+PASS functional equation
+PASS double real root derived from finite field count
+A_0
+[sqrt(10)/2, 0]
+[0, -2*sqrt(10)/5]
+A_1
+[0, 0]
+[0, 3*sqrt(10)/10]
+A_2
+[0, sqrt(6)/2]
+[0, 0]
+A_3
+[0, 0]
+[sqrt(6)/2, 0]
+Pi
+[1, 0]
+[0, -1]
+E_d
+[5/2, 0, 0, 3/2]
+[0, -2, 0, 0]
+[0, 0, -2, 0]
+[3/2, 0, 0, 5/2]
+product_A
+[1, 0]
+[0, -2]
+N_1..6 ['9', '9', '81', '225', '1089', '3969']
+a_1..6 ['9', '0', '24', '54', '216', '648']
+Z = (2*u + 1)**2/((u - 1)*(4*u - 1))
+pi from N1 = -2
+TALLY curve_supersingular: 34/34 PASS; 0 FAIL
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS letter 4 homogeneous
+PASS letter 5 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS Kraus completeness on the entire bond
+PASS unique stationary cover channel
+PASS trivial Artin trace n=1
+PASS sign Artin trace n=1
+PASS trivial Artin trace n=2
+PASS sign Artin trace n=2
+PASS trivial Artin trace n=3
+PASS sign Artin trace n=3
+PASS trivial Artin trace n=4
+PASS sign Artin trace n=4
+PASS trivial Artin trace n=5
+PASS sign Artin trace n=5
+PASS trivial Artin trace n=6
+PASS sign Artin trace n=6
+PASS deck transformation commutes with path transfer
+A_0
+[1, 0]
+[0, 0]
+A_1
+[0, 0]
+[1, 0]
+A_2
+[0, 0]
+[1, 0]
+A_3
+[0, 0]
+[0, 1]
+A_4
+[0, 1]
+[0, 0]
+A_5
+[0, 1]
+[0, 0]
+Pi
+[1, 0]
+[0, 1]
+deck_X
+[0, 1]
+[1, 0]
+path_C
+[1, 2]
+[2, 1]
+Artin_trivial_amplitude_letter
+[3]
+Artin_sign_amplitude_letter
+[-1]
+N_1..6 ['2', '10', '26', '82', '242', '730']
+a_1..6 ['2', '4', '8', '18', '48', '116']
+deck_twisted_traces ['4', '8', '28', '80', '244', '728']
+N_sign_1..6 ['-1', '1', '-1', '1', '-1', '1']
+a_sign_1..6 ['-1', '1', '0', '0', '0', '0']
+Z_cover = 1/((1 - 3*u)*(u + 1))
+L_trivial = 1/(1 - 3*u)
+L_sign = 1/(u + 1)
+TALLY z2_shift_cover: 31/31 PASS; 0 FAIL
+PASS monic coefficient degree 3 vanishes
+PASS monic coefficient degree 4 vanishes
+PASS monic coefficient degree 5 vanishes
+PASS monic coefficient degree 6 vanishes
+PASS RH by exact cyclotomic arithmetic
+PASS even character has factor 1-u
+PASS explicit L polynomial from monic words
+PASS irreducible-polynomial Euler logarithm degree 1
+PASS irreducible-polynomial Euler logarithm degree 2
+PASS irreducible-polynomial Euler logarithm degree 3
+PASS irreducible-polynomial Euler logarithm degree 4
+PASS irreducible-polynomial Euler logarithm degree 5
+PASS irreducible-polynomial Euler logarithm degree 6
+PASS character k=1 RH
+PASS character k=2 RH
+PASS character k=3 RH
+PASS character k=4 RH
+PASS character k=5 RH
+PASS character k=6 RH
+PASS Horner sum is not the Galois-commuting Frobenius transfer
+PASS physical open-chain norm n=1
+PASS physical open-chain norm n=2
+PASS physical open-chain norm n=3
+H_0
+[1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1]
+[0, 0, 0, 1, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0]
+H_1
+[0, 0, 0, 0, 0, 1, 0, 0]
+[1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1]
+[0, 0, 1, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 1, 0, 0, 0, 0]
+Pi_open
+[1, 0, 0, 0, 0, 0, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 0, 0, 0, 1]
+right_boundary_e1
+[0]
+[1]
+[0]
+[0]
+[0]
+[0]
+[0]
+[0]
+left_character_row
+[0, 1, w, w**3, w**2, w**6, w**4, w**5]
+multiplication_by_generator
+[1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1]
+[0, 0, 0, 1, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0]
+amplitude_F_odd
+[1, 0]
+[0, -w**3 - w - 1]
+Pi_amplitude
+[-1, 0]
+[0, -1]
+L_monic_coefficients_0..6 ['1', 'w**3 + w', '-w**3 - w - 1', '0', '0', '0', '0']
+log_N_1..6_exact ['w**3 + w', 'w**5 - w**4 - w**3 - w - 1', '3*w**4 + w**3 + w**2', '-3*w**5 - 3*w**4 - 2*w**3 - 4', 'w**5 - 5*w**2 + w', '5*w**5 + 5*w**3 + 5*w**2 - 2*w - 1']
+log_N_1..6_decimal ['(-0.27747906604368566+1.2157152215855884j)', '(-0.044073000010209806-1.7567593946498548j)', '(-3.8263964055659905+0.10716043394670804j)', '(1.17240714138104+3.3586674756630295j)', '(1.5135735376839907-5.067735990622914j)', '(-8.977033282792704+0.6057557306517314j)']
+formal_a_1..6_exact ['w**3 + w', 'w**5/2 - w**4/2 - w**3 - w - 1/2', 'w**4 + w**2/3 - w/3', '-w**5 - w**4/2 - w**3/4 + w/4 - 3/4', 'w**5/5 - w**3/5 - w**2', '2*w**5/3 - w**4/3 + w**3 + 2*w**2/3']
+formal_a_1..6_decimal ['(-0.27747906604368566+1.2157152215855884j)', '(0.1167030330167379-1.4862373081177207j)', '(-1.182972446507435-0.3695182625462934j)', '(0.3041200353478124+1.2788567175782202j)', '(0.3582105207455353-1.2566902424416995j)', '(-0.8973404905433657+0.5785116521567444j)']
+physical_open_norm_1..6 ['2', '4', '7', '14', '28', '56']
+L = -(u - 1)*(u*w**3 + u*w + u + 1)
+alpha = -w**3 - w - 1
+alpha_decimal = (-0.7225209339563143-1.2157152215855884j)
+w = exp(2*pi*i/7)
+primitive_generator_digits = [0, 1, 0]
+odd_character_k = 1
+TALLY dirichlet_f2: 23/23 PASS; 0 FAIL
+PASS monic coefficient degree 2 vanishes
+PASS monic coefficient degree 3 vanishes
+PASS monic coefficient degree 4 vanishes
+PASS monic coefficient degree 5 vanishes
+PASS monic coefficient degree 6 vanishes
+PASS RH by exact cyclotomic arithmetic
+PASS odd character is nontrivial on -1
+PASS explicit L polynomial from monic words
+PASS irreducible-polynomial Euler logarithm degree 1
+PASS irreducible-polynomial Euler logarithm degree 2
+PASS irreducible-polynomial Euler logarithm degree 3
+PASS irreducible-polynomial Euler logarithm degree 4
+PASS irreducible-polynomial Euler logarithm degree 5
+PASS irreducible-polynomial Euler logarithm degree 6
+PASS character k=1 RH
+PASS even character k=2 has only 1-u
+PASS character k=3 RH
+PASS even character k=4 has only 1-u
+PASS character k=5 RH
+PASS even character k=6 has only 1-u
+PASS character k=7 RH
+PASS Horner sum is not the Galois-commuting Frobenius transfer
+PASS physical open-chain norm n=1
+PASS physical open-chain norm n=2
+H_0
+[1, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 0, 1, 0, 0, 0, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0, 1]
+[0, 0, 0, 0, 0, 1, 0, 0, 0]
+H_1
+[0, 0, 0, 1, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 0, 0, 1, 0, 0, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0, 1]
+H_2
+[0, 0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 0, 1, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0, 1]
+[0, 0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0, 0]
+Pi_open
+[1, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 0, 0, 0, 0, 1]
+right_boundary_e1
+[0]
+[1]
+[0]
+[0]
+[0]
+[0]
+[0]
+[0]
+[0]
+left_character_row
+[0, 1, w**4, w**6, w, w**7, w**2, w**3, w**5]
+multiplication_by_generator
+[1, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 0, 0, 0, 0, 1]
+[0, 1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0, 0]
+amplitude_F_odd
+[w*(w**2 + w - 1)]
+Pi_amplitude
+[-1]
+L_monic_coefficients_0..6 ['1', '-w**3 - w**2 + w', '0', '0', '0', '0', '0']
+log_N_1..6_exact ['-w**3 - w**2 + w', '2*w**3 + 2*w - 1', 'w**3 - 5*w**2 - w', '4*w**3 + 4*w + 7', '11*w**3 - w**2 - 11*w', '-10*w**3 - 10*w + 23']
+log_N_1..6_decimal ['(1.414213562373094-1j)', '(-0.9999999999999991+2.8284271247461916j)', '(-1.4142135623730958-5j)', '(7+5.656854249492383j)', '(-15.556349186104043-0.9999999999999973j)', '(23-14.142135623730951j)']
+formal_a_1..6_exact ['-w**3 - w**2 + w', '3*w**3/2 + w**2/2 + w/2 - 1/2', '2*w**3/3 - 4*w**2/3 - 2*w/3', 'w**3/2 + w/2 + 2', '12*w**3/5 - 12*w/5', '-7*w**3/3 + 2*w**2/3 - 5*w/3 + 4']
+formal_a_1..6_decimal ['(1.414213562373094-1j)', '(-1.207106781186548+1.9142135623730958j)', '(-0.9428090415820636-1.333333333333334j)', '(2+0.7071067811865479j)', '(-3.3941125496954285+5.873123168353978e-16j)', '(4.471404520791033-2.1617604580795238j)']
+physical_open_norm_1..6 ['3', '8', '24', '72', '216', '648']
+L = -u*w**3 - u*w**2 + u*w + 1
+alpha = w**3 + w**2 - w
+alpha_decimal = (-1.414213562373094+1j)
+w = exp(2*pi*i/8)
+primitive_generator_digits = [1, 1]
+odd_character_k = 1
+TALLY dirichlet_f3: 24/24 PASS; 0 FAIL
+PASS Hasse-Davenport sign from direct extension sum n=1
+PASS affine-line quadratic additive Gauss sum n=1
+PASS Hasse-Davenport sign from direct extension sum n=2
+PASS affine-line quadratic additive Gauss sum n=2
+PASS Hasse-Davenport sign from direct extension sum n=3
+PASS affine-line quadratic additive Gauss sum n=3
+PASS Hasse-Davenport sign from direct extension sum n=4
+PASS affine-line quadratic additive Gauss sum n=4
+PASS Hasse-Davenport sign from direct extension sum n=5
+PASS affine-line quadratic additive Gauss sum n=5
+PASS Hasse-Davenport sign from direct extension sum n=6
+PASS affine-line quadratic additive Gauss sum n=6
+PASS Gauss norm squared
+PASS three explicit affine letters sum to the base Gauss sum
+open_A_0
+[1]
+open_A_1
+[-1/2 + sqrt(3)*I/2]
+open_A_2
+[-1/2 + sqrt(3)*I/2]
+open_boundary
+[1]
+amplitude_F
+[-sqrt(3)*I]
+Pi_amplitude
+[-1]
+log_N_1..6 ['sqrt(3)*I', '3', '-3*sqrt(3)*I', '-9', '9*sqrt(3)*I', '27']
+formal_a_1..6 ['sqrt(3)*I', '3/2 - sqrt(3)*I/2', '-4*sqrt(3)*I/3', '-3', '8*sqrt(3)*I/5', '4 + 2*sqrt(3)*I/3']
+G_standard_sum = sqrt(3)*I
+L_standard = sqrt(3)*I*u + 1
+L_if_G_means_Frobenius_alpha = sqrt(3)*I*u + 1
+physical_open_norm_degree_n = 3**n
+TALLY gauss: 14/14 PASS; 0 FAIL
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS Kraus completeness on the entire bond
+PASS direct extension Kloosterman sum n=1
+PASS direct extension Kloosterman sum n=2
+PASS direct extension Kloosterman sum n=3
+PASS direct extension Kloosterman sum n=4
+PASS direct extension Kloosterman sum n=5
+PASS direct extension Kloosterman sum n=6
+PASS affine elliptic count n=1
+PASS affine elliptic count n=2
+PASS affine elliptic count n=3
+A_0
+[sqrt(2), 0]
+[0, sqrt(2)*(-3 + sqrt(7)*I)/4]
+A_1
+[0, 0]
+[0, 0]
+A_2
+[0, sqrt(2)]
+[0, 0]
+A_3
+[0, 0]
+[sqrt(2), 0]
+Pi
+[1, 0]
+[0, -1]
+E_d
+[2, 0, 0, 2]
+[0, -3/2 - sqrt(7)*I/2, 0, 0]
+[0, 0, -3/2 + sqrt(7)*I/2, 0]
+[2, 0, 0, 2]
+amplitude_F
+[0, -4]
+[1, -3]
+Pi_amplitude
+[-1, 0]
+[0, -1]
+raw_Kl_1..6 ['3', '-1', '-9', '31', '-57', '47']
+N_1..6 ['7', '15', '55', '287', '967', '4143']
+a_1..6 ['7', '4', '16', '68', '192', '680']
+L_log_N_1..6 ['3', '-1', '-9', '31', '-57', '47']
+L_formal_a_1..6 ['3', '-2', '-4', '8', '-12', '10']
+L_Kl = 4*u**2 + 3*u + 1
+Z_affine = -(4*u**2 + 3*u + 1)/(4*u - 1)
+pi from Kl1 = -3/2 + sqrt(7)*I/2
+TALLY kloosterman: 24/24 PASS; 0 FAIL
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS letter 4 homogeneous
+PASS letter 5 homogeneous
+PASS letter 6 homogeneous
+PASS letter 7 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS transposed row letters have TP normalization
+PASS unique stationary graph-cover channel
+PASS other graph eigenvalues strictly subleading
+PASS Artin determinant factorisation
+PASS character projector n=1
+PASS character projector n=2
+PASS character projector n=3
+PASS character projector n=4
+PASS character projector n=5
+PASS character projector n=6
+PASS free deck action commutes with transfer
+PASS Bass trivial factor
+PASS Bass sign factor
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS orthonormal word contraction n=2
+PASS orthonormal word contraction n=3
+PASS Kraus completeness on the entire bond
+PASS physical tensor from reduced inverse-pairing quadratic has FE
+cover_A_0
+[1, 0, 1, 1, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+cover_A_1
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 1, 1, 1, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+cover_A_2
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 1, 1, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+cover_A_3
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 1, 0, 1]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+cover_A_4
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 0, 1, 1]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+cover_A_5
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 1, 1]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+cover_A_6
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[1, 1, 1, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+cover_A_7
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[1, 1, 0, 1, 0, 0, 0, 0]
+Pi_cover
+[1, 0, 0, 0, 0, 0, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 0, 0, 0, 1]
+cover_TP_A_0
+[sqrt(3)/3, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[sqrt(3)/3, 0, 0, 0, 0, 0, 0, 0]
+[sqrt(3)/3, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+cover_TP_A_1
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, sqrt(3)/3, 0, 0, 0, 0, 0, 0]
+[0, sqrt(3)/3, 0, 0, 0, 0, 0, 0]
+[0, sqrt(3)/3, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+cover_TP_A_2
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, sqrt(3)/3, 0, 0, 0, 0, 0]
+[0, 0, sqrt(3)/3, 0, 0, 0, 0, 0]
+[0, 0, sqrt(3)/3, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+cover_TP_A_3
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, sqrt(3)/3, 0, 0, 0, 0]
+[0, 0, 0, sqrt(3)/3, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, sqrt(3)/3, 0, 0, 0, 0]
+cover_TP_A_4
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, sqrt(3)/3, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, sqrt(3)/3, 0, 0, 0]
+[0, 0, 0, 0, sqrt(3)/3, 0, 0, 0]
+cover_TP_A_5
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, sqrt(3)/3, 0, 0]
+[0, 0, 0, 0, 0, sqrt(3)/3, 0, 0]
+[0, 0, 0, 0, 0, sqrt(3)/3, 0, 0]
+cover_TP_A_6
+[0, 0, 0, 0, 0, 0, sqrt(3)/3, 0]
+[0, 0, 0, 0, 0, 0, sqrt(3)/3, 0]
+[0, 0, 0, 0, 0, 0, sqrt(3)/3, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+cover_TP_A_7
+[0, 0, 0, 0, 0, 0, 0, sqrt(3)/3]
+[0, 0, 0, 0, 0, 0, 0, sqrt(3)/3]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, sqrt(3)/3]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0]
+H_base
+[1, 0, 1, 1]
+[0, 1, 1, 1]
+[1, 1, 1, 0]
+[1, 1, 0, 1]
+H_sign
+[1, 0, 1, 1]
+[0, 1, 1, 1]
+[-1, -1, -1, 0]
+[-1, -1, 0, -1]
+H_cover
+[1, 0, 1, 1, 0, 0, 0, 0]
+[0, 1, 1, 1, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 1, 1, 0]
+[0, 0, 0, 0, 1, 1, 0, 1]
+[0, 0, 0, 0, 1, 0, 1, 1]
+[0, 0, 0, 0, 0, 1, 1, 1]
+[1, 1, 1, 0, 0, 0, 0, 0]
+[1, 1, 0, 1, 0, 0, 0, 0]
+deck
+[0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 0, 0, 0, 1]
+[1, 0, 0, 0, 0, 0, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 0, 0]
+Bass_even
+[0, -3]
+[1, 4]
+Bass_odd
+[0, -3]
+[1, 0]
+curve_A_0
+[sqrt(2), 0]
+[0, sqrt(6)*I/2]
+curve_A_1
+[0, 0]
+[0, sqrt(2)/2]
+curve_A_2
+[0, 1]
+[0, 0]
+curve_A_3
+[0, 0]
+[1, 0]
+Pi_curve
+[1, 0]
+[0, -1]
+N_cover_1..6 ['4', '8', '28', '104', '244', '680']
+a_cover_1..6 ['4', '2', '8', '24', '48', '108']
+N_sign_1..6 ['0', '-4', '0', '20', '0', '-52']
+a_sign_1..6 ['0', '-2', '0', '6', '0', '-8']
+N_curve_1..6 ['4', '16', '28', '64', '244', '784']
+a_curve_1..6 ['4', '6', '8', '12', '48', '124']
+Z_cover = 1/((u - 1)**3*(u + 1)**2*(3*u - 1)*(3*u**2 + 1))
+L_trivial = -1/((u - 1)**2*(u + 1)*(3*u - 1))
+L_sign = -1/((u - 1)*(u + 1)*(3*u**2 + 1))
+Z_curve = (3*u**2 + 1)/((u - 1)*(3*u - 1))
+TALLY graph_artin: 46/46 PASS; 0 FAIL
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS TTT FE classification
+PASS TTT RH classification
+PASS TTT unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS TTF FE classification
+PASS TTF RH classification
+PASS TTF unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS TFT FE classification
+PASS TFT RH classification
+PASS TFT unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS TFF FE classification
+PASS TFF RH classification
+PASS TFF unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS FTT FE classification
+PASS FTT RH classification
+PASS FTT unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS FTF FE classification
+PASS FTF RH classification
+PASS FTF unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS FFT FE classification
+PASS FFT RH classification
+PASS FFT unique stationary state classification
+PASS transfer preserves doubled grading
+PASS letter 0 homogeneous
+PASS letter 1 homogeneous
+PASS letter 2 homogeneous
+PASS letter 3 homogeneous
+PASS count n=1
+PASS count n=2
+PASS count n=3
+PASS count n=4
+PASS count n=5
+PASS count n=6
+PASS orthonormal word contraction n=1
+PASS Kraus completeness on the entire bond
+PASS FFF FE classification
+PASS FFF RH classification
+PASS FFF unique stationary state classification
+PASS periodic channel still has one stationary state
+PASS periodic channel has another peripheral eigenvalue
+PASS off-circle reciprocal pair has a negative Weil form
+TTT_A_0
+[5/2, 0]
+[0, 5/2]
+TTT_A_1
+[3/2, 0]
+[0, -3/2]
+TTT_A_2
+[0, sqrt(15)/2]
+[sqrt(15)/2, 0]
+TTT_A_3
+[0, -sqrt(15)*I/2]
+[sqrt(15)*I/2, 0]
+TTT_Pi
+[1, 0]
+[0, -1]
+TTF_A_0
+[5/2, 0, 0, 0]
+[0, 5/2, 0, 0]
+[0, 0, 5/2, 0]
+[0, 0, 0, 5/2]
+TTF_A_1
+[3/2, 0, 0, 0]
+[0, 3/2, 0, 0]
+[0, 0, -3/2, 0]
+[0, 0, 0, -3/2]
+TTF_A_2
+[0, 0, sqrt(15)/2, 0]
+[0, 0, 0, sqrt(15)/2]
+[sqrt(15)/2, 0, 0, 0]
+[0, sqrt(15)/2, 0, 0]
+TTF_A_3
+[0, 0, -sqrt(15)*I/2, 0]
+[0, 0, 0, -sqrt(15)*I/2]
+[sqrt(15)*I/2, 0, 0, 0]
+[0, sqrt(15)*I/2, 0, 0]
+TTF_Pi
+[1, 0, 0, 0]
+[0, 1, 0, 0]
+[0, 0, -1, 0]
+[0, 0, 0, -1]
+TFT_A_0
+[3*sqrt(3)/2, 0]
+[0, 3*sqrt(3)/2]
+TFT_A_1
+[sqrt(7)/2, 0]
+[0, -sqrt(7)/2]
+TFT_A_2
+[0, sqrt(21)/2]
+[sqrt(21)/2, 0]
+TFT_A_3
+[0, -3*I/2]
+[3*I/2, 0]
+TFT_Pi
+[1, 0]
+[0, -1]
+TFF_A_0
+[3*sqrt(3)/2, 0, 0, 0]
+[0, 3*sqrt(3)/2, 0, 0]
+[0, 0, 3*sqrt(3)/2, 0]
+[0, 0, 0, 3*sqrt(3)/2]
+TFF_A_1
+[sqrt(7)/2, 0, 0, 0]
+[0, sqrt(7)/2, 0, 0]
+[0, 0, -sqrt(7)/2, 0]
+[0, 0, 0, -sqrt(7)/2]
+TFF_A_2
+[0, 0, sqrt(21)/2, 0]
+[0, 0, 0, sqrt(21)/2]
+[sqrt(21)/2, 0, 0, 0]
+[0, sqrt(21)/2, 0, 0]
+TFF_A_3
+[0, 0, -3*I/2, 0]
+[0, 0, 0, -3*I/2]
+[3*I/2, 0, 0, 0]
+[0, 3*I/2, 0, 0]
+TFF_Pi
+[1, 0, 0, 0]
+[0, 1, 0, 0]
+[0, 0, -1, 0]
+[0, 0, 0, -1]
+FTT_A_0
+[sqrt(6), 0]
+[0, sqrt(6)]
+FTT_A_1
+[sqrt(2), 0]
+[0, -sqrt(2)]
+FTT_A_2
+[0, 2]
+[2, 0]
+FTT_A_3
+[0, -2*I]
+[2*I, 0]
+FTT_Pi
+[1, 0]
+[0, -1]
+FTF_A_0
+[sqrt(6), 0, 0, 0]
+[0, sqrt(6), 0, 0]
+[0, 0, sqrt(6), 0]
+[0, 0, 0, sqrt(6)]
+FTF_A_1
+[sqrt(2), 0, 0, 0]
+[0, sqrt(2), 0, 0]
+[0, 0, -sqrt(2), 0]
+[0, 0, 0, -sqrt(2)]
+FTF_A_2
+[0, 0, 2, 0]
+[0, 0, 0, 2]
+[2, 0, 0, 0]
+[0, 2, 0, 0]
+FTF_A_3
+[0, 0, -2*I, 0]
+[0, 0, 0, -2*I]
+[2*I, 0, 0, 0]
+[0, 2*I, 0, 0]
+FTF_Pi
+[1, 0, 0, 0]
+[0, 1, 0, 0]
+[0, 0, -1, 0]
+[0, 0, 0, -1]
+FFT_A_0
+[sqrt(23)/2, 0]
+[0, sqrt(23)/2]
+FFT_A_1
+[sqrt(11)/2, 0]
+[0, -sqrt(11)/2]
+FFT_A_2
+[0, sqrt(15)/2]
+[sqrt(15)/2, 0]
+FFT_A_3
+[0, -sqrt(15)*I/2]
+[sqrt(15)*I/2, 0]
+FFT_Pi
+[1, 0]
+[0, -1]
+FFF_A_0
+[sqrt(23)/2, 0, 0, 0]
+[0, sqrt(23)/2, 0, 0]
+[0, 0, sqrt(23)/2, 0]
+[0, 0, 0, sqrt(23)/2]
+FFF_A_1
+[sqrt(11)/2, 0, 0, 0]
+[0, sqrt(11)/2, 0, 0]
+[0, 0, -sqrt(11)/2, 0]
+[0, 0, 0, -sqrt(11)/2]
+FFF_A_2
+[0, 0, sqrt(15)/2, 0]
+[0, 0, 0, sqrt(15)/2]
+[sqrt(15)/2, 0, 0, 0]
+[0, sqrt(15)/2, 0, 0]
+FFF_A_3
+[0, 0, -sqrt(15)*I/2, 0]
+[0, 0, 0, -sqrt(15)*I/2]
+[sqrt(15)*I/2, 0, 0, 0]
+[0, sqrt(15)*I/2, 0, 0]
+FFF_Pi
+[1, 0, 0, 0]
+[0, 1, 0, 0]
+[0, 0, -1, 0]
+[0, 0, 0, -1]
+periodic_A_0
+[0, sqrt(2)]
+[0, 0]
+periodic_A_1
+[0, 0]
+[sqrt(2), 0]
+periodic_Pi
+[1, 0]
+[0, -1]
+TFT_Weil_minor
+[2, 5/2]
+[5/2, 2]
+TFT_Weil_witness
+[1]
+[-1]
+TTT_N_1..6 ['9', '225', '3969', '65025', '1046529', '16769025']
+TTT_a_1..6 ['9', '108', '1320', '16200', '209304', '2794140']
+TTF_N_1..6 ['36', '900', '15876', '260100', '4186116', '67076100']
+TTF_a_1..6 ['36', '432', '5280', '64800', '837216', '11176560']
+TFT_N_1..6 ['7', '189', '3577', '61425', '1015777', '16515009']
+TFT_a_1..6 ['7', '91', '1190', '15309', '203154', '2751875']
+TFF_N_1..6 ['28', '756', '14308', '245700', '4063108', '66060036']
+TFF_a_1..6 ['28', '364', '4760', '61236', '812616', '11007500']
+FTT_N_1..6 ['8', '224', '3968', '65024', '1046528', '16769024']
+FTT_a_1..6 ['8', '108', '1320', '16200', '209304', '2794140']
+FTF_N_1..6 ['32', '896', '15872', '260096', '4186112', '67076096']
+FTF_a_1..6 ['32', '432', '5280', '64800', '837216', '11176560']
+FFT_N_1..6 ['11', '239', '4043', '65375', '1048091', '16775759']
+FFT_a_1..6 ['11', '114', '1344', '16284', '209616', '2795248']
+FFF_N_1..6 ['44', '956', '16172', '261500', '4192364', '67103036']
+FFF_a_1..6 ['44', '456', '5376', '65136', '838464', '11180992']
+periodic_N_1..6 ['0', '8', '0', '32', '0', '128']
+periodic_a_1..6 ['0', '4', '0', '6', '0', '20']
+TTT_Z = (4*u - 1)**2/((u - 1)*(16*u - 1))
+TTF_Z = (4*u - 1)**8/((u - 1)**4*(16*u - 1)**4)
+TFT_Z = (2*u - 1)*(8*u - 1)/((u - 1)*(16*u - 1))
+TFF_Z = (2*u - 1)**4*(8*u - 1)**4/((u - 1)**4*(16*u - 1)**4)
+FTT_Z = -(4*u - 1)**2/(16*u - 1)
+FTF_Z = (4*u - 1)**8/(16*u - 1)**4
+FFT_Z = (3*u - 1)**2/((u - 1)*(16*u - 1))
+FFF_Z = (3*u - 1)**8/((u - 1)**4*(16*u - 1)**4)
+periodic_Z = -1/((2*u - 1)*(2*u + 1))
+TALLY independence: 131/131 PASS; 0 FAIL
+PASS regular bosonic half-entropy transfer
+PASS half-entropy norm L=1
+PASS half-entropy norm L=2
+PASS half-entropy norm L=3
+PASS half-entropy norm L=4
+PASS half-entropy norm L=5
+PASS half-entropy norm L=6
+PASS zero-mode cancellation
+PASS alternative is Lindblad normalized
+PASS fermionic jump nilpotent
+PASS alternative fails mixed-species finite-kinetic-energy regularity
+PASS CPTP alternative norm L=1
+PASS CPTP alternative norm L=2
+PASS CPTP alternative norm L=3
+PASS CPTP alternative norm L=4
+PASS CPTP alternative norm L=5
+PASS CPTP alternative norm L=6
+PASS CPTP alternative has unique stationary vacuum
+Pi
+[1, 0]
+[0, -1]
+Q_regular
+[1/2, 0]
+[0, 1/2]
+R_regular
+[1, 0]
+[0, 0]
+T_regular
+[2, 0, 0, 0]
+[0, 1, 0, 0]
+[0, 0, 1, 0]
+[0, 0, 0, 1]
+Q_Lindblad
+[-1/8, 0]
+[0, -5/8]
+R_fermion
+[0, 1]
+[0, 0]
+R_boson
+[1/2, 0]
+[0, -1/2]
+T_Lindblad
+[0, 0, 0, 1]
+[0, -1, 0, 0]
+[0, 0, -1, 0]
+[0, 0, 0, -1]
+H_Lindblad
+[0, 0]
+[0, 0]
+N_L=1..6 ['4.670774270471606', '47.209093934213584', '383.34325656954746', '2926.3598370085842', '21878.05263570414', '162351.3626255112']
+N_exact_L=1..6 ['-E + exp(2)', '-exp(2) + exp(4)', '-exp(3) + exp(6)', '-exp(4) + exp(8)', '-exp(5) + exp(10)', '-exp(6) + exp(12)']
+N_regular = exp(2L)-exp(L)
+Z_regular = (z - 1)/(z - 2)
+N_Lindblad = 1-exp(-L)
+Z_Lindblad = (z + 1)/z
+shift_to_positive_exponents = Q_Lindblad + I gives T_Lindblad + 2I
+TALLY cmps_half: 18/18 PASS; 0 FAIL
+PASS Lindblad completeness
+PASS single fermion regularity
+PASS unique stationary vacuum
+PASS positive growth obtained by scalar Q shift
+PASS FE cMPS norm L=1
+PASS FE cMPS norm L=2
+PASS FE cMPS norm L=3
+PASS FE cMPS norm L=4
+PASS FE cMPS norm L=5
+PASS FE cMPS norm L=6
+PASS additive functional equation
+PASS odd frequencies are Hamiltonian input, no zero table
+PASS sampled CPTP Kraus completeness t=0.125
+PASS sampled CPTP Kraus completeness t=0.5
+PASS sampled CPTP Kraus completeness t=1.0
+PASS sampled CPTP Kraus completeness t=2.0
+PASS sampled CPTP Kraus completeness t=3.0
+PASS sampled CPTP Kraus completeness t=6.0
+Pi
+[1, 0]
+[0, -1]
+H
+[0, 0]
+[0, 1]
+R
+[0, sqrt(2)]
+[0, 0]
+Q_normalized
+[0, 0]
+[0, -1 - I]
+Q_growth
+[1, 0]
+[0, -I]
+T_normalized
+[0, 0, 0, 2]
+[0, -1 + I, 0, 0]
+[0, 0, -1 - I, 0]
+[0, 0, 0, -2]
+T_growth
+[2, 0, 0, 2]
+[0, 1 + I, 0, 0]
+[0, 0, 1 - I, 0]
+[0, 0, 0, 0]
+N_L=1..6 ['5.451668219098879', '61.748014674422954', '444.19785518102907', '3053.333452001966', '21943.267392681642', '161981.07073842204']
+N_exact_L=1..6 ['-2*E*cos(1) + 1 + exp(2)', '1 - 2*exp(2)*cos(2) + exp(4)', '1 - 2*exp(3)*cos(3) + exp(6)', '1 - 2*exp(4)*cos(4) + exp(8)', '-2*exp(5)*cos(5) + 1 + exp(10)', '-2*exp(6)*cos(6) + 1 + exp(12)']
+N = 1+exp(2L)-2exp(L)cos(L)
+Z_growth = ((z - 1)**2 + 1)/(z*(z - 2))
+Z_normalized = ((z + 1)**2 + 1)/(z*(z + 2))
+TALLY cmps_fe: 18/18 PASS; 0 FAIL
+TOTAL TALLY: 461 passed checks; 0 failed scripts; 13/13 examples completed.

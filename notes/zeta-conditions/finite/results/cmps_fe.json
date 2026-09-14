@@ -1,0 +1,136 @@
+{
+  "name": "cmps_fe",
+  "checks": 18,
+  "failed": [],
+  "matrices": {
+    "Pi": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "-1"
+      ]
+    ],
+    "H": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "R": [
+      [
+        "0",
+        "sqrt(2)"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "Q_normalized": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "-1 - I"
+      ]
+    ],
+    "Q_growth": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "-I"
+      ]
+    ],
+    "T_normalized": [
+      [
+        "0",
+        "0",
+        "0",
+        "2"
+      ],
+      [
+        "0",
+        "-1 + I",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "-1 - I",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "-2"
+      ]
+    ],
+    "T_growth": [
+      [
+        "2",
+        "0",
+        "0",
+        "2"
+      ],
+      [
+        "0",
+        "1 + I",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1 - I",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "sequences": {
+    "N_L=1..6": [
+      "5.451668219098879",
+      "61.748014674422954",
+      "444.19785518102907",
+      "3053.333452001966",
+      "21943.267392681642",
+      "161981.07073842204"
+    ],
+    "N_exact_L=1..6": [
+      "-2*E*cos(1) + 1 + exp(2)",
+      "1 - 2*exp(2)*cos(2) + exp(4)",
+      "1 - 2*exp(3)*cos(3) + exp(6)",
+      "1 - 2*exp(4)*cos(4) + exp(8)",
+      "-2*exp(5)*cos(5) + 1 + exp(10)",
+      "-2*exp(6)*cos(6) + 1 + exp(12)"
+    ]
+  },
+  "formulas": {
+    "N": "1+exp(2L)-2exp(L)cos(L)",
+    "Z_growth": "((z - 1)**2 + 1)/(z*(z - 2))",
+    "Z_normalized": "((z + 1)**2 + 1)/(z*(z + 2))"
+  },
+  "facts": [
+    "Odd decay rates are 1, even nonstationary decay rate 2; normalized correlation lengths 1 and 1/2.",
+    "Continuous length has no intrinsic a_d. Sampling at L=n gives formal Mobius exponents, generally nonintegral."
+  ]
+}

@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-14, night: the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -121,6 +121,31 @@ all rows sketched/numerical, author claude:fable-5.1, unreviewed. Worklog "Night
   coherences is pure dephasing. **Next:** test (e) in the finite covariant cones of shard 04d
   (does Galois covariance + a character-dephasing Kossakowski block + BC stationarity leave
   exactly an even-odd Hamiltonian free?); review shard 03b.
+
+### The zeta conditions factor by factor (2026-09-14, night; shard 06h) — catalogue
+
+TJO's complementary strategy after the negative: impose the zeta conditions one at a time on
+graded ring norms, with tiny L-functions and completely concrete tensors. One astra lane
+(`notes/zeta-conditions/`, 461 checks re-run; `scripts/zeta_conditions.py` 26 checks in CI).
+- **Smallest example:** pair shift on m^2 letters with the diagonal odd, diag(1,[a=b]) on
+  C^{1|1}: Z = (1 - m u)/(1 - m^2 u), one zero at q^-1/2 by half entropy, genuine gas, no FE.
+- **Ledger C1-C10** as exact algebra; automatic: positivity, rationality, sign structure;
+  constraints: integrality, genuine gas, FE, RH, unique fixed point (= simple Perron root +
+  whole-bond TP gauge + mixing), Galois/Artin, realisability, continuum embedding.
+- **Catalogue:** four-letter TP elliptic tensors on C^{1|1} (FE by a visible duality J, RH by a
+  unitary odd block, unique maximally mixed mixing fixed point; affine, projective, supersingular
+  with a real double zero); Pauli family proving FE/RH/mixing independent; Horner MPS for
+  Dirichlet L over F_2[x] and F_3[x]; Gauss, Kloosterman (affine count of y^2+xy=x^3+1), a graph
+  cover with reciprocal Bass quadratics; cMPS half entropy and amplitude damping with the additive
+  FE Z(2-z) = Z(z).
+- **Orchestrator corrected:** inverse-closed letters alone give no FE (diag(1,2)); the swap
+  L-function is not an Artin factor; unique fixed point is three conditions; my duality matrix
+  for the elliptic tensor was wrong twice before Z-conjugation on the even block.
+- **Limits:** finite bond => rational Z, no atomic prime comb, periodic copies of finitely many
+  divisor points under u = q^-s. Factor by factor tests local data; it does not build the infinite
+  object. **Next, if pursued:** Opus REFUTE review of 06h (and 04g); a bond-cutoff family of
+  four-letter-type tensors whose divisor points accumulate (the only route to non-rational
+  behaviour), or the Selberg/Lax-Phillips side where the infinite object exists.
 
 ### The yolo Lindbladian and its audit (2026-09-14, night; shard 04g) — NEGATIVE
 

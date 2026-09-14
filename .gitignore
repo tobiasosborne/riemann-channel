@@ -19,3 +19,7 @@ refs/src/
 notes/yolo-lindblad/*.log
 notes/yolo-lindblad/*.stdout
 notes/yolo-lindblad/finite/__pycache__/
+
+notes/zeta-conditions/*.log
+notes/zeta-conditions/*.stdout
+notes/zeta-conditions/finite/__pycache__/

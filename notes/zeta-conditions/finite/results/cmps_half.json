@@ -1,0 +1,158 @@
+{
+  "name": "cmps_half",
+  "checks": 18,
+  "failed": [],
+  "matrices": {
+    "Pi": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "-1"
+      ]
+    ],
+    "Q_regular": [
+      [
+        "1/2",
+        "0"
+      ],
+      [
+        "0",
+        "1/2"
+      ]
+    ],
+    "R_regular": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "T_regular": [
+      [
+        "2",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    "Q_Lindblad": [
+      [
+        "-1/8",
+        "0"
+      ],
+      [
+        "0",
+        "-5/8"
+      ]
+    ],
+    "R_fermion": [
+      [
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "R_boson": [
+      [
+        "1/2",
+        "0"
+      ],
+      [
+        "0",
+        "-1/2"
+      ]
+    ],
+    "T_Lindblad": [
+      [
+        "0",
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "-1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "-1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "-1"
+      ]
+    ],
+    "H_Lindblad": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "sequences": {
+    "N_L=1..6": [
+      "4.670774270471606",
+      "47.209093934213584",
+      "383.34325656954746",
+      "2926.3598370085842",
+      "21878.05263570414",
+      "162351.3626255112"
+    ],
+    "N_exact_L=1..6": [
+      "-E + exp(2)",
+      "-exp(2) + exp(4)",
+      "-exp(3) + exp(6)",
+      "-exp(4) + exp(8)",
+      "-exp(5) + exp(10)",
+      "-exp(6) + exp(12)"
+    ]
+  },
+  "formulas": {
+    "N_regular": "exp(2L)-exp(L)",
+    "Z_regular": "(z - 1)/(z - 2)",
+    "N_Lindblad": "1-exp(-L)",
+    "Z_Lindblad": "(z + 1)/z",
+    "shift_to_positive_exponents": "Q_Lindblad + I gives T_Lindblad + 2I"
+  },
+  "facts": [
+    "No intrinsic integer-degree prime counts in continuous length.",
+    "Regular bosonic tensor is not TP gaugeable on the whole bond; its Perron left eigenmatrix has rank one."
+  ]
+}

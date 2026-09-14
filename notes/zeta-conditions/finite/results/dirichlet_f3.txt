@@ -1,0 +1,103 @@
+PASS monic coefficient degree 2 vanishes
+PASS monic coefficient degree 3 vanishes
+PASS monic coefficient degree 4 vanishes
+PASS monic coefficient degree 5 vanishes
+PASS monic coefficient degree 6 vanishes
+PASS RH by exact cyclotomic arithmetic
+PASS odd character is nontrivial on -1
+PASS explicit L polynomial from monic words
+PASS irreducible-polynomial Euler logarithm degree 1
+PASS irreducible-polynomial Euler logarithm degree 2
+PASS irreducible-polynomial Euler logarithm degree 3
+PASS irreducible-polynomial Euler logarithm degree 4
+PASS irreducible-polynomial Euler logarithm degree 5
+PASS irreducible-polynomial Euler logarithm degree 6
+PASS character k=1 RH
+PASS even character k=2 has only 1-u
+PASS character k=3 RH
+PASS even character k=4 has only 1-u
+PASS character k=5 RH
+PASS even character k=6 has only 1-u
+PASS character k=7 RH
+PASS Horner sum is not the Galois-commuting Frobenius transfer
+PASS physical open-chain norm n=1
+PASS physical open-chain norm n=2
+H_0
+[1, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 0, 1, 0, 0, 0, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0, 1]
+[0, 0, 0, 0, 0, 1, 0, 0, 0]
+H_1
+[0, 0, 0, 1, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 0, 0, 1, 0, 0, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0, 1]
+H_2
+[0, 0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 0, 1, 0, 0, 0, 0, 0]
+[1, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 1, 0, 0, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0, 1]
+[0, 0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0, 0]
+Pi_open
+[1, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 0, 0, 0, 0, 1]
+right_boundary_e1
+[0]
+[1]
+[0]
+[0]
+[0]
+[0]
+[0]
+[0]
+[0]
+left_character_row
+[0, 1, w**4, w**6, w, w**7, w**2, w**3, w**5]
+multiplication_by_generator
+[1, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 1, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 1, 0]
+[0, 0, 0, 0, 0, 0, 0, 0, 1]
+[0, 1, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 1, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 1, 0, 0]
+[0, 0, 1, 0, 0, 0, 0, 0, 0]
+amplitude_F_odd
+[w*(w**2 + w - 1)]
+Pi_amplitude
+[-1]
+L_monic_coefficients_0..6 ['1', '-w**3 - w**2 + w', '0', '0', '0', '0', '0']
+log_N_1..6_exact ['-w**3 - w**2 + w', '2*w**3 + 2*w - 1', 'w**3 - 5*w**2 - w', '4*w**3 + 4*w + 7', '11*w**3 - w**2 - 11*w', '-10*w**3 - 10*w + 23']
+log_N_1..6_decimal ['(1.414213562373094-1j)', '(-0.9999999999999991+2.8284271247461916j)', '(-1.4142135623730958-5j)', '(7+5.656854249492383j)', '(-15.556349186104043-0.9999999999999973j)', '(23-14.142135623730951j)']
+formal_a_1..6_exact ['-w**3 - w**2 + w', '3*w**3/2 + w**2/2 + w/2 - 1/2', '2*w**3/3 - 4*w**2/3 - 2*w/3', 'w**3/2 + w/2 + 2', '12*w**3/5 - 12*w/5', '-7*w**3/3 + 2*w**2/3 - 5*w/3 + 4']
+formal_a_1..6_decimal ['(1.414213562373094-1j)', '(-1.207106781186548+1.9142135623730958j)', '(-0.9428090415820636-1.333333333333334j)', '(2+0.7071067811865479j)', '(-3.3941125496954285+5.873123168353978e-16j)', '(4.471404520791033-2.1617604580795238j)']
+physical_open_norm_1..6 ['3', '8', '24', '72', '216', '648']
+L = -u*w**3 - u*w**2 + u*w + 1
+alpha = w**3 + w**2 - w
+alpha_decimal = (-1.414213562373094+1j)
+w = exp(2*pi*i/8)
+primitive_generator_digits = [1, 1]
+odd_character_k = 1
+TALLY dirichlet_f3: 24/24 PASS; 0 FAIL
