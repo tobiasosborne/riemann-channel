@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-13, session close: finite symmetry and graded cMPS)
+## Current state (2026-09-14, session close: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -130,6 +130,100 @@ calculation above remains OPEN; this finite matrix calculation does not
 complete it. Prime powers, the real place, metaplectic compatibility,
 the critical operator-algebra limit, and the physical cMPS remain open.
 The new statements should receive independent review before promotion.
+
+### Two Lindblad papers read (2026-09-14, two Opus readers) and the mixing-time question
+
+TJO's hypothesis: Ramanujan properties are tightly related to MIXING TIMES of
+Lindbladians. Two new papers were read from TeX (sources in refs/src, notes
+`notes/extract/2609.13121-reading.md`, `notes/extract/2609.12284-reading.md`,
+quotes line-checked by the readers; no lab-book rows yet).
+
+- **2609.13121, Becker–Zworski, "Optimal relaxation for Witten Lindbladians
+  (in 1D)".** One jump a = h d_x + V', pure fixed point |nu><nu|. Trace-norm
+  decay at exactly the gap lambda_1(h)/(2h) for a REGULAR class of inputs,
+  sharp; no uniform exponential decay on all trace class (1/t example, in
+  the untypeset tail of the latexdiff source). SUSY intertwining (d_y moves
+  to the partner aa* with no zero mode) + maximum principle. Relevance:
+  suggestive, one-sided (slowest rate only); same pattern as our vacuum-decay
+  Lindbladian with a Gibbs diffusion on the diagonal ("both halves" under
+  one jump) but self-adjoint H, so real rates, no zeros. Nothing on cMPS,
+  grading, expanders, cutoff.
+- **2609.12284, Shang, "A Simple Quantum Linear-System Solver via
+  Dissipation".** Purely dissipative reset Lindbladian with pure fixed point
+  encoding A^{-1}b, A non-normal allowed; worst-case mixing O(kappa^2 log 1/eps),
+  dimension independent, matching lower bound for the family; proof via a
+  Poisson-equation / absorption-time argument, no spectrum. Reader-derived
+  (not in paper, numerically checked): spectrum real, gap in
+  [sigma_min^2/2, sigma_min^2], Jordan blocks at tuned parameters invisible to
+  mixing. Relevance: weak; in the notebook's "no-event generator + scalar
+  reset" class.
+- **Convergent negative (UNREVIEWED, both readers independently):** for the
+  Riemann semigroup, ||Z(t)|| = 1 for all t, with or without RH. Argument:
+  reproducing-kernel bound ||Z_t|| >= e^{-eps t} - |S(x - i eps)| and
+  |S(x - i eps)| -> 0 as x -> infinity (mpmath at eps=0.2: 0.72, 0.60, 0.095,
+  0.027 at x = 10, 100, 1000, 5000; heuristic Gamma decay t^{-2 eps} against
+  convexity t^{eps}). Consistent with the recorded Riesz-basis dead route.
+  Consequence: RH cannot be a WORST-CASE mixing-time statement for these
+  channels (no bounded G with B^dag G + G B = -G/2 on all of K_S); a mixing
+  form must restrict to regular data or a weighted norm — exactly the shape
+  of Becker–Zworski's theorem.
+- Pointer (from memory, NOT yet checked against a source): Lubetzky–Peres,
+  "Cutoff on all Ramanujan graphs" (GAFA 2016) — the natural Ramanujan ↔
+  mixing link; quantum analogue for Weil–LPS channels is an open question.
+
+**Next, proposed (not started):** (1) review the ||Z_t|| = 1 argument and
+record it as a negative; (2) truncated-zero numerics: sup_t e^{t/4}||Z_t^(N)||,
+Gram condition number, integrated Gramian versus N; (3) fetch Lubetzky–Peres,
+ask for cutoff of Ramanujan quantum expanders (Weil–LPS); (4) the regular
+data class on which "all rates 1/4" ⇔ uniform e^{-t/4} decay.
+
+### Discussion 2026-09-14: Weil numerator as a boson–fermion ring norm
+
+TJO: for elliptic curves the zeta has numerator and denominator; natural to
+realise via ring norms of an MPS with fermions and bosons. Answer (discussion,
+not registered): by the twisted-ring theorem the P-closed ring norm is
+str E^n on the doubled bond; the untwisted closure is excluded by
+thm:no-ungraded-trace. Minimal bond C^{1|1} has even and odd doubled
+sectors of dimension 2 each, exactly {1,q} and {alpha, conj alpha}. Even a
+BOSONIC tensor A_s = diag(a_s, c a_s), sum |a_s|^2 = 1, |c|^2 = q gives
+||Psi_P||^2 = ||Psi_+ - Psi_-||^2 = |1 - conj(c)^n|^2 = 1 + q^n - alpha^n -
+conj(alpha)^n: Hasse's N_n = deg(1 - phi^n) in MPS clothing. Cauchy–Schwarz
+on the cross transfer gives the one-sided bound |alpha| <= sqrt(1*q) for
+free (decoupled blocks); the functional equation is the equality case.
+Caveats: alpha is put in by hand (circular); the real question is a tensor
+from the curve (test: can the Artin–Schreier super-transfer be written as a
+P(x)conj P graded E = sum A (x) conj A?); genus >= 2 needs cancellations in
+the (-,-) block and presumably fermionic couplings, where C–S is no longer
+free. Wording note: cor:curve-counts-graded is correct as stated (it names
+Tr(sum A (x) conj A)^n, periodic closure) but a bosonic MPS with boundary P
+does realise genus-1 counts; add "with periodic closure" when next touched.
+
+### The fermion parity of a cMPS ring (2026-09-13, Opus, alone)
+
+TJO was cautious about "the ring norm is a supertrace" and asked whether it
+had been proved (it had NOT: only the lattice fMPS contraction was cited,
+cit:fmps-supertrace) and for a direct rigorous calculation of <(-1)^F> in a
+general boson–fermion cMPS ending in str and sdet. Done without subagents
+at TJO's instruction: shards 02f, 04e, 04f (Lamport proofs), script
+`scripts/cmps_parity_supertrace.py` (89 checks against explicit
+Jordan–Wigner Fock vectors; in local CI). All new rows `sketched`
+(unreviewed, author claude:opus-5).
+
+- General data (no grading): <Psi_B'|(-1)^F|Psi_B> = Tr[(B⊗B̄') e^{L T_eta}],
+  T_eta = Q⊗1 + 1⊗Q̄' + Σ eta_a R_a⊗R̄'_a; a signed sum of squares. The
+  absence of any sign in the plain norm is a proved step (ordered creation
+  vectors contract without sign), not a convention.
+- With a bond grading P: (-1)^F Psi_B = Psi_{PBP}, so <(-1)^F> = ±1 for
+  B = 1, P, Pi_±. The physical parity carries NO spectral information.
+- The supertrace lives on the doubled bond, Gamma = P⊗P̄ (odd = block
+  off-diagonal coherences): ||Psi_P||² = str e^{LT}, ||Psi_1||² = Tr e^{LT};
+  odd trace = 2 Re<Psi_{Pi-}|Psi_{Pi+}> (interference); Psi_P is the
+  periodic (Ramond) fermion ring, Psi_1 the antiperiodic one.
+- Ring-length transforms: ∫e^{-zL}||Psi_P||² dL = str(z−T)^{-1} =
+  d/dz log sdet(z−T); Frullani gives sdet(z−T)/sdet(z0−T); ring zeta
+  1/sdet(z−T), poles net even, zeros net odd.
+- Bearing: the HANDOFF sentence is a theorem for finite bonds, sharpened
+  (obs:cmps-supertrace-reading). Open: infinite bonds; review.
 
 ### Latest discussion: Ramanujan conditions in Q and R (2026-09-13)
 

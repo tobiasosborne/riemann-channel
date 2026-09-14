@@ -1,0 +1,222 @@
+% SHARD-ID: RC-04F-CMPS-TWISTED-SUPERTRACE
+% SHARD-TITLE: Graded cMPS Rings: The Twisted Ring Norm Is a Supertrace, Its Ring Zeta a Superdeterminant
+% SHARD-SUMMARY: With a bond grading the physical fermion parity only conjugates the boundary matrix, so its expectation value is +-1 for a parity-homogeneous boundary; the supertrace over the doubled-bond grading P (x) conj P is instead the norm of the ring closed with the bond parity, a positive sum of squares whose odd part is the interference between the two parity-sector closures.
+% SHARD-SUMMARY: The twisted ring is the periodic-fermion ring and the untwisted one the antiperiodic ring; the Laplace and Frullani transforms in the ring length give str (z - T)^{-1} and sdet(z - T), so the ring zeta is 1/sdet with poles from the even and zeros from the odd sector; checked against explicit Jordan-Wigner Fock vectors, and read against the Phantasm programme.
+% SHARD-KEYWORDS: cMPS, fermionic cMPS, bond grading, fermion parity, supertrace, superdeterminant, twisted boundary condition, periodic, antiperiodic, Ramond, Neveu-Schwarz, ring zeta, Frullani, Phantasm
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/cmps_parity_supertrace.py
+
+\section{Graded cMPS Rings: Supertrace and Superdeterminant}
+\label{sec:cmps-twisted-supertrace}
+
+Throughout this section $(Q,R)$ carry a bond grading $P$ (\cref{def:cmps-ring-vector}),
+$\Tcm$, $\Tcm_\eta$ and $\Gdb=P\otimes\bar P$ are as in \cref{def:cmps-transfer-generators}, and
+$\cmps{B}$ is the ring vector of length $L$ with boundary matrix $B$.
+
+\begin{proposition}[With a bond grading the physical parity moves the boundary]
+\label{prop:cmps-graded-parity}
+\claimstatus{prop:cmps-graded-parity}{sketched-conditional}
+(i) $\Gdb^2=1$ and $\Gdb\Tcm=\Tcm\Gdb$. (ii) $(P\otimes1)\Tcm(P\otimes1)=\Tcm_\eta=
+(1\otimes\bar P)\Tcm(1\otimes\bar P)$. (iii) $\Fpar\cmps{B}=\cmps{PBP}$ for every $B$. (iv) If
+$PB=BP$ then $\Fpar\cmps{B}=\cmps{B}$, and if $PB=-BP$ then $\Fpar\cmps{B}=-\cmps{B}$; in
+particular $\langle\cmps{B},\Fpar\cmps{B}\rangle=\pm\|\cmps{B}\|^2$ for
+$B\in\{1,P,\Pisec{+},\Pisec{-}\}$ (sign $+$).
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] (i): $\bar P^2=\overline{P^2}=1$. Conjugating term by term,
+$(P\otimes\bar P)(Q\otimes1)(P\otimes\bar P)=PQP\otimes1=Q\otimes1$, likewise for
+$1\otimes\bar Q$, and $(P\otimes\bar P)(R_a\otimes\bar R_a)(P\otimes\bar P)=PR_aP\otimes
+\overline{PR_aP}=\eta_a^2R_a\otimes\bar R_a$. $\square$
+\item[$\langle1\rangle$2.] (ii): $(P\otimes1)$ fixes $Q\otimes1$ and $1\otimes\bar Q$ and sends
+$R_a\otimes\bar R_a$ to $\eta_aR_a\otimes\bar R_a$; the same for $1\otimes\bar P$. $\square$
+\item[$\langle1\rangle$3.] (iii): $\camp{PBP}_n(x;a)=\eta_a\,\camp{B}_n(x;a)$. \emph{Proof.} By
+cyclicity $\camp{PBP}_n=\Tr[B\,PXP]$ with $X=e^{x_1Q}R_{a_1}\cdots R_{a_n}e^{(L-x_n)Q}$. Insert
+$P^2=1$ between all factors: $Pe^{yQ}P=e^{yPQP}=e^{yQ}$ and $PR_aP=\eta_aR_a$, so
+$PXP=\eta_aX$. Hence $\cmps{PBP}=\sum_n\Jiso\hat\eta\camp{B}_n=\Fpar\sum_n\Jiso\camp{B}_n$ by
+\cref{lem:cmps-fock-isometry} and continuity of $\Fpar$. $\square$
+\item[$\langle1\rangle$4.] (iv): $PB=\pm BP$ gives $PBP=\pm B$; apply $\langle1\rangle$3. The four
+listed matrices commute with $P$. $\square$
+\end{enumerate}
+\end{proof}
+
+As a consistency check, \cref{thm:cmps-overlap-parity}(ii) and (ii) above give
+$\Tr[(B\otimes\bar B)e^{L\Tcm_\eta}]=\Tr[(PBP\otimes\bar B)e^{L\Tcm}]=\langle\cmps{B},\cmps{PBP}\rangle$,
+the same statement as (iii). The direct answer to TJO's question is therefore: in a graded
+cMPS the expectation value of $(-1)^F$ is identically $\pm1$ for the natural boundaries and
+carries no spectral information.
+
+\begin{theorem}[The twisted ring norm is a supertrace]
+\label{thm:cmps-twisted-supertrace}
+\claimstatus{thm:cmps-twisted-supertrace}{sketched-conditional}
+(i) $\|\cmps{1}\|^2=\Tr e^{L\Tcm}$ and $\|\cmps{P}\|^2=\str e^{L\Tcm}=\Tr(e^{L\Tcm}|_{\mathrm{even}})
+-\Tr(e^{L\Tcm}|_{\mathrm{odd}})$. (ii) $\langle\cmps{P},\Fpar\cmps{P}\rangle=\str e^{L\Tcm}=
+\Tr[\Gdb e^{L\Tcm_\eta}]$ and $\langle\cmps{1},\Fpar\cmps{1}\rangle=\Tr e^{L\Tcm}$. (iii)
+$\Tr(e^{L\Tcm}|_{\mathrm{even}})=\|\cmps{\Pisec{+}}\|^2+\|\cmps{\Pisec{-}}\|^2$ and
+$\Tr(e^{L\Tcm}|_{\mathrm{odd}})=2\re\langle\cmps{\Pisec{-}},\cmps{\Pisec{+}}\rangle$. (iv)
+$\str e^{L\Tcm}=\sum_n\sum_a\int_{\simplex{n}}\bigl|\Tr[P\,e^{x_1Q}R_{a_1}\cdots
+R_{a_n}e^{(L-x_n)Q}]\bigr|^2dx\ge0$, with equality iff $\cmps{P}=0$.
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] For $M$ commuting with $\Gdb$ and $E_\pm=\tfrac12(1\pm\Gdb)$:
+$E_\pm$ are complementary idempotents commuting with $M$, so $M$ is block diagonal for
+$\mathrm{ran}E_+\oplus\mathrm{ran}E_-$, $\Tr(E_\pm M)=\Tr(M|_{\mathrm{ran}E_\pm})$ and
+$\Tr(\Gdb M)=\Tr(E_+M)-\Tr(E_-M)$. $e^{L\Tcm}$ commutes with $\Gdb$ by
+\cref{prop:cmps-graded-parity}(i). $\square$
+\item[$\langle1\rangle$2.] (i): \cref{thm:cmps-overlap-parity}(i) with $B=B'=1$, and with
+$B=B'=P$, where $P\otimes\bar P=\Gdb$; then $\langle1\rangle$1. $\square$
+\item[$\langle1\rangle$3.] (ii): the first equality is \cref{prop:cmps-graded-parity}(iv) and (i);
+the second is \cref{thm:cmps-overlap-parity}(ii) with $B=B'=P$; the untwisted case likewise.
+$\square$
+\item[$\langle1\rangle$4.] (iii): expanding $\Pisec{\pm}=\tfrac12(1\pm P)$,
+$\Pisec{+}\otimes\bar{\Pisec{+}}+\Pisec{-}\otimes\bar{\Pisec{-}}=\tfrac12(1+\Gdb)=E_+$ and
+$\Pisec{+}\otimes\bar{\Pisec{-}}+\Pisec{-}\otimes\bar{\Pisec{+}}=E_-$. By
+\cref{thm:cmps-overlap-parity}(i), $\|\cmps{\Pisec{\pm}}\|^2=\Tr[(\Pisec{\pm}\otimes
+\bar{\Pisec{\pm}})e^{L\Tcm}]$ and $\langle\cmps{\Pisec{\mp}},\cmps{\Pisec{\pm}}\rangle=
+\Tr[(\Pisec{\pm}\otimes\bar{\Pisec{\mp}})e^{L\Tcm}]$; these two cross terms are complex
+conjugates. Add and use $\langle1\rangle$1. $\square$
+\item[$\langle1\rangle$5.] (iv): \cref{thm:cmps-overlap-parity}(iii) without signs for $B=P$,
+and (i). $\square$
+\end{enumerate}
+\end{proof}
+
+Two elementary readings. First, the minus sign of the supertrace is the minus sign in
+$\cmps{P}=\cmps{\Pisec{+}}-\cmps{\Pisec{-}}$: the odd sector of the doubled bond is the
+interference term between the two parity-sector closures, and positivity of the norm is
+automatic. Second, physical fermions are not needed to have an odd sector: if every species is
+bosonic and $P$ commutes with $Q$ and all $R_a$, the bond splits into two decoupled cMPS on
+the $\pm1$ eigenspaces and $\str e^{L\Tcm}=\|\Psi_+-\Psi_-\|^2$, the odd sector being their
+cross-transfer. Fermionic $R_a$ are what couple the two blocks.
+
+\begin{proposition}[The twisted ring is the periodic fermion ring]
+\label{prop:cmps-twist-translation}
+\claimstatus{prop:cmps-twist-translation}{sketched-conditional}
+For every $t\in[0,L)$, $U_t\cmps{P}=\cmps{P}$ and $U^{\mathrm{ap}}_t\cmps{1}=\cmps{1}$
+(\cref{def:graded-fock}).
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] \textbf{Action on amplitudes.} For $(y;b)\in\simplex{n}\times\Spc^n$ let
+$w=\#\{k:y_k<t\}$ and define $(T_tc)(y;b)=\varepsilon_w(b)\,c(y_{w+1}-t,\dots,y_n-t,y_1-t+L,
+\dots,y_w-t+L;\,b_{w+1},\dots,b_n,b_1,\dots,b_w)$ with $\varepsilon_w(b)=\prod_{k\le w<l}
+\eta_{b_kb_l}$, and $T^{\mathrm{ap}}_t=(-1)^{w_f}T_t$, $w_f$ the number of fermionic
+$b_1,\dots,b_w$. These are unitary on $\Kamp{n}$, and $U_t\Jiso=\Jiso T_t$,
+$U^{\mathrm{ap}}_t\Jiso=\Jiso T^{\mathrm{ap}}_t$. \emph{Proof.} On a grid having $L-t$ as a cell
+boundary, $u_t$ maps cells to the cells of the shifted grid, the $w$ cells beyond $L-t$ landing
+first; by (F5) $U_te(i,a)$ is the ordered product with the last $w$ creation operators moved to
+the front, which by (F1) costs exactly $\varepsilon_w$; $u^{\mathrm{ap}}_t$ adds $-1$ per wrapped
+fermion. So the identities hold on box functions of such grids, which are dense
+(\cref{lem:cmps-fock-isometry}, steps $\langle1\rangle$2 and $\langle1\rangle$4, refining by the
+point $L-t$); both sides are bounded. $\square$
+\item[$\langle1\rangle$2.] \textbf{Cyclic shift of the amplitude.} With $x$ the argument on the
+right of $\langle1\rangle$1, split $X=e^{x_1Q}R_{a_1}\cdots e^{(L-x_n)Q}$ at the position $L-t$
+as $X=X_1X_2$, $X_2$ containing the last $w$ factors $R$. Then $X_2X_1=e^{y_1Q}R_{b_1}e^{(y_2-y_1)Q}
+\cdots R_{b_n}e^{(L-y_n)Q}$, because $e^{(L-x_n)Q}e^{x_1Q}=e^{(y_{w+1}-y_w)Q}$ and the end
+pieces become $e^{y_1Q}$ and $e^{(L-y_n)Q}$. Hence $\camp{1}_n(x;a)=\camp{1}_n(y;b)$ and, moving
+$X_2$ past $P$ with $PX_2=\eta_{b_1}\cdots\eta_{b_w}X_2P$, $\camp{P}_n(x;a)=(-1)^{w_f}\camp{P}_n(y;b)$.
+$\square$
+\item[$\langle1\rangle$3.] \textbf{Parity of nonzero amplitudes.} If $\eta_b=-1$ then
+$\camp{1}_n(y;b)=\camp{P}_n(y;b)=0$. \emph{Proof.} $PXP=-X$ and $PB=BP$ give $\Tr[BX]=\Tr[PBXP]
+=-\Tr[BX]$. $\square$
+\item[$\langle1\rangle$4.] \textbf{QED.} Let $n_f$ be the (even, by $\langle1\rangle$3) number of
+fermionic letters of $b$. Then $\varepsilon_w(b)=(-1)^{w_f(n_f-w_f)}=(-1)^{w_f}$. By
+$\langle1\rangle$2, $T_t\camp{P}_n=(-1)^{w_f}(-1)^{w_f}\camp{P}_n=\camp{P}_n$ and
+$T^{\mathrm{ap}}_t\camp{1}_n=(-1)^{w_f}(-1)^{w_f}\camp{1}_n=\camp{1}_n$. Apply $\langle1\rangle$1
+and sum over $n$. $\square$
+\end{enumerate}
+\end{proof}
+
+So $\|\cmps{P}\|^2$ is the Ramond (periodic) ring norm and $\|\cmps{1}\|^2$ the
+Neveu--Schwarz (antiperiodic) one: the supertrace of the transfer semigroup in the dilation
+direction is the ordinary norm of the physically periodic fermionic ring, the familiar
+exchange of a parity insertion in one direction with a boundary condition in the other.
+
+\begin{theorem}[Ring-length transforms: supertrace resolvent and superdeterminant]
+\label{thm:cmps-sdet}
+\claimstatus{thm:cmps-sdet}{sketched-conditional}
+Let $N_P(L)=\|\cmps{P}\|^2$ and $N_1(L)=\|\cmps{1}\|^2$ as functions of the ring length, the
+data $(Q,R,P)$ fixed; let $m_\pm(\lambda)$ be the algebraic multiplicity of $\lambda$ in
+$\Tcm|_{\mathrm{even}}$, $\Tcm|_{\mathrm{odd}}$, $\nu(\lambda)=m_+(\lambda)-m_-(\lambda)$, and
+$\omega=\max\re\operatorname{spec}\Tcm$. (i) $N_P(L)=\sum_\lambda\nu(\lambda)e^{\lambda L}$, and
+$N_P$ determines $\nu$. (ii) For $\re z>\omega$,
+$\int_0^\infty e^{-zL}N_P(L)\,dL=\str(z-\Tcm)^{-1}=\frac{d}{dz}\log\sdet(z-\Tcm)=\sum_\lambda
+\frac{\nu(\lambda)}{z-\lambda}$. (iii) For $\re z,\re z_0>\omega$,
+\[
+  \exp\Bigl(-\int_0^\infty\bigl(e^{-zL}-e^{-z_0L}\bigr)N_P(L)\,\frac{dL}{L}\Bigr)
+  =\frac{\sdet(z-\Tcm)}{\sdet(z_0-\Tcm)} .
+\]
+(iv) The same holds for $N_1$ with $\Tr$, $\det$ and $m_++m_-$. Hence the ring zeta of the
+twisted rings is $1/\sdet(z-\Tcm)=\det(z-\Tcm|_{\mathrm{odd}})/\det(z-\Tcm|_{\mathrm{even}})
+=\prod_\lambda(z-\lambda)^{-\nu(\lambda)}$: poles at net-even and zeros at net-odd eigenvalues.
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] For $M\in M_k(\mathbb C)$ with algebraic multiplicities $m$:
+$\Tr e^{LM}=\sum m(\lambda)e^{\lambda L}$, $\Tr(z-M)^{-1}=\sum m(\lambda)/(z-\lambda)$,
+$\det(z-M)=\prod(z-\lambda)^{m(\lambda)}$. \emph{Proof.} Schur: $M=UTU^\dagger$ with $T$ upper
+triangular carrying each eigenvalue $m(\lambda)$ times on the diagonal; $e^{LT}$ and $(z-T)^{-1}$
+are upper triangular with diagonals $e^{\lambda L}$ and $(z-\lambda)^{-1}$. $\square$
+\item[$\langle1\rangle$2.] (i): \cref{thm:cmps-twisted-supertrace}(i) and $\langle1\rangle$1 on the
+invariant sectors (\cref{prop:cmps-graded-parity}(i)). Distinct exponentials are linearly
+independent, so the coefficients $\nu(\lambda)$ are determined. $\square$
+\item[$\langle1\rangle$3.] (ii): $\int_0^\infty e^{-(z-\lambda)L}dL=(z-\lambda)^{-1}$ for
+$\re(z-\lambda)>0$; sum the finitely many terms and use $\langle1\rangle$1 on each sector;
+$\sdet(z-\Tcm)=\prod(z-\lambda)^{\nu(\lambda)}$ has logarithmic derivative
+$\sum\nu(\lambda)/(z-\lambda)$. $\square$
+\item[$\langle1\rangle$4.] \textbf{Frullani.} For $\re\kappa_1,\re\kappa_2>0$,
+$\int_0^\infty(e^{-\kappa_1 L}-e^{-\kappa_2 L})\frac{dL}{L}=\operatorname{Log}\kappa_2-\operatorname{Log}\kappa_1$
+(principal branch). \emph{Proof.} $|e^{-\kappa_1 L}-e^{-\kappa_2 L}|\le|\kappa_1-\kappa_2|L$ for $L\ge0$,
+so the integral converges and, by dominated differentiation on compact subsets of the right
+half plane, is holomorphic in $\kappa_1$ with derivative $-\int_0^\infty e^{-\kappa_1 L}dL=-1/\kappa_1$;
+it vanishes at $\kappa_1=\kappa_2$, as does $\operatorname{Log}\kappa_2-\operatorname{Log}\kappa_1$, which has
+the same derivative on the connected half plane. $\square$
+\item[$\langle1\rangle$5.] (iii): by (i) and $\langle1\rangle$4 with $\kappa_1=z-\lambda$,
+$\kappa_2=z_0-\lambda$, the exponent equals $-\sum\nu(\lambda)[\operatorname{Log}(z_0-\lambda)-
+\operatorname{Log}(z-\lambda)]$; exponentiating the integer multiples gives
+$\prod(z-\lambda)^{\nu(\lambda)}/\prod(z_0-\lambda)^{\nu(\lambda)}$. $\square$
+\item[$\langle1\rangle$6.] (iv): identical, with $m_++m_-$ in place of $\nu$; the zeta statement is
+$\langle1\rangle$3. $\square$
+\end{enumerate}
+\end{proof}
+
+\begin{numerical}[Parity, overlap, supertrace and sdet against explicit Fock vectors]
+\label{num:cmps-parity-supertrace}
+\claimstatus{num:cmps-parity-supertrace}{numerical}
+\texttt{scripts/cmps\_parity\_supertrace.py} (\texttt{outputs/cmps\_parity\_supertrace.txt},
+$89$ checks). Lattice, exact at fixed spacing: $6$ sites with one hard-core boson and two
+fermion species, Jordan--Wigner creation operators whose graded relations and parity action
+are checked first, bond $2+2$, random data. For ungraded data the Fock inner products
+$\langle\Psi'|\Psi\rangle$ and $\langle\Psi'|\Fpar|\Psi\rangle$ match $\Tr[(B\otimes\bar
+B')E^N]$ and $\Tr[(B\otimes\bar B')E_\eta^N]$ to $10^{-10}$, and $\langle\Fpar\rangle=+0.0107$
+is nontrivial. For graded data: $\Fpar\cmps{B}=\cmps{PBP}$ as vectors, $\langle\Fpar\rangle=1$
+for $B=1,P$, $\|\cmps{P}\|^2=\str E^N$, the odd trace equals $2\re\langle\cmps{\Pisec{-}},
+\cmps{\Pisec{+}}\rangle$, $\cmps{P}$ has only even fermion number, and $\cmps{P}$ ($\cmps{1}$)
+is invariant under the periodic (antiperiodic) lattice translation and not under the other.
+Continuum, bond $2+1$: the Dyson series against \texttt{expm}; lattice $\str E^N\to\str
+e^{L\Tcm}$ at first order; the Laplace transform of $N_P$ equals $\str(z-\Tcm)^{-1}$ to
+$10^{-8}$ and the Frullani exponential equals the $\sdet$ ratio ($0.6002951682$ both).
+\end{numerical}
+
+\begin{observation}[What this does and does not give the Phantasm]
+\label{obs:cmps-supertrace-reading}
+\claimstatus{obs:cmps-supertrace-reading}{sketched-conditional}
+For a finite graded bond the HANDOFF reading ``the ring norm is a supertrace, the ordinary norm
+of a fermionic ring with its parity insertion'' is a theorem, with three sharpenings. (a) The
+sign is not the expectation value of the physical $(-1)^F$, which is $\pm1$
+(\cref{prop:cmps-graded-parity}); it is the bond parity inserted in the closure, i.e.\ the
+periodic fermion boundary condition (\cref{prop:cmps-twist-translation}). (b) The grading is
+$\Gdb=P\otimes\bar P$ on the doubled bond, whose odd sector is the block-off-diagonal operators:
+if zeros are to appear as the odd part of such a ring zeta, they are relaxation rates of
+$\Tcm$ on coherences between the two parity blocks, which agrees with the vacuum-decay picture of \cref{obs:zero-coherences-populations}; the supertrace
+over the bond itself in the graded realisation of \cref{sec:phantasm-forced} is a different
+operator and its relation to a $\Tcm$ is not established. (c) Positivity
+$\str e^{L\Tcm}=\|\cmps{P}\|^2\ge0$ is automatic, and the ring zeta is exactly $1/\sdet$,
+consistent with the rigidity of \cref{thm:supertrace-rigidity}. Not established: anything for
+an infinite-dimensional bond (trace class, regularisation of the Laplace transforms), and any
+identification of $\Tcm$ with a Riemann Lindbladian.
+\end{observation}

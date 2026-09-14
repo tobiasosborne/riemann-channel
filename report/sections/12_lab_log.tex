@@ -109,3 +109,30 @@ local CI. Full written derivations were supplied by Codex but no independent
 review was performed, so the eight new analytic claim rows are
 \texttt{sketched}; the ninth is \texttt{numerical}. The arithmetic map to
 the scattering bond and the adelic limit remain open.
+
+\subsection*{2026-09-13: the fermion parity of a cMPS ring}
+
+TJO was cautious about reading the ring norm of a boson--fermion cMPS as a
+supertrace, asked whether it had been proved (it had not: the book only
+cited the lattice fermionic-MPS contraction), and asked for a direct,
+rigorous calculation of the expectation value of $(-1)^F$ ending in a
+supertrace and a superdeterminant. Done alone by Opus at TJO's instruction,
+without subagents, in \cref{sec:cmps-parity,sec:cmps-twisted-supertrace}.
+Outcome: for arbitrary data the parity expectation is a trace of the
+sign-twisted generator; with a bond grading it is identically $\pm1$; the
+supertrace, graded on the doubled bond, is the norm of the ring closed
+with the bond parity (the periodic fermion ring), and its ring-length
+zeta is $1/\sdet$. Unreviewed, so the rows are \texttt{sketched}; the
+Jordan--Wigner script passes $89$ checks.
+
+\subsection*{2026-09-14: two Lindblad papers, mixing times}
+
+At TJO's request two Opus readers read arXiv:2609.13121 (Becker--Zworski,
+optimal relaxation of Witten Lindbladians) and arXiv:2609.12284 (Shang,
+a dissipative quantum linear-system solver) from TeX; reading notes are in
+\texttt{notes/extract/}. Neither bears directly on Ramanujan properties,
+cMPS or KMS states. Both readers independently argue that the compressed
+Riemann semigroup has operator norm one for all times, independently of
+RH, so a mixing-time form of the Ramanujan statement must restrict to
+regular data. This is unreviewed and not registered as a claim.
+

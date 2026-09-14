@@ -1,0 +1,246 @@
+% SHARD-ID: RC-04E-CMPS-PARITY-OVERLAP
+% SHARD-TITLE: The Fermion Parity of a Boson--Fermion cMPS Ring: Overlap Theorem
+% SHARD-SUMMARY: TJO asked whether the ring norm of a boson-fermion cMPS being a supertrace had been proved, and for a direct calculation of the expectation value of the fermion parity; it had not been, the book only cited the graded contraction of fermionic MPS.
+% SHARD-SUMMARY: Proves in Lamport structure, from the graded commutation relations alone, that ordered creation vectors contract without any statistics sign, that ordered amplitudes embed isometrically into Fock space, and hence that <Psi_B'|(-1)^F|Psi_B> = Tr[(B (x) conj B') exp(L T_eta)] for arbitrary cMPS data, a signed sum of squares.
+% SHARD-KEYWORDS: cMPS, fermionic cMPS, fermion parity, overlap, transfer generator, ordered contraction, Dyson series, Lamport proof, boundary matrix
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/cmps_parity_supertrace.py
+
+\section{The Fermion Parity of a Boson--Fermion cMPS Ring}
+\label{sec:cmps-parity}
+
+\emph{Question (TJO, 2026-09-13).} The Phantasm programme reads the ring norm of a graded
+cMPS as a supertrace (HANDOFF, ``forced consequence''). Had that been proved, and what does a
+direct calculation of the expectation value of $(-1)^F$ in a general boson--fermion cMPS
+give? \emph{Answer on arrival.} It had not been proved. The book contained the graded
+contraction of lattice fermionic MPS as a citation (\cref{cit:fmps-supertrace}), the graded
+cMPS matrix structure as a citation (\cref{cit:fcmps-graded-bond}), and theorems about
+abstract graded spectral data (\cref{sec:phantasm-forced}); no cMPS calculation. This section
+and the next supply it, with the definitions of \cref{sec:definitions-graded-cmps}.
+
+\emph{Result in one paragraph.} For arbitrary data, $\langle\cmps{B'}|\Fpar|\cmps{B}\rangle =
+\Tr[(B\otimes\bar B')e^{L\Tcm_\eta}]$, a signed sum of squares
+(\cref{thm:cmps-overlap-parity}). With a bond grading this collapses: the physical parity only
+moves $B$ to $PBP$, so $\langle\Fpar\rangle=\pm1$ for a parity-homogeneous boundary
+(\cref{prop:cmps-graded-parity}). The supertrace appears instead as the norm of the ring closed
+with the bond parity, $\|\cmps{P}\|^2=\str e^{L\Tcm}$, graded by $\Gdb=P\otimes\bar P$, whose
+ring-length transform is $1/\sdet(z-\Tcm)$ (\cref{thm:cmps-twisted-supertrace,thm:cmps-sdet}).
+So the HANDOFF sentence is correct as stated for finite bonds, but the sign is the bond
+parity of the closure, not the expectation value of the physical $(-1)^F$.
+
+\emph{Status.} The author of every argument here is \texttt{claude:opus-5}, working alone at
+TJO's instruction; no independent review has been performed, so the rows are
+\texttt{sketched}. The numerical row is independent evidence at the level of explicit
+Jordan--Wigner operators.
+
+\subsection{Inputs}
+
+\begin{assumption}[Graded canonical relations]
+\label{asm:graded-fock}
+\claimstatus{asm:graded-fock}{assumed}
+In $\Fock$ (\cref{def:graded-fock}), for $f,g\in L^2([0,L))$ and $a,b\in\Spc$, on
+$\Fock_{\mathrm{fin}}$: (F1) $a_b(g)a^\dagger_a(f)-\eta_{ab}a^\dagger_a(f)a_b(g)=\delta_{ab}
+\langle g,f\rangle$ and $a^\dagger_a(f)a^\dagger_b(g)=\eta_{ab}a^\dagger_b(g)a^\dagger_a(f)$;
+(F2) $a_b(g)\vacF=0$; (F3) $\langle\Upsilon,a^\dagger_a(f)\Upsilon'\rangle=\langle
+a_a(f)\Upsilon,\Upsilon'\rangle$ for $\Upsilon,\Upsilon'\in\Fock_{\mathrm{fin}}$, $a^\dagger_a(f)$ is linear in
+$f$ and maps $\Fock_n$ into $\Fock_{n+1}$; (F4) the $\Fock_n$ are mutually orthogonal, $\|\vacF\|=1$ and
+$\Fock_0=\mathbb C\vacF$; (F5) $\Gamma(u)$ is unitary, $\Gamma(u)\vacF=\vacF$ and
+$\Gamma(u)a^\dagger_a(f)=a^\dagger_a(u_af)\Gamma(u)$. These are the standard properties of
+the boson and fermion Fock spaces.
+\end{assumption}
+
+\begin{citedfact}[Overlap, transfer matrix and parity action of cMPS]
+\label{cit:hcov-overlap-parity}
+\claimstatus{cit:hcov-overlap-parity}{cited}
+Haegeman, Cirac, Osborne and Verstraete \cite{haegeman2013calculus} compute the overlap of two
+boson--fermion cMPS as $\Tr[(B\otimes\bar B)\,\mathcal P\exp\int\Tcm]$ with the transfer matrix
+carrying a plus sign for every species, using the ordered contraction of creation operators
+formally with delta functions, and state that the parity operator replaces $R_\alpha$ by % bare-ok
+$\eta_{\alpha}R_\alpha$. % bare-ok
+Verbatim: \texttt{\detokenize{\voperator{T}(x)=Q(x)\otimes \one_{D}+\one_{D}\otimes \overline{Q(x)} + \sum_{\alpha=1}^{N} R_{\alpha}(x)\otimes \overline{R_{\alpha}(x)}.}}
+(\texttt{1211.3935:calculus.tex:378}) and
+\texttt{\detokenize{Since $\operator{P}\ket{\Psi[Q,\{R_{\alpha}\}]}=\ket{\Psi[Q,\{\eta_{\alpha,\alpha} R_{\alpha}\}]}$}}
+(\texttt{1211.3935:calculus.tex:319}).
+\end{citedfact}
+
+So the overlap formula and the parity action are prior art at a formal level, and
+\cref{thm:cmps-overlap-parity}(ii) below is their combination. What this section adds is a
+proof from (F1)--(F5) in which the absence of a statistics sign in the norm is a checked step
+(\cref{lem:ordered-contraction}, step $\langle1\rangle3$), not a convention.
+
+\subsection{Ordered contraction and the Fock embedding}
+
+A \emph{grid} is a partition of $[0,L)$ into finitely many nonempty half-open intervals
+$C_1,\dots,C_M$ listed from left to right, $\chi_i$ the indicator of $C_i$. For a strictly
+increasing $i=(i_1<\dots<i_n)$ and $a\in\Spc^n$ put
+$e(i,a)=a^\dagger_{a_1}(\chi_{i_1})\cdots a^\dagger_{a_n}(\chi_{i_n})\vacF$ ($e(\emptyset)=\vacF$),
+and let $\mathrm{box}(i,a)\in\Kamp{n}$ be $(x;b)\mapsto\delta_{ab}\prod_k\chi_{i_k}(x_k)$, which is
+supported in $\simplex{n}\times\Spc^n$ because the cells are ordered.
+
+\begin{lemma}[Ordered creation vectors contract without sign]
+\label{lem:ordered-contraction}
+\claimstatus{lem:ordered-contraction}{sketched-conditional}
+For strictly increasing $i$ of length $n$, $j$ of length $m$ on one grid, and words $a,b$,
+$\langle e(j,b),e(i,a)\rangle=\delta_{mn}\prod_{k=1}^{n}\delta_{i_kj_k}\delta_{a_kb_k}|C_{i_k}|$.
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] For $g,h_1,\dots,h_n\in L^2$ and $b,a_1,\dots,a_n\in\Spc$:
+$a_b(g)a^\dagger_{a_1}(h_1)\cdots a^\dagger_{a_n}(h_n)\vacF=\sum_{k=1}^n\bigl(\prod_{l<k}\eta_{ba_l}\bigr)
+\delta_{ba_k}\langle g,h_k\rangle\,a^\dagger_{a_1}(h_1)\cdots\widehat{a^\dagger_{a_k}(h_k)}\cdots
+a^\dagger_{a_n}(h_n)\vacF$. \emph{Proof.} Induction on $n$. For $n=0$ both sides vanish by (F2).
+For $n\ge1$ write the vector as $a^\dagger_{a_1}(h_1)X$ and use (F1):
+$a_b(g)a^\dagger_{a_1}(h_1)X=\delta_{ba_1}\langle g,h_1\rangle X+\eta_{ba_1}a^\dagger_{a_1}(h_1)a_b(g)X$;
+expand $a_b(g)X$ by the induction hypothesis. $\square$
+\item[$\langle1\rangle$2.] For $m\ge1$ and $\Upsilon\in\Fock_{\mathrm{fin}}$,
+$\langle e(j,b),\Upsilon\rangle=\langle e(j',b'),a_{b_1}(\chi_{j_1})\Upsilon\rangle$ with
+$j'=(j_2,\dots,j_m)$, $b'=(b_2,\dots,b_m)$. \emph{Proof.}
+$e(j,b)=a^\dagger_{b_1}(\chi_{j_1})e(j',b')$ and (F3). $\square$
+\item[$\langle1\rangle$3.] \textbf{The lemma, by induction on $m$.} If $m=0$ the claim is
+$\langle\vacF,e(i,a)\rangle=\delta_{n0}$, true by (F3), (F4). If $m\ge1$ and $n=0$, the inner
+product is $\langle e(j',b'),a_{b_1}(\chi_{j_1})\vacF\rangle=0$ by $\langle1\rangle$2 and (F2).
+Let $m,n\ge1$. By $\langle1\rangle$2 and $\langle1\rangle$1,
+\[
+\langle e(j,b),e(i,a)\rangle=\sum_{k=1}^n\Bigl(\prod_{l<k}\eta_{b_1a_l}\Bigr)\delta_{b_1a_k}
+\langle\chi_{j_1},\chi_{i_k}\rangle\,\langle e(j',b'),e(i^{(k)},a^{(k)})\rangle ,
+\]
+$i^{(k)},a^{(k)}$ being $i,a$ with the $k$-th entry deleted. Since distinct cells are disjoint,
+$\langle\chi_{j_1},\chi_{i_k}\rangle=|C_{i_k}|\delta_{j_1i_k}$. Let $k\ge2$. If $m=1$, then
+$j'$ is empty and $i^{(k)}$ is not, so the last factor is $0$ by the induction hypothesis. If
+$m\ge2$, the induction hypothesis makes the last factor vanish unless $j'=i^{(k)}$, whose
+first entry is $i_1$; that would give $j_2=i_1<i_k=j_1$, contradicting $j_1<j_2$. Hence only
+$k=1$ survives; its sign product is empty, so
+$\langle e(j,b),e(i,a)\rangle=\delta_{b_1a_1}\delta_{j_1i_1}|C_{i_1}|\,\langle
+e(j',b'),e(i^{(1)},a^{(1)})\rangle$, and the induction hypothesis finishes. $\square$
+\end{enumerate}
+The statistics factors $\prod_{l<k}\eta_{b_1a_l}$ ride only on the terms $k\ge2$, which vanish:
+this is the whole reason no sign enters the norm of an ordered state.
+\end{proof}
+
+\begin{lemma}[Isometric embedding of ordered amplitudes]
+\label{lem:cmps-fock-isometry}
+\claimstatus{lem:cmps-fock-isometry}{sketched-conditional}
+There is a unique bounded linear $\Jiso\colon\bigoplus_n\Kamp{n}\to\Fock$ with
+$\Jiso\,\mathrm{box}(i,a)=e(i,a)$ for every grid, strictly increasing $i$ and word $a$. It is
+isometric, maps $\Kamp{n}$ into $\overline{\Fock_n}$, and satisfies $\Fpar\Jiso=\Jiso\hat\eta$
+where $(\hat\eta c)(x;a)=\eta_a c(x;a)$.
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] \textbf{One grid.} The box functions of a grid $G$ are pairwise
+orthogonal in $\Kamp{n}$ with $\|\mathrm{box}(i,a)\|^2=\prod_k|C_{i_k}|$. By
+\cref{lem:ordered-contraction} the vectors $e(i,a)$ have the same Gram matrix, so the linear
+extension $\Jiso_G$ to their span $S_G$ is well defined and isometric. $\square$
+\item[$\langle1\rangle$2.] \textbf{Refinement.} If $G'$ refines $G$ then $S_G\subseteq S_{G'}$ and
+$\Jiso_{G'}|_{S_G}=\Jiso_G$. \emph{Proof.} Each $C_{i_k}$ is a disjoint union of $G'$-cells,
+all to the left of those in $C_{i_{k+1}}$, so $\mathrm{box}(i,a)=\sum\mathrm{box}'(i',a)$
+over the strictly increasing $i'$ with $C'_{i'_k}\subseteq C_{i_k}$, and $e(i,a)=\sum e'(i',a)$
+by linearity of $a^\dagger$ in its argument (F3). $\square$
+\item[$\langle1\rangle$3.] Any two grids have a common refinement, so $S=\bigcup_GS_G$ is a
+linear subspace on which $\Jiso$ is well defined and isometric. $\square$
+\item[$\langle1\rangle$4.] \textbf{Density.} $S$ is dense in $\Kamp{n}$. \emph{Proof.}
+Continuous $c$ with compact support in $\simplex{n}\times\Spc^n$ are dense. On the uniform grid
+of mesh $h$ let $c_h$ equal $c$ at the left corner of each strictly increasing box and $0$
+elsewhere. On those boxes $|c-c_h|\le\operatorname{osc}_c(\sqrt nh)$; every other point of
+$\simplex{n}$ has two consecutive coordinates in one cell, a set of measure at most
+$(n-1)hL^{n-1}$. So $\|c-c_h\|^2\le|\Spc|^n\bigl(\operatorname{osc}_c(\sqrt nh)^2L^n+(n-1)hL^{n-1}
+\sup|c|^2\bigr)\to0$ by uniform continuity. $\square$
+\item[$\langle1\rangle$5.] \textbf{Extension.} $\Jiso$ extends uniquely by continuity to an
+isometry on each $\Kamp{n}$ with range in $\overline{\Fock_n}$ (F3); ranges for different $n$
+are orthogonal (F4), so the sum over $n$ is isometric. Uniqueness: a bounded map is fixed by
+its values on the dense set $S$. $\square$
+\item[$\langle1\rangle$6.] \textbf{Parity.} By (F5), $\Fpar e(i,a)=\eta_ae(i,a)$. Both
+$\Fpar\Jiso$ and $\Jiso\hat\eta$ are bounded and agree on $S$. $\square$
+\end{enumerate}
+\end{proof}
+
+For box amplitudes $\Jiso$ is literally the smeared form of the formal integral
+$\int c\,a^\dagger_{a_1}(x_1)\cdots a^\dagger_{a_n}(x_n)\vacF$ of
+\cite{haegeman2013calculus}; \cref{lem:cmps-fock-isometry} is its rigorous meaning.
+
+\subsection{The overlap and parity theorem}
+
+\begin{lemma}[Dyson series]
+\label{lem:dyson-series}
+\claimstatus{lem:dyson-series}{sketched}
+Let $A,C\in M_N(\mathbb C)$, $L\ge0$, $I_0(L)=e^{LA}$ and, for $n\ge1$,
+$I_n(L)=\int_{0<x_1<\dots<x_n<L}e^{x_1A}Ce^{(x_2-x_1)A}C\cdots Ce^{(L-x_n)A}\,dx$. Then
+$\|I_n(L)\|\le e^{L\|A\|}\|C\|^nL^n/n!$ and $\sum_{n\ge0}I_n(L)=e^{L(A+C)}$.
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] \textbf{Bound.} $\|e^{yA}\|\le e^{y\|A\|}$ and the exponents in each
+integrand add up to $L$, so the integrand has norm at most $e^{L\|A\|}\|C\|^n$; the simplex has
+volume $L^n/n!$. $\square$
+\item[$\langle1\rangle$2.] \textbf{Recursion.} $I_n(L)=\int_0^LI_{n-1}(y)\,C\,e^{(L-y)A}\,dy$
+for $n\ge1$. \emph{Proof.} Fubini, integrating first over $0<x_1<\dots<x_{n-1}<y=x_n$. $\square$
+\item[$\langle1\rangle$3.] On $[0,L_0]$ the series $F=\sum_nI_n$ converges uniformly by
+$\langle1\rangle$1, $F$ is continuous, and summing $\langle1\rangle$2 termwise gives
+$F(L)=e^{LA}+\int_0^LF(y)Ce^{(L-y)A}dy$. $\square$
+\item[$\langle1\rangle$4.] $G(L)=e^{L(A+C)}$ satisfies the same equation. \emph{Proof.} Put
+$H(L)=G(L)e^{-LA}$. Then $H'=G(A+C)e^{-LA}-GAe^{-LA}=GCe^{-LA}$ and $H(0)=1$, so
+$G(L)e^{-LA}=1+\int_0^LG(y)Ce^{-yA}dy$; multiply by $e^{LA}$ on the right. $\square$
+\item[$\langle1\rangle$5.] \textbf{QED.} $Z=F-G$ is continuous with
+$Z(L)=\int_0^LZ(y)Ce^{(L-y)A}dy$, so $\|Z(L)\|\le K\int_0^L\|Z(y)\|dy$ with
+$K=\|C\|e^{L_0\|A\|}$; iterating, $\|Z(L)\|\le\sup_{[0,L_0]}\|Z\|\,(KL)^k/k!$ for every $k$,
+hence $Z=0$. $\square$
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Overlap and fermion parity of cMPS rings]
+\label{thm:cmps-overlap-parity}
+\claimstatus{thm:cmps-overlap-parity}{sketched-conditional}
+Let $(Q,R,B)$ and $(Q',R',B')$ be cMPS data with the same $D$ and $\Spc$, and let
+$\Psi=\cmps{B}$, $\Psi'$ the ring vector of $(Q',R',B')$. The series defining them converge in
+$\Fock$, and
+\begin{enumerate}
+\item[(i)] $\langle\Psi',\Psi\rangle=\Tr\bigl[(B\otimes\bar B')\,e^{L\Tcm}\bigr]$;
+\item[(ii)] $\langle\Psi',\Fpar\Psi\rangle=\Tr\bigl[(B\otimes\bar B')\,e^{L\Tcm_\eta}\bigr]$;
+\item[(iii)] $\langle\Psi,\Fpar\Psi\rangle=\sum_{n\ge0}\sum_{a\in\Spc^n}\eta_a\int_{\simplex{n}}
+|\camp{B}_n(x;a)|^2dx$, and $\|\Psi\|^2$ is the same sum without the signs $\eta_a$.
+\end{enumerate}
+No bond grading, regularity condition or normalisation is assumed.
+\end{theorem}
+
+\begin{proof}
+Write $\epsilon\in\{0,1\}$, with $\epsilon=1$ for the parity insertion, and
+$A=Q\otimes1+1\otimes\bar Q'$, $C_\epsilon=\sum_a\eta_a^\epsilon R_a\otimes\bar R'_a$, so that
+$A+C_0=\Tcm$ and $A+C_1=\Tcm_\eta$.
+\begin{enumerate}
+\item[$\langle1\rangle$1.] \textbf{Convergence.} With $r=\max_a\|R_a\|$ and the trace norm
+$\|B\|_1$, $|\camp{B}_n(x;a)|\le\|B\|_1e^{L\|Q\|}r^n$, so
+$\|\camp{B}_n\|^2_{\Kamp{n}}\le\|B\|_1^2e^{2L\|Q\|}(|\Spc|r^2L)^n/n!$. The vectors
+$\Jiso\camp{B}_n$ are mutually orthogonal (\cref{lem:cmps-fock-isometry}) with summable squared
+norms, so $\sum_n\Jiso\camp{B}_n$ converges. $\square$
+\item[$\langle1\rangle$2.] $\langle\Psi',(\Fpar)^\epsilon\Psi\rangle=\sum_n\sum_a\eta_a^\epsilon
+\int_{\simplex{n}}\overline{c'_n(x;a)}\,\camp{B}_n(x;a)\,dx$, $c'_n$ the amplitude of the primed
+data. \emph{Proof.} Continuity of the inner product and of $\Fpar$, then
+$\Fpar\Jiso=\Jiso\hat\eta$, isometry of $\Jiso$ and orthogonality for different $n$
+(\cref{lem:cmps-fock-isometry}). $\square$
+\item[$\langle1\rangle$3.] \textbf{Pointwise factorisation.}
+$\overline{c'_n(x;a)}\,\camp{B}_n(x;a)=\Tr\bigl[(B\otimes\bar B')\,e^{x_1A}(R_{a_1}\otimes\bar
+R'_{a_1})e^{(x_2-x_1)A}\cdots(R_{a_n}\otimes\bar R'_{a_n})e^{(L-x_n)A}\bigr]$. \emph{Proof.}
+$\overline{\Tr Y}=\Tr\bar Y$ and $\overline{e^{yQ'}}=e^{y\bar Q'}$; $\Tr X\,\Tr Y=\Tr(X\otimes Y)$;
+$(X_1\otimes Y_1)(X_2\otimes Y_2)=X_1X_2\otimes Y_1Y_2$; and $e^{yQ}\otimes e^{y\bar
+Q'}=e^{yA}$ because $Q\otimes1$ and $1\otimes\bar Q'$ commute. $\square$
+\item[$\langle1\rangle$4.] $\sum_a\eta_a^\epsilon$ of the matrix in $\langle1\rangle$3 is
+$e^{x_1A}C_\epsilon e^{(x_2-x_1)A}\cdots C_\epsilon e^{(L-x_n)A}$. \emph{Proof.}
+$\eta_a^\epsilon=\prod_k\eta_{a_k}^\epsilon$, and the sum over each $a_k$ acts on the $k$-th
+factor alone. $\square$
+\item[$\langle1\rangle$5.] \textbf{QED.} Integrating $\langle1\rangle$4 over $\simplex{n}$ gives the
+Dyson term $I_n(L)$ of $(A,C_\epsilon)$; the trace is linear and continuous and the sum over
+$n$ converges absolutely (\cref{lem:dyson-series}), so $\langle1\rangle$2 equals
+$\Tr[(B\otimes\bar B')\sum_nI_n(L)]=\Tr[(B\otimes\bar B')e^{L(A+C_\epsilon)}]$. This is (i) for
+$\epsilon=0$ and (ii) for $\epsilon=1$; (iii) is $\langle1\rangle$2 with primed data equal to
+unprimed. $\square$
+\end{enumerate}
+\end{proof}
+
+So, with no structure at all, the parity expectation is
+$\langle\Fpar\rangle_B=\Tr[(B\otimes\bar B)e^{L\Tcm_\eta}]/\Tr[(B\otimes\bar B)e^{L\Tcm}]$:
+the sign sits in the generator, every $n$-particle term is weighted by $\eta_a$, and
+$\Tcm_\eta$ is in general not the generator of a positive semigroup. It is a trace, not a
+supertrace. The next section shows what a bond grading does to it.

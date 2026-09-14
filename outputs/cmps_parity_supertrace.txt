@@ -1,0 +1,19 @@
+== lattice: explicit Jordan--Wigner Fock vectors, N = 6 sites, bond 2+2
+   graded relations and parity action of the Fock operators: ok
+   ungraded overlap: Fock vs transfer formula agree (|value| = 6.859930e+02)
+   ungraded (-1)^F : Fock vs transfer formula agree (|value| = 8.579303e+02)
+   ungraded <(-1)^F> = +0.010699 (nontrivial without a bond grading)
+   (-1)^F Psi_B = Psi_{PBP} as Fock vectors: ok
+   graded: <(-1)^F> = 1 in Psi_1 and in Psi_P; ||Psi_1||^2 = Tr E^N = 2.386836e+02
+   graded: ||Psi_P||^2 = str E^N = 2.372802e+02 = Tr_even 2.379819e+02 - Tr_odd 7.017317e-01
+   odd sector = interference 2 Re <Psi_Pi-|Psi_Pi+>: ok
+   Psi_P has only even fermion number; signed and unsigned sums of squares coincide: ok
+   Psi_P is invariant under the periodic, Psi_1 under the antiperiodic translation (and not conversely): ok
+== continuum: Dyson, lattice limit, Laplace and Frullani identities (bond 2+1)
+   Dyson series (14 orders, nested quadrature) vs expm: error ratio 4.02 under grid doubling, Richardson residual < 1e-5
+   lattice str E^N -> str exp(L T) at first order in the spacing: error ratios 1.96, 1.98, 1.99
+   sectors: even dim 5, odd dim 4; spectral abscissa omega = 3.576422
+   int_0^inf e^(-sL) ||Psi_P(L)||^2 dL = 0.8156775634 = str (s-T)^(-1) = d/ds log sdet(s-T)
+   exp(-int (e^(-sL)-e^(-s0 L)) ||Psi_P(L)||^2 dL/L) = 0.6002951682 = sdet(s-T)/sdet(s0-T) = 0.6002951682
+   untwisted ring (B = 1): Laplace transform = Tr (s-T)^(-1) = d/ds log det(s-T): ok
+all 89 checks passed

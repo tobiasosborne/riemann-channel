@@ -1,0 +1,72 @@
+% SHARD-ID: RC-02F-DEFINITIONS-GRADED-CMPS
+% SHARD-TITLE: Definitions, Continued: Boson--Fermion cMPS Rings, Parity and Transfer Generators
+% SHARD-SUMMARY: Fixes the graded Fock space of a finite set of bosonic and fermionic species on a ring of length L, the fermion parity and the periodic and antiperiodic translations.
+% SHARD-SUMMARY: Defines a constant boson--fermion cMPS ring vector through its ordered n-particle amplitudes and a boundary matrix, a bond grading, the sign-twisted transfer generators on the doubled bond, the doubled-bond parity, and the graded supertrace and superdeterminant used in RC-04E and RC-04F.
+% SHARD-KEYWORDS: definitions, cMPS, fermionic cMPS, Fock space, fermion parity, boundary matrix, bond grading, transfer generator, doubled bond, supertrace, superdeterminant, translation
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{Definitions, Continued: Boson--Fermion cMPS Rings}
+\label{sec:definitions-graded-cmps}
+
+Throughout, $L>0$ is the ring length, $\Spc$ a finite set of particle species with parity
+$p\colon\Spc\to\{0,1\}$, $\eta_a=(-1)^{p_a}$ and $\eta_{ab}=(-1)^{p_ap_b}$. For a word
+$a=(a_1,\dots,a_n)\in\Spc^n$ put $\eta_a=\eta_{a_1}\cdots\eta_{a_n}$. Bars denote entrywise
+complex conjugation of matrices, $\otimes$ the Kronecker product, and $\Tr$ the trace of a
+matrix of the size at hand.
+
+\begin{definition}[Graded Fock space, fermion parity, translations]
+\label{def:graded-fock}
+$\Fock$ is the tensor product of the symmetric Fock space over
+$\bigoplus_{p_a=0}L^2([0,L))$ and the antisymmetric Fock space over
+$\bigoplus_{p_a=1}L^2([0,L))$, with vacuum $\vacF$, $n$-particle subspace $\Fock_n$ and
+finite-particle subspace $\Fock_{\mathrm{fin}}$. For $f\in L^2([0,L))$, $a^\dagger_a(f)$
+creates a particle of species $a$ in the mode $f$ and $a_a(f)$ is its adjoint on
+$\Fock_{\mathrm{fin}}$. For a family $u=(u_a)_{a\in\Spc}$ of unitaries on $L^2([0,L))$,
+$\Gamma(u)$ is its second quantisation. The \emph{fermion parity} is
+$\Fpar=\Gamma((\eta_a)_a)$. The \emph{periodic translation} by $t\in[0,L)$ is
+$U_t=\Gamma((u_t)_a)$ with $(u_tf)(x)=f(x-t \bmod L)$; the \emph{antiperiodic translation}
+$U^{\mathrm{ap}}_t$ uses $u_t$ on bosonic species and, on fermionic species, $(u^{\mathrm{ap}}_t
+f)(x)=f(x-t)$ for $x\ge t$ and $-f(x-t+L)$ for $x<t$. The facts used about these objects are
+listed in \cref{asm:graded-fock}.
+\end{definition}
+
+\begin{definition}[Boson--fermion cMPS ring vector, bond grading]
+\label{def:cmps-ring-vector}
+\emph{cMPS data} are a bond dimension $D$, matrices $Q,R_a\in M_D(\mathbb C)$ ($a\in\Spc$),
+constant in $x$, and a \emph{boundary matrix} $B\in M_D(\mathbb C)$. The open ordered simplex
+is $\simplex{n}=\{x\in(0,L)^n: x_1<\dots<x_n\}$, $\Kamp{n}=L^2(\simplex{n}\times\Spc^n)$
+(Lebesgue times counting measure), and the \emph{$n$-particle amplitude} is
+\[
+  \camp{B}_n(x;a)=\Tr\bigl[B\,e^{x_1Q}R_{a_1}e^{(x_2-x_1)Q}R_{a_2}\cdots R_{a_n}e^{(L-x_n)Q}\bigr],
+  \qquad \camp{B}_0=\Tr\bigl[Be^{LQ}\bigr].
+\]
+The \emph{cMPS ring vector} is $\cmps{B}=\sum_{n\ge0}\Jiso\camp{B}_n\in\Fock$, where $\Jiso$ is
+the isometry of \cref{lem:cmps-fock-isometry} and the series converges by
+\cref{thm:cmps-overlap-parity}; this is the state of \cite{haegeman2013calculus} with the
+positions increasing from left to right. A \emph{bond grading} is $P\in M_D(\mathbb C)$ with
+$P^2=1$, $PQP=Q$ and $PR_aP=\eta_aR_a$ for all $a$; its sector projections are
+$\Pisec{\pm}=\tfrac12(1\pm P)$. The \emph{untwisted} ring is $\cmps{1}$ and the \emph{twisted}
+ring is $\cmps{P}$. No regularity (supercommutation) condition and no normalisation of $Q$ is
+imposed.
+\end{definition}
+
+\begin{definition}[Sign-twisted transfer generators, doubled-bond parity, super-invariants]
+\label{def:cmps-transfer-generators}
+For two cMPS data $(Q,R)$, $(Q',R')$ with the same $D$ and $\Spc$, and signs
+$s\in\{\pm1\}^{\Spc}$, the \emph{sign-twisted transfer generator} on
+$\mathbb C^D\otimes\mathbb C^D$ is
+\[
+  \Tcm_s=Q\otimes1+1\otimes\bar Q'+\textstyle\sum_{a\in\Spc}s_a\,R_a\otimes\bar R'_a .
+\]
+$\Tcm$ is $\Tcm_s$ with all $s_a=1$ and $\Tcm_\eta$ is $\Tcm_s$ with $s_a=\eta_a$; when the
+primed data are not named they equal the unprimed ones. Given a bond grading $P$, the
+\emph{doubled-bond parity} is $\Gdb=P\otimes\bar P$; since $\Gdb^2=1$, $\mathbb C^D\otimes\mathbb
+C^D$ is the direct sum of its \emph{even} ($+1$) and \emph{odd} ($-1$) eigenspaces. Under
+$|i\rangle\otimes|j\rangle\mapsto|i\rangle\langle j|$ with $P=1_{D_+}\oplus(-1_{D_-})$ the
+even sector is the block-diagonal and the odd sector the block-off-diagonal matrices, of
+dimensions $D_+^2+D_-^2$ and $2D_+D_-$. For an operator $M$ commuting with $\Gdb$,
+$\str M=\Tr(\Gdb M)$, which is the supertrace of \cref{def:graded-spectral-datum}, and for
+$z\in\mathbb C$ outside the spectrum of $M$, $\sdet(z-M)=\det(z-M|_{\mathrm{even}})/
+\det(z-M|_{\mathrm{odd}})$.
+\end{definition}

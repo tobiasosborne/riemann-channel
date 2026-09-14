@@ -173,3 +173,15 @@ Sp	\mathrm{Sp}	symplectic group	curves	RC-06B	-
 Dg	\mathsf D_{#1}	transfer determinant D_g(T) = det(1 - T E_g)	curves	RC-06B	-
 gzeta	\mathcal Z	graded geodesic determinant (total zeta) of a complex with specified geodesic data	complexes	RC-02D	subscripts ord and pt select the ordered-cell and pointed-opposition data
 sdet	\operatorname{sdet}	superdeterminant (Berezinian) of an even operator on a Z_2-graded space	graded, complexes	RC-02D	sdet = det on the even part divided by det on the odd part
+Spc	\mathfrak S	finite set of particle species of a boson-fermion cMPS	cMPS	RC-02F	-
+Fock	\mathfrak F	graded Fock space over L^2([0,L)) for the species set	cMPS	RC-02F	-
+vacF	\Omega_{\mathfrak F}	Fock vacuum	cMPS	RC-02F	bare Omega is the Casimir
+Fpar	(-1)^{\hat F}	fermion parity operator on the Fock space	cMPS	RC-02F	-
+simplex	\Delta^{<}_{#1}	open ordered simplex {0 < x_1 < ... < x_n < L}	cMPS	RC-02F	bare Delta is the Laplacian
+Kamp	\mathcal K_{#1}	ordered amplitude space L^2(ordered simplex x species^n)	cMPS	RC-02F	-
+Jiso	\mathcal J	isometry from ordered amplitudes into the Fock space	cMPS	RC-04E	-
+cmps	\Psi^{\mathrm c}_{#1}	cMPS ring vector with boundary matrix B	cMPS	RC-02F	-
+camp	c^{#1}	n-particle amplitude c^B_n of a cMPS ring vector	cMPS	RC-02F	-
+Tcm	\mathbb T	cMPS transfer generator Q(x)1 + 1(x)conj Q + sum_a s_a R_a (x) conj R_a on the doubled bond (subscript eta: fermionic signs)	cMPS	RC-02F	-
+Gdb	\Gamma_{\mathrm b}	doubled-bond parity P (x) conj P	cMPS	RC-02F	-
+Pisec	\Pi_{#1}	bond parity sector projections (1 +- P)/2	cMPS	RC-02F	-

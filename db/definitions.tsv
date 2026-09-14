@@ -65,3 +65,6 @@ def:cayley-complex	Cayley complex	report/sections/02d_definitions_complexes.tex	
 def:kraus-connection	Kraus connection on the 1-skeleton; flat, pure gauge, paired	report/sections/02d_definitions_complexes.tex	stipulated	-	notes/complex-zeta/astra-proofs.md T5.1, T5.5
 def:voltage-quotient	voltage quotient and Artin block	report/sections/02d_definitions_complexes.tex	stipulated	-	notes/complex-zeta/astra-proofs.md T5.6
 def:ramanujan-quantum-expander-a2	Ramanujan quantum expander of type A-tilde, exceptional space	report/sections/02d_definitions_complexes.tex	stipulated	-	notes/complex-zeta/astra-proofs.md T6.1
+def:graded-fock	graded Fock space, fermion parity, periodic and antiperiodic translations	report/sections/02f_definitions_graded_cmps.tex	stipulated	-	session 2026-09-13 (cMPS parity calculation)
+def:cmps-ring-vector	boson-fermion cMPS ring vector, boundary matrix, bond grading, twisted and untwisted rings	report/sections/02f_definitions_graded_cmps.tex	stipulated	-	session 2026-09-13; state of 1211.3935 made rigorous via J
+def:cmps-transfer-generators	sign-twisted transfer generators, doubled-bond parity, graded supertrace and superdeterminant on the doubled bond	report/sections/02f_definitions_graded_cmps.tex	stipulated	-	session 2026-09-13
