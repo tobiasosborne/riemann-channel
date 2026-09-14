@@ -130,6 +130,12 @@ Full account: `docs/worklog/2026-09-14.md`.
   (`conj:three-letter-universal`); bosonic cancellation on larger bonds; whether the
   certified tensor's unitary similarity is an even gauge carrying the Hodge metric;
   the amplitude-locality conjecture (`conj:amplitude-locality`).
+- **Explicit examples (evening, shard 06g, `scripts/ring_norm_examples.py`):** one MPS
+  per genus 0-3 written out (genus 3 over F_37 from three brute-force counts); every
+  odd mode has correlation length 2/log q (that is RH); block Schmidt spectra from the
+  doubled bond, entropy <= 2 log D, closed forms give flat spectra (log 8, log 12);
+  parent Hamiltonians with the periodic fermion ring selected by a parity-twisted
+  boundary term. Unreviewed.
 - **Next rung, if TJO meant a Deligne-type variety:** the simplest is a curve with
   coefficients (an elliptic surface over F_q(t) with degree-2 L-function, a K3 with
   Picard number 20). Note: a surface's middle cohomology is EVEN, so its interesting

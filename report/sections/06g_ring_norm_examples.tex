@@ -1,0 +1,147 @@
+% SHARD-ID: RC-06G-RING-NORM-EXAMPLES
+% SHARD-TITLE: Curve Counts as Twisted Ring Norms V: One Explicit Matrix Product State per Genus, Entanglement, Parent Hamiltonians
+% SHARD-SUMMARY: Writes down the actual matrices of a matrix product state whose P-closed ring norm counts the points of one curve of each genus 0, 1, 2, 3 (P^1, an ordinary elliptic curve, the certified and the closed-form genus-two tensors, a genus-three curve over F_37), and records what is needed at each genus.
+% SHARD-SUMMARY: Works out the usual MPS properties: transfer spectra and correlation lengths (RH is the statement that every odd mode has correlation length 2/log q), block Schmidt spectra and entanglement entropies of the twisted ring (genus 0 is a cat state, genus 1 a product state, genus >= 2 saturates a flat spectrum), injectivity lengths, and the parent Hamiltonians with their ring ground spaces, gaps and the parity-twisted boundary term that selects the periodic fermion ring.
+% SHARD-KEYWORDS: matrix product state, examples, genus, elliptic curve, genus two, genus three, entanglement entropy, Schmidt spectrum, correlation length, injectivity, parent Hamiltonian, frustration free, Ramond, Neveu-Schwarz, Jordan-Wigner, cat state
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/ring_norm_examples.py
+
+\section{Curve Counts as Twisted Ring Norms V: Explicit Examples, Entanglement, Parent Hamiltonians}
+\label{sec:ring-norm-examples}
+
+\emph{Question (TJO, 2026-09-14, evening).} How hard is it to describe a specific example of
+each genus and write down the actual matrices of the corresponding MPS; and what are their
+usual entanglement properties and parent Hamiltonians? \emph{Answer.} Genus $0$ and $1$ are
+one-liners, genus $2$ is the closed form of \cref{thm:nine-letter-tensor} for $\qs\ge16$ and the
+certified decimals of \cref{thm:f5-certified-tensor} below that, and every genus $g$ is the same
+closed form on $\mathbb C^{1|g}$ once $\qs+1\ge2g\sqrt{\qs}$; the only input at every genus is
+the $L$-polynomial (brute-force counts $\Ncount{1},\dots,\Ncount{g}$, Newton's identities, the
+functional equation). Everything below is the notebook's own calculation
+(\texttt{scripts/ring\_norm\_examples.py}, author claude:fable-5.1, unreviewed); the
+contraction is the Kronecker one of \cref{def:graded-lattice-tensor}, with the fermionic
+reading checked against explicit Jordan--Wigner vectors.
+
+\subsection{The five states}
+
+\begin{definition}[The example states]
+\label{def:example-states}
+All rings are $P$-closed unless stated. (0) $\mathbb P^1/\mathbb F_5$: bond $\mathbb C^2$
+ungraded, letters $\{\infty\}\cup\mathbb F_5$, $A_\infty = e_{11}$, $A_s = e_{22}$ for $s\in\mathbb F_5$;
+$\Psi = |\infty\rangle^{\otimes n}+\sum_{s\in\mathbb F_5^n}|s\rangle$, $\|\Psi\|^2 = 1+5^n$; the
+configurations are the points. (1) $y^2 = x^3+x+1/\mathbb F_5$: $\Ncount{1} = 9$, $a = -3$,
+$\pi = (-3+i\sqrt{11})/2$; bond $\mathbb C^{1|1}$, letters $A_s = \phi_s\operatorname{diag}(1,\pi)$ with
+$\phi = (1,1)/\sqrt2$, $P = \operatorname{diag}(1,-1)$; the same Frobenius as the toral endomorphism
+$M = \bigl(\begin{smallmatrix}0&-5\\1&-3\end{smallmatrix}\bigr)$. (2a) $y^2 = x^5+x^3+x^2-2/\mathbb F_5$:
+the certified letters of \cref{thm:f5-certified-tensor}, two even, one odd, bond $\mathbb C^{1|2}$.
+(2b) the same curve over $\mathbb F_{25}$ (eigenvalues $\pi_j^2$): the nine-letter tensor with
+$t = 13$, $w = 13/2$, $h = 6\sqrt2$. (3) $y^2 = x^7+x+1/\mathbb F_{37}$: counts $41, 1455, 50915$,
+six Frobenius eigenvalues of modulus $\sqrt{37}$; the closed form on $\mathbb C^{1|3}$ with ten
+even and six odd $4\times4$ letters, $t = 19$, $w = 19/3$, $h = 6\sqrt3$; $\mathbb F_{37}$ is the
+smallest prime field with $\qs+1\ge6\sqrt{\qs}$.
+\end{definition}
+
+\begin{proposition}[Correlation lengths: RH as a single odd correlation length]
+\label{prop:example-correlation-lengths}
+\claimstatus{prop:example-correlation-lengths}{sketched-conditional}
+For every graded tensor whose doubled transfer has net even spectrum $\{1,\qs\}$ and odd
+spectrum the Frobenius eigenvalues, the dominant eigenvalue is $\qs$, the even correlation
+length is $1/\log\qs$, and the correlation length of an odd mode $\alphaw{j}$ is
+$1/\log(\qs/|\alphaw{j}|)$; hence RH for the curve is the statement that every odd (fermionic)
+mode has the same correlation length $2/\log\qs$, twice the even one. In the five examples
+this holds to $10^{-6}$ (\cref{num:ring-norm-examples}).
+\end{proposition}
+
+\begin{proof}
+Immediate from the spectra; the modulus $|\alphaw{j}| = \sqrt{\qs}$ is \cref{asm:weil-curves}.
+\end{proof}
+
+\subsection{Entanglement}
+
+\begin{proposition}[Block Schmidt spectrum of a twisted ring from the doubled bond]
+\label{prop:example-block-spectrum}
+\claimstatus{prop:example-block-spectrum}{sketched}
+For a graded tensor on a bond of dimension $D$ with Kronecker contraction, the reduced state of
+a contiguous block of $l$ sites in the $P$-closed ring of length $n$ has at most $D^2$ nonzero
+Schmidt weights, equal to the spectrum of the $D^2\times D^2$ matrix $K\,G_X^{T}$ with
+$G_X[(ab),(a'b')] = (\Edb^l)_{(aa'),(bb')}$ and $K[(ab),(a'b')] = (\Edb^{\,n-l}\Gdb)_{(bb'),(aa')}$,
+normalised by the ring norm; hence the block entanglement entropy is at most $2\log D$. For a
+contiguous block starting at the first site the fermionic (Jordan--Wigner) reduced state has
+the same spectrum, because the string acting on the block is a parity sign, a unitary on the
+block.
+\end{proposition}
+
+\begin{proof}
+Write $\Psi_P = \sum_{ab}X_{ab}\otimes Y_{ba}$ with $X_{ab} = \sum_w(A_w)_{ab}|w\rangle$ over the
+block and $Y_{ba} = \sum_{w'}(A_{w'}P)_{ba}|w'\rangle$ over the rest; then
+$\rho_{\mathrm{block}} = \sum K_{\alpha\beta}|X_\alpha\rangle\langle X_\beta|$ with $K$ the Gram matrix of the % bare-ok
+$Y$, and on coefficient vectors $\rho$ acts as $K G_X^T$. The Gram matrices are the stated % bare-ok
+entries of $\Edb^l$ and $\Edb^{n-l}(P\otimes\bar P)$. Checked against explicit vectors in
+\cref{num:ring-norm-examples}.
+\end{proof}
+
+\begin{observation}[What the entanglement looks like at each genus]
+\label{obs:example-entanglement}
+\claimstatus{obs:example-entanglement}{sketched}
+Genus $0$: the state is a cat state of two orthogonal product states with weights
+$1$ and $5^n$, so every block has Schmidt rank two and entropy $H\bigl(1/(1+5^n)\bigr)$,
+which vanishes exponentially; the parent Hamiltonian is two-fold degenerate (both branches),
+as for a GHZ state. Genus $1$: $\Psi_P = (1-\pi^n)\phi^{\otimes n}$ is a product state; the two
+bond lines carry the same physical vector, so the count is entirely in the normalisation and
+the entanglement is zero. Genus $2$ (certified letters over $\mathbb F_5$): Schmidt rank
+$9 = D^2$ for every half-ring, entropy saturating at $1.6636$ for $n\ge20$ (bound
+$2\log3 = 2.197$), largest weights $0.380, 0.199, 0.199, 0.105$. Genus $2$ (nine letters over
+$\mathbb F_{25}$): the half-ring spectrum is exactly $\{\tfrac14,\tfrac18^{\times4},\tfrac1{16}^{\times4}\}$
+already at $n = 10$, entropy $\log8 = 2.0794$; genus $3$ (sixteen letters over $\mathbb F_{37}$):
+weights $\{\tfrac14,\tfrac1{12}^{\times6},\tfrac1{36}^{\times9}\}$, entropy $\log12 = 2.4849$, in
+both cases $\tfrac14$ on the vacuum line and a flat spectrum on the rest, the signature of the
+depolarising even letters of \cref{thm:nine-letter-tensor}. The odd sector contributes to the
+entanglement only through the doubled bond: the physical letters of the certified tensor
+carry one fermion, those of the closed form $2g$.
+\end{observation}
+
+\subsection{Parent Hamiltonians}
+
+\begin{proposition}[Parent Hamiltonians and the two boundary conditions]
+\label{prop:example-parent-hamiltonian}
+\claimstatus{prop:example-parent-hamiltonian}{sketched}
+Let $S_k$ be the span of the $k$-site block vectors $X_{ab}$ and $h = 1-\Pi_{S_k}$; the parent
+Hamiltonian on the ring is $H = \sum_ih_i$ (translates, wrapping around). Every ring
+$\Psi_B$ with $B$ commuting with the letters is annihilated by all non-wrapping terms; the
+term wrapping the closure sees $B$. For an all-even tensor both $\Psi_1$ and $\Psi_P$ are
+ground states. When odd letters are present, $A_sPA_t = \eta_sPA_sA_t$, so $\Psi_P$ is a ground
+state exactly of the Hamiltonian whose wrapping terms are conjugated by the site parities of
+the wrapped sites (the Jordan--Wigner image of the periodic fermion ring), and $\Psi_1$
+(antiperiodic) of the untwisted one; the fermionic parent Hamiltonian is one local
+Hamiltonian with these two boundary conditions.
+\end{proposition}
+
+\begin{proof}
+Sketch. The block at sites $i..i+k-1$ of $\Psi_B$ has components $\sum_{ab}(A_w)_{ab}(\cdots B\cdots)_{ba}$,
+in $S_k$; for the wrapped block the word is $A_{w_1}BA_{w_2}$, and for $B = P$ moving $P$ to the
+left multiplies the wrapped letters by their parities, i.e.\ applies $\prod Z$ on the wrapped
+sites, which is undone by conjugating the term. Checked numerically in
+\cref{num:ring-norm-examples}: for the fermionic examples $\Psi_P$ lies in the kernel of the
+twisted and not of the untwisted Hamiltonian, and conversely for $\Psi_1$.
+\end{proof}
+
+\begin{numerical}[The five examples: spectra, entanglement, injectivity, parent Hamiltonians]
+\label{num:ring-norm-examples}
+\claimstatus{num:ring-norm-examples}{numerical}
+\texttt{scripts/ring\_norm\_examples.py} (\texttt{outputs/ring\_norm\_examples.txt}). For each of the
+five states: the counts $\str\Edb^n = \Ncount{n}$ for $n\le4$; the even and odd spectra and the
+correlation lengths ($1/\log\qs$ even, $2/\log\qs$ for every odd mode); the injectivity ranks
+$\dim\operatorname{span}\{A_w: |w| = k\}$ for $k\le4$: genus $0$ gives $2<4$ (two blocks), genus $1$ gives
+$1$ (product state), the certified genus-two letters reach $9 = D^2$ at $k = 2$, the closed
+forms are injective at $k = 1$; the block Schmidt spectra from \cref{prop:example-block-spectrum}
+against explicit vectors for $n\le7$ (genus $2$) and against explicit Jordan--Wigner Fock
+vectors for $n\le5$; the half-ring entropies of \cref{obs:example-entanglement}; the parent
+Hamiltonians ($k = 2$ for genus $0$, $k = 1$ for genus $1$, $k = 3$ for the certified letters,
+$k = 2$ for the nine letters) with ring ground-space dimensions, gaps, and the membership of
+$\Psi_1$ and $\Psi_P$ in the kernels of the untwisted and parity-twisted Hamiltonians as in
+\cref{prop:example-parent-hamiltonian}; genus $3$ has sixteen letters and its parent Hamiltonian
+is not diagonalised. Results: genus $0$, ring $n = 5$, ground space of dimension $2$ (the two
+branches), gap $2$; genus $1$, $n = 6$, unique ground state, gap $1$; certified genus-two
+letters, $n = 6$, unique ground state for each boundary condition, gaps $0.239$ (untwisted,
+$\Psi_1$) and $0.232$ (twisted, $\Psi_P$); nine letters over $\mathbb F_{25}$, $n = 4$, unique ground
+state for each, gaps $0.639$ and $0.636$. $80$ checks.
+\end{numerical}

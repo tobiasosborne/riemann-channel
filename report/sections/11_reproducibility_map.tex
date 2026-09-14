@@ -4,7 +4,7 @@
 % SHARD-SUMMARY: Records the environment, the data files, and the reference-source manifest.
 % SHARD-KEYWORDS: reproducibility, scripts, outputs, data, refs, manifest
 % SHARD-NOTES: none
-% SHARD-SCRIPTS: scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py, scripts/artin_schreier_super.py, scripts/riemann_graded_trace.py, scripts/bc_entropy.py, scripts/cmps_parity_supertrace.py, scripts/weil_ring_norm_check.py, scripts/ring_norm_tensor.py, scripts/ring_norm_certificate.py
+% SHARD-SCRIPTS: scripts/qihara.py, scripts/bcmpo.py, scripts/scat.py, scripts/ringnorm.py, scripts/weil_lps.py, scripts/weil_lps_hashimoto.py, scripts/artin_schreier_mps.py, scripts/qihara_general.py, scripts/artin_schreier_super.py, scripts/riemann_graded_trace.py, scripts/bc_entropy.py, scripts/cmps_parity_supertrace.py, scripts/weil_ring_norm_check.py, scripts/ring_norm_tensor.py, scripts/ring_norm_certificate.py, scripts/ring_norm_examples.py
 
 \section{Reproducibility Map}
 \label{sec:repro}
@@ -36,6 +36,7 @@ script & what it establishes & output, claims \\
 \texttt{weil\_ring\_norm\_check.py} & Elliptic-curve counts as twisted ring norms of the $\mathbb C^{1|1}$ tensor, explicit vectors, Hilbert--Schmidt chain, genus-two searches, the $y^3-y = x^2$ indicator state & \texttt{outputs/weil\_ring\_norm\_check.txt}; \texttt{num:weil-ring-norm-check} \\
 \texttt{ring\_norm\_tensor.py} & Toral Frobenius counts, Lefschetz, Fourier orbits, Lenstra structure, refutation of the drafted trace bound, structured genus-two solutions, supersingularity of the quadratic family, cut ranks ($562$ s) & \texttt{outputs/ring\_norm\_tensor.txt}; \texttt{num:ring-norm-tensor}, \texttt{num:cut-rank-binary}, \texttt{num:genus-two-cm-diagonal} \\
 \texttt{ring\_norm\_certificate.py} & Exact rational contraction certificate of the $\mathbb F_5$ three-letter genus-two tensor; nine-letter tensor at $\qs = 25,17,16$; Jordan--Wigner norms & \texttt{outputs/ring\_norm\_certificate.txt}; \texttt{num:ring-norm-certificate} \\
+\texttt{ring\_norm\_examples.py} & One explicit MPS per genus $0$--$3$: spectra, correlation lengths, block Schmidt spectra (Gram formula, explicit and Jordan--Wigner vectors), injectivity, parent Hamiltonians with twisted and untwisted boundary terms & \texttt{outputs/ring\_norm\_examples.txt}; \texttt{num:ring-norm-examples} \\
 \bottomrule
 \end{tabular}
 \end{center}
