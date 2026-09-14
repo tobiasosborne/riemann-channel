@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-14, second session: the ring-norm-tensor campaign; earlier today: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-14, night: back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -85,6 +85,42 @@ character reading of the grading and conj:galois-graded-bond.
 0d. **Mayer cusp tail** (`notes/resonances/astra-freeassoc.md` §3): unchanged.
 0e. **Suzuki's prime-defined screw kernel** (§16.3): unchanged.
 0f. **Literature:** Bonthonneau–Weich; Lewis–Zagier, Chang–Mayer: unchanged.
+
+### Back to basics: the graded permutation and the physical letters (2026-09-14, night; shard 03b)
+
+TJO restarted from the permutation (1 2)(3 4 5): one-matrix MPS, ring norms, the gas of rings
+as l^2(N) with zeta a pure vector of square-root thermal weights, and the two oscillators with
+energies 2 and 3. Recorded in shard 03b with `scripts/graded_permutation.py` (46 checks, in CI);
+all rows sketched/numerical, author claude:fable-5.1, unreviewed. Worklog "Night".
+
+- **Gas = oscillators is unique factorisation.** Point-letter ring norm = periodic points =
+  Lambda_sigma(n); the gas is (x)_c l^2(N_0), H = sum l_c N_c, zeta = Tr e^{-beta H}; also
+  zeta = Tr u^N Gamma(P) on the bond Fock space (sigma-fixed monomials = gas configurations);
+  the thermal vector is a product state, Gibbs only on the diagonal algebra.
+- **Grading a cycle odd induces zeros, with two more knobs.** Ramond closure: 1/sdet, zeros
+  at the odd cycle's eigenvalues; holonomy places them; untwisted closure has none; the pole at
+  1 is eaten unless a holonomy is used (rigidity/net multiplicity in miniature). A fermionic
+  prime contributes 1 - u^l for every l; all primes fermionic gives 1/zeta (Moebius as fermion
+  parity, zeros on Re s = 0, NOT the critical line).
+- **Physical dimension principle (obs:physical-dimension-principle).** Ring norms see the
+  letters only through the transfer channel: lower bound = Kraus rank (canonical up to a
+  unitary), one letter = the channel itself. The sign lives only in even-odd coherences of the
+  doubled bond: letters that record the bond parity kill the zeros (ladder at n = 6: one
+  letter 1, one per cycle 13, one per point 5); partial recording at rate gamma shifts every
+  odd eigenvalue by -2 gamma and no even one (prop:parity-jump-uniform-shift): the
+  letter-level form of the uniform-rate statement, 2 gamma = 1/4 is the e^{-t/4}.
+- **Jump operators of the Riemann cMPS (obs:jump-operator-guidance, TJO's question).**
+  Prime jumps vs Galois jumps generate different dissipators, so it is a question about the
+  Lindbladian. Galois jumps (character-diagonal unitaries) give character dephasing: they set
+  the uniform rate and cannot produce frequencies; as a full per-step average they are a
+  character measurement and remove the zeros. Prime jumps act on all character sectors and
+  carry the lengths: the record; alone, real spectrum, no zeros. The grading must be
+  transverse to the primes. The frequencies gamma_n need an even-odd Hamiltonian (or
+  non-normal coupling) that neither family supplies. Ansatz shape: prime jumps + Galois
+  dephasing at 2 gamma = 1/4 + even-odd Hamiltonian; RH = the dissipation on the even-odd
+  coherences is pure dephasing. **Next:** test (e) in the finite covariant cones of shard 04d
+  (does Galois covariance + a character-dephasing Kossakowski block + BC stationarity leave
+  exactly an even-odd Hamiltonian free?); review shard 03b.
 
 ### The ring-norm-tensor campaign (2026-09-14, afternoon; shards 02g, 06c--06f)
 

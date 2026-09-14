@@ -161,3 +161,20 @@ correlation lengths ($2/\log\qs$ for every odd mode is RH), block Schmidt spectr
 doubled bond, and parent Hamiltonians whose periodic-fermion ground state is selected by a
 parity-twisted boundary term.
 
+
+\subsection*{2026-09-14, night: back to basics, the graded permutation}
+
+TJO went back to the permutation $(1\,2)(3\,4\,5)$: its one-matrix MPS, the gas of rings as
+$\ltwo{\mathbb N}$ of the naturals with the zeta function a pure vector of square-root thermal weights, and
+the isomorphism with two oscillators of energies $2$ and $3$; then graded the $3$-cycle odd and
+asked whether boundary conditions induce zeros; then asked what principle fixes the number of
+physical letters; then, mid-recording, whether the discussion gives guidance on the jump operators
+of the Riemann cMPS (prime jumps versus Bost--Connes symmetry jumps). Shard 03b and
+\texttt{scripts/graded\_permutation.py} ($46$ checks): the gas is unique factorisation; the Ramond
+closure gives $(1-u^3)/(1-u^2)$ with the pole at $1$ eaten unless a holonomy moves the zeros; a
+fermionic prime contributes $1-u^{\wl}$ (all primes fermionic: M\"obius); the sign lives only in the
+even--odd coherences of the doubled bond, so the physical dimension is sandwiched between the Kraus
+rank and letters coarser than the grading (ladder $5,13,1$ at $n = 6$); a parity jump shifts the
+odd spectrum uniformly, the letter-level form of the uniform-rate statement; and the reading for the
+Riemann cMPS: Galois jumps set the rate, prime jumps are the record, the frequencies still need an
+even--odd Hamiltonian. All rows \texttt{sketched}/\texttt{numerical}, author claude:fable-5.1, unreviewed.

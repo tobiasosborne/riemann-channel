@@ -1,0 +1,306 @@
+% SHARD-ID: RC-03B-GRADED-PERMUTATION
+% SHARD-TITLE: Back to Basics: The Graded Permutation, Its Gas, Induced Zeros, and the Choice of Physical Letters
+% SHARD-SUMMARY: For a permutation with cycles of lengths 2 and 3 the ring norm of the point-letter MPS counts periodic points (the von Mangoldt function of the permutation), the gas of rings is the Fock space of two oscillators with those energies via unique factorisation, and the zeta function is a thermal norm on the gas and a twisted Fock trace on the bond.
+% SHARD-SUMMARY: Grading one cycle odd and closing the ring with the parity insertion turns its eigenvalues into zeros (holonomy moves them, the untwisted closure has none, a fermionic prime is a two-level system contributing 1 - u^l); the ring norm sees the sign only through even-odd coherences of the doubled bond, which fixes the physical dimension between the Kraus rank of the transfer channel and letters coarser than the grading; a parity-measuring jump shifts the whole odd spectrum uniformly, the letter-level form of the uniform-rate statement, with a reading for the Riemann cMPS jump operators.
+% SHARD-KEYWORDS: permutation, ring norm, von Mangoldt, gas, oscillators, unique factorisation, Fock space, symmetric power, grading, supertrace, superdeterminant, Ramond, Neveu-Schwarz, holonomy, fermionic prime, Moebius, physical letters, Kraus rank, Stinespring, dephasing, jump operators, Galois, Phantasm
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/graded_permutation.py
+
+\section{Back to Basics: The Graded Permutation and the Choice of Physical Letters}
+\label{sec:graded-permutation}
+
+\emph{Question (TJO, 2026-09-14, night).} Start from a permutation, $\pi = (1\,2)(3\,4\,5)$. The
+naive MPS has one matrix, the permutation matrix, bond dimension five, and ring norms. The gas of
+rings of lengths $1,2,3,\dots$ should be $\wl^2$ of the naturals, the zeta function a pure vector
+in it with square-root thermal weights, and zeta is also the partition function of two oscillators
+with energies $2$ and $3$; so there should be an isomorphism. Then: grade the second cycle odd,
+and ask whether the right boundary conditions induce zeros; and what principle fixes the number of
+physical letters, since one letter and five letters both have a reason to be. Everything here is
+elementary and the notebook's own calculation (\texttt{scripts/graded\_permutation.py}, author
+claude:fable-5.1, unreviewed).
+
+\subsection{The objects}
+
+\begin{definition}[Graded permutation matrix product states]
+\label{def:graded-permutation-mps}
+Let $\pi$ be a permutation of a finite set $X$ with cycles $c$ of lengths $\wl_c$, $m_\wl$ the
+number of cycles of length $\wl$, and $P = \sum_x |\pi x\rangle\langle x|$ its permutation
+matrix on the bond $\mathbb C^X$. A \emph{letter assignment} is a map $\lambda\colon X\to S$ to a
+finite set of physical letters; its letters are $\Kr{s} = \sum_{\lambda(x) = s}|\pi x\rangle\langle x|$,
+so $\sum_s\Kr{s} = P$. Three assignments recur: \emph{point letters} ($S = X$, $\lambda = \mathrm{id}$),
+\emph{one letter} ($|S| = 1$, $\Kr{} = P$) and \emph{cycle letters} ($\lambda(x)$ = the cycle of $x$).
+A \emph{grading} is a choice of odd cycles $C_-$; $\Pi = \pm1$ on the points of even and odd cycles,
+$\Gdb = \Pi\otimes\bar\Pi$ on the doubled bond, $\Edb = \sum_s\Kr{s}\otimes\bar{\Kr{s}}$. A
+\emph{holonomy} $h = (h_c)\in U(1)^{\text{cycles}}$ multiplies one edge of each cycle by $h_c$,
+$P_h$. The ring of length $n$ with closure $B$ is $\Psi_B = \sum_{w\in S^n}\Tr(B\Kr{w_n}\cdots
+\Kr{w_1})\,|w\rangle$; $B = 1$ is the untwisted (Neveu--Schwarz) and $B = \Pi$ the twisted
+(Ramond) closure. The \emph{von Mangoldt function} of $\pi$ is $\vM_\pi(n) =
+\sum_{\wl\mid n}\wl\,m_\wl$, the zeta function $\zeta_\pi(u) = \exp\sum_n\Tr(P^n)u^n/n$ and the
+graded zeta function $\zeta^{\mathrm{gr}}_{\pi,h}(u) = \exp\sum_n\str(P_h^n)u^n/n$.
+\end{definition}
+
+\subsection{Rings and the gas}
+
+\begin{proposition}[Point-letter rings count periodic points]
+\label{prop:permutation-rings}
+\claimstatus{prop:permutation-rings}{sketched}
+With point letters, $\Psi_1 = \sum_{\pi^nx = x}|x,\pi x,\dots,\pi^{n-1}x\rangle$, a sum of
+orthonormal terms, so $\|\Psi_1\|^2 = \#\mathrm{Fix}(\pi^n) = \Tr P^n = \vM_\pi(n)$;
+$\zeta_\pi(u) = 1/\det(1-uP) = \prod_c(1-u^{\wl_c})^{-1}$, with poles at the eigenvalues of $P$
+(all on the unit circle, one pole at $u = 1$ per cycle); and $\log\zeta_\pi(u) =
+\sum_n\|\Psi_1\|^2u^n/n$. For $(1\,2)(3\,4\,5)$: $\vM_\pi = 0,2,3,2,0,5,\dots$ and
+$\zeta_\pi = 1/((1-u^2)(1-u^3))$.
+\end{proposition}
+
+\begin{proof}
+$\Tr(\Kr{x_n}\cdots\Kr{x_1}) = 1$ iff $x_{k+1} = \pi x_k$ for all $k$ cyclically, i.e.\ iff the
+word is an orbit of a point of period $n$ listed from its starting point; distinct starting points
+give distinct words. $\#\mathrm{Fix}(\pi^n) = \sum_{\wl\mid n}\wl m_\wl$ since a point of an
+$\wl$-cycle has period $n$ iff $\wl\mid n$. The determinant identity is
+$\exp\sum_n\Tr(P^n)u^n/n = \exp(-\Tr\log(1-uP))$, and $\det(1-uP) = \prod_c(1-u^{\wl_c})$ because
+an $\wl$-cycle has eigenvalues the $\wl$-th roots of unity.
+\end{proof}
+
+The weight $\wl_c$ (``$\log p$'') is the number of starting points on the prime ring; the ring of
+length $n$ is nonzero only when $n$ is a multiple of a single cycle length (``a prime power'').
+
+\begin{proposition}[The gas is the oscillator Fock space; the same number from the bond]
+\label{prop:permutation-gas}
+\claimstatus{prop:permutation-gas}{sketched}
+Let the gas be $\ltwo{\,\cdot\,}$ of the free commutative monoid on the cycles (multisets of prime rings).
+(i) The map (multiset with $a_c$ copies of $c$) $\mapsto\bigotimes_c|a_c\rangle$ is a unitary onto
+$\bigotimes_c\ltwo{\mathbb N_0}$; the length operator becomes $H = \sum_c\wl_cN_c$, $\Tr e^{-\invtemp H} =
+\zeta_\pi(e^{-\invtemp})$, and the energy-$N$ eigenspace has dimension $\#\{(a_c):\sum a_c\wl_c = N\}$.
+(ii) On the bosonic Fock space over the bond, $\Tr_{\mathrm{Sym}(\mathbb C^X)}u^N\Gamma(P) =
+\sum_k u^k\Tr\mathrm{Sym}^k(P) = 1/\det(1-uP)$, and $\Tr\mathrm{Sym}^k(P)$ counts the monomials
+$x^m$ fixed by $\pi$, i.e.\ exponent vectors constant on cycles, which are the gas
+configurations of length $k$. (iii) The vector $v_\invtemp = \sum_{(a_c)}e^{-\invtemp\sum a_c\wl_c/2}
+\bigotimes|a_c\rangle$ is a product vector over the cycles with $\|v_\invtemp\|^2 = \zeta_\pi(e^{-\invtemp})$;
+its vector state equals the Gibbs state on the algebra generated by the $N_c$ and differs from it
+off that algebra. (iv) $\sum_n\|\Psi_1\|^2e^{-\invtemp n} = \langle H\rangle_\invtemp$, the mean length
+of the gas.
+\end{proposition}
+
+\begin{proof}
+(i) is unique factorisation in the free monoid; $\Tr e^{-\invtemp H} = \prod_c(1-e^{-\invtemp\wl_c})^{-1}$.
+(ii) $\mathrm{Sym}^k(P)$ permutes the monomial basis, so its trace is the number of fixed monomials,
+and $x^m$ is fixed iff $m_{\pi x} = m_x$; the generating function of $\Tr\mathrm{Sym}^k$ is
+$\prod_\lambda(1-u\lambda)^{-1}$ over the eigenvalues. (iii) The sum factorises; the diagonal
+matrix elements of $|v_\invtemp\rangle\langle v_\invtemp|/\|v_\invtemp\|^2$ are the Gibbs weights, while
+$\langle v_\invtemp|S_c|v_\invtemp\rangle\ne0$ for the shift $S_c$ whereas $\Tr(\gibbs{\invtemp}S_c) = 0$.
+(iv) Differentiate $\log\zeta_\pi(e^{-\invtemp})$ in $\invtemp$ using \cref{prop:permutation-rings}.
+\end{proof}
+
+The gas configurations are the diagonal of the second-quantised transfer matrix in the monomial
+basis: side A computes $\zeta_\pi$ as a plain thermal norm over the gas, side B as a trace over
+the bond with the transfer matrix inserted, and on the gas itself $\Gamma(P)$ acts as the identity.
+The ``naturals'' of the toy are the elements $2^a3^b$ with integer lengths $2a+3b$, so $H$ is
+degenerate ($2^3$ and $3^2$ have the same length); in $\ltwo{\mathbb N}$ the lengths $\log n$ are
+distinct because $\log2,\log3$ are incommensurable. The prime-side creation operators are the
+shifts $|a\rangle\mapsto|a+1\rangle$ (the Bost--Connes isometries), not $a^\dagger$: the Hilbert
+space and the Hamiltonian are those of the oscillators, the algebra is Toeplitz.
+
+\subsection{Grading one cycle odd}
+
+\begin{theorem}[The twisted closure induces zeros]
+\label{thm:permutation-induced-zeros}
+\claimstatus{thm:permutation-induced-zeros}{sketched}
+Fix a grading and a holonomy. (i) $\str P_h^n = \sum_{c\ \mathrm{even}}\wl_ch_c^{n/\wl_c}[\wl_c\mid n]
+- \sum_{c\ \mathrm{odd}}\wl_ch_c^{n/\wl_c}[\wl_c\mid n]$ and
+$\zeta^{\mathrm{gr}}_{\pi,h}(u) = 1/\sdet(1-uP_h) = \prod_{c\ \mathrm{odd}}(1-h_cu^{\wl_c})\big/
+\prod_{c\ \mathrm{even}}(1-h_cu^{\wl_c})$: the odd cycles' eigenvalues, the $\wl_c$-th roots of
+$h_c$, are zeros. (ii) The untwisted closure gives $\zeta_\pi$, with no zeros, for every grading.
+(iii) A zero and a pole cancel exactly when an even and an odd cycle share a root: for
+$(1\,2)(3\,4\,5)$ with $h = 1$, $\zeta^{\mathrm{gr}} = (1-u^3)/(1-u^2) = (1+u+u^2)/(1+u)$, zeros at
+the primitive cube roots, the pole at $u = 1$ eaten by the odd fixed vector; with $h_{(345)} = -1$,
+$\zeta^{\mathrm{gr}} = (1-u+u^2)/(1-u)$, pole at $1$ kept, zeros at $e^{\pm i\pi/3}$, pole at $-1$
+eaten. (iv) On the gas side an odd cycle is a fermionic prime:
+$\operatorname{Str}_{\bigwedge(\mathbb C^{\wl})}u^N\Gamma(h_cP_c) = \det(1-uh_cP_c) = 1-h_cu^{\wl_c}$,
+the occupied top form contributing $(-u)^{\wl_c}\cdot h_c\operatorname{sgn}(c) = -h_cu^{\wl_c}$ for
+every length. The graded zeta is $\operatorname{Str}_{\mathrm{gas}}u^H$, a Witten index with fugacity, and
+$\zeta^{\mathrm{gr}} = \langle v_\invtemp|\Fpar|v_\invtemp\rangle$ is an indefinite overlap, not a norm.
+\end{theorem}
+
+\begin{proof}
+(i) $\Tr(\Pi P_h^n) = \sum_c\pm\Tr(P_{h,c}^n)$ and $P_{h,c}^n = h_c^{n/\wl_c}\cdot1$ when $\wl_c\mid n$,
+traceless otherwise; then $\exp\sum_n\str(P_h^n)u^n/n = \exp(-\str\log(1-uP_h)) = 1/\sdet(1-uP_h)$
+and $\det(1-uh_cP_c) = 1-h_cu^{\wl_c}$. (ii) is \cref{prop:permutation-rings}. (iii) is the
+factorisation. (iv) $\operatorname{Str}u^N\Gamma(M) = \sum_k(-u)^k\Tr\bigwedge^k(M) = \det(1-uM)$; the
+$\wl$-cycle is even or odd as $\wl$ is odd or even, so $(-1)^{\wl}\operatorname{sgn} = -1$.
+\end{proof}
+
+The three boundary conditions are separate knobs: the grading alone does nothing (ii), the parity
+insertion produces the numerator (i), and the holonomy places the zeros (i); (iii) is the net-multiplicity
+(rigidity) phenomenon of \cref{sec:phantasm-forced} in miniature: ``grade a sector odd'' is only half a
+specification. Every eigenvalue of a permutation has modulus one, so the pole circle and the zero
+circle coincide; the critical-line separation needs weights $\sqrt{\qs}$ on the odd cycle
+(\cref{sec:ring-norm-examples}).
+
+\begin{corollary}[All primes fermionic: the M\"obius function is a fermion parity]
+\label{cor:moebius-fermion-parity}
+\claimstatus{cor:moebius-fermion-parity}{sketched}
+Grading every cycle odd gives $\zeta^{\mathrm{gr}}_\pi = \det(1-uP) = 1/\zeta_\pi$. In the
+arithmetic gas, grading every prime odd gives $\prod_p(1-p^{-s}) = 1/\zeta(s) = \sum_n\operatorname{M\ddot ob}(n)n^{-s}$:
+the squarefree gas with $\operatorname{M\ddot ob}(n) = (-1)^{\#\text{primes}}$ its fermion parity; the zeros of the
+fermionic-prime factors lie on $\re s = 0$, not on the critical line.
+\end{corollary}
+
+\begin{proof}
+Set $C_- =$ all cycles in \cref{thm:permutation-induced-zeros}(i); for the arithmetic case expand
+the Euler product, each prime occupied at most once with sign $-1$ (checked exactly for the
+$13$-smooth numbers at $s = 2$).
+\end{proof}
+
+\subsection{Where the sign can and cannot live: the physical letters}
+
+\begin{proposition}[Ring norms see the letters only through the transfer channel]
+\label{prop:letters-transfer-invariance}
+\claimstatus{prop:letters-transfer-invariance}{sketched}
+For any graded lattice tensor $\{\Kr{s}\}_{s\in S}$ and closure $B$, $\|\Psi_B\|^2 = \Tr[(B\otimes\bar B)\Edb^n]$
+depends on the letters only through $\Edb$. If $V\colon\mathbb C^S\to\mathbb C^{S'}$ is an isometry and
+$\Kr{t}' = \sum_sV_{ts}\Kr{s}$, then $\Edb' = \Edb$ and $\Psi_B' = V^{\otimes n}\Psi_B$; conversely two
+families with the same $\Edb$ are so related after padding by zero letters (Kraus uniqueness). The
+minimal number of letters is the rank of the Choi matrix $\sum_s|\Kr{s}\rangle\!\rangle\langle\!\langle\Kr{s}|$
+(the Kraus rank of the transfer channel), and $\Tr[\Gdb\Edb^n]$ is the Ramond amplitude of the
+one-letter MPS with matrix $\Edb$ on the doubled bond graded by $\Gdb$.
+\end{proposition}
+
+\begin{proof}
+$\sum_t\Kr{t}'\otimes\bar{\Kr{t}}' = \sum_{s,s'}(V^\dagger V)_{s's}\Kr{s}\otimes\bar{\Kr{s'}}$ and $V^\dagger V = 1$;
+$\Psi'_B$ is the image of $\Psi_B$ under $V^{\otimes n}$ by linearity. The converse and the rank
+statement are the unitary freedom of Kraus decompositions of a completely positive map. The last
+claim is the definition of the one-letter amplitude.
+\end{proof}
+
+\begin{lemma}[Sector-separating letters kill the odd sector]
+\label{lem:sector-separating-letters}
+\claimstatus{lem:sector-separating-letters}{sketched}
+If every letter is supported in a single parity sector, $\Kr{s} = \Pisec{\epsilon_s}\Kr{s}\Pisec{\epsilon_s}$
+with $\epsilon_s\in\{+,-\}$, then $\Edb$ vanishes on the $\Gdb$-odd doubled subspace, so
+$\Tr[\Gdb\Edb^n] = \Tr\Edb^n$: the twisted and untwisted ring norms coincide, no ring norm carries a
+sign, and the ring zeta $1/\sdet(1-u\Edb)$ has no zeros.
+\end{lemma}
+
+\begin{proof}
+On $|x\rangle\otimes|y\rangle$ with $x$ even and $y$ odd, $\Kr{s}|x\rangle\ne0$ forces $\epsilon_s = +$
+and $\bar{\Kr{s}}|y\rangle\ne0$ forces $\epsilon_s = -$; so every term of $\Edb$ vanishes there, and
+likewise on odd $\otimes$ even. The $\Gdb$-odd subspace is exactly their sum.
+\end{proof}
+
+\begin{proposition}[The word formula and the letter ladder]
+\label{prop:letters-word-formula}
+\claimstatus{prop:letters-word-formula}{sketched}
+For a letter assignment $\lambda$ of a graded permutation, the Ramond ring amplitude of the word
+$w\in S^n$ is $\sum(-1)^{|x|}$ over the points $x$ of period $n$ whose orbit emits $w$, and
+$\|\Psi_\Pi\|^2 = \sum_w\bigl|\sum_{x\to w}(-1)^{|x|}\bigr|^2$. Hence: point letters give
+$\|\Psi_\Pi\|^2 = \Tr P^n$ (Kraus rank $|X|$); cycle letters give $\sum_c(\Tr P_c^n)^2$ (Kraus rank
+the number of cycles); one letter gives $|\str P^n|^2$ (Kraus rank $1$), whose ring zeta is
+$1/\sdet(1-uP\otimes\bar P)$ with the products (even eigenvalue)$\times\overline{\text{(odd eigenvalue)}}$
+as zeros. Any $\lambda$ that separates even from odd points falls under
+\cref{lem:sector-separating-letters}. For $(1\,2)(3\,4\,5)$ at $n = 6$ the three norms are
+$5$, $13$ and $1 = (2-3)^2$; the one-letter ring zeta is $(1+u^3)^2/((1-u^2)^2(1-u^3))$.
+\end{proposition}
+
+\begin{proof}
+$\Tr(\Pi\Kr{w_n}\cdots\Kr{w_1}) = \sum_x\Pi_{xx}[\text{orbit of }x\text{ emits }w]$ since each
+$\Kr{s}$ moves $x$ to $\pi x$ iff $\lambda(x) = s$. Point letters: one orbit per word. Cycle
+letters: all $\wl_c$ starting points of a cycle emit the same word with the same sign. One letter:
+all periodic points emit the same word. The one-letter doubled bond has eigenvalues
+$\lambda\bar\lambda'$ with parity the product of parities.
+\end{proof}
+
+For $0/1$ letters the two sectors interfere only if they emit literally the same word, which forces
+one letter; weighted letters $\operatorname{diag}(a_s, c\,a_s)$ (\cref{sec:ring-norm-examples}, genus one)
+emit the same word with amplitudes differing by $c^n$, so several letters coexist with the sign. The
+weights ($\sqrt{\qs}$, phases) buy that freedom.
+
+\begin{proposition}[A parity-measuring jump shifts the odd spectrum uniformly]
+\label{prop:parity-jump-uniform-shift}
+\claimstatus{prop:parity-jump-uniform-shift}{sketched}
+(i) Composing the transfer channel with the partial dephasing $\dm\mapsto(1-p)\dm+p\Pi\dm\Pi$
+multiplies the $\Gdb$-odd doubled subspace by $1-2p$ and fixes the even one, so
+$\|\Psi_\Pi\|^2 = \Tr_{\mathrm{even}}\Edb^n - (1-2p)^n\Tr_{\mathrm{odd}}\Edb^n$. (ii) For a graded
+Lindbladian with generator $\Tcm$ on the doubled bond, adding the jump $\sqrt\gamma\,\Pi$ adds exactly
+$\gamma(\Gdb-1)$: every eigenvalue on the even--odd coherences is shifted by $-2\gamma$ and every
+even-sector eigenvalue is unchanged. (iii) For a finite abelian group of unitaries $U_a = \sum_\chi
+\chi(a)\Pi_\chi$ diagonal in a character grading, the jumps $\sqrt{\gamma/|G|}\,U_a$ add $-\gamma$ on
+every cross-character coherence $|\chi\rangle\langle\chi'|$, $\chi\ne\chi'$, and $0$ within a sector;
+the full group average as a single-step channel is the character measurement and annihilates the
+cross-character coherences. (iv) Consequently a uniform-rate (Ramanujan) odd spectrum is preserved
+and translated by parity or character dephasing; if the generator on the even--odd coherences is
+$\Tcm_0-2\gamma$ with $\Tcm_0$ anti-Hermitian, the odd spectrum lies on the line $\re = -2\gamma$,
+and $2\gamma = \tfrac14$ is the $e^{-t/4}$ of the Riemann normalisation.
+\end{proposition}
+
+\begin{proof}
+(i) $\Pi\dm\Pi = \pm\dm$ on the $\Gdb$-even/odd subspaces. (ii) The dissipator of $R = \sqrt\gamma\Pi$
+is $\gamma(\Pi\dm\Pi-\dm)$ since $R^\dagger R = \gamma$; on the doubled bond this is $\gamma(\Gdb-1)$,
+which commutes with $\Tcm$ and is $0$ on the even and $-2\gamma$ on the odd subspace. (iii)
+$\frac{1}{|G|}\sum_a\chi(a)\overline{\chi'(a)} = \delta_{\chi\chi'}$. (iv) is (ii) with the stated form.
+\end{proof}
+
+\begin{observation}[What fixes the physical dimension]
+\label{obs:physical-dimension-principle}
+\claimstatus{obs:physical-dimension-principle}{sketched}
+The zeta function never chooses the physical dimension. From below it is bounded by the Kraus rank
+of the transfer channel, the minimal choice being canonical up to a unitary on the letters
+(\cref{prop:letters-transfer-invariance}); one letter is the universal description of norms (the
+channel itself), and the letters are what one adds back to purify. One and five letters for a
+permutation are not two letterings of one object but two channels, $\mathrm{Ad}(P)$ and the
+dephased permutation $X\mapsto P\operatorname{diag}(X)P^\dagger$, which agree on the classical
+(diagonal) sector where the count lives: the physical dimension measures the which-path information
+the environment records per step (the field species, in Lindblad language the number of jump
+channels). From above, once a grading is in play, the letters must be coarser than the grading:
+zeros are eigenvalues of the transfer on the even--odd coherences, and letters that record the bond
+parity kill them (\cref{lem:sector-separating-letters}, the ladder $5,13,1$ of
+\cref{prop:letters-word-formula}); partial parity recording at rate $\gamma$ does not kill them but
+shifts them uniformly (\cref{prop:parity-jump-uniform-shift}). The ``one letter per prime'' choice,
+natural on the gas side, is the worst one when the grading is by prime.
+\end{observation}
+
+\begin{observation}[Reading for the Riemann cMPS: prime jumps versus symmetry jumps]
+\label{obs:jump-operator-guidance}
+\claimstatus{obs:jump-operator-guidance}{sketched}
+TJO asked (2026-09-14) whether the jump operators of the Riemann cMPS should be the prime jumps
+(on-site physical space with levels labelled by primes) or unitaries from the Bost--Connes symmetry
+$\hat{\mathbb Z}^\times$. What the toy makes readable, as a reading and not a theorem: (a) the ring
+norms and hence the explicit formula see the jumps only through the Lindbladian
+(\cref{prop:letters-transfer-invariance}); the two proposals generate different dissipators
+(isometries $\bciso{p}$ shifting the length by $\log p$ versus unitaries commuting with $H$), so the
+question is about $\Tcm$, not about unravellings. (b) Galois jumps are diagonal in the character
+grading of \cref{conj:galois-graded-bond} ($U_a = \sum_\chi\chi(a)\Pi_\chi$); by
+\cref{prop:parity-jump-uniform-shift}(iii) their dissipator is character dephasing: it sets one
+uniform rate on every trivial--nontrivial coherence, leaves the trivial (pole) sector alone, and can
+produce no frequency; taken as a full average per step it is a character measurement and removes the
+zeros. They are the natural carrier of the $e^{-t/4}$, i.e.\ of the rate half of the Ramanujan
+statement, not of the zeros' positions. (c) Prime jumps act on every character sector
+($\chi\mapsto\chi(p\,\cdot)$), so they do not separate the sectors, and they carry the lengths: they
+are the record (the prime comb of the explicit formula is their emission record). Alone they give a
+Gibbs fixed point with real spectrum and no zeros (\cref{sec:phantasm-channels}). The grading must be
+transverse to the primes: grading the primes themselves odd gives $1/\zeta$ and zeros on $\re s = 0$
+(\cref{cor:moebius-fermion-parity}). (d) Neither family supplies the frequencies $\gamma_n$; those
+need a Hamiltonian, or a non-normal even--odd coupling, on the coherences between the pole sector and
+the nontrivial-character sectors: the Hilbert--P\'olya half remains. (e) The ansatz shape this
+suggests: prime jumps with weights (record, lengths, Gibbs fixed point) $+$ Galois dephasing at
+$2\gamma = \tfrac14$ (rate) $+$ an even--odd Hamiltonian part (frequencies), with RH the statement
+that the dissipation on the even--odd coherences is pure dephasing, i.e.\ uniform. Unreviewed;
+the finite covariant cones of \cref{sec:bc-symmetry-generators} are the place to test (e).
+\end{observation}
+
+\begin{numerical}[The graded permutation, 46 checks]
+\label{num:graded-permutation}
+\claimstatus{num:graded-permutation}{numerical}
+\texttt{scripts/graded\_permutation.py} (\texttt{outputs/graded\_permutation.txt}): $\Tr P^n =
+\vM_\pi(n)$ and the point-letter ring as the orbit superposition for $n = 2,3,4,6$; the
+zeta series against $1/((1-u^2)(1-u^3))$ and the eigenvalues of $P$; gas coefficients against
+$\#\{2a+3b = N\}$, against fixed monomials of $\mathrm{Sym}^k(P)$ for $k\le7$, and against the
+eigenvalue product; $\|v_\invtemp\|^2 = \zeta_\pi(e^{-\invtemp})$, product structure, the mean-length
+identity, and a coherence $\langle v|S|v\rangle = 0.4966$ absent from the Gibbs state; $\str P^n$,
+the Ramond and Neveu--Schwarz zeta functions, holonomies $h = -1, i$, the fermionic-cycle identity
+for $\wl\le7$, and the M\"obius identity exactly at $s = 2$ on $13$-smooth numbers; the letter
+ladder (Kraus ranks $1,2,5$; norms $|\str P^n|^2$, $\sum_c(\Tr P_c^n)^2$, $\Tr P^n$), the one-letter
+ring zeta, invariance under a random unitary mixing and an isometric padding to eight letters, the
+word formula for all three assignments, and twisted $=$ untwisted for the separating assignments;
+parity dephasing at $p = 0.3$ and the jump $\sqrt\gamma\Pi$ at $\gamma = 1/8$ on a random graded
+Lindbladian with one even and one odd jump (odd spectrum shifted by exactly $-1/4$, even unchanged).
+\end{numerical}

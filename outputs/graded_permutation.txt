@@ -1,0 +1,52 @@
+1. rings of the permutation (1 2)(3 4 5)
+  ok  1  Tr P^n = Lambda_sigma(n) = sum_(l|n) l m_l : [0, 2, 3, 2, 0, 5, 0, 2, 3, 2, 0, 5]
+  ok  2  n=2: point-letter ring = uniform superposition of the 2 periodic orbits with starting point
+  ok  3  n=2: ||psi_n||^2 = Tr P^n = 2
+  ok  4  n=3: point-letter ring = uniform superposition of the 3 periodic orbits with starting point
+  ok  5  n=3: ||psi_n||^2 = Tr P^n = 3
+  ok  6  n=4: point-letter ring = uniform superposition of the 2 periodic orbits with starting point
+  ok  7  n=4: ||psi_n||^2 = Tr P^n = 2
+  ok  8  n=6: point-letter ring = uniform superposition of the 5 periodic orbits with starting point
+  ok  9  n=6: ||psi_n||^2 = Tr P^n = 5
+  ok 10  exp(sum Tr P^n u^n/n) = 1/((1-u^2)(1-u^3)) = 1/det(1-uP)
+  ok 11  poles = eigenvalues of P: {1,-1} and the cube roots of unity
+2. the gas: two oscillators, bond Fock space, thermal vector
+  ok 12  coefficient of u^N in zeta = #{(a,b): 2a+3b = N} = [1, 0, 1, 1, 1, 1, 2, 1, 2, 2, 2, 2, 3]
+  ok 13  Tr Sym^k(P) = #sigma-fixed monomials = gas configurations of length k: [1, 0, 1, 1, 1, 1, 2, 1]
+  ok 14  Tr_Fock(C^5) u^N Gamma(P) = prod_lambda (1-u lambda)^{-1} = 1/((1-u^2)(1-u^3))
+  ok 15  ||v_beta||^2 = zeta_sigma(e^-beta) at beta=0.7: 1.512530
+  ok 16  v_beta is a product vector over the two primes
+  ok 17  sum_n ||psi_n||^2 e^{-beta n} = <H>_beta (mean length of the gas)
+  ok 18  vector state has coherences the Gibbs state lacks: <v|S|v> = 0.4966, Tr(rho S) = 0
+3. grading the 3-cycle odd: closures, holonomy, fermionic cycles, Moebius
+  ok 19  str P^n = 2[2|n] - 3[3|n]: [0, 2, -3, 2, 0, -1, 0, 2, -3, 2, 0, -1]
+  ok 20  Ramond closure: exp(sum str P^n u^n/n) = (1-u^3)/(1-u^2) = 1/sdet(1-uP)
+  ok 21  net: zeros at the primitive cube roots, pole at -1, the pole at 1 cancelled by the odd fixed vector
+  ok 22  Neveu-Schwarz closure (no parity insertion): no zeros
+  ok 23  holonomy h=-1 on the odd cycle: odd eigenvalues = cube roots of h
+  ok 24  holonomy h=1j on the odd cycle: odd eigenvalues = cube roots of h
+  ok 25  h=-1: zeta = (1-u+u^2)/(1-u): pole at 1 kept, zeros at exp(+-i pi/3), pole at -1 eaten
+  ok 26  l=2: Str_(exterior algebra) u^N Gamma(P_l) = 1 - u^l; (-1)^l sgn(cycle) = -1
+  ok 27  l=3: Str_(exterior algebra) u^N Gamma(P_l) = 1 - u^l; (-1)^l sgn(cycle) = -1
+  ok 28  l=4: Str_(exterior algebra) u^N Gamma(P_l) = 1 - u^l; (-1)^l sgn(cycle) = -1
+  ok 29  l=5: Str_(exterior algebra) u^N Gamma(P_l) = 1 - u^l; (-1)^l sgn(cycle) = -1
+  ok 30  l=6: Str_(exterior algebra) u^N Gamma(P_l) = 1 - u^l; (-1)^l sgn(cycle) = -1
+  ok 31  l=7: Str_(exterior algebra) u^N Gamma(P_l) = 1 - u^l; (-1)^l sgn(cycle) = -1
+  ok 32  all primes fermionic: prod_p (1 - p^-s) = sum_squarefree mu(n) n^-s (13-smooth, s=2, exact)
+4. physical letters: invariance, the ladder, the word formula
+  ok 33  one letter: Kraus rank 1, Ramond norm |str P^n|^2 = [0, 4, 9, 4, 0, 1, 0, 4, 9, 4, 0, 1]
+  ok 34  cycle letters: Kraus rank 2, Ramond norm sum_c (Tr P_c^n)^2 = [0, 4, 9, 4, 0, 13, 0, 4, 9, 4, 0, 13]
+  ok 35  point letters: Kraus rank 5, Ramond norm Tr P^n = [0, 2, 3, 2, 0, 5, 0, 2, 3, 2, 0, 5]
+  ok 36  one letter: ring zeta = 1/sdet(1 - u P(x)conj P) = (1+u^3)^2/((1-u^2)^2(1-u^3))
+  ok 37  letters mixed by a unitary or padded by an isometry: same E_d, same Ramond norms, Kraus rank unchanged
+  ok 38  the Kraus rank of E_d is the minimal letter count (8 padded letters still rank 5)
+  ok 39  word formula sum_w |sum_x (-1)^|x||^2 reproduces the one-letter Ramond norm
+  ok 40  word formula sum_w |sum_x (-1)^|x||^2 reproduces the cycle-letter Ramond norm
+  ok 41  word formula sum_w |sum_x (-1)^|x||^2 reproduces the point-letter Ramond norm
+  ok 42  letters that resolve the parity: twisted norm = untwisted norm (no odd sector populated)
+  ok 43  letters that resolve the parity: twisted norm = untwisted norm (no odd sector populated)
+5. a parity-measuring jump: uniform shift of the odd sector, even sector untouched
+  ok 44  parity dephasing with weight p=0.3: Ramond norm = Tr_even E^n - (1-2p)^n Tr_odd E^n (odd sector rescaled, even untouched)
+  ok 45  jump sqrt(gamma) Pi adds exactly gamma (Gamma_b - 1) to the doubled-bond generator
+  ok 46  gamma=0.125: every even-odd coherence eigenvalue shifted by -2 gamma = -0.25, every even-sector eigenvalue unchanged
+all 46 checks passed
