@@ -1,0 +1,140 @@
+% SHARD-ID: RC-02H-DEFINITIONS-GRADED-RAMANUJAN
+% SHARD-TITLE: Definitions, Continued: The Ramanujan Property for Graded Transfer Channels
+% SHARD-SUMMARY: Sixth definitions shard: graded transfer channel with its even and odd sector restrictions, graded divisor, growth and trivial set, parity-twisted trace preservation and the P-mode.
+% SHARD-SUMMARY: Graded RH (one-sided), functional equation, Ramanujan (two-sided) and the manifest Hilbert-Polya form, stated on the divisor so that the same words apply to lattice channels and cMPS generators; graded quantum expanders; the graded Hashimoto operator and graded quantum Ihara zeta; index-two (Clifford) gradings of representation channels.
+% SHARD-KEYWORDS: definitions, graded bond, transfer channel, sectors, divisor, trivial set, P-mode, Riemann hypothesis, functional equation, Ramanujan, Hilbert-Polya, quantum expander, Hashimoto, quantum Ihara zeta, Clifford theory, index two
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{Definitions, Continued: The Ramanujan Property for Graded Channels}
+\label{sec:definitions-h}
+
+These definitions are used in \cref{sec:graded-ramanujan}. They build on the graded lattice
+tensor of \cref{def:graded-lattice-tensor}, whose doubled transfer $\Edb$ commutes with the
+doubled parity $\Gdb$, and on the cMPS generator $\Tcm$ of \cref{def:cmps-transfer-generators}.
+``Even'' and ``odd'' always refer to $\Gdb$-sectors of the doubled bond: block-diagonal
+operators (populations of and coherences within each parity block) and block-off-diagonal
+operators (coherences between the two parity blocks).
+
+\begin{definition}[Graded transfer channel, sector restrictions, graded divisor, trivial set]
+\label{def:graded-transfer-channel}
+A \emph{graded transfer channel} is a graded lattice tensor $(\Kr{s})_s$ on $V = V_+\oplus V_-$
+with parity $P$, viewed through its doubled transfer $\Edb$ or the channel $X\mapsto\sum_s\Kr{s}X
+\Kr{s}^\dagger$. Its \emph{sector restrictions} are $\Esec{0} = \Edb|_{\mathrm{even}}$ and
+$\Esec{1} = \Edb|_{\mathrm{odd}}$. The two closures give the ring norms $\Tr\Edb^n = \Tr\Esec{0}^n
++\Tr\Esec{1}^n$ (antiperiodic) and $\str\Edb^n = \Tr\Esec{0}^n-\Tr\Esec{1}^n$ (periodic,
+\cref{def:graded-lattice-tensor}). The \emph{graded divisor} is $\nu(\lambda) = m_0(\lambda)-
+m_1(\lambda)$, the difference of the algebraic multiplicities of $\lambda$ in the two sectors:
+$\nu>0$ are the poles and $\nu<0$ the zeros of the ring zeta $1/\sdet(1-\uz\Edb)$, and $\nu = 0$
+is invisible. The \emph{growth} is $\qs = \specrad(\Edb) = \specrad(\Esec{0})$, the Perron root; its
+eigenvector can be taken even (average with its $P$-conjugate), and no nonzero positive
+operator is odd, though positive operators need not be even; the channel is \emph{graded
+primitive} when $\nu(\qs) = 1$. The \emph{trivial divisor} $\nu_{\mathrm{triv}}$ is a signed divisor, with
+multiplicities and parities, designated for structural reasons: $\qs$ (even, simple), its images
+$\zeta\qs$ under the period of $\Edb$ ($\zeta^k = 1$; period modes can be odd, so their parities
+are recorded, not assumed), the value $1$ as the designated $H^0$ partner of $\qs$ (the constant
+term of a count), the functional-equation partners of these when \cref{def:graded-rh-fe-ramanujan}
+supplies one, and, in the arithmetic cases, the archimedean or topological ladder. The
+\emph{retained divisor} is $\nu_{\mathrm{ret}} = \nu-\nu_{\mathrm{triv}}$; $\trivS$ denotes
+the support of $\nu_{\mathrm{triv}}$. Accidental eigenvalues at a trivial value are retained with
+their own multiplicity. (Prover correction, ledger L31, L41: a value set of even modes is not the
+accurate object.) For a cMPS generator $\Tcm$ the same words apply
+with $\Edb = e^{L\Tcm}$ and a \emph{pair of reference rates} $(\omega_0,\omega_1)$ in place of
+$(\qs,1)$: the fixed point's rate and its designated partner's, whose midpoint is the critical
+line; in the channel normalisation $\omega_0 = 0$, and $\omega_1$ must be supplied as data, since
+a trace-preserving spectral bound alone is $0$ and does not determine it (ledger L36: amplitude
+damping has centre $-\gamma/2$ with spectral bound $0$).
+\end{definition}
+
+\begin{definition}[Parity-twisted unitality, $P$-mode]
+\label{def:parity-twisted-tp}
+A graded transfer channel with letter parities $\epsilon_s = \pm1$ is \emph{parity-twisted unital} with
+twisted eigenvalue $\pmode$ when $\sum_s\epsilon_s\Kr{s}\Kr{s}^\dagger = \pmode\,1$,
+equivalently $\Edb(P) = \pmode P$ in the channel picture (signed unitality in the map convention
+$X\mapsto\sum_s\Kr{s}X\Kr{s}^\dagger$; signed trace preservation would use
+$\Kr{s}^\dagger\Kr{s}$, ledger L28); the even eigenvector $P$
+is then the \emph{$P$-mode}. For unital channels with unitary homogeneous letters of weights $w_s$,
+$\pmode = \sum_s\epsilon_sw_s$, the signed weight of the letters.
+\end{definition}
+
+\begin{definition}[Graded RH, functional equation, Ramanujan, manifest form]
+\label{def:graded-rh-fe-ramanujan}
+Let $(V,P,\Edb)$ be a graded transfer channel with growth $\qs$, divisor $\nu$ and trivial set
+$\trivS$. The \emph{critical circle} is $|\lambda| = \sqrt\qs$ (counting normalisation; $\qs^{-1/2}$
+for the channel normalisation, the line $\re z = \omega/2$ for a generator).
+\begin{enumerate}
+\item[(RH)] \emph{One-sided (square-root cancellation):} every point of
+$\operatorname{supp}\nu_{\mathrm{ret}}$ has $|\lambda|\le\sqrt\qs$; equivalently the periodic
+ring norm minus its trivial part is $O(n^c\qs^{n/2})$ (Ces\`aro argument on the modes of maximal
+modulus; it says nothing about cancelled modes).
+\item[(FE)] \emph{Functional equation:} the divisor form is $\nu_{\mathrm{ret}}(\qs/\lambda) =
+\nu_{\mathrm{ret}}(\lambda)$ (continuum: $\nu_{\mathrm{ret}}(\omega_0+\omega_1-\lambda) =
+\nu_{\mathrm{ret}}(\lambda)$); the stronger operator form is an even similarity $J$ (commuting with
+$\Gdb$) with $J\Edb J^{-1} = \qs\Edb^{-1}$ on specified retained sectors, which also matches Jordan
+data (ledger L32). For a generator, $J\Tcm J^{-1} = \omega_0+\omega_1-\Tcm$.
+\item[(Ram)] \emph{Ramanujan (two-sided):} every retained divisor point, even (pole) or odd
+(zero), lies on the critical circle. Under the reality hypothesis $\nu_{\mathrm{ret}}(\bar\lambda)
+= \nu_{\mathrm{ret}}(\lambda)$ (automatic for graded transfer channels, whose sector spectra are
+conjugation closed) this is equivalent to (RH) and divisor (FE).
+\item[(HP)] \emph{Manifest, or Hilbert--P\'olya, form:} on specified retained invariant sector
+subspaces there is a $\Gdb$-even positive definite form $G$ with $\Edb^\dagger G\Edb = \qs G$,
+i.e.\ the retained parts of $\Esec{1}/\sqrt\qs$ and $\Esec{0}/\sqrt\qs$ are $G$-unitary; this is
+equivalent to those operators being diagonalisable with spectrum on the circle
+(\cref{prop:hp-inner-product-discrete} sector by sector), and is a statement about the retained
+operators, not about the divisor alone (ledger L33). For a generator: $\Tcm = \omega/2 + iH$ on those sectors
+with $H$ $G$-self-adjoint, the ``$e^{-t/4}$ rescaling'' of the Riemann normalisation
+($\omega = 1/2$).
+\end{enumerate}
+(RH), (FE) and mixing are independent in general (\cref{sec:zeta-conditions}, Pauli family).
+The prover lane (\texttt{notes/ramanujan-graded/astra-proofs.md}, ``Definitions: verdict'')
+distinguishes a \emph{graded CP transfer} (this definition) from a \emph{graded spectral transfer},
+a graded operator with a divisor but no supplied Kraus realisation: the Artin--Schreier
+super-transfer of \cref{sec:artin-schreier-super}, the Riemann graded generator of
+\cref{sec:phantasm-forced} and the Selberg flat tower of \cref{sec:selberg-tower} are of the
+second kind, and only the divisor statements apply to them.
+\end{definition}
+
+\begin{definition}[Graded quantum expander]
+\label{def:graded-quantum-expander}
+A trace-preserving graded channel $\chan$ (channel normalisation) on $B(V_+\oplus V_-)$ with a
+unique fixed point (necessarily even) is a \emph{$(D_+|D_-,\Dk,\lambda_0,\lambda_1)$ graded quantum
+expander} (\emph{mixing} version) when every even eigenvalue other than the simple stationary
+one has modulus at most $\lambda_0<1$ and every odd eigenvalue has modulus at most $\lambda_1<1$;
+uniqueness of the stationary state excludes odd fixed operators. The \emph{period-$k$} version
+records and removes the peripheral modes with their parities (the all-odd examples of
+\cref{sec:graded-ramanujan} have the even mode $P$ at $-1$ and are period two, not mixing as
+single-step channels). The \emph{odd gap} $-\log\lambda_1$ bounds the asymptotic decay of the
+parity coherences, with possible Jordan factors; it is not a single-step contraction bound. The expander is \emph{Ramanujan} when $\lambda_0 =
+\lambda_1 = \lamH = 2\sqrt{\Dk-1}/\Dk$ in the Hermitian case (unitary letters closed under adjoint,
+equal weights; \emph{sector Ramanujan}), or when its divisor satisfies (Ram) of
+\cref{def:graded-rh-fe-ramanujan} in general. The letter degree $\Dk$ is data: repeated letters
+change the Hastings benchmark without changing the channel.
+\end{definition}
+
+\begin{definition}[Graded Hashimoto operator, graded quantum Ihara zeta, balanced grading]
+\label{def:graded-hashimoto}
+For unitary homogeneous letters $U_i$, $i\in[\Dk]$, with a fixed-point-free reversal $\rev$ and
+$U_{\bari{i}} = U_i^\dagger$ (so $U_i$ and $U_{\bari{i}}$ have the same parity), the \emph{graded
+Hashimoto operator} is the operator $\Hash$ of \cref{def:quantum-hashimoto} on $B(V)\otimes
+\mathbb C^{\Dk}$ with $\Eop{i} = \Ad(U_i)$; it commutes with $\Gdb\otimes1$ and has sector
+restrictions $\Hash_0$, $\Hash_1$. The \emph{graded quantum Ihara zeta} is $1/\sdet(1-\uz\Hash) =
+\det(1-\uz\Hash_1)/\det(1-\uz\Hash_0)$, the ring zeta of the periodic non-backtracking rings,
+$\str\Hash^n = \sum_w|\Tr(PU_w)|^2$ over cyclically non-backtracking words. The grading is
+\emph{balanced} when $D_+ = D_-$.
+\end{definition}
+
+\begin{definition}[Index-two grading of a representation channel]
+\label{def:index-two-grading}
+Let $G$ be a group with an index-two subgroup $G_0$ and sign character $\epsilon\colon G\to\{\pm1\}$,
+$\ker\epsilon = G_0$, and let $\pi$ be an irreducible unitary representation of $G$ on $V$ whose
+restriction to $G_0$ is reducible, $\pi|_{G_0} = \pi_+\oplus\pi_-$ with $\pi_\pm$ irreducible and
+conjugate under the odd coset (Clifford theory: $\pi = \operatorname{Ind}_{G_0}^G\pi_+$). The
+\emph{index-two grading} is $P = +1$ on $V_+ = \pi_+$ and $-1$ on $V_- = \pi_-$, so that $P\pi(g)P
+= \epsilon(g)\pi(g)$: elements of $G_0$ act as even letters and elements of the odd coset as odd
+letters. For a finite symmetric generating set $S$ of $G$ the \emph{graded representation channel}
+is $\chan = |S|^{-1}\sum_{s\in S}\Ad\pi(s)$, with walk element $W_S = |S|^{-1}\sum_{s\in S}s$ in the
+group algebra. The examples of \cref{sec:graded-ramanujan} are $G = \mathrm{PGL}_2(\mathbb F_p)
+\supset\mathrm{PSL}_2(\mathbb F_p)$ with $\epsilon$ the Legendre symbol of the determinant, and
+the Pauli group (not its abelian quotient, whose two-dimensional representation is projective;
+ledger L09) with $G_0$ the index-two subgroup generated by $iI$ and $Z$.
+\end{definition}

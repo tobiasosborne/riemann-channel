@@ -1,0 +1,33 @@
+E0: pair shift minus its diagonal, bond C^{1|1}
+  ok  1  N_n = 4^n - 2^n = [2, 12, 56, 240, 992, 4032] (explicit words at n = 4)
+  ok  2  prime counts nonnegative integers: [2, 5, 18, 57, 198, 661]
+  ok  3  Z = (1-2u)/(1-4u): one zero at 1/2 = q^-1/2, one pole at 1/4; no functional equation
+projective elliptic curve y^2 = x^3 + x + 1 over F_5: four-letter TP tensor on C^{1|1}
+  ok  4  N_1 = 9, a = -3, pi = (-3 + i sqrt 11)/2, |pi|^2 = 5
+  ok  5  sum_s A_s^+ A_s = q 1: letters / sqrt q form a trace-preserving channel on the whole bond
+  ok  6  even spectrum {1, 5}, odd spectrum {pi, conj pi}
+  ok  7  Ramond norm = #E(F_5^n) = [9, 27, 108, 675, 3069, 15552] (explicit words at n = 3)
+  ok  8  duality J E_d J^-1 = q E_d^-1 (3+2X -> 3-2X on the even block, pi <-> conj pi on the odd block), J commutes with Gamma_b: the functional equation by a visible mechanism
+  ok  9  odd block / sqrt 5 is unitary: RH by a visible mechanism
+  ok 10  unique fixed point of the normalised channel: the maximally mixed state; all other eigenvalues inside the unit circle (mixing)
+independence of FE, RH and mixing: Pauli-letter channels on C^{1|1}
+  ok 11  TTT: TP after /4, even {16,1}, odd {4,4}
+  ok 12  TTT: FE True, RH True, genuine gas (a_d = [9, 108, 1320, 16200, 209304, 2794140])
+  ok 13  TFT: TP after /4, even {16,1}, odd {8,2}
+  ok 14  TFT: FE True, RH False, genuine gas (a_d = [7, 91, 1190, 15309, 203154, 2751875])
+  ok 15  FTT: TP after /4, even {16,0}, odd {4,4}
+  ok 16  FTT: FE False, RH True, genuine gas (a_d = [8, 108, 1320, 16200, 209304, 2794140])
+  ok 17  FFT: TP after /4, even {16,1}, odd {3,3}
+  ok 18  FFT: FE False, RH False, genuine gas (a_d = [11, 114, 1344, 16284, 209616, 2795248])
+  ok 19  with even {1,q} and every odd modulus sqrt q, the divisor is automatically reciprocal: FE cannot fail when RH and the projective pole pair hold
+FE cMPS on C^{1|1}: amplitude damping with a Hamiltonian
+  ok 20  normalised generator: even {0, -2}, odd {-1 +- i}: unique vacuum fixed point, odd rate = half the population decay, frequency from H
+  ok 21  N(L) = |1 - e^{(1+i)L}|^2 = 1 + e^{2L} - 2 e^L cos L >= 0
+  ok 22  ring zeta ((z-1)^2+1)/(z(z-2)) satisfies the additive functional equation Z(2 - z) = Z(z); zeros on Re z = 1
+tiny Dirichlet L-function over F_2[x] modulo x^3 + x + 1 via the Horner transfer
+  ok 23  L(u,chi) = 1 + (w + w^3) u - (1 + w + w^3) u^2 from the Horner letters with the character as boundary row
+  ok 24  L(u,chi) = (1 - u)(1 - alpha u) with |alpha|^2 = 2: one trivial root, one zero on |u| = 2^-1/2
+  ok 25  factorisation check at u = 1
+supersingular curve y^2 + y = x^3 over F_4: real double zero
+  ok 26  #E(F_4) = 9, a = -4, P(u) = 1 + 4u + 4u^2 = (1 + 2u)^2: double zero at u = -1/2, |2| = sqrt 4
+all 26 checks passed

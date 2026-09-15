@@ -1,0 +1,56 @@
+PASS 001: D1 equal radii, disjoint spectra {1} and {-1}
+PASS 002: D1 trace inequality n=1
+PASS 003: D1 trace inequality n=2
+PASS 004: D1 trace inequality n=3
+PASS 005: D1 trace inequality n=4
+PASS 006: D1 trace inequality n=5
+PASS 007: D1 trace inequality n=6
+PASS 008: positive matrices need not be even; I+X is a rank-one positive matrix
+PASS 009: D4 primitive counterexample: even {14,10}, odd {10,6}
+PASS 010: D4 hidden modes outside band, surviving modes inside
+PASS 011: D4 exact cancellation of f_10
+D4 reduced Z = (13*u**2 - 6*u + 1)/((u - 1)*(13*u - 1))
+PASS 012: D5 degree four dephasing has odd spectral radius zero
+PASS 013: D5 claimed return-word lower bound fails already at length two
+PASS 014: D5 C^(1|1): I/P odd characters cancel exactly
+PASS 015: D5 C^(2|2): I/P odd characters cancel exactly
+PASS 016: D5 C^(7|7): I/P odd characters cancel exactly
+PASS 017: D5 C^(31|31): I/P odd characters cancel exactly
+PASS 018: D5 primitive D=16 family, odd block zero, m=3
+PASS 019: D5 spectator has unique fixed point and is primitive, m=3
+PASS 020: D5 primitive D=16 family, odd block zero, m=5
+PASS 021: D5 spectator has unique fixed point and is primitive, m=5
+PASS 022: D5 primitive D=16 family, odd block zero, m=7
+PASS 023: D5 spectator has unique fixed point and is primitive, m=7
+PASS 024: D3 exact sector Bass identity [0, 3]
+PASS 025: D3 exact sector Bass identity [1, 2]
+PASS 026: D13 exact Pauli elliptic zeta
+PASS 027: D13 six Pauli ring counts
+Pauli counts: [8, 32, 104, 640, 3208, 15392]
+PASS 028: D6 cyclic word/supertrace equality, Pauli n=1
+PASS 029: D6 cyclic word/supertrace equality, Pauli n=2
+PASS 030: D6 cyclic word/supertrace equality, Pauli n=3
+PASS 031: D13 actual nonsingular elliptic curve over F5, b=0
+PASS 032: D13 actual nonsingular elliptic curve over F5, b=1
+PASS 033: D13 actual nonsingular elliptic curve over F5, b=4
+PASS 034: D13 rational noninteger odd eigenvalues, all sector modes inside band
+PASS 035: D13 N_P(1)=16/3, not a word count
+Nonintegral circle numerator: 25*u**4 - 40*u**3/3 + 70*u**2/9 - 8*u/3 + 1
+PASS 036: D13 numerator not a Weil polynomial over Z
+PASS 037: D13 primitive D=10 example: even {10,2}, odd {6,6}, at the band edge
+PASS 038: D13 integral Weil-9 numerator (1-3u)^4 would give a curve -2 rational points
+PASS 039: D7 at epsilon=1 every rate aliases to e
+PASS 040: D7 sampled divisor cancels completely
+PASS 041: D7 continuous supertrace does not vanish between samples
+PASS 042: D9 even diffusion rates
+PASS 043: D9 odd diffusion rates
+PASS 044: D8 Euler Kraus family is CPTP, n=50
+PASS 045: D8 Euler Kraus family is CPTP, n=100
+PASS 046: D8 Euler Kraus family is CPTP, n=200
+PASS 047: D8 Euler Kraus family is CPTP, n=400
+PASS 048: D8 first-order norm convergence under mesh halving
+D8 operator norm errors: [0.00521304633378794, 0.002595350337372959, 0.0012949003494462652, 0.0006467587563392108]
+PASS 049: D14 odd fixed operators can exist when the fixed point is not unique
+PASS 050: period-two channel with grading P=Z has an odd peripheral eigenoperator X
+
+50/50 checks passed

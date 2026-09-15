@@ -1,0 +1,95 @@
+(1) Pauli letters on the qubit bond C^{1|1}, P = Z; six letters X,X,Y,Y,Z,Z with reversal pairing the copies
+  ok   letter homogeneous: odd
+  ok   letter homogeneous: odd
+  ok   letter homogeneous: odd
+  ok   letter homogeneous: odd
+  ok   letter homogeneous: even
+  ok   letter homogeneous: even
+  ok   doubled transfer commutes with Gamma = P (x) P
+   even (vertex) spectrum: [-2.  6.]  odd (vertex) spectrum: [-2. -2.]   Hastings band |lambda| <= 2 sqrt(q) = 4.47213595499958
+  ok   even {6 (fixed point), -2 (P-mode = #even - #odd letters)}, odd {-2, -2}: all nontrivial in the band
+  ok   Hashimoto operator commutes with Gamma (x) 1
+   even edge moduli: [1.0, 2.236068, 5.0]  odd edge moduli: [1.0, 2.236068]  critical sqrt q = 2.236068
+  ok   odd edge eigenvalues on the critical circle (plus the trivial +-1); even: trivial {5,1} and the circle
+  ok   graded quantum Ihara-Bass on the even sector: det(1-uT_k) = (1-u^2)^(n_k(D-2)/2) det(1 - u Sigma_k + q u^2)
+  ok   graded quantum Ihara-Bass on the odd sector: det(1-uT_k) = (1-u^2)^(n_k(D-2)/2) det(1 - u Sigma_k + q u^2)
+  ok   str T^n = [8, 32, 104, 640, 3208, 15392] = 1 + 5^n - (mu^n + conj mu^n), mu = -1 + 2i: the point counts of an elliptic curve over F_5 with 8 points
+  ok   graded quantum Ihara zeta = (1 + 2u + 5u^2)/((1-u)(1-5u)): curve normal form, genus 1, balanced grading cancels the (1-u^2) factors
+  ok   elliptic curves y^2 = x^3 + ax + b over F_5 with 8 points, (a,b) in [(4, 0), (4, 1), (4, 4)]...: the Pauli non-backtracking ring counts their points
+  ok   n = 1: str T^n = sum_(cyclically non-backtracking words) |Tr(P U_w)|^2 = 8 (a ring norm)
+  ok   n = 2: str T^n = sum_(cyclically non-backtracking words) |Tr(P U_w)|^2 = 32 (a ring norm)
+  ok   n = 3: str T^n = sum_(cyclically non-backtracking words) |Tr(P U_w)|^2 = 104 (a ring norm)
+(2) the shard-06h four-letter projective elliptic tensor on C^{1|1} (q = 5, r = 1, pi = (-3 + i sqrt 11)/2)
+  ok   sum_s A_s^+ A_s = q 1 (trace preservation up to q: the fixed point / pole at s = 1)
+  ok   sum_s eps_s A_s A_s^+ = r 1: parity-twisted preservation, E(P) = r P, the P-mode is the H^0 pole at 1
+  ok   P (as a vector of the doubled bond) is an even eigenvector with eigenvalue r
+   even: [1. 5.]  odd: [-1.5-1.658312j -1.5+1.658312j]
+  ok   odd block: E_1^+ E_1 = q, i.e. E_1 = sqrt q times a unitary (Hilbert-Polya form on the odd sector)
+  ok   divisor: even = trivial {q, r} exactly, odd on |mu| = sqrt q: RH with an empty nontrivial even sector
+  ok   |Tr E_odd^n| <= Tr E_even^n for n <= 8 (both closures are ring norms)
+(3) PGL2(F_5) with the 14 LPS generators of norm 13; (q/p) = -1
+  ok   chi has order 4, chi^2 = the quadratic character
+  ok   pi is a unitary representation of GL2(F_5), trivial on the centre: a representation of PGL2(F_5) of dimension 6
+  ok   irreducible: <chi_pi, chi_pi> = 1
+  ok   restricted to G_0 = {det a square} = PSL2 x centre it splits into two irreducibles (Clifford theory, index 2)
+  ok   the averaged operator has two eigenvalues of opposite sign and equal multiplicity: commutant = span(1, P)
+  ok   P diagonal in the rotated basis
+  ok   P pi(g) P = (det g / p) pi(g): elements of the nontrivial coset are odd, of PSL2 even
+  ok   all 14 generators have non-square determinant 13 mod 5: every letter is odd
+  ok   distinct in PGL2, closed under inverse, fixed-point-free reversal
+  ok   Cayley graph on 120 vertices, 14-regular, bipartite (eigenvalue -(q+1))
+  ok   Ramanujan: max nontrivial |lambda| = 4.0000 <= 2 sqrt q = 7.2111
+  ok   channel commutes with Gamma = Ad(P)
+   even sector (18): extremes [-14.  -4.] ... [ 4. 14.];  odd sector (18): [-4.0000, 4.0000];  band 7.2111
+  ok   even sector: the fixed point q+1 (simple) and the P-mode -(q+1) = eps(W_S) (all letters odd)
+  ok   even nontrivial eigenvalues in the Hastings band (max 4.0000)
+  ok   odd sector (parity coherences) entirely in the Hastings band (max 4.0000): a graded Ramanujan quantum expander
+  ok   Harrow containment: every channel eigenvalue (both sectors) is a Cayley-graph eigenvalue
+  ok   str Sigma^n = [0.0, 360.0, 0.0, 76320.0] >= 0 and |Tr odd| <= Tr even
+  ok   str = sum_w |Tr(P pi(w))|^2 and Tr = sum_w |Tr pi(w)|^2 on words of length <= 3
+  ok   odd length: both ring norms vanish (chi_pi is supported on G_0; bipartite)
+  ok   Hashimoto operator (504 x 504) commutes with Gamma (x) 1
+  ok   odd edge eigenvalues: 36 on |mu| = sqrt q, 216 at |mu| = 1 (the (1-u^2) factor), none elsewhere
+  ok   even edge eigenvalues: 32 on the circle, 2 at |mu| = q (trivial +-q), 218 at |mu| = 1
+  ok   graded quantum Ihara-Bass on the even sector at u = (0.05+0.02j)
+  ok   graded quantum Ihara-Bass on the odd sector at u = (0.05+0.02j)
+  ok   non-backtracking parity-closed ring norms str T^n = [0, 360, 0, 57600, 0, 9645480] >= 0
+   NET vertex divisor: 2 net-even (poles, incl. +-(q+1)), 2 net-odd (zeros), 16 cancelled pairs; reduced graded Ihara zeta: numerator degree 4, denominator degree 4 (of which 4 structural)
+  ok   raw odd edge count = 2 dim(odd) (two roots per quadratic) plus dim(odd)(D-2) trivial ones; the raw count is NOT the reduced numerator degree (prover correction)
+(3) PGL2(F_13) with the 6 LPS generators of norm 5; (q/p) = -1
+  ok   chi has order 4, chi^2 = the quadratic character
+  ok   pi is a unitary representation of GL2(F_13), trivial on the centre: a representation of PGL2(F_13) of dimension 14
+  ok   irreducible: <chi_pi, chi_pi> = 1
+  ok   restricted to G_0 = {det a square} = PSL2 x centre it splits into two irreducibles (Clifford theory, index 2)
+  ok   the averaged operator has two eigenvalues of opposite sign and equal multiplicity: commutant = span(1, P)
+  ok   P diagonal in the rotated basis
+  ok   P pi(g) P = (det g / p) pi(g): elements of the nontrivial coset are odd, of PSL2 even
+  ok   all 6 generators have non-square determinant 5 mod 13: every letter is odd
+  ok   distinct in PGL2, closed under inverse, fixed-point-free reversal
+  ok   Cayley graph on 2184 vertices, 6-regular, bipartite (eigenvalue -(q+1))
+  ok   Ramanujan: max nontrivial |lambda| = 4.2497 <= 2 sqrt q = 4.4721
+  ok   channel commutes with Gamma = Ad(P)
+   even sector (98): extremes [-6.       -3.561553] ... [3.561553 6.      ];  odd sector (98): [-4.2497, 4.2497];  band 4.4721
+  ok   even sector: the fixed point q+1 (simple) and the P-mode -(q+1) = eps(W_S) (all letters odd)
+  ok   even nontrivial eigenvalues in the Hastings band (max 3.5616)
+  ok   odd sector (parity coherences) entirely in the Hastings band (max 4.2497): a graded Ramanujan quantum expander
+  ok   Harrow containment: every channel eigenvalue (both sectors) is a Cayley-graph eigenvalue
+  ok   str Sigma^n = [0.0, 0.0, 0.0, -0.0] >= 0 and |Tr odd| <= Tr even
+  ok   str = sum_w |Tr(P pi(w))|^2 and Tr = sum_w |Tr pi(w)|^2 on words of length <= 3
+  ok   odd length: both ring norms vanish (chi_pi is supported on G_0; bipartite)
+  ok   Hashimoto operator (1176 x 1176) commutes with Gamma (x) 1
+  ok   odd edge eigenvalues: 196 on |mu| = sqrt q, 392 at |mu| = 1 (the (1-u^2) factor), none elsewhere
+  ok   even edge eigenvalues: 192 on the circle, 2 at |mu| = q (trivial +-q), 394 at |mu| = 1
+  ok   graded quantum Ihara-Bass on the even sector at u = (0.05+0.02j)
+  ok   graded quantum Ihara-Bass on the odd sector at u = (0.05+0.02j)
+  ok   non-backtracking parity-closed ring norms str T^n = [0, 0, 0, 0, 0, 37128] >= 0
+   NET vertex divisor: 72 net-even (poles, incl. +-(q+1)), 72 net-odd (zeros), 26 cancelled pairs; reduced graded Ihara zeta: numerator degree 144, denominator degree 144 (of which 4 structural)
+  ok   raw odd edge count = 2 dim(odd) (two roots per quadratic) plus dim(odd)(D-2) trivial ones; the raw count is NOT the reduced numerator degree (prover correction)
+(4) continuum limit of (1): jump Lindbladian L = sum_s g_s (Ad sigma_s - 1), Gamma-graded; spectrum = affine image
+  ok   L commutes with Gamma: the grading survives the continuum limit (odd letters are jumps of finite rate)
+  ok   even {0, -2(g_X+g_Y)} (fixed point, P-mode), odd {-2(g_Z+g_Y), -2(g_Z+g_X)}: the P-mode rate is twice the odd-letter rate
+  ok   graded Chernoff: str (1 + eps L)^(L/eps) -> str e^(L T) at L = 0.5 (0.346320 vs 0.346213)
+  ok   graded Chernoff: str (1 + eps L)^(L/eps) -> str e^(L T) at L = 2.0 (0.844767 vs 0.844617)
+  ok   str e^{tL} >= 0 for t in [0,5]: the periodic ring norm of the graded cMPS
+
+81/81 checks passed

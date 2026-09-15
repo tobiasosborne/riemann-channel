@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -85,6 +85,56 @@ character reading of the grading and conj:galois-graded-bond.
 0d. **Mayer cusp tail** (`notes/resonances/astra-freeassoc.md` §3): unchanged.
 0e. **Suzuki's prime-defined screw kernel** (§16.3): unchanged.
 0f. **Literature:** Bonthonneau–Weich; Lewis–Zagier, Chang–Mayer: unchanged.
+
+### The Ramanujan property for graded transfer channels (2026-09-15, morning; shards 02h, 03c, 03d)
+
+TJO's quest item: a rigorous definition of the Ramanujan property from the graded MPS picture that
+survives the continuum limit, with Harrow expanders as the test; and whether "we only have quantum
+expanders for ungraded bond space / antiperiodic BCs". Orchestrator alone, then one codex
+gpt-6-astra xhigh prover lane (`notes/ramanujan-graded/`). All rows sketched, author
+claude:fable-5.1, unreviewed. Worklog 2026-09-15.
+
+- **Answer: yes.** Every quantum expander in the literature and the book is ungraded; its ring zeta
+  has only poles; the two closures coincide (prop:no-ungraded-zeros). Zeros are the odd-sector
+  (parity-coherence) eigenvalues under the periodic closure.
+- **Definition (def:graded-rh-fe-ramanujan):** on the divisor nu = m_even - m_odd of 1/sdet(1 - uE);
+  growth q = Perron root; trivial set {q, period images, 1, FE partners}; RH = one-sided
+  |lambda| <= sqrt q; FE = even similarity J E J^-1 = q E^-1; Ramanujan = both; manifest = E/sqrt q
+  unitary for a Gamma_b-even positive form. Exactly eps-independent for e^{eps T}; in a Chernoff
+  limit the grading survives only in the jumps (odd letters are never close to 1:
+  prop:graded-chernoff). For infinite bonds: divisor of correlation functions of regular data, not
+  the L2 spectrum (obs:divisor-regular-data).
+- **The P-mode is structural, not trivial** (prop:p-mode; my own mid-session correction):
+  sum_s eps_s A_s A_s^+ = r_P 1 gives E(P) = r_P P; r_P = 1 for the 06h tensor (H^0), -2 for the
+  Pauli letters (inside the band, a pole pair on the circle), -(q+1) for all letters odd.
+- **Graded quantum expanders exist** (thm:graded-harrow, thm:graded-qihara-bass,
+  cor:graded-band-circle, prop:graded-alon-boppana): index-two (Clifford) gradings of Harrow
+  channels; Ad P intertwines; trivial and sign reps both even; Harrow's bound sector by sector;
+  graded Ihara-Bass with (1-u^2)^{n_k(D-2)/2} cancelling for balanced gradings; odd edge
+  eigenvalues on |mu| = sqrt q are zeros. Verified: PGL2(F_5) and PGL2(F_13) principal series
+  (chi of order 4) with bipartite LPS generators (5;13), (13;5); Pauli X,X,Y,Y,Z,Z on C^{1|1}
+  gives (1+2u+5u^2)/((1-u)(1-5u)), the zeta of y^2 = x^3+4x+b over F_5 (prop:qubit-graded-zeta).
+  `scripts/graded_ramanujan.py`, 79 checks, in CI.
+- **Harrow's continuum limit is clean:** the representation Lindbladian; Ramanujan = temperedness
+  of pi (x) conj pi (gap 1/2), no discrete divisor; graded PGL2(R) version = discrete series pairs,
+  odd sector = archimedean ladder, closed geodesics EVEN (obs:graded-continuous-harrow). The grading
+  that makes Selberg zeros odd is Dyatlov-Zworski's form degree (obs:selberg-grading-choice).
+- **Prover lane (codex gpt-6-astra, `notes/ramanujan-graded/astra-proofs.md`): 4 proved, 9
+  corrected, 1 refuted, 41 ledger rows, applied.** Biggest corrections: the LPS "genus 18/98" was the
+  raw odd count; only the NET divisor survives ((5;13): numerator degree 4, no nontrivial poles;
+  (13;5): 144/144 with 140 nontrivial poles); NO odd-sector Alon-Boppana (the letter P kills the odd
+  sector; obs:odd-gap-no-alon-boppana); band iff circle only for the net divisor; trivial data must
+  be a signed divisor with parities; the continuum needs two reference rates; "graded CP transfer" vs
+  "graded spectral transfer" (Artin-Schreier / Riemann / Selberg have no supplied Kraus
+  realisation); the PSL2(R) type-zero bound >= 1/2 is EQUIVALENT to temperedness; PGL2(R) pairs need
+  even k >= 2; shard 05's "nontrivial zero" should have read "pole" (fixed).
+- **Open:** a circle-type graded expander from a representation (odd block sqrt q-unitary by a
+  mechanism; Artin-Schreier is the prototype); a Kraus realisation of the Artin-Schreier / Riemann /
+  Selberg graded spectral transfers; the relation between "Hermitian + lift" and "odd block
+  unitary"; the Repka 3/4 threshold vs Selberg 3/16 (unverified, do not cite); which Selberg grading
+  is the Phantasm's. **Next, if pursued:** Opus REFUTE review of 02h/03c/03d against
+  astra-proofs.md; then the K-type-0-vs-2 grading of a PSL2(R) representation channel as the
+  candidate form-degree grading.
 
 ### Back to basics: the graded permutation and the physical letters (2026-09-14, night; shard 03b)
 

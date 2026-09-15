@@ -1,0 +1,250 @@
+% SHARD-ID: RC-03C-GRADED-RAMANUJAN
+% SHARD-TITLE: The Ramanujan Property for Graded Transfer Channels: Definition, Graded Quantum Ihara-Bass, Graded Harrow Expanders
+% SHARD-SUMMARY: TJO asked for a rigorous definition of the Ramanujan property that starts from graded MPS, survives the continuum limit, and admits Harrow expanders as a test, suspecting that all known quantum expanders are ungraded; the suspicion is confirmed and the definition is given on the divisor of the parity-closed ring zeta.
+% SHARD-SUMMARY: Graded quantum Ihara-Bass holds sector by sector, so index-two (Clifford) gradings of Harrow channels are graded Ramanujan expanders whose odd sector carries zeros on the critical circle: PGL_2(F_p) with LPS generators in the odd coset, and the six-letter Pauli channel on a qubit whose periodic non-backtracking ring norms count the points of an elliptic curve over F_5.
+% SHARD-KEYWORDS: Ramanujan, Riemann hypothesis, graded bond, supertrace, divisor, quantum expander, Hashimoto, Ihara-Bass, Alon-Boppana, Clifford theory, PGL_2, LPS, Hecke, Pauli, elliptic curve
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/graded_ramanujan.py
+
+\section{The Ramanujan Property for Graded Transfer Channels}
+\label{sec:graded-ramanujan}
+
+\emph{Question (TJO, 2026-09-15).} Working from the MPS picture, and given that the graded
+supertrace is necessary for zeta zeros, what is the correct definition of the Ramanujan property,
+rigorous and meaningful in the continuum limit, with Harrow expanders as a test case? Do we
+understand it in the graded case at all, or do we only have quantum expanders for ungraded bonds
+and antiperiodic closures? \emph{Answer.} The suspicion is right about the literature and about
+this book up to \cref{sec:zeta-conditions}: every quantum expander in sight is ungraded, and on an
+ungraded bond the two closures coincide and the ring zeta has only poles
+(\cref{prop:no-ungraded-zeros}). The definition is \cref{def:graded-rh-fe-ramanujan}, stated on
+the divisor of the periodic ring zeta, and it is exactly stable under the continuum limit
+(\cref{prop:graded-continuum-exact,prop:graded-chernoff}). Graded quantum expanders exist with a
+mechanism (\cref{thm:graded-harrow}), the smallest being a qubit with Pauli letters whose graded
+Ihara zeta is an elliptic curve zeta (\cref{prop:qubit-graded-zeta}). Everything in this section is
+the notebook's own work of one session (author claude:fable-5.1, numerics
+\texttt{scripts/graded\_ramanujan.py}, $81$ checks), with one codex gpt-6-astra prover lane
+(\texttt{notes/ramanujan-graded/astra-proofs.md}: $4$ proved, $9$ corrected, $1$ refuted, a
+$41$-row correction ledger, $132$ further checks) whose corrections are applied below and recorded
+in the claims database; nothing here has had an independent (second-family) review.
+
+\subsection{Positivity and the $P$-mode}
+
+\begin{proposition}[Graded Weil--Hodge inequality]
+\label{prop:graded-weil-hodge}
+\claimstatus{prop:graded-weil-hodge}{sketched}
+For every graded transfer channel and $n\ge1$, $|\Tr\Esec{1}^n|\le\Tr\Esec{0}^n$; hence
+$\specrad(\Esec{1})\le\specrad(\Esec{0}) = \qs$, both sector spectra being conjugation closed.
+Equal radii do not force a common eigenvalue: the single even letter $P$ on $\mathbb C^{1|1}$ has
+even spectrum $\{1,1\}$ and odd $\{-1,-1\}$ (prover, ledger L01).
+\end{proposition}
+\begin{proof}
+Both closures are ring norms: $\Tr\Edb^n = \sum_w|\Tr\Kr{w}|^2\ge0$ and $\str\Edb^n =
+\sum_w|\Tr(P\Kr{w})|^2\ge0$ (\cref{def:graded-lattice-tensor}), i.e.\ $\Tr\Esec{0}^n\ge\pm\Tr
+\Esec{1}^n$; a Perron eigenmatrix $R\ge0$ averages to the even Perron eigenmatrix $(R+PRP)/2$,
+so the radius is attained evenly (positive operators need not be even, ledger L02). Proved by the
+prover lane (D1). This is the finite shadow of the Hodge index inequality of
+\cref{sec:ring-norm-bosonic-nogo}.
+\end{proof}
+
+\begin{proposition}[The $P$-mode]
+\label{prop:p-mode}
+\claimstatus{prop:p-mode}{sketched}
+$\Edb(P) = P\sum_s\epsilon_s\Kr{s}\Kr{s}^\dagger$. Under parity-twisted unitality
+(\cref{def:parity-twisted-tp}) $P$ is an even eigenvector with eigenvalue $\pmode$; for a graded
+representation channel $\pmode = \epsilon(W_S)$, the sign character evaluated on the walk element.
+The $P$-mode is structural but not trivial: for the elliptic tensor of \cref{sec:zeta-conditions}
+$\pmode = 1$ (projective) or $0$ (affine), the $H^0$ pole and the functional-equation partner of
+the fixed point; for the Pauli letters below $\pmode = -2$ lies inside the Hastings band and its
+Ihara--Bass quadratic contributes a pole pair on the critical circle; for all letters odd
+$\pmode = -\qs-1$ is the period image of the fixed point (bipartite case). For unitary letters the
+Ramanujan property therefore imposes the \emph{balance condition} $|w_{\mathrm{even}}-
+w_{\mathrm{odd}}|\le\lamH$ unless $\pmode\in\trivS$.
+\end{proposition}
+\begin{proof}
+$P\Kr{s}P = \epsilon_s\Kr{s}$ gives $\Kr{s}P\Kr{s}^\dagger = \epsilon_sP\Kr{s}\Kr{s}^\dagger$; for a
+representation channel $\pi(s)P\pi(s)^\dagger = \epsilon(s)P$. Proved by the prover lane (D2).
+Checked on every example of \cref{num:graded-ramanujan}, including
+$\sum_s\epsilon_s\Kr{s}\Kr{s}^\dagger = 1$ for the 06h tensor.
+\end{proof}
+
+\subsection{Graded quantum Ihara--Bass and graded quantum expanders}
+
+\begin{proposition}[No zeros without a grading; no unique fixed point with only even letters]
+\label{prop:no-ungraded-zeros}
+\claimstatus{prop:no-ungraded-zeros}{sketched}
+(i) For $P = 1$ the two closures coincide and the ring zeta $1/\det(1-\uz\Edb)$ has no zeros; a
+quantum expander in the sense of \cref{def:quantum-expander} (Hastings, Harrow, the Weil--LPS
+channels of \cref{sec:weil-lps}, the complexes of \cref{sec:complex-zeta}) is such a channel.
+(ii) If every letter is even, the bond splits, $\str\Edb^n = \|\Psi_+-\Psi_-\|^2$, and both
+$1_+$ and $1_-$ are fixed: no unique fixed point. Zeros with a unique fixed point require odd
+letters, i.e.\ letters that anticommute with $P$. (iii) No nonzero positive operator is odd; odd
+fixed operators can nevertheless exist when the stationary state is not unique (the identity
+channel fixes every coherence), and uniqueness excludes them (ledger L29).
+\end{proposition}
+\begin{proof}
+(i) is the definition of the ring zeta; (ii) is the second reading after
+\cref{thm:cmps-twisted-supertrace} together with $\Edb(1_\pm) = 1_\pm$ for even unital letters;
+(iii) $PXP = -X\ge0$ forces $X = 0$, and a Hermitian fixed operator of a finite CPTP map is a
+combination of stationary states. Proved by the prover lane (D14).
+\end{proof}
+
+\begin{theorem}[Graded quantum Ihara--Bass]
+\label{thm:graded-qihara-bass}
+\claimstatus{thm:graded-qihara-bass}{sketched}
+For the graded Hashimoto operator of \cref{def:graded-hashimoto} with $\Sig_k = \Dk\chan|_{k}$,
+$n_0 = D_+^2+D_-^2$ and $n_1 = 2D_+D_-$,
+\[
+  \det(1-\uz\Hash_k) = (1-\uz^2)^{n_k(\Dk-2)/2}\det\bigl(1-\uz\Sig_k+(\Dk-1)\uz^2\bigr),\qquad k = 0,1,
+\]
+so the graded quantum Ihara zeta is $(1-\uz^2)^{-(\Dk-2)(D_+-D_-)^2/2}\prod_{\lambda\
+\mathrm{odd}}(1-\lambda\uz+\qs\uz^2)\big/\prod_{\lambda\ \mathrm{even}}(1-\lambda\uz+\qs\uz^2)$,
+$\qs = \Dk-1$, and for a balanced grading the $(1-\uz^2)$ factors cancel exactly.
+\end{theorem}
+\begin{proof}
+$\Gdb\otimes1$ commutes with $\Hash$, with $\Sig\otimes1$ and with the reversal; the proof of
+\cref{thm:qihara-general} in the unitary case (\cref{cor:qihara-unitary}) runs on each invariant
+subspace with $n^2$ replaced by its dimension. Proved by the prover lane (D3). Verified to
+$10^{-9}$ on all three examples of \cref{num:graded-ramanujan}.
+\end{proof}
+
+\begin{corollary}[Band if and only if circle, sector by sector]
+\label{cor:graded-band-circle}
+\claimstatus{cor:graded-band-circle}{sketched}
+For a Hermitian graded channel (unitary letters closed under adjoint, equal weights) each
+adjacency eigenvalue $\lambda$ of a sector gives two edge eigenvalues with $\edgeev_+\edgeev_- =
+\qs$, both of modulus $\sqrt\qs$ iff $|\lambda|\le2\sqrt\qs$. Hence: every point of the
+\emph{retained net} divisor of the graded quantum Ihara zeta lies on $|\uz| = \qs^{-1/2}$ iff
+$|\lambda|\le2\sqrt\qs$ for every $\lambda\notin\{\pm(\qs+1)\}$ with nonzero net multiplicity
+$m_0(\lambda)-m_1(\lambda)$. A bound on both entire sectors implies the divisor statement; the
+converse is false without a no-cancellation hypothesis (prover, D4: a primitive degree-$14$ channel
+with even $\{14,10\}$, odd $\{10,6\}$ has the mode $10$ outside the band, cancelled, and reduced
+zeta $(1-6\uz+13\uz^2)/((1-\uz)(1-13\uz))$). Zeros are the net-odd quadratics and poles the net-even
+ones; the trivial factors are $\{1,\qs\}$ from $\lambda = \qs+1$, $\{-1,-\qs\}$ from $\lambda =
+-(\qs+1)$ when present, and $\pm1$ from the $(1-\uz^2)$ factors; zeta points are the reciprocals of
+edge eigenvalues.
+\end{corollary}
+\begin{proof}
+\cref{thm:graded-qihara-bass} and the root analysis of \cref{obs:rh-iff-ramanujan-channel}, applied
+to each sector and then to the net multiplicities; $\Sig_1$ is Hilbert--Schmidt self-adjoint so its
+eigenvalues are real. Corrected and proved by the prover lane (D4).
+\end{proof}
+
+\begin{observation}[No odd-sector Alon--Boppana bound]
+\label{obs:odd-gap-no-alon-boppana}
+\claimstatus{obs:odd-gap-no-alon-boppana}{sketched}
+The drafted odd-sector analogue of Hastings' lower bound, $\specrad(\chan|_1)\ge\lamH-o(1)$, is
+false (prover, D5, refuted): the degree-four channel $\tfrac14(2\Ad1+2\Ad P)$ on
+$\mathbb C^{m|m}$ has $\chan|_1 = 0$ for every $m$, and there are primitive degree-sixteen
+families with $\specrad(\chan|_1) = 0$ and unbounded $m$. Hastings' argument
+(\texttt{prov:hastings07-alon-boppana}, \texttt{0706.0556:sd10.tex:284-287},
+{\small\texttt{\detokenize{N(0,m) \geq c \times (2\sqrt{D-1})^m/(m+1)^{3/2},}}})
+needs every word trace $|\Tr U_w|^2\ge0$; on the odd sector word traces can be negative. The
+even letter $P$ is exactly the parity jump of \cref{prop:parity-jump-uniform-shift}, which shifts
+the whole odd spectrum: the odd gap has no universal lower bound, and ``Ramanujan'' for the odd
+sector is an upper bound (the band), not an optimality statement.
+\end{observation}
+
+\subsection{Graded Harrow expanders}
+
+\begin{theorem}[Index-two gradings of Harrow channels]
+\label{thm:graded-harrow}
+\claimstatus{thm:graded-harrow}{sketched}
+Let $\chan$ be the graded representation channel of \cref{def:index-two-grading}. (i) $\Gdb =
+\Ad(P)$ is a $G$-intertwiner of $\pi\otimes\bar\pi = \operatorname{End}(V)$; as $G_0$-modules the
+even sector is $\pi_+\otimes\bar\pi_+\oplus\pi_-\otimes\bar\pi_-$ and the odd sector
+$\pi_+\otimes\bar\pi_-\oplus\pi_-\otimes\bar\pi_+$. (ii) The trivial representation occurs once, in
+the even sector (the scalars, the fixed point), and the sign representation $\epsilon$ once, in the
+even sector, spanned by $P$, with $\chan(P) = \epsilon(W_S)P$. (iii) Every other constituent $\constit$
+of either sector satisfies $|\constit(W_S)|\le\lamtwo(\mathrm{Cay}(G,S))$ (\cref{cit:harrow-transfer});
+if $\mathrm{Cay}(G,S)$ is Ramanujan, $\chan$ is a graded Ramanujan quantum expander and, by
+\cref{cor:graded-band-circle}, the odd sector of its graded Hashimoto operator carries zeros on
+$|\uz| = \qs^{-1/2}$, $\qs = |S|-1$. (iv) Character formulas: $\Tr\chan^n = |S|^{-n}\sum_{|w| = n}
+|\chi_\pi(w)|^2$ and $\str\chan^n = |S|^{-n}\sum_{|w| = n}|\chi_+(w)-\chi_-(w)|^2$, where $\chi_\pi =
+\chi_++\chi_-$ on $G_0$ and $\chi_\pi = 0$ off $G_0$; only words with product in $G_0$ contribute to
+either ring norm. (v) Artin factorisation: with $a_{k,\constit}$ the multiplicity of $\constit$ in sector $k$,
+the graded quantum Ihara zeta is $\prod_\constit\det(1-\uz\Hash_\constit)^{a_{1,\constit}-a_{0,\constit}}$,
+$\Hash_\constit$ the Hashimoto operator built from the individual letters $\constit(s)$ and the
+reversal (not from the averaged matrix $\constit(W_S)$ alone), so the $L$-functions of the graded
+expander are the $\constit$-factors, with net sign by sector.
+\end{theorem}
+\begin{proof}
+(i) $\Ad(P)\Ad(\pi(g)) = \Ad(\epsilon(g)\pi(g)P) = \Ad(\pi(g))\Ad(P)$. (ii) $\pi$ irreducible gives
+$\operatorname{End}_G(V) = \mathbb C$; $P$ spans the $\epsilon$-isotypic part since $\Ad\pi(g)P =
+\epsilon(g)P$, and $\epsilon\ne1$ so it is not the trivial constituent; both are even. (iii) is
+Harrow's argument on each sector. (iv) $\Tr\Ad(U) = |\Tr U|^2$ and $\str\Ad(U) = |\Tr(PU)|^2$;
+$\Tr(P\pi(g)) = \chi_+(g)-\chi_-(g)$ for $g\in G_0$ and $0$ for block-off-diagonal $\pi(g)$; the
+sums run over labelled words with product in $G_0$. (v) decompose each sector into $G$-isotypic
+components; $\Hash$ commutes with the decomposition. Corrected and proved by the prover lane (D6,
+ledger L06--L09, L37).
+\end{proof}
+
+\begin{numerical}[Three graded Ramanujan expanders]
+\label{num:graded-ramanujan}
+\claimstatus{num:graded-ramanujan}{numerical}
+\texttt{scripts/graded\_ramanujan.py} (\texttt{outputs/graded\_ramanujan.txt}, $81$ checks).
+\textbf{(a) Pauli.} $V = \mathbb C^{1|1}$, $P = Z$, letters $X,X,Y,Y,Z,Z$ (each self-adjoint letter
+twice so the reversal is fixed-point-free), $\Dk = 6$, $\qs = 5$. Even spectrum $\{6,-2\}$, odd
+$\{-2,-2\}$, all nontrivial in the band $|\lambda|\le2\sqrt5$ (the direct, non-lifted transfer has
+$Z_P = (1+2\uz)/(1-6\uz)$ with its zero at $-2$, off the circle: the curve appears only after the
+non-backtracking lift); graded Ihara--Bass on both sectors;
+odd edge eigenvalues on $|\edgeev| = \sqrt5$; $\str\Hash^n = 8,32,104,640,3208,15392 = 1+5^n-
+(\edgeev^n+\bar\edgeev^n)$ with $\edgeev = -1+2i$, verified against the word sum
+$\sum_w|\Tr(PU_w)|^2$ for $n\le3$; graded quantum Ihara zeta $(1+2\uz+5\uz^2)/((1-\uz)(1-5\uz))$.
+\textbf{(b) The 06h elliptic tensor} ($\qs = 5$, $\pmode = 1$): $\sum_s\epsilon_s\Kr{s}\Kr{s}^\dagger
+= 1$, $\Edb(P) = P$, even $\{5,1\} = \trivS$, odd $\{\pi,\bar\pi\}$ on the circle with
+$\Esec{1}^\dagger\Esec{1} = 5$, graded Weil--Hodge inequality for $n\le8$.
+\textbf{(c) Graded Weil--LPS.} $G = \mathrm{PGL}_2(\mathbb F_p)$, $\pi$ the principal series
+$I(\chi,\chi^{-1})$ with $\chi$ of order $4$ (dimension $p+1$, splitting on $\mathrm{PSL}_2$ into
+halves of dimension $(p+1)/2$, $P$ found as the traceless element of the commutant of $\pi(G_0)$ by
+exact group averaging), $S$ the $\qs+1$ LPS quaternions of norm $\qs$ with $(\qs/p) = -1$, all in
+the odd coset; $(p;\qs) = (5;13)$ and $(13;5)$. Cayley graphs on $120$ and $2184$ vertices,
+bipartite, Ramanujan (max nontrivial $|\lambda| = 4.00$ and $4.25$ against $2\sqrt\qs = 7.21$ and
+$4.47$); both sectors of $\chan$ in the band, $P$-mode $-(\qs+1)$, Harrow containment of both sector
+spectra in the Cayley spectrum; $\str\chan^n\ge0$ with the character formula on words of length
+$\le3$, vanishing for odd $n$; graded Ihara--Bass on both sectors of the $504$- and $1176$-dimensional
+Hashimoto operators; odd edge eigenvalues $36$ and $196$ on $|\edgeev| = \sqrt\qs$ (raw counts) and the rest at
+$|\edgeev| = 1$; even ones on the circle plus $\{\pm\qs,\pm1\}$. The sectors share eigenvalues,
+and only the net divisor survives: for $(5;13)$ there are $16$ cancelled pairs and the reduced
+zeta is $(1-4\uz+13\uz^2)(1+4\uz+13\uz^2)/[(1-\uz)(1-13\uz)(1+\uz)(1+13\uz)]$ (numerator degree
+$4$, no nontrivial poles); for $(13;5)$ the reduced numerator and denominator both have degree
+$144$, the denominator carrying $140$ nontrivial pole factors on the circle (e.g.\ $\lambda = 0$
+has net even multiplicity $4$). My first printout claimed numerator degrees $36$ and $196$ over four
+trivial factors; the prover's independent audit (\texttt{finite/harrow\_audit.py}, $16$ checks)
+corrected it and the script now prints the net divisor. In the $(13;5)$ case the extremal Hecke
+eigenvalue $4.2497$ lives in the odd sector.
+\textbf{(d) Continuum.} The jump Lindbladian of (a) commutes with $\Gdb$; even $\{0,-2(g_X+g_Y)\}$,
+odd $\{-2(g_Z+g_Y),-2(g_Z+g_X)\}$; $\str(1+\epsilon\Tcm)^{L/\epsilon}\to\str e^{L\Tcm}$ at
+$\epsilon = 10^{-3}$; $\str e^{t\Tcm}\ge0$.
+\end{numerical}
+
+\begin{proposition}[The qubit with unitary letters]
+\label{prop:qubit-graded-zeta}
+\claimstatus{prop:qubit-graded-zeta}{sketched}
+For $\Dk$ unitary homogeneous letters closed under adjoint on $\mathbb C^{1|1}$, $\qs = \Dk-1$, write
+the even letters $\operatorname{diag}(a_i,d_i)$ and the odd ones with off-diagonal entries $a_i,d_i$
+(all of modulus one), and put $\pmode = N_{\mathrm{even}}-N_{\mathrm{odd}}$, $x =
+\sum_{\mathrm{even}}a_i\bar d_i\in\mathbb R$, $y = \sum_{\mathrm{odd}}a_i\bar d_i$. Then
+$\operatorname{spec}\Sig_0 = \{\Dk,\pmode\}$, $\Sig_1 = \bigl(\begin{smallmatrix}x&y\\
+\bar y&x\end{smallmatrix}\bigr)$ with eigenvalues $\lambda_\pm = x\pm|y|$, and
+\[
+  \frac{(1-\lambda_+\uz+\qs\uz^2)(1-\lambda_-\uz+\qs\uz^2)}{(1-\uz)(1-\qs\uz)(1-\pmode\uz+\qs\uz^2)}
+\]
+is the graded quantum Ihara zeta. The sector Ramanujan condition is $|\pmode|,|\lambda_\pm|\le
+2\sqrt\qs$ (or, all letters odd, $\pmode = -\Dk$, $x = 0$ and $|y|\le2\sqrt\qs$ after
+removing the even $\pm\Dk$ modes); the divisor condition tests only uncancelled quadratics. For the
+Pauli letters $\pmode = \lambda_\pm = -2$, one odd quadratic cancels the $P$-mode pole pair, and the
+result is the zeta function of the elliptic curves $y^2 = x^3+4x+b$, $b\in\{0,1,4\}$, over
+$\mathbb F_5$ ($8$ points, $a_5 = -2$): the periodic non-backtracking ring norms of a qubit with
+Pauli letters count the points of an elliptic curve. The numerator is in general not integral (a
+Ramanujan example with $N_P(1) = 16/3$), need not be a Weil polynomial, and an integral Weil
+numerator need not be a curve numerator ($(1-3\uz)^4$ over $\mathbb F_9$ would give $-2$ points);
+ring norms of unitary letters are weighted squared amplitudes, not word counts, unless the letters
+are $0/1$ or the words are counted with multiplicity as here (prover, D13, ledger L25--L27).
+\end{proposition}
+\begin{proof}
+\cref{thm:graded-qihara-bass} with $n_0 = n_1 = 2$; the even sector is spanned by $1$ and $P$
+(\cref{prop:p-mode}); the odd block is computed in the basis $(E_{01},E_{10})$. Corrected and
+proved by the prover lane (D13). The Pauli case is \cref{num:graded-ramanujan}(a); it is an
+ordinary representation of the Pauli group with $G_0 = \langle iI,Z\rangle$, projective on the
+abelian quotient (ledger L09).
+\end{proof}

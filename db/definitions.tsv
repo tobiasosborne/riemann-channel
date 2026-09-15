@@ -76,3 +76,9 @@ def:nine-letter-tensor	nine-letter tensor	report/sections/02g_definitions_ring_n
 def:example-states	the five example states (genus 0 to 3)	report/sections/06g_ring_norm_examples.tex	stipulated	-	session 2026-09-14 evening
 def:graded-permutation-mps	graded permutation matrix product state (letter assignment, grading, holonomy, closures)	report/sections/03b_graded_permutation.tex	stipulated	-	session 2026-09-14 night
 def:phase-side-guess	the phase-side Lindbladian guess (profinite phases, Fourier grading, prime jumps V_p, Galois unitaries, Ramanujan shells, finite model)	report/sections/04g_phase_side_lindbladian.tex	stipulated	-	session 2026-09-14 night, yolo guess
+def:graded-transfer-channel	graded transfer channel, sector restrictions, graded divisor, growth, trivial set	report/sections/02h_definitions_graded_ramanujan.tex	stipulated	-	notes/ramanujan-graded/definition.md sections 1-2
+def:parity-twisted-tp	parity-twisted unitality, P-mode	report/sections/02h_definitions_graded_ramanujan.tex	stipulated	-	notes/ramanujan-graded/definition.md D2
+def:graded-rh-fe-ramanujan	graded RH, functional equation, Ramanujan, manifest (Hilbert-Polya) form	report/sections/02h_definitions_graded_ramanujan.tex	stipulated	-	notes/ramanujan-graded/definition.md section 2
+def:graded-quantum-expander	graded quantum expander, odd gap	report/sections/02h_definitions_graded_ramanujan.tex	stipulated	-	notes/ramanujan-graded/definition.md section 3
+def:graded-hashimoto	graded Hashimoto operator, graded quantum Ihara zeta, balanced grading	report/sections/02h_definitions_graded_ramanujan.tex	stipulated	-	notes/ramanujan-graded/definition.md section 3
+def:index-two-grading	index-two (Clifford) grading of a representation channel, graded representation channel	report/sections/02h_definitions_graded_ramanujan.tex	stipulated	-	notes/ramanujan-graded/definition.md section 4

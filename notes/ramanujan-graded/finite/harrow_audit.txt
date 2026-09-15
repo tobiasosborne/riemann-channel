@@ -1,0 +1,86 @@
+PASS 01: p=5: two equal-dimensional Clifford blocks
+PASS 02: p=5: all LPS letters odd
+PASS 03: p=5: odd band
+PASS 04: p=5: even band
+
+(p,q)=(5,13), adjacency value : even, odd, nu=even-odd
+  -14.0000000000 :  1,  0,  +1
+  -4.0000000000 :  3,  4,  -1
+  -2.0000000000 :  5,  5,  +0
+   2.0000000000 :  5,  5,  +0
+   4.0000000000 :  3,  4,  -1
+   14.0000000000 :  1,  0,  +1
+REDUCED degrees: numerator 4, denominator 4; nontrivial denominator degree 0
+PASS 05: p=5: balanced total degree and four structural poles
+PASS 06: p=5: printed raw-odd genus is not the reduced numerator degree
+PASS 07: p=5: twisted character identity, parity 1
+PASS 08: p=5: twisted character identity, parity -1
+
+PASS 09: p=13: two equal-dimensional Clifford blocks
+PASS 10: p=13: all LPS letters odd
+PASS 11: p=13: odd band
+PASS 12: p=13: even band
+
+(p,q)=(13,5), adjacency value : even, odd, nu=even-odd
+  -6.0000000000 :  1,  0,  +1
+  -4.2497208491 :  0,  3,  -3
+  -4.2469796037 :  0,  2,  -2
+  -3.6947627170 :  0,  3,  -3
+  -3.6038754716 :  0,  1,  -1
+  -3.5615528128 :  6,  3,  +3
+  -3.4555535520 :  0,  3,  -3
+  -3.4424715998 :  3,  0,  +3
+  -3.1745224074 :  3,  0,  +3
+  -3.0000000000 :  4,  1,  +3
+  -2.8019377358 :  0,  3,  -3
+  -2.6102347677 :  3,  0,  +3
+  -2.5615528128 :  3,  0,  +3
+  -2.5549581321 :  0,  2,  -2
+  -2.4939592074 :  0,  1,  -1
+  -2.0000000000 :  7,  2,  +5
+  -1.5615528128 :  3,  0,  +3
+  -1.4450418679 :  0,  3,  -3
+  -1.2085739483 :  0,  3,  -3
+  -1.1980622642 :  0,  2,  -2
+  -1.1218160399 :  3,  0,  +3
+  -1.0000000000 :  5,  4,  +1
+  -0.9327337429 :  0,  3,  -3
+  -0.8900837358 :  0,  1,  -1
+  -0.5615528128 :  6,  3,  +3
+  -0.2469796037 :  0,  3,  -3
+  -0.1307960071 :  0,  3,  -3
+  -0.0000000000 :  4,  0,  +4
+   0.1307960071 :  0,  3,  -3
+   0.2469796037 :  0,  3,  -3
+   0.5615528128 :  6,  3,  +3
+   0.8900837358 :  0,  1,  -1
+   0.9327337429 :  0,  3,  -3
+   1.0000000000 :  5,  4,  +1
+   1.1218160399 :  3,  0,  +3
+   1.1980622642 :  0,  2,  -2
+   1.2085739483 :  0,  3,  -3
+   1.4450418679 :  0,  3,  -3
+   1.5615528128 :  3,  0,  +3
+   2.0000000000 :  7,  2,  +5
+   2.4939592074 :  0,  1,  -1
+   2.5549581321 :  0,  2,  -2
+   2.5615528128 :  3,  0,  +3
+   2.6102347677 :  3,  0,  +3
+   2.8019377358 :  0,  3,  -3
+   3.0000000000 :  4,  1,  +3
+   3.1745224074 :  3,  0,  +3
+   3.4424715998 :  3,  0,  +3
+   3.4555535520 :  0,  3,  -3
+   3.5615528128 :  6,  3,  +3
+   3.6038754716 :  0,  1,  -1
+   3.6947627170 :  0,  3,  -3
+   4.2469796037 :  0,  2,  -2
+   4.2497208491 :  0,  3,  -3
+   6.0000000000 :  1,  0,  +1
+REDUCED degrees: numerator 144, denominator 144; nontrivial denominator degree 140
+PASS 13: p=13: balanced total degree and four structural poles
+PASS 14: p=13: printed raw-odd genus is not the reduced numerator degree
+PASS 15: p=13: twisted character identity, parity 1
+PASS 16: p=13: twisted character identity, parity -1
+
+16/16 checks passed

@@ -186,3 +186,7 @@ Tcm	\mathbb T	cMPS transfer generator Q(x)1 + 1(x)conj Q + sum_a s_a R_a (x) con
 Gdb	\Gamma_{\mathrm b}	doubled-bond parity P (x) conj P	cMPS	RC-02F	-
 Pisec	\Pi_{#1}	bond parity sector projections (1 +- P)/2	cMPS	RC-02F	-
 Edb	\mathcal E_{\mathrm d}	doubled transfer matrix sum_s A_s (x) conj A_s of a graded lattice tensor	MPS, graded	RC-02G	the continuum generator is Tcm
+Esec	{\mathcal E_{\mathrm d}^{(#1)}}	restriction of the doubled transfer to the Gamma_b-sector k = 0 (even) or 1 (odd)	graded Ramanujan	RC-02H	-
+pmode	r_{P}	P-mode eigenvalue under parity-twisted unitality: sum_s eps_s A_s A_s^dagger = r_P 1, E(P) = r_P P	graded Ramanujan	RC-02H	-
+specrad	\operatorname{rad}	spectral radius of an operator	graded Ramanujan	RC-02H	-
+constit	\upsilon	irreducible constituent of a tensor product of representations (a sector of the doubled bond)	graded Ramanujan	RC-03C	-

@@ -1,0 +1,68 @@
+PASS 001: shard 09b sl2 brackets, W has period 2*pi in SL2
+PASS 002: -T_09b on D_n K-type n+2j is n+2nj+2j^2
+PASS 003: principal-series rate 1/2+2r^2+m^2/2
+PASS 004: the normalized 2d-letter walk has threshold 1/(2d)
+PASS 005: k=1, ell=0: tensor lowest vector annihilated
+PASS 006: k=1, ell=0: weight 2k+2ell and flip sign (-1)^ell
+PASS 007: k=1, ell=1: tensor lowest vector annihilated
+PASS 008: k=1, ell=1: weight 2k+2ell and flip sign (-1)^ell
+PASS 009: k=1, ell=2: tensor lowest vector annihilated
+PASS 010: k=1, ell=2: weight 2k+2ell and flip sign (-1)^ell
+PASS 011: k=1, ell=3: tensor lowest vector annihilated
+PASS 012: k=1, ell=3: weight 2k+2ell and flip sign (-1)^ell
+PASS 013: k=1, ell=4: tensor lowest vector annihilated
+PASS 014: k=1, ell=4: weight 2k+2ell and flip sign (-1)^ell
+PASS 015: k=1, ell=5: tensor lowest vector annihilated
+PASS 016: k=1, ell=5: weight 2k+2ell and flip sign (-1)^ell
+PASS 017: k=1, ell=6: tensor lowest vector annihilated
+PASS 018: k=1, ell=6: weight 2k+2ell and flip sign (-1)^ell
+PASS 019: k=2, ell=0: tensor lowest vector annihilated
+PASS 020: k=2, ell=0: weight 2k+2ell and flip sign (-1)^ell
+PASS 021: k=2, ell=1: tensor lowest vector annihilated
+PASS 022: k=2, ell=1: weight 2k+2ell and flip sign (-1)^ell
+PASS 023: k=2, ell=2: tensor lowest vector annihilated
+PASS 024: k=2, ell=2: weight 2k+2ell and flip sign (-1)^ell
+PASS 025: k=2, ell=3: tensor lowest vector annihilated
+PASS 026: k=2, ell=3: weight 2k+2ell and flip sign (-1)^ell
+PASS 027: k=2, ell=4: tensor lowest vector annihilated
+PASS 028: k=2, ell=4: weight 2k+2ell and flip sign (-1)^ell
+PASS 029: k=2, ell=5: tensor lowest vector annihilated
+PASS 030: k=2, ell=5: weight 2k+2ell and flip sign (-1)^ell
+PASS 031: k=2, ell=6: tensor lowest vector annihilated
+PASS 032: k=2, ell=6: weight 2k+2ell and flip sign (-1)^ell
+PASS 033: k=4, ell=0: tensor lowest vector annihilated
+PASS 034: k=4, ell=0: weight 2k+2ell and flip sign (-1)^ell
+PASS 035: k=4, ell=1: tensor lowest vector annihilated
+PASS 036: k=4, ell=1: weight 2k+2ell and flip sign (-1)^ell
+PASS 037: k=4, ell=2: tensor lowest vector annihilated
+PASS 038: k=4, ell=2: weight 2k+2ell and flip sign (-1)^ell
+PASS 039: k=4, ell=3: tensor lowest vector annihilated
+PASS 040: k=4, ell=3: weight 2k+2ell and flip sign (-1)^ell
+PASS 041: k=4, ell=4: tensor lowest vector annihilated
+PASS 042: k=4, ell=4: weight 2k+2ell and flip sign (-1)^ell
+PASS 043: k=4, ell=5: tensor lowest vector annihilated
+PASS 044: k=4, ell=5: weight 2k+2ell and flip sign (-1)^ell
+PASS 045: k=4, ell=6: tensor lowest vector annihilated
+PASS 046: k=4, ell=6: weight 2k+2ell and flip sign (-1)^ell
+PASS 047: tensor K-level 0: all multiplicities exhausted
+PASS 048: tensor K-level 1: all multiplicities exhausted
+PASS 049: tensor K-level 2: all multiplicities exhausted
+PASS 050: tensor K-level 3: all multiplicities exhausted
+PASS 051: tensor K-level 4: all multiplicities exhausted
+PASS 052: tensor K-level 5: all multiplicities exhausted
+PASS 053: tensor K-level 6: all multiplicities exhausted
+PASS 054: tensor K-level 7: all multiplicities exhausted
+PASS 055: tensor K-level 8: all multiplicities exhausted
+PASS 056: tensor K-level 9: all multiplicities exhausted
+PASS 057: tensor K-level 10: all multiplicities exhausted
+PASS 058: tensor K-level 11: all multiplicities exhausted
+PASS 059: D_2: large-t logarithmic derivative approaches -2/2
+PASS 060: D_4: large-t logarithmic derivative approaches -4/2
+PASS 061: D_6: large-t logarithmic derivative approaches -6/2
+PASS 062: D_8: large-t logarithmic derivative approaches -8/2
+PASS 063: Repka: complementary constituent parameter s_new=2s-1
+PASS 064: Repka boundary agrees with the spherical diffusion threshold
+PASS 065: same parameter gives Laplace value 3/16
+PASS 066: reflection shifts both sector pairs by 0 or -2gamma
+
+66/66 checks passed

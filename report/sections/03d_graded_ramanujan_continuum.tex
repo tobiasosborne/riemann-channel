@@ -1,0 +1,195 @@
+% SHARD-ID: RC-03D-GRADED-RAMANUJAN-CONTINUUM
+% SHARD-TITLE: The Graded Ramanujan Property in the Continuum: Exactness, Chernoff, Harrow's Limit, and the Selberg Grading
+% SHARD-SUMMARY: The divisor definition of the graded Ramanujan property is exactly stable under the continuum limit; in a genuine Chernoff limit the grading survives only in the jump operators, so odd letters are dissipative and there is no Hamiltonian odd letter; for infinite bonds the divisor is defined from correlation functions of regular data, not from the L2 spectrum.
+% SHARD-SUMMARY: Harrow's continuum limit is the representation Lindbladian whose Ramanujan property is temperedness of the tensor square; its PGL_2(R) index-two grading puts the archimedean ladder in the odd sector and the closed geodesics in the even one, and the grading that makes the Selberg zeros odd is the transverse form-degree grading of Dyatlov-Zworski; a status summary lists what is and is not understood.
+% SHARD-KEYWORDS: continuum limit, cMPS, Chernoff, jump operators, Lindbladian, tempered, Fell absorption, discrete series, ladder, Gamma factor, Selberg, form degree, Dyatlov-Zworski, regular data, resonances
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{The Graded Ramanujan Property in the Continuum}
+\label{sec:graded-ramanujan-continuum}
+
+This section continues \cref{sec:graded-ramanujan}: the definitions are those of
+\cref{sec:definitions-h}, the drafted statements are the orchestrator's (author claude:fable-5.1,
+one codex prover lane, \texttt{notes/ramanujan-graded/}), and nothing here has had an independent
+review.
+
+\subsection{The continuum limit}
+
+\begin{proposition}[Exactness under the continuum limit]
+\label{prop:graded-continuum-exact}
+\claimstatus{prop:graded-continuum-exact}{sketched-conditional}
+For a graded cMPS generator $\Tcm$ ($Q$ even, $R_a$ homogeneous) the lattice channel ${\Edb}_\epsilon
+= e^{\epsilon\Tcm}$ is a graded transfer channel with periodic ring norms $\str{\Edb}_\epsilon^n =
+\str e^{n\epsilon\Tcm}$ for every $\epsilon$, and its divisor is the push-forward
+$\nu_\epsilon(w) = \sum_{e^{\epsilon\lambda} = w}\nu(\lambda)$. Since $|e^{\epsilon\lambda}| =
+e^{\epsilon c}$ iff $\re\lambda = c$, a line statement on all retained sector eigenvalues is
+$\epsilon$-independent; the net-divisor statements (RH), (FE), (Ram) are $\epsilon$-independent for
+$\epsilon$ small enough that no two divisor points alias ($\epsilon(\lambda-\lambda')\notin2\pi i
+\mathbb Z$) and none aliases a trivial mode; at $\epsilon = 1$ a CP example whose rates all alias to
+$e$ has a lattice divisor that cancels completely while $\str e^{L\Tcm}$ does not vanish between the
+samples (prover, D7, ledger L10).
+\end{proposition}
+\begin{proof}
+$\str e^{L\Tcm} = \sum_\lambda\nu(\lambda)e^{\lambda L}$ (\cref{thm:cmps-sdet}); the exponential map
+pushes forward signed multiplicities and sends vertical lines to circles. Corrected and proved by
+the prover lane (D7).
+\end{proof}
+
+\begin{proposition}[Graded Chernoff limit: the grading lives in the jumps]
+\label{prop:graded-chernoff}
+\claimstatus{prop:graded-chernoff}{sketched}
+On a fixed finite bond let $\chan_\epsilon$ be parity-covariant CPTP maps with $\|\chan_\epsilon-1-
+\epsilon\Tcm\| = \epsilon\,\delta(\epsilon)$, $\delta(\epsilon)\to0$, in an induced norm. Then
+$\chan_\epsilon^{\lfloor L/\epsilon\rfloor}\to e^{L\Tcm}$ in norm uniformly on $[0,L_0]$, both ring
+norms converge, $\Tcm$ commutes with $\Gdb$, and $\Tcm$ has a GKSL presentation with $[H,P] = 0$ and
+homogeneous jumps $R_a$ (reached by a canonical change of noise basis, not necessarily by an even
+unitary remix alone; ledger L38), i.e.\ $Q = -iH-\tfrac12\sum R_a^\dagger R_a$ is even. For any
+homogeneous Kraus representation of $\chan_\epsilon$ the odd letters satisfy
+$\sum_{a\ \mathrm{odd}}\|\Kr{a}(\epsilon)\|_{\mathrm{HS}}^2 = O(\epsilon)$ (Choi odd-block estimate): odd
+letters are collectively of order $\sqrt\epsilon$ and can never be a drift letter close to the
+identity ($PAP = -A$, $A = 1+B$ give $\|B\|\ge1$); individual limits $\Kr{a}/\sqrt\epsilon\to R_a$
+require a choice of Kraus gauge (ledger L12). In the continuum, parity-changing dynamics is
+dissipative and there is no Hamiltonian odd letter.
+\end{proposition}
+\begin{proof}
+Chernoff's product estimate on a fixed finite bond; $\Gdb$-invariance passes to the limit; a
+$\Gdb$-commuting GKSL generator has a homogeneous canonical presentation. Checked in
+\cref{num:graded-ramanujan}(d) and by the prover's CPTP Euler family with first-order norm
+convergence under mesh halving. Corrected and proved by the prover lane (D8, ledger L11--L12,
+L38). This is why \cref{obs:jump-operator-guidance} needed an even--odd Hamiltonian on the
+\emph{doubled} bond rather than an odd letter.
+\end{proof}
+
+\begin{proposition}[Jump Lindbladians: the band is affine]
+\label{prop:jump-lindbladian-band}
+\claimstatus{prop:jump-lindbladian-band}{sketched}
+For $\Tcm = \sum_sg_s(\Ad U_s-1)$ with homogeneous unitaries closed under adjoint, $e^{t\Tcm} =
+e^{-\gamma t}e^{\gamma t\chan}$ with $\gamma = \sum_sg_s$ and $\chan$ the weighted channel, so
+$\operatorname{spec}\Tcm = \gamma(\operatorname{spec}\chan-1)$ sector by sector, and the graded
+Ramanujan band for equal rates is $[-\gamma(1+\lamH),-\gamma(1-\lamH)]$ on both sectors; the
+non-backtracking lift exists since the words are discrete.
+\end{proposition}
+\begin{proof}
+$\Tcm = \gamma(\chan-1)$ with $\chan$ and $1$ commuting. Proved by the prover lane (D9).
+\cref{num:graded-ramanujan}(d).
+\end{proof}
+
+\begin{observation}[The divisor when there is no trace]
+\label{obs:divisor-regular-data}
+\claimstatus{obs:divisor-regular-data}{sketched-conditional}
+For an infinite-dimensional graded bond the ring norms are distributions
+(\cref{def:distributional-trace}) or correlation functions of regular data. The prover lane (D10)
+makes this a \emph{relative resonance divisor}: given specified regular spaces, a meromorphic
+continuation of the resolvent between them beyond $\re z = \omega/2$ (an assumption of the kind of
+\cref{asm:explicit-formula-trace}), and finite-rank Riesz projections at its poles, the divisor is
+the signed count of algebraic multiplicities of those projections, sector by sector; the order of
+a scalar correlation pole does not measure multiplicity, and a general non-normal generator has no
+scalar spectral measure, so with continuous spectrum one retains vector-dependent spectral measures
+or supplies a spectral theorem with weights (ledger L13--L14). The definition is deliberately not the
+$L^2$ spectrum of $\Tcm$: for the compressed Riemann semigroup $\|Z(t)\| = 1$ for all $t$ (two
+readers, 2026-09-14, unreviewed), so no statement on $K_S$ sees the rate $1/4$; (HP) must then be
+stated on a weighted or anisotropic space with domain and norm-equivalence qualifications, as
+resonances are for Anosov flows. For the Riemann graded generator of \cref{prop:riemann-graded-generator}
+the reference rates are $0$ and $-\tfrac12$, the archimedean ladder $-(k+\tfrac12)$ must be
+designated trivial, and the regular nontrivial modes have centre $-\tfrac14$ iff RH; the realisation
+of that generator as a doubled-bond cMPS is not supplied (it is a graded spectral transfer,
+\cref{def:graded-rh-fe-ramanujan}).
+\end{observation}
+
+\subsection{Harrow's continuum limit, ungraded and graded}
+
+\begin{observation}[Continuous Harrow: Ramanujan is temperedness]
+\label{obs:continuous-harrow-tempered}
+\claimstatus{obs:continuous-harrow-tempered}{sketched}
+Replacing the finite group by a Lie group and the letters by $\exp(\pm\sqrt\epsilon X_j)$ gives
+$\chan_\epsilon = 1+(\epsilon/2d)\sum_jB_j^2+O(\epsilon^2)$, the representation Lindbladian of
+\cref{prop:quantum-lindblad-tensor} divided by $d$; with $\Tcm_* = \tfrac12(B_H^2+B_E^2) = 2\Cas+
+\tfrac12B_W^2$ (shard 09b) the equally averaged two-generator walk has generator $\Tcm_*/2$ and
+threshold $\tfrac14$, and $\Tcm_*$ itself (steps $\exp(\pm\sqrt{d\epsilon}X_j)$) has threshold
+$\tfrac12$ (ledger L15). For an irreducible tempered $\pi$ of $\mathrm{SL}_2(\mathbb R)$,
+$\pi\otimes\bar\pi$ is tempered (Fell absorption) and on the $K$-invariant sector
+$\operatorname{spec}(-\Tcm_*)\subset[\tfrac12,\infty)$, with the exact rate $2s(1-s)+m^2/2$ on a
+constituent of parameter $s$ and $K$-type $m$; the bound is sharp for every $D_k^\pm$ (spectrum
+exactly $[\tfrac12,\infty)$, endpoint not an eigenvector), there is no HS fixed vector, and for a
+unitary representation of $\mathrm{PSL}_2(\mathbb R)$ the type-zero bound $-\Tcm_*\ge\tfrac12$ is
+equivalent to temperedness: this is the precise diffusion meaning of ``continuous Ramanujan''
+(prover, D11). It is not a flow-divisor line theorem: principal constituents have leading
+matrix-coefficient exponents $-\tfrac12\pm ir$ along $a_t$, but discrete series are tempered with
+faster exponents $-n/2$ and descendants, and discrete and continuous constituents coexist
+(ledger L16--L18). Harrow's transfer becomes ``tempered implies tempered tensor square''; the
+discrete zeros appear only on a lattice quotient (\cref{sec:selberg-tower}). For the complementary
+series $\pi_s$ the tensor square is reported (from memory, unverified, H-repka in the prover's
+report) to contain a complementary series iff $s>\tfrac34$, which would make the Lindbladian of
+$\pi_s$ Ramanujan for $\tfrac12<s\le\tfrac34$ although $\pi_s$ is not tempered, the threshold being
+Selberg's $\tfrac3{16} = \tfrac34\cdot\tfrac14$; not to be cited until byte-checked.
+\end{observation}
+
+\begin{observation}[Graded continuous Harrow: the $\mathrm{PGL}_2(\mathbb R)$ grading is the archimedean ladder]
+\label{obs:graded-continuous-harrow}
+\claimstatus{obs:graded-continuous-harrow}{sketched}
+For $G = \mathrm{PGL}_2(\mathbb R)\supset\mathrm{PSL}_2(\mathbb R)$ the index-two graded genuine
+irreducibles are the discrete series pairs $D_k^+\oplus D_k^-$ with $k\ge2$ \emph{even} (the centre
+$-1$ acts by $(-1)^k$; odd $k$ needs a covering group or a projective bond, ledger L19), swapped by
+the reflection $r = \operatorname{diag}(-1,1)$; even letters are the $\mathfrak{sl}_2$ generators
+(diffusion $\kappa\Tcm_*$), the odd letter is the reflection, a jump at rate $\gamma$
+(\cref{prop:graded-chernoff}). Exact decompositions (prover, D12): the even sector is
+$D_k^+\otimes D_k^-\oplus\mathrm{c.c.}\simeq2\int^\oplus I_{1/2+ir}\,dr$, principal series only, with
+$K$-invariant rates $\kappa(\tfrac12+2r^2)$ and $\kappa(\tfrac12+2r^2)+2\gamma$ for the two
+reflection eigencombinations; the odd sector is $\bigoplus_{l\ge0}(D_{2k+2l}^+\oplus
+D_{2k+2l}^-)$, purely discrete, with rates $\kappa(n+2nj+2j^2)$ and the same plus $2\gamma$
+($n = 2k+2l$, $j\ge0$), odd minimum $2\kappa k$, and leading $a_t$-exponents $-n/2 = -(k+l)$:
+an arithmetic ladder at and beyond the functional-equation partner, positionally the
+$\Gamma$-factor ladder of \cref{prop:riemann-graded-generator} (the zero rung, multiplicities and
+descendants differ; ledger L24), carrying no critical-line modes. $P$ is a bounded eigenoperator,
+not Hilbert--Schmidt, so it supplies no HS divisor point (L21); the heat supertrace is not an
+ordinary integral against $|\chi_+-\chi_-|^2$ (the even heat operator is not trace class), but the
+localised regular-character functional is well defined and vanishes on hyperbolic elements because
+$\chi_{D_k^+} = \chi_{D_k^-}$ there: the regular even and odd hyperbolic contributions cancel in
+the supertrace (L22--L23), so the reflection grading assigns the closed geodesics to the even
+sector and the archimedean ladder to the odd one, the opposite of the Riemann assignment. For
+$k = 1$ (projective) $D_1\otimes D_1 = \bigoplus D_{2+2m}$ gives exponents $-(1+m)$ and its symmetric
+part every other rung, matching the $\Gamma_{\mathbb C}$ and $\Gamma_{\mathbb R}$ pole lists
+positionally.
+\end{observation}
+
+\begin{observation}[Which grading makes the Selberg zeros odd]
+\label{obs:selberg-grading-choice}
+\claimstatus{obs:selberg-grading-choice}{sketched-conditional}
+The grading that makes the Selberg zeros odd is not the reflection grading but the transverse
+form-degree grading of the geodesic flow: Dyatlov--Zworski write the Ruelle zeta as
+$\zeta_1/(\zeta_0\zeta_2)$ over form degrees (\cref{cit:dz-order-chi}), using the Lefschetz
+identity (\texttt{prov:dz13-lefschetz}, \texttt{1306.4203:zeta.tex:525-526})
+{\small\texttt{\detokenize{\det ( I - \mathcal P_\gamma ) = \sum_{ k=0}^{ n-1} ( - 1 )^k \tr \wedge^k \mathcal P_\gamma .}}}
+so the Selberg zeta $Z(s) = \det(1-L_s)$ is the odd-degree factor, its zeros $\tfrac12\pm ir_j$ are
+net-odd divisor points on the critical line exactly when Selberg's $\tfrac14$ holds (the Ramanujan
+row of \cref{obs:continuous-dictionary}), and its trivial zeros form the ladder. This is the
+form-degree grading found for curves in \cref{sec:ring-norm-genus-one-tier-a}. On the doubled bond of a
+representation channel of $\mathrm{PSL}_2(\mathbb R)$ the candidate is the $K$-type grading
+(functions, $m = 0$, against $1$-forms, $m = \pm2$), whose uniform shift $m^2/2 = 2$ would be the
+continuous analogue of the $-2\gamma$ parity-jump shift of \cref{prop:parity-jump-uniform-shift}.
+Not drafted as a claim.
+\end{observation}
+
+\subsection{Where this leaves the graded Ramanujan property}
+
+\begin{observation}[Status]
+\label{obs:graded-ramanujan-status}
+\claimstatus{obs:graded-ramanujan-status}{sketched-conditional}
+Understood: the definition (on the retained net divisor, with a signed trivial divisor and two
+reference rates) and its stability under non-aliasing continuum limits; graded quantum expanders
+with a mechanism (index-two gradings, band form, net zeros after the non-backtracking lift; the odd
+gap has no Alon--Boppana floor, \cref{obs:odd-gap-no-alon-boppana}), Hecke-eigenvalue zeros for
+graded Weil--LPS, an elliptic curve over $\mathbb F_5$ from a qubit; curve-type channels Ramanujan by a second mechanism
+(the odd block is $\sqrt\qs$ times a unitary, the $P$-mode is $H^0$ by parity-twisted unitality); Harrow's continuum limit as temperedness, its graded version as the archimedean
+ladder. Not understood: a graded channel of \emph{circle type} with a group-theoretic mechanism (a
+non-Hermitian graded channel whose odd block is $\sqrt\qs$-unitary because of a representation, as
+in Artin--Schreier by Parseval); a Kraus (doubled-bond) realisation of the Artin--Schreier, Riemann
+and Selberg graded spectral transfers, none of which is supplied (a doubled bond has $n_0-n_1 =
+(D_+-D_-)^2\ge0$ while a cohomological grading may have more odd than even dimensions); a principle relating ``Hermitian channel plus non-backtracking
+lift'' to ``odd block unitary'' (Ihara--Bass manufactures the partner and the circle from a real
+band; for curves it is the Hodge index); a continuum example with an infinite discrete divisor on
+the critical line other than Riemann and Selberg; and which grading of the Selberg side is the
+Phantasm's (\cref{obs:selberg-grading-choice} argues form degree). The Riemann case needs the
+second mechanism in the continuum, on regular data (\cref{obs:divisor-regular-data}).
+\end{observation}

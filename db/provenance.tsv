@@ -145,3 +145,5 @@ prov:goreskytai-cm-type	1701.07742	main.tex	604-605	and where $\Phi$ is a CM typ
 prov:dupuy-cm-field	2003.05380	weil.tex	332	\item $\QQ(\pi)$ is a CM-field with maximal totally real subfield $\QQ(\beta)$, and $\pi$ has no real embeddings;	cit:cm-lift-frobenius
 prov:lesfari-wedge	0903.2156	main.tex	1254	$$\omega\wedge \overline{\omega}=-2i|f|^2dx\wedge dy.$$	cit:hodge-positive-forms
 prov:lesfari-positive	0903.2156	main.tex	1262	&=&\int_X|f|^2dx\wedge dy > 0, \quad \omega\neq 0,\nonumber	cit:hodge-positive-forms
+prov:hastings07-alon-boppana	0706.0556	sd10.tex	284-287	N(0,m) \geq c \times (2\sqrt{D-1})^m/(m+1)^{3/2},	obs:odd-gap-no-alon-boppana
+prov:dz13-lefschetz	1306.4203	zeta.tex	525-526	\det ( I - \mathcal P_\gamma ) = \sum_{ k=0}^{ n-1} ( - 1 )^k \tr \wedge^k \mathcal P_\gamma .	obs:selberg-grading-choice
