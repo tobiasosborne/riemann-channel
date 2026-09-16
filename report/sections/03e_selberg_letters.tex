@@ -1,0 +1,229 @@
+% SHARD-ID: RC-03E-SELBERG-LETTERS
+% SHARD-TITLE: An Infinite Object Whose Odd-Block Form Is Derived from the Letters: the Selberg Zeta as a Graded Transfer
+% SHARD-SUMMARY: The Selberg zeta of a compact hyperbolic surface is the ring zeta of a two-term transverse complex of the geodesic flow (even drift, odd drift plus one); its first-band resonant states push forward onto Laplace eigenspaces, the Laplacian is a sum of squares of the Haar-unitary letters, and so the reality of the retained odd divisor, its functional equation and a positive form making the rescaled flow unitary are derived from the letters, with the 1/4 coercivity as the one extra bound and a Jordan obstruction at the threshold.
+% SHARD-SUMMARY: The first-band operator form of the continuous Ihara-Bass (quadratic intertwining through the fibre pushforward plus the horocyclic ladder) is proved; there is no doubled-bond CP realisation of the flow supertraces, which are negative distributions; the modular surface, the finite theorem and the labelled-input theorems continue in the next shard.
+% SHARD-KEYWORDS: Selberg zeta, geodesic flow, horocyclic operators, first band, Pollicott-Ruelle resonances, letters, Haar, positive form, functional equation, threshold, Jordan block, Hashimoto lift, Ihara quadratic, Eisenstein series, scattering poles, K-type grading
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{The Selberg Zeta as a Graded Transfer Whose Odd-Block Form Comes from the Letters}
+\label{sec:selberg-letters}
+
+\emph{Question (TJO, 2026-09-16).} What is the most consequential step toward a mechanism, and
+take it: exhibit an infinite-object zeta as a graded transfer whose odd-block unitarity is
+\emph{derived} from the letters rather than read off the zeros. The Selberg zeta of a compact
+hyperbolic surface is the one infinite object where the trace formula is a theorem, the divisor is
+known, and the source of reality is known. The orchestrator drafted eight statements
+(\texttt{notes/selberg-letters/draft.md}); one codex \texttt{gpt-6-astra} prover lane returned
+\texttt{notes/selberg-letters/astra-proofs.md} ($7$ corrected, $1$ open, a $40$-row correction
+ledger of which $34$ rows correct the draft and $6$ answer questions the draft had posed,
+\texttt{scripts/selberg\_letters.py}, $131$ checks), and a Claude Opus refuter reviewed it
+(\texttt{notes/reviews/selberg-letters-2026-09-16.md}: four independent scripts, $153$ checks,
+$31$ citations byte-checked; round 1: $7$ VALID, $4$ MINOR, no MAJOR; the MINOR items are applied
+below; round 2: all VALID). Conventions are those of
+\cref{sec:selberg,sec:definitions-h}: $G = \PSL(\mathbb R)$, left-invariant fields, $\gflow =
+\Hgen/2$, the horocyclic fields $\Uhor{\pm} = (\Egen\pm\Wgen)/2$, and the resonance parameter
+$\lambda$ of the \emph{generator $-\gflow$}: $(\gflow+\lambda)u = 0$, so $e^{-t\gflow}u =
+e^{t\lambda}u$ and $\lambda$ is the notebook's $\lapvar$ (ledger L14). For a Laplace eigenvalue
+$\lapeig = s(1-s)$ the two flow roots are $\lambda_\pm = s_\pm-1$ with $s_\pm = \tfrac12\pm
+\sqrt{\tfrac14-\lapeig}$, each with multiplicity $d_{\lapeig} = \dim\ker(\Lap-\lapeig)$; $c = 2g-2$.
+
+\subsection{Inputs}
+
+\begin{citedfact}[Horocyclic commutation relations]
+\label{cit:dfg-horocyclic}
+\claimstatus{cit:dfg-horocyclic}{cited}
+Dyatlov, Faure and Guillarmou \cite{dyatlov2015power}, for the left-invariant fields of
+$X = \operatorname{diag}(\tfrac12,-\tfrac12)$, $U_+ = \bigl(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\bigr)$,
+$U_- = \bigl(\begin{smallmatrix}0&0\\1&0\end{smallmatrix}\bigr)$:
+\texttt{\detokenize{[X,U_\pm]=\pm U_\pm,\quad [U_+,U_-]=2X.}}
+(\texttt{1403.0256:RuelleResonForHn.tex:543-544}). In the notebook's basis $X = \gflow$,
+$U_\pm = \Uhor{\pm}$, and $\Cas = \gflow^2+\tfrac12(\Uhor{+}\Uhor{-}+\Uhor{-}\Uhor{+})$.
+\end{citedfact}
+
+\begin{citedfact}[First-band pushforward]
+\label{cit:dfg-first-band-pushforward}
+\claimstatus{cit:dfg-first-band-pushforward}{cited}
+Dyatlov, Faure and Guillarmou \cite{dyatlov2015power}, for $\Resfb(\lambda) = \{u\in\mathcal D'(SM):
+(X+\lambda)u = 0,\ U_-u = 0\}$ (the wavefront condition being automatic):
+\texttt{\detokenize{u\in\Res^0_X(\lambda)\mapsto  f(x):=\int_{S_x M} u(x,\xi)\,dS(\xi) \end{equation} is an isomorphism from $\Res^0_X(\lambda)$ onto $\Eig(-\lambda(1+\lambda))$,}}
+(\texttt{1403.0256:RuelleResonForHn.tex:601-604}), proved there through the boundary
+representation and the scalar Poisson operator, for $\lambda\notin-1-\mathbb N_0$.
+\end{citedfact}
+
+\begin{assumption}[Resonance theory of the compact surface flow]
+\label{asm:dfg-resonance-theory}
+\claimstatus{asm:dfg-resonance-theory}{assumed}
+The Pollicott--Ruelle resonances of $\gflow$ on $SM$ are defined on the anisotropic spaces of
+Dyatlov--Faure--Guillarmou with finite-rank Riesz projections and no resonances in $\re\lambda>0$;
+the ladder decomposition $\operatorname{Res}_X(\lambda) = \bigoplus_{m\ge0}U_+^m\Resfb(\lambda+m)$
+holds for $\lambda\notin-1-\tfrac12\mathbb N_0$; algebraic and geometric multiplicities agree for
+$\lambda\notin-\tfrac12-\tfrac12\mathbb N_0$; and the logarithmic derivative of each flat
+dynamical determinant has residue equal to the rank of the Riesz projection (Dyatlov--Zworski).
+Sources are named by line in the prover's hypothesis register (H-DFG-REG, H-DFG-LAD, H-DFG-SS,
+H-DZ-MULT).
+\end{assumption}
+
+\begin{assumption}[Coercivity of the letters, Selberg's $\tfrac14$]
+\label{asm:selberg-coercivity}
+\claimstatus{asm:selberg-coercivity}{assumed}
+$\|\Hgen f\|^2+\|\Egen f\|^2\ge\|f\|^2$ for every smooth right-$K$-invariant $f\perp1$ on $SM$;
+equivalently $\Lap\ge\tfrac14$ on $1^\perp$. A surface-dependent property, not derived from the
+letters; it is the Selberg-side analogue of the Ramanujan bound.
+\end{assumption}
+
+\begin{assumption}[Finite-area Selberg divisor]
+\label{asm:cusp-divisor-theorem}
+\claimstatus{asm:cusp-divisor-theorem}{assumed}
+The divisor of the Selberg zeta of a finite-area one-cusp quotient, as stated by Friedman,
+Jorgenson and Smajlovi\'c \cite{friedman2016central} (\texttt{1607.08053:main.tex:370-401},
+attributed there to Venkov and Hejhal, whose pages are not checked here): discrete-spectrum zeros,
+their real partners, the signed order at $\tfrac12$, parabolic poles at $-n-\tfrac12$, zeros
+reflected from the scattering determinant, and the topological and elliptic integer divisor.
+\end{assumption}
+
+\subsection{The compact surface}
+
+\begin{proposition}[The Laplacian is a sum of squares of the letters]
+\label{prop:selberg-letters-laplacian}
+\claimstatus{prop:selberg-letters-laplacian}{proved-conditional}
+The left-invariant fields $\Hgen,\Egen,\Wgen,\gflow,\Uhor{\pm}$ are skew-symmetric on $C^\infty(SM)$
+with respect to Haar measure (the group is unimodular by the brackets) and generate unitary groups
+on $L^2(SM)$; $\Cas$ is central; on right-$K$-invariant $f$, $\langle f,\Lap f\rangle =
+\tfrac14(\|\Hgen f\|^2+\|\Egen f\|^2)$, so $\operatorname{spec}\Lap\subset[0,\infty)$ and every
+$s$ with $s(1-s)\in\operatorname{spec}\Lap$ lies in $(\tfrac12+i\mathbb R)\cup[0,1]$ (the draft had
+the map pointing the other way, ledger L01).
+\end{proposition}
+\begin{proof}
+\cref{prop:lindblad-sum-of-squares,prop:casimir-laplacian} and \texttt{notes/selberg/astra-proofs.md}
+T2.1--T2.2; the prover's D1.
+\end{proof}
+
+\begin{theorem}[The Selberg zeta is the ring zeta of the stable transverse complex]
+\label{thm:selberg-two-term-ring-zeta}
+\claimstatus{thm:selberg-two-term-ring-zeta}{proved-conditional}
+Let $C(t) = \sum_\gamma\sum_{k\ge1}\wl_\gamma\delta(t-k\wl_\gamma)$ be the unweighted orbit comb
+and $F = C/(4\sinh^2(t/2))$ the function flat trace. With the ring zeta
+$Z(s) = \exp\int_0^\infty e^{-st}\str(t)\,dt/t$ normalised by its convergent orbital exponential:
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+transfer (single copy, spectral) & flat supertrace $\str(t)$ & ring zeta \\
+\midrule
+function flow $-\gflow$, even & $F$ & $\Dtow(s)^{-1}$ \\
+function flow, all odd & $-F$ & $\Dtow(s)$ \\
+full transverse forms, degree parity & $(2-e^t-e^{-t})F = -C$ & $\Ruelle(s) = \Zsel(s)/\Zsel(s+1)$ \\
+stable complex (\cref{def:stable-transverse-complex}), even $-\gflow$, odd $-\gflow+1$ & $(1-e^t)F$ & $\Zsel(s) = \Dtow(s-1)/\Dtow(s)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+For $\Zsel$ the divisor $\nu = -\operatorname{ord}\Zsel$ is entirely odd: trivial part
+$-\delta_1-\delta_0-c\sum_{n\ge0}(2n+1)\delta_{-n}$ (both constant roots are zeros, not a Perron
+pole and partner; reference pair $(1,0)$, critical line $\re s = \tfrac12$), retained part
+$-\sum_{\lapeig>0}d_{\lapeig}(\delta_{s_+(\lapeig)}+\delta_{s_-(\lapeig)})$ with
+$\operatorname{ord}_{1/2}\Zsel = 2d_{1/4}$. The retained divisor satisfies (FE) under $s\mapsto1-s$
+unconditionally, and (RH) and (Ram) of \cref{def:graded-rh-fe-ramanujan} iff
+\cref{asm:selberg-coercivity}. For $\Ruelle$ the retained divisor is $-\mathcal S+\mathcal S(\cdot+1)$
+(the even band is the odd band shifted by $-1$; net orders $1,c,2c-1,2c$ at $1,0,-1,-n$), so
+\emph{(FE) and (Ram) fail for the Ruelle zeta even under coercivity}; the all-odd tower
+$\Dtow$ likewise fails unless restricted to its first band. Closed geodesics are fermionic
+because $\dim E_s = 1$: $\det(1-\Poinc) = -|\det(1-\Poinc)|$.
+\end{theorem}
+\begin{proof}
+Flat traces on transverse $k$-forms with multipliers $e^{\pm t}$ (\cref{cit:dz-guillemin},
+\cref{prop:poincare-jacobian}): $N_0 = N_2 = F$, $N_1 = (e^t+e^{-t})F$; the orbital exponential
+of $-C$ is $\log\Ruelle$; $F = C\sum_{j\ge1}je^{-jt}$ gives $\Dtow$; the stable line multiplies by
+$1-e^t$ and cancels one transverse denominator. The complex is built from a letter:
+$df = (\Uhor{+}f)\eta_+$ intertwines $-\gflow$ and $-\gflow+1$ since $[-\gflow,\Uhor{+}] = -\Uhor{+}$.
+Divisors from \cref{asm:selberg-zeta-entire} by shifting. Prover's D2, ledger L02--L09 (the draft
+had the Ruelle poles at $0$ wrong, the trivial multiplicities unspecified, and treated Ruelle,
+Selberg and the tower interchangeably). Checked symbolically for $g = 2,3,5$ in
+\cref{num:selberg-letters}.
+\end{proof}
+
+\begin{theorem}[The first band: reality, positive form and functional equation from the letters]
+\label{thm:selberg-first-band-form}
+\claimstatus{thm:selberg-first-band-form}{proved-conditional}
+For $u\in\Resfb(\lambda)$: $\Cas u = \lambda(1+\lambda)u$ (from $\Cas = \gflow^2+\Uhor{+}\Uhor{-}-
+\gflow$ on $\ker\Uhor{-}$; the draft's ordering sign was wrong, ledger L10), and the fibre
+pushforward $\pi_*u$ is a smooth Laplace eigenfunction with $\Lap\pi_*u = -\lambda(1+\lambda)\pi_*u$
+(centrality; this is algebra). That $\pi_*$ is injective and onto is \cref{cit:dfg-first-band-pushforward},
+analysis, not algebra. Consequently:
+\begin{enumerate}
+\item[(i)] \emph{Reality from Haar.} $-\lambda(1+\lambda) = \langle f,\Lap f\rangle/\|f\|^2\ge0$
+with $f = \pi_*u\ne0$, so for $\lambda\notin-1-\mathbb N_0$ (the range of the Poisson
+isomorphism; at $\lambda = -1$ a first-band state has $\pi_*u = 0$) the first-band divisor lies in
+$(-\tfrac12+i\mathbb R)\cup[-1,0]$; its nonconstant part lies on $\re\lambda = -\tfrac12$ iff
+\cref{asm:selberg-coercivity}.
+\item[(ii)] \emph{The form.} The total pullback $\langle\pi_*u,\pi_*v\rangle$ is degenerate on the
+sum of the two branches of one $\lapeig$ (both push to the same $E_{\lapeig}$; Gram matrix
+$\|f\|^2\bigl(\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\bigr)$, ledger L12). The
+\emph{orthogonal branchwise} form $G_\oplus(u,v) = \sum_\lambda\langle\pi_*u_\lambda,\pi_*v_\lambda\rangle$
+on the algebraic direct sum of the nonconstant first-band eigenspaces is positive definite; in its
+modal completion $-\gflow$ is normal, and $e^{t/2}e^{-t\gflow}$ is $G_\oplus$-unitary iff
+\cref{asm:selberg-coercivity}: the manifest form (HP) for the retained odd block of the stable
+complex, shifted by one. What the letters supply here is the branch norms and the reality and
+line of (i); once the line holds and the block is semisimple, the existence of \emph{some}
+positive form is the (HP) equivalence of \cref{def:graded-rh-fe-ramanujan}, and the new content
+is that this particular form is the transported Haar form, together with the threshold
+obstruction of (iv) (review, MINOR 6).
+\item[(iii)] \emph{Operator functional equation.} $J = (\pi_*|_{\Resfb(-1-\lambda)})^{-1}\pi_*|_{\Resfb(\lambda)}$
+is an involution, $G_\oplus$-unitary, with $J\gflow J^{-1} = 1-\gflow$ (the draft wrote $-1-X$,
+ledger L14); on the odd Selberg generator $S = -\gflow+1$, $JSJ^{-1} = 1-S$.
+\item[(iv)] \emph{The threshold is a Jordan obstruction.} At $\lambda = -\tfrac12$ the eigenstate
+space has dimension $d_{1/4}$ while $\operatorname{ord}_{-1/2}\Dtow = 2d_{1/4}$ is the algebraic
+multiplicity (\cref{asm:dfg-resonance-theory}); a positive $G$ with $A^{*G}+A = -1$ forces
+semisimplicity, so the full algebraic block at a Laplace eigenvalue exactly $\tfrac14$ admits no
+positive unitarising form. Divisor (RH)/(FE)/(Ram) are unaffected; operator (HP) on the complete
+algebraic band needs in addition $\tfrac14\notin\operatorname{spec}\Lap$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Prover's D3, nine Lamport steps, ledger L10--L16; the analytic inputs are exactly
+\cref{cit:dfg-first-band-pushforward,asm:dfg-resonance-theory}. The degenerate Gram matrix and the
+Casimir sign are verified in \cref{num:selberg-letters}.
+\end{proof}
+
+\begin{proposition}[Operator-level continuous Ihara--Bass: first band and ladder]
+\label{prop:selberg-ladder-ihara}
+\claimstatus{prop:selberg-ladder-ihara}{proved-conditional}
+On $\ker\Uhor{-}$, $\pi_*(A^2+A) = -\Lap\pi_*$ with $A = -\gflow$: a \emph{quadratic}
+intertwining, since one Laplace eigenvalue has two flow roots. The ladder is
+$\Uhor{-}\Uhor{+}^mv = m(2z-m+1)\Uhor{+}^{m-1}v$ for $\Uhor{-}v = 0$, $\gflow v = -zv$, giving
+$U_-^mU_+^m = m!\prod_{j=1}^m(2\lambda+m+j)$ on $\Resfb(\lambda+m)$ and the decomposition of
+\cref{asm:dfg-resonance-theory} off the exceptional set. The adjacency object is the two-jump
+multiplication-sector generator $\tfrac12(\Hgen^2+\Egen^2) = 2\Cas+\tfrac12\Wgen^2 = -2\Lap$ on
+$K$-invariants (\cref{prop:lindblad-sum-of-squares,prop:casimir-laplacian}); sampling time $\tsamp$
+turns the two roots into $\edgeev_\pm = e^{\tsamp\lambda_\pm}$ with $\edgeev_+\edgeev_- = e^{-\tsamp}$ and
+$\edgeev_++\edgeev_- = 2e^{-\tsamp/2}\cos(\tsamp\sqrt{\lapeig-1/4})$, a cosine functional calculus of $\Lap$,
+not $-2\Lap$, with aliasing (ledger L18). This proves the first-band operator form of the
+``not established'' item of \cref{sec:selberg-tower}; a literal compression of the whole tower to
+one Laplacian determinant is still not supplied (ledger L19).
+\end{proposition}
+\begin{proof}
+Prover's D4; the ladder coefficient is checked to level six in \cref{num:selberg-letters}.
+\end{proof}
+
+\begin{proposition}[No doubled-bond CP realisation; the transfer is single-copy]
+\label{prop:selberg-no-cp-realisation}
+\claimstatus{prop:selberg-no-cp-realisation}{sketched-conditional}
+The stable complex and the full transverse generator $-\gflow\otimes1+1\otimes\operatorname{diag}(0,0;1,-1)$
+are single-copy graded \emph{spectral} transfers with the relative resonance divisor of
+\cref{obs:divisor-regular-data} (smooth tests against distributions, DFG spaces sector by sector).
+They are not doubled transfers: the conjugation $Y\mapsto e^{tT}Ye^{tT^\dagger}$ is CP on a larger
+space with generator $T\otimes1+1\otimes\bar T$, product grading and squared coefficient growth
+(ledger L20--L22); multiplication operators are not Hilbert--Schmidt (L21); and both flat
+supertraces $-C$ and $-C/(1-e^{-t})$ are \emph{negative} distributions, hence cannot be cMPS ring
+norms, which are nonnegative (\cref{thm:cmps-twisted-supertrace}(iv), itself \texttt{sketched-conditional};
+only the sign is used; L23). Adding the two
+dissipative jumps $\sqrt\kappa\Hgen,\sqrt\kappa\Egen$ to the drift gives $L_\kappa = -\gflow+
+2\kappa\Cas+\tfrac\kappa2\Wgen^2$ on multiplication observables; it preserves neither the $K$-sector
+nor the first band ($[\Uhor{-},\tfrac12(\Hgen^2+\Egen^2)]u = (2\lambda-1)\Uhor{+}u$ on first-band
+states), so the Selberg divisor is a drift phenomenon and its fate under diffusion needs new
+analysis (L25). \cref{prop:graded-chernoff} is consistent: the parity here is a coefficient
+grading of the transverse factor, not a physical parity-changing jump (L24).
+\end{proposition}
+\begin{proof}
+Prover's D5.
+\end{proof}
+

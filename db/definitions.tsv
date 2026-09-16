@@ -82,3 +82,4 @@ def:graded-rh-fe-ramanujan	graded RH, functional equation, Ramanujan, manifest (
 def:graded-quantum-expander	graded quantum expander, odd gap	report/sections/02h_definitions_graded_ramanujan.tex	stipulated	-	notes/ramanujan-graded/definition.md section 3
 def:graded-hashimoto	graded Hashimoto operator, graded quantum Ihara zeta, balanced grading	report/sections/02h_definitions_graded_ramanujan.tex	stipulated	-	notes/ramanujan-graded/definition.md section 3
 def:index-two-grading	index-two (Clifford) grading of a representation channel, graded representation channel	report/sections/02h_definitions_graded_ramanujan.tex	stipulated	-	notes/ramanujan-graded/definition.md section 4
+def:stable-transverse-complex	stable transverse complex of the geodesic flow (even drift -X, odd drift -X+1 on the stable covector line), its flat supertrace and ring zeta	report/sections/02h_definitions_graded_ramanujan.tex	stipulated	-	notes/selberg-letters/astra-proofs.md D2

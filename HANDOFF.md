@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -85,6 +85,52 @@ character reading of the grading and conj:galois-graded-bond.
 0d. **Mayer cusp tail** (`notes/resonances/astra-freeassoc.md` §3): unchanged.
 0e. **Suzuki's prime-defined screw kernel** (§16.3): unchanged.
 0f. **Literature:** Bonthonneau–Weich; Lewis–Zagier, Chang–Mayer: unchanged.
+
+### An infinite object whose odd-block form is derived from the letters (2026-09-16; shards 03e, 03f)
+
+TJO asked for the most consequential step toward a proof; recommendation and execution: exhibit an
+infinite-object zeta as a graded transfer whose odd-block unitarity is DERIVED from the letters,
+Selberg first. Orchestrator draft D1-D8 (`notes/selberg-letters/draft.md`), one codex gpt-6-astra
+xhigh lane (`astra-proofs.md`, 7 corrected / 1 open, 40-row ledger of which 34 are genuine
+corrections, `scripts/selberg_letters.py` 131 checks in CI), Opus REFUTE review
+`notes/reviews/selberg-letters-2026-09-16.md` (4 independent scripts, 153 checks, 31 citations
+byte-checked; no BLOCKER/MAJOR; round 1: 7 VALID, 4 MINOR, applied; round 2: all VALID; verdicts
+in the claims rows). Worklog
+2026-09-16.
+
+- **Z_S is the ring zeta of the stable two-term transverse complex** (even -X, odd -X+1;
+  def:stable-transverse-complex; thm:selberg-two-term-ring-zeta): Z_S(s) = D_tow(s-1)/D_tow(s),
+  retained divisor all odd, FE unconditional, RH/Ram iff Selberg's 1/4 (asm:selberg-coercivity).
+  The Ruelle zeta (full transverse forms) FAILS FE/Ram: its even band is shifted by one. Closed
+  geodesics are fermionic because dim E_s = 1.
+- **First band, derived from the letters** (thm:selberg-first-band-form): Omega = lambda(1+lambda)
+  on Res^0 (algebra), pushforward onto Laplace eigenspaces (DFG, cited by line), reality from Haar;
+  the positive form is the ORTHOGONAL sum of branchwise pullbacks (the total pullback is degenerate);
+  operator FE J X J^{-1} = 1 - X; Jordan block at a Laplace eigenvalue exactly 1/4, so full operator
+  HP needs the strict bound. What is extra: the 1/4 coercivity, the Poisson bridge, strictness
+  (thm:letters-derived-selberg).
+- **Finite theorem** (thm:hashimoto-lift-metric, thm:letters-derived-finite): for graphs and graded
+  quantum Hashimoto lifts, inverse pushforward F_mu, companion model, letter-derived metric
+  G_C = [[1, S/2],[S/2, q]] with C* G C = q G, positive iff STRICT band; exact endpoint
+  counterexamples (K_3 x Q_3; a ten-letter Pauli channel). Settles the "Hermitian channel plus
+  lift => odd block unitary" open item (inverse-paired setting).
+- **Negatives:** no doubled-bond CP realisation (flat supertraces are negative distributions,
+  prop:selberg-no-cp-realisation); K-type parity is not a flow grading and does not supercancel
+  (prop:ktype-not-flow-grading; obs:selberg-grading-choice corrected); the first-band operator form
+  of the continuous Ihara-Bass is proved, the full-tower compression is not (prop:selberg-ladder-ihara).
+- **Where it stops, the Riemann side** (obs:modular-scattering-sector, OPEN): on PSL_2(Z) the Riemann
+  zeros rho/2 are Selberg zeros (FJS divisor theorem, byte-checked); their first-band states push to
+  Eisenstein Laurent coefficients outside L^2, so the Haar form is unavailable; the orchestrator's
+  e^{t/2} rescaling was the WRONG rate (that sector's centre is -3/4 under RH; the Riemann model's
+  -1/4 belongs to -conj(rho)/2; not identified); truncated Maass-Selberg norms are positive
+  throughout the strip; Selberg's 1/4 for PSL_2(Z) is KNOWN (Booker-Lee-Strombergsson, reported,
+  not byte-checked). The missing object is H-CUSP-BRIDGE: a non-compact flow realisation with
+  finite-rank resonant data at rho/2 - 1 and a positive modal pairing at the correct centre.
+- **Next, if pursued:** (1) the bridge: DFG-type resonance theory for the modular flow (Dyatlov-
+  Guillarmou cusp resonances) and the Eisenstein Laurent data as first-band states, with the
+  correct centre; (2) identify or refute the affine relation between the scattering sector
+  (-3/4) and the Riemann graded generator (-1/4) of 04b; (3) a positive form on regular data for
+  the Eisenstein sector (Lax-Phillips, weighted), the exact shape RH must take here.
 
 ### The Ramanujan property for graded transfer channels (2026-09-15, morning; shards 02h, 03c, 03d)
 

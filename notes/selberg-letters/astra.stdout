@@ -1,0 +1,8 @@
+Wrote [the report](notes/selberg-letters/astra-proofs.md): all D1–D8, labelled hypotheses, proofs, and a 40-row correction ledger.
+
+Main result: the two-term transverse transfer gives \(Z_S\), with a positive form obtained from orthogonal branchwise Haar pullbacks. Full operator unitarity requires excluding threshold Jordan blocks.
+
+Tally: **7 CORRECTED, 1 OPEN (D6)**. The [finite audit](notes/selberg-letters/finite/check_letters.out) passes **131 checks**, including exact graph and quantum counterexamples at the Ramanujan endpoint.
+
+Only the report and files in the assigned `finite/` directory were written.
+codex exit: 0

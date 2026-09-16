@@ -1,0 +1,165 @@
+% SHARD-ID: RC-03F-SELBERG-LETTERS-FINITE
+% SHARD-TITLE: The Selberg Letters, Continued: the Modular Surface, the Finite Hashimoto-Lift Theorem, the K-Type Grading, and What Is Derived from the Letters
+% SHARD-SUMMARY: On the modular surface the Riemann zeros are Selberg zeros at rho/2 whose first-band states push forward to Eisenstein Laurent coefficients outside L2, so the Haar-transported form is unavailable there, the draft's rescaling is at the wrong centre (-3/4 versus the Riemann model's -1/4), and the truncated Maass-Selberg norm is positive throughout the strip; the missing object is a non-compact flow realisation with a positive modal pairing.
+% SHARD-SUMMARY: The same mechanism is a finite theorem for graphs and graded quantum Hashimoto lifts: inverse pushforward, companion model, an explicit letter-derived metric positive exactly on the strict Ramanujan band, an operator functional equation, and exact endpoint counterexamples with Jordan blocks; the K-type parity is not a flow grading and does not supercancel; two labelled-input theorems state precisely what the letters supply; 131 finite checks.
+% SHARD-KEYWORDS: modular surface, Eisenstein series, scattering poles, Riemann zeros, Maass-Selberg, Hashimoto lift, Ihara quadratic, companion matrix, letter-derived metric, Jordan block, K-type grading, theta function, labelled inputs
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/selberg_letters.py
+
+\section{The Selberg Letters, Continued: Modular Surface, Finite Lifts, Labelled Inputs}
+\label{sec:selberg-letters-finite}
+
+Continuation of \cref{sec:selberg-letters}, same conventions, same proof file
+\texttt{notes/selberg-letters/astra-proofs.md} and review file.
+
+\subsection{Where the mechanism stops: the modular surface}
+
+\begin{citedfact}[Selberg's eigenvalue conjecture at small level]
+\label{cit:bls-selberg-level-one}
+\claimstatus{cit:bls-selberg-level-one}{cited}
+Booker, Lee and Str\"ombergsson \cite{booker2018twist}, Theorem 1.1:
+\texttt{\detokenize{The Selberg eigenvalue conjecture is true for $\Gamma_1(N)$ for $N\leq 880$, and for $\Gamma(N)$ for $N\leq 226$.}}
+(\texttt{1803.06016:main.tex:121-122}); in particular for the full modular group. Fetched and
+line-checked by the reviewer.
+\end{citedfact}
+
+\begin{observation}[The Riemann zeros as Selberg zeros of the modular surface, outside $L^2$]
+\label{obs:modular-scattering-sector}
+\claimstatus{obs:modular-scattering-sector}{sketched-conditional}
+For $\Gamma = \PSL(\mathbb Z)$ and a nontrivial zero $\zero$ of $\zeta$ of order $m$, $\scatdet$ has
+a pole of order $m$ at $s_0 = \zero/2$ ($\zeta(\zero-1)\ne0$ by the functional equation), and
+$\Zsel$ a zero there (its location is item~6 of \cref{asm:cusp-divisor-theorem}; the order $m$
+is inferred from the residues of $\Zsel'/\Zsel$ and $\scatdet'/\scatdet$, not stated in the
+source), with no collision with the discrete spectrum; RH is the statement that \emph{these} zeros lie on $\re s = \tfrac14$, not a
+$\tfrac14$ line for the whole divisor. The mechanism of \cref{thm:selberg-first-band-form} stops
+exactly here: a first-band state at $\lambda = s_0-1$ would push forward to the leading Laurent
+coefficient of the Eisenstein series at $s_0$, whose constant term $c_{-m}y^{1-s_0}$ is not in
+$L^2$, so the Haar-transported form is unavailable and symmetry of $\Lap$ says nothing about $\zero$
+(self-adjointness covers the cusp forms, the residual modes and the constant). Moreover the draft's
+rescaling $e^{t/2}$ can never unitarise that sector under \emph{any} positive norm, since
+$\re(\lambda+\tfrac12) = \re s_0-\tfrac12<0$: the scattering subset has flow centre $-\tfrac34$
+under RH, while the Riemann model of \cref{prop:riemann-graded-generator} has centre $-\tfrac14$ and
+belongs to $-\bar\zero/2$; the two are related by affine substitutions and have not been identified
+(ledger L30). The Maass--Selberg relation for the truncated Eisenstein series gives
+$\|\trunc e_{-m}\|^2 = |c_{-m}|^2Y^{1-2\re s_0}/(1-2\re s_0)>0$ throughout $0<\re s_0<\tfrac12$,
+so truncated positivity is not an RH criterion (L31). Selberg's $\tfrac14$ for the full modular
+group is a known theorem (\cref{cit:bls-selberg-level-one}; the draft called it open, L28). What
+is missing is a
+non-compact flow realisation with finite-rank resonant data at $s_0-1$ and a positive modal pairing
+at the correct centre (the prover's H-CUSP-BRIDGE); this item is exploratory and OPEN.
+\end{observation}
+
+\subsection{The same mechanism in finite dimensions}
+
+\begin{theorem}[Hashimoto lifts: letter-derived metric, functional equation, strict band]
+\label{thm:hashimoto-lift-metric}
+\claimstatus{thm:hashimoto-lift-metric}{proved}
+Let $\mathcal V$ be a finite Hilbert space, $\Wsp$ its edge space, and $T = SR-J_0$ with
+$J_0^2 = 1$, $RS = \Sig = \Sig^\dagger$, $RJ_0S = \Dk\,1$, $\Dk = \qs+1>2$; for a $(\qs+1)$-regular
+graph $S$ is the source map, $R$ the head sum and $J_0$ edge reversal; for a graded channel with
+unitary letters $\Eop{i} = \Ad(U_i)$ in the source-letter convention of \cref{thm:qihara-general},
+$Rx = \sum_i\Eop{i}x_i$ (with $\Ad(U_i)$, not $\Ad(U_i^\dagger)$, ledger L35), $(J_0x)_j =
+\Eop{\bari{j}}x_{\bari{j}}$, sector by sector under $\Gdb$. Then $T$ is invertible,
+$\Sig R = R(T+\qs T^{-1})$, and for $\edgeev\ne\pm1$
+\[
+  R\colon\ker(T-\edgeev)\xrightarrow{\ \sim\ }\ker\bigl(\Sig-(\edgeev+\qs/\edgeev)\bigr),\qquad
+  F_\edgeev f = \frac{\edgeev S-J_0S}{\edgeev^2-1}f
+\]
+are inverse maps ($\pm\sqrt\qs$ is \emph{not} an exception, L32). On the retained band
+$\Wsp_{\mathrm{band}} = \{Sf+J_0Sg\}$ over $\mathcal V_{\mathrm{ret}}$ (the $\pm\Dk$ modes removed),
+$L(f,g) = Sf+J_0Sg$ is an isomorphism with $L^{-1}TL = C = \bigl(\begin{smallmatrix}\Sig&\qs\\-1&0\end{smallmatrix}\bigr)$,
+and the letter-derived metric $G_C = \bigl(\begin{smallmatrix}1&\Sig/2\\\Sig/2&\qs\end{smallmatrix}\bigr)$
+satisfies $C^\dagger G_CC = \qs G_C$; $G_C$ is positive definite iff the \emph{strict} band
+$|a|<2\sqrt\qs$ holds for every retained eigenvalue of $\Sig$, and then $T/\sqrt\qs$ is
+$G_C$-unitary on the whole algebraic band, with the operator functional equation $F_C =
+\bigl(\begin{smallmatrix}0&\sqrt\qs\\\qs^{-1/2}&0\end{smallmatrix}\bigr)$, $F_C^2 = 1$,
+$F_CCF_C = \qs C^{-1}$, $F_C^\dagger G_CF_C = G_C$. At an endpoint $a = \pm2\sqrt\qs$ the companion
+matrix has a size-two Jordan block, so no positive form unitarises the full band (the total
+pullback $\langle Ru,Rv\rangle$ is degenerate on partner lifts, as in
+\cref{thm:selberg-first-band-form}(ii)). Reality of $\Sig$ comes from the letters (reversal, or
+adjoint-paired unitaries); the band bound is extra; the reduced divisor sees only
+$m_0(a)-m_1(a)$ and cannot certify sector positivity.
+\end{theorem}
+\begin{proof}
+Prover's D7, nine steps: $RT = \Sig R-RJ_0$, $RJ_0T = \qs R$; $(\edgeev+J_0)^{-1} = (\edgeev-J_0)/(\edgeev^2-1)$;
+$L^\dagger L = \bigl(\begin{smallmatrix}\Dk&\Sig\\\Sig&\Dk\end{smallmatrix}\bigr)>0$ off $\pm\Dk$;
+the Schur complement of $G_C$ is $\qs-\Sig^2/4$. Exact endpoint counterexamples in
+\cref{num:selberg-letters}. This settles the ``Hermitian channel plus lift'' item of
+\cref{obs:graded-ramanujan-status} in the inverse-paired setting; it is not a theorem for
+arbitrary Hermitian CP channels without such a lift (L36).
+\end{proof}
+
+\begin{proposition}[$K$-type parity is not a flow grading and does not supercancel]
+\label{prop:ktype-not-flow-grading}
+\claimstatus{prop:ktype-not-flow-grading}{proved}
+With $P_K = (-1)^{m/2}$ on $K$-type $m\in2\mathbb Z$: $P_K\Hgen P_K = -\Hgen$, $P_K\Egen P_K =
+-\Egen$, $P_K\Wgen P_K = \Wgen$, so $\tfrac12(\Hgen^2+\Egen^2)$ is even but $\gflow = \Hgen/2$ is
+\emph{odd}: $P_K$ does not commute with the flow. It is not the Hodge grading either (Hodge uses
+two weight-zero copies and weights $\pm2$ with the Hodge Laplacian, whose heat supertrace is
+$\chi(M)$); on a spherical principal-series constituent with Casimir $-\lapeig$ the two-jump
+diffusion has weight-$m$ eigenvalue $-2\lapeig-m^2/2$ and
+$\Tr(P_Ke^{tL_{\mathrm{adj}}}) = e^{-2\lapeig t}\sum_{n\in\mathbb Z}(-1)^ne^{-2n^2t}>0$ (Poisson
+summation), so nothing cancels. The grading that yields $\Zsel$ is the stable transverse complex
+of \cref{thm:selberg-two-term-ring-zeta}; \cref{obs:selberg-grading-choice} is corrected
+accordingly (ledger L37--L40).
+\end{proposition}
+\begin{proof}
+Prover's D8; the theta factor at $t = 1$ ($0.7300003\ldots$) in \cref{num:selberg-letters}.
+\end{proof}
+
+\subsection{What is derived from the letters}
+
+\begin{theorem}[Labelled inputs, compact Selberg]
+\label{thm:letters-derived-selberg}
+\claimstatus{thm:letters-derived-selberg}{proved-conditional}
+With inputs [HAAR] (invariant inner product, closed realisations), [SL2] (the three letters and
+their brackets), [ANALYSIS] (\cref{cit:dfg-first-band-pushforward,asm:dfg-resonance-theory}),
+[TRACE] (\cref{cit:dz-guillemin,asm:selberg-zeta-entire}), the optional [BOUND]
+(\cref{asm:selberg-coercivity}) and [ENDPOINT] ($\tfrac14\notin\operatorname{spec}\Lap$):
+[HAAR]+[SL2] give $\Lap\ge0$ as a sum of letter squares; adding [ANALYSIS] gives the first-band
+quadratic, reality, the branchwise form and the paired operator FE off the threshold; adding
+[TRACE] identifies the stable complex's ring zeta with $\Zsel$, makes the retained divisor odd and
+fixes the trivial multiplicities; [BOUND] is equivalent to (RH) and (Ram) on the retained divisor,
+(FE) holding without it; with [ENDPOINT], [BOUND] gives the positive manifest form on the complete
+algebraic retained odd block in its modal completion. A tensor-network Kraus realisation and norm
+equivalence with the anisotropic space are separate, unproved.
+\end{theorem}
+\begin{proof}
+\cref{prop:selberg-letters-laplacian,thm:selberg-two-term-ring-zeta,thm:selberg-first-band-form};
+prover's ``What is derived from the letters''.
+\end{proof}
+
+\begin{theorem}[Labelled inputs, finite graphs and channels]
+\label{thm:letters-derived-finite}
+\claimstatus{thm:letters-derived-finite}{proved}
+With [LETTERS] (incidence and reversal, or homogeneous adjoint-paired unitaries with the
+Hilbert--Schmidt form), [LIFT] (the non-backtracking exclusion and source-letter convention) and
+the finite spectral theorem: the identities of \cref{thm:hashimoto-lift-metric}, Hermiticity of
+$\Sig$, the pushforward, the companion model, the metric $G_C$ and the operator FE follow; the
+optional sector bound [BOUND] puts the roots on the critical circle, and its strict version makes
+$G_C$ positive on the entire retained algebraic band. This is the finite counterpart of
+\cref{thm:letters-derived-selberg}, with no resonance or Poisson theorem needed.
+\end{theorem}
+\begin{proof}
+\cref{thm:hashimoto-lift-metric}.
+\end{proof}
+
+\begin{numerical}[Finite audits]
+\label{num:selberg-letters}
+\claimstatus{num:selberg-letters}{numerical}
+\texttt{scripts/selberg\_letters.py} (output \texttt{outputs/selberg\_letters.txt}, $131$ checks,
+$5$ s): exact $\mathfrak{sl}_2$ brackets and ladder coefficients to level six; the Casimir sign on
+$\ker U_-$ and the FE sign; the singular total-pullback Gram matrix; the integer divisors of
+\cref{thm:selberg-two-term-ring-zeta} for $g = 2,3,5$; the transverse orbit weights; negativity
+of the flat supertraces; the $K$-type theta factor; for Petersen, $K_4$, the degree-$14$ LPS
+Cayley graph on $\mathrm{PGL}_2(\mathbb F_5)$ ($120$ vertices), its six-dimensional principal-series
+bond with $3|3$ grading ($18|18$ doubled) and the six Pauli letters: every retained root lifts
+($TF_\edgeev f = \edgeev F_\edgeev f$, $RF_\edgeev f = f$, residuals $\le4.5\cdot10^{-14}$), the untagged pullback
+kills partner differences, the metric identity and its positivity exactly on the strict band, the
+operator FE, and the graded Bass determinants; the Pauli reduced zeta $(1+2\uz+5\uz^2)/((1-\uz)(1-5\uz))$
+with counts $8,32,104,640,3208,15392$. Exact endpoint counterexamples: $K_3\square Q_3$ is
+$5$-regular and Ramanujan with $-4$ of multiplicity two, and its Hashimoto matrix has
+$\dim\ker(T+2) = 2$, $\dim\ker(T+2)^2 = 4$; the ten-letter Pauli channel ($I^{\times4},X^{\times4},
+Z^{\times2}$, $P = Z$, $\Dk = 10$, $\qs = 9$, even adjacency $\{10,2\}$, odd $\{6,-2\}$) is
+sector-Ramanujan with an odd Hashimoto eigenvalue $3$ of nullities $1,2$.
+\end{numerical}

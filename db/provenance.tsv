@@ -147,3 +147,6 @@ prov:lesfari-wedge	0903.2156	main.tex	1254	$$\omega\wedge \overline{\omega}=-2i|
 prov:lesfari-positive	0903.2156	main.tex	1262	&=&\int_X|f|^2dx\wedge dy > 0, \quad \omega\neq 0,\nonumber	cit:hodge-positive-forms
 prov:hastings07-alon-boppana	0706.0556	sd10.tex	284-287	N(0,m) \geq c \times (2\sqrt{D-1})^m/(m+1)^{3/2},	obs:odd-gap-no-alon-boppana
 prov:dz13-lefschetz	1306.4203	zeta.tex	525-526	\det ( I - \mathcal P_\gamma ) = \sum_{ k=0}^{ n-1} ( - 1 )^k \tr \wedge^k \mathcal P_\gamma .	obs:selberg-grading-choice
+prov:dfg14-horocyclic	1403.0256	RuelleResonForHn.tex	543-544	[X,U_\pm]=\pm U_\pm,\quad [U_+,U_-]=2X.	cit:dfg-horocyclic
+prov:dfg14-pushforward	1403.0256	RuelleResonForHn.tex	601-604	u\in\Res^0_X(\lambda)\mapsto  f(x):=\int_{S_x M} u(x,\xi)\,dS(\xi) \end{equation} is an isomorphism from $\Res^0_X(\lambda)$ onto $\Eig(-\lambda(1+\lambda))$,	cit:dfg-first-band-pushforward
+prov:bls18-selberg-level	1803.06016	main.tex	121-122	The Selberg eigenvalue conjecture is true for $\Gamma_1(N)$ for $N\leq 880$, and for $\Gamma(N)$ for $N\leq 226$.	cit:bls-selberg-level-one

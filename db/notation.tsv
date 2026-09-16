@@ -190,3 +190,8 @@ Esec	{\mathcal E_{\mathrm d}^{(#1)}}	restriction of the doubled transfer to the 
 pmode	r_{P}	P-mode eigenvalue under parity-twisted unitality: sum_s eps_s A_s A_s^dagger = r_P 1, E(P) = r_P P	graded Ramanujan	RC-02H	-
 specrad	\operatorname{rad}	spectral radius of an operator	graded Ramanujan	RC-02H	-
 constit	\upsilon	irreducible constituent of a tensor product of representations (a sector of the doubled bond)	graded Ramanujan	RC-03C	-
+Uhor	{\mathsf U^{\mathrm h}_{#1}}	horocyclic left-invariant fields U_+ = (E + W)/2, U_- = (E - W)/2 of Dyatlov-Faure-Guillarmou, [X, U_pm] = pm U_pm, [U_+, U_-] = 2X	Selberg	RC-03E	-
+Resfb	\operatorname{Res}^0_{\mathcal X}	first-band resonant states {u : (X + lambda) u = 0, U_- u = 0}	Selberg	RC-03E	-
+lapeig	\sigma_{\!\Lap}	Laplace eigenvalue sigma = s(1-s) of the surface in the Selberg-letters shard, with multiplicity d_sigma	Selberg	RC-03E	distinct from sigs (real part of s)
+tsamp	\tau_{\mathrm{s}}	sampling time of the geodesic flow (lattice step) in the Selberg-letters shard	Selberg	RC-03E	-
+trunc	\Lambda^{Y}	Maass-Selberg truncation of an Eisenstein series at height Y	modular	RC-03F	-

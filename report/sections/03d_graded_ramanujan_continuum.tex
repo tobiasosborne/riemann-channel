@@ -1,7 +1,7 @@
 % SHARD-ID: RC-03D-GRADED-RAMANUJAN-CONTINUUM
 % SHARD-TITLE: The Graded Ramanujan Property in the Continuum: Exactness, Chernoff, Harrow's Limit, and the Selberg Grading
 % SHARD-SUMMARY: The divisor definition of the graded Ramanujan property is exactly stable under the continuum limit; in a genuine Chernoff limit the grading survives only in the jump operators, so odd letters are dissipative and there is no Hamiltonian odd letter; for infinite bonds the divisor is defined from correlation functions of regular data, not from the L2 spectrum.
-% SHARD-SUMMARY: Harrow's continuum limit is the representation Lindbladian whose Ramanujan property is temperedness of the tensor square; its PGL_2(R) index-two grading puts the archimedean ladder in the odd sector and the closed geodesics in the even one, and the grading that makes the Selberg zeros odd is the transverse form-degree grading of Dyatlov-Zworski; a status summary lists what is and is not understood.
+% SHARD-SUMMARY: Harrow's continuum limit is the representation Lindbladian whose Ramanujan property is temperedness of the tensor square; its PGL_2(R) index-two grading puts the archimedean ladder in the odd sector and the closed geodesics in the even one, and the grading that makes the Selberg zeros odd is the stable transverse complex (corrected 2026-09-16, not the K-type grading); a status summary lists what is and is not understood.
 % SHARD-KEYWORDS: continuum limit, cMPS, Chernoff, jump operators, Lindbladian, tempered, Fell absorption, discrete series, ladder, Gamma factor, Selberg, form degree, Dyatlov-Zworski, regular data, resonances
 % SHARD-NOTES: none
 % SHARD-SCRIPTS: none
@@ -164,11 +164,14 @@ identity (\texttt{prov:dz13-lefschetz}, \texttt{1306.4203:zeta.tex:525-526})
 so the Selberg zeta $Z(s) = \det(1-L_s)$ is the odd-degree factor, its zeros $\tfrac12\pm ir_j$ are
 net-odd divisor points on the critical line exactly when Selberg's $\tfrac14$ holds (the Ramanujan
 row of \cref{obs:continuous-dictionary}), and its trivial zeros form the ladder. This is the
-form-degree grading found for curves in \cref{sec:ring-norm-genus-one-tier-a}. On the doubled bond of a
-representation channel of $\mathrm{PSL}_2(\mathbb R)$ the candidate is the $K$-type grading
-(functions, $m = 0$, against $1$-forms, $m = \pm2$), whose uniform shift $m^2/2 = 2$ would be the
-continuous analogue of the $-2\gamma$ parity-jump shift of \cref{prop:parity-jump-uniform-shift}.
-Not drafted as a claim.
+form-degree grading found for curves in \cref{sec:ring-norm-genus-one-tier-a}. \emph{Corrected
+2026-09-16} (\cref{sec:selberg-letters}): the precise statement is that $\Zsel$ is the ring zeta
+of the \emph{stable} two-term transverse complex (even $-\gflow$, odd $-\gflow+1$,
+\cref{thm:selberg-two-term-ring-zeta}), while the full exterior algebra gives the Ruelle zeta,
+whose even band is shifted and fails (FE); and the $K$-type grading proposed here as the doubled-bond
+candidate is \emph{not} a flow grading (it makes $\gflow$ odd) and does not supercancel
+(\cref{prop:ktype-not-flow-grading}). The $K$-type parity survives only as a grading of the
+diffusion letters.
 \end{observation}
 
 \subsection{Where this leaves the graded Ramanujan property}
@@ -186,10 +189,14 @@ ladder. Not understood: a graded channel of \emph{circle type} with a group-theo
 non-Hermitian graded channel whose odd block is $\sqrt\qs$-unitary because of a representation, as
 in Artin--Schreier by Parseval); a Kraus (doubled-bond) realisation of the Artin--Schreier, Riemann
 and Selberg graded spectral transfers, none of which is supplied (a doubled bond has $n_0-n_1 =
-(D_+-D_-)^2\ge0$ while a cohomological grading may have more odd than even dimensions); a principle relating ``Hermitian channel plus non-backtracking
-lift'' to ``odd block unitary'' (Ihara--Bass manufactures the partner and the circle from a real
-band; for curves it is the Hodge index); a continuum example with an infinite discrete divisor on
-the critical line other than Riemann and Selberg; and which grading of the Selberg side is the
-Phantasm's (\cref{obs:selberg-grading-choice} argues form degree). The Riemann case needs the
+(D_+-D_-)^2\ge0$ while a cohomological grading may have more odd than even dimensions); a continuum example with an infinite discrete divisor on
+the critical line other than Riemann and Selberg. \emph{Settled on 2026-09-16}
+(\cref{sec:selberg-letters}): the principle relating ``Hermitian channel plus non-backtracking
+lift'' to ``odd block unitary'' is \cref{thm:hashimoto-lift-metric} (letter-derived metric,
+positive exactly on the strict band, Jordan obstruction at the endpoints); the Selberg graded
+spectral transfer is the stable transverse complex, whose first-band form is derived from the
+letters with the $\tfrac14$ coercivity as the one extra bound
+(\cref{thm:letters-derived-selberg}); and the obstacle on the Riemann side is now the
+non-compact bridge of \cref{obs:modular-scattering-sector}. The Riemann case needs the
 second mechanism in the continuum, on regular data (\cref{obs:divisor-regular-data}).
 \end{observation}

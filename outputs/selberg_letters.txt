@@ -1,0 +1,146 @@
+PASS sl2: exact conventions
+PASS sl2: ladder coefficient m=1
+PASS sl2: ladder coefficient m=2
+PASS sl2: ladder coefficient m=3
+PASS sl2: ladder coefficient m=4
+PASS sl2: ladder coefficient m=5
+PASS sl2: ladder coefficient m=6
+PASS sl2: Casimir X^2-X on ker U_-
+PASS first band: aggregate pushforward Gram is singular
+PASS first band: FE for -X and corrected FE for X
+PASS Ruelle: exact integer divisor genus=2
+PASS tower: integer multiplicity cN^2+2 genus=2
+PASS Ruelle: exact integer divisor genus=3
+PASS tower: integer multiplicity cN^2+2 genus=3
+PASS Ruelle: exact integer divisor genus=5
+PASS tower: integer multiplicity cN^2+2 genus=5
+PASS Ruelle: exterior supertrace sign
+PASS Selberg: half-exterior transfer weight
+PASS CP obstruction: transverse supertrace is negative
+PASS K-type grading: heat supertrace theta factor does not cancel
+DATA K-type theta factor at t=1: 0.730000328323
+PASS Ihara endpoint: nonzero square-zero Jordan part
+PASS Petersen: adjacency Hermitian
+PASS Petersen: RS=A and RJS=D
+PASS Petersen: reversal squares to identity
+PASS Petersen: predicted Ramanujan verdict
+PASS Petersen: every retained root satisfies TF=mu F and RF=f
+PASS Petersen: untagged pullback kills partner differences
+PASS Petersen: explicit letter-derived metric identity
+PASS Petersen: operator FE and its metric invariance
+PASS Petersen: metric positive exactly in the strict band
+DATA Petersen: vertices/sector=10, degree=3, retained=9, max_abs_adjacency=2.0000000000, band=2.8284271247, lift_residual=3.779e-15
+PASS K4: adjacency Hermitian
+PASS K4: RS=A and RJS=D
+PASS K4: reversal squares to identity
+PASS K4: predicted Ramanujan verdict
+PASS K4: every retained root satisfies TF=mu F and RF=f
+PASS K4: untagged pullback kills partner differences
+PASS K4: explicit letter-derived metric identity
+PASS K4: operator FE and its metric invariance
+PASS K4: metric positive exactly in the strict band
+DATA K4: vertices/sector=4, degree=3, retained=3, max_abs_adjacency=1.0000000000, band=2.8284271247, lift_residual=1.810e-15
+PASS K3 x Q3 endpoint: adjacency Hermitian
+PASS K3 x Q3 endpoint: RS=A and RJS=D
+PASS K3 x Q3 endpoint: reversal squares to identity
+PASS K3 x Q3 endpoint: predicted Ramanujan verdict
+PASS K3 x Q3 endpoint: every retained root satisfies TF=mu F and RF=f
+PASS K3 x Q3 endpoint: untagged pullback kills partner differences
+PASS K3 x Q3 endpoint: explicit letter-derived metric identity
+PASS K3 x Q3 endpoint: operator FE and its metric invariance
+PASS K3 x Q3 endpoint: metric positive exactly in the strict band
+DATA K3 x Q3 endpoint: vertices/sector=24, degree=5, retained=23, max_abs_adjacency=4.0000000000, band=4.0000000000, lift_residual=1.675e-14
+PASS endpoint graph: exact nullities 2 and 4 (Jordan obstruction)
+DATA endpoint graph mu=-2: geometric=2, generalized_order_2=4
+PASS Pauli: unitary letters
+PASS Pauli: adjoint reversal
+PASS Pauli: grading covariance
+PASS Pauli even: adjacency Hermitian
+PASS Pauli even: RS=A and RJS=D
+PASS Pauli even: reversal squares to identity
+PASS Pauli even: predicted Ramanujan verdict
+PASS Pauli even: every retained root satisfies TF=mu F and RF=f
+PASS Pauli even: untagged pullback kills partner differences
+PASS Pauli even: explicit letter-derived metric identity
+PASS Pauli even: operator FE and its metric invariance
+PASS Pauli even: metric positive exactly in the strict band
+DATA Pauli even: vertices/sector=2, degree=6, retained=1, max_abs_adjacency=2.0000000000, band=4.4721359550, lift_residual=0.000e+00
+PASS Pauli even: independent determinant Bass check
+PASS Pauli odd: adjacency Hermitian
+PASS Pauli odd: RS=A and RJS=D
+PASS Pauli odd: reversal squares to identity
+PASS Pauli odd: predicted Ramanujan verdict
+PASS Pauli odd: every retained root satisfies TF=mu F and RF=f
+PASS Pauli odd: untagged pullback kills partner differences
+PASS Pauli odd: explicit letter-derived metric identity
+PASS Pauli odd: operator FE and its metric invariance
+PASS Pauli odd: metric positive exactly in the strict band
+DATA Pauli odd: vertices/sector=2, degree=6, retained=2, max_abs_adjacency=2.0000000000, band=4.4721359550, lift_residual=0.000e+00
+PASS Pauli odd: independent determinant Bass check
+PASS Pauli: net ring counts and cancellation
+PASS Pauli: exact reduced elliptic zeta
+DATA Pauli ring counts: [8, 32, 104, 640, 3208, 15392]
+PASS Pauli endpoint: unitary letters
+PASS Pauli endpoint: adjoint reversal
+PASS Pauli endpoint: grading covariance
+PASS Pauli endpoint even: adjacency Hermitian
+PASS Pauli endpoint even: RS=A and RJS=D
+PASS Pauli endpoint even: reversal squares to identity
+PASS Pauli endpoint even: predicted Ramanujan verdict
+PASS Pauli endpoint even: every retained root satisfies TF=mu F and RF=f
+PASS Pauli endpoint even: untagged pullback kills partner differences
+PASS Pauli endpoint even: explicit letter-derived metric identity
+PASS Pauli endpoint even: operator FE and its metric invariance
+PASS Pauli endpoint even: metric positive exactly in the strict band
+DATA Pauli endpoint even: vertices/sector=2, degree=10, retained=1, max_abs_adjacency=2.0000000000, band=6.0000000000, lift_residual=5.027e-16
+PASS Pauli endpoint even: independent determinant Bass check
+PASS Pauli endpoint odd: adjacency Hermitian
+PASS Pauli endpoint odd: RS=A and RJS=D
+PASS Pauli endpoint odd: reversal squares to identity
+PASS Pauli endpoint odd: predicted Ramanujan verdict
+PASS Pauli endpoint odd: every retained root satisfies TF=mu F and RF=f
+PASS Pauli endpoint odd: untagged pullback kills partner differences
+PASS Pauli endpoint odd: explicit letter-derived metric identity
+PASS Pauli endpoint odd: operator FE and its metric invariance
+PASS Pauli endpoint odd: metric positive exactly in the strict band
+DATA Pauli endpoint odd: vertices/sector=2, degree=10, retained=2, max_abs_adjacency=6.0000000000, band=6.0000000000, lift_residual=2.046e-15
+PASS Pauli endpoint odd: independent determinant Bass check
+PASS quantum endpoint: exact odd nullities 1 and 2; sector Ramanujan but no HP
+DATA quantum endpoint mu=3: geometric=1, generalized_order_2=2
+PASS PGL2(F5) LPS(13) graph: adjacency Hermitian
+PASS PGL2(F5) LPS(13) graph: RS=A and RJS=D
+PASS PGL2(F5) LPS(13) graph: reversal squares to identity
+PASS PGL2(F5) LPS(13) graph: predicted Ramanujan verdict
+PASS PGL2(F5) LPS(13) graph: every retained root satisfies TF=mu F and RF=f
+PASS PGL2(F5) LPS(13) graph: untagged pullback kills partner differences
+PASS PGL2(F5) LPS(13) graph: explicit letter-derived metric identity
+PASS PGL2(F5) LPS(13) graph: operator FE and its metric invariance
+PASS PGL2(F5) LPS(13) graph: metric positive exactly in the strict band
+DATA PGL2(F5) LPS(13) graph: vertices/sector=120, degree=14, retained=118, max_abs_adjacency=4.0000000000, band=7.2111025509, lift_residual=2.958e-14
+PASS PGL2(F5): all LPS letters odd in C^{3|3}
+PASS PGL2(F5) principal series: unitary letters
+PASS PGL2(F5) principal series: adjoint reversal
+PASS PGL2(F5) principal series: grading covariance
+PASS PGL2(F5) principal series even: adjacency Hermitian
+PASS PGL2(F5) principal series even: RS=A and RJS=D
+PASS PGL2(F5) principal series even: reversal squares to identity
+PASS PGL2(F5) principal series even: predicted Ramanujan verdict
+PASS PGL2(F5) principal series even: every retained root satisfies TF=mu F and RF=f
+PASS PGL2(F5) principal series even: untagged pullback kills partner differences
+PASS PGL2(F5) principal series even: explicit letter-derived metric identity
+PASS PGL2(F5) principal series even: operator FE and its metric invariance
+PASS PGL2(F5) principal series even: metric positive exactly in the strict band
+DATA PGL2(F5) principal series even: vertices/sector=18, degree=14, retained=16, max_abs_adjacency=4.0000000000, band=7.2111025509, lift_residual=4.410e-14
+PASS PGL2(F5) principal series even: independent determinant Bass check
+PASS PGL2(F5) principal series odd: adjacency Hermitian
+PASS PGL2(F5) principal series odd: RS=A and RJS=D
+PASS PGL2(F5) principal series odd: reversal squares to identity
+PASS PGL2(F5) principal series odd: predicted Ramanujan verdict
+PASS PGL2(F5) principal series odd: every retained root satisfies TF=mu F and RF=f
+PASS PGL2(F5) principal series odd: untagged pullback kills partner differences
+PASS PGL2(F5) principal series odd: explicit letter-derived metric identity
+PASS PGL2(F5) principal series odd: operator FE and its metric invariance
+PASS PGL2(F5) principal series odd: metric positive exactly in the strict band
+DATA PGL2(F5) principal series odd: vertices/sector=18, degree=14, retained=18, max_abs_adjacency=4.0000000000, band=7.2111025509, lift_residual=1.934e-14
+PASS PGL2(F5) principal series odd: independent determinant Bass check
+FINAL TALLY: 131 PASS / 0 FAIL
