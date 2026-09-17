@@ -85,32 +85,53 @@ bordered_jacobian(arb_mat_t J, const arb_mat_t A, const arb_mat_t Y, slong m, sl
     arb_zero(arb_mat_entry(J, n, n));
 }
 
-/* K = y~ - Z + (I - R J(Y)) D  with D = Y - y~ */
+/* C = A B by arb_dot (no temporaries beyond the result); A is p x q, B is q x r */
 static void
-krawczyk(arb_mat_t K, arb_mat_t C, arb_mat_t JY, const arb_mat_t E, const arb_mat_t Y, const arb_mat_t D,
-         const arb_mat_t R, const arb_mat_t Z, const arb_mat_t Ytil, slong m, slong prec)
+mat_mul_dot(arb_mat_t C, const arb_mat_t A, const arb_mat_t B, slong prec)
 {
-    slong n = arb_mat_nrows(E), i;
-    bordered_jacobian(JY, E, Y, m, prec);
-    arb_mat_mul(C, R, JY, prec);
-    for (i = 0; i <= n; i++) arb_sub_ui(arb_mat_entry(C, i, i), arb_mat_entry(C, i, i), 1, prec);
-    arb_mat_neg(C, C);
-    arb_mat_mul(K, C, D, prec);
+    slong i, j, p = arb_mat_nrows(A), q = arb_mat_ncols(A), r = arb_mat_ncols(B);
+    for (i = 0; i < p; i++)
+        for (j = 0; j < r; j++)
+            arb_dot(arb_mat_entry(C, i, j), NULL, 0, arb_mat_entry(A, i, 0), 1, arb_mat_entry(B, 0, j), r, q, prec);
+}
+
+/* Krawczyk image of the box y~ + D, with C0 = I - R J(y~) precomputed (ball) and the box dependence
+ * handled in O(n^2):  J(Y) - J(y~) = [-D_lam I, -D_x; 0, 0], so
+ *   K = y~ - Z + C0 D - R (J(Y) - J(y~)) D = y~ - Z + C0 D + 2 R_x (D_lam * D_x),
+ * where R_x is the first n columns of R and D = (D_x; D_lam) is centred at 0. */
+static void
+krawczyk(arb_mat_t K, const arb_mat_t C0, const arb_mat_t R, const arb_mat_t D, const arb_mat_t Z,
+         const arb_mat_t Ytil, slong prec)
+{
+    slong n = arb_mat_nrows(R) - 1, i;
+    arb_mat_t W;
+    arb_t t;
+    arb_mat_init(W, n, 1); arb_init(t);
+    mat_mul_dot(K, C0, D, prec);
+    for (i = 0; i < n; i++) arb_mul(arb_mat_entry(W, i, 0), arb_mat_entry(D, n, 0), arb_mat_entry(D, i, 0), prec);
+    for (i = 0; i <= n; i++)
+    {
+        arb_dot(t, NULL, 0, arb_mat_entry(R, i, 0), 1, arb_mat_entry(W, 0, 0), 1, n, prec);
+        arb_mul_2exp_si(t, t, 1);
+        arb_add(arb_mat_entry(K, i, 0), arb_mat_entry(K, i, 0), t, prec);
+    }
     arb_mat_sub(K, K, Z, prec);
     arb_mat_add(K, K, Ytil, prec);
+    arb_mat_clear(W); arb_clear(t);
 }
 
 int zst_eigmin(arb_t eps, arb_ptr v, const arb_mat_t E, slong iters, slong prec)
 {
+    /* memory: at most E (caller), R, C0 and the transient Emid/Jm/LU alive at once */
     slong n = arb_mat_nrows(E), i, j, m, inflate, it;
-    arb_mat_t Emid, X, Ytil, Y, Jm, R, F, Z, JY, C, D, K;
+    arb_mat_t Emid, X, Ytil, Y, Jm, R, C0, F, Z, D, K;
     arb_t t, lam;
     int ok = 0;
 
     arb_mat_init(Emid, n, n); arb_mat_init(X, n, 1);
     arb_mat_init(Ytil, n + 1, 1); arb_mat_init(Y, n + 1, 1); arb_mat_init(K, n + 1, 1);
-    arb_mat_init(Jm, n + 1, n + 1); arb_mat_init(R, n + 1, n + 1); arb_mat_init(JY, n + 1, n + 1);
-    arb_mat_init(C, n + 1, n + 1); arb_mat_init(F, n + 1, 1); arb_mat_init(Z, n + 1, 1); arb_mat_init(D, n + 1, 1);
+    arb_mat_init(R, n + 1, n + 1); arb_mat_init(C0, n + 1, n + 1);
+    arb_mat_init(F, n + 1, 1); arb_mat_init(Z, n + 1, 1); arb_mat_init(D, n + 1, 1);
     arb_init(t); arb_init(lam);
 
     for (i = 0; i < n; i++)
@@ -123,32 +144,26 @@ int zst_eigmin(arb_t eps, arb_ptr v, const arb_mat_t E, slong iters, slong prec)
     for (i = 0; i < n; i++) arb_set(arb_mat_entry(Ytil, i, 0), arb_mat_entry(X, i, 0));
     arb_set(arb_mat_entry(Ytil, n, 0), lam);
 
-    /* R ~ J(y~)^{-1} */
+    /* R ~ J(y~)^{-1} from the midpoint Jacobian; then C0 = I - R J(y~) with the ball E */
+    arb_mat_init(Jm, n + 1, n + 1);
     bordered_jacobian(Jm, Emid, Ytil, m, prec);
-    if (!arb_mat_approx_inv(R, Jm, prec)) goto done;
+    arb_mat_clear(Emid); arb_mat_init(Emid, 0, 0);
+    if (!arb_mat_approx_inv(R, Jm, prec)) { arb_mat_clear(Jm); goto done; }
+    bordered_jacobian(Jm, E, Ytil, m, prec);
+    mat_mul_dot(C0, R, Jm, prec);
+    arb_mat_clear(Jm);
+    for (i = 0; i <= n; i++) arb_sub_ui(arb_mat_entry(C0, i, i), arb_mat_entry(C0, i, i), 1, prec);
+    arb_mat_neg(C0, C0);
 
     /* F(y~) in ball arithmetic from the ball matrix E; Z = R F(y~) */
+    for (i = 0; i < n; i++)
     {
-        arb_mat_t EX; arb_mat_init(EX, n, 1);
-        arb_mat_mul(EX, E, X, prec);
-        for (i = 0; i < n; i++)
-        {
-            arb_mul(t, lam, arb_mat_entry(X, i, 0), prec);
-            arb_sub(arb_mat_entry(F, i, 0), arb_mat_entry(EX, i, 0), t, prec);
-        }
-        arb_zero(arb_mat_entry(F, n, 0));           /* X[m] - 1 = 0 exactly */
-        arb_mat_clear(EX);
+        arb_dot(arb_mat_entry(F, i, 0), NULL, 0, arb_mat_entry(E, i, 0), 1, arb_mat_entry(X, 0, 0), 1, n, prec);
+        arb_mul(t, lam, arb_mat_entry(X, i, 0), prec);
+        arb_sub(arb_mat_entry(F, i, 0), arb_mat_entry(F, i, 0), t, prec);
     }
-    arb_mat_mul(Z, R, F, prec);
-    if (getenv("ZST_DEBUG"))
-    {
-        mag_t mR, mF, mZ; mag_init(mR); mag_init(mF); mag_init(mZ);
-        arb_mat_bound_inf_norm(mR, R); arb_mat_bound_inf_norm(mF, F); arb_mat_bound_inf_norm(mZ, Z);
-        flint_printf("eigmin: m=%wd |R|<=", m); mag_printd(mR, 3); flint_printf(" |F|<="); mag_printd(mF, 3);
-        flint_printf(" |Z|<="); mag_printd(mZ, 3); flint_printf(" F[0]="); arb_printn(arb_mat_entry(F,0,0), 5, 0);
-        flint_printf(" E[0,0] rad="); mag_printd(arb_radref(arb_mat_entry(E,0,0)), 3); flint_printf("\n");
-        mag_clear(mR); mag_clear(mF); mag_clear(mZ);
-    }
+    arb_zero(arb_mat_entry(F, n, 0));           /* X[m] - 1 = 0 exactly */
+    mat_mul_dot(Z, R, F, prec);
 
     /* box Y = y~ + D, D centred at 0 with radius 4|Z| + 2^-prec (componentwise), inflated on failure */
     for (i = 0; i <= n; i++)
@@ -163,7 +178,7 @@ int zst_eigmin(arb_t eps, arb_ptr v, const arb_mat_t E, slong iters, slong prec)
     for (inflate = 0; inflate < 60 && !ok; inflate++)
     {
         arb_mat_add(Y, Ytil, D, prec);
-        krawczyk(K, C, JY, E, Y, D, R, Z, Ytil, m, prec);
+        krawczyk(K, C0, R, D, Z, Ytil, prec);
         ok = 1;
         for (i = 0; i <= n; i++)
             if (!arb_contains(arb_mat_entry(Y, i, 0), arb_mat_entry(K, i, 0)) ||
@@ -172,14 +187,6 @@ int zst_eigmin(arb_t eps, arb_ptr v, const arb_mat_t E, slong iters, slong prec)
         if (!ok)
             for (i = 0; i <= n; i++)
                 mag_mul_2exp_si(arb_radref(arb_mat_entry(D, i, 0)), arb_radref(arb_mat_entry(D, i, 0)), 2);
-    }
-    if (getenv("ZST_DEBUG"))
-    {
-        mag_t mC; mag_init(mC); arb_mat_bound_inf_norm(mC, C);
-        flint_printf("eigmin: ok=%d after %wd inflations, |C|<=", ok, inflate); mag_printd(mC, 3);
-        flint_printf(" rad K[0]="); mag_printd(arb_radref(arb_mat_entry(K,0,0)), 3);
-        flint_printf(" rad D[0]="); mag_printd(arb_radref(arb_mat_entry(D,0,0)), 3); flint_printf("\n");
-        mag_clear(mC);
     }
     if (!ok) goto done;
 
@@ -192,7 +199,7 @@ int zst_eigmin(arb_t eps, arb_ptr v, const arb_mat_t E, slong iters, slong prec)
             arb_intersection(arb_mat_entry(Y, i, 0), arb_mat_entry(Y, i, 0), arb_mat_entry(K, i, 0), prec);
             arb_sub(arb_mat_entry(D, i, 0), arb_mat_entry(Y, i, 0), arb_mat_entry(Ytil, i, 0), prec);
         }
-        krawczyk(K, C, JY, E, Y, D, R, Z, Ytil, m, prec);
+        krawczyk(K, C0, R, D, Z, Ytil, prec);
         for (i = 0; i <= n; i++)
             if (mag_cmp(arb_radref(arb_mat_entry(K, i, 0)), arb_radref(arb_mat_entry(Y, i, 0))) < 0) improved = 1;
         if (!improved) break;
@@ -203,8 +210,7 @@ int zst_eigmin(arb_t eps, arb_ptr v, const arb_mat_t E, slong iters, slong prec)
 
 done:
     arb_mat_clear(Emid); arb_mat_clear(X); arb_mat_clear(Ytil); arb_mat_clear(Y); arb_mat_clear(K);
-    arb_mat_clear(Jm); arb_mat_clear(R); arb_mat_clear(JY); arb_mat_clear(C); arb_mat_clear(F);
-    arb_mat_clear(Z); arb_mat_clear(D);
+    arb_mat_clear(R); arb_mat_clear(C0); arb_mat_clear(F); arb_mat_clear(Z); arb_mat_clear(D);
     arb_clear(t); arb_clear(lam);
     return ok;
 }
@@ -255,12 +261,12 @@ static int
 verify_pd(const arb_mat_t F, slong prec)
 {
     slong n = arb_mat_nrows(F), i, j, k;
-    arb_mat_t Lt, LLt, Rm;
+    arb_mat_t Lt, Rm;
     arb_t delta, t, u;
     mag_t r, d;
     int ok = 1;
     if (n == 0) return 1;
-    arb_mat_init(Lt, n, n); arb_mat_init(LLt, n, n); arb_mat_init(Rm, n, n);
+    arb_mat_init(Lt, n, n); arb_mat_init(Rm, n, n);
     arb_init(delta); arb_init(t); arb_init(u); mag_init(r); mag_init(d);
     /* delta = 2^-(prec/2) * max_i |F_ii| (midpoints) */
     arb_zero(delta);
@@ -289,16 +295,20 @@ verify_pd(const arb_mat_t F, slong prec)
     }
     if (ok)
     {
-        /* residual F - delta I - Lt Lt^T in ball arithmetic; ||.||_2 <= ||.||_inf for symmetric matrices */
-        arb_mat_transpose(Rm, Lt);
-        arb_mat_mul(LLt, Lt, Rm, prec);
-        arb_mat_sub(Rm, F, LLt, prec);
-        for (i = 0; i < n; i++) arb_sub(arb_mat_entry(Rm, i, i), arb_mat_entry(Rm, i, i), delta, prec);
+        /* residual F - delta I - Lt Lt^T in ball arithmetic (rows of Lt dotted, no transpose or product
+         * matrix); ||.||_2 <= ||.||_inf for symmetric matrices */
+        for (i = 0; i < n; i++)
+            for (j = 0; j < n; j++)
+            {
+                arb_dot(arb_mat_entry(Rm, i, j), arb_mat_entry(F, i, j), 1,
+                        arb_mat_entry(Lt, i, 0), 1, arb_mat_entry(Lt, j, 0), 1, FLINT_MIN(i, j) + 1, prec);
+                if (i == j) arb_sub(arb_mat_entry(Rm, i, i), arb_mat_entry(Rm, i, i), delta, prec);
+            }
         arb_mat_bound_inf_norm(r, Rm);
         arb_get_mag_lower(d, delta);
         ok = mag_cmp(r, d) < 0;
     }
-    arb_mat_clear(Lt); arb_mat_clear(LLt); arb_mat_clear(Rm);
+    arb_mat_clear(Lt); arb_mat_clear(Rm);
     arb_clear(delta); arb_clear(t); arb_clear(u); mag_clear(r); mag_clear(d);
     return ok;
 }
@@ -311,11 +321,11 @@ int zst_certify_even_simple(const arb_mat_t E, const arb_mat_t O, const arb_t ep
      * a certified eigenvalue of E - s, so exactly one; no odd eigenvalue lies below s.
      * Ground truth for the hypothesis: refs/src/2511.22755/mc2arXiv.tex, Definition `even-simple` l.850. */
     slong n = arb_mat_nrows(E), m = arb_mat_nrows(O), i, j;
-    arb_mat_t F, G, Lc;
+    arb_mat_t F, G;
     arb_t s, nv, t;
     int ok = 0;
     if (!arb_is_positive(eps)) return 0;
-    arb_mat_init(F, n, n); arb_mat_init(G, m, m); arb_mat_init(Lc, n, n);
+    arb_mat_init(F, n, n); arb_mat_init(G, m, m);
     arb_init(s); arb_init(nv); arb_init(t);
     arb_get_ubound_arf(arb_midref(s), eps, prec); mag_zero(arb_radref(s));
     arb_mul_2exp_si(s, s, 1);
@@ -332,7 +342,6 @@ int zst_certify_even_simple(const arb_mat_t E, const arb_mat_t O, const arb_t ep
     ok = verify_pd(F, prec);
     if (ok && m > 0)
     {
-        arb_mat_clear(Lc); arb_mat_init(Lc, m, m);
         for (i = 0; i < m; i++)
             for (j = 0; j < m; j++)
             {
@@ -341,7 +350,7 @@ int zst_certify_even_simple(const arb_mat_t E, const arb_mat_t O, const arb_t ep
             }
         ok = verify_pd(G, prec);
     }
-    arb_mat_clear(F); arb_mat_clear(G); arb_mat_clear(Lc);
+    arb_mat_clear(F); arb_mat_clear(G);
     arb_clear(s); arb_clear(nv); arb_clear(t);
     return ok;
 }

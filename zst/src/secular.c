@@ -157,14 +157,15 @@ candidates_scan(double *sd, arb_srcptr xi, slong N, slong prec, slong G)
     arb_init(s); arb_init(lo); arb_init(hi); arb_init(h); arb_init(d); arb_init(hl); arb_init(hh);
     for (j = 0; j <= N && n < N; j++)
     {
-        slong npts = (j < N) ? G : 4 * 26;     /* tail: distance from N = 2^(k/4)/16, k = 0..104 (up to 2^22/16 N-independent) */
+        slong npts = (j < N) ? G : 64 * 26;    /* tail: distance from N = 2^(k/64)/16, k = 0..1664: 1.1% steps up to 2^22 (the
+                                                 * tail roots come in pairs separated by ~10% of their distance from N) */
         int sgn_prev = 0;
         P.j = j;
         for (k = 0; k <= npts && n < N; k++)
         {
             int sgn;
             if (j < N) { arb_set_si(s, j); arb_set_si(d, k); arb_div_si(d, d, G, prec); arb_add(s, s, d, prec); }
-            else       { arb_set_si(s, N); arb_set_d(d, pow(2.0, (double) k / 4.0) / 16.0); arb_add(s, s, d, prec); }
+            else       { arb_set_si(s, N); arb_set_d(d, pow(2.0, (double) k / 64.0) / 16.0); arb_add(s, s, d, prec); }
             sec_raw(h, d, s, &P, prec);
             sgn = arb_is_positive(h) ? 1 : (arb_is_negative(h) ? -1 : 0);
             if (sgn == 0) { sd[n++] = arf_get_d(arb_midref(s), ARF_RND_NEAR); sgn_prev = 0; continue; }
@@ -266,7 +267,9 @@ roots_from_candidates(arb_ptr roots, slong maxroots, slong *unresolved,
                 arb_t h, d; arb_init(h); arb_init(d);
                 sec_raw(h, d, s0, &P, prec);
                 flint_printf("secular: unverified candidate sd=%.17g s0=", sd[i]); arb_printn(s0, 25, 0);
-                flint_printf(" j=%wd h(s0)=", P.j); arb_printn(h, 5, 0); flint_printf(" h'(s0)="); arb_printn(d, 5, 0); flint_printf("\n");
+                flint_printf(" j=%wd h(s0)=", P.j); arb_printn(h, 5, 0); flint_printf(" rad="); mag_printd(arb_radref(h), 3);
+                flint_printf(" h'(s0)="); arb_printn(d, 5, 0); flint_printf(" rad="); mag_printd(arb_radref(d), 3);
+                flint_printf(" rad(xi_0)="); mag_printd(arb_radref(xi + 0), 3); flint_printf("\n");
                 arb_clear(h); arb_clear(d);
             }
         }
@@ -318,14 +321,19 @@ roots_from_candidates(arb_ptr roots, slong maxroots, slong *unresolved,
 slong zst_secular_roots(arb_ptr roots, slong maxroots, slong *unresolved,
                         arb_srcptr xi, slong N, slong prec)
 {
-    slong want = FLINT_MIN(N, maxroots), found = 0, G, ncand;
-    double *sd = flint_malloc(sizeof(double) * (N + 4 * 26 + 2));
+    slong want = FLINT_MIN(N, maxroots), found = 0, G, ncand, nscan = 0;
+    double *sd = flint_malloc(sizeof(double) * (N + 64 * 26 + 2));
+    arb_ptr scan_roots = getenv("ZST_DEBUG") ? _arb_vec_init(maxroots) : NULL;
     /* sign scan with increasing grid density, then QR at prec/3, then QR at prec */
     for (G = 16; G <= 64 && found < want; G *= 4)
     {
         ncand = candidates_scan(sd, xi, N, prec, G);
         found = roots_from_candidates(roots, maxroots, unresolved, xi, N, prec, sd, ncand);
-        if (getenv("ZST_DEBUG")) flint_printf("secular: scan G=%wd: %wd candidates, %wd certified\n", G, ncand, found);
+        if (getenv("ZST_DEBUG"))
+        {
+            flint_printf("secular: scan G=%wd: %wd candidates, %wd certified\n", G, ncand, found);
+            _arb_vec_set(scan_roots, roots, found); nscan = found;
+        }
     }
     if (found < want)
     {
@@ -337,6 +345,17 @@ slong zst_secular_roots(arb_ptr roots, slong maxroots, slong *unresolved,
     {
         ncand = candidates_qr(sd, xi, N, prec, prec);
         found = roots_from_candidates(roots, maxroots, unresolved, xi, N, prec, sd, ncand);
+    }
+    if (scan_roots)
+    {
+        slong i, k;
+        for (i = 0; i < found; i++)
+        {
+            int seen = 0;
+            for (k = 0; k < nscan; k++) if (arb_overlaps(roots + i, scan_roots + k)) { seen = 1; break; }
+            if (!seen) { flint_printf("secular: root missed by the scan: "); arb_printn(roots + i, 12, ARB_STR_NO_RADIUS); flint_printf("\n"); }
+        }
+        _arb_vec_clear(scan_roots, maxroots);
     }
     flint_free(sd);
     return found;
