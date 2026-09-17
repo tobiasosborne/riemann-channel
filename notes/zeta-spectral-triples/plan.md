@@ -1,8 +1,9 @@
 # Zeta spectral triples (Connes, Consani, Moscovici, arXiv:2511.22755): reading notes and an implementation plan for a rigorous arb/FLINT C library
 
 Status: reading notes plus a validated reference prototype (`ccm_proto.py`, mpmath) and an
-implementation plan. Nothing here is a registered lab-book claim. Sidequest of 2026-09-17; intended
-to become its own repository.
+implementation plan. Nothing here is a registered lab-book claim. Sidequest of 2026-09-17. M0-M2 are
+implemented in `zst/` (kept in this repository for now; see `zst/README.md`), with the paper's
+`lambda = sqrt 13, N = 120` column reproduced as certified bounds (`zst_run_x13_N120.txt`).
 
 Source: `refs/src/2511.22755/mc2arXiv.tex` (fetched 2026-09-17, sha256 in `refs/manifest.sha256`;
 arXiv id added to `refs/fetch_sources.sh`). Line numbers below refer to that file.
@@ -353,6 +354,9 @@ Threading: OpenMP over `n` in the build and over columns in the factorisation;
 
 - M0 (done today): reading, formula sheet, mpmath prototype, paper's table reproduced, FLINT
   function inventory verified (`flint_smoke.c`).
+- M1 and M2 (done today, afternoon): `zst/`; see `zst/README.md` for the design decisions that
+  differ from the plan (own Krawczyk verification instead of arb's Rump routine; roots by QR
+  candidates plus interval Newton with completeness by count instead of global isolation).
 - M1 zeta pipeline, approximate: `zst --lambda 3 --N 40 --digits 60` prints 20 zeros; matches the
   prototype to `1e-30`. Deliverables: `weil_data.c` (zeta), `kernel.c`, `loewner.c`, approximate
   `eigmin.c`, `secular.c` with the `2N` count, `compare.c`. One day of work.

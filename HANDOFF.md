@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped and planned as a standalone arb/FLINT library, `notes/zeta-spectral-triples/plan.md`; 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -108,9 +108,16 @@ implementation of the paper's algorithm, as a possible standalone repository. De
   Selberg compact and modular (H-CUSP-BRIDGE test), and the notebook's graded divisor formulation
   run through one pipeline; certified eigenpair (inverse iteration + Rump + LDL inertia for
   even-simplicity), certified roots, adaptive precision; milestones M0 (done) to M5.
-- Not started: the repository itself. **Next, if TJO approves:** create `zst`, execute M1 (zeta
-  pipeline, approximate) and M2 (certification), then the `(lambda, N)` accuracy map and the
-  `x = 100` run.
+- **MVP done (afternoon, `zst/` in this repo; TJO: keep it here for now).** M1 and M2 of the plan:
+  certified `(a_n, b_n)`, Krawczyk-verified minimal eigenpair, ball-`LDL^T` inertia certifying the
+  even-simple hypothesis, QR candidates plus interval-Newton roots with completeness by count,
+  comparison with `acb_dirichlet_zeta_zeros`. `x = 13, N = 120, 700 bits` in 5 s returns the paper's
+  50-row column as certified upper bounds (`2.44e-55` on the first zero). Four tests (`make check`),
+  two fuzz harnesses (`make fuzz`, one real defect found), mutation testing (`make mutate`, one test
+  gap found and closed), ground-truth citations by TeX line in every module. Worklog 2026-09-17,
+  `zst/README.md`. **Next, if pursued:** M3 (general explicit-formula data model, Dirichlet characters,
+  archimedean constants derived from gamma factors), then the `(lambda, N)` accuracy map and the
+  `x = 100` run (M4), then `det_reg -> Xi` and the prolate side (M5).
 
 ### An infinite object whose odd-block form is derived from the letters (2026-09-16; shards 03e, 03f)
 
