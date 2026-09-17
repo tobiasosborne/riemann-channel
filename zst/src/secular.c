@@ -157,14 +157,14 @@ candidates_scan(double *sd, arb_srcptr xi, slong N, slong prec, slong G)
     arb_init(s); arb_init(lo); arb_init(hi); arb_init(h); arb_init(d); arb_init(hl); arb_init(hh);
     for (j = 0; j <= N && n < N; j++)
     {
-        slong npts = (j < N) ? G : 8 * 12;     /* tail: 8 points per octave over 12 octaves */
+        slong npts = (j < N) ? G : 4 * 26;     /* tail: distance from N = 2^(k/4)/16, k = 0..104 (up to 2^22/16 N-independent) */
         int sgn_prev = 0;
         P.j = j;
         for (k = 0; k <= npts && n < N; k++)
         {
             int sgn;
             if (j < N) { arb_set_si(s, j); arb_set_si(d, k); arb_div_si(d, d, G, prec); arb_add(s, s, d, prec); }
-            else       { arb_set_si(s, N); arb_set_d(d, (double) N * (pow(2.0, (double) k / 8.0) - 1.0)); arb_add(s, s, d, prec); }
+            else       { arb_set_si(s, N); arb_set_d(d, pow(2.0, (double) k / 4.0) / 16.0); arb_add(s, s, d, prec); }
             sec_raw(h, d, s, &P, prec);
             sgn = arb_is_positive(h) ? 1 : (arb_is_negative(h) ? -1 : 0);
             if (sgn == 0) { sd[n++] = arf_get_d(arb_midref(s), ARF_RND_NEAR); sgn_prev = 0; continue; }
@@ -277,8 +277,38 @@ roots_from_candidates(arb_ptr roots, slong maxroots, slong *unresolved,
         i = j;
         while (i > 0 && arb_lt(roots + i, roots + i - 1)) { arb_swap(roots + i, roots + i - 1); i--; }
     }
+    /* overlapping certified balls: either the same root twice or two roots too close to separate.
+     * Decide rigorously: if the Newton operator maps the hull of the pair into itself, the hull has
+     * exactly one root and one copy is kept; otherwise both are dropped as unresolved. */
     for (j = 1; j < found; j++)
-        if (arb_overlaps(roots + j, roots + j - 1)) { unres += found; found = 0; break; }
+    {
+        if (!arb_overlaps(roots + j, roots + j - 1)) continue;
+        {
+            arb_t H, m, hm, dm, hH, dH, nx; int one = 0;
+            arb_init(H); arb_init(m); arb_init(hm); arb_init(dm); arb_init(hH); arb_init(dH); arb_init(nx);
+            arb_union(H, roots + j, roots + j - 1, prec);
+            P.j = (slong) arf_get_d(arb_midref(H), ARF_RND_DOWN); if (P.j > N) P.j = N; if (P.j < 0) P.j = 0;
+            arb_get_mid_arb(m, H);
+            sec_raw(hm, dm, m, &P, prec); sec_raw(hH, dH, H, &P, prec);
+            if (!arb_contains_zero(dH))
+            {
+                arb_div(nx, hm, dH, prec); arb_sub(nx, m, nx, prec);
+                if (arb_contains(H, nx) && mag_cmp(arb_radref(nx), arb_radref(H)) < 0) one = 1;
+            }
+            if (one)
+            {   /* keep one copy: the intersection, which still contains the root */
+                arb_intersection(roots + j - 1, roots + j - 1, roots + j, prec);
+                for (i = j; i + 1 < found; i++) arb_swap(roots + i, roots + i + 1);
+                found--; j--;
+            }
+            else
+            {
+                for (i = j - 1; i + 2 < found; i++) arb_swap(roots + i, roots + i + 2);
+                found -= 2; unres += 2; j -= 2; if (j < 0) j = 0;
+            }
+            arb_clear(H); arb_clear(m); arb_clear(hm); arb_clear(dm); arb_clear(hH); arb_clear(dH); arb_clear(nx);
+        }
+    }
 
     if (unresolved) *unresolved = unres;
     arb_clear(s0);
@@ -289,9 +319,9 @@ slong zst_secular_roots(arb_ptr roots, slong maxroots, slong *unresolved,
                         arb_srcptr xi, slong N, slong prec)
 {
     slong want = FLINT_MIN(N, maxroots), found = 0, G, ncand;
-    double *sd = flint_malloc(sizeof(double) * (N + 8 * 12 + 1));
+    double *sd = flint_malloc(sizeof(double) * (N + 4 * 26 + 2));
     /* sign scan with increasing grid density, then QR at prec/3, then QR at prec */
-    for (G = 16; G <= 1024 && found < want; G *= 4)
+    for (G = 16; G <= 64 && found < want; G *= 4)
     {
         ncand = candidates_scan(sd, xi, N, prec, G);
         found = roots_from_candidates(roots, maxroots, unresolved, xi, N, prec, sd, ncand);
@@ -299,9 +329,9 @@ slong zst_secular_roots(arb_ptr roots, slong maxroots, slong *unresolved,
     }
     if (found < want)
     {
-        ncand = candidates_qr(sd, xi, N, prec, FLINT_MAX(256, prec / 3));
+        ncand = candidates_qr(sd, xi, N, prec, FLINT_MAX(256, prec / 2));
         found = roots_from_candidates(roots, maxroots, unresolved, xi, N, prec, sd, ncand);
-        if (getenv("ZST_DEBUG")) flint_printf("secular: QR at prec/3: %wd candidates, %wd certified\n", ncand, found);
+        if (getenv("ZST_DEBUG")) flint_printf("secular: QR at prec/2: %wd candidates, %wd certified\n", ncand, found);
     }
     if (found < want)
     {
