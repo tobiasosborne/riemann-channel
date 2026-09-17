@@ -1,0 +1,1 @@
+== 21:14:36 x=100 N=1000 prec=4000 -> ../notes/zeta-spectral-triples/bench/x100_N1000_p4000.txt
