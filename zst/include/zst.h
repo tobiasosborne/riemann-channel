@@ -44,6 +44,14 @@ int zst_eigmin(arb_t eps, arb_ptr v, const arb_mat_t E, slong iters, slong prec)
  * LDL^T factorisation of A - shift. Returns -1 if some pivot ball contains zero (inconclusive). */
 slong zst_inertia_neg(const arb_mat_t A, const arb_t shift, slong prec);
 
+/* Certificate of the paper's even-simple hypothesis from a certified even eigenpair (eps, v):
+ * with s = 2 * upper(eps), certifies by ball Cholesky that E - s + v v^T/|v|^2 and O - s are positive
+ * definite. Then E - s has exactly one negative eigenvalue (interlacing under the rank-one update,
+ * and eps - s < 0 along v) and O - s has none: eps is the simple smallest eigenvalue of the whole
+ * matrix and its eigenvector is even. Error amplification is linear in the condition number, unlike
+ * the unpivoted LDL^T of zst_inertia_neg. Returns 1 if certified, 0 otherwise. */
+int zst_certify_even_simple(const arb_mat_t E, const arb_mat_t O, const arb_t eps, arb_srcptr v, slong prec);
+
 /* The N positive zeros of g(s) = sum_{j=-N}^{N} xi_j/(j - s), xi_{-j} = xi_j, xi[0..N] given as
  * balls with sum_j xi_j = 1 (g is odd, so these are half of its 2N real zeros). Candidates are the
  * square roots of the eigenvalues of the odd block of D'^2 (approximate QR); each is certified by

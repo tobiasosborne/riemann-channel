@@ -33,6 +33,25 @@ int main(void)
     arb_set_si(shift, 1); /* shift exactly at an eigenvalue: a pivot ball contains zero -> inconclusive */
     CHECK(zst_inertia_neg(A, shift, prec) == -1, "2x2: shift at eigenvalue is inconclusive");
 
+    /* even-simple certificate by deflated Cholesky: for [[2,-1],[-1,2]] with (eps, v) = (1, (1,1)) and
+     * the "odd block" [[5]]: shift 2 eps = 2 lies between 1 and 3, so certifiable; with the odd block
+     * [[1.5]] it must fail (an odd eigenvalue below the shift); with the shift at 4 (above 3) the even
+     * block has two eigenvalues below it and the deflated matrix is indefinite: must fail. */
+    {
+        arb_mat_t O1; arb_mat_init(O1, 1, 1);
+        arb_set_si(arb_mat_entry(O1, 0, 0), 5);
+        arb_set_si(arb_mat_entry(A, 0, 0), 2); arb_set_si(arb_mat_entry(A, 0, 1), -1);
+        arb_set_si(arb_mat_entry(A, 1, 0), -1); arb_set_si(arb_mat_entry(A, 1, 1), 2);
+        arb_one(eps); arb_one(v + 0); arb_one(v + 1);
+        CHECK(zst_certify_even_simple(A, O1, eps, v, prec) == 1, "deflated Cholesky: certified");
+        arb_set_d(arb_mat_entry(O1, 0, 0), 1.5);
+        CHECK(zst_certify_even_simple(A, O1, eps, v, prec) == 0, "deflated Cholesky: odd eigenvalue below shift -> fail");
+        arb_set_si(arb_mat_entry(O1, 0, 0), 5);
+        arb_set_si(eps, 2);   /* wrong eps (not an eigenvalue): shift 4 > 3, deflation cannot rescue it */
+        CHECK(zst_certify_even_simple(A, O1, eps, v, prec) == 0, "deflated Cholesky: shift above second eigenvalue -> fail");
+        arb_mat_clear(O1);
+    }
+
     /* near-singular: minimal eigenvalue ~ 1e-30 - 1e-62, certified with a tiny radius */
     arb_set_str(arb_mat_entry(A, 0, 0), "1e-30", prec); arb_set_str(arb_mat_entry(A, 0, 1), "1e-31", prec);
     arb_set_str(arb_mat_entry(A, 1, 0), "1e-31", prec); arb_set_si(arb_mat_entry(A, 1, 1), 1);

@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <flint/acb_dirichlet.h>
 #include "zst.h"
 
 static double now(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return t.tv_sec + 1e-9 * t.tv_nsec; }
@@ -31,7 +32,7 @@ int main(int argc, char **argv)
         arb_ptr a, b, v, xi, roots, gamma;
         arb_mat_t E, O;
         ulong X = (ulong) (xd + 1e-9);
-        slong nroots, unres, k, neg_even, neg_odd, dim = N + 1;
+        slong nroots, unres, k, dim = N + 1;
         double t0 = now(), t1, t2, t3, t4;
         int ok;
 
@@ -62,12 +63,12 @@ int main(int argc, char **argv)
         /* even-simple check: shift = 2 * upper bound of eps (eps > 0 expected) */
         arb_get_ubound_arf(arb_midref(shift), eps, prec); mag_zero(arb_radref(shift));
         arb_mul_2exp_si(shift, shift, 1);
-        neg_even = zst_inertia_neg(E, shift, prec);
-        neg_odd = zst_inertia_neg(O, shift, prec);
-        t3 = now();
-        flint_printf("inertia below 2 eps: even block %wd (want 1), odd block %wd (want 0)  [-1 = inconclusive]  (%.2fs)\n",
-                     neg_even, neg_odd, t3 - t2);
-        flint_printf("even-simple hypothesis: %s\n", (neg_even == 1 && neg_odd == 0) ? "CERTIFIED" : "not certified");
+        {
+            int es = zst_certify_even_simple(E, O, eps, v, prec);
+            t3 = now();
+            flint_printf("even-simple hypothesis (deflated Cholesky of E - 2 eps and O - 2 eps): %s  (%.2fs)\n",
+                         es ? "CERTIFIED" : "not certified", t3 - t2);
+        }
 
         /* xi_j from the even coordinates, normalised sum_{j=-N}^N xi_j = 1 */
         arb_set(xi + 0, v + 0);
@@ -85,7 +86,19 @@ int main(int argc, char **argv)
         flint_printf("positive secular roots: %wd certified of N = %wd, %wd unresolved  ->  spectrum %s  (%.2fs)\n",
                      nroots, N, unres, (nroots == N) ? "COMPLETE" : "incomplete", t4 - t3);
 
-        zst_zeta_zeros(gamma, K, prec);
+        /* reference zeros: full precision for the first 20 (where the construction is most accurate),
+         * 400 bits for the rest (their certified error is far above 1e-100 anyway) */
+        {
+            slong K1 = FLINT_MIN(K, 20);
+            zst_zeta_zeros(gamma, K1, prec);
+            if (K > K1)
+            {
+                acb_ptr rho = _acb_vec_init(K - K1); fmpz_t n1; fmpz_init(n1); fmpz_set_si(n1, K1 + 1);
+                acb_dirichlet_zeta_zeros(rho, n1, K - K1, FLINT_MIN(prec, 400));
+                for (k = K1; k < K; k++) arb_set(gamma + k, acb_imagref(rho + k - K1));
+                _acb_vec_clear(rho, K - K1); fmpz_clear(n1);
+            }
+        }
         arb_const_pi(twopiL, prec); arb_mul_2exp_si(twopiL, twopiL, 1); arb_div(twopiL, twopiL, L, prec);
         flint_printf("\n  k   z_k = 2 pi s_k / L                                   |z_k - gamma_k| <=\n");
         for (k = 0; k < K && k < nroots; k++)

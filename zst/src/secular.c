@@ -143,8 +143,9 @@ cmp_arf_d(const void *a, const void *b)
     return (x > y) - (x < y);
 }
 
-slong zst_secular_roots(arb_ptr roots, slong maxroots, slong *unresolved,
-                        arb_srcptr xi, slong N, slong prec)
+static slong
+secular_roots_qr(arb_ptr roots, slong maxroots, slong *unresolved,
+                 arb_srcptr xi, slong N, slong prec, slong qr_prec)
 {
     slong i, j, found = 0, unres = 0;
     acb_mat_t M, Lm, Rm;
@@ -169,8 +170,10 @@ slong zst_secular_roots(arb_ptr roots, slong maxroots, slong *unresolved,
             if (i == j) arb_add_ui(t, t, (ulong) (i * i), prec);
             acb_set_arb(acb_mat_entry(M, i - 1, j - 1), t);
         }
-    mag_set_ui_2exp_si(tol, 1, -prec + 20);
-    acb_mat_approx_eig_qr(mu, NULL, NULL, M, tol, 0, prec);
+    /* candidates only need to land in the Newton basin, so the QR runs at reduced precision first;
+     * zst_secular_roots retries at full precision if the certified list comes out incomplete */
+    mag_set_ui_2exp_si(tol, 1, -qr_prec + 20);
+    acb_mat_approx_eig_qr(mu, NULL, NULL, M, tol, 0, qr_prec);
 
     /* candidate positive roots s = sqrt(Re mu), in increasing order (doubles suffice for ordering) */
     for (i = 0; i < N; i++)
@@ -235,5 +238,15 @@ slong zst_secular_roots(arb_ptr roots, slong maxroots, slong *unresolved,
     acb_mat_clear(M); acb_mat_clear(Lm); acb_mat_clear(Rm);
     _acb_vec_clear(mu, N); flint_free(sd);
     mag_clear(tol); arb_clear(s0); arb_clear(t);
+    return found;
+}
+
+slong zst_secular_roots(arb_ptr roots, slong maxroots, slong *unresolved,
+                        arb_srcptr xi, slong N, slong prec)
+{
+    slong qr_prec = FLINT_MAX(256, prec / 3), found;
+    found = secular_roots_qr(roots, maxroots, unresolved, xi, N, prec, qr_prec);
+    if (found < FLINT_MIN(N, maxroots) && qr_prec < prec)
+        found = secular_roots_qr(roots, maxroots, unresolved, xi, N, prec, prec);
     return found;
 }

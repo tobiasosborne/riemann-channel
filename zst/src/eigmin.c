@@ -244,3 +244,104 @@ slong zst_inertia_neg(const arb_mat_t A, const arb_t shift, slong prec)
     arb_mat_clear(Lm); _arb_vec_clear(d, n); arb_clear(t); arb_clear(u);
     return neg;
 }
+
+/* Verified positive definiteness (Rump's isspd): with delta = 2^-(prec/2) max_i F_ii, compute an
+ * approximate Cholesky factor Lt of mid(F) - delta I in midpoint arithmetic (which fails only if
+ * that matrix is numerically not positive definite), then bound r = ||F - delta I - Lt Lt^T||_inf in
+ * ball arithmetic. Since Lt Lt^T is positive semidefinite for any real Lt, F >= (delta - r) I, and
+ * delta > r certifies F positive definite. Unlike interval Cholesky this amplifies input radii
+ * only through the residual, not through the pivots. Returns 1 if certified. */
+static int
+verify_pd(const arb_mat_t F, slong prec)
+{
+    slong n = arb_mat_nrows(F), i, j, k;
+    arb_mat_t Lt, LLt, Rm;
+    arb_t delta, t, u;
+    mag_t r, d;
+    int ok = 1;
+    if (n == 0) return 1;
+    arb_mat_init(Lt, n, n); arb_mat_init(LLt, n, n); arb_mat_init(Rm, n, n);
+    arb_init(delta); arb_init(t); arb_init(u); mag_init(r); mag_init(d);
+    /* delta = 2^-(prec/2) * max_i |F_ii| (midpoints) */
+    arb_zero(delta);
+    for (i = 0; i < n; i++)
+    {
+        arb_get_mid_arb(t, arb_mat_entry(F, i, i)); arb_abs(t, t);
+        if (arb_gt(t, delta)) arb_set(delta, t);
+    }
+    arb_mul_2exp_si(delta, delta, -(prec / 2));
+    arb_get_mid_arb(delta, delta);
+    /* approximate Cholesky of mid(F) - delta I (Cholesky-Banachiewicz, midpoints only) */
+    for (j = 0; j < n && ok; j++)
+    {
+        arb_get_mid_arb(t, arb_mat_entry(F, j, j)); arb_sub(t, t, delta, prec);
+        for (k = 0; k < j; k++) arb_submul(t, arb_mat_entry(Lt, j, k), arb_mat_entry(Lt, j, k), prec);
+        arb_get_mid_arb(t, t);
+        if (!arb_is_positive(t)) { ok = 0; break; }
+        arb_sqrt(arb_mat_entry(Lt, j, j), t, prec); arb_get_mid_arb(arb_mat_entry(Lt, j, j), arb_mat_entry(Lt, j, j));
+        for (i = j + 1; i < n; i++)
+        {
+            arb_get_mid_arb(t, arb_mat_entry(F, i, j));
+            for (k = 0; k < j; k++) arb_submul(t, arb_mat_entry(Lt, i, k), arb_mat_entry(Lt, j, k), prec);
+            arb_div(t, t, arb_mat_entry(Lt, j, j), prec);
+            arb_get_mid_arb(arb_mat_entry(Lt, i, j), t);
+        }
+    }
+    if (ok)
+    {
+        /* residual F - delta I - Lt Lt^T in ball arithmetic; ||.||_2 <= ||.||_inf for symmetric matrices */
+        arb_mat_transpose(Rm, Lt);
+        arb_mat_mul(LLt, Lt, Rm, prec);
+        arb_mat_sub(Rm, F, LLt, prec);
+        for (i = 0; i < n; i++) arb_sub(arb_mat_entry(Rm, i, i), arb_mat_entry(Rm, i, i), delta, prec);
+        arb_mat_bound_inf_norm(r, Rm);
+        arb_get_mag_lower(d, delta);
+        ok = mag_cmp(r, d) < 0;
+    }
+    arb_mat_clear(Lt); arb_mat_clear(LLt); arb_mat_clear(Rm);
+    arb_clear(delta); arb_clear(t); arb_clear(u); mag_clear(r); mag_clear(d);
+    return ok;
+}
+
+int zst_certify_even_simple(const arb_mat_t E, const arb_mat_t O, const arb_t eps, arb_srcptr v, slong prec)
+{
+    /* s = 2 upper(eps), c = s + 1 (> s - eps, so the deflated direction is lifted above zero);
+     * F = E - s + c v v^T / (v^T v) positive definite (verify_pd) and O - s positive definite.
+     * Interlacing: E - s = F - (rank-one PSD) has at most one negative eigenvalue, and eps - s < 0 is
+     * a certified eigenvalue of E - s, so exactly one; no odd eigenvalue lies below s.
+     * Ground truth for the hypothesis: refs/src/2511.22755/mc2arXiv.tex, Definition `even-simple` l.850. */
+    slong n = arb_mat_nrows(E), m = arb_mat_nrows(O), i, j;
+    arb_mat_t F, G, Lc;
+    arb_t s, nv, t;
+    int ok = 0;
+    if (!arb_is_positive(eps)) return 0;
+    arb_mat_init(F, n, n); arb_mat_init(G, m, m); arb_mat_init(Lc, n, n);
+    arb_init(s); arb_init(nv); arb_init(t);
+    arb_get_ubound_arf(arb_midref(s), eps, prec); mag_zero(arb_radref(s));
+    arb_mul_2exp_si(s, s, 1);
+    arb_zero(nv);
+    for (i = 0; i < n; i++) arb_addmul(nv, v + i, v + i, prec);
+    arb_add_ui(t, s, 1, prec); arb_div(nv, nv, t, prec);          /* nv = (v^T v)/c, c = s + 1 */
+    for (i = 0; i < n; i++)
+        for (j = 0; j < n; j++)
+        {
+            arb_mul(t, v + i, v + j, prec); arb_div(t, t, nv, prec);
+            arb_add(arb_mat_entry(F, i, j), arb_mat_entry(E, i, j), t, prec);
+            if (i == j) arb_sub(arb_mat_entry(F, i, i), arb_mat_entry(F, i, i), s, prec);
+        }
+    ok = verify_pd(F, prec);
+    if (ok && m > 0)
+    {
+        arb_mat_clear(Lc); arb_mat_init(Lc, m, m);
+        for (i = 0; i < m; i++)
+            for (j = 0; j < m; j++)
+            {
+                arb_set(arb_mat_entry(G, i, j), arb_mat_entry(O, i, j));
+                if (i == j) arb_sub(arb_mat_entry(G, i, i), arb_mat_entry(G, i, i), s, prec);
+            }
+        ok = verify_pd(G, prec);
+    }
+    arb_mat_clear(F); arb_mat_clear(G); arb_mat_clear(Lc);
+    arb_clear(s); arb_clear(nv); arb_clear(t);
+    return ok;
+}
