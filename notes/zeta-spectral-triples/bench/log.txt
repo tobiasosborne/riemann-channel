@@ -1,0 +1,9 @@
+== 20:30:32 x=13 N=120 prec=700 -> ../notes/zeta-spectral-triples/bench/x13_N120_p700.txt
+total 3.20s
+== 20:30:36 x=20 N=100 prec=900 -> ../notes/zeta-spectral-triples/bench/x20_N100_p900.txt
+total 2.59s
+== 20:30:38 x=20 N=150 prec=900 -> ../notes/zeta-spectral-triples/bench/x20_N150_p900.txt
+total 6.84s
+== 20:30:45 x=20 N=200 prec=900 -> ../notes/zeta-spectral-triples/bench/x20_N200_p900.txt
+total 14.93s
+== 20:31:00 x=30 N=300 prec=1300 -> ../notes/zeta-spectral-triples/bench/x30_N300_p1300.txt

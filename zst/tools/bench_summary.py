@@ -13,7 +13,7 @@ def parse(path):
     r["t_build"] = g(r"matrix build: ([\d.]+)s")
     r["eps"] = (re.search(r"eps_N = \[([^\s\]]+)", t) or [None, None])[1]
     r["t_eig"] = g(r"certified, ([\d.]+)s")
-    r["even_simple"] = "CERTIFIED" in (re.search(r"even-simple hypothesis: (\S+)", t) or [None, ""])[1]
+    r["even_simple"] = "CERTIFIED" in (re.search(r"even-simple hypothesis[^:]*: (\S+)", t) or [None, ""])[1]
     r["t_inertia"] = g(r"(?:\[-1 = inconclusive\]|not certified|CERTIFIED)  \(([\d.]+)s\)")
     mm = re.search(r"positive secular roots: (\d+) certified of N = (\d+), (\d+) unresolved  ->  spectrum (\S+)  \(([\d.]+)s\)", t)
     if mm:

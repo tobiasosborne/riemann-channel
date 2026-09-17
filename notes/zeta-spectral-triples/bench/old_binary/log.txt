@@ -1,0 +1,12 @@
+== 20:23:33 x=13 N=120 prec=700 -> ../notes/zeta-spectral-triples/bench/x13_N120_p700.txt
+total 3.14s
+== 20:23:36 x=13 N=240 prec=800 -> ../notes/zeta-spectral-triples/bench/x13_N240_p800.txt
+total 21.03s
+== 20:23:57 x=20 N=200 prec=900 -> ../notes/zeta-spectral-triples/bench/x20_N200_p900.txt
+total 13.91s
+== 20:24:11 x=30 N=300 prec=1300 -> ../notes/zeta-spectral-triples/bench/x30_N300_p1300.txt
+total 227.78s
+== 20:27:59 x=40 N=400 prec=1700 -> ../notes/zeta-spectral-triples/bench/x40_N400_p1700.txt
+Terminated
+wall 135.573151253 s  maxrss 2004 KB
+== 20:30:14 x=50 N=500 prec=2100 -> ../notes/zeta-spectral-triples/bench/x50_N500_p2100.txt
