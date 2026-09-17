@@ -7,3 +7,5 @@ total 6.84s
 == 20:30:45 x=20 N=200 prec=900 -> ../notes/zeta-spectral-triples/bench/x20_N200_p900.txt
 total 14.93s
 == 20:31:00 x=30 N=300 prec=1300 -> ../notes/zeta-spectral-triples/bench/x30_N300_p1300.txt
+total 234.68s
+== 20:34:55 x=30 N=450 prec=1300 -> ../notes/zeta-spectral-triples/bench/x30_N450_p1300.txt

@@ -143,23 +143,62 @@ cmp_arf_d(const void *a, const void *b)
     return (x > y) - (x < y);
 }
 
+/* Candidate generator 1: sign scan in midpoint arithmetic. On each unit interval [j, j+1] evaluate
+ * h_j at G+1 equispaced points and bisect every sign change; beyond the last pole scan h_N on a
+ * geometric grid up to 2^12 N. Returns the number of candidates written to sd (doubles suffice: the
+ * candidates are polished by Newton at full precision before certification). */
 static slong
-secular_roots_qr(arb_ptr roots, slong maxroots, slong *unresolved,
-                 arb_srcptr xi, slong N, slong prec, slong qr_prec)
+candidates_scan(double *sd, arb_srcptr xi, slong N, slong prec, slong G)
 {
-    slong i, j, found = 0, unres = 0;
-    acb_mat_t M, Lm, Rm;
-    acb_ptr mu;
-    double *sd;
-    mag_t tol;
+    slong j, k, n = 0, it;
     sec_param P;
-    arb_t s0, t;
-
+    arb_t s, lo, hi, h, d, hl, hh;
     P.xi = xi; P.N = N;
-    acb_mat_init(M, N, N); acb_mat_init(Lm, N, N); acb_mat_init(Rm, N, N);
+    arb_init(s); arb_init(lo); arb_init(hi); arb_init(h); arb_init(d); arb_init(hl); arb_init(hh);
+    for (j = 0; j <= N && n < N; j++)
+    {
+        slong npts = (j < N) ? G : 8 * 12;     /* tail: 8 points per octave over 12 octaves */
+        int sgn_prev = 0;
+        P.j = j;
+        for (k = 0; k <= npts && n < N; k++)
+        {
+            int sgn;
+            if (j < N) { arb_set_si(s, j); arb_set_si(d, k); arb_div_si(d, d, G, prec); arb_add(s, s, d, prec); }
+            else       { arb_set_si(s, N); arb_set_d(d, (double) N * (pow(2.0, (double) k / 8.0) - 1.0)); arb_add(s, s, d, prec); }
+            sec_raw(h, d, s, &P, prec);
+            sgn = arb_is_positive(h) ? 1 : (arb_is_negative(h) ? -1 : 0);
+            if (sgn == 0) { sd[n++] = arf_get_d(arb_midref(s), ARF_RND_NEAR); sgn_prev = 0; continue; }
+            if (sgn_prev != 0 && sgn != sgn_prev)
+            {   /* bisect [lo, s] */
+                arb_set(hi, s);
+                for (it = 0; it < 40; it++)
+                {
+                    arb_add(d, lo, hi, prec); arb_mul_2exp_si(d, d, -1);
+                    sec_raw(h, hl, d, &P, prec);
+                    if (arb_is_positive(h) == (sgn > 0)) arb_set(hi, d); else arb_set(lo, d);
+                }
+                arb_add(d, lo, hi, prec); arb_mul_2exp_si(d, d, -1);
+                sd[n++] = arf_get_d(arb_midref(d), ARF_RND_NEAR);
+            }
+            arb_set(lo, s); sgn_prev = sgn;
+        }
+    }
+    arb_clear(s); arb_clear(lo); arb_clear(hi); arb_clear(h); arb_clear(d); arb_clear(hl); arb_clear(hh);
+    return n;
+}
+
+/* Candidate generator 2: eigenvalues of M_ij = i^2 delta_ij - 2 i xi_i j by approximate QR at qr_prec. */
+static slong
+candidates_qr(double *sd, arb_srcptr xi, slong N, slong prec, slong qr_prec)
+{
+    slong i, j, n = 0;
+    acb_mat_t M;
+    acb_ptr mu;
+    mag_t tol;
+    arb_t t;
+    acb_mat_init(M, N, N);
     mu = _acb_vec_init(N);
-    sd = flint_malloc(sizeof(double) * N);
-    mag_init(tol); arb_init(s0); arb_init(t);
+    mag_init(tol); arb_init(t);
 
     /* M_{ij} = i^2 delta_ij - 2 i xi_i j on midpoints (indices 1..N) */
     for (i = 1; i <= N; i++)
@@ -175,25 +214,32 @@ secular_roots_qr(arb_ptr roots, slong maxroots, slong *unresolved,
     mag_set_ui_2exp_si(tol, 1, -qr_prec + 20);
     acb_mat_approx_eig_qr(mu, NULL, NULL, M, tol, 0, qr_prec);
 
-    /* candidate positive roots s = sqrt(Re mu), in increasing order (doubles suffice for ordering) */
+    /* candidate positive roots s = sqrt(Re mu) */
     for (i = 0; i < N; i++)
     {
         double re = arf_get_d(arb_midref(acb_realref(mu + i)), ARF_RND_NEAR);
-        sd[i] = (re > 0) ? sqrt(re) : -1.0;
-        if (getenv("ZST_DEBUG") && (re <= 0 || !arb_contains_zero(acb_imagref(mu + i)) || arf_get_d(arb_midref(acb_imagref(mu + i)), ARF_RND_NEAR) != 0))
-        { flint_printf("secular: eigenvalue mu["); flint_printf("%wd] = ", i); acb_printn(mu + i, 20, 0); flint_printf("\n"); }
+        if (re > 0) sd[n++] = sqrt(re);
     }
-    qsort(sd, N, sizeof(double), cmp_arf_d);
+    acb_mat_clear(M); _acb_vec_clear(mu, N); mag_clear(tol); arb_clear(t);
+    return n;
+}
 
-    for (i = 0; i < N && found < maxroots; i++)
+/* polish each candidate by Newton on midpoints, certify by interval Newton, sort, require disjointness */
+static slong
+roots_from_candidates(arb_ptr roots, slong maxroots, slong *unresolved,
+                      arb_srcptr xi, slong N, slong prec, double *sd, slong ncand)
+{
+    slong i, j, found = 0, unres = 0;
+    sec_param P;
+    arb_t s0;
+    P.xi = xi; P.N = N;
+    arb_init(s0);
+    qsort(sd, ncand, sizeof(double), cmp_arf_d);
+    for (i = 0; i < ncand && found < maxroots; i++)
     {
         slong k;
-        if (sd[i] <= 0)
-        {
-            unres++;
-            if (getenv("ZST_DEBUG")) flint_printf("secular: excluded candidate mu <= 0 (sd=%.17g)\n", sd[i]);
-            continue;
-        }
+        if (sd[i] <= 0) { unres++; continue; }
+        if (i > 0 && sd[i] == sd[i - 1]) continue;       /* duplicate candidate */
         /* refine the candidate on midpoints with a few Newton steps before the interval step */
         arb_set_d(s0, sd[i]);
         P.j = (slong) sd[i]; if (P.j > N) P.j = N;
@@ -235,18 +281,33 @@ secular_roots_qr(arb_ptr roots, slong maxroots, slong *unresolved,
         if (arb_overlaps(roots + j, roots + j - 1)) { unres += found; found = 0; break; }
 
     if (unresolved) *unresolved = unres;
-    acb_mat_clear(M); acb_mat_clear(Lm); acb_mat_clear(Rm);
-    _acb_vec_clear(mu, N); flint_free(sd);
-    mag_clear(tol); arb_clear(s0); arb_clear(t);
+    arb_clear(s0);
     return found;
 }
 
 slong zst_secular_roots(arb_ptr roots, slong maxroots, slong *unresolved,
                         arb_srcptr xi, slong N, slong prec)
 {
-    slong qr_prec = FLINT_MAX(256, prec / 3), found;
-    found = secular_roots_qr(roots, maxroots, unresolved, xi, N, prec, qr_prec);
-    if (found < FLINT_MIN(N, maxroots) && qr_prec < prec)
-        found = secular_roots_qr(roots, maxroots, unresolved, xi, N, prec, prec);
+    slong want = FLINT_MIN(N, maxroots), found = 0, G, ncand;
+    double *sd = flint_malloc(sizeof(double) * (N + 8 * 12 + 1));
+    /* sign scan with increasing grid density, then QR at prec/3, then QR at prec */
+    for (G = 16; G <= 1024 && found < want; G *= 4)
+    {
+        ncand = candidates_scan(sd, xi, N, prec, G);
+        found = roots_from_candidates(roots, maxroots, unresolved, xi, N, prec, sd, ncand);
+        if (getenv("ZST_DEBUG")) flint_printf("secular: scan G=%wd: %wd candidates, %wd certified\n", G, ncand, found);
+    }
+    if (found < want)
+    {
+        ncand = candidates_qr(sd, xi, N, prec, FLINT_MAX(256, prec / 3));
+        found = roots_from_candidates(roots, maxroots, unresolved, xi, N, prec, sd, ncand);
+        if (getenv("ZST_DEBUG")) flint_printf("secular: QR at prec/3: %wd candidates, %wd certified\n", ncand, found);
+    }
+    if (found < want)
+    {
+        ncand = candidates_qr(sd, xi, N, prec, prec);
+        found = roots_from_candidates(roots, maxroots, unresolved, xi, N, prec, sd, ncand);
+    }
+    flint_free(sd);
     return found;
 }
