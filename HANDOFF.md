@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped and planned as a standalone arb/FLINT library, `notes/zeta-spectral-triples/plan.md`; 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -85,6 +85,32 @@ character reading of the grading and conj:galois-graded-bond.
 0d. **Mayer cusp tail** (`notes/resonances/astra-freeassoc.md` §3): unchanged.
 0e. **Suzuki's prime-defined screw kernel** (§16.3): unchanged.
 0f. **Literature:** Bonthonneau–Weich; Lewis–Zagier, Chang–Mayer: unchanged.
+
+### Sidequest 2026-09-17: zeta spectral triples (Connes-Consani-Moscovici, arXiv:2511.22755)
+
+TJO asked for a careful reading and a concrete plan for a highly optimised, extensible arb/FLINT C
+implementation of the paper's algorithm, as a possible standalone repository. Delivered in
+`notes/zeta-spectral-triples/` (`plan.md`, `ccm_proto.py`, two runs, `flint_smoke.c`); worklog 2026-09-17.
+
+- The algorithm: window `[lambda^-1, lambda]`, `2N+1` Fourier modes, Weil form matrix of Loewner form
+  `(b_n - b_m)/(n - m)` (pole term rank two, primes `<= lambda^2` as atoms, archimedean part by
+  digamma/trigamma plus `e^{-2L}`-series), even-block minimal eigenvector `xi`, rank-one perturbation
+  of the scaling operator, spectrum = real zeros of `sum_j xi_j/(j - s)` scaled by `2 pi/L`. The mpmath
+  prototype reproduces the paper's `lambda = sqrt 13, N = 120` column for all 50 zeros to every
+  printed digit (first zero to `2.4e-55` from primes `<= 13`).
+- Found: a typo in the paper's displayed constant `c(L)` (identity shift only; `eps_N` moves, the
+  spectrum does not); the secular function has several roots per pole interval (root isolation must
+  use the `2N` count); the accuracy law `|z_1 - gamma_1| ~ 5e4 (1 - chi_4(lambda))`, about `5.5`
+  digits per unit `lambda^2`.
+- Plan: `libzst` on FLINT 3 (all needed calls verified on 3.0.1 here), input = abstract
+  explicit-formula distribution (atoms, exponential-series kernels, trivial-divisor poles, identity
+  shift) so Dirichlet/Hecke/GL(2), graph and curve transfer operators (Caratheodory-Fejer anchor),
+  Selberg compact and modular (H-CUSP-BRIDGE test), and the notebook's graded divisor formulation
+  run through one pipeline; certified eigenpair (inverse iteration + Rump + LDL inertia for
+  even-simplicity), certified roots, adaptive precision; milestones M0 (done) to M5.
+- Not started: the repository itself. **Next, if TJO approves:** create `zst`, execute M1 (zeta
+  pipeline, approximate) and M2 (certification), then the `(lambda, N)` accuracy map and the
+  `x = 100` run.
 
 ### An infinite object whose odd-block form is derived from the letters (2026-09-16; shards 03e, 03f)
 
