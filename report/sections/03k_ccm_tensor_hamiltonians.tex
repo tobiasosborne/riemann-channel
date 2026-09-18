@@ -1,0 +1,117 @@
+% SHARD-ID: RC-03K-CCM-TENSOR-HAMILTONIANS
+% SHARD-TITLE: CCM in Tensor-Network Terms V: the Nullvector and Hamiltonians
+% SHARD-SUMMARY: Interprets the Weil matrix as a clock Hamiltonian and its nullspace projector as a parent constraint for the transfer-history state.
+% SHARD-SUMMARY: Constructs a positive propagation Hamiltonian for that history, distinguishes its ground state from the CCM nullvector, and separates both from the quotient frequency operator.
+% SHARD-KEYWORDS: CCM, Hamiltonian, ground state, parent constraint, history state, propagation, clock, nullvector
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/ccm_tensor_network.py
+
+\section{CCM in Tensor-Network Terms V: the Nullvector and Hamiltonians}
+\label{sec:ccm-tn-hamiltonians}
+
+TJO's question, ``perhaps the nullvector is related to a Hamiltonian'',
+has several exact answers. Their Hilbert spaces and ground states must
+be kept distinct. Use \cref{def:ccm-tn-feature,def:ccm-tn-history}.
+
+\begin{proposition}[Clock ground state and parent constraint]
+\label{prop:ccm-tn-clock-hamiltonian}
+\claimstatus{prop:ccm-tn-clock-hamiltonian}{proved}
+Suppose $E^*\TNmetric E=\TNmetric$. Then
+$H_{\mathrm{clock}}=\TNGram=\TNfeature^*\TNfeature$ is positive,
+and its zero-energy states are exactly $c$ with $p_c(E)=0$.
+The clock marginal of $\TNhistory$ is $\TNGram$, its squared norm is
+$Kd$, and
+\[
+ (P_{\ker}\otimes I)\TNhistory=0.
+\]
+Thus a one-dimensional kernel gives a rank-one parent constraint
+$P_{\ker}=|\TNnull\rangle\langle\TNnull|/\|\TNnull\|^2$ on the length register.
+It does not identify a local parent Hamiltonian for the original
+physical MPS.
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] By metric unitarity,
+$\langle E^j,E^k\rangle_{\mathrm{HS},G}=\Tr E^{k-j}$.
+Consequently $c^*\TNGram c=\|\TNfeature c\|^2$; positivity and the
+kernel assertion follow.
+\item[$\langle1\rangle$2.] The $(j,k)$ entry of the partial trace is
+$\langle\overline{v_k},\overline{v_j}\rangle
+=\langle v_j,v_k\rangle=(\TNGram)_{jk}$. Each diagonal entry is
+$d$, giving norm squared $Kd$.
+\item[$\langle1\rangle$3.] The squared norm of
+$(P_{\ker}\otimes I)\TNhistory$ is $\Tr(P_{\ker}\TNGram)=0$.
+All operators here act on the length register or feature space of
+\cref{def:ccm-tn-history}; no physical-site Hamiltonian is involved.
+\end{enumerate}
+\end{proof}
+
+Notice the reversal of roles: $\TNnull$ is a ground state of $W$, but
+$|\TNnull\rangle\langle\TNnull|$ penalises a forbidden clock direction of
+the history state. Generally $(W\otimes I)\TNhistory\ne0$.
+This is the same linear algebra as a parent projector onto the kernel
+of a reduced density matrix, on a different choice of degrees of freedom.
+
+\begin{proposition}[A propagation Hamiltonian for transfer histories]
+\label{prop:ccm-tn-history-hamiltonian}
+\claimstatus{prop:ccm-tn-history-hamiltonian}{proved}
+For the same metric-unitary $E$ and $K\geq2$,
+$H_{\mathrm{prop}}$ of \cref{def:ccm-tn-history} is positive and
+annihilates $\TNhistory$. Its entire ground space is
+\[
+ \left\{\sum_{j=0}^{K-1}|j\rangle\otimes V^j w:
+ w\in\overline{\operatorname{End}(\TNret)}\right\}.
+\]
+It has dimension $d^2$ and first positive eigenvalue
+$2-2\cos(\pi/K)$. Adding
+$|0\rangle\langle0|\otimes(I-|w_*\rangle\langle w_*|)$,
+where $w_*=\overline{\operatorname{vec}(I)}/\sqrt d$, gives a unique
+ground-state line, spanned by $\TNhistory$.
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] Left multiplication by a unitary is unitary
+in Hilbert--Schmidt space, so $V^*V=I$. Expanding $L_j^*L_j$ gives
+\[
+ (|j\rangle\langle j|+|j+1\rangle\langle j+1|)\otimes I
+ -|j+1\rangle\langle j|\otimes V
+ -|j\rangle\langle j+1|\otimes V^*.
+\]
+\item[$\langle1\rangle$2.] For $v=\sum_j|j\rangle\otimes w_j$,
+zero energy is equivalent to $L_jv=w_{j+1}-Vw_j=0$ for every $j$.
+Hence $w_j=V^jw_0$, proving the ground-space description and dimension.
+\item[$\langle1\rangle$3.] The controlled unitary
+$B=\sum_j|j\rangle\langle j|\otimes V^j$ conjugates the Hamiltonian
+to the $K$-vertex path Laplacian tensored with the feature identity.
+The cosine vectors $\cos((j+\tfrac12)m\pi/K)$ satisfy its interior
+and endpoint equations, with eigenvalues $2-2\cos(m\pi/K)$ for
+$m=0,\ldots,K-1$. This proves the gap.
+\item[$\langle1\rangle$4.] The extra boundary term is positive and
+requires $w_0\in\mathbb Cw_*$. Together with Step 2 it leaves exactly
+the asserted line. No gap for the pinned sum is asserted.
+\end{enumerate}
+\end{proof}
+
+This is locality between adjacent clock values. The feature update $V$
+may be dense. It is a concrete tensor-network Hamiltonian built from a
+given transfer, without an assertion of locality on the original chain.
+
+\subsection{Which Hamiltonian is used by CCM?}
+
+Under the even-simple hypotheses, $T=Q_N-\epsilon I$ is a positive
+Hamiltonian on Fourier coefficients, with ground vector $\TNnull$.
+The self-adjoint $D''$ acts instead on its metric quotient; the direction
+$\TNnull$ has been removed. It is a frequency Hamiltonian, not $T$, and
+$D'\TNnull=0$ does not supply a central spectral zero of $D''$.
+
+For a positive full-rank finite moment matrix, a unit least eigenvector
+satisfies $\|\TNfeature\TNnull\|^2=\epsilon>0$. Subtraction of
+$\epsilon I$ creates an exact radical for a new Gram matrix; it does
+not make $p_{\TNnull}(E)$ vanish. At the exact finite window the radical is
+an operator relation, while below that window it minimises a residual.
+
+Finally, if an exact polynomial relation is $p(E)=0$, the tempting
+Hamiltonian $p(E)^\sharp p(E)$ is the zero operator. The nontrivial
+Hamiltonian connections above live on length coefficients and histories.
+They do not yet determine the physical generator of the proposed
+Riemann cMPS.

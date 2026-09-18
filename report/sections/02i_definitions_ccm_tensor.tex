@@ -1,0 +1,145 @@
+% SHARD-ID: RC-02I-DEFINITIONS-CCM-TENSOR
+% SHARD-TITLE: Definitions, Continued: Transfer Histories, Weil Kernels, and CCM Quotients
+% SHARD-SUMMARY: Distinguishes the physical MPS auxiliary space, doubled transfer space, operator feature space, and cyclic moment space.
+% SHARD-SUMMARY: Fixes the metric, conjugation, window and boundary conventions for the tensor-network reconstruction of finite and continuous spectral data.
+% SHARD-KEYWORDS: CCM, tensor network, Gram matrix, clock, feature map, moment space, quotient, kernel
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{Definitions, Continued: Transfer Histories and CCM Quotients}
+\label{sec:definitions-ccm-tensor}
+
+These definitions supplement \cref{def:transfer-matrix,def:weil-form};
+they do not identify the physical and reconstructed auxiliary spaces.
+Inner products are conjugate-linear in the first argument.
+
+\begin{definition}[The four spaces of transfer reconstruction]
+\label{def:ccm-tn-spaces}
+Let $\TNaux$ be the physical MPS auxiliary space. The transfer matrix of
+\cref{def:transfer-matrix} acts on
+$\TNspace=\TNaux\otimes\overline{\TNaux}\simeq\operatorname{End}(\TNaux)$.
+A retained invariant space $\TNret$ is specified separately; when spectral
+subtraction removes partial multiplicities, only a retained spectral multiset
+is specified and an invariant restriction is not thereby defined.
+Write $E$ for the rescaled retained operator when such an operator is given,
+and $d=\dim\TNret\geq1$; empty retained spaces are excluded in these
+history-state constructions. The feature space is
+$\operatorname{End}(\TNret)$; the reconstructed moment space $\TNmoment$
+will be a quotient of polynomials, not a synonym for $\TNaux$ or $\TNret$.
+For an edge lift, $\TNspace$ includes the directed-edge or letter register.
+\end{definition}
+
+\begin{definition}[Metric adjoint and transfer-feature map]
+\label{def:ccm-tn-feature}
+Given $\TNmetric>0$ on $\TNret$, put
+$A^{\sharp}=\TNmetric^{-1}A^*\TNmetric$ and
+$\langle A,B\rangle_{\mathrm{HS},G}=\Tr(A^\sharp B)$.
+Equivalently this is the ordinary Hilbert--Schmidt product of
+$\widetilde A=\TNmetric^{1/2}A\TNmetric^{-1/2}$ and $\widetilde B$.
+For a window of $K\geq1$ lengths $j=0,\ldots,K-1$, the length register is
+$\mathbb C^K$ and the feature map is
+\[
+ \TNfeature c=\sum_{j=0}^{K-1}c_jE^j=p_c(E),\qquad
+ p_c(z)=\sum_{j=0}^{K-1}c_jz^j.
+\]
+Vectorisation is an isometry from the ordinary Hilbert--Schmidt operator
+space to two open indices. A bar on this vector belongs to the conjugate
+feature Hilbert space; this convention fixes the transpose in a clock
+partial trace.
+\end{definition}
+
+\begin{definition}[Moment matrix, cyclic algebra, and shift]
+\label{def:ccm-tn-moments}
+For the retained rescaled trace sequence of
+\cref{def:rescaled-trace-sequence}, write $t_k=\Tr E^k$ for $k\geq0$
+and $t_{-k}=\overline{t_k}$. Its window matrix is
+\[
+  (\TNGram)_{jk}=t_{k-j},\qquad 0\leq j,k<K.
+\]
+Thus $c^*\TNGram c=\Wform(c)$ with the coefficient convention of
+\cref{def:weil-form}. When the spectral support is a finite set
+$\{z_1,\ldots,z_r\}$ on the unit circle with positive weights $m_a$,
+put $p_*(z)=\prod_{a=1}^r(z-z_a)$ and
+\[
+ \TNmoment=\mathbb C[z]/(p_*),\qquad
+ \langle[p],[q]\rangle=\sum_a m_a\overline{p(z_a)}q(z_a).
+\]
+The moment shift is multiplication by $z$ on this quotient.
+The distinct-support count $r$ and the total weight $\sum_a m_a$ are
+different data. An unweighted trace of the moment shift counts support once.
+\end{definition}
+
+\begin{definition}[Transfer history and propagation Hamiltonian]
+\label{def:ccm-tn-history}
+In \cref{def:ccm-tn-feature}, let
+$v_j=\operatorname{vec}(\TNmetric^{1/2}E^j\TNmetric^{-1/2})$ and
+\[
+ \TNhistory=\sum_{j=0}^{K-1}|j\rangle\otimes\overline{v_j}.
+\]
+When $E^*\TNmetric E=\TNmetric$, let $V$ act on the conjugate feature
+space as the conjugate of left multiplication by
+$\TNmetric^{1/2}E\TNmetric^{-1/2}$. For $0\leq j<K-1$ put
+$L_j=\langle j+1|\otimes I-\langle j|\otimes V$ and
+$H_{\mathrm{prop}}=\sum_jL_j^*L_j$.
+The clock Hamiltonian is $H_{\mathrm{clock}}=\TNGram$ when the latter
+is positive, and $P_{\ker}$ denotes its orthogonal kernel projector.
+These operators act on a length register, or a length register with a
+feature space; no locality in the physical sites of the original MPS is
+part of these definitions.
+\end{definition}
+
+\begin{definition}[CCM finite window, shifted metric, and boundary correction]
+\label{def:ccm-tn-loewner}
+On the Fourier coefficient space $\mathbb C^{2N+1}$, indexed by
+$-N,\ldots,N$, let $D=\operatorname{diag}(j)$,
+$\eta=(1,\ldots,1)^T$, and $Jv=(v_{-j})_j$.
+A CCM matrix $Q_N$ is real symmetric, with
+\[
+ (Q_N)_{jj}=a_j,\qquad (Q_N)_{jk}=\frac{b_j-b_k}{j-k}\ (j\ne k),
+ \quad a_{-j}=a_j,\quad b_{-j}=-b_j,\quad \TNresponse=(b_j)_j.
+\]
+Set $\epsilon=\lambda_{\min}(Q_N)$ and $T=Q_N-\epsilon I$.
+The even-simple hypothesis means that this least eigenvalue is simple
+and its eigenvector satisfies $J\TNnull=\TNnull$. When $\eta^*\TNnull=1$,
+the corrected operator is $D'=D-|D\TNnull\rangle\langle\eta|$.
+The proposed quotient operator $D''$ acts on
+$\mathbb C^{2N+1}/\mathbb C\TNnull$ with metric $T$; its well-definedness
+and self-adjointness are assertions to prove, not part of the definition.
+In the interval $[0,L]$ the modes are
+$u_j(x)=L^{-1/2}e^{2\pi ijx/L}$, so the physical frequency operator is
+$(2\pi/L)D$ and $\eta^*f=\sqrt L f(0)$ for a truncated Fourier vector.
+\end{definition}
+
+\begin{definition}[One-sided window distribution and correlation form]
+\label{def:ccm-tn-window-form}
+Let $f,g$ be finite sums of the modes $u_j$ of
+\cref{def:ccm-tn-loewner}, extended by zero outside $[0,L]$.
+Write $f^*(x)=\overline{f(-x)}$ and
+$(f^**g)(y)=\int\overline{f(x)}g(x+y)\,dx$.
+For a real distribution $\mathcal D$ on the closed half interval,
+acting on $C^\infty([0,L])$, define
+\[
+ Q(f,g)=\mathcal D\bigl((f^**g)(y)+(f^**g)(-y)\bigr),\qquad
+ (Q_N)_{jk}=Q(u_j,u_k).
+\]
+The one-sided derivatives of the symmetrised correlation at $0$ and
+$L$ are part of this prescription. A globally even distribution on
+smooth full-line tests does not by itself specify these endpoint data.
+\end{definition}
+
+\begin{definition}[Continuous features and three meanings of kernel]
+\label{def:ccm-tn-continuous}
+For a finite-dimensional unitary group $U(t)=e^{-itH}$, $H=H^*$, on a retained space, put
+$F_f=\int f(t)U(t)\,dt$ for a compactly supported integrable test function.
+For a positive spectral measure $\TNmeasure$, the spectral feature is
+$\widehat f(\omega)=\int f(t)e^{-i\omega t}\,dt$, when this belongs
+to $L^2(\TNmeasure)$. These are separate constructions until a spectral
+representation identifies them.
+The \emph{distribution kernel} of a Weil form is the distribution used
+to pair two test functions through their correlation; its
+\emph{nullspace} is the radical of that form. The \emph{Dirichlet kernel}
+$\sum_{j=-N}^N e^{2\pi ijx/L}$ approximates evaluation at the boundary.
+The archimedean gamma kernels are constituents of the input distribution,
+not any of these nullspaces. Endpoint distributions retain the one-sided
+prescription used to define the window form.
+\end{definition}

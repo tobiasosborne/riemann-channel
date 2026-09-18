@@ -1,0 +1,187 @@
+% SHARD-ID: RC-03I-CCM-TENSOR-ALGORITHM
+% SHARD-TITLE: CCM in Tensor-Network Terms III: the Boundary Correction and Quotient
+% SHARD-SUMMARY: Derives the Loewner Weil matrix from correlated Fourier-window functions and identifies its rank-two displacement as a boundary defect.
+% SHARD-SUMMARY: Proves the rank-one correction is self-adjoint on the shifted-metric quotient, gives the complete secular polynomial, and exhibits real output from a negative input form.
+% SHARD-KEYWORDS: CCM, Loewner, boundary tensor, quotient, minimal eigenvector, secular equation, self-adjointness
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/ccm_tensor_network.py
+
+\section{CCM in Tensor-Network Terms III: Boundary and Quotient}
+\label{sec:ccm-tn-algorithm}
+
+The continuous construction replaces powers indexed by integer length
+with functions of logarithmic length. Its arithmetic input is a
+correlation form, $QW(f,g)=\Psi(f^**g)$, from primes, poles and gamma
+terms. This input is computed before a physical bond is known.
+Connes--Consani--Moscovici \cite{connes2025zeta} and
+Connes--van Suijlekom \cite{connes2025quadratic} supply the structured
+matrix argument. The following derivation isolates its network operations.
+
+\begin{proposition}[Window correlations give a boundary displacement]
+\label{prop:ccm-tn-loewner-displacement}
+\claimstatus{prop:ccm-tn-loewner-displacement}{proved}
+The form of \cref{def:ccm-tn-window-form} gives exactly the real
+Loewner data of \cref{def:ccm-tn-loewner}, with
+\[
+ a_j=\mathcal D\bigl(2(1-y/L)\cos(2\pi jy/L)\bigr),\qquad
+ b_j=-\pi^{-1}\mathcal D\bigl(\sin(2\pi jy/L)\bigr).
+\]
+Its reflection commutes with $Q_N$, and
+\[
+ [D,Q_N]=[D,T]=|\TNresponse\rangle\langle\eta|
+                    -|\eta\rangle\langle\TNresponse|.
+\]
+The displacement has rank at most two. Here $\eta$ represents
+boundary evaluation, not a physical bond vacuum.
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] Integrating two zero-extended modes on
+their overlap gives, for $m\ne n$ and $0\leq y\leq L$,
+\[
+ (u_m^**u_n)(y)=
+ \frac{e^{2\pi imy/L}-e^{2\pi iny/L}}{2\pi i(n-m)}.
+\]
+Adding the value at $-y$ gives
+$(\sin(2\pi my/L)-\sin(2\pi ny/L))/(\pi(n-m))$.
+For $m=n$ the sum is $2(1-y/L)\cos(2\pi ny/L)$.
+Applying $\mathcal D$ proves the entries.
+\item[$\langle1\rangle$2.] Reflection follows from even $a_j$ and
+odd $b_j$. Entrywise $(DQ_N-Q_ND)_{jk}=b_j-b_k$, including zero
+on the diagonal, which is the displayed rank-two expression.
+\item[$\langle1\rangle$3.] For a truncated Fourier vector,
+$\eta^*f=\sqrt L f(0)=\sqrt L f(L)$ by direct evaluation.
+Subtracting $\epsilon I$ does not alter the commutator.
+\end{enumerate}
+\end{proof}
+
+The position-space form is translation invariant before cutting the
+window; the Fourier-index matrix is generally Loewner, not Toeplitz.
+Boundary data survive the cut. In particular $\mathcal D=\delta_0$
+gives $2I$, whereas $\mathcal D=\delta'_0$ gives
+$(2/L)|\eta\rangle\langle\eta|$. The latter's globally even
+symmetrisation is zero on smooth full-line tests, but the zero-extended
+window functions have a corner at zero. This is why the half-interval
+prescription matters. An order-zero atom at $y=L$ contributes zero;
+endpoint derivatives need not.
+
+\begin{theorem}[The corrected frequency operator]
+\label{thm:ccm-tn-loewner-quotient}
+\claimstatus{thm:ccm-tn-loewner-quotient}{proved}
+Assume the real Loewner data and the even-simple minimum of
+\cref{def:ccm-tn-loewner}. Boundary normalisation $\eta^*\TNnull=1$
+is possible. The operator $D'=D-|D\TNnull\rangle\langle\eta|$
+descends to a self-adjoint $D''$ on the quotient with metric $T$.
+Its characteristic polynomial is
+\[
+ \det(D''-sI)=P_N(s)=\sum_{j=-N}^N\TNnull_j
+                      \prod_{\substack{k=-N\\k\ne j}}^N(k-s).
+\]
+It has degree $2N$, is even, and has only real roots counted with
+multiplicity. No assumption $\epsilon\geq0$ is required.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] The spectral theorem gives $T\geq0$ and
+$\ker T=\mathbb C\TNnull$. Take $\TNnull$ real. Reflection gives
+$\TNresponse^*\TNnull=0$. If $D\TNnull=0$, then $\TNnull$ is a nonzero multiple
+of the zero Fourier basis vector and $\eta^*\TNnull\ne0$.
+Otherwise $D\TNnull$ is nonzero odd and cannot lie in the even radical.
+The displacement applied to $\TNnull$ gives
+$-TD\TNnull=\TNresponse(\eta^*\TNnull)$, proving nonvanishing and, after
+normalisation, $TD\TNnull=-\TNresponse$.
+\item[$\langle1\rangle$2.] The oblique projector
+$P_0=I-|\TNnull\rangle\langle\eta|$ has range $\ker\eta^*$ and
+kernel $\mathbb C\TNnull$. Thus $D'=DP_0$ uniquely agrees with $D$
+on zero-boundary vectors and kills $\TNnull$. The correction is one
+boundary tensor: input covector $\eta^*$, output vector $D\TNnull$.
+\item[$\langle1\rangle$3.] Directly,
+\[
+ TD'=TD+\TNresponse\eta^*=DT+\eta\TNresponse^*=D'^*T.
+\]
+Since $D'\TNnull=0$, it descends to the quotient. The quotient metric
+is positive definite and finite-dimensional symmetry gives
+self-adjointness.
+\item[$\langle1\rangle$4.] Away from the integer grid, the rank-one
+determinant identity gives
+\[
+ \det(D'-sI)=-s\det(D-sI)\sum_j\frac{\TNnull_j}{j-s}.
+\]
+Indeed $(D-sI)^{-1}D\TNnull=\TNnull+s(D-sI)^{-1}\TNnull$ and
+$\eta^*\TNnull=1$. A basis starting with the killed vector $\TNnull$
+also gives $\det(D'-sI)=-s\det(D''-sI)$.
+Cancel away from zero and the grid; polynomial continuation proves
+the asserted formula everywhere.
+\item[$\langle1\rangle$5.] The coordinate sum is one, giving degree
+$2N$ and leading coefficient one. Relabelling $j\mapsto-j$ gives
+evenness. Self-adjointness gives reality of every root.
+\end{enumerate}
+\end{proof}
+
+For an ordinary Hermitian matrix in code, choose columns $C$ spanning
+$\TNnull^\perp$, set $G_C=C^*TC>0$ and $B=C^*D'C$; then
+$G_C^{1/2}BG_C^{-1/2}$ is Hermitian. The Euclidean compression
+$C^*DC$ generally represents a different operator.
+
+\subsection{What the nullvector's transform contributes}
+
+Away from the grid, $P_N(s)=0$ is the secular equation
+$\sum_j\TNnull_j/(j-s)=0$. At a grid value,
+\[
+ P_N(j)=\TNnull_j\prod_{k\ne j}(k-j).
+\]
+Thus grid roots require $\TNnull_j=0$ and are handled by the polynomial,
+not by treating every displayed denominator as a pole. The unquotiented
+$D'$ has an additional zero from the killed vector.
+There is no positive-residue assumption on $\TNnull_j$, hence no general
+one-root-per-gap rule.
+
+In centred length coordinates $t=\log u\in[-L/2,L/2]$, direct
+integration gives the entire transform of the window vector:
+\[
+ \widehat{\TNnull}(z)=\frac2{\sqrt L}\sin(zL/2)
+                    \sum_{j=-N}^N\frac{\TNnull_j}{z-2\pi j/L}.
+\]
+At an included grid point $2\pi j/L$ its value is
+$\sqrt L(-1)^j\TNnull_j$ by a limit. Outside the included grid the sine
+factor supplies the unchanged periodic Fourier tail. The finite
+quotient supplies the $2N$ modified spectral values, with the scale
+$2\pi/L$. This separates the finite polynomial, the meromorphic
+secular display, and the full entire transform.
+
+\begin{proposition}[Real output is not positivity or ordinary compression]
+\label{prop:ccm-tn-no-naive-compression}
+\claimstatus{prop:ccm-tn-no-naive-compression}{proved}
+For $N=1$ in the basis $(-1,0,1)$, let
+\[
+ Q_N=\begin{pmatrix}6&2&2\\2&1&2\\2&2&6\end{pmatrix},\quad
+ \TNresponse=(-2,0,2)^T,\quad\TNnull=(-1/2,2,-1/2)^T.
+\]
+The eigenvalues of $Q_N$ are $0,4,9$, the radical is simple even,
+and the quotient polynomial is $s^2-2$. Its roots lie outside the
+Fourier interval $[-1,1]$, so $D''$ is not an ordinary orthogonal
+compression of $D$. Replacing $Q_N$ by $Q_N-10I$ makes it negative
+definite and leaves the real CCM output unchanged.
+\end{proposition}
+\begin{proof}
+The independent vectors $\TNnull,(1,0,-1)^T,(2,1,2)^T$ have eigenvalues
+$0,4,9$ by multiplication. Substitution in the characteristic formula
+gives $s^2-2$. Every Rayleigh quotient of $D$ lies in $[-1,1]$,
+as does every ordinary orthogonal compression's spectrum.
+Adding a scalar to $Q_N$ adds the same scalar to its minimum and
+leaves $T,\TNnull,D',D''$ unchanged.
+\end{proof}
+
+The Fourier reflection $J$ used by even-simplicity is not the physical
+fermion parity. In particular an even minimum of the Fourier form
+does not identify the quotient with a physically odd bond sector.
+
+\begin{observation}[Rejected: ordinary compression of the scaling operator]
+\label{obs:ccm-tn-naive-compression}
+\claimstatus{obs:ccm-tn-naive-compression}{refuted}
+Rejected assertion: for every finite CCM Loewner window, $D''$ is an
+ordinary Euclidean orthogonal compression of the input diagonal $D$.
+\Cref{prop:ccm-tn-no-naive-compression} gives frequencies
+$\pm\sqrt2$ outside the spectral interval of $D$.
+The surviving operator is the corrected quotient in the $T$ metric.
+\end{observation}

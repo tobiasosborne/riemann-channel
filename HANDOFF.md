@@ -2,6 +2,23 @@
 
 # HANDOFF — riemann-channel
 
+## Active focus (TJO, 2026-09-18): CCM in tensor-network terms
+
+TJO has made understanding the Connes--Consani--Moscovici algorithm in the
+project's tensor-network language the current focus: the Weil form as a
+bond/transfer-space contraction, its kernel, the reconstructed operator,
+and the continuous/graded extensions. Campaign record:
+`notes/ccm-tensor-network/BRIEF.md`, decisions in `ISSUES.md` alongside it.
+Use rk-light: addressable proofs, the existing claim/definition/provenance
+databases, red-capable checks, and adversarial review before promotion.
+The investigation is written in new shards `02i` and `03g`--`03l`, with
+entry point `notes/ccm-tensor-network.md`. The finite Gram, support kernel,
+clock/history Hamiltonians, continuous boundary correction and conditional
+smeared/intertwining formulations have separate proofs and review scopes.
+The physical Riemann bond and increasing-window identification remain open.
+Trace data lose Jordan structure; native and reconstructed metrics differ.
+
+
 ## Current state (2026-09-18, night: `ihz/` built, G1-G3 of the Ihara plan, exact anchor and certified ball stage on twelve graphs and a curve, non-Ramanujan trajectories certified; evening: MVP-2 (Ihara zeta of graphs) planned, `notes/zeta-spectral-triples/ihara/plan.md`, five lanes, prototype exact at the critical window; morning: `zst` benchmark to x = 50 certified, report in `notes/zeta-spectral-triples/report-2026-09-18.md`; 2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`

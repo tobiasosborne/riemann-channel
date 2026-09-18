@@ -17,6 +17,13 @@ produced them.
 
 ## The working picture
 
+**Current focus (2026-09-18): CCM in tensor-network terms.** The new lab-book
+shards `02i` and `03g`--`03l` develop the Weil form as a metric-dependent
+Gram matrix of open transfer powers, its kernel and moment reconstruction,
+the CCM boundary correction, and the nullvector's clock/parent-Hamiltonian
+interpretations. Start with [the reading guide](notes/ccm-tensor-network.md).
+The arithmetic Riemann bond and increasing-window identification remain open.
+
 Every zeta function in sight has two sides.
 
 - **Side A, the gas.** A nonnegative count of closed orbits (prime cycles

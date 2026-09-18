@@ -1,0 +1,98 @@
+% SHARD-ID: RC-03J-CCM-TENSOR-EXAMPLES
+% SHARD-TITLE: CCM in Tensor-Network Terms IV: an Exact Elliptic-Curve Example
+% SHARD-SUMMARY: Works through the retained F5 Pauli companion, its positive metric, and a three-length Weil matrix with an exact annihilating polynomial.
+% SHARD-SUMMARY: Separates the spectral support recovered from counts from the physical Pauli letters and shows why the native Hilbert-Schmidt contraction gives the wrong Gram matrix.
+% SHARD-KEYWORDS: CCM, Pauli channel, elliptic curve, F5, Gram matrix, metric, minimal polynomial
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/ccm_tensor_network.py
+
+\section{CCM in Tensor-Network Terms IV: an Exact Example}
+\label{sec:ccm-tn-examples}
+
+The net retained values of the graded nonbacktracking edge lift of
+the six-letter Pauli example in \cref{sec:graded-ramanujan} are
+$-1\pm2i$, of modulus $\sqrt5$; they are not eigenvalues of its
+raw doubled adjacency transfer, whose spectrum is $6,-2,-2,-2$.
+Here is the entire reconstruction on their two-dimensional companion
+representative. It is small enough to exhibit every contraction exactly.
+
+\begin{proposition}[The F5 retained companion and its Weil kernel]
+\label{prop:ccm-tn-pauli}
+\claimstatus{prop:ccm-tn-pauli}{proved}
+For
+\[
+ E=\frac1{\sqrt5}\begin{pmatrix}0&-5\\1&-2\end{pmatrix},\qquad
+ \TNmetric=\begin{pmatrix}1&-1\\-1&5\end{pmatrix},
+\]
+the metric is positive and $E^*\TNmetric E=\TNmetric$. The three-length
+moment matrix is
+\[
+ W^{(3)}=\begin{pmatrix}
+ 2&-2/\sqrt5&-6/5\\
+ -2/\sqrt5&2&-2/\sqrt5\\
+ -6/5&-2/\sqrt5&2
+ \end{pmatrix}.
+\]
+Its eigenvalues are $0,14/5,16/5$, and its kernel is spanned by
+$\TNnull=(1,2/\sqrt5,1)^T$. Thus the kernel gives precisely
+$E^2+(2/\sqrt5)E+I=0$. This matrix is the $G$-Hilbert--Schmidt Gram of
+$I,E,E^2$, whereas it is not their ordinary Hilbert--Schmidt Gram.
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] The leading minors of $\TNmetric$ are $1,4$;
+direct multiplication gives $E^*\TNmetric E=\TNmetric$.
+\item[$\langle1\rangle$2.] Direct multiplication also gives the quadratic
+relation, and $E$ is not scalar, so the polynomial is minimal. Taking
+traces gives $t_0=2,t_1=-2/\sqrt5,t_2=-6/5$, hence the displayed matrix
+by \cref{def:ccm-tn-moments}.
+\item[$\langle1\rangle$3.] Its characteristic polynomial is
+$s(s-14/5)(s-16/5)$ and $W^{(3)}\TNnull=0$, proving the rank and kernel.
+\item[$\langle1\rangle$4.] Step 1 implies $E^\sharp=E^{-1}$, hence
+$\Tr((E^j)^\sharp E^k)=t_{k-j}$. But
+$\Tr(E^*E)=6\ne2=W^{(3)}_{11}$, disproving the native-metric identity.
+\end{enumerate}
+\end{proof}
+
+\subsection{Reading the diagram from counts to the bond relation}
+
+The unnormalised data are
+\[
+ N_k=1+5^k-\bigl((-1+2i)^k+(-1-2i)^k\bigr).
+\]
+Thus $N_0=0,N_1=8,N_2=32$. Remove the known even contribution with
+the correct sign and scale the odd part:
+\[
+ t_k=5^{-k/2}(1+5^k-N_k).
+\]
+The resulting $W^{(3)}$ is built from three ring lengths. Its nullvector
+specifies three open transfer networks whose coherent sum vanishes:
+\[
+ \underbrace{I}_{\text{length }0}
+ +\frac2{\sqrt5}\underbrace{E}_{\text{length }1}
+ +\underbrace{E^2}_{\text{length }2}=0.
+\]
+The kernel polynomial has roots $(-1\pm2i)/\sqrt5$; multiplication
+by $z$ modulo that polynomial is the recovered two-dimensional moment
+shift. The six Pauli letters supply these data through the graded
+nonbacktracking edge lift and cancellation of its even/odd common
+factors. The moment problem does not output those six letters.
+
+The metric is equally tangible. Closing the open networks with
+$A^\sharp=\TNmetric^{-1}A^*\TNmetric$ gives the correct overlaps;
+closing with $A^*$ gives a different network. Similarity of transfer
+matrices preserves ring traces while changing this uncorrected closure.
+
+\subsection{Independent evidence}
+
+The deterministic checker \texttt{scripts/ccm\_tensor\_network.py}
+also checks the permutation $(1\ 2)(3\ 4\ 5)$, whose five-dimensional
+permutation representation has only four distinct spectral values.
+Its kernel polynomial is $(z^2-1)(z^2+z+1)$ and the recovered cyclic
+space has dimension four. The repeated eigenvalue $1$ survives as a
+weight, not as two independent moment vectors.
+Complex phases test the clock conjugation convention; a Jordan block
+tests the limit of spectral reconstruction; and the exact CCM toy in
+the preceding shard tests the boundary correction.
+These computations are finite evidence for the formulas, separate from
+their proofs and from any infinite spectral convergence claim.

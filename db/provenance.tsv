@@ -150,3 +150,5 @@ prov:dz13-lefschetz	1306.4203	zeta.tex	525-526	\det ( I - \mathcal P_\gamma ) = 
 prov:dfg14-horocyclic	1403.0256	RuelleResonForHn.tex	543-544	[X,U_\pm]=\pm U_\pm,\quad [U_+,U_-]=2X.	cit:dfg-horocyclic
 prov:dfg14-pushforward	1403.0256	RuelleResonForHn.tex	601-604	u\in\Res^0_X(\lambda)\mapsto  f(x):=\int_{S_x M} u(x,\xi)\,dS(\xi) \end{equation} is an isomorphism from $\Res^0_X(\lambda)$ onto $\Eig(-\lambda(1+\lambda))$,	cit:dfg-first-band-pushforward
 prov:bls18-selberg-level	1803.06016	main.tex	121-122	The Selberg eigenvalue conjecture is true for $\Gamma_1(N)$ for $N\leq 880$, and for $\Gamma(N)$ for $N\leq 226$.	cit:bls-selberg-level-one
+prov:ccm25-tn-correlation	2511.22755	mc2arXiv.tex	466	QW(f,g)=\Psi(f^**g), \ \	prop:ccm-tn-loewner-displacement
+prov:ccm25-tn-displacement	2511.22755	mc2arXiv.tex	840	D\, T-T\, D=\vert \beta\rangle\langle \eta\vert -\vert \eta\rangle\langle \beta\vert, \ \ \beta=\sum b_j\,V_j,\ \ \eta=\sum V_j.	thm:ccm-tn-loewner-quotient

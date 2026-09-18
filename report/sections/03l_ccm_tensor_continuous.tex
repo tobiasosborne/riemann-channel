@@ -1,0 +1,178 @@
+% SHARD-ID: RC-03L-CCM-TENSOR-CONTINUOUS
+% SHARD-TITLE: CCM in Tensor-Network Terms VI: Smeared Transfers and the Infinite Bond
+% SHARD-SUMMARY: Gives the finite and infinite smeared Hilbert-Schmidt Gram formulations and the precise summability required for a transfer-flow interpretation.
+% SHARD-SUMMARY: Proves an exact intertwining in a supplied finite spectral model with zero unshifted minimum and records why the Riemann bond identification remains open.
+% SHARD-KEYWORDS: CCM, cMPS, transfer flow, smeared operator, Hilbert-Schmidt, Riemann, intertwining, infinite trace
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{CCM in Tensor-Network Terms VI: Smeared Transfers}
+\label{sec:ccm-tn-continuous}
+
+The continuous analogue of $\sum_jc_jE^j$ is a coherent integral of
+open transfer propagators. This gives a natural tensor network when
+the propagator and its positive metric have been supplied. Constructing
+those objects arithmetically is a separate question.
+
+\begin{proposition}[Finite smeared transfer Gram]
+\label{prop:ccm-tn-continuous-smeared-gram}
+\claimstatus{prop:ccm-tn-continuous-smeared-gram}{proved}
+For a finite-dimensional self-adjoint $H$, set $U(t)=e^{-itH}$ and
+$F_f$ as in \cref{def:ccm-tn-continuous}. For integrable compactly
+supported $f,g$,
+\[
+ \iint\overline{f(x)}g(y)\Tr U(y-x)\,dx\,dy
+       =\Tr(F_f^*F_g).
+\]
+In a finite test basis the unshifted Gram nullspace consists exactly
+of superpositions with $\sum_jc_jF_{f_j}=0$.
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] The group law gives $U(x)^*U(y)=U(y-x)$.
+Expand the two operator integrals; finite-dimensional Fubini gives
+the identity.
+\item[$\langle1\rangle$2.] The contraction is explicitly
+$\sum_{a,b}\overline{(F_f)_{ab}}(F_g)_{ab}$, joining the two open
+transfer indices. Its Gram norm vanishes exactly when the operator
+superposition vanishes.
+\end{enumerate}
+\end{proof}
+
+For a cMPS, the propagators initially act on the doubled bond:
+\[
+ \mathcal L=K\otimes I+I\otimes\bar K+\sum_a R_a\otimes\bar R_a.
+\]
+The existing Dyson expansion of \cref{thm:cmps-ring-norms} supplies
+its positive-length ring norms from local propagators and jumps.
+A centred retained part $\mathcal L-aI=-iH$ supplies the proposition
+only if it is skew-adjoint in the chosen positive metric. The
+half-plane bound, line duality and semisimplicity remain separate
+inputs (\cref{thm:weil-positivity-continuous,thm:weil-line-duality,prop:hp-inner-product-continuous}).
+The smeared operators have another pair of open transfer indices;
+their Gram is not the physical cMPS overlap at two different lengths.
+
+\begin{proposition}[Infinite smearing and the raw-trace obstruction]
+\label{prop:ccm-tn-infinite-smeared-gram}
+\claimstatus{prop:ccm-tn-infinite-smeared-gram}{proved}
+Suppose a self-adjoint $H$ has an orthonormal eigenbasis with real
+eigenvalues $\gamma_r$, repeated with multiplicity, and its locally
+finite counting measure $\TNmeasure=\sum_r\delta_{\gamma_r}$ has polynomial
+growth. For $f,g\in C_c^\infty(\mathbb R)$, the operators
+$F_f=\widehat f(H),F_g=\widehat g(H)$ are Hilbert--Schmidt and
+\[
+ W(f,g)=\sum_r\overline{\widehat f(\gamma_r)}\widehat g(\gamma_r)
+       =\Tr(F_f^*F_g).
+\]
+This defines a distributional correlation form. On an infinite
+Hilbert space the unsmeared unitary $U(t)$ is never Hilbert--Schmidt
+or trace class, so its proposed raw Gram has infinite diagonal.
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] Repeated integration by parts gives rapid
+Fourier decay. Polynomial counting growth makes
+$\sum_r|\widehat f(\gamma_r)|^2$ finite, and similarly for $g$.
+Spectral calculus gives Hilbert--Schmidt operators.
+\item[$\langle1\rangle$2.] Cauchy--Schwarz makes the cross sum
+absolutely convergent. The product of the two Hilbert--Schmidt
+operators is trace class and its diagonal trace is the displayed sum.
+\item[$\langle1\rangle$3.] Define the tempered distribution
+$W(h)=\sum_r\widehat h(\gamma_r)$.
+The Fourier identity
+$\widehat{f^**g}=\overline{\widehat f}\widehat g$ proves the
+correlation interpretation, without an intermediate pointwise trace.
+\item[$\langle1\rangle$4.] For an infinite-dimensional unitary,
+$\|U(t)\|_{\mathrm{HS}}^2=\Tr I=\infty$. Trace class would imply
+Hilbert--Schmidt, so that too fails.
+\end{enumerate}
+\end{proof}
+
+A general positive spectral measure gives features in $L^2(\TNmeasure)$,
+but need not give an operator trace on a specified physical bond.
+When its total mass is infinite, the constant feature is not a
+normalisable cyclic vector. The zero-extended Fourier-window functions
+also are not smooth compactly supported tests: applying the proposition
+to them needs a separate summability/domain argument. For counting
+growth $O(R\log R)$, their $O((1+|\gamma|)^{-1})$ transforms do give
+square summability, with the endpoint form still specified separately.
+
+\begin{proposition}[Exact intertwining when an unshifted model is given]
+\label{prop:ccm-tn-exact-continuous-intertwiner}
+\claimstatus{prop:ccm-tn-exact-continuous-intertwiner}{proved}
+In addition to the hypotheses of
+\cref{thm:ccm-tn-loewner-quotient}, suppose a finite self-adjoint $H$
+realises the \emph{unshifted} window form by the preceding finite
+Gram construction and $\epsilon=0$. Then the feature map descends
+isometrically from the CCM quotient onto its range in operator space,
+and intertwines $(2\pi/L)D''$ with left multiplication by $H$.
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item[$\langle1\rangle$1.] In $[0,L]$ coordinates let
+$\TNnull_b=\sqrt L\TNnull$, so $\TNnull_b(0)=\TNnull_b(L)=1$.
+For periodic $f$, integration by parts gives
+\[
+ F_{-if'}=HF_f-if(0)(e^{-iLH}-I).
+\]
+\item[$\langle1\rangle$2.] The zero unshifted Gram norm gives
+$F_{\TNnull_b}=0$. Apply Step 1 to $\TNnull_b$ and subtract $f(0)$
+times that identity. The boundary terms cancel and yield
+\[
+ F_{-if'-(-i\TNnull_b')f(0)}=HF_f.
+\]
+The input on the left is precisely the physically scaled $D'f$.
+\item[$\langle1\rangle$3.] The Gram identity identifies the radical
+with the feature kernel and makes the quotient map isometric onto
+its range. Step 2 makes this range invariant under self-adjoint
+left multiplication by $H$, proving the claim.
+\end{enumerate}
+\end{proof}
+
+This is the exact finite bridge between the two descriptions. It
+recovers a cyclic space of functions of $H$, not all physical
+multiplicity vectors. For $\epsilon>0$ the original feature map
+satisfies $\|F_{\TNnull}\|_{\mathrm{HS}}^2=\epsilon\|\TNnull\|^2$ and does
+not even descend to the CCM quotient. The shifted matrix has its own
+Gram factor $T^{1/2}$, which is not thereby an arithmetic transfer flow.
+
+\subsection{What is still missing for the Riemann tensor network}
+
+The explicit formula supplies the correlation distribution without
+constructing a bond. Under RH its zero-side pairing becomes a positive
+spectral Gram; this is a conditional realisation, not a construction
+from the physical letters. In general it pairs each zero with its
+functional-equation partner, as in
+\cref{obs:weil-zeta-dictionary,cit:weil-criterion}.
+For a graded transfer, the corresponding expression is the difference
+of even and odd smeared Gram norms. One must know the sector to be
+moved across before obtaining a positive odd Gram.
+
+\begin{observation}[The remaining bond identification]
+\label{obs:ccm-tn-riemann-bond-open}
+\claimstatus{obs:ccm-tn-riemann-bond-open}{open}
+The missing construction is an arithmetic retained transfer flow with
+a specified positive metric and distributional trace, together with
+an isometry/intertwiner from the CCM window quotients and control of
+their increasing-window limit. Neither the finite quotient theorem
+nor the clock-history Hamiltonian supplies such a Riemann cMPS bond,
+its local letters, its stationary density, or its physical grading.
+\end{observation}
+
+The fixed-window real-zero theorem of
+\cite{connes2025quadratic} concerns a semibounded closed form with a
+simple isolated even minimum. Convergence of suitably normalised
+entire approximants to the completed zeta function as the window also
+grows is a further step. It would exclude off-line zeros by a complex
+analytic limit argument; finite real spectra and accurate matches to
+known zeros alone do not provide that step.
+
+\begin{observation}[Rejected: a finite raw Gram of an infinite unitary flow]
+\label{obs:ccm-tn-raw-infinite-gram}
+\claimstatus{obs:ccm-tn-raw-infinite-gram}{refuted}
+Rejected assertion: on an infinite-dimensional Hilbert space,
+$\Tr(U(s)^*U(t))$ is a finite Hilbert--Schmidt Gram kernel for a
+unitary flow. Its diagonal is $\Tr I=\infty$.
+\Cref{prop:ccm-tn-infinite-smeared-gram} gives the surviving smeared
+form under explicit summability hypotheses.
+\end{observation}

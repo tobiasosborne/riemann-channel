@@ -195,3 +195,14 @@ Resfb	\operatorname{Res}^0_{\mathcal X}	first-band resonant states {u : (X + lam
 lapeig	\sigma_{\!\Lap}	Laplace eigenvalue sigma = s(1-s) of the surface in the Selberg-letters shard, with multiplicity d_sigma	Selberg	RC-03E	distinct from sigs (real part of s)
 tsamp	\tau_{\mathrm{s}}	sampling time of the geodesic flow (lattice step) in the Selberg-letters shard	Selberg	RC-03E	-
 trunc	\Lambda^{Y}	Maass-Selberg truncation of an Eisenstein series at height Y	modular	RC-03F	-
+TNaux	\mathcal B_{\mathrm{aux}}	physical MPS auxiliary space	CCM tensor-network reconstruction	RC-02I	-
+TNspace	\mathcal V_{\mathrm{tr}}	doubled transfer space including edge register for a lift	CCM tensor-network reconstruction	RC-02I	-
+TNret	\mathcal V_{\mathrm{ret}}	specified nonzero retained invariant transfer space	CCM tensor-network reconstruction	RC-02I	-
+TNmoment	\mathcal H_{\mathrm{mom}}	weighted cyclic moment quotient	CCM tensor-network reconstruction	RC-02I	-
+TNmetric	G_{\mathrm{ret}}	positive metric on retained transfer space	CCM tensor-network reconstruction	RC-02I	-
+TNGram	W^{(K)}	K-length Weil moment matrix with entry t_{k-j}	CCM tensor-network reconstruction	RC-02I	-
+TNfeature	\mathcal F_K	length coefficients to polynomial in retained transfer	CCM tensor-network reconstruction	RC-02I	-
+TNhistory	|\Omega_K\rangle	conjugated-feature transfer history with clock marginal W	CCM tensor-network reconstruction	RC-02I	-
+TNnull	\boldsymbol{\xi}	CCM least window vector or exact finite radical vector	CCM window reconstruction	RC-02I	distinct from completed zeta cxi
+TNresponse	\boldsymbol{\beta}	CCM boundary displacement response vector	CCM Loewner window	RC-02I	distinct from inverse temperature
+TNmeasure	\mu_{\mathrm{sp}}	positive spectral measure for smeared features	continuous CCM features	RC-02I	distinct from an edge eigenvalue
