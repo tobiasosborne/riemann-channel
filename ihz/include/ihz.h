@@ -40,6 +40,8 @@
 #include <flint/fmpz_mat.h>
 #include <flint/fmpz_poly.h>
 #include <flint/fmpz_poly_factor.h>
+#include <flint/fmpz_vec.h>
+#include <flint/arb_fmpz_poly.h>
 #include <flint/fmpq_mat.h>
 #include <flint/arb.h>
 #include <flint/acb.h>
