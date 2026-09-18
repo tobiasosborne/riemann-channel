@@ -23,3 +23,6 @@ notes/yolo-lindblad/finite/__pycache__/
 notes/zeta-conditions/*.log
 notes/zeta-conditions/*.stdout
 notes/zeta-conditions/finite/__pycache__/
+
+# ihz build artefacts
+ihz/build/
