@@ -121,7 +121,8 @@ void ihz_even_block(arb_mat_t E, const ihz_weil_t *W, slong Mp, slong prec);   /
 void ihz_odd_block(arb_mat_t O, const ihz_weil_t *W, slong Mp, slong prec);    /* Mp^2 */
 /* even-block vector c (length Mp+1) -> xi (length 2Mp+1, index j+Mp). */
 void ihz_even_to_full(arb_ptr xi, arb_srcptr c, slong Mp, slong prec);
-/* Integer matrix (DTD)_{jk} = q^{min(j,k)} c_{|j-k|}, K x K, K = 2Mp+1 (sign included in c's sign). */
+/* Integer matrix D T D, (DTD)_{jk} = sign * q^{min(j,k)} c_{|j-k|}, K x K, K = 2Mp+1: the true congruence
+ * with D = diag(r^j), so rank, kernel AND positivity agree with T. */
 void ihz_toeplitz_exact(fmpz_mat_t DTD, const ihz_weil_t *W, slong Mp);
 
 /* ---------------------------------------------------------------- rank.c (exact) */
