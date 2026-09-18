@@ -23,3 +23,10 @@ total 2498.49s
 == 00:27:11 x=60 N=600 prec=2500 -> ../notes/zeta-spectral-triples/bench/x60_N600_p2500.txt
 total 5694.88s
 == 02:35:55 x=50 N=500 prec=2100 -> ../notes/zeta-spectral-triples/bench/x50_N500_p2100.txt
+total 457.21s
+== 02:43:32 x=60 N=600 prec=2500 -> ../notes/zeta-spectral-triples/bench/x60_N600_p2500.txt
+total 997.84s
+== 03:00:10 x=80 N=800 prec=3300 -> ../notes/zeta-spectral-triples/bench/x80_N800_p3300.txt
+total 3323.22s
+== 03:55:34 x=100 N=1000 prec=4000 -> ../notes/zeta-spectral-triples/bench/x100_N1000_p4000.txt
+== 05:28:43 x=60 N=600 prec=2500 -> ../notes/zeta-spectral-triples/bench/x60_N600_p2500.txt

@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-18: `zst` benchmark to x = 50 certified, report in `notes/zeta-spectral-triples/report-2026-09-18.md`; 2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -108,7 +108,14 @@ implementation of the paper's algorithm, as a possible standalone repository. De
   Selberg compact and modular (H-CUSP-BRIDGE test), and the notebook's graded divisor formulation
   run through one pipeline; certified eigenpair (inverse iteration + Rump + LDL inertia for
   even-simplicity), certified roots, adaptive precision; milestones M0 (done) to M5.
-- **MVP done (afternoon, `zst/` in this repo; TJO: keep it here for now).** M1 and M2 of the plan:
+- **Benchmark (evening of the 17th into the 18th; `notes/zeta-spectral-triples/report-2026-09-18.md`,
+  `benchmark.md`, `bench/`).** Certified through x = 50 (N = 500, 2100 bits, 8 min): first zero to
+  2.9e-249, 211 zeros below 1e-50, 341 below 1e-3. Laws: first-zero accuracy `e^{-4 pi x}` (5.4 digits
+  per unit x, N-independent); error at height gamma grows like `10^{0.37 gamma}`; N saturates at
+  7.5 x. Four scale-induced defects fixed test-first (worklog 2026-09-18): positive-definiteness
+  certificate replaces interval LDL, sign-scan candidates replace QR, rigorous dedupe, mean-value
+  Newton verifier. x = 100 not completed (memory). TJO asked to wind up; work stopped here.
+- **MVP done (afternoon of the 17th, `zst/` in this repo; TJO: keep it here for now).** M1 and M2 of the plan:
   certified `(a_n, b_n)`, Krawczyk-verified minimal eigenpair, ball-`LDL^T` inertia certifying the
   even-simple hypothesis, QR candidates plus interval-Newton roots with completeness by count,
   comparison with `acb_dirichlet_zeta_zeros`. `x = 13, N = 120, 700 bits` in 5 s returns the paper's

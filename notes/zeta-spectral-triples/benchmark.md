@@ -22,9 +22,16 @@ below `1e-d`; times in seconds (build, eigenpair, even-simple certificate, roots
    30   450  1300  2.13e-150      2.08e-146      78     106     124     148    172    Y    1.6  34.7  23.6  657*    719*
    40   400  1700  2.90e-204      3.01e-200     140     177     198     225    251    Y    2.2  33.7  23.5   58     119
 
+   50   400  2100  3.31e-258      1.54e-249     (only 5 zeros compared in this run)               Y    3.4  76.7  49.9   132     262
+   50   500  2100  2.16e-258      2.88e-249     211     253     277     308    341    Y    4.3 131.4  93.1   224     457
+
 (*) roots stage with the QR candidate generator; the sign-scan generator (later the same day) does
-the x = 40 case in 58 s instead of 612 s with the identical table. Rows for x = 50, 60, 80, 100 are
-appended below as they complete.
+the x = 40 case in 58 s instead of 612 s with the identical table. The x = 50 rows use the final code
+(sign scan, mean-value Newton verifier). x = 60 (N = 600, 2500 bits) and x = 80 (N = 800, 3300 bits,
+55 min, 2.4 GB peak) completed with complete certified spectra but their output files were lost to a
+cleanup mistake before the tables were extracted; x = 60 was rerun at the end (see `bench/` if the
+file is present). x = 100 (N = 1000, 4000 bits) was OOM-killed at the 10.7 GB cgroup limit with the
+first version of the code and was not completed after the memory rework.
 
 Selected certified errors at x = 40 (N = 400): zero 1: 3.0e-200, zero 50: 1.6e-118, zero 100:
 3.5e-80, zero 150: 1.0e-45, zero 200: 8.5e-20, zero 250: 2.0e-4, zero 300: 4.2 (meaningless).
@@ -32,7 +39,7 @@ Selected certified errors at x = 40 (N = 400): zero 1: 3.0e-200, zero 50: 1.6e-1
 ## What the table says
 
 1. **Accuracy of the first zero is exponential in x and independent of N.** `log10 err(z1) ~ -5.4 x + 15`
-   (x = 13: -54.6; 20: -91.9; 30: -145.6; 40: -199.5), i.e. 5.4 digits per unit of x, matching
+   (x = 13: -54.6; 20: -91.9; 30: -145.6; 40: -199.5; 50: -248.5), i.e. 5.4 digits per unit of x, matching
    `e^{-4 pi x}` (4 pi / ln 10 = 5.46), the decay of the prolate eigenvalue defect `1 - chi_4(lambda)`
    the paper's Section 7 points to. With only the primes up to 40 the first zero is certified to 200
    digits. N does not enter: at x = 20, N = 100, 150, 200 give 3e-91, 1.5e-92, 1.2e-92.
@@ -40,7 +47,7 @@ Selected certified errors at x = 40 (N = 400): zero 1: 3.0e-200, zero 50: 1.6e-1
    `log10 err(z_k) ~ log10 err(z1) + 0.37 gamma_k` (x = 13: from -55 at gamma = 14 to -2.7 at
    gamma = 143; x = 40: from -200 at 14 to -3.7 at 555). So the number of usable zeros grows linearly
    in x: zeros with certified error below 1e-3 reach `gamma_max ~ 14.6 x - 40` (x = 13: 143; 20: 254;
-   30: 402; 40: 555), and below 1e-50, `gamma_max ~ 14.6 x - 170`.
+   30: 402; 40: 555; 50: 700), and below 1e-50, `gamma_max ~ 14.6 x - 170`.
 3. **N saturates at about 7.5 x.** x = 20: N = 100 gives 84 zeros below 1e-3, N = 150 and 200 give 95;
    x = 30: N = 300 and 450 both give 172. The bandwidth needed is `s_max = gamma_max L / 2 pi ~ 2.3 x`
    (x = 40: s_max = 326 for gamma = 555), and N ~ 1.5 s_max suffices; beyond that N only adds
