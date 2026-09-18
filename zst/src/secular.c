@@ -30,34 +30,36 @@
 
 typedef struct { arb_srcptr xi; slong N; slong j; } sec_param;
 
-/* ball evaluation of h_j and its derivative at s (j < N: P = (j-s)(j+1-s); j >= N: P = (N - s)) */
+/* ball evaluation of h_j and its first two derivatives at s (j < N: P = (j-s)(j+1-s); j >= N: P = (N - s));
+ * h2 may be NULL */
 static void
-sec_raw(arb_t h0, arb_t h1, const arb_t s, const sec_param *P, slong prec)
+sec_raw2(arb_t h0, arb_t h1, arb_t h2, const arb_t s, const sec_param *P, slong prec)
 {
     slong k, N = P->N, j = P->j;
-    arb_t Pv, Pd, t, u, den;
-    arb_init(Pv); arb_init(Pd); arb_init(t); arb_init(u); arb_init(den);
+    arb_t Pv, Pd, t, u, w, den;
+    int quad = (j < N);
+    arb_init(Pv); arb_init(Pd); arb_init(t); arb_init(u); arb_init(w); arb_init(den);
 
-    if (j < N)
-    {   /* P = (j - s)(j+1 - s), P' = 2s - 2j - 1 */
+    if (quad)
+    {   /* P = (j - s)(j+1 - s), P' = 2s - 2j - 1, P'' = 2 */
         arb_sub_si(t, s, j, prec); arb_neg(t, t);
         arb_sub_si(u, s, j + 1, prec); arb_neg(u, u);
         arb_mul(Pv, t, u, prec);
         arb_mul_2exp_si(Pd, s, 1); arb_sub_si(Pd, Pd, 2 * j + 1, prec);
     }
     else
-    {   /* P = (N - s), P' = -1 */
+    {   /* P = (N - s), P' = -1, P'' = 0 */
         arb_sub_si(Pv, s, N, prec); arb_neg(Pv, Pv);
         arb_set_si(Pd, -1);
     }
-    arb_zero(h0); arb_zero(h1);
+    arb_zero(h0); arb_zero(h1); if (h2) arb_zero(h2);
     for (k = -N; k <= N; k++)
     {
         arb_srcptr xk = P->xi + (k < 0 ? -k : k);
-        if (k == j || (j < N && k == j + 1))
+        if (k == j || (quad && k == j + 1))
         {
-            if (j < N)
-            {   /* P/(k - s) = (other - s): value (other - s), derivative -1 */
+            if (quad)
+            {   /* P/(k - s) = (other - s): value (other - s), derivative -1, second derivative 0 */
                 arb_sub_si(t, s, (k == j) ? j + 1 : j, prec); arb_neg(t, t);
                 arb_addmul(h0, xk, t, prec);
                 arb_sub(h1, h1, xk, prec);
@@ -66,15 +68,46 @@ sec_raw(arb_t h0, arb_t h1, const arb_t s, const sec_param *P, slong prec)
                 arb_add(h0, h0, xk, prec);         /* P/(N - s) = 1 */
             continue;
         }
-        /* f = P/u, u = k - s, u' = -1:  f' = (P' u + P)/u^2 */
+        /* f = P/u, u = k - s, u' = -1:  f' = (P' u + P)/u^2,  f'' = (P'' u^2 + 2 P' u + 2 P)/u^3 */
         arb_sub_si(den, s, k, prec); arb_neg(den, den);
         arb_div(t, Pv, den, prec);
         arb_addmul(h0, xk, t, prec);
         arb_mul(t, Pd, den, prec); arb_add(t, t, Pv, prec);
         arb_sqr(u, den, prec); arb_div(t, t, u, prec);
         arb_addmul(h1, xk, t, prec);
+        if (h2)
+        {
+            if (quad) arb_mul_2exp_si(t, u, 1); else arb_zero(t);    /* P'' u^2 */
+            arb_mul(w, Pd, den, prec); arb_mul_2exp_si(w, w, 1); arb_add(t, t, w, prec);
+            arb_mul_2exp_si(w, Pv, 1); arb_add(t, t, w, prec);
+            arb_mul(u, u, den, prec); arb_div(t, t, u, prec);
+            arb_addmul(h2, xk, t, prec);
+        }
     }
-    arb_clear(Pv); arb_clear(Pd); arb_clear(t); arb_clear(u); arb_clear(den);
+    arb_clear(Pv); arb_clear(Pd); arb_clear(t); arb_clear(u); arb_clear(w); arb_clear(den);
+}
+
+static void
+sec_raw(arb_t h0, arb_t h1, const arb_t s, const sec_param *P, slong prec)
+{
+    sec_raw2(h0, h1, NULL, s, P, prec);
+}
+
+/* h'(X) over a box X in mean-value form h'(m) + h''(X)(X - m): the plain evaluation carries the full
+ * dependency error (sum |xi_k|) rad(X), which for the far roots exceeds h'^2/|h(m)| and makes Newton
+ * containment impossible at any radius (found at x = 50, N = 400). */
+static void
+sec_der_box(arb_t d, const arb_t X, const sec_param *P, slong prec)
+{
+    arb_t m, dm, h0, h1, h2, dx;
+    arb_init(m); arb_init(dm); arb_init(h0); arb_init(h1); arb_init(h2); arb_init(dx);
+    arb_get_mid_arb(m, X);
+    sec_raw2(h0, dm, NULL, m, P, prec);
+    sec_raw2(h0, h1, h2, X, P, prec);
+    arb_sub(dx, X, m, prec);
+    arb_addmul(dm, h2, dx, prec);
+    arb_set(d, dm);
+    arb_clear(m); arb_clear(dm); arb_clear(h0); arb_clear(h1); arb_clear(h2); arb_clear(dx);
 }
 
 void zst_secular_eval(arb_t val, arb_t der, const arb_t s, arb_srcptr xi, slong N, slong j, slong prec)
@@ -98,11 +131,17 @@ verify_root(arb_t r_out, const sec_param *P, const arb_t s0, slong prec)
         arb_set(X, s0); arb_add_error_2exp_si(X, e);
         arb_get_mid_arb(m, X);
         sec_raw(hm, dm, m, P, prec);
-        sec_raw(hX, dX, X, P, prec);
+        sec_der_box(dX, X, P, prec);
         if (arb_contains_zero(dX)) continue;
         arb_div(nx, hm, dX, prec); arb_sub(nx, m, nx, prec);
         if (arb_contains(X, nx) && mag_cmp(arb_radref(nx), arb_radref(X)) < 0)
             ok = 1;
+        if (getenv("ZST_DEBUG_VERIFY"))
+        {
+            flint_printf("verify e=%wd radX=", e); mag_printd(arb_radref(X), 3); flint_printf(" radnx="); mag_printd(arb_radref(nx), 3);
+            flint_printf(" contains=%d dX0=%d hm=", arb_contains(X, nx), arb_contains_zero(dX)); arb_printn(hm, 3, 0);
+            flint_printf(" dX="); arb_printn(dX, 3, 0); flint_printf(" ok=%d\n", ok);
+        }
     }
     if (ok)
     {
@@ -111,7 +150,7 @@ verify_root(arb_t r_out, const sec_param *P, const arb_t s0, slong prec)
         {
             arb_get_mid_arb(m, X);
             sec_raw(hm, dm, m, P, prec);
-            sec_raw(hX, dX, X, P, prec);
+            sec_der_box(dX, X, P, prec);
             if (arb_contains_zero(dX)) break;
             arb_div(nx, hm, dX, prec); arb_sub(nx, m, nx, prec);
             if (!arb_overlaps(nx, X)) break;
@@ -292,7 +331,7 @@ roots_from_candidates(arb_ptr roots, slong maxroots, slong *unresolved,
             arb_union(H, roots + j, roots + j - 1, prec);
             P.j = (slong) arf_get_d(arb_midref(H), ARF_RND_DOWN); if (P.j > N) P.j = N; if (P.j < 0) P.j = 0;
             arb_get_mid_arb(m, H);
-            sec_raw(hm, dm, m, &P, prec); sec_raw(hH, dH, H, &P, prec);
+            sec_raw(hm, dm, m, &P, prec); sec_der_box(dH, H, &P, prec);
             if (!arb_contains_zero(dH))
             {
                 arb_div(nx, hm, dH, prec); arb_sub(nx, m, nx, prec);
