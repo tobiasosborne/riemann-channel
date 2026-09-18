@@ -18,9 +18,29 @@ static void print_ball(const char *lab, const arb_t x) {
     printf("%s = ", lab); arb_printn(x, 20, 0); printf("   rad "); mag_printd(arb_radref(x), 3); printf("\n");
 }
 
+
+/* Certified MINIMUM eigenvalue of a real symmetric ball matrix. ihz_eigmin (inverse iteration) converges
+ * to the eigenvalue of smallest modulus, which is the minimum only when the matrix is PSD; shift by a
+ * bound s0 <= lambda_min first (s0 = -(||A||_F + 1)), so that A - s0 has all eigenvalues positive and
+ * its smallest-modulus eigenvalue is lambda_min - s0. Returns 1 on certification. */
+static int min_eig_certified(arb_t out, const arb_mat_t A, slong prec)
+{
+    slong n = arb_mat_nrows(A), i, j; arb_t s0, fro; arb_mat_t B; arb_ptr v; int ok;
+    arb_init(s0); arb_init(fro); arb_mat_init(B, n, n); v = _arb_vec_init(n);
+    arb_zero(fro);
+    for (i = 0; i < n; i++) for (j = 0; j < n; j++) arb_addmul(fro, arb_mat_entry(A, i, j), arb_mat_entry(A, i, j), prec);
+    arb_sqrt(fro, fro, prec); arb_add_ui(fro, fro, 1, prec); arb_neg(s0, fro);
+    arb_mat_set(B, A);
+    for (i = 0; i < n; i++) arb_sub(arb_mat_entry(B, i, i), arb_mat_entry(B, i, i), s0, prec);
+    ok = ihz_eigmin(out, v, B, 400, prec);
+    if (ok) arb_add(out, out, s0, prec); else arb_indeterminate(out);
+    arb_clear(s0); arb_clear(fro); arb_mat_clear(B); _arb_vec_clear(v, n);
+    return ok;
+}
+
 /* one window: returns 0 on success; fills summary fields */
 static int run_window(const ihz_weil_t *W, slong Mp, const ihz_spectrum_t *S, slong prec, int do_unitary,
-                      int verbose, arb_t eps_out, slong *nroots_out, slong *unres_out, arb_t maxerr_out, int *unit_ok)
+                      int verbose, arb_t eps_out, arb_t eps_odd_out, slong *nroots_out, slong *unres_out, arb_t maxerr_out, int *unit_ok)
 {
     slong K = 2 * Mp + 1, i;
     arb_mat_t E, O, T; arb_t eps; arb_ptr v, xi, theta, err; slong nroots, unres;
@@ -30,6 +50,11 @@ static int run_window(const ihz_weil_t *W, slong Mp, const ihz_spectrum_t *S, sl
     int ok = ihz_eigmin(eps, v, E, 200, prec);
     if (!ok) { printf("  Mp=%ld: eigmin FAILED to certify\n", Mp); arb_indeterminate(eps); }
     arb_set(eps_out, eps);
+    /* the odd block's minimal eigenvalue: the full T minimum is min(eps, eps_odd); negative iff off-circle pair (plan 1.5) */
+    arb_indeterminate(eps_odd_out);
+    if (Mp >= 1) min_eig_certified(eps_odd_out, O, prec);
+    /* the even block's true minimum, in case it is not the smallest-modulus eigenvalue */
+    { arb_t em; arb_init(em); if (min_eig_certified(em, E, prec) && !arb_overlaps(em, eps)) { if (verbose) { print_ball("  NOTE even block minimum differs from the smallest-modulus eigenvalue; minimum", em); } arb_set(eps_out, em); } arb_clear(em); }
     int cert = ok ? ihz_certify_even_simple(E, O, eps, v, prec) : 0;
     ihz_even_to_full(xi, v, Mp, prec);
     slong rank = ihz_rank_exact(W, Mp);
@@ -60,7 +85,7 @@ static int run_window(const ihz_weil_t *W, slong Mp, const ihz_spectrum_t *S, sl
     }
     if (verbose) {
         printf("  Mp=%ld K=%ld: exact rank %ld (kernel dim %ld)\n", Mp, K, rank, K - rank);
-        print_ball("  eps", eps);
+        print_ball("  eps_even", eps); print_ball("  eps_odd ", eps_odd_out);
         printf("  even-simple certificate: %s\n", cert ? "CERTIFIED" : "not certified (expected at eps = 0)");
         printf("  roots of R(theta) on [0,pi]: %ld certified, %ld unresolved\n", nroots, unres);
         for (i = 0; i < nroots; i++) { printf("    theta_%ld", i); print_ball("", theta + i); }
@@ -145,21 +170,21 @@ int main(int argc, char **argv)
             }
         } else printf("kernel at the critical window is not one-dimensional\n");
     }
-    arb_t eps, maxerr; arb_init(eps); arb_init(maxerr); slong nroots, unres; int uok;
+    arb_t eps, eps_odd, maxerr; arb_init(eps); arb_init(eps_odd); arb_init(maxerr); slong nroots, unres; int uok;
     if (scan) {
         slong Mmax = (Mc >= 0 ? Mc + 1 : W.M); if (Mmax > W.M) Mmax = W.M;
-        printf("\nscan  Mp   K  rank  kerdim  eps                          roots unres  maxerr(mid)   unitary\n");
+        printf("\nscan  Mp   K  rank  kerdim  eps_even                     eps_odd                      roots unres  maxerr(mid)   unitary\n");
         for (slong Mp = 0; Mp <= Mmax; Mp++) {
             slong rk = ihz_rank_exact(&W, Mp);
-            run_window(&W, Mp, have_S ? &S : NULL, prec, do_unitary, 0, eps, &nroots, &unres, maxerr, &uok);
-            printf("      %2ld  %2ld  %3ld  %3ld     ", Mp, 2 * Mp + 1, rk, 2 * Mp + 1 - rk); arb_printn(eps, 12, 0);
+            run_window(&W, Mp, have_S ? &S : NULL, prec, do_unitary, 0, eps, eps_odd, &nroots, &unres, maxerr, &uok);
+            printf("      %2ld  %2ld  %3ld  %3ld     ", Mp, 2 * Mp + 1, rk, 2 * Mp + 1 - rk); arb_printn(eps, 12, 0); printf("  "); arb_printn(eps_odd, 12, 0);
             printf("  %3ld  %3ld   ", nroots, unres); arb_printn(maxerr, 6, 0); printf("   %s\n", uok < 0 ? "-" : (uok ? "ok" : "FAIL"));
         }
     }
     slong Mrun = (Mc >= 0) ? Mc : W.M;
     printf("\nball stage at Mp=%ld (prec %ld):\n", Mrun, prec);
-    run_window(&W, Mrun, have_S ? &S : NULL, prec, do_unitary, 1, eps, &nroots, &unres, maxerr, &uok);
-    arb_clear(eps); arb_clear(maxerr);
+    run_window(&W, Mrun, have_S ? &S : NULL, prec, do_unitary, 1, eps, eps_odd, &nroots, &unres, maxerr, &uok);
+    arb_clear(eps); arb_clear(eps_odd); arb_clear(maxerr);
     if (have_S) ihz_spectrum_clear(&S);
     ihz_weil_clear(&W); fmpz_poly_clear(P); fmpz_poly_clear(Psf); fmpz_poly_clear(Q);
     flint_cleanup();

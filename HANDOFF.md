@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-18, evening: MVP-2 (Ihara zeta of graphs) planned, `notes/zeta-spectral-triples/ihara/plan.md`, five lanes, prototype exact at the critical window; morning: `zst` benchmark to x = 50 certified, report in `notes/zeta-spectral-triples/report-2026-09-18.md`; 2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-18, night: `ihz/` built, G1-G3 of the Ihara plan, exact anchor and certified ball stage on twelve graphs and a curve, non-Ramanujan trajectories certified; evening: MVP-2 (Ihara zeta of graphs) planned, `notes/zeta-spectral-triples/ihara/plan.md`, five lanes, prototype exact at the critical window; morning: `zst` benchmark to x = 50 certified, report in `notes/zeta-spectral-triples/report-2026-09-18.md`; 2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -127,9 +127,13 @@ implementation of the paper's algorithm, as a possible standalone repository. De
   RH (`eps_M` diverges like `-m rho^{2M}`, `xi_min` goes odd, kernel still exact); RH enters only as
   `eps -> 0` (Weil's criterion). Sign flipped for graphs (poles), CCM's sign for curves (already
   Hallouin-Perret 2019). Plan: `ihz/` sibling library, `eigmin.c` ported, exact integer stage +
-  arb stage, G1-G5, ~1400 lines, two weeks. **Next, if pursued:** G1 (exact stage) then G2 (the
-  certified anchor at the critical window); the under-resolved law is the one experiment that can
-  inform the zeta case; an Opus REFUTE review of `lanes/theory.md` before any claim is registered.
+  arb stage, G1-G5, ~1400 lines, two weeks. **Built the same night (`ihz/`, README there):** G1-G3 done with three Opus workers, `make
+  check` green, bench outputs in `ihara/bench/`; exact anchor on twelve graphs and the `F_5` curve,
+  certified unitary key lemma and Prony multiplicities at the critical window, certified
+  non-Ramanujan trajectories (`necklace:6`, `prism:16`, `twoK4`) matching the prototype and `IH-27`.
+  **Next, if pursued:** the `Q-2` under-resolved law from the bench data (with TJO); the
+  anti-palindromic search (`Q-3`); fuzz and mutation once the API settles; an Opus REFUTE review of
+  `lanes/theory.md` before any claim is registered; then M3/G5 (shared data model with `zst`).
 - **MVP done (afternoon of the 17th, `zst/` in this repo; TJO: keep it here for now).** M1 and M2 of the plan:
   certified `(a_n, b_n)`, Krawczyk-verified minimal eigenpair, ball-`LDL^T` inertia certifying the
   even-simple hypothesis, QR candidates plus interval-Newton roots with completeness by count,

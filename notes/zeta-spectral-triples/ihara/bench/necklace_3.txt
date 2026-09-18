@@ -1,0 +1,47 @@
+graph necklace:3: nv=12 ne=18 regular=1 q=2 bipartite=0 connected=1
+Ihara-Bass exact identity: PASS
+retained charpoly degree 22, squarefree part degree R=8
+truth: 8 distinct retained points:
+  mu_0 (mult 2) = [-1.04306509882575 +/- 2.96e-15] + [-0.954994868892831 +/- 4.83e-16]*I
+  mu_1 (mult 2) = [-1.04306509882575 +/- 2.96e-15] + [0.954994868892831 +/- 4.83e-16]*I
+  mu_2 (mult 5) = [-0.500000000000000 +/- 1e-20] + [-1.32287565553230 +/- 4.71e-15]*I
+  mu_3 (mult 5) = [-0.500000000000000 +/- 1e-20] + [1.32287565553230 +/- 4.71e-15]*I
+  mu_4 (mult 2) = [0.285996634158102 +/- 4.91e-16] + [-1.38499311379163 +/- 7.51e-16]*I
+  mu_5 (mult 2) = [0.285996634158102 +/- 4.91e-16] + [1.38499311379163 +/- 7.51e-16]*I
+  mu_6 (mult 2) = [1.25706846466765 +/- 4.47e-15] + [-0.647903445845234 +/- 2.62e-16]*I
+  mu_7 (mult 2) = [1.25706846466765 +/- 4.47e-15] + [0.647903445845234 +/- 2.62e-16]*I
+t_k (k = 0..24): 22.000000 [-2.1213203 +/- 4.36e-8] [-8.5000000 +/- 1e-11] [9.5459415 +/- 4.61e-8] [-1.2500000 +/- 1e-12] [-5.8336309 +/- 4.48e-8] [-0.62500000 +/- 1e-13] [-3.9774756 +/- 4.42e-8] [-9.3125000 +/- 1e-11] [-0.39774756 +/- 4.42e-9] [12.593750 +/- 1e-11] [-7.3583299 +/- 4.18e-8] [-6.8281250 +/- 1e-12] [19.787941 +/- 3.30e-7] [1.8359375 +/- 1e-12] [-5.8170581 +/- 2.97e-8] [8.7929688 +/- 5.01e-8] [-4.7978300 +/- 4.22e-9] [-6.0566406 +/- 2.51e-8] [4.2467839 +/- 9.09e-9] [-3.0517578 +/- 1.26e-8] [-12.684418 +/- 4.22e-7] [-3.4243164 +/- 6.26e-9] [13.673608 +/- 3.28e-7] [-2.9895020 +/- 4.69e-8]
+critical window: Mp=4 (K=9), exact rank R=8
+exact kernel polynomial Q(z) = z^8+2*z^6-2*z^5+3*z^4-4*z^3+8*z^2+16
+EXACT ANCHOR: kernel polynomial == squarefree retained charpoly: PASS
+
+scan  Mp   K  rank  kerdim  eps_even                     eps_odd                      roots unres  maxerr(mid)   unitary
+       0   1    1    0     22.0000000000  nan    0    0   [+/- inf]   -
+       1   3    3    0     [12.5478369883 +/- 2.88e-11]  [30.5000000000 +/- 1e-15]    1    0   [1.73556 +/- 3.90e-6]   ok
+       2   5    5    0     [6.92650830995 +/- 1.12e-12]  [14.6575688052 +/- 1.35e-11]    2    0   [0.792877 +/- 1.56e-7]   ok
+       3   7    7    0     [2.93578421296 +/- 1.47e-12]  [14.3542486889 +/- 3.55e-11]    3    0   [0.369856 +/- 4.57e-7]   ok
+       4   9    8    1     [1.93481407393e-39 +/- 9.14e-52]  [11.2864794971 +/- 2.90e-11]    4    0   [+/- 6.83e-76]   ok
+  Mp=5: eigmin FAILED to certify
+       5  11    8    3     nan  [+/- 2.95e-74]    0   -1   0   -
+
+ball stage at Mp=4 (prec 256):
+  NOTE even block minimum differs from the smallest-modulus eigenvalue; minimum = [1.9348140739290871616e-39 +/- 2.75e-59]   rad 1.91e-74
+  unitary key lemma: U^T(T-eps)U = T-eps CERTIFIED, det identity CERTIFIED
+  Mp=4 K=9: exact rank 8 (kernel dim 1)
+  eps_even = [+/- 2.43e-75]   rad 2.28e-75
+  eps_odd  = [11.286479497071059871 +/- 1.37e-19]   rad 1.67e-74
+  even-simple certificate: not certified (expected at eps = 0)
+  roots of R(theta) on [0,pi]: 4 certified, 0 unresolved
+    theta_0 = [0.47589808164800935622 +/- 2.04e-21]   rad 2.62e-76
+    theta_1 = [1.3671617281073351336 +/- 6.78e-21]   rad 4.65e-76
+    theta_2 = [1.9321634507016044248 +/- 2.06e-20]   rad 7.42e-76
+    theta_3 = [2.4002438489430618369 +/- 2.48e-20]   rad 4.22e-76
+    truth point 0 (mult 2): |mu - root| <= 3.41e-76 + |mid| [+/- 6.83e-76]
+    truth point 1 (mult 2): |mu - root| <= 3.41e-76 + |mid| [+/- 6.83e-76]
+    truth point 2 (mult 5): |mu - root| <= 5.49e-76 + |mid| [+/- 1.10e-75]
+    truth point 3 (mult 5): |mu - root| <= 5.49e-76 + |mid| [+/- 1.10e-75]
+    truth point 4 (mult 2): |mu - root| <= 3.51e-76 + |mid| [+/- 7.03e-76]
+    truth point 5 (mult 2): |mu - root| <= 3.51e-76 + |mid| [+/- 7.03e-76]
+    truth point 6 (mult 2): |mu - root| <= 2.16e-76 + |mid| [+/- 4.33e-76]
+    truth point 7 (mult 2): |mu - root| <= 2.16e-76 + |mid| [+/- 4.33e-76]
+  Prony weights at the truth points: [2.0000000 +/- 3e-12] + [+/- 1.95e-70]*I [2.0000000 +/- 3e-12] + [+/- 8.82e-71]*I [5.0000000 +/- 1e-12] + [+/- 6.10e-71]*I [5.0000000 +/- 1e-12] + [+/- 2.39e-71]*I [2.0000000 +/- 3e-12] + [+/- 1.30e-71]*I [2.0000000 +/- 1e-12] + [+/- 4.45e-72]*I [2.0000000 +/- 1e-12] + [+/- 2.34e-72]*I [2.0000000 +/- 1e-12] + [+/- 1.57e-72]*I

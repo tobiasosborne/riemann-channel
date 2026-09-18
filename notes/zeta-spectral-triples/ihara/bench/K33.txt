@@ -1,0 +1,25 @@
+graph K33: nv=6 ne=9 regular=1 q=2 bipartite=1 connected=1
+Ihara-Bass exact identity: PASS
+retained charpoly degree 8, squarefree part degree R=2
+truth: 2 distinct retained points:
+  mu_0 (mult 4) = [-1.41421356237310 +/- 4.96e-15]*I
+  mu_1 (mult 4) = [1.41421356237310 +/- 4.96e-15]*I
+t_k (k = 0..12): 8.0000000 0 [-8.0000000 +/- 1e-11] 0 [8.0000000 +/- 1e-11] 0 [-8.0000000 +/- 1e-11] 0 [8.0000000 +/- 1e-11] 0 [-8.0000000 +/- 1e-11] 0 [8.0000000 +/- 1e-11]
+critical window: Mp=1 (K=3), exact rank R=2
+exact kernel polynomial Q(z) = z^2+2
+EXACT ANCHOR: kernel polynomial == squarefree retained charpoly: PASS
+
+scan  Mp   K  rank  kerdim  eps_even                     eps_odd                      roots unres  maxerr(mid)   unitary
+       0   1    1    0     8.00000000000  nan    0    0   [+/- inf]   -
+  Mp=1: eigmin FAILED to certify
+       1   3    2    1     nan  [16.0000000000 +/- 1e-15]    0   -1   0   -
+  Mp=2: eigmin FAILED to certify
+       2   5    2    3     nan  [+/- 1.51e-75]    0   -1   0   -
+
+ball stage at Mp=1 (prec 256):
+  Mp=1: eigmin FAILED to certify
+  Mp=1 K=3: exact rank 2 (kernel dim 1)
+  eps_even = nan   rad +inf
+  eps_odd  = [16.000000000000000000 +/- 1e-23]   rad 1.51e-75
+  even-simple certificate: not certified (expected at eps = 0)
+  roots of R(theta) on [0,pi]: 0 certified, -1 unresolved
