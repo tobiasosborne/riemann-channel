@@ -1,0 +1,17 @@
+zst: x = 50 (prime powers <= 50), N = 400, prec = 2100 bits, L = [3.91202300542815 +/- 3.95e-15]
+matrix build: 3.38s
+minimal even eigenvalue eps_N = [3.312659875e-258 +/- 1.94e-268]  (Rump-certified, 76.69s)
+even-simple hypothesis (deflated Cholesky of E - 2 eps and O - 2 eps): CERTIFIED  (49.94s)
+xi_0 = [1.124232647e+127 +/- 2.24e+117], xi_1 = [-1.060145747e+127 +/- 2.43e+117], xi_N = [-0.0011380 +/- 3.99e-8]
+positive secular roots: 400 certified of N = 400, 0 unresolved  ->  spectrum COMPLETE  (131.56s)
+
+  k   z_k = 2 pi s_k / L                                   |z_k - gamma_k| <=
+  1   14.13472514173469379045725198356247027078   1.54e-249
+  2   21.02203963877155499262847959389690277733   3.16e-248
+  3   25.01085758014568876321379099256282181866   1.22e-246
+  4   30.42487612585951321031189753058409132018   3.74e-245
+  5   32.93506158773918969066236896407490348881   1.06e-243
+
+total 261.64s
+
+wall 261.64 s  maxrss 0 KB

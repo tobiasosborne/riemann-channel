@@ -22,3 +22,4 @@ total 5802.21s
 total 2498.49s
 == 00:27:11 x=60 N=600 prec=2500 -> ../notes/zeta-spectral-triples/bench/x60_N600_p2500.txt
 total 5694.88s
+== 02:35:55 x=50 N=500 prec=2100 -> ../notes/zeta-spectral-triples/bench/x50_N500_p2100.txt
