@@ -140,6 +140,15 @@ Cayley (`IH-13`): for odd `K`, `lambda_n = tan(pi n/K)` and the real congruence
 (`CS:1128`), so `CS:1356` applies verbatim. Cost: `C` is non-unitary, so the `eps`-shift must be
 done in the Toeplitz picture first; and it replaces a natural unitary by an artificial self-adjoint.
 
+Convention trap (both lanes hit it independently). `eta` is the delta at the window edge in the
+position basis, i.e. all-ones in the DFT basis up to `K^{1/2}` and the window-shift phase `z_n^{-M}`
+(window `{-M..M}` versus `{0..K-1}`). All-ones in the position basis gives a `xi`-independent
+determinant `(s^K - 1)/(s - 1)`; and in the un-congruenced Cayley picture the second displacement
+vector is `eta_n = (-1)^n sec(pi n/K)`, which `C` turns into all-ones. Taking `CS:1356` with a
+literal all-ones `eta` in the wrong coordinates returns real but wrong roots (angle errors `0.4`
+to `0.5` where the truth is exact). The rule for the implementation: read `eta` off the displacement
+`Z T Z^* - T`, never posit it.
+
 Backbone decision (`IH-14`): the position-basis Toeplitz route (`CS:792`, `corcar`) is the MVP-2
 backbone (complete published proof, minimal hypotheses, gives weights and the over-resolved
 diagnosis, `O(K^2)`); `U''` is implemented as a certified cross-check because it, not the
@@ -176,10 +185,28 @@ construction (`Q-1`).
 Non-Ramanujan: the construction never breaks (circle spectrum at every `M`); with a real retained
 pair `rho, 1/rho`, multiplicity `m`, `eps_M = -m rho^{K+1}/(rho^2 - 1)(1 + o(1))`, so
 `d log(-eps_M)/dM -> 2 log rho` (`IH-27`, PROVED; prism `C_16 x K_2`: `rho = 1.123952`, predicted
-`-1299` vs observed `-1351` at `M = 21`, ratio `1.2826` vs `rho^2 = 1.2633`). The returned points
+`-1299` vs observed `-1351` at `M = 21`, ratio `1.2826` vs `rho^2 = 1.2633`; two disjoint `K_4`,
+`rho = sqrt 2`: successive ratios `2.87, 2.80, 2.46, 2.10, 2.16 -> 2`). The returned points
 go asymptotically equidistributed and carry no divisor information (`IH-28`, CLAIMED). The trivial
 divisor bookkeeping is load-bearing: forgetting the bipartite pair `{-q, -1}` makes the law report
 `2 log sqrt q`.
+
+The parity mechanism behind this (numerics lane, section 3; proof in two lines): with the even
+extension a reciprocal pair `{x, 1/x}` contributes `2 f^(x) f^(1/x)` to the form, which is
+`+2 x^{-(K-1)} f^(x)^2 >= 0` on even `f` and `<= 0` on odd `f`. For a regular graph every off-circle
+retained point is real, so the EVEN block stays positive semidefinite for every window while the
+ODD block carries the negative eigenvalue: `xi_min` is odd, `<eta|xi_min> = 0`, and CCM's
+`even-simple` fails. What survives is Caratheodory-Fejer on the kernel: at `K = R+1` the kernel
+vector of `T` (equivalently the minimal even-block vector) still vanishes on the whole divisor,
+off-circle points included (Vandermonde rank does not need the circle). So what breaks on a false RH
+is CCM's prescription "take the minimal eigenvector", not the exact recovery; and in the discrete
+setting "`xi_min` even for every window" is implied by Ramanujan's failure being absent, while the
+converse (Ramanujan implies `xi_min` even for every `K`) is exactly `Q-3` and open. This is the
+finite form of `prop:weil-orbit-negative` (`proved`) read in the `gamma`-grading.
+
+Reality is free (numerics lane, verified on 200 random real even Toeplitz matrices): `T - eps_min`
+is PSD Toeplitz with a kernel for ANY Hermitian Toeplitz `T`, so the circle conclusion holds without
+positivity or a divisor. The whole content of the chain is positivity, i.e. `thm:weil-positivity-finite`.
 
 Irregular: everything using only "Hermitian Toeplitz" survives (`IH-30`); `sqrt q` becomes
 `specrad(B)^{1/2}`, `W_{0,2}` drops to rank one (`IH-31`); the functional equation fails, so
@@ -251,8 +278,10 @@ Can, and should:
    points. This is the discrete counterpart of CCM's `eps_N ~ 10 (1 - chi_4(lambda))`
    (`../plan.md` 1.6) and the one place where the graph can inform the zeta case.
 3. The non-Ramanujan experiment: the sign change of `eps_M`, the slope `2 log rho`, the
-   equidistribution of the returned points; families with `rho` tunable (prisms `C_n x K_2`, long
-   cubic necklaces, two `K_4 - e` joined).
+   equidistribution of the returned points, the odd `xi_min` versus the even-block kernel vector
+   that still recovers the divisor; families with `rho` tunable (prisms `C_n x K_2`, cubic
+   necklaces of `K_4 - e`), and the minimal fully controlled case, two disjoint `K_4` (the second
+   Perron eigenvalue is retained, `rho = sqrt 2`, critical `K = 5`).
 4. Irregular graphs: the one-sided regime; what `eps_M` and the returned points do without a
    functional equation.
 5. Graded sign: a curve (Artin-Schreier data from `scripts/artin_schreier_mps.py`, or the elliptic
@@ -344,10 +373,14 @@ Precision: `K <= 200` and `prec = 256` bits cover every graph in section 3; LPS 
 
 Pinned closed forms: `K_4` (`q = 2`, retained `mu^2 + mu + 2 = 0`, `R = 2`, critical `K = 3`),
 `K_{3,3}` (bipartite, `{-q,-1}` trivial), `Q_3` (bipartite, spectrum `3, 1^3, -1^3, -3`), Petersen
-(`R = 4`, multiplicities `5, 5, 4, 4`; `eps_M` values above), Heawood (bipartite Ramanujan), `C_n`
-(`q = 1`, degenerate, must not mis-certify), the prism `C_16 x K_2` (`rho = 1.123952`, `eps_M`
-trajectory of `IH-27`), one irregular graph. Integration: exact recovery at `K = R+1` certified;
-under-resolved values pinned from `ihara_proto.py`. Fuzz: random regular graphs by a pairing model
+(`R = 4`, multiplicities `5, 5, 4, 4`; `eps_M` values above), Heawood and Pappus (bipartite
+Ramanujan, `R = 4` and `6`), `C_n` (`q = 1`, degenerate, must not mis-certify), two disjoint `K_4`
+(non-Ramanujan, `eps_M = -2.673, -7.679, -21.48, -52.78, -111.06, -240.05` at `M = 2..7`), the
+necklace of six `K_4 - e` (`lambda_2 = 2.86619826`, `eps_M` positive to `M = 5`, `-8.257` at `M = 6`,
+`-624.42` at `M = 14`; even-block kernel exact from `M = 10`), the prism `C_16 x K_2` (`IH-27`
+trajectory), the dumbbell and the triangle with a pendant path (irregular; `pt.err` saturating at
+`0.20`; the pendant invisible). Integration: exact recovery at `K = R+1` certified; under-resolved
+values pinned from `ihara_proto.py` (section 6). Fuzz: random regular graphs by a pairing model
 (invariants: Ihara-Bass identity, `t_k` real, even/odd eigenvectors, roots on the circle, count
 `K-1`, `U^* T U = T`), arbitrary normalised `xi` for `circle_roots`. Mutation on every new `src`
 file; `eigmin.c` included for copy errors.
@@ -373,7 +406,42 @@ file; `eigmin.c` included for copy errors.
 
 ## 6. Prototype record
 
-Filled in from `lanes/numerics.md` when the numerics lane reports (running at the time of writing).
+`ihara_proto.py` (numpy, sympy, mpmath at 40 digits; seeded; 21 s from the repo root; options
+`--graph`, `--M`, `--Mmax`, `--dps`), captured run `run_ihara_proto.txt` (1470 lines, 446 tagged
+checks, all PASS; re-run by the orchestrator, identical modulo blank lines). Write-up
+`lanes/numerics.md`. Independent of the theory lane (neither read the other); the orchestrator's
+own numpy check of `IH-3`, `IH-11`, `IH-18` on `K_4` and Petersen agreed to `1e-14`.
+
+Identity checks: Ihara-Bass at random `u` (`<= 1.5e-15`), `N_k = Tr B^k` against direct prime-cycle
+enumeration and `N_k = sum_{d | k} d P_d`, `spec(B)` against the `mu^2 - lambda mu + q` prediction
+(`<= 5.8e-15`), trace-route `t_k` against the direct divisor sum (`<= 2.2e-36`), Cantoni-Butler,
+functional-equation closure of `A_ret` (`<= 7.7e-38`; the trivial `+-1` copies are NOT reciprocal
+closed, so the trivial part must be subtracted in its even extension).
+
+Regimes (Ramanujan objects; `eps` at the critical window `|eps| < 1e-39`, angle error `0`, kernel
+dimension `3` one window later):
+
+| object | `R` | critical `M` | `eps` at `M_crit - 1` | angle error there |
+|---|---|---|---|---|
+| `K_4`, `K_{3,3}`, Pauli curve | 2 | 1 | (`K = 1`) | |
+| `Q_3` | 4 | 2 | `3.0` | `3.6e-1` |
+| Petersen | 4 | 2 | `9.4476568` | `6.1e-1` |
+| Heawood | 4 | 2 | `12.0` | `5.2e-1` |
+| Pappus | 6 | 3 | `4.661334` | `5.2e-1` |
+| necklace of two `K_4 - e` | 8 | 4 | `1.965774` | `3.5e-1` |
+| necklace of three | 8 | 4 | `2.9357842` | `2.6e-1` (`1.32, 0.57, 0.26` at `K = 3, 5, 7`) |
+
+Perturbed operator: the multiplicative variant (shift, `eta` = delta at the window edge, `xi_M = 1`)
+is the companion matrix of `z^M xi^(z)`, satisfies `D'^T (tau - eps) D' = tau - eps` exactly and
+`Det(D'' - s) = +-s^M xi^(s)` (this is `IH-11`); the additive Cayley variant with
+`eta_n = (-1)^n sec(pi n/K)` satisfies Lemma `key` (i)-(iii) to `1e-40` and returns the angles by
+`theta = 2 arctan s` to `1.3e-15` (this is `IH-13`); the angle operator has a rank-3 commutator.
+
+Non-Ramanujan, irregular and graded: as recorded in sections 1.5 and 4.4. Precision: `Tr B^k`
+exact, the only cancellation is about `q^{k/2}/R`; double suffices for `eps_M` everywhere (agrees
+to `2.3e-13`) and for the roots when the kernel is simple; double cannot certify `eps_M = 0` at
+the critical window (condition number `1e16` to `1e18`, float64 returns `+-1e-15` with arbitrary
+sign), which is the argument for arb and for the exact rank stage of section 4.3.
 
 ## 7. Risks
 
@@ -388,11 +456,18 @@ Filled in from `lanes/numerics.md` when the numerics lane reports (running at th
 
 ## 8. Open questions carried
 
-`Q-1` canonical `xi` when over-resolved; `Q-2` the under-resolved law (MVP-2 measures it); `Q-3`
-anti-palindromic minimal eigenvectors (MVP-2 searches); `Q-4` the exact weak-* limit in the
-non-Ramanujan case; `Q-5` a principled trivial divisor for irregular graphs; `Q-6` a Krein-space
-key lemma for mixed divisors; `Q-7` any `Z`-side analogue of the prolate tower (no for finite graphs;
-open for infinite objects).
+`Q-1` canonical `xi` when over-resolved; `Q-2` the under-resolved law (MVP-2 measures it; the
+numerics lane notes the minimiser is a discrete prolate/Slepian problem, the natural place to ask
+whether `1 - chi_4(lambda)` is its continuous limit); `Q-3` anti-palindromic minimal eigenvectors,
+now sharpened to "is `even-simple` for every window EQUIVALENT to Ramanujan, or only implied by its
+failure" (MVP-2 searches); `Q-4` the exact weak-* limit in the non-Ramanujan case; `Q-5` a principled
+trivial divisor for irregular graphs, and whether the functional equation is a necessary input for
+convergence (dumbbell: `eps_M` changes sign at `M = 4`, error saturates); `Q-6` a Krein-space key
+lemma for mixed divisors; `Q-7` any `Z`-side analogue of the prolate tower (no for finite graphs;
+open for infinite objects); `Q-8` (numerics lane) a `CS`-type key lemma with a general `eta` read
+off the displacement `|beta><eta| - |eta><beta|`, which would cover zeta and graphs in one
+statement, and whether CCM's parity hypothesis is avoidable by the unitary route plus a Cayley
+transform at the end (the multiplicative variant needs no parity).
 
 ## 9. References
 

@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Current state (2026-09-18: `zst` benchmark to x = 50 certified, report in `notes/zeta-spectral-triples/report-2026-09-18.md`; 2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-18, evening: MVP-2 (Ihara zeta of graphs) planned, `notes/zeta-spectral-triples/ihara/plan.md`, five lanes, prototype exact at the critical window; morning: `zst` benchmark to x = 50 certified, report in `notes/zeta-spectral-triples/report-2026-09-18.md`; 2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -115,6 +115,21 @@ implementation of the paper's algorithm, as a possible standalone repository. De
   7.5 x. Four scale-induced defects fixed test-first (worklog 2026-09-18): positive-definiteness
   certificate replaces interval LDL, sign-scan candidates replace QR, rigorous dedupe, mean-value
   Newton verifier. x = 100 not completed (memory). TJO asked to wind up; work stopped here.
+- **MVP-2 planned (evening of the 18th; `notes/zeta-spectral-triples/ihara/plan.md`, lanes under
+  `ihara/lanes/`, prototype `ihara_proto.py`).** TJO: the Ihara zeta of graphs, to see what in CCM
+  generalises. Answer: the linear algebra verbatim (Toeplitz Weil form = `thm:weil-positivity-finite`,
+  cyclic-shift displacement, a new unitary key lemma `U^* T U = T`, circle conclusion =
+  Caratheodory-Fejer = Connes-van Suijlekom `corcar` (2511.23257:792, fetched) = Makhoul 1981,
+  `eps` = Pisarenko noise floor, Cayley transform makes it an instance of CS Prop. finmain); the
+  analytic content does not (finite divisor: exact at the critical window `K = R+1`, degenerate
+  above; no second truncation, no archimedean transcendental term, no prolate/Hermite structure:
+  the missing step of CCM has no graph counterpart). What the graph adds: the chain run on a false
+  RH (`eps_M` diverges like `-m rho^{2M}`, `xi_min` goes odd, kernel still exact); RH enters only as
+  `eps -> 0` (Weil's criterion). Sign flipped for graphs (poles), CCM's sign for curves (already
+  Hallouin-Perret 2019). Plan: `ihz/` sibling library, `eigmin.c` ported, exact integer stage +
+  arb stage, G1-G5, ~1400 lines, two weeks. **Next, if pursued:** G1 (exact stage) then G2 (the
+  certified anchor at the critical window); the under-resolved law is the one experiment that can
+  inform the zeta case; an Opus REFUTE review of `lanes/theory.md` before any claim is registered.
 - **MVP done (afternoon of the 17th, `zst/` in this repo; TJO: keep it here for now).** M1 and M2 of the plan:
   certified `(a_n, b_n)`, Krawczyk-verified minimal eigenpair, ball-`LDL^T` inertia certifying the
   even-simple hypothesis, QR candidates plus interval-Newton roots with completeness by count,
