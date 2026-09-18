@@ -86,17 +86,21 @@ int main(int argc, char **argv)
         flint_printf("positive secular roots: %wd certified of N = %wd, %wd unresolved  ->  spectrum %s  (%.2fs)\n",
                      nroots, N, unres, (nroots == N) ? "COMPLETE" : "incomplete", t4 - t3);
 
-        /* reference zeros: full precision for the first 20 (where the construction is most accurate),
-         * 400 bits for the rest (their certified error is far above 1e-100 anyway) */
+        /* reference zeros in three precision tiers: full precision for the first 20, then 1200 bits up to
+         * the 400th (bounds down to ~1e-350 stay measurable), then 400 bits (bounds down to ~1e-118) */
         {
-            slong K1 = FLINT_MIN(K, 20);
-            zst_zeta_zeros(gamma, K1, prec);
-            if (K > K1)
+            slong tiers[3][2] = {{20, prec}, {400, FLINT_MIN(prec, 1200)}, {K, FLINT_MIN(prec, 400)}}, ti, k0 = 0;
+            for (ti = 0; ti < 3 && k0 < K; ti++)
             {
-                acb_ptr rho = _acb_vec_init(K - K1); fmpz_t n1; fmpz_init(n1); fmpz_set_si(n1, K1 + 1);
-                acb_dirichlet_zeta_zeros(rho, n1, K - K1, FLINT_MIN(prec, 400));
-                for (k = K1; k < K; k++) arb_set(gamma + k, acb_imagref(rho + k - K1));
-                _acb_vec_clear(rho, K - K1); fmpz_clear(n1);
+                slong k1 = FLINT_MIN(K, tiers[ti][0]);
+                if (k1 > k0)
+                {
+                    acb_ptr rho = _acb_vec_init(k1 - k0); fmpz_t n1; fmpz_init(n1); fmpz_set_si(n1, k0 + 1);
+                    acb_dirichlet_zeta_zeros(rho, n1, k1 - k0, tiers[ti][1]);
+                    for (k = k0; k < k1; k++) arb_set(gamma + k, acb_imagref(rho + k - k0));
+                    _acb_vec_clear(rho, k1 - k0); fmpz_clear(n1);
+                }
+                k0 = k1;
             }
         }
         arb_const_pi(twopiL, prec); arb_mul_2exp_si(twopiL, twopiL, 1); arb_div(twopiL, twopiL, L, prec);
