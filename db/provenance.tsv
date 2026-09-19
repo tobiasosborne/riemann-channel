@@ -150,3 +150,4 @@ prov:dz13-lefschetz	1306.4203	zeta.tex	525-526	\det ( I - \mathcal P_\gamma ) = 
 prov:dfg14-horocyclic	1403.0256	RuelleResonForHn.tex	543-544	[X,U_\pm]=\pm U_\pm,\quad [U_+,U_-]=2X.	cit:dfg-horocyclic
 prov:dfg14-pushforward	1403.0256	RuelleResonForHn.tex	601-604	u\in\Res^0_X(\lambda)\mapsto  f(x):=\int_{S_x M} u(x,\xi)\,dS(\xi) \end{equation} is an isomorphism from $\Res^0_X(\lambda)$ onto $\Eig(-\lambda(1+\lambda))$,	cit:dfg-first-band-pushforward
 prov:bls18-selberg-level	1803.06016	main.tex	121-122	The Selberg eigenvalue conjecture is true for $\Gamma_1(N)$ for $N\leq 880$, and for $\Gamma(N)$ for $N\leq 226$.	cit:bls-selberg-level-one
+prov:cs25-corcar	2511.23257	Araki-final-oct25.tex	752	if $T \in M_n(\mathbb{C})$ is a Hermitian, positive semidefinite Toeplitz matrix of rank $n - 1$, and $\xi \in \ker T$, then the polynomial $P(z) = \sum \xi_j z^j$ has all its zeros on the unit circle.	cit:cf-kernel-circle

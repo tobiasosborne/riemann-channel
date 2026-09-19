@@ -27,6 +27,20 @@ at `refs/src/1712.07832/` (TeX) and `refs/src/uetake-2007/` (publisher PDF); dow
 receipts and hashes are committed with the notes. Archives and full third-party
 source caches remain local and Git-ignored, following existing repository policy.
 
+**Afternoon (2026-09-19).** The zeta-spectral-triples sidequest branch was merged into master
+(both HANDOFF blocks kept; the six new TeX sources fetched so the manifest check passes). TJO's
+question on the CCM method (can one estimate `tr(A^l)`, `l > K`, better than the chain does?)
+is answered in **shard 08g** (`report/sections/08g_weil_window_extension.tex`,
+`scripts/weil_window_extension.py`, 45 checks, unreviewed): the window form is an exact
+compression and the chain's implicit higher-trace model is the Pisarenko extension; the
+admissible next trace fills a disc (Levinson centre, determinant-ratio radius, boundary =
+singular windows with `K+1` atoms by Caratheodory-Fejer, byte-cited), so positivity alone cannot
+beat it; the counts add `N >= 0` and a Newton congruence mod `K+1`, which pin the next trace of
+`(1 2)(3 4 5)` one lag before the critical window but nothing for the Petersen graph (rescaling by
+`q^{(K+1)/2}`); for zeta the mean of the higher traces is the pole, already exact, so better
+estimators mean more primes. Proposed, not run: the per-window disc radius in `ihz`/`zst` as a
+rigorous ignorance measure against the observed `e^{-4 pi x}` convergence. Worklog 2026-09-19.
+
 
 ## Current state (2026-09-18, night: `ihz/` built, G1-G3 of the Ihara plan, exact anchor and certified ball stage on twelve graphs and a curve, non-Ramanujan trajectories certified; evening: MVP-2 (Ihara zeta of graphs) planned, `notes/zeta-spectral-triples/ihara/plan.md`, five lanes, prototype exact at the critical window; morning: `zst` benchmark to x = 50 certified, report in `notes/zeta-spectral-triples/report-2026-09-18.md`; 2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 

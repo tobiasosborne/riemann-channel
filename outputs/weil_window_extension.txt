@@ -1,0 +1,56 @@
+1. the permutation (1 2)(3 4 5): windows, the disc, what pins the next trace
+  ok  1  Tr P^k = #Fix(sigma^k) = [5, 0, 2, 3, 2, 0, 5, 0, 2, 3, 2, 0]
+  ok  2  window matrix T_K positive definite for K <= 3, singular from K = 4 (four distinct atoms)
+  ok  3  K=1: disc centre = Levinson one-step predictor = -0.0000
+  ok  4  K=1: disc radius = det T_K / det T_(K-1) = 5.0000
+  ok  5  K=1: T_(K+1)(x) >= 0 exactly for |x - c| <= r (61 sample points)
+  ok  6  K=1: true t_(K+1) = 2 lies in [-5.000, 5.000]
+  ok  7  K=1: boundary point x = -5.0000 gives a singular window; kernel roots on the unit circle (K+1 = 2 atoms)
+  ok  8  K=1: boundary point x = 5.0000 gives a singular window; kernel roots on the unit circle (K+1 = 2 atoms)
+  ok  9  K=1: Pisarenko extension 0.0000 (eps = 5.000) lies inside the disc
+  ok 10  K=1: Newton congruence t_(K+1) = 0 mod 2 holds (true 2)
+       K=1: disc [-5.000, 5.000], Pisarenko 0.000, residue 0 mod 2, integers >= 0 in disc with that residue: [0, 2, 4]
+  ok 11  K=2: disc centre = Levinson one-step predictor = -0.0000
+  ok 12  K=2: disc radius = det T_K / det T_(K-1) = 4.2000
+  ok 13  K=2: T_(K+1)(x) >= 0 exactly for |x - c| <= r (61 sample points)
+  ok 14  K=2: true t_(K+1) = 3 lies in [-4.200, 4.200]
+  ok 15  K=2: boundary point x = -4.2000 gives a singular window; kernel roots on the unit circle (K+1 = 3 atoms)
+  ok 16  K=2: boundary point x = 4.2000 gives a singular window; kernel roots on the unit circle (K+1 = 3 atoms)
+  ok 17  K=2: Pisarenko extension 0.0000 (eps = 3.000) lies inside the disc
+  ok 18  K=2: Newton congruence t_(K+1) = 0 mod 3 holds (true 3)
+       K=2: disc [-4.200, 4.200], Pisarenko 0.000, residue 0 mod 3, integers >= 0 in disc with that residue: [0, 3]
+  ok 19  K=3: disc centre = Levinson one-step predictor = -0.0571
+  ok 20  K=3: disc radius = det T_K / det T_(K-1) = 2.0571
+  ok 21  K=3: T_(K+1)(x) >= 0 exactly for |x - c| <= r (61 sample points)
+  ok 22  K=3: true t_(K+1) = 2 lies in [-2.114, 2.000]
+  ok 23  K=3: boundary point x = -2.1143 gives a singular window; kernel roots on the unit circle (K+1 = 4 atoms)
+  ok 24  K=3: boundary point x = 2.0000 gives a singular window; kernel roots on the unit circle (K+1 = 4 atoms)
+  ok 25  K=3: Pisarenko extension -0.5000 (eps = 1.000) lies inside the disc
+  ok 26  K=3: Newton congruence t_(K+1) = 2 mod 4 holds (true 2)
+       K=3: disc [-2.114, 2.000], Pisarenko -0.500, residue 2 mod 4, integers >= 0 in disc with that residue: [2]
+  ok 27  disc + nonnegativity + Newton congruence: 3 candidates at K=1, 2 at K=2, pinned to the truth (2) at K=3
+  ok 28  K=3: Pisarenko alone predicts -0.5 (repeated atom at 1), truth is 2
+2. singular windows: the kernel recurrence determines every later trace
+  ok 29  K=4: window singular, min eigenvalue 1.9e-16
+  ok 30  K=4: kernel recurrence gives t_(K+1) = 0.000000 = truth 0
+  ok 31  K=4: kernel polynomial roots = the four distinct eigenvalues of P
+  ok 32  K=5: window singular, min eigenvalue -1.9e-15
+  ok 33  K=5: kernel recurrence gives t_(K+1) = 5.000000 = truth 5
+3. the Petersen graph (q = 2): the disc in rescaled units and in count units
+  ok 34  Tr B^k = [30, 0, 0, 0, 0, 120, 120, 0] (Petersen: girth 5, 12 pentagons, 10 hexagons)
+  ok 35  rescaled traces reproduce integer counts exactly for k <= 11
+  ok 36  window positive definite for K <= 3, singular from K = 4 (four distinct atoms)
+  ok 37  K=1: true rescaled t_(K+1) = -7.5000 in [-17.500, 18.000]
+  ok 38  K=1: Newton congruence N_(K+1) = 0 mod 2 holds (true 0)
+  ok 39  K=1: disc radius 17.750 rescaled, 35.50 in counts; 26 admissible integers, not pinned
+       K=1: counts disc [-20.00, 51.00], truth N_2 = 0, candidates [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]
+  ok 40  K=2: true rescaled t_(K+1) = -3.1820 in [-12.170, 16.562]
+  ok 41  K=2: Newton congruence N_(K+1) = 0 mod 3 holds (true 0)
+  ok 42  K=2: disc radius 14.366 rescaled, 40.63 in counts; 19 admissible integers, not pinned
+       K=2: counts disc [-25.42, 55.85], truth N_3 = 0, candidates [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54]
+  ok 43  K=3: true rescaled t_(K+1) = -6.7500 in [-6.750, 17.956]
+  ok 44  K=3: Newton congruence N_(K+1) = 0 mod 4 holds (true 0)
+  ok 45  K=3: disc radius 12.353 rescaled, 49.41 in counts; 25 admissible integers, not pinned
+       K=3: counts disc [0.00, 98.82], truth N_4 = 0, candidates [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96]
+
+all 45 checks passed

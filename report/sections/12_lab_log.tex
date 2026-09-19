@@ -230,3 +230,20 @@ grading is not a flow grading. Orchestrator corrected on the Casimir ordering si
 of the spectral map, the Ruelle trivial divisor, the FE sign, the total pullback, the endpoint
 exception, the quantum pushforward convention, the Riemann-sector rate, and ``Selberg's $\tfrac14$
 is open for $\PSL(\mathbb Z)$'' (it is known).
+
+\subsection*{2026-09-19: the sidequest merged; the window as a compression and the extension disc}
+
+The zeta-spectral-triples sidequest branch (\texttt{zst/}, \texttt{ihz/},
+\texttt{notes/zeta-spectral-triples/}, worklogs 2026-09-17 and 2026-09-18) was merged into
+master, both HANDOFF blocks kept. TJO then asked whether one could build a better estimator of the
+higher traces $\Tr X^l$, $l > K$, from the traces up to $K$, the CCM chain appearing to model them.
+Shard 08g answers: the chain models nothing beyond the window (the window form is an exact
+compression, the implicit model is the Pisarenko extension); the admissible next trace fills a
+disc with the Levinson predictor as centre and a determinant ratio as radius, whose boundary
+points are the singular windows with $K+1$ atoms (Carath\'eodory--Fej\'er, byte-cited from
+Connes--van Suijlekom), so positivity alone cannot beat it; the counts add nonnegativity and a
+Newton-identity congruence modulo $K+1$, which pin the next trace of the permutation
+$(1\,2)(3\,4\,5)$ one lag before the critical window but nothing for the Petersen graph, where the
+rescaling multiplies the radius by $q^{(K+1)/2}$; for $\zeta$ the mean of the higher traces is the
+pole, already exact, so a better estimator means more primes. $45$ checks
+(\texttt{scripts/weil\_window\_extension.py}). Orchestrator alone; unreviewed.
