@@ -41,6 +41,14 @@ beat it; the counts add `N >= 0` and a Newton congruence mod `K+1`, which pin th
 estimators mean more primes. Proposed, not run: the per-window disc radius in `ihz`/`zst` as a
 rigorous ignorance measure against the observed `e^{-4 pi x}` convergence. Worklog 2026-09-19.
 
+**Evening (2026-09-19): the ideation ledger.** `notes/ideation-ledger-2026-09-19/` (read `README.md`
+then `LEDGER.md`): every idea, lead and dead route in the notebook's history, 100% source coverage
+verified by script (138 repo files + 20 codex rollouts; 17 Opus lanes, 1509 entries; 4 digests, 492
+items; 1 synthesis). `LEDGER.md` section 3.1 is the ranked list of 40 leads to act on; section 5 lists
+repo defects to repair (shard 04 sign errors, dependency rot, unreviewed load-bearing claims, the
+BLAS-thread CI fixture, unresolved provenance addresses). The 2026-09-19 morning astra ideation
+session's inter-agent briefs are encrypted and unrecoverable; everything it wrote to disk is covered.
+
 
 ## Current state (2026-09-18, night: `ihz/` built, G1-G3 of the Ihara plan, exact anchor and certified ball stage on twelve graphs and a curve, non-Ramanujan trajectories certified; evening: MVP-2 (Ihara zeta of graphs) planned, `notes/zeta-spectral-triples/ihara/plan.md`, five lanes, prototype exact at the critical window; morning: `zst` benchmark to x = 50 certified, report in `notes/zeta-spectral-triples/report-2026-09-18.md`; 2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
