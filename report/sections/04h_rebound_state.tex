@@ -1,0 +1,264 @@
+% SHARD-ID: RC-04H-REBOUND-STATE
+% SHARD-TITLE: The Phantasm IV: a Rebound State Inside the Model Space, the Renewal Channel, and Every Finite Entanglement Spectrum
+% SHARD-SUMMARY: The Riemann channel is a no-event semigroup in the Siemon--Holevo--Werner sense with a one-dimensional exit (the cusp) that every zero mode couples to; reinserting the exit flux at a rebound density inside the model space gives a conservative renewal Lindbladian whose stationary state exists iff the mean holding time is finite, is unique and attracting, and is mixed whenever the rebound is; an explicit rebound with infinite mean exists using only the zero symmetry and the zero count.
+% SHARD-SUMMARY: On the graded space the odd coherences keep the zeros as eigenvalues for every rebound, the even sector is a rank-one perturbation with an explicit persistence criterion and a secular equation of Connes--Consani--Moscovici shape, mode-diagonal rebounds are stationary for every weight vector iff RH, the stationary density's spectrum is a Gram spectrum because the modes are not orthogonal, the stationary states of renewal channels are exactly the densities with positive loss, and, for any one-exit no-event semigroup with a flag of generator eigenvectors (nothing about zeta is used), invariant flags realise every finite density spectrum and the Gibbs spectra for beta greater than one; what stays open is the arithmetic identification of the flag isometry with the Bost--Connes bond.
+% SHARD-KEYWORDS: rebound state, renewal, Siemon-Holevo-Werner, exit space, cusp, no-event semigroup, model space, Cauchy kernels, Takenaka-Malmquist, holding time, secular equation, rank-one perturbation, persistence, Gram spectrum, entanglement spectrum, invariant flag, admissible density, Gibbs, both halves, Phantasm
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/rebound_state.py
+
+\section{The Phantasm IV: a Rebound State Inside the Model Space}
+\label{sec:rebound-state}
+
+\emph{Question (TJO, 2026-09-19, chosen from the ideation ledger).} \Cref{conj:phantasm-both-halves}
+asks for one graded Lindbladian with a mixed stationary state of prescribed entanglement spectrum and
+the zeros as odd relaxation modes. The vacuum-decay Lindbladian has the zeros and a pure absorbing
+stationary state (\cref{prop:vacuum-renewal-trivial-entanglement}). The Siemon--Holevo--Werner picture
+\cite{siemon2017unbounded} says that a standard generator with a given no-event semigroup is fixed by
+one rebound state. What happens when the rebound state lives \emph{inside} the model space? One codex
+\texttt{gpt-6-astra} prover lane (\texttt{notes/rebound-state/astra-proofs.md}, brief
+\texttt{astra-brief.md}, $32$-row correction ledger), one Opus numerics lane run blind from the brief
+(\texttt{numerics.md}, \texttt{scripts/rebound\_state.py}, $150$ checks), one Opus refutation review
+(\texttt{notes/reviews/rebound-state-2026-09-19.md}). Worklog 2026-09-19.
+
+\subsection{Conventions, and the sign of the modes}
+
+Work in the upper half plane: $\Theta(\tauM) = \Ssym(-\tauM) = \cxi(1+2i\tauM)/\cxi(1-2i\tauM)$ is inner
+in $\mathbb C_+$ with zeros $w_\zero = \gam{}/2 + i(1-\sigs)/2$, one per nontrivial zero
+$\zero = \sigs + i\gam{}$, all on $\im w = \tfrac14$ iff RH. The model space is $\KS = H^2(\mathbb C_+)
+\ominus\Theta H^2$, the compressed semigroup $\Zt = P_{\KS}e^{i\tsg\tauM}|_{\KS}$, and the
+\emph{no-event semigroup} of this section is $C_\tsg = \Zt^{*}$, so that the Riemann channel of
+\cref{def:riemann-channel} is $\rdens\mapsto C_\tsg\rdens C_\tsg^{*}$. Under the Paley--Wiener map
+$F\colon H^2\to L^2(0,\infty)$ the semigroup $C_\tsg$ is the backward translation $g(x)\mapsto
+g(x+\tsg)$ restricted to the invariant subspace $F\KS$, and $Fk_w = -i\sqrt{2\pi}\,e^{-i\bar wx}$ for
+the kernel $k_w(\tauM) = (\tauM-\bar w)^{-1}$. Densities are written $\rdens$ (never $\zero$, which is a
+zero), the rebound density $\reb$, the exit functional $j$, the generator $C_\tsg = e^{\tsg\Bgen^{*}}$.
+
+\begin{observation}[The sign in \cref{prop:functional-model-modes}]
+\label{obs:model-modes-sign}
+\claimstatus{obs:model-modes-sign}{proved}
+With $\Theta$ inner in $\mathbb C_+$ and $\Theta(w) = 0$, $k_w\in\KS$ and $C_\tsg k_w =
+e^{-i\tsg\bar w}k_w$, of modulus $e^{-\tsg\im w}$: decay at rate $(1-\sigs)/2$, which is $\tfrac14$
+for every mode iff RH. The statement printed in \cref{prop:functional-model-modes}, with the kernel in
+the lower half plane and eigenvalue $e^{-i\tsg\bar\lambda}$, has modulus $e^{+\tsg\im\lambda}$ and is
+growth; the corrected form, with $\Zt k_\lambda = e^{i\tsg\bar\lambda}k_\lambda$ in the lower-half-plane
+picture, is equivalent to the one here; the kernels are eigenvectors of the \emph{adjoint} of the
+compression, which is where the sign was lost. The conclusion of \cref{prop:functional-model-modes}
+(RH iff one rate) is unaffected.
+\end{observation}
+
+\begin{lemma}[The exit is the cusp, one-dimensional, and no zero mode is dark]
+\label{lem:exit-one-dimensional}
+\claimstatus{lem:exit-one-dimensional}{proved}
+On the domain $D(\Bgen^{*}) = \KS\cap H^1$ the exit form of \cite{siemon2017unbounded} is
+$-(\langle\Bgen^{*}\rvec,\phi\rangle + \langle\rvec,\Bgen^{*}\phi\rangle) = \overline{j\rvec}\,j\phi$
+with $j\rvec = (F\rvec)(0)$: the exit space is $\mathbb C$, and $J\rvec(\tsg) = jC_\tsg\rvec$ is an
+isometry $\KS\to L^2(\mathbb R_+)$, the outgoing translation representation. $C_\tsg\to0$ strongly, and
+$jk_w = -i\sqrt{2\pi}\ne0$ for every zero: no mode is decoupled from the exit. Nothing here needs
+uniform exponential stability; the unreviewed claim $\|C_\tsg\| = 1$ is neither used nor contradicted.
+\end{lemma}
+
+\subsection{The renewal channel}
+
+\begin{definition}[Renewal generator with a rebound inside the model space; admissible densities]
+\label{def:rebound-renewal-generator}
+For a density $\reb$ on $\KS$, the \emph{renewal generator} is
+$\mathcal L_{\reb}(\rdens) = \Bgen^{*}\rdens + \rdens\Bgen + \mathrm{fl}(\rdens)\,\reb$, $\mathrm{fl}(\rdens) =
+\Tr(|j\rangle\langle j|\rdens)$ read as the exit flux, with the minimal semigroup of
+\cite{siemon2017unbounded} (reinsertion map $\rdens\mapsto\Tr(\rdens)\reb$, jump operators
+$\reb^{1/2}$-columns times $j$). The \emph{holding-time law} is $m_{\reb}(\tsg) =
+-\tfrac{d}{d\tsg}\Tr(C_\tsg\reb C_\tsg^{*})$, its Laplace transform $\widehat m_{\reb}$, its mean
+$\bar t_{\reb} = \int_0^\infty\Tr(C_\tsg\reb C_\tsg^{*})\,d\tsg$. The \emph{graded renewal generator} is the
+same construction on $\mathbb C\vac\oplus\KS$ ($\vac$ even, $\KS$ odd) with the exit from $\KS$
+reinserted at a density $\widetilde{\reb}$ on the whole space; $\widetilde{\reb} = \Omvac$ is the
+vacuum-decay Lindbladian of \cref{def:vacuum-decay}. A density $\rdens$ on $\KS$ is \emph{admissible}
+if $\rdens\in D(\mathcal L_0)$, $\mathcal L_0(\rdens) = \Bgen^{*}\rdens+\rdens\Bgen$, and the
+\emph{loss} $Q_\rdens = -\mathcal L_0(\rdens)$ is a positive trace-class operator.
+\end{definition}
+
+\begin{theorem}[Conservativity, stationary state, renewal theorem]
+\label{thm:rebound-renewal}
+\claimstatus{thm:rebound-renewal}{proved}
+(i) For every density $\reb$ on $\KS$ the minimal semigroup of $\mathcal L_{\reb}$ is trace
+preserving, with $D(\mathcal L_{\reb}) = D(\mathcal L_0)$ and holding times i.i.d.\ with law $m_{\reb}$,
+a probability density on $(0,\infty)$; the renewal process does not explode. (ii) There is a stationary
+density iff $\bar t_{\reb}<\infty$, and then it is unique, $\rdens_\infty = \bar t_{\reb}^{-1}\int_0^\infty
+C_\tsg\reb C_\tsg^{*}\,d\tsg$, every initial density converges to it in trace norm, and it is mixed
+whenever $\reb$ is. (iii) If $\reb$ is supported on the span of finitely many modes $k_{w_n}$ then
+$\bar t_{\reb}<\infty$, and for $\reb = \sum_n p_n|e_n\rangle\langle e_n|$ with normalised modes $e_n$
+one has $\bar t = \sum_n p_n/(2\im w_n)$ and $\rdens_\infty = \bar t^{\,-1}\sum_n p_n(2\im w_n)^{-1}
+|e_n\rangle\langle e_n|$; for a general finitely supported $\reb$ the integral is the entrywise
+(Schur) product of the coefficient matrix of $\reb$ with the Cauchy matrix $i/(w_n-\bar w_m)$.
+\end{theorem}
+
+\begin{assumption}[Zero symmetry and zero count]
+\label{asm:zero-reflection-count}
+\claimstatus{asm:zero-reflection-count}{assumed}
+The multiset of nontrivial zeros is invariant, with multiplicity, under $\zero\mapsto1-\bar\zero$ and
+under conjugation, and the number of zeros with $0<\gam{}\le T$ satisfies $N_+(T)/T\to\infty$ (a weak
+form of the Riemann--von Mangoldt count). Standard; no local source.
+\end{assumption}
+
+\begin{proposition}[A rebound of infinite mean exists]
+\label{prop:infinite-mean-rebound}
+\claimstatus{prop:infinite-mean-rebound}{proved-conditional}
+For normalised Takenaka--Malmquist vectors $f_N$ built from a list $z_1,\dots,z_N$ of zeros of $\Theta$
+the mean holding time is
+$\int_0^\infty\tsg|(Ff_N)(\tsg)|^2d\tsg = (2\im z_N)^{-1} + \sum_{k<N}2(\im z_N+\im z_k)/
+((\re z_N-\re z_k)^2+(\im z_N+\im z_k)^2)$. Under \cref{asm:zero-reflection-count} there are zero lists
+of arbitrary length in a real interval of length one inside $\tfrac14\le\im z<\tfrac12$, each summand
+is then at least $\tfrac12$, and $\reb_{\infty} = \sum_r2^{-r}|f_r\rangle\langle f_r|$ with lists of length
+$N_r\ge2\cdot4^r+1$ is a density on $\KS$ with $\bar t_{\reb_{\infty}} = \infty$: no stationary density.
+This holds with or without RH. The vacuum of \cref{prop:vacuum-renewal-trivial-entanglement} is not
+this case: its holding law is defective (an atom at infinity) and its no-event semigroup is not strongly
+stable, so it is an absorbing boundary case, not a recurrent rebound of infinite mean.
+\end{proposition}
+
+\subsection{The graded space: the zeros are protected, the vacuum is not unique}
+
+\begin{proposition}[Odd coherences carry the zeros for every rebound]
+\label{prop:odd-modes-protected}
+\claimstatus{prop:odd-modes-protected}{proved}
+On $\mathbb C\vac\oplus\KS$, for every density $\widetilde{\reb}$ (even or not), the odd operators
+$|k_w\rangle\langle\vac|$ and $|\vac\rangle\langle k_w|$ are eigen-operators of the graded renewal
+generator with eigenvalues $-i\bar w$ and $iw$ (decay rate $\im w$, so $\tfrac14$ under RH), because the
+exit flux vanishes on every odd operator; with multiplicity, repeated zeros give derivative-kernel
+chains. The generator preserves parity iff $\widetilde{\reb}$ is even; an odd component of
+$\widetilde{\reb}$ feeds odd outputs from even inputs but leaves odd inputs autonomous.
+\end{proposition}
+
+\begin{proposition}[Stationary states on the graded space]
+\label{prop:graded-stationary-segment}
+\claimstatus{prop:graded-stationary-segment}{proved}
+The vacuum is stationary for every rebound. If $\widetilde{\reb} = 0\oplus\reb$ with
+$\bar t_{\reb}<\infty$ the stationary densities are exactly the segment $q\Omvac + (1-q)(0\oplus
+\rdens_\infty)$, $0\le q\le1$, the vacuum mass being conserved; if $\bar t_{\reb} = \infty$ only the
+vacuum is stationary, and states on $\KS$ do not converge to it. If $\widetilde{\reb}$ has vacuum
+weight $q>0$ the vacuum is the unique stationary density and attracts every state. So a unique
+\emph{mixed} stationary state on the graded space needs an exit from the vacuum as well; the
+uncoupled even line of \cref{def:vacuum-decay} is not the last word.
+\end{proposition}
+
+\subsection{The even sector: persistence and the secular equation}
+
+\begin{proposition}[Rank-one perturbation, persistence, secular roots]
+\label{prop:rebound-persistence-secular}
+\claimstatus{prop:rebound-persistence-secular}{proved}
+$\mathcal L_{\reb} = \mathcal L_0 + |\reb\rangle\!\rangle\langle\!\langle\mathrm{fl}|$ is a rank-one perturbation.
+On the span of finitely many modes, with the biorthogonal system of $\mathcal L_0$ whose
+eigen-operators $|e_n\rangle\langle e_m|$ have eigenvalues $-i\bar w_n + iw_m$ (rate $\im w_n+\im w_m$):
+a simple eigenvalue persists iff $\mathrm{fl}(X)\,\mathrm{dual}_X(\reb) = 0$, where $\mathrm{dual}_X$ is the dual functional
+(the eigen-\emph{operator} itself persists iff $\mathrm{fl}(X) = 0$, which never happens for the mode
+operators since $\mathrm{fl}(|e_n\rangle\langle e_m|)\ne0$; collisions of pair eigenvalues occur even for simple
+zeros and are handled by multiplicities), and every other eigenvalue is a root of $1 =
+\widehat m_{\reb}(z)$, with $\det(z-\mathcal L_{\reb}) = \det(z-\mathcal L_0)\,(1-\widehat m_{\reb}(z))$
+on the finite restriction. Explicitly $\widehat m_{\reb}(z) = \sum_{n,m}\reb_{nm}G_{mn}\,
+(-i\bar w_n+iw_m)^{-1}\cdots$ in the Gram matrix $G_{nm} = i/(w_n-\bar w_m)$; the shape
+$1 = \sum_{n,m}c_{nm}/(z+i\bar w_n-iw_m)$ is that of a Connes--Consani--Moscovici secular equation,
+but only the universal rank-one determinant identity is established, no identification.
+\end{proposition}
+
+\begin{proposition}[Mode-diagonal rebounds: a renewal reformulation of RH; the Gram spectrum]
+\label{prop:mode-diagonal-rebound-rh}
+\claimstatus{prop:mode-diagonal-rebound-rh}{proved-conditional}
+(i) For a family of distinct zeros, $\rdens_\infty = \reb$ for every finitely supported
+mode-diagonal $\reb$ on the family iff all widths $\im w_n$ in the family coincide; with the
+quantifier over all zeros and \cref{asm:zero-reflection-count} the common width must be $\tfrac14$, so
+RH iff the stationary state equals the rebound for every finite modal mixture. A singleton gives no
+test; this is a renewal-channel form of the equal-rate criterion of \cref{prop:functional-model-modes},
+not a new mechanism. (ii) Under RH every mode-diagonal $\reb$ has $\bar t_{\reb} = 2$, the secular
+function is $\widehat m(z) = \tfrac12/(z+\tfrac12)$ for every weight vector, the only new eigenvalue is
+$0$, every other even eigenvalue has real part exactly $-\tfrac12$, and $-\tfrac12$ keeps multiplicity
+$N-1$. (iii) The density spectrum of $\rdens_\infty$ is \emph{not} the weight list $\{p_n(2\im w_n)^{-1}
+/\bar t\}$: distinct modes are never orthogonal, $G_{nm}\ne0$, and the spectrum is that of
+$G^{1/2}\operatorname{diag}(p_n(2\im w_n)^{-1}/(\bar t G_{nn}))G^{1/2}$; for $N = 2$ it is
+$\tfrac12(1\pm\sqrt{(p_1-p_2)^2+4p_1p_2|o|^2})$ with $o$ the normalised overlap. Under RH the spectrum
+of $\rdens_\infty$ equals that of $\reb$, not $\{p_n\}$.
+\end{proposition}
+
+\subsection{The inverse problem: every finite spectrum, and the Gibbs spectra}
+
+\begin{theorem}[Admissible densities are exactly the stationary states]
+\label{thm:rebound-admissibility}
+\claimstatus{thm:rebound-admissibility}{proved}
+A density $\rdens$ on $\KS$ is the stationary state of $\mathcal L_{\reb}$ for some density $\reb$ iff
+it is admissible (\cref{def:rebound-renewal-generator}); then the flux $\mathrm{fl}(\rdens) = \Tr Q_\rdens$ is
+finite and strictly positive and the rebound is unique, $\reb = Q_\rdens/\Tr Q_\rdens$. Equivalently
+$\rdens$ lies in the cone of orbit states $\int_0^\infty|C_\tsg\rvec\rangle\langle C_\tsg\rvec|d\tsg$ with
+convergent input flux. On the span of finitely many modes, with $\rdens = \sum\rdens_{nm}|e_n\rangle
+\langle e_m|$, admissibility is the Schur-product condition $(\rdens_{nm}(a_n+\bar a_m))_{nm}\ge0$ with
+$a_n = i\bar w_n$, a rank-two indefinite factor for distinct pairs; under RH $a_n+\bar a_m = \tfrac12 +
+i(\gam{n}-\gam{m})/2$. Mode-diagonal densities are admissible; a density commuting with the
+Hamiltonian part of $\Bgen$ with non-degenerate spectrum never is; Gibbs-like spectra on Haar-random
+eigenvectors fail positivity in every trial of \cref{num:rebound-state}.
+\end{theorem}
+
+\begin{theorem}[Invariant flags realise every finite density spectrum, for any one-exit no-event semigroup]
+\label{thm:flag-spectrum-attainable}
+\claimstatus{thm:flag-spectrum-attainable}{proved}
+Let $C_\tsg = e^{\tsg\Bgen^{*}}$ be any strongly stable one-exit no-event semigroup, $-(\Bgen^{*}+\Bgen)
+= |j\rangle\langle j|$ as forms, and $V_1\subset\dots\subset V_N$ a flag spanned by generator
+eigenvectors, $P_k$ its projections, $u_1,\dots,u_N$ the Gram--Schmidt basis of the flag. Then
+$Q_k = -(\Bgen^{*}P_k+P_k\Bgen) = j_k^{*}j_k\ge0$, and for any $p_1\ge\dots\ge p_N>0$ with $\sum p_i =
+1$, $\rdens = \sum_ip_i|u_i\rangle\langle u_i| = \sum_k(p_k-p_{k+1})P_k$ has loss $Q_{\rdens} =
+\sum_k(p_k-p_{k+1})Q_k\ge0$: admissible with exactly the prescribed spectrum, rebound
+$Q_{\rdens}/\Tr Q_{\rdens}$. Nothing about $\zeta$ is used (the reviewer's point M1: this is a
+statement about one-exit semigroups, verified for generic and off-line modes). For the Riemann
+channel with distinct zero modes, $\Tr Q_k = 2\sum_{n\le k}\im w_n$ and the rebound is
+$Q_{\rdens}/(2\sum_np_n\im w_n)$; no RH and no orthogonality of the modes is used. The rebound need
+not be mixed: for the flat density $P_N/N$ it is the pure state $Q_N/\Tr Q_N$, because the exit is
+one-dimensional.
+\end{theorem}
+
+\begin{proposition}[Gibbs spectra for $\invtemp>1$ from an infinite flag]
+\label{prop:gibbs-flag-isometry}
+\claimstatus{prop:gibbs-flag-isometry}{proved}
+For an isometry $U\colon\ltwo{\mathbb N}\to\KS$ the density $U\gibbs{\invtemp}U^{*}$ is admissible iff
+it lies in $D(\mathcal L_0)$ with $-\mathcal L_0(U\gibbs{\invtemp}U^{*})\ge0$. Taking $Ue_n = u_n$ along an
+infinite flag of distinct modes, for every decreasing probability sequence $(d_n)$ the sums $\rdens =
+\sum_k(d_k-d_{k+1})P_k$ and $Q = \sum_k(d_k-d_{k+1})Q_k$ converge in trace norm, $\Tr Q = 2\sum_nd_n
+\im w_n\in(0,1)$, and $\rdens$ is admissible with spectrum $(d_n)$; for $d_n = n^{-\invtemp}/\zeta(\invtemp)$
+this is the Gibbs entanglement spectrum of \cref{obs:complementary-halves}. Under RH every such flag
+has $\Tr Q = \tfrac12$ and $\bar t_{\reb} = 2$ for every $\invtemp>1$. At $\invtemp = 1$ the candidate is not
+trace class (\cref{prop:normal-kms-gibbs}): the critical obstruction is trace normalisation, not a
+diverging holding time and not a failure of positivity. Open: a distinguished $U$ carrying the
+Bost--Connes observables, the prime action and detailed balance.
+\end{proposition}
+
+\begin{observation}[What this buys for \cref{conj:phantasm-both-halves}, and what it does not]
+\label{obs:rebound-both-halves-scope}
+\claimstatus{obs:rebound-both-halves-scope}{sketched}
+Rebounding inside $\KS$ gives a conservative renewal Lindbladian with a unique, attracting, mixed
+stationary density of any prescribed finite spectrum, or of the Gibbs spectrum for $\invtemp>1$,
+while the odd coherences of the graded extension keep the zeros as relaxation modes once each plus
+conjugates. So the literal clause of \cref{obs:complementary-halves}, ``no construction in this book has
+both'', is no longer true as a purely spectral statement; a direct sum of the vacuum-decay and
+prime-chain generators would already falsify it trivially (reviewer's point M2), and the content here
+is that the mixed density lives on $\KS$ itself, fed by the same cusp flux that carries the zeros,
+with rebound $Q/\Tr Q$. What is not supplied: any arithmetic reason
+for $\reb$ (the spectrum is put in by hand through a freely chosen flag), the identification of $\KS$
+with the Bost--Connes bond, a critical ($\invtemp = 1$) non-normal state, and a unique mixed
+stationary state on the graded space, which needs an exit from the vacuum. The even sector's
+non-stationary spectrum is pair differences with new secular roots, not zeros.
+\end{observation}
+
+\begin{numerical}[Finite Gram model of the renewal channel]
+\label{num:rebound-state}
+\claimstatus{num:rebound-state}{numerical}
+\texttt{scripts/rebound\_state.py}, $150$ checks, blind to the prover. Gram constant $G_{nm} =
+i/(w_n-\bar w_m)$ for the $(2\pi)^{-1}dx$ inner product (quadrature to $8\cdot10^{-6}$); exit $j =
+-i\,\mathbf 1^{\mathsf T}$ in the mode basis with $-(D^{*}G+GD) = \mathbf 1\mathbf 1^{\mathsf T}$ exactly and
+$\langle j,k_n\rangle = -i$ for every mode. Trace preservation, CPTP of $e^{\tsg\mathcal L_{\reb}}$, and
+$\int m_{\reb} = 1$ for eight (model, $\reb$) pairs; $\rdens_\infty$ by four routes to $10^{-14}$; under
+RH $\bar t = 2$ for every mode-diagonal $\reb$; odd coherences exact eigen-operators to $10^{-14}$ for
+every $\widetilde{\reb}$, $\Omvac$ reproducing \cref{thm:vacuum-decay-finite} to $2\cdot10^{-14}$, and
+$\dim\ker = 2$ on the graded space for internal rebounds; the determinant identity to $5\cdot10^{-14}$;
+$\rdens_\infty = \reb$ on-line to $10^{-15}$ and $\|\rdens_\infty-\reb\|_1\in[0.11,0.15]$ off-line;
+the weight list is not the spectrum (on-line, $N = 5$, $p = (.40,.30,.15,.10,.05)$: spectrum
+$(.4256,.2957,.1441,.0973,.0374)$, discrepancy $6.4\%$) while the Gram formula holds to
+$10^{-15}$; admissibility cone equals the orbit cone; Gibbs-like spectra on Haar-random eigenvectors
+fail positivity $400/400$ at $\invtemp = 1.5, 2$; the necessary bound $|H_{ab}|\ge\tfrac12|j_a||j_b|
+|\sqrt{\lambda_a}-\sqrt{\lambda_b}|/(\sqrt{\lambda_a}+\sqrt{\lambda_b})$ and the corollary that a density
+commuting with $H$ with non-degenerate spectrum is never admissible. Two prose claims of the numerics
+report are superseded by the review: the vacuum is not the $\im w\to0$ end of the mean, and the
+persistence criterion in the form ``$\reb_{nm} = 0$'' holds only at simple eigenvalues.
+\end{numerical}

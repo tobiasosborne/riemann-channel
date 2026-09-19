@@ -41,6 +41,20 @@ beat it; the counts add `N >= 0` and a Newton congruence mod `K+1`, which pin th
 estimators mean more primes. Proposed, not run: the per-window disc radius in `ihz`/`zst` as a
 rigorous ignorance measure against the observed `e^{-4 pi x}` convergence. Worklog 2026-09-19.
 
+**Night (2026-09-19): the rebound-state round (shard 04h).** TJO picked the ledger's most promising
+theorem-shaped lead, item 0b' (`conj:phantasm-both-halves`), and the full protocol ran: astra prover,
+blind Opus numerics, Opus REFUTE review (21 VALID, 2 MINOR, 0 INVALID). Registered in
+`report/sections/04h_rebound_state.tex`: a rebound density inside K_S gives a conservative renewal
+Lindbladian with a unique attracting mixed stationary state iff the mean holding time is finite; odd
+coherences keep the zeros for every rebound; invariant flags of modes realise every finite entanglement
+spectrum and the Gibbs spectra for beta > 1 (for any one-exit no-event semigroup, nothing about zeta
+used; under RH the mean holding time is exactly 2); admissible stationary densities are exactly those
+with positive loss. Corrected: the sign in `prop:functional-model-modes`; `obs:complementary-halves`.
+**Next on this lead:** (i) give the vacuum an exit so the graded space has a unique mixed stationary
+state; (ii) the arithmetic identification of the flag isometry U with the Bost-Connes bond, now a
+concrete positivity condition `-(B^* U D U^* + U D U^* B) >= 0` plus the prime action; (iii) the
+numerics lane's necessary bound on |H_ab| as a filter for candidate U. Worklog 2026-09-19, night.
+
 **Evening (2026-09-19): the ideation ledger.** `notes/ideation-ledger-2026-09-19/` (read `README.md`
 then `LEDGER.md`): every idea, lead and dead route in the notebook's history, 100% source coverage
 verified by script (138 repo files + 20 codex rollouts; 17 Opus lanes, 1509 entries; 4 digests, 492

@@ -195,3 +195,6 @@ Resfb	\operatorname{Res}^0_{\mathcal X}	first-band resonant states {u : (X + lam
 lapeig	\sigma_{\!\Lap}	Laplace eigenvalue sigma = s(1-s) of the surface in the Selberg-letters shard, with multiplicity d_sigma	Selberg	RC-03E	distinct from sigs (real part of s)
 tsamp	\tau_{\mathrm{s}}	sampling time of the geodesic flow (lattice step) in the Selberg-letters shard	Selberg	RC-03E	-
 trunc	\Lambda^{Y}	Maass-Selberg truncation of an Eisenstein series at height Y	modular	RC-03F	-
+reb	\varOmega	rebound density inside the model space (reinsertion state of the renewal generator)	Riemann channel	RC-04H	never \Omega, which is the Casimir
+rdens	\mathsf s	density (state) on the model space in the renewal channel, also the target density of the inverse problem	Riemann channel	RC-04H	never rho (a zero) or sigma (a real part)
+rvec	\mathsf v	generic vector of the model space in the exit and orbit-state formulas	Riemann channel	RC-04H	-

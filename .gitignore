@@ -29,3 +29,7 @@ notes/zeta-conditions/finite/__pycache__/
 
 # ihz build artefacts
 ihz/build/
+
+# rebound-state campaign raw codex stream
+notes/rebound-state/astra-session.log
+notes/rebound-state/astra-session.out

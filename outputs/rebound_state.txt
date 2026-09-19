@@ -1,0 +1,189 @@
+The rebound state inside the model space: finite Gram evidence for T1--T6.
+
+Numerics lane for the brief `notes/rebound-state/astra-brief.md` (drafted statements
+T1--T7, conventions C1--C4).  Independent of the prover's file.  Deterministic
+(seed 20260919); every check is an assertion, tally printed at the end.
+
+modes: N = 5;  on-line Im w = [0.25];  off-line Im w = [0.25  0.19  0.31  0.225 0.25 ]
+Gram condition numbers: on-line 2.7510, off-line 2.8869, both-signs 1.4240
+
+0. conventions: Gram constant, one-exit identity, mode eigenvalues (C1-C4)
+  ok  1  on-line: <k_n|k_m> = i/(w_n - conj w_m) by quadrature of (1/2pi)int conj(k_n)k_m dx (max dev 8.0e-06); the Gram constant is c = i
+  ok  2  off-line: <k_n|k_m> = i/(w_n - conj w_m) by quadrature of (1/2pi)int conj(k_n)k_m dx (max dev 8.0e-06); the Gram constant is c = i
+  ok  3  both-signs: <k_n|k_m> = i/(w_n - conj w_m) by quadrature of (1/2pi)int conj(k_n)k_m dx (max dev 8.0e-06); the Gram constant is c = i
+  ok  4  on-line: G Hermitian, G_nn = 1/(2 Im w_n), lambda_min(G) = 1.1137 > 0
+  ok  5  on-line: no two kernel modes are orthogonal, min_{n!=m}|G_nm| = 0.1062 (this is what breaks T5(b), see below)
+  ok  6  on-line: mode-basis exit identity -(D^* G + G D) = 1 1^T exactly
+  ok  7  off-line: G Hermitian, G_nn = 1/(2 Im w_n), lambda_min(G) = 1.1169 > 0
+  ok  8  off-line: no two kernel modes are orthogonal, min_{n!=m}|G_nm| = 0.1062 (this is what breaks T5(b), see below)
+  ok  9  off-line: mode-basis exit identity -(D^* G + G D) = 1 1^T exactly
+  ok 10  both-signs: G Hermitian, G_nn = 1/(2 Im w_n), lambda_min(G) = 1.6572 > 0
+  ok 11  both-signs: no two kernel modes are orthogonal, min_{n!=m}|G_nm| = 0.0476 (this is what breaks T5(b), see below)
+  ok 12  both-signs: mode-basis exit identity -(D^* G + G D) = 1 1^T exactly
+  ok 13  on-line: -(K+K^dag) has numerical rank 1 (sv2/sv1 = 1.3e-15)
+  ok 14  on-line: -(K+K^dag) = |j><j| with |j> = i R^(-1) 1 (C2), ||j||^2 = 1^T G^(-1) 1 = 2.500000
+  ok 15  on-line: <j|k_n> = -i != 0 for EVERY mode (C3: no mode decoupled from the exit)
+  ok 16  on-line: spec(K_mat) = {-i conj(w_n)}, decay rates Im w_n = [0.25 0.25 0.25 0.25 0.25]
+  ok 17  on-line: C_t k_n = e^(-i conj(w_n) t) k_n for t = 0.3, 1.7, 5.0 (C1, corrected sign)
+  ok 18  on-line: K = -i H - (1/2)|j><j| with H = (i/2)(K-K^dag) Hermitian (GKLS form)
+  ok 19  on-line: ||C_t||_2 = [1.00000e+00 1.00000e+00 9.55228e-01 1.01806e-01 5.90000e-05] at t = 0,.5,2,10,40 -- contractive, -> 0, and STRICTLY < 1 for t>0 (C4: ||C_t||=1 is false in the finite model)
+  ok 20  off-line: -(K+K^dag) has numerical rank 1 (sv2/sv1 = 2.8e-15)
+  ok 21  off-line: -(K+K^dag) = |j><j| with |j> = i R^(-1) 1 (C2), ||j||^2 = 1^T G^(-1) 1 = 2.450000
+  ok 22  off-line: <j|k_n> = -i != 0 for EVERY mode (C3: no mode decoupled from the exit)
+  ok 23  off-line: spec(K_mat) = {-i conj(w_n)}, decay rates Im w_n = [0.19  0.225 0.25  0.25  0.31 ]
+  ok 24  off-line: C_t k_n = e^(-i conj(w_n) t) k_n for t = 0.3, 1.7, 5.0 (C1, corrected sign)
+  ok 25  off-line: K = -i H - (1/2)|j><j| with H = (i/2)(K-K^dag) Hermitian (GKLS form)
+  ok 26  off-line: ||C_t||_2 = [1.00000e+00 1.00000e+00 9.57256e-01 1.60312e-01 5.21000e-04] at t = 0,.5,2,10,40 -- contractive, -> 0, and STRICTLY < 1 for t>0 (C4: ||C_t||=1 is false in the finite model)
+  ok 27  both-signs: -(K+K^dag) has numerical rank 1 (sv2/sv1 = 2.0e-15)
+  ok 28  both-signs: -(K+K^dag) = |j><j| with |j> = i R^(-1) 1 (C2), ||j||^2 = 1^T G^(-1) 1 = 2.000000
+  ok 29  both-signs: <j|k_n> = -i != 0 for EVERY mode (C3: no mode decoupled from the exit)
+  ok 30  both-signs: spec(K_mat) = {-i conj(w_n)}, decay rates Im w_n = [0.25 0.25 0.25 0.25]
+  ok 31  both-signs: C_t k_n = e^(-i conj(w_n) t) k_n for t = 0.3, 1.7, 5.0 (C1, corrected sign)
+  ok 32  both-signs: K = -i H - (1/2)|j><j| with H = (i/2)(K-K^dag) Hermitian (GKLS form)
+  ok 33  both-signs: ||C_t||_2 = [1.00000e+00 9.95170e-01 6.34682e-01 9.54990e-02 4.80000e-05] at t = 0,.5,2,10,40 -- contractive, -> 0, and STRICTLY < 1 for t>0 (C4: ||C_t||=1 is false in the finite model)
+
+1. T1 (conservativity): trace preservation and complete positivity
+  ok 34  T1 on-line, Omega = mode-diagonal p=(.4,.3,.15,.1,.05): Tr L_Omega(rho) = 0 (vec(1) is a left null vector)
+  ok 35  T1 on-line, Omega = pure on one mode khat_1: Tr L_Omega(rho) = 0 (vec(1) is a left null vector)
+  ok 36  T1 on-line, Omega = generic full-rank density: Tr L_Omega(rho) = 0 (vec(1) is a left null vector)
+  ok 37  T1 on-line, Omega = rank-one on a random vector: Tr L_Omega(rho) = 0 (vec(1) is a left null vector)
+  ok 38  T1 off-line, Omega = mode-diagonal p=(.4,.3,.15,.1,.05): Tr L_Omega(rho) = 0 (vec(1) is a left null vector)
+  ok 39  T1 off-line, Omega = pure on one mode khat_1: Tr L_Omega(rho) = 0 (vec(1) is a left null vector)
+  ok 40  T1 off-line, Omega = generic full-rank density: Tr L_Omega(rho) = 0 (vec(1) is a left null vector)
+  ok 41  T1 off-line, Omega = rank-one on a random vector: Tr L_Omega(rho) = 0 (vec(1) is a left null vector)
+  ok 42  T1 on-line, generic Omega: e^(t L_Omega) is CPTP for t = 0.1, 1, 6 (Choi >= 0 to 1e-10, partial trace = 1); jumps L_a = sqrt(w_a)|phi_a><j|
+  ok 43  T1 on-line, Omega = mode-diagonal p=(.4,.3,.15,.1,.05): m_Omega(t) = -d/dt Tr(C_t Omega C_t^dag) >= 0 and int_0^inf m_Omega = 1.000000 (a proper holding-time density)
+  ok 44  T1 on-line, Omega = pure on one mode khat_1: m_Omega(t) = -d/dt Tr(C_t Omega C_t^dag) >= 0 and int_0^inf m_Omega = 1.000000 (a proper holding-time density)
+  ok 45  T1 on-line, Omega = generic full-rank density: m_Omega(t) = -d/dt Tr(C_t Omega C_t^dag) >= 0 and int_0^inf m_Omega = 1.000000 (a proper holding-time density)
+  ok 46  T1 on-line, Omega = rank-one on a random vector: m_Omega(t) = -d/dt Tr(C_t Omega C_t^dag) >= 0 and int_0^inf m_Omega = 1.000000 (a proper holding-time density)
+  ok 47  T1 off-line, Omega = mode-diagonal p=(.4,.3,.15,.1,.05): m_Omega(t) = -d/dt Tr(C_t Omega C_t^dag) >= 0 and int_0^inf m_Omega = 1.000000 (a proper holding-time density)
+  ok 48  T1 off-line, Omega = pure on one mode khat_1: m_Omega(t) = -d/dt Tr(C_t Omega C_t^dag) >= 0 and int_0^inf m_Omega = 1.000000 (a proper holding-time density)
+  ok 49  T1 off-line, Omega = generic full-rank density: m_Omega(t) = -d/dt Tr(C_t Omega C_t^dag) >= 0 and int_0^inf m_Omega = 1.000000 (a proper holding-time density)
+  ok 50  T1 off-line, Omega = rank-one on a random vector: m_Omega(t) = -d/dt Tr(C_t Omega C_t^dag) >= 0 and int_0^inf m_Omega = 1.000000 (a proper holding-time density)
+
+2. T2 (stationary state and the renewal theorem)
+  ok 51  T2 on-line, Omega = mode-diagonal p=(.4,.3,.15,.1,.05): rho_inf from the mode integral = Lyapunov solve = K-eigenbasis integral = null vector of L_Omega, max dev 5.3e-15; mu = 2.000000
+  ok 52  T2 on-line, Omega = mode-diagonal p=(.4,.3,.15,.1,.05): rho_inf is a density and Tr(|j><j| rho_inf) = 1/mu = 0.500000 (mean holding time 2.000000 < inf)
+  ok 53  T2 on-line, Omega = pure on one mode khat_1: rho_inf from the mode integral = Lyapunov solve = K-eigenbasis integral = null vector of L_Omega, max dev 8.4e-16; mu = 2.000000
+  ok 54  T2 on-line, Omega = pure on one mode khat_1: rho_inf is a density and Tr(|j><j| rho_inf) = 1/mu = 0.500000 (mean holding time 2.000000 < inf)
+  ok 55  T2 on-line, Omega = generic full-rank density: rho_inf from the mode integral = Lyapunov solve = K-eigenbasis integral = null vector of L_Omega, max dev 2.8e-15; mu = 2.061720
+  ok 56  T2 on-line, Omega = generic full-rank density: rho_inf is a density and Tr(|j><j| rho_inf) = 1/mu = 0.485032 (mean holding time 2.061720 < inf)
+  ok 57  T2 on-line, Omega = rank-one on a random vector: rho_inf from the mode integral = Lyapunov solve = K-eigenbasis integral = null vector of L_Omega, max dev 1.9e-15; mu = 1.923813
+  ok 58  T2 on-line, Omega = rank-one on a random vector: rho_inf is a density and Tr(|j><j| rho_inf) = 1/mu = 0.519801 (mean holding time 1.923813 < inf)
+  ok 59  T2 off-line, Omega = mode-diagonal p=(.4,.3,.15,.1,.05): rho_inf from the mode integral = Lyapunov solve = K-eigenbasis integral = null vector of L_Omega, max dev 9.9e-16; mu = 2.153631
+  ok 60  T2 off-line, Omega = mode-diagonal p=(.4,.3,.15,.1,.05): rho_inf is a density and Tr(|j><j| rho_inf) = 1/mu = 0.464332 (mean holding time 2.153631 < inf)
+  ok 61  T2 off-line, Omega = pure on one mode khat_1: rho_inf from the mode integral = Lyapunov solve = K-eigenbasis integral = null vector of L_Omega, max dev 3.6e-15; mu = 2.000000
+  ok 62  T2 off-line, Omega = pure on one mode khat_1: rho_inf is a density and Tr(|j><j| rho_inf) = 1/mu = 0.500000 (mean holding time 2.000000 < inf)
+  ok 63  T2 off-line, Omega = generic full-rank density: rho_inf from the mode integral = Lyapunov solve = K-eigenbasis integral = null vector of L_Omega, max dev 3.4e-15; mu = 1.993325
+  ok 64  T2 off-line, Omega = generic full-rank density: rho_inf is a density and Tr(|j><j| rho_inf) = 1/mu = 0.501674 (mean holding time 1.993325 < inf)
+  ok 65  T2 off-line, Omega = rank-one on a random vector: rho_inf from the mode integral = Lyapunov solve = K-eigenbasis integral = null vector of L_Omega, max dev 3.9e-15; mu = 2.977350
+  ok 66  T2 off-line, Omega = rank-one on a random vector: rho_inf is a density and Tr(|j><j| rho_inf) = 1/mu = 0.335869 (mean holding time 2.977350 < inf)
+  ok 67  T2 on-line: ker L_Omega is 1-dimensional, gap = 0.435824, and e^(60 L)rho_0 -> rho_inf (dev 8.2e-13) -- unique, globally attracting
+  ok 68  T2 off-line: ker L_Omega is 1-dimensional, gap = 0.392502, and e^(60 L)rho_0 -> rho_inf (dev 6.6e-12) -- unique, globally attracting
+  ok 69  T2 on-line: mode-diagonal mu = sum_n p_n/(2 Im w_n) = 2.000000
+  ok 70  T2 off-line: mode-diagonal mu = sum_n p_n/(2 Im w_n) = 2.153631
+  ok 71  T2 on-line: under RH every mode-diagonal Omega has mu = 1/(2*1/4) = 2 exactly, so no mode-diagonal rebound state on the critical line can have mu = infinity
+  ok 72  T2 on-line: over 300 random full-rank Omega, mu ranges over [1.8610, 2.5815] -- NOT constant = 2 off the mode-diagonal (the mu = 2 identity is special to mode-diagonal Omega)
+  ok 73  T2: mu blows up as a mode approaches the real axis: Im w_5 = 0.002 gives mu = 51.60 ~ p_5/(2 Im w_5) = 50 (finite-dimensional shadow of mu = infinity)
+
+3. T4 (persistence criterion and secular equation)
+  ok 74  T4 on-line, Omega = mode-diagonal p=(.4,.3,.15,.1,.05): mhat(z) = Tr(|j><j|(z-L_0)^(-1)Omega) = sum_nm Omega_k[n,m]/(z + i conj w_n - i w_m) = Laplace(m_Omega)(z) (dev 7.0e-16, Laplace at z=0.8 3.1e-06)
+  ok 75  T4 on-line, Omega = pure on one mode khat_1: mhat(z) = Tr(|j><j|(z-L_0)^(-1)Omega) = sum_nm Omega_k[n,m]/(z + i conj w_n - i w_m) = Laplace(m_Omega)(z) (dev 4.3e-16, Laplace at z=0.8 3.1e-06)
+  ok 76  T4 on-line, Omega = generic full-rank density: mhat(z) = Tr(|j><j|(z-L_0)^(-1)Omega) = sum_nm Omega_k[n,m]/(z + i conj w_n - i w_m) = Laplace(m_Omega)(z) (dev 2.0e-15, Laplace at z=0.8 4.2e-07)
+  ok 77  T4 on-line, Omega = rank-one on a random vector: mhat(z) = Tr(|j><j|(z-L_0)^(-1)Omega) = sum_nm Omega_k[n,m]/(z + i conj w_n - i w_m) = Laplace(m_Omega)(z) (dev 2.0e-15, Laplace at z=0.8 1.1e-05)
+  ok 78  T4 off-line, Omega = mode-diagonal p=(.4,.3,.15,.1,.05): mhat(z) = Tr(|j><j|(z-L_0)^(-1)Omega) = sum_nm Omega_k[n,m]/(z + i conj w_n - i w_m) = Laplace(m_Omega)(z) (dev 2.0e-16, Laplace at z=0.8 3.1e-06)
+  ok 79  T4 off-line, Omega = pure on one mode khat_1: mhat(z) = Tr(|j><j|(z-L_0)^(-1)Omega) = sum_nm Omega_k[n,m]/(z + i conj w_n - i w_m) = Laplace(m_Omega)(z) (dev 1.0e-15, Laplace at z=0.8 3.1e-06)
+  ok 80  T4 off-line, Omega = generic full-rank density: mhat(z) = Tr(|j><j|(z-L_0)^(-1)Omega) = sum_nm Omega_k[n,m]/(z + i conj w_n - i w_m) = Laplace(m_Omega)(z) (dev 4.2e-15, Laplace at z=0.8 2.7e-06)
+  ok 81  T4 off-line, Omega = rank-one on a random vector: mhat(z) = Tr(|j><j|(z-L_0)^(-1)Omega) = sum_nm Omega_k[n,m]/(z + i conj w_n - i w_m) = Laplace(m_Omega)(z) (dev 1.4e-14, Laplace at z=0.8 4.1e-06)
+  ok 82  T4(b) on-line, Omega = mode-diagonal p=(.4,.3,.15,.1,.05): det(z - L_Omega) = det(z - L_0)(1 - mhat(z)) exactly (max rel dev 8.5e-15) -- rank-one secular identity
+  ok 83  T4(b) on-line, Omega = pure on one mode khat_1: det(z - L_Omega) = det(z - L_0)(1 - mhat(z)) exactly (max rel dev 2.5e-15) -- rank-one secular identity
+  ok 84  T4(b) on-line, Omega = generic full-rank density: det(z - L_Omega) = det(z - L_0)(1 - mhat(z)) exactly (max rel dev 9.2e-15) -- rank-one secular identity
+  ok 85  T4(b) on-line, Omega = rank-one on a random vector: det(z - L_Omega) = det(z - L_0)(1 - mhat(z)) exactly (max rel dev 9.4e-15) -- rank-one secular identity
+  ok 86  T4(b) off-line, Omega = mode-diagonal p=(.4,.3,.15,.1,.05): det(z - L_Omega) = det(z - L_0)(1 - mhat(z)) exactly (max rel dev 6.3e-15) -- rank-one secular identity
+  ok 87  T4(b) off-line, Omega = pure on one mode khat_1: det(z - L_Omega) = det(z - L_0)(1 - mhat(z)) exactly (max rel dev 4.2e-15) -- rank-one secular identity
+  ok 88  T4(b) off-line, Omega = generic full-rank density: det(z - L_Omega) = det(z - L_0)(1 - mhat(z)) exactly (max rel dev 1.9e-14) -- rank-one secular identity
+  ok 89  T4(b) off-line, Omega = rank-one on a random vector: det(z - L_Omega) = det(z - L_0)(1 - mhat(z)) exactly (max rel dev 4.9e-14) -- rank-one secular identity
+  ok 90  T4(a) on-line: Tr(|j><j| X_nm) = 1 for ALL N^2 eigen-operators X_nm = |k_n><k_m| -- the first disjunct of T4(a) NEVER fires in the ungraded model (operator form of C3)
+  ok 91  T4(a) off-line: Tr(|j><j| X_nm) = 1 for ALL N^2 eigen-operators X_nm = |k_n><k_m| -- the first disjunct of T4(a) NEVER fires in the ungraded model (operator form of C3)
+  ok 92  T4(a) on-line, mode-diagonal Omega: all 20 off-diagonal eigenvalues z_nm (n!=m) persist (their residue Omega_k[n,m] = 0); max |Omega_k off-diag| = 1.4e-16
+  ok 93  T4(a) on-line: the N-fold degenerate L_0 eigenvalue -1/2 (all diagonal X_nn) keeps multiplicity N-1 = 4 under the rank-one perturbation; one copy moves to the secular root
+  ok 94  T4(b)+T5(c) on-line: the ONLY new eigenvalue is z = 1.16e-15-8.60e-16j = 0, the unique root of 1 = mhat(z) = (1/2)/(z+1/2)
+  ok 95  T4 N=3, Omega = generic full-rank: spec(L_Omega) equals the roots of prod(z - z_nm) - sum_nm Omega_k[n,m] prod_(others) exactly (max dev 1.9e-08); all 9 L_0 eigenvalues destroyed
+  ok 96  T4 N=3, Omega = rank-one random: spec(L_Omega) equals the roots of prod(z - z_nm) - sum_nm Omega_k[n,m] prod_(others) exactly (max dev 1.5e-08); all 9 L_0 eigenvalues destroyed
+
+4. T5 (mode-diagonal rebound states; RH reformulation)
+  ok 97  T5 on-line: rho_inf = mu^(-1) sum_n p_n (2 Im w_n)^(-1) |khat_n><khat_n| with mu = sum p_n (2 Im w_n)^(-1) = 2.000000 (dev 8.9e-16)
+  ok 98  T5 off-line: rho_inf = mu^(-1) sum_n p_n (2 Im w_n)^(-1) |khat_n><khat_n| with mu = sum p_n (2 Im w_n)^(-1) = 2.088084 (dev 8.0e-16)
+  ok 99  T5 both-signs: rho_inf = mu^(-1) sum_n p_n (2 Im w_n)^(-1) |khat_n><khat_n| with mu = sum p_n (2 Im w_n)^(-1) = 2.000000 (dev 7.2e-16)
+  ok 100  T5(a) on-line (RH TRUE, all Im w = 1/4): rho_inf = Omega for every mode-diagonal Omega, 6 random p, max dev 7.8e-16
+  ok 101  T5(a) both-signs (RH TRUE, all Im w = 1/4): rho_inf = Omega for every mode-diagonal Omega, 6 random p, max dev 7.2e-16
+  ok 102  T5(a) off-line (RH FALSE, Im w = [0.25  0.19  0.31  0.225 0.25 ]): rho_inf != Omega for all 6 random p; max-entry gap in [0.0541, 0.0765], trace distance ||rho_inf - Omega||_1 in [0.1108, 0.1536]
+  ok 103  T5(a) exact quantifier: off-line, but p supported on the two modes with EQUAL Im w = 1/4, gives rho_inf = Omega again (dev 3.9e-16) -- the criterion is 'all Im w_n with p_n > 0 are equal', not 'all zeros on the line'
+   T5(b): entanglement spectrum of rho_inf
+  !! T5(b) FAILS AS STATED. On-line, p = [0.4  0.3  0.15 0.1  0.05]: the drafted claim is that the entanglement spectrum of rho_inf is {p_n (2 Im w_n)^(-1)/mu} = [0.4  0.3  0.15 0.1  0.05]; the actual spectrum of rho_inf is [0.4256   0.295654 0.14409  0.097305 0.037351]. Max discrepancy 0.0256 (relative 6.4%); entropies 1.352492 vs 1.392321 nats.
+  ok 104  T5(b) DISPROVED: spec(rho_inf) != {p_n(2 Im w_n)^(-1)/mu}, discrepancy 0.0256. Reason: khat_n are NEVER orthogonal (G_nm = i/(w_n - conj w_m) != 0), so sum_n lambda_n |khat_n><khat_n| is not a spectral decomposition
+  ok 105  T5(b) CORRECTED and verified: spec(rho_inf) = spec(diag(p_n(2 Im w_n)^(-1)/(mu G_nn)) G) = spec(G^(1/2) diag(...) G^(1/2)), dev 1.4e-15; it reduces to {p_n} only in the (never realised) limit of orthogonal modes
+  ok 106  T5(b) what survives: under RH spec(rho_inf) = spec(Omega) exactly (a corollary of T5(a)), so the entanglement spectrum IS the rebound state's own spectrum -- just not {p_n}
+  ok 107  T5(b) boundary case: a single mode (p = delta_1) does give the exact spectrum {1,0,..,0}; the failure is strictly a multi-mode non-orthogonality effect
+  ok 108  T5(c) on-line: mhat_Omega(z) = (1/2)/(z + 1/2) for EVERY mode-diagonal Omega (independent of p), dev 3.4e-16; unique root z = 0
+  ok 109  T5(c) off-line: the N diagonal L_0 eigenvalues -2 Im w_n are replaced by the N roots of 1 = sum_n p_n 2 Im w_n/(z + 2 Im w_n), = [-0.556768 -0.5      -0.488041 -0.416289 -0.      ]; z = 0 is always a root (trace preservation)
+  ok 110  T5(c) on-line: EVERY nonzero eigenvalue of L_Omega has Re = -1/2 = -2*(1/4); the even-sector relaxation rate is exactly twice the common zero-decay rate. Frequencies = (gamma_m - gamma_n)/2, the pair differences
+
+5. T3 (graded version on C vac + K: the zeros survive for every rebound state)
+  ok 111  T3: the graded one-exit identity -(Kbar + Kbar^dag) = |j><j| still holds on C vac + K (Kbar = 0 (+) K, j supported on K)
+  ok 112  T3, Omega = even (mode-diagonal on K): |k_n><vac| and |vac><k_n| are EXACT eigen-operators with eigenvalues -i conj(w_n) and +i w_n (decay rate Im w_n = 1/4), for this Omega (dev 1.4e-14); the exit functional annihilates them
+  ok 113  T3, Omega = with vacuum-mode coherences: |k_n><vac| and |vac><k_n| are EXACT eigen-operators with eigenvalues -i conj(w_n) and +i w_n (decay rate Im w_n = 1/4), for this Omega (dev 1.4e-14); the exit functional annihilates them
+  ok 114  T3, Omega = Omega = |vac><vac| (vacuum decay): |k_n><vac| and |vac><k_n| are EXACT eigen-operators with eigenvalues -i conj(w_n) and +i w_n (decay rate Im w_n = 1/4), for this Omega (dev 1.4e-14); the exit functional annihilates them
+  ok 115  T3, Omega = generic full-rank on C vac + K: |k_n><vac| and |vac><k_n| are EXACT eigen-operators with eigenvalues -i conj(w_n) and +i w_n (decay rate Im w_n = 1/4), for this Omega (dev 1.4e-14); the exit functional annihilates them
+  !! T3 labelling: with the convention <f|g> conjugate-linear in the first slot, it is |k_w><vac| that carries -i conj(w) and |vac><k_w| that carries +i w; the brief's T3 states the transpose. Not a mathematical error, but the draft's assignment must be swapped.
+  ok 116  T3 (new): |vac><vac| is stationary for L_Omega for EVERY Omega -- the vacuum is never emptied, because Kbar|vac> = 0 and the exit functional vanishes on it
+  ok 117  T3, Omega = even (mode-diagonal on K): Tr(Omega|_K) = 1.0000, dim ker L_Omega = 2 (vacuum AND a mixed rho_inf: stationary state NOT unique)
+  ok 118  T3, Omega = with vacuum-mode coherences: Tr(Omega|_K) = 0.8443, dim ker L_Omega = 1 (the vacuum alone is stationary: all population drains into vac)
+  ok 119  T3, Omega = Omega = |vac><vac| (vacuum decay): Tr(Omega|_K) = 0.0000, dim ker L_Omega = 1 (the vacuum alone is stationary: all population drains into vac)
+  ok 120  T3, Omega = generic full-rank on C vac + K: Tr(Omega|_K) = 0.8437, dim ker L_Omega = 1 (the vacuum alone is stationary: all population drains into vac)
+  ok 121  T3, Omega = even (mode-diagonal on K): det(z - L_Omega) = det(z - L_0)(1 - mhat_K(z)) with mhat built from the K-BLOCK of Omega alone (rel dev 2.7e-14), and the 2N+1 protected eigenvalues {0} u {-i conj w_n} u {i w_n} all lie in spec L_Omega (dev 1.6e-14)
+  ok 122  T3, Omega = with vacuum-mode coherences: det(z - L_Omega) = det(z - L_0)(1 - mhat_K(z)) with mhat built from the K-BLOCK of Omega alone (rel dev 1.7e-14), and the 2N+1 protected eigenvalues {0} u {-i conj w_n} u {i w_n} all lie in spec L_Omega (dev 2.0e-14)
+  ok 123  T3, Omega = Omega = |vac><vac| (vacuum decay): det(z - L_Omega) = det(z - L_0)(1 - mhat_K(z)) with mhat built from the K-BLOCK of Omega alone (rel dev 0.0e+00), and the 2N+1 protected eigenvalues {0} u {-i conj w_n} u {i w_n} all lie in spec L_Omega (dev 1.1e-14)
+  ok 124  T3, Omega = generic full-rank on C vac + K: det(z - L_Omega) = det(z - L_0)(1 - mhat_K(z)) with mhat built from the K-BLOCK of Omega alone (rel dev 8.5e-15), and the 2N+1 protected eigenvalues {0} u {-i conj w_n} u {i w_n} all lie in spec L_Omega (dev 1.4e-14)
+  ok 125  T3 consistency with thm:vacuum-decay-finite: for Omega = |vac><vac|, spec L_vac = {0} u spec(B) u conj spec(B) u {b_i + conj b_j}, dev 2.1e-14
+  ok 126  T3 / prop:vacuum-renewal-trivial-entanglement: Tr(C_t Omega_vac C_t^dag) = 1 for all t, so m_vac = 0 and mu_vac = infinity -- the vacuum is the exact boundary case of T2's criterion
+
+6. T6 (the inverse problem: the cone of admissible stationary states)
+  ok 127  T6(a) on-line: every mode-diagonal sigma is ADMISSIBLE (6 random p; worst lambda_min(Omega_cand) = 3.1e-03) and Tr Omega_cand = 1 automatically
+  ok 128  T6(a) off-line: every mode-diagonal sigma is ADMISSIBLE (6 random p; worst lambda_min(Omega_cand) = 1.4e-02) and Tr Omega_cand = 1 automatically
+  ok 129  T6 Schur form: Omega_cand_k[n,m] = sigma_k[n,m] (conj(a_n) + a_m), a_n = -i w_n (entrywise/Hadamard product with a rank-two matrix)
+  ok 130  T6 Schur form: M_nm = conj(a_n)+a_m has rank 2 and signature (1,1) (eigenvalues [-15.5982  18.0982]); x^dag M x = 2 Re(conj(v) u), u = sum x_n, v = sum a_n x_n -- genuinely indefinite, so admissibility is a real restriction
+  ok 131  T6 on-line explicit form: M_nm = 1/2 + i(gamma_n - gamma_m)/2 under RH (real part constant = 2 Im w, imaginary part the ordinate differences)
+   T6(b): random eigenvectors with Gibbs-like spectrum n^(-beta)/Z
+  ok 132  T6(b) on-line, beta = 1.5: positivity of Omega_cand FAILS for 400/400 Haar-random eigenbases (spectrum [0.568  0.2008 0.1093 0.071  0.0508]); most negative eigenvalue -8.2959. Prescribing the entanglement spectrum with random eigenvectors is essentially never admissible
+  ok 133  T6(b) on-line, beta = 2.0: positivity of Omega_cand FAILS for 400/400 Haar-random eigenbases (spectrum [0.6832 0.1708 0.0759 0.0427 0.0273]); most negative eigenvalue -19.1376. Prescribing the entanglement spectrum with random eigenvectors is essentially never admissible
+  ok 134  T6(b) off-line, beta = 1.5: positivity of Omega_cand FAILS for 400/400 Haar-random eigenbases (spectrum [0.568  0.2008 0.1093 0.071  0.0508]); most negative eigenvalue -8.7550. Prescribing the entanglement spectrum with random eigenvectors is essentially never admissible
+  ok 135  T6(b) off-line, beta = 2.0: positivity of Omega_cand FAILS for 400/400 Haar-random eigenbases (spectrum [0.6832 0.1708 0.0759 0.0427 0.0273]); most negative eigenvalue -19.7373. Prescribing the entanglement spectrum with random eigenvectors is essentially never admissible
+   T6(b): a necessary condition on the eigenvectors of sigma
+  ok 136  T6(b) necessary condition VERIFIED on admissible states: for every admissible sigma with eigenpairs (lambda_a, phi_a), |H_ab| >= (1/2)|j_a||j_b| |sqrt(lam_a)-sqrt(lam_b)|/(sqrt(lam_a)+sqrt(lam_b)) for all a != b (50 mode-diagonal sigma, worst margin |H_ab| - bound = 0.0121 >= 0)
+  ok 137  T6(b) the condition is NECESSARY, not sufficient: of 200 inadmissible Gibbs-like samples (beta = 2, all 200 inadmissible) it certifies 5 (2%) outright; worst violation 0.1627, and no admissible sample ever violates it
+  ok 138  T6(b) sharp corollary: if sigma COMMUTES with H and has non-degenerate spectrum (and all j_a != 0) it can never be admissible -- the bound forces |H_ab| > 0. Test with sigma = Gibbs in the eigenbasis of H: lambda_min(Omega_cand) = -0.2926 < 0
+  !! T6(b) BOST-CONNES READING: the obstruction reappears as FAILURE OF POSITIVITY, not as mu = infinity. mu stays finite for every finite-rank sigma; what fails is that a prescribed spectrum in a prescribed eigenbasis U forces |<U n|H|U m>| >= (1/2)|j_n||j_m| |sqrt(p_n)-sqrt(p_m)|/(sqrt(p_n)+sqrt(p_m)); an eigenbasis commuting with H (e.g. an 'arithmetic' basis chosen independently of the modes) is excluded outright.
+   T6(c): the cone generated by the orbit states Phi(psi)
+  ok 139  T6(c): -(K Phi(psi) + Phi(psi) K^dag) = |psi><psi| >= 0, so every orbit state is admissible (Lyapunov identity, dev < 1e-10)
+  ok 140  T6(c) forward: an admissible sigma is the POSITIVE combination sigma = Tr(|j><j|sigma) sum_a omega_a Phi(phi_a) of orbit states over the eigenvectors of Omega_cand (dev 7.3e-15)
+  ok 141  T6(c) converse: any positive combination of orbit states is admissible (lambda_min(Omega_cand) = -1.1e-15)
+  ok 142  T6(c) separation: an admissible sigma is fitted by nonnegative combinations of 600 random orbit states to residual 0.0e+00, an inadmissible one only to 0.2533 (its lambda_min(Omega_cand) = -7.0409) -- admissible cone = orbit cone, numerically
+  ok 143  T6 uniqueness/round trip: Omega_cand(rho_inf(Omega)) = Omega exactly (dev 2.9e-15)
+
+7. sanity: N = 1 closed form and N = 2 by hand
+  ok 144  N=1: G = 1/(2 Im w) = 2, |j|^2 = 2 Im w = 1/2, L_Omega = (-2 Im w + |j|^2) rho = 0 identically; rho_inf = Omega = 1 trivially
+  ok 145  N=1: mhat(z) = 2 Im w/(z + 2 Im w) = (1/2)/(z+1/2); the only root of 1 = mhat is z = 0
+  ok 146  N=2 by hand: ||j||^2 = 1^T G^(-1) 1 = (G11+G22-2Re G12)/det G = 1.000000
+  ok 147  N=2 by hand, mode-diagonal p = [0.7 0.3]: spec L_Omega = {0, -(b1 p2 + b2 p1), z_12, z_21} = {0, -0.500000, -1/2 +- i(g2-g1)/2} (exact solution of (z+b1)(z+b2) = p1 b1(z+b2) + p2 b2(z+b1))
+  ok 148  N=2 by hand: on-line rho_inf = Omega and mu = p1/(1/2) + p2/(1/2) = 2 = 2.000000
+  ok 149  N=2 by hand, T5(b) again: mode overlap |<khat_1|khat_2>| = 0.143688, so the spectrum of rho_inf is [0.71056 0.28944] and not p = [0.7 0.3]; closed form (1 +- sqrt((p1-p2)^2 + 4 p1 p2 |o|^2))/2 = [0.71056 0.28944]
+  ok 150  N=2 by hand: the corrected entanglement spectrum closed form verified to 5.0e-16
+
+all 150 checks passed
+3 loud findings:
+  (1) T5(b) FAILS AS STATED. On-line, p = [0.4  0.3  0.15 0.1  0.05]: the drafted claim is that the entanglement spectrum of rho_inf is {p_n (2 Im w_n)^(-1)/mu} = [0.4  0.3  0.15 0.1  0.05]; the actual spectrum of rho_inf is [0.4256   0.295654 0.14409  0.097305 0.037351]. Max discrepancy 0.0256 (relative 6.4%); entropies 1.352492 vs 1.392321 nats.
+  (2) T3 labelling: with the convention <f|g> conjugate-linear in the first slot, it is |k_w><vac| that carries -i conj(w) and |vac><k_w| that carries +i w; the brief's T3 states the transpose. Not a mathematical error, but the draft's assignment must be swapped.
+  (3) T6(b) BOST-CONNES READING: the obstruction reappears as FAILURE OF POSITIVITY, not as mu = infinity. mu stays finite for every finite-rank sigma; what fails is that a prescribed spectrum in a prescribed eigenbasis U forces |<U n|H|U m>| >= (1/2)|j_n||j_m| |sqrt(p_n)-sqrt(p_m)|/(sqrt(p_n)+sqrt(p_m)); an eigenbasis commuting with H (e.g. an 'arithmetic' basis chosen independently of the modes) is excluded outright.
+
+verdicts: T1 supports | T2 supports | T3 supports (labels transposed; vacuum stationary for every Omega, so uniqueness fails in the graded model) | T4 supports | T5(a) supports, T5(c) supports, T5(b) CONTRADICTS | T6 supports (cone, Schur form, admissibility of mode-diagonal sigma) with a new necessary condition on eigenbases | T7 not a numerical statement
