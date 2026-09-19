@@ -1,0 +1,86 @@
+{
+  "created_utc": "2026-09-19T09:33:17.410983+00:00",
+  "network_access": "none; existing local sources only",
+  "source_files": [
+    {
+      "path": "HANDOFF.md",
+      "sha256": "cf6d8d4b8ac3ec9de303bb2f311bb107cb536b7c86b2b1412e6731c3a5efc653",
+      "bytes": 59902
+    },
+    {
+      "path": "refs/src/1211.3935/calculus.tex",
+      "sha256": "112383149004ccace6ad3c28356ad6ea06a489a753845fec1ded08eb6345c7c8",
+      "bytes": 130278
+    },
+    {
+      "path": "report/sections/03b_graded_permutation.tex",
+      "sha256": "92ad20317fd69766438c6841f803e132f459ae662ecf9c8c00d38ce3454e59f9",
+      "bytes": 22915
+    },
+    {
+      "path": "report/sections/03c_graded_ramanujan.tex",
+      "sha256": "572249977525eaa45f11defe1869371e148fe00e13b9001e189aeb3cb7e3c1f6",
+      "bytes": 18239
+    },
+    {
+      "path": "report/sections/03d_graded_ramanujan_continuum.tex",
+      "sha256": "20b4e62d44ac17c98e65bb28472721783f10b731f529731a71a4d67b35c29200",
+      "bytes": 15655
+    },
+    {
+      "path": "report/sections/03f_selberg_letters_finite.tex",
+      "sha256": "b91e80a74440799831a88ac0a231503ca1723e51cb4f73161d5f8884faef1312",
+      "bytes": 12234
+    },
+    {
+      "path": "report/sections/04b_phantasm_forced.tex",
+      "sha256": "56fbf9c0395c135013d9c8f19546a686c342c374036db585dc77e1fe211de0a5",
+      "bytes": 18105
+    },
+    {
+      "path": "report/sections/04c_phantasm_channels.tex",
+      "sha256": "df911824f5c263354f119b58ead4d626b9233cdc5cce2c363478c10024abba40",
+      "bytes": 16496
+    },
+    {
+      "path": "report/sections/04d_bc_symmetry_generators.tex",
+      "sha256": "40981f5823b173f2725a4e47b25ed3d3d065fcd04fcb076a64086169c825b89c",
+      "bytes": 11820
+    },
+    {
+      "path": "report/sections/04e_cmps_parity_overlap.tex",
+      "sha256": "149826c6974f30dcd3b39d038ea5f0e44cf68643f4a8f973f8eafd5bdc286c7a",
+      "bytes": 16217
+    },
+    {
+      "path": "report/sections/04f_cmps_twisted_supertrace.tex",
+      "sha256": "71eca6c68e219d10248d6642cc8bff366e9b2fef319221209f33d7fc76153580",
+      "bytes": 15708
+    },
+    {
+      "path": "report/sections/04g_phase_side_lindbladian.tex",
+      "sha256": "2d43624e6f151361bad3da7d39b0355dba7f7409ecb15e402b12141c1e19ad6f",
+      "bytes": 14406
+    },
+    {
+      "path": "report/sections/06h_zeta_conditions.tex",
+      "sha256": "a3fb69025890be304ece45bb0c2ee76bd70368ccc96a76a1376e137878f6b72d",
+      "bytes": 16638
+    },
+    {
+      "path": "notes/reviews/selberg-letters-2026-09-16.md",
+      "sha256": "5f4f58c7dc8b3362d0756f149e793079343a90b2361070b5feac82e913a015c5",
+      "bytes": 24837
+    },
+    {
+      "path": "notes/rh-strategy-2026-09-19/cmps-renewal-bridge.md",
+      "sha256": "adfd79ae7eabf5c24420eb316b0696d46d5669668ae0a0ddd782e5ea8809de00",
+      "bytes": 5557
+    },
+    {
+      "path": "notes/rh-strategy-2026-09-19/cusp-bridge.md",
+      "sha256": "f11d5eedf0258eb01d98920575a97d963a366756eae3e23286cdf296237093b9",
+      "bytes": 19898
+    }
+  ]
+}

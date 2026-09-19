@@ -275,7 +275,9 @@ def check_shards(notation, defs, claims, prov):
     for p in sorted(top_notes - notes_named): err(f"{p} is not distilled by any shard (add to a SHARD-NOTES header)")
     for p in sorted(notes_named - top_notes): err(f"SHARD-NOTES names {p} which is not a top-level note")
     # scripts parity
-    top_scripts = {f"scripts/{f}" for f in os.listdir(os.path.join(ROOT, "scripts")) if f.endswith(".py") and f != "labbook_check.py" and f != "transcript_to_md.py"}
+    # Maintenance tools do not assert mathematical claims or produce evidence.
+    maintenance_scripts = {"labbook_check.py", "transcript_to_md.py", "research_checkpoint.py"}
+    top_scripts = {f"scripts/{f}" for f in os.listdir(os.path.join(ROOT, "scripts")) if f.endswith(".py") and f not in maintenance_scripts}
     for p in sorted(top_scripts - scripts_named): err(f"{p} is not evidenced by any shard (add to a SHARD-SCRIPTS header)")
     for p in sorted(scripts_named):
         stem = os.path.splitext(os.path.basename(p))[0]

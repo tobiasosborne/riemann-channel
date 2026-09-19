@@ -241,7 +241,8 @@ def graded_harrow(p, q, nmax=4, ihara=True):
         check(all(np.min(np.abs(lam - v)) < 1e-6 for v in allc), "Harrow containment: every channel eigenvalue (both sectors) is a Cayley-graph eigenvalue")
     # ring norms and words
     N1, NP = ring_norms(Sig, Gm, nmax)
-    check(np.all(NP >= -1e-9) and np.all(np.abs(N1[1::2] - NP[1::2]) / 2 <= (N1[1::2] + NP[1::2]) / 2 + 1e-9), f"str Sigma^n = {[round(x, 6) for x in NP]} >= 0 and |Tr odd| <= Tr even")
+    # Normalize printed signed zero across BLAS thread counts; assertions use NP unchanged.
+    check(np.all(NP >= -1e-9) and np.all(np.abs(N1[1::2] - NP[1::2]) / 2 <= (N1[1::2] + NP[1::2]) / 2 + 1e-9), f"str Sigma^n = {[round(x, 6) + 0.0 for x in NP]} >= 0 and |Tr odd| <= Tr even")
     check(np.allclose(NP[:3], [word_ring_norm(Ws, Pm, k) for k in (1, 2, 3)]) and np.allclose(N1[:3], [word_ring_norm(Ws, np.eye(D), k) for k in (1, 2, 3)]), "str = sum_w |Tr(P pi(w))|^2 and Tr = sum_w |Tr pi(w)|^2 on words of length <= 3")
     check(abs(NP[0]) < 1e-9 and abs(N1[0]) < 1e-9, "odd length: both ring norms vanish (chi_pi is supported on G_0; bipartite)")
     if ihara:

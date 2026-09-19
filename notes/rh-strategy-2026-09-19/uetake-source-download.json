@@ -1,0 +1,10 @@
+{
+  "source_url": "https://www.impan.pl/shop/en/publication/transaction/download/product/85177",
+  "doi": "10.4064/ap92-2-1",
+  "retrieved_utc": "2026-09-19T09:32:32.660624+00:00",
+  "format_note": "Publisher PDF; TeX source not located. paper.txt is convenience extraction, check formulas against PDF.",
+  "sha256": {
+    "refs/src/uetake-2007/paper.txt": "c94e52c0b45cc9fbd7b259486f9175b8b391787eda0a780c76fa87e8d4921423",
+    "refs/src/uetake-2007/paper.pdf": "89e0f00bf04192e975ad22dafa032cd224c39b1d9c03db8bb5368e142b32ac49"
+  }
+}

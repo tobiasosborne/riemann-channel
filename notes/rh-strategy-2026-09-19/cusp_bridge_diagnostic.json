@@ -1,0 +1,116 @@
+{
+  "status": "all assertions passed",
+  "interpretation": "synthetic finite diagnostics; no RH evidence",
+  "cases": [
+    {
+      "case": "on_line",
+      "parameters": [
+        [
+          0.25,
+          1.0
+        ],
+        [
+          0.25,
+          2.0
+        ],
+        [
+          0.25,
+          3.0
+        ]
+      ],
+      "gram_eigenvalues": [
+        0.8061146861711264,
+        1.7215727289897564,
+        3.4723125848391154
+      ],
+      "lyapunov_residual": 3.1401849173675503e-16,
+      "exit_residual": 7.701859664206228e-16,
+      "centered_identity_residual": 3.8659043403122315e-16,
+      "hardy_gram_residual": 0.0,
+      "affine_residual": 0.0,
+      "truncation_normalization_residual": 3.8484284159040614e-16,
+      "centered_defect_norm": 2.2544074479065386,
+      "cmps_gauge_residual": 9.718415738830587e-16,
+      "hamiltonian_exit_residual": 4.845315884654003e-16,
+      "nonnormality": 1.9364916731037094
+    },
+    {
+      "case": "off_line_FE_pair",
+      "parameters": [
+        [
+          0.15,
+          1.0
+        ],
+        [
+          0.35,
+          1.0
+        ],
+        [
+          0.25,
+          2.0
+        ]
+      ],
+      "gram_eigenvalues": [
+        0.1254226044087503,
+        1.5420829972569208,
+        5.094399160239092
+      ],
+      "lyapunov_residual": 5.20740757162067e-16,
+      "exit_residual": 7.850462293418876e-17,
+      "centered_identity_residual": 1.2412670766236366e-16,
+      "hardy_gram_residual": 0.0,
+      "affine_residual": 0.0,
+      "truncation_normalization_residual": 2.7627845759677963e-16,
+      "centered_defect_norm": 1.9372017255561063,
+      "cmps_gauge_residual": 2.6860802466089568e-15,
+      "hamiltonian_exit_residual": 1.342807076825924e-15,
+      "nonnormality": 1.3114877048604017
+    },
+    {
+      "case": "one_on_line",
+      "parameters": [
+        [
+          0.25,
+          1.0
+        ]
+      ],
+      "gram_eigenvalues": [
+        2.0
+      ],
+      "lyapunov_residual": 0.0,
+      "exit_residual": 0.0,
+      "centered_identity_residual": 0.0,
+      "hardy_gram_residual": 0.0,
+      "affine_residual": 0.0,
+      "truncation_normalization_residual": 0.0,
+      "centered_defect_norm": 0.0,
+      "cmps_gauge_residual": 1.1102230246251565e-16,
+      "hamiltonian_exit_residual": 5.551115123125783e-17,
+      "nonnormality": 0.0
+    },
+    {
+      "case": "one_off_line",
+      "parameters": [
+        [
+          0.15,
+          1.0
+        ]
+      ],
+      "gram_eigenvalues": [
+        1.4285714285714286
+      ],
+      "lyapunov_residual": 2.220446049250313e-16,
+      "exit_residual": 0.0,
+      "centered_identity_residual": 5.551115123125783e-17,
+      "hardy_gram_residual": 0.0,
+      "affine_residual": 0.0,
+      "truncation_normalization_residual": 1.1487393818367058e-16,
+      "centered_defect_norm": 0.28571428571428564,
+      "cmps_gauge_residual": 1.1102230246251565e-16,
+      "hamiltonian_exit_residual": 5.551115123125783e-17,
+      "nonnormality": 0.0
+    }
+  ],
+  "old_formula_modulus": 1.2840254166877414,
+  "correct_formula_modulus": 0.7788007830714049
+}

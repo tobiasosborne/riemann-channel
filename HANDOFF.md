@@ -2,6 +2,32 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-19: decay-mode/cMPS review, stopped and saved
+
+User requested a multi-agent repository review, continuous local writes and RH
+proof ideas, then two deeper reviews of Riemann versus Selberg decay modes.
+Five lanes and parent calculations are saved under
+`notes/rh-strategy-2026-09-19/`; start with `SYNTHESIS.md` and `SESSION.md`.
+The user then requested shutdown, commit and push; no further research is running.
+
+Main lead: a regular fermionic cMPS with a faithful mixed stationary bond has a
+physical two-point function selecting a closed four-mode sector. Its quadratic
+fermion structure supplies observable closure; a separate reflection and
+coercivity condition enforce a common width. Perturbations distinguish these
+requirements. This is a finite mechanism, not a Riemann construction or RH proof.
+The operator review separates Selberg's L2 Laplace mechanism from Riemann's cusp
+wave/scattering leakage, records an explicit candidate flow-to-wave intertwiner,
+and locates Uetake's 2007 modal/completeness theorem. All new findings remain
+exploratory; registered claim statuses and mathematical shards are unchanged.
+
+Recovery: `scripts/research_checkpoint.py` writes verified, atomic local archives
+in `.recovery/`, including the Git-ignored reference cache. `RECOVERY.md` in the
+session directory gives offline restore instructions. New full sources are cached
+at `refs/src/1712.07832/` (TeX) and `refs/src/uetake-2007/` (publisher PDF); download
+receipts and hashes are committed with the notes. Archives and full third-party
+source caches remain local and Git-ignored, following existing repository policy.
+
+
 ## Current state (2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`

@@ -1,0 +1,65 @@
+{
+  "started_utc": "2026-09-19T09:34:46.782981+00:00",
+  "checks": [
+    {
+      "script": "cusp_bridge_diagnostic.py",
+      "exit_code": 0,
+      "stdout_last_lines": [
+        "  \"old_formula_modulus\": 1.2840254166877414,",
+        "  \"correct_formula_modulus\": 0.7788007830714049",
+        "}"
+      ],
+      "stderr": ""
+    },
+    {
+      "script": "graded_channels_checks.py",
+      "exit_code": 0,
+      "stdout_last_lines": [
+        "    }",
+        "  ]",
+        "}"
+      ],
+      "stderr": ""
+    },
+    {
+      "script": "regular_cmps_decay_check.py",
+      "exit_code": 0,
+      "stdout_last_lines": [
+        "  ],",
+        "  \"uniform_odd_decay\": false",
+        "}"
+      ],
+      "stderr": ""
+    },
+    {
+      "script": "regular_cmps_decay_exact.py",
+      "exit_code": 0,
+      "stdout_last_lines": [
+        "Matrix([[10496/27, 0, -32/3, 0], [0, 32/3, 0, -1], [-32/3, 0, 1, 0], [0, -1, 0, 1]])",
+        "POSITIVE LEADING PRINCIPAL MINORS: [10496/27, 335872/81, 237568/81, 215296/81]",
+        "EXACT CENTERED SKEW-ADJOINT IDENTITY ON REACHABLE SUBSPACE: True"
+      ],
+      "stderr": ""
+    },
+    {
+      "script": "positivity-products-check.py",
+      "exit_code": 0,
+      "stdout_last_lines": [
+        "{\"digits\": 40, \"h\": \"0.25\", \"A\": \"4.0\", \"nodes\": 32, \"prime_integer_cutoff\": 2981, \"prime_powers\": 465, \"psi_1\": \"0.044007305236852526860218606408084\", \"psi_2\": \"0.053341124171855668963118936050792\", \"kernel_min_eigenvalue\": \"0.014617683766178404574862176205138\", \"increments_min_eigenvalue\": \"0.00037548466627156527593048268288747\", \"congruence_max_row_sum_residual\": \"0.0\", \"last_schur_pivot\": \"0.027373828536335081382106850330501\"}",
+        "{\"digits\": 70, \"h\": \"0.25\", \"A\": \"2.0\", \"nodes\": 16, \"prime_integer_cutoff\": 55, \"prime_powers\": 24, \"psi_1\": \"0.044007305236852526860218606408084\", \"psi_2\": \"0.053341124171855668963118936050792\", \"kernel_min_eigenvalue\": \"0.021015846748265249448873779710089\", \"increments_min_eigenvalue\": \"0.00074765995104878474675699294975149\", \"congruence_max_row_sum_residual\": \"0.0\", \"last_schur_pivot\": \"0.034576752223427791509385422028406\"}",
+        "{\"digits\": 70, \"h\": \"0.25\", \"A\": \"4.0\", \"nodes\": 32, \"prime_integer_cutoff\": 2981, \"prime_powers\": 465, \"psi_1\": \"0.044007305236852526860218606408084\", \"psi_2\": \"0.053341124171855668963118936050792\", \"kernel_min_eigenvalue\": \"0.014617683766178404574862176205138\", \"increments_min_eigenvalue\": \"0.00037548466627156527593048268288747\", \"congruence_max_row_sum_residual\": \"0.0\", \"last_schur_pivot\": \"0.027373828536335081382106850330501\"}"
+      ],
+      "stderr": ""
+    },
+    {
+      "script": "cmps_renewal_check.py",
+      "exit_code": 0,
+      "stdout_last_lines": [
+        "  ],",
+        "  \"scope\": \"Finite cMPS reset feasibility; no arithmetic or RH inference\"",
+        "}"
+      ],
+      "stderr": ""
+    }
+  ]
+}
