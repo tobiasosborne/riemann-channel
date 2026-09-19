@@ -28,7 +28,7 @@ receipts and hashes are committed with the notes. Archives and full third-party
 source caches remain local and Git-ignored, following existing repository policy.
 
 
-## Current state (2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-18, night: `ihz/` built, G1-G3 of the Ihara plan, exact anchor and certified ball stage on twelve graphs and a curve, non-Ramanujan trajectories certified; evening: MVP-2 (Ihara zeta of graphs) planned, `notes/zeta-spectral-triples/ihara/plan.md`, five lanes, prototype exact at the critical window; morning: `zst` benchmark to x = 50 certified, report in `notes/zeta-spectral-triples/report-2026-09-18.md`; 2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -111,6 +111,65 @@ character reading of the grading and conj:galois-graded-bond.
 0d. **Mayer cusp tail** (`notes/resonances/astra-freeassoc.md` §3): unchanged.
 0e. **Suzuki's prime-defined screw kernel** (§16.3): unchanged.
 0f. **Literature:** Bonthonneau–Weich; Lewis–Zagier, Chang–Mayer: unchanged.
+
+### Sidequest 2026-09-17: zeta spectral triples (Connes-Consani-Moscovici, arXiv:2511.22755)
+
+TJO asked for a careful reading and a concrete plan for a highly optimised, extensible arb/FLINT C
+implementation of the paper's algorithm, as a possible standalone repository. Delivered in
+`notes/zeta-spectral-triples/` (`plan.md`, `ccm_proto.py`, two runs, `flint_smoke.c`); worklog 2026-09-17.
+
+- The algorithm: window `[lambda^-1, lambda]`, `2N+1` Fourier modes, Weil form matrix of Loewner form
+  `(b_n - b_m)/(n - m)` (pole term rank two, primes `<= lambda^2` as atoms, archimedean part by
+  digamma/trigamma plus `e^{-2L}`-series), even-block minimal eigenvector `xi`, rank-one perturbation
+  of the scaling operator, spectrum = real zeros of `sum_j xi_j/(j - s)` scaled by `2 pi/L`. The mpmath
+  prototype reproduces the paper's `lambda = sqrt 13, N = 120` column for all 50 zeros to every
+  printed digit (first zero to `2.4e-55` from primes `<= 13`).
+- Found: a typo in the paper's displayed constant `c(L)` (identity shift only; `eps_N` moves, the
+  spectrum does not); the secular function has several roots per pole interval (root isolation must
+  use the `2N` count); the accuracy law `|z_1 - gamma_1| ~ 5e4 (1 - chi_4(lambda))`, about `5.5`
+  digits per unit `lambda^2`.
+- Plan: `libzst` on FLINT 3 (all needed calls verified on 3.0.1 here), input = abstract
+  explicit-formula distribution (atoms, exponential-series kernels, trivial-divisor poles, identity
+  shift) so Dirichlet/Hecke/GL(2), graph and curve transfer operators (Caratheodory-Fejer anchor),
+  Selberg compact and modular (H-CUSP-BRIDGE test), and the notebook's graded divisor formulation
+  run through one pipeline; certified eigenpair (inverse iteration + Rump + LDL inertia for
+  even-simplicity), certified roots, adaptive precision; milestones M0 (done) to M5.
+- **Benchmark (evening of the 17th into the 18th; `notes/zeta-spectral-triples/report-2026-09-18.md`,
+  `benchmark.md`, `bench/`).** Certified through x = 50 (N = 500, 2100 bits, 8 min): first zero to
+  2.9e-249, 211 zeros below 1e-50, 341 below 1e-3. Laws: first-zero accuracy `e^{-4 pi x}` (5.4 digits
+  per unit x, N-independent); error at height gamma grows like `10^{0.37 gamma}`; N saturates at
+  7.5 x. Four scale-induced defects fixed test-first (worklog 2026-09-18): positive-definiteness
+  certificate replaces interval LDL, sign-scan candidates replace QR, rigorous dedupe, mean-value
+  Newton verifier. x = 100 not completed (memory). TJO asked to wind up; work stopped here.
+- **MVP-2 planned (evening of the 18th; `notes/zeta-spectral-triples/ihara/plan.md`, lanes under
+  `ihara/lanes/`, prototype `ihara_proto.py`).** TJO: the Ihara zeta of graphs, to see what in CCM
+  generalises. Answer: the linear algebra verbatim (Toeplitz Weil form = `thm:weil-positivity-finite`,
+  cyclic-shift displacement, a new unitary key lemma `U^* T U = T`, circle conclusion =
+  Caratheodory-Fejer = Connes-van Suijlekom `corcar` (2511.23257:792, fetched) = Makhoul 1981,
+  `eps` = Pisarenko noise floor, Cayley transform makes it an instance of CS Prop. finmain); the
+  analytic content does not (finite divisor: exact at the critical window `K = R+1`, degenerate
+  above; no second truncation, no archimedean transcendental term, no prolate/Hermite structure:
+  the missing step of CCM has no graph counterpart). What the graph adds: the chain run on a false
+  RH (`eps_M` diverges like `-m rho^{2M}`, `xi_min` goes odd, kernel still exact); RH enters only as
+  `eps -> 0` (Weil's criterion). Sign flipped for graphs (poles), CCM's sign for curves (already
+  Hallouin-Perret 2019). Plan: `ihz/` sibling library, `eigmin.c` ported, exact integer stage +
+  arb stage, G1-G5, ~1400 lines, two weeks. **Built the same night (`ihz/`, README there):** G1-G3 done with three Opus workers, `make
+  check` green, bench outputs in `ihara/bench/`; exact anchor on twelve graphs and the `F_5` curve,
+  certified unitary key lemma and Prony multiplicities at the critical window, certified
+  non-Ramanujan trajectories (`necklace:6`, `prism:16`, `twoK4`) matching the prototype and `IH-27`.
+  **Next, if pursued:** the `Q-2` under-resolved law from the bench data (with TJO); the
+  anti-palindromic search (`Q-3`); fuzz and mutation once the API settles; an Opus REFUTE review of
+  `lanes/theory.md` before any claim is registered; then M3/G5 (shared data model with `zst`).
+- **MVP done (afternoon of the 17th, `zst/` in this repo; TJO: keep it here for now).** M1 and M2 of the plan:
+  certified `(a_n, b_n)`, Krawczyk-verified minimal eigenpair, ball-`LDL^T` inertia certifying the
+  even-simple hypothesis, QR candidates plus interval-Newton roots with completeness by count,
+  comparison with `acb_dirichlet_zeta_zeros`. `x = 13, N = 120, 700 bits` in 5 s returns the paper's
+  50-row column as certified upper bounds (`2.44e-55` on the first zero). Four tests (`make check`),
+  two fuzz harnesses (`make fuzz`, one real defect found), mutation testing (`make mutate`, one test
+  gap found and closed), ground-truth citations by TeX line in every module. Worklog 2026-09-17,
+  `zst/README.md`. **Next, if pursued:** M3 (general explicit-formula data model, Dirichlet characters,
+  archimedean constants derived from gamma factors), then the `(lambda, N)` accuracy map and the
+  `x = 100` run (M4), then `det_reg -> Xi` and the prolate side (M5).
 
 ### An infinite object whose odd-block form is derived from the letters (2026-09-16; shards 03e, 03f)
 

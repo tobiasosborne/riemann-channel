@@ -1,0 +1,13 @@
+K4: 0 s, exit 0
+Q3: 0 s, exit 0
+petersen: 0 s, exit 0
+K33: 0 s, exit 0
+heawood: 0 s, exit 0
+pappus: 0 s, exit 0
+necklace:2: 0 s, exit 0
+necklace:3: 0 s, exit 0
+twoK4: 0 s, exit 0
+necklace:6: 1 s, exit 0
+prism:16: 2 s, exit 0
+Cn:5: 0 s, exit 0
+curve: exit 0

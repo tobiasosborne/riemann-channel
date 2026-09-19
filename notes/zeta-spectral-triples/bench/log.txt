@@ -1,0 +1,32 @@
+== 20:30:32 x=13 N=120 prec=700 -> ../notes/zeta-spectral-triples/bench/x13_N120_p700.txt
+total 3.20s
+== 20:30:36 x=20 N=100 prec=900 -> ../notes/zeta-spectral-triples/bench/x20_N100_p900.txt
+total 2.59s
+== 20:30:38 x=20 N=150 prec=900 -> ../notes/zeta-spectral-triples/bench/x20_N150_p900.txt
+total 6.84s
+== 20:30:45 x=20 N=200 prec=900 -> ../notes/zeta-spectral-triples/bench/x20_N200_p900.txt
+total 14.93s
+== 20:31:00 x=30 N=300 prec=1300 -> ../notes/zeta-spectral-triples/bench/x30_N300_p1300.txt
+total 234.68s
+== 20:34:55 x=30 N=450 prec=1300 -> ../notes/zeta-spectral-triples/bench/x30_N450_p1300.txt
+total 719.39s
+== 20:46:54 x=40 N=400 prec=1700 -> ../notes/zeta-spectral-triples/bench/x40_N400_p1700.txt
+total 679.35s
+== 20:58:14 x=50 N=500 prec=2100 -> ../notes/zeta-spectral-triples/bench/x50_N500_p2100.txt
+== 21:14:16 x=50 N=500 prec=2100 -> ../notes/zeta-spectral-triples/bench/x50_N500_p2100.txt
+total 2492.10s
+== 21:55:49 x=60 N=600 prec=2500 -> ../notes/zeta-spectral-triples/bench/x60_N600_p2500.txt
+total 5802.21s
+== 23:32:31 x=80 N=800 prec=3300 -> ../notes/zeta-spectral-triples/bench/x80_N800_p3300.txt
+== 23:45:32 x=50 N=500 prec=2100 -> ../notes/zeta-spectral-triples/bench/x50_N500_p2100.txt
+total 2498.49s
+== 00:27:11 x=60 N=600 prec=2500 -> ../notes/zeta-spectral-triples/bench/x60_N600_p2500.txt
+total 5694.88s
+== 02:35:55 x=50 N=500 prec=2100 -> ../notes/zeta-spectral-triples/bench/x50_N500_p2100.txt
+total 457.21s
+== 02:43:32 x=60 N=600 prec=2500 -> ../notes/zeta-spectral-triples/bench/x60_N600_p2500.txt
+total 997.84s
+== 03:00:10 x=80 N=800 prec=3300 -> ../notes/zeta-spectral-triples/bench/x80_N800_p3300.txt
+total 3323.22s
+== 03:55:34 x=100 N=1000 prec=4000 -> ../notes/zeta-spectral-triples/bench/x100_N1000_p4000.txt
+== 05:28:43 x=60 N=600 prec=2500 -> ../notes/zeta-spectral-triples/bench/x60_N600_p2500.txt
