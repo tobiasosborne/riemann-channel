@@ -27,9 +27,10 @@ nonzero, satisfies
 \]
 bound sheet on every cusp, outgoing sheet on every funnel; it is a null vector of the outgoing matrix of
 $p_{\mathrm{funnel}}$ iff $C_c = 0$ and of the bound matrix iff $C_f = 0$. For the one-vertex regular diagram with
-cusp weight $a$ and funnel weight $\qs+1-a$, $p = z^2-(1+a(\qs-1))/\qs$: the Perron root is a resonance at
-$\qs^{-1/2}$ iff $a = 0$, a threshold iff $a = 1$, and a visible bound state with $\vartheta^2 = \qs/(1+a(\qs-1))$
-for $1<a\le\qs+1$.
+cusp weight $a$ and funnel weight $\qs+1-a$, $p = z^2-(1+a(\qs-1))/\qs$: for $0\le a<1$ the Perron root is a resonance
+at $z^2 = (1+a(\qs-1))/\qs\in[1/\qs,1)$, at $\qs^{-1/2}$ iff $a = 0$; $a = 1$ is a threshold; for $1<a\le\qs+1$ it is a
+visible bound state with $\vartheta^2 = \qs/(1+a(\qs-1))$, at $\qs^{-1/2}$ iff $a = \qs+1$. A light cusp leaves the
+Perron-type mode outgoing, but at a radius other than $\qs^{-1/2}$.
 \end{proposition}
 
 \begin{lemma}[First-order motion of the resonances under an added funnel]
@@ -37,19 +38,32 @@ for $1<a\le\qs+1$.
 \claimstatus{lem:funnel-first-order}{sketched}
 Adding a funnel of weight $f$ at vertex $v$ gives exactly $p_f = p-(f/\qs)\,p^{(v)}$, $p^{(v)}$ the resonance
 polynomial of the core with $v$ deleted, so a simple root moves by $dz_i/df = \qs^{-1}p^{(v)}(z_i)/p'(z_i)$ and
-$d|z_i|/df = \re(\bar z_i\,dz_i/df)/|z_i|$. The Hasse--Weil quartet of D2 stays on the Weil circle to first
-order iff $\re\big(\bar z_i\,p^{(v)}(z_i)/p'(z_i)\big) = 0$ for all four roots.
+$d|z_i|/df = \re(\bar z_i\,dz_i/df)/|z_i|$. Since $P_v$ is real and diagonal, the roots of $p_f$ stay closed under
+$z\mapsto-z$ and $z\mapsto\bar z$ for every $f$, so the Hasse--Weil quartet remains one Klein orbit
+$\{z,-z,\bar z,-\bar z\}$ and hence equimodular as long as it has four distinct non-real, non-imaginary elements: an
+added funnel moves the common radius off $\qs^{-1/4}$ but cannot break the equal-modulus property until the orbit
+splits. At genus one, $\mathrm{RH}(Y)$ on $K_{\mathrm{HW}}$ is therefore a consequence of the bipartite sign and reality
+whenever the quartet is a single orbit; Weil's content for D2 is the radius, pinned by the product identity of
+\cref{prop:nonzero-root-product}. At genus two, two orbits can have different moduli.
 \end{lemma}
 
 \begin{numerical}[A funnel bolted onto D2]
 \label{num:funnel-on-d2}
 \claimstatus{num:funnel-on-d2}{numerical}
-NUMERICS-SUMMARY-2
+\texttt{scripts/graded\_toys.py}, ledger D32--D37: the constant-mode identity of \cref{prop:constant-mode-mixed-sheets}
+on three regular cusp-plus-funnel diagrams, both ``iff'' clauses; the one-vertex formula at $\qs = 2,3,5$; on D2 with a
+funnel of weight $f$ at each core vertex, $d|z_i|/df$ at $f = 0$ equal for all four Hasse--Weil roots at every vertex
+($+0.0630672$ at $A$, $+0.1261345$ at $B$, $-0.0210224$ at $C$, $-0.1681793$ at $D$, $-0.0630672$ at $E$ and $F$), the
+four moduli equal to $10^{-15}$ at $f = 1/5$ (radii $0.853128$, $0.864176$, $0.836761$, $0.807041$, $0.827557$), the
+orbit splitting into two moduli at $f = 1$ ($D$: $0.618034$, $0.707107$), $f = 2$ ($E$, $F$), $f = 5$ ($A$), not up to
+$f = 5$ at $B$, $C$; the Perron parameter decreasing strictly from $\qs^{-1/2}$ ($0.706576$ at $f = 0.01$, $0.138712$
+at $f = 100$, funnel at $B$), the Perron pair a visible bound state for every $f$ tried; with the cusp of D2 replaced
+by a funnel, the root motions.
 \end{numerical}
 
-So item (i) is negative on one connected regular diagram: a cusp of any weight keeps the constant mode from
-being outgoing, and a funnel on the arithmetic core costs the Weil circle. The graded network says what is
-needed instead.
+So item (i) is negative on one connected regular diagram: a cusp of weight $a>1$ keeps the constant mode bound, a
+light cusp makes a Perron-type mode outgoing at the wrong radius, and a funnel on the arithmetic core costs the
+Weil radius, though not, at genus one, the equal-modulus property. The graded network says what is needed instead.
 
 \subsection{The glued toy: odd letters are necessary and sufficient}
 
@@ -91,8 +105,10 @@ the Hasse--Weil part and $0$ on the delay part, and $\Tr Z_+^L = \qs^{-L/2}(1+(-
 \claimstatus{prop:shared-exit-tradeoff}{sketched}
 For a fixed reset and eigenvectors $k_n,k_m$ of $Z$ with simple eigenvalues, $X = |k_n\rangle\langle k_m|$ has
 exit trace $\Tr(JXJ^{*}) = \langle a_m,a_n\rangle = (1-\bar z_mz_n)\langle k_m,k_n\rangle$. If it vanishes, $X$ is an
-eigen-operator with eigenvalue $z_n\bar z_m$; if not, $X$ is not an eigen-operator and the eigenvalue persists
-iff $\langle l_n|\reb|l_m\rangle = 0$ for the dual eigenvectors ($\cref{prop:rebound-persistence-secular}$). On a
+eigen-operator with eigenvalue $z_n\bar z_m$; if not, $X$ is not an eigen-operator (residue
+$\langle a_m,a_n\rangle\reb$), and the copy of the eigenvalue it carried persists iff $\langle l_n|\reb|l_m\rangle = 0$ for
+the dual eigenvectors (\cref{prop:rebound-persistence-secular}); on a real core the value is degenerate in $\Ad(Z)$
+and keeps its other copies. On a
 connected core with a shared exit the modes are not orthogonal, so the zeros are not protected once the even
 mode leaks; the glued toy is protected because its sectors exit through different blocks.
 \end{proposition}
@@ -163,7 +179,7 @@ $\chi$.
 \begin{proposition}[The graded bond of a character channel is odd-only]
 \label{prop:character-channel-graded-bond}
 \claimstatus{prop:character-channel-graded-bond}{sketched-conditional}
-For a nontrivial primitive $\chi$ mod $N$ over $\Fq[T]$, $L(\uz,\chi) = \sum_{f\ \mathrm{monic}}\chi(f)\uz^{\deg f}$ is
+For a nontrivial \emph{primitive} $\chi$ mod $N$ over $\Fq[T]$, $L(\uz,\chi) = \sum_{f\ \mathrm{monic}}\chi(f)\uz^{\deg f}$ is
 a polynomial of degree $\deg N-1$, equal to $\det(1-\uz\Frob_\chi)$ for odd $\chi$ and to $(1-\uz)\det(1-\uz\Frob_\chi)$
 for even $\chi$ (the factor of the place at $\infty$), with every eigenvalue of $\Frob_\chi$ of modulus
 $\sqrt{\qs}$ \cite{rosen2002function}. With $E_\chi = (\Frob_\chi)_-\oplus\Pi\Frob_\chi(-1)$ and $w = \qs^{-2s}$, the
@@ -171,16 +187,27 @@ completed ratio is $L(2s-1,\chi)/L(2s,\chi) = \sdet(1-wE_\chi)$, whose disc part
 at the eigenvalues of $\Frob_\chi$ and has no even entry; the trivial character carries
 $\zeta_{\Fq(T)}(2s-1)/\zeta_{\Fq(T)}(2s) = \sdet(1-wE_S)$ at $g = 0$, disc part $\netmult(1) = +1$. Under
 \cref{asm:h-arith-gamma1} the disc part of the level-$N$ graded bond is
-$(1)_+\oplus\bigoplus_{\chi\ne1}(\alphaw{\chi,1},\dots,\alphaw{\chi,d_\chi})_-$, the diamond operator $\langle a\rangle$
-acting on the $\chi$-block by $\chi(a)$: over $\Fq(T)$ every zero lives in the level tower, and the vacuum in the
-trivial channel alone. If the incomplete $L$ appears instead, each even $\chi$ adds an odd mode at the Perron
-position $z = \pm\qs^{-1/2}$.
+$(1)_+\oplus\bigoplus_{\chi\ \mathrm{primitive},\ \chi\ne1}(\alphaw{\chi,1},\dots,\alphaw{\chi,d_\chi})_-$ over the conductors
+dividing $N$, the trivial zero of each even $\chi$ split off as the vacuum line is split off the trivial channel, the
+diamond operator $\langle a\rangle$ acting on the $\chi$-block by $\chi(a)$: over $\Fq(T)$ every zero lives in the level
+tower, and the vacuum in the trivial channel alone. Imprimitive characters add the Euler factors of the primes
+dividing $N$ but not the conductor, with roots of modulus one; these, and the trivial zeros if the incomplete $L$
+appears, are odd modes at the Perron radius $|z| = \qs^{-1/2}$.
 \end{proposition}
 
 \begin{numerical}[{Character channels over $\mathbb F_3[T]$}]
 \label{num:character-channels}
 \claimstatus{num:character-channels}{numerical}
-NUMERICS-SUMMARY-3
+\texttt{scripts/graded\_toys.py}, ledger D46--D51: all $25$ nontrivial characters mod $T^3-T-1$ (primitive, $\deg L = 2$,
+$12$ even with the factor $1-\uz$) and all $15$ mod $T(T^2+1)$ ($7$ primitive); every nontrivial root of every primitive
+character has $|\alphaw{}| = \sqrt3$; the Euler product to order $\uz^5$; $\det(1-\uz\Frob_\chi) = L(\uz,\chi)$; the
+superdeterminant identity as rational functions for all $40$ characters; no even disc eigenvalue in any channel; the
+imprimitive characters' modulus-one roots; the trivial channel at $g = 0$. Also this shard's glued toy (D38--D45:
+parities of the letters, uniqueness by the eigenvalue count at $1$, both sectors populated, the odd eigenvalues
+$\pm\qs^{-1/2}\bar z_n$, the twisted ring-norm identity, the segment for a sector-preserving reset, the exact vanishing
+$\langle a_m,a_n\rangle = 0$ across blocks, the shared-exit residue $\langle a_m,a_n\rangle\reb$ on a random three-vertex
+core) and the Frobenius channel (G5(a,b) in full; conjugation-closed disc zero sets for real and complex exit
+directions on D2 with a second cusp at each vertex).
 \end{numerical}
 
 \begin{observation}[What the next round should do]

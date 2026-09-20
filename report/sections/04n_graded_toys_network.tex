@@ -31,13 +31,15 @@ Let $M = \big(\begin{smallmatrix}T_X & -(I-C)\\ I & 0\end{smallmatrix}\big)$ on 
 $h = 1$, $R(z) = -\prod_{\edgeev\in\operatorname{spec}M}(z-\edgeev)/(1-z\edgeev)$ with algebraic multiplicities: each
 unimodular conjugate pair contributes $1$, each interior eigenvalue a zero of $R$ (a resonance), each exterior
 eigenvalue $1/\vartheta$ the bound-state pole at $\vartheta$. (b) $\Tr M^m = \sum_{p(\edgeev)=0}\edgeev^m$. (c) $\ker M =
-0\oplus\ker(I-C)$, and under the invertible Schur bracket of \cref{prop:multi-exit-spectrum}(iii) $M$ has
-$\dim\ker(I-C)$ Jordan blocks of size two at $0$: the delay sector seen on the core. (d) For $C = 0$ and
+0\oplus\ker(I-C)$, and, when no $c = 1$ junction carries a loop and the Schur bracket of
+\cref{prop:multi-exit-spectrum}(iii) is invertible, $M$ has $\dim\ker(I-C)$ Jordan blocks of size two at $0$: the
+delay sector seen on the core (a loop at a $c = 1$ junction gives $\operatorname{ord}_0p = 1$ and a block of size one). (d) For $C = 0$ and
 $T_X = \Aadj_X/\sqrt{\qs}$, $\det(1-zM_0) = \det(I-\uz\Aadj_X+\qs\uz^2)$, $\uz = z/\sqrt{\qs}$, so by Bass's theorem
 (the scalar case of \cref{thm:qihara-general}) $\operatorname{spec}(\sqrt{\qs}M_0)\cup\{\pm1\}^{|E|-|V|} =
 \operatorname{spec}(\Hash)$; in general $M = M_0 + \big(\begin{smallmatrix}0&C\\0&0\end{smallmatrix}\big)$, the core's
-non-backtracking operator plus a rank-$h$ correction at the junctions, the bound sheet being $\det(1-zM)$ and
-the outgoing sheet $\det(z-M)$.
+non-backtracking operator plus a correction of rank the number of distinct junction vertices, the bound sheet
+being $\det(1-zM)$ and the outgoing sheet $\det(z-M)$. The cores of D2 and D3 are not regular by themselves (the
+cusp ray carries the missing unit of degree at the junction), so for them only the determinant identity transfers.
 \end{theorem}
 
 Block elimination for (a); Newton's identities for (b); the kernel and the Schur bracket for (c); the
@@ -60,7 +62,7 @@ With $E_S := \Frob\oplus\Pi\,\Frob(-1)$ on $H\oplus H$ and $w = \qs^{-2s}$,
 \frac{\zeta_K(2s-1)}{\zeta_K(2s)} = \sdet(1-wE_S) = \frac{(1-w)\,P(\qs w)}{(1-\qs^2w)\,P(w)} .
 \]
 The even eigenvalues of $E_S$ are $1,\qs,\qs\alphaw{i}$ and the odd ones $\alphaw{i},\qs,\qs^2$; the two lines
-with eigenvalue $\qs$ cancel. Under $z^2 = e/\qs$ the eigenvalues with $|e|<\qs$, whose images lie in the disc,
+with eigenvalue $\qs$ (on $|z| = 1$) cancel. Under $z^2 = e/\qs$ the eigenvalues with $|e|<\qs$, whose images lie in the disc,
 are exactly $e = 1$ (even, $z = \pm\qs^{-1/2}$) and $e = \alphaw{i}$ (odd, $|z| = \qs^{-1/4}$): the disc part of
 the graded divisor is $\netmult(1) = +1$, $\netmult(\alphaw{i}) = -1$. Poincar\'e duality
 $\Frob\simeq\qs\Frob^{-1}$ gives $E_S\simeq\Pi(\qs^2E_S^{-1})$ and
@@ -129,12 +131,15 @@ with the Jordan structure of $Z$, and the reset never acts on the odd sector. (c
 \]
 so their difference is $4\re\sum_nz_n^L$, the resonance power sums of \cref{prop:cusp-walk-power-sums}. For D2,
 $\Tr Z^L = 0$ for odd $L$ and $\Tr Z^{2k} = 2\qs^{-k}(\alphaw{+}^k+\alphaw{-}^k) = 2\qs^{-k}(1+\qs^k-\Ncount{k})$,
-the odd half of the point count of $y^2+y = x^3+x+1$ over $\Fqn{k}$. (d) The graded divisor of $\Edb$ is
-$\netmult(1) = 2$ (the vacuum and $\rdens_\infty$), $\netmult(z_n) = \netmult(\bar z_n) = -m_n$, and
-$\netmult = m_0$ at the remaining eigenvalues of $\mathcal E_{\reb}$; the ring zeta is
-$1/\sdet(1-\uz\Edb) = \prod_n(1-\uz z_n)^{m_n}(1-\uz\bar z_n)^{m_n}/((1-\uz)\det(1-\uz\mathcal E_{\reb}))$: its zeros
-are the resonances and their conjugates. (e) $\mathrm{RH}(Y)$ with radius $r$ holds iff every odd eigenvalue of
-$\Edb$ has modulus $r$; the even sector has two fixed points (\cref{prop:graded-stationary-segment}), so
+the odd half of the point count of $y^2+y = x^3+x+1$ over $\Fqn{k}$. (d) The retained graded divisor of $\Edb$ (nonzero
+eigenvalues) is $\netmult(1) = 2$ (the vacuum and $\rdens_\infty$), $\netmult(\lambda) = -2m_\lambda$ at every nonzero
+$\lambda\in\operatorname{spec}Z$ (the odd sector carries $\operatorname{spec}Z$ and its conjugate, and the
+resonance set is conjugation-closed), and $\netmult = m_0$ at the remaining nonzero eigenvalues of
+$\mathcal E_{\reb}$; the ring zeta is
+$1/\sdet(1-\uz\Edb) = \prod_n(1-\uz z_n)^{m_n}(1-\uz\bar z_n)^{m_n}/((1-\uz)\det(1-\uz\mathcal E_{\reb}))$, the product
+over modes: its zeros are the resonances and their conjugates. (e) The nonzero resonances share one modulus $r$
+(RH on the retained divisor, i.e.\ on $K_{\mathrm{HW}}$ for D2) iff every nonzero odd eigenvalue of $\Edb$ has
+modulus $r$; the even sector has two fixed points (\cref{prop:graded-stationary-segment}), so
 $\Edb$ is not a mixing graded quantum expander (\cref{def:graded-quantum-expander}): the missing even exit of
 \cref{obs:cusp-no-graph-vacuum} as a property of the network.
 \end{theorem}
@@ -150,6 +155,15 @@ channel's own (the fixed points and the secular roots), not $1+\qs^k$.
 \begin{numerical}[Blind numerics lane, graded toys: this shard's part]
 \label{num:graded-toys-network}
 \claimstatus{num:graded-toys-network}{numerical}
-\texttt{scripts/graded\_toys.py} (\texttt{outputs/graded\_toys.txt}; ledger in \texttt{notes/graded-toys/numerics.md}):
-NUMERICS-SUMMARY-1
+\texttt{scripts/graded\_toys.py} ($512$ assertions, $12$ s, seed $20260920$; \texttt{outputs/graded\_toys.txt};
+ledger D1--D51 in \texttt{notes/graded-toys/numerics.md}; $498$ pass, every one of the $14$ failures a wording or scope
+correction of the brief, each paired with a passing corrected assertion). This shard's part: the linearisation on D2, D3
+and random cores with one to three cusps, the Jordan structure and its loop counterexample, the Bass identity on five
+regular graphs (with the trivial factor $\pm\qs^{-1/2}$); the superdeterminant identity, the disc classification and the
+functional equation exactly for both curves and a synthetic genus-two Weil polynomial; $1/R$ against
+$z^{-2}\sdet(1-E_S/(\qs z^2))$ at eight points on D2 and D3; the prefactor and first nonzero coefficient ($[z^2]p_2 = -1$,
+$[z^4]p_3 = -1$); the graded MPS of D2 with a modal and a random reset: normalisation, the transfer channel, the even and
+odd sectors, the explicit ring vectors to $L = 4$, both closures, the point counts $\Ncount{k} = 1, 5, 13, 25, 41$ by
+enumeration in $\Fqn{k}$ against $\Tr Z^{2k}$, the ring-zeta product formula to $10^{-14}$, the odd multiplicities
+$-2$ and the even multiplicity of $0$ ($16$, $14$), the fixed-point segment.
 \end{numerical}

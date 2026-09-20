@@ -2,6 +2,47 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-20, night: a graded tensor network for the cusp toys (shards 04n, 04o); the four next steps worked through
+
+TJO asked for the four next steps below to be worked through and for a graded tensor-network realisation of the
+toys. One construction does both: a graded transfer channel whose bond is the model space of a diagram
+(`notes/graded-toys/`: brief G1--G7, `proofs.md` by Fable with a 15-row correction ledger, blind Opus numerics
+`scripts/graded_toys.py` 512 checks / 498 pass with the 14 failures corrections of the brief, Opus REFUTE review
+`notes/reviews/graded-toys-2026-09-20.md`: REVIEW-COUNTS). Container setup: TeX Live, FLINT 3.0.1 (`ihz`, `zst`
+build and pass), scipy, all 142 arXiv sources and the Sørensen text (byte-exact via pdftotext) re-fetched; the
+gate is green from a fresh clone. Worklog 2026-09-20, night.
+
+**Registered (04n, 04o).** `p = det(z − M)`, `ptilde = det(1 − zM)` for `M = [[T_X, −(I−C)],[I,0]]`, the core's
+non-backtracking operator plus a junction correction (Bass); `R` is a ratio of a characteristic polynomial and
+its reversal, so the resonances are not graded on the core. **For every curve `ζ_K(2s−1)/ζ_K(2s) = sdet(1 −
+q^{−2s}(Fr ⊕ Π Fr(−1)))`**, whose disc part is exactly the pole (even, eigenvalue 1) and the zeros (odd, the
+`H^1` eigenvalues): on D2 and D3's zeta channel `1/R = z^{−2} sdet(1 − E_S/(qz²))`, the notebook's grading is
+the cohomological degree, no choice made; functional equation from Poincaré duality. Genus `g`, one `c = 1`
+cusp: `1/R = s_D z^{−2} q^{1−g} ζ-ratio`, `[z^2]p = −s_D q^{1−g}`; the prefactor `q^{1−2gs}` is excluded for
+`g ≥ 2` (item ii is a test of the structural hypothesis, not of a formula; no genus-two diagram exists here).
+The renewal channel of any `h`-exit contraction is the transfer channel of a normalised graded MPS on
+`C vac ⊕ K`; its odd sector is `Z` and `Z̄` exactly; the difference of the two closures is `4 Re Tr Z^L`, and
+for D2 the twisted ring norm's odd part is the odd half of the point count (`N_k = 1, 5, 13, 25, 41`). Item (i):
+on a regular diagram with cusps and funnels the constant mode is half-outgoing (bound on cusps, outgoing on
+funnels at the same `z = q^{−1/2}`); a funnel bolted onto D2 shifts the quartet's radius but keeps it
+equimodular (one Klein orbit of the bipartite sign and conjugation, until it splits): **at genus one RH(Y) on
+K_HW is forced by symmetry and Weil's content is the radius**; a channel with only even letters always has two
+stationary states, so a unique mixed stationary state with pole even and zeros odd needs a fermionic letter,
+realised by the glued network (funnel tree `⊕` D2, separate exit blocks, parity-crossing reset: unique mixed
+even stationary state, odd modes `q^{−3/4}`, protection = energy-orthogonality). Item (iv): the
+arithmetic-metric completion is the Frobenius channel `r² Ad(U) + (1−r²) Ω Tr`, a one-gap expander with
+diagonal Blaschke characteristic function, and no self-adjoint diagram has it (`S(z̄) = S(z)^*` for Hermitian
+cores). Item (iii): **`Γ_0(N)` with trivial character sees only `ζ` (oldform Eisenstein series); the `L`-zeros
+live on `Γ_1(N)`**; under H-ARITH-1 the level-`N` bond is one even vacuum line plus odd `L`-zero blocks over
+primitive characters graded by the diamond operators (numerics over `F_3[T]` for two cubic `N`).
+
+**Next on this lead (in order).** (i) `Γ_1(N)` Eisenstein constant terms over `F_q[T]` for one cubic `N`,
+settling H-ARITH-1 and the completed-versus-incomplete `L` question; the quotient graph `Γ_1(N)\T` is the
+diagram. (ii) The glued toy as a fermionic MPS proper (odd letters as fermionic species, sign-twisted closures).
+(iii) Is the Frobenius channel a Weil-representation / graded Harrow expander at `p = 2`? (iv) A
+non-self-adjoint core realising the diagonal `Θ'`. (v) Genus two: the test is of the structural hypothesis
+(Perron-only bound spectrum, all resonances on one circle); it needs a genus-two quotient graph.
+
 ## Session 2026-09-20, evening: two arithmetic cavities with cusps (shards 04k, 04l, 04m); the hedgehog is real, the rebound is still free
 
 TJO clarified that the Phantasm is a *system* whose resonances are the zeros (an arithmetic cavity coupled

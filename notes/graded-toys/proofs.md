@@ -18,13 +18,19 @@ exterior eigenvalue `mu = 1/vartheta` contributes the bound-state pole at `varth
 
 (b) `Tr M^m = sum_{p(mu) = 0} mu^m` for all `m >= 1`.
 
-(c) `ker M = 0 (+) ker(I - C)`. If the Schur bracket of `prop:multi-exit-spectrum`(iii) is invertible,
-`M` has exactly `dim ker(I - C)` Jordan blocks at `0`, each of size two.
+(c) `ker M = 0 (+) ker(I - C)`. If no `c = 1` junction carries a loop (`T_UU = 0` on `U = ker(I - C)`, as in
+the Schur elimination of `prop:multi-exit-spectrum`(iii)) and that Schur bracket is invertible, `M` has
+exactly `dim ker(I - C)` Jordan blocks at `0`, each of size two. With a loop of weight `a != 0` at a
+`c = 1` junction, `ord_0 p = 1` (`prop:nonzero-root-product`) and the block has size one (numerics F1).
 
 (d) If `C = 0` and `T_X = A_X/sqrt q` with `A_X` the adjacency matrix of a `(q+1)`-regular graph, then
 `det(1 - z M_0) = det(I - u A_X + q u^2)`, `u = z/sqrt q`, hence by Ihara--Bass
-`spec(sqrt q M_0) cup {+-1}^{|E| - |V|} = spec(B)` (multisets), `B` the Hashimoto operator. In general
-`M = M_0 + [[0, C], [0, 0]]`.
+`spec(sqrt q M_0) cup {+-1}^{|E| - |V|} = spec(B)` (multisets), `B` the Hashimoto operator (equivalently
+`spec(M_0) cup {+- q^{-1/2}}^{|E|-|V|} = spec(B)/sqrt q`; the brief's `{+-1}` on the left was in the wrong
+normalisation, numerics F3). In general `M = M_0 + [[0, C], [0, 0]]`, a correction of rank the number of
+distinct junction vertices (numerics F2). The cores of D2 and D3 are not themselves regular (the cusp ray
+carries the missing unit of degree at the junction), so for them only the determinant identity transfers
+(numerics F4).
 
 *Proof.* (a) Block elimination with the invertible lower-right block `z`, valid for `z != 0` and then
 for all `z` by polynomial identity:
@@ -63,8 +69,8 @@ the same graded space; `Pi X` is `X` with the parities reversed. `E_S := Fr (+) 
 **Theorem G2.** (a) With `w = q^{-2s}`,
 `zeta_K(2s - 1)/zeta_K(2s) = sdet(1 - w E_S) = (1 - w) P(q w)/((1 - q^2 w) P(w))`.
 (b) The eigenvalues `e` of `E_S` with `|e| < q` are `1` (even) and `alpha_1, ..., alpha_{2g}` (odd); the
-two eigenvalues equal to `q` (one even, from `Fr` on `H^2`; one odd, from `Fr(-1)` on `H^0`) cancel;
-all others (`q alpha_i` even, `q^2` odd) have `|e| > q`.
+two eigenvalues equal to `q` (one even, from `Fr` on `H^2`; one odd, from `Fr(-1)` on `H^0`) lie on
+`|e| = q`, i.e. `|z| = 1`, and cancel; all others (`q alpha_i` even, `q^2` odd) have `|e| > q`.
 (d) `sdet(1 - w E_S) . sdet(1 - E_S/(q^2 w)) = q^{2g - 2}`.
 
 *Proof.* (a) The even part of `E_S` is `Fr|_{H^0 (+) H^2}` together with the odd part of `Fr(-1)`, i.e.
@@ -149,12 +155,19 @@ structure of `Z`, and the reset does not act on the odd sector.
 `str EE^L = <psi_L^P|psi_L^P> = 1 + Tr E_Omega^L - 2 Re Tr Z^L`, where `EE = sum_i A_i (x) conj A_i`.
 For D2, `Tr Z^L = 0` for odd `L` and `Tr Z^{2k} = 2 q^{-k}(alpha_+^k + alpha_-^k) = 2 q^{-k}(1 + q^k - N_k)`.
 
-(d) The graded divisor of `EE`: `nu(1) = 2` (both even: `|vac><vac|` and `rho_inf`), `nu(z_n) = nu(conj z_n) = -m_n`
-(odd), and `nu(lambda) = m_0(lambda)` at the remaining even eigenvalues, which are the eigenvalues of
-`E_Omega` other than `1`; `1/sdet(1 - u EE) = prod_n (1 - u z_n)^{m_n}(1 - u conj z_n)^{m_n} / ((1 - u) det(1 - u E_Omega))`.
+(d) The retained graded divisor of `EE` (nonzero eigenvalues; the value `0` is invisible to the ring zeta
+and the even sector carries it with a large multiplicity, numerics F8): `nu(1) = 2` (both even:
+`|vac><vac|` and `rho_inf`), `nu(lambda) = -2 m_lambda` at every nonzero `lambda in spec Z` (the odd
+sector carries `spec Z` from `|k><vac|` and `conj spec Z` from `|vac><k|`, and `spec Z` is closed under
+conjugation, so each value occurs twice; numerics F7), and `nu(lambda) = m_0(lambda)` at the remaining even
+eigenvalues, which are the nonzero eigenvalues of `E_Omega` other than `1`;
+`1/sdet(1 - u EE) = prod_n (1 - u z_n)^{m_n}(1 - u conj z_n)^{m_n} / ((1 - u) det(1 - u E_Omega))`, the
+product over the modes `n` (each value appearing once as `z_n` and once as a `conj z_{n'}`).
 
-(e) `RH(Y)` with radius `r` holds iff every odd eigenvalue of `EE` has modulus `r`. `EE` has two even
-fixed points, so it is not a mixing graded quantum expander in the sense of `def:graded-quantum-expander`.
+(e) The nonzero resonances all have modulus `r` (RH(Y) on the retained divisor, i.e. on `K_HW` for D2,
+where `def:cusp-diagram` counts the delay roots as resonances of modulus `0`; numerics F9) iff every
+nonzero odd eigenvalue of `EE` has modulus `r`. `EE` has two even fixed points, so it is not a mixing
+graded quantum expander in the sense of `def:graded-quantum-expander`.
 
 *Proof.* (a) `A_0^* A_0 = 1 (+) Z^* Z` and `sum_{a,k} A_{(a,k)}^* A_{(a,k)} = sum_a |j_a><j_a| sum_k p_k = J^* J`
 (`J^* J = sum_a J^* e_a e_a^* J`), so the sum is `1 (+) (Z^* Z + J^* J) = 1`. The channel is
@@ -213,13 +226,15 @@ Under the wave group the constant mode is then not a resonance eigen-datum of th
 `L^2` eigen-datum; it is a half-outgoing state, not represented in `K`.
 
 **Proposition G4(b).** One-vertex regular diagram, core `[0]`, one cusp of weight `a` and one funnel of
-weight `b = q + 1 - a`: `p(z) = z^2 - (1 + a(q - 1))/q`. The Perron root is a resonance at `z^2 = 1/q`
-iff `a = 0`, a threshold iff `a = 1`, and a visible bound state with `vartheta^2 = q/(1 + a(q-1)) in (1/q, 1)`
-for `1 < a <= q + 1`, with `vartheta^2 = 1/q` iff `a = q + 1`.
+weight `b = q + 1 - a`: `p(z) = z^2 - (1 + a(q - 1))/q`. For `0 <= a < 1` the Perron root is a resonance,
+at `z^2 = (1 + a(q-1))/q in [1/q, 1)`, equal to `1/q` iff `a = 0` (pure funnel); `a = 1` is a threshold;
+for `1 < a <= q + 1` it is a visible bound state with `vartheta^2 = q/(1 + a(q-1)) in [1/q, 1)`, equal to
+`1/q` iff `a = q + 1` (pure cusp). (The brief's range `0 < a < q+1` for the bound state was wrong,
+numerics F10: a light cusp leaves the Perron-type mode outgoing, at a radius other than `q^{-1/2}`.)
 
 *Proof.* `p = z^2 + 1 - a - (q + 1 - a)/q = z^2 - (a(q-1) + 1)/q`. The root `z^2 = (1 + a(q-1))/q` is `1/q`
-at `a = 0`, `1` at `a = 1`, `q` at `a = q + 1`, and increases in `a`; a root outside the disc is the
-reciprocal of a visible bound parameter (`thm:cusp-resonance-count`). QED.
+at `a = 0`, `1` at `a = 1`, `q` at `a = q + 1`, and increases in `a`; a root inside the disc is a resonance
+and one outside is the reciprocal of a visible bound parameter (`thm:cusp-resonance-count`). QED.
 
 **Lemma G4(c) (first-order root motion under an added funnel).** For a diagram with resonance
 polynomial `p(z) = det(N(z))`, `N(z) = (1 + z^2) - z T_X - C`, adding a funnel of weight `f` at vertex
@@ -232,8 +247,22 @@ circle iff this quantity vanishes for all four.
 
 *Proof.* `det(N - eps P_v) = det N - eps det N^{(v)}` (expansion along row `v`; exact since the
 perturbation is rank one on the diagonal), with `eps = f/q` by `prop:funnel-self-energy`. Implicit
-differentiation of `p_f(z_i(f)) = 0`. QED. (The values are computed by the numerics lane; the lemma
-supplies the criterion. The brief's "for every `v` and every `f > 0`" is a numerical statement.)
+differentiation of `p_f(z_i(f)) = 0`. QED.
+
+**Corollary G4(c') (the quartet stays equimodular).** `P_v` is real and diagonal, so it commutes with the
+bipartite sign `eps` and preserves reality: for every `f` the roots of `p_f` are closed under
+`z -> -z` and `z -> conj z`. A Klein orbit `{z, -z, conj z, -conj z}` with `z` neither real nor purely
+imaginary has four distinct elements of one modulus. Hence the perturbed Hasse--Weil quartet remains
+equimodular for every `f` for which it remains a single orbit; only the value `q^{-1/4}` of the radius is
+lost. The numerics lane found the four derivatives `d|z_i|/df` identical at every vertex (`+0.0630672`
+at `A`, `+0.1261345` at `B`, `-0.0210224` at `C`, `-0.1681793` at `D`, `-0.0630672` at `E`, `F`), the moduli
+equal to `1e-15` at `f = 1/5`, and the orbit splitting into two orbits of different moduli at `f = 1`
+(`D`), `f = 2` (`E`, `F`), `f = 5` (`A`), and not up to `f = 5` at `B`, `C` (numerics F11). The Perron
+parameter decreases strictly from `q^{-1/2}` for `f > 0` and the Perron pair stays a visible bound state
+for every finite `f` (numerics F12). The same argument shows that at genus one `RH(Y)` on `K_HW` is a
+consequence of the bipartite sign and reality alone, whenever the quartet is one Klein orbit; Weil's
+content for D2 is the radius, pinned by the product identity of `prop:nonzero-root-product`. At genus two
+two orbits can have different moduli, and there Weil has independent content.
 
 **Lemma G4(d)(iii) (even letters, two stationary states).** Let `H = H_+ (+) H_-` with both summands
 nonzero and let `E(rho) = sum_i A_i rho A_i^*` be trace preserving with every `A_i` even. Then `E` has
@@ -299,7 +328,11 @@ eigenvalue `z_n conj z_m` of `Ad(Z)` (assumed simple) persists in `E` iff `<l_n|
 second form. `E X = Z X Z^* + Tr(J X J^*) Omega`. `E = E_0 + |Omega>><<fl|` is a rank-one perturbation
 of `E_0 = Ad(Z)`, and `prop:rebound-persistence-secular` says a simple eigenvalue of `E_0` with
 eigen-operator `X` and dual functional `dual_X` persists iff `fl(X) dual_X(Omega) = 0`; here
-`dual_X(Y) = <l_n| Y |l_m>` (the left eigen-operator of `Ad(Z)` at `z_n conj z_m` is `|l_n><l_m|`). QED.
+`dual_X(Y) = <l_n| Y |l_m>` (the left eigen-operator of `Ad(Z)` at `z_n conj z_m` is `|l_n><l_m|`). On a
+real core the value `z_n conj z_m` is degenerate in `Ad(Z)` (it equals `z_{n'} conj z_{m'}` for the
+conjugate modes), so a rank-one perturbation removes one copy: the eigen-operator `|k_n><k_m|` is lost,
+with residue `E X - z_n conj(z_m) X = <a_m, a_n> Omega`, while the value survives with multiplicity
+reduced by one (numerics F15). QED.
 
 *Remark (the trade-off).* Protection of the odd coherence between an even and an odd mode is
 equivalent, by the Gram identity, to their energy-orthogonality; on a connected core with a shared
@@ -395,7 +428,7 @@ same dichotomy is expected over `F_q[T]` (`cit:kk-level-constant-term` is the tr
 instance at one cusp). So `conj:galois-graded-bond` and item (iii) of `obs:elliptic-cavity-next`
 should name `Gamma_1(N)` (or the nebentypus tower), not `Gamma_0(N)`.
 
-**Proposition G6(b) (conditional on H-ARITH-1: the `psi`-channel of the `Gamma_1(N)` scattering
+**Proposition G6(b) (stated for primitive characters; conditional on H-ARITH-1: the `psi`-channel of the `Gamma_1(N)` scattering
 matrix over `F_q[T]` is a monomial times `L(2s-1, psi)/L(2s, psi)`, with `L` the completed
 `L`-function).** Let `psi` be a nontrivial primitive Dirichlet character mod `N` over `F_q[T]`, and
 `L(u, psi) = sum_{f monic} psi(f) u^{deg f}`, a polynomial of degree `deg N - 1`. If `psi` is odd
@@ -409,8 +442,13 @@ Put `E_psi = (Fr_psi)_- (+) Pi Fr_psi(-1) = (Fr_psi)_- (+) (q Fr_psi)_+`. Then, 
 `beta_i` of `Fr_psi`, with no even entry. For the trivial character the channel is
 `zeta_{F_q(T)}(2s-1)/zeta_{F_q(T)}(2s) = sdet(1 - w E_S)` with `g = 0`, whose disc part is the single
 even entry `nu(1) = +1`. Hence, under H-ARITH-1, the disc part of the level-`N` graded bond is
-`(1)_+ (+) (+)_{psi != 1} (beta_{psi,1}, ..., beta_{psi, d_psi})_-`, with the diamond operator `<a>` acting
-on the `psi`-block by `psi(a)`.
+`(1)_+ (+) (+)_{psi primitive, psi != 1} (beta_{psi,1}, ..., beta_{psi, d_psi})_-`, the sum over primitive
+characters of conductors dividing `N` with the trivial zero `beta = 1` of each even `psi` split off
+exactly as the vacuum line is split off the trivial channel, and with the diamond operator `<a>` acting
+on the `psi`-block by `psi(a)`. An imprimitive `psi` induced from conductor `M` carries in addition the
+Euler factors `prod_{P | N, P not | M}(1 - psi^*(P) u^{deg P})`, whose roots have modulus `1`; both the
+trivial zeros and these sit at `|e| = 1`, i.e. at the Perron radius `|z| = q^{-1/2}`, as odd modes
+(numerics F13). The equivalence "`(1 - u)` factor iff `psi` even" also needs primitivity (F13).
 
 *Proof.* Orthogonality of characters gives `sum_{deg f = d, f monic} psi(f) = 0` for `d >= deg N`, so
 `L(u, psi)` is a polynomial of degree at most `deg N - 1`; the Euler product
@@ -440,3 +478,12 @@ the Eisenstein computation, not here.
 | 4 | G4(c) | "for every `v` and every `f > 0`" is not proved; the lemma gives the first-order criterion, the numerics lane the values |
 | 5 | G4(d)(iii) | strengthened to a general lemma: even letters on a graded bond give at least two stationary densities |
 | 6 | G6(b) | the completed versus incomplete `L`-function (the place at infinity) is part of the hypothesis; the incomplete choice adds an odd mode at `z = +- q^{-1/2}` per even character |
+| 7 | G1(c) | needs no loop at a `c = 1` junction (numerics F1) |
+| 8 | G1(d) | the trivial Bass factor is `{+- q^{-1/2}}` in the `M_0` normalisation, `{+-1}` in the `sqrt q M_0` one; the correction has rank the number of distinct junction vertices; the arithmetic cores are not regular by themselves (F2, F3, F4) |
+| 9 | G2(b) | the two cancelling lines at `e = q` lie on `|z| = 1` (F5) |
+| 10 | G2(e) | for several `c = 1` junction vertices the statement is about the first nonzero coefficient `[z^{ord_0 p}] p` (F6; D3 has `[z^4] p = -1`) |
+| 11 | G3(d,e) | `nu(lambda) = -2 m_lambda` on the odd sector; the divisor and the RH equivalence are for nonzero eigenvalues (F7, F8, F9) |
+| 12 | G4(b) | bound state for `1 < a <= q+1` only; for `a < 1` the Perron-type root is a resonance (F10) |
+| 13 | G4(c) | the quartet stays equimodular (one Klein orbit); a funnel costs the Weil radius, not RH(Y); the Perron pair stays bound (F11, F12) |
+| 14 | G4(d)(vi) | the eigen-operator is lost, the eigenvalue keeps a copy (F15) |
+| 15 | G6(b) | primitive characters; imprimitive ones add modulus-one modes at the Perron radius (F13); the truncated sum is the `L`-function only for `psi != 1` (F14) |
