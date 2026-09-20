@@ -1,0 +1,305 @@
+% SHARD-ID: RC-04K-ELLIPTIC-CAVITY-SCATTERING
+% SHARD-TITLE: The Phantasm VI: Two Arithmetic Cavities with Cusps I. The Elliptic-Curve Diagrams, the Multi-Exit Scattering Matrix, the Zeta Identification, and the Character Blocks
+% SHARD-SUMMARY: The two elliptic-curve tree quotients of Arends--Peterson--Weich (y^2+y=x^3+x+1 over F_2, one cusp; y^2=x^3+x+1 over F_3, four cusps) are set up in the notebook's normalisation from their stabiliser data: every arithmetic junction has coupling c = 1 (not the Nagao q+1), the h-exit scattering matrix is S = (z Gamma - 1)^{-1}(1 - Gamma/z) = -Q(z)^{-1}Q(1/z) with det S = (-1)^h p/ptilde, and APW's mu is the notebook's z.
+% SHARD-SUMMARY: For the one-cusp cavity 1/R = z^{-2} zeta_K(2s-1)/zeta_K(2s) exactly, the four resonances are the square roots of the inverse Frobenius eigenvalues on |z| = 2^{-1/4}, plus a double delay root at z = 0 forced by c = 1, and the nonzero-root product 1 - ||b||^2 = -1 pins the Weil radius q^{-1/4} (with a genus caution).
+% SHARD-SUMMARY: For the four-cusp cavity the Klein symmetry splits S into a Dirichlet channel -1, a pure delay z^2, and a 2x2 block with determinant z^2 zeta_K(2s)/zeta_K(2s-1); the one-step height renormalisation diag(1,z) diagonalises that block in a fixed basis into (zeta block, z^2), giving one zeta channel and three monomial channels, the genus-one prediction of the class-character picture; the central multiplicities (two +1, two -1) match Sorensen's h[2] formula.
+% SHARD-KEYWORDS: elliptic curve, graph of groups, stabiliser function, cusp, scattering matrix, h exits, Childs-Gosset, Arends-Peterson-Weich, Hasse-Weil zeta, inverse Frobenius, Weil circle, delay mode, height renormalisation, class group, Sorensen, Lorscheid, H-DIAG, H-EIS, H-CLASS
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/elliptic_cavity.py
+
+\section{The Phantasm VI: Two Arithmetic Cavities with Cusps I. The Elliptic-Curve Diagrams, the Multi-Exit Scattering Matrix, and the Zeta Identification}
+\label{sec:elliptic-cavity-scattering}
+
+\emph{Question (TJO, 2026-09-20).} The Phantasm is a \emph{system} whose resonances are the zeros, pictured
+as an arithmetic cavity coupled to cusps (``a spiky object, like a hedgehog''); the modular surface is one
+candidate, not the definition. \Cref{sec:cusp-graph-scattering,sec:cusp-graph-renewal} built the toy with a
+general core and no arithmetic; the reviewer's verdict was that nothing arithmetic was used. Arends--Peterson--Weich
+\cite{arends2026resonances} supply the arithmetic: two elliptic-curve tree quotients whose resonance
+determinants contain the Hasse--Weil numerator. This shard does the Lax--Phillips reading of their two
+examples in the notebook's normalisation, and the next shard runs the channel on them. One codex
+\texttt{gpt-6-astra} prover lane (\texttt{notes/elliptic-cavity/astra-proofs.md}, brief \texttt{astra-brief.md},
+$44$-row correction ledger), one Opus numerics lane blind from the brief (\texttt{numerics.md},
+\texttt{scripts/elliptic\_cavity.py}, $192$ checks, $35$-row ledger), one Opus literature lane
+(\texttt{sources.md}; eight new sources fetched), one Opus refutation review
+(\texttt{notes/reviews/elliptic-cavity-2026-09-20.md}: $19$ VALID, $5$ MINOR, $0$ INVALID, $597$ independent checks in three
+scratch scripts, both figures re-read; it also contributed the mass formula and the group-matrix form below). Worklog
+2026-09-20 (evening).
+
+\subsection{The diagrams and the multi-exit normalisation}
+
+\begin{definition}[Graph with stabiliser function; the two elliptic cavities; the $h$-exit scattering matrix]
+\label{def:elliptic-cavity}
+A \emph{graph with stabiliser function} is a graph with $S(v),S(e)>0$ on vertices and edges, measure
+$\nu(v) = 1/S(v)$, and adjacency $(Af)(v) = \sum_{e:\,t(e)=v}\big(S(v)/S(e)\big)f(o(e))$
+(\cref{cit:apw-adjacency}); it is a quotient of the $(q+1)$-regular tree when every vertex has
+$\deg v = \sum_{e\ni v}S(v)/S(e) = q+1$. A \emph{cusp} is a ray $c_1,c_2,\dots$ with $S(c_{k+1}) = qS(c_k)$ and
+$S(c_kc_{k+1}) = S(c_k)$, attached to a core vertex $v$ by an edge $e$. The \emph{one-cusp elliptic cavity}
+$\mathrm{D2}$ ($q = 2$; $y^2+y = x^3+x+1$ over $\mathbb F_2$; Serre, \emph{Trees}, II.2.4.4, drawn in
+\cite{arends2026resonances}) has core vertices $A,B,C,D,E,F$ with $S = 6,2,2,1,3,3$, edges $AB{:}2$, $BC{:}2$,
+$CD{:}1$, $DE{:}1$, $DF{:}1$, and one cusp at $B$ with $S(Bc_1) = 2$, $S(c_k) = 2^{k+1}$. The \emph{four-cusp
+elliptic cavity} $\mathrm{D3}$ ($q = 3$; $y^2 = x^3+x+1$ over $\mathbb F_3$; Takahashi's Figure 5, drawn in
+\cite{arends2026resonances}) has core vertices $L1p,L1,L2,X,Xp,Y,Z,Zp,Q$ with $S = 48,12,6,2,8,6,12,48,4$,
+edges $L1pL1{:}12$, $L1L2{:}6$, $L2X{:}2$, $XXp{:}2$, $XY{:}2$, $XQ{:}2$, $YZ{:}6$, $ZZp{:}12$, one cusp at $L1$ and one
+at $Z$ (edge $12$, ray $36,108,\dots$) and two at $Q$ (edge $4$, ray $12,36,\dots$). The curves have
+$N_1 = 1$, $P(T) = 1-2T+2T^2$, $\alphaw{\pm} = 1\mp i$, $|\mathrm{Pic}(R)| = 1$ and $N_1 = 4$, $P(T) = 1+3T^2$,
+$\alphaw{\pm} = \pm i\sqrt3$, $\mathrm{Pic}(R)\cong\mathbb Z/4$ respectively, with
+$\zeta_K(s) = P(q^{-s})/((1-q^{-s})(1-q^{1-s}))$ for the function field $K$ of the curve.
+For a core $T_X$ with $h$ standard rays attached at vertices $v_a$ with couplings $c_a>0$ (repeats allowed),
+put $W = (c_a\,\delta_{v,v_a})_{v,a}$, $C = WW^{*} = \sum_a c_a^2P_{v_a}$, $G(\lambda) = (\lambda-T_X)^{-1}$,
+$\mathsf G(z) = W^{*}G(z+1/z)W$ (the $h\times h$ exit resolvent). The \emph{scattering matrix} $\mathbf S(z)$ is
+defined by the generalised eigenfunctions $g^{(b)}(r^{(a)}_k) = \delta_{ab}z^{-k}+\mathbf S_{ab}(z)z^{k}$, and
+$p(z) = \det\big((1+z^2)I-zT_X-C\big)$, $\tilde p(z) = z^{2n}p(1/z)$. A \emph{delay mode} is a root of $p$ at
+$z = 0$. A \emph{height renormalisation} is the congruence $\mathbf S\mapsto D\mathbf S D$ with
+$D = \mathrm{diag}(z^{a_1},\dots,z^{a_h})$, the effect of moving the origin of ray $a$ by $a_a$ steps.
+\end{definition}
+
+\begin{assumption}[H-DIAG: the stabiliser data are the arithmetic quotients]
+\label{asm:h-diag}
+\claimstatus{asm:h-diag}{assumed}
+The stabiliser data of $\mathrm{D2}$ and $\mathrm{D3}$ in \cref{def:elliptic-cavity}, transcribed from the
+figures of \cite{arends2026resonances}, are the quotients $\mathrm{GL}_2(R)\backslash\mathcal T$ for the two
+affine elliptic curves. Takahashi's theorem is not in the repository. What is proved here: every vertex,
+including every ray vertex, has degree $q+1$ (\cref{lem:tree-matching-determinant}); the rank-one
+perturbed Bass determinants reproduce APW's displayed polynomials; and for $\mathrm{D2}$ Lorscheid's
+independently drawn class-number-one graph agrees weight for weight (figure-read, \texttt{sources.md}). For
+$\mathrm{D3}$ no second source exists: Lorscheid's graph for the same curve is a different object
+(\cref{cit:lorscheid-components}).
+\end{assumption}
+
+\begin{proposition}[Normalisation with $h$ cusps; the arithmetic junction has $c = 1$]
+\label{prop:stabiliser-normalisation}
+\claimstatus{prop:stabiliser-normalisation}{proved}
+With $g = f/\sqrt S$ the adjacency becomes the symmetric kernel $\sqrt{S(v)S(w)}/S(e)$ on counting measure,
+and $T_X = q^{-1/2}D^{-1/2}A_XD^{1/2}$ for the coordinate adjacency $A_X$ ($D = \mathrm{diag}\,S$; the symmetric
+form $D^{-1/2}A_XD^{-1/2}$ applies to the measure kernel $S(v)S(w)/S(e)$, prover ledger 2). On a cusp ray every
+normalised entry is $1$, so each cusp is the standard ray of \cref{def:cusp-diagram}, and the junction
+coupling is
+\[
+c^2 = \frac{S(v)S(c_1)}{q\,S(e)^2} = \frac{S(v)}{S(e)} ,
+\]
+using the degree condition $S(c_1)/S(e) = q$ at $c_1$; this is APW's $c_v$ summand. For the Nagao cusp
+$c^2 = q+1$ (\cref{prop:cusp-reflection}); for every junction of $\mathrm{D2}$ and $\mathrm{D3}$, $c = 1$, so
+$C_{\mathrm{D2}} = \mathrm{diag}(0,1,0,0,0,0)$ and $C_{\mathrm{D3}} = \mathrm{diag}(0,1,0,0,0,0,1,0,2)$. With
+$a = \sqrt{3/2}$, $b = 1/\sqrt2$, $d = 2/\sqrt3$, $e = \sqrt{2/3}$ the cores are the weighted trees
+$T_{\mathrm{D2}}$: $AB{:}a$, $BC{:}b$, $CD{:}1$, $DE{:}a$, $DF{:}a$, and $T_{\mathrm{D3}}$: $L1pL1{:}d$, $L1L2{:}e$,
+$L2X{:}1$, $XXp{:}d$, $XY{:}1$, $XQ{:}e$, $YZ{:}e$, $ZZp{:}d$.
+\end{proposition}
+
+\begin{theorem}[The $h$-exit scattering matrix]
+\label{thm:multi-exit-scattering}
+\claimstatus{thm:multi-exit-scattering}{proved}
+Solving the first ray equations $W^{*}x = u+v$ and the core equation $x = GW(z^{-1}u+zv)$ gives
+\[
+\mathbf S(z) = (z\mathsf G-I)^{-1}(I-z^{-1}\mathsf G) = -Q(z)^{-1}Q(1/z),\qquad Q(z) = I-z\mathsf G ,
+\]
+Childs--Gosset's $h$-tail formula (\cref{cit:cg-h-tail}) with boundary block $0$. All factors commute;
+$\mathbf S = \mathbf S^{T}$, $\mathbf S(z)\mathbf S(1/z) = I$, $\mathbf S(\bar z) = \overline{\mathbf S(z)}$, hence
+$\mathbf S^{*}\mathbf S = I$ on the circle, with removable singularities at core eigenvalues and at the thresholds
+$\pm1$ (entries are bounded by one on the circle). Sylvester's identity $\det_h(I-t\mathsf G) = \det_n(I-tGC)$
+gives
+\[
+\det\mathbf S(z) = (-1)^h\,\frac{p(z)}{\tilde p(z)} ,\qquad p\ \text{monic of degree }2n,\quad
+\tilde p(0) = 1,\quad p(0) = \det(I-C) = \prod_v(1-C_{vv}).
+\]
+APW's resonance matrix (\cref{cit:apw-resonance-matrix}) satisfies $\det H(\mathfrak m) = (-1)^n(2\mathfrak m)^{-n}p(\mathfrak m)$:
+their $\mathfrak m$ is the notebook's $z$, and their resonances are the nonzero roots of the unreduced $p$
+(bound-state reciprocals, cusp forms and thresholds included). Their displayed polynomials $F$ are
+$\det H = F/(128z^4)$ for $\mathrm{D2}$ and $-F/(1536z^5)$ for $\mathrm{D3}$ (numerics D-ledger; prover ledger 3).
+\end{theorem}
+
+\begin{proposition}[What the matrix sees: bound states, cusp forms, the root at zero, thresholds]
+\label{prop:multi-exit-spectrum}
+\claimstatus{prop:multi-exit-spectrum}{proved}
+Let $X_b = \mathrm{span}\{T_X^k\,\mathrm{ran}\,W\}$ and $X_c = X_b^\perp$; $X_c$ is exactly the span of the
+cusp forms (core eigenvectors vanishing at every attachment vertex; for $h>1$ there is no further class),
+and the factor $D_c(z) = \prod_t(1-tz+z^2)^{m_c(t)}$ divides both $p$ and $\tilde p$. (i) A visible bound
+state $(\lambda-T_X-\vartheta C)x = 0$, $g_a(k) = c_ax(v_a)\vartheta^k$, $0<|\vartheta|<1$, has $\vartheta$ real and is a
+\emph{simple matrix pole} of $\mathbf S$ with residue rank the visible eigenspace dimension, by
+$\mathbf S = -I+(z^{-1}-z)W^{*}(\lambda-T_X-zC)^{-1}W$ and the spectral projection of the resolvent. (ii) For
+$h>1$ a scalar gcd of $p,\tilde p$ is \emph{not} the cusp-and-threshold factor: with $T_X = 0_{2\times2}$, one
+exit per vertex, $C = \mathrm{diag}(5/4,5)$, $\mathbf S = \mathrm{diag}\big(-\tfrac{z^2-1/4}{1-z^2/4},
+-\tfrac{z^2-4}{1-4z^2}\big)$ has $\det\mathbf S = 1$ yet resonance zeros and bound poles at $\pm1/2$ in
+different directions; the correct objects are the Smith--McMillan partial multiplicities, or the minimal
+inner model of \cref{thm:h-exit-model}. (iii) A root of $p$ at $z = 0$ is a genuine eigenvalue $0$ of the
+compressed operator, a mode that leaves in finitely many no-event steps (for $T_X = [0]$, $c = 1$:
+$\mathbf S = -z^2$, the two-dimensional truncated shift); APW exclude it ($\mathfrak m\in\mathbb C^\times$). With
+$U = \ker(I-C)$, $V = U^\perp$ and $T_{UU} = 0$, Schur elimination gives $p(z) = \det(A_V+O(z))\,
+\det[z^2(I_U-T_{UV}A_V^{-1}T_{VU})+O(z^3)]$, so $\mathrm{ord}_0p = 2\dim U$ when the bracket is invertible:
+$2$ for $\mathrm{D2}$ (bracket $-1$), $4$ for $\mathrm{D3}$ (bracket $-I_2$; the double attachment at $Q$
+contributes the invertible entry $-1$, not a vector of $U$). \emph{These delay counts, $N$ and $\dim K$ are properties of
+where the core/cusp cut is placed, not of the diagram} (reviewer, finding 2): moving the cut $k$ ray steps outward keeps
+$c^2 = 1$, gives $\mathrm{ord}_0p = 2(1+k)$ and $R\mapsto z^{2k}R$, and leaves the nonzero divisor and the first nonzero
+coefficient $[z^m]p$ invariant; APW's $\det H = \mathfrak m^kf(\mathfrak m)$ (\texttt{2603.26443:final\_draft.tex:1922}) is
+the same remark and is why they take $\mathfrak m\in\mathbb C^\times$. (iv) The count with state multiplicities is
+$N = 2(n-m_c)-b-n_h$ and $w(\det\mathbf S) = N-b$ (\cref{cit:cg-levinson}), $b$ visible bound states, $n_h$
+half-bound states at both thresholds: $N_{\mathrm{D2}} = 12-4-2 = 6$, $N_{\mathrm{D3}} = 18-4-2-4 = 8$,
+windings $4$ and $6$. Both matrices are regular at $\pm1$; $\mathrm{D3}$ has two half-bound states at each
+sign with $\mathbf S(\pm1) = (-1)\oplus(1)\oplus\big(\begin{smallmatrix}0&\mp1\\\mp1&0\end{smallmatrix}\big)$
+in the symmetry basis of \cref{thm:d3-channels}: two eigenvalues $+1$ and two $-1$.
+\end{proposition}
+
+\begin{lemma}[Tree matching expansion; the two consistency checks]
+\label{lem:tree-matching-determinant}
+\claimstatus{lem:tree-matching-determinant}{proved}
+For a weighted tree core, $p(z) = \sum_{M}(-z^2)^{|M|}\prod_{ij\in M}T_{ij}^2\prod_{v\notin M}(1+z^2-C_{vv})$,
+the sum over matchings $M$ (a forest permutation has only fixed points and disjoint transpositions). The
+degree sums of \cref{def:elliptic-cavity} are $3$ at every vertex of $\mathrm{D2}$ and $4$ at every vertex of
+$\mathrm{D3}$ (core and rays, the junction included), and the expansion reproduces APW's two displayed
+polynomials exactly, as in \cref{thm:d2-zeta,thm:d3-channels}.
+\end{lemma}
+
+\subsection{The one-cusp cavity: the zeta ratio and the inverse Frobenius}
+
+\begin{theorem}[$\mathrm{D2}$: exact determinants and the zeta identification]
+\label{thm:d2-zeta}
+\claimstatus{thm:d2-zeta}{proved-conditional}
+Under \cref{asm:h-diag},
+\[
+p_2 = \tfrac{z^2}{2}(z^2-2)(z^2+1)^2(2z^4-2z^2+1),\qquad
+\tilde p_2 = -\tfrac12(z^2+1)^2(2z^2-1)(z^4-2z^2+2),
+\]
+\[
+R_2(z) = -\frac{p_2}{\tilde p_2} = \frac{z^2(z^2-2)(2z^4-2z^2+1)}{(2z^2-1)(z^4-2z^2+2)},\qquad
+\boxed{\ \frac1{R_2(z)} = z^{-2}\,\frac{\zeta_K(2s-1)}{\zeta_K(2s)}\ }\quad(z = q^{s-1/2}),
+\]
+as meromorphic functions, cancellations included, by the algebraic identity
+$\zeta_K(2s-1)/\zeta_K(2s) = \frac{P(t)}{P(t/q)}\frac{1-t/q}{1-qt}$, $t = z^{-2}$. The Nagao cusp has
+$1/R = q\,\zeta_{\mathbb F_q(T)}(2s-1)/\zeta_{\mathbb F_q(T)}(2s)$ (\cref{prop:pure-cusp-scattering}); the
+pattern $q^{1-2gs}$ fits the two genera, but so does $q^{1-2s}$ (they agree at $g = 0,1$, all the data there is); the
+prefactor is \textbf{H-EIS}, under-determined, not a theorem (prover ledger 15; review finding 4; Lorscheid's
+adelic factor $\|\mathfrak c\|^{2s}$ with $\deg\mathfrak c = 2g-2$, \texttt{sources.md}, is the same shape in a
+different normalisation).
+\end{theorem}
+
+\begin{proposition}[$\mathrm{D2}$: spectrum, bipartite sign, inverse Frobenius, the Weil circle]
+\label{prop:d2-spectrum-frobenius}
+\claimstatus{prop:d2-spectrum-frobenius}{proved-conditional}
+Under \cref{asm:h-diag}: the visible bound states are the Perron pair $\vartheta = \pm1/\sqrt2$
+($\lambda = \pm3/\sqrt2$; $g = 1/\sqrt{S}$ and its alternating twin); the core kernel is two-dimensional,
+spanned by $(1/\sqrt2,0,-\sqrt{3/2},0,1,0)$ and $(1/\sqrt2,0,-\sqrt{3/2},0,0,1)$, both vanishing at $B$: one
+two-dimensional eigenspace at $\lambda = 0$ whose wave parameters $\pm i$ carry multiplicity two each (the
+factor $(z^2+1)^2$; APW's ``two $L^2$-eigenfunctions at each of $\pm i$'' is this eigenspace, not four
+functions). There is no other $L^2$ spectrum and no threshold. The nonzero resonances are the four roots
+of $2z^4-2z^2+1$, i.e.\ $z^2 = 1/\alphaw{\pm}$, $|z| = 2^{-1/4} = 0.8408964\ldots$, $\arg z\in\{\pm\pi/8,\pm7\pi/8\}$;
+the delay root $z = 0$ is double (one Jordan block, \cref{prop:d2-canonical-rebound}). $\mathrm{D2}$ is
+bipartite, $\varepsilon T\varepsilon = -T$, and on the four-dimensional Hasse--Weil sector $K_{\mathrm{HW}}$ the
+compressed operator of \cref{thm:h-exit-model} satisfies $\varepsilon Z\varepsilon = -Z$ and
+$Z^2|_{K_{\mathrm{HW}}}\ \text{is similar to}\ \mathrm{Fr}^{-1}\otimes I_2$, $Z\simeq\big(\begin{smallmatrix}
+0&\mathrm{Fr}^{-1}\\I&0\end{smallmatrix}\big)$: a spectral similarity, not a canonical identification with
+cohomology (ledger 14); the bipartite pairing $z\leftrightarrow-z$ \emph{is} the choice of square root, not
+a second doubling (ledger 41). Weil's theorem for $E$ is the equal-modulus property $\mathrm{RH}(Y)$ of
+\cref{def:cusp-diagram} on $K_{\mathrm{HW}}$, and only there: the full six-dimensional model has the two
+delay modes of modulus $0$.
+\end{proposition}
+
+\begin{proposition}[The nonzero-root product; the Weil radius is pinned by the diagram]
+\label{prop:nonzero-root-product}
+\claimstatus{prop:nonzero-root-product}{proved}
+If $p(z) = a_mz^m+O(z^{m+1})$ with $a_m\ne0$ then $\prod_{z_i\ne0}z_i = (-1)^ma_m$. For one junction with
+$c = 1$, writing $T_X = \big(\begin{smallmatrix}a&b^{*}\\b&D_0\end{smallmatrix}\big)$ (junction first),
+$M_0 = (1+z^2)I-zD_0$,
+\[
+p(z) = \det M_0(z)\,\big[z^2-az-z^2b^{*}M_0(z)^{-1}b\big],
+\]
+so the product of the nonzero roots is $a$ if $a\ne0$ and $1-\|b\|^2$ if $a = 0\ne1-\|b\|^2$. For
+$\mathrm{D2}$, $\|b\|^2 = 2$ and the product is $-1$: exterior pair $-2$, cusp factors $1$, Hasse--Weil
+quartet $\prod|z_i| = 1/2 = q^{-1}$. For $\mathrm{D3}$ the coefficient of $z^4$ is again $-1$ and the
+Hasse--Weil product is $1/3 = q^{-1}$. Hence on both diagrams, \emph{given} that the only $L^2$ spectrum
+outside the band is the Perron pair and that the four nonzero resonances share one modulus $r$,
+$r^4 = q^{-1}$: the equal-modulus hypothesis plus the diagram pins the Weil radius $q^{-1/4}$ (numerics
+lane, \S3). More sharply (review finding 3): with the Perron pair as the only outside-band $L^2$ spectrum,
+$|\prod_{\text{nonzero}}z_i| = 1$ gives $q\,r^{4g} = 1$, so at genus one the Perron pair \emph{alone} pins $r$.
+This answers \cref{prop:cusp-radius-product}'s ``nothing pins $r$'' for the arithmetic diagrams, and it corrects the
+previous review's finding 7: its premise $c^2 = q+1$ fails, $p(0) = 0$, and the demand ``extra bound spectrum'' is
+replaced by the first-nonzero-coefficient identity above. \emph{The coefficient $-1$ is not structural} (the
+reviewer's synthetic $c = 1$ core gives $-2$), so the naive extrapolation $r = q^{-1/(4g)}$ is not a prediction; the
+reviewer's channel bookkeeping under H-CLASS gives instead $|[z^m]p| = q^{\,1-g-(h-1)(g-1)}$, i.e.\ $1$ at $g = 1$ and
+$q^{-h}$ at $g = 2$: one integer to compute on a genus-two diagram, the sharpest testable prediction of the round.
+\end{proposition}
+
+\subsection{The four-cusp cavity: symmetry channels and the height renormalisation}
+
+\begin{theorem}[$\mathrm{D3}$: determinants and the three channels]
+\label{thm:d3-channels}
+\claimstatus{thm:d3-channels}{proved-conditional}
+Under \cref{asm:h-diag},
+\[
+p_3 = \tfrac{z^4}{3}(z-1)^2(z+1)^2(z^2-3)(z^2+1)^2(3z^4+1),\qquad
+\tilde p_3 = -\tfrac13(z-1)^2(z+1)^2(z^2+1)^2(3z^2-1)(z^4+3),\qquad \det\mathbf S = p_3/\tilde p_3 .
+\]
+In the constant exit basis $q_- = (Q_1-Q_2)/\sqrt2$, $l_- = (L1-Z)/\sqrt2$, $l_+ = (L1+Z)/\sqrt2$,
+$q_+ = (Q_1+Q_2)/\sqrt2$ the two graph involutions give
+\[
+\mathbf S = (-1)\ \oplus\ z^2\ \oplus\ \mathbf S_e(z),\qquad
+\mathbf S_e(z) = \frac1{\mathcal D}\begin{pmatrix} z^2F & -4z^3(z^2+1)\\ -4z^3(z^2+1) & F\end{pmatrix},
+\]
+$\mathcal D = (3z^2-1)(z^4+3)$, $F = (z^2-1)(3z^4-2z^2+3)$: $q_-$ is a Dirichlet end ($Wq_- = 0$), $l_-$ is the
+three-vertex path $\{L1p,L1,L2\}$ with a Dirichlet condition at $X$ and a unit exit at its middle vertex,
+whose two leaf squares sum to $2$, so $p_o = z^2(z^2+1)(z^2-1)$, $\tilde p_o = (z^2+1)(1-z^2)$ and
+$-p_o/\tilde p_o = z^2$ exactly (a pure two-step delay; for any such path the transparency condition is
+$a_1^2+a_2^2 = 2$, numerics D-ledger). The even core determinant is $p_e = \frac{z^2}{3}(z^2-1)(z^2-3)(z^2+1)
+(3z^4+1)$, $p_3 = p_op_e$, and
+\[
+R_3(z) := \det\mathbf S_e(z) = \frac{z^2(z^2-3)(3z^4+1)}{(3z^2-1)(z^4+3)} = z^2\,\frac{\zeta_K(2s)}{\zeta_K(2s-1)},
+\]
+the same form as $R_2$ (\cref{thm:d2-zeta}) with $P(T) = 1+3T^2$.
+\end{theorem}
+
+\begin{proposition}[$\mathrm{D3}$: spectral bookkeeping]
+\label{prop:d3-spectrum}
+\claimstatus{prop:d3-spectrum}{proved-conditional}
+Under \cref{asm:h-diag}: the nonzero resonances are the roots of $3z^4+1$, $z^2 = 1/\alphaw{\pm} = \mp i/\sqrt3$,
+$|z| = 3^{-1/4}$, angles $\pi/4,3\pi/4,5\pi/4,7\pi/4$, all in the even block; the delay root has order four,
+two modes in $\mathbf S_e$ (its lower-right entry is $1+O(z^2)$, its determinant $z^2+O(z^4)$: one size-two
+Jordan block) and two in the $z^2$ channel; the visible bound states are the Perron pair $\pm1/\sqrt3$
+($\lambda = \pm4/\sqrt3$); the core kernel has dimension \emph{three} but only two vectors vanish at all exits
+(the leaf equations force $L1 = Z = X = 0$, then $L2 = -\sqrt2L1p$, $Y = -\sqrt2Zp$, $-\sqrt2(L1p+Zp)+
+\frac2{\sqrt3}Xp+\sqrt{\tfrac23}Q = 0$, and $Q = 0$ leaves dimension two, one of each reflection parity):
+these are the cusp forms at $\lambda = 0$, multiplicity two at each wave parameter $\pm i$; the third kernel
+vector is not an eigenfunction on $Y$. The threshold factors $(z\mp1)^2$ are one half-bound state from
+$p_o$ and one from $p_e$ at each sign, with the regular limit of \cref{prop:multi-exit-spectrum}(iv); APW's
+``topological resonances at $\pm1$ of multiplicity $2$'' (\cref{cit:apw-elliptic-numerator}) are these half-bound
+states, and their central multiplicities $m_\pm = (h\pm(h[2]-2))/2 = 2,2$ are exactly Sørensen's formula
+for a class group with $h = 4$, $h[2] = 2$ (\cref{cit:sorensen-central-trace}): no tension with
+\cref{cit:apw-four-types}(iv). There are eight model modes in all.
+\end{proposition}
+
+\begin{theorem}[The height renormalisation diagonalises the even block]
+\label{thm:d3-height-diagonalisation}
+\claimstatus{thm:d3-height-diagonalisation}{proved-conditional}
+The unrenormalised $\mathbf S_e$ has no constant eigenbasis (the ratio of diagonal difference to
+off-diagonal entry is $-(z^2-1)^2(3z^4-2z^2+3)/(4z^3(z^2+1))$) and its eigenvalues are not rational
+functions (the discriminant numerator $9z^{16}-48z^{14}+124z^{12}-144z^{10}+374z^8-144z^6+124z^4-48z^2+9$ is
+squarefree). But the diagonal \emph{congruence} $D(z) = \mathrm{diag}(1,z)$ and $H = \frac1{\sqrt2}
+\big(\begin{smallmatrix}1&1\\1&-1\end{smallmatrix}\big)$ give
+\[
+\boxed{\ H^{*}D\,\mathbf S_e\,D\,H = \mathrm{diag}\big(R_3(z),\,z^2\big)\ } ,
+\]
+and among $\mathrm{diag}(z^a,z^b)$ a constant eigenbasis exists iff $a-b = -1$ (the two $Q$-cusps start one
+step deeper than the $L1,Z$ cusps: $12,36,\dots$ against $36,108,\dots$). Multiplying both $Q$ coordinates by
+$z$ on all four exits gives $z^2\cdot\{\zeta_K(2s)/\zeta_K(2s-1),\ 1,\ 1,\ -1\}$: one zeta channel and three
+monomial channels, the genus-one prediction of the class-character picture (for an unramified nontrivial
+character of a genus-one function field $L(s,\chi) = 1$). The congruence adds delay modes
+($\det(D\mathbf S_eD) = z^2\det\mathbf S_e$) and changes individual eigenvalues; the nonzero resonance
+positions are unchanged. The $2\times2$ congruence by itself does not name the characters of $\mathbb Z/4$; the
+four-exit equal-depth cut does (\cref{prop:d3-group-matrix}: $L1,Z$ the self-inverse classes, $Q_1,Q_2$ an inverse
+pair), and the Klein automorphism group is exactly the stabiliser of that structure, translation by the $2$-torsion
+and inversion, so no transitive class-group action is needed (reviewer's re-verdict note).
+\end{theorem}
+
+\begin{observation}[H-CLASS: what the class-character diagonalisation needs]
+\label{obs:h-class}
+\claimstatus{obs:h-class}{sketched}
+For number fields Sørensen (\cref{cit:sorensen-scattering-matrix}) proves that the cusp scattering
+matrix is a class-group matrix, $\mathbf S_{\mathrm{HM}}(s,m,\chi) = \hat L(2s,\chi)^{-1}\hat L(2s-1,\chi)P$, diagonalised by
+the class characters through the Dedekind determinant relation; the proof uses that the class group
+permutes the cusps simply transitively. On a graph of groups the cusps are permuted only by graph
+automorphisms, here the Klein group, so the theorem does not transfer as stated; yet for $\mathrm{D3}$ it holds in
+Sørensen's literal form once all cusps are cut at equal depth (\cref{prop:d3-group-matrix}), and
+\cref{thm:d3-height-diagonalisation} is its $2\times2$ shadow. \textbf{H-CLASS} (general): for $R$ the coordinate ring of an affine curve over $\mathbb F_q$, the equal-depth-cut
+$h\times h$ scattering matrix of $\mathrm{GL}_2(R)\backslash\mathcal T$ is $M\cdot P_{\mathrm{inv}}$ with $M_{ab} = f(b-a)$ a
+$\mathrm{Pic}(R)$-group matrix whose character factors are $L(2s-1,\chi)/L(2s,\chi)$ up to monomials. Two cautions from the sources: the number
+of cusps is $h\deg x$ for a removed place $x$ of degree $\deg x$ (\cref{cit:lorscheid-cusp-count}), so the
+genus-$g$ statement must carry $\deg x$; and Lorscheid's Hecke graph ceases to be the tree quotient when
+$h$ is even (\cref{cit:lorscheid-components}), so the $\mathrm{D3}$ diagram rests on APW's figure alone.
+\end{observation}

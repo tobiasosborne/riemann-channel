@@ -2,6 +2,48 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-20, evening: two arithmetic cavities with cusps (shards 04k, 04l, 04m); the hedgehog is real, the rebound is still free
+
+TJO clarified that the Phantasm is a *system* whose resonances are the zeros (an arithmetic cavity coupled
+to cusps, "a hedgehog"; the modular surface is one candidate, possibly over-promoted), then sketched an
+arithmetic skeleton with "a cusp per prime", cusps integrated out into sinks patched by exit spaces, and the
+cMPS as the minimal Stinespring dilation of the core dynamics, and asked whether funnels are the even
+sector. The round did the Lax--Phillips reading of Arends--Peterson--Weich's two elliptic-curve tree
+quotients (`notes/elliptic-cavity/`: brief, `astra-proofs.md` 44-row ledger, blind numerics
+`scripts/elliptic_cavity.py` 192 checks, `sources.md` with eight new sources, review
+`notes/reviews/elliptic-cavity-2026-09-20.md`: 19 VALID, 5 MINOR, 0 INVALID before fixes, 24 VALID after, 597 checks; the reviewer added the mass formula Σ1/S(v) − Σ1/S(e) = −ζ_K(−1), the Z/4 group-matrix form of D3's scattering matrix after the equal-depth cut, and the cut-dependence of the delay sector with the genus law |[z^m]p| = q^{1−g−(h−1)(g−1)}). Worklog 2026-09-20, evening.
+
+**Registered (04k, 04l, 04m).** Arithmetic junctions have `c^2 = S(v)/S(e) = 1` (delay modes at `z = 0`,
+`ord_0 p = 2 dim ker(1 - C)`); the h-exit scattering matrix `S = (z Gamma - 1)^{-1}(1 - Gamma/z)`, `det S =
+(-1)^h p/ptilde`, APW's `mu` = notebook `z`; `1/R_2 = z^{-2} zeta_K(2s-1)/zeta_K(2s)` exactly for the F_2
+curve, resonances `z^2 = 1/alpha` on `2^{-1/4}`, `Z^2 ~ Fr^{-1} (x) I_2`; the nonzero-root product `-1` on both
+diagrams pins `r = q^{-1/4}` given equal moduli (the previous review's finding 7 had a false premise); the
+F_3 hedgehog splits as `(-1) (+) z^2 (+) S_e`, `det S_e = z^2 zeta_K(2s)/zeta_K(2s-1)`, and the one-step height
+shift `diag(1,z)` diagonalises `S_e` into (zeta block, `z^2`): one zeta channel, three monomial channels, the
+genus-one class-character prediction; Sorensen's `m_+- = (h +- (h[2]-2))/2 = 2, 2` matches APW's `+-1`
+resonances. The h-exit model and renewal channel (instrument on exit matrices; uniqueness is not
+irreducibility; common modulus for fixed resets only). The canonical cusp rebound of D2 is an absorbing delay
+mode that never charges the zeros; modal Hasse--Weil rebounds are stationary with mean `2 + sqrt 2`; the
+metrics making `q^{1/4} Z` unitary form a cone with a single symmetric ray, the energy metric is outside, and
+in the arithmetic metric the HW defect has rank four (one exit per zero mode). The constant mode never leaks
+on finite volume; the funnel self-energy is `C/(qz)`; a constant cannot be outgoing on a cusp and a funnel at
+once; lattice quotients have no funnels. Corrected: `thm:cusp-renewal-discrete`(c) (modal resets are aperiodic
+at `c = 1`). Open: H-HECKE, H-CLASS in general, H-EIS, the genus prediction `4h + 4`.
+
+**Answers given in conversation (not registered).** The honest "cusp per prime" is the `Gamma_0(N)` level
+tower (cusps indexed by divisors of `N`), whose diamond operators carry `(Z/N)^x` with inverse limit `Zhat^x =
+Gal(Q^ab/Q)`, the Bost--Connes symmetry group: TJO's two demands meet there. The Euler product is a series
+(product-state) structure, not parallel exits. Funnels = even sector in the precise sense that the constant
+mode flips from bound state to outgoing state at the same `z = q^{-1/2}` (Patterson--Sullivan analogue).
+
+**Next on this lead (in order).** (i) The cusp-plus-funnel toy by hand (not a lattice quotient): does the
+renewal channel get a unique mixed stationary state with the pole even and the zeros odd, given the
+incompatible outgoing conditions for a constant? (ii) A genus-two diagram (or Lorscheid's `Z/2 x Z/2` curve)
+to test the coefficient `-1` against Weil and the `4h + 4` count. (iii) `Gamma_0(N)` over `F_q[T]`, `N` a
+product of two primes: four cusps, one per divisor, Dirichlet `L`-functions (H-ARITH). (iv) The
+arithmetic-metric completion with one exit per zero mode: which geometric object has four cusps seeing the
+four Hasse--Weil modes separately?
+
 ## Session 2026-09-20: a finite graph with a cusp (shards 04i, 04j); the arithmetic target is now concrete
 
 TJO restated the theme (RH as a Lindblad process, zeros as Connes's absorption spectrum, ring norm a

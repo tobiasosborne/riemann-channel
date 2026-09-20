@@ -1,0 +1,343 @@
+Two arithmetic cavities with cusps: elliptic curves over F_2 and F_3.
+
+Numerics lane for `notes/elliptic-cavity/astra-brief.md` (Section 0, C1--C3, T1--T6).
+Run BLIND to the prover's file.  Deterministic (seed 20260920); every claim is an
+assertion with an explicit tolerance, and the tally is printed at the end.
+Exact wherever exactness is possible: all determinants, all scattering matrices and
+all zeta identities are done with sympy over Q(sqrt q), not by floating point.
+
+seed 20260920;  author claude:opus;  date 2026-09-20
+
+==============================================================================
+SECTION 0   the two diagrams: transcription, degrees, normalisation C1
+==============================================================================
+
+-- D2  y^2 + y = x^3 + x + 1 over F_2 (Serre, Trees II.2.4.4; APW Fig. 'serre')   q = 2, n = 6 core vertices, h = 1 cusps
+  ok   1  D2: every CORE vertex has degree sum_e S(v)/S(e) = q+1 = 3 (degrees [3, 3, 3, 3, 3, 3])
+  ok   2  D2: every RAY vertex has degree q+1 too; c_1 gives S(c_1)/S(e) + 1 = q+1, i.e. S(c_1) = q S(e), verified for each cusp [('B', 2, 4, 3)]; c_k (k=2..6) gives q + 1 identically
+  ok   3  D2: c_a^2 = S(v)S(c_1)/(q S(e)^2) = S(v)/S(e) = ['1'] (the two forms agree because S(c_1) = q S(e))
+  ok   4  D2: EVERY cusp junction has c_a^2 = 1 (not q+1 as at the Nagao cusp): the ray attaches where S(v) = S(e).  C = diag['0', '1', '0', '0', '0', '0']
+  ok   5  D2: g = f/sqrt(S) then /sqrt q turns the cusp ray into the FREE path adjacency (T g)(k) = g(k+1)+g(k-1), with junction weight sqrt(c^2) = 1.000000 (max dev 1.1e-16)
+   T_X (6x6) in the order ['A', 'B', 'C', 'D', 'E', 'F']:
+     +0.00000  +1.22474  +0.00000  +0.00000  +0.00000  +0.00000
+     +1.22474  +0.00000  +0.70711  +0.00000  +0.00000  +0.00000
+     +0.00000  +0.70711  +0.00000  +1.00000  +0.00000  +0.00000
+     +0.00000  +0.00000  +1.00000  +0.00000  +1.22474  +1.22474
+     +0.00000  +0.00000  +0.00000  +1.22474  +0.00000  +0.00000
+     +0.00000  +0.00000  +0.00000  +1.22474  +0.00000  +0.00000
+   distinct nonzero entries: ['sqrt(2)/2', '1', 'sqrt(6)/2']
+
+-- D3  y^2 = x^3 + x + 1 over F_3 (Takahashi Fig. 5; APW Fig. 'takahashi')   q = 3, n = 9 core vertices, h = 4 cusps
+  ok   6  D3: every CORE vertex has degree sum_e S(v)/S(e) = q+1 = 4 (degrees [4, 4, 4, 4, 4, 4, 4, 4, 4])
+  ok   7  D3: every RAY vertex has degree q+1 too; c_1 gives S(c_1)/S(e) + 1 = q+1, i.e. S(c_1) = q S(e), verified for each cusp [('L1', 12, 36, 4), ('Z', 12, 36, 4), ('Q', 4, 12, 4), ('Q', 4, 12, 4)]; c_k (k=2..6) gives q + 1 identically
+  ok   8  D3: c_a^2 = S(v)S(c_1)/(q S(e)^2) = S(v)/S(e) = ['1', '1', '1', '1'] (the two forms agree because S(c_1) = q S(e))
+  ok   9  D3: EVERY cusp junction has c_a^2 = 1 (not q+1 as at the Nagao cusp): the ray attaches where S(v) = S(e).  C = diag['0', '1', '0', '0', '0', '0', '1', '0', '2']
+  ok  10  D3: g = f/sqrt(S) then /sqrt q turns the cusp ray into the FREE path adjacency (T g)(k) = g(k+1)+g(k-1), with junction weight sqrt(c^2) = 1.000000 (max dev 2.2e-16)
+   T_X (9x9) in the order ['L1p', 'L1', 'L2', 'X', 'Xp', 'Y', 'Z', 'Zp', 'Q']:
+     +0.00000  +1.15470  +0.00000  +0.00000  +0.00000  +0.00000  +0.00000  +0.00000  +0.00000
+     +1.15470  +0.00000  +0.81650  +0.00000  +0.00000  +0.00000  +0.00000  +0.00000  +0.00000
+     +0.00000  +0.81650  +0.00000  +1.00000  +0.00000  +0.00000  +0.00000  +0.00000  +0.00000
+     +0.00000  +0.00000  +1.00000  +0.00000  +1.15470  +1.00000  +0.00000  +0.00000  +0.81650
+     +0.00000  +0.00000  +0.00000  +1.15470  +0.00000  +0.00000  +0.00000  +0.00000  +0.00000
+     +0.00000  +0.00000  +0.00000  +1.00000  +0.00000  +0.00000  +0.81650  +0.00000  +0.00000
+     +0.00000  +0.00000  +0.00000  +0.00000  +0.00000  +0.81650  +0.00000  +1.15470  +0.00000
+     +0.00000  +0.00000  +0.00000  +0.00000  +0.00000  +0.00000  +1.15470  +0.00000  +0.00000
+     +0.00000  +0.00000  +0.00000  +0.81650  +0.00000  +0.00000  +0.00000  +0.00000  +0.00000
+   distinct nonzero entries: ['sqrt(6)/3', '1', '2*sqrt(3)/3']
+
+==============================================================================
+SECTION 1   p, ptilde by exact rational arithmetic; APW's det H; z = 0
+==============================================================================
+
+-- D2:  p(z) = z**2*(z**2 - 2)*(z**2 + 1)**2*(2*z**4 - 2*z**2 + 1)/2
+   ptilde(z) = -(z**2 + 1)**2*(2*z**2 - 1)*(z**4 - 2*z**2 + 2)/2
+  ok  11  D2: p(z) = det((1+z^2)I - z T_X - C) equals the brief's displayed p EXACTLY (difference is the zero polynomial)
+  ok  12  D2: ptilde(z) = z^(2n) p(1/z) equals the brief's displayed ptilde EXACTLY
+  ok  13  D2: ptilde computed directly as det((1+z^2)I - z T_X - z^2 C) agrees with z^(2n) p(1/z) (both exact)
+  ok  14  D2: deg p = 2n = 12 and p is MONIC (leading coefficient 1)
+  ok  15  D2: p is an EVEN polynomial -- the diagram is a tree, hence bipartite, and sigma T_X sigma = -T_X, sigma C sigma = C give p(-z) = p(z); resonances come in +- pairs
+  ok  16  D2: ord_0 p = 2 = 2 * dim ker(1 - C) = 2 * 1; p(0) = det(1-C) = 0 because c_a^2 = 1 at every junction, and the FIRST-order term also vanishes because T_X has no loop at an attachment vertex and the attachment vertices are pairwise non-adjacent (max |T_X| between them 0.0e+00, loops ['0', '0', '0', '0', '0', '0'])
+  ok  17  D2: (the two geometric hypotheses just used, verified) no loops and no edges among the attachment vertices
+  ok  18  D2: det H(mu) = (-1)^n (2 mu)^(-n) det((1+mu^2) - mu T_X - C) EXACTLY, with H = (A_L + B(mu))/(2 sqrt q) - z(mu) and B(mu)_vv = c_v sqrt q/mu, c_v = C_vv (APW 2603.26443:final_draft.tex:1896-1905).  So APW's mu IS the notebook's z
+  ok  19  D2: APW's DISPLAYED polynomial is NOT det H(mu); it is (-1)^n 2^n q mu^(n - ord_0 p) det H(mu) = 128*z**4 det H, equivalently p(z) = z^2 * (APW display)/q.  The constant is exactly q and the monomial exactly z^(n-m): APW silently drop the z = 0 root and clear denominators
+
+-- D3:  p(z) = z**4*(z - 1)**2*(z + 1)**2*(z**2 - 3)*(z**2 + 1)**2*(3*z**4 + 1)/3
+   ptilde(z) = -(z - 1)**2*(z + 1)**2*(z**2 + 1)**2*(3*z**2 - 1)*(z**4 + 3)/3
+  ok  20  D3: p(z) = det((1+z^2)I - z T_X - C) equals the brief's displayed p EXACTLY (difference is the zero polynomial)
+  ok  21  D3: ptilde(z) = z^(2n) p(1/z) equals the brief's displayed ptilde EXACTLY
+  ok  22  D3: ptilde computed directly as det((1+z^2)I - z T_X - z^2 C) agrees with z^(2n) p(1/z) (both exact)
+  ok  23  D3: deg p = 2n = 18 and p is MONIC (leading coefficient 1)
+  ok  24  D3: p is an EVEN polynomial -- the diagram is a tree, hence bipartite, and sigma T_X sigma = -T_X, sigma C sigma = C give p(-z) = p(z); resonances come in +- pairs
+  ok  25  D3: ord_0 p = 4 = 2 * dim ker(1 - C) = 2 * 2; p(0) = det(1-C) = 0 because c_a^2 = 1 at every junction, and the FIRST-order term also vanishes because T_X has no loop at an attachment vertex and the attachment vertices are pairwise non-adjacent (max |T_X| between them 0.0e+00, loops ['0', '0', '0', '0', '0', '0', '0', '0', '0'])
+  ok  26  D3: (the two geometric hypotheses just used, verified) no loops and no edges among the attachment vertices
+  ok  27  D3: det H(mu) = (-1)^n (2 mu)^(-n) det((1+mu^2) - mu T_X - C) EXACTLY, with H = (A_L + B(mu))/(2 sqrt q) - z(mu) and B(mu)_vv = c_v sqrt q/mu, c_v = C_vv (APW 2603.26443:final_draft.tex:1896-1905).  So APW's mu IS the notebook's z
+  ok  28  D3: APW's DISPLAYED polynomial is NOT det H(mu); it is (-1)^n 2^n q mu^(n - ord_0 p) det H(mu) = -1536*z**5 det H, equivalently p(z) = z^4 * (APW display)/q.  The constant is exactly q and the monomial exactly z^(n-m): APW silently drop the z = 0 root and clear denominators
+
+==============================================================================
+SECTION 2   the roots of p: resonances, bound states, cusp forms, thresholds
+==============================================================================
+  ok  29  D2: gcd(p, ptilde) = (z**2 + 1)**2 -- the cusp-form factor (z^2+1)^2 (no threshold factor)
+  ok  30  D2: N = #resonances (multiplicity, z = 0 included, thresholds excluded) = 6 = 4 Hasse-Weil + 2 at z = 0 -- the brief's N(D2) = 6 is CORRECT
+  ok  31  D2: all 4 Hasse-Weil resonances have modulus q^(-1/4) = 0.840896415 (spread 4.4e-16) -- Weil's RH for the curve is exactly RH(Y) on this sector
+   D2: Hasse-Weil resonances [-0.776887-0.321797j, -0.776887+0.321797j, +0.776887-0.321797j, +0.776887+0.321797j]
+        moduli 0.840896415, angles (deg) [-157.5, -22.5, 22.5, 157.5]
+  ok  32  D2: the poles of det S in the disc are [-0.707107+0.000000j, +0.707107-0.000000j] = +- q^(-1/2) = +-0.707106781, the Perron pair
+  ok  33  D2: z^2 runs over the roots T of P(T) = [1, -2, 2], i.e. z^2 = 1/alpha with alpha the Frobenius eigenvalues; each value taken twice ([+0.500000-0.500000j, +0.500000+0.500000j])
+  ok  34  D2: dim ker T_X = 2, of which 2 vanish at EVERY attachment vertex ['B'] -- those 2 are the cusp forms, and they are exactly the factor (z^2+1)^2 of p (lambda = 0 <-> z = +-i, multiplicity 2 at each)
+  ok  35  D2: L = 120: exactly 2 eigenvalues outside [-2,2], lambda = [-2.121320, +2.121320] = +-(q^(1/2)+q^(-1/2)) = +-2.121320 (the Perron pair), and both eigenvectors decay (max tail norm 1.1e-14).  RAM(Y) holds: NO further l^2 spectrum outside the band
+  ok  36  D2: L = 120: dim ker T on Y = 2, and exactly 2 of it vanishes identically on the rays = the 2 cusp forms extended by zero (APW's 'two l^2 eigenfunctions at each of mu = +-i').  The remaining 0 zero mode(s) are the bipartite-imbalance artefacts of the TRUNCATED rays, not l^2 states
+  ok  37  D2: L = 200: exactly 2 eigenvalues outside [-2,2], lambda = [-2.121320, +2.121320] = +-(q^(1/2)+q^(-1/2)) = +-2.121320 (the Perron pair), and both eigenvectors decay (max tail norm 0.0e+00).  RAM(Y) holds: NO further l^2 spectrum outside the band
+  ok  38  D2: L = 200: dim ker T on Y = 2, and exactly 2 of it vanishes identically on the rays = the 2 cusp forms extended by zero (APW's 'two l^2 eigenfunctions at each of mu = +-i').  The remaining 0 zero mode(s) are the bipartite-imbalance artefacts of the TRUNCATED rays, not l^2 states
+  ok  39  D2: p(0) = det(1-C) = 0, so 04j's identity 'prod of all roots = 1 - c^2' is vacuous.  The corrected statement: prod of the NONZERO roots of p = (-1)^(2n-m) [z^m] p / lc(p) = -1 (here [z^m]p = -1 = lead(ptilde))
+  ok  40  D2: hence prod|nonzero resonances| = prod|l^2 parameters| = 1/q = 0.500000 (0.500000000 vs 0.500000000); with 4 resonances on one circle this FORCES r = q^(-1/4).  The Weil radius is pinned by the Perron pair alone
+  ok  41  D3: gcd(p, ptilde) = (z - 1)**2*(z + 1)**2*(z**2 + 1)**2 -- the cusp-form factor (z^2+1)^2 and the threshold factor (z^2-1)^2
+  ok  42  D3: N = #resonances (multiplicity, z = 0 included, thresholds excluded) = 8 = 4 Hasse-Weil + 4 at z = 0 -- the brief's N(D3) = 8 is CORRECT
+  ok  43  D3: all 4 Hasse-Weil resonances have modulus q^(-1/4) = 0.759835686 (spread 7.8e-16) -- Weil's RH for the curve is exactly RH(Y) on this sector
+   D3: Hasse-Weil resonances [-0.537285-0.537285j, -0.537285+0.537285j, +0.537285-0.537285j, +0.537285+0.537285j]
+        moduli 0.759835686, angles (deg) [-135.0, -45.0, 45.0, 135.0]
+  ok  44  D3: the poles of det S in the disc are [-0.577350+0.000000j, +0.577350+0.000000j] = +- q^(-1/2) = +-0.577350269, the Perron pair
+  ok  45  D3: z^2 runs over the roots T of P(T) = [1, 0, 3], i.e. z^2 = 1/alpha with alpha the Frobenius eigenvalues; each value taken twice ([+0.000000-0.577350j, +0.000000+0.577350j])
+  ok  46  D3: dim ker T_X = 3, of which 2 vanish at EVERY attachment vertex ['L1', 'Z', 'Q'] -- those 2 are the cusp forms, and they are exactly the factor (z^2+1)^2 of p (lambda = 0 <-> z = +-i, multiplicity 2 at each)
+  !! D3: dim ker T_X = 3 but only 2 kernel vectors are cusp forms; the third does not vanish at Q and is NOT an l^2 eigenfunction of T on Y.  'dim ker T_X' is therefore NOT the cusp-form count in general (it is for D2, where all of ker T_X vanishes at B)
+  ok  47  D3: L = 120: exactly 2 eigenvalues outside [-2,2], lambda = [-2.309401, +2.309401] = +-(q^(1/2)+q^(-1/2)) = +-2.309401 (the Perron pair), and both eigenvectors decay (max tail norm 9.0e-23).  RAM(Y) holds: NO further l^2 spectrum outside the band
+  ok  48  D3: L = 120: dim ker T on Y = 3, and exactly 2 of it vanishes identically on the rays = the 2 cusp forms extended by zero (APW's 'two l^2 eigenfunctions at each of mu = +-i').  The remaining 1 zero mode(s) are the bipartite-imbalance artefacts of the TRUNCATED rays, not l^2 states -- D3's third kernel vector of T_X lives here
+  ok  49  D3: L = 200: exactly 2 eigenvalues outside [-2,2], lambda = [-2.309401, +2.309401] = +-(q^(1/2)+q^(-1/2)) = +-2.309401 (the Perron pair), and both eigenvectors decay (max tail norm 0.0e+00).  RAM(Y) holds: NO further l^2 spectrum outside the band
+  ok  50  D3: L = 200: dim ker T on Y = 3, and exactly 2 of it vanishes identically on the rays = the 2 cusp forms extended by zero (APW's 'two l^2 eigenfunctions at each of mu = +-i').  The remaining 1 zero mode(s) are the bipartite-imbalance artefacts of the TRUNCATED rays, not l^2 states -- D3's third kernel vector of T_X lives here
+  ok  51  D3: p(0) = det(1-C) = 0, so 04j's identity 'prod of all roots = 1 - c^2' is vacuous.  The corrected statement: prod of the NONZERO roots of p = (-1)^(2n-m) [z^m] p / lc(p) = -1 (here [z^m]p = -1 = lead(ptilde))
+  ok  52  D3: hence prod|nonzero resonances| = prod|l^2 parameters| = 1/q = 0.333333 (0.333333333 vs 0.333333333); with 4 resonances on one circle this FORCES r = q^(-1/4).  The Weil radius is pinned by the Perron pair alone
+  !! Section 2: 04j flagged 'nothing pins r to q^(-1/4)'.  On an arithmetic diagram it IS pinned: [z^m]p = -1 (both diagrams), the only l^2 modes outside the band are the Perron pair +-q^(-1/2), and the 4 = 4g Hasse-Weil resonances share one modulus, so r^4 = q^(-1).  For genus g >= 2 the same argument would give r = q^(-1/(4g)), which CONTRADICTS Weil unless [z^m]p != -1 or there are extra l^2 modes outside the band: a sharp, testable prediction for a genus-2 diagram.
+
+==============================================================================
+SECTION 3   S(z) from the generalised eigenfunctions: symmetry, unitarity,
+            functional equation, det S, and the Childs-Gosset reconciliation
+==============================================================================
+  ok  53  D2: the brief's S(z) = (z Gamma - 1)^(-1)(1 - z^(-1) Gamma) reproduces the DIRECT generalised-eigenfunction solve at 4 points of |z| = 1 (max dev 4.1e-15); L = 14 and L = 30 agree to 5.8e-15, so the solve is exact
+  ok  54  D2: S = S^T at z = e^(i0.4) (dev 0.0e+00)
+  ok  55  D2: S is UNITARY on |z| = 1 at z = e^(i0.4) (dev 0.0e+00)
+  ok  56  D2: the functional equation S(z) S(1/z) = 1 at z = e^(i0.4) (dev 0.0e+00)
+  ok  57  D2: S = S^T at z = e^(i1.7) (dev 0.0e+00)
+  ok  58  D2: S is UNITARY on |z| = 1 at z = e^(i1.7) (dev 0.0e+00)
+  ok  59  D2: the functional equation S(z) S(1/z) = 1 at z = e^(i1.7) (dev 2.2e-16)
+  ok  60  D2: S = S^T at z = e^(i2.9) (dev 0.0e+00)
+  ok  61  D2: S is UNITARY on |z| = 1 at z = e^(i2.9) (dev 2.2e-16)
+  ok  62  D2: the functional equation S(z) S(1/z) = 1 at z = e^(i2.9) (dev 1.2e-15)
+  ok  63  D2: S(conj z) = conj S(z) at z = +0.500000+0.310000j, i.e. S is rational with REAL coefficients (dev 0.0e+00)
+  ok  64  D2: S(conj z) = conj S(z) at z = +1.400000-0.900000j, i.e. S is rational with REAL coefficients (dev 0.0e+00)
+  ok  65  D2: det S(z) = (-1)^h p(z)/ptilde(z) with h = 1 at 3 points off the circle (max dev 3.7e-15); Sylvester: det_h(1 - z Gamma) = det_n(1 - z G C)
+  ok  66  D3: the brief's S(z) = (z Gamma - 1)^(-1)(1 - z^(-1) Gamma) reproduces the DIRECT generalised-eigenfunction solve at 4 points of |z| = 1 (max dev 3.5e-15); L = 14 and L = 30 agree to 4.3e-15, so the solve is exact
+  ok  67  D3: S = S^T at z = e^(i0.4) (dev 3.0e-16)
+  ok  68  D3: S is UNITARY on |z| = 1 at z = e^(i0.4) (dev 4.4e-16)
+  ok  69  D3: the functional equation S(z) S(1/z) = 1 at z = e^(i0.4) (dev 2.3e-16)
+  ok  70  D3: S = S^T at z = e^(i1.7) (dev 1.1e-16)
+  ok  71  D3: S is UNITARY on |z| = 1 at z = e^(i1.7) (dev 5.6e-16)
+  ok  72  D3: the functional equation S(z) S(1/z) = 1 at z = e^(i1.7) (dev 4.4e-16)
+  ok  73  D3: S = S^T at z = e^(i2.9) (dev 8.1e-16)
+  ok  74  D3: S is UNITARY on |z| = 1 at z = e^(i2.9) (dev 6.7e-16)
+  ok  75  D3: the functional equation S(z) S(1/z) = 1 at z = e^(i2.9) (dev 1.6e-15)
+  ok  76  D3: S(conj z) = conj S(z) at z = +0.500000+0.310000j, i.e. S is rational with REAL coefficients (dev 0.0e+00)
+  ok  77  D3: S(conj z) = conj S(z) at z = +1.400000-0.900000j, i.e. S is rational with REAL coefficients (dev 0.0e+00)
+  ok  78  D3: det S(z) = (-1)^h p(z)/ptilde(z) with h = 4 at 3 points off the circle (max dev 1.7e-14); Sylvester: det_h(1 - z Gamma) = det_n(1 - z G C)
+
+   D2 exact:  R(z) = z**2*(z**2 - 2)*(2*z**4 - 2*z**2 + 1)/((2*z**2 - 1)*(z**4 - 2*z**2 + 2))
+  ok  79  D2: R(z) = -p(z)/ptilde(z) EXACTLY (04i's sign, no extra power of z)
+  ok  80  D2: and it equals the brief's displayed R(z) = z^2 (z^2-2)(2z^4-2z^2+1)/((2z^2-1)(z^4-2z^2+2)) EXACTLY -- T1(a) is CORRECT
+
+-- reconciliation with Childs--Gosset (1203.6557:levinson2.tex:365)
+  ok  81  D2: S_notebook(z) = z^2 * S_ChildsGosset(z) EXACTLY (dev 4.9e-16).  The factor is an ORIGIN SHIFT of the tail coordinate, not a discrepancy: Childs--Gosset put the incoming wave z^(-(j+1)) at tail site j with j = 0 the ATTACHMENT vertex (1203.6557:levinson2.tex:340-346), while the notebook puts z^(-k) at ray site k >= 1 with the attachment vertex outside the ray.  Both are unitary; the brief's 'reconcile' has the answer z^2, and a scattering function is only defined up to a power of z (04i numerics D13)
+  ok  82  general: on a random 6-vertex core with THREE tails at distinct vertices and c = 1, S_notebook = z^2 S_ChildsGosset as 3x3 matrices (dev 1.2e-15); the shift is the same scalar z^2 in every channel
+  !! Childs--Gosset's setup attaches at most one tail per vertex, so D3 (TWO cusps at Q) is outside it as written; the Gamma-form S = (z Gamma - 1)^{-1}(1 - Gamma/z) still applies, and there Gamma is SINGULAR (rank 3 < h = 4) -- which is exactly what makes the antisymmetric Q-channel a Dirichlet end.
+
+-- Levinson (1203.6557:levinson2.tex:511): w(det S) = 2(m - n_b - n_c - n_h/2)
+  ok  83  D2: winding of det S round |z| = 1 is 4 = 2(m - n_b - n_c - n_h/2) = 2(6 - 2 - 2 - 0/2) = #resonances - #visible bound states = 6 - 2.  The threshold multiplicity n_h = 0 is exactly APW's 'topological resonances at mu = +-1 of multiplicity 2' (D3) / their absence (D2)
+  ok  84  D3: winding of det S round |z| = 1 is 6 = 2(m - n_b - n_c - n_h/2) = 2(9 - 2 - 2 - 4/2) = #resonances - #visible bound states = 8 - 2.  The threshold multiplicity n_h = 4 is exactly APW's 'topological resonances at mu = +-1 of multiplicity 2' (D3) / their absence (D2)
+
+==============================================================================
+SECTION 4   1/R and det S_even against the zeta function of the function field
+==============================================================================
+  ok  85  D2 (q=2, P(T) = 1 - 2T + 2T^2): the rational functions used below really are zeta_K(2s-1) and zeta_K(2s) under z = q^(s-1/2), checked at 3 complex s (max dev 8.0e-16)
+  ok  86  D3 (q=3, P(T) = 1 + 3T^2): the rational functions used below really are zeta_K(2s-1) and zeta_K(2s) under z = q^(s-1/2), checked at 3 complex s (max dev 1.7e-15)
+  ok  87  T1(b) D2: 1/R(z) = z^(-2) zeta_K(2s-1)/zeta_K(2s) EXACTLY, K = F_2(E) -- as a rational-function identity, not just at sample points
+  ok  88  T1(b) D2: and it is 1/R, not R (the two differ); the prefactor is the monomial z^(-2) = q^(1-2s), against q = q^(1-0) for the pure Nagao cusp (04i C3)
+  ok  89  T1(b) D2: the same, evaluated at 4 complex s including s = 1/2 + 14.13i, against the scattering matrix computed from Gamma (max dev 8.7e-16)
+  !! T1(b) H-EIS: with only two data points (genus 0: prefactor q = q^(1-2gs)|_{g=0}; genus 1: z^(-2) = q^(1-2s) = q^(1-2gs)|_{g=1}) the pattern q^(1-2gs) fits, but D3's even block below gives the prefactor z^(+2) = q^(2s-1) for the RECIPROCAL ratio, i.e. the same q^(1-2s) attached to zeta(2s-1)/zeta(2s).  Two genus-1 points and one genus-0 point cannot separate q^(1-2gs) from q^(1-2s); H-EIS stays unasserted.
+
+==============================================================================
+SECTION 5   D3: Klein block structure of S(z), the -1 and z^2 channels,
+            the even 2x2 block and the monomial renormalisation (H-CLASS)
+==============================================================================
+  ok  90  D3: sigma (L1p<->Zp, L1<->Z, L2<->Y, fixing X, Xp, Q) is an involutive automorphism of the weighted core: P T_X P^T = T_X exactly; together with the swap tau of the two Q-cusps (which acts trivially on the core) it generates a Klein four-group
+   sigma-orbits: [('L1p', 'Zp'), ('L1', 'Z'), ('L2', 'Y'), ('X',), ('Xp',), ('Q',)]
+   A_even =
+[[0 4 0 0 0 0]
+ [1 0 2 0 0 0]
+ [0 1 0 3 0 0]
+ [0 0 2 0 1 1]
+ [0 0 0 4 0 0]
+ [0 0 0 2 0 0]]
+   S_eff(even) = ['24', '6', '3', '2', '8', '4'], C_even = diag['0', '1', '0', '0', '0', '2']
+   A_odd  =
+[[0 4 0]
+ [1 0 2]
+ [0 1 0]]
+   S_eff(odd)  = ['24', '6', '3'], C_odd  = diag['0', '1', '0']
+  ok  91  D3 even block: every reduced vertex still has degree q+1 = 4 (the reduction preserves the tree-quotient normalisation)
+  ok  92  D3: p = p_even * p_odd exactly, with p_even = z**2*(z - 1)*(z + 1)*(z**2 - 3)*(z**2 + 1)*(3*z**4 + 1)/3 and p_odd = z**2*(z - 1)*(z + 1)*(z**2 + 1)
+  ok  93  T2(b) D3: p_odd(z) = -z^2 ptilde_odd(z) EXACTLY (ptilde_odd = -(z - 1)*(z + 1)*(z**2 + 1)); hence R_odd = -p_odd/ptilde_odd = +z^2 identically.  The reason is visible in p_odd = z^2(z^2-1)(z^2+1) = z^2(z^4-1); the odd core ('L1p', 'L1', 'L2') is a 3-path with a Dirichlet condition at X and the c = 1 cusp in the MIDDLE
+  ok  94  T2(b) D3, the REASON: for ANY 3-path core with the c = 1 cusp in the middle and couplings a_1, a_2, p + z^2 ptilde = -z**2*(z**2 + 1)**2*(a1**2 + a2**2 - 2), which vanishes identically iff a_1^2 + a_2^2 = 2.  There is no hidden transparency, just this one identity
+  ok  95  T2(b) D3: and that sum really is 2 for the transcribed weights (a_1^2 = 4/3, a_2^2 = 2/3)
+  ok  96  T2(b) D3: the antisymmetric (L1 - Z)/sqrt2 channel has S = +z^2 IDENTICALLY, as an exact rational-function identity (the brief found it at three points; it is exact)
+
+   S_even(z) (basis (L1+Z)/sqrt2 , (Q1+Q2)/sqrt2):
+     [z**2*(z - 1)*(z + 1)*(3*z**4 - 2*z**2 + 3)/((3*z**2 - 1)*(z**4 + 3)),   -4*z**3*(z**2 + 1)/((3*z**2 - 1)*(z**4 + 3))]
+     [-4*z**3*(z**2 + 1)/((3*z**2 - 1)*(z**4 + 3)),   (z - 1)*(z + 1)*(3*z**4 - 2*z**2 + 3)/((3*z**2 - 1)*(z**4 + 3))]
+  ok  97  D3: S_even is symmetric (exactly)
+  ok  98  D3: S_even has the EXACT internal relation (S_even)_11 = z^2 (S_even)_22 -- this single fact is what makes the monomial renormalisation below work, and what makes the unrenormalised eigenvectors z-dependent
+  ok  99  T2(b) D3: det S_even(z) = z^2 zeta_K(2s)/zeta_K(2s-1) EXACTLY, K = F_3(E), P(T) = 1 + 3T^2 -- the brief's claim is CORRECT (and it is the RECIPROCAL of D2's 1/R form, prefactor z^(+2))
+  ok 100  T2(b) D3: in the FIXED (z-independent) Klein basis ['e+ = (L1+Z)/r2', 'e- = (L1-Z)/r2', 'f+ = (Q1+Q2)/r2', 'f- = (Q1-Q2)/r2'] S(z) is block diagonal 1 + 1 + 2 at z = +0.630000+0.290000j (largest forbidden entry 2.6e-16)
+  ok 101  T2(b) D3: the f- channel has S = -1 exactly at z = +0.630000+0.290000j (|S+1| = 3.5e-16) -- Gamma annihilates f- (rank Gamma = 3 < h = 4), a Dirichlet end
+  ok 102  T2(b) D3: the e- channel has S = z^2 at z = +0.630000+0.290000j (dev 1.2e-16)
+  ok 103  D3: the 2x2 even block of the full S equals the exact S_even computed from the reduced 6-vertex diagram at z = +0.630000+0.290000j (dev 4.3e-16)
+  ok 104  T2(b) D3: in the FIXED (z-independent) Klein basis ['e+ = (L1+Z)/r2', 'e- = (L1-Z)/r2', 'f+ = (Q1+Q2)/r2', 'f- = (Q1-Q2)/r2'] S(z) is block diagonal 1 + 1 + 2 at z = +0.453596+0.891207j (largest forbidden entry 3.7e-16)
+  ok 105  T2(b) D3: the f- channel has S = -1 exactly at z = +0.453596+0.891207j (|S+1| = 1.2e-16) -- Gamma annihilates f- (rank Gamma = 3 < h = 4), a Dirichlet end
+  ok 106  T2(b) D3: the e- channel has S = z^2 at z = +0.453596+0.891207j (dev 2.5e-16)
+  ok 107  D3: the 2x2 even block of the full S equals the exact S_even computed from the reduced 6-vertex diagram at z = +0.453596+0.891207j (dev 4.0e-16)
+  ok 108  T2(b) D3: in the FIXED (z-independent) Klein basis ['e+ = (L1+Z)/r2', 'e- = (L1-Z)/r2', 'f+ = (Q1+Q2)/r2', 'f- = (Q1-Q2)/r2'] S(z) is block diagonal 1 + 1 + 2 at z = +1.700000-0.500000j (largest forbidden entry 2.1e-15)
+  ok 109  T2(b) D3: the f- channel has S = -1 exactly at z = +1.700000-0.500000j (|S+1| = 1.1e-16) -- Gamma annihilates f- (rank Gamma = 3 < h = 4), a Dirichlet end
+  ok 110  T2(b) D3: the e- channel has S = z^2 at z = +1.700000-0.500000j (dev 5.7e-15)
+  ok 111  D3: the 2x2 even block of the full S equals the exact S_even computed from the reduced 6-vertex diagram at z = +1.700000-0.500000j (dev 3.1e-15)
+
+-- T2(d) H-CLASS: eigenvectors of S_even, and D(z) = diag(z^a, z^b)
+  ok 112  T2(d) D3: the RAW S_even(z) does NOT have z-independent eigenvectors -- ||[S_even(z_1), S_even(z_2)]|| up to 1.7480; the brief is right that the naive H-CLASS reading fails
+   eigenvalues of S_even at z = 0.8+0.1i: [-1.199967+0.277270j, +0.800046+0.106797j]  (the brief quotes -1.19997+0.27727i and 0.80005+0.10680i)
+  ok 113  T2(d) D3: those are exactly the brief's two quoted numbers, so the brief's S_even and this one are the same matrix (independent confirmation of the transcription)
+  ok 114  T2(d) D3: scanning a - b over the half-integers in [-4, 4], the ratio (z^(a-b) S_11 - z^(b-a) S_22)/S_12 is CONSTANT for exactly one value, a - b = -1 (value 0).  So YES, a diagonal monomial renormalisation D(z) = diag(z^a, z^(a+1)) makes D S_even D have z-INDEPENDENT eigenvectors (1, +-1)/sqrt2, and only the difference a - b matters
+  ok 115  T2(d) D3: with D = diag(1, z) the renormalised block has EQUAL diagonal entries z**2*(z - 1)*(z + 1)*(3*z**4 - 2*z**2 + 3)/((3*z**2 - 1)*(z**4 + 3)), so it is (scalar) + (off-diagonal) * sigma_x
+  ok 116  T2(d) D3: the eigenvalue on (1,-1)/sqrt2 is EXACTLY z^2 = z**2 -- a pure monomial
+  ok 117  T2(d) D3: the eigenvalue on (1,1)/sqrt2 is EXACTLY z^2 zeta_K(2s)/zeta_K(2s-1) = z**2*(z**2 - 3)*(3*z**4 + 1)/((3*z**2 - 1)*(z**4 + 3)) = det S_even.  H-CLASS is CONFIRMED for D3: after the monomial renormalisation the four channels carry {-z^2, z^2, z^2, z^2 zeta_K(2s)/zeta_K(2s-1)}, i.e. ONE zeta block and THREE monomial blocks, exactly the prediction for g = 1 where L(s, chi) = 1 for the three nontrivial unramified characters
+  ok 118  T2(d) D3: consistency, the product of the two renormalised eigenvalues is det(D)^2 det S_even = z^2 det S_even
+  !! T2(d) D3: the brief GUESSED the renormalisation from 'the two Q-cusps start one step deeper (12, 36, ...) than the L1, Z cusps (36, 108, ...)'.  That is exactly right: a - b = -1 is one ray step, D = diag(1, 1, z, z) on the four channels re-bases the two Q-rays one site outwards.  The four eigenvalues then become z^2 * {1, 1, -1, zeta_K(2s)/zeta_K(2s-1)} (the f- channel's -1 becomes -z^2 under the same D).
+
+-- T2(c) the thresholds z = +-1
+  ok 119  T2(c) D3: S_even(z) is REGULAR at z = +1 (multiplicity-2 threshold): at z = 1(1-1e-05) the even block is [[-1e-05, -1.0], [-1.0, -1e-05]], limit [[0.0, -1.0], [-1.0, 0.0]] = -sgn * sigma_x (dev 1.0e-05); det S_even(+-1) = -1, and the eigenvalues of the FULL S(+-1) are {+1, -1} (even) + {+1} (e-) + {-1} (f-)
+  ok 120  T2(c) D3: S_even(z) is REGULAR at z = -1 (multiplicity-2 threshold): at z = -1(1-1e-05) the even block is [[-1e-05, 1.0], [1.0, -1e-05]], limit [[0.0, 1.0], [1.0, 0.0]] = -sgn * sigma_x (dev 1.0e-05); det S_even(+-1) = -1, and the eigenvalues of the FULL S(+-1) are {+1, -1} (even) + {+1} (e-) + {-1} (f-)
+  ok 121  T2(c) D3: S_even(z) is REGULAR at z = +1 (multiplicity-2 threshold): at z = 1(1-1e-07) the even block is [[-0.0, -1.0], [-1.0, -0.0]], limit [[0.0, -1.0], [-1.0, 0.0]] = -sgn * sigma_x (dev 1.0e-07); det S_even(+-1) = -1, and the eigenvalues of the FULL S(+-1) are {+1, -1} (even) + {+1} (e-) + {-1} (f-)
+  ok 122  T2(c) D3: S_even(z) is REGULAR at z = -1 (multiplicity-2 threshold): at z = -1(1-1e-07) the even block is [[-0.0, 1.0], [1.0, -0.0]], limit [[0.0, 1.0], [1.0, 0.0]] = -sgn * sigma_x (dev 1.0e-07); det S_even(+-1) = -1, and the eigenvalues of the FULL S(+-1) are {+1, -1} (even) + {+1} (e-) + {-1} (f-)
+  ok 123  T2(c) D3: tr S(+1) = tr(even) + 1 + (-1) = -2.00e-09 = 0, and (h + tr S(+1))/2 = (4 + 0)/2 = 2 reproduces APW's threshold multiplicity 2 at mu = +1
+  ok 124  T2(c) D2: S(1) = R(1) = -1.0 (p(+-1) != 0 there), so (h + tr S)/2 = (1 - 1)/2 = 0 -- D2 has NO threshold resonance, also reproduced.  Two data points for 'multiplicity at z = +-1 = (h + tr S(+-1))/2'; not asserted
+
+==============================================================================
+SECTION 6   D2: the model space K, the contraction Z, the exit j, the Gram
+==============================================================================
+  ok 125  T3(a) D2: char poly of Z = prod (w - z_j) over the 6 resonances (coefficient dev 3.2e-15); spec Z = the resonances themselves, moduli [+0.000000, +0.000000, +0.840896, +0.840896, +0.840896, +0.840896] -- 4 on |z| = q^(-1/4) and a double 0.  dim K = deg det Theta = 6, z = 0 INCLUDED
+  ok 126  T3(a) D2: Z is a contraction (largest singular value 1.000000000000)
+  ok 127  T3(a) D2: 1 - Z^*Z = |j><j| is RANK ONE (second singular value 8.19e-15); the exit is one-dimensional because h = 1
+  ok 128  T3(a) D2: ||j||^2 = 1.000000000000 = 1 - |Theta(0)|^2 with Theta(0) = prod z_j = 0 (the z = 0 resonances).  So Z^*Z is a PROJECTION: Z is a PARTIAL ISOMETRY, and Z j = 0
+  ok 129  T3(a) D2: indeed Z j = 0 (norm 4.4e-16) -- j spans ker Z, which sits inside the z = 0 (delay) generalised eigenspace
+  ok 130  T3(a) D2: dim ker Z = 1, so the double resonance at z = 0 is a SINGLE Jordan block of size 2 (companion matrices are non-derogatory) -- the brief's guess is right; the delay sector is 2-dimensional and Z restricted to it is the 2x2 nilpotent shift
+  ok 131  T3(a) D2: Z^m -> 0 (||Z^170|| = 2.3e-13)
+  ok 132  T1(c) D2: the bipartite sign is realised on K as an involutive ISOMETRY sigma with sigma Z sigma = -Z (dev 2.4e-15); on K it is diag((-1)^k) in the f_k basis, which is orthogonal because p and the Blaschke denominator are EVEN polynomials
+  ok 133  T4(b) D2: the Gram identity <k_n,k_m>(1 - conj(z_n) z_m) = conj(a_n) a_m holds on the Hasse-Weil sector (dev 4.9e-15); every exit amplitude a_n = <j|k_n> is nonzero (min |a_n| = 0.5412), so NO Hasse-Weil mode is dark to the cusp
+  ok 134  T4(b) D2: in the normalisation a_n = 1 the Gram matrix is G_nm = 1/(1 - conj(z_n) z_m) with conj(z_n) z_m in {+-q^(-1/2), +-1/alpha, +-1/conj(alpha)}, alpha = 1 +- i
+  ok 135  T4(b) D2: the four distinct |G_nm| are the CLOSED FORMS 1/(1 - q^(-1/2)) = 2+sqrt2 = 3.414214 (diagonal), 1/(1 + q^(-1/2)) = 2-sqrt2 = 0.585786 (z vs -z), |q/(q - alpha)| = |alpha| = sqrt2 = 1.414214 and |q/(q + alpha)| = 2/sqrt10 = 0.632456
+   D2 Hasse-Weil mode angles  cos(theta_nm) = |<k_n,k_m>|/(||k_n|| ||k_m||):
+     1.000000  0.414214  0.185242  0.171573
+     0.414214  1.000000  0.171573  0.185242
+     0.185242  0.171573  1.000000  0.414214
+     0.171573  0.185242  0.414214  1.000000
+  ok 136  T4(c) D2: exactly THREE distinct off-diagonal cosines, all closed-form (1-q^(-1/2))|G_nm|: (sqrt q - 1)/(sqrt q + 1) = 3 - 2 sqrt2 = 0.171573 for z vs -z; (1-q^(-1/2)) q/|q-alpha| = sqrt2 - 1 = 0.414214 for z vs conj z; (1-q^(-1/2)) q/|q+alpha| = (2-sqrt2)/sqrt10 = 0.185242 for z vs -conj z.  The Lax-Phillips Gram is FAR from orthogonal (largest cosine 0.414214)
+
+==============================================================================
+SECTION 7   D2: the renewal channel -- which rebound does the arithmetic pick?
+==============================================================================
+  ok 137  T4(a) D2: Omega_J = J^*J/Tr(J^*J) = |j><j| already has trace 1 (||j||^2 = 1)
+  ok 138  T4(a) D2: Omega_J is EXACTLY stationary, rho_inf = Omega_J (dev 1.9e-15); it is a PURE state
+  ok 139  T4(a) D2: the holding law of Omega_J is m(1) = 1.000000000000 and m(m) = 0 for m >= 2 (max 9.1e-18): DETERMINISTIC holding time 1, mean 1, aperiodic (gcd = 1).  mhat(u) = u, so 1 - mhat = 1 - u
+  ok 140  T4(a) D2: at u = +0.300000+0.000000j, mhat(u) = u exactly and det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) (dev 1.1e-16)
+  ok 141  T4(a) D2: at u = -0.450000+0.000000j, mhat(u) = u exactly and det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) (dev 1.1e-16)
+  ok 142  T4(a) D2: at u = +0.000000+0.600000j, mhat(u) = u exactly and det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) (dev 8.0e-16)
+  ok 143  T4(a) D2: the Riesz projector on the z = 0 (delay) sector has rank 2.000000 = 2 and is idempotent (dev 7.1e-15)
+  ok 144  T4(a) D2: P_HW j = 0 (norm 1.5e-15): the stationary state of the CANONICAL cusp rebound lives ENTIRELY in the 2-dimensional delay sector and has ZERO overlap with the Hasse-Weil sector.  'Flux returns where it left' is the one rebound that never charges the arithmetic
+  !! T4(a) D2: the canonical cusp rebound Omega_J is degenerate on this diagram.  Because c = 1 at the arithmetic junction, p has a double root at z = 0, so Theta(0) = 0, so ||j||^2 = 1 - |Theta(0)|^2 = 1, so Z^*Z is a projection, Z j = 0, the holding time is deterministically 1 and rho_inf = |j><j| sits in the delay sector.  The Hasse-Weil modes are never populated.  This is a NEW obstruction, not in the brief.
+  ok 145  T4(a) D2': dropping the z = 0 resonances (APW's mu in C^x) gives the 4-dimensional Hasse-Weil model; there 1 - Z^*Z = |j><j| with ||j||^2 = 1 - |Theta(0)|^2 = 1 - (prod|z_i|)^2 = 1 - q^(-2) = 3/4 = 0.750000000
+  ok 146  T4(a) D2': rho_inf = (mean)^(-1) sum_m Z^m Omega_J Z^*m is stationary (dev 3.3e-16)
+   D2' canonical rebound: holding law m(1..6) = [0.75, 0.0, 0.083333, 0.0, 0.020833, 0.0],  sum = 1.000000000
+   mean holding time 2.333333333;  spec rho_inf = [+0.142857, +0.142857, +0.142857, +0.571429]
+  ok 147  T4(a) D2': m is a probability law (sum 1.000000000) with mean 2.333333 = Tr X, X - Z X Z^* = Omega_J
+  ok 148  T4(a) D2': 1 is a simple eigenvalue of E_Omega and all others have modulus <= 0.782667 < 1, so rho_inf is unique and ATTRACTING; the law is aperiodic (gcd of its support is 1) even though c = 1 -- 04j's periodicity worry needs a MODAL rebound on a z = 0 mode, which Omega_J is not
+  ok 149  T4(a) D2': the canonical holding law is supported on ODD times only, m = [0.75, 0.0, 0.083333333, 0.0, 0.020833333, 0.0, 0.083333333] -- because the bipartite sign gives sigma Z sigma = -Z with sigma j = +-j, so <j|Z^(m-1)|j> = 0 for m even.  Support {1, 3, 5, ...} has gcd 1, hence aperiodic; mean = 7/3 = 2.333333333, and spec rho_inf = {1/7, 1/7, 1/7, 4/7} = [+0.142857, +0.142857, +0.142857, +0.571429]
+  ok 150  T4(a) D2': those two numbers are EXACTLY 7/3 and {1/7, 1/7, 1/7, 4/7} (dev 8.9e-15)
+  ok 151  T4(a) D2': |characteristic function of Z| = |Blaschke product over the 4 Hasse-Weil resonances| (dev 5.6e-16), so Theta = eta * B_HW
+  ok 152  T4(a) D2': the Taylor coefficients of Theta are theta_(m+1) = <j'|Z^(*m)|j> with j' the SECOND defect vector (1 - Z Z^* = |j'><j'|), not <j|Z^(*m)|j> (dev 1.6e-16).  So Sz.-Nagy--Foias gives the CROSS amplitudes; mhat for Omega_J is the Hadamard square of the DIAGONAL amplitudes and is NOT read off Theta.  It IS rational of degree <= dim(K)^2, computed here from the superoperator
+  ok 153  T4(a) D2': and the naive reading theta_(m+1) = <j|Z^(*m)|j> is FALSE here (dev 0.750); it happens to be true only when dim K = 1
+
+-- T4(b) mode-diagonal rebounds
+  ok 154  T4(b) D2: a mode-diagonal rebound Omega = sum_i p_i |k_i><k_i| on the four Hasse-Weil modes (weights [+0.173531, +0.195641, +0.233159, +0.397669]) is a density (it is NOT a spectral decomposition: the k_i are not orthogonal, max |<k_i,k_j>| off-diagonal 0.414214)
+  ok 155  T4(b) D2: it is EXACTLY stationary, rho_inf = Omega (dev 5.6e-16) -- because all four moduli coincide (Weil), for EVERY weight vector
+  ok 156  T4(b) D2: mean holding time = 1/(1 - q^(-1/2)) = 2 + sqrt2 = 3.414213562 = 3.414213562, independent of the weights (04j's 1/(1-r^2) at r = q^(-1/4)); compare 2 for the modular surface (04h) -- a different time convention, not the same number
+  ok 157  T4(b) D2: the exit rate is <j|Omega|j> = 1 - q^(-1/2) = 0.292893219 for every mode-diagonal Omega, because |<j|k_i>|^2/||k_i||^2 = 1 - |z_i|^2 (the Gram identity)
+  ok 158  T4(b) D2: spec rho_inf = [+0.097774, +0.145878, +0.278359, +0.477989] is the GRAM spectrum, NOT the weight list [+0.173531, +0.195641, +0.233159, +0.397669] (04h reviewer M1)
+  ok 159  T4(b) D2: a mode-diagonal rebound mixing the z = 0 eigenvector with a Hasse-Weil mode is NOT stationary (||E(Omega) - Omega|| = 0.085398): the moduli 0 and q^(-1/4) differ, so 04j's common-modulus criterion fails.  The ARITHMETIC rebounds are exactly those supported on the Hasse-Weil sector
+  ok 160  T4(b) D2: its renewal sum still converges to a unique rho_inf != Omega (||rho_inf - Omega|| = 0.132104), mean holding time 2.207107 = (1/2)(1/(1-0)) + (1/2)/(1 - q^(-1/2)) = 2.207107
+
+==============================================================================
+SECTION 8   D2: 'RH = Ramanujan = Z is q^(-1/4) times a unitary', made literal
+==============================================================================
+  ok 161  T4(c) D2: all four eigenvalues of q^(1/4) Z|_K_HW have modulus 1 (max dev 2.2e-15) -- this is Weil's theorem, and it is the ONLY input needed for what follows
+  ok 162  T4(c) D2: but q^(1/4) Z is NOT unitary for the LAX-PHILLIPS inner product (||U^*U - 1|| = 0.511401); equivalently U is not normal (||[U, U^*]|| = 0.925615)
+  ok 163  T4(c) D2: with the inner product H_w = V^(-*) diag(w) V^(-1), w = [+0.781681, +0.871259, +0.915461, +0.947318] > 0, U^* H U = H EXACTLY (dev 2.7e-15): q^(1/4) Z IS unitary.  The set of such inner products is a 4-parameter open cone (one positive weight per eigenvector), 3-dimensional modulo scale
+  ok 164  T4(c) D2: with the inner product H_w = V^(-*) diag(w) V^(-1), w = [+0.229703, +0.697005, +1.012839, +1.038001] > 0, U^* H U = H EXACTLY (dev 2.1e-15): q^(1/4) Z IS unitary.  The set of such inner products is a 4-parameter open cone (one positive weight per eigenvector), 3-dimensional modulo scale
+  ok 165  T4(c) D2: with the inner product H_w = V^(-*) diag(w) V^(-1), w = [+0.190775, +0.735325, +0.764352, +1.036548] > 0, U^* H U = H EXACTLY (dev 2.0e-15): q^(1/4) Z IS unitary.  The set of such inner products is a 4-parameter open cone (one positive weight per eigenvector), 3-dimensional modulo scale
+  ok 166  T4(c) D2: the Lax-Phillips inner product is NOT in this cone: its Gram in the eigenbasis is not diagonal (largest off-diagonal 0.414214, the cosines of Section 6)
+  ok 167  T4(c) D2: the group generated by z -> -z (the bipartite sign) and z -> conj z (the real structure) acts TRANSITIVELY on the four Hasse-Weil modes (orbit of one mode has size 4 = 4).  Hence a weight vector invariant under both must be CONSTANT: the sigma- and conjugation-symmetric sub-cone is ONE-dimensional, i.e. a SINGLE inner product up to scale -- the arithmetic inner product is unique
+  ok 168  T4(c) D2: that distinguished inner product is H = V^(-*) V^(-1) (the eigenvectors declared orthonormal); q^(1/4) Z is unitary for it (dev 3.1e-15)
+  ok 169  T4(c) D2: and read in THAT inner product the stationary state of a mode-diagonal rebound has spectrum exactly the weight list [+0.173531, +0.195641, +0.233159, +0.397669] (dev 1.7e-16), while in the Lax-Phillips one it has the Gram spectrum of check above.  So the renewal channel 'uses' the arithmetic inner product exactly when one insists rho_inf's spectrum be the rebound weights
+  !! T4(c) D2: 'RH = Ramanujan = the compressed operator is q^(-1/4) times a unitary' is TRUE for a 4-parameter cone of inner products on K_HW and FALSE for the Lax-Phillips energy one.  New here: the bipartite sign and the real structure together act transitively on the four modes, so the symmetric sub-cone is a single ray -- the arithmetic inner product is UNIQUE up to scale, not merely non-empty.
+
+==============================================================================
+SECTION 9   D3: block split of K; T5 the even sector never leaks
+==============================================================================
+  ok 170  T3(c) D3: the EVEN block has 6 resonances = 4 Hasse-Weil + 2 at z = 0
+  ok 171  T3(c) D3: the ODD (L1 - Z) channel has Theta_odd = z^2, so K_odd is 2-dimensional with Z_odd the 2x2 nilpotent Jordan block (two delay modes, no Hasse-Weil)
+  ok 172  T3(c) D3: the (Q_1 - Q_2) channel has S = -1, a unimodular CONSTANT; its inner part has degree 0, so K = 0 there -- a Dirichlet end has no model space, and the Klein four-group adds nothing but two delay modes to the one-cusp cavity
+  ok 173  T3(c) D3: dim K = 6 + 2 + 0 = 8 = the total resonance count, so the isotypic split of K is exactly K_even (+) K_odd (+) 0.  For genus one the hedgehog contributes ONLY trivial (monomial) channels: 4 Hasse-Weil modes, all in K_even, and 4 delay modes
+  ok 174  T3(c) D3: explicitly, Theta_odd = z^2 gives Z_odd = [[0,1],[0,0]] with 1 - Z^*Z = |e_1><e_1| -- the free half line of 04i, a pure two-step delay
+
+-- T5 the even sector (the vacuum) never leaks on a finite-volume diagram
+  ok 175  T5 D2: the total volume sum_v 1/S(v) = 10/3 = 3.333333 is FINITE (core 17/6 + rays 1/2, geometric with ratio 1/q)
+  ok 176  T5 D2: the constant function f = 1 (i.e. g = 1/sqrt S) is an exact eigenvector of A with eigenvalue q+1, so of T with lambda = (q+1)/sqrt q = 2.121320 (residual away from the truncation 1.1e-16); it is l^2 because the volume is finite
+  ok 177  T5 D2: its parameter is z = q^(-1/2) = 0.707107, a POLE of det S in the disc, not a zero: the Perron mode is a bound state, removed by the Blaschke factor when Theta is formed, and therefore ABSENT from K.  No rebound can give it an exit, however many cusps -- the hedgehog does not help
+  ok 178  T5 D3: the total volume sum_v 1/S(v) = 7/4 = 1.750000 is FINITE (core 17/12 + rays 1/3, geometric with ratio 1/q)
+  ok 179  T5 D3: the constant function f = 1 (i.e. g = 1/sqrt S) is an exact eigenvector of A with eigenvalue q+1, so of T with lambda = (q+1)/sqrt q = 2.309401 (residual away from the truncation 2.2e-16); it is l^2 because the volume is finite
+  ok 180  T5 D3: its parameter is z = q^(-1/2) = 0.577350, a POLE of det S in the disc, not a zero: the Perron mode is a bound state, removed by the Blaschke factor when Theta is formed, and therefore ABSENT from K.  No rebound can give it an exit, however many cusps -- the hedgehog does not help
+  ok 181  T5 funnel q=2: with p_funnel(z) = det((1+z^2) - z T_X - C_cusp - q^(-1) C_funnel) the TREE (one core vertex, q+1 funnels, C_funnel = q+1) gives p = 1 + z^2 - (q+1)/q and resonances z = +-q^(-1/2) = ['-sqrt(2)/2', 'sqrt(2)/2'] -- exactly APW's H(mu) = -(mu - q^(-1) mu^(-1))/2 (2603.26443:final_draft.tex:2000)
+  ok 182  T5 cusp q=2: the same formula with C_cusp = q+1 and no funnel gives p = z^2 - q, resonances z = +-q^(1/2) = ['-sqrt(2)', 'sqrt(2)'] -- APW's modular curve.  The two worked examples together FIX the relative factor q^(-1) on C_funnel, so the brief's p_funnel is confirmed (still H-FUNNEL: no funnel diagram with a nontrivial core was built)
+  ok 183  T5 funnel q=3: with p_funnel(z) = det((1+z^2) - z T_X - C_cusp - q^(-1) C_funnel) the TREE (one core vertex, q+1 funnels, C_funnel = q+1) gives p = 1 + z^2 - (q+1)/q and resonances z = +-q^(-1/2) = ['-sqrt(3)/3', 'sqrt(3)/3'] -- exactly APW's H(mu) = -(mu - q^(-1) mu^(-1))/2 (2603.26443:final_draft.tex:2000)
+  ok 184  T5 cusp q=3: the same formula with C_cusp = q+1 and no funnel gives p = z^2 - q, resonances z = +-q^(1/2) = ['-sqrt(3)', 'sqrt(3)'] -- APW's modular curve.  The two worked examples together FIX the relative factor q^(-1) on C_funnel, so the brief's p_funnel is confirmed (still H-FUNNEL: no funnel diagram with a nontrivial core was built)
+  ok 185  T5 funnel q=5: with p_funnel(z) = det((1+z^2) - z T_X - C_cusp - q^(-1) C_funnel) the TREE (one core vertex, q+1 funnels, C_funnel = q+1) gives p = 1 + z^2 - (q+1)/q and resonances z = +-q^(-1/2) = ['-sqrt(5)/5', 'sqrt(5)/5'] -- exactly APW's H(mu) = -(mu - q^(-1) mu^(-1))/2 (2603.26443:final_draft.tex:2000)
+  ok 186  T5 cusp q=5: the same formula with C_cusp = q+1 and no funnel gives p = z^2 - q, resonances z = +-q^(1/2) = ['-sqrt(5)', 'sqrt(5)'] -- APW's modular curve.  The two worked examples together FIX the relative factor q^(-1) on C_funnel, so the brief's p_funnel is confirmed (still H-FUNNEL: no funnel diagram with a nontrivial core was built)
+  !! T5: APW's FUNNELS are the missing exit.  Their self-energy at a core vertex is f_v/(sqrt q mu) against the cusp's c_v sqrt q/mu (2603.26443:final_draft.tex:1900), i.e. in the notebook's normalisation the funnel contributes C_funnel/(q z) where the cusp contributes C_cusp/z.  So p_funnel(z) = det((1+z^2) - z T_X - C_cusp - q^(-1) C_funnel) -- the brief's guess is right, with the q^(-1) attached to C_funnel exactly as written. Not asserted: no funnel diagram was built here.
+
+==============================================================================
+SECTION 10  D2: Z^2 on the Hasse-Weil sector, and the genus count 4g
+==============================================================================
+  ok 187  T1(c) D2: spec(Z^2|_K_HW) = {1/alpha, 1/conj alpha} each with MULTIPLICITY TWO ([+0.500000-0.500000j, +0.500000-0.500000j, +0.500000+0.500000j, +0.500000+0.500000j]); alpha = 1 +- i are the Frobenius eigenvalues on H^1(E)
+  ok 188  T1(c) D2: the bipartite involution sigma on K_HW satisfies sigma^2 = 1, sigma Z sigma = -Z and [sigma, Z^2] = 0 (devs 8.9e-16, 1.5e-15, 2.8e-15)
+  ok 189  T1(c) D2: on the sigma = +1 eigenspace (dimension 2) Z^2 has spectrum exactly {1/alpha, 1/conj alpha} = [+0.500000-0.500000j, +0.500000+0.500000j].  So K_HW = H^1(E) (x) C^2 with Z^2 = Frobenius^(-1) (x) 1 and sigma = 1 (x) diag(+1,-1), and Z is a square root of Frobenius^(-1) (x) 1 that ANTI-commutes with the bipartite sign.  That is the exact sense of the brief's phrase
+  ok 190  T1(c) D2: on the sigma = -1 eigenspace (dimension 2) Z^2 has spectrum exactly {1/alpha, 1/conj alpha} = [+0.500000-0.500000j, +0.500000+0.500000j].  So K_HW = H^1(E) (x) C^2 with Z^2 = Frobenius^(-1) (x) 1 and sigma = 1 (x) diag(+1,-1), and Z is a square root of Frobenius^(-1) (x) 1 that ANTI-commutes with the bipartite sign.  That is the exact sense of the brief's phrase
+  ok 191  T6 D2: #Hasse-Weil resonances = 4 = 4g with g = 1 (2g zeros of P, doubled by the square root z^2 = T, i.e. by the bipartite +- pairing)
+  ok 192  T6 D3: #Hasse-Weil resonances = 4 = 4g with g = 1 (2g zeros of P, doubled by the square root z^2 = T, i.e. by the bipartite +- pairing)
+  !! T6: for a curve of genus g and h = |Pic(R)| cusps, H-CLASS + the data here predicts one block carrying zeta_K (4g resonances) and h-1 blocks carrying L(s, chi) of degree 2g-2 (so 4g-4 resonances each).  g = 1 gives 0, confirmed: D3's three nontrivial channels are the monomials -z^2, z^2, z^2 after the ray renormalisation.  D3 also shows the cusps are NOT permuted by Pic(R) = Z/4 (its automorphism group is only the Klein four-group, and S(L1) = 12 != S(Q) = 4), so the class-group labelling lives in the Eisenstein normalisation, not in the diagram.
+
+==============================================================================
+CHECKS PASSED: 192
+==============================================================================
+9 loud findings:
+  (1) D3: dim ker T_X = 3 but only 2 kernel vectors are cusp forms; the third does not vanish at Q and is NOT an l^2 eigenfunction of T on Y.  'dim ker T_X' is therefore NOT the cusp-form count in general (it is for D2, where all of ker T_X vanishes at B)
+  (2) Section 2: 04j flagged 'nothing pins r to q^(-1/4)'.  On an arithmetic diagram it IS pinned: [z^m]p = -1 (both diagrams), the only l^2 modes outside the band are the Perron pair +-q^(-1/2), and the 4 = 4g Hasse-Weil resonances share one modulus, so r^4 = q^(-1).  For genus g >= 2 the same argument would give r = q^(-1/(4g)), which CONTRADICTS Weil unless [z^m]p != -1 or there are extra l^2 modes outside the band: a sharp, testable prediction for a genus-2 diagram.
+  (3) Childs--Gosset's setup attaches at most one tail per vertex, so D3 (TWO cusps at Q) is outside it as written; the Gamma-form S = (z Gamma - 1)^{-1}(1 - Gamma/z) still applies, and there Gamma is SINGULAR (rank 3 < h = 4) -- which is exactly what makes the antisymmetric Q-channel a Dirichlet end.
+  (4) T1(b) H-EIS: with only two data points (genus 0: prefactor q = q^(1-2gs)|_{g=0}; genus 1: z^(-2) = q^(1-2s) = q^(1-2gs)|_{g=1}) the pattern q^(1-2gs) fits, but D3's even block below gives the prefactor z^(+2) = q^(2s-1) for the RECIPROCAL ratio, i.e. the same q^(1-2s) attached to zeta(2s-1)/zeta(2s).  Two genus-1 points and one genus-0 point cannot separate q^(1-2gs) from q^(1-2s); H-EIS stays unasserted.
+  (5) T2(d) D3: the brief GUESSED the renormalisation from 'the two Q-cusps start one step deeper (12, 36, ...) than the L1, Z cusps (36, 108, ...)'.  That is exactly right: a - b = -1 is one ray step, D = diag(1, 1, z, z) on the four channels re-bases the two Q-rays one site outwards.  The four eigenvalues then become z^2 * {1, 1, -1, zeta_K(2s)/zeta_K(2s-1)} (the f- channel's -1 becomes -z^2 under the same D).
+  (6) T4(a) D2: the canonical cusp rebound Omega_J is degenerate on this diagram.  Because c = 1 at the arithmetic junction, p has a double root at z = 0, so Theta(0) = 0, so ||j||^2 = 1 - |Theta(0)|^2 = 1, so Z^*Z is a projection, Z j = 0, the holding time is deterministically 1 and rho_inf = |j><j| sits in the delay sector.  The Hasse-Weil modes are never populated.  This is a NEW obstruction, not in the brief.
+  (7) T4(c) D2: 'RH = Ramanujan = the compressed operator is q^(-1/4) times a unitary' is TRUE for a 4-parameter cone of inner products on K_HW and FALSE for the Lax-Phillips energy one.  New here: the bipartite sign and the real structure together act transitively on the four modes, so the symmetric sub-cone is a single ray -- the arithmetic inner product is UNIQUE up to scale, not merely non-empty.
+  (8) T5: APW's FUNNELS are the missing exit.  Their self-energy at a core vertex is f_v/(sqrt q mu) against the cusp's c_v sqrt q/mu (2603.26443:final_draft.tex:1900), i.e. in the notebook's normalisation the funnel contributes C_funnel/(q z) where the cusp contributes C_cusp/z.  So p_funnel(z) = det((1+z^2) - z T_X - C_cusp - q^(-1) C_funnel) -- the brief's guess is right, with the q^(-1) attached to C_funnel exactly as written. Not asserted: no funnel diagram was built here.
+  (9) T6: for a curve of genus g and h = |Pic(R)| cusps, H-CLASS + the data here predicts one block carrying zeta_K (4g resonances) and h-1 blocks carrying L(s, chi) of degree 2g-2 (so 4g-4 resonances each).  g = 1 gives 0, confirmed: D3's three nontrivial channels are the monomials -z^2, z^2, z^2 after the ray renormalisation.  D3 also shows the cusps are NOT permuted by Pic(R) = Z/4 (its automorphism group is only the Klein four-group, and S(L1) = 12 != S(Q) = 4), so the class-group labelling lives in the Eisenstein normalisation, not in the diagram.

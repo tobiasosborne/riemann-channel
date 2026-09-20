@@ -35,8 +35,10 @@ $\bar t_{\reb} = \sum_{m\ge0}\mathrm{Tr}(C^m\reb\,C^{*m})<\infty$: in finite dim
 phenomenon of \cref{prop:infinite-mean-rebound} cannot occur. (c) $\rdens_\infty = \bar t_{\reb}^{-1}\sum_{m\ge0}C^m\reb\,C^{*m}$
 is stationary; it is the \emph{unique} stationary density unconditionally, and it attracts every density iff
 the holding law is aperiodic; the peripheral eigenvalues of $\mathcal E_{\reb}$ are exactly the $d$-th roots
-of unity, $d = \gcd\{m: m_{\reb}(m)>0\}$, each simple. Aperiodicity holds iff $0$ is not a resonance, i.e.
-$c\ne1$, whenever the range of $\reb$ contains an eigenvector of $C$; it can fail with nonreal resonances:
+of unity, $d = \gcd\{m: m_{\reb}(m)>0\}$, each simple. Every modal $\reb$ (a mixture of eigenvectors of $C$, the eigenvalue $0$ included) is aperiodic, since each
+normalised eigenvector has one-step exit probability $1-|z_i|^2>0$ (corrected 2026-09-20 evening,
+\cref{prop:d2-canonical-rebound}; the registered ``iff $c\ne1$'' was false); aperiodicity can fail for non-modal
+$\reb$ with nonreal resonances:
 $C = \big(\begin{smallmatrix}0&1\\-r^2&0\end{smallmatrix}\big)$, eigenvalues $\pm ir$,
 $\reb = |e_2\rangle\langle e_2|$ has $m$ supported on even times and $\mathcal E_{\reb}$ has the eigenvalue $-1$.
 (d) $\rdens_\infty$ is pure iff $\reb$ is a pure state on an eigenvector of $C$, and then $\rdens_\infty = \reb$.
