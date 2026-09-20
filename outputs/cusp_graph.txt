@@ -1,0 +1,694 @@
+A finite graph with a cusp: reflection coefficient, resonances, renewal channel.
+
+Numerics lane for the brief `notes/cusp-graph/astra-brief.md` (conventions C1--C3,
+statements T1, T3--T7).  Run blind to the prover's file.  Deterministic (seed
+20260920); every check is an assertion, tally printed at the end.
+
+seed 20260920; core index 0 is always v_0
+
+==============================================================================
+C1  normalisation of the tree quotient, and the reflection coefficient
+==============================================================================
+  ok   1  q=2: A is self-adjoint on L^2(Y,m) iff m_0=1, m_1=(q+1)/q, m_n=(q+1)q^-n (n>=1); the brief's m ~ q^-n holds only for n>=1 (junction correction (q+1)/q at n=0..1)
+  ok   2  q=2: with the uncorrected m_n = q^-n for ALL n, A is NOT symmetric (max asymmetry 2.0000)
+  ok   3  q=2: g = m^1/2 f and division by sqrt q turn A into T_X=[0] (+) path adjacency with junction c = sqrt(q+1), i.e. c^2 = q+1 = 3 exactly
+  ok   4  q=3: A is self-adjoint on L^2(Y,m) iff m_0=1, m_1=(q+1)/q, m_n=(q+1)q^-n (n>=1); the brief's m ~ q^-n holds only for n>=1 (junction correction (q+1)/q at n=0..1)
+  ok   5  q=3: with the uncorrected m_n = q^-n for ALL n, A is NOT symmetric (max asymmetry 3.0000)
+  ok   6  q=3: g = m^1/2 f and division by sqrt q turn A into T_X=[0] (+) path adjacency with junction c = sqrt(q+1), i.e. c^2 = q+1 = 4 exactly
+  ok   7  q=5: A is self-adjoint on L^2(Y,m) iff m_0=1, m_1=(q+1)/q, m_n=(q+1)q^-n (n>=1); the brief's m ~ q^-n holds only for n>=1 (junction correction (q+1)/q at n=0..1)
+  ok   8  q=5: with the uncorrected m_n = q^-n for ALL n, A is NOT symmetric (max asymmetry 5.0000)
+  ok   9  q=5: g = m^1/2 f and division by sqrt q turn A into T_X=[0] (+) path adjacency with junction c = sqrt(q+1), i.e. c^2 = q+1 = 6 exactly
+  ok  10  pure cusp q=2: R from the direct ray solve (L=40 and L=200 identical) = the G-form (1 - c^2 G/z)/(c^2 G z - 1), max dev 9.85e-14
+  ok  11  pure cusp q=2: R = -p(z)/ptilde(z) EXACTLY -- the power of z is 0 and the brief's 'R = p/ptilde' is off by the sign -1 (max dev 1.29e-14)
+  ok  12  pure cusp q=2: the brief's determinant ratio equals -R, not R (dev from -R 1.31e-14, from +R 2.00e+00)
+  ok  13  1-vertex loop a=0.7 c=1.3: R from the direct ray solve (L=40 and L=200 identical) = the G-form (1 - c^2 G/z)/(c^2 G z - 1), max dev 5.68e-14
+  ok  14  1-vertex loop a=0.7 c=1.3: R = -p(z)/ptilde(z) EXACTLY -- the power of z is 0 and the brief's 'R = p/ptilde' is off by the sign -1 (max dev 1.15e-14)
+  ok  15  1-vertex loop a=0.7 c=1.3: the brief's determinant ratio equals -R, not R (dev from -R 1.13e-14, from +R 2.00e+00)
+  ok  16  3-vertex core: R from the direct ray solve (L=40 and L=200 identical) = the G-form (1 - c^2 G/z)/(c^2 G z - 1), max dev 9.15e-14
+  ok  17  3-vertex core: R = -p(z)/ptilde(z) EXACTLY -- the power of z is 0 and the brief's 'R = p/ptilde' is off by the sign -1 (max dev 1.84e-14)
+  ok  18  3-vertex core: the brief's determinant ratio equals -R, not R (dev from -R 1.84e-14, from +R 2.00e+00)
+  ok  19  pure cusp q=2: p and ptilde have real coefficients (max |Im| 1.1e-15)
+  ok  20  pure cusp q=2: ptilde(z) = z^2n p(1/z) verified on coefficients (dev 8.0e-16)
+  ok  21  pure cusp q=2: deg p = 2n = 2, leading coeff 1, p(0) = 1 - c^2 = -2.000000; so prod of ALL roots of p = 1 - c^2 exactly (not just 'up to sign')
+  ok  22  pure cusp q=2: leading coeff of ptilde = 1 - c^2 = -2.000000 (degree drops at c = 1)
+  ok  23  pure cusp q=2: at z = e^(i 0.2), |R| = 1 (dev 8.9e-15) and R(z)R(1/z) = 1 (dev 1.6e-14)
+  ok  24  pure cusp q=2: at z = e^(i 1.1), |R| = 1 (dev 3.1e-15) and R(z)R(1/z) = 1 (dev 1.6e-14)
+  ok  25  pure cusp q=2: at z = e^(i 2.0), |R| = 1 (dev 4.3e-15) and R(z)R(1/z) = 1 (dev 8.5e-15)
+  ok  26  pure cusp q=2: at z = e^(i 2.9), |R| = 1 (dev 5.1e-15) and R(z)R(1/z) = 1 (dev 5.8e-14)
+  ok  27  pure cusp q=2: R(conj z) = conj R(z) at z = +0.500000+0.400000j (dev 1.8e-15)
+  ok  28  pure cusp q=2: R(conj z) = conj R(z) at z = +0.500000+1.700000j (dev 1.9e-16)
+  ok  29  pure cusp q=2: deg R = 2n/2n = 2/2 as a rational map (before cancellation)
+  ok  30  1-vertex loop a=0.7 c=1.3: p and ptilde have real coefficients (max |Im| 6.2e-16)
+  ok  31  1-vertex loop a=0.7 c=1.3: ptilde(z) = z^2n p(1/z) verified on coefficients (dev 3.4e-16)
+  ok  32  1-vertex loop a=0.7 c=1.3: deg p = 2n = 2, leading coeff 1, p(0) = 1 - c^2 = -0.690000; so prod of ALL roots of p = 1 - c^2 exactly (not just 'up to sign')
+  ok  33  1-vertex loop a=0.7 c=1.3: leading coeff of ptilde = 1 - c^2 = -0.690000 (degree drops at c = 1)
+  ok  34  1-vertex loop a=0.7 c=1.3: at z = e^(i 0.2), |R| = 1 (dev 1.0e-14) and R(z)R(1/z) = 1 (dev 1.6e-14)
+  ok  35  1-vertex loop a=0.7 c=1.3: at z = e^(i 1.1), |R| = 1 (dev 3.1e-15) and R(z)R(1/z) = 1 (dev 1.6e-14)
+  ok  36  1-vertex loop a=0.7 c=1.3: at z = e^(i 2.0), |R| = 1 (dev 3.8e-15) and R(z)R(1/z) = 1 (dev 7.5e-15)
+  ok  37  1-vertex loop a=0.7 c=1.3: at z = e^(i 2.9), |R| = 1 (dev 8.4e-15) and R(z)R(1/z) = 1 (dev 5.8e-14)
+  ok  38  1-vertex loop a=0.7 c=1.3: R(conj z) = conj R(z) at z = +0.500000+0.400000j (dev 5.0e-16)
+  ok  39  1-vertex loop a=0.7 c=1.3: R(conj z) = conj R(z) at z = +0.500000+1.700000j (dev 4.4e-16)
+  ok  40  1-vertex loop a=0.7 c=1.3: deg R = 2n/2n = 2/2 as a rational map (before cancellation)
+  ok  41  3-vertex core: p and ptilde have real coefficients (max |Im| 3.7e-16)
+  ok  42  3-vertex core: ptilde(z) = z^2n p(1/z) verified on coefficients (dev 3.9e-16)
+  ok  43  3-vertex core: deg p = 2n = 6, leading coeff 1, p(0) = 1 - c^2 = +0.360000; so prod of ALL roots of p = 1 - c^2 exactly (not just 'up to sign')
+  ok  44  3-vertex core: leading coeff of ptilde = 1 - c^2 = +0.360000 (degree drops at c = 1)
+  ok  45  3-vertex core: at z = e^(i 0.2), |R| = 1 (dev 9.5e-15) and R(z)R(1/z) = 1 (dev 1.6e-14)
+  ok  46  3-vertex core: at z = e^(i 1.1), |R| = 1 (dev 3.8e-15) and R(z)R(1/z) = 1 (dev 1.6e-14)
+  ok  47  3-vertex core: at z = e^(i 2.0), |R| = 1 (dev 3.8e-15) and R(z)R(1/z) = 1 (dev 7.5e-15)
+  ok  48  3-vertex core: at z = e^(i 2.9), |R| = 1 (dev 8.2e-15) and R(z)R(1/z) = 1 (dev 5.6e-14)
+  ok  49  3-vertex core: R(conj z) = conj R(z) at z = +0.500000+0.400000j (dev 2.3e-16)
+  ok  50  3-vertex core: R(conj z) = conj R(z) at z = +0.500000+1.700000j (dev 9.9e-15)
+  ok  51  3-vertex core: deg R = 2n/2n = 6/6 as a rational map (before cancellation)
+
+==============================================================================
+C2  classification of the zeros and poles of R in the unit disc
+==============================================================================
+
+-- per core: resonances, trivial l^2 modes, cusp forms, the count formula
+  ok  52  pure cusp q=2: #res = 0 = 2(n - mu) - t_nc - beta = 2*(1 - 0) - 2 - 0 = 2n - t - mu - e - beta (t=2, e=0); and dim Krylov(T_X, v_0) = 1 = n - mu
+  ok  53  pure cusp q=2: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  54  pure cusp q=5: #res = 0 = 2(n - mu) - t_nc - beta = 2*(1 - 0) - 2 - 0 = 2n - t - mu - e - beta (t=2, e=0); and dim Krylov(T_X, v_0) = 1 = n - mu
+  ok  55  pure cusp q=5: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  56  free half line (c=1): #res = 2 = 2(n - mu) - t_nc - beta = 2*(1 - 0) - 0 - 0 = 2n - t - mu - e - beta (t=0, e=0); and dim Krylov(T_X, v_0) = 1 = n - mu
+  ok  57  free half line (c=1): the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  58  loop a=1.0 c^2=0.5: #res = 2 = 2(n - mu) - t_nc - beta = 2*(1 - 0) - 0 - 0 = 2n - t - mu - e - beta (t=0, e=0); and dim Krylov(T_X, v_0) = 1 = n - mu
+  ok  59  loop a=1.0 c^2=0.5: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  60  loop a=0.0 c^2=1.5: #res = 2 = 2(n - mu) - t_nc - beta = 2*(1 - 0) - 0 - 0 = 2n - t - mu - e - beta (t=0, e=0); and dim Krylov(T_X, v_0) = 1 = n - mu
+  ok  61  loop a=0.0 c^2=1.5: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  62  loop a=0.5 c^2=1.2: #res = 2 = 2(n - mu) - t_nc - beta = 2*(1 - 0) - 0 - 0 = 2n - t - mu - e - beta (t=0, e=0); and dim Krylov(T_X, v_0) = 1 = n - mu
+  ok  63  loop a=0.5 c^2=1.2: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  64  loop a=1.0 c^2=3 (band edge): #res = 0 = 2(n - mu) - t_nc - beta = 2*(1 - 0) - 1 - 1 = 2n - t - mu - e - beta (t=1, e=0); and dim Krylov(T_X, v_0) = 1 = n - mu
+  ok  65  loop a=1.0 c^2=3 (band edge): the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  66  loop a=1.0 c^2=4: #res = 0 = 2(n - mu) - t_nc - beta = 2*(1 - 0) - 2 - 0 = 2n - t - mu - e - beta (t=2, e=0); and dim Krylov(T_X, v_0) = 1 = n - mu
+  ok  67  loop a=1.0 c^2=4: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  68  cuspy w=-3 (cusp lam=3 outside band): #res = 3 = 2(n - mu) - t_nc - beta = 2*(3 - 1) - 1 - 0 = 2n - t - mu - e - beta (t=2, e=0); and dim Krylov(T_X, v_0) = 2 = n - mu
+  ok  69  cuspy w=-3 (cusp lam=3 outside band): the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  70  cuspy w=1 (cusp lam=-1 embedded): #res = 3 = 2(n - mu) - t_nc - beta = 2*(3 - 1) - 1 - 0 = 2n - t - mu - e - beta (t=1, e=1); and dim Krylov(T_X, v_0) = 2 = n - mu
+  ok  71  cuspy w=1 (cusp lam=-1 embedded): the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  72  K4, q=2, c^2=3: #res = 2 = 2(n - mu) - t_nc - beta = 2*(4 - 2) - 2 - 0 = 2n - t - mu - e - beta (t=2, e=2); and dim Krylov(T_X, v_0) = 2 = n - mu
+  ok  73  K4, q=2, c^2=3: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  74  3-cube, q=2, c^2=3: #res = 6 = 2(n - mu) - t_nc - beta = 2*(8 - 4) - 2 - 0 = 2n - t - mu - e - beta (t=2, e=4); and dim Krylov(T_X, v_0) = 4 = n - mu
+  ok  75  3-cube, q=2, c^2=3: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  76  Petersen, q=2, c^2=3: #res = 4 = 2(n - mu) - t_nc - beta = 2*(10 - 7) - 2 - 0 = 2n - t - mu - e - beta (t=2, e=7); and dim Krylov(T_X, v_0) = 3 = n - mu
+  ok  77  Petersen, q=2, c^2=3: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  78  random 3-vertex core #1: #res = 6 = 2(n - mu) - t_nc - beta = 2*(3 - 0) - 0 - 0 = 2n - t - mu - e - beta (t=0, e=0); and dim Krylov(T_X, v_0) = 3 = n - mu
+  ok  79  random 3-vertex core #1: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  80  random 3-vertex core #2: #res = 5 = 2(n - mu) - t_nc - beta = 2*(3 - 0) - 1 - 0 = 2n - t - mu - e - beta (t=1, e=0); and dim Krylov(T_X, v_0) = 3 = n - mu
+  ok  81  random 3-vertex core #2: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  82  random 4-vertex core #1: #res = 7 = 2(n - mu) - t_nc - beta = 2*(4 - 0) - 1 - 0 = 2n - t - mu - e - beta (t=1, e=0); and dim Krylov(T_X, v_0) = 4 = n - mu
+  ok  83  random 4-vertex core #1: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  84  random 4-vertex core #2: #res = 6 = 2(n - mu) - t_nc - beta = 2*(4 - 0) - 2 - 0 = 2n - t - mu - e - beta (t=2, e=0); and dim Krylov(T_X, v_0) = 4 = n - mu
+  ok  85  random 4-vertex core #2: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  86  random 5-vertex core #1: #res = 10 = 2(n - mu) - t_nc - beta = 2*(5 - 0) - 0 - 0 = 2n - t - mu - e - beta (t=0, e=0); and dim Krylov(T_X, v_0) = 5 = n - mu
+  ok  87  random 5-vertex core #1: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+  ok  88  random 5-vertex core #2: #res = 8 = 2(n - mu) - t_nc - beta = 2*(5 - 0) - 2 - 0 = 2n - t - mu - e - beta (t=2, e=0); and dim Krylov(T_X, v_0) = 5 = n - mu
+  ok  89  random 5-vertex core #2: the Krylov block p_red has no root on |z| = 1 except the band edge (0 strays); so all unit-circle roots of p are cusp forms or +-1
+
+-- poles inside the disc are real and are l^2 eigenvalues (long-ray check)
+  ok  90  pure cusp q=2: every root of ptilde in |z|<1 is real (max |Im| 2.0e-16); z = [-0.707107, +0.707107]
+  ok  91  pure cusp q=2: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [-2.121320, +2.121320] = {z + 1/z} from ptilde (max dev 4.4e-16)
+  ok  92  pure cusp q=2: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok  93  pure cusp q=5: every root of ptilde in |z|<1 is real (max |Im| 8.7e-17); z = [-0.447214, +0.447214]
+  ok  94  pure cusp q=5: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [-2.683282, +2.683282] = {z + 1/z} from ptilde (max dev 2.2e-15)
+  ok  95  pure cusp q=5: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok  96  free half line (c=1): every root of ptilde in |z|<1 is real (max |Im| 0.0e+00); z = []
+  ok  97  free half line (c=1): truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [] = {z + 1/z} from ptilde (max dev 0.0e+00)
+  ok  98  free half line (c=1): those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok  99  loop a=1.0 c^2=0.5: every root of ptilde in |z|<1 is real (max |Im| 0.0e+00); z = []
+  ok 100  loop a=1.0 c^2=0.5: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [] = {z + 1/z} from ptilde (max dev 0.0e+00)
+  ok 101  loop a=1.0 c^2=0.5: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 102  loop a=0.0 c^2=1.5: every root of ptilde in |z|<1 is real (max |Im| 0.0e+00); z = []
+  ok 103  loop a=0.0 c^2=1.5: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [] = {z + 1/z} from ptilde (max dev 0.0e+00)
+  ok 104  loop a=0.0 c^2=1.5: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 105  loop a=0.5 c^2=1.2: every root of ptilde in |z|<1 is real (max |Im| 0.0e+00); z = []
+  ok 106  loop a=0.5 c^2=1.2: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [] = {z + 1/z} from ptilde (max dev 0.0e+00)
+  ok 107  loop a=0.5 c^2=1.2: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 108  loop a=1.0 c^2=3 (band edge): every root of ptilde in |z|<1 is real (max |Im| 9.9e-17); z = [+0.500000]
+  ok 109  loop a=1.0 c^2=3 (band edge): truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [+2.500000] = {z + 1/z} from ptilde (max dev 0.0e+00)
+  ok 110  loop a=1.0 c^2=3 (band edge): those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 111  loop a=1.0 c^2=4: every root of ptilde in |z|<1 is real (max |Im| 3.1e-16); z = [-0.767592, +0.434259]
+  ok 112  loop a=1.0 c^2=4: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [-2.070368, +2.737034] = {z + 1/z} from ptilde (max dev 1.3e-15)
+  ok 113  loop a=1.0 c^2=4: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 114  cuspy w=-3 (cusp lam=3 outside band): every root of ptilde in |z|<1 is real (max |Im| 9.7e-17); z = [-0.312104, +0.381966]
+  ok 115  cuspy w=-3 (cusp lam=3 outside band): truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [-3.516167, +3.000000] = {z + 1/z} from ptilde (max dev 4.4e-15)
+  ok 116  cuspy w=-3 (cusp lam=3 outside band): those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 117  cuspy w=1 (cusp lam=-1 embedded): every root of ptilde in |z|<1 is real (max |Im| 4.7e-17); z = [+0.659505]
+  ok 118  cuspy w=1 (cusp lam=-1 embedded): truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [+2.175794] = {z + 1/z} from ptilde (max dev 8.9e-16)
+  ok 119  cuspy w=1 (cusp lam=-1 embedded): those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 120  K4, q=2, c^2=3: every root of ptilde in |z|<1 is real (max |Im| 8.3e-17); z = [-0.612036, +0.462304]
+  ok 121  K4, q=2, c^2=3: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [-2.245927, +2.625383] = {z + 1/z} from ptilde (max dev 1.8e-15)
+  ok 122  K4, q=2, c^2=3: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 123  3-cube, q=2, c^2=3: every root of ptilde in |z|<1 is real (max |Im| 8.8e-16); z = [-0.496224, +0.496224]
+  ok 124  3-cube, q=2, c^2=3: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [-2.511442, +2.511442] = {z + 1/z} from ptilde (max dev 3.6e-15)
+  ok 125  3-cube, q=2, c^2=3: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 126  Petersen, q=2, c^2=3: every root of ptilde in |z|<1 is real (max |Im| 2.0e-16); z = [-0.550845, +0.505362]
+  ok 127  Petersen, q=2, c^2=3: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [-2.366237, +2.484141] = {z + 1/z} from ptilde (max dev 2.2e-15)
+  ok 128  Petersen, q=2, c^2=3: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 129  random 3-vertex core #1: every root of ptilde in |z|<1 is real (max |Im| 0.0e+00); z = []
+  ok 130  random 3-vertex core #1: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [] = {z + 1/z} from ptilde (max dev 0.0e+00)
+  ok 131  random 3-vertex core #1: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 132  random 3-vertex core #2: every root of ptilde in |z|<1 is real (max |Im| 1.4e-16); z = [+0.451586]
+  ok 133  random 3-vertex core #2: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [+2.666004] = {z + 1/z} from ptilde (max dev 4.4e-16)
+  ok 134  random 3-vertex core #2: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 135  random 4-vertex core #1: every root of ptilde in |z|<1 is real (max |Im| 8.7e-16); z = [-0.248033]
+  ok 136  random 4-vertex core #1: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [-4.279755] = {z + 1/z} from ptilde (max dev 1.8e-14)
+  ok 137  random 4-vertex core #1: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 138  random 4-vertex core #2: every root of ptilde in |z|<1 is real (max |Im| 7.3e-16); z = [-0.887678, +0.639068]
+  ok 139  random 4-vertex core #2: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [-2.014213, +2.203847] = {z + 1/z} from ptilde (max dev 1.3e-15)
+  ok 140  random 4-vertex core #2: those eigenvectors decay (max tail norm on the last 40 ray sites 2.1e-19) -- they are genuinely l^2
+  ok 141  random 5-vertex core #1: every root of ptilde in |z|<1 is real (max |Im| 0.0e+00); z = []
+  ok 142  random 5-vertex core #1: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [] = {z + 1/z} from ptilde (max dev 0.0e+00)
+  ok 143  random 5-vertex core #1: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+  ok 144  random 5-vertex core #2: every root of ptilde in |z|<1 is real (max |Im| 3.5e-16); z = [-0.422853, +0.505466]
+  ok 145  random 5-vertex core #2: truncated ray L=400 gives l^2 eigenvalues outside [-2,2] [-2.787743, +2.483838] = {z + 1/z} from ptilde (max dev 3.6e-15)
+  ok 146  random 5-vertex core #2: those eigenvectors decay (max tail norm on the last 40 ray sites 0.0e+00) -- they are genuinely l^2
+
+-- resonances: roots of p not shared with ptilde; conjugate pairs; effective operator
+  ok 147  pure cusp q=2: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = []
+  ok 148  pure cusp q=2: the 0 non-real resonances come in conjugate pairs
+  ok 149  pure cusp q=2: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 150  pure cusp q=5: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = []
+  ok 151  pure cusp q=5: the 0 non-real resonances come in conjugate pairs
+  ok 152  pure cusp q=5: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 153  free half line (c=1): every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.000000+0.000000j, +0.000000-0.000000j]
+  ok 154  free half line (c=1): the 2 non-real resonances come in conjugate pairs
+  ok 155  free half line (c=1): every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 156  loop a=1.0 c^2=0.5: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [+0.500000-0.500000j, +0.500000+0.500000j]
+  ok 157  loop a=1.0 c^2=0.5: the 2 non-real resonances come in conjugate pairs
+  ok 158  loop a=1.0 c^2=0.5: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 159  loop a=0.0 c^2=1.5: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.707107-0.000000j, +0.707107-0.000000j]
+  ok 160  loop a=0.0 c^2=1.5: the 0 non-real resonances come in conjugate pairs
+  ok 161  loop a=0.0 c^2=1.5: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 162  loop a=0.5 c^2=1.2: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.262348+0.000000j, +0.762348-0.000000j]
+  ok 163  loop a=0.5 c^2=1.2: the 0 non-real resonances come in conjugate pairs
+  ok 164  loop a=0.5 c^2=1.2: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 165  loop a=1.0 c^2=3 (band edge): every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = []
+  ok 166  loop a=1.0 c^2=3 (band edge): the 0 non-real resonances come in conjugate pairs
+  ok 167  loop a=1.0 c^2=3 (band edge): every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 168  loop a=1.0 c^2=4: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = []
+  ok 169  loop a=1.0 c^2=4: the 0 non-real resonances come in conjugate pairs
+  ok 170  loop a=1.0 c^2=4: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 171  cuspy w=-3 (cusp lam=3 outside band): every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.217798-0.234580j, -0.217798+0.234580j, +0.639659-0.000000j]
+  ok 172  cuspy w=-3 (cusp lam=3 outside band): the 2 non-real resonances come in conjugate pairs
+  ok 173  cuspy w=-3 (cusp lam=3 outside band): every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 174  cuspy w=1 (cusp lam=-1 embedded): every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.794838+0.000000j, +0.139275-0.393506j, +0.139275+0.393506j]
+  ok 175  cuspy w=1 (cusp lam=-1 embedded): the 2 non-real resonances come in conjugate pairs
+  ok 176  cuspy w=1 (cusp lam=-1 embedded): every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 177  K4, q=2, c^2=3: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [+0.442513-0.608338j, +0.442513+0.608338j]
+  ok 178  K4, q=2, c^2=3: the 2 non-real resonances come in conjugate pairs
+  ok 179  K4, q=2, c^2=3: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 180  3-cube, q=2, c^2=3: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.759676-0.449397j, -0.759676+0.449397j, +0.000000-0.900780j, -0.000000+0.900780j, +0.759676-0.449397j, +0.759676+0.449397j]
+  ok 181  3-cube, q=2, c^2=3: the 6 non-real resonances come in conjugate pairs
+  ok 182  3-cube, q=2, c^2=3: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 183  Petersen, q=2, c^2=3: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.187467-0.807269j, -0.187467+0.807269j, +0.812880-0.387093j, +0.812880+0.387093j]
+  ok 184  Petersen, q=2, c^2=3: the 4 non-real resonances come in conjugate pairs
+  ok 185  Petersen, q=2, c^2=3: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 186  random 3-vertex core #1: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.733807-0.499926j, -0.733807+0.499926j, -0.293331-0.860121j, -0.293331+0.860121j, +0.457139-0.879758j, +0.457139+0.879758j]
+  ok 187  random 3-vertex core #1: the 6 non-real resonances come in conjugate pairs
+  ok 188  random 3-vertex core #1: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 189  random 3-vertex core #2: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.770782-0.506288j, -0.770782+0.506288j, -0.287843-0.851007j, -0.287843+0.851007j, -0.138169-0.000000j]
+  ok 190  random 3-vertex core #2: the 4 non-real resonances come in conjugate pairs
+  ok 191  random 3-vertex core #2: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 192  random 4-vertex core #1: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.809821-0.585684j, -0.809821+0.585684j, -0.187691-0.000000j, +0.001794-0.929229j, +0.001794+0.929229j, +0.725234-0.674289j, +0.725234+0.674289j]
+  ok 193  random 4-vertex core #1: the 6 non-real resonances come in conjugate pairs
+  ok 194  random 4-vertex core #1: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 195  random 4-vertex core #2: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.410516-0.862106j, -0.410516+0.862106j, +0.247998-0.275442j, +0.247998+0.275442j, +0.305396-0.926220j, +0.305396+0.926220j]
+  ok 196  random 4-vertex core #2: the 6 non-real resonances come in conjugate pairs
+  ok 197  random 4-vertex core #2: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 198  random 5-vertex core #1: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.948271-0.000000j, -0.746597+0.000000j, -0.168251-0.976430j, -0.168251+0.976430j, +0.248504-0.929884j, +0.248504+0.929884j, +0.386642-0.921551j, +0.386642+0.921551j, +0.991539-0.109669j, +0.991539+0.109669j]
+  ok 199  random 5-vertex core #1: the 8 non-real resonances come in conjugate pairs
+  ok 200  random 5-vertex core #1: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+  ok 201  random 5-vertex core #2: every resonance solves det(lam - T_X - (c^2/z) P_0) = 0 with lam = z + 1/z (outgoing self-energy); res = [-0.482915-0.845387j, -0.482915+0.845387j, -0.066102-0.278216j, -0.066102+0.278216j, +0.336406-0.935136j, +0.336406+0.935136j, +0.587871-0.490629j, +0.587871+0.490629j]
+  ok 202  random 5-vertex core #2: the 8 non-real resonances come in conjugate pairs
+  ok 203  random 5-vertex core #2: every trivial mode solves det(lam - T_X - c^2 z P_0) = 0 (incoming branch)
+
+-- common factors of p and ptilde: cusp forms, PLUS the band edge z = +-1
+  ok 204  pure cusp q=2: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 1 (coefficient dev 0.0e+00)
+  ok 205  pure cusp q=2: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 206  pure cusp q=5: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 1 (coefficient dev 0.0e+00)
+  ok 207  pure cusp q=5: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 208  free half line (c=1): p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 1 (coefficient dev 0.0e+00)
+  ok 209  free half line (c=1): p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 210  loop a=1.0 c^2=0.5: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 1 (coefficient dev 0.0e+00)
+  ok 211  loop a=1.0 c^2=0.5: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 212  loop a=0.0 c^2=1.5: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 1 (coefficient dev 0.0e+00)
+  ok 213  loop a=0.0 c^2=1.5: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 214  loop a=0.5 c^2=1.2: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 1 (coefficient dev 0.0e+00)
+  ok 215  loop a=0.5 c^2=1.2: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 216  loop a=1.0 c^2=3 (band edge): p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 1 (coefficient dev 0.0e+00)
+  ok 217  loop a=1.0 c^2=3 (band edge): p_red and ptilde_red share ONLY the band-edge roots z = +-1 (1 of them); every other common factor of p, ptilde is a cusp form
+  ok 218  loop a=1.0 c^2=4: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 1 (coefficient dev 0.0e+00)
+  ok 219  loop a=1.0 c^2=4: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 220  cuspy w=-3 (cusp lam=3 outside band): p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 2 (coefficient dev 1.8e-15)
+  ok 221  cuspy w=-3 (cusp lam=3 outside band): p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 222  cuspy w=1 (cusp lam=-1 embedded): p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 2 (coefficient dev 1.1e-15)
+  ok 223  cuspy w=1 (cusp lam=-1 embedded): p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 224  K4, q=2, c^2=3: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 2 (coefficient dev 2.3e-15)
+  ok 225  K4, q=2, c^2=3: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 226  3-cube, q=2, c^2=3: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 4 (coefficient dev 1.5e-14)
+  ok 227  3-cube, q=2, c^2=3: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 228  Petersen, q=2, c^2=3: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 3 (coefficient dev 4.0e-13)
+  ok 229  Petersen, q=2, c^2=3: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 230  random 3-vertex core #1: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 3 (coefficient dev 6.7e-16)
+  ok 231  random 3-vertex core #1: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 232  random 3-vertex core #2: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 3 (coefficient dev 4.4e-16)
+  ok 233  random 3-vertex core #2: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 234  random 4-vertex core #1: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 4 (coefficient dev 2.7e-15)
+  ok 235  random 4-vertex core #1: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 236  random 4-vertex core #2: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 4 (coefficient dev 6.7e-16)
+  ok 237  random 4-vertex core #2: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 238  random 5-vertex core #1: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 5 (coefficient dev 8.9e-16)
+  ok 239  random 5-vertex core #1: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 240  random 5-vertex core #2: p(z) = p_red(z) * prod_cusp (z^2 - lam z + 1) exactly, with p_red the Krylov block of dimension 5 (coefficient dev 2.6e-15)
+  ok 241  random 5-vertex core #2: p_red and ptilde_red share ONLY the band-edge roots z = +-1 (0 of them); every other common factor of p, ptilde is a cusp form
+  ok 242  loop a=1 c^2=3: p and ptilde share the root z = -1 (lambda = -2) although the core has NO cusp form -- C2(iii) is false as stated; p(+-1) = ptilde(+-1) identically
+  ok 243  cuspy w=-3: the cusp form has lambda = +3.000000 OUTSIDE [-2,2], so it IS an l^2 eigenvalue (2 of them) but is NOT a pole of R (1 poles) -- C2(i) is too strong
+  ok 244  cuspy w=1: the cusp form has lambda = -1.000000 embedded in [-2,2]; its two z-roots sit on |z| = 1 and are invisible to R
+  ok 245  cuspy w=-3: the cusp form extended by zero is an exact l^2 eigenvector of T on Y
+
+-- Blaschke structure of R (why R is not the characteristic function)
+  ok 246  pure cusp q=2: R(z) = -prod_i (z - z_i)/(1 - z_i z) over the roots of p (dev 5.0e-16); the factors with |z_i|<1 are Blaschke, those with |z_i|>1 are INVERSE Blaschke, so R is not inner on the disc
+  ok 247  pure cusp q=5: R(z) = -prod_i (z - z_i)/(1 - z_i z) over the roots of p (dev 5.7e-16); the factors with |z_i|<1 are Blaschke, those with |z_i|>1 are INVERSE Blaschke, so R is not inner on the disc
+  ok 248  free half line (c=1): R(z) = -prod_i (z - z_i)/(1 - z_i z) over the roots of p (dev 1.2e-15); the factors with |z_i|<1 are Blaschke, those with |z_i|>1 are INVERSE Blaschke, so R is not inner on the disc
+  ok 249  loop a=1.0 c^2=0.5: R(z) = -prod_i (z - z_i)/(1 - z_i z) over the roots of p (dev 1.6e-15); the factors with |z_i|<1 are Blaschke, those with |z_i|>1 are INVERSE Blaschke, so R is not inner on the disc
+  ok 250  loop a=0.0 c^2=1.5: R(z) = -prod_i (z - z_i)/(1 - z_i z) over the roots of p (dev 9.1e-16); the factors with |z_i|<1 are Blaschke, those with |z_i|>1 are INVERSE Blaschke, so R is not inner on the disc
+  ok 251  loop a=0.5 c^2=1.2: R(z) = -prod_i (z - z_i)/(1 - z_i z) over the roots of p (dev 8.6e-16); the factors with |z_i|<1 are Blaschke, those with |z_i|>1 are INVERSE Blaschke, so R is not inner on the disc
+  ok 252  loop a=1.0 c^2=3 (band edge): R(z) = -prod_i (z - z_i)/(1 - z_i z) over the roots of p (dev 6.9e-16); the factors with |z_i|<1 are Blaschke, those with |z_i|>1 are INVERSE Blaschke, so R is not inner on the disc
+  ok 253  loop a=1.0 c^2=4: R(z) = -prod_i (z - z_i)/(1 - z_i z) over the roots of p (dev 8.8e-16); the factors with |z_i|<1 are Blaschke, those with |z_i|>1 are INVERSE Blaschke, so R is not inner on the disc
+
+==============================================================================
+C3  the pure cusp
+==============================================================================
+  ok 254  q=2: p(z) = z^2 - q and ptilde(z) = 1 - q z^2, so R(z) = -p/ptilde = (z^2 - q)/(q z^2 - 1) -- the brief's C3 R is CORRECT
+  ok 255  q=2: the direct ray solve confirms it (dev 2.0e-14)
+  ok 256  q=2: no resonances; poles at z = +-q^-1/2 = +0.707107, zeros at +-q^1/2 outside
+  ok 257  q=2: q zeta_K(2s-1)/zeta_K(2s) = 1/R(z), NOT R(z) (dev from 1/R 7.0e-16, from R 2.5e+00); so phi = 1/R, with the pole at s=1 (z=q^1/2) and the zero at s=0 (z=q^-1/2)
+  ok 258  q=3: p(z) = z^2 - q and ptilde(z) = 1 - q z^2, so R(z) = -p/ptilde = (z^2 - q)/(q z^2 - 1) -- the brief's C3 R is CORRECT
+  ok 259  q=3: the direct ray solve confirms it (dev 2.1e-14)
+  ok 260  q=3: no resonances; poles at z = +-q^-1/2 = +0.577350, zeros at +-q^1/2 outside
+  ok 261  q=3: q zeta_K(2s-1)/zeta_K(2s) = 1/R(z), NOT R(z) (dev from 1/R 1.4e-15, from R 2.6e+00); so phi = 1/R, with the pole at s=1 (z=q^1/2) and the zero at s=0 (z=q^-1/2)
+  ok 262  q=5: p(z) = z^2 - q and ptilde(z) = 1 - q z^2, so R(z) = -p/ptilde = (z^2 - q)/(q z^2 - 1) -- the brief's C3 R is CORRECT
+  ok 263  q=5: the direct ray solve confirms it (dev 1.8e-14)
+  ok 264  q=5: no resonances; poles at z = +-q^-1/2 = +0.447214, zeros at +-q^1/2 outside
+  ok 265  q=5: q zeta_K(2s-1)/zeta_K(2s) = 1/R(z), NOT R(z) (dev from 1/R 4.5e-16, from R 3.4e+00); so phi = 1/R, with the pole at s=1 (z=q^1/2) and the zero at s=0 (z=q^-1/2)
+  ok 266  q=7: p(z) = z^2 - q and ptilde(z) = 1 - q z^2, so R(z) = -p/ptilde = (z^2 - q)/(q z^2 - 1) -- the brief's C3 R is CORRECT
+  ok 267  q=7: the direct ray solve confirms it (dev 2.1e-14)
+  ok 268  q=7: no resonances; poles at z = +-q^-1/2 = +0.377964, zeros at +-q^1/2 outside
+  ok 269  q=7: q zeta_K(2s-1)/zeta_K(2s) = 1/R(z), NOT R(z) (dev from 1/R 9.0e-16, from R 5.3e+00); so phi = 1/R, with the pole at s=1 (z=q^1/2) and the zero at s=0 (z=q^-1/2)
+  !! phi = 1/R: the poles of phi in |z| < 1 are the ZEROS of R, i.e. the resonances, which is what makes 'poles of phi with Re s < 1/2 = eigenvalues of the compression' consistent with C2(iv)
+
+==============================================================================
+T1  the discrete wave group, D_+, D_-, K and the compressed contraction Z
+==============================================================================
+  ok 270  T1(a) W^T E W = E exactly: the energy form is W-invariant (dev 0.0e+00)
+  ok 271  T1(a) E conserved along 12 steps of the wave evolution (E = +9.454054, max drift 5.3e-15)
+  ok 272  T1(a) d'Alembert on the ray: purely outgoing data u_m(k) = B(k - m) propagates with speed one and never reaches the core (8 steps)
+  ok 273  T1(a) finite propagation speed one: data at r_30 stays beyond r_{30-m-1} after m steps, so a truncated ray is exact for a bounded number of steps
+  ok 274  T1(a) W b_j = b_{j+1} and W^-1 f_j = f_{j+1} exactly (dev 0.0e+00, 0.0e+00): D_+ is W-invariant, D_- is W^-1-invariant, each with a ONE-dimensional wandering vector -- the one-dimensional exit
+
+-- D_+ must start at b_2: the brief's D_+ is not E-orthogonal to D_-
+  ok 275  2-vertex core c=1.1: <b_1, E f_1> = (1 - c^2)/2 = -0.105000 is NONZERO unless c = 1, while <b_j, E f_k> = 0 for all j >= 2 (worst 0.0e+00); so the outgoing space is D_+ = span{b_j : j >= 2}, i.e. B supported on k >= 2
+  ok 276  pure cusp q=2: <b_1, E f_1> = (1 - c^2)/2 = -1.000000 is NONZERO unless c = 1, while <b_j, E f_k> = 0 for all j >= 2 (worst 0.0e+00); so the outgoing space is D_+ = span{b_j : j >= 2}, i.e. B supported on k >= 2
+  ok 277  loop a=1 c^2=0.5: <b_1, E f_1> = (1 - c^2)/2 = +0.250000 is NONZERO unless c = 1, while <b_j, E f_k> = 0 for all j >= 2 (worst 0.0e+00); so the outgoing space is D_+ = span{b_j : j >= 2}, i.e. B supported on k >= 2
+
+-- the two threshold modes: finite energy, not in l^2
+  ok 278  pure cusp q=2: the constant (z = +1) tail on r_20..r_54 has E = +2.000000 = 2 independent of its length, while ||.||^2 = +70.000000 grows: E-finite, not l^2 (E is degenerate at lambda = +-2)
+  ok 279  pure cusp q=2: the constant (z = +1) tail on r_30..r_54 has E = +2.000000 = 2 independent of its length, while ||.||^2 = +50.000000 grows: E-finite, not l^2 (E is degenerate at lambda = +-2)
+  ok 280  pure cusp q=2: the alternating (z = -1) tail on r_20..r_54 has E = +2.000000 = 2 independent of its length, while ||.||^2 = +70.000000 grows: E-finite, not l^2 (E is degenerate at lambda = +-2)
+  ok 281  pure cusp q=2: the alternating (z = -1) tail on r_30..r_54 has E = +2.000000 = 2 independent of its length, while ||.||^2 = +50.000000 grows: E-finite, not l^2 (E is degenerate at lambda = +-2)
+  ok 282  loop a=1 c^2=0.5: the constant (z = +1) tail on r_20..r_54 has E = +2.000000 = 2 independent of its length, while ||.||^2 = +70.000000 grows: E-finite, not l^2 (E is degenerate at lambda = +-2)
+  ok 283  loop a=1 c^2=0.5: the constant (z = +1) tail on r_30..r_54 has E = +2.000000 = 2 independent of its length, while ||.||^2 = +50.000000 grows: E-finite, not l^2 (E is degenerate at lambda = +-2)
+  ok 284  loop a=1 c^2=0.5: the alternating (z = -1) tail on r_20..r_54 has E = +2.000000 = 2 independent of its length, while ||.||^2 = +70.000000 grows: E-finite, not l^2 (E is degenerate at lambda = +-2)
+  ok 285  loop a=1 c^2=0.5: the alternating (z = -1) tail on r_30..r_54 has E = +2.000000 = 2 independent of its length, while ||.||^2 = +50.000000 grows: E-finite, not l^2 (E is degenerate at lambda = +-2)
+
+-- trivial eigen-data spans an E-hyperbolic plane (two E-null directions)
+  ok 286  pure cusp q=2: for the trivial mode lambda = +2.121320 (z = +0.707107), both W-eigen-data (psi, psi/z) and (psi, z psi) are E-NULL (-1.9e-16, -8.3e-17); E on the plane has signature (1 - lam/2, 1 + lam/2) = (+2.060660, -0.060660), indefinite
+  ok 287  pure cusp q=2: for the trivial mode lambda = -2.121320 (z = -0.707107), both W-eigen-data (psi, psi/z) and (psi, z psi) are E-NULL (-1.9e-16, -8.3e-17); E on the plane has signature (1 - lam/2, 1 + lam/2) = (+2.060660, -0.060660), indefinite
+  ok 288  loop a=1 c^2=4: for the trivial mode lambda = -2.070368 (z = -0.767592), both W-eigen-data (psi, psi/z) and (psi, z psi) are E-NULL (-3.3e-16, -1.8e-16); E on the plane has signature (1 - lam/2, 1 + lam/2) = (+2.035184, -0.035184), indefinite
+  ok 289  K4, q=2, c^2=3: for the trivial mode lambda = +2.625383 (z = +0.462304), both W-eigen-data (psi, psi/z) and (psi, z psi) are E-NULL (1.4e-15, 2.8e-16); E on the plane has signature (1 - lam/2, 1 + lam/2) = (+2.312692, -0.312692), indefinite
+  ok 290  K4, q=2, c^2=3: for the trivial mode lambda = -2.245927 (z = -0.612036), both W-eigen-data (psi, psi/z) and (psi, z psi) are E-NULL (-3.1e-16, -6.0e-17); E on the plane has signature (1 - lam/2, 1 + lam/2) = (+2.122964, -0.122964), indefinite
+
+-- dim K from the D_+/D_- construction, and by how much it misses #resonances
+   core                          n  #res  mu  t_nc  beta | dimK_c  2(n-mu-t_nc)-2
+   pure cusp q=2                 1     0   0     2     0 |      0               0
+  ok 291  pure cusp q=2: dim K (compactly supported) = 0 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 292  pure cusp q=2: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 293  pure cusp q=2: keeping the brief's b_1 in D_+ removes still more (0 left)
+   pure cusp q=5                 1     0   0     2     0 |      0               0
+  ok 294  pure cusp q=5: dim K (compactly supported) = 0 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 295  pure cusp q=5: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 296  pure cusp q=5: keeping the brief's b_1 in D_+ removes still more (0 left)
+   free half line (c=1)          1     2   0     0     0 |      0               0
+  ok 297  free half line (c=1): dim K (compactly supported) = 0 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 298  free half line (c=1): equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 299  free half line (c=1): keeping the brief's b_1 in D_+ removes still more (0 left)
+   loop a=1.0 c^2=0.5            1     2   0     0     0 |      0               0
+  ok 300  loop a=1.0 c^2=0.5: dim K (compactly supported) = 0 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 301  loop a=1.0 c^2=0.5: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 302  loop a=1.0 c^2=0.5: keeping the brief's b_1 in D_+ removes still more (0 left)
+   loop a=0.0 c^2=1.5            1     2   0     0     0 |      0               0
+  ok 303  loop a=0.0 c^2=1.5: dim K (compactly supported) = 0 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 304  loop a=0.0 c^2=1.5: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 305  loop a=0.0 c^2=1.5: keeping the brief's b_1 in D_+ removes still more (0 left)
+   loop a=0.5 c^2=1.2            1     2   0     0     0 |      0               0
+  ok 306  loop a=0.5 c^2=1.2: dim K (compactly supported) = 0 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 307  loop a=0.5 c^2=1.2: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 308  loop a=0.5 c^2=1.2: keeping the brief's b_1 in D_+ removes still more (0 left)
+   loop a=1.0 c^2=3 (band edge)  1     0   0     1     1 |      0               0
+  ok 309  loop a=1.0 c^2=3 (band edge): dim K (compactly supported) = 0 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 310  loop a=1.0 c^2=3 (band edge): equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 311  loop a=1.0 c^2=3 (band edge): keeping the brief's b_1 in D_+ removes still more (0 left)
+   loop a=1.0 c^2=4              1     0   0     2     0 |      0               0
+  ok 312  loop a=1.0 c^2=4: dim K (compactly supported) = 0 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 313  loop a=1.0 c^2=4: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 314  loop a=1.0 c^2=4: keeping the brief's b_1 in D_+ removes still more (0 left)
+   cuspy w=-3 (cusp lam=3 outside band)  3     3   1     1     0 |      0               0
+  ok 315  cuspy w=-3 (cusp lam=3 outside band): dim K (compactly supported) = 0 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 316  cuspy w=-3 (cusp lam=3 outside band): equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 317  cuspy w=-3 (cusp lam=3 outside band): keeping the brief's b_1 in D_+ removes still more (0 left)
+   cuspy w=1 (cusp lam=-1 embedded)  3     3   1     1     0 |      0               0
+  ok 318  cuspy w=1 (cusp lam=-1 embedded): dim K (compactly supported) = 0 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 319  cuspy w=1 (cusp lam=-1 embedded): equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 320  cuspy w=1 (cusp lam=-1 embedded): keeping the brief's b_1 in D_+ removes still more (0 left)
+   K4, q=2, c^2=3                4     2   2     2     0 |      0               0
+  ok 321  K4, q=2, c^2=3: dim K (compactly supported) = 0 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 322  K4, q=2, c^2=3: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 323  K4, q=2, c^2=3: keeping the brief's b_1 in D_+ removes still more (0 left)
+   3-cube, q=2, c^2=3            8     6   4     2     0 |      2               2
+  ok 324  3-cube, q=2, c^2=3: dim K (compactly supported) = 2 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 325  3-cube, q=2, c^2=3: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 326  3-cube, q=2, c^2=3: keeping the brief's b_1 in D_+ removes still more (1 left)
+   Petersen, q=2, c^2=3         10     4   7     2     0 |      0               0
+  ok 327  Petersen, q=2, c^2=3: dim K (compactly supported) = 0 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 328  Petersen, q=2, c^2=3: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 329  Petersen, q=2, c^2=3: keeping the brief's b_1 in D_+ removes still more (0 left)
+   random 3-vertex core #1       3     6   0     0     0 |      4               4
+  ok 330  random 3-vertex core #1: dim K (compactly supported) = 4 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 331  random 3-vertex core #1: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 332  random 3-vertex core #1: keeping the brief's b_1 in D_+ removes still more (3 left)
+   random 3-vertex core #2       3     5   0     1     0 |      2               2
+  ok 333  random 3-vertex core #2: dim K (compactly supported) = 2 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 334  random 3-vertex core #2: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 335  random 3-vertex core #2: keeping the brief's b_1 in D_+ removes still more (1 left)
+   random 4-vertex core #1       4     7   0     1     0 |      4               4
+  ok 336  random 4-vertex core #1: dim K (compactly supported) = 4 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 337  random 4-vertex core #1: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 338  random 4-vertex core #1: keeping the brief's b_1 in D_+ removes still more (3 left)
+   random 4-vertex core #2       4     6   0     2     0 |      2               2
+  ok 339  random 4-vertex core #2: dim K (compactly supported) = 2 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 340  random 4-vertex core #2: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 341  random 4-vertex core #2: keeping the brief's b_1 in D_+ removes still more (1 left)
+   random 5-vertex core #1       5    10   0     0     0 |      8               8
+  ok 342  random 5-vertex core #1: dim K (compactly supported) = 8 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 343  random 5-vertex core #1: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 344  random 5-vertex core #1: keeping the brief's b_1 in D_+ removes still more (7 left)
+   random 5-vertex core #2       5     8   0     2     0 |      4               4
+  ok 345  random 5-vertex core #2: dim K (compactly supported) = 4 = max(0, 2(n - mu - t_nc) - 2), stable in the ray cut (M = 8 and M = 12); each l^2 eigen-datum removes 2
+  ok 346  random 5-vertex core #2: equivalently dim K = #res - t_nc + beta - 2 (clipped at 0): the brief's 'dim K = #resonances' misses t_nc + 2 - beta dimensions
+  ok 347  random 5-vertex core #2: keeping the brief's b_1 in D_+ removes still more (3 left)
+  !! T1(c) CORRECTED: with D_+ = span{b_j, j >= 2}, D_- = span{f_j, j >= 1} and H_LP the E-orthocomplement of ALL l^2 eigen-data, the l^2 space K has dimension 2(n - mu - t_nc) - 2 = #res - t_nc - 2 (beta = 0), not #res. The deficit is exactly the 2 threshold modes at z = +-1 (E-finite, not l^2) plus one E-isotropic direction per trivial mode (its eigen-data plane is E-hyperbolic, so removing all of it over-counts). The energy completion, not l^2, is the right space; verified on 19 cores.
+
+-- the functional model of Z built from the graph's resonances
+   loop a=1.0 c^2=0.5: 2 resonances [+0.500000-0.500000j, +0.500000+0.500000j], Gram cond 2.618
+   loop a=0.5 c^2=1.2: 2 resonances [-0.262348+0.000000j, +0.762348-0.000000j], Gram cond 4.169
+   K4, q=2, c^2=3: 2 resonances [+0.442513-0.608338j, +0.442513+0.608338j], Gram cond 2.012
+   random 3-vertex core #2: 5 resonances [-0.770782-0.506288j, -0.770782+0.506288j, -0.287843-0.851007j, -0.287843+0.851007j, -0.138169-0.000000j], Gram cond 23.350
+  ok 348  T1(c) loop a=1.0 c^2=0.5: spec Z = the resonances THEMSELVES, all in |z| < 1 (max |z| = 0.707107); the reflections 1/conj z lie outside the disc and cannot be the spectrum of a contraction
+  ok 349  T1(c) loop a=1.0 c^2=0.5: 1 - Z^*Z = |j><j| is rank one with j = G^(-1/2) 1 (dev 1.1e-15)
+  ok 350  T1(c) loop a=1.0 c^2=0.5: 1 - Z Z^* is rank one too (both defect indices are 1)
+  ok 351  T1(c) loop a=1.0 c^2=0.5: Z is a contraction and Z^m -> 0 (||Z^m|| at m = 1, 4, 12, 62 = 1.000e+00, 2.500e-01, 1.563e-02, 7.535e-10)
+  ok 352  T1(c) loop a=1.0 c^2=0.5: <k_n,k_m> = conj(a_n) a_m/(1 - conj(z_n) z_m) with a_n = <j|k_n> = 1 (dev 4.4e-16); a_n != 0 for every mode, so NO resonance mode is decoupled from the cusp (the brief's guess 1/(1 - z_n conj z_m) is right up to this normalisation)
+  ok 353  T1(d) loop a=1.0 c^2=0.5: |characteristic function of Z| = |Blaschke product over the resonances| (dev 2.2e-16); and by C2 that Blaschke product is R times the Blaschke product of the trivial modes -- NOT R and NOT 1/R
+  ok 354  T1(c) loop a=0.5 c^2=1.2: spec Z = the resonances THEMSELVES, all in |z| < 1 (max |z| = 0.762348); the reflections 1/conj z lie outside the disc and cannot be the spectrum of a contraction
+  ok 355  T1(c) loop a=0.5 c^2=1.2: 1 - Z^*Z = |j><j| is rank one with j = G^(-1/2) 1 (dev 5.0e-16)
+  ok 356  T1(c) loop a=0.5 c^2=1.2: 1 - Z Z^* is rank one too (both defect indices are 1)
+  ok 357  T1(c) loop a=0.5 c^2=1.2: Z is a contraction and Z^m -> 0 (||Z^m|| at m = 1, 4, 12, 76 = 1.000e+00, 3.941e-01, 4.513e-02, 1.295e-09)
+  ok 358  T1(c) loop a=0.5 c^2=1.2: <k_n,k_m> = conj(a_n) a_m/(1 - conj(z_n) z_m) with a_n = <j|k_n> = 1 (dev 2.2e-16); a_n != 0 for every mode, so NO resonance mode is decoupled from the cusp (the brief's guess 1/(1 - z_n conj z_m) is right up to this normalisation)
+  ok 359  T1(d) loop a=0.5 c^2=1.2: |characteristic function of Z| = |Blaschke product over the resonances| (dev 1.7e-16); and by C2 that Blaschke product is R times the Blaschke product of the trivial modes -- NOT R and NOT 1/R
+  ok 360  T1(c) K4, q=2, c^2=3: spec Z = the resonances THEMSELVES, all in |z| < 1 (max |z| = 0.752259); the reflections 1/conj z lie outside the disc and cannot be the spectrum of a contraction
+  ok 361  T1(c) K4, q=2, c^2=3: 1 - Z^*Z = |j><j| is rank one with j = G^(-1/2) 1 (dev 8.3e-16)
+  ok 362  T1(c) K4, q=2, c^2=3: 1 - Z Z^* is rank one too (both defect indices are 1)
+  ok 363  T1(c) K4, q=2, c^2=3: Z is a contraction and Z^m -> 0 (||Z^m|| at m = 1, 4, 12, 73 = 1.000e+00, 3.941e-01, 4.586e-02, 1.068e-09)
+  ok 364  T1(c) K4, q=2, c^2=3: <k_n,k_m> = conj(a_n) a_m/(1 - conj(z_n) z_m) with a_n = <j|k_n> = 1 (dev 2.2e-15); a_n != 0 for every mode, so NO resonance mode is decoupled from the cusp (the brief's guess 1/(1 - z_n conj z_m) is right up to this normalisation)
+  ok 365  T1(d) K4, q=2, c^2=3: |characteristic function of Z| = |Blaschke product over the resonances| (dev 2.8e-16); and by C2 that Blaschke product is R times the Blaschke product of the trivial modes -- NOT R and NOT 1/R
+  ok 366  T1(c) random 3-vertex core #2: spec Z = the resonances THEMSELVES, all in |z| < 1 (max |z| = 0.922189); the reflections 1/conj z lie outside the disc and cannot be the spectrum of a contraction
+  ok 367  T1(c) random 3-vertex core #2: 1 - Z^*Z = |j><j| is rank one with j = G^(-1/2) 1 (dev 1.0e-15)
+  ok 368  T1(c) random 3-vertex core #2: 1 - Z Z^* is rank one too (both defect indices are 1)
+  ok 369  T1(c) random 3-vertex core #2: Z is a contraction and Z^m -> 0 (||Z^m|| at m = 1, 4, 12, 248 = 1.000e+00, 1.000e+00, 4.538e-01, 2.521e-09)
+  ok 370  T1(c) random 3-vertex core #2: <k_n,k_m> = conj(a_n) a_m/(1 - conj(z_n) z_m) with a_n = <j|k_n> = 1 (dev 1.6e-14); a_n != 0 for every mode, so NO resonance mode is decoupled from the cusp (the brief's guess 1/(1 - z_n conj z_m) is right up to this normalisation)
+  ok 371  T1(d) random 3-vertex core #2: |characteristic function of Z| = |Blaschke product over the resonances| (dev 3.3e-16); and by C2 that Blaschke product is R times the Blaschke product of the trivial modes -- NOT R and NOT 1/R
+  ok 372  T1(c) the FREE half line (T_X = [0], c = 1) has p(z) = z^2, ptilde = 1, R = -z^2 and a DOUBLE resonance at z = 0; its model is the 2x2 nilpotent Jordan block, the one case where H-SIMPLE fails
+
+==============================================================================
+T3-T5  the renewal channel in discrete time
+==============================================================================
+  ok 373  T3(a) loop a=1.0 c^2=0.5: Kraus set {C, sqrt(p_i)|w_i><j|} is trace preserving, sum K^*K = 1 (dev 1.1e-15)
+  ok 374  T3(a) loop a=1.0 c^2=0.5: the superoperator matches the Kraus channel on random densities
+  ok 375  T3(a) loop a=1.0 c^2=0.5: row-major vec of E_Omega reproduces C rho C^* + <j|rho|j> Omega
+  ok 376  T3(a) loop a=1.0 c^2=0.5: Choi matrix is positive semidefinite (min eig 3.7e-17) -- E_Omega is CPTP
+  ok 377  T3(b) loop a=1.0 c^2=0.5: m(m) = <j|C^(m-1) Omega C^*(m-1)|j> >= 0 and telescopes exactly, sum_1^M m(m) = 1 - Tr(C^M Omega C^*M) = +1.000000 -> 1 (Tr(C^M ...) = 4.9e-324)
+  ok 378  T3(b) loop a=1.0 c^2=0.5: mean holding time +1.696828 = sum_m Tr(C^m Omega C^*m) = Tr X with X - C X C^* = Omega, = +1.696828 < infinity (finite dimension: the infinite-mean phenomenon of 04h cannot occur)
+  ok 379  T3(c) loop a=1.0 c^2=0.5: rho_inf = mu^-1 sum_m C^m Omega C^*m is stationary (dev 3.3e-16)
+  ok 380  T3(c) loop a=1.0 c^2=0.5: the null vector of 1 - E_Omega agrees with the renewal sum (dev 2.2e-16)
+  ok 381  T3(c) loop a=1.0 c^2=0.5: eigenvalue 1 of E_Omega is simple and all others have modulus <= 0.500000 < 1, so rho_inf is unique and attracting (aperiodic case)
+  ok 382  T3(c) loop a=1.0 c^2=0.5: 4000 iterations from a random density converge to rho_inf (dev 7.9e-13)
+  ok 383  T3(e) loop a=1.0 c^2=0.5: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = +0.300000+0.000000j (|lhs - rhs| = 1.1e-16)
+  ok 384  T3(e) loop a=1.0 c^2=0.5: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = +0.610000+0.000000j (|lhs - rhs| = 1.3e-17)
+  ok 385  T3(e) loop a=1.0 c^2=0.5: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = -0.450000+0.000000j (|lhs - rhs| = 8.9e-16)
+  ok 386  T3(e) loop a=1.0 c^2=0.5: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = +0.000000+0.800000j (|lhs - rhs| = 2.5e-16)
+  ok 387  T3(d) loop a=1.0 c^2=0.5: rho_inf is PURE iff Omega is a pure state that is an EIGENVECTOR of C (purity +1.000000); a generic pure Omega gives purity +0.762541 < 1
+  ok 388  T3(a) loop a=0.5 c^2=1.2: Kraus set {C, sqrt(p_i)|w_i><j|} is trace preserving, sum K^*K = 1 (dev 6.7e-16)
+  ok 389  T3(a) loop a=0.5 c^2=1.2: the superoperator matches the Kraus channel on random densities
+  ok 390  T3(a) loop a=0.5 c^2=1.2: row-major vec of E_Omega reproduces C rho C^* + <j|rho|j> Omega
+  ok 391  T3(a) loop a=0.5 c^2=1.2: Choi matrix is positive semidefinite (min eig 4.8e-16) -- E_Omega is CPTP
+  ok 392  T3(b) loop a=0.5 c^2=1.2: m(m) = <j|C^(m-1) Omega C^*(m-1)|j> >= 0 and telescopes exactly, sum_1^M m(m) = 1 - Tr(C^M Omega C^*M) = +1.000000 -> 1 (Tr(C^M ...) = 1.5e-323)
+  ok 393  T3(b) loop a=0.5 c^2=1.2: mean holding time +2.195693 = sum_m Tr(C^m Omega C^*m) = Tr X with X - C X C^* = Omega, = +2.195693 < infinity (finite dimension: the infinite-mean phenomenon of 04h cannot occur)
+  ok 394  T3(c) loop a=0.5 c^2=1.2: rho_inf = mu^-1 sum_m C^m Omega C^*m is stationary (dev 2.2e-16)
+  ok 395  T3(c) loop a=0.5 c^2=1.2: the null vector of 1 - E_Omega agrees with the renewal sum (dev 1.7e-16)
+  ok 396  T3(c) loop a=0.5 c^2=1.2: eigenvalue 1 of E_Omega is simple and all others have modulus <= 0.437691 < 1, so rho_inf is unique and attracting (aperiodic case)
+  ok 397  T3(c) loop a=0.5 c^2=1.2: 4000 iterations from a random density converge to rho_inf (dev 1.0e-12)
+  ok 398  T3(e) loop a=0.5 c^2=1.2: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = +0.300000+0.000000j (|lhs - rhs| = 4.4e-16)
+  ok 399  T3(e) loop a=0.5 c^2=1.2: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = +0.610000+0.000000j (|lhs - rhs| = 1.1e-16)
+  ok 400  T3(e) loop a=0.5 c^2=1.2: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = -0.450000+0.000000j (|lhs - rhs| = 2.2e-16)
+  ok 401  T3(e) loop a=0.5 c^2=1.2: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = +0.000000+0.800000j (|lhs - rhs| = 0.0e+00)
+  ok 402  T3(d) loop a=0.5 c^2=1.2: rho_inf is PURE iff Omega is a pure state that is an EIGENVECTOR of C (purity +1.000000); a generic pure Omega gives purity +0.868924 < 1
+  ok 403  T3(a) K4, q=2, c^2=3: Kraus set {C, sqrt(p_i)|w_i><j|} is trace preserving, sum K^*K = 1 (dev 1.0e-15)
+  ok 404  T3(a) K4, q=2, c^2=3: the superoperator matches the Kraus channel on random densities
+  ok 405  T3(a) K4, q=2, c^2=3: row-major vec of E_Omega reproduces C rho C^* + <j|rho|j> Omega
+  ok 406  T3(a) K4, q=2, c^2=3: Choi matrix is positive semidefinite (min eig 6.8e-17) -- E_Omega is CPTP
+  ok 407  T3(b) K4, q=2, c^2=3: m(m) = <j|C^(m-1) Omega C^*(m-1)|j> >= 0 and telescopes exactly, sum_1^M m(m) = 1 - Tr(C^M Omega C^*M) = +1.000000 -> 1 (Tr(C^M ...) = 9.9e-324)
+  ok 408  T3(b) K4, q=2, c^2=3: mean holding time +2.240818 = sum_m Tr(C^m Omega C^*m) = Tr X with X - C X C^* = Omega, = +2.240818 < infinity (finite dimension: the infinite-mean phenomenon of 04h cannot occur)
+  ok 409  T3(c) K4, q=2, c^2=3: rho_inf = mu^-1 sum_m C^m Omega C^*m is stationary (dev 3.3e-16)
+  ok 410  T3(c) K4, q=2, c^2=3: the null vector of 1 - E_Omega agrees with the renewal sum (dev 4.0e-16)
+  ok 411  T3(c) K4, q=2, c^2=3: eigenvalue 1 of E_Omega is simple and all others have modulus <= 0.567211 < 1, so rho_inf is unique and attracting (aperiodic case)
+  ok 412  T3(c) K4, q=2, c^2=3: 4000 iterations from a random density converge to rho_inf (dev 1.9e-12)
+  ok 413  T3(e) K4, q=2, c^2=3: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = +0.300000+0.000000j (|lhs - rhs| = 1.9e-17)
+  ok 414  T3(e) K4, q=2, c^2=3: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = +0.610000+0.000000j (|lhs - rhs| = 5.6e-17)
+  ok 415  T3(e) K4, q=2, c^2=3: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = -0.450000+0.000000j (|lhs - rhs| = 4.5e-16)
+  ok 416  T3(e) K4, q=2, c^2=3: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = +0.000000+0.800000j (|lhs - rhs| = 2.5e-16)
+  ok 417  T3(d) K4, q=2, c^2=3: rho_inf is PURE iff Omega is a pure state that is an EIGENVECTOR of C (purity +1.000000); a generic pure Omega gives purity +0.680488 < 1
+  ok 418  T3(a) random 3-vertex core #2: Kraus set {C, sqrt(p_i)|w_i><j|} is trace preserving, sum K^*K = 1 (dev 1.1e-15)
+  ok 419  T3(a) random 3-vertex core #2: the superoperator matches the Kraus channel on random densities
+  ok 420  T3(a) random 3-vertex core #2: row-major vec of E_Omega reproduces C rho C^* + <j|rho|j> Omega
+  ok 421  T3(a) random 3-vertex core #2: Choi matrix is positive semidefinite (min eig -4.1e-16) -- E_Omega is CPTP
+  ok 422  T3(b) random 3-vertex core #2: m(m) = <j|C^(m-1) Omega C^*(m-1)|j> >= 0 and telescopes exactly, sum_1^M m(m) = 1 - Tr(C^M Omega C^*M) = +1.000000 -> 1 (Tr(C^M ...) = 1.9e-282)
+  ok 423  T3(b) random 3-vertex core #2: mean holding time +5.809952 = sum_m Tr(C^m Omega C^*m) = Tr X with X - C X C^* = Omega, = +5.809952 < infinity (finite dimension: the infinite-mean phenomenon of 04h cannot occur)
+  ok 424  T3(c) random 3-vertex core #2: rho_inf = mu^-1 sum_m C^m Omega C^*m is stationary (dev 1.2e-16)
+  ok 425  T3(c) random 3-vertex core #2: the null vector of 1 - E_Omega agrees with the renewal sum (dev 1.2e-15)
+  ok 426  T3(c) random 3-vertex core #2: eigenvalue 1 of E_Omega is simple and all others have modulus <= 0.854476 < 1, so rho_inf is unique and attracting (aperiodic case)
+  ok 427  T3(c) random 3-vertex core #2: 4000 iterations from a random density converge to rho_inf (dev 4.7e-13)
+  ok 428  T3(e) random 3-vertex core #2: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = +0.300000+0.000000j (|lhs - rhs| = 2.2e-16)
+  ok 429  T3(e) random 3-vertex core #2: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = +0.610000+0.000000j (|lhs - rhs| = 3.3e-17)
+  ok 430  T3(e) random 3-vertex core #2: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = -0.450000+0.000000j (|lhs - rhs| = 1.3e-14)
+  ok 431  T3(e) random 3-vertex core #2: det(1 - u E_Omega) = det(1 - u E_0)(1 - mhat(u)) at u = +0.000000+0.800000j (|lhs - rhs| = 6.5e-16)
+  ok 432  T3(d) random 3-vertex core #2: rho_inf is PURE iff Omega is a pure state that is an EIGENVECTOR of C (purity +1.000000); a generic pure Omega gives purity +0.335544 < 1
+  ok 433  T3(c) periodic counterexample: the FREE half line (T_X = [0], c = 1) has p(z) = z^2, ptilde = 1, two resonances at z = 0, and its model contraction is the 2x2 nilpotent Jordan block with 1 - Z^*Z = |e_1><e_1|
+  ok 434  T3(c) periodic: with Omega = |psi><psi|, psi perp j, the holding law is [+0.000000, +1.000000, +0.000000, +0.000000, +0.000000] (m = 1..5) -- supported on {2}, period 2; E_Omega has the eigenvalue -1 (min |w + 1| = 0.0e+00), so the stationary state is not attracting
+  ok 435  T3(c) loop a=1.0 c^2=0.5: for Omega on a single resonance z = +0.500000-0.500000j, the holding law is m(m) = |<j|k>|^2 |z|^(2m-2) > 0 for EVERY m, so gcd = 1: aperiodicity needs only z != 0, not that the resonance is non-real
+  ok 436  T3(c) loop a=0.5 c^2=1.2: for Omega on a single resonance z = -0.262348+0.000000j, the holding law is m(m) = |<j|k>|^2 |z|^(2m-2) > 0 for EVERY m, so gcd = 1: aperiodicity needs only z != 0, not that the resonance is non-real
+  ok 437  T3(c) K4, q=2, c^2=3: for Omega on a single resonance z = +0.442513-0.608338j, the holding law is m(m) = |<j|k>|^2 |z|^(2m-2) > 0 for EVERY m, so gcd = 1: aperiodicity needs only z != 0, not that the resonance is non-real
+  ok 438  T3(c) random 3-vertex core #2: for Omega on a single resonance z = -0.770782-0.506288j, the holding law is m(m) = |<j|k>|^2 |z|^(2m-2) > 0 for EVERY m, so gcd = 1: aperiodicity needs only z != 0, not that the resonance is non-real
+
+-- T4  mode-diagonal rebounds and the uniform-modulus criterion
+  ok 439  T4 loop a=1.0 c^2=0.5: mu_Omega = sum_i p_i/(1 - |z_i|^2) = +2.000000 = +2.000000 (direct sum)
+  ok 440  T4 loop a=1.0 c^2=0.5: |z_i| = [+0.707107, +0.707107]; uniform modulus = True, and rho_inf = Omega is True (||rho_inf - Omega|| = 3.3e-16)
+  ok 441  T4 loop a=1.0 c^2=0.5: under uniform modulus r = +0.707107 the mean holding time is 1/(1 - r^2) = +2.000000, independent of the mixture
+  ok 442  T4 loop a=1.0 c^2=0.5: the spectrum of rho_inf is [+0.142488, +0.857512], NOT the weight list [+0.188121, +0.811879] -- a Gram spectrum, because the k_i are not orthogonal (max |<k_i,k_j>| off-diagonal 0.4472)
+  ok 443  T4 loop a=0.5 c^2=1.2: mu_Omega = sum_i p_i/(1 - |z_i|^2) = +1.134007 = +1.134007 (direct sum)
+  ok 444  T4 loop a=0.5 c^2=1.2: |z_i| = [+0.262348, +0.762348]; uniform modulus = False, and rho_inf = Omega is False (||rho_inf - Omega|| = 4.3e-02)
+  ok 445  T4 loop a=0.5 c^2=1.2: the spectrum of rho_inf is [+0.068101, +0.931899], NOT the weight list [+0.045743, +0.954257] -- a Gram spectrum, because the k_i are not orthogonal (max |<k_i,k_j>| off-diagonal 0.5204)
+  ok 446  T4 K4, q=2, c^2=3: mu_Omega = sum_i p_i/(1 - |z_i|^2) = +2.303579 = +2.303579 (direct sum)
+  ok 447  T4 K4, q=2, c^2=3: |z_i| = [+0.752259, +0.752259]; uniform modulus = True, and rho_inf = Omega is True (||rho_inf - Omega|| = 2.2e-16)
+  ok 448  T4 K4, q=2, c^2=3: under uniform modulus r = +0.752259 the mean holding time is 1/(1 - r^2) = +2.303579, independent of the mixture
+  ok 449  T4 K4, q=2, c^2=3: the spectrum of rho_inf is [+0.320198, +0.679802], NOT the weight list [+0.432044, +0.567956] -- a Gram spectrum, because the k_i are not orthogonal (max |<k_i,k_j>| off-diagonal 0.3360)
+  ok 450  T4 random 3-vertex core #2: mu_Omega = sum_i p_i/(1 - |z_i|^2) = +4.911815 = +4.911815 (direct sum)
+  ok 451  T4 random 3-vertex core #2: |z_i| = [+0.138169, +0.898368, +0.898368, +0.922189, +0.922189]; uniform modulus = False, and rho_inf = Omega is False (||rho_inf - Omega|| = 1.3e-01)
+  ok 452  T4 random 3-vertex core #2: the spectrum of rho_inf is [+0.016801, +0.043651, +0.138668, +0.289707, +0.511172], NOT the weight list [+0.037389, +0.149617, +0.199958, +0.263492, +0.349544] -- a Gram spectrum, because the k_i are not orthogonal (max |<k_i,k_j>| off-diagonal 0.4497)
+
+-- T5  admissibility and invariant flags
+  ok 453  T5 loop a=1.0 c^2=0.5: Tr Q_sigma = <j|sigma|j> = +0.373408 for a random density (dev 6.1e-16)
+  !! T5 loop a=1.0 c^2=0.5: a random density had Q_sigma with a negative eigenvalue (-4.085e-02) -- admissibility is a real restriction
+  ok 454  T5 loop a=1.0 c^2=0.5: for the C-invariant flag of resonance eigenvectors, every Q_k = P_k - C P_k C^* >= 0 (min eig 0.0e+00)
+  ok 455  T5 loop a=1.0 c^2=0.5: sigma = sum (p_k - p_k+1) P_k is admissible and has the PRESCRIBED spectrum [+0.181909, +0.818091] (dev 5.6e-16)
+  ok 456  T5 loop a=1.0 c^2=0.5: and it is the stationary state of its own renewal channel
+  ok 457  T5 loop a=1.0 c^2=0.5: in the resonance basis Q_sigma has coefficient matrix sigma_nm (1 - z_n conj z_m) -- an entrywise (Schur) factor, dev 2.4e-15
+  ok 458  T5 loop a=0.5 c^2=1.2: Tr Q_sigma = <j|sigma|j> = +0.287984 for a random density (dev 5.6e-16)
+  !! T5 loop a=0.5 c^2=1.2: a random density had Q_sigma with a negative eigenvalue (-7.346e-02) -- admissibility is a real restriction
+  ok 459  T5 loop a=0.5 c^2=1.2: for the C-invariant flag of resonance eigenvectors, every Q_k = P_k - C P_k C^* >= 0 (min eig -6.9e-18)
+  ok 460  T5 loop a=0.5 c^2=1.2: sigma = sum (p_k - p_k+1) P_k is admissible and has the PRESCRIBED spectrum [+0.416732, +0.583268] (dev 3.3e-16)
+  ok 461  T5 loop a=0.5 c^2=1.2: and it is the stationary state of its own renewal channel
+  ok 462  T5 loop a=0.5 c^2=1.2: in the resonance basis Q_sigma has coefficient matrix sigma_nm (1 - z_n conj z_m) -- an entrywise (Schur) factor, dev 3.6e-15
+  ok 463  T5 K4, q=2, c^2=3: Tr Q_sigma = <j|sigma|j> = +0.411900 for a random density (dev 8.3e-16)
+  !! T5 K4, q=2, c^2=3: a random density had Q_sigma with a negative eigenvalue (-2.881e-01) -- admissibility is a real restriction
+  ok 464  T5 K4, q=2, c^2=3: for the C-invariant flag of resonance eigenvectors, every Q_k = P_k - C P_k C^* >= 0 (min eig 0.0e+00)
+  ok 465  T5 K4, q=2, c^2=3: sigma = sum (p_k - p_k+1) P_k is admissible and has the PRESCRIBED spectrum [+0.271184, +0.728816] (dev 2.8e-16)
+  ok 466  T5 K4, q=2, c^2=3: and it is the stationary state of its own renewal channel
+  ok 467  T5 K4, q=2, c^2=3: in the resonance basis Q_sigma has coefficient matrix sigma_nm (1 - z_n conj z_m) -- an entrywise (Schur) factor, dev 4.2e-15
+  ok 468  T5 random 3-vertex core #2: Tr Q_sigma = <j|sigma|j> = +0.053091 for a random density (dev 8.3e-17)
+  !! T5 random 3-vertex core #2: a random density had Q_sigma with a negative eigenvalue (-3.811e-01) -- admissibility is a real restriction
+  ok 469  T5 random 3-vertex core #2: for the C-invariant flag of resonance eigenvectors, every Q_k = P_k - C P_k C^* >= 0 (min eig -2.2e-15)
+  ok 470  T5 random 3-vertex core #2: sigma = sum (p_k - p_k+1) P_k is admissible and has the PRESCRIBED spectrum [+0.067544, +0.076186, +0.167915, +0.290776, +0.397578] (dev 1.7e-16)
+  ok 471  T5 random 3-vertex core #2: and it is the stationary state of its own renewal channel
+  ok 472  T5 random 3-vertex core #2: in the resonance basis Q_sigma has coefficient matrix sigma_nm (1 - z_n conj z_m) -- an entrywise (Schur) factor, dev 1.2e-13
+
+==============================================================================
+T6  the graded space: odd coherences are eigen-operators
+==============================================================================
+  ok 473  T6 loop a=1.0 c^2=0.5: on C vac (+) K with C vac = vac, 1 - C^*C = |j><j| still holds (the vacuum has no exit)
+  ok 474  T6 loop a=1.0 c^2=0.5 rebound #1: |k_0><vac| is an eigen-operator with eigenvalue z_0 = +0.500000-0.500000j (NOT conj z), because the exit functional annihilates odd operators (dev 1.7e-16)
+  ok 475  T6 loop a=1.0 c^2=0.5 rebound #1: |k_1><vac| is an eigen-operator with eigenvalue z_1 = +0.500000+0.500000j (NOT conj z), because the exit functional annihilates odd operators (dev 4.8e-16)
+  ok 476  T6 loop a=1.0 c^2=0.5 rebound #2: |k_0><vac| is an eigen-operator with eigenvalue z_0 = +0.500000-0.500000j (NOT conj z), because the exit functional annihilates odd operators (dev 1.7e-16)
+  ok 477  T6 loop a=1.0 c^2=0.5 rebound #2: |k_1><vac| is an eigen-operator with eigenvalue z_1 = +0.500000+0.500000j (NOT conj z), because the exit functional annihilates odd operators (dev 4.8e-16)
+  ok 478  T6 loop a=1.0 c^2=0.5 rebound #3: |k_0><vac| is an eigen-operator with eigenvalue z_0 = +0.500000-0.500000j (NOT conj z), because the exit functional annihilates odd operators (dev 1.7e-16)
+  ok 479  T6 loop a=1.0 c^2=0.5 rebound #3: |k_1><vac| is an eigen-operator with eigenvalue z_1 = +0.500000+0.500000j (NOT conj z), because the exit functional annihilates odd operators (dev 4.8e-16)
+  ok 480  T6 loop a=0.5 c^2=1.2: on C vac (+) K with C vac = vac, 1 - C^*C = |j><j| still holds (the vacuum has no exit)
+  ok 481  T6 loop a=0.5 c^2=1.2 rebound #1: |k_0><vac| is an eigen-operator with eigenvalue z_0 = -0.262348+0.000000j (NOT conj z), because the exit functional annihilates odd operators (dev 2.8e-17)
+  ok 482  T6 loop a=0.5 c^2=1.2 rebound #1: |k_1><vac| is an eigen-operator with eigenvalue z_1 = +0.762348-0.000000j (NOT conj z), because the exit functional annihilates odd operators (dev 2.2e-16)
+  ok 483  T6 loop a=0.5 c^2=1.2 rebound #2: |k_0><vac| is an eigen-operator with eigenvalue z_0 = -0.262348+0.000000j (NOT conj z), because the exit functional annihilates odd operators (dev 2.8e-17)
+  ok 484  T6 loop a=0.5 c^2=1.2 rebound #2: |k_1><vac| is an eigen-operator with eigenvalue z_1 = +0.762348-0.000000j (NOT conj z), because the exit functional annihilates odd operators (dev 2.2e-16)
+  ok 485  T6 loop a=0.5 c^2=1.2 rebound #3: |k_0><vac| is an eigen-operator with eigenvalue z_0 = -0.262348+0.000000j (NOT conj z), because the exit functional annihilates odd operators (dev 2.8e-17)
+  ok 486  T6 loop a=0.5 c^2=1.2 rebound #3: |k_1><vac| is an eigen-operator with eigenvalue z_1 = +0.762348-0.000000j (NOT conj z), because the exit functional annihilates odd operators (dev 2.2e-16)
+  ok 487  T6 K4, q=2, c^2=3: on C vac (+) K with C vac = vac, 1 - C^*C = |j><j| still holds (the vacuum has no exit)
+  ok 488  T6 K4, q=2, c^2=3 rebound #1: |k_0><vac| is an eigen-operator with eigenvalue z_0 = +0.442513-0.608338j (NOT conj z), because the exit functional annihilates odd operators (dev 3.6e-16)
+  ok 489  T6 K4, q=2, c^2=3 rebound #1: |k_1><vac| is an eigen-operator with eigenvalue z_1 = +0.442513+0.608338j (NOT conj z), because the exit functional annihilates odd operators (dev 2.8e-16)
+  ok 490  T6 K4, q=2, c^2=3 rebound #2: |k_0><vac| is an eigen-operator with eigenvalue z_0 = +0.442513-0.608338j (NOT conj z), because the exit functional annihilates odd operators (dev 3.6e-16)
+  ok 491  T6 K4, q=2, c^2=3 rebound #2: |k_1><vac| is an eigen-operator with eigenvalue z_1 = +0.442513+0.608338j (NOT conj z), because the exit functional annihilates odd operators (dev 2.8e-16)
+  ok 492  T6 K4, q=2, c^2=3 rebound #3: |k_0><vac| is an eigen-operator with eigenvalue z_0 = +0.442513-0.608338j (NOT conj z), because the exit functional annihilates odd operators (dev 3.6e-16)
+  ok 493  T6 K4, q=2, c^2=3 rebound #3: |k_1><vac| is an eigen-operator with eigenvalue z_1 = +0.442513+0.608338j (NOT conj z), because the exit functional annihilates odd operators (dev 2.8e-16)
+  ok 494  T6 random 3-vertex core #2: on C vac (+) K with C vac = vac, 1 - C^*C = |j><j| still holds (the vacuum has no exit)
+  ok 495  T6 random 3-vertex core #2 rebound #1: |k_0><vac| is an eigen-operator with eigenvalue z_0 = -0.770782-0.506288j (NOT conj z), because the exit functional annihilates odd operators (dev 5.0e-16)
+  ok 496  T6 random 3-vertex core #2 rebound #1: |k_1><vac| is an eigen-operator with eigenvalue z_1 = -0.770782+0.506288j (NOT conj z), because the exit functional annihilates odd operators (dev 5.6e-16)
+  ok 497  T6 random 3-vertex core #2 rebound #1: |k_2><vac| is an eigen-operator with eigenvalue z_2 = -0.287843-0.851007j (NOT conj z), because the exit functional annihilates odd operators (dev 6.7e-16)
+  ok 498  T6 random 3-vertex core #2 rebound #1: |k_3><vac| is an eigen-operator with eigenvalue z_3 = -0.287843+0.851007j (NOT conj z), because the exit functional annihilates odd operators (dev 6.4e-16)
+  ok 499  T6 random 3-vertex core #2 rebound #1: |k_4><vac| is an eigen-operator with eigenvalue z_4 = -0.138169-0.000000j (NOT conj z), because the exit functional annihilates odd operators (dev 3.3e-16)
+  ok 500  T6 random 3-vertex core #2 rebound #2: |k_0><vac| is an eigen-operator with eigenvalue z_0 = -0.770782-0.506288j (NOT conj z), because the exit functional annihilates odd operators (dev 5.0e-16)
+  ok 501  T6 random 3-vertex core #2 rebound #2: |k_1><vac| is an eigen-operator with eigenvalue z_1 = -0.770782+0.506288j (NOT conj z), because the exit functional annihilates odd operators (dev 5.6e-16)
+  ok 502  T6 random 3-vertex core #2 rebound #2: |k_2><vac| is an eigen-operator with eigenvalue z_2 = -0.287843-0.851007j (NOT conj z), because the exit functional annihilates odd operators (dev 6.7e-16)
+  ok 503  T6 random 3-vertex core #2 rebound #2: |k_3><vac| is an eigen-operator with eigenvalue z_3 = -0.287843+0.851007j (NOT conj z), because the exit functional annihilates odd operators (dev 6.4e-16)
+  ok 504  T6 random 3-vertex core #2 rebound #2: |k_4><vac| is an eigen-operator with eigenvalue z_4 = -0.138169-0.000000j (NOT conj z), because the exit functional annihilates odd operators (dev 3.3e-16)
+  ok 505  T6 random 3-vertex core #2 rebound #3: |k_0><vac| is an eigen-operator with eigenvalue z_0 = -0.770782-0.506288j (NOT conj z), because the exit functional annihilates odd operators (dev 5.0e-16)
+  ok 506  T6 random 3-vertex core #2 rebound #3: |k_1><vac| is an eigen-operator with eigenvalue z_1 = -0.770782+0.506288j (NOT conj z), because the exit functional annihilates odd operators (dev 5.6e-16)
+  ok 507  T6 random 3-vertex core #2 rebound #3: |k_2><vac| is an eigen-operator with eigenvalue z_2 = -0.287843-0.851007j (NOT conj z), because the exit functional annihilates odd operators (dev 6.7e-16)
+  ok 508  T6 random 3-vertex core #2 rebound #3: |k_3><vac| is an eigen-operator with eigenvalue z_3 = -0.287843+0.851007j (NOT conj z), because the exit functional annihilates odd operators (dev 6.4e-16)
+  ok 509  T6 random 3-vertex core #2 rebound #3: |k_4><vac| is an eigen-operator with eigenvalue z_4 = -0.138169-0.000000j (NOT conj z), because the exit functional annihilates odd operators (dev 3.3e-16)
+
+==============================================================================
+T7  RAM(Y) and RH(Y): independence, and what pins the modulus
+==============================================================================
+
+   one-vertex loop core, T_X = [a]:  (RAM, RH) -> count, first example
+   RAM=True  RH=True    72 of 90   e.g. a=-3.000000 c^2=+0.250000: 1 resonances |z| = [+0.275255], 1 trivial l^2
+   RAM=True  RH=False    2 of 90   e.g. a=-0.500000 c^2=+1.250000: 2 resonances |z| = [+0.309017, +0.809017], 0 trivial l^2
+   RAM=False RH=True    16 of 90   e.g. a=-3.000000 c^2=+6.000000: 0 resonances |z| = [], 2 trivial l^2
+   RAM=False RH=False    0 of 90   (not realised by a one-vertex core)
+  ok 510  T7(a): a ONE-vertex loop core already realises RAM&RH, RAM&not-RH and not-RAM&RH, so RAM and RH are independent; neither implies the other
+  ok 511  T7(a): a one-vertex core can NEVER realise not-RAM & not-RH: #res + #trivial <= 2n = 2, and not-RAM needs 2 trivial while not-RH needs 2 resonances
+
+   non-vacuous cases (>= 2 resonances AND >= 2 trivial l^2 modes), random cores:
+   RAM=True  RH=True   bipartite n=3 c=+2.195000  |z_res| = [+0.952369, +0.952369]  trivial lam = [-2.539101, +2.539101]
+   RAM=True  RH=False  bipartite n=4 c=+1.424000  |z_res| = [+0.811331, +0.811331, +0.811331, +0.811331, +0.948932, +0.948932]  trivial lam = [-2.239142, +2.239142]
+   RAM=False RH=True   generic   n=2 c=+2.204000  |z_res| = [+0.977579, +0.977579]  trivial lam = [-2.614249, +2.410808]
+   RAM=False RH=False  generic   n=4 c=+0.526000  |z_res| = [+0.352038, +0.515975, +0.949642, +0.949642, +0.999904, +0.999904]  trivial lam = [-2.412621, +2.773871]
+  ok 512  T7(a) non-vacuously (>= 2 resonances AND >= 2 trivial modes): 4 of the 4 combinations occur; RAM(Y) non-vacuously needs a bipartite core (the two trivial modes must be exactly +-lambda_top), which random symmetric cores essentially never are
+  ok 513  T7(a): RAM and RH both FAIL for 100 of 400 random 2-3 vertex cores; smallest example n = 2
+
+   'neither' example: n = 2, c = +0.407000, T_X =
+[[ 1.154  2.092]
+ [ 2.092 -2.12 ]]
+     resonance moduli [+0.345700, +0.524354]; trivial l^2 eigenvalues [-3.150841, +2.254872]
+
+-- T7(d) smallest cores with a non-real resonance pair
+  ok 514  T7(d): the SMALLEST core with a non-real resonance pair is n = 1: T_X = [1], c^2 = 1/2 gives z = [+0.500000-0.500000j, +0.500000+0.500000j], a conjugate pair, |z| = +0.707107 = sqrt(1 - c^2); it automatically satisfies RH(Y) (conjugate pairs have equal modulus)
+  ok 515  T7(d): for n = 1 a non-real pair requires a^2 < 4(1 - c^2), hence c^2 < 1; with the arithmetic junction c^2 = q + 1 > 1 a one-vertex core has only REAL resonances
+  ok 516  T7(d): RH(Y) together with a non-real pair and c > 1 occurs for 89 of 400 random 2-3 vertex cores; smallest n = 2 (a single conjugate pair is automatically RH)
+
+-- T7(b) the product identity and whether r is pinned
+  ok 517  pure cusp q=2: prod of ALL roots of p = -2.000000-0.000000j = 1 - c^2 = -2.000000 exactly
+  ok 518  pure cusp q=2: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+1.000000 = +1.000000) -- this is the ONLY constraint on the resonance moduli
+  ok 519  pure cusp q=5: prod of ALL roots of p = -5.000000-0.000000j = 1 - c^2 = -5.000000 exactly
+  ok 520  pure cusp q=5: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+1.000000 = +1.000000) -- this is the ONLY constraint on the resonance moduli
+  ok 521  free half line (c=1): prod of ALL roots of p = +0.000000+0.000000j = 1 - c^2 = +0.000000 exactly
+  ok 522  free half line (c=1): prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.000000 = +0.000000) -- this is the ONLY constraint on the resonance moduli
+  ok 523  loop a=1.0 c^2=0.5: prod of ALL roots of p = +0.500000+0.000000j = 1 - c^2 = +0.500000 exactly
+  ok 524  loop a=1.0 c^2=0.5: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.500000 = +0.500000) -- this is the ONLY constraint on the resonance moduli
+  ok 525  loop a=0.0 c^2=1.5: prod of ALL roots of p = -0.500000+0.000000j = 1 - c^2 = -0.500000 exactly
+  ok 526  loop a=0.0 c^2=1.5: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.500000 = +0.500000) -- this is the ONLY constraint on the resonance moduli
+  ok 527  loop a=0.5 c^2=1.2: prod of ALL roots of p = -0.200000+0.000000j = 1 - c^2 = -0.200000 exactly
+  ok 528  loop a=0.5 c^2=1.2: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.200000 = +0.200000) -- this is the ONLY constraint on the resonance moduli
+  ok 529  loop a=1.0 c^2=3 (band edge): prod of ALL roots of p = -2.000000-0.000000j = 1 - c^2 = -2.000000 exactly
+  ok 530  loop a=1.0 c^2=3 (band edge): prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+1.000000 = +1.000000) -- this is the ONLY constraint on the resonance moduli
+  ok 531  loop a=1.0 c^2=4: prod of ALL roots of p = -3.000000-0.000000j = 1 - c^2 = -3.000000 exactly
+  ok 532  loop a=1.0 c^2=4: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+1.000000 = +1.000000) -- this is the ONLY constraint on the resonance moduli
+  ok 533  cuspy w=-3 (cusp lam=3 outside band): prod of ALL roots of p = -0.210000+0.000000j = 1 - c^2 = -0.210000 exactly
+  ok 534  cuspy w=-3 (cusp lam=3 outside band): prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.025035 = +0.025035) -- this is the ONLY constraint on the resonance moduli
+  ok 535  cuspy w=1 (cusp lam=-1 embedded): prod of ALL roots of p = -0.210000-0.000000j = 1 - c^2 = -0.210000 exactly
+  ok 536  cuspy w=1 (cusp lam=-1 embedded): prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.138496 = +0.138496) -- this is the ONLY constraint on the resonance moduli
+  ok 537  K4, q=2, c^2=3: prod of ALL roots of p = -2.000000-0.000000j = 1 - c^2 = -2.000000 exactly
+  ok 538  K4, q=2, c^2=3: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.565893 = +0.565893) -- this is the ONLY constraint on the resonance moduli
+  ok 539  3-cube, q=2, c^2=3: prod of ALL roots of p = -2.000000-0.000000j = 1 - c^2 = -2.000000 exactly
+  ok 540  3-cube, q=2, c^2=3: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.492477 = +0.492477) -- this is the ONLY constraint on the resonance moduli
+  ok 541  Petersen, q=2, c^2=3: prod of ALL roots of p = -2.000000-0.000000j = 1 - c^2 = -2.000000 exactly
+  ok 542  Petersen, q=2, c^2=3: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.556753 = +0.556753) -- this is the ONLY constraint on the resonance moduli
+  ok 543  random 3-vertex core #1: prod of ALL roots of p = +0.640000+0.000000j = 1 - c^2 = +0.640000 exactly
+  ok 544  random 3-vertex core #1: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.640000 = +0.640000) -- this is the ONLY constraint on the resonance moduli
+  ok 545  random 3-vertex core #2: prod of ALL roots of p = -0.210000-0.000000j = 1 - c^2 = -0.210000 exactly
+  ok 546  random 3-vertex core #2: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.094833 = +0.094833) -- this is the ONLY constraint on the resonance moduli
+  ok 547  random 4-vertex core #1: prod of ALL roots of p = +0.640000+0.000000j = 1 - c^2 = +0.640000 exactly
+  ok 548  random 4-vertex core #1: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.158741 = +0.158741) -- this is the ONLY constraint on the resonance moduli
+  ok 549  random 4-vertex core #2: prod of ALL roots of p = -0.210000-0.000000j = 1 - c^2 = -0.210000 exactly
+  ok 550  random 4-vertex core #2: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.119130 = +0.119130) -- this is the ONLY constraint on the resonance moduli
+  ok 551  random 5-vertex core #1: prod of ALL roots of p = +0.640000-0.000000j = 1 - c^2 = +0.640000 exactly
+  ok 552  random 5-vertex core #1: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.640000 = +0.640000) -- this is the ONLY constraint on the resonance moduli
+  ok 553  random 5-vertex core #2: prod of ALL roots of p = -0.210000-0.000000j = 1 - c^2 = -0.210000 exactly
+  ok 554  random 5-vertex core #2: prod|roots of p inside| = |1 - c^2| * prod|trivial z| (+0.044885 = +0.044885) -- this is the ONLY constraint on the resonance moduli
+  ok 555  T7(b): for the pure cusp |1 - c^2| = q and the trivial modes are +-q^-1/2, so the identity forces prod|resonances| = 1, impossible for moduli < 1 -- hence NO resonances; with c^2 = q+1 and only the Perron pair trivial, resonances cannot exist at all
+  !! T7(b): nothing pins r to q^-1/4. The product identity gives prod|res| = |1-c^2| prod|z_trivial|, so under RH(Y) with R resonances r^R is fixed by the TRIVIAL spectrum and c alone; r = q^-1/4 for all R would need |1-c^2| prod|z_t| = q^-R/4, a condition the arithmetic (extra trivial modes at deeper levels) must supply.
+
+-- T7(c) a checkable criterion: r-self-reciprocality of the reduced numerator
+  ok 556  loop a=1.0 c^2=0.5: RH(Y) = True iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 1.000000 (deviation 1.6e-15); moduli [+0.707107, +0.707107]
+  ok 557  loop a=0.0 c^2=1.5: RH(Y) = True iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 1.000000 (deviation 1.1e-15); moduli [+0.707107, +0.707107]
+  ok 558  loop a=0.5 c^2=1.2: RH(Y) = False iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 0.761905 (deviation 1.7e+00); moduli [+0.262348, +0.762348]
+  ok 559  cuspy w=-3 (cusp lam=3 outside band): RH(Y) = False iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 0.844106 (deviation 1.4e+00); moduli [+0.320099, +0.320099, +0.639659]
+  ok 560  cuspy w=1 (cusp lam=-1 embedded): RH(Y) = False iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 0.863945 (deviation 1.1e+00); moduli [+0.417426, +0.417426, +0.794838]
+  ok 561  K4, q=2, c^2=3: RH(Y) = True iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 1.000000 (deviation 5.0e-16); moduli [+0.752259, +0.752259]
+  ok 562  3-cube, q=2, c^2=3: RH(Y) = False iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 0.999724 (deviation 8.0e-02); moduli [+0.882647, +0.882647, +0.882647, +0.882647, +0.900780, +0.900780]
+  ok 563  Petersen, q=2, c^2=3: RH(Y) = False iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 0.996574 (deviation 1.3e-01); moduli [+0.828751, +0.828751, +0.900342, +0.900342]
+  ok 564  random 3-vertex core #1: RH(Y) = False iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 0.993202 (deviation 1.4e-01); moduli [+0.887918, +0.887918, +0.908764, +0.908764, +0.991439, +0.991439]
+  ok 565  random 3-vertex core #2: RH(Y) = False iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 0.384382 (deviation 6.3e-01); moduli [+0.138169, +0.898368, +0.898368, +0.922189, +0.922189]
+  ok 566  random 4-vertex core #1: RH(Y) = False iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 0.453329 (deviation 9.1e-01); moduli [+0.187691, +0.929230, +0.929230, +0.990267, +0.990267, +0.999417, +0.999417]
+  ok 567  random 4-vertex core #2: RH(Y) = False iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 0.585489 (deviation 4.9e-01); moduli [+0.370637, +0.370637, +0.954856, +0.954856, +0.975270, +0.975270]
+  ok 568  random 5-vertex core #1: RH(Y) = False iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 0.967215 (deviation 7.4e-01); moduli [+0.746597, +0.948271, +0.962516, +0.962516, +0.990820, +0.990820, +0.997585, +0.997585, +0.999374, +0.999374]
+  ok 569  random 5-vertex core #2: RH(Y) = False iff the reduced numerator, rescaled to b_k = c_k r^(k-d), is self-reciprocal b_k = b_0 b_(d-k) with |b_0| = 0.426182 (deviation 6.2e-01); moduli [+0.285961, +0.285961, +0.765709, +0.765709, +0.973595, +0.973595, +0.993805, +0.993805]
+
+==============================================================================
+CHECKS PASSED: 569
+==============================================================================
+7 loud findings:
+  (1) phi = 1/R: the poles of phi in |z| < 1 are the ZEROS of R, i.e. the resonances, which is what makes 'poles of phi with Re s < 1/2 = eigenvalues of the compression' consistent with C2(iv)
+  (2) T1(c) CORRECTED: with D_+ = span{b_j, j >= 2}, D_- = span{f_j, j >= 1} and H_LP the E-orthocomplement of ALL l^2 eigen-data, the l^2 space K has dimension 2(n - mu - t_nc) - 2 = #res - t_nc - 2 (beta = 0), not #res. The deficit is exactly the 2 threshold modes at z = +-1 (E-finite, not l^2) plus one E-isotropic direction per trivial mode (its eigen-data plane is E-hyperbolic, so removing all of it over-counts). The energy completion, not l^2, is the right space; verified on 19 cores.
+  (3) T5 loop a=1.0 c^2=0.5: a random density had Q_sigma with a negative eigenvalue (-4.085e-02) -- admissibility is a real restriction
+  (4) T5 loop a=0.5 c^2=1.2: a random density had Q_sigma with a negative eigenvalue (-7.346e-02) -- admissibility is a real restriction
+  (5) T5 K4, q=2, c^2=3: a random density had Q_sigma with a negative eigenvalue (-2.881e-01) -- admissibility is a real restriction
+  (6) T5 random 3-vertex core #2: a random density had Q_sigma with a negative eigenvalue (-3.811e-01) -- admissibility is a real restriction
+  (7) T7(b): nothing pins r to q^-1/4. The product identity gives prod|res| = |1-c^2| prod|z_trivial|, so under RH(Y) with R resonances r^R is fixed by the TRIVIAL spectrum and c alone; r = q^-1/4 for all R would need |1-c^2| prod|z_t| = q^-R/4, a condition the arithmetic (extra trivial modes at deeper levels) must supply.

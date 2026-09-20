@@ -2,6 +2,47 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-20: a finite graph with a cusp (shards 04i, 04j); the arithmetic target is now concrete
+
+TJO restated the theme (RH as a Lindblad process, zeros as Connes's absorption spectrum, ring norm a
+supertrace, RH the Ramanujan property of a continuous quantum expander) and asked for the simplest
+example of "cusp exit plus rebound" closer to zeta. Full protocol round on a finite core with a ray
+attached with the tree-quotient weights (`notes/cusp-graph/`: brief, `astra-proofs.md` 34-row ledger,
+blind numerics `scripts/cusp_graph.py` 569 checks, `sources.md`, `childs-lead.md`, `physics-picture.md`
+and the interactive `physics-picture.html`, review `notes/reviews/cusp-graph-2026-09-20.md`:
+21 VALID, 3 MINOR (T1b, T1c, T8), 0 INVALID, 2880 independent checks). Worklog 2026-09-20.
+
+**Decisive prior art.** Arends--Peterson--Weich, arXiv:2603.26443 (fetched, byte-cited): resonances on
+geometrically finite graphs of groups via a resonance matrix equal to the notebook's rank-one perturbed
+Bass determinant `p(z) = det((1+z^2) - z T_X - c^2 P_0)`; two elliptic-curve tree quotients
+(`y^2 + y = x^3 + x + 1` over `F_2`, `y^2 = x^3 + x + 1` over `F_3`) whose resonance determinants contain the
+Hasse--Weil numerator at `T = z^2`, resonances on `|z| = q^{-1/4}` by Weil; the wave-equation /
+Lax--Phillips construction explicitly left to follow-up work. Childs--Strouse, arXiv:1103.5077: the
+reflection coefficient `R = -Q(1/z)/Q(z)` verbatim, half-bound (threshold) states, Levinson's count.
+Kaneko--Koyama, arXiv:2303.09327: the level-`A` constant term over `F_q[T]`; no source has the
+`Gamma_0(N)` scattering matrix as Dirichlet `L`-functions (H-ARITH, open).
+
+**Registered (04i, 04j).** `R = -p/ptilde` (sign corrected), `phi = 1/R`; poles in the disc = visible bound
+states, zeros = resonances, cusp forms and threshold roots cancel, count `N = 2d - b - n_th`; the pure cusp
+is the function-field zeta ratio with no resonances; the discrete wave group with speed one, the `3/32`
+obstruction to projecting radiation data after deleting bound states and its repair
+`D_+ = O_+ cap O_-^perp`, giving a one-exit contraction with `dim K = N`, spectrum the resonances,
+characteristic function the pole-removed inner part `eta R B_bd`, Gram identity
+`<k_n,k_m>(1 - conj z_n z_m) = conj(a_n) a_m`; the discrete renewal channel (CPTP, finite mean, unique
+stationary density, attraction iff aperiodic, equal moduli iff mode-diagonal stationarity, mean
+`1/(1-r^2)`, flags, odd modes protected); RAM and RH independent; product of roots `= 1 - c^2`, so a
+full-weight cusp on a Perron-only core has NO resonances and the radius is never universally `q^{-1/4}`;
+the cusp sees only the Krylov space of the attachment vertex. A graph bound state is not an even vacuum:
+the even exit is still missing.
+
+**Next on this lead (in order).** (i) Build the Arends--Peterson--Weich elliptic-curve diagram over `F_2`
+(stabiliser data from Serre II.2.4.4 / Takahashi Thm 5; their figure is a PNG, read it with the vision
+skill or recompute), confirm the resonance determinant, construct the `h`-exit contraction and run the
+renewal channel with an arithmetic rebound (Hecke-invariant, or the function-field Bost--Connes state):
+does the arithmetic pick the rebound? (ii) H-ARITH for `Gamma_0(N)` over `F_q[T]` (Li 1979, Kaneko--
+Koyama; `deg N >= 2` needed for `L`-zeros). (iii) The even exit: what leaks from the constant mode on an
+arithmetic diagram with more than one cusp.
+
 ## Session 2026-09-19: decay-mode/cMPS review, stopped and saved
 
 User requested a multi-agent repository review, continuous local writes and RH

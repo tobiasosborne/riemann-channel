@@ -151,3 +151,13 @@ prov:dfg14-horocyclic	1403.0256	RuelleResonForHn.tex	543-544	[X,U_\pm]=\pm U_\pm
 prov:dfg14-pushforward	1403.0256	RuelleResonForHn.tex	601-604	u\in\Res^0_X(\lambda)\mapsto  f(x):=\int_{S_x M} u(x,\xi)\,dS(\xi) \end{equation} is an isomorphism from $\Res^0_X(\lambda)$ onto $\Eig(-\lambda(1+\lambda))$,	cit:dfg-first-band-pushforward
 prov:bls18-selberg-level	1803.06016	main.tex	121-122	The Selberg eigenvalue conjecture is true for $\Gamma_1(N)$ for $N\leq 880$, and for $\Gamma(N)$ for $N\leq 226$.	cit:bls-selberg-level-one
 prov:cs25-corcar	2511.23257	Araki-final-oct25.tex	752	if $T \in M_n(\mathbb{C})$ is a Hermitian, positive semidefinite Toeplitz matrix of rank $n - 1$, and $\xi \in \ker T$, then the polynomial $P(z) = \sum \xi_j z^j$ has all its zeros on the unit circle.	cit:cf-kernel-circle
+prov:apw-abstract	2603.26443	final_draft.tex	50	In contrast to the hyperbolic surfaces setting, geometrically finite graphs have only finitely many resonances, and these resonances may be computed explicitly	cit:apw-resonances
+prov:apw-lax-phillips	2603.26443	final_draft.tex	138	In follow-up work, we plan to connect the theory of resonances on geometrically finite graphs developed in this paper with the wave equation on regular trees and graphs	cit:apw-lax-phillips-open
+prov:apw-elliptic-f2	2603.26443	final_draft.tex	2008	(\mu^2 + 1)^2 (\mu^2 - 2) (2 \mu^4 - 2 \mu^2 + 1).	cit:apw-elliptic-curves
+prov:apw-elliptic-f3	2603.26443	final_draft.tex	2056	(\mu^2 + 1)^2 (\mu - 1)^2 (\mu + 1)^2 (\mu^2 - 3) (3 \mu^4 + 1).	cit:apw-elliptic-curves
+prov:apw-weil-circle	2603.26443	final_draft.tex	2092	Resonances on the circle of radius $\frac{1}{q^{\frac{1}{4}}}$ corresponding to square roots of zeros of the Hasse-Weil zeta function of $C$.	cit:apw-weil-circle
+prov:childs-reflection	1103.5077	main.tex	192-197	R(z) \defeq - \frac{Q(z^{-1})}{Q(z)}	cit:childs-strouse-reflection
+prov:childs-q	1103.5077	main.tex	196	Q(z) &\defeq 1 - z(a + C(z))	cit:childs-strouse-reflection
+prov:childs-levinson	1103.5077	main.tex	275-278	w_\Gamma(R) = 2 (m - n_b - n_c - \smfrac{1}{2}n_h).	cit:childs-strouse-levinson
+prov:childs-half-bound	1103.5077	main.tex	232	Using the terminology of Ref.~\cite{HKS91}, we refer to such states as \emph{half-bound states}.	cit:childs-strouse-levinson
+prov:kk-level-constant	2303.09327	main.tex	390	\frac{q^{a(1-2s)}}{1-q^{-2as}} \frac{\zeta_{\F_{q}[T]}(2s-1)}{\zeta_{\F_{q}[T]}(2s)}	cit:kk-level-constant-term

@@ -1,0 +1,181 @@
+% SHARD-ID: RC-04J-CUSP-GRAPH-RENEWAL
+% SHARD-TITLE: The Phantasm V: a Finite Graph with a Cusp II. The Renewal Channel in Discrete Time, Ramanujan versus RH for a Diagram, and What the Arithmetic Must Supply
+% SHARD-SUMMARY: The rebound round of shard 04h transcribes verbatim to the one-exit contraction of a diagram: the renewal channel is CPTP with explicit Kraus operators, its holding law is proper with finite mean, the stationary density is unique unconditionally and attracting iff aperiodic (a nonreal-resonance periodic counterexample exists), mode-diagonal rebounds are stationary for every weight iff all resonances share one modulus, with mean holding time 1/(1-r^2), admissible densities are those with positive loss, invariant flags realise every finite spectrum, and odd coherences are protected; a graph bound state cannot serve as the even vacuum.
+% SHARD-SUMMARY: Ramanujan (all nontrivial l^2 eigenvalues in the band) and RH (all resonances on one circle) are independent already for one- and two-vertex cores; the product of all roots of p is exactly 1 - c^2, so the common radius is fixed by the coupling and the visible bound states, never universally q^{-1/4}, and a cusp of full weight q+1 on a core whose only bound states are the Perron pair has no resonances at all; a scaled self-reciprocity test is necessary and, with a Cayley real-root test, sufficient; the cusp sees only the Krylov space of the attachment vertex. The arithmetic round must supply the L-function identification of the scattering matrix (H-ARITH); the elliptic-curve quotients of Arends--Peterson--Weich are the concrete target.
+% SHARD-KEYWORDS: renewal channel, discrete time, Kraus operators, holding time, aperiodic, stationary density, Gram spectrum, admissible density, invariant flag, odd modes, vacuum, Ramanujan diagram, RH for a diagram, product identity, self-reciprocal, Cayley transform, Krylov space, H-ARITH, Dirichlet L-function over F_q[T], elliptic curve
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/cusp_graph.py
+
+\section{The Phantasm V: a Finite Graph with a Cusp II. The Renewal Channel, Ramanujan versus RH, and the Arithmetic Round}
+\label{sec:cusp-graph-renewal}
+
+Same lanes and files as \cref{sec:cusp-graph-scattering}. Throughout, $C$ is the no-event contraction of
+\cref{thm:cusp-wave-contraction} on the model space $K$ of dimension $N$, $I-C^{*}C = jj^{*}$, $C^m\to0$;
+H-CONTRACTION means only this, so everything in this section holds for every finite stable contraction with
+a rank-one defect.
+
+\subsection{The renewal channel in discrete time}
+
+\begin{definition}[Renewal channel of a diagram]
+\label{def:cusp-renewal-channel}
+For a density $\reb$ on $K$, $\mathcal E_{\reb}(\rdens) = C\rdens C^{*} + \langle j|\rdens|j\rangle\,\reb$;
+its \emph{holding law} is $m_{\reb}(m) = \langle j|C^{m-1}\reb\,C^{*(m-1)}|j\rangle$, $m\ge1$, with generating
+function $\hat m_{\reb}(u) = \sum_m m_{\reb}(m)u^m$ and mean $\bar t_{\reb}$. The \emph{graded channel} is the
+same map on $\mathbb C\,\mathrm{vac}\oplus K$ with $\mathrm{vac}$ even and $K$ odd. A density $\rdens$ is
+\emph{admissible} if it is stationary for some $\mathcal E_{\reb}$; its \emph{loss} is
+$Q_{\rdens} = \rdens - C\rdens C^{*}$.
+\end{definition}
+
+\begin{theorem}[Renewal channel: CPTP, holding law, stationary density, secular equation]
+\label{thm:cusp-renewal-discrete}
+\claimstatus{thm:cusp-renewal-discrete}{proved}
+(a) $\mathcal E_{\reb}$ is CPTP with Kraus operators $C$ and $\sqrt{p_i}\,|\omega_i\rangle\langle j|$ for
+$\reb = \sum_ip_i|\omega_i\rangle\langle\omega_i|$. (b) $m_{\reb}$ is a probability law with mean
+$\bar t_{\reb} = \sum_{m\ge0}\mathrm{Tr}(C^m\reb\,C^{*m})<\infty$: in finite dimension the infinite-mean
+phenomenon of \cref{prop:infinite-mean-rebound} cannot occur. (c) $\rdens_\infty = \bar t_{\reb}^{-1}\sum_{m\ge0}C^m\reb\,C^{*m}$
+is stationary; it is the \emph{unique} stationary density unconditionally, and it attracts every density iff
+the holding law is aperiodic; the peripheral eigenvalues of $\mathcal E_{\reb}$ are exactly the $d$-th roots
+of unity, $d = \gcd\{m: m_{\reb}(m)>0\}$, each simple. Aperiodicity holds iff $0$ is not a resonance, i.e.
+$c\ne1$, whenever the range of $\reb$ contains an eigenvector of $C$; it can fail with nonreal resonances:
+$C = \big(\begin{smallmatrix}0&1\\-r^2&0\end{smallmatrix}\big)$, eigenvalues $\pm ir$,
+$\reb = |e_2\rangle\langle e_2|$ has $m$ supported on even times and $\mathcal E_{\reb}$ has the eigenvalue $-1$.
+(d) $\rdens_\infty$ is pure iff $\reb$ is a pure state on an eigenvector of $C$, and then $\rdens_\infty = \reb$.
+(e) $\det(1-u\,\mathcal E_{\reb}) = \det(1-u\,\mathcal E_0)\,(1-\hat m_{\reb}(u))$ with
+$\mathcal E_0(\rdens) = C\rdens C^{*}$; a simple product eigenvalue $z_a\bar z_b$ persists iff the residue
+criterion of \cref{prop:rebound-persistence-secular} holds, with residues at collisions.
+\end{theorem}
+
+\begin{proposition}[Mode-diagonal rebounds: the common-modulus criterion and the Gram spectrum]
+\label{prop:cusp-modal-rh}
+\claimstatus{prop:cusp-modal-rh}{proved}
+Under H-SIMPLE, for $\reb = \sum_ip_i|e_i\rangle\langle e_i|$ on normalised eigenvectors,
+$\bar t_{\reb} = \sum_ip_i/(1-|z_i|^2)$ and $\rdens_\infty = \bar t_{\reb}^{-1}\sum_ip_i(1-|z_i|^2)^{-1}|e_i\rangle\langle e_i|$;
+$\rdens_\infty = \reb$ for every probability vector on a family of distinct resonances iff all $|z_i|$ in the
+family coincide (the discrete \cref{prop:mode-diagonal-rebound-rh}). Under $\mathrm{RH}(Y)$ with radius $r$,
+$\bar t_{\reb} = (1-r^2)^{-1}$ independent of the weights ($(1-q^{-1/2})^{-1}$ at $r = q^{-1/4}$; the continuous
+$\bar t = 2$ of \cref{prop:mode-diagonal-rebound-rh} is a different time convention, not the same number). The
+spectrum of $\rdens_\infty$ is the Gram spectrum $\mathrm{spec}(O^{1/2}\mathrm{diag}(w)O^{1/2})$,
+$O_{ij} = \langle e_i,e_j\rangle$, not the weight list.
+\end{proposition}
+
+\begin{theorem}[Admissible densities and invariant flags]
+\label{thm:cusp-admissible-flags}
+\claimstatus{thm:cusp-admissible-flags}{proved}
+$\rdens$ is admissible iff $Q_{\rdens}\ge0$; then $\reb = Q_{\rdens}/\mathrm{Tr}\,Q_{\rdens}$ is unique and
+$\mathrm{Tr}\,Q_{\rdens} = \langle j|\rdens|j\rangle$. For any $C$-invariant flag $V_1\subset\dots\subset V_N$
+with projections $P_k$, $Q_k = P_k - CP_kC^{*}\ge0$, and $\rdens = \sum_k(p_k-p_{k+1})P_k$ is admissible with
+the prescribed spectrum $p_1\ge\dots\ge p_N$ (the discrete \cref{thm:flag-spectrum-attainable}); this uses
+only H-CONTRACTION with arbitrary defect rank, nothing about the graph. Under H-SIMPLE the condition reads,
+in the resonance basis with Gram matrix $G$, $\big(\rdens_{nm}(1-\bar z_nz_m)\big)\circ G^{-1}$-conjugated
+Schur form as in \cref{thm:rebound-admissibility}.
+\end{theorem}
+
+\begin{proposition}[Odd modes are protected]
+\label{prop:cusp-odd-protected}
+\claimstatus{prop:cusp-odd-protected}{proved}
+On $\mathbb C\,\mathrm{vac}\oplus K$, for every rebound density on the graded space, the odd operators
+$|k_i\rangle\langle\mathrm{vac}|$ and $|\mathrm{vac}\rangle\langle k_i|$ are eigen-operators of the graded
+renewal channel with eigenvalues $z_i$ and $\bar z_i$, because the exit functional vanishes on odd operators;
+odd inputs stay autonomous for any rebound (the discrete \cref{prop:odd-modes-protected}).
+\end{proposition}
+
+\begin{observation}[A graph bound state is not a stationary even vacuum]
+\label{obs:cusp-no-graph-vacuum}
+\claimstatus{obs:cusp-no-graph-vacuum}{sketched}
+The visible bound states of the diagram, the discrete analogue of the constant function of the modular
+surface and of the pole at $s = 1$, have wave eigen-data with time multipliers $\vartheta^{\pm1}\ne1$ on an
+$E$-indefinite block with no positive $W$-invariant form; declaring one stationary changes the dynamics.
+With the $1\oplus C$ construction the vacuum is always stationary and never leaks, so a unique mixed
+graded stationary state still needs an even exit, exactly as in \cref{prop:graded-stationary-segment};
+the graph does not supply it.
+\end{observation}
+
+\subsection{Ramanujan versus RH for a diagram}
+
+\begin{proposition}[RAM and RH are independent]
+\label{prop:cusp-ram-rh-independent}
+\claimstatus{prop:cusp-ram-rh-independent}{proved}
+For the one-vertex core $T_X = [a]$, $p = z^2-az+1-c^2$. With $a = 29/20$, $c^2 = 1/2$ both roots
+$(29\pm\sqrt{41})/40$ are resonances of unequal modulus, no bound states: RAM holds, RH fails. The connected
+nonnegative two-vertex core $T_X = \big(\begin{smallmatrix}2/5&\sqrt{51}/5\\ \sqrt{51}/5&1/10\end{smallmatrix}\big)$,
+$c^2 = 5/2$, has $p = (z^2+\tfrac12)(z-2)(z+\tfrac32)$: resonances $\pm i/\sqrt2$ (RH), visible bound
+eigenvalues $5/2$ (Perron) and $-13/6$ outside the band and not an exempt twin (RAM fails). A one-vertex core
+can never fail both (numerics D19); all four combinations occur nonvacuously among random two- and
+three-vertex cores. Non-real resonances for $n = 1$ need $c^2<1$, so with the arithmetic $c^2 = q+1$ a
+one-vertex core has only real resonances (numerics D18). Regular cores with $q = 2$, $c^2 = 3$: $K_4$ has
+resonances $0.442513\pm0.608338i$, RH holds; the $3$-cube and the Petersen graph fail RH (moduli
+$0.882647, 0.900780$ and $0.828751, 0.900342$); none hits $q^{-1/4} = 0.840896$.
+\end{proposition}
+
+\begin{proposition}[The product identity fixes the radius]
+\label{prop:cusp-radius-product}
+\claimstatus{prop:cusp-radius-product}{proved}
+The product of all $2n$ roots of the monic $p$ is exactly $1-c^2$, and after removing cusp, exterior and
+threshold roots $\prod_iz_i = (1-c^2)\prod_\vartheta\vartheta/\prod_{\epsilon}\epsilon$. Under $\mathrm{RH}(Y)$ with
+$N>0$ and $c\ne1$, $r^N = |1-c^2|\prod_\vartheta|\vartheta|$: the radius is determined by the coupling and the
+visible bound states, never universally $q^{-1/4}$. Consequence: with $c^2 = q+1$ and the Perron pair
+$\pm q^{-1/2}$ as the only visible bound states, $\prod|z_i| = 1$, so there are no resonances; any
+arithmetic quotient with resonances must have $L^2$ spectrum outside the band beyond the Perron pair, or
+more than one cusp, or a smaller junction weight.
+\end{proposition}
+
+\begin{proposition}[Checkable criteria for RH of a diagram]
+\label{prop:cusp-rh-criterion}
+\claimstatus{prop:cusp-rh-criterion}{proved}
+Let $Q(z) = \prod_i(z-z_i)$ be the reduced resonance polynomial with $Q(0)\ne0$, $r = |Q(0)|^{1/N}$,
+$F(w) = r^{-N}Q(rw)$. Necessary: $F(w) = F(0)w^N\overline{F(1/\bar w)}$ with $|F(0)| = 1$ (scaled
+self-reciprocity). It is not sufficient ($(w-2)(w-\tfrac12)$). Necessary and sufficient: self-reciprocity
+plus real-rootedness of the Cayley transform $H(x) = \kappa(x+i)^NF((x-i)/(x+i))$; under H-SIMPLE,
+equivalently a positive $H$ with $M_Q^{*}HM_Q = r^2H$ for the companion matrix. The smallest core with a
+non-real resonance pair is $n = 1$ with $c^2<1$ and $a^2<4(1-c^2)$, modulus $\sqrt{1-c^2}$, RH automatic.
+\end{proposition}
+
+\begin{observation}[The cusp sees only the Krylov space]
+\label{obs:cusp-krylov-factorisation}
+\claimstatus{obs:cusp-krylov-factorisation}{sketched}
+$p = p_{\mathrm{red}}\prod_{\mathrm{cusp}}(z^2-\lambda z+1)$ with $\deg p_{\mathrm{red}} = 2\dim\mathrm{Kry}(T_X,v_0)$;
+resonances and visible bound states are properties of the Krylov compression $(T_X|_{\mathrm{Kry}},v_0,c)$
+alone, and after the reduction $p_{\mathrm{red}},\tilde p_{\mathrm{red}}$ share only the threshold roots.
+This is what makes the Petersen core (cusp-form multiplicity $7$) tractable. Numerics lane; consistent
+with the $X_b$ decomposition of \cref{prop:cusp-visible-spectrum}.
+\end{observation}
+
+\begin{numerical}[Blind numerics on the diagram]
+\label{num:cusp-graph}
+\claimstatus{num:cusp-graph}{numerical}
+\texttt{scripts/cusp\_graph.py}, $569$ checks, $10$ s, seed $20260920$: $R$ from a direct ray solve at
+$L = 40$ and $200$ (dev $10^{-13}$), the sign $R = -p/\tilde p$, unimodularity and the functional equation;
+the junction measure $m_n = (q+1)q^{-n}$ and $c^2 = q+1$; classification of roots on $19$ cores (one-vertex
+loop scans, random $3$--$5$ vertex cores, $K_4$, $3$-cube, Petersen, a core with a cusp form at $\lambda = 3$,
+a band-edge core), the count $2(n-m_c)-t_{nc}-n_{\mathrm{th}}$, the product identity to $10^{-8}$; the pure cusp at
+$q = 2,3,5,7$ and $\phi = 1/R$ to $10^{-15}$; the energy signature $(1-\lambda/2,1+\lambda/2)$, $E$-null
+bound-state data ($3\cdot10^{-16}$), the $L^2$ deficit $\dim K_c = \#\mathrm{res}-t_{nc}+n_{\mathrm{th}}-2$ at two
+ray cuts; $Z$ from the functional model, rank-one defect ($10^{-13}$), Gram identity ($10^{-14}$); renewal
+channel on four models: CPTP, holding law to one, $\rdens_\infty$ by two routes, determinant identity, modal
+mean holding times, admissibility and flags, odd-mode protection; the periodic $c = 1$ example; RAM/RH tables over
+$90$ one-vertex and $1200$ random cores; the self-reciprocity test on $15$ cores.
+\end{numerical}
+
+\subsection{What the arithmetic round must supply}
+
+\begin{observation}[H-ARITH and the target]
+\label{obs:cusp-arith-next}
+\claimstatus{obs:cusp-arith-next}{sketched}
+Generic for every finite core and every number $h$ of cusps, after the matrix generalisation: the
+self-adjoint scattering with Schur self-energies, rational reflection, the separation of invisible modes and
+thresholds, energy conservation and the positive wave space, the renewal channel and flags (with $h$
+distinct rebounds the scalar renewal law is replaced by a matrix one). Already published, not open (reviewer finding 3): the $h\times h$ scattering matrix and the matrix
+Levinson count \cite{childs2012levinson}, and the curve-direction resonance divisor with its $q^{-1/4}$
+circle (\cref{cit:apw-weil-circle}). Not supplied, hypothesis H-ARITH:
+for $\Gamma_0(N)<\mathrm{GL}_2(\mathbb F_q[T])$ the identification of the $h\times h$ scattering matrix
+with Dirichlet $L$-functions over $\mathbb F_q[T]$ (\cref{cit:kk-level-constant-term} gives the level-$A$
+constant term at one cusp only), the resonances as $L$-zeros at $|z| = q^{-1/4}$, the diamond action as
+the level-$N$ grading, and a cusp comb over monic irreducibles. The concrete alternative target is the
+curve version already computed in \cref{cit:apw-elliptic-curves}: the $\mathrm{PGL}_2(R)$ quotient of the
+affine elliptic curve $y^2+y = x^3+x+1$ over $\mathbb F_2$, whose resonances are the square roots of the
+Hasse--Weil zeros on $|z| = 2^{-1/4}$ with the Perron pair $\pm\sqrt2^{\,\pm1}$ and cusp forms at $\pm i$;
+by \cref{prop:cusp-radius-product} its junction data cannot be a single full-weight cusp on a core with
+only the Perron pair. Running the renewal channel of \cref{thm:cusp-renewal-discrete} on that diagram,
+with the rebound chosen from the arithmetic (Hecke-invariant or Bost--Connes-type over the function
+field), is the next round.
+\end{observation}
