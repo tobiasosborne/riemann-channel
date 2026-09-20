@@ -515,3 +515,93 @@ the Perron radius, which is exactly the kind of thing that would break "the disc
 correction of an earlier target and it rests on two books that are not in the repository. Until they
 are, the `Γ_0(N)`-versus-`Γ_1(N)` dichotomy is a well-argued belief, not a cited fact — and
 `conj:galois-graded-bond` is about to be rewritten on the strength of it.
+
+## Re-verdicts after the corrections
+
+I re-read the seven environments in `04n`/`04o`, the paragraphs G1(d), G2(c), G2(e) with its
+Remark (1), G4(c′), G4(d)(vi), G5(a) and G5(c),(d) of `proofs.md`, and the three numerical
+environments. All seven corrected statements now say exactly what my scripts verify, and the three
+bookkeeping errors are gone. I added 80 further checks to `scratch_gt_net.py` for the one genuinely
+new assertion in the corrected text — "the rank-one perturbation removes **at most** one copy, the
+drop being decided by the sum of the residues" — and they pass: on 40 random rank-one perturbations
+of `Ad(Z)` with `Z = diag(0.6, 0.5e^{0.7i}, 0.75, 0.4e^{0.7i})` no eigenvalue multiplicity ever
+drops by more than one, and at the degenerate value `z_1\bar z_2 = z_3\bar z_4` the drop occurs
+**iff** the two-term residue sum is nonzero. Script totals are now 128 / 154 / **489** / 185 / 679,
+**1635 checks, 0 failures**.
+
+**VERDICT thm:diagram-linearisation: VALID.** Part (d) now reads "For `C = 0` and
+`T_X = \Aadj_X/\sqrt{\qs}` **with `\Aadj_X` the adjacency matrix of a `(\qs+1)`-regular graph**",
+which is exactly the hypothesis my three non-regular counterexamples show is needed; the
+determinant identity `det(1-zM_0) = det(I-uA_X+qu^2)` that the closing sentence still transfers to
+the irregular D2/D3 cores is a pure substitution and is true without it, so that sentence remains
+correct. `proofs.md` G1(d) already carried the hypothesis and is unchanged.
+
+**VERDICT prop:cavity-superdeterminant: VALID.** The two offending clauses are replaced by exactly
+the statement I verified: "The parity of a line is its cohomological degree mod 2 on the untwisted
+copy and the degree plus one on the Tate-twisted copy; flipping the untwisted copy instead inverts
+the ratio, so the operator `E_S` involves the choice of which copy is flipped, but the graded
+divisor, read off the rational function, does not." That matches my symbolic computation
+(`sdet(1-wE_S')·sdet(1-wE_S) = 1` identically) term for term, and `proofs.md` G2(c) and its proof
+now carry the same sentence and the one-line reason.
+
+**VERDICT prop:genus-prefactor-forced: VALID.** All three defects are repaired: the hypotheses now
+read "one junction of coupling `c = 1`, **no loop at the junction and invertible Schur bracket (so
+`ord_0 p = 2`)**" and "the `4g` numbers … as its **nonzero** resonances", and the instance sentence
+now reads "For D2 (`g = 1`, `s_D = 1`) this is `thm:d2-zeta`; **D3 has four cusps and lies outside
+the hypothesis (its even channel has `s_D = -1` and the sign of `thm:d3-channels` comes from
+`(-1)^h`)**" — precisely the three numbers I computed (`D = z^4-1`, `s_D = -1`, `[z^2]p_e = +1`,
+`h = 2`). With `ord_0 p = 2` now an explicit hypothesis, the root at `0` is accounted for and D2
+satisfies the list: its remaining roots beyond the four nonzero resonances, the exterior pair and
+the double root at `0` are `±i` twice each, on the unit circle. (Reading point, not a defect: "every
+other root of `p` on the unit circle" must be read as "every root other than those already
+accounted for", which the explicit `ord_0 p = 2` makes unambiguous.) Remark (1) of `proofs.md`
+matches.
+
+**VERDICT lem:funnel-first-order: VALID.** The hypothesis is now stated: "For a bipartite core
+(`\varepsilon T_X\varepsilon = -T_X`), since `P_v` is real and diagonal **and commutes with
+`\varepsilon`**, the roots of `p_f` stay closed under `z\mapsto-z` and `z\mapsto\bar z`", which is
+what my triangle-core counterexample forces and what the rest of the lemma needs. `proofs.md`
+G4(c′) carries the same insertion ("for a bipartite core it commutes with the bipartite sign `eps`").
+All the quantitative content I reproduced — the exact cofactor identity, the six derivative values,
+the `f = 1/5` radii, the split points — is untouched and still matches.
+
+**VERDICT prop:shared-exit-tradeoff: VALID.** The sentence now splits the two cases exactly as my
+counterexample requires: "if the value `z_n\bar z_m` is simple in `\Ad(Z)` it persists iff
+`⟨l_n|\reb|l_m⟩ = 0` …, and when it is degenerate, as on a real core where the conjugate modes carry
+the same value, the rank-one perturbation removes **at most one copy**, the drop being decided by
+the **sum** of the residues over the degenerate eigen-operators, not by each separately." Both new
+clauses are now verified: the "at most one" bound holds in 40 random rank-one perturbations, and
+the sum criterion is an exact `iff` in every one of them. `proofs.md` G4(d)(vi) carries the same
+correction and now ends "The persistence criterion of `prop:rebound-persistence-secular` applies
+verbatim only when the value is simple", which is the right scope note.
+
+**VERDICT thm:frobenius-channel-expander: VALID.** `U^2\simeq(\Frob|_{H^1}/\sqrt{\qs})\otimes1_2`
+is now dimensionally right (`4 = 4`) and is exactly the multiset I computed,
+`{α_+/\sqrt q, α_+/\sqrt q, α_-/\sqrt q, α_-/\sqrt q}` to `1e-12`; `proofs.md` G5(a) matches.
+Everything else in the theorem was already verified and is unchanged, including the point the brief
+got wrong, that it is the characteristic function of `Z'` and not of `Z'^*` that is
+`\operatorname{diag}(b_{z_a})`.
+
+**VERDICT prop:no-selfadjoint-one-mode-exits: VALID.** Both defects are repaired, and in the
+weaker direction I asked for: "any constant-basis splitting of the quartet is into
+conjugation-closed sets, hence **at most into two pairs (whether a connected core attains the
+two-pair splitting is not established)**", and "the symmetric arithmetic metric is, **up to scale**,
+the unique diagonal metric it fixes". The first is now exactly the obstruction I verified — a
+conjugation-closed subset of `{a,-a,\bar a,-\bar a}` has size `0, 2` or `4`, and the only size-two
+ones are `{a,\bar a}` and `{-a,-\bar a}` — with attainment correctly flagged as open; the second
+matches `thm:arithmetic-metric`'s "single ray". `proofs.md` G5(c) and G5(d) carry both.
+
+**Bookkeeping.** `num:graded-toys-network` now reads "the value `0` with multiplicity `20` resp.
+`18` in the even sector against `4` in the odd one (`\netmult(0) = 16`, …)" — the numbers I
+recomputed, correctly labelled; `num:funnel-on-d2` now cites ledger **D33–D37**; and
+`num:character-channels` now cites **D47–D51** for the characters and **D38–D46** for the glued toy
+and the Frobenius channel. All three are right.
+
+**Tally after the corrections: 15 VALID, 0 MINOR, 0 INVALID.**
+
+Nothing above this section is changed. What remains open is unchanged and is listed in "What a
+further reviewer should attack next": in particular H-LP (now inherited through five shards),
+`asm:h-arith-gamma1` and its completed-versus-incomplete branch, the genus-two hypothesis (where
+`s_D` is the untested quantity), attainment of the two-pair exit splitting, and getting Huxley,
+Hejhal and Rosen into `refs/src/` so that `obs:level-tower-correction` and
+`prop:character-channel-graded-bond` can be byte-cited.

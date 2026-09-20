@@ -8,7 +8,7 @@ TJO asked for the four next steps below to be worked through and for a graded te
 toys. One construction does both: a graded transfer channel whose bond is the model space of a diagram
 (`notes/graded-toys/`: brief G1--G7, `proofs.md` by Fable with a 15-row correction ledger, blind Opus numerics
 `scripts/graded_toys.py` 512 checks / 498 pass with the 14 failures corrections of the brief, Opus REFUTE review
-`notes/reviews/graded-toys-2026-09-20.md`: REVIEW-COUNTS). Container setup: TeX Live, FLINT 3.0.1 (`ihz`, `zst`
+`notes/reviews/graded-toys-2026-09-20.md`: 8 VALID / 7 MINOR / 0 INVALID before the fixes, 15 VALID / 0 MINOR / 0 INVALID after, 1635 independent checks in five scratch scripts). Container setup: TeX Live, FLINT 3.0.1 (`ihz`, `zst`
 build and pass), scipy, all 142 arXiv sources and the Sørensen text (byte-exact via pdftotext) re-fetched; the
 gate is green from a fresh clone. Worklog 2026-09-20, night.
 

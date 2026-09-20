@@ -709,4 +709,38 @@ for m in supp:
 check('glued instance: holding law aperiodic (gcd of its support is 1)', g_ == 1, str((g_, supp[:6])))
 check('glued instance: tbar finite', tbar < 1e6 and tbar > 0, str(tbar))
 
+# ---- the corrected wording: a rank-one perturbation removes AT MOST one copy,
+# and the drop is decided by the SUM of the residues over the degenerate eigen-operators.
+rng2 = np.random.default_rng(31415)
+for t in range(40):
+    d = 4
+    zs = np.array([0.6, 0.5 * np.exp(1j * 0.7), 0.75, 0.4 * np.exp(1j * 0.7)])
+    Zt = np.diag(zs)
+    Ad0 = np.kron(Zt, Zt.conj())
+    fv2 = rng2.normal(size=4) + 1j * rng2.normal(size=4)
+    Xo = rng2.normal(size=(4, 4)) + 1j * rng2.normal(size=(4, 4))
+    Omt = Xo @ Xo.conj().T
+    Omt /= np.trace(Omt).real
+    Mt = Ad0.astype(complex).copy()
+    for i in range(4):
+        for jj in range(4):
+            E = np.zeros((4, 4), dtype=complex); E[i, jj] = 1
+            Mt[:, 4 * i + jj] += (fv2.conj() @ E @ fv2) * Omt.reshape(-1)
+    ev0 = np.linalg.eigvals(Ad0)
+    ev1 = np.linalg.eigvals(Mt)
+    worst_drop = 0
+    for lam0 in set(np.round(ev0, 9)):
+        m0 = int(np.sum(np.abs(ev0 - lam0) < 1e-7))
+        m1 = int(np.sum(np.abs(ev1 - lam0) < 1e-7))
+        worst_drop = max(worst_drop, m0 - m1)
+    check('rank-one perturbation %d: no eigenvalue multiplicity drops by more than one' % t,
+          worst_drop <= 1, str(worst_drop))
+    # and the sum criterion at the degenerate value
+    lam = zs[0] * np.conj(zs[1])
+    s_res = (np.conj(fv2[0]) * fv2[1] * Omt[0, 1] + np.conj(fv2[2]) * fv2[3] * Omt[2, 3])
+    m0 = int(np.sum(np.abs(ev0 - lam) < 1e-7))
+    m1 = int(np.sum(np.abs(ev1 - lam) < 1e-7))
+    check('rank-one perturbation %d: drop at the degenerate value = [sum of residues != 0]' % t,
+          (m0 - m1 == 1) == (abs(s_res) > 1e-9), '%d->%d sum=%s' % (m0, m1, s_res))
+
 print("\nscratch_gt_net: %d passed, %d failed" % (PASS[0], len(FAIL)))
