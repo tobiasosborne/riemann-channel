@@ -1,0 +1,155 @@
+% SHARD-ID: RC-04N-GRADED-TOYS-NETWORK
+% SHARD-TITLE: The Phantasm VII: a Graded Tensor Network for the Cusp Toys I. The Diagram's Transfer Matrix, the Scattering Matrix as a Superdeterminant of Frobenius, and the Graded MPS of the Renewal Channel
+% SHARD-SUMMARY: The resonance polynomial and its reversal are the characteristic polynomial and the reversed characteristic polynomial of one real matrix on the doubled core, the core's non-backtracking operator plus a rank-h junction correction; the reflection coefficient is the ratio of the two, so the resonances enter its traces with a plus sign and the grading is not visible on the core.
+% SHARD-SUMMARY: For every curve the ratio zeta_K(2s-1)/zeta_K(2s) is the superdeterminant of Fr (+) Pi Fr(-1), Frobenius direct sum its parity-flipped Tate twist, whose disc part is exactly the pole (even, eigenvalue 1) and the zeros (odd, the Frobenius eigenvalues on H^1); on the elliptic cavities this is 1/R up to the delay prefactor, so the notebook's grading is the cohomological degree; at genus g the H-EIS prefactor is forced to q^{1-g} z^{-2}, up to a threshold sign.
+% SHARD-SUMMARY: The renewal channel of any h-exit contraction is the transfer channel of a normalised MPS on the bond C vac (+) K with all letters even; its odd sector carries the resonances exactly, the difference of the twisted and untwisted ring norms is four times the real part of the resonance power sums, and for D2 the twisted ring norm's odd part at length 2k is the odd half of the point count of the curve over F_{2^k}.
+% SHARD-KEYWORDS: linearisation, companion matrix, Hashimoto, Ihara-Bass, superdeterminant, Frobenius, Tate twist, parity flip, graded divisor, functional equation, genus, H-EIS, matrix product state, renewal channel, twisted ring norm, supertrace, point count, odd sector, graded Ramanujan
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/graded_toys.py
+
+\section{The Phantasm VII: a Graded Tensor Network for the Cusp Toys I. Transfer Matrix, Superdeterminant, Graded MPS}
+\label{sec:graded-toys-network}
+
+\emph{Question (TJO, 2026-09-20, night).} Work through the four next steps of
+\cref{obs:elliptic-cavity-next} and give a graded tensor-network realisation of the toys. This shard
+and the next answer through one construction: a graded transfer channel (\cref{def:graded-transfer-channel})
+whose bond is the model space of a diagram. Brief \texttt{notes/graded-toys/brief.md} (G1--G7), proofs
+\texttt{notes/graded-toys/proofs.md} (author \texttt{claude:fable-5.1}), blind numerics
+\texttt{notes/graded-toys/numerics.md} with \texttt{scripts/graded\_toys.py}, review
+\texttt{notes/reviews/graded-toys-2026-09-20.md}. Conventions: \cref{def:elliptic-cavity,def:h-exit-renewal-channel}
+(diagram, $p$, $\tilde p$, $\mathbf S$, model $K$, $Z$, $J$, fixed reset $\reb$) and
+\cref{def:cmps-transfer-generators,def:graded-transfer-channel} (bond grading $P$, sectors, $\str$, $\sdet$,
+graded divisor $\netmult$). Worklog 2026-09-20, night.
+
+\subsection{The diagram's own transfer matrix}
+
+\begin{theorem}[Linearisation: the resonance polynomial is a characteristic polynomial]
+\label{thm:diagram-linearisation}
+\claimstatus{thm:diagram-linearisation}{sketched}
+Let $M = \big(\begin{smallmatrix}T_X & -(I-C)\\ I & 0\end{smallmatrix}\big)$ on $\mathbb C^n\oplus\mathbb C^n$.
+(a) $\det(z-M) = p(z)$ and $\det(1-zM) = \tilde p(z)$; hence $\det\mathbf S = (-1)^h\det(z-M)/\det(1-zM)$ and, for
+$h = 1$, $R(z) = -\prod_{\edgeev\in\operatorname{spec}M}(z-\edgeev)/(1-z\edgeev)$ with algebraic multiplicities: each
+unimodular conjugate pair contributes $1$, each interior eigenvalue a zero of $R$ (a resonance), each exterior
+eigenvalue $1/\vartheta$ the bound-state pole at $\vartheta$. (b) $\Tr M^m = \sum_{p(\edgeev)=0}\edgeev^m$. (c) $\ker M =
+0\oplus\ker(I-C)$, and under the invertible Schur bracket of \cref{prop:multi-exit-spectrum}(iii) $M$ has
+$\dim\ker(I-C)$ Jordan blocks of size two at $0$: the delay sector seen on the core. (d) For $C = 0$ and
+$T_X = \Aadj_X/\sqrt{\qs}$, $\det(1-zM_0) = \det(I-\uz\Aadj_X+\qs\uz^2)$, $\uz = z/\sqrt{\qs}$, so by Bass's theorem
+(the scalar case of \cref{thm:qihara-general}) $\operatorname{spec}(\sqrt{\qs}M_0)\cup\{\pm1\}^{|E|-|V|} =
+\operatorname{spec}(\Hash)$; in general $M = M_0 + \big(\begin{smallmatrix}0&C\\0&0\end{smallmatrix}\big)$, the core's
+non-backtracking operator plus a rank-$h$ correction at the junctions, the bound sheet being $\det(1-zM)$ and
+the outgoing sheet $\det(z-M)$.
+\end{theorem}
+
+Block elimination for (a); Newton's identities for (b); the kernel and the Schur bracket for (c); the
+substitution for (d) (\texttt{proofs.md}, G1). $M$ is real, so the resonances enter $\Tr M^m$ with a plus
+sign: $R$ is the ratio of the characteristic polynomial to its reversal, not a superdeterminant of $M$. The
+grading of the resonances is a fact about the arithmetic side, next, and is imposed on the model side after.
+
+\subsection{The scattering matrix as a superdeterminant of Frobenius}
+
+Let $H = H^0_+\oplus H^1_-\oplus H^2_+$ be the graded Frobenius module of a curve of genus $g$ over $\Fq$,
+$\Frob$ with eigenvalues $1$; $\alphaw{1},\dots,\alphaw{2g}$; $\qs$, $P(T) = \prod_i(1-\alphaw{i}T)$, $\zeta_K(s) =
+1/\sdet(1-\qs^{-s}\Frob)$, and let $\Frob(-1) = \qs\Frob$ be the Tate twist on the same graded space and $\Pi$
+the parity flip.
+
+\begin{theorem}[The zeta ratio is a superdeterminant; its disc part is the pole even and the zeros odd]
+\label{thm:scattering-superdeterminant}
+\claimstatus{thm:scattering-superdeterminant}{sketched}
+With $E_S := \Frob\oplus\Pi\,\Frob(-1)$ on $H\oplus H$ and $w = \qs^{-2s}$,
+\[
+\frac{\zeta_K(2s-1)}{\zeta_K(2s)} = \sdet(1-wE_S) = \frac{(1-w)\,P(\qs w)}{(1-\qs^2w)\,P(w)} .
+\]
+The even eigenvalues of $E_S$ are $1,\qs,\qs\alphaw{i}$ and the odd ones $\alphaw{i},\qs,\qs^2$; the two lines
+with eigenvalue $\qs$ cancel. Under $z^2 = e/\qs$ the eigenvalues with $|e|<\qs$, whose images lie in the disc,
+are exactly $e = 1$ (even, $z = \pm\qs^{-1/2}$) and $e = \alphaw{i}$ (odd, $|z| = \qs^{-1/4}$): the disc part of
+the graded divisor is $\netmult(1) = +1$, $\netmult(\alphaw{i}) = -1$. Poincar\'e duality
+$\Frob\simeq\qs\Frob^{-1}$ gives $E_S\simeq\Pi(\qs^2E_S^{-1})$ and
+$\sdet(1-wE_S)\,\sdet(1-E_S/(\qs^2w)) = \qs^{2g-2}$, the functional equation.
+\end{theorem}
+
+\begin{proposition}[The elliptic cavities realise the disc part of $E_S$]
+\label{prop:cavity-superdeterminant}
+\claimstatus{prop:cavity-superdeterminant}{sketched-conditional}
+Under \cref{asm:h-diag}, for D2 (\cref{thm:d2-zeta}) and for the zeta channel of D3 (\cref{thm:d3-channels}),
+$1/R(z) = z^{-2}\sdet\big(1-E_S/(\qs z^2)\big)$: the visible bound states (the Perron pair) are the even disc
+eigenvalue $e = 1$ and the resonances are the odd disc eigenvalues $e = \alphaw{i}$, $z^2 = \alphaw{i}/\qs$. The
+parities are the cohomological degrees mod $2$, with the Tate-twisted copy flipped; no choice is made. The
+prefactor $z^{-2}$ is the delay sector, a cut artefact (\cref{prop:multi-exit-spectrum}(iii)).
+\end{proposition}
+
+This is the ``pole even, zeros odd'' grading of \cref{conj:phantasm-both-halves} and \cref{obs:character-sector-grading}
+supplied by the arithmetic of the toy rather than imposed: the zeros are odd because $H^1$ is odd.
+
+\begin{proposition}[Genus $g$, one cusp: the H-EIS prefactor and the first coefficient are forced]
+\label{prop:genus-prefactor-forced}
+\claimstatus{prop:genus-prefactor-forced}{sketched}
+Let a one-cusp diagram with one junction of coupling $c = 1$, cut at the junction, have the Perron pair as its
+only visible bound states, the $4g$ numbers $z^2\in\{\alphaw{i}/\qs\}$ as its resonances, all simple, and every
+other root of $p$ on the unit circle, with monic unimodular factor $D$ and $s_D = D(0) = (-1)^{m_{+1}}$
+($m_{+1}$ the multiplicity of the threshold root $z = 1$). Then
+\[
+\frac1{R(z)} = s_D\,z^{-2}\qs^{1-g}\,\frac{\zeta_K(2s-1)}{\zeta_K(2s)},\qquad [z^2]\,p = -s_D\,\qs^{1-g},
+\]
+and the alternative prefactor $\qs^{1-2gs} = z^{-2g}\qs^{1-g}$ of \cref{thm:d2-zeta} is excluded for $g\ge2$, since
+$\operatorname{ord}_0p = 2\dim\ker(I-C) = 2$ for every genus. For $g = 1$, $s_D = 1$, this is
+\cref{thm:d2-zeta,thm:d3-channels}; at $h = 1$ the formula $|[z^m]p| = \qs^{1-g-(h-1)(g-1)}$ of
+\cref{prop:nonzero-root-product} is the product identity under this hypothesis.
+\end{proposition}
+
+Item (ii) of \cref{obs:elliptic-cavity-next} is therefore not a test of a formula but of the hypothesis: a
+genus-two diagram with $[z^2]p\ne-\qs^{-1}$ has visible bound states beyond the Perron pair or resonances off
+the Weil circle. No genus-two quotient graph is in the repository; none is built here.
+
+\subsection{The graded MPS of the renewal channel}
+
+\begin{definition}[Graded renewal network of an $h$-exit contraction]
+\label{def:graded-renewal-network}
+For an $h$-exit contraction $(Z,J)$ on $K$ (\cref{def:h-exit-renewal-channel}) and a fixed reset
+$\reb = \sum_kp_k|\omega_k\rangle\langle\omega_k|$, the \emph{graded renewal network} is the matrix-product tensor
+on the bond $H = \mathbb C\,\vac\oplus K$ with grading $P = 1\oplus(-1)$ and letters
+\[
+A_0 = 1\oplus Z,\qquad A_{(a,k)} = \sqrt{p_k}\,|\omega_k\rangle\langle j_a|,\quad j_a = J^{*}e_a,\ a = 1,\dots,h ,
+\]
+with doubled transfer $\Edb = \sum_iA_i\otimes\bar A_i$, sector restrictions $\Esec{0}$, $\Esec{1}$, untwisted and
+twisted ring vectors $\mps{L} = \sum_i\Tr[A_{i_1}\cdots A_{i_L}]|i\rangle$ and $\mps{L}^P$ (with $P$ inserted). A
+letter of the form $|\omega\rangle\langle j|$ has parity $\epsilon(\omega)\epsilon(j)$; here every letter is even.
+\end{definition}
+
+\begin{theorem}[The renewal channel is the transfer channel of the network; the odd sector is the resonances]
+\label{thm:renewal-graded-mps}
+\claimstatus{thm:renewal-graded-mps}{sketched}
+(a) $\sum_iA_i^{*}A_i = 1$ and $\rdens\mapsto\sum_iA_i\rdens A_i^{*}$ is the graded renewal channel with fixed reset
+$\reb$ of \cref{thm:h-exit-renewal}(e); $\Edb$ commutes with $P\otimes\bar P$. (b) On the even sector $\Edb$ acts as
+$\rdens_{vv}\oplus\mathcal E_{\reb}(\rdens_K)$; on the odd sector as $|k\rangle\langle\vac|\mapsto|Zk\rangle\langle\vac|$
+and $|\vac\rangle\langle k|\mapsto|\vac\rangle\langle Zk|$, so the odd eigenvalues are the $z_n$ and $\bar z_n$
+with the Jordan structure of $Z$, and the reset never acts on the odd sector. (c) The two closures are
+\[
+\ringnorm{L} = \Tr\Edb^L = 1+\Tr\mathcal E_{\reb}^L+2\re\Tr Z^L,\qquad
+\langle\mps{L}^P|\mps{L}^P\rangle = \str\Edb^L = 1+\Tr\mathcal E_{\reb}^L-2\re\Tr Z^L ,
+\]
+so their difference is $4\re\sum_nz_n^L$, the resonance power sums of \cref{prop:cusp-walk-power-sums}. For D2,
+$\Tr Z^L = 0$ for odd $L$ and $\Tr Z^{2k} = 2\qs^{-k}(\alphaw{+}^k+\alphaw{-}^k) = 2\qs^{-k}(1+\qs^k-\Ncount{k})$,
+the odd half of the point count of $y^2+y = x^3+x+1$ over $\Fqn{k}$. (d) The graded divisor of $\Edb$ is
+$\netmult(1) = 2$ (the vacuum and $\rdens_\infty$), $\netmult(z_n) = \netmult(\bar z_n) = -m_n$, and
+$\netmult = m_0$ at the remaining eigenvalues of $\mathcal E_{\reb}$; the ring zeta is
+$1/\sdet(1-\uz\Edb) = \prod_n(1-\uz z_n)^{m_n}(1-\uz\bar z_n)^{m_n}/((1-\uz)\det(1-\uz\mathcal E_{\reb}))$: its zeros
+are the resonances and their conjugates. (e) $\mathrm{RH}(Y)$ with radius $r$ holds iff every odd eigenvalue of
+$\Edb$ has modulus $r$; the even sector has two fixed points (\cref{prop:graded-stationary-segment}), so
+$\Edb$ is not a mixing graded quantum expander (\cref{def:graded-quantum-expander}): the missing even exit of
+\cref{obs:cusp-no-graph-vacuum} as a property of the network.
+\end{theorem}
+
+The proofs are one-line computations from the definitions (\texttt{proofs.md}, G3): the reset term
+$\sum_a\langle j_a|\rdens|j_a\rangle\reb$ vanishes on $|k\rangle\langle\vac|$ because $j_a\in K$; the trace of
+$X\mapsto Z^LX$ on $\{|k\rangle\langle\vac|\}$ is $\Tr Z^L$; the point-count identity is
+$\Ncount{k} = \str\Frob^k$ with $z_n^2 = \alphaw{\pm}/\qs$. In the vocabulary of \cref{sec:what-rh}: the twisted ring
+norm of the network carries the zeros with the sign of the explicit formula, and the untwisted one with the
+opposite sign; the difference of the two closures is the ``odd half'' of the count, and the even half is the
+channel's own (the fixed points and the secular roots), not $1+\qs^k$.
+
+\begin{numerical}[Blind numerics lane, graded toys: this shard's part]
+\label{num:graded-toys-network}
+\claimstatus{num:graded-toys-network}{numerical}
+\texttt{scripts/graded\_toys.py} (\texttt{outputs/graded\_toys.txt}; ledger in \texttt{notes/graded-toys/numerics.md}):
+NUMERICS-SUMMARY-1
+\end{numerical}
