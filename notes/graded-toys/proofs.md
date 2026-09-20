@@ -89,7 +89,10 @@ Weil polynomial, `P(T) = q^g T^{2g} P(1/(q T))` (from `alpha_i -> q/alpha_i`), g
 **Proposition G2(c).** Under `asm:h-diag`, for D2 (`thm:d2-zeta`) and for the zeta channel of D3
 (`thm:d3-channels`), `1/R(z) = z^{-2} sdet(1 - E_S/(q z^2))`; the visible bound states are the even
 disc eigenvalue `e = 1` (`z^2 = e/q = 1/q`) and the resonances are the odd disc eigenvalues
-`e = alpha_i` (`z^2 = alpha_i/q`).
+`e = alpha_i` (`z^2 = alpha_i/q`). The parity of a line is its cohomological degree mod 2 on the untwisted
+copy and the degree plus one on the twisted copy; flipping the untwisted copy instead gives the reciprocal
+ratio (review), so the operator `E_S` involves that choice while the graded divisor, read off the rational
+function, does not.
 
 *Proof.* `z = q^{s - 1/2}` gives `w = q^{-2s} = 1/(q z^2)`. `thm:d2-zeta` states
 `1/R_2 = z^{-2} zeta_K(2s-1)/zeta_K(2s)`; `thm:d3-channels` states `R_3 = det S_e = z^2 zeta_K(2s)/zeta_K(2s-1)`;
@@ -97,11 +100,12 @@ apply G2(a). The zeros of `1/R` in the disc are the poles of `R`, the visible bo
 (`prop:multi-exit-spectrum`(i)), and come from the even factor `(1 - w)`, i.e. `z^2 = 1/q`; the poles
 of `1/R` in the disc are the resonances and come from the odd factor `P(w)`, i.e. `w = 1/alpha_i`,
 `z^2 = alpha_i/q`. The prefactor `z^{-2}` carries the two delay modes (`prop:multi-exit-spectrum`(iii)).
-QED.
+Flipping the other copy replaces `sdet` by its reciprocal by definition of the superdeterminant. QED.
 
 **Proposition G2(e) (genus `g`, one cusp).** Let a one-cusp diagram have a single junction with
-`c = 1`, cut at the junction, and suppose: the visible bound states are exactly the Perron pair
-`vartheta = +- q^{-1/2}`; the resonances are exactly the `4g` numbers with `z^2 in {alpha_i/q}`, each
+`c = 1`, no loop at the junction and invertible Schur bracket (so `ord_0 p = 2`), cut at the junction,
+and suppose: the visible bound states are exactly the Perron pair `vartheta = +- q^{-1/2}`; the nonzero
+resonances are exactly the `4g` numbers with `z^2 in {alpha_i/q}`, each
 simple; every other root of `p` lies on the unit circle. Let `D(z)` be the monic product of the
 unimodular root factors and `s_D = D(0) = (-1)^{m_{+1}}`, `m_{+1}` the multiplicity of the root
 `z = +1`. Then
@@ -128,7 +132,9 @@ The coefficient: `[z^2] p = prod_i (-alpha_i/q) . (-q) . D(0) = -s_D q^{1 - g}`.
 `z^{-2g}` would give `ord_0 R = 2g`, but `ord_0 R = ord_0 p = 2 dim ker(I - C) = 2` for one `c = 1`
 junction cut at the junction (`prop:multi-exit-spectrum`(iii)); this is independent of `g`. QED.
 
-*Remarks.* (1) For D2 and D3 (`g = 1`, `s_D = 1`) this is `thm:d2-zeta` and `thm:d3-channels`. The
+*Remarks.* (1) For D2 (`g = 1`, `s_D = 1`) this is `thm:d2-zeta`; D3 has four cusps and is outside the
+hypothesis (its even channel has `s_D = -1`, and the sign in `thm:d3-channels` is the `(-1)^h` of
+`thm:multi-exit-scattering`; review). The
 brief omitted `s_D`; it is `+1` unless the threshold `z = +1` occurs with odd multiplicity. (2) The
 reviewer's formula `|[z^m] p| = q^{1 - g - (h-1)(g-1)}` in `prop:nonzero-root-product` reduces at
 `h = 1` to `q^{1 - g}`, which is the product identity under the structural hypothesis; the content of a
@@ -249,8 +255,8 @@ circle iff this quantity vanishes for all four.
 perturbation is rank one on the diagonal), with `eps = f/q` by `prop:funnel-self-energy`. Implicit
 differentiation of `p_f(z_i(f)) = 0`. QED.
 
-**Corollary G4(c') (the quartet stays equimodular).** `P_v` is real and diagonal, so it commutes with the
-bipartite sign `eps` and preserves reality: for every `f` the roots of `p_f` are closed under
+**Corollary G4(c') (the quartet stays equimodular).** `P_v` is real and diagonal, so for a bipartite core it commutes with the
+bipartite sign `eps` (review: bipartiteness is needed) and preserves reality: for every `f` the roots of `p_f` are closed under
 `z -> -z` and `z -> conj z`. A Klein orbit `{z, -z, conj z, -conj z}` with `z` neither real nor purely
 imaginary has four distinct elements of one modulus. Hence the perturbed Hasse--Weil quartet remains
 equimodular for every `f` for which it remains a single orbit; only the value `q^{-1/4}` of the radius is
@@ -330,9 +336,11 @@ of `E_0 = Ad(Z)`, and `prop:rebound-persistence-secular` says a simple eigenvalu
 eigen-operator `X` and dual functional `dual_X` persists iff `fl(X) dual_X(Omega) = 0`; here
 `dual_X(Y) = <l_n| Y |l_m>` (the left eigen-operator of `Ad(Z)` at `z_n conj z_m` is `|l_n><l_m|`). On a
 real core the value `z_n conj z_m` is degenerate in `Ad(Z)` (it equals `z_{n'} conj z_{m'}` for the
-conjugate modes), so a rank-one perturbation removes one copy: the eigen-operator `|k_n><k_m|` is lost,
-with residue `E X - z_n conj(z_m) X = <a_m, a_n> Omega`, while the value survives with multiplicity
-reduced by one (numerics F15). QED.
+conjugate modes), so a rank-one perturbation removes at most one copy: the eigen-operator `|k_n><k_m|` is lost,
+with residue `E X - z_n conj(z_m) X = <a_m, a_n> Omega`, while the value survives with multiplicity reduced
+by at most one, the drop being decided by the sum of the residues over the degenerate eigen-operators
+(numerics F15; the reviewer exhibits cancelling residues with no drop). The persistence criterion of
+`prop:rebound-persistence-secular` applies verbatim only when the value is simple. QED.
 
 *Remark (the trade-off).* Protection of the odd coherence between an even and an odd mode is
 equivalent, by the Gram identity, to their energy-orthogonality; on a connected core with a shared
@@ -350,7 +358,7 @@ they exit through different blocks.
 traceless operators `E' = r^2 Ad(U)`, so the spectrum of `E'` is `{1} cup r^2 spec(Ad U)`, every
 relaxation eigenvalue having modulus exactly `r^2`. For `K = K_HW` of D2 in the symmetric arithmetic
 metric, `r = q^{-1/4}`, `U = diag(e^{i theta_a})` with `e^{2 i theta_a} = z_a^2 q^{1/2} = alpha_a/sqrt q`
-(each `alpha` twice), i.e. `U^2 ~ (Fr/sqrt q) (x) 1_2` as multisets, and the relaxation moduli are all
+(each `alpha` twice), i.e. `U^2 ~ (Fr|_{H^1}/sqrt q) (x) 1_2` as multisets, and the relaxation moduli are all
 `q^{-1/2}`.
 
 *Proof.* Kraus operators `r U` and `sqrt(1 - r^2) sqrt(p_k) |omega_k><e_a|` (`a` over an orthonormal
@@ -377,8 +385,8 @@ rays and constant couplings. Then `Gam(conj z) = Gam(z)^*`, `S(conj z) = S(z)^*`
 `e in C^h`, `e^* S(conj z) e = conj(e^* S(z) e)`. Consequently, if `S(z) = V diag(s_1(z), ..., s_h(z)) V^*`
 with a constant unitary `V`, each `s_a` has a conjugation-closed zero set. No such diagram has
 `S ~ diag(b_{z_a}(z)) . (unitary constant) . (factors with real zeros and poles)` with the four
-non-real Hasse--Weil modes of D2 in four distinct diagonal entries; the finest constant-basis
-splitting of the quartet is into two conjugation-closed pairs.
+non-real Hasse--Weil modes of D2 in four distinct diagonal entries; any constant-basis splitting of the quartet
+is into conjugation-closed sets, hence at most two pairs (attainment on a connected core not established; review).
 
 *Proof.* With `T_X = sum_i t_i |x_i><x_i|`, `t_i` real, `Gam(z)_{ab} = sum_i c_a c_b x_i(v_a) conj(x_i(v_b))/(lambda(z) - t_i)`,
 so `Gam(z) = sum_i (lambda(z) - t_i)^{-1} G_i` with Hermitian constant `G_i`, and `lambda(conj z) = conj lambda(z)`
@@ -392,8 +400,8 @@ conjugation-closure. QED.
 **Proposition G5(d).** On `K_HW` of D2 the bipartite sign `eps` (`eps Z eps = -Z`) and complex
 conjugation (with respect to the real structure in which `Z` is real, `prop:d2-canonical-rebound`)
 generate a Klein four-group acting simply transitively on the four modes `{a, -a, conj a, -conj a}`;
-the symmetric arithmetic metric of `thm:arithmetic-metric` is the unique diagonal metric (up to
-scale) invariant under this group, and in it the four one-mode exits of G5(b) are permuted by the
+the symmetric arithmetic metric of `thm:arithmetic-metric` is the unique diagonal metric up to
+scale invariant under this group, and in it the four one-mode exits of G5(b) are permuted by the
 group.
 
 *Proof.* `eps k_a` is an eigenvector with eigenvalue `-z_a`; `conj(k_a)` (entrywise, `Z` real) is an
@@ -487,3 +495,4 @@ the Eisenstein computation, not here.
 | 13 | G4(c) | the quartet stays equimodular (one Klein orbit); a funnel costs the Weil radius, not RH(Y); the Perron pair stays bound (F11, F12) |
 | 14 | G4(d)(vi) | the eigen-operator is lost, the eigenvalue keeps a copy (F15) |
 | 15 | G6(b) | primitive characters; imprimitive ones add modulus-one modes at the Perron radius (F13); the truncated sum is the `L`-function only for `psi != 1` (F14) |
+| 16 | review | G1(d) needs `(q+1)`-regularity in the shard; G2(c) parity is degree+1 on the twisted copy, the operator involves a choice, the divisor does not; G2(e) hypotheses (no loop, Schur bracket, nonzero resonances), D3 outside; G4(c') needs a bipartite core; G4(d)(vi) degenerate values are decided by the sum of residues; G5(a) `Fr|_{H^1}`; G5(c) attainment not established, metric unique up to scale |

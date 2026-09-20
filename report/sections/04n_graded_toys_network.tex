@@ -34,7 +34,7 @@ eigenvalue $1/\vartheta$ the bound-state pole at $\vartheta$. (b) $\Tr M^m = \su
 0\oplus\ker(I-C)$, and, when no $c = 1$ junction carries a loop and the Schur bracket of
 \cref{prop:multi-exit-spectrum}(iii) is invertible, $M$ has $\dim\ker(I-C)$ Jordan blocks of size two at $0$: the
 delay sector seen on the core (a loop at a $c = 1$ junction gives $\operatorname{ord}_0p = 1$ and a block of size one). (d) For $C = 0$ and
-$T_X = \Aadj_X/\sqrt{\qs}$, $\det(1-zM_0) = \det(I-\uz\Aadj_X+\qs\uz^2)$, $\uz = z/\sqrt{\qs}$, so by Bass's theorem
+$T_X = \Aadj_X/\sqrt{\qs}$ with $\Aadj_X$ the adjacency matrix of a $(\qs+1)$-regular graph, $\det(1-zM_0) = \det(I-\uz\Aadj_X+\qs\uz^2)$, $\uz = z/\sqrt{\qs}$, so by Bass's theorem
 (the scalar case of \cref{thm:qihara-general}) $\operatorname{spec}(\sqrt{\qs}M_0)\cup\{\pm1\}^{|E|-|V|} =
 \operatorname{spec}(\Hash)$; in general $M = M_0 + \big(\begin{smallmatrix}0&C\\0&0\end{smallmatrix}\big)$, the core's
 non-backtracking operator plus a correction of rank the number of distinct junction vertices, the bound sheet
@@ -75,8 +75,10 @@ $\sdet(1-wE_S)\,\sdet(1-E_S/(\qs^2w)) = \qs^{2g-2}$, the functional equation.
 Under \cref{asm:h-diag}, for D2 (\cref{thm:d2-zeta}) and for the zeta channel of D3 (\cref{thm:d3-channels}),
 $1/R(z) = z^{-2}\sdet\big(1-E_S/(\qs z^2)\big)$: the visible bound states (the Perron pair) are the even disc
 eigenvalue $e = 1$ and the resonances are the odd disc eigenvalues $e = \alphaw{i}$, $z^2 = \alphaw{i}/\qs$. The
-parities are the cohomological degrees mod $2$, with the Tate-twisted copy flipped; no choice is made. The
-prefactor $z^{-2}$ is the delay sector, a cut artefact (\cref{prop:multi-exit-spectrum}(iii)).
+parity of a line is its cohomological degree mod $2$ on the untwisted copy and the degree plus one on the
+Tate-twisted copy; flipping the untwisted copy instead inverts the ratio, so the operator $E_S$ involves the choice
+of which copy is flipped, but the graded divisor, read off the rational function, does not: the pole is even and the
+zeros are odd. The prefactor $z^{-2}$ is the delay sector, a cut artefact (\cref{prop:multi-exit-spectrum}(iii)).
 \end{proposition}
 
 This is the ``pole even, zeros odd'' grading of \cref{conj:phantasm-both-halves} and \cref{obs:character-sector-grading}
@@ -85,16 +87,18 @@ supplied by the arithmetic of the toy rather than imposed: the zeros are odd bec
 \begin{proposition}[Genus $g$, one cusp: the H-EIS prefactor and the first coefficient are forced]
 \label{prop:genus-prefactor-forced}
 \claimstatus{prop:genus-prefactor-forced}{sketched}
-Let a one-cusp diagram with one junction of coupling $c = 1$, cut at the junction, have the Perron pair as its
-only visible bound states, the $4g$ numbers $z^2\in\{\alphaw{i}/\qs\}$ as its resonances, all simple, and every
-other root of $p$ on the unit circle, with monic unimodular factor $D$ and $s_D = D(0) = (-1)^{m_{+1}}$
+Let a one-cusp diagram with one junction of coupling $c = 1$, no loop at the junction and invertible Schur
+bracket (so $\operatorname{ord}_0p = 2$), cut at the junction, have the Perron pair as its only visible bound states,
+the $4g$ numbers $z^2\in\{\alphaw{i}/\qs\}$ as its nonzero resonances, all simple, and every other root of $p$ on the
+unit circle, with monic unimodular factor $D$ and $s_D = D(0) = (-1)^{m_{+1}}$
 ($m_{+1}$ the multiplicity of the threshold root $z = 1$). Then
 \[
 \frac1{R(z)} = s_D\,z^{-2}\qs^{1-g}\,\frac{\zeta_K(2s-1)}{\zeta_K(2s)},\qquad [z^2]\,p = -s_D\,\qs^{1-g},
 \]
 and the alternative prefactor $\qs^{1-2gs} = z^{-2g}\qs^{1-g}$ of \cref{thm:d2-zeta} is excluded for $g\ge2$, since
-$\operatorname{ord}_0p = 2\dim\ker(I-C) = 2$ for every genus. For $g = 1$, $s_D = 1$, this is
-\cref{thm:d2-zeta,thm:d3-channels}; at $h = 1$ the formula $|[z^m]p| = \qs^{1-g-(h-1)(g-1)}$ of
+$\operatorname{ord}_0p = 2\dim\ker(I-C) = 2$ for every genus. For D2 ($g = 1$, $s_D = 1$) this is
+\cref{thm:d2-zeta}; D3 has four cusps and lies outside the hypothesis (its even channel has $s_D = -1$ and the sign
+of \cref{thm:d3-channels} comes from $(-1)^h$ in \cref{thm:multi-exit-scattering}); at $h = 1$ the formula $|[z^m]p| = \qs^{1-g-(h-1)(g-1)}$ of
 \cref{prop:nonzero-root-product} is the product identity under this hypothesis.
 \end{proposition}
 
@@ -165,5 +169,6 @@ $z^{-2}\sdet(1-E_S/(\qs z^2))$ at eight points on D2 and D3; the prefactor and f
 $[z^4]p_3 = -1$); the graded MPS of D2 with a modal and a random reset: normalisation, the transfer channel, the even and
 odd sectors, the explicit ring vectors to $L = 4$, both closures, the point counts $\Ncount{k} = 1, 5, 13, 25, 41$ by
 enumeration in $\Fqn{k}$ against $\Tr Z^{2k}$, the ring-zeta product formula to $10^{-14}$, the odd multiplicities
-$-2$ and the even multiplicity of $0$ ($16$, $14$), the fixed-point segment.
+$-2$, the value $0$ with multiplicity $20$ resp.\ $18$ in the even sector against $4$ in the odd one ($\netmult(0) = 16$,
+$14$, invisible to the ring zeta), the fixed-point segment.
 \end{numerical}

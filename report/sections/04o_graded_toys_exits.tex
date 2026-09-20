@@ -38,8 +38,8 @@ Perron-type mode outgoing, but at a radius other than $\qs^{-1/2}$.
 \claimstatus{lem:funnel-first-order}{sketched}
 Adding a funnel of weight $f$ at vertex $v$ gives exactly $p_f = p-(f/\qs)\,p^{(v)}$, $p^{(v)}$ the resonance
 polynomial of the core with $v$ deleted, so a simple root moves by $dz_i/df = \qs^{-1}p^{(v)}(z_i)/p'(z_i)$ and
-$d|z_i|/df = \re(\bar z_i\,dz_i/df)/|z_i|$. Since $P_v$ is real and diagonal, the roots of $p_f$ stay closed under
-$z\mapsto-z$ and $z\mapsto\bar z$ for every $f$, so the Hasse--Weil quartet remains one Klein orbit
+$d|z_i|/df = \re(\bar z_i\,dz_i/df)/|z_i|$. For a bipartite core ($\varepsilon T_X\varepsilon = -T_X$), since $P_v$ is real and diagonal and commutes with
+$\varepsilon$, the roots of $p_f$ stay closed under $z\mapsto-z$ and $z\mapsto\bar z$ for every $f$, so the Hasse--Weil quartet remains one Klein orbit
 $\{z,-z,\bar z,-\bar z\}$ and hence equimodular as long as it has four distinct non-real, non-imaginary elements: an
 added funnel moves the common radius off $\qs^{-1/4}$ but cannot break the equal-modulus property until the orbit
 splits. At genus one, $\mathrm{RH}(Y)$ on $K_{\mathrm{HW}}$ is therefore a consequence of the bipartite sign and reality
@@ -50,7 +50,7 @@ whenever the quartet is a single orbit; Weil's content for D2 is the radius, pin
 \begin{numerical}[A funnel bolted onto D2]
 \label{num:funnel-on-d2}
 \claimstatus{num:funnel-on-d2}{numerical}
-\texttt{scripts/graded\_toys.py}, ledger D32--D37: the constant-mode identity of \cref{prop:constant-mode-mixed-sheets}
+\texttt{scripts/graded\_toys.py}, ledger D33--D37: the constant-mode identity of \cref{prop:constant-mode-mixed-sheets}
 on three regular cusp-plus-funnel diagrams, both ``iff'' clauses; the one-vertex formula at $\qs = 2,3,5$; on D2 with a
 funnel of weight $f$ at each core vertex, $d|z_i|/df$ at $f = 0$ equal for all four Hasse--Weil roots at every vertex
 ($+0.0630672$ at $A$, $+0.1261345$ at $B$, $-0.0210224$ at $C$, $-0.1681793$ at $D$, $-0.0630672$ at $E$ and $F$), the
@@ -106,9 +106,10 @@ the Hasse--Weil part and $0$ on the delay part, and $\Tr Z_+^L = \qs^{-L/2}(1+(-
 For a fixed reset and eigenvectors $k_n,k_m$ of $Z$ with simple eigenvalues, $X = |k_n\rangle\langle k_m|$ has
 exit trace $\Tr(JXJ^{*}) = \langle a_m,a_n\rangle = (1-\bar z_mz_n)\langle k_m,k_n\rangle$. If it vanishes, $X$ is an
 eigen-operator with eigenvalue $z_n\bar z_m$; if not, $X$ is not an eigen-operator (residue
-$\langle a_m,a_n\rangle\reb$), and the copy of the eigenvalue it carried persists iff $\langle l_n|\reb|l_m\rangle = 0$ for
-the dual eigenvectors (\cref{prop:rebound-persistence-secular}); on a real core the value is degenerate in $\Ad(Z)$
-and keeps its other copies. On a
+$\langle a_m,a_n\rangle\reb$); if the value $z_n\bar z_m$ is simple in $\Ad(Z)$ it persists iff $\langle l_n|\reb|l_m\rangle = 0$
+for the dual eigenvectors (\cref{prop:rebound-persistence-secular}), and when it is degenerate, as on a real core where
+the conjugate modes carry the same value, the rank-one perturbation removes at most one copy, the drop being decided
+by the sum of the residues over the degenerate eigen-operators, not by each separately. On a
 connected core with a shared exit the modes are not orthogonal, so the zeros are not protected once the even
 mode leaks; the glued toy is protected because its sectors exit through different blocks.
 \end{proposition}
@@ -129,7 +130,7 @@ unique stationary density $\rdens_\infty = (1-r^2)\sum_mr^{2m}U^m\reb U^{*m}$, e
 traceless operators $\mathcal E' = r^2\Ad(U)$, so every relaxation eigenvalue has modulus exactly $r^2$. The
 characteristic function of $Z'$ is $\Theta'(z) = (1-zrU^{*})^{-1}(z-rU) = \operatorname{diag}\big((z-z_a)/(1-\bar z_az)\big)$
 in the eigenbasis of $U$: the $a$-th exit sees the single mode $z_a$. For $K_{\mathrm{HW}}$ of D2 in the symmetric
-arithmetic metric (\cref{thm:arithmetic-metric}), $r = \qs^{-1/4}$ and $U^2\simeq(\Frob/\sqrt{\qs})\otimes1_2$
+arithmetic metric (\cref{thm:arithmetic-metric}), $r = \qs^{-1/4}$ and $U^2\simeq(\Frob|_{H^1}/\sqrt{\qs})\otimes1_2$
 as multisets; the relaxation moduli are all $\qs^{-1/2}$.
 \end{theorem}
 
@@ -140,10 +141,10 @@ For a Hermitian core with standard rays, $\mathbf S(\bar z) = \mathbf S(z)^{*}$,
 \overline{e^{*}\mathbf S(z)e}$ for every constant $e\in\mathbb C^h$; if $\mathbf S$ is diagonalised by a constant
 unitary, each diagonal channel has a conjugation-closed zero set. So the diagonal $\Theta'$ of
 \cref{thm:frobenius-channel-expander} with the four non-real Hasse--Weil modes in four entries is not the
-scattering matrix of any self-adjoint diagram; the finest constant-basis splitting of the quartet is into two
-conjugation-closed pairs. On $K_{\mathrm{HW}}$ the bipartite sign and complex conjugation generate a Klein
-four-group acting simply transitively on the four modes; the symmetric arithmetic metric is the unique diagonal
-metric it fixes, and in it the four one-mode exits are permuted by the group.
+scattering matrix of any self-adjoint diagram; any constant-basis splitting of the quartet is into conjugation-closed
+sets, hence at most into two pairs (whether a connected core attains the two-pair splitting is not established). On
+$K_{\mathrm{HW}}$ the bipartite sign and complex conjugation generate a Klein four-group acting simply transitively on
+the four modes; the symmetric arithmetic metric is, up to scale, the unique diagonal metric it fixes, and in it the four one-mode exits are permuted by the group.
 \end{proposition}
 
 Answer to item (iv): the object with four cusps seeing the four modes separately is the Frobenius channel,
@@ -182,7 +183,7 @@ $\chi$.
 For a nontrivial \emph{primitive} $\chi$ mod $N$ over $\Fq[T]$, $L(\uz,\chi) = \sum_{f\ \mathrm{monic}}\chi(f)\uz^{\deg f}$ is
 a polynomial of degree $\deg N-1$, equal to $\det(1-\uz\Frob_\chi)$ for odd $\chi$ and to $(1-\uz)\det(1-\uz\Frob_\chi)$
 for even $\chi$ (the factor of the place at $\infty$), with every eigenvalue of $\Frob_\chi$ of modulus
-$\sqrt{\qs}$ \cite{rosen2002function}. With $E_\chi = (\Frob_\chi)_-\oplus\Pi\Frob_\chi(-1)$ and $w = \qs^{-2s}$, the
+$\sqrt{\qs}$ \cite{rosen2002function} (not byte-cited; the source is not in the repository). With $E_\chi = (\Frob_\chi)_-\oplus\Pi\Frob_\chi(-1)$ and $w = \qs^{-2s}$, the
 completed ratio is $L(2s-1,\chi)/L(2s,\chi) = \sdet(1-wE_\chi)$, whose disc part is $\netmult(\alphaw{\chi,i}) = -1$
 at the eigenvalues of $\Frob_\chi$ and has no even entry; the trivial character carries
 $\zeta_{\Fq(T)}(2s-1)/\zeta_{\Fq(T)}(2s) = \sdet(1-wE_S)$ at $g = 0$, disc part $\netmult(1) = +1$. Under
@@ -198,15 +199,15 @@ appears, are odd modes at the Perron radius $|z| = \qs^{-1/2}$.
 \begin{numerical}[{Character channels over $\mathbb F_3[T]$}]
 \label{num:character-channels}
 \claimstatus{num:character-channels}{numerical}
-\texttt{scripts/graded\_toys.py}, ledger D46--D51: all $25$ nontrivial characters mod $T^3-T-1$ (primitive, $\deg L = 2$,
+\texttt{scripts/graded\_toys.py}, ledger D47--D51: all $25$ nontrivial characters mod $T^3-T-1$ (primitive, $\deg L = 2$,
 $12$ even with the factor $1-\uz$) and all $15$ mod $T(T^2+1)$ ($7$ primitive); every nontrivial root of every primitive
 character has $|\alphaw{}| = \sqrt3$; the Euler product to order $\uz^5$; $\det(1-\uz\Frob_\chi) = L(\uz,\chi)$; the
 superdeterminant identity as rational functions for all $40$ characters; no even disc eigenvalue in any channel; the
-imprimitive characters' modulus-one roots; the trivial channel at $g = 0$. Also this shard's glued toy (D38--D45:
+imprimitive characters' modulus-one roots; the trivial channel at $g = 0$. Also this shard's glued toy and Frobenius channel (D38--D46:
 parities of the letters, uniqueness by the eigenvalue count at $1$, both sectors populated, the odd eigenvalues
 $\pm\qs^{-1/2}\bar z_n$, the twisted ring-norm identity, the segment for a sector-preserving reset, the exact vanishing
 $\langle a_m,a_n\rangle = 0$ across blocks, the shared-exit residue $\langle a_m,a_n\rangle\reb$ on a random three-vertex
-core) and the Frobenius channel (G5(a,b) in full; conjugation-closed disc zero sets for real and complex exit
+core; G5(a,b) in full; conjugation-closed disc zero sets for real and complex exit
 directions on D2 with a second cusp at each vertex).
 \end{numerical}
 
