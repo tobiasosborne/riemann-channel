@@ -12,7 +12,7 @@ bulk. Answers: the naive quotient is `R_+` with commuting dilations, the blind s
 representation, functional equation = Poisson; metaplectic unitarity carries no information, the problem is the
 canonical metric. Bond, not bulk: yes, and it identifies the bond. Round `notes/gl1-bond/` (brief B1–B5, proofs,
 blind Opus numerics 159 checks / 152 pass with the 7 failures the brief's own defects, Opus REFUTE review
-REVIEW-COUNTS). Worklog 2026-09-21.
+1 VALID / 4 MINOR / 0 INVALID before the fixes, 5 VALID / 0 MINOR / 0 INVALID after, 228 independent checks in four scratch scripts). Worklog 2026-09-21.
 
 **Registered (04p).** Units-invariant adelic bond of a function field = `l^2(Pic^0) (x) l^2(Z)` with the degree
 shift; ring norms = effective-divisor counts, `Z(T)`; generic Riemann–Roch part = the Perron pair (even),
