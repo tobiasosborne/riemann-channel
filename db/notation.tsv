@@ -209,3 +209,10 @@ TNmeasure	\mu_{\mathrm{sp}}	positive spectral measure for smeared features	conti
 reb	\varOmega	rebound density inside the model space (reinsertion state of the renewal generator)	Riemann channel	RC-04H	never \Omega, which is the Casimir
 rdens	\mathsf s	density (state) on the model space in the renewal channel, also the target density of the inverse problem	Riemann channel	RC-04H	never rho (a zero) or sigma (a real part)
 rvec	\mathsf v	generic vector of the model space in the exit and orbit-state formulas	Riemann channel	RC-04H	-
+jtheta	\theta_{\mathrm J}	Jacobi theta function, the sum over the integers of exp(-pi n^2 y)	Riemann channel	RC-04P	the bond state of the GL_1 dilation bond over Q
+chir	\Gamma_{\mathrm c}	chirality: left multiplication by the bond parity, L_P (x) 1 on B(V) (x) C^D	graded, quantum Ihara	RC-08H	anticommutes with the Hashimoto operator when every letter is odd
+orhalf	F_{\mathrm{or}}	oriented half of the Euler product: product over one orientation of each prime cycle	quantum Ihara	RC-08H	|F|^2 = det(1 - uH) on the real axis
+Npen	\mathsf N	first-order pencil [[1 + uJ, S],[uR, 1]] on W (+) V	quantum Ihara	RC-08H	det N = det(1 - uH); sans-serif to avoid N = dim V
+Mmass	\mathsf B	mass (block-diagonal) part of the pencil, diag(1 + uJ, 1)	quantum Ihara	RC-08H	-
+Dch	\mathsf D_{\mathrm{ch}}	chiral (block off-diagonal, Dirac-type) part of the pencil, [[0, S],[uR, 0]]	quantum Ihara	RC-08H	the bouquet form of Matsuura-Ohta's deformed incidence Dirac operator
+pairop	\mathsf K	the paired even operator YX (+) XY on W_even (+) V_odd, X = uR(1+uJ)^{-1}, Y = S	quantum Ihara	RC-08H	supertrace zero in every power

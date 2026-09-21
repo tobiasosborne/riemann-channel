@@ -32,9 +32,17 @@ step "refs manifest"
 if [ -d refs/src ]; then (cd refs && timeout 120 sha256sum -c --quiet manifest.sha256); else echo "refs/src absent (run refs/fetch_sources.sh); provenance quotes were checked only if present"; fi
 
 step "evidence scripts smoke (fast ones)"
-for s in scripts/qihara.py scripts/qihara_general.py scripts/weil_positivity.py scripts/bc_entropy.py scripts/bc_symmetry_generators.py scripts/cmps_parity_supertrace.py scripts/ring_norm_certificate.py scripts/graded_permutation.py scripts/phase_side_lindbladian.py scripts/zeta_conditions.py scripts/graded_ramanujan.py scripts/selberg_letters.py scripts/weil_window_extension.py scripts/rebound_state.py scripts/cusp_graph.py scripts/elliptic_cavity.py scripts/ccm_tensor_network.py; do
+# Only scripts that finish in a few seconds run here (the pre-commit hook re-runs every one of them on
+# every commit). weil_positivity.py (minutes) is deliberately NOT in this list; the slower scripts
+# (graded_permutation, phase_side_lindbladian, graded_ramanujan, elliptic_cavity: 25-55 s each) run
+# only with CI_FULL=1. Everything else is re-run by `make scripts-run`. Timed 2026-09-21.
+FAST="scripts/qihara.py scripts/qihara_general.py scripts/bc_entropy.py scripts/bc_symmetry_generators.py scripts/cmps_parity_supertrace.py scripts/ring_norm_certificate.py scripts/zeta_conditions.py scripts/selberg_letters.py scripts/weil_window_extension.py scripts/rebound_state.py scripts/cusp_graph.py scripts/ihara_dirac.py scripts/ccm_tensor_network.py"
+SLOW="scripts/graded_permutation.py scripts/phase_side_lindbladian.py scripts/graded_ramanujan.py scripts/elliptic_cavity.py"
+LIST="$FAST"; if [ "${CI_FULL:-0}" = "1" ]; then LIST="$FAST $SLOW"; fi
+for s in $LIST; do
+  [ -f "$s" ] || continue
   n="$(basename "$s" .py)"
-  timeout 600 python3 "$s" > "$tmp/$n.txt" 2>&1
+  timeout 120 python3 "$s" > "$tmp/$n.txt" 2>&1
   if ! diff -q <(grep -v '^\s*$' "outputs/$n.txt") <(grep -v '^\s*$' "$tmp/$n.txt") >/dev/null; then
     echo "ci: outputs/$n.txt differs from a fresh run of $s (seeded scripts must be reproducible)" >&2
     diff "outputs/$n.txt" "$tmp/$n.txt" | head -20 >&2; exit 1

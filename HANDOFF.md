@@ -2,6 +2,112 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-21, evening: square roots of Ihara--Bass (shard 08h); branches merged into master; CI smoke list trimmed
+
+TJO asked to tidy the conceptual loose ends around graded Ihara--Bass: is a "square root" version with a
+Dirac-style operator in place of the standard matrices the natural object for the graded spaces? Round with
+astra xhigh as prover and Fable as brief author, numerics and reviewer (no Opus/Sonnet lanes, by instruction):
+`notes/ihara-dirac/` (brief T1--T4, `astra-proofs.md` with a 24-row correction ledger, `numerics.md`,
+`scripts/ihara_dirac.py` 158 checks), review `notes/reviews/ihara-dirac-2026-09-21.md` (10 VALID / 0 MINOR /
+0 INVALID after corrections). Worklog 2026-09-21, evening.
+
+**Registered (08h).** Three different "square roots": (i) the chiral linearisation `N(u) = [[1 + uJ, S],[uR, 1]]`
+on `W (+) V` (Matsuura--Ohta's Dirac + mass on the bouquet with matrix weights): `det N = det(1 - uH)` with two
+Schur evaluations, SUSY pairing of `XY` on `V` and `YX = u(H+J)(1+uJ)^{-1}` on `W` (`str K^k = 0`), the Euler
+exponent `N(D-2)/2` = Berezinian of the rescaled diagonal mass with **vertices odd, edges even** (the `k+1`
+parity of 02d), and no Berezinian of the coupling (ledger item 32 closed); (ii) the oriented half `F`: no prime
+class is self-reverse, `det(1 - uH) = F(u) conj F(conj u)`, and **for Kraus letters `= F(u)^2` on the disc**
+(`F` real, orientation-independent), `F` not a polynomial; Kac--Ward/Kasteleyn/Loebl--Somberg square roots need
+the spinor twist and Aizenman--Warzel's twist anti-symmetry, which Ad-weights lack (neither symmetric nor
+anti-symmetric: traces 0 and 4); (iii) **odd letters make the Hashimoto operator chiral**: `Gamma_c = L_P (x) 1`
+anticommutes with `H`, `J`, `Sigma` (balanced grading forced), the graded zeta is `det(1 - u^2 K_1)/det(1 - u^2 K_0)`
+with `K_k = H_k^2|_+`, the square root of the two-step zeta; `Sigma_k = [[0,a],[a^*,0]]`, Ramanujan band `<=>`
+`a a^* <= 4q`; zeros have order `b_1 - b_0` (cancellation possible), the sector circle condition is the
+modulus-`q` condition on `K_1` on `Hom(V_-,V_+) (x) C^D`, and the manifest Hilbert--Polya form needs
+semisimplicity (band-edge Jordan block example); one even letter breaks `L_P`-chirality but other involutions
+can exist; in the continuum the reflection about `-c` survives for `sum L_i^* L_i = c`. Single layer: `str h^k = 0`,
+induction identity proved, doubled supertrace = squared norm of the amplitude vector, `X,X,Y,Y` example. This
+is the notebook's own square root: the bipartite `z <-> -z`, `Z^2 ~ Fr^{-1}` of 04k/04n.
+
+**Next on this lead.** (i) The two-step block `K_1` of the graded Weil--LPS expanders on `Hom(V_-,V_+)`, where
+the circle is a theorem: an ungraded operator with Frobenius-type spectrum, and its invariant Hermitian form
+(semisimplicity there?). (ii) A sign-twisted reversal `U_{bar i} = -U_i^*` as the channel analogue of the spinor
+twist: does an Ad-weighted oriented half become a Pfaffian? (iii) The centred continuum reflection for the
+notebook's jump Lindbladians (03c(d)) and the cMPS decay modes.
+
+**Repository.** Master now contains both branches (`inspiring-ride`: CCM tensor shards 02i/03g--03l, `zst`
+elliptic/Dirichlet; `beautiful-bohr`: 04n/04o/04p and 08h). `scripts/ci_local.sh`: `weil_positivity.py`
+(minutes) removed from the pre-commit smoke list, the four 25--55 s scripts behind `CI_FULL=1`.
+
+## Session 2026-09-21: the adelic symplectic space as the bond (shard 04p); the class-group bond, the theta functional, the cusps as the GL_1 bond
+
+TJO returned to the genesis idea (a symplectic space for `Q^x \ (R_+ x prod_p Z)`, Heisenberg–Weyl, an
+automorphism) and asked for it to be reconsidered on the repository's learnings (four Opus distillation lanes,
+recorded in the worklog), then whether the adelic symplectic space is consistently the **bond** rather than the
+bulk. Answers: the naive quotient is `R_+` with commuting dilations, the blind side A; the symplectic space is
+`A (+) A` with the rational Lagrangian, state the theta functional, automorphisms `SL_2(Q)` via the Weil
+representation, functional equation = Poisson; metaplectic unitarity carries no information, the problem is the
+canonical metric. Bond, not bulk: yes, and it identifies the bond. Round `notes/gl1-bond/` (brief B1–B5, proofs,
+blind Opus numerics 159 checks / 152 pass with the 7 failures the brief's own defects, Opus REFUTE review
+1 VALID / 4 MINOR / 0 INVALID before the fixes, 5 VALID / 0 MINOR / 0 INVALID after, 228 independent checks in four scratch scripts). Worklog 2026-09-21.
+
+**Registered (04p).** Units-invariant adelic bond of a function field = `l^2(Pic^0) (x) l^2(Z)` with the degree
+shift; ring norms = effective-divisor counts, `Z(T)`; generic Riemann–Roch part = the Perron pair (even),
+special part (theta divisor) = `P(T)` (odd, `H^1`); genus one: `P = 1 - (q+1-h)T + qT^2`, **`h = P(1) = N_1`, the
+bond dimension is the zeta numerator at 1**. Theta functional = bond state `q^{h^0(D)}`; Tate's unit-ball
+integral = `Z`; Poisson on `A/K` = Riemann–Roch; the Weyl element acts as `D -> K_C - D`. **Cusps of
+`GL_2(R)\T` = `Pic(R) = Pic^0`**: the hedgehog's spikes are the GL_1 bond, H-CLASS is its Fourier transform, D3's
+monomial channels are its nontrivial class characters (`L = 1` at genus one); `h = 4 = dim K_HW` at D3 is an
+accident. Over `Q`: bond `L^2(R_+^x)`, Jacobi theta as state, `int (theta - 1 - y^{-1/2}) y^{s/2} d^x y =
+2 pi^{-s/2} Gamma(s/2) zeta(s)` in the strip: Riemann 1859 is the `Q` case; `conj:h-theta` open. Not gained:
+the metric (genus-one tests are vacuous; Kraus dichotomy stands).
+
+**Next on this lead (in order).** (i) H-THETA numerically. (ii) Genus two: class-group bond, theta divisor, the
+first non-vacuous Hodge-versus-symmetric-ray test. (iii) The Frobenius channel on the class-group bond in the
+Hodge metric, and its exit. (iv) The two GL_1 cusps `0, infinity` folded by the automorphism against the single
+cusp and one-dimensional exit of the modular surface.
+
+## Session 2026-09-20, night: a graded tensor network for the cusp toys (shards 04n, 04o); the four next steps worked through
+
+TJO asked for the four next steps below to be worked through and for a graded tensor-network realisation of the
+toys. One construction does both: a graded transfer channel whose bond is the model space of a diagram
+(`notes/graded-toys/`: brief G1--G7, `proofs.md` by Fable with a 15-row correction ledger, blind Opus numerics
+`scripts/graded_toys.py` 512 checks / 498 pass with the 14 failures corrections of the brief, Opus REFUTE review
+`notes/reviews/graded-toys-2026-09-20.md`: 8 VALID / 7 MINOR / 0 INVALID before the fixes, 15 VALID / 0 MINOR / 0 INVALID after, 1635 independent checks in five scratch scripts). Container setup: TeX Live, FLINT 3.0.1 (`ihz`, `zst`
+build and pass), scipy, all 142 arXiv sources and the Sørensen text (byte-exact via pdftotext) re-fetched; the
+gate is green from a fresh clone. Worklog 2026-09-20, night.
+
+**Registered (04n, 04o).** `p = det(z − M)`, `ptilde = det(1 − zM)` for `M = [[T_X, −(I−C)],[I,0]]`, the core's
+non-backtracking operator plus a junction correction (Bass); `R` is a ratio of a characteristic polynomial and
+its reversal, so the resonances are not graded on the core. **For every curve `ζ_K(2s−1)/ζ_K(2s) = sdet(1 −
+q^{−2s}(Fr ⊕ Π Fr(−1)))`**, whose disc part is exactly the pole (even, eigenvalue 1) and the zeros (odd, the
+`H^1` eigenvalues): on D2 and D3's zeta channel `1/R = z^{−2} sdet(1 − E_S/(qz²))`, the notebook's grading is
+the cohomological degree, no choice made; functional equation from Poincaré duality. Genus `g`, one `c = 1`
+cusp: `1/R = s_D z^{−2} q^{1−g} ζ-ratio`, `[z^2]p = −s_D q^{1−g}`; the prefactor `q^{1−2gs}` is excluded for
+`g ≥ 2` (item ii is a test of the structural hypothesis, not of a formula; no genus-two diagram exists here).
+The renewal channel of any `h`-exit contraction is the transfer channel of a normalised graded MPS on
+`C vac ⊕ K`; its odd sector is `Z` and `Z̄` exactly; the difference of the two closures is `4 Re Tr Z^L`, and
+for D2 the twisted ring norm's odd part is the odd half of the point count (`N_k = 1, 5, 13, 25, 41`). Item (i):
+on a regular diagram with cusps and funnels the constant mode is half-outgoing (bound on cusps, outgoing on
+funnels at the same `z = q^{−1/2}`); a funnel bolted onto D2 shifts the quartet's radius but keeps it
+equimodular (one Klein orbit of the bipartite sign and conjugation, until it splits): **at genus one RH(Y) on
+K_HW is forced by symmetry and Weil's content is the radius**; a channel with only even letters always has two
+stationary states, so a unique mixed stationary state with pole even and zeros odd needs a fermionic letter,
+realised by the glued network (funnel tree `⊕` D2, separate exit blocks, parity-crossing reset: unique mixed
+even stationary state, odd modes `q^{−3/4}`, protection = energy-orthogonality). Item (iv): the
+arithmetic-metric completion is the Frobenius channel `r² Ad(U) + (1−r²) Ω Tr`, a one-gap expander with
+diagonal Blaschke characteristic function, and no self-adjoint diagram has it (`S(z̄) = S(z)^*` for Hermitian
+cores). Item (iii): **`Γ_0(N)` with trivial character sees only `ζ` (oldform Eisenstein series); the `L`-zeros
+live on `Γ_1(N)`**; under H-ARITH-1 the level-`N` bond is one even vacuum line plus odd `L`-zero blocks over
+primitive characters graded by the diamond operators (numerics over `F_3[T]` for two cubic `N`).
+
+**Next on this lead (in order).** (i) `Γ_1(N)` Eisenstein constant terms over `F_q[T]` for one cubic `N`,
+settling H-ARITH-1 and the completed-versus-incomplete `L` question; the quotient graph `Γ_1(N)\T` is the
+diagram. (ii) The glued toy as a fermionic MPS proper (odd letters as fermionic species, sign-twisted closures).
+(iii) Is the Frobenius channel a Weil-representation / graded Harrow expander at `p = 2`? (iv) A
+non-self-adjoint core realising the diagonal `Θ'`. (v) Genus two: the test is of the structural hypothesis
+(Perron-only bound spectrum, all resonances on one circle); it needs a genus-two quotient graph.
+
 ## Session 2026-09-20, evening: two arithmetic cavities with cusps (shards 04k, 04l, 04m); the hedgehog is real, the rebound is still free
 
 TJO clarified that the Phantasm is a *system* whose resonances are the zeros (an arithmetic cavity coupled

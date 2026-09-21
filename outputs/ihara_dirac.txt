@@ -1,0 +1,165 @@
+== T1: the chiral linearisation N(u) = M(u) + Dslash(u), its two Schur evaluations, the pairing ==
+  ok   T1a det N(u) = det(1 - uH), random non-unitary Kraus, n = 2, m = 2
+  ok   T1a det N(u) = det(1 + uJ) det(1 - uR(1 + uJ)^-1 S), random non-unitary Kraus, n = 2, m = 2
+  ok   T1a thm:qihara-general form agrees, random non-unitary Kraus, n = 2, m = 2
+  ok   T1b nonzero spectra of XY (on V) and YX (on W) coincide, random non-unitary Kraus, n = 2, m = 2
+  ok   T1b YX = u (H + J)(1 + uJ)^-1, random non-unitary Kraus, n = 2, m = 2
+  ok   T1b str Lambda^k = 0 for k = 1..5 (Lambda = YX (+) XY on W_even (+) V_odd), random non-unitary Kraus, n = 2, m = 2
+  ok   T1b sdet(1 - Lambda) = 1, random non-unitary Kraus, n = 2, m = 2
+  ok   T1d Schur-on-V Berezinian = det(1 - uH), random non-unitary Kraus, n = 2, m = 2
+  ok   T1d Schur-on-W Berezinian = det(1 + uJ)^2/det(1 - uH), random non-unitary Kraus, n = 2, m = 2
+  ok   T1d the two Berezinians differ (no super coupling), random non-unitary Kraus, n = 2, m = 2
+  ok   T1a det N(u) = det(1 - uH), random unitary Kraus, n = 2, m = 3
+  ok   T1a det N(u) = det(1 + uJ) det(1 - uR(1 + uJ)^-1 S), random unitary Kraus, n = 2, m = 3
+  ok   T1a thm:qihara-general form agrees, random unitary Kraus, n = 2, m = 3
+  ok   T1b nonzero spectra of XY (on V) and YX (on W) coincide, random unitary Kraus, n = 2, m = 3
+  ok   T1b YX = u (H + J)(1 + uJ)^-1, random unitary Kraus, n = 2, m = 3
+  ok   T1b str Lambda^k = 0 for k = 1..5 (Lambda = YX (+) XY on W_even (+) V_odd), random unitary Kraus, n = 2, m = 3
+  ok   T1b sdet(1 - Lambda) = 1, random unitary Kraus, n = 2, m = 3
+  ok   T1d Schur-on-V Berezinian = det(1 - uH), random unitary Kraus, n = 2, m = 3
+  ok   T1d Schur-on-W Berezinian = det(1 + uJ)^2/det(1 - uH), random unitary Kraus, n = 2, m = 3
+  ok   T1d the two Berezinians differ (no super coupling), random unitary Kraus, n = 2, m = 3
+  ok   T1a det N(u) = det(1 - uH), classical bouquet D = 4
+  ok   T1a det N(u) = det(1 + uJ) det(1 - uR(1 + uJ)^-1 S), classical bouquet D = 4
+  ok   T1a thm:qihara-general form agrees, classical bouquet D = 4
+  ok   T1b nonzero spectra of XY (on V) and YX (on W) coincide, classical bouquet D = 4
+  ok   T1b YX = u (H + J)(1 + uJ)^-1, classical bouquet D = 4
+  ok   T1b str Lambda^k = 0 for k = 1..5 (Lambda = YX (+) XY on W_even (+) V_odd), classical bouquet D = 4
+  ok   T1b sdet(1 - Lambda) = 1, classical bouquet D = 4
+  ok   T1d Schur-on-V Berezinian = det(1 - uH), classical bouquet D = 4
+  ok   T1d Schur-on-W Berezinian = det(1 + uJ)^2/det(1 - uH), classical bouquet D = 4
+  ok   T1d the two Berezinians differ (no super coupling), classical bouquet D = 4
+  ok   T1a det N(u) = det(1 - uH), classical bouquet D = 6
+  ok   T1a det N(u) = det(1 + uJ) det(1 - uR(1 + uJ)^-1 S), classical bouquet D = 6
+  ok   T1a thm:qihara-general form agrees, classical bouquet D = 6
+  ok   T1b nonzero spectra of XY (on V) and YX (on W) coincide, classical bouquet D = 6
+  ok   T1b YX = u (H + J)(1 + uJ)^-1, classical bouquet D = 6
+  ok   T1b str Lambda^k = 0 for k = 1..5 (Lambda = YX (+) XY on W_even (+) V_odd), classical bouquet D = 6
+  ok   T1b sdet(1 - Lambda) = 1, classical bouquet D = 6
+  ok   T1d Schur-on-V Berezinian = det(1 - uH), classical bouquet D = 6
+  ok   T1d Schur-on-W Berezinian = det(1 + uJ)^2/det(1 - uH), classical bouquet D = 6
+  ok   T1d the two Berezinians differ (no super coupling), classical bouquet D = 6
+  ok   T1c Ber_{W_even (+) V_odd}(diag(1 + uJ, (1 - u^2) 1_V)) = (1 - u^2)^{N(D-2)/2}, unitary letters
+  ok   T1c cor:qihara-unitary on the same letters
+  ok   T1d/T2e classical bouquet D = 4: det(1 - uH) = (1-u)^2(1+u)(1-3u) at u = 0.2
+  ok   T1d classical bouquet D = 4: det(1 + uJ) = (1 - u^2)^2 at u = 0.2
+  ok   T1d/T2e classical bouquet D = 4: det(1 - uH) = (1-u)^2(1+u)(1-3u) at u = -0.5
+  ok   T1d classical bouquet D = 4: det(1 + uJ) = (1 - u^2)^2 at u = -0.5
+  ok   T1d/T2e classical bouquet D = 4: det(1 - uH) = (1-u)^2(1+u)(1-3u) at u = 0.3
+  ok   T1d classical bouquet D = 4: det(1 + uJ) = (1 - u^2)^2 at u = 0.3
+== T2: the oriented half ==
+  ok   T2a no self-reverse primitive class among 510 classes, D = 4, length <= 7
+  ok   T2a reversal permutes the classes of each length, D = 4
+  ok   T2a no self-reverse primitive class among 832 classes, D = 6, length <= 5
+  ok   T2a reversal permutes the classes of each length, D = 6
+  ok   T2b det(1 - u^l E_wbar) = conj det(1 - conj(u)^l E_w), non-unitary Kraus n = 2, m = 2
+  ok   T2c det(1 - uH) = |F(u)|^2 to 2e-3 with prime classes of length <= 8 at u = 0.35/rad(H), non-unitary Kraus n = 2, m = 2 (0.512434 vs 0.512441)
+  ok   T2c the full truncated Euler product is real and equals |F|^2 exactly, non-unitary Kraus n = 2, m = 2
+  ok   T2c det(1 - uH) > 0 on the real axis inside the disc, non-unitary Kraus n = 2, m = 2
+  ok   T2b det(1 - u^l E_wbar) = conj det(1 - conj(u)^l E_w), unitary Kraus n = 2, m = 2
+  ok   T2c det(1 - uH) = |F(u)|^2 to 2e-3 with prime classes of length <= 8 at u = 0.35/rad(H), unitary Kraus n = 2, m = 2 (0.453535 vs 0.453541)
+  ok   T2c the full truncated Euler product is real and equals |F|^2 exactly, unitary Kraus n = 2, m = 2
+  ok   T2c det(1 - uH) > 0 on the real axis inside the disc, unitary Kraus n = 2, m = 2
+  ok   T2d sdet(1 - uH) = |F_gr(u)|^2 to 5e-3 (classes of length <= 6), mixed-parity unitary letters (0.843858 vs 0.843894)
+  ok   T2e (1-u)^2(1+u)(1-3u) has simple roots at -1 and 1/3: sqrt is not a polynomial
+  ok   T2e Ad-weights: transition-path traces of gamma = (0, 1, 2, 1)+(bar e) and its twist are neither equal nor opposite (0.0046-0.0000j vs 0.0007+0.0000j)
+  ok   T2e prover's unitary counterexample U_e = U_f = diag(1, i): path traces 0 and 4
+  ok   T2e classical weights are twist symmetric (every allowed path has weight 1)
+  ok   T2e loopwise time reversal: Tr E_wbar = conj Tr E_w
+  ok   T2e Kraus loop traces are real and nonnegative (|Tr A_w|^2)
+  ok   T2c Kraus letters: det(1 - uH) = F(u)^2 at complex u (classes of length <= 8), 0.70018-0.25107j vs 0.70018-0.25107j
+  ok   T2c Kraus letters: det(1 - z E_w) has real coefficients (Ad(A) preserves Hermitian matrices)
+  ok   T2c E_1 = i, E_2 = -i: det(1 - uH) = 1 + u^2 = |1 - iu|^2 but not (1 - iu)^2: only F F^# in general
+== T3: odd letters make the Hashimoto operator chiral ==
+  ok   T3a Gamma^2 = 1 and [Gamma, Gamma_b] = 0, C^{2|2}, three odd letters
+  ok   T3a Gamma H Gamma = H^eps, Gamma J Gamma = J^eps, Gamma Sigma Gamma = Sigma^eps, C^{2|2}, three odd letters
+  ok   T3a det(1 - uH_0) = det(1 - uH_0^eps), C^{2|2}, three odd letters
+  ok   T3a det(1 - uH_1) = det(1 - uH_1^eps), C^{2|2}, three odd letters
+  ok   T3b Gamma anticommutes with H, J, Sigma, C^{2|2}, three odd letters
+  ok   T3b spec H_0 symmetric under negation, C^{2|2}, three odd letters
+  ok   T3b det(1 - uH_0) even in u and = det_+(1 - u^2 H_0^2|_+) at u = 0.21, C^{2|2}, three odd letters
+  ok   T3b det(1 - uH_0) even in u and = det_+(1 - u^2 H_0^2|_+) at u = (0.1+0.2j), C^{2|2}, three odd letters
+  ok   T3b Sigma_0 = [[0, alpha],[alpha^*, 0]] (chiral, HS self-adjoint), C^{2|2}, three odd letters
+  ok   T3b det(1 - u Sigma_0 + q u^2) = det_+((1 + q u^2)^2 - u^2 alpha alpha^*), C^{2|2}, three odd letters
+  ok   T3b spec(Sigma_0)^2 = spec(alpha alpha^*) (doubled), C^{2|2}, three odd letters
+  ok   T3b Ramanujan band for Sigma_0 <=> spec(alpha alpha^*) in [0, 4q] off the trivial part (False), C^{2|2}, three odd letters
+  ok   T3b spec H_1 symmetric under negation, C^{2|2}, three odd letters
+  ok   T3b det(1 - uH_1) even in u and = det_+(1 - u^2 H_1^2|_+) at u = 0.21, C^{2|2}, three odd letters
+  ok   T3b det(1 - uH_1) even in u and = det_+(1 - u^2 H_1^2|_+) at u = (0.1+0.2j), C^{2|2}, three odd letters
+  ok   T3b Sigma_1 = [[0, alpha],[alpha^*, 0]] (chiral, HS self-adjoint), C^{2|2}, three odd letters
+  ok   T3b det(1 - u Sigma_1 + q u^2) = det_+((1 + q u^2)^2 - u^2 alpha alpha^*), C^{2|2}, three odd letters
+  ok   T3b spec(Sigma_1)^2 = spec(alpha alpha^*) (doubled), C^{2|2}, three odd letters
+  ok   T3b Ramanujan band for Sigma_1 <=> spec(alpha alpha^*) in [0, 4q] off the trivial part (True), C^{2|2}, three odd letters
+  ok   T3c the Gamma = +1 part of the odd sector is Hom(V_-, V_+) (x) C^D (L_P X = P X acts as +1 when the range is V_+), C^{2|2}, three odd letters
+  ok   T3c spec(H_1^2|_+) = squares of the odd edge eigenvalues (each once), C^{2|2}, three odd letters
+  ok   T3d Sigma 1 = D 1 and Sigma P = -D P (P-mode -D), C^{2|2}, three odd letters
+  ok   T3d Gamma exchanges 1 and P, C^{2|2}, three odd letters
+  ok   T3d trivial edge eigenvalue 5 present in the even sector, C^{2|2}, three odd letters
+  ok   T3d trivial edge eigenvalue 1 present in the even sector, C^{2|2}, three odd letters
+  ok   T3d trivial edge eigenvalue -5 present in the even sector, C^{2|2}, three odd letters
+  ok   T3d trivial edge eigenvalue -1 present in the even sector, C^{2|2}, three odd letters
+  ok   T3b odd unitary letters force a balanced grading D_+ = D_-, C^{2|2}, three odd letters
+  ok   T3a Gamma^2 = 1 and [Gamma, Gamma_b] = 0, C^{1|1}, two odd letters
+  ok   T3a Gamma H Gamma = H^eps, Gamma J Gamma = J^eps, Gamma Sigma Gamma = Sigma^eps, C^{1|1}, two odd letters
+  ok   T3a det(1 - uH_0) = det(1 - uH_0^eps), C^{1|1}, two odd letters
+  ok   T3a det(1 - uH_1) = det(1 - uH_1^eps), C^{1|1}, two odd letters
+  ok   T3b Gamma anticommutes with H, J, Sigma, C^{1|1}, two odd letters
+  ok   T3b spec H_0 symmetric under negation, C^{1|1}, two odd letters
+  ok   T3b det(1 - uH_0) even in u and = det_+(1 - u^2 H_0^2|_+) at u = 0.21, C^{1|1}, two odd letters
+  ok   T3b det(1 - uH_0) even in u and = det_+(1 - u^2 H_0^2|_+) at u = (0.1+0.2j), C^{1|1}, two odd letters
+  ok   T3b Sigma_0 = [[0, alpha],[alpha^*, 0]] (chiral, HS self-adjoint), C^{1|1}, two odd letters
+  ok   T3b det(1 - u Sigma_0 + q u^2) = det_+((1 + q u^2)^2 - u^2 alpha alpha^*), C^{1|1}, two odd letters
+  ok   T3b spec(Sigma_0)^2 = spec(alpha alpha^*) (doubled), C^{1|1}, two odd letters
+  ok   T3b Ramanujan band for Sigma_0 <=> spec(alpha alpha^*) in [0, 4q] off the trivial part (True), C^{1|1}, two odd letters
+  ok   T3b spec H_1 symmetric under negation, C^{1|1}, two odd letters
+  ok   T3b det(1 - uH_1) even in u and = det_+(1 - u^2 H_1^2|_+) at u = 0.21, C^{1|1}, two odd letters
+  ok   T3b det(1 - uH_1) even in u and = det_+(1 - u^2 H_1^2|_+) at u = (0.1+0.2j), C^{1|1}, two odd letters
+  ok   T3b Sigma_1 = [[0, alpha],[alpha^*, 0]] (chiral, HS self-adjoint), C^{1|1}, two odd letters
+  ok   T3b det(1 - u Sigma_1 + q u^2) = det_+((1 + q u^2)^2 - u^2 alpha alpha^*), C^{1|1}, two odd letters
+  ok   T3b spec(Sigma_1)^2 = spec(alpha alpha^*) (doubled), C^{1|1}, two odd letters
+  ok   T3b Ramanujan band for Sigma_1 <=> spec(alpha alpha^*) in [0, 4q] off the trivial part (True), C^{1|1}, two odd letters
+  ok   T3c the Gamma = +1 part of the odd sector is Hom(V_-, V_+) (x) C^D (L_P X = P X acts as +1 when the range is V_+), C^{1|1}, two odd letters
+  ok   T3c spec(H_1^2|_+) = squares of the odd edge eigenvalues (each once), C^{1|1}, two odd letters
+  ok   T3d Sigma 1 = D 1 and Sigma P = -D P (P-mode -D), C^{1|1}, two odd letters
+  ok   T3d Gamma exchanges 1 and P, C^{1|1}, two odd letters
+  ok   T3d trivial edge eigenvalue 3 present in the even sector, C^{1|1}, two odd letters
+  ok   T3d trivial edge eigenvalue 1 present in the even sector, C^{1|1}, two odd letters
+  ok   T3d trivial edge eigenvalue -3 present in the even sector, C^{1|1}, two odd letters
+  ok   T3d trivial edge eigenvalue -1 present in the even sector, C^{1|1}, two odd letters
+  ok   T3b odd unitary letters force a balanced grading D_+ = D_-, C^{1|1}, two odd letters
+  ok   T3a Gamma^2 = 1 and [Gamma, Gamma_b] = 0, C^{2|2}, two odd + one even letter
+  ok   T3a Gamma H Gamma = H^eps, Gamma J Gamma = J^eps, Gamma Sigma Gamma = Sigma^eps, C^{2|2}, two odd + one even letter
+  ok   T3a det(1 - uH_0) = det(1 - uH_0^eps), C^{2|2}, two odd + one even letter
+  ok   T3a det(1 - uH_1) = det(1 - uH_1^eps), C^{2|2}, two odd + one even letter
+  ok   T3e chirality fails with one even letter: even-sector spectrum not symmetric, C^{2|2}, two odd + one even letter
+  ok   T3e Pauli letters X,X,Y,Y,Z,Z: even spectrum {6, -2}, not symmetric (one even letter)
+  ok   T3 D_5: rotations even, reflections odd in the eigenbasis of the rotations
+  ok   T3 D_5: Gamma anticommutes with H
+  ok   T3 D_5 odd sector: the four nontrivial odd edge eigenvalues lie on |mu| = sqrt 9 = 3 (K_{5,5}, the Cayley graph of the reflections, is Ramanujan); moduli present: [1. 3.]
+  ok   T3 D_5 odd sector adjacency Sigma_1 = 0 (the K_{5,5} eigenvalue 0): zeros at u^2 = -1/9 exactly
+  ok   T3 D_5: det(1 - uH_1) = (1 - u^2)^{n_1(D-2)/2}(1 + 9u^2)^2 with n_1 = 2, at u = 0.2
+== T3': the prover's counterexamples ==
+  ok   T3c all-X letters: Z_gr = 1 although H_1 has nonzero spectrum (candidate zeros cancel against the even sector)
+  ok   T3c Jordan example: odd adjacency eigenvalues +-2 sqrt 3 (band edge, q = 3)
+  ok   T3c Jordan example: det(1 - uH_1) = (1 - u^2)^2 (1 - 3u^2)^2 at u = 0.2
+  ok   T3c Jordan example: det(1 - uH_1) = (1 - u^2)^2 (1 - 3u^2)^2 at u = (0.3+0.1j)
+  ok   T3c Jordan example: K_1 = H_1^2|_+ has a nontrivial Jordan block at 3 (rank(K-3) > rank((K-3)^2)); every retained eigenvalue of K_1/q is unimodular but K_1 is not diagonalisable
+  ok   T4c X,X,Y,Y: Z_gr = (1 + 3u^2)^2/((1 - u^2)(1 - 9u^2)) at u = 0.2
+  ok   T4c X,X,Y,Y: single layer det(1 - uh) = (1 - u^2)^2 (1 - 2u^2 + 9u^4) at u = 0.2
+  ok   T4c X,X,Y,Y: Z_gr = (1 + 3u^2)^2/((1 - u^2)(1 - 9u^2)) at u = (0.15+0.1j)
+  ok   T4c X,X,Y,Y: single layer det(1 - uh) = (1 - u^2)^2 (1 - 2u^2 + 9u^4) at u = (0.15+0.1j)
+  ok   T4c X,X,Y,Y: no single-layer edge eigenvalue squares to the doubled candidate -3: no spectral-squaring identification
+  ok   T4c X,X,Y,Y: str h^2 = 0 while str H^2 = 32 (eight rooted words of squared amplitude 4)
+  ok   T3e mixed example: X(x)X is odd and 1(x)X is even for P = Z(x)1
+  ok   T3e mixed example: L_Q with Q = 1(x)Z anticommutes with H and commutes with Gamma_b: a different chiral involution exists
+  ok   T3f continuum: for sum L_i^* L_i = c 1 the generator satisfies Gamma (L + c) Gamma = -(L + c): spectrum symmetric about -c
+  ok   T3f continuum: spectrum of L reflected about -c
+== T4: the single layer ==
+  ok   T4a single-layer h is odd for P (x) 1
+  ok   T4a det(1 - uh) = det_+(1 - u^2 h^2|_+)
+  ok   T4a str h^k = 0 for k = 1..6, so sdet(1 - uh) = 1
+  ok   T4a/b sum over cyclically non-backtracking words of length 2 of Tr(P U_w) = 0
+  ok   T4a/b sum over cyclically non-backtracking words of length 4 of Tr(P U_w) = 0
+  ok   T4c str H^2 = sum_w |Tr(P U_w)|^2 = 26.8250 > 0 while sum_w Tr(P U_w) = 0
+
+158/158 checks passed

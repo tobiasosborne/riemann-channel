@@ -1,0 +1,148 @@
+% SHARD-ID: RC-04P-GL1-BOND
+% SHARD-TITLE: The Phantasm VIII: the Adelic Symplectic Space as the Bond. The Class-Group Bond of a Function Field, the Theta Functional as its State, the Cusps as the GL_1 Bond, and Riemann's Theta for Q
+% SHARD-SUMMARY: Taking the adelic symplectic space as the bond of the cMPS (not the bulk, which would be the blind product state over primes) identifies, for a function field, the units-invariant bond with l^2 of the class group times the degree ladder: its ring norms are the effective-divisor counts, its generic Riemann--Roch part is the pole, its special part (the theta divisor) is the zeros, and at genus one the bond dimension is the zeta numerator at T = 1 and determines the Frobenius roots.
+% SHARD-SUMMARY: The theta functional evaluated on the idele class of a divisor D is q^{h^0(D)}, Tate's zeta integral of the unit ball is Z(T), and Poisson summation on A/K for the unit ball is Riemann--Roch, so the adelic Fourier transform (the Weyl element of the Weil representation) acts on the bond state as D -> K_C - D; the cusps of the tree quotient GL_2(R)\T are Pic(R) = Pic^0(K), so the hedgehog's spikes are the GL_1 bond and H-CLASS is a Pic-group matrix block-diagonalised by the Fourier transform on it, with the nontrivial class characters seeing no zeros at genus one.
+% SHARD-SUMMARY: Over Q the units-invariant bond is L^2(R_+^x) with Jacobi's theta as bond state, the constant terms 1 and y^{-1/2} as the even sector exchanged by the automorphism, and the Mellin transform of the odd part equal to 2 pi^{-s/2} Gamma(s/2) zeta(s) in the strip: Riemann's 1859 argument is the Q case; what the bond reading does not supply is the metric, and at genus one the symmetric-ray test is vacuous.
+% SHARD-KEYWORDS: adelic bond, idele class group, class group, Picard group, effective divisors, Riemann--Roch, theta functional, theta divisor, Tate's thesis, Poisson summation, Weyl element, cusps, Pic(R), class characters, Hecke L-function, Jacobi theta, Mellin transform, H-THETA, metric
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/gl1_bond.py
+
+\section{The Phantasm VIII: the Adelic Symplectic Space as the Bond}
+\label{sec:gl1-bond}
+
+\emph{Question (TJO, 2026-09-21).} Is it consistent to take the symplectic space over the adeles as the bond
+(auxiliary) system of the cMPS rather than the bulk? Brief \texttt{notes/gl1-bond/brief.md} (B1--B5), proofs
+\texttt{notes/gl1-bond/proofs.md} (author \texttt{claude:fable-5.1}), blind numerics
+\texttt{notes/gl1-bond/numerics.md} with \texttt{scripts/gl1\_bond.py}, review
+\texttt{notes/reviews/gl1-bond-2026-09-21.md}. The bulk cannot be the adeles: a physical state that is a product
+over places is the Bost--Connes side A with bond dimension one (\cref{prop:normal-kms-gibbs}), blind to the zeros
+(\cref{obs:prime-by-prime-blind}). The bond reading is made concrete where everything is finite and RH is known,
+a function field $K$ of genus $g$ over $\Fq$ with a rational point $P_0$, and then stated for $\mathbb Q$. The
+statements are elementary function-field facts (Riemann--Roch, Tate's thesis, Serre's description of the tree
+quotient); none of Rosen, Weil, Serre or Tate is in the repository, so the citations are not byte-cited, and the
+round's content is the identification with the notebook's objects. Notation: $\mathrm{Pic}^n$ the classes of
+degree $n$, $h = |\mathrm{Pic}^0(\Fq)|$, $h^0(D) = \dim L(D)$, $Z(T) = \zeta_K(s)$ at $T = \qs^{-s}$,
+$Z = P/((1-T)(1-\qs T))$, $P = \prod(1-\alphaw{i}T)$. Worklog 2026-09-21.
+
+\begin{definition}[Class-group bond of a function field; bond state]
+\label{def:class-group-bond}
+The \emph{class-group bond} of $K$ is $\ltwo{\mathrm{Pic}^0}\otimes\ltwo{\mathbb Z}$ (class times degree), with the
+degree shift $[D]\mapsto[D+P_0]$ as transfer step; its \emph{ring norm} at length $n$ is the number $a_n$ of
+effective divisors of degree $n$, and its \emph{bond state} is the function $[D]\mapsto\qs^{h^0(D)}$ on
+$\mathrm{Pic}$. Its \emph{generic part} is the Riemann--Roch value $h(\qs^{n+1-g}-1)/(\qs-1)$ of $a_n$ and its
+\emph{special part} the deviation, supported on degrees $n\le2g-2$ (the theta divisor).
+\end{definition}
+
+\begin{proposition}[The class-group bond: ring norms, generic part, genus one]
+\label{prop:class-group-bond}
+\claimstatus{prop:class-group-bond}{proved}
+(a) $Z(T) = \sum_na_nT^n$ with $a_n = \sum_{[D]\in\mathrm{Pic}^n}(\qs^{h^0(D)}-1)/(\qs-1)$. (b) For $n>2g-2$,
+$a_n = h(\qs^{n+1-g}-1)/(\qs-1)$, geometric in $\qs^n$ and $1$: the Perron pair, the even part of
+\cref{thm:scattering-superdeterminant}; the special degrees $n\le2g-2$ carry $P(T)$, the $H^1$ factor of the
+superdeterminant in the variable $w = T^2$. (c) $a_0 = 1$, and at genus one
+\[
+Z(T) = 1+\frac{hT}{(1-T)(1-\qs T)},\qquad P(T) = 1-(\qs+1-h)T+\qs T^2,\qquad h = P(1) = \Ncount{1}:
+\]
+the Frobenius roots are determined by the class number alone (D2: $1-2T+2T^2$; D3: $1+3T^2$). (d) In general
+$h = P(1) = \det(1-\Frob|H^1)$ (Weil): the bond dimension of the class-group bond is the zeta numerator at $T = 1$.
+\end{proposition}
+
+\begin{proposition}[The theta functional is the bond state; Poisson summation is Riemann--Roch]
+\label{prop:theta-functional-bond-state}
+\claimstatus{prop:theta-functional-bond-state}{proved}
+Let $f = 1_{O_{\mathbb A}}$ and $x$ an idele with divisor $D$. (a) $\Theta(xf) = \sum_{a\in K}1_{O_{\mathbb A}}(xa) = \qs^{h^0(D)}$.
+(b) With $\mathrm{vol}(\prod_vO_v^\times) = 1$ and $\re s>1$ (elsewhere by continuation), $\int_{\mathbb A^\times/K^\times}(\Theta(xf)-1)|x|^s\,d^\times x =
+(\qs-1)^{-1}\sum_{[D]}(\qs^{h^0(D)}-1)\qs^{-s\deg D} = Z(\qs^{-s})$ (fibre volume $1/(\qs-1)$ over $\mathrm{Pic}$), and
+$\int_{\mathbb A^\times}f(x)|x|^sd^\times x = Z(\qs^{-s})$ (fibre volume $1$ over the effective divisors). (c) The
+functional equation $Z(1/(\qs T)) = \qs^{1-g}T^{2-2g}Z(T)$ is Poisson summation on $\mathbb A/K$ for $f$, and for
+this $f$ Poisson summation is Riemann--Roch $h^0(D)-h^0(K_C-D) = \deg D+1-g$: the adelic Fourier transform, the
+Weyl element of the Weil representation of $\SL(K)$, acts on the bond state as $[D]\mapsto[K_C-D]$, preserving
+the theta divisor $\{h^0>0\}\subset\mathrm{Pic}^{g-1}$ (its fixed locus is the set of theta characteristics
+$\{2[D] = [K_C]\}$, a $\mathrm{Pic}^0[2]$-torsor when nonempty, of order at most $2^{2g}$). The two poles of $Z$ are the two constant terms of $\Theta$, $a = 0$ and its Fourier image.
+\end{proposition}
+
+\begin{proposition}[The cusps of the tree quotient are the class-group bond]
+\label{prop:cusps-are-class-group-bond}
+\claimstatus{prop:cusps-are-class-group-bond}{proved-conditional}
+Let $R = O(C\setminus P_0)$, $\deg P_0 = 1$. (a) The cusps of $\mathrm{GL}_2(R)\backslash\mathcal T$ are in bijection with
+$\mathrm{Pic}(R)\cong\mathrm{Pic}^0(K)$ (Serre for $\mathrm{GL}_2(R)$; the count is byte-cited in \cref{cit:lorscheid-cusp-count} and, for
+APW's $\mathrm{PGL}_2(R)$, in \cref{cit:apw-cusps-pic-no-funnels}): one for D2, four for D3. The
+hedgehog's spikes are the units-invariant GL$_1$ bond $\ltwo{\mathrm{Pic}^0}$, and H-CLASS (\cref{obs:h-class},
+\cref{prop:d3-group-matrix}) says the GL$_2$ scattering matrix at equal depth is a $\mathrm{Pic}$-group matrix times
+the inversion pairing, block-diagonalised, not diagonalised, by the Fourier transform on that bond ($2\times2$
+blocks on inverse pairs of characters). (b) For a class character $\chi$
+extended by $\chi(P_0) = 1$, $L(T,\chi) := \sum_{[D]}\chi([D])(\qs^{h^0(D)}-1)/(\qs-1)\,T^{\deg D} =
+\prod_{\mathfrak P}(1-\chi([\mathfrak P])T^{\deg\mathfrak P})^{-1}$ is the Hecke $L$-function of $\chi$, a polynomial of
+degree $2g-2$ for $\chi\ne1$; at genus one it is $1$ (for $n\ge1$, $h^0 = n$ depends only on the degree and
+$\sum_{\mathrm{Pic}^n}\chi = 0$): no channel other than $\chi = 1$ carries a zero, which is why the non-zeta channels of
+\cref{thm:d3-channels} are monomial; their values $\{1,1,-1\}$ come from the inversion pairing, not from a
+bijection with the three nontrivial characters (\cref{thm:d3-height-diagonalisation}). This is
+\cref{prop:character-channel-graded-bond} at the level of $\mathrm{Pic}^0$. (c) At genus one $\dim\ltwo{\mathrm{Pic}^0} = h = P(1)$ while $\dim K_{\mathrm{HW}} = 4$ (under \cref{asm:h-diag},
+\cref{prop:d2-spectrum-frobenius,prop:d3-spectrum}): they coincide for D3 ($h = 4$) and not for D2 ($h = 1$), so ``one cusp per class'' is not ``one exit per zero mode''
+(\cref{thm:arithmetic-metric}).
+\end{proposition}
+
+\begin{proposition}[Over $\mathbb Q$: Riemann's theta on the dilation bond]
+\label{prop:riemann-theta-dilation-bond}
+\claimstatus{prop:riemann-theta-dilation-bond}{proved}
+(a) $\mathbb A^\times = \mathbb Q^\times\cdot\mathbb R_+^\times\cdot\hat{\mathbb Z}^\times$ with
+$\mathbb Q^\times\cap\mathbb R_+^\times\hat{\mathbb Z}^\times = \{1\}$: the units-invariant GL$_1$ bond over
+$\mathbb Q$ is $L^2(\mathbb R_+^\times,d^\times x)$, one cusp. (b) For $x\in\mathbb R_+^\times$ and
+$f = e^{-\pi t^2}\otimes1_{\hat{\mathbb Z}}$, $\Theta(xf) = \sum_{n\in\mathbb Z}e^{-\pi n^2x^2} = \jtheta(x^2)$,
+$\jtheta(y) = \sum_ne^{-\pi n^2y}$, $\jtheta(1/y) = y^{1/2}\jtheta(y)$. (c) For $0<\re s<1$,
+\[
+\int_0^\infty\big(\jtheta(y)-1-y^{-1/2}\big)\,y^{s/2}\,d^\times y = 2\pi^{-s/2}\Gamma(s/2)\zeta(s) = \frac{4\,\cxi(s)}{s(s-1)},
+\]
+the integral diverging outside the strip; the zeros of $\zeta$ in the strip are the zeros of the Mellin transform of
+the odd part $\jtheta-1-y^{-1/2}$ of the bond state, and the constant terms $1$ (the pole $s = 0$) and $y^{-1/2}$ (the
+pole $s = 1$), the even sector, are exchanged by the automorphism $y\mapsto1/y$; here $y = |x|^2$, and in the idele
+variable the constant halves, $\int_0^\infty(\jtheta(x^2)-1-x^{-1})x^s\,d^\times x = 2\cxi(s)/(s(s-1))$. Riemann's 1859 argument is the $\mathbb Q$ case of
+``adelic symplectic space as bond''.
+\end{proposition}
+
+\begin{conjecture}[H-THETA]
+\label{conj:h-theta}
+\claimstatus{conj:h-theta}{open}
+The compression of the dilation semigroup to the dilation-cyclic subspace of the odd part $\jtheta-1-y^{-1/2}$ of the
+bond state, with the outgoing half $y>1$ removed, is unitarily equivalent to the Riemann channel of
+\cref{prop:functional-model-modes} on $\KS = H^2\ominus\Ssym H^2$.
+\end{conjecture}
+
+\begin{observation}[What the bond reading does not supply: the metric]
+\label{obs:gl1-bond-no-metric}
+\claimstatus{obs:gl1-bond-no-metric}{proved}
+At genus one the Frobenius roots are fixed by $h$ alone and their common modulus $\sqrt{\qs}$ is Hasse's theorem,
+which nothing on the bond forces (the map $h\mapsto P$ gives equal moduli exactly on the Hasse interval; the numerics
+lane's counterexample $\qs = 2$, $h = 6$ has roots $-1,-2$). Any metric in which $\qs^{1/4}Z$ is unitary is diagonal in the eigenbasis of $Z$ and reality and the bipartite
+sign fix the ratios (\cref{thm:arithmetic-metric}), and on $H^1\otimes\mathbb C$ with distinct Frobenius eigenvalues
+every Frobenius-normal metric is diagonal with reality fixing the ratio, so ``the symmetric ray of \cref{thm:arithmetic-metric}
+is the Hodge metric'' is vacuous at genus one; the first genuine test is genus two. The Kraus dichotomy
+(\cref{obs:kraus-dichotomy}) stands: the automorphism gives the functional equation, not the circle.
+\end{observation}
+
+\begin{numerical}[Blind numerics lane, class-group bond]
+\label{num:gl1-bond}
+\claimstatus{num:gl1-bond}{numerical}
+\texttt{scripts/gl1\_bond.py} ($159$ assertions, $5$ s, seed $20260921$; \texttt{outputs/gl1\_bond.txt}; ledger D01--D31 in
+\texttt{notes/gl1-bond/numerics.md}; $152$ pass, the $7$ failures the brief's own defects, each paired with a passing
+corrected assertion): closed points of degree $\le6$ of both curves by Frobenius orbits on $C(\Fqn{k})$ (D2:
+$\Ncount{k} = 1,5,13,25,41,65$; D3: $4,16,28,64,244,784$), effective-divisor counts $a_n = 1,1,3,7,15,31,63$ and
+$1,4,16,52,160,484,1456$ against $Z(T)$; the group law and $\mathrm{Pic}^0$ ($h = 1$; $\mathbb Z/4$); $h^0$ three ways
+(Riemann--Roch, class-wise enumeration, explicit rank over $\Fqn{6}$); $a_n$ as the class sum; the functional
+equation with its $\qs^{1-g}T^{2-2g}$ prefactor also at $g = 0$; the four class characters of $\mathbb Z/4$ with
+$L(T,\chi) = 1$ for $\chi\ne1$; the cusp counts against $h$; Jacobi theta: $\Theta(xf) = \jtheta(x^2)$ to $10^{-40}$, the
+Mellin identity in the strip to $10^{-40}$ with its simple poles and residues $\mp2$ at $s = 0, 1$, divergence at
+$s = 2, 3$, and the vanishing at $\tfrac12+14.134725i$, $\tfrac12+21.022040i$ to the precision of the zeros.
+\end{numerical}
+
+\begin{observation}[What the next round should do]
+\label{obs:gl1-bond-next}
+\claimstatus{obs:gl1-bond-next}{sketched}
+(i) H-THETA: compute the dilation-cyclic space of the odd theta and its outgoing half, and compare with $\KS$
+numerically through the first zeros. (ii) Genus two: a curve with $h$ and $P$ known, the class-group bond, the
+theta divisor as the odd part, and the first non-vacuous test of the symmetric-ray metric against the Hodge metric.
+(iii) The Frobenius channel of \cref{thm:frobenius-channel-expander} on the class-group bond: is the compressed
+degree shift on the special part, in the Hodge metric, $\qs^{1/2}$ times a unitary, and what is its exit?
+(iv) The two cusps $0,\infty$ of GL$_1$ against the one cusp of the modular surface: the folding by the
+automorphism as the origin of the one-dimensional exit of \cref{lem:exit-one-dimensional}.
+\end{observation}
