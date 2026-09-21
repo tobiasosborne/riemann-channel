@@ -95,10 +95,14 @@ mat_mul_dot(arb_mat_t C, const arb_mat_t A, const arb_mat_t B, slong prec)
             arb_dot(arb_mat_entry(C, i, j), NULL, 0, arb_mat_entry(A, i, 0), 1, arb_mat_entry(B, 0, j), r, q, prec);
 }
 
-/* Krawczyk image of the box y~ + D, with C0 = I - R J(y~) precomputed (ball) and the box dependence
- * handled in O(n^2):  J(Y) - J(y~) = [-D_lam I, -D_x; 0, 0], so
- *   K = y~ - Z + C0 D - R (J(Y) - J(y~)) D = y~ - Z + C0 D + 2 R_x (D_lam * D_x),
- * where R_x is the first n columns of R and D = (D_x; D_lam) is centred at 0. */
+/* Krawczyk image of the box y~ + D, with C0 = I - R J(y~) precomputed (ball). F is quadratic, so
+ * the expansion is EXACT: F(y~ + d) = F(y~) + J(y~) d - d_lam d_x, hence for y = y~ + d in Y
+ *   y - R F(y) = y~ - Z + C0 d + R_x (d_lam * d_x),
+ * enclosed over Y by  K = y~ - Z + C0 D + R_x (D_lam * D_x),  R_x the first n columns of R.
+ * (Bug fixed 2026-09-18, found by Lane C of MVP-3: the previous code used the mean-value bound
+ * 2 R_x (D_lam * D_x), which is a valid superset only while D is centred at 0; the contraction loop
+ * below moves the box off-centre, and the factor 2 then EXCLUDED the true solution, so the
+ * returned box could miss the eigenvalue when inverse iteration had not converged.) */
 static void
 krawczyk(arb_mat_t K, const arb_mat_t C0, const arb_mat_t R, const arb_mat_t D, const arb_mat_t Z,
          const arb_mat_t Ytil, slong prec)
@@ -112,7 +116,6 @@ krawczyk(arb_mat_t K, const arb_mat_t C0, const arb_mat_t R, const arb_mat_t D, 
     for (i = 0; i <= n; i++)
     {
         arb_dot(t, NULL, 0, arb_mat_entry(R, i, 0), 1, arb_mat_entry(W, 0, 0), 1, n, prec);
-        arb_mul_2exp_si(t, t, 1);
         arb_add(arb_mat_entry(K, i, 0), arb_mat_entry(K, i, 0), t, prec);
     }
     arb_mat_sub(K, K, Z, prec);

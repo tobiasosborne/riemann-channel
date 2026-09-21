@@ -1,0 +1,33 @@
+# ./build/zst --chi 5 --x 13 --N 40 --prec 500 --zeros 10
+# 2026-09-18T17:07:26+02:00, FLINT 3.0.1, gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+# tree: zst MVP-3 lane C (src/parity.c, src/ell_ref.c, tools/zst.c)
+
+zst: real primitive character chi_D, D = 5 (Kronecker symbol), conductor 5
+     gamma factor Gamma_R(s + 0) = (Q, d, mu) = (pi^-1/2, 2, 1/2), no pole (F6, F17)
+x = 13 (prime powers <= 13), N = 40, prec = 500 bits, L = [2.56494935746154 +/- 3.27e-15]   (matrix build 0.02s)
+certified block minima (Rayleigh above, ball LDL^T inertia below):
+   min E = [2.48054456833e-12 +/- 3.76e-24]
+   min O = [3.29982200539e-9 +/- 3.72e-22]
+parity: +1 (EVEN minimum)   certified gap >= 3.2973415e-9   (0.08s)
+even-simple hypothesis (deflated Cholesky of E - 2 eps and O - 2 eps): CERTIFIED
+xi_0 = [80666.4515386 +/- 8.10e-9]   (consistency check, astra-review.md Q1: under even-simple D'' is invertible and
+    xi_0 = prod_{k=1}^{N} s_k^2 / (N!)^2 > 0; a non-positive xi_0 refutes the hypothesis)
+xi_1 = [-52143.99674 +/- 4.51e-6], xi_N = [-0.0039860 +/- 3.32e-8]
+positive secular roots: 40 certified of N = 40, 0 unresolved  ->  spectrum COMPLETE
+
+  k   z_k = 2 pi s_k / L                        gamma_k (PARI)                          |z_k - gamma_k|
+  1   6.64845334511732905295867918221   6.64845334472771471612327845998   3.896e-10
+  2   9.83144445332520522290894459144   9.83144443288666961634832134746   2.044e-8
+  3   11.9588457521456215476998425754   11.9588456260835145302656586883   1.261e-7
+  4   16.0338330240904730847727459238   16.0338211283842356745932537822   1.190e-5
+  5   17.5670840216894819772088903740   17.5669942923255552027015952681   8.973e-5
+  6   19.5409583202801749156861358681   19.5407326227847502503786900230   0.0002257
+  7   22.2283612604111583627595615836   22.2274054544594109118776249631   0.0009558
+  8   24.5947442827465566296882707695   24.5884662174081952076562699761   0.006278
+  9   26.8207342270112878405926105867   26.7760959480041401165235749653   0.04464
+ 10   28.6473619686171333001454967430   28.4610351001775224751869782723   0.1863
+window total 0.23s
+
+total 0.23s
+
+# wall 0.23 s, max rss 8584 kB

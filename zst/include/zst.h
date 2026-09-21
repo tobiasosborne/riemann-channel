@@ -18,6 +18,7 @@
 #include <flint/acb.h>
 #include <flint/arb_mat.h>
 #include <flint/acb_mat.h>
+#include <flint/fmpz.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -71,6 +72,73 @@ void zst_secular_eval(arb_t val, arb_t der, const arb_t s, arb_srcptr xi, slong 
 
 /* gamma[k-1] = Im rho_k for k = 1..K. */
 void zst_zeta_zeros(arb_ptr gamma, slong K, slong prec);
+
+
+/* ---- MVP-3 (2026-09-18): the general explicit-formula data model; Dirichlet characters; E/Q ----
+ * AUTHORITATIVE formula sheet: notes/zeta-spectral-triples/ellcurve/astra-review.md, "Formula sheet
+ * for the workers", F1-F18 (cite F-numbers in code comments next to the TeX lines). Window distribution
+ * (F2, F6, F8) on [0, L], L = log x = 2 log lambda:
+ *   D(q) = sum_k w_k q(y_k)                                                     atoms, 0 < y_k <= L
+ *        - sum_g mult_g int_0^L (q(y) - q(0)) rho_{d_g, mu_g}(y) dy             gamma factors, SUBTRACTED
+ *        + (pole terms, F18, rank two at +-1/2 for zeta)
+ *        + (s/2) q(0),   s = log C + sum_g mult_g [2 log Q_g + (2/d_g) psi(mu_g/d_g) + 2 T_{d_g,mu_g}(L)]
+ * with rho_{d,mu}(y) = sum_{k>=0} e^{-(dk+mu)y} and a gamma factor Q^s Gamma((s + kappa)/d), mu = kappa
+ * + 1/2 (F6). (a_n, b_n) per F3/F16: b_n = -(1/pi) D(sin omega_n y), a_n = 2 D((1 - y/L) cos omega_n y),
+ * omega_n = 2 pi n / L; the identity shift s is added to every a_n. zst_weil_riemann must reproduce
+ * zst_riemann_ab (full a_n including the shift) to all digits: F10/F12. */
+typedef struct {
+    arb_t    L;                                   /* window length, L = log x */
+    slong    natoms; arb_ptr y; arb_ptr w;        /* atoms: positions in (0, L], real weights (F5: -t_m log p / p^m) */
+    slong    ngamma; arb_ptr Q; arb_ptr d; arb_ptr mu; slong *mult;  /* gamma factors Q^s Gamma((s+kappa)/d), mu = kappa + 1/2 */
+    fmpz_t   cond;                                /* conductor C (>= 1); contributes +log C to the shift (F8) */
+    slong    npoles; arb_ptr sigma; slong *pmult; /* rank-one pole terms at real sigma (zeta: +-1/2, F18); usually 0 */
+    arb_t    shift_extra;                         /* any further identity shift (default 0; Q3 invariance tests) */
+} zst_weil_t;
+
+void zst_weil_init(zst_weil_t *W, slong natoms, slong ngamma, slong npoles, slong prec);
+void zst_weil_clear(zst_weil_t *W);
+
+/* Window integrals I1, I2, I3 of one kernel rho_{d,mu} for mode n >= 0 (F13-F15: polygamma plus the
+ * z = e^{-dL} series with the rigorous tail F15). */
+void zst_kernel_I123(arb_t I1, arb_t I2, arb_t I3, slong n, const arb_t d, const arb_t mu, const arb_t L, slong prec);
+
+/* Convergent tail T_{d,mu}(L) = int_L^inf rho_{d,mu} (F8) and the total identity shift s of W (F8). */
+void zst_kernel_tail(arb_t T, const arb_t d, const arb_t mu, const arb_t L, slong prec);
+void zst_weil_shift(arb_t s, const zst_weil_t *W, slong prec);
+
+/* Loewner data (a_n, b_n), n = 0..N (F16; b_0 = 0 exactly). */
+void zst_weil_ab(arb_ptr a, arb_ptr b, slong N, const zst_weil_t *W, slong prec);
+
+/* Constructors. x = lambda^2 (window), X = prime-power cutoff (all p^m with 1 < p^m <= X enter). */
+void zst_weil_riemann(zst_weil_t *W, const arb_t x, ulong X, slong prec);
+/* Real primitive Dirichlet character of fundamental discriminant D (chi(n) = Kronecker (D/n)),
+ * gamma factor Gamma_R(s + kappa), kappa = 0 for D > 0, 1 for D < 0; conductor |D|; no pole. */
+void zst_weil_dirichlet(zst_weil_t *W, const fmpz_t D, const arb_t x, ulong X, slong prec);
+/* Elliptic curve E/Q from a GLOBAL MINIMAL Weierstrass model [a1,a2,a3,a4,a6] and its conductor C
+ * (both inputs; taken from tests/data/ell_ref.txt, never computed here): atoms per F4/F5, gamma
+ * factor Gamma_C(s + 1/2) as (Q = 1/(2 pi), d = 1, mu = 1, mult 1), no pole (F17). */
+void zst_weil_ellcurve(zst_weil_t *W, const fmpz *ainvs, const fmpz_t C, const arb_t x, ulong X, slong prec);
+
+/* a_p = p - A_p, A_p = number of affine F_p-solutions of the general Weierstrass equation, singular
+ * point included (F4); valid at good and bad primes of a minimal model, also p = 2, 3. */
+slong zst_ell_ap(const fmpz *ainvs, ulong p);
+
+/* Reference data from tests/data/ell_ref.txt (tools/pari_ref.py; PARI 2.17.2). Fills the minimal
+ * model, conductor, root number w, analytic rank, and the first K zero ordinates gamma_k (analytic
+ * normalisation; central zeros as 0 with multiplicity) as balls of radius 1e-38. Returns 1, or 0 if the
+ * label is absent. `path` NULL = default location relative to the zst directory. */
+int zst_ell_ref(fmpz *ainvs, fmpz_t C, int *w, slong *rank, arb_ptr gamma, slong K,
+                const char *label, const char *path, slong prec);
+
+/* Certified MINIMUM eigenpair of a real symmetric block (not the smallest modulus: the block is shifted
+ * below its Frobenius bound before inverse iteration, then Rump-enclosed). Returns 1 on success. */
+int zst_block_min(arb_t lam, arb_ptr v, const arb_mat_t A, slong iters, slong prec);
+
+/* Parity of the global minimum of the Weil form (review, Q1): certified minima of E and O. Returns
+ * +1 if min E < min O is certified (even-simple candidate; then zst_certify_even_simple applies),
+ * -1 if min O < min E is certified (odd minimum: the paper's construction is inapplicable), 0 if
+ * undecided. gap = certified lower bound on |min E - min O|. */
+int zst_parity(arb_t minE, arb_t minO, arb_t gap, const arb_mat_t E, const arb_mat_t O, slong iters, slong prec);
 
 #ifdef __cplusplus
 }

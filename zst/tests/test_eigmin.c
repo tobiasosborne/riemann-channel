@@ -7,6 +7,34 @@
 static int fails = 0;
 #define CHECK(cond, msg) do { if (!(cond)) { flint_printf("FAIL: %s\n", msg); fails++; } } while (0)
 
+/* Soundness regression (2026-09-18, found by Lane C of MVP-3): with the Krawczyk remainder taken as
+ * the mean-value bound 2 R_x (D_lam D_x) instead of the exact quadratic R_x (D_lam D_x), the
+ * contraction loop (off-centred boxes) converged to a tight box that MISSED the eigenvalue whenever
+ * inverse iteration had not converged. Exact dyadic matrix A = H diag(-3,-1,2,5) H + 8 I with the
+ * Householder H = I - w w^T/2, w = (1,1,1,1): spectrum {5, 7, 10, 13}. Whatever the iteration count,
+ * a certified box must contain 5. */
+static int soundness_unconverged(void)
+{
+    slong n = 4, i, j, k, its[5] = {1, 2, 3, 5, 10}, prec = 200;
+    int bad = 0;
+    double d[4] = {-3, -1, 2, 5}, H[4][4], A[4][4];
+    arb_mat_t M; arb_t lam; arb_ptr v = _arb_vec_init(n);
+    arb_mat_init(M, n, n); arb_init(lam);
+    for (i = 0; i < n; i++) for (j = 0; j < n; j++) H[i][j] = (i == j) - 0.5;
+    for (i = 0; i < n; i++) for (j = 0; j < n; j++)
+    { A[i][j] = 0; for (k = 0; k < n; k++) A[i][j] += H[i][k] * d[k] * H[k][j]; }   /* multiples of 1/4: exact */
+    for (i = 0; i < n; i++) for (j = 0; j < n; j++)
+    { arb_set_d(arb_mat_entry(M, i, j), A[i][j]); if (i == j) arb_add_ui(arb_mat_entry(M, i, j), arb_mat_entry(M, i, j), 8, prec); }
+    for (i = 0; i < 5; i++)
+    {
+        int ok = zst_eigmin(lam, v, M, its[i], prec);
+        if (ok && !arb_contains_si(lam, 5))
+        { flint_printf("  soundness: iters = %wd certified a box excluding 5: ", its[i]); arb_printn(lam, 20, 0); flint_printf("\n"); bad++; }
+    }
+    arb_mat_clear(M); arb_clear(lam); _arb_vec_clear(v, n);
+    return bad == 0;
+}
+
 int main(void)
 {
     slong prec = 200;
@@ -63,6 +91,8 @@ int main(void)
     CHECK(mag_cmp_2exp_si(arb_radref(eps), -250) < 0, "near-singular: eigenvalue radius tiny");
 
     arb_mat_clear(A); arb_clear(eps); arb_clear(one); arb_clear(shift); arb_clear(t); _arb_vec_clear(v, 2);
+    CHECK(soundness_unconverged(), "soundness: certified boxes contain the eigenvalue at every iteration count");
+
     flint_cleanup();
     flint_printf("test_eigmin: %s\n", fails ? "FAIL" : "PASS");
     return fails ? 1 : 0;

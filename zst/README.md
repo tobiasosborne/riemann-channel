@@ -76,14 +76,28 @@ verification is easy; two of the `N` positive roots lie far beyond the last pole
 ## Layout
 
     include/zst.h     public API (documented per function)
-    src/              riemann_ab.c  blocks.c  eigmin.c  secular.c  compare.c
-    tools/zst.c       command-line driver;  tools/mutate.py  mutation testing
-    tests/            test_ab  test_eigmin  test_secular  test_pipeline   (make check)
+    src/              riemann_ab.c  blocks.c  eigmin.c  secular.c  compare.c      (zeta MVP, M1-M2)
+                      kernel.c  weil_data.c  ellcurve.c  dirichlet.c            (MVP-3: generic data model, F1-F18)
+                      parity.c  ell_ref.c                                      (MVP-3: certified block minima, parity, references)
+    tools/zst.c       command-line driver (--x --N; --curve <label>, --chi <D>, --scan-parity x1,x2,..);
+                      tools/pari_ref.py ground truth (PARI via cypari2);  tools/mutate.py  mutation testing
+    tests/            test_ab  test_eigmin  test_secular  test_pipeline  test_kernel  test_weil  test_ellcurve
+                      test_dirichlet  test_parity  test_ell_ref  test_pipeline_ell  test_dirichlet_pipeline   (make check)
+    tests/data/       ell_ref.txt dirichlet_ref.txt (PARI), kernel_pins.txt ell_pins_*.txt dirichlet_pins.txt (mpmath)
     fuzz/             fuzz_secular.c  fuzz_ab.c   (make fuzz, make fuzz-plain)
+
+## MVP-3 (2026-09-18): the general data model, Dirichlet characters, elliptic curves over Q
+
+M3 is done: `zst_weil_t` (atoms, subtracted gamma kernels `(Q, d, mu, mult)`, poles, conductor, shift)
+with the constants derived (formula sheet `notes/zeta-spectral-triples/ellcurve/astra-review.md`,
+F1-F18); zeta through it reproduces `zst_riemann_ab` to 1e-40. Report and results:
+`notes/zeta-spectral-triples/ellcurve/report-ell.md` (11a1 first zero to 4e-4 at x = 13, 2e-9 at x = 30;
+chi_{-4} to 2e-12; 37a1 and 389a1 have an ODD global minimum at every tested window, so the paper's
+construction is inapplicable there and `--curve 37a1` says so). A soundness bug in `zst_eigmin`'s
+Krawczyk contraction (wrong remainder coefficient for off-centred boxes) was found by Lane C and fixed;
+`test_eigmin` now carries the reproducer.
 
 ## Next (plan.md milestones)
 
-M3: the general explicit-formula data model (`zst_weil_t`: atoms, exponential-series kernels,
-trivial-divisor poles, identity shift) with the archimedean constants derived rather than typed, and
-Dirichlet characters as the first extension. M4: scale (`x ~ 100`, `N ~ 10^3`, thousands of digits;
+M4: scale (`x ~ 100`, `N ~ 10^3`, thousands of digits;
 OpenMP; the Loewner displacement structure). M5: `det_reg -> Xi` and the prolate comparison.

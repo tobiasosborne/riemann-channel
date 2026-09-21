@@ -1,0 +1,191 @@
+<title>Zeros From Counts</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="theme.css">
+<style>
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16.5px; line-height: 1.6;
+    margin: 0; padding-block: 0 80px; padding-inline: 16px; }
+  .page { max-width: var(--wide); margin: 0 auto; }
+  .prose { max-width: var(--measure); }
+  header.hero { padding: 56px 0 28px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
+  .kicker { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 14px; }
+  h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.2rem, 5.5vw, 3.6rem); line-height: 1.05; margin: 0 0 18px; letter-spacing: -.01em; text-wrap: balance; font-variation-settings: "opsz" 144; }
+  .lede { font-size: 1.15rem; color: var(--ink-2); max-width: var(--measure); margin: 0 0 22px; text-wrap: pretty; }
+  .thesis { font-family: var(--font-display); font-size: 1.28rem; line-height: 1.4; max-width: 60ch; margin: 0; padding-left: 16px; border-left: 3px solid var(--accent); }
+  nav.stations { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); margin: 0 -16px 8px; padding: 8px 16px; overflow-x: auto; }
+  nav.stations ol { list-style: none; display: flex; gap: 6px 18px; margin: 0; padding: 0; white-space: nowrap; font-family: var(--font-mono); font-size: 12px; }
+  nav.stations a { color: var(--ink-2); text-decoration: none; }
+  nav.stations a b { color: var(--accent); font-weight: 500; margin-right: 6px; }
+  nav.stations a:hover { color: var(--ink); }
+  section.station { padding-top: 44px; }
+  .station-no { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
+  h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.6rem, 3.4vw, 2.1rem); line-height: 1.15; margin: 0 0 16px; text-wrap: balance; }
+  h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.2rem; margin: 26px 0 8px; }
+  p { margin: 0 0 14px; text-wrap: pretty; }
+  .prose mjx-container[display="true"] { margin: 10px 0 16px; overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+  .prose { min-width: 0; } body { overflow-x: hidden; }
+  .dict { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; max-width: var(--measure); margin: 8px 0 18px; border-top: 1px solid var(--rule); font-size: 15px; }
+  .dict > div { padding: 8px 0; border-bottom: 1px solid var(--bg-3); }
+  .dict .h { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  .aside { background: var(--bg-2); border-radius: var(--radius); padding: 12px 16px; font-size: 15px; color: var(--ink-2); max-width: var(--measure); margin: 6px 0 18px; }
+  .aside b { color: var(--ink); font-weight: 600; }
+  .steps { counter-reset: st; list-style: none; padding: 0; margin: 12px 0 16px; max-width: var(--measure); }
+  .steps li { position: relative; padding: 10px 0 10px 44px; border-top: 1px solid var(--bg-3); }
+  .steps li::before { counter-increment: st; content: counter(st); position: absolute; left: 0; top: 9px; width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent-soft); color: var(--accent); font: 500 13px var(--font-mono); display: grid; place-items: center; }
+  .steps b { font-weight: 600; }
+  footer { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--ink-2); max-width: var(--measure); }
+  footer a, .prose a { color: var(--accent); }
+  code { font-family: var(--font-mono); font-size: .92em; background: var(--bg-2); padding: 1px 5px; border-radius: 3px; }
+  @media (max-width: 560px) { .dict { grid-template-columns: 1fr; } header.hero { padding-top: 32px; } }
+</style>
+
+<div class="page">
+<header class="hero">
+  <p class="kicker">An interactive tutorial · the Connes–Consani–Moscovici construction</p>
+  <h1>Zeros From Counts</h1>
+  <p class="lede">A zeta function is a way of counting. This page shows how a short table of counts becomes a matrix, how the quietest direction of that matrix becomes a spectrum, and why that spectrum is the set of zeros. Every idea is introduced on a permutation of five letters before it is applied to the Riemann zeta.</p>
+  <p class="thesis">Positivity of a truncated form is the Riemann hypothesis of a window. Its minimal eigenvector is the spectrum of the window.</p>
+</header>
+
+<nav class="stations" aria-label="Stations">
+  <ol>
+    <li><a href="#s1"><b>1</b>Counts</a></li>
+    <li><a href="#s2"><b>2</b>Spectrum</a></li>
+    <li><a href="#s3"><b>3</b>Positivity</a></li>
+    <li><a href="#s4"><b>4</b>Minimal eigenvector</a></li>
+    <li><a href="#s5"><b>5</b>Secular function</a></li>
+    <li><a href="#s6"><b>6</b>Riemann</a></li>
+    <li><a href="#s7"><b>7</b>The algorithm</a></li>
+  </ol>
+</nav>
+
+<section class="station" id="s1">
+  <p class="station-no">Station 1</p>
+  <h2>A zeta function counts fixed points</h2>
+  <div class="prose">
+  <p>Take the permutation \(\sigma = (1\,2)(3\,4\,5)\) of five letters: it swaps 1 and 2 and cycles 3, 4, 5. Apply it repeatedly and count how many letters stay put. Under \(\sigma\) itself, none does. Under \(\sigma^2\), letters 1 and 2 are back where they started, so \(N_2 = 2\). Under \(\sigma^3\), the three-cycle has closed, so \(N_3 = 3\). Under \(\sigma^6\) everything is fixed. The sequence \(N_k = \#\mathrm{Fix}(\sigma^k)\) is the whole content of the permutation up to relabelling, and it is periodic.</p>
+  <p>Package the counts into a generating function in the one way that turns sums into products:</p>
+  \[ Z_\sigma(u) \;=\; \exp\Big(\sum_{k\ge 1} \frac{N_k}{k}\,u^k\Big) \;=\; \prod_{\text{cycles } c} \frac{1}{1-u^{\ell(c)}} . \]
+  <p>The product runs over the cycles of \(\sigma\), and \(\ell(c)\) is the length of the cycle. This is the zeta function of the dynamical system "iterate \(\sigma\)". Compare it with the Euler product of the Riemann zeta, written on the logarithmic scale \(u = e^{-s}\):</p>
+  \[ \zeta(s) = \prod_p \frac{1}{1-p^{-s}}, \qquad \log\zeta(s) = \sum_{p}\sum_{m\ge 1}\frac{1}{m}\,p^{-ms} = \sum_{n\ge 2} \frac{\Lambda(n)}{\log n}\, n^{-s} . \]
+  <div class="dict">
+    <div class="h">Permutation</div><div class="h">Riemann zeta</div>
+    <div>a cycle \(c\)</div><div>a prime \(p\)</div>
+    <div>its length \(\ell(c)\), an integer</div><div>its length \(\log p\), a real number</div>
+    <div>a closed orbit \(c^m\), length \(m\ell\)</div><div>a prime power \(p^m\), length \(m\log p\)</div>
+    <div>the count \(N_k\) at length \(k\)</div><div>the weight \(\Lambda(n)=\log p\) at length \(\log n = m\log p\)</div>
+    <div>\(Z_\sigma(u)\), \(u=e^{-s}\)</div><div>\(\zeta(s)\)</div>
+  </div>
+  <p>The only difference in the bookkeeping is that the lengths of a permutation are integers while the lengths \(\log p\) of the primes are not. Everything else on this page is the same in both worlds. Keep the dictionary in mind; the page returns to it at every station.</p>
+  </div>
+  <div class="demo" id="demo-permCounts"></div>
+</section>
+
+<section class="station" id="s2">
+  <p class="station-no">Station 2</p>
+  <h2>Counts are power sums of a spectrum</h2>
+  <div class="prose">
+  <p>Let \(P\) be the permutation matrix of \(\sigma\): the \(n\times n\) matrix with a 1 in row \(\sigma(i)\) of column \(i\). Then \(P^k\) is the permutation matrix of \(\sigma^k\), and its trace counts the fixed points. So if \(\lambda_1,\dots,\lambda_n\) are the eigenvalues of \(P\),</p>
+  \[ N_k \;=\; \operatorname{Tr} P^k \;=\; \sum_{i=1}^{n} \lambda_i^{\,k}. \]
+  <p>This is the <b>explicit formula</b> in its simplest form: counts are power sums of a spectrum. The eigenvalues of a permutation matrix are roots of unity. A cycle of length \(\ell\) contributes all \(\ell\)-th roots of unity, so every cycle contributes the eigenvalue \(1\) once. That eigenvalue is special. It is the eigenvalue of the constant vector, it is there for every permutation, and it carries no information about the cycle structure beyond the number of cycles. Call it <span style="color:var(--pole)">trivial</span>. For the Riemann zeta the same role is played by the pole at \(s=1\): the explicit formula of Riemann and von Mangoldt reads</p>
+  \[ \sum_{n\le x}\Lambda(n) \;=\; x \;-\; \sum_{\rho} \frac{x^{\rho}}{\rho} \;-\; \log 2\pi \;-\; \tfrac12\log(1-x^{-2}), \]
+  <p>and the leading term \(x = x^{1}\) is the "power" of the pole, while the zeros \(\rho\) enter with a <em>minus</em> sign. In the general form of the method a zeta has a <b>divisor</b>: a set of poles and a set of zeros, and the counts are the power sums of the poles minus the power sums of the zeros. For a permutation there are only poles (the reciprocal \(1/Z_\sigma(u) = \det(1-uP)\) is a polynomial). For the Riemann zeta there is one pole and infinitely many zeros. The sign is the one genuinely new ingredient, and the method will handle it by a choice of sign in a single matrix.</p>
+  <p>The formula runs both ways. Newton's identities convert the first \(n\) power sums into the coefficients of the characteristic polynomial \(\det(1-uP)\), whose roots are the eigenvalues. So \(n\) counts determine an \(n\)-point spectrum exactly. Fewer counts do not: the demo shows what the recovery does when it is starved of data.</p>
+  </div>
+  <div class="demo" id="demo-newton"></div>
+</section>
+
+<section class="station" id="s3">
+  <p class="station-no">Station 3</p>
+  <h2>Positivity is the Riemann hypothesis of a window</h2>
+  <div class="prose">
+  <p>Every eigenvalue of a permutation matrix has modulus one. That is the permutation's Riemann hypothesis, and it is automatic because \(P\) is unitary. The Riemann hypothesis proper says the zeros \(\rho = \tfrac12 + i\gamma\) all have real part \(\tfrac12\); on the scale \(u = e^{-s}\), after the rescaling \(u\mapsto e^{1/2}u\) that puts the critical line on the unit circle, it says that the zeros are unimodular. Same statement, different zeta. Now suppose you only know the counts \(N_0, N_1, \dots, N_M\) for some window size \(M\). Can you tell from these numbers alone whether the spectrum lies on the circle?</p>
+  <p>Form the symmetric matrix of the counts along the diagonals, a Toeplitz matrix:</p>
+  \[ T_{jk} \;=\; N_{|j-k|}, \qquad 0\le j,k\le M, \qquad N_0 = n . \]
+  <p>If \(N_k = \sum_i \lambda_i^k\) with every \(|\lambda_i| = 1\), then \(N_{|j-k|} = \sum_i \lambda_i^{\,j}\,\overline{\lambda_i^{\,k}}\), so \(T\) is a sum of rank-one positive matrices and</p>
+  \[ f^{\mathsf T} T f \;=\; \sum_i \Big|\sum_{j=0}^{M} f_j\,\lambda_i^{\,j}\Big|^2 \;\ge\; 0 \qquad\text{for every } f. \]
+  <p>This is <b>Weil's positivity</b> in its finite form: the quadratic form built from the counts is nonnegative, and it is nonnegative <em>because</em> the spectrum lies on the circle. The converse holds too, once the window is large enough, with one subtlety worth seeing. Push a conjugate pair of eigenvalues <em>outward</em> to modulus \(r>1\), and for a large enough \(M\) the matrix \(T\) acquires a negative eigenvalue. Pull the pair <em>inward</em> to \(r<1\) and positivity survives for every \(M\): the counts \(2r^k\cos k\theta\) are the Fourier coefficients of a Poisson kernel, still a positive measure on the circle. What rescues the equivalence is the functional equation. A zeta with a functional equation has a spectrum symmetric under \(\lambda \mapsto 1/\bar\lambda\), so an eigenvalue inside the circle always comes with a partner outside, and the partner is what the form detects. The demo lets you break the hypothesis by hand and watch the smallest eigenvalue of \(T\) cross zero.</p>
+  <div class="aside"><b>Why "the Riemann hypothesis of a window".</b> The matrix \(T\) only sees the counts up to length \(M\). Its positivity is a statement you can check with finitely many numbers. As the window grows, the family of statements "\(T_M \ge 0\) for all \(M\)" becomes equivalent to the spectrum being unimodular. For the Riemann zeta the analogous family is Weil's criterion: the Riemann hypothesis holds if and only if the explicit-formula form is positive on every test function.</div>
+  </div>
+  <div class="demo" id="demo-toeplitz"></div>
+</section>
+
+<section class="station" id="s4">
+  <p class="station-no">Station 4</p>
+  <h2>The minimal eigenvector knows the spectrum</h2>
+  <div class="prose">
+  <p>The positivity argument gave more than a sign. The form vanishes on \(f\) exactly when the polynomial \(f(z) = \sum_j f_j z^j\) vanishes at every eigenvalue. So the <b>kernel</b> of \(T\) consists of polynomials of degree at most \(M\) that vanish on the spectrum. If the spectrum has \(d\) distinct points, such a polynomial exists once \(M \ge d\), and for \(M = d\) there is exactly one up to scale: the kernel is one-dimensional, and its vector \(\xi\), read as a polynomial, has the \(d\) distinct eigenvalues as its roots. Call \(M = d\) the <b>critical window</b>. At the critical window, the counts hand you the spectrum through the kernel of \(T\), with no Newton identities and no knowledge of \(n\).</p>
+  <p>Below the critical window there is no kernel; the smallest eigenvalue \(\varepsilon_M\) of \(T\) is positive. Take its eigenvector \(\xi\) anyway. A classical theorem (Carathéodory and Fejér; in signal processing, Pisarenko's method) says that when \(\varepsilon_M\) is a simple eigenvalue of a positive definite Toeplitz matrix, the polynomial \(\xi(z)\) has <em>all its roots on the unit circle</em>. Its coefficients are self-inversive (\(\xi_j = \pm\,\xi_{M-j}\)), which forces the roots to come in pairs \(z, 1/\bar z\), and a root that is its own partner sits on the circle. These roots are the best guess for the spectrum from the window you have, and they move onto the true eigenvalues as \(M\) reaches the critical value, while \(\varepsilon_M\) falls to zero.</p>
+  <p>This is the whole method, in the finite case: <em>positivity, minimal eigenvector, roots</em>. The demo shows the three pieces moving together as the window grows.</p>
+  </div>
+  <div class="demo" id="demo-pisarenko"></div>
+</section>
+
+<section class="station" id="s5">
+  <p class="station-no">Station 5</p>
+  <h2>When lengths are real numbers, roots become a secular equation</h2>
+  <div class="prose">
+  <p>Back to the dictionary. The primes have lengths \(\log p\), which are not integers, so the counts do not sit at \(k = 0, 1, 2, \dots\) but at a scattered set of points on the line, and "the Toeplitz matrix of the counts" must be replaced by something that makes sense for a distribution on an interval. The window becomes an interval \([0, L]\) in the length variable (in the original multiplicative variable, \([\lambda^{-1}, \lambda]\) with \(L = 2\log\lambda\)). The natural basis is no longer the monomials \(z^j\) but the Fourier modes \(e^{2\pi i j x / L}\), \(|j|\le N\). The role of the monomials is played by these modes, the role of the polynomial \(\xi(z)\) by the trigonometric sum \(\sum_j \xi_j e^{2\pi i j x/L}\), and the role of "the roots of \(\xi(z)\)" needs a new definition.</p>
+  <p>Here is the definition, and it is the one place where the finite case whispers the answer. The roots of a polynomial \(\xi(z)\) are the eigenvalues of its companion matrix, and the companion matrix is the shift \(z\mapsto z\cdot z\) on polynomials of bounded degree, corrected by a rank-one term that folds \(z^{M+1}\) back using \(\xi\). On the interval, the operator that plays the role of the shift is the generator of scaling, \(D = \frac{L}{2\pi i}\frac{d}{dx}\), which is diagonal on Fourier modes with eigenvalue \(j\) on the \(j\)-th mode. The Connes–Consani–Moscovici construction perturbs it by a rank-one term built from \(\xi\) and the "evaluation at the edge of the window" functional \(\eta\) (which pairs each mode to 1):</p>
+  \[ D' \;=\; D \;-\; |D\xi\rangle\langle\eta|, \qquad \langle\eta|\xi\rangle = \sum_j \xi_j = 1 . \]
+  <p>Its eigenvalues, apart from the vector \(\xi\) itself which it kills, are the real roots of the <b>secular function</b></p>
+  \[ g(s) \;=\; \sum_{j=-N}^{N} \frac{\xi_j}{\,j - s\,} , \]
+  <p>a rational function with a simple pole at every integer \(j\) where \(\xi_j \ne 0\). The key lemma of the paper is that when \(\xi\) is the minimal eigenvector of the form of Station 6, all \(2N\) roots are real: \(D'\) is self-adjoint for a modified inner product built from the form itself. Between consecutive poles there is at least one root, but not exactly one (the \(\xi_j\) change sign), and two roots lie beyond the last poles; completeness must be checked by counting to \(2N\). The demo lets you play with a symmetric \(\xi\), see the poles and roots, and check that the eigenvalues of the small matrix \(D'\) are exactly those roots.</p>
+  </div>
+  <div class="demo" id="demo-secular"></div>
+</section>
+
+<section class="station" id="s6">
+  <p class="station-no">Station 6</p>
+  <h2>The Riemann zeros from the primes up to 13</h2>
+  <div class="prose">
+  <p>Now assemble the Riemann instance from the dictionary. The counts in the window are the prime powers \(p^m \le \lambda^2\) with weights \(\Lambda(p^m)\,p^{-m/2}\) (the factor \(p^{-m/2}\) is the rescaling of Station 3 that moves the critical line to the circle). With \(\lambda^2 = 13\) the window contains the lengths \(\log 2, \log 3, \log 4, \log 5, \log 7, \log 8, \log 9, \log 11, \log 13\): nine numbers, the last of them sitting exactly on the edge of the window, since \(L = \log 13\). Two further ingredients have no permutation analogue and are the price of an infinite object:</p>
+  <ul>
+    <li><b>The pole.</b> The trivial eigenvalue of Station 2. It enters the form as an explicit rank-two term with the opposite sign to the zeros. (Riemann's zeta has one pole; a permutation has as many trivial eigenvalues as it has cycles.)</li>
+    <li><b>The archimedean term.</b> The gamma factor of the functional equation, \(\pi^{-s/2}\Gamma(s/2)\), contributes a smooth density on the window (a sum of exponentials \(\sum_k e^{-(2k+1/2)x}\)), which accounts for the trivial zeros at the negative even integers. A permutation has nothing at infinity; the Riemann zeta does.</li>
+  </ul>
+  <p>The form is then written in the Fourier basis of the window; because the whole construction is invariant under the shift along the window, the matrix has the Loewner shape \(\tau_{jk} = (b_j - b_k)/(j-k)\) with a diagonal \(a_j\), the continuous cousin of "constant along diagonals". The zeros come in pairs \(\pm\gamma\), so the form commutes with \(j\mapsto -j\) and splits into an even and an odd block; the even block is the one whose minimal eigenvector is used. From here the steps are those of Station 4: certify the minimal eigenvalue \(\varepsilon_N > 0\), take its eigenvector \(\xi\), and read off the \(2N\) real roots of the secular function. Multiplied by \(2\pi/L\), the positive roots are the ordinates of the Riemann zeros, and with the nine numbers above and \(N = 20\) the first zero \(\gamma_1 = 14.1347\ldots\) is reproduced to 35 digits.</p>
+  <p>The numbers in the demo were computed by the mpmath prototype and cross-checked against the certified C implementation described at the end of the page; every recovered zero is shown with its distance to the true zero.</p>
+  </div>
+  <div class="demo" id="demo-riemann"></div>
+</section>
+
+<section class="station" id="s7">
+  <p class="station-no">Station 7</p>
+  <h2>The algorithm in its general form</h2>
+  <div class="prose">
+  <p>Strip away everything specific and what remains is a machine with one input and one output. The input is <em>window data</em>: a finite list of lengths with weights (the counts of closed orbits, or of prime powers), a designated trivial part (the poles), and, for infinite objects, a smooth term for the place at infinity. The output is a self-adjoint operator whose spectrum is the window's estimate of the zeros. In between there are five steps, and none of them uses anything but the least structure common to all zeta functions: closed orbits have lengths, lengths add under iteration, and the counts are power sums of a divisor.</p>
+  <ol class="steps">
+    <li><b>Window.</b> Choose the length cutoff (\(M\), or \(L = 2\log\lambda\)) and the basis of the window (monomials \(z^j\), or Fourier modes).</li>
+    <li><b>Form.</b> Build the Weil form of the counts in that basis: the Toeplitz matrix \(N_{|j-k|}\), or the Loewner matrix of the explicit-formula distribution, with the pole term carrying the opposite sign.</li>
+    <li><b>Positivity.</b> Compute and certify the smallest eigenvalue \(\varepsilon\). Its sign is the Riemann hypothesis of the window; its size measures how far the window is from resolving the spectrum.</li>
+    <li><b>Minimal eigenvector.</b> Take the eigenvector \(\xi\) of \(\varepsilon\), normalised by \(\sum_j\xi_j = 1\). At a critical window it spans the kernel.</li>
+    <li><b>Spectrum.</b> Its roots: of the polynomial \(\xi(z)\) on the circle, or of the secular function \(\sum_j \xi_j/(j-s)\) on the line. They are real, they come in pairs, and they converge to the zeros as the window grows.</li>
+  </ol>
+  <p>What the theorem guarantees is the reality of the spectrum in step 5 for <em>any</em> real distribution on the window, hypothesis or no hypothesis. What it does not guarantee, and what the numbers make plausible, is convergence to the zeros as the window grows: with enough Fourier modes (\(N\) around 120) the first zero gains about five and a half decimal digits per unit of \(\lambda^2\); at the small \(N\) of the demo above, the truncation caps the gain well below that, which the convergence figure shows honestly. That convergence is where the mathematics of the paper currently stops, and where the method's generality is also its limit: the machine cannot know which zeta it is running on, so whatever it proves it proves for all of them at once.</p>
+  </div>
+  <div class="demo" id="demo-algorithm"></div>
+</section>
+
+<footer>
+  <p><b>Sources.</b> A. Connes, C. Consani, H. Moscovici, <i>Zeta spectral triples</i>, arXiv:2511.22755 (the construction of Stations 5–7: the Loewner form, the even-simple hypothesis, the key lemma, the secular equation). The finite case of Stations 3–4 is the Carathéodory–Fejér theorem on positive Toeplitz forms, used in signal processing as Pisarenko's harmonic decomposition; its use as the graph instance of the same construction is worked out in the companion library <code>ihz</code>. The Riemann numbers were produced by the mpmath prototype <code>ccm_proto.py</code> and cross-checked against the certified FLINT/arb implementation <code>zst</code> (both in the riemann-channel repository), which reproduces the paper's table as certified bounds.</p>
+  <p>Made with permutations of five letters, nine prime powers, and one rank-one perturbation.</p>
+</footer>
+</div>
+
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' },
+    options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'], ignoreHtmlClass: 'demo' } };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+<script src="core.js"></script>
+<script src="demos-finite.js"></script>
+<script src="riemann-data.js"></script>
+<script src="demos-riemann.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.ZT && typeof ZT.mountAll === 'function') { ZT.mountAll(); }
+    else { document.querySelectorAll('.demo').forEach(function (el) { el.innerHTML = '<pre class="err">demo scripts did not load</pre>'; }); }
+  });
+</script>

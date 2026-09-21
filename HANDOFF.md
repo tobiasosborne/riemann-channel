@@ -18,8 +18,7 @@ smeared/intertwining formulations have separate proofs and review scopes.
 The physical Riemann bond and increasing-window identification remain open.
 Trace data lose Jordan structure; native and reconstructed metrics differ.
 
-
-## Current state (2026-09-18, night: `ihz/` built, G1-G3 of the Ihara plan, exact anchor and certified ball stage on twelve graphs and a curve, non-Ramanujan trajectories certified; evening: MVP-2 (Ihara zeta of graphs) planned, `notes/zeta-spectral-triples/ihara/plan.md`, five lanes, prototype exact at the critical window; morning: `zst` benchmark to x = 50 certified, report in `notes/zeta-spectral-triples/report-2026-09-18.md`; 2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
+## Current state (2026-09-18, late night: MVP-3, the CCM construction on L(E, s) for E/Q and on real Dirichlet characters, planned, astra-reviewed and built in `zst/` (generic explicit-formula data model; 37a1/389a1 have an odd Weil-form minimum, construction inapplicable; `zst_eigmin` soundness bug fixed); interactive tutorial "Zeros From Counts" published as an artifact; TJO's bond-space reading of Weil positivity recorded; night: `ihz/` built, G1-G3 of the Ihara plan, exact anchor and certified ball stage on twelve graphs and a curve, non-Ramanujan trajectories certified; evening: MVP-2 (Ihara zeta of graphs) planned, `notes/zeta-spectral-triples/ihara/plan.md`, five lanes, prototype exact at the critical window; morning: `zst` benchmark to x = 50 certified, report in `notes/zeta-spectral-triples/report-2026-09-18.md`; 2026-09-17: sidequest, Connes-Consani-Moscovici zeta spectral triples read, prototyped, planned (`notes/zeta-spectral-triples/plan.md`) and a certified C/FLINT MVP built in `zst/` (paper's table reproduced as certified bounds in 5 s); 2026-09-16: the Selberg zeta as a graded transfer whose odd-block form is derived from the letters (shards 03e/03f), Opus-reviewed; 2026-09-15, morning: the Ramanujan property for graded transfer channels defined (shards 02h/03c/03d), graded Harrow expanders with zeros, Pauli qubit = elliptic curve over F_5; 2026-09-14, night: zeta conditions catalogue (shard 06h); the yolo Lindbladian audited (negative, shard 04g); back to basics, the graded permutation and the physical letters; afternoon: the ring-norm-tensor campaign; morning: cMPS parity/supertrace theorem, two Lindblad papers, Weil numerator as ring norm)
 
 Repo created from a single conversation in `../arithmetic-quantum-mechanics`
 (session 2026-09-10/11, TJO with Claude Fable 5.1). Everything in this repo
@@ -161,6 +160,65 @@ implementation of the paper's algorithm, as a possible standalone repository. De
   `zst/README.md`. **Next, if pursued:** M3 (general explicit-formula data model, Dirichlet characters,
   archimedean constants derived from gamma factors), then the `(lambda, N)` accuracy map and the
   `x = 100` run (M4), then `det_reg -> Xi` and the prolate side (M5).
+
+### MVP-3 (2026-09-18, late night): the CCM construction on L(E, s), E/Q, and on Dirichlet characters
+
+TJO: a tracer bullet for "a zeta with zeros", the simplest (elliptic curves); plan -> astra review ->
+Opus lanes. Deliverables: `notes/zeta-spectral-triples/ellcurve/` (`plan.md`, `astra-brief.md`,
+`astra-review.md` = the authoritative formula sheet F1-F18, `checks/` = astra's independent prototype
+and run records, `bench/`, `report-ell.md`), `zst/` (new modules `kernel.c weil_data.c ellcurve.c
+dirichlet.c parity.c ell_ref.c`, CLI `--curve/--chi/--scan-parity`, 12 tests green in 3 s, PARI ground
+truth via cypari2 in a scratch venv: `tools/pari_ref.py`, `tests/data/`). Worklog 2026-09-18.
+
+- **Generic data model done (parent plan M3).** Atoms + subtracted gamma kernels `(Q, d, mu, mult)` +
+  poles + conductor + shift; constants derived (F8: `s = log C + sum 2 log Q + (2/d) psi(mu/d) +
+  2 T_{d,mu}(L)`), zeta regression to 1e-40 including the shift; the draft's prime weights were WRONG
+  (missing `p^{-m/2}`; true weight `-t_m log p / p^m`), caught by astra.
+- **Central zeros are invisible to the construction** (`D''` invertible, `xi_0 > 0` under even-simple),
+  and even-simple FAILS for 37a1 (w = -1, rank 1) at x = 8, 13, 20 and for 389a1 (w = +1, rank 2): the
+  Weil form's global minimum is ODD (certified). Parity of the minimiser is the observable; it is not a
+  root-number theorem. Open: antiperiodic half-integer grid (H-HALF-GRID); `beta/B` odd variant derived.
+- **Accuracy is object-dependent**: 11a1 first zero 4.1e-4 (x = 13) -> 2.1e-9 (x = 30), five digits
+  where zeta gains ninety; scale `sqrt(x/C)` suggested (H-RATE, open). chi_{-4}: 1.9e-12 at x = 13.
+- **Soundness bug fixed in `zst_eigmin`** (Krawczyk remainder coefficient 2 -> 1; off-centred boxes
+  could exclude the eigenvalue when inverse iteration had not converged; zeta certificates unaffected;
+  regression test red-then-green).
+
+### Tutorial "Zeros From Counts" (2026-09-18) and TJO's bond-space reading
+
+Interactive tutorial on the method in its general form, from fixed-point counts of (1 2)(3 4 5) to the
+Riemann zeros, seven stations with live demos; source `notes/zeta-spectral-triples/tutorial/`
+(index.html, theme.css, core.js, demos-finite.js, riemann-data.js, demos-riemann.js), artifact
+https://claude.ai/artifact/HcHhMU6JUHBgBoVXNRqARf (private). Mathematical points fixed while building:
+pulling an eigenvalue pair inside the circle never breaks Toeplitz positivity (Poisson kernel), only
+the functional-equation partner outside does; the kernel vector is self-inversive up to sign; the
+prototype's secular-root scan misses roots beyond the last pole (the generator scans outward).
+
+**TJO (late night): the CCM algorithm should have a compelling formulation in the
+notebook's tensor-network/MPS reading: cycle lengths and fixed-point counts are ring data,
+so investigate Weil positivity on bond space.** The initial Gram/minimal-polynomial proposal
+was audited in the CCM tensor-network campaign. Its corrected formulation is in
+`notes/ccm-tensor-network.md`, shards `02i` and `03g`--`03l`:
+
+- The retained Weil matrix is a Gram of open transfer powers when a unitary metric is
+  specified; similarity unitarity does not give the native Hilbert--Schmidt Gram.
+- The critical kernel polynomial gives distinct spectral support. It annihilates the
+  original transfer exactly when that transfer is semisimple; multiplicities are weights.
+- Supertrace forms have signed net weights. Sector unitarity alone does not make them positive;
+  recovering a positive odd form requires the known even contribution to be moved across.
+- An exact unshifted Gram nullvector supplies a parent constraint on the original transfer
+  history. A shifted minimum is a ground vector of a new coefficient-space Hamiltonian;
+  it is a parent constraint only for a new purification of that shifted Gram, not generally
+  for the original history. The quotient frequency operator removes the shifted nullvector;
+  none of these is automatically a local physical MPS Hamiltonian.
+- Continuous smearing supplies a valid operator Gram under stated hypotheses. The unsmeared
+  infinite unitary Gram diverges. The actual Riemann bond, its physical grading and a
+  convergent intertwining of the increasing CCM windows remain open.
+
+Four stronger formulations are retained as refuted rows in `db/claims.tsv`. The campaign
+uses the existing rk-light gate; review and response records are under `notes/reviews/`
+and `notes/ccm-tensor-network/`. The prior scalar trace/physical bond identifications
+are superseded by these qualified statements.
 
 ### An infinite object whose odd-block form is derived from the letters (2026-09-16; shards 03e, 03f)
 

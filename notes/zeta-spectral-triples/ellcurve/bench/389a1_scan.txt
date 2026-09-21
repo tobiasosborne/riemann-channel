@@ -1,0 +1,69 @@
+# ./build/zst --curve 389a1 --scan-parity 8,13,20 --N 60 --prec 700
+# 2026-09-18T17:07:57+02:00, FLINT 3.0.1, gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+# tree: zst MVP-3 lane C (src/parity.c, src/ell_ref.c, tools/zst.c)
+
+zst: curve 389a1  [0,1,1,-2,0]  conductor 389  root number +1  analytic rank 2
+     gamma factor Gamma_C(s + 1/2) = (Q, d, mu) = (1/2pi, 1, 1), no pole (F17)
+
+parity scan (certified minima of the even and odd blocks per window):
+
+--- x = 8 ---
+x = 8 (prime powers <= 8), N = 60, prec = 700 bits, L = [2.07944154167984 +/- 4.08e-15]   (matrix build 0.05s)
+certified block minima (Rayleigh above, ball LDL^T inertia below):
+   min E = [3.50815644026 +/- 5.22e-14]
+   min O = [2.57896896298 +/- 3.21e-12]
+parity: -1 (ODD minimum)   certified gap >= 0.92918748   (0.32s)
+odd minimum: the paper's construction is inapplicable at this window
+   (the even-simple hypothesis of mc2arXiv.tex l.850 fails: the global minimum of the
+    Weil form lies in the odd block, so Lemma `key' l.863 gives no rank-one deflation,
+    the sum normalisation of xi is undefined, and no CCM spectrum is defined here.)
+   min E = [3.50815644026 +/- 5.22e-14]
+   min O = [2.57896896298 +/- 3.21e-12]
+   gap  >= 0.92918748
+   L2-normalised odd minimiser, first coefficients (basis (V_j - V_{-j})/sqrt2;
+   the eigenvalue above is certified, the eigenvector is the inverse-iteration
+   minimiser and is printed without radii):
+     c_1 = 0.930448705672,  c_2 = 0.232512860084,  c_3 = 0.155149058727,  c_4 = 0.0936754714525,  c_5 = 0.102802012302,  c_6 = 0.0810130483509
+window total 0.52s
+
+--- x = 13 ---
+x = 13 (prime powers <= 13), N = 60, prec = 700 bits, L = [2.56494935746154 +/- 3.27e-15]   (matrix build 0.04s)
+certified block minima (Rayleigh above, ball LDL^T inertia below):
+   min E = [3.16384739214 +/- 2.97e-12]
+   min O = [1.64014011817 +/- 3.89e-13]
+parity: -1 (ODD minimum)   certified gap >= 1.5237073   (0.33s)
+odd minimum: the paper's construction is inapplicable at this window
+   (the even-simple hypothesis of mc2arXiv.tex l.850 fails: the global minimum of the
+    Weil form lies in the odd block, so Lemma `key' l.863 gives no rank-one deflation,
+    the sum normalisation of xi is undefined, and no CCM spectrum is defined here.)
+   min E = [3.16384739214 +/- 2.97e-12]
+   min O = [1.64014011817 +/- 3.89e-13]
+   gap  >= 1.5237073
+   L2-normalised odd minimiser, first coefficients (basis (V_j - V_{-j})/sqrt2;
+   the eigenvalue above is certified, the eigenvector is the inverse-iteration
+   minimiser and is printed without radii):
+     c_1 = 0.922862788914,  c_2 = 0.302949984762,  c_3 = 0.116048583281,  c_4 = 0.0838676876256,  c_5 = 0.0678244770843,  c_6 = 0.109470471619
+window total 0.52s
+
+--- x = 20 ---
+x = 20 (prime powers <= 20), N = 60, prec = 700 bits, L = [2.99573227355399 +/- 9.94e-16]   (matrix build 0.04s)
+certified block minima (Rayleigh above, ball LDL^T inertia below):
+   min E = [2.75552960571 +/- 2.77e-13]
+   min O = [0.815491898026 +/- 2.64e-13]
+parity: -1 (ODD minimum)   certified gap >= 1.9400377   (0.32s)
+odd minimum: the paper's construction is inapplicable at this window
+   (the even-simple hypothesis of mc2arXiv.tex l.850 fails: the global minimum of the
+    Weil form lies in the odd block, so Lemma `key' l.863 gives no rank-one deflation,
+    the sum normalisation of xi is undefined, and no CCM spectrum is defined here.)
+   min E = [2.75552960571 +/- 2.77e-13]
+   min O = [0.815491898026 +/- 2.64e-13]
+   gap  >= 1.9400377
+   L2-normalised odd minimiser, first coefficients (basis (V_j - V_{-j})/sqrt2;
+   the eigenvalue above is certified, the eigenvector is the inverse-iteration
+   minimiser and is printed without radii):
+     c_1 = 0.918003158222,  c_2 = 0.282125470603,  c_3 = 0.145553629606,  c_4 = 0.125360852375,  c_5 = 0.0718793685286,  c_6 = 0.0594080987862
+window total 0.52s
+
+total 1.57s
+
+# wall 1.56 s, max rss 10688 kB
