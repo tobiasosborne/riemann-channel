@@ -1,0 +1,247 @@
+% SHARD-ID: RC-04I-CUSP-GRAPH-SCATTERING
+% SHARD-TITLE: The Phantasm V: a Finite Graph with a Cusp I. Scattering, Resonances, Bound States, and the One-Exit Contraction
+% SHARD-SUMMARY: A finite core with an infinite ray attached with the weights of the cusp of the tree quotient is the discrete modular surface: the reflection coefficient is minus the ratio of two rank-one perturbed Bass determinants, its zeros inside the disc are the resonances, its poles inside are the visible bound states, cusp forms and threshold roots cancel, and the resonance count follows.
+% SHARD-SUMMARY: The discrete wave equation has speed-one d'Alembert solutions on the ray; after removing bound-state data the local radiation spaces are no longer orthogonal (an exact obstruction of size 3/32 on the pure q = 2 cusp), and the repair, intersecting the projected outgoing space with the orthocomplement of the incoming one (a choice, not a derivation: reviewer), gives a one-exit contraction whose characteristic function is the pole-removed reflection coefficient, spectrum the resonances, and a closed-form Gram identity. Prior art: Childs--Strouse have the reflection coefficient and the count, Arends--Peterson--Weich the resonance polynomial and the elliptic-curve examples on the circle q^{-1/4}.
+% SHARD-KEYWORDS: cusp, ray, tree quotient, Nagao ray, reflection coefficient, resonance, bound state, cusp form, threshold, half-bound state, Levinson, Bass determinant, self-energy, discrete wave equation, d'Alembert, Lax-Phillips, Sz.-Nagy-Foias, model space, one-exit contraction, Gram identity, Childs, Arends-Peterson-Weich, elliptic curve, Hasse-Weil
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/cusp_graph.py
+
+\section{The Phantasm V: a Finite Graph with a Cusp I. Scattering and the One-Exit Contraction}
+\label{sec:cusp-graph-scattering}
+
+\emph{Question (TJO, 2026-09-20).} \Cref{sec:rebound-state} showed that any one-exit no-event
+semigroup admits a conservative renewal completion, with the zeros protected as odd modes; the reviewer's
+verdict was that nothing about $\zeta$ is used and the zeros are put in by hand. The simplest object where
+the arithmetic supplies the exit is a finite graph with a cusp: an infinite ray attached with the weights
+of the quotient of the $(q+1)$-regular tree by a cusp stabiliser. This shard sets the toy up with a general
+finite core and no arithmetic. One codex \texttt{gpt-6-astra} prover lane (\texttt{notes/cusp-graph/astra-proofs.md},
+brief \texttt{astra-brief.md}, $34$-row correction ledger), one Opus numerics lane blind from the brief
+(\texttt{numerics.md}, \texttt{scripts/cusp\_graph.py}, $569$ checks, $19$-row ledger), two literature lanes
+(\texttt{sources.md}, \texttt{childs-lead.md}), one Opus refutation review
+(\texttt{notes/reviews/cusp-graph-2026-09-20.md}). Worklog 2026-09-20.
+
+\subsection{The diagram, its normalisation, and the spectral parameter}
+
+\begin{definition}[Finite core with one cusp; resonances, bound states, cusp forms, thresholds]
+\label{def:cusp-diagram}
+A \emph{core} is a real symmetric $n\times n$ matrix $T_X$ (a weighted finite graph, loops allowed) with a
+distinguished vertex $v_0$, $P_0 = |v_0\rangle\langle v_0|$, and a coupling $c>0$. The \emph{diagram} $Y$ is
+the bounded self-adjoint operator on $\mathbb C^n\oplus L^2(\{1,2,\dots\})$
+\[
+T = T_X\oplus T_{\mathrm{ray}} + c\,(|v_0\rangle\langle r_1| + |r_1\rangle\langle v_0|),\qquad
+(T_{\mathrm{ray}}g)_1 = g_2,\quad (T_{\mathrm{ray}}g)_k = g_{k-1}+g_{k+1}\ (k\ge2).
+\]
+The spectral parameter is $\lambda = z+1/z$, and $z = q^{s-1/2}$ maps the critical line $\re s = \tfrac12$
+to the unit circle and $\re s<\tfrac12$ to the open disc. With $G(\lambda) = \langle v_0|(\lambda-T_X)^{-1}|v_0\rangle$
+the \emph{reflection coefficient} is defined by the generalised eigenfunctions $g(r_k) = z^{-k}+R(z)z^{k}$,
+$k\ge1$. Put $p(z) = \det\big((1+z^2)I - zT_X - c^2P_0\big)$ and $\tilde p(z) = z^{2n}p(1/z)$.
+A \emph{cusp form} is an eigenvector of $T_X$ vanishing at $v_0$. A \emph{visible bound state} is an
+$L^2$ eigenfunction of $T$ with nonzero ray component (it decays as $\vartheta^k$, $\vartheta\in(-1,1)$).
+A \emph{threshold root} is a common root of $p,\tilde p$ at $z=\pm1$. The \emph{resonances} are the zeros
+of the reduced $R$ in $|z|<1$, with multiplicity. $\mathrm{RAM}(Y)$: every $L^2$ eigenvalue of $T$ other
+than the Perron eigenvalue and its bipartite twin lies in $[-2,2]$. $\mathrm{RH}(Y)$: all resonances share
+one modulus $r$.
+\end{definition}
+
+The normalisation is that of the tree quotient. On the Nagao ray $L_0,L_1,\dots$ of
+$\mathrm{GL}_2(\mathbb F_q[T])\backslash\mathcal T$ (Serre, \emph{Trees}, II.1.6; restated in
+\cite{arends2026resonances}) the adjacency operator acts by $(Af)(L_n) = f(L_{n+1})+qf(L_{n-1})$
+for $n\ge1$ and $(Af)(L_0) = (q+1)f(L_1)$; self-adjointness on $L^2(Y,m)$ forces $m_0 = 1$,
+$m_n = (q+1)q^{-n}$ ($n\ge1$), and $g = m^{1/2}f$ followed by division by $\sqrt q$ gives exactly
+$T_{\mathrm{ray}}$ with $c^2 = q+1$ (the orchestrator's $m_n\sim q^{-n}$ for all $n$ was not self-adjoint
+at the junction: prover ledger 1, numerics D2). The Eisenstein-type solutions $q^{sn}, q^{(1-s)n}$ become
+$z^{n}, z^{-n}$.
+
+\subsection{What scattering sees}
+
+\begin{proposition}[The reflection coefficient]
+\label{prop:cusp-reflection}
+\claimstatus{prop:cusp-reflection}{proved}
+Substituting the ansatz gives $c\,g(v_0) = 1+R$, $g_X = c(z^{-1}+Rz)(\lambda-T_X)^{-1}|v_0\rangle$, and
+\[
+R(z) = \frac{1-c^2G(\lambda)z^{-1}}{c^2G(\lambda)z-1}
+ = -\,\frac{\det(\lambda-T_X-c^2z^{-1}P_0)}{\det(\lambda-T_X-c^2zP_0)} = -\,\frac{p(z)}{\tilde p(z)},
+\]
+with a minus sign and no extra power of $z$ (the brief's determinant form lacked the sign; prover ledger 3,
+numerics D1). $p$ is monic of degree $2n$ with $p(0) = 1-c^2$ and $\tilde p(0) = 1$; $R$ has real
+coefficients, $R(z)R(1/z) = 1$ and $|R| = 1$ on the circle. The ray self-energy at $v_0$ is $c^2z$ on the
+physical (decaying, Catalan-series) branch and $c^2/z$ on its second-sheet continuation.
+\end{proposition}
+
+\begin{proposition}[Visible bound states, invisible cusp forms, threshold cancellation]
+\label{prop:cusp-visible-spectrum}
+\claimstatus{prop:cusp-visible-spectrum}{proved}
+Let $X_b$ be the Krylov space of $(T_X,v_0)$, $d = \dim X_b$, and $X_c = X_b^\perp$ the span of the cusp
+forms, with eigenvalue multiplicities $m_c(t)$. Then $p = D_c\,p_b$, $\tilde p = D_c\,\tilde p_b$ with
+$D_c(z) = \prod_t(1-tz+z^2)^{m_c(t)}$. (i) The poles of the reduced $R$ in $|z|<1$ are simple, real, nonzero,
+and in bijection with the visible bound states: $(\lambda - T_X - c^2\vartheta P_0)x = 0$, $g_k = cx_0\vartheta^k$,
+$\lambda = \vartheta+\vartheta^{-1}$ outside $[-2,2]$; cusp forms outside the band are $L^2$ eigenfunctions but
+are cancelled in $R$ (numerics D4). (ii) $R$ has no non-real pole in the disc. (iii) Up to a constant
+$\gcd(p,\tilde p) = D_c\,H$ with $H(z) = \prod_{\epsilon\in E_{\mathrm{th}}}(z-\epsilon)$,
+$E_{\mathrm{th}} = \{\epsilon = \pm1 : p_b(\epsilon) = 0\}$, $n_{\mathrm{th}} = |E_{\mathrm{th}}|$: common factors are the
+cusp forms \emph{and} the threshold roots, which are simple and correspond to non-$L^2$ constant or
+alternating tails (Childs--Strouse's half-bound states; numerics D5).
+\end{proposition}
+
+\begin{theorem}[Resonances and their number]
+\label{thm:cusp-resonance-count}
+\claimstatus{thm:cusp-resonance-count}{proved}
+The resonances $z_i\neq0$ are exactly the non-cancelled solutions of
+$(T_X + c^2z_i^{-1}P_0)x = (z_i+z_i^{-1})x$, the self-consistent eigenvalues of the effective operator with
+the outgoing self-energy; the continued tail $cx_0z_i^{-k}$ grows in space and is outgoing in time. Non-real
+resonances come in conjugate pairs, and the exterior roots of $p_b$ are exactly the reciprocals $\vartheta^{-1}$
+of the visible bound parameters. With $b$ visible bound states,
+\[
+N = 2d - b - n_{\mathrm{th}} = 2n - 2\textstyle\sum_t m_c(t) - b - n_{\mathrm{th}} ,
+\]
+counting a possible zero root (a delay mode, present iff $c = 1$). The rational degree of $R$ is $2d-n_{\mathrm{th}}$.
+\end{theorem}
+
+\begin{proposition}[The pure cusp]
+\label{prop:pure-cusp-scattering}
+\claimstatus{prop:pure-cusp-scattering}{proved}
+For $T_X = [0]$, $c^2 = q+1$: $R(z) = (z^2-q)/(qz^2-1)$, poles $\pm q^{-1/2}$ (the constant function on the
+quotient, $g = \sqrt m$, and its alternating twin, eigenvalues $\pm(q+1)/\sqrt q$), zeros $\pm q^{1/2}$,
+no resonances. With $\zeta_K(s) = ((1-q^{-s})(1-q^{1-s}))^{-1}$ and $z = q^{s-1/2}$,
+\[
+q\,\frac{\zeta_K(2s-1)}{\zeta_K(2s)} = \frac{qz^2-1}{z^2-q} = \frac1{R(z)} ,
+\]
+so the modular scattering matrix $\phi(s) = \cxi(2s-1)/\cxi(2s)$ of \cref{sec:riemann-channel} corresponds to
+$\phi = 1/R$: the poles of $\phi$ in $\re s<\tfrac12$ are the zeros of $R$ in the disc, the resonances; the
+pole at $s = 1$ and the zero at $s = 0$ recur with period $\pi i/\log q$. The pure cusp is all cusp and no
+interior.
+\end{proposition}
+
+\subsection{Prior art}
+
+The prover's file cites neither source below (reviewer finding 1); \cref{prop:cusp-reflection,prop:cusp-visible-spectrum,thm:cusp-resonance-count,prop:pure-cusp-scattering}
+are therefore re-derivations, registered with the citations here. The reviewer verified that Childs--Strouse's
+$R$ reduces to \cref{prop:cusp-reflection} on $21$ cores and that the Arends--Peterson--Weich resonance determinant equals $(-1)^n(2z)^{-n}p(z)$ in our
+variable (their parameter is written mu).
+
+\begin{citedfact}[Childs--Strouse: the reflection coefficient of a graph with a tail]
+\label{cit:childs-strouse-reflection}
+\claimstatus{cit:childs-strouse-reflection}{cited}
+Childs and Strouse \cite{childs2011levinson} scatter a continuous-time quantum walk on a weighted finite
+graph with one semi-infinite path attached and extend the reflection coefficient to the plane as
+\texttt{\detokenize{R(z) \defeq - \frac{Q(z^{-1})}{Q(z)}}} with
+\texttt{\detokenize{Q(z) &\defeq 1 - z(a + C(z))}}, $C(z) = b^\dagger(z+z^{-1}-D)^{-1}b$
+(\texttt{1103.5077:main.tex:192-197}). With $a = 0$, $b = c|v_0\rangle$, $D = T_X$ this is
+\cref{prop:cusp-reflection} verbatim, sign included; the cusp weight $c^2 = q+1$ is a special case of
+their weighted $b$, not a new ingredient at the formula level.
+\end{citedfact}
+
+\begin{citedfact}[Childs--Strouse: Levinson's theorem for graphs]
+\label{cit:childs-strouse-levinson}
+\claimstatus{cit:childs-strouse-levinson}{cited}
+For $m$ internal vertices, $n_c$ confined (cusp-form), $n_h$ half-bound (threshold) and $n_b$ evanescent
+bound states, and $a\ne0$ or $\|b\|\ne1$, the winding of the phase of $R$ around the circle is
+\texttt{\detokenize{w_\Gamma(R) = 2 (m - n_b - n_c - \smfrac{1}{2}n_h).}} (\texttt{1103.5077:main.tex:275-278});
+half-bound states are the $k = 0,\pi$ threshold states (\texttt{:232}). Equivalently
+$w_\Gamma(R) = N - n_b$, which reproduces the count of \cref{thm:cusp-resonance-count}. The sequel
+\cite{childs2012levinson} drops the hypothesis and treats several tails.
+\end{citedfact}
+
+\begin{citedfact}[Arends--Peterson--Weich: resonances on geometrically finite graphs]
+\label{cit:apw-resonances}
+\claimstatus{cit:apw-resonances}{cited}
+\cite{arends2026resonances} define resonances of the adjacency operator on $(q+1)$-regular graphs of
+groups with cusps and funnels by meromorphic continuation of the resolvent: ``\texttt{\detokenize{In contrast to the hyperbolic surfaces setting, geometrically finite graphs have only finitely many resonances, and these resonances may be computed explicitly}}''
+(\texttt{2603.26443:final\_draft.tex:50}). Their resonance matrix is a rank-one perturbation of the core
+adjacency by the cusp weight, and its determinant is $p$ up to a power of $z$ and normalisation (their parameter, written mu, is our $z$);
+their resonances outside the disc are the reciprocals of the visible bound parameters, their unit-circle
+factors are cusp forms, their ``topological'' resonances at $\pm1$ are the threshold roots.
+\end{citedfact}
+
+\begin{citedfact}[Arends--Peterson--Weich: the wave equation is left open]
+\label{cit:apw-lax-phillips-open}
+\claimstatus{cit:apw-lax-phillips-open}{cited}
+``\texttt{\detokenize{In follow-up work, we plan to connect the theory of resonances on geometrically finite graphs developed in this paper with the wave equation on regular trees and graphs}}''
+(\texttt{2603.26443:final\_draft.tex:138}). The wave group, the radiation spaces and the one-exit
+contraction of \cref{thm:cusp-wave-contraction} are therefore not in that source.
+\end{citedfact}
+
+\begin{citedfact}[Arends--Peterson--Weich: elliptic-curve quotients]
+\label{cit:apw-elliptic-curves}
+\claimstatus{cit:apw-elliptic-curves}{cited}
+For the quotient of the tree by $\mathrm{PGL}_2$ of the coordinate ring of $y^2+y = x^3+x+1$ over
+$\mathbb F_2$ the resonance determinant is
+\texttt{\detokenize{(\mu^2 + 1)^2 (\mu^2 - 2) (2 \mu^4 - 2 \mu^2 + 1).}} (\texttt{2603.26443:final\_draft.tex:2008}),
+and for $y^2 = x^3+x+1$ over $\mathbb F_3$ it is
+\texttt{\detokenize{(\mu^2 + 1)^2 (\mu - 1)^2 (\mu + 1)^2 (\mu^2 - 3) (3 \mu^4 + 1).}} (\texttt{:2056}), their parameter written mu, our $z$.
+The last factor is the Hasse--Weil numerator at $T = z^2$; the factor $z^2-q$ is the Perron pair; the
+$(z^2+1)^2$ are $L^2$ eigenvalues on the circle (cusp forms); the $(z\mp1)^2$ are non-$L^2$
+threshold resonances.
+\end{citedfact}
+
+\begin{citedfact}[Arends--Peterson--Weich: the Weil circle]
+\label{cit:apw-weil-circle}
+\claimstatus{cit:apw-weil-circle}{cited}
+``\texttt{\detokenize{Resonances on the circle of radius $\frac{1}{q^{\frac{1}{4}}}$ corresponding to square roots of zeros of the Hasse-Weil zeta function of $C$.}}''
+(\texttt{2603.26443:final\_draft.tex:2092}); the circle is Weil's theorem, and the mechanism named is the
+Eisenstein series. This is the curve version of $\mathrm{RH}(Y)$ with $r = q^{-1/4}$.
+\end{citedfact}
+
+\begin{citedfact}[{Kaneko--Koyama: the level-$A$ constant term over $\mathbb F_q[T]$}]
+\label{cit:kk-level-constant-term}
+\claimstatus{cit:kk-level-constant-term}{cited}
+For $\Gamma_0(A)<\mathrm{GL}_2(\mathbb F_q[T])$, $A$ monic irreducible of degree $a$, the constant-term sum
+equals \texttt{\detokenize{\frac{q^{a(1-2s)}}{1-q^{-2as}} \frac{\zeta_{\F_{q}[T]}(2s-1)}{\zeta_{\F_{q}[T]}(2s)}}}
+(\cite{kaneko2023que}, \texttt{2303.09327:main.tex:390}): the level generalisation of
+\cref{prop:pure-cusp-scattering}. No source found states that the poles of the $\Gamma_0(N)$ scattering
+matrix are Dirichlet $L$-zeros; that remains the hypothesis H-ARITH of \cref{obs:cusp-arith-next}.
+\end{citedfact}
+
+\subsection{The wave group and the one-exit contraction}
+
+\begin{theorem}[Discrete Lax--Phillips on the diagram]
+\label{thm:cusp-wave-contraction}
+\claimstatus{thm:cusp-wave-contraction}{sketched}
+Let $u_{m+1} = Tu_m - u_{m-1}$, $W(u,v) = (Tu-v,u)$, $E(u,v) = \|u\|^2+\|v\|^2-\re\langle u,Tv\rangle$.
+(a) $E$ is $W$-invariant; on the ray the equation has the exact d'Alembert solutions
+$u_m(k) = F(k+m)+B(k-m)$ (speed one). The local outgoing space is forward invariant and the local incoming
+space backward invariant, each a shift of multiplicity one, and $E$-orthogonality of the two forces the
+outgoing profile to start at $k\ge2$ (numerics D8). (b) On the $E$-orthocomplement of all $L^2$
+eigen-data (bound states and cusp forms) $E$ is positive and $W$ is $E$-unitary; on each bound-state block
+$E$ is indefinite with both wave eigen-data $E$-null (time multipliers $\vartheta^{\pm1}$, not $1$).
+(c) Deleting bound-state data does \emph{not} preserve the orthogonality of the projected local radiation
+spaces: on the pure $q = 2$ cusp two $E$-orthogonal local data acquire projected cross energy $3/32$.
+The repair is $D_- = \mathcal O_-$ and $D_+ = \mathcal O_+\cap\mathcal O_-^{\perp}$, which in the incoming
+translation representation reads $UD_+ = RH^2\cap H^2 = \Theta H^2$ with
+$\Theta = \eta\,R\,B_{\mathrm{bd}} = \prod_{i=1}^N b_{z_i}$, the pole-removed inner part of $R$
+($B_{\mathrm{bd}}$ the Blaschke product of the visible bound parameters, $|\eta| = 1$). Hence
+$K = H_E\ominus(D_+\oplus D_-)$ is carried to $K_\Theta = H^2\ominus\Theta H^2$, $\dim K = N$,
+$Z = P_{K_\Theta}M_w|_{K_\Theta}$ has spectrum exactly the resonances (not their reflections; numerics D11),
+$Z^m\to0$, and with $C = Z^{*}$ the defects are rank one, $I - C^{*}C = jj^{*}$ with $j = P_K1$ the
+compression of the first normalised translation coordinate, $I - CC^{*} = j'j'^{*}$ with
+$j' = (\Theta(w)-\Theta(0))/w$. (d) The standard theorem used is the scalar Sz.-Nagy--Foias model theorem; the mirror choice $D_- = \mathcal O_-\cap\mathcal O_+^{\perp}$ and the Lax--Phillips route that keeps the indefinite bound-state block are unexamined, and the unitary equivalence of the wave compression with $Z$ is asserted, not proved (reviewer finding 2; hence sketched);
+neither $R$ nor $1/R$ is the characteristic function when bound states are present (numerics D13).
+\end{theorem}
+
+\begin{lemma}[The Gram identity and the exit]
+\label{lem:cusp-gram-exit}
+\claimstatus{lem:cusp-gram-exit}{sketched}
+Under H-SIMPLE, $k_i(w) = (1-z_iw)^{-1}\in K_\Theta$, $Ck_i = z_ik_i$, $G_{ij} = \langle k_i,k_j\rangle =
+(1-\bar z_iz_j)^{-1}$, $\langle j,k_i\rangle = 1$; in coordinates $G - D^{*}GD = \mathbf 1\mathbf 1^{*}$
+with $D = \mathrm{diag}(z_i)$. In general $\langle k_n,k_m\rangle(1-\bar z_nz_m) = \bar a_na_m$ with
+$a_n = \langle j|k_n\rangle$, so no eigenvector is dark: a zero exit amplitude would force $\|Cv\| = \|v\|$
+with $|z|<1$ (numerics D12). Repeated resonances use derivative kernels.
+\end{lemma}
+
+\begin{proposition}[Walk expansions and the cusp term]
+\label{prop:cusp-walk-power-sums}
+\claimstatus{prop:cusp-walk-power-sums}{proved}
+Under H-REG ($T_X = A_X/\sqrt q$, $X$ $(q+1)$-regular) and $u = z/\sqrt q$, $\det(I-uA_X+qu^2) = \det(I-zT_X+z^2)$
+is the vertex factor of the Bass determinant, and $p,\tilde p$ are its rank-one perturbations:
+$\log p = \log\det H_0 + \log(1-c^2h)$, $\log\tilde p = \log\det H_0+\log(1-c^2z^2h)$ with
+$H_0 = I - zT_X+z^2$, $h = \langle v_0|H_0^{-1}|v_0\rangle$. The power sums of the resonances are
+\[
+\sum_{i=1}^N z_i^m = -m[w^m]\log\tilde p(w) - \sum_t m_c(t)(a_t^m+a_t^{-m}) - \sum_{\epsilon\in E_{\mathrm{th}}}\epsilon^m - \sum_\vartheta\vartheta^{-m},
+\]
+the expansion of $\log p$ at zero giving inverse powers instead (ledger 18). The logarithmic derivative
+$-R'/R = -p'/p + \tilde p'/\tilde p$ is a finite rational cusp contribution
+$-\sum_i\big((z-z_i)^{-1}+\bar z_i(1-\bar z_iz)^{-1}\big) + \sum_\vartheta\big((z-\vartheta)^{-1}+\vartheta(1-\vartheta z)^{-1}\big)$,
+not a prime comb; the physical self-energy $c^2z$ resums the Catalan-weighted returning ray excursions of
+length $2r+2$, and $c^2/z$ is their second-sheet continuation. The arithmetic comb of
+\cref{prop:cusp-prime-comb} has no counterpart at finite core.
+\end{proposition}

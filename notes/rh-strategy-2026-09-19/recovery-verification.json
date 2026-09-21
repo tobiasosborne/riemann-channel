@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "archive": ".recovery/20260919T093604.737475Z-session.tar.gz",
+  "archive_sha256": "a213dd5c69e78ef95513ae6294ea5352655abe021cca5655226f9e1825c2be82",
+  "restored_files_verified": 39,
+  "corrupt_archive_rejected": true,
+  "network_used": false
+}

@@ -2,6 +2,151 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-20, evening: two arithmetic cavities with cusps (shards 04k, 04l, 04m); the hedgehog is real, the rebound is still free
+
+TJO clarified that the Phantasm is a *system* whose resonances are the zeros (an arithmetic cavity coupled
+to cusps, "a hedgehog"; the modular surface is one candidate, possibly over-promoted), then sketched an
+arithmetic skeleton with "a cusp per prime", cusps integrated out into sinks patched by exit spaces, and the
+cMPS as the minimal Stinespring dilation of the core dynamics, and asked whether funnels are the even
+sector. The round did the Lax--Phillips reading of Arends--Peterson--Weich's two elliptic-curve tree
+quotients (`notes/elliptic-cavity/`: brief, `astra-proofs.md` 44-row ledger, blind numerics
+`scripts/elliptic_cavity.py` 192 checks, `sources.md` with eight new sources, review
+`notes/reviews/elliptic-cavity-2026-09-20.md`: 19 VALID, 5 MINOR, 0 INVALID before fixes, 24 VALID after, 597 checks; the reviewer added the mass formula Σ1/S(v) − Σ1/S(e) = −ζ_K(−1), the Z/4 group-matrix form of D3's scattering matrix after the equal-depth cut, and the cut-dependence of the delay sector with the genus law |[z^m]p| = q^{1−g−(h−1)(g−1)}). Worklog 2026-09-20, evening.
+
+**Registered (04k, 04l, 04m).** Arithmetic junctions have `c^2 = S(v)/S(e) = 1` (delay modes at `z = 0`,
+`ord_0 p = 2 dim ker(1 - C)`); the h-exit scattering matrix `S = (z Gamma - 1)^{-1}(1 - Gamma/z)`, `det S =
+(-1)^h p/ptilde`, APW's `mu` = notebook `z`; `1/R_2 = z^{-2} zeta_K(2s-1)/zeta_K(2s)` exactly for the F_2
+curve, resonances `z^2 = 1/alpha` on `2^{-1/4}`, `Z^2 ~ Fr^{-1} (x) I_2`; the nonzero-root product `-1` on both
+diagrams pins `r = q^{-1/4}` given equal moduli (the previous review's finding 7 had a false premise); the
+F_3 hedgehog splits as `(-1) (+) z^2 (+) S_e`, `det S_e = z^2 zeta_K(2s)/zeta_K(2s-1)`, and the one-step height
+shift `diag(1,z)` diagonalises `S_e` into (zeta block, `z^2`): one zeta channel, three monomial channels, the
+genus-one class-character prediction; Sorensen's `m_+- = (h +- (h[2]-2))/2 = 2, 2` matches APW's `+-1`
+resonances. The h-exit model and renewal channel (instrument on exit matrices; uniqueness is not
+irreducibility; common modulus for fixed resets only). The canonical cusp rebound of D2 is an absorbing delay
+mode that never charges the zeros; modal Hasse--Weil rebounds are stationary with mean `2 + sqrt 2`; the
+metrics making `q^{1/4} Z` unitary form a cone with a single symmetric ray, the energy metric is outside, and
+in the arithmetic metric the HW defect has rank four (one exit per zero mode). The constant mode never leaks
+on finite volume; the funnel self-energy is `C/(qz)`; a constant cannot be outgoing on a cusp and a funnel at
+once; lattice quotients have no funnels. Corrected: `thm:cusp-renewal-discrete`(c) (modal resets are aperiodic
+at `c = 1`). Open: H-HECKE, H-CLASS in general, H-EIS, the genus prediction `4h + 4`.
+
+**Answers given in conversation (not registered).** The honest "cusp per prime" is the `Gamma_0(N)` level
+tower (cusps indexed by divisors of `N`), whose diamond operators carry `(Z/N)^x` with inverse limit `Zhat^x =
+Gal(Q^ab/Q)`, the Bost--Connes symmetry group: TJO's two demands meet there. The Euler product is a series
+(product-state) structure, not parallel exits. Funnels = even sector in the precise sense that the constant
+mode flips from bound state to outgoing state at the same `z = q^{-1/2}` (Patterson--Sullivan analogue).
+
+**Next on this lead (in order).** (i) The cusp-plus-funnel toy by hand (not a lattice quotient): does the
+renewal channel get a unique mixed stationary state with the pole even and the zeros odd, given the
+incompatible outgoing conditions for a constant? (ii) A genus-two diagram (or Lorscheid's `Z/2 x Z/2` curve)
+to test the coefficient `-1` against Weil and the `4h + 4` count. (iii) `Gamma_0(N)` over `F_q[T]`, `N` a
+product of two primes: four cusps, one per divisor, Dirichlet `L`-functions (H-ARITH). (iv) The
+arithmetic-metric completion with one exit per zero mode: which geometric object has four cusps seeing the
+four Hasse--Weil modes separately?
+
+## Session 2026-09-20: a finite graph with a cusp (shards 04i, 04j); the arithmetic target is now concrete
+
+TJO restated the theme (RH as a Lindblad process, zeros as Connes's absorption spectrum, ring norm a
+supertrace, RH the Ramanujan property of a continuous quantum expander) and asked for the simplest
+example of "cusp exit plus rebound" closer to zeta. Full protocol round on a finite core with a ray
+attached with the tree-quotient weights (`notes/cusp-graph/`: brief, `astra-proofs.md` 34-row ledger,
+blind numerics `scripts/cusp_graph.py` 569 checks, `sources.md`, `childs-lead.md`, `physics-picture.md`
+and the interactive `physics-picture.html`, review `notes/reviews/cusp-graph-2026-09-20.md`:
+21 VALID, 3 MINOR (T1b, T1c, T8), 0 INVALID, 2880 independent checks). Worklog 2026-09-20.
+
+**Decisive prior art.** Arends--Peterson--Weich, arXiv:2603.26443 (fetched, byte-cited): resonances on
+geometrically finite graphs of groups via a resonance matrix equal to the notebook's rank-one perturbed
+Bass determinant `p(z) = det((1+z^2) - z T_X - c^2 P_0)`; two elliptic-curve tree quotients
+(`y^2 + y = x^3 + x + 1` over `F_2`, `y^2 = x^3 + x + 1` over `F_3`) whose resonance determinants contain the
+Hasse--Weil numerator at `T = z^2`, resonances on `|z| = q^{-1/4}` by Weil; the wave-equation /
+Lax--Phillips construction explicitly left to follow-up work. Childs--Strouse, arXiv:1103.5077: the
+reflection coefficient `R = -Q(1/z)/Q(z)` verbatim, half-bound (threshold) states, Levinson's count.
+Kaneko--Koyama, arXiv:2303.09327: the level-`A` constant term over `F_q[T]`; no source has the
+`Gamma_0(N)` scattering matrix as Dirichlet `L`-functions (H-ARITH, open).
+
+**Registered (04i, 04j).** `R = -p/ptilde` (sign corrected), `phi = 1/R`; poles in the disc = visible bound
+states, zeros = resonances, cusp forms and threshold roots cancel, count `N = 2d - b - n_th`; the pure cusp
+is the function-field zeta ratio with no resonances; the discrete wave group with speed one, the `3/32`
+obstruction to projecting radiation data after deleting bound states and its repair
+`D_+ = O_+ cap O_-^perp`, giving a one-exit contraction with `dim K = N`, spectrum the resonances,
+characteristic function the pole-removed inner part `eta R B_bd`, Gram identity
+`<k_n,k_m>(1 - conj z_n z_m) = conj(a_n) a_m`; the discrete renewal channel (CPTP, finite mean, unique
+stationary density, attraction iff aperiodic, equal moduli iff mode-diagonal stationarity, mean
+`1/(1-r^2)`, flags, odd modes protected); RAM and RH independent; product of roots `= 1 - c^2`, so a
+full-weight cusp on a Perron-only core has NO resonances and the radius is never universally `q^{-1/4}`;
+the cusp sees only the Krylov space of the attachment vertex. A graph bound state is not an even vacuum:
+the even exit is still missing.
+
+**Next on this lead (in order).** (i) Build the Arends--Peterson--Weich elliptic-curve diagram over `F_2`
+(stabiliser data from Serre II.2.4.4 / Takahashi Thm 5; their figure is a PNG, read it with the vision
+skill or recompute), confirm the resonance determinant, construct the `h`-exit contraction and run the
+renewal channel with an arithmetic rebound (Hecke-invariant, or the function-field Bost--Connes state):
+does the arithmetic pick the rebound? (ii) H-ARITH for `Gamma_0(N)` over `F_q[T]` (Li 1979, Kaneko--
+Koyama; `deg N >= 2` needed for `L`-zeros). (iii) The even exit: what leaks from the constant mode on an
+arithmetic diagram with more than one cusp.
+
+## Session 2026-09-19: decay-mode/cMPS review, stopped and saved
+
+User requested a multi-agent repository review, continuous local writes and RH
+proof ideas, then two deeper reviews of Riemann versus Selberg decay modes.
+Five lanes and parent calculations are saved under
+`notes/rh-strategy-2026-09-19/`; start with `SYNTHESIS.md` and `SESSION.md`.
+The user then requested shutdown, commit and push; no further research is running.
+
+Main lead: a regular fermionic cMPS with a faithful mixed stationary bond has a
+physical two-point function selecting a closed four-mode sector. Its quadratic
+fermion structure supplies observable closure; a separate reflection and
+coercivity condition enforce a common width. Perturbations distinguish these
+requirements. This is a finite mechanism, not a Riemann construction or RH proof.
+The operator review separates Selberg's L2 Laplace mechanism from Riemann's cusp
+wave/scattering leakage, records an explicit candidate flow-to-wave intertwiner,
+and locates Uetake's 2007 modal/completeness theorem. All new findings remain
+exploratory; registered claim statuses and mathematical shards are unchanged.
+
+Recovery: `scripts/research_checkpoint.py` writes verified, atomic local archives
+in `.recovery/`, including the Git-ignored reference cache. `RECOVERY.md` in the
+session directory gives offline restore instructions. New full sources are cached
+at `refs/src/1712.07832/` (TeX) and `refs/src/uetake-2007/` (publisher PDF); download
+receipts and hashes are committed with the notes. Archives and full third-party
+source caches remain local and Git-ignored, following existing repository policy.
+
+**Afternoon (2026-09-19).** The zeta-spectral-triples sidequest branch was merged into master
+(both HANDOFF blocks kept; the six new TeX sources fetched so the manifest check passes). TJO's
+question on the CCM method (can one estimate `tr(A^l)`, `l > K`, better than the chain does?)
+is answered in **shard 08g** (`report/sections/08g_weil_window_extension.tex`,
+`scripts/weil_window_extension.py`, 45 checks, unreviewed): the window form is an exact
+compression and the chain's implicit higher-trace model is the Pisarenko extension; the
+admissible next trace fills a disc (Levinson centre, determinant-ratio radius, boundary =
+singular windows with `K+1` atoms by Caratheodory-Fejer, byte-cited), so positivity alone cannot
+beat it; the counts add `N >= 0` and a Newton congruence mod `K+1`, which pin the next trace of
+`(1 2)(3 4 5)` one lag before the critical window but nothing for the Petersen graph (rescaling by
+`q^{(K+1)/2}`); for zeta the mean of the higher traces is the pole, already exact, so better
+estimators mean more primes. Proposed, not run: the per-window disc radius in `ihz`/`zst` as a
+rigorous ignorance measure against the observed `e^{-4 pi x}` convergence. Worklog 2026-09-19.
+
+**Night (2026-09-19): the rebound-state round (shard 04h).** TJO picked the ledger's most promising
+theorem-shaped lead, item 0b' (`conj:phantasm-both-halves`), and the full protocol ran: astra prover,
+blind Opus numerics, Opus REFUTE review (21 VALID, 2 MINOR, 0 INVALID). Registered in
+`report/sections/04h_rebound_state.tex`: a rebound density inside K_S gives a conservative renewal
+Lindbladian with a unique attracting mixed stationary state iff the mean holding time is finite; odd
+coherences keep the zeros for every rebound; invariant flags of modes realise every finite entanglement
+spectrum and the Gibbs spectra for beta > 1 (for any one-exit no-event semigroup, nothing about zeta
+used; under RH the mean holding time is exactly 2); admissible stationary densities are exactly those
+with positive loss. Corrected: the sign in `prop:functional-model-modes`; `obs:complementary-halves`.
+**Next on this lead:** (i) give the vacuum an exit so the graded space has a unique mixed stationary
+state; (ii) the arithmetic identification of the flag isometry U with the Bost-Connes bond, now a
+concrete positivity condition `-(B^* U D U^* + U D U^* B) >= 0` plus the prime action; (iii) the
+numerics lane's necessary bound on |H_ab| as a filter for candidate U. Worklog 2026-09-19, night.
+
+**Evening (2026-09-19): the ideation ledger.** `notes/ideation-ledger-2026-09-19/` (read `README.md`
+then `LEDGER.md`): every idea, lead and dead route in the notebook's history, 100% source coverage
+verified by script (138 repo files + 20 codex rollouts; 17 Opus lanes, 1509 entries; 4 digests, 492
+items; 1 synthesis). `LEDGER.md` section 3.1 is the ranked list of 40 leads to act on; section 5 lists
+repo defects to repair (shard 04 sign errors, dependency rot, unreviewed load-bearing claims, the
+BLAS-thread CI fixture, unresolved provenance addresses). The 2026-09-19 morning astra ideation
+session's inter-agent briefs are encrypted and unrecoverable; everything it wrote to disk is covered.
+
+
 ## Active focus (TJO, 2026-09-18): CCM in tensor-network terms
 
 TJO has made understanding the Connes--Consani--Moscovici algorithm in the

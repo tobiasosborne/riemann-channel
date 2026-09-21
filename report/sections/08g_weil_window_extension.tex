@@ -1,0 +1,207 @@
+% SHARD-ID: RC-08G-WEIL-WINDOW-EXTENSION
+% SHARD-TITLE: Weil Positivity, Continued: the Windowed Form Is a Compression, the Extension Disc for the Next Trace, and What the Counts Add
+% SHARD-SUMMARY: The Connes--Consani--Moscovici chain and its graph analogue never model the traces beyond the window: the window form is the exact compression of the full Weil form, and the model of the higher traces is implicit, the Carath\'eodory--Fej\'er / Pisarenko extension (atoms on the circle plus a noise floor at lag zero).
+% SHARD-SUMMARY: Given the traces up to lag K with a positive window, the admissible next trace fills a closed disc (centre the Levinson one-step predictor, radius a ratio of Toeplitz determinants, boundary points the singular windows with K+1 atoms); no estimator from traces and positivity alone beats it; the counts add nonnegativity and a Newton-identity congruence modulo K+1, which pin the next trace of a permutation but not of a q-regular graph, where the disc radius grows by q^{(K+1)/2} in count units; for zeta the mean of the higher traces is the pole term, already exact, so a better higher-trace estimator means more primes.
+% SHARD-KEYWORDS: window, compression, Toeplitz, trigonometric moment problem, extension disc, Levinson, Yule-Walker, maximum entropy, Burg, Pisarenko, Caratheodory-Fejer, Schur parameters, Verblunsky, Newton identities, congruence, permutation, Petersen graph, Connes-Consani-Moscovici, zeta spectral triples, higher traces
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/weil_window_extension.py
+
+\section{Weil Positivity, Continued: the Window as a Compression and the Extension Disc}
+\label{sec:weil-window-extension}
+
+\emph{Question (TJO, 2026-09-19).} The Connes--Consani--Moscovici construction
+\cite{connes2025zeta} (read and implemented in the \texttt{zst} and \texttt{ihz} sidequests,
+\texttt{notes/zeta-spectral-triples/}) seems to (1) assume a form for the traces $\Tr X^k$ of a
+transfer operator, (2) collect the data up to some lag, (3) build a model for the higher traces
+from the incomplete data, and (4) use positivity and the Toeplitz structure to read information
+off the minimal eigenvector. The characteristic polynomial of $X$ is built from the traces; could
+one be cleverer and build a better estimator of $\Tr X^l$ for $l > K$ from the traces up to $K$?
+Everything here is elementary and the notebook's own calculation
+(\texttt{scripts/weil\_window\_extension.py}, author claude:fable-5.1, unreviewed); the classical
+names are given for orientation, not as citations, except the Carath\'eodory--Fej\'er corollary,
+which is byte-cited from \cite{connes2025quadratic}.
+
+\subsection{The window is a compression, and the model of the higher traces is implicit}
+
+Throughout, $X$ is a finite transfer operator with trivial multiset $S_{\mathrm{triv}}$ and
+critical radius $r$, and $\nuseq{k}$ is its rescaled trace sequence as in
+\cref{thm:weil-positivity-finite}, $\nuseq{-k} = \overline{\nuseq{k}}$. For a permutation matrix
+$P$ (\cref{sec:graded-permutation}) $r = 1$, $S_{\mathrm{triv}} = \emptyset$ and
+$\nuseq{k} = \Tr P^k = \#\mathrm{Fix}(\pi^k)$ (\cref{prop:permutation-rings}); for a
+$(q+1)$-regular graph $X = \Hash$, $r = \sqrt q$ and $S_{\mathrm{triv}}$ is the Ihara--Bass
+trivial divisor, so that $\nuseq{k} = q^{-k/2}(\Tr\Hash^k - \text{trivial})$.
+
+\begin{definition}[Window matrix, admissible extensions, extremal extensions]
+\label{def:window-extension-set}
+The \emph{window matrix} of order $K$ is the $(K+1)\times(K+1)$ Hermitian Toeplitz matrix
+$\Wform_K = (\nuseq{j-k})_{j,k=0}^{K}$, the matrix of the Weil form $\Wform$ of
+\cref{thm:weil-positivity-finite} on test sequences supported in $\{0,\dots,K\}$. The
+\emph{admissible set} at order $K$ is the set of values $x\in\mathbb C$ such that the window
+matrix of order $K+1$ built from $\nuseq{0},\dots,\nuseq{K},x$ is positive semidefinite. An
+\emph{extension} of the data $\nuseq{0},\dots,\nuseq{K}$ is any sequence agreeing with it up to lag
+$K$ whose window matrices of every order are positive semidefinite, equivalently (by the
+Carath\'eodory--Toeplitz theorem) the Fourier coefficient sequence of a positive measure on the
+unit circle. The \emph{Pisarenko extension} is obtained by subtracting the minimal eigenvalue
+$\varepsilon_K$ of $\Wform_K$ from the diagonal, taking the $K$ roots $z_1,\dots,z_K$ of the
+kernel polynomial $\sum_j\kappa_jz^j$ of $\Wform_K - \varepsilon_K$ and the weights $w_j$ that
+reproduce the shifted data, and setting $\nuseq{k} = \sum_j w_jz_j^k + \varepsilon_K\delta_{k,0}$
+for all $k$.
+\end{definition}
+
+\begin{observation}[The chain never models the higher traces; its implicit model is Pisarenko's]
+\label{obs:window-is-compression}
+\claimstatus{obs:window-is-compression}{sketched}
+In the Connes--Consani--Moscovici chain and in its graph analogue
+(\texttt{notes/zeta-spectral-triples/ihara/lanes/theory.md}, IH-3 and IH-11), the window
+quadratic form is the exact restriction of the full Weil form to test functions supported in the
+window: for a graph, only $\nuseq{0},\dots,\nuseq{K}$ enter $\Wform_K$, and they enter exactly;
+for $\zeta$, only the primes $p\le\lambda^2$ enter the form on $[\lambda^{-1},\lambda]$, and the
+pole and archimedean terms enter exactly. No value is assigned to the traces beyond the window.
+Positivity of every compression is Weil's criterion, and positivity of the compression is
+implied by it. The perturbed operator of the chain has as spectrum exactly the roots of the kernel
+polynomial of $\Wform_K - \varepsilon_K$ (IH-11(iv)), so the only model of the higher traces the
+chain commits to is the Pisarenko extension of \cref{def:window-extension-set}: $K$ atoms on the
+circle plus a white-noise floor of size $\varepsilon_K$ at lag zero. This is the minimal-support
+extension of the data, and it is the appropriate prior exactly because the true spectral measure
+is pure point.
+\end{observation}
+
+\subsection{The extension disc}
+
+\begin{citedfact}[Carath\'eodory--Fej\'er corollary]
+\label{cit:cf-kernel-circle}
+\claimstatus{cit:cf-kernel-circle}{cited}
+\sloppy
+Connes and van Suijlekom \cite{connes2025quadratic} state and reprove the corollary of the 1911
+Carath\'eodory--Fej\'er structure theorem:
+{\small\texttt{\detokenize{if $T \in M_n(\mathbb{C})$ is a Hermitian, positive semidefinite Toeplitz matrix of rank $n - 1$, and $\xi \in \ker T$, then the polynomial $P(z) = \sum \xi_j z^j$ has all its zeros on the unit circle.}}}
+(\texttt{2511.23257:Araki-final-oct25.tex:752}). In the notation of this section: a Hermitian
+positive semidefinite Toeplitz matrix of rank one less than its size has a one-dimensional kernel,
+and the polynomial of the kernel vector has all its zeros on the unit circle.
+\end{citedfact}
+
+\begin{proposition}[The admissible next trace fills a disc]
+\label{prop:extension-disc}
+\claimstatus{prop:extension-disc}{sketched}
+Let $\Wform_K$ be positive definite and write its last column above the diagonal as
+$u(x) = (\bar x,\overline{\nuseq{K}},\dots,\overline{\nuseq{1}})^{\mathsf T}$ for a candidate
+$x = \nuseq{K+1}$.
+\begin{enumerate}
+\item[(i)] The admissible set is the closed disc $|x - c_K|\le r_K$ with
+  $c_K = -(\Wform_K^{-1}w)_0/(\Wform_K^{-1})_{00}$, where $w = u(0)$, and
+  $r_K^2 = (\nuseq{0} - w^*\Wform_K^{-1}w)/(\Wform_K^{-1})_{00} + |c_K|^2$.
+\item[(ii)] The centre is the one-step linear predictor: with $a$ the solution of the
+  Yule--Walker system $\Wform_{K-1}a = -(\nuseq{1},\dots,\nuseq{K})^{\mathsf T}$,
+  $c_K = -\sum_{j=1}^{K}a_j\nuseq{K+1-j}$; the radius is the prediction error
+  $r_K = \det\Wform_K/\det\Wform_{K-1}$, non-increasing in $K$.
+\item[(iii)] $x$ lies on the boundary of the disc iff $\Wform_{K+1}(x)$ is singular, and then its
+  kernel is one-dimensional and the kernel polynomial has its $K+1$ roots on the unit circle
+  (\cref{cit:cf-kernel-circle}): the boundary points are exactly the extensions by $K+1$ atoms.
+\item[(iv)] If the retained measure of $X$ has exactly $K+1$ distinct atoms, the true value
+  $\nuseq{K+1}$ lies on the boundary of the disc of order $K$, and every later trace is determined
+  by the kernel recurrence of $\Wform_{K+1}$.
+\item[(v)] Each further lag adds one free parameter in the closed unit disc (the Schur, or
+  Verblunsky, parameter); no estimator of $\nuseq{K+1}$ from $\nuseq{0},\dots,\nuseq{K}$ and
+  positivity alone can do better than the disc of (i). The centre $c_K$ is the minimax choice and
+  is the extension of maximal entropy (Burg); the Pisarenko extension of
+  \cref{def:window-extension-set} lies in the disc.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) By the Schur complement, $\Wform_{K+1}(x)\ge0$ iff
+$g(x) := \nuseq{0} - u(x)^*\Wform_K^{-1}u(x)\ge0$. With $u(x) = \bar xe_0 + w$,
+$g(x) = \nuseq{0} - |x|^2(\Wform_K^{-1})_{00} - 2\,\mathrm{Re}\big(x\,(\Wform_K^{-1}w)_0\big)
+- w^*\Wform_K^{-1}w$, and completing the square gives the disc with the displayed centre and
+radius; $r_K^2\ge0$ because the true next trace is admissible. (ii) The Yule--Walker system is the
+normal equation for the best monic predictor in $L^2$ of the measure whose Fourier coefficients
+are the $\nuseq{k}$, and $g(c_K) = \max g$ is its residual; $(\Wform_K^{-1})_{00} =
+\det\Wform_{K-1}/\det\Wform_K$ by Cramer's rule and Toeplitz shift invariance, which turns
+$g(c_K)/(\Wform_K^{-1})_{00}$ into $(\det\Wform_K/\det\Wform_{K-1})^2$; the script checks both
+identities to $10^{-9}$ on every window of the two examples rather than carrying the algebra
+here, which is why the status is \texttt{sketched}. Monotonicity of $r_K$ is the monotonicity of
+prediction errors under refinement. (iii) $\det\Wform_{K+1}(x) = g(x)\det\Wform_K$, so
+singularity is $g = 0$, the boundary; the kernel is one-dimensional because $\Wform_K$ is
+definite; \cref{cit:cf-kernel-circle} gives the circle. (iv) With $m = K+1$ distinct atoms the
+window matrices have rank at most $m$, so $\Wform_{K+1}$ (size $K+2$) is singular while
+$\Wform_K$ (size $K+1$) is definite (a Vandermonde argument at $m$ distinct nodes); singular
+means boundary by (iii), and the kernel vector of $\Wform_{K+1}$ is the polynomial vanishing on
+the atoms, whose recurrence propagates every later trace. (v) is the Schur parametrisation of the
+truncated trigonometric moment problem (Verblunsky's theorem), stated here for orientation and
+not used by anything else in this section.
+\end{proof}
+
+\subsection{What the counts add}
+
+The traces of a transfer operator built from letters are counts, and counts carry information
+that positivity does not see.
+
+\begin{proposition}[Newton congruence]
+\label{prop:newton-congruence}
+\claimstatus{prop:newton-congruence}{sketched}
+Let $X$ be a square matrix with integer entries and $N_k = \Tr X^k$. Then for every $K\ge0$,
+$N_{K+1}\equiv -\sum_{i=1}^{K}c_iN_{K+1-i}\pmod{K+1}$, where $\det(1-uX) = \sum_ic_iu^i$ and the
+$c_i$ are integers determined by $N_1,\dots,N_i$. So the traces up to lag $K$ determine the next
+trace modulo $K+1$.
+\end{proposition}
+
+\begin{proof}
+Newton's identity for the characteristic polynomial reads
+$(K+1)c_{K+1} = -\sum_{i=0}^{K}c_iN_{K+1-i}$ with $c_0 = 1$; the $c_i$ are integers because
+$\det(1-uX)\in\mathbb Z[u]$. Reduce modulo $K+1$.
+\end{proof}
+
+\begin{observation}[Rescaling defeats integrality; for $\zeta$ the mean of the higher traces is the
+pole]
+\label{obs:rescaling-and-zeta}
+\claimstatus{obs:rescaling-and-zeta}{sketched}
+(i) For a permutation ($r = 1$) the disc of \cref{prop:extension-disc}, the half-line
+$N_{K+1}\ge0$ and the congruence of \cref{prop:newton-congruence} act on the same integer, and
+can pin it before the window is exact (\cref{num:weil-window-extension}: pinned at $K = 3$ for
+$(1\,2)(3\,4\,5)$, one lag before the critical window). (ii) For a $(q+1)$-regular graph the disc
+lives in the rescaled variable and has radius $q^{(K+1)/2}r_K$ in count units, which exceeds one
+on every positive-definite window of the Petersen graph (radii $35.5$, $40.6$, $49.4$ in counts
+at $K = 1,2,3$), so integrality pins nothing; only the Ramanujan-side information (positivity) and
+the exact critical window remain. (iii) For $\zeta$ the traces are $\vM(n)$. The mean of the
+traces beyond the window is the prime number theorem, which is exactly the pole term of the
+explicit formula and enters the window form exactly; the higher powers $p^m > \lambda^2$ of the
+known primes lie outside the support of the windowed form and are invisible to it; what is
+unknown beyond the window is the fluctuation $\vM(n) - 1$, which by the explicit formula is
+the zeros. A better estimator of the higher traces of $\zeta$ therefore means more primes, i.e.\ a
+larger window. The freedom that remains is the choice of extremal extension in
+\cref{prop:extension-disc}(v), and the content of \cite{connes2025zeta} is the rate at which the
+Pisarenko atoms converge to the true zeros as the window grows (about $5.4$ digits per unit of
+$\lambda^2$ in the \texttt{zst} benchmark), the prolate step that a finite divisor cannot
+exercise because its disc radius reaches zero at the critical window
+(\cref{prop:extension-disc}(iv)).
+\end{observation}
+
+\begin{numerical}[Windows, discs, congruences: the permutation $(1\,2)(3\,4\,5)$ and the Petersen graph]
+\label{num:weil-window-extension}
+\claimstatus{num:weil-window-extension}{numerical}
+\texttt{scripts/weil\_window\_extension.py}, $45$ checks. Permutation: $\Tr P^k =
+5,0,2,3,2,0,5,\dots$; $\Wform_K$ definite for $K\le3$, singular from $K = 4$ (four distinct
+atoms); at $K = 1,2,3$ the disc centre equals the Levinson predictor and the radius equals
+$\det\Wform_K/\det\Wform_{K-1}$ ($5$, $4.2$, $2.0571$), positivity of $\Wform_{K+1}(x)$ holds
+exactly on the disc ($61$ sample points per window), the truth lies inside, both boundary points
+give singular windows with all kernel roots on the circle, the Pisarenko extension lies inside,
+the Newton congruence holds, and the integers $\ge0$ in the disc with the right residue are
+$\{0,2,4\}$, $\{0,3\}$, $\{2\}$: pinned at $K = 3$, where the truth $2$ sits on the boundary and
+Pisarenko alone predicts $-0.5$ (repeated atom at $1$). At $K = 4,5$ the kernel recurrence returns
+$\nuseq{5} = 0$, $\nuseq{6} = 5$ exactly and the kernel roots are the four distinct eigenvalues.
+Petersen ($q = 2$, $18$ retained eigenvalues at angles $\pm\arccos(1/2\sqrt2)$ and $\pm3\pi/4$):
+rescaled traces reproduce $\Tr\Hash^k = 30,0,0,0,0,120,120,0$ exactly; $\Wform_K$ definite for
+$K\le3$; the truth lies in every disc and on the boundary at $K = 3$; the congruence holds; the
+counts-unit radii are $35.5$, $40.6$, $49.4$ with $26$, $19$, $25$ admissible integers.
+\end{numerical}
+
+\paragraph{Not established, and one computation proposed.}
+None of this is a statement about $\zeta$ beyond \cref{obs:rescaling-and-zeta}(iii), which is an
+argument, not a theorem. The disc radius $r_K$ is a rigorous measure of ignorance about the next
+lag; in \texttt{ihz} it is one determinant ratio per window, and combined with the congruence
+and nonnegativity it would show how far below the critical window a graph divisor is already
+forced. For \texttt{zst} the analogous quantity, the Schur-complement radius of the window
+Loewner form as $\lambda$ grows, would bound rigorously what the primes beyond $\lambda^2$ can do
+to the form; comparing its decay in $\lambda$ with the observed $e^{-4\pi\lambda^2}$ convergence
+of the first zero would say whether that convergence is explained by the shrinking envelope or by
+something specific to the arithmetic. Not run.

@@ -230,3 +230,37 @@ grading is not a flow grading. Orchestrator corrected on the Casimir ordering si
 of the spectral map, the Ruelle trivial divisor, the FE sign, the total pullback, the endpoint
 exception, the quantum pushforward convention, the Riemann-sector rate, and ``Selberg's $\tfrac14$
 is open for $\PSL(\mathbb Z)$'' (it is known).
+
+\subsection*{2026-09-19: the sidequest merged; the window as a compression and the extension disc}
+
+The zeta-spectral-triples sidequest branch (\texttt{zst/}, \texttt{ihz/},
+\texttt{notes/zeta-spectral-triples/}, worklogs 2026-09-17 and 2026-09-18) was merged into
+master, both HANDOFF blocks kept. TJO then asked whether one could build a better estimator of the
+higher traces $\Tr X^l$, $l > K$, from the traces up to $K$, the CCM chain appearing to model them.
+Shard 08g answers: the chain models nothing beyond the window (the window form is an exact
+compression, the implicit model is the Pisarenko extension); the admissible next trace fills a
+disc with the Levinson predictor as centre and a determinant ratio as radius, whose boundary
+points are the singular windows with $K+1$ atoms (Carath\'eodory--Fej\'er, byte-cited from
+Connes--van Suijlekom), so positivity alone cannot beat it; the counts add nonnegativity and a
+Newton-identity congruence modulo $K+1$, which pin the next trace of the permutation
+$(1\,2)(3\,4\,5)$ one lag before the critical window but nothing for the Petersen graph, where the
+rescaling multiplies the radius by $q^{(K+1)/2}$; for $\zeta$ the mean of the higher traces is the
+pole, already exact, so a better estimator means more primes. $45$ checks
+(\texttt{scripts/weil\_window\_extension.py}). Orchestrator alone; unreviewed.
+
+\subsection*{2026-09-20: a finite graph with a cusp (shards 04i, 04j)}
+TJO restated the theme (RH as a Lindblad process with the zeros as absorption spectrum, the ring norm
+a supertrace, RH the Ramanujan property of a continuous quantum expander) and asked how to explore
+the cusp-exit-plus-rebound mechanism of \cref{sec:rebound-state} on the simplest example closer to
+$\zeta$. Answer: a finite core with a ray attached with the weights of the tree quotient. Full protocol
+round (astra prover, blind Opus numerics with $569$ checks, Sonnet and Opus literature lanes, Opus
+refutation review). Decisive prior art found: Arends--Peterson--Weich (resonance matrix $=$ the
+rank-one perturbed Bass determinant; elliptic-curve quotients with resonances on $|z| = q^{-1/4}$; the
+wave equation left open) and Childs--Strouse (the reflection coefficient verbatim, half-bound states,
+Levinson's count). Corrections of the orchestrator: sign of the determinant form, junction measure,
+threshold cancellation, outgoing profile offset, the $3/32$ obstruction to projecting radiation data
+after deleting bound states and its repair, $\phi = 1/R$, aperiodicity. New: the one-exit contraction
+with $\dim K = $ number of resonances, the discrete renewal channel, RAM and RH independent, the
+product identity $1-c^2$ forcing the pure cusp empty and fixing the radius from the bound states, the
+Krylov factorisation. An interactive physics exposition was published as an artifact. Next: the
+elliptic-curve diagram with an arithmetic rebound.

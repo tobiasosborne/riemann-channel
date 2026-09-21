@@ -1,0 +1,23 @@
+{
+  "total_claim_rows": 357,
+  "status_counts": {
+    "sketched": 96,
+    "numerical": 34,
+    "proved": 124,
+    "open": 7,
+    "cited": 59,
+    "assumed": 34,
+    "conjectured": 3
+  },
+  "kinds": {
+    "proposition": 100,
+    "theorem": 52,
+    "numerical": 34,
+    "observation": 46,
+    "conjecture": 10,
+    "corollary": 13,
+    "citedfact": 59,
+    "assumption": 34,
+    "lemma": 9
+  }
+}

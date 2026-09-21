@@ -1,0 +1,275 @@
+% SHARD-ID: RC-04L-ELLIPTIC-CAVITY-CHANNEL
+% SHARD-TITLE: The Phantasm VI: Two Arithmetic Cavities with Cusps II. The h-Exit Model, the Renewal Channel, the Rebounds the Arithmetic Does and Does Not Pick, the Arithmetic Metric, the Vacuum, and Funnels
+% SHARD-SUMMARY: The one-exit machinery of shards 04i/04j is generalised to h exits on the model side: an ordered Blaschke-Potapov pole removal gives a rational inner matrix function Theta, the model space has dimension deg det Theta = number of resonances with the delay modes included, the defect I - Z^*Z = J^*J has rank at most h, and the renewal channel E(rho) = Z rho Z^* + R(J rho J^*) with a CP rebound map R is CPTP; stationary densities correspond bijectively to stationary exit densities of an h^2 x h^2 renewal instrument, uniqueness is not irreducibility, and the common-modulus theorem holds for fixed resets but fails for exit-dependent rebounds.
+% SHARD-SUMMARY: On the one-cusp elliptic cavity the canonical cusp rebound is a pure delay mode (Theta(0) = 0 because c = 1): absorbing, holding law delta_1, never charging the Hasse-Weil sector, so "flux returns where it left" is not the arithmetic rebound; modal Hasse-Weil rebounds are all stationary (Weil) with mean holding time 2 + sqrt 2, exit rate 1 - q^{-1/2}, and Gram spectrum, not weight list; the metrics in which q^{1/4} Z is unitary form a three-parameter cone whose parity-and-reality invariant part is a single ray, the Lax-Phillips metric is outside it (angles 80.1, 65.5, 79.3 degrees), and in the arithmetic metric the Hasse-Weil defect has rank four, so the arithmetic channel needs one exit per zero mode.
+% SHARD-SUMMARY: The constant function on a finite-volume regular diagram is a bound state with wave multipliers q^{+-1/2}, never stationary and never leaking: no number of cusps gives the vacuum an exit; a funnel enters the resonance determinant with self-energy C/(qz), turning the constant mode from a bound state at z = q^{-1/2} into an outgoing state at the same value, but a globally constant function cannot be outgoing on a cusp and a funnel at once, and cusp-plus-funnel diagrams are not lattice quotients. Hecke selection of the rebound and the genus/class-number prediction are open.
+% SHARD-KEYWORDS: h exits, Blaschke-Potapov, inner matrix function, model space, defect, Gram identity, renewal channel, CP rebound, renewal instrument, fixed reset, common modulus, delay mode, canonical rebound, absorbing, Hasse-Weil sector, arithmetic metric, unitarisability, vacuum, finite volume, funnel, Hecke, H-HECKE, H-CLASS, H-LP
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/elliptic_cavity.py
+
+\section{The Phantasm VI: Two Arithmetic Cavities with Cusps II. The $h$-Exit Model, the Renewal Channel, the Arithmetic Metric, and the Vacuum}
+\label{sec:elliptic-cavity-channel}
+
+Same lanes and files as \cref{sec:elliptic-cavity-scattering}. Throughout, H-CORE means a finite real
+symmetric core with finitely many standard rays and positive couplings (\cref{def:elliptic-cavity}), H-LP is
+the energy completion and the repair $D_+ = \mathcal O_+\cap\mathcal O_-^\perp$ of
+\cref{thm:cusp-wave-contraction} (inherited, not re-litigated: the model below is proved, its
+identification with the geometric wave compression is not), and H-CONTRACTION means a finite-dimensional
+$Z$ with $Z^m\to0$ and $I-Z^{*}Z = J^{*}J$.
+
+\subsection{The model with $h$ exits and the renewal channel}
+
+\begin{definition}[The $h$-exit model; rebound map; renewal channel; fixed reset]
+\label{def:h-exit-renewal-channel}
+For $\mathbf S$ as in \cref{def:elliptic-cavity}, the \emph{inner part} is $\Theta = \eta\,\mathbf S\,B_{\mathrm{bd}}$
+with $B_{\mathrm{bd}}$ the ordered right Blaschke--Potapov product removing the bound-state poles and $\eta$ a
+constant unitary; the \emph{model space} is $K = H^2(\mathbb C^h)\ominus\Theta H^2(\mathbb C^h)$, the
+\emph{compressed shift} $Z = P_KM_w|_K$, and the \emph{exit map} $J:K\to\mathbb C^h$ is defined by
+$(I-P_K)(wf) = \Theta\,Jf$. A \emph{rebound map} is a CPTP map $\mathsf R:\mathcal B(\mathbb C^h)\to\mathcal B(K)$;
+the \emph{renewal channel} is $\mathcal E_{\mathsf R}(\rdens) = Z\rdens Z^{*}+\mathsf R(J\rdens J^{*})$; its
+\emph{holding instrument} is the sequence of completely positive maps $\mathcal M_m = \Psi\mathcal E_0^{m-1}\mathsf R$
+on $\mathcal B(\mathbb C^h)$, $\Psi(X) = JXJ^{*}$, $\mathcal E_0(X) = ZXZ^{*}$, with $\mathcal R = \sum_{m\ge1}\mathcal M_m$
+the \emph{exit renewal channel}. A \emph{fixed reset} is $\mathsf R(X) = \mathrm{Tr}(X)\,\reb$ for a density $\reb$
+on $K$; a \emph{modal} reset has $\reb$ a mixture of normalised eigenvectors of $Z$. The \emph{Hasse--Weil sector}
+$K_{\mathrm{HW}}$ of an elliptic cavity is the invariant span of the eigenvectors at the nonzero resonances; the
+\emph{delay sector} is the generalised eigenspace at $0$.
+\end{definition}
+
+\begin{theorem}[The $h$-exit model: inner part, dimension, defect, Gram identity]
+\label{thm:h-exit-model}
+\claimstatus{thm:h-exit-model}{proved}
+Under H-CORE. Removing a simple matrix pole at $\vartheta$ with residue $R_\vartheta$ by the right factor
+$B_{\vartheta,P} = I-P+b_\vartheta P$, $P$ the projection onto $\mathrm{ran}\,R_\vartheta^{*}$, $b_\vartheta(z) = (z-\vartheta)/(1-\bar\vartheta z)$,
+and repeating with recomputed residues, gives an ordered minimal product $B_{\mathrm{bd}}$ of degree $b$ (not in
+general a commuting product of scalar factors), and $\Theta = \eta\mathbf SB_{\mathrm{bd}}$ is rational inner. Then
+$\dim K = \deg\det\Theta = N$ (the resonances with multiplicity, delay modes included), $\mathrm{spec}\,Z$ is the
+disc zero set of $\Theta$ with its Jordan structure, $Z^m\to0$, and
+\[
+I-Z^{*}Z = J^{*}J,\qquad \mathrm{rank}\,J\le h,\qquad \sum_{m\ge0}Z^{*m}J^{*}JZ^m = I ,
+\]
+so no nonzero vector has zero flux at every time (an individual instantaneous flux may vanish, ledger 23).
+For eigenvectors $Zk_n = z_nk_n$ and exit amplitudes $a_n = Jk_n\in\mathbb C^h$,
+$(1-\bar z_nz_m)\langle k_n,k_m\rangle = a_n^{*}a_m$, in particular $a_n\ne0$; in the scalar case
+$k_a(w) = \Theta(w)/(w-a)$ has $Jk_a = 1$ and $\|k_a\|^2 = (1-|a|^2)^{-1}$. For $\mathrm{D2}$, with $\eta = -1$,
+\[
+\Theta_2(z) = \frac{z^2(2z^4-2z^2+1)}{z^4-2z^2+2},\qquad B_{\mathrm{bd}} = b_{1/\sqrt2}\,b_{-1/\sqrt2},\qquad N = 6 .
+\]
+Under H-LP this $K$, $Z$, $J$ is the geometric wave compression of \cref{thm:cusp-wave-contraction} with $h$ exits.
+\end{theorem}
+
+\begin{theorem}[The renewal channel with $h$ exits]
+\label{thm:h-exit-renewal}
+\claimstatus{thm:h-exit-renewal}{proved}
+Under H-CONTRACTION, for every rebound map $\mathsf R(X) = \sum_k V_k XV_k^{*}$:
+(a) $\mathcal E_{\mathsf R}$ is CPTP with Kraus operators $Z$ and $V_k J$.
+(b) The holding instrument is an $h^2\times h^2$ transfer operator on exit matrices, not an $h\times h$
+transition matrix (ledger 24); telescoping the defect identity gives total probability one, so $\mathcal R$ is
+CPTP, and the mean holding time $\bar t(\mathsf u) = \sum_{k\ge0}\mathrm{Tr}\,\mathcal E_0^k\mathsf R(\mathsf u)$ is finite uniformly
+in the exit density $\mathsf u$.
+(c) With $\mathcal U = (I-\mathcal E_0)^{-1}\mathsf R$, the map $\mathsf u\mapsto\rdens_\infty = \mathcal U\mathsf u/\mathrm{Tr}\,\mathcal U\mathsf u
+= \bar t(\mathsf u)^{-1}\sum_kZ^k\mathsf R(\mathsf u)Z^{*k}$ is a bijection between stationary exit densities of $\mathcal R$ and
+stationary densities of $\mathcal E_{\mathsf R}$ (every stationary density has nonzero flux, by stability). Hence
+uniqueness is uniqueness for $\mathcal R$, \emph{not} irreducibility (ledger 25: irreducibility is sufficient and gives a
+faithful state; a unique absorbing state is a reducible example, \cref{prop:d2-canonical-rebound}); with
+uniqueness, attraction of every density is absence of other peripheral eigenvalues, decided by the secular
+identity $\det(I-u\mathcal E) = \det(I-u\mathcal E_0)\det(I-\widehat{\mathcal M}(u))$, $\widehat{\mathcal M}(u) =
+\sum_mu^m\mathcal M_m$: a simple zero at $u = 1$ and no other circle zero of the second factor. A scalar gcd of
+holding times does not replace this for a general instrument.
+(d) For a \emph{fixed reset} the scalar proof of \cref{thm:cusp-renewal-discrete} applies for any exit rank:
+the stationary density is unique, and for a modal $\reb = \sum_ip_i|e_i\rangle\langle e_i|$,
+$\bar t = \sum_ip_i/(1-|z_i|^2)$, $\rdens_\infty = \bar t^{-1}\sum_i\frac{p_i}{1-|z_i|^2}|e_i\rangle\langle e_i|$, so every
+modal reset on a family of eigenvectors is stationary iff their moduli coincide (\cref{prop:cusp-modal-rh}),
+with holding law $(1-r^2)r^{2(m-1)}$ and mean $(1-r^2)^{-1}$; a modal reset charging both a delay mode and the
+Hasse--Weil modes is never stationary. For an exit-dependent $\mathsf R$ this is false in both directions:
+$Z = \mathrm{diag}(r_1,r_2)$, $J = \mathrm{diag}(\sqrt{1-r_1^2},\sqrt{1-r_2^2})$ and $\mathsf R = \mathrm{id}$ make every
+diagonal density stationary with $r_1\ne r_2$ (ledger 27).
+(e) A density is stationary for some rebound iff $\rdens-Z\rdens Z^{*}\ge0$ (then the fixed reset
+$\reb = Q/\mathrm{Tr}\,Q$ works), and invariant flags realise every decreasing spectrum
+(\cref{thm:cusp-admissible-flags}, arbitrary defect). On $\mathbb C\,\mathrm{vac}\oplus K$ with $\tilde Z = 1\oplus Z$,
+$\tilde J = 0\oplus J$, the odd coherences $|k_n\rangle\langle\mathrm{vac}|$ are eigen-operators with eigenvalue $z_n$
+for every $\mathsf R$ (\cref{prop:cusp-odd-protected}).
+\end{theorem}
+
+\begin{proposition}[Symmetry blocks; what the extra cusps add at genus one]
+\label{prop:covariant-channel-blocks}
+\claimstatus{prop:covariant-channel-blocks}{proved}
+A finite automorphism group of the diagram acts unitarily on core, rays and exits; with a compatible inner
+generator $Z$ commutes with the model representation and $J$ intertwines it with the exit representation, so
+the \emph{no-event model} is an orthogonal sum of isotypic components. For $\mathrm{D3}$, $K = K_e\oplus K_o$,
+$\dim K_e = 6$ (four Hasse--Weil modes and a length-two delay chain), $\dim K_o = 2$ (the delay chain of the
+$z^2$ channel); the Dirichlet channel $-1$ has no model space. Within $K_e$ the Hasse--Weil and delay
+subspaces are invariant but generally not orthogonal; the same holds for $\mathrm{D2}$. Covariance of a
+\emph{channel} does not preserve these Hilbert-space blocks: it preserves isotypic components of the
+conjugation representation on operator space, and densities of two inequivalent one-dimensional types both
+transform trivially, so a covariant rebound may transfer populations between them (the brief's stronger claim
+is false, ledger 29). At genus one the extra character channels add delay and constant factors and rebound
+choices, no further nonzero resonances; they are not dynamically irrelevant.
+\end{proposition}
+
+\subsection{Which rebound does the arithmetic pick? The one-cusp cavity}
+
+\begin{proposition}[The canonical cusp rebound of $\mathrm{D2}$ is an absorbing delay mode]
+\label{prop:d2-canonical-rebound}
+\claimstatus{prop:d2-canonical-rebound}{proved}
+Since $\Theta_2(0) = 0$ (a consequence of $c = 1$), $j = J^{*}1 = \Theta_2(w)/w$ has $\|j\| = 1$ and $Zj = P_K\Theta_2 = 0$;
+$g = \Theta_2(w)/w^2\in K$ is orthogonal to $j$, normalised, with $Zg = j$: the delay sector is one size-two Jordan
+block. In an orthonormal basis (polynomial basis $w^k/(w^4-2w^2+2)$, Cholesky),
+\[
+Z = \begin{pmatrix}
+0&2/3&0&-\sqrt5/6&0&0\\ 1&0&0&0&0&0\\ 0&\sqrt5/3&0&1/3&0&0\\ 0&0&1&0&0&0\\ 0&0&0&\sqrt3/2&0&0\\ 0&0&0&0&1&0
+\end{pmatrix},\qquad j = e_6,\qquad I-Z^{*}Z = e_6e_6^{*},\qquad \chi_Z = z^2(z^4-z^2+\tfrac12).
+\]
+The canonical rebound $\reb_J = J^{*}J/\mathrm{Tr}(J^{*}J) = |j\rangle\langle j|$ (``flux returns where it left'') has
+$\rdens_\infty = \reb_J$, spectrum $(1,0,0,0,0,0)$, holding law $m(m) = \delta_{m1}$, $\hat m(u) = u$, mean $1$: it is
+the unique stationary density (fixed reset), attracting, and a \emph{modal rebound at zero} whose Hasse--Weil
+Riesz projection vanishes although its overlaps $\langle j,k_a\rangle = 1$ with every Hasse--Weil mode are nonzero. It
+never charges the zeros; the naive ``arithmetic picks the rebound'' candidate fails \emph{for this cut}: the degeneracy
+is a property of where the core/cusp cut is placed (\cref{prop:multi-exit-spectrum}(iii), review finding 2), not of the
+diagram. (On APW's convention with
+the delay modes dropped it is a genuine mixture: law $(3/4,0,1/12,0,1/48,\dots)$ on odd times, mean $7/3$,
+spectrum $\{1/7,1/7,1/7,4/7\}$; numerics D-ledger.) The same-defect amplitude is $\langle j,(I-uZ)^{-1}j\rangle = 1$,
+whereas the Sz.-Nagy--Foias transfer $\langle k,[-Z+uD_{Z^{*}}(I-uZ^{*})^{-1}D_Z]j\rangle = \Theta_2(u)$ links
+\emph{opposite} defect vectors, $I-ZZ^{*} = kk^{*}$, $k = (\sqrt{15}/6,0,-1/\sqrt3,0,1/2,0)^T$: the
+characteristic function does not generate the holding law (ledger 32). \emph{Correction to
+\cref{thm:cusp-renewal-discrete}(c):} ``aperiodic iff $c\ne1$ when the range of $\reb$ contains an eigenvector'' is
+wrong; every normalised eigenvector has one-step exit probability $1-|z_i|^2>0$, including $z_i = 0$, so every
+modal reset is aperiodic even at $c = 1$ (ledger 43; the periodic examples are non-modal).
+\end{proposition}
+
+\begin{proposition}[Modal Hasse--Weil rebounds of $\mathrm{D2}$; the Gram matrix in closed form]
+\label{prop:d2-modal-gram}
+\claimstatus{prop:d2-modal-gram}{proved-conditional}
+For any weights on the four normalised Hasse--Weil eigenvectors, $\rdens_\infty = \reb$, $m(m) = \delta\,2^{-(m-1)/2}$,
+$\bar t = \delta^{-1} = 2+\sqrt2$, $\delta = 1-1/\sqrt2$ (in general $(1-q^{-1/2})^{-1}$; the modular surface's $2$ is
+continuous time), and the exit rate $\langle j|\reb|j\rangle = 1-q^{-1/2}$ for every modal reset, forced by the Gram
+identity. With $a = \sqrt{(1+i)/2}$ (positive real and imaginary parts), roots ordered $(a,-a,\bar a,-\bar a)$,
+$k_i = \Theta_2/(w-z_i)$, $e_i = \sqrt\delta\,k_i$, the normalised Gram matrix is
+\[
+O = \begin{pmatrix}1&d&u&v\\ d&1&v&u\\ \bar u&\bar v&1&d\\ \bar v&\bar u&d&1\end{pmatrix},\qquad
+d = 3-2\sqrt2,\quad u = \delta(1-i),\quad v = \delta(3+i)/5 ,
+\]
+invariant under the parity matrix $\mathsf P$ swapping $1\leftrightarrow2$, $3\leftrightarrow4$, with
+$\mathsf P\,\mathrm{diag}(z_i)\mathsf P = -\mathrm{diag}(z_i)$. The stationary density's spectrum is
+$\mathrm{spec}(\mathrm{diag}(\sqrt p)\,O\,\mathrm{diag}(\sqrt p))$, the Gram spectrum, not the weight list: for equal
+weights $0.11448581, 0.16190739, 0.29972775, 0.42387905$ (plus two zeros on the full $K$).
+\end{proposition}
+
+\begin{theorem}[The metrics in which $q^{1/4}Z$ is unitary; the arithmetic metric needs one exit per mode]
+\label{thm:arithmetic-metric}
+\claimstatus{thm:arithmetic-metric}{proved-conditional}
+On $K_{\mathrm{HW}}$ of $\mathrm{D2}$, in the eigenbasis, a positive matrix $H$ defines an inner product for which
+$Z^{*}HZ = r^2H$, $r = 2^{-1/4}$, iff $(\bar z_iz_j-r^2)H_{ij} = 0$ iff $H = \mathrm{diag}(h_1,\dots,h_4)$, $h_i>0$: a
+cone of real dimension four, three modulo scale. Parity invariance forces $h_1 = h_2$, $h_3 = h_4$; invariance under
+the real structure $z\mapsto\bar z$ forces $h_1 = h_3$, $h_2 = h_4$; both leave a \emph{single ray}, all weights
+equal on the vectors $e_i$ of \cref{prop:d2-modal-gram} (the two symmetries act transitively on the four modes).
+The Lax--Phillips energy metric is outside the cone: $|\langle e_a,e_{-a}\rangle| = 3-2\sqrt2$,
+$|\langle e_a,e_{\bar a}\rangle| = \sqrt2-1$, $|\langle e_a,e_{-\bar a}\rangle| = (\sqrt2-1)/\sqrt5$, angles
+$80.12^\circ$, $65.53^\circ$, $79.32^\circ$, so $q^{1/4}Z$ is not energy-unitary. This is the notebook's ``RH =
+Ramanujan = the compressed operator is $q^{-1/4}$ times a unitary'' made literal for the elliptic cavity: true for
+the cone, canonically for its symmetric ray, false for the energy metric; no independent global Ramanujan
+statement follows. The channel of \cref{thm:h-exit-renewal} uses the energy metric and its adjoints; changing
+metric rebuilds adjoints, defects and resets (ledger 35). Obstruction: in an arithmetic metric
+$I-Z^{*'}Z = (1-r^2)I$ on $K_{\mathrm{HW}}$ has rank \emph{four}; it cannot factor through the one-dimensional cusp
+exit, whose defect restricted to $K_{\mathrm{HW}}$ has rank one. An arithmetic-metric renewal construction needs at
+least four exit coordinates on $K_{\mathrm{HW}}$, one per zero mode: a different conservative completion of the same
+eigenvalue data (ledger 44).
+\end{theorem}
+
+\begin{observation}[H-HECKE: Hecke and Bost--Connes selection of the rebound is open]
+\label{obs:hecke-rebound-open}
+\claimstatus{obs:hecke-rebound-open}{open}
+The stabiliser sizes specify adjacency, not the vertex and edge groups, their embeddings, or the double cosets
+that define Hecke correspondences, so no Hecke operator can be built from H-DIAG alone. Commutation with
+adjacency and preservation of cusp asymptotics would not by themselves force a modal rebound (joint eigenspaces
+may coincide, $Z^2$ already has doubled eigenvalues, covariance of a CP map does not force diagonal outputs). A
+selection theorem needs a specified Hecke action compatible with adjoints, simple separated joint characters and
+a dephasing condition; the function-field Bost--Connes systems (Jacob, Consani--Marcolli, Neshveyev--Rustad;
+\texttt{sources.md}) supply none of this for the diagram. \textbf{H-HECKE.}
+\end{observation}
+
+\subsection{The vacuum: finite volume, and funnels}
+
+\begin{proposition}[The constant function on a finite-volume regular diagram never leaks]
+\label{prop:constant-mode-no-exit}
+\claimstatus{prop:constant-mode-no-exit}{proved}
+On a graph with stabiliser function of finite volume ($\sum_v1/S(v)<\infty$) and bounded degree the constant
+function is in $L^2(V,1/S)$ and $A$ is bounded self-adjoint; $A\mathbf 1 = \deg$, so \emph{regularity is
+necessary} (ledger 37), and for a $(q+1)$-regular diagram $\mathbf 1$ is an eigenfunction with normalised
+eigenvalue $(q+1)/\sqrt q>2$ and cusp tails $\propto q^{-k/2}$: a visible bound state with poles $z = \pm q^{-1/2}$
+(bipartite case), not a cusp form. Under the discrete wave group $W(u,v) = (Tu-v,u)$ its data have time
+multipliers $\sqrt q$ and $q^{-1/2}$, neither of modulus one, and the bound wave block has indefinite energy: the
+Perron mode is \emph{not} stationary under the wave group and radiates no flux (\cref{obs:cusp-no-graph-vacuum}
+holds, not an exception to it; a Schrödinger eigenstate or the Markov operator $A/(q+1)$ are other dynamics).
+In the model with the bound data removed and the vacuum adjoined, $\tilde Z = 1\oplus Z$, $\tilde J = 0\oplus J$, every
+rebound leaves the vacuum without an exit (\cref{prop:graded-stationary-segment}), independently of the number of
+cusps: the hedgehog does not help. Finite volume does not forbid a different dynamics or a different defect on the
+bound data.
+\end{proposition}
+
+\begin{proposition}[The funnel self-energy; the constant mode on a funnel]
+\label{prop:funnel-self-energy}
+\claimstatus{prop:funnel-self-energy}{proved}
+APW's outgoing constant-type conditions are $f(w) = \sqrt q\,f(v)/\mathfrak m$ on a cusp and $f(w) = f(v)/(\sqrt q\,\mathfrak m)$ on a
+funnel (\cref{cit:apw-resonance-matrix}, \texttt{:1915}), so after the notebook's normalisation the self-energies
+are $\varSigma_{\mathrm{cusp}} = C_{\mathrm{cusp}}/z$ and $\varSigma_{\mathrm{funnel}} = C_{\mathrm{funnel}}/(qz)$ and
+\[
+\boxed{\ p_{\mathrm{funnel}}(z) = \det\big((1+z^2)I-zT_X-C_{\mathrm{cusp}}-q^{-1}C_{\mathrm{funnel}}\big)\ },
+\]
+with the same Laurent factor to APW's $H$; the one-vertex $(q+1)$-funnel tree gives $p = z^2-q^{-1}$, APW's
+$\pm q^{-1/2}$, and the numerics lane reproduces their modular-curve example ($\pm q^{1/2}$) for $q = 2,3,5$. This is
+the constant-type finite resonance matrix, not a proof that a funnel's wave space is a single standard ray. On a
+funnel the constant function is not $L^2$ (sphere growth $q^k$), so the bound-state argument of
+\cref{prop:constant-mode-no-exit} lapses and the constant function becomes outgoing at $z = q^{-1/2}$, the same
+number with its role flipped from pole to zero. But a globally constant function is not outgoing on a cusp and a
+funnel at once: the cusp condition needs $z = \sqrt q$, the funnel condition $z = 1/\sqrt q$. ``Zeros from the cusp,
+vacuum leak from the funnel'' is a research target (ledger 40), and by \cref{cit:apw-cusps-pic-no-funnels} a
+cusp-plus-funnel diagram is \emph{not} the quotient of the tree by a lattice in $\mathrm{PGL}(2,F)$: it must be built by
+hand.
+\end{proposition}
+
+\begin{observation}[Genus, class number, and the number-field hedgehog: the testable prediction]
+\label{obs:genus-class-prediction}
+\claimstatus{obs:genus-class-prediction}{open}
+Under H-CLASS a curve of genus $g$ with one removed rational point and $h$ cusps has one character channel
+carrying the zeta numerator of degree $2g$, hence $4g$ nonzero square-root resonances (bipartite pairing is the
+square root, not a second doubling), and each nontrivial unramified character an $L$-polynomial of degree $2g-2$,
+hence $4g-4$ resonances: at genus one none (as $\mathrm{D3}$ shows), at genus two eight zeta resonances and four per
+nontrivial character, all on $|z| = q^{-1/4}$, $4h+4$ in total before delay, bound, cusp-form and threshold
+bookkeeping. These are character channels, not individual geometric spikes. For number fields every class
+character carries Hecke $L$-zeros (\cref{cit:sorensen-scattering-matrix}). The $\Gamma_0(N)$ direction, one cusp
+per divisor of the level with Dirichlet $L$-functions, remains H-ARITH (\cref{obs:cusp-arith-next}); the level tower
+is the honest ``cusp per prime'', and its diamond operators carry $(\mathbb Z/N)^\times$, whose inverse limit is the
+Bost--Connes symmetry group.
+\end{observation}
+
+\begin{numerical}[Blind numerics lane, elliptic cavities]
+\label{num:elliptic-cavity}
+\claimstatus{num:elliptic-cavity}{numerical}
+\texttt{scripts/elliptic\_cavity.py} ($192$ checks, $51$ s, seed $20260920$; \texttt{outputs/elliptic\_cavity.txt};
+ledger D1--D35 in \texttt{notes/elliptic-cavity/numerics.md}): both figures re-read and confirmed vertex for vertex;
+degrees $q+1$; $p,\tilde p$ by exact rational arithmetic in $t = z/\sqrt q$ (integer coefficients) against APW's
+polynomials; $\mathbf S$ from a direct generalised-eigenfunction solve against the closed form (deviation
+$4\cdot10^{-15}$), symmetry, unitarity, functional equation, $\det\mathbf S = (-1)^hp/\tilde p$, $\det H = (-1)^n(2\mathfrak m)^{-n}p$;
+$1/R_2$ against $z^{-2}\zeta_K(2s-1)/\zeta_K(2s)$; the three $\mathrm{D3}$ channels and $\det\mathbf S_e$ against the
+zeta ratio; the height renormalisation $a-b = -1$ unique among half-integers in $[-4,4]$; $\mathrm{ord}_0p = 2\dim\ker(I-C)$;
+$\dim\ker T_X = 3$ against two cusp forms; regular thresholds, $\mathrm{tr}\,\mathbf S(\pm1) = 0$, Levinson windings $4,6$;
+the model contraction with its Jordan block, $\reb_J$ absorbing, modal means $2+\sqrt2$, exit rate $1-q^{-1/2}$,
+Gram entries $\{2+\sqrt2,2-\sqrt2,\sqrt2,2/\sqrt{10}\}$; the metric cone and its single symmetric ray; the product
+identity $[z^m]p = -1$ on both diagrams; the funnel formula against APW's tree and modular-curve examples for
+$q = 2,3,5$.
+\end{numerical}
+
+\begin{observation}[What the next round should do]
+\label{obs:elliptic-cavity-next}
+\claimstatus{obs:elliptic-cavity-next}{sketched}
+(i) The cusp-plus-funnel toy by hand: one core, one cusp carrying a zeta factor, one funnel, and the question
+whether the renewal channel then has a unique mixed stationary state with the pole even and the zeros odd, given
+\cref{prop:funnel-self-energy}'s incompatibility of the two outgoing conditions for a constant. (ii) A genus-two
+diagram (or the $\mathbb Z/2\times\mathbb Z/2$ curve of Lorscheid) to test \cref{prop:nonzero-root-product}'s coefficient
+$-1$ against Weil and \cref{obs:genus-class-prediction}'s $4h+4$. (iii) $\Gamma_0(N)$ over $\mathbb F_q[T]$ with $N$ a
+product of two primes: four cusps, one per divisor, Dirichlet $L$-functions (H-ARITH). (iv) The arithmetic-metric
+completion with one exit per zero mode (\cref{thm:arithmetic-metric}): what geometric object has four cusps seeing
+the four Hasse--Weil modes separately? (v) Promote \cref{prop:d3-group-matrix} to a statement for general
+$\mathrm{GL}_2(R)\backslash\mathcal T$ and prove it. (vi) Construct the Lax--Phillips completion for $\mathrm{D2}$, or stop
+quoting $\dim K$ geometrically: H-LP has been inherited unexamined through three shards (reviewer).
+\end{observation}

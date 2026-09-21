@@ -152,3 +152,30 @@ prov:dfg14-pushforward	1403.0256	RuelleResonForHn.tex	601-604	u\in\Res^0_X(\lamb
 prov:bls18-selberg-level	1803.06016	main.tex	121-122	The Selberg eigenvalue conjecture is true for $\Gamma_1(N)$ for $N\leq 880$, and for $\Gamma(N)$ for $N\leq 226$.	cit:bls-selberg-level-one
 prov:ccm25-tn-correlation	2511.22755	mc2arXiv.tex	466	QW(f,g)=\Psi(f^**g), \ \	prop:ccm-tn-loewner-displacement
 prov:ccm25-tn-displacement	2511.22755	mc2arXiv.tex	840	D\, T-T\, D=\vert \beta\rangle\langle \eta\vert -\vert \eta\rangle\langle \beta\vert, \ \ \beta=\sum b_j\,V_j,\ \ \eta=\sum V_j.	thm:ccm-tn-loewner-quotient
+prov:cs25-corcar	2511.23257	Araki-final-oct25.tex	752	if $T \in M_n(\mathbb{C})$ is a Hermitian, positive semidefinite Toeplitz matrix of rank $n - 1$, and $\xi \in \ker T$, then the polynomial $P(z) = \sum \xi_j z^j$ has all its zeros on the unit circle.	cit:cf-kernel-circle
+prov:apw-abstract	2603.26443	final_draft.tex	50	In contrast to the hyperbolic surfaces setting, geometrically finite graphs have only finitely many resonances, and these resonances may be computed explicitly	cit:apw-resonances
+prov:apw-lax-phillips	2603.26443	final_draft.tex	138	In follow-up work, we plan to connect the theory of resonances on geometrically finite graphs developed in this paper with the wave equation on regular trees and graphs	cit:apw-lax-phillips-open
+prov:apw-elliptic-f2	2603.26443	final_draft.tex	2008	(\mu^2 + 1)^2 (\mu^2 - 2) (2 \mu^4 - 2 \mu^2 + 1).	cit:apw-elliptic-curves
+prov:apw-elliptic-f3	2603.26443	final_draft.tex	2056	(\mu^2 + 1)^2 (\mu - 1)^2 (\mu + 1)^2 (\mu^2 - 3) (3 \mu^4 + 1).	cit:apw-elliptic-curves
+prov:apw-weil-circle	2603.26443	final_draft.tex	2092	Resonances on the circle of radius $\frac{1}{q^{\frac{1}{4}}}$ corresponding to square roots of zeros of the Hasse-Weil zeta function of $C$.	cit:apw-weil-circle
+prov:childs-reflection	1103.5077	main.tex	192-197	R(z) \defeq - \frac{Q(z^{-1})}{Q(z)}	cit:childs-strouse-reflection
+prov:childs-q	1103.5077	main.tex	196	Q(z) &\defeq 1 - z(a + C(z))	cit:childs-strouse-reflection
+prov:childs-levinson	1103.5077	main.tex	275-278	w_\Gamma(R) = 2 (m - n_b - n_c - \smfrac{1}{2}n_h).	cit:childs-strouse-levinson
+prov:childs-half-bound	1103.5077	main.tex	232	Using the terminology of Ref.~\cite{HKS91}, we refer to such states as \emph{half-bound states}.	cit:childs-strouse-levinson
+prov:kk-level-constant	2303.09327	main.tex	390	\frac{q^{a(1-2s)}}{1-q^{-2as}} \frac{\zeta_{\F_{q}[T]}(2s-1)}{\zeta_{\F_{q}[T]}(2s)}	cit:kk-level-constant-term
+prov:apw-adjacency	2603.26443	final_draft.tex	442	Af(v) = \sum_{\overrightarrow{e} \in \vec{\mathcal{E}} : t(\overrightarrow{e}) = v} \frac{\mathcal{S}(v)}{\mathcal{S}(e)}f(o(\overrightarrow{e})).	cit:apw-adjacency
+prov:apw-b-matrix	2603.26443	final_draft.tex	1899	Let $B(\mu)$ be the diagonal matrix with entry $(v, v)$ equal to $c_v \frac{\sqrt{q}}{\mu} + f_v \frac{1}{\sqrt{q} \mu}$ where	cit:apw-resonance-matrix
+prov:apw-resonance-matrix	2603.26443	final_draft.tex	1907	H(\mu) \coloneqq  \frac{1}{2 \sqrt{q}}(A_{\mathcal{L}} + B(\mu)) - z(\mu) I.	cit:apw-resonance-matrix
+prov:apw-p-mu-squared	2603.26443	final_draft.tex	2030	Letting $P(T)$ denote the numerator, we find that $P(\mu^2)$ is exactly equal to the unaccounted for polynomial in the determinant of the resonance matrix.	cit:apw-elliptic-numerator
+prov:apw-d3-thresholds	2603.26443	final_draft.tex	2058	We also have resonances at $\mu = \pm 1$ (each of multiplicity 2). However, we compute that they are in fact not $\ell^2$-eigenfunctions.	cit:apw-elliptic-numerator
+prov:apw-type-four	2603.26443	final_draft.tex	2093	Resonances at $\mu = \pm 1$ whose multiplicity is related to the number of cusps and the functional equation of the zeta function/trace of the scattering matrix.	cit:apw-four-types
+prov:apw-followup	2603.26443	final_draft.tex	2095	We plan to make this correspondence precise in follow-up work connecting resonances with the Lax-Phillips scattering theory in this setting.	cit:apw-four-types
+prov:apw-cusps-pic	2603.26443	final_draft.tex	892	As we vary over $c \in \textnormal{Pic}(R)$, we obtain distinct cusps, and all cusps arise in this way.	cit:apw-cusps-pic-no-funnels
+prov:apw-no-funnels	2603.26443	final_draft.tex	854	and the quotient has finitely many cusps (possibly none) and no funnels. See Theorem 6.1 of Lubotzky	cit:apw-cusps-pic-no-funnels
+prov:cg-h-tail	1203.6557	levinson2.tex	365	S(z) & =-Q(z)^{-1}Q(z^{-1})	cit:cg-h-tail
+prov:cg-winding	1203.6557	levinson2.tex	511	w_{\Gamma}(\det(S))=2\left(m-n_{b}-n_{c}-\frac{1}{2}n_{h}\right).	cit:cg-levinson
+prov:sorensen-thm72	sorensen-2001	paper.txt	1439	Theorem 7.2. The scattering matrix for the Hilbert modular group is	cit:sorensen-scattering-matrix
+prov:sorensen-cor92	sorensen-2001	paper.txt	1654	the central scattering trace is given by	cit:sorensen-central-trace
+prov:sorensen-mpm	sorensen-2001	paper.txt	1667	m+ + m = h and m+	cit:sorensen-central-trace
+prov:lorscheid-components	1012.4825	elliptic.tex	309	In particular, $\cG_x$ is connected if and only if the class number of $F$ is odd.	cit:lorscheid-components
+prov:lorscheid-cusp-count	1012.3513	hecke.tex	992	The number of cusps is $\#\Cl\cO_X^x \,=\,\#(\rquot{\Cl X}{\langle x\rangle}) \,=\, \#\Cl^0X\cdot\#(\ZZ/d_x\ZZ)\,=\,h_Xd_x$.	cit:lorscheid-cusp-count

@@ -1,0 +1,79 @@
+{
+  "status": "complete",
+  "started_unix": 1789810491.3535762,
+  "mpmath_version": "1.3.0",
+  "qualification": "High precision numerical checks, not rigorous interval certificates.",
+  "exact_checks": [
+    {
+      "name": "prime_atom_indefinite",
+      "eigenvalues": [
+        "5/7",
+        "-5/7"
+      ]
+    },
+    {
+      "name": "sparse_second_difference",
+      "cases": 50,
+      "passed": true
+    }
+  ],
+  "grids": [
+    {
+      "digits": 40,
+      "h": "0.25",
+      "A": "2.0",
+      "nodes": 16,
+      "prime_integer_cutoff": 55,
+      "prime_powers": 24,
+      "psi_1": "0.044007305236852526860218606408084",
+      "psi_2": "0.053341124171855668963118936050792",
+      "kernel_min_eigenvalue": "0.021015846748265249448873779710089",
+      "increments_min_eigenvalue": "0.00074765995104878474675699294975149",
+      "congruence_max_row_sum_residual": "0.0",
+      "last_schur_pivot": "0.034576752223427791509385422028406"
+    },
+    {
+      "digits": 40,
+      "h": "0.25",
+      "A": "4.0",
+      "nodes": 32,
+      "prime_integer_cutoff": 2981,
+      "prime_powers": 465,
+      "psi_1": "0.044007305236852526860218606408084",
+      "psi_2": "0.053341124171855668963118936050792",
+      "kernel_min_eigenvalue": "0.014617683766178404574862176205138",
+      "increments_min_eigenvalue": "0.00037548466627156527593048268288747",
+      "congruence_max_row_sum_residual": "0.0",
+      "last_schur_pivot": "0.027373828536335081382106850330501"
+    },
+    {
+      "digits": 70,
+      "h": "0.25",
+      "A": "2.0",
+      "nodes": 16,
+      "prime_integer_cutoff": 55,
+      "prime_powers": 24,
+      "psi_1": "0.044007305236852526860218606408084",
+      "psi_2": "0.053341124171855668963118936050792",
+      "kernel_min_eigenvalue": "0.021015846748265249448873779710089",
+      "increments_min_eigenvalue": "0.00074765995104878474675699294975149",
+      "congruence_max_row_sum_residual": "0.0",
+      "last_schur_pivot": "0.034576752223427791509385422028406"
+    },
+    {
+      "digits": 70,
+      "h": "0.25",
+      "A": "4.0",
+      "nodes": 32,
+      "prime_integer_cutoff": 2981,
+      "prime_powers": 465,
+      "psi_1": "0.044007305236852526860218606408084",
+      "psi_2": "0.053341124171855668963118936050792",
+      "kernel_min_eigenvalue": "0.014617683766178404574862176205138",
+      "increments_min_eigenvalue": "0.00037548466627156527593048268288747",
+      "congruence_max_row_sum_residual": "0.0",
+      "last_schur_pivot": "0.027373828536335081382106850330501"
+    }
+  ],
+  "finished_unix": 1789810492.4977455
+}

@@ -206,3 +206,6 @@ TNhistory	|\Omega_K\rangle	conjugated-feature transfer history with clock margin
 TNnull	\boldsymbol{\xi}	CCM least window vector or exact finite radical vector	CCM window reconstruction	RC-02I	distinct from completed zeta cxi
 TNresponse	\boldsymbol{\beta}	CCM boundary displacement response vector	CCM Loewner window	RC-02I	distinct from inverse temperature
 TNmeasure	\mu_{\mathrm{sp}}	positive spectral measure for smeared features	continuous CCM features	RC-02I	distinct from an edge eigenvalue
+reb	\varOmega	rebound density inside the model space (reinsertion state of the renewal generator)	Riemann channel	RC-04H	never \Omega, which is the Casimir
+rdens	\mathsf s	density (state) on the model space in the renewal channel, also the target density of the inverse problem	Riemann channel	RC-04H	never rho (a zero) or sigma (a real part)
+rvec	\mathsf v	generic vector of the model space in the exit and orbit-state formulas	Riemann channel	RC-04H	-

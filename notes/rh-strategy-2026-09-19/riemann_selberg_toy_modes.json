@@ -1,0 +1,87 @@
+{
+  "status": "all synthetic diagnostics passed",
+  "interpretation": "CP, one exit, stability and FE do not force common width; wave shift is exact algebra",
+  "two_level_cases": [
+    {
+      "case": "underdamped_equal_widths",
+      "coupling": 0.5,
+      "eigenvalues": [
+        [
+          -0.2500000000000002,
+          1.4330127018922194
+        ],
+        [
+          -0.24999999999999992,
+          0.5669872981077807
+        ]
+      ],
+      "amplitude_widths": [
+        0.2500000000000002,
+        0.24999999999999992
+      ],
+      "decay_gauge_residual": 0.0,
+      "functional_equation_pair_residual": 4.440892098500626e-16,
+      "nonnormality": 0.7071067811865476,
+      "centered_matrix_rank": 2,
+      "centered_square_norm": 0.2651650429449553,
+      "all_widths_quarter": true,
+      "cmps_gauge_residual": 0.0
+    },
+    {
+      "case": "overdamped_FE_paired_unequal_widths",
+      "coupling": 0.125,
+      "eigenvalues": [
+        [
+          -0.4665063509461096,
+          0.9999999999999998
+        ],
+        [
+          -0.033493649053890344,
+          1.0
+        ]
+      ],
+      "amplitude_widths": [
+        0.4665063509461096,
+        0.033493649053890344
+      ],
+      "decay_gauge_residual": 0.0,
+      "functional_equation_pair_residual": 2.306595211858756e-16,
+      "nonnormality": 0.1767766952966369,
+      "centered_matrix_rank": 2,
+      "centered_square_norm": 0.06629126073623882,
+      "all_widths_quarter": false,
+      "cmps_gauge_residual": 0.0
+    },
+    {
+      "case": "threshold_Jordan",
+      "coupling": 0.25,
+      "eigenvalues": [
+        [
+          -0.25000000465520117,
+          0.999999994037728
+        ],
+        [
+          -0.24999999534479864,
+          1.0000000059622716
+        ]
+      ],
+      "amplitude_widths": [
+        0.25000000465520117,
+        0.24999999534479864
+      ],
+      "decay_gauge_residual": 0.0,
+      "functional_equation_pair_residual": 9.310402698803344e-09,
+      "nonnormality": 0.3535533905932738,
+      "centered_matrix_rank": 1,
+      "centered_square_norm": 0.0,
+      "all_widths_quarter": true,
+      "cmps_gauge_residual": 0.0
+    }
+  ],
+  "wave_intertwiner_residuals": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ]
+}

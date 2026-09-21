@@ -74,7 +74,7 @@
   ok   even nontrivial eigenvalues in the Hastings band (max 3.5616)
   ok   odd sector (parity coherences) entirely in the Hastings band (max 4.2497): a graded Ramanujan quantum expander
   ok   Harrow containment: every channel eigenvalue (both sectors) is a Cayley-graph eigenvalue
-  ok   str Sigma^n = [0.0, 0.0, 0.0, -0.0] >= 0 and |Tr odd| <= Tr even
+  ok   str Sigma^n = [0.0, 0.0, 0.0, 0.0] >= 0 and |Tr odd| <= Tr even
   ok   str = sum_w |Tr(P pi(w))|^2 and Tr = sum_w |Tr pi(w)|^2 on words of length <= 3
   ok   odd length: both ring norms vanish (chi_pi is supported on G_0; bipartite)
   ok   Hashimoto operator (1176 x 1176) commutes with Gamma (x) 1

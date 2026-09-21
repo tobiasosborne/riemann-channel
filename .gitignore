@@ -24,5 +24,12 @@ notes/zeta-conditions/*.log
 notes/zeta-conditions/*.stdout
 notes/zeta-conditions/finite/__pycache__/
 
+# Local offline recovery bundles include cached third-party reference sources.
+.recovery/
+
 # ihz build artefacts
 ihz/build/
+
+# rebound-state campaign raw codex stream
+notes/rebound-state/astra-session.log
+notes/rebound-state/astra-session.out

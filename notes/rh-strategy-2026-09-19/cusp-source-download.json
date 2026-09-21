@@ -1,0 +1,15 @@
+{
+  "source_url": "https://arxiv.org/src/1712.07832",
+  "retrieved_utc": "2026-09-19T09:26:19.484157+00:00",
+  "files_sha256": {
+    "refs/src/1712.07832/preprint.tex": "e5f0b3f72511b6c821fa034ad09c171366bd25e925389c9e724f70510fed6ce3",
+    "refs/src/1712.07832/indicial_roots.pdf_tex": "11ca7d84c9596a51b370766092ac99486d0618421a85cc7e119f4029f5c216b1",
+    "refs/src/1712.07832/cusp_geodesics.pdf_tex": "23faa0019df984764e75a8d9fa2474abb2002c30fab3f15e61041e42a2d375e0",
+    "refs/src/1712.07832/src.tar": "388482d25842cf1243f72b610bce246b2c4c8f1bf30ea9e4afec29b0a650e7d9",
+    "refs/src/1712.07832/cusp_mfld.pdf": "e331f6233663b6b0778b347d20392e7122e2e7df6163545e8d73483651495ea5",
+    "refs/src/1712.07832/cusp_geodesics.pdf": "6cc7507f69acb1c2c90381afc9e9e032c1ae3dd9fcd1fccfd05567f4df96f55a",
+    "refs/src/1712.07832/cusp_mfld.pdf_tex": "4940cec36ed77773062b7bcf707df8e4461795fa9e44087343d3da6716f9f215",
+    "refs/src/1712.07832/indicial_roots.pdf": "1ed10641303e457831b84971da3825c38d0aaa655956f0822f9a3050573c56b9"
+  },
+  "archive_validated": true
+}

@@ -1,0 +1,132 @@
+% SHARD-ID: RC-04M-ELLIPTIC-CAVITY-SOURCES
+% SHARD-TITLE: The Phantasm VI: Two Arithmetic Cavities with Cusps III. Cited Facts from the Sources, and the Reviewer's Two Checks
+% SHARD-SUMMARY: The byte-cited facts used by the elliptic-cavity round: Arends--Peterson--Weich's adjacency operator on a graph with stabiliser function, their resonance matrix with cusp and funnel self-energies, the Hasse--Weil numerator in the two elliptic examples, the four expected resonance types and the Lax--Phillips follow-up, cusps indexed by Pic(R) and the absence of funnels on lattice quotients (Lubotzky).
+% SHARD-SUMMARY: Also the reviewer's two exact checks, registered as sketched for the prover: the equal-depth cut turns the four-cusp scattering matrix into a Z/4 group matrix in Sorensen's literal form, and the Euler--Poincare mass of both diagrams equals -zeta_K(-1). Childs--Gosset's h-tail scattering matrix and Levinson winding; Sorensen's class-group form of the Hilbert modular scattering matrix and the central trace h[2] - 2 with the +-1 multiplicities; Lorscheid's connectivity criterion for the Hecke graph (odd class number) and the cusp count h deg x.
+% SHARD-KEYWORDS: Arends-Peterson-Weich, Childs-Gosset, Sorensen, Lorscheid, stabiliser function, resonance matrix, funnel, Pic(R), Lubotzky, Levinson, class group, Hecke graph, cusp count
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{The Phantasm VI: Two Arithmetic Cavities with Cusps III. Cited Facts from the Sources, and the Reviewer's Two Checks}
+\label{sec:elliptic-cavity-sources}
+
+The sources of \cref{sec:elliptic-cavity-scattering,sec:elliptic-cavity-channel}, byte-checked against
+\texttt{refs/src} (literature lane, \texttt{notes/elliptic-cavity/sources.md}).
+
+\subsection{The reviewer's two checks}
+
+\begin{proposition}[The equal-depth cut makes $\mathbf S$ a $\mathbb Z/4$ group matrix (reviewer's result)]
+\label{prop:d3-group-matrix}
+\claimstatus{prop:d3-group-matrix}{sketched-conditional}
+In the exit basis $(L1,Z,Q_1,Q_2)$ with $D = \mathrm{diag}(1,1,z,z)$,
+\[
+D\,\mathbf S\,D = (a-d)\,P_{\mathrm{inv}} + d\,\mathbf J\qquad\text{exactly},\qquad a-d = z^2,\qquad a+3d = R_3(z) = z^2\,\frac{\zeta_K(2s)}{\zeta_K(2s-1)},
+\]
+with $\mathbf J$ the all-ones matrix and $P_{\mathrm{inv}}$ the involution fixing $L1,Z$ and swapping $Q_1,Q_2$: Sørensen's
+form (group matrix)$\times$(inversion permutation), \cref{cit:sorensen-scattering-matrix}. Inversion on $\mathbb Z/4$ fixes
+exactly two elements while inversion on $(\mathbb Z/2)^2$ fixes all four, so the scattering matrix itself distinguishes
+the class group $\mathbb Z/4$; the three nontrivial characters give $a-d = z^2$ ($L(s,\chi) = 1$) and the trivial one
+$a+3d = R_3$; $\mathrm{sign}(1/\det) = -1 = (-1)^{(h-h[2])/2}$ as in Sørensen. $D = \mathrm{diag}(1,1,z,z)$ is not a trick: it is
+the cut of all four cusps at the same ray depth (the reviewer rebuilt $\mathrm{D3}$ with the two $Q$-ray heads inside the
+core). Verified exactly in \texttt{notes/reviews/scratch\_ec\_diagram.py}; to be proved by the prover lane.
+\end{proposition}
+
+\begin{proposition}[The Euler--Poincaré mass of the diagrams is $-\zeta_K(-1)$ (reviewer's check)]
+\label{prop:euler-poincare-mass}
+\claimstatus{prop:euler-poincare-mass}{sketched-conditional}
+$\sum_v1/S(v)-\sum_e1/S(e) = -\zeta_K(-1)$ exactly: $\mathrm{D2}$: $10/3-5 = -5/3 = -P(2)/((1-2)(1-4))$; $\mathrm{D3}$:
+$7/4-7/2 = -7/4 = -28/16$; and symbolically in $q$ for the Nagao quotient of $\mathrm{GL}_2(\mathbb F_q[T])$ (which also
+re-derives $c^2 = q+1$). This is the first arithmetic test of the \emph{absolute} stabiliser sizes of \cref{asm:h-diag};
+both diagrams pass. (Serre's Euler--Poincaré measure for tree lattices; no local source for the formula.)
+\end{proposition}
+
+\subsection{Cited facts}
+
+\begin{citedfact}[Arends--Peterson--Weich: the adjacency operator of a graph with stabiliser function]
+\label{cit:apw-adjacency}
+\claimstatus{cit:apw-adjacency}{cited}
+\cite{arends2026resonances} define the adjacency operator on a graph of groups through the stabiliser
+sizes alone: \texttt{\detokenize{Af(v) = \sum_{\overrightarrow{e} \in \vec{\mathcal{E}} : t(\overrightarrow{e}) = v} \frac{\mathcal{S}(v)}{\mathcal{S}(e)}f(o(\overrightarrow{e})).}}
+(\texttt{2603.26443:final\_draft.tex:442}), self-adjoint on $L^2(V,1/S)$.
+\end{citedfact}
+
+\begin{citedfact}[Arends--Peterson--Weich: the resonance matrix, cusp and funnel self-energies]
+\label{cit:apw-resonance-matrix}
+\claimstatus{cit:apw-resonance-matrix}{cited}
+\cite{arends2026resonances}: \texttt{\detokenize{Let $B(\mu)$ be the diagonal matrix with entry $(v, v)$ equal to $c_v \frac{\sqrt{q}}{\mu} + f_v \frac{1}{\sqrt{q} \mu}$ where}}
+$c_v$ ($f_v$) sums $S(v)/S(e)$ over cusp (funnel) edges at $v$ (\texttt{:1899}, \texttt{:1901}), and the resonance
+matrix is \texttt{\detokenize{H(\mu) \coloneqq  \frac{1}{2 \sqrt{q}}(A_{\mathcal{L}} + B(\mu)) - z(\mu) I.}}
+(\texttt{:1907}); resonances are the $\mathfrak m\in\mathbb C^\times$ with $\det H(\mathfrak m) = 0$ (their $\mu$).
+\end{citedfact}
+
+\begin{citedfact}[Arends--Peterson--Weich: the elliptic examples carry the Hasse--Weil numerator]
+\label{cit:apw-elliptic-numerator}
+\claimstatus{cit:apw-elliptic-numerator}{cited}
+For the $\mathbb F_2$ curve, \cite{arends2026resonances} find
+\texttt{\detokenize{Letting $P(T)$ denote the numerator, we find that $P(\mu^2)$ is exactly equal to the unaccounted for polynomial in the determinant of the resonance matrix.}}
+(\texttt{2603.26443:final\_draft.tex:2030}), and for the $\mathbb F_3$ curve
+\texttt{\detokenize{We also have resonances at $\mu = \pm 1$ (each of multiplicity 2). However, we compute that they are in fact not $\ell^2$-eigenfunctions.}}
+(\texttt{:2058}).
+\end{citedfact}
+\begin{citedfact}[Arends--Peterson--Weich: the four expected types, and the Lax--Phillips follow-up]
+\label{cit:apw-four-types}
+\claimstatus{cit:apw-four-types}{cited}
+\cite{arends2026resonances} expect, by analogy with number fields, trivial resonances at $\pm\sqrt q$,
+$\ell^2$ eigenvalues on the unit circle (Drinfeld), Hasse--Weil square roots on $q^{-1/4}$, and
+\texttt{\detokenize{Resonances at $\mu = \pm 1$ whose multiplicity is related to the number of cusps and the functional equation of the zeta function/trace of the scattering matrix.}}
+(\texttt{2603.26443:final\_draft.tex:2093});
+\texttt{\detokenize{We plan to make this correspondence precise in follow-up work connecting resonances with the Lax-Phillips scattering theory in this setting.}}
+(\texttt{:2095}).
+\end{citedfact}
+
+\begin{citedfact}[Arends--Peterson--Weich: cusps are the classes of $\mathrm{Pic}(R)$; arithmetic quotients have no funnels]
+\label{cit:apw-cusps-pic-no-funnels}
+\claimstatus{cit:apw-cusps-pic-no-funnels}{cited}
+\cite{arends2026resonances}: \texttt{\detokenize{As we vary over $c \in \textnormal{Pic}(R)$, we obtain distinct cusps, and all cusps arise in this way.}}
+(\texttt{2603.26443:final\_draft.tex:892}); and for lattices in $\mathrm{PGL}(2,F)$,
+\texttt{\detokenize{and the quotient has finitely many cusps (possibly none) and no funnels. See Theorem 6.1 of Lubotzky}}
+(\texttt{:854}).
+\end{citedfact}
+
+\begin{citedfact}[Childs--Gosset: the $h$-tail scattering matrix and Levinson count]
+\label{cit:cg-h-tail}
+\claimstatus{cit:cg-h-tail}{cited}
+\cite{childs2012levinson}: \texttt{\detokenize{S(z) & =-Q(z)^{-1}Q(z^{-1})}} (\texttt{1203.6557:levinson2.tex:365})
+with $Q(z) = 1-z(A+B^\dagger(z+z^{-1}-D)^{-1}B)$ (\texttt{:369}).
+\end{citedfact}
+\begin{citedfact}[Childs--Gosset: the winding of $\det S$]
+\label{cit:cg-levinson}
+\claimstatus{cit:cg-levinson}{cited}
+\cite{childs2012levinson}: \texttt{\detokenize{w_{\Gamma}(\det(S))=2\left(m-n_{b}-n_{c}-\frac{1}{2}n_{h}\right).}}
+(\texttt{1203.6557:levinson2.tex:511}), $n_h$ the half-bound states (\texttt{:463}).
+\end{citedfact}
+
+\begin{citedfact}[Sørensen: the Hilbert modular scattering matrix is a class-group matrix]
+\label{cit:sorensen-scattering-matrix}
+\claimstatus{cit:sorensen-scattering-matrix}{cited}
+\cite{sorensen2001eisenstein}, \texttt{\detokenize{Theorem 7.2. The scattering matrix for the Hilbert modular group is}}
+$\mathbf S_{\mathrm{HM}}(s,m,\chi) = \hat L(2s,\chi)^{-1}\hat L(2s-1,\chi)P$ (\texttt{sorensen-2001:paper.txt:1439}; symbols
+reconstructed from the text layer), diagonalised over class characters by the Dedekind determinant
+relation (\texttt{:1456}); the paper cites Efrat 1987 and Efrat--Sarnak 1985 for the earlier cases.
+\end{citedfact}
+\begin{citedfact}[Sørensen: the central scattering trace and the $\pm1$ multiplicities]
+\label{cit:sorensen-central-trace}
+\claimstatus{cit:sorensen-central-trace}{cited}
+\cite{sorensen2001eisenstein}, Corollary 9.2, \texttt{\detokenize{the central scattering trace is given by}}
+$\mathrm{tr}\,\mathbf S_{\mathrm{HM}}(1/2,0,\chi) = h[2]-2$ (\texttt{sorensen-2001:paper.txt:1654-1656}; line numbers as Python
+\texttt{splitlines} counts them, which is what the gate uses), hence
+\texttt{\detokenize{m+ + m = h and m+}} $-\,m_- = h[2]-2$ for the multiplicities of $\pm1$ (\texttt{:1667}).
+\end{citedfact}
+
+\begin{citedfact}[Lorscheid: components of the Hecke graph and the cusp count]
+\label{cit:lorscheid-components}
+\claimstatus{cit:lorscheid-components}{cited}
+\cite{lorscheid2010elliptic}: \texttt{\detokenize{In particular, $\cG_x$ is connected if and only if the class number of $F$ is odd.}}
+(\texttt{1012.4825:elliptic.tex:309}); his graph for $y^2 = x^3+x+2$ over $\mathbb F_3$ (the $\mathrm{D3}$
+curve after $x\mapsto x+2$) is disconnected, a different object from the tree quotient.
+\end{citedfact}
+\begin{citedfact}[Lorscheid: the number of cusps is $h\deg x$]
+\label{cit:lorscheid-cusp-count}
+\claimstatus{cit:lorscheid-cusp-count}{cited}
+\cite{lorscheid2010hecke}: \texttt{\detokenize{The number of cusps is $\#\Cl\cO_X^x \,=\,\#(\rquot{\Cl X}{\langle x\rangle}) \,=\, \#\Cl^0X\cdot\#(\ZZ/d_x\ZZ)\,=\,h_Xd_x$.}}
+(\texttt{1012.3513:hecke.tex:992}).
+\end{citedfact}
