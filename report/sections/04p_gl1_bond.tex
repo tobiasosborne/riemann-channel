@@ -35,7 +35,7 @@ $\mathrm{Pic}$. Its \emph{generic part} is the Riemann--Roch value $h(\qs^{n+1-g
 
 \begin{proposition}[The class-group bond: ring norms, generic part, genus one]
 \label{prop:class-group-bond}
-\claimstatus{prop:class-group-bond}{sketched}
+\claimstatus{prop:class-group-bond}{proved}
 (a) $Z(T) = \sum_na_nT^n$ with $a_n = \sum_{[D]\in\mathrm{Pic}^n}(\qs^{h^0(D)}-1)/(\qs-1)$. (b) For $n>2g-2$,
 $a_n = h(\qs^{n+1-g}-1)/(\qs-1)$, geometric in $\qs^n$ and $1$: the Perron pair, the even part of
 \cref{thm:scattering-superdeterminant}; the special degrees $n\le2g-2$ carry $P(T)$, the $H^1$ factor of the
@@ -57,24 +57,28 @@ $\int_{\mathbb A^\times}f(x)|x|^sd^\times x = Z(\qs^{-s})$ (fibre volume $1$ ove
 functional equation $Z(1/(\qs T)) = \qs^{1-g}T^{2-2g}Z(T)$ is Poisson summation on $\mathbb A/K$ for $f$, and for
 this $f$ Poisson summation is Riemann--Roch $h^0(D)-h^0(K_C-D) = \deg D+1-g$: the adelic Fourier transform, the
 Weyl element of the Weil representation of $\SL(K)$, acts on the bond state as $[D]\mapsto[K_C-D]$, preserving
-the theta divisor $\{h^0>0\}\subset\mathrm{Pic}^{g-1}$ (whose fixed locus is the $2$-torsion coset, in general
-larger). The two poles of $Z$ are the two constant terms of $\Theta$, $a = 0$ and its Fourier image.
+the theta divisor $\{h^0>0\}\subset\mathrm{Pic}^{g-1}$ (its fixed locus is the set of theta characteristics
+$\{2[D] = [K_C]\}$, a $\mathrm{Pic}^0[2]$-torsor of order at most $2^{2g}$). The two poles of $Z$ are the two constant terms of $\Theta$, $a = 0$ and its Fourier image.
 \end{proposition}
 
 \begin{proposition}[The cusps of the tree quotient are the class-group bond]
 \label{prop:cusps-are-class-group-bond}
-\claimstatus{prop:cusps-are-class-group-bond}{sketched}
+\claimstatus{prop:cusps-are-class-group-bond}{sketched-conditional}
 Let $R = O(C\setminus P_0)$, $\deg P_0 = 1$. (a) The cusps of $\mathrm{GL}_2(R)\backslash\mathcal T$ are in bijection with
-$\mathrm{Pic}(R)\cong\mathrm{Pic}^0(K)$ (Serre; \cref{cit:lorscheid-cusp-count}): one for D2, four for D3. The
-hedgehog's spikes are the units-invariant GL$_1$ bond $\ltwo{\mathrm{Pic}^0}$, and H-CLASS (\cref{obs:h-class})
-says the GL$_2$ scattering matrix at equal depth is the Fourier transform on it. (b) For a class character $\chi$
+$\mathrm{Pic}(R)\cong\mathrm{Pic}^0(K)$ (Serre for $\mathrm{GL}_2(R)$; the count is byte-cited in \cref{cit:lorscheid-cusp-count} and, for
+APW's $\mathrm{PGL}_2(R)$, in \cref{cit:apw-cusps-pic-no-funnels}): one for D2, four for D3. The
+hedgehog's spikes are the units-invariant GL$_1$ bond $\ltwo{\mathrm{Pic}^0}$, and H-CLASS (\cref{obs:h-class},
+\cref{prop:d3-group-matrix}) says the GL$_2$ scattering matrix at equal depth is a $\mathrm{Pic}$-group matrix times
+the inversion pairing, block-diagonalised, not diagonalised, by the Fourier transform on that bond ($2\times2$
+blocks on inverse pairs of characters). (b) For a class character $\chi$
 extended by $\chi(P_0) = 1$, $L(T,\chi) := \sum_{[D]}\chi([D])(\qs^{h^0(D)}-1)/(\qs-1)\,T^{\deg D} =
 \prod_{\mathfrak P}(1-\chi([\mathfrak P])T^{\deg\mathfrak P})^{-1}$ is the Hecke $L$-function of $\chi$, a polynomial of
 degree $2g-2$ for $\chi\ne1$; at genus one it is $1$ (for $n\ge1$, $h^0 = n$ depends only on the degree and
-$\sum_{\mathrm{Pic}^n}\chi = 0$): the three monomial channels of \cref{thm:d3-channels} are the three nontrivial
-characters of $\mathbb Z/4$, and the zeta channel is $\chi = 1$; this is \cref{prop:character-channel-graded-bond}
-at the level of $\mathrm{Pic}^0$. (c) At genus one $\dim\ltwo{\mathrm{Pic}^0} = h = P(1)$ while $\dim K_{\mathrm{HW}} = 4$:
-they coincide for D3 ($h = 4$) and not for D2 ($h = 1$), so ``one cusp per class'' is not ``one exit per zero mode''
+$\sum_{\mathrm{Pic}^n}\chi = 0$): no channel other than $\chi = 1$ carries a zero, which is why the non-zeta channels of
+\cref{thm:d3-channels} are monomial; their values $\{1,1,-1\}$ come from the inversion pairing, not from a
+bijection with the three nontrivial characters (\cref{thm:d3-height-diagonalisation}). This is
+\cref{prop:character-channel-graded-bond} at the level of $\mathrm{Pic}^0$. (c) At genus one $\dim\ltwo{\mathrm{Pic}^0} = h = P(1)$ while $\dim K_{\mathrm{HW}} = 4$ (under \cref{asm:h-diag},
+\cref{prop:d2-spectrum-frobenius,prop:d3-spectrum}): they coincide for D3 ($h = 4$) and not for D2 ($h = 1$), so ``one cusp per class'' is not ``one exit per zero mode''
 (\cref{thm:arithmetic-metric}).
 \end{proposition}
 
@@ -90,8 +94,9 @@ $\jtheta(y) = \sum_ne^{-\pi n^2y}$, $\jtheta(1/y) = y^{1/2}\jtheta(y)$. (c) For 
 \int_0^\infty\big(\jtheta(y)-1-y^{-1/2}\big)\,y^{s/2}\,d^\times y = 2\pi^{-s/2}\Gamma(s/2)\zeta(s) = \frac{4\,\cxi(s)}{s(s-1)},
 \]
 the integral diverging outside the strip; the zeros of $\zeta$ in the strip are the zeros of the Mellin transform of
-the odd part $\jtheta-1-y^{-1/2}$ of the bond state, and the constant terms $1$, $y^{-1/2}$ (the even sector, the
-poles $s = 1, 0$) are exchanged by the automorphism $y\mapsto1/y$. Riemann's 1859 argument is the $\mathbb Q$ case of
+the odd part $\jtheta-1-y^{-1/2}$ of the bond state, and the constant terms $1$ (the pole $s = 0$) and $y^{-1/2}$ (the
+pole $s = 1$), the even sector, are exchanged by the automorphism $y\mapsto1/y$; here $y = |x|^2$, and in the idele
+variable the constant halves, $\int_0^\infty(\jtheta(x^2)-1-x^{-1})x^s\,d^\times x = 2\cxi(s)/(s(s-1))$. Riemann's 1859 argument is the $\mathbb Q$ case of
 ``adelic symplectic space as bond''.
 \end{proposition}
 
@@ -108,8 +113,9 @@ bond state, with the outgoing half $y>1$ removed, is unitarily equivalent to the
 \claimstatus{obs:gl1-bond-no-metric}{sketched}
 At genus one the Frobenius roots are fixed by $h$ alone and their common modulus $\sqrt{\qs}$ is Hasse's theorem,
 which nothing on the bond forces (the map $h\mapsto P$ gives equal moduli exactly on the Hasse interval; the numerics
-lane's counterexample $\qs = 2$, $h = 6$ has roots $-1,-2$). Any metric for which $\Frob$ is normal is diagonal in its
-eigenbasis, and reality and the bipartite sign fix the ratios, so ``the symmetric ray of \cref{thm:arithmetic-metric}
+lane's counterexample $\qs = 2$, $h = 6$ has roots $-1,-2$). Any metric in which $\qs^{1/4}Z$ is unitary is diagonal in the eigenbasis of $Z$ and reality and the bipartite
+sign fix the ratios (\cref{thm:arithmetic-metric}), and on $H^1\otimes\mathbb C$ with distinct Frobenius eigenvalues
+every Frobenius-normal metric is diagonal with reality fixing the ratio, so ``the symmetric ray of \cref{thm:arithmetic-metric}
 is the Hodge metric'' is vacuous at genus one; the first genuine test is genus two. The Kraus dichotomy
 (\cref{obs:kraus-dichotomy}) stands: the automorphism gives the functional equation, not the circle.
 \end{observation}

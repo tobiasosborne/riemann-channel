@@ -40,13 +40,15 @@ part of (b) has the two eigenvalues `q` and `1`, which are the even (Perron, pol
 
 **Proposition B2.** Let `O_A = prod_v O_v` and `f = 1_{O_A}`. For an idele `x` with divisor `D = div(x) = sum_v v(x_v) v`:
 (a) `Theta(x f) = sum_{a in K} 1_{O_A}(x a) = q^{h^0(D)}`.
-(b) With `d^x x` normalised by `vol(prod_v O_v^x) = 1`,
+(b) With `d^x x` normalised by `vol(prod_v O_v^x) = 1`, for `Re s > 1` (elsewhere by continuation),
 `int_{A^x/K^x} (Theta(x f) - 1) |x|^s d^x x = (q-1)^{-1} sum_{[D] in Pic} (q^{h^0(D)} - 1) q^{-s deg D} = Z(q^{-s})`,
 and `int_{A^x} f(x)|x|^s d^x x = sum_{D >= 0} q^{-s deg D} = Z(q^{-s})` as well.
 (c) The functional equation `Z(1/(qT)) = q^{1-g} T^{2-2g} Z(T)` is Poisson summation on `A/K` for `f`, and for this
 `f` Poisson summation is Riemann--Roch `h^0(D) - h^0(K_C - D) = deg D + 1 - g`. On `Pic^{g-1}` the map
-`[D] -> [K_C - D]` preserves the theta divisor `W_{g-1} = {[D] : h^0(D) > 0}` (its fixed locus is the
-`K_C`-translate of the 2-torsion, in general larger than `W_{g-1}`; numerics F5).
+`[D] -> [K_C - D]` preserves the theta divisor `W_{g-1} = {[D] : h^0(D) > 0}`; its fixed locus is the set of theta
+characteristics `{[D] : 2[D] = [K_C]}`, a `Pic^0[2]`-torsor (possibly empty over `F_q`) of order at most `2^{2g}`,
+which is larger than `W_0` at genus one (two classes for D3, one for D2) and finite against the
+`(g-1)`-dimensional `W_{g-1}` for `g >= 2` (review).
 
 *Proof.* (a) `x a in O_A` iff `v(x_v) + v(a) >= 0` for every place, i.e. `div(a) + D >= 0`, i.e. `a in L(D)`;
 this set has `q^{h^0(D)}` elements (including `a = 0`). (b) The map `A^x/K^x -> Pic(K)`, `x -> [div x]`, is
@@ -56,8 +58,12 @@ surjective with fibres the cosets of `(prod_v O_v^x) K^x / K^x ~ prod_v O_v^x / 
 ideles with `div(x) >= 0`, whose fibres over the effective divisors have volume `1`. (c) Tate's thesis for
 function fields (Weil, *Basic number theory*, VII; Rosen, ch. 6 and 7): the global functional equation of
 `zeta(f, s)` follows from `sum_{a in K} f(x a) = |x|^{-1} sum_{a in K} \hat f(a/x)` (Poisson on `A/K`, `A/K`
-compact and self-dual), and for `f = 1_{O_A}` with the self-dual measure, `\hat f = q^{1-g} 1_{O_A(K_C)}`-type
-translate by a canonical divisor, so that Poisson at `x` reads `q^{h^0(D)} = q^{deg D + 1 - g} q^{h^0(K_C - D)}`,
+compact and self-dual), and for `f = 1_{O_A}`, with the additive character attached to a global differential `omega` (so that the
+self-dual measure gives `vol(O_A) = q^{1-g}`; this choice, not Poisson, is where Serre duality enters),
+
+    hat f = q^{1-g} 1_{O_A(K_C)},   O_A(K_C) = {a : div(a) + div(omega) >= 0 locally},
+
+so that Poisson at `x` reads `q^{h^0(D)} = q^{deg D + 1 - g} q^{h^0(K_C - D)}`,
 which is Riemann--Roch. Substituting in (b) gives the functional equation of `Z`. Symmetry of the theta divisor:
 for `deg D = g-1`, Riemann--Roch gives `h^0(D) = h^0(K_C - D)`. Not byte-cited. QED.
 
@@ -80,8 +86,11 @@ it is a polynomial of degree `2g - 2`, and at genus one it equals `1`.
 *Proof.* (a) The ends of `T` are `P^1(K_{P_0})`, the cusps of the quotient are the `Gamma`-orbits of the
 `K`-rational ends `P^1(K)`, and a `K`-line `L subset K^2` gives the rank-one projective `R`-module `L cap R^2`;
 two lines are in the same `GL_2(R)`-orbit iff these modules are isomorphic, and every rank-one projective
-module arises, so the cusps are `Pic(R)` (Serre, *Trees*, II.2.3, Prop. 2 and the discussion of
-`GL_2(R) \ T` there; the notebook cites the count `h deg x` for a removed place `x` in `cit:lorscheid-cusp-count`).
+module arises, so the cusps are `Pic(R)` (Serre, *Trees*, II.2, the section `def:elliptic-cavity` cites as II.2.4.4; not checkable here). The count is
+byte-cited in the repository: `cit:lorscheid-cusp-count` (`1012.3513:hecke.tex:992`, `#cusps = h_X d_x`) and
+`cit:apw-cusps-pic-no-funnels` (`2603.26443:final_draft.tex:892`, cusps in bijection with `Pic(R)`). APW's
+lattice is `PGL_2(R)`, and the Steinitz argument above is for `GL_2(R)`; the two counts agree by the sources,
+not by the argument given (review).
 `Pic(R) = Pic(C)/<[P_0]>`, and subtracting a multiple of the degree-one class `[P_0]` normalises each class to
 degree zero uniquely, so `Pic(R) ~ Pic^0(K)`. `h = 1` for D2 and `h = 4` for D3 (`def:elliptic-cavity`), matching
 the one cusp and the four cusps. (b) By the count of B1(a), `sum_{D >= 0, [D] = c} T^{deg D} = (q^{h^0(c)}-1)/(q-1) T^{deg c}`,
@@ -90,12 +99,20 @@ divisors into closed points, `chi` being multiplicative on classes. For `chi != 
 numerator of the zeta function of the unramified abelian cover attached to `chi` divided by that of `C`, a
 polynomial of degree `2g - 2` (Rosen, ch. 9; Weil). At `g = 1` this degree is `0`; directly: for `n >= 1`,
 `h^0(D) = n` depends only on the degree, and `sum_{[D] in Pic^n} chi([D]) = 0` because `Pic^n` is a `Pic^0`-torsor
-and `chi != 1`, while for `n = 0` only `[D] = 0` contributes `1`. Not byte-cited except as stated. (c) Arithmetic. QED.
+and `chi != 1`, while for `n = 0` only `[D] = 0` contributes `1`. Not byte-cited except as stated. (c) `dim l^2(Pic^0) = h` is B1; `dim K_HW = 4` is the count of nonzero
+resonances of D2 and D3, `prop:d2-spectrum-frobenius` and `prop:d3-spectrum`, which rest on `asm:h-diag` (the
+transcribed stabiliser data) and on H-LP for the model-space reading; so (c) is conditional on `asm:h-diag`
+(review). QED.
 
-*Reading.* The four cusps of D3 are `Pic^0 = Z/4`; H-CLASS (`obs:h-class`) says the equal-depth-cut scattering
-matrix is a `Pic`-group matrix diagonalised by the class characters, i.e. the GL_2 scattering matrix is the
-Fourier transform on the GL_1 bond `l^2(Pic^0)`; the three monomial channels of `thm:d3-channels` are the three
-nontrivial characters with `L(T, chi) = 1`, and the zeta channel is `chi = 1`. The coincidence `h = 4 = 4g` at
+*Reading.* The four cusps of D3 are `Pic^0 = Z/4`; H-CLASS (`obs:h-class`, `prop:d3-group-matrix`) says the
+equal-depth-cut scattering matrix is a `Pic`-group matrix times the inversion pairing `P_inv`; the class
+characters block-diagonalise it, with a `2 x 2` block on each inverse pair `{chi, bar chi}` of eigenvalues
+`+- (hat f(chi) hat f(bar chi))^{1/2}`, so the Fourier transform on the GL_1 bond `l^2(Pic^0)` is the change of
+basis, not the diagonalisation. With `L(T, chi) = 1` for `chi != 1` this reproduces the channels
+`{zeta, 1, 1, -1}` of `thm:d3-channels` exactly, the `-1` coming from the inversion pairing and not from a
+character value: the three monomial channels are not in bijection with the three nontrivial characters
+(review; `thm:d3-height-diagonalisation` already says the congruence does not name the characters). What the
+characters do say is that no channel other than `chi = 1` carries a zero at genus one. The coincidence `h = 4 = 4g` at
 D3 is not "one cusp per zero mode" (`thm:arithmetic-metric` needs one exit per mode on `K_HW`, and D2 has one
 cusp for four modes).
 
@@ -131,7 +148,10 @@ specification's test points `s = 2, 3` are outside the strip and must be replace
 
 *Reading.* Riemann's argument is the `Q` case of "adelic symplectic space as bond": bond `L^2(R_+^x)`, no-event
 dynamics the dilation, bond state `theta`, automorphism `y -> 1/y` (the Weyl element acting through the Weil
-representation, i.e. Fourier on `A/Q`), even sector the two constant terms `1, y^{-1/2}` (the poles `s = 1, 0`),
+representation, i.e. Fourier on `A/Q`), even sector the two constant terms `1` (the pole `s = 0`) and
+`y^{-1/2}` (the pole `s = 1`), in the variable `y = |x|^2`; in the idele variable `x` the same identity reads
+`int_0^infty (theta(x^2) - 1 - x^{-1}) x^s d^x x = Lambda(s) = 2 xi(s)/(s(s-1))`, half the constant of (c) because
+`d^x y = 2 d^x x` (review; so the brief's constant was right for the idele variable and wrong for `y`),
 odd sector `theta - 1 - y^{-1/2}`. **H-THETA** (hypothesis, not claimed): the compression of the dilation
 semigroup to the dilation-cyclic subspace of the odd part of `theta`, with the outgoing half `y > 1` removed, is
 unitarily equivalent to the Riemann channel of `prop:functional-model-modes` on `K_S = H^2 ominus S H^2`.
@@ -141,9 +161,12 @@ unitarily equivalent to the Riemann channel of `prop:functional-model-modes` on 
 The identifications B1--B4 are exact and elementary; they place the bond, its state, its grading and its
 automorphism. They do not place the metric. At genus one the Frobenius roots are fixed by `h` alone (B1(c))
 and their common modulus `sqrt q` is Hasse's theorem, which nothing on the bond forces. On `K_HW`, any
-metric for which Frobenius is normal is diagonal in its eigenbasis, and the reality and bipartite symmetries
-fix the ratios (`thm:arithmetic-metric`), so "the symmetric ray is the Hodge metric" carries no content at genus
-one; the first genuine test is genus two, where two Klein orbits can have different moduli
+metric in which `q^{1/4} Z` is unitary is diagonal in the eigenbasis of `Z` (`thm:arithmetic-metric`; not
+"Frobenius-normal": Frobenius has doubled eigenvalues on `K_HW` and its normal metrics form an eight-dimensional
+cone, review), and the reality and bipartite symmetries fix the ratios; on `H^1 (x) C` itself, when the two
+Frobenius eigenvalues are distinct, every Frobenius-normal metric is diagonal in the eigenbasis and reality fixes
+the ratio; so "the symmetric ray is the Hodge metric" carries no content at genus one (it fails to be even
+well-posed at square `q` with `h = 1`, where `P` has a double root); the first genuine test is genus two, where two Klein orbits can have different moduli
 (`lem:funnel-first-order`). The Kraus dichotomy (`obs:kraus-dichotomy`) stands: the automorphism gives the
 functional equation, adjoint pairing gives reality, and the circle needs unitarity of the dynamics itself in a
 canonical metric.
@@ -156,4 +179,5 @@ canonical metric.
 | 2 | numerics spec, item 6 | the test points `s = 2, 3` lie outside the strip; the integral diverges there |
 | 4 | B4(a) | the lattice sum with `f_infty = e^{-pi t^2}` is `theta(x^2)`, as stated in B4(b) here; the brief's display wrote `theta(x)` (numerics F3) |
 | 5 | B1(c), B2(c) | `P` is the `H^1` factor of the superdeterminant in `w = T^2`, not the whole odd part (F4); the involution preserves the theta divisor, its fixed locus is the 2-torsion coset (F5) |
+| 6 | review | B2(c) fixed locus = theta characteristics, not "larger"; B2(b) range `Re s > 1`; B2(c) `hat f` displayed with the differential-attached character; B3(a) cusp count byte-cited via Lorscheid and APW, `PGL_2` vs `GL_2`; B3(c) conditional on `asm:h-diag`; B3 reading: block-diagonalisation with `2 x 2` inverse-pair blocks, the `-1` from the pairing; B4 reading: pole pairing and the variable `y = |x|^2`, idele-variable constant `Lambda(s)`; B5: unitarising metrics of `Z`, distinct eigenvalues on `H^1` |
 | 3 | B2(b) | `Theta(xf)` in B2(a) is a function of the divisor class only through `h^0`; the Tate integral over `A^x` (not modulo `K^x`) gives `Z` directly with fibre volume `1`, the version over `A^x/K^x` needs the fibre volume `1/(q-1)` and the subtraction of the constant term `a = 0` |
