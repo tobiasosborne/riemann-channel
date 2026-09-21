@@ -1,0 +1,226 @@
+% SHARD-ID: RC-04O-GRADED-TOYS-EXITS
+% SHARD-TITLE: The Phantasm VII: a Graded Tensor Network for the Cusp Toys II. The Even Exit and the Funnel, the Glued Toy with Odd Letters, the Frobenius Channel of the Arithmetic Metric, and the Level Tower
+% SHARD-SUMMARY: On a regular diagram with cusps and funnels the constant function is bound on the cusps and outgoing on the funnels at the same z = q^{-1/2}, so it is neither a resonance nor a bound state; a funnel bolted onto an arithmetic core moves the Hasse--Weil quartet off the Weil circle at first order; and on any graded bond a channel with only even letters has two stationary densities, so a unique mixed stationary state with the pole even and the zeros odd requires an odd (fermionic) letter, realised by a glued network whose sectors exit through different blocks and are protected exactly because they are energy-orthogonal.
+% SHARD-SUMMARY: The arithmetic-metric completion with one exit per zero mode is the channel r^2 Ad(U) + (1 - r^2) Omega Tr with U^2 the normalised Frobenius, a one-gap quantum expander whose characteristic function is diagonal in Blaschke factors; no self-adjoint diagram has it, because each constant exit direction of a Hermitian core sees a conjugation-closed set of resonances.
+% SHARD-SUMMARY: Gamma_0(N) with trivial character has only oldform Eisenstein series and sees only zeta; the Dirichlet L-zeros live on Gamma_1(N), where, under H-ARITH-1, the graded bond is one even vacuum line from the trivial character and odd-only L-zero blocks from the others, graded by the diamond operators.
+% SHARD-KEYWORDS: funnel, constant mode, half-outgoing, even exit, odd letter, fermionic letter, glued toy, energy-orthogonality, shared exit, persistence, arithmetic metric, Frobenius channel, quantum expander, Blaschke, characteristic function, Hermitian core, Klein group, Gamma_0(N), Gamma_1(N), oldforms, Dirichlet L-function, diamond operator, H-ARITH-1
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{The Phantasm VII: a Graded Tensor Network for the Cusp Toys II. The Even Exit, the Glued Toy, the Frobenius Channel, the Level Tower}
+\label{sec:graded-toys-exits}
+
+Same lanes and files as \cref{sec:graded-toys-network}. This shard answers items (i), (iv) and (iii) of
+\cref{obs:elliptic-cavity-next}.
+
+\subsection{The even exit: what a funnel does}
+
+\begin{proposition}[The constant function on a diagram with cusps and funnels is half-outgoing]
+\label{prop:constant-mode-mixed-sheets}
+\claimstatus{prop:constant-mode-mixed-sheets}{proved}
+Let a diagram with core $T_X$, cusp rays and funnel rays ($S(f_{k+1}) = S(f_k)/\qs$, $S(f_kf_{k+1}) = S(f_{k+1})$)
+be $(\qs+1)$-regular at every vertex, and $C_c$, $C_f$ the cusp and funnel junction weights
+(\cref{prop:funnel-self-energy}). The restriction $x$ of the constant function to the core, with all entries
+nonzero, satisfies
+\[
+\big[(1+z^2)I - zT_X - z^2C_c - \qs^{-1}C_f\big]x = 0\qquad\text{at } z = \qs^{-1/2},
+\]
+bound sheet on every cusp, outgoing sheet on every funnel; it is a null vector of the outgoing matrix of
+$p_{\mathrm{funnel}}$ iff $C_c = 0$ and of the bound matrix iff $C_f = 0$. For the one-vertex regular diagram with
+cusp weight $a$ and funnel weight $\qs+1-a$, $p = z^2-(1+a(\qs-1))/\qs$: for $0\le a<1$ the Perron root is a resonance
+at $z^2 = (1+a(\qs-1))/\qs\in[1/\qs,1)$, at $\qs^{-1/2}$ iff $a = 0$; $a = 1$ is a threshold; for $1<a\le\qs+1$ it is a
+visible bound state with $\vartheta^2 = \qs/(1+a(\qs-1))$, at $\qs^{-1/2}$ iff $a = \qs+1$. A light cusp leaves the
+Perron-type mode outgoing, but at a radius other than $\qs^{-1/2}$.
+\end{proposition}
+
+\begin{lemma}[First-order motion of the resonances under an added funnel]
+\label{lem:funnel-first-order}
+\claimstatus{lem:funnel-first-order}{proved}
+Adding a funnel of weight $f$ at vertex $v$ gives exactly $p_f = p-(f/\qs)\,p^{(v)}$, $p^{(v)}$ the resonance
+polynomial of the core with $v$ deleted, so a simple root moves by $dz_i/df = \qs^{-1}p^{(v)}(z_i)/p'(z_i)$ and
+$d|z_i|/df = \re(\bar z_i\,dz_i/df)/|z_i|$. For a bipartite core ($\varepsilon T_X\varepsilon = -T_X$), since $P_v$ is real and diagonal and commutes with
+$\varepsilon$, the roots of $p_f$ stay closed under $z\mapsto-z$ and $z\mapsto\bar z$ for every $f$, so the Hasse--Weil quartet remains one Klein orbit
+$\{z,-z,\bar z,-\bar z\}$ and hence equimodular as long as it has four distinct non-real, non-imaginary elements: an
+added funnel moves the common radius off $\qs^{-1/4}$ but cannot break the equal-modulus property until the orbit
+splits. At genus one, $\mathrm{RH}(Y)$ on $K_{\mathrm{HW}}$ is therefore a consequence of the bipartite sign and reality
+whenever the quartet is a single orbit; Weil's content for D2 is the radius, pinned by the product identity of
+\cref{prop:nonzero-root-product}. At genus two, two orbits can have different moduli.
+\end{lemma}
+
+\begin{numerical}[A funnel bolted onto D2]
+\label{num:funnel-on-d2}
+\claimstatus{num:funnel-on-d2}{numerical}
+\texttt{scripts/graded\_toys.py}, ledger D33--D37: the constant-mode identity of \cref{prop:constant-mode-mixed-sheets}
+on three regular cusp-plus-funnel diagrams, both ``iff'' clauses; the one-vertex formula at $\qs = 2,3,5$; on D2 with a
+funnel of weight $f$ at each core vertex, $d|z_i|/df$ at $f = 0$ equal for all four Hasse--Weil roots at every vertex
+($+0.0630672$ at $A$, $+0.1261345$ at $B$, $-0.0210224$ at $C$, $-0.1681793$ at $D$, $-0.0630672$ at $E$ and $F$), the
+four moduli equal to $10^{-15}$ at $f = 1/5$ (radii $0.853128$, $0.864176$, $0.836761$, $0.807041$, $0.827557$), the
+orbit splitting into two moduli at $f = 1$ ($D$: $0.618034$, $0.707107$), $f = 2$ ($E$, $F$), $f = 5$ ($A$), not up to
+$f = 5$ at $B$, $C$; the Perron parameter decreasing strictly from $\qs^{-1/2}$ ($0.706576$ at $f = 0.01$, $0.138712$
+at $f = 100$, funnel at $B$), the Perron pair a visible bound state for every $f$ tried; with the cusp of D2 replaced
+by a funnel, the root motions.
+\end{numerical}
+
+So item (i) is negative on one connected regular diagram: a cusp of weight $a>1$ keeps the constant mode bound, a
+light cusp makes a Perron-type mode outgoing at the wrong radius, and a funnel on the arithmetic core costs the
+Weil radius, though not, at genus one, the equal-modulus property. The graded network says what is needed instead.
+
+\subsection{The glued toy: odd letters are necessary and sufficient}
+
+\begin{lemma}[Even letters give two stationary densities]
+\label{lem:even-letters-two-fixed-points}
+\claimstatus{lem:even-letters-two-fixed-points}{proved}
+Let $H = H_+\oplus H_-$ with both summands nonzero and $\rdens\mapsto\sum_iA_i\rdens A_i^{*}$ trace preserving with
+every $A_i$ even. Then there are stationary densities supported on $H_+$ and on $H_-$. Hence a parity-preserving
+channel with a unique stationary density has, in every Kraus representation by homogeneous letters, an odd letter.
+\end{lemma}
+
+Even letters and their adjoints preserve each sector, so the channel restricts to a trace-preserving map on
+each $B(H_\pm)$, which has a fixed density (\texttt{proofs.md}, G4(d)(iii)). In the fermionic-MPS language of
+\cref{def:cmps-ring-vector} an odd letter is a fermionic physical species: the parity-crossing rebound is a
+fermionic jump, the ``parity jump'' of the ideation ledger.
+
+\begin{theorem}[The glued toy]
+\label{thm:glued-graded-toy}
+\claimstatus{thm:glued-graded-toy}{proved}
+Let $(Z_\pm,J_\pm)$ be $h_\pm$-exit contractions on $K_\pm$, $K = K_+\oplus K_-$ with $P = 1\oplus(-1)$,
+$Z = Z_+\oplus Z_-$, $J = J_+\oplus J_-$ into $\mathbb C^{h_+}\oplus\mathbb C^{h_-}$, and $\reb = \reb_+\oplus\reb_-$
+an even density with $\Tr\reb_\pm>0$. (i) The letters $A_0 = Z$, $A_{(a,k)} = \sqrt{p_k}|\omega_k\rangle\langle j_a|$
+are homogeneous of parity $\epsilon(\omega_k)\epsilon(j_a)$, the cross letters odd; the channel is a
+trace-preserving graded transfer channel. (ii) It has a unique stationary density
+$\rdens_\infty = \bar t^{\,-1}\sum_mZ^m\reb Z^{*m}$, even, of rank at least two, with $\rdens_\infty|_{K_\pm}\ge\bar t^{\,-1}\reb_\pm$;
+it attracts every density iff the holding law is aperiodic. (iii) On the odd sector the channel is
+$X\mapsto ZXZ^{*}$ (the exit matrix of an odd $X$ is block-off-diagonal, of trace zero): the odd coherences
+$|k_n\rangle\langle k_m|$, $k_n\in K_-$, $k_m\in K_+$, are eigen-operators with eigenvalues $z_n\bar z_m$ for every
+fixed reset, of modulus $r_+r_-$ under $\mathrm{RH}(Y_+)$, $\mathrm{RH}(Y_-)$: rates add. (iv) The odd part of the
+twisted ring norm is $\str\Edb^L-\Tr\Esec{0}^L = -2\re[(\Tr Z_-^L)\,\overline{\Tr Z_+^L}]$. (v) Instance: $K_+$ the
+model of APW's tree, the one-vertex core with one funnel of weight $\qs+1$ ($c_+^2 = (\qs+1)/\qs$,
+$p_+ = z^2-1/\qs$, no bound states, $\dim K_+ = 2$, $\operatorname{spec}Z_+ = \{\pm\qs^{-1/2}\}$), $K_-$ the
+six-dimensional model of D2: odd eigenvalues $\pm\qs^{-1/2}\bar z_n$ and conjugates, of modulus $\qs^{-3/4}$ on
+the Hasse--Weil part and $0$ on the delay part, and $\Tr Z_+^L = \qs^{-L/2}(1+(-1)^L)$.
+\end{theorem}
+
+\begin{proposition}[Shared exit: protection is energy-orthogonality]
+\label{prop:shared-exit-tradeoff}
+\claimstatus{prop:shared-exit-tradeoff}{proved}
+For a fixed reset and eigenvectors $k_n,k_m$ of $Z$ with simple eigenvalues, $X = |k_n\rangle\langle k_m|$ has
+exit trace $\Tr(JXJ^{*}) = \langle a_m,a_n\rangle = (1-\bar z_mz_n)\langle k_m,k_n\rangle$. If it vanishes, $X$ is an
+eigen-operator with eigenvalue $z_n\bar z_m$; if not, $X$ is not an eigen-operator (residue
+$\langle a_m,a_n\rangle\reb$); if the value $z_n\bar z_m$ is simple in $\Ad(Z)$ it persists iff $\langle l_n|\reb|l_m\rangle = 0$
+for the dual eigenvectors (\cref{prop:rebound-persistence-secular}), and when it is degenerate, as on a real core where
+the conjugate modes carry the same value, the rank-one perturbation removes at most one copy, the drop being decided
+by the sum of the residues over the degenerate eigen-operators, not by each separately. On a
+connected core with a shared exit the modes are not orthogonal, so the zeros are not protected once the even
+mode leaks; the glued toy is protected because its sectors exit through different blocks.
+\end{proposition}
+
+Conclusion for item (i): the object with pole even, zeros odd and a unique mixed stationary state is not a
+graph of groups (\cref{cit:apw-cusps-pic-no-funnels}) but a graded bond gluing an even funnel diagram to an odd
+cusp diagram through a parity-crossing rebound: the ``hedgehog'' has an even spike and odd spikes that meet
+only in the rebound, and the fermionic letter that joins them is exactly what makes the stationary state unique.
+
+\subsection{The Frobenius channel: item (iv)}
+
+\begin{theorem}[The arithmetic-metric renewal channel is a one-gap quantum expander with diagonal characteristic function]
+\label{thm:frobenius-channel-expander}
+\claimstatus{thm:frobenius-channel-expander}{proved-conditional}
+Let $U$ be unitary on a finite-dimensional $K$, $0<r<1$, $Z' = rU$, $J' = \sqrt{1-r^2}\,1_K$ (one exit per mode),
+and $\reb$ a density. The renewal channel $\mathcal E'(\rdens) = r^2U\rdens U^{*}+(1-r^2)\Tr(\rdens)\reb$ is CPTP with
+unique stationary density $\rdens_\infty = (1-r^2)\sum_mr^{2m}U^m\reb U^{*m}$, equal to $\reb$ iff $[U,\reb] = 0$; on
+traceless operators $\mathcal E' = r^2\Ad(U)$, so every relaxation eigenvalue has modulus exactly $r^2$. The
+characteristic function of $Z'$ is $\Theta'(z) = (1-zrU^{*})^{-1}(z-rU) = \operatorname{diag}\big((z-z_a)/(1-\bar z_az)\big)$
+in the eigenbasis of $U$: the $a$-th exit sees the single mode $z_a$. For $K_{\mathrm{HW}}$ of D2 in the symmetric
+arithmetic metric (\cref{thm:arithmetic-metric}), $r = \qs^{-1/4}$ and $U^2\simeq(\Frob|_{H^1}/\sqrt{\qs})\otimes1_2$
+as multisets; the relaxation moduli are all $\qs^{-1/2}$.
+\end{theorem}
+
+\begin{proposition}[No self-adjoint diagram has one-mode exits; the Klein group of the odd sector]
+\label{prop:no-selfadjoint-one-mode-exits}
+\claimstatus{prop:no-selfadjoint-one-mode-exits}{proved}
+For a Hermitian core with standard rays, $\mathbf S(\bar z) = \mathbf S(z)^{*}$, hence $e^{*}\mathbf S(\bar z)e =
+\overline{e^{*}\mathbf S(z)e}$ for every constant $e\in\mathbb C^h$; if $\mathbf S$ is diagonalised by a constant
+unitary, each diagonal channel has a conjugation-closed zero set. So the diagonal $\Theta'$ of
+\cref{thm:frobenius-channel-expander} with the four non-real Hasse--Weil modes in four entries is not the
+scattering matrix of any self-adjoint diagram; any constant-basis splitting of the quartet is into conjugation-closed
+sets, hence at most into two pairs (whether a connected core attains the two-pair splitting is not established). On
+$K_{\mathrm{HW}}$ the bipartite sign and complex conjugation generate a Klein four-group acting simply transitively on
+the four modes; the symmetric arithmetic metric is, up to scale, the unique diagonal metric it fixes, and in it the four one-mode exits are permuted by the group.
+\end{proposition}
+
+Answer to item (iv): the object with four cusps seeing the four modes separately is the Frobenius channel,
+the odd disc part of $E_S$ (\cref{thm:scattering-superdeterminant}) completed by a fixed reset; it is a
+Lindblad-level object, not the wave equation of a graph, and its uniform gap is the metric's, not a theorem
+about D2.
+
+\subsection{The level tower: item (iii)}
+
+\begin{observation}[$\Gamma_0(N)$ with trivial character sees only $\zeta$; the $L$-zeros live on $\Gamma_1(N)$]
+\label{obs:level-tower-correction}
+\claimstatus{obs:level-tower-correction}{sketched}
+For $\Gamma_0(N)<\SL(\mathbb Z)$ with trivial nebentypus and $N$ squarefree, the $2^{\omega(N)}$ functions
+$E(dz,s)$, $d\mid N$, are $\Gamma_0(N)$-invariant and span the Eisenstein space (there are no Eisenstein newforms
+with trivial character at squarefree level), so every scattering-matrix entry is a rational function of the
+$\pp^{-s}$, $\pp\mid N$, times $\cxi(2s-1)/\cxi(2s)$, and the scattering determinant is
+$(\cxi(2s-1)/\cxi(2s))^{2^{\omega(N)}}$ times a rational function: no Dirichlet $L$-function. The $L$-ratios
+$L(2s-1,\chi)/L(2s,\chi)$ enter for $\Gamma_1(N)$, equivalently $\Gamma_0(N)$ with a nontrivial nebentypus
+\cite{huxley1984scattering,hejhal1983selberg2}; \cref{cit:kk-level-constant-term} is the trivial-character
+instance over $\Fq[T]$ at one cusp. Item (iii) and \cref{conj:galois-graded-bond} should name $\Gamma_1(N)$.
+Not byte-cited; the sources are not in the repository.
+\end{observation}
+
+\begin{assumption}[H-ARITH-1]
+\label{asm:h-arith-gamma1}
+\claimstatus{asm:h-arith-gamma1}{assumed}
+For $\Gamma_1(N)<\mathrm{GL}_2(\Fq[T])$ the scattering matrix is diagonalised by the Dirichlet characters $\chi$ of
+$(\Fq[T]/N)^\times$, the $\chi$-channel being a monomial in $z$ times $L(2s-1,\chi)/L(2s,\chi)$ with $L$ the
+completed $L$-function (Euler factor at $\infty$ included), and the diamond operators act on the $\chi$-channel by
+$\chi$.
+\end{assumption}
+
+\begin{proposition}[The graded bond of a character channel is odd-only]
+\label{prop:character-channel-graded-bond}
+\claimstatus{prop:character-channel-graded-bond}{proved-conditional}
+For a nontrivial \emph{primitive} $\chi$ mod $N$ over $\Fq[T]$, $L(\uz,\chi) = \sum_{f\ \mathrm{monic}}\chi(f)\uz^{\deg f}$ is
+a polynomial of degree $\deg N-1$, equal to $\det(1-\uz\Frob_\chi)$ for odd $\chi$ and to $(1-\uz)\det(1-\uz\Frob_\chi)$
+for even $\chi$ (the factor of the place at $\infty$), with every eigenvalue of $\Frob_\chi$ of modulus
+$\sqrt{\qs}$ \cite{rosen2002function} (not byte-cited; the source is not in the repository). With $E_\chi = (\Frob_\chi)_-\oplus\Pi\Frob_\chi(-1)$ and $w = \qs^{-2s}$, the
+completed ratio is $L(2s-1,\chi)/L(2s,\chi) = \sdet(1-wE_\chi)$, whose disc part is $\netmult(\alphaw{\chi,i}) = -1$
+at the eigenvalues of $\Frob_\chi$ and has no even entry; the trivial character carries
+$\zeta_{\Fq(T)}(2s-1)/\zeta_{\Fq(T)}(2s) = \sdet(1-wE_S)$ at $g = 0$, disc part $\netmult(1) = +1$. Under
+\cref{asm:h-arith-gamma1} the disc part of the level-$N$ graded bond is
+$(1)_+\oplus\bigoplus_{\chi\ \mathrm{primitive},\ \chi\ne1}(\alphaw{\chi,1},\dots,\alphaw{\chi,d_\chi})_-$ over the conductors
+dividing $N$, the trivial zero of each even $\chi$ split off as the vacuum line is split off the trivial channel, the
+diamond operator $\langle a\rangle$ acting on the $\chi$-block by $\chi(a)$: over $\Fq(T)$ every zero lives in the level
+tower, and the vacuum in the trivial channel alone. Imprimitive characters add the Euler factors of the primes
+dividing $N$ but not the conductor, with roots of modulus one; these, and the trivial zeros if the incomplete $L$
+appears, are odd modes at the Perron radius $|z| = \qs^{-1/2}$.
+\end{proposition}
+
+\begin{numerical}[{Character channels over $\mathbb F_3[T]$}]
+\label{num:character-channels}
+\claimstatus{num:character-channels}{numerical}
+\texttt{scripts/graded\_toys.py}, ledger D47--D51: all $25$ nontrivial characters mod $T^3-T-1$ (primitive, $\deg L = 2$,
+$12$ even with the factor $1-\uz$) and all $15$ mod $T(T^2+1)$ ($7$ primitive); every nontrivial root of every primitive
+character has $|\alphaw{}| = \sqrt3$; the Euler product to order $\uz^5$; $\det(1-\uz\Frob_\chi) = L(\uz,\chi)$; the
+superdeterminant identity as rational functions for all $40$ characters; no even disc eigenvalue in any channel; the
+imprimitive characters' modulus-one roots; the trivial channel at $g = 0$. Also this shard's glued toy and Frobenius channel (D38--D46:
+parities of the letters, uniqueness by the eigenvalue count at $1$, both sectors populated, the odd eigenvalues
+$\pm\qs^{-1/2}\bar z_n$, the twisted ring-norm identity, the segment for a sector-preserving reset, the exact vanishing
+$\langle a_m,a_n\rangle = 0$ across blocks, the shared-exit residue $\langle a_m,a_n\rangle\reb$ on a random three-vertex
+core; G5(a,b) in full; conjugation-closed disc zero sets for real and complex exit
+directions on D2 with a second cusp at each vertex).
+\end{numerical}
+
+\begin{observation}[What the next round should do]
+\label{obs:graded-toys-next}
+\claimstatus{obs:graded-toys-next}{sketched}
+(i) Compute the $\Gamma_1(N)$ (or nebentypus) Eisenstein constant terms over $\Fq[T]$ for one $N$ of degree
+three and settle \cref{asm:h-arith-gamma1}, including the completed-versus-incomplete question; the quotient
+graph $\Gamma_1(N)\backslash\mathcal T$ (Gekeler--Nonnengardt) is the diagram. (ii) The glued toy as a
+fermionic MPS proper: write the odd letters as fermionic species of \cref{def:cmps-ring-vector} and compute
+the antiperiodic and periodic closures with the sign-twisted transfer generator. (iii) Ask whether the Frobenius
+channel of \cref{thm:frobenius-channel-expander} is the transfer channel of a Weil-representation or graded
+Harrow expander (\cref{sec:graded-ramanujan}) at $\pp = 2$: its letters are $rU$ and the reset, its relaxation
+spectrum is $r^2\operatorname{spec}\Ad(U)$. (iv) A non-self-adjoint core (gain and loss at the junctions)
+realising the diagonal $\Theta'$, as the Lindblad-level ``hedgehog'' the arithmetic metric asks for.
+\end{observation}

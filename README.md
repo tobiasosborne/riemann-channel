@@ -160,6 +160,8 @@ Notes, in reading order:
     python3 scripts/graded_permutation.py  # the graded permutation (1 2)(3 4 5): gas, induced zeros, physical letters
     python3 scripts/graded_ramanujan.py    # graded Ramanujan: Pauli qubit elliptic curve, graded Weil-LPS Hashimoto sectors
     python3 scripts/selberg_letters.py     # Selberg letters: divisors, first-band algebra, Hashimoto lifts and endpoint counterexamples
+    python3 scripts/graded_toys.py         # graded tensor network of the cusp toys: linearisation, Frobenius superdeterminant, graded MPS, funnels, Frobenius channel, character channels
+    python3 scripts/gl1_bond.py            # the class-group bond of the D2 and D3 curves: divisor counts, h^0, Pic^0, class characters, Jacobi theta
     refs/fetch_sources.sh                  # re-fetch the quoted arXiv TeX sources
 
 Notes render with `fmd-report notes/<name>.md -o notes/<name>.html`,

@@ -1,0 +1,601 @@
+
+====================================================================================================
+SECTION 0   the diagrams D2, D3 (def:elliptic-cavity), normalisation, p and ptilde
+====================================================================================================
+  ok     1  S0 D2: every core vertex has degree q+1 = 3 (A:3, B:3, C:3, D:3, E:3, F:3)
+  ok     2  S0 D2: every cusp ray satisfies S(c_1)/S(e) = q, so its first ray vertex also has degree q+1 and the ray normalises to the free path
+  ok     3  S0 D2: every arithmetic junction has c^2 = S(v)/S(e) = 1 (prop:stabiliser-normalisation), not the Nagao q+1
+  ok     4  S0 D2: Ahat = D^(-1/2) A_X D^(1/2) is symmetric, so T_X = Ahat/sqrt q is a real symmetric core
+  ok     5  S0 D3: every core vertex has degree q+1 = 4 (L1p:4, L1:4, L2:4, X:4, Xp:4, Y:4, Z:4, Zp:4, Q:4)
+  ok     6  S0 D3: every cusp ray satisfies S(c_1)/S(e) = q, so its first ray vertex also has degree q+1 and the ray normalises to the free path
+  ok     7  S0 D3: every arithmetic junction has c^2 = S(v)/S(e) = 1 (prop:stabiliser-normalisation), not the Nagao q+1
+  ok     8  S0 D3: Ahat = D^(-1/2) A_X D^(1/2) is symmetric, so T_X = Ahat/sqrt q is a real symmetric core
+  ok     9  S0 D2: C = diag(0,1,0,0,0,0) in the order A,B,C,D,E,F
+  ok    10  S0 D3: C = diag(0,1,0,0,0,0,1,0,2) in the order L1p,L1,L2,X,Xp,Y,Z,Zp,Q (the double cusp at Q gives the entry 2)
+  ok    11  S0 D2: the normalised core weights are AB:sqrt(3/2), BC:1/sqrt2, CD:1, DE:DF:sqrt(3/2)
+  ok    12  S0 D3: the normalised core weights are L1pL1:2/sqrt3, L1L2:sqrt(2/3), L2X:1, XXp:2/sqrt3, XY:1, XQ:sqrt(2/3), YZ:sqrt(2/3), ZZp:2/sqrt3
+  ok    13  S0 D2: p_2 = (z^2/2)(z^2-2)(z^2+1)^2(2z^4-2z^2+1) exactly (thm:d2-zeta)
+  ok    14  S0 D3: p_3 = (z^4/3)(z-1)^2(z+1)^2(z^2-3)(z^2+1)^2(3z^4+1) exactly (thm:d3-channels)
+  ok    15  S0 D2: ptilde_2 = -(1/2)(z^2+1)^2(2z^2-1)(z^4-2z^2+2) exactly
+  ok    16  S0 D3: ptilde_3 = -(1/3)(z-1)^2(z+1)^2(z^2+1)^2(3z^2-1)(z^4+3) exactly
+  ok    17  S0 D2: ptilde(z) = z^(2n) p(1/z) with n = 6, and ptilde(0) = 1
+  ok    18  S0 D3: ptilde(z) = z^(2n) p(1/z) with n = 9, and ptilde(0) = 1
+  ok    19  S0 D2: the four Hasse-Weil resonances lie on |z| = q^(-1/4) = 0.8408964 [-0.776887-0.321797j, -0.776887+0.321797j, +0.776887-0.321797j, +0.776887+0.321797j]
+  ok    20  S0 D3: the four Hasse-Weil resonances lie on |z| = q^(-1/4) = 0.7598357 [-0.537285-0.537285j, -0.537285+0.537285j, +0.537285-0.537285j, +0.537285+0.537285j]
+
+====================================================================================================
+SECTION 1   G1(a)-(d): the linearisation M = [[T_X, -(I-C)],[I,0]]
+====================================================================================================
+  ok    21  G1(a) generic n=2: det(z - M) = p(z) = det((1+z^2)I - zT_X - C) identically in all 5 symbols
+  ok    22  G1(a) generic n=2: det(1 - zM) = ptilde(z) = det(I - zT_X + z^2(I-C)) identically
+  ok    23  G1(d) generic n=2: M = M_0 + [[0,C],[0,0]] exactly, the correction supported on the junctions
+  ok    24  G1(a) generic n=3: det(z - M) = p(z) = det((1+z^2)I - zT_X - C) identically in all 9 symbols
+  ok    25  G1(a) generic n=3: det(1 - zM) = ptilde(z) = det(I - zT_X + z^2(I-C)) identically
+  ok    26  G1(d) generic n=3: M = M_0 + [[0,C],[0,0]] exactly, the correction supported on the junctions
+  ok    27  G1(a) D2: det(z - M) = p(z) coefficient by coefficient (max deviation 6.00e-15); spec M has moduli [+0.000000, +0.000000, +0.840896, +0.840896, +0.840896, +0.840896, +1.000000, +1.000000, +1.000000, +1.000000, +1.414214, +1.414214]
+  ok    28  G1(a) D2: det(1 - zM) = ptilde(z) coefficient by coefficient (max deviation 6.00e-15)
+  ok    29  G1(b) D2: Tr M^m = sum_{roots of p} mu^m for m = 1..8 (max deviation 3.55e-14); power sums [+0.000000, +0.000000, +2.000000, +12.000000]...
+  ok    30  G1(c) D2: dim ker M = dim ker(I-C) = 1 (geometric), ord_0 p = 2 = 2 dim ker(I-C), and M has 2 zero eigenvalues: the delay sector is 1 Jordan block(s) of size two
+  ok    31  G1(c) D2: nullities of M, M^2, M^3 are 1, 2, 2: exactly 1 Jordan block(s) of size two at 0, none larger
+  ok    32  G1(d) D2: M - M_0 = [[0,C],[0,0]]; its rank is 1 (= number of distinct junction vertices), while h = 1
+  ok    33  G1(d) D2: det(1 - z M_0) = det(I - z T_X + z^2) = det(I - u A_X + q u^2) with u = z/sqrt q, at 5 random points (max deviation 4.78e-15): the vertex factor of the Bass determinant
+  ok    34  G1(a) D3: det(z - M) = p(z) coefficient by coefficient (max deviation 1.07e-14); spec M has moduli [+0.000000, +0.000000, +0.000000, +0.000000, +0.759836, +0.759836, +0.759836, +0.759836, +1.000000, +1.000000, +1.000000, +1.000000, +1.000000, +1.000000, +1.000000, +1.000000, +1.732051, +1.732051]
+  ok    35  G1(a) D3: det(1 - zM) = ptilde(z) coefficient by coefficient (max deviation 1.07e-14)
+  ok    36  G1(b) D3: Tr M^m = sum_{roots of p} mu^m for m = 1..8 (max deviation 5.68e-14); power sums [+0.000000, +0.000000, +6.000000, +24.666667]...
+  ok    37  G1(c) D3: dim ker M = dim ker(I-C) = 2 (geometric), ord_0 p = 4 = 2 dim ker(I-C), and M has 4 zero eigenvalues: the delay sector is 2 Jordan block(s) of size two
+  ok    38  G1(c) D3: nullities of M, M^2, M^3 are 2, 4, 4: exactly 2 Jordan block(s) of size two at 0, none larger
+  ok    39  G1(d) D3: M - M_0 = [[0,C],[0,0]]; its rank is 3 (= number of distinct junction vertices), while h = 4
+  ok    40  G1(d) D3: det(1 - z M_0) = det(I - z T_X + z^2) = det(I - u A_X + q u^2) with u = z/sqrt q, at 5 random points (max deviation 2.07e-15): the vertex factor of the Bass determinant
+  ok    41  G1(d) K_4 (3-regular, q=2): Ihara-Bass det(I - uB) = (1-u^2)^(|E|-|V|) det(I - uA + q u^2) at 4 points (max deviation 4.58e-16)
+  ok    42  G1(d) 3-cube (3-regular, q=2): Ihara-Bass det(I - uB) = (1-u^2)^(|E|-|V|) det(I - uA + q u^2) at 4 points (max deviation 1.33e-15)
+  ok    43  G1(d) Petersen (3-regular, q=2): Ihara-Bass det(I - uB) = (1-u^2)^(|E|-|V|) det(I - uA + q u^2) at 4 points (max deviation 1.35e-15)
+  ok    44  G1(d) K_{3,3} (3-regular, q=2): Ihara-Bass det(I - uB) = (1-u^2)^(|E|-|V|) det(I - uA + q u^2) at 4 points (max deviation 1.88e-15)
+  ok    45  G1(d) C_5 (2-regular, q=1): Ihara-Bass det(I - uB) = (1-u^2)^(|E|-|V|) det(I - uA + q u^2) at 4 points (max deviation 2.24e-16)
+  FAIL  46  G1(d) BRIEF: spec(M_0) u {+-1 with multiplicity |E|-|V|} = spec(B)/sqrt q on the five regular cores (max deviation 7.65e-01)
+  ok    47  G1(d) CORRECTED: spec(M_0) u {+-q^(-1/2) with multiplicity |E|-|V|} = spec(B)/sqrt q, equivalently sqrt q . spec(M_0) u {+-1} = spec(B) (max deviation 0.00e+00): the trivial +-1 block of the Bass factor (1-u^2)^(|E|-|V|) lives in the variable u = z/sqrt q, so it is NOT rescaled by sqrt q the way spec(M_0) is
+  ok    48  G1(d) SCOPE: the CORE of D2 alone is NOT (q+1)-regular (core degrees {'A': '3', 'B': '2', 'C': '3', 'D': '3', 'E': '3', 'F': '3'}: the missing unit at B is carried by the cusp ray), so the Hashimoto half of G1(d) applies to the core only under H-REG, not to the arithmetic diagrams themselves
+  ok    49  G1(a) D2: spec M splits as 4 unimodular (cusp forms +-i twice), 6 interior (4 Hasse-Weil + double 0) and 2 exterior (+-sqrt2 = 1/vartheta) [-1.414214+0.000000j, +1.414214+0.000000j]
+  ok    50  G1(a) D2: each unimodular conjugate pair mu, conj mu cancels in prod (z-mu)/(1-z mu) (residual 1.11e-16)
+  ok    51  G1(a) D2: R(z) = -prod_{spec M} (z-mu)/(1-z mu) = -p/ptilde (deviation 4.22e-17)
+  ok    52  G1(a) D2: the two exterior roots are 1/vartheta with vartheta = +-q^(-1/2), the Perron pair of visible bound states
+  --      five random cores, exact rational arithmetic (seed 20260920):
+  ok    53  G1(a) random core 1 (n=4, h=2, c^2=['1', '1/2']): det(z-M) = p and det(1-zM) = ptilde, exactly over Q
+  ok    54  G1(b) random core 1: Tr M^m = sum mu^m exactly over Q for m = 1..6
+  ok    55  G1(c) random core 1: ker M = 0 (+) ker(I-C) (dim 1) and ord_0 p = 2 = 2 dim ker(I-C) (junctions made loopless: T_UU = 0)
+  ok    56  G1(a) random core 2 (n=2, h=3, c^2=['1', '1', '3/2']): det(z-M) = p and det(1-zM) = ptilde, exactly over Q
+  ok    57  G1(b) random core 2: Tr M^m = sum mu^m exactly over Q for m = 1..6
+  ok    58  G1(c) random core 2: ker M = 0 (+) ker(I-C) (dim 1) and ord_0 p = 2 = 2 dim ker(I-C) (junctions made loopless: T_UU = 0)
+  ok    59  G1(a) random core 3 (n=3, h=1, c^2=['1']): det(z-M) = p and det(1-zM) = ptilde, exactly over Q
+  ok    60  G1(b) random core 3: Tr M^m = sum mu^m exactly over Q for m = 1..6
+  ok    61  G1(c) random core 3: ker M = 0 (+) ker(I-C) (dim 1) and ord_0 p = 2 = 2 dim ker(I-C) (junctions made loopless: T_UU = 0)
+  ok    62  G1(a) random core 4 (n=2, h=3, c^2=['2', '5/2', '5/2']): det(z-M) = p and det(1-zM) = ptilde, exactly over Q
+  ok    63  G1(b) random core 4: Tr M^m = sum mu^m exactly over Q for m = 1..6
+  ok    64  G1(c) random core 4: ker M = 0 (+) ker(I-C) (dim 0) and ord_0 p = 0 = 2 dim ker(I-C) (junctions made loopless: T_UU = 0)
+  ok    65  G1(a) random core 5 (n=3, h=1, c^2=['1']): det(z-M) = p and det(1-zM) = ptilde, exactly over Q
+  ok    66  G1(b) random core 5: Tr M^m = sum mu^m exactly over Q for m = 1..6
+  ok    67  G1(c) random core 5: ker M = 0 (+) ker(I-C) (dim 1) and ord_0 p = 2 = 2 dim ker(I-C) (junctions made loopless: T_UU = 0)
+  FAIL  68  G1(c) BRIEF, applied to a c = 1 junction carrying a LOOP T_vv = 1/2: ord_0 p = 2 dim ker(I-C) = 2; measured ord_0 p = 1, p = z*(6*z**3 - z**2 - z - 3)/6
+  ok    69  G1(c) CORRECTED: with a loop at the junction the delay root is SIMPLE (ord_0 p = 1) and M has one Jordan block of size ONE at 0 (nullities of M and M^2 are 1, 1); 'M is singular with Jordan blocks of size two at 0, ord_0 p = 2 dim ker(I-C)' needs the unstated hypothesis T_UU = 0 (no loop at a c = 1 junction) of prop:multi-exit-spectrum(iii), which D2 and D3 satisfy
+
+====================================================================================================
+SECTION 2   G2(a)-(e): zeta_K(2s-1)/zeta_K(2s) = sdet(1 - w E_S)
+====================================================================================================
+  ok    70  G2 D2 (g=1, q=2): P has degree 2g = 2 and |alpha_i| = sqrt q = 1.4142136 [+1.000000-1.000000j, +1.000000+1.000000j] (Weil)
+  ok    71  G2 D2 (g=1, q=2): alpha -> q/alpha = conj(alpha) is an involution of the multiset
+  ok    72  G2(a) D2 (g=1, q=2): dim(H (+) H) = 8 = 4g+4; even spectrum {1, q, q alpha_i}, odd {alpha_i, q, q^2}
+  ok    73  G2(a) D2 (g=1, q=2): sdet(1 - w E_S) = (1-w) P(qw)/((1 - q^2 w) P(w)) exactly
+  ok    74  G2(a) D2 (g=1, q=2): zeta_K(2s-1)/zeta_K(2s) = sdet(1 - w E_S) with w = q^(-2s) exactly
+  ok    75  G2(d) D2 (g=1, q=2): sdet(1-w E_S) . sdet(1 - E_S/(q^2 w)) = q^(2g-2) = 1 exactly (Poincare duality)
+  ok    76  G2(b) D2 (g=1, q=2): the only even eigenvalue with |e| < q is e = 1, nu(1) = +1 (z = +- q^(-1/2), |z| = 0.7071068)
+  ok    77  G2(b) D2 (g=1, q=2): the odd eigenvalues with |e| < q are exactly the 2 alpha_i, nu(alpha_i) = -1, with z-images on |z| = q^(-1/4) = 0.8408964
+  ok    78  G2(b) D2 (g=1, q=2): every remaining eigenvalue (q alpha_i, q^2) has |e| > q, so no further z-image in the disc; the two lines at e = q (|e| = q exactly, NOT > q) cancel in sdet
+  ok    79  G2(b) D2 (g=1, q=2): the cancelling pair sits ON |e| = q, i.e. at |z| = 1 (the unit circle), not inside the disc: the brief's 'every other eigenvalue has |e| > q' omits them
+  ok    80  G2 D3 (g=1, q=3): P has degree 2g = 2 and |alpha_i| = sqrt q = 1.7320508 [+0.000000-1.732051j, +0.000000+1.732051j] (Weil)
+  ok    81  G2 D3 (g=1, q=3): alpha -> q/alpha = conj(alpha) is an involution of the multiset
+  ok    82  G2(a) D3 (g=1, q=3): dim(H (+) H) = 8 = 4g+4; even spectrum {1, q, q alpha_i}, odd {alpha_i, q, q^2}
+  ok    83  G2(a) D3 (g=1, q=3): sdet(1 - w E_S) = (1-w) P(qw)/((1 - q^2 w) P(w)) exactly
+  ok    84  G2(a) D3 (g=1, q=3): zeta_K(2s-1)/zeta_K(2s) = sdet(1 - w E_S) with w = q^(-2s) exactly
+  ok    85  G2(d) D3 (g=1, q=3): sdet(1-w E_S) . sdet(1 - E_S/(q^2 w)) = q^(2g-2) = 1 exactly (Poincare duality)
+  ok    86  G2(b) D3 (g=1, q=3): the only even eigenvalue with |e| < q is e = 1, nu(1) = +1 (z = +- q^(-1/2), |z| = 0.5773503)
+  ok    87  G2(b) D3 (g=1, q=3): the odd eigenvalues with |e| < q are exactly the 2 alpha_i, nu(alpha_i) = -1, with z-images on |z| = q^(-1/4) = 0.7598357
+  ok    88  G2(b) D3 (g=1, q=3): every remaining eigenvalue (q alpha_i, q^2) has |e| > q, so no further z-image in the disc; the two lines at e = q (|e| = q exactly, NOT > q) cancel in sdet
+  ok    89  G2(b) D3 (g=1, q=3): the cancelling pair sits ON |e| = q, i.e. at |z| = 1 (the unit circle), not inside the disc: the brief's 'every other eigenvalue has |e| > q' omits them
+  ok    90  G2 synthetic g=2, q=3: P has degree 2g = 4 and |alpha_i| = sqrt q = 1.7320508 [+0.000000-1.732051j, +0.000000+1.732051j, +1.000000-1.414214j, +1.000000+1.414214j] (Weil)
+  ok    91  G2 synthetic g=2, q=3: alpha -> q/alpha = conj(alpha) is an involution of the multiset
+  ok    92  G2(a) synthetic g=2, q=3: dim(H (+) H) = 12 = 4g+4; even spectrum {1, q, q alpha_i}, odd {alpha_i, q, q^2}
+  ok    93  G2(a) synthetic g=2, q=3: sdet(1 - w E_S) = (1-w) P(qw)/((1 - q^2 w) P(w)) exactly
+  ok    94  G2(a) synthetic g=2, q=3: zeta_K(2s-1)/zeta_K(2s) = sdet(1 - w E_S) with w = q^(-2s) exactly
+  ok    95  G2(d) synthetic g=2, q=3: sdet(1-w E_S) . sdet(1 - E_S/(q^2 w)) = q^(2g-2) = 9 exactly (Poincare duality)
+  ok    96  G2(b) synthetic g=2, q=3: the only even eigenvalue with |e| < q is e = 1, nu(1) = +1 (z = +- q^(-1/2), |z| = 0.5773503)
+  ok    97  G2(b) synthetic g=2, q=3: the odd eigenvalues with |e| < q are exactly the 4 alpha_i, nu(alpha_i) = -1, with z-images on |z| = q^(-1/4) = 0.7598357
+  ok    98  G2(b) synthetic g=2, q=3: every remaining eigenvalue (q alpha_i, q^2) has |e| > q, so no further z-image in the disc; the two lines at e = q (|e| = q exactly, NOT > q) cancel in sdet
+  ok    99  G2(b) synthetic g=2, q=3: the cancelling pair sits ON |e| = q, i.e. at |z| = 1 (the unit circle), not inside the disc: the brief's 'every other eigenvalue has |e| > q' omits them
+  ok   100  G2(c) D2: 1/R(z) = z^(-2) sdet(1 - E_S/(q z^2)) at 8 points (max deviation 1.35e-15)
+  ok   101  G2(c) D3: in the basis (q_-, l_-, l_+, q_+) the scattering matrix is block diagonal (-1) (+) (z^2) (+) S_e (max off-block entry 3.16e-16)
+  ok   102  G2(c) D3: the Dirichlet channel is -1 and the odd channel is exactly z^2 (max deviation 3.86e-16)
+  ok   103  G2(c) D3: 1/R_3(z) = 1/det S_e = z^(-2) sdet(1 - E_S/(q z^2)) at 8 points (max deviation 1.83e-14)
+  ok   104  G2(e) D2: [z^2] p = -q^(1-g) = -1  (brief's displayed formula); actual [z^2] p = -1, ord_0 p = 2
+  ok   105  G2(e) D2: the FIRST NONZERO coefficient [z^(ord_0 p)] p = [z^2] p = -1 = -q^(1-g); |[z^m]p| = q^(1-g-(h-1)(g-1)) = 1 with h = 1
+  FAIL 106  G2(e) D3: [z^2] p = -q^(1-g) = -1  (brief's displayed formula); actual [z^2] p = 0, ord_0 p = 4
+  ok   107  G2(e) D3: the FIRST NONZERO coefficient [z^(ord_0 p)] p = [z^4] p = -1 = -q^(1-g); |[z^m]p| = q^(1-g-(h-1)(g-1)) = 1 with h = 4
+  ok   108  G2(e) D2: the prefactor is q^(1-g) z^(-2) = z^(-2) at g = 1, as H-EIS predicts
+
+====================================================================================================
+SECTION 3   the model space (thm:h-exit-model) and G3(a)-(e)
+====================================================================================================
+  ok   109  S3 D2 model: char poly of Z = prod (w - z_j) over the six resonances (deviation 4.44e-15); dim K = deg det Theta = 6
+  ok   110  S3 D2 model: I - Z^*Z = J^*J with rank J = 1 (deviation 5.92e-16); the exit map is J = e_N^* in the basis w^k/qq
+  ok   111  S3 D2 model: Z^m -> 0 (||Z^8|| = 7.91e-01, ||Z^120|| = 2.95e-09), H-CONTRACTION holds
+  ok   112  S3 D2 model: the delay sector is ONE Jordan block of size two at 0 (nullities 1, 2), as prop:d2-canonical-rebound states
+  ok   113  S3 D2 model: the exit amplitude of every Hasse-Weil eigenvector k_a = Theta/(w-a) is a_n = 1 (deviation 0.00e+00); no eigenvector is dark
+  ok   114  S3 D2 model: the Gram identity a_n^* a_m = (1 - conj(z_n) z_m) <k_n,k_m> holds (deviation 9.42e-16)
+  ok   115  S3 D2 model: the normalised Hasse-Weil Gram matrix matches prop:d2-modal-gram's closed form d = 3-2sqrt2, u = delta(1-i), v = delta(3+i)/5 (deviation 4.44e-16)
+  ok   116  G3(a) D2 [modal Hasse-Weil reset]: sum_i A_i^* A_i = 1, the MPS is normalised / the channel is trace preserving (deviation 5.92e-16)
+  ok   117  G3(a) D2 [modal Hasse-Weil reset]: every letter is EVEN (P A P = A): vac is never touched
+  ok   118  G3(a) D2 [modal Hasse-Weil reset]: EE commutes with P (x) conj P (deviation 0.00e+00)
+  ok   119  G3(b) D2 [modal Hasse-Weil reset]: EE is block diagonal in the (even, odd) split, dims 37 and 12 = 1 + N^2 and 2N with N = 6
+  ok   120  G3(b) D2 [modal Hasse-Weil reset]: spec E_0 = {1 (vacuum)} u spec E_Omega (deviation 3.61e-08)
+  ok   121  G3(b) D2 [modal Hasse-Weil reset]: the odd sector's spectrum is {z_n} u {conj z_n}, independent of the reset (deviation 1.00e-08)
+  ok   122  G3(b) D2 [modal Hasse-Weil reset]: E_Omega has a simple eigenvalue at 1 (multiplicity 1); with the vacuum line, nu(1) = 2 in the even sector
+  ok   123  G3(b) D2 [modal Hasse-Weil reset]: rho_inf = tbar^(-1) sum_m Z^m Omega Z^(*m) (deviation 1.34e-08)
+  ok   124  G3 D2 [modal Hasse-Weil reset]: rho_inf = Omega exactly (prop:d2-modal-gram / prop:cusp-modal-rh: every modal reset on an equal-modulus family is stationary), deviation 5.62e-17
+  ok   125  G3 D2 [modal reset]: mean holding time tbar = (1-q^(-1/2))^(-1) = 2 + sqrt 2 = 3.4142136 (computed 3.4142136)
+  ok   126  G3(b) D2 [modal Hasse-Weil reset]: det(1 - u E_Omega) = det(1 - u E_0^K)(1 - mhat(u)) at three points
+  ok   127  G3(c) D2 [modal Hasse-Weil reset]: Tr EE^L = 1 + Tr E_Omega^L + 2 Re Tr Z^L and str EE^L = 1 + Tr E_Omega^L - 2 Re Tr Z^L for L = 1..8, so the difference of the two ring norms is 4 Re Tr Z^L
+  ok   128  G3(c) D2 [modal Hasse-Weil reset]: the explicit ring vectors satisfy <psi_L|psi_L> = Tr EE^L and <psi_L^P|psi_L^P> = str EE^L for L = 1..4 (5 letters)
+  ok   129  G3(d) D2 [modal Hasse-Weil reset]: 1/sdet(1 - u EE) = prod (1-u z_n)(1-u conj z_n) / ((1-u)^2 prod_sec (1-u lambda)) (deviation 7.63e-15)
+  ok   130  G3(d) D2 [modal Hasse-Weil reset]: nu(1) = 2 = 2 (the vacuum and rho_inf, both even)
+  FAIL 131  G3(d) D2 [modal Hasse-Weil reset]: the brief's nu(z_n) = -m_n = -1 at each Hasse-Weil resonance; measured [-2, -2, -2, -2]
+  ok   132  G3(d) D2 [modal Hasse-Weil reset]: CORRECTED: nu(z_n) = -2 m_n = -2, because the odd sector carries BOTH {z_n} (from Z (x) 1) and {conj z_n} (from 1 (x) conj Z) and the resonance set of a real core is conjugation closed, so each value occurs twice
+  FAIL 133  G3(d) D2 [modal Hasse-Weil reset]: nu(0) = 16; the brief's nu(z_n) = -m_n would give -2 for the double delay root, but the EVEN sector also carries 0 with multiplicity 20 (from Ad_Z), so the delay value is NOT purely odd
+  FAIL 134  G3(e) D2 [modal Hasse-Weil reset]: every odd eigenvalue of EE has one modulus; observed moduli [0.0, 0.8408964] -- RH(Y) on the FULL six-dimensional model would require this and it fails, the delay modes give modulus 0
+  ok   135  G3(a) D2 [random reset]: sum_i A_i^* A_i = 1, the MPS is normalised / the channel is trace preserving (deviation 1.11e-15)
+  ok   136  G3(a) D2 [random reset]: every letter is EVEN (P A P = A): vac is never touched
+  ok   137  G3(a) D2 [random reset]: EE commutes with P (x) conj P (deviation 0.00e+00)
+  ok   138  G3(b) D2 [random reset]: EE is block diagonal in the (even, odd) split, dims 37 and 12 = 1 + N^2 and 2N with N = 6
+  ok   139  G3(b) D2 [random reset]: spec E_0 = {1 (vacuum)} u spec E_Omega (deviation 0.00e+00)
+  ok   140  G3(b) D2 [random reset]: the odd sector's spectrum is {z_n} u {conj z_n}, independent of the reset (deviation 1.00e-08)
+  ok   141  G3(b) D2 [random reset]: E_Omega has a simple eigenvalue at 1 (multiplicity 1); with the vacuum line, nu(1) = 2 in the even sector
+  ok   142  G3(b) D2 [random reset]: rho_inf = tbar^(-1) sum_m Z^m Omega Z^(*m) (deviation 6.15e-08)
+  ok   143  G3(b) D2 [random reset]: det(1 - u E_Omega) = det(1 - u E_0^K)(1 - mhat(u)) at three points
+  ok   144  G3(c) D2 [random reset]: Tr EE^L = 1 + Tr E_Omega^L + 2 Re Tr Z^L and str EE^L = 1 + Tr E_Omega^L - 2 Re Tr Z^L for L = 1..8, so the difference of the two ring norms is 4 Re Tr Z^L
+  ok   145  G3(c) D2 [random reset]: the explicit ring vectors satisfy <psi_L|psi_L> = Tr EE^L and <psi_L^P|psi_L^P> = str EE^L for L = 1..4 (7 letters)
+  ok   146  G3(d) D2 [random reset]: 1/sdet(1 - u EE) = prod (1-u z_n)(1-u conj z_n) / ((1-u)^2 prod_sec (1-u lambda)) (deviation 3.61e-15)
+  ok   147  G3(d) D2 [random reset]: nu(1) = 2 = 2 (the vacuum and rho_inf, both even)
+  FAIL 148  G3(d) D2 [random reset]: the brief's nu(z_n) = -m_n = -1 at each Hasse-Weil resonance; measured [-2, -2, -2, -2]
+  ok   149  G3(d) D2 [random reset]: CORRECTED: nu(z_n) = -2 m_n = -2, because the odd sector carries BOTH {z_n} (from Z (x) 1) and {conj z_n} (from 1 (x) conj Z) and the resonance set of a real core is conjugation closed, so each value occurs twice
+  FAIL 150  G3(d) D2 [random reset]: nu(0) = 14; the brief's nu(z_n) = -m_n would give -2 for the double delay root, but the EVEN sector also carries 0 with multiplicity 18 (from Ad_Z), so the delay value is NOT purely odd
+  FAIL 151  G3(e) D2 [random reset]: every odd eigenvalue of EE has one modulus; observed moduli [0.0, 0.8408964] -- RH(Y) on the FULL six-dimensional model would require this and it fails, the delay modes give modulus 0
+  ok   152  G3(e) D2 [K_HW only]: on the Hasse-Weil sector every odd eigenvalue of EE has modulus r = q^(-1/4) = 0.8408964 (observed [np.float64(0.84089642)]): RH(Y) <-> the odd sector is Ramanujan, as G3(e) claims, once the delay modes are removed
+  ok   153  G3(e) D2: the even sector has exactly two fixed points (the vacuum and rho_inf), so the stationary densities form a segment and EE is NOT a mixing graded expander (prop:graded-stationary-segment, obs:cusp-no-graph-vacuum)
+
+====================================================================================================
+SECTION 3b  G3(c): Tr Z^{2k} = 2 q^{-k}(alpha_+^k + alpha_-^k) = 2 q^{-k}(1 + q^k - N_k)
+====================================================================================================
+  ok   154  G3(c) point counts of y^2 + y = x^3 + x + 1 over F_(2^k), k = 1..5, by direct enumeration: [1, 5, 13, 25, 41]; predicted 1 + q^k - (alpha_+^k + alpha_-^k) = [1, 5, 13, 25, 41]
+  ok   155  G3(c) D2: Tr Z^(2k) = 2 q^(-k)(alpha_+^k + alpha_-^k) = 2 q^(-k)(1 + q^k - N_k) for k = 1..5, exactly the odd half of the point count
+  ok   156  G3(c) D2: Tr Z^L = 0 for every odd L (the bipartite pairing z <-> -z)
+
+====================================================================================================
+SECTION 4   G4(a)-(d): the even exit, funnels, and the glued graded network
+====================================================================================================
+  ok   157  G4(b): the one-vertex cusp(a)+funnel(b) diagram with a + b = q+1 has p = z^2 - (1 + a(q-1))/q, exactly and symbolically in a and q
+  ok   158  G4(b): a = 0 (pure funnel, APW's tree) gives p = z^2 - 1/q: a resonance at z = q^(-1/2)
+  ok   159  G4(b): a = q+1 (pure cusp) gives p = z^2 - q, i.e. a visible bound state at vartheta = q^(-1/2)
+  ok   160  G4(b): vartheta^2 = q/(1+a(q-1)) equals 1 at a = 1 (threshold) and 1/q at a = q+1
+  FAIL 161  G4(b): vartheta^2 in (1/q, 1) for EVERY 0 < a < q+1 with a != 1 (brief's claim); counterexamples found: [('2', '1/4', '8/5'), ('2', '1/2', '4/3'), ('2', '3/4', '8/7'), ('3', '1/4', '2'), ('3', '1/2', '3/2'), ('3', '3/4', '6/5'), ('5', '1/4', '5/2'), ('5', '1/2', '5/3'), ('5', '3/4', '5/4')]
+  ok   162  G4(b): the corrected range: vartheta^2 in (1/q,1), i.e. a genuine visible bound state, exactly for 1 < a < q+1; for 0 < a < 1 the root of p lies INSIDE the disc and the constant mode is a resonance, not a bound state
+  --      G4(b) q=2, a=1/2: roots of p are [-sqrt(3)/2, sqrt(3)/2], moduli [0.8660254037844386, 0.8660254037844386] -- inside the unit disc, hence resonances
+  --      G4(b) q=3, a=1/2: roots of p are [-sqrt(6)/3, sqrt(6)/3], moduli [0.816496580927726, 0.816496580927726] -- inside the unit disc, hence resonances
+  ok   163  G4(a) D2-with-funnel (the cusp at B replaced by a funnel of weight 1, still 3-regular): the constant g = 1/sqrt S solves [(1+z^2) - zT_X - z^2 C_c - q^(-1) C_f]x = 0 at z = q^(-1/2) (residual 2.22e-16)
+  ok   164  G4(a) D2-with-funnel: C_c = 0, so z = q^(-1/2) IS a root of p_funnel (outgoing everywhere), as G4(a) states
+  --      G4(a) D2-with-funnel: the full root set of p_funnel is [-1.324718+0.000000j, -0.707107+0.000000j, -0.662359-0.562280j, -0.662359+0.562280j, +0.000000-1.000000j, +0.000000-1.000000j, +0.000000+1.000000j, +0.000000+1.000000j, +0.662359-0.562280j, +0.662359+0.562280j, +0.707107+0.000000j, +1.324718+0.000000j], moduli [+0.707107, +0.707107, +0.868837, +0.868837, +0.868837, +0.868837, +1.000000, +1.000000, +1.000000, +1.000000, +1.324718, +1.324718]
+  ok   165  G4(a) D2 (pure cusp): the constant mode solves the same equation with C_f = 0 (residual 2.22e-16), and z = q^(-1/2) is a root of ptilde, i.e. a visible bound state: ptilde_2(1/sqrt2) = 0.0e+00
+  ok   166  G4(a) D2: z = q^(-1/2) is a root of ptilde (bound everywhere, C_f = 0) and NOT of p
+  ok   167  G4(a) two-vertex 3-regular cusp(2)+funnel(2) diagram: the constant mode solves the mixed equation at z = q^(-1/2) (residual 2.22e-16)
+  ok   168  G4(a) two-vertex mixed diagram: with both kinds of ray present, z = q^(-1/2) is neither a resonance (p = -0.500000) nor a visible bound state (ptilde = +0.250000): the constant function is in neither L^2 nor K
+
+====================================================================================================
+SECTION 4b  G4(c): d|z_i|/df at f = 0 for the four Hasse-Weil roots, all six vertices
+====================================================================================================
+  ok   169  G4(c) D2: p_f(z) = det((1+z^2) - z T_2 - P_B - (f/q) P_v) = p_0(z) - (f/q) M_vv(z), the rank-one cofactor expansion, exactly (checked symbolically at v = A)
+  --      G4(c) funnel at   A: d|z_i|/df at f=0 for the quartet = +0.0630672, +0.0630672, +0.0630672, +0.0630672
+  --      G4(c) funnel at   B: d|z_i|/df at f=0 for the quartet = +0.1261345, +0.1261345, +0.1261345, +0.1261345
+  --      G4(c) funnel at   C: d|z_i|/df at f=0 for the quartet = -0.0210224, -0.0210224, -0.0210224, -0.0210224
+  --      G4(c) funnel at   D: d|z_i|/df at f=0 for the quartet = -0.1681793, -0.1681793, -0.1681793, -0.1681793
+  --      G4(c) funnel at   E: d|z_i|/df at f=0 for the quartet = -0.0630672, -0.0630672, -0.0630672, -0.0630672
+  --      G4(c) funnel at   F: d|z_i|/df at f=0 for the quartet = -0.0630672, -0.0630672, -0.0630672, -0.0630672
+  ok   170  G4(c) D2: for EVERY core vertex v and every Hasse-Weil root, d|z_i|/df at f = 0 is nonzero, so the quartet leaves the circle |z| = q^(-1/4) at first order (vertices with a vanishing derivative: [])
+  ok   171  G4(c) D2: at EVERY vertex the four derivatives d|z_i|/df coincide (max spread 0.00e+00): the quartet moves as a rigid Klein orbit {z,-z,conj z,-conj z}, so it leaves the circle q^(-1/4) but stays EQUIMODULAR at first order
+  --      G4(c) funnel at   A: tracked quartet moduli f=0.02: 0.842154/0.842154/0.842154/0.842154; f=0.1: 0.847107/0.847107/0.847107/0.847107; f=0.2: 0.853128/0.853128/0.853128/0.853128; f=0.5: 0.870065/0.870065/0.870065/0.870065; f=1.0: 0.894641/0.894641/0.894641/0.894641; f=2.0: 0.930789/0.930789/0.930789/0.930789; f=5.0: 0.847331/0.847331/1.101614/1.101614
+  --      G4(c) funnel at   B: tracked quartet moduli f=0.02: 0.843402/0.843402/0.843402/0.843402; f=0.1: 0.853051/0.853051/0.853051/0.853051; f=0.2: 0.864176/0.864176/0.864176/0.864176; f=0.5: 0.891586/0.891586/0.891586/0.891586; f=1.0: 0.922574/0.922574/0.922574/0.922574; f=2.0: 0.955216/0.955216/0.955216/0.955216; f=5.0: 0.983440/0.983440/0.983440/0.983440
+  --      G4(c) funnel at   C: tracked quartet moduli f=0.02: 0.840477/0.840477/0.840477/0.840477; f=0.1: 0.838812/0.838812/0.838812/0.838812; f=0.2: 0.836761/0.836761/0.836761/0.836761; f=0.5: 0.830822/0.830822/0.830822/0.830822; f=1.0: 0.821677/0.821677/0.821677/0.821677; f=2.0: 0.807222/0.807222/0.807222/0.807222; f=5.0: 0.840896/0.840896/0.840896/0.840896
+  --      G4(c) funnel at   D: tracked quartet moduli f=0.02: 0.837531/0.837531/0.837531/0.837531; f=0.1: 0.824026/0.824026/0.824026/0.824026; f=0.2: 0.807041/0.807041/0.807041/0.807041; f=0.5: 0.755066/0.755066/0.755066/0.755066; f=1.0: 0.618034/0.618034/0.707107/0.707107; f=2.0: 0.000000/0.000000/0.880486/0.880486; f=5.0: 0.000000/0.000000/0.951218/0.951218
+  --      G4(c) funnel at   E: tracked quartet moduli f=0.02: 0.839628/0.839628/0.839628/0.839628; f=0.1: 0.834413/0.834413/0.834413/0.834413; f=0.2: 0.827557/0.827557/0.827557/0.827557; f=0.5: 0.804378/0.804378/0.804378/0.804378; f=1.0: 0.753353/0.753353/0.753353/0.753353; f=2.0: 0.000000/0.000000/0.861016/0.861016; f=5.0: 0.000000/0.000000/1.028982/1.028982
+  --      G4(c) funnel at   F: tracked quartet moduli f=0.02: 0.839628/0.839628/0.839628/0.839628; f=0.1: 0.834413/0.834413/0.834413/0.834413; f=0.2: 0.827557/0.827557/0.827557/0.827557; f=0.5: 0.804378/0.804378/0.804378/0.804378; f=1.0: 0.753353/0.753353/0.753353/0.753353; f=2.0: 0.000000/0.000000/0.861016/0.861016; f=5.0: 0.000000/0.000000/1.028982/1.028982
+  FAIL 172  G4(c) D2: at f = 1/5 the four Hasse-Weil moduli are no longer equal at any vertex (the brief's 'the Hasse-Weil quartet leaves the circle |z| = 2^(-1/4)', read as a loss of the equal-modulus property); measured spreads {A:6.7e-16, B:5.6e-16, C:1.6e-15, D:7.8e-16, E:2.0e-15, F:2.0e-15}
+  ok   173  G4(c) D2: CORRECTED: at f = 1/5 the quartet is still EQUIMODULAR at every vertex (max spread 2.0e-15); it has left the circle q^(-1/4) for a different circle, so RH(Y) survives with a shifted radius
+  --      G4(c) the first grid value of f at which the quartet stops being equimodular, by vertex: {A: f=5.0 -> [0.847331, 0.847331, 1.101614, 1.101614], D: f=1.0 -> [0.618034, 0.618034, 0.707107, 0.707107], E: f=2.0 -> [0.0, 0.0, 0.861016, 0.861016], F: f=2.0 -> [0.0, 0.0, 0.861016, 0.861016]}; vertices with no split on the grid up to f = 5: ['B', 'C']
+  ok   174  G4(c) D2: for large enough f the quartet does break into two Klein orbits of different moduli, at the vertices ['A', 'D', 'E', 'F'] (the roots collide on an axis and split), so RH(Y) eventually fails -- but not at first order in f
+  --      G4(c) D2, funnel at B: the visible bound parameter vartheta = 1/max|exterior root| as f grows: [(0.01, 0.706576), (0.5, 0.6797761), (2.0, 0.5984047), (10.0, 0.3825763), (100.0, 0.1387123)]; q^(-1/2) = 0.7071068
+  FAIL 175  G4(c) D2: 'the Perron pair moves inward without reaching q^(-1/2) for finite f' (brief), read as vartheta staying above q^(-1/2)
+  ok   176  G4(c) D2: CORRECTED: vartheta starts AT q^(-1/2) = 0.7071068 at f = 0 and drops strictly below it for every f > 0, decreasing monotonically towards 0; the exterior root 1/vartheta never re-enters the disc, so the Perron pair stays a visible bound state and never becomes the funnel's outgoing mode at z = q^(-1/2)
+
+====================================================================================================
+SECTION 4c  G4(d)(i)-(vi): the glued graded network
+====================================================================================================
+  ok   177  G4(d)(v) K_+: APW's tree (core [0], one funnel of weight q+1, c_+^2 = (q+1)/q, p_+ = z^2 - 1/q) has a two-dimensional model space with eigenvalues +-q^(-1/2) and I - Z^*Z = J^*J
+  ok   178  G4(d)(v) K_+: p_+ = z^2 - 1/q exactly, no visible bound states, Theta_+ = -R_+
+  ok   179  G4(d) glued: Z = Z_+ (+) Z_-, J = J_+ (+) J_- is a 2-exit contraction on K = K_+ (+) K_- (dim 2 + 6), I - Z^*Z = J^*J
+  ok   180  G4(d)(i) glued: every letter is homogeneous, of parity eps(omega_k) eps(j_a); the parities are [1, 1, -1, -1, 1, -1, 1, -1, 1, -1, 1, 1, -1] -- 6 of the 13 letters are ODD (the cross letters: an exit of one sector reset into the other)
+  ok   181  G4(d)(i) glued: sum A_i^* A_i = 1, EE is a trace-preserving graded transfer channel
+  ok   182  G4(d)(i) glued: EE commutes with the doubled parity
+  ok   183  G4(d)(ii) glued: the eigenvalue 1 of EE is simple (multiplicity 1), so the stationary density is unique
+  ok   184  G4(d)(ii) glued: rho_inf is EVEN and MIXED, populating both sectors with weights 0.356496 and 0.643504
+  ok   185  G4(d)(ii) glued: rho_inf = tbar^(-1) sum_m Z^m Omega Z^(*m) (deviation 2.78e-16)
+  ok   186  G4(d)(iv,v) glued: the odd eigenvalues of EE are exactly {+-q^(-1/2) conj(z_n)} and their conjugates (max deviation 1.00e-08)
+  ok   187  G4(d)(v) glued: the odd moduli are [np.float64(0.0), np.float64(0.5946036)]: q^(-3/4) = 0.5946036 on the Hasse-Weil part (rates add: r_+ r_- = q^(-1/2) q^(-1/4)) and 0 on the delay part
+  ok   188  G4(d)(v) glued: the twisted ring norm's odd part is -2 Re[(Tr Z_-^L) conj(Tr Z_+^L)], with Tr Z_+^L = q^(-L/2)(1 + (-1)^L), for L = 1..8
+  ok   189  G4(d)(iv) glued: |k_n><k_m| with k_n in K_-, k_m in K_+ is an eigen-operator of EE with eigenvalue z_n conj(z_m) = +0.549342-0.227545j, because Tr(J|k_n><k_m|J^*) = <a_m,a_n> = 0 (different exit blocks); deviation 2.07e-16
+  ok   190  G4(d)(iv) glued: <a_m, a_n> = 0 exactly for cross-sector modes (0.00e+00)
+  ok   191  G4(d)(iii) glued, sector-preserving reset: sum A_i^* A_i = 1
+  ok   192  G4(d)(iii) glued, sector-preserving reset: ALL letters are even (no parity-crossing letter)
+  ok   193  G4(d)(iii) glued: with a sector-preserving reset the eigenvalue 1 has multiplicity 2 = 2: each sector carries its own stationary density and the stationary densities form a SEGMENT -- a unique mixed stationary state requires an odd letter
+
+====================================================================================================
+SECTION 4d  G4(d)(vi): the shift on a random three-vertex core with one shared cusp
+====================================================================================================
+  ok   194  G4(d)(vi): a random three-vertex core with one cusp, six distinct nonzero resonances and no visible bound states was found
+  ok   195  G4(d)(vi): the six-dimensional one-exit model of the random core satisfies I - Z^*Z = J^*J (c^2 = 0.632409)
+  ok   196  G4(d)(vi): the Gram identity <a_m,a_n> = (1 - conj(z_m) z_n) <k_m,k_n> holds (deviation 7.99e-14); with ONE shared exit all <a_m,a_n> = conj(a_m) a_n are nonzero (min 1.0000)
+  ok   197  G4(d)(vi): with a SHARED exit, |k_n><k_m| is NOT an eigen-operator of EE_Omega for any cross pair: the residue is exactly <a_m,a_n> Omega (min residual 2.672e-01, max deviation from <a_m,a_n> Omega 9.24e-15)
+  ok   198  G4(d)(vi): the multiplicity of each cross eigenvalue z_n conj(z_m) drops by exactly one under the reset [(2, 1), (2, 1), (2, 1), (2, 1), (2, 1), (2, 1), (2, 1), (2, 1)]: NOTE the VALUE still persists, because the spectrum of Ad_Z on a real core is conjugation symmetric, so z_n conj(z_m) is already degenerate (paired with z_n' conj(z_m') for the conjugate roots) and a rank-one reset can remove only one copy
+  ok   199  G4(d)(vi): the rank-one persistence/secular identity det(1-u EE_Omega) = det(1-u EE_0)(1 - mhat(u)) holds, so persistence is exactly <a_m,a_n> . dual_nm(Omega) = 0
+
+====================================================================================================
+SECTION 5   G5(a)-(c): the arithmetic-metric channel and the self-adjointness obstruction
+====================================================================================================
+  ok   200  G5(a) D2, arithmetic metric (all four e_i declared orthonormal, thm:arithmetic-metric's symmetric ray): Z = r U with r = q^(-1/4) = 0.8408964 and U unitary
+  ok   201  G5(a) D2: with one exit per mode, J' = sqrt(1-r^2) 1_{K_HW} (h = 4) satisfies I - Z'^*Z' = J'^*J' in the arithmetic metric
+  ok   202  G5(a) D2: U^2 is similar to (Fr/sqrt q)^(-1) (x) 1_2 (spectra agree to 0.00e+00)
+  ok   203  G5(a) [random (non-commuting) Omega]: EE' = r^2 Ad(U) + (1-r^2) Tr(.) Omega is trace preserving
+  ok   204  G5(a) [random (non-commuting) Omega]: rho_inf = (1-r^2) sum_m r^(2m) U^m Omega U^(*m) is the unique stationary density (residual 5.57e-17)
+  ok   205  G5(a) [random (non-commuting) Omega]: rho_inf = Omega iff [Omega, U] = 0 (||[Omega,U]|| = 2.06e-01, ||rho_inf - Omega|| = 1.63e-01)
+  ok   206  G5(a) [modal (diagonal) Omega]: EE' = r^2 Ad(U) + (1-r^2) Tr(.) Omega is trace preserving
+  ok   207  G5(a) [modal (diagonal) Omega]: rho_inf = (1-r^2) sum_m r^(2m) U^m Omega U^(*m) is the unique stationary density (residual 5.56e-17)
+  ok   208  G5(a) [modal (diagonal) Omega]: rho_inf = Omega iff [Omega, U] = 0 (||[Omega,U]|| = 0.00e+00, ||rho_inf - Omega|| = 2.22e-16)
+  ok   209  G5(a) D2: on traceless operators EE' = r^2 Ad(U); all 15 relaxation eigenvalues have modulus exactly r^2 = q^(-1/2) = 0.7071068 (deviation 1.11e-16): a one-gap mixing quantum expander
+  ok   210  G5(a) D2: the relaxation spectrum is exactly {r^2 e^(i(theta_a - theta_b))} (deviation 0.00e+00)
+  ok   211  G5(a) D2: with the vacuum adjoined, lambda_1 = r = q^(-1/4) = 0.8408964 (every odd eigenvalue), lambda_0 = q^(-1/2)
+  ok   212  G5(b) D2: Theta'(z) = (1 - z r U^*)^(-1)(z - r U) = diag((z-z_a)/(1 - conj(z_a) z)) at three points: the a-th exit sees the single mode z_a
+
+====================================================================================================
+SECTION 5b  G5(c): D2 with a second unit cusp at each vertex in turn
+====================================================================================================
+  ok   213  G5(c) D2+cusp at A: S(z) is symmetric and S(conj z) = conj(S(z)) (deviations 2.00e-16, 0.00e+00)
+  ok   214  G5(c) D2+cusp at C: S(z) is symmetric and S(conj z) = conj(S(z)) (deviations 6.21e-17, 0.00e+00)
+  ok   215  G5(c) D2+cusp at D: S(z) is symmetric and S(conj z) = conj(S(z)) (deviations 1.27e-15, 0.00e+00)
+  ok   216  G5(c) D2+cusp at E: S(z) is symmetric and S(conj z) = conj(S(z)) (deviations 1.57e-16, 0.00e+00)
+  ok   217  G5(c) D2+cusp at F: S(z) is symmetric and S(conj z) = conj(S(z)) (deviations 2.11e-17, 0.00e+00)
+  ok   218  G5(c) D2, two exits: e^* S(conj z) e = conj(e^* S(z) e) for every REAL constant exit direction, at all five placements (max deviation 0.00e+00)
+  ok   219  G5(c) D2, two exits: the same identity holds for COMPLEX constant e as well, because S = S^T (max deviation 3.28e-15); so no constant exit direction sees a non-conjugation-closed set of resonances
+  ok   220  G5(c) D2+cusp at A: the zero set in the disc of e^* S(z) e is conjugation closed for e = e_1, e_2, (1,1), (1,i); disc-zero moduli [[0.0, 0.0], [0.0, 0.0, 0.751796, 0.751796, 0.969823, 0.969823, 0.969823, 0.969823], [0.0, 0.653273, 0.934193, 0.934193], [0.0, 0.0]]
+  ok   221  G5(c) D2+cusp at C: the zero set in the disc of e^* S(z) e is conjugation closed for e = e_1, e_2, (1,1), (1,i); disc-zero moduli [[0.0, 0.0, 0.79931, 0.79931, 0.79931, 0.79931], [0.0, 0.0, 0.451768, 0.451768], [0.0, 0.601593], [0.0, 0.0]]
+  ok   222  G5(c) D2+cusp at D: the zero set in the disc of e^* S(z) e is conjugation closed for e = e_1, e_2, (1,1), (1,i); disc-zero moduli [[0.0, 0.0, 0.707107, 0.707107, 0.816497, 0.816497], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]]
+  ok   223  G5(c) D2+cusp at E: the zero set in the disc of e^* S(z) e is conjugation closed for e = e_1, e_2, (1,1), (1,i); disc-zero moduli [[0.0, 0.0, 0.826887, 0.826887, 0.826887, 0.826887], [0.0, 0.0, 0.483479, 0.483479], [0.0, 0.0, 0.752158, 0.752158], [0.0, 0.0]]
+  ok   224  G5(c) D2+cusp at F: the zero set in the disc of e^* S(z) e is conjugation closed for e = e_1, e_2, (1,1), (1,i); disc-zero moduli [[0.0, 0.0, 0.826887, 0.826887, 0.826887, 0.826887], [0.0, 0.0, 0.483479, 0.483479], [0.0, 0.0, 0.752158, 0.752158], [0.0, 0.0]]
+
+====================================================================================================
+SECTION 6   G6(b): L(u,psi) for (F_3[T]/N)^x, N = T^3-T-1 and N = T(T^2+1)
+====================================================================================================
+  ok   225  G6(b) the monic irreducibles of F_3[T] up to degree 5 are counted correctly: {1: 3, 2: 3, 3: 8, 4: 18, 5: 48} against the necklace counts 3, 3, 8, 18, 48
+  ok   226  G6(b) N = T^3 - T - 1 is irreducible over F_3 (no root in F_3, degree 3)
+  ok   227  G6(b) T^2 + 1 is irreducible over F_3, so N = T(T^2+1) is squarefree with two prime factors of degrees 1 and 2
+  ok   228  G6(b): |(F_3[T]/N)^x| = 26 = 27-1 for N = T^3-T-1 and 16 = 2 . 8 = |F_3^x| . |F_9^x| for N = T(T^2+1)
+  ok   229  G6(b) N1: the unit group is CYCLIC of order 26, generator [0, 2]
+  ok   230  G6(b) N2: F_9^x = (F_3[T]/(T^2+1))^x is cyclic of order 8, generator [1, 1]
+  ok   231  G6(b) N2: the CRT map u -> (u mod T, u mod T^2+1) is a bijection onto Z/2 x Z/8 (16 distinct pairs): the unit group is NOT cyclic, so the characters are enumerated as homomorphisms from this presentation
+  ok   232  G6(b) N = T^3-T-1, psi trivial: the truncated sum sum_{deg f < deg N} psi(f) u^(deg f) = [1.0, 3.0, 9.0] is NOT the L-function of the trivial character, which is prod_{P|N}(1-u^(deg P))/(1-qu) and is not a polynomial of degree deg N - 1
+  ok   233  G6(b) N = T^3-T-1, psi = (1,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   234  G6(b) N = T^3-T-1, psi = (1,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   235  G6(b) N = T^3-T-1, psi = (1,) ODD: L(1) = 1.669999 != 0, no (1-u) factor
+  ok   236  G6(b) N = T^3-T-1, psi = (1,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.66e-14)
+  ok   237  G6(b) N = T^3-T-1, psi = (1,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 1.33e-15), Fr_psi the companion matrix of the beta's
+  ok   238  G6(b) N = T^3-T-1, psi = (1,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 1.24e-14)
+  ok   239  G6(b) N = T^3-T-1, psi = (1,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   240  G6(b) N = T^3-T-1, psi = (2,) (even, primitive): deg L = 2 = deg N - 1
+  ok   241  G6(b) N = T^3-T-1, psi = (2,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   242  G6(b) N = T^3-T-1, psi = (2,) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 5.55e-16; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   243  G6(b) N = T^3-T-1, psi = (2,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 9.93e-15)
+  ok   244  G6(b) N = T^3-T-1, psi = (2,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 1.57e-16), Fr_psi the companion matrix of the beta's
+  ok   245  G6(b) N = T^3-T-1, psi = (2,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 8.88e-16)
+  ok   246  G6(b) N = T^3-T-1, psi = (2,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   247  G6(b) N = T^3-T-1, psi = (3,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   248  G6(b) N = T^3-T-1, psi = (3,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   249  G6(b) N = T^3-T-1, psi = (3,) ODD: L(1) = 1.669999 != 0, no (1-u) factor
+  ok   250  G6(b) N = T^3-T-1, psi = (3,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.78e-14)
+  ok   251  G6(b) N = T^3-T-1, psi = (3,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 6.66e-16), Fr_psi the companion matrix of the beta's
+  ok   252  G6(b) N = T^3-T-1, psi = (3,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 5.33e-15)
+  ok   253  G6(b) N = T^3-T-1, psi = (3,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   254  G6(b) N = T^3-T-1, psi = (4,) (even, primitive): deg L = 2 = deg N - 1
+  ok   255  G6(b) N = T^3-T-1, psi = (4,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   256  G6(b) N = T^3-T-1, psi = (4,) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 1.65e-15; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   257  G6(b) N = T^3-T-1, psi = (4,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.19e-14)
+  ok   258  G6(b) N = T^3-T-1, psi = (4,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 8.99e-16), Fr_psi the companion matrix of the beta's
+  ok   259  G6(b) N = T^3-T-1, psi = (4,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 8.98e-15)
+  ok   260  G6(b) N = T^3-T-1, psi = (4,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   261  G6(b) N = T^3-T-1, psi = (5,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   262  G6(b) N = T^3-T-1, psi = (5,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   263  G6(b) N = T^3-T-1, psi = (5,) ODD: L(1) = 4.148627 != 0, no (1-u) factor
+  ok   264  G6(b) N = T^3-T-1, psi = (5,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 2.14e-14)
+  ok   265  G6(b) N = T^3-T-1, psi = (5,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 1.18e-15), Fr_psi the companion matrix of the beta's
+  ok   266  G6(b) N = T^3-T-1, psi = (5,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 1.00e-14)
+  ok   267  G6(b) N = T^3-T-1, psi = (5,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   268  G6(b) N = T^3-T-1, psi = (6,) (even, primitive): deg L = 2 = deg N - 1
+  ok   269  G6(b) N = T^3-T-1, psi = (6,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   270  G6(b) N = T^3-T-1, psi = (6,) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 2.19e-15; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   271  G6(b) N = T^3-T-1, psi = (6,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.99e-14)
+  ok   272  G6(b) N = T^3-T-1, psi = (6,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 6.75e-16), Fr_psi the companion matrix of the beta's
+  ok   273  G6(b) N = T^3-T-1, psi = (6,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 7.16e-15)
+  ok   274  G6(b) N = T^3-T-1, psi = (6,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   275  G6(b) N = T^3-T-1, psi = (7,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   276  G6(b) N = T^3-T-1, psi = (7,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   277  G6(b) N = T^3-T-1, psi = (7,) ODD: L(1) = 4.148627 != 0, no (1-u) factor
+  ok   278  G6(b) N = T^3-T-1, psi = (7,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 3.32e-14)
+  ok   279  G6(b) N = T^3-T-1, psi = (7,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 2.59e-15), Fr_psi the companion matrix of the beta's
+  ok   280  G6(b) N = T^3-T-1, psi = (7,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 2.47e-14)
+  ok   281  G6(b) N = T^3-T-1, psi = (7,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   282  G6(b) N = T^3-T-1, psi = (8,) (even, primitive): deg L = 2 = deg N - 1
+  ok   283  G6(b) N = T^3-T-1, psi = (8,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   284  G6(b) N = T^3-T-1, psi = (8,) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 5.67e-15; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   285  G6(b) N = T^3-T-1, psi = (8,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.65e-14)
+  ok   286  G6(b) N = T^3-T-1, psi = (8,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 7.02e-16), Fr_psi the companion matrix of the beta's
+  ok   287  G6(b) N = T^3-T-1, psi = (8,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 4.44e-15)
+  ok   288  G6(b) N = T^3-T-1, psi = (8,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   289  G6(b) N = T^3-T-1, psi = (9,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   290  G6(b) N = T^3-T-1, psi = (9,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   291  G6(b) N = T^3-T-1, psi = (9,) ODD: L(1) = 1.669999 != 0, no (1-u) factor
+  ok   292  G6(b) N = T^3-T-1, psi = (9,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 2.17e-14)
+  ok   293  G6(b) N = T^3-T-1, psi = (9,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 1.35e-15), Fr_psi the companion matrix of the beta's
+  ok   294  G6(b) N = T^3-T-1, psi = (9,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 1.08e-14)
+  ok   295  G6(b) N = T^3-T-1, psi = (9,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   296  G6(b) N = T^3-T-1, psi = (10,) (even, primitive): deg L = 2 = deg N - 1
+  ok   297  G6(b) N = T^3-T-1, psi = (10,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   298  G6(b) N = T^3-T-1, psi = (10,) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 7.77e-16; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   299  G6(b) N = T^3-T-1, psi = (10,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 5.09e-14)
+  ok   300  G6(b) N = T^3-T-1, psi = (10,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 5.39e-16), Fr_psi the companion matrix of the beta's
+  ok   301  G6(b) N = T^3-T-1, psi = (10,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 5.96e-15)
+  ok   302  G6(b) N = T^3-T-1, psi = (10,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   303  G6(b) N = T^3-T-1, psi = (11,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   304  G6(b) N = T^3-T-1, psi = (11,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   305  G6(b) N = T^3-T-1, psi = (11,) ODD: L(1) = 4.148627 != 0, no (1-u) factor
+  ok   306  G6(b) N = T^3-T-1, psi = (11,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.69e-14)
+  ok   307  G6(b) N = T^3-T-1, psi = (11,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 4.58e-16), Fr_psi the companion matrix of the beta's
+  ok   308  G6(b) N = T^3-T-1, psi = (11,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 3.97e-15)
+  ok   309  G6(b) N = T^3-T-1, psi = (11,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   310  G6(b) N = T^3-T-1, psi = (12,) (even, primitive): deg L = 2 = deg N - 1
+  ok   311  G6(b) N = T^3-T-1, psi = (12,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   312  G6(b) N = T^3-T-1, psi = (12,) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 8.00e-15; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   313  G6(b) N = T^3-T-1, psi = (12,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 2.13e-14)
+  ok   314  G6(b) N = T^3-T-1, psi = (12,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 4.48e-16), Fr_psi the companion matrix of the beta's
+  ok   315  G6(b) N = T^3-T-1, psi = (12,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 3.58e-15)
+  ok   316  G6(b) N = T^3-T-1, psi = (12,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   317  G6(b) N = T^3-T-1, psi = (13,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   318  G6(b) N = T^3-T-1, psi = (13,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   319  G6(b) N = T^3-T-1, psi = (13,) ODD: L(1) = 7.000000 != 0, no (1-u) factor
+  ok   320  G6(b) N = T^3-T-1, psi = (13,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.07e-13)
+  ok   321  G6(b) N = T^3-T-1, psi = (13,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 1.47e-15), Fr_psi the companion matrix of the beta's
+  ok   322  G6(b) N = T^3-T-1, psi = (13,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 9.08e-15)
+  ok   323  G6(b) N = T^3-T-1, psi = (13,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   324  G6(b) N = T^3-T-1, psi = (14,) (even, primitive): deg L = 2 = deg N - 1
+  ok   325  G6(b) N = T^3-T-1, psi = (14,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   326  G6(b) N = T^3-T-1, psi = (14,) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 1.23e-14; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   327  G6(b) N = T^3-T-1, psi = (14,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 6.47e-14)
+  ok   328  G6(b) N = T^3-T-1, psi = (14,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 6.28e-16), Fr_psi the companion matrix of the beta's
+  ok   329  G6(b) N = T^3-T-1, psi = (14,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 5.35e-15)
+  ok   330  G6(b) N = T^3-T-1, psi = (14,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   331  G6(b) N = T^3-T-1, psi = (15,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   332  G6(b) N = T^3-T-1, psi = (15,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   333  G6(b) N = T^3-T-1, psi = (15,) ODD: L(1) = 4.148627 != 0, no (1-u) factor
+  ok   334  G6(b) N = T^3-T-1, psi = (15,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 4.78e-14)
+  ok   335  G6(b) N = T^3-T-1, psi = (15,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 1.20e-15), Fr_psi the companion matrix of the beta's
+  ok   336  G6(b) N = T^3-T-1, psi = (15,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 1.04e-14)
+  ok   337  G6(b) N = T^3-T-1, psi = (15,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   338  G6(b) N = T^3-T-1, psi = (16,) (even, primitive): deg L = 2 = deg N - 1
+  ok   339  G6(b) N = T^3-T-1, psi = (16,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   340  G6(b) N = T^3-T-1, psi = (16,) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 4.62e-15; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   341  G6(b) N = T^3-T-1, psi = (16,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 4.97e-14)
+  ok   342  G6(b) N = T^3-T-1, psi = (16,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 6.28e-16), Fr_psi the companion matrix of the beta's
+  ok   343  G6(b) N = T^3-T-1, psi = (16,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 5.77e-15)
+  ok   344  G6(b) N = T^3-T-1, psi = (16,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   345  G6(b) N = T^3-T-1, psi = (17,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   346  G6(b) N = T^3-T-1, psi = (17,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   347  G6(b) N = T^3-T-1, psi = (17,) ODD: L(1) = 1.669999 != 0, no (1-u) factor
+  ok   348  G6(b) N = T^3-T-1, psi = (17,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 8.27e-14)
+  ok   349  G6(b) N = T^3-T-1, psi = (17,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 4.44e-16), Fr_psi the companion matrix of the beta's
+  ok   350  G6(b) N = T^3-T-1, psi = (17,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 1.78e-15)
+  ok   351  G6(b) N = T^3-T-1, psi = (17,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   352  G6(b) N = T^3-T-1, psi = (18,) (even, primitive): deg L = 2 = deg N - 1
+  ok   353  G6(b) N = T^3-T-1, psi = (18,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   354  G6(b) N = T^3-T-1, psi = (18,) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 5.86e-15; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   355  G6(b) N = T^3-T-1, psi = (18,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 4.04e-14)
+  ok   356  G6(b) N = T^3-T-1, psi = (18,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 4.44e-16), Fr_psi the companion matrix of the beta's
+  ok   357  G6(b) N = T^3-T-1, psi = (18,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 5.33e-15)
+  ok   358  G6(b) N = T^3-T-1, psi = (18,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   359  G6(b) N = T^3-T-1, psi = (19,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   360  G6(b) N = T^3-T-1, psi = (19,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   361  G6(b) N = T^3-T-1, psi = (19,) ODD: L(1) = 4.148627 != 0, no (1-u) factor
+  ok   362  G6(b) N = T^3-T-1, psi = (19,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 7.85e-14)
+  ok   363  G6(b) N = T^3-T-1, psi = (19,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 1.78e-15), Fr_psi the companion matrix of the beta's
+  ok   364  G6(b) N = T^3-T-1, psi = (19,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 1.42e-14)
+  ok   365  G6(b) N = T^3-T-1, psi = (19,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   366  G6(b) N = T^3-T-1, psi = (20,) (even, primitive): deg L = 2 = deg N - 1
+  ok   367  G6(b) N = T^3-T-1, psi = (20,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   368  G6(b) N = T^3-T-1, psi = (20,) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 1.35e-14; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   369  G6(b) N = T^3-T-1, psi = (20,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 8.75e-14)
+  ok   370  G6(b) N = T^3-T-1, psi = (20,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 8.01e-16), Fr_psi the companion matrix of the beta's
+  ok   371  G6(b) N = T^3-T-1, psi = (20,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 6.40e-15)
+  ok   372  G6(b) N = T^3-T-1, psi = (20,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   373  G6(b) N = T^3-T-1, psi = (21,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   374  G6(b) N = T^3-T-1, psi = (21,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   375  G6(b) N = T^3-T-1, psi = (21,) ODD: L(1) = 4.148627 != 0, no (1-u) factor
+  ok   376  G6(b) N = T^3-T-1, psi = (21,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 6.46e-14)
+  ok   377  G6(b) N = T^3-T-1, psi = (21,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 1.73e-15), Fr_psi the companion matrix of the beta's
+  ok   378  G6(b) N = T^3-T-1, psi = (21,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 1.72e-14)
+  ok   379  G6(b) N = T^3-T-1, psi = (21,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   380  G6(b) N = T^3-T-1, psi = (22,) (even, primitive): deg L = 2 = deg N - 1
+  ok   381  G6(b) N = T^3-T-1, psi = (22,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   382  G6(b) N = T^3-T-1, psi = (22,) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 1.63e-14; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   383  G6(b) N = T^3-T-1, psi = (22,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 4.93e-14)
+  ok   384  G6(b) N = T^3-T-1, psi = (22,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 1.14e-15), Fr_psi the companion matrix of the beta's
+  ok   385  G6(b) N = T^3-T-1, psi = (22,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 1.09e-14)
+  ok   386  G6(b) N = T^3-T-1, psi = (22,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   387  G6(b) N = T^3-T-1, psi = (23,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   388  G6(b) N = T^3-T-1, psi = (23,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   389  G6(b) N = T^3-T-1, psi = (23,) ODD: L(1) = 1.669999 != 0, no (1-u) factor
+  ok   390  G6(b) N = T^3-T-1, psi = (23,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 6.15e-14)
+  ok   391  G6(b) N = T^3-T-1, psi = (23,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 2.48e-15), Fr_psi the companion matrix of the beta's
+  ok   392  G6(b) N = T^3-T-1, psi = (23,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 1.99e-14)
+  ok   393  G6(b) N = T^3-T-1, psi = (23,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   394  G6(b) N = T^3-T-1, psi = (24,) (even, primitive): deg L = 2 = deg N - 1
+  ok   395  G6(b) N = T^3-T-1, psi = (24,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   396  G6(b) N = T^3-T-1, psi = (24,) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 4.77e-14; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   397  G6(b) N = T^3-T-1, psi = (24,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.47e-13)
+  ok   398  G6(b) N = T^3-T-1, psi = (24,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 1.20e-15), Fr_psi the companion matrix of the beta's
+  ok   399  G6(b) N = T^3-T-1, psi = (24,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 1.12e-14)
+  ok   400  G6(b) N = T^3-T-1, psi = (24,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   401  G6(b) N = T^3-T-1, psi = (25,) (odd, primitive): deg L = 2 = deg N - 1
+  ok   402  G6(b) N = T^3-T-1, psi = (25,) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   403  G6(b) N = T^3-T-1, psi = (25,) ODD: L(1) = 1.669999 != 0, no (1-u) factor
+  ok   404  G6(b) N = T^3-T-1, psi = (25,): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.10e-13)
+  ok   405  G6(b) N = T^3-T-1, psi = (25,): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 2.32e-15), Fr_psi the companion matrix of the beta's
+  ok   406  G6(b) N = T^3-T-1, psi = (25,): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 2.25e-14)
+  ok   407  G6(b) N = T^3-T-1, psi = (25,): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   408  G6(b) N = T^3-T-1: 25 of the 25 nontrivial characters are primitive (not induced from a proper divisor of N); all of them have deg L = deg N - 1
+  --      G6(b) N = T^3-T-1: the level-N graded bond (disc part) is (1)_+ from the trivial character plus 50 odd L-zeros from the 25 nontrivial characters
+  FAIL 409  G6(b) N = T^3-T-1 BRIEF: the level-N graded bond (1)_+ (+) (+)_{psi != 1} (beta_{psi,i})_- has ALL its odd modes on the Weil circle |beta| = sqrt q; characters contributing a mode off that circle: [((2,), 1), ((4,), 1), ((6,), 1), ((8,), 1), ((10,), 1), ((12,), 1), ((14,), 1), ((16,), 1), ((18,), 1), ((20,), 1), ((22,), 1), ((24,), 1)]
+  ok   410  G6(b) N = T^3-T-1 CORRECTED: for a PRIMITIVE psi at most one odd mode is off the Weil circle, namely the trivial zero beta = 1 that the factor (1-u) contributes when psi is even; the imprimitive characters (N composite) contribute one modulus-1 mode per missing Euler factor
+  ok   411  G6(b) N = T(T^2+1), psi trivial: the truncated sum sum_{deg f < deg N} psi(f) u^(deg f) = [1.0, 2.0, 5.0] is NOT the L-function of the trivial character, which is prod_{P|N}(1-u^(deg P))/(1-qu) and is not a polynomial of degree deg N - 1
+  ok   412  G6(b) N = T(T^2+1), psi = (0, 1) (odd, imprimitive): deg L = 2 = deg N - 1
+  ok   413  G6(b) N = T(T^2+1), psi = (0, 1) IMPRIMITIVE (induced from a proper divisor of N): the root moduli are ['1.0000000', '1.7320508'] -- 1 of them equal 1, from the Euler factors prod_{P|N, P not| M} (1 - psi*(P) u^(deg P)) that the induction inserts; only the primitive part obeys Weil
+  ok   414  G6(b) N = T(T^2+1), psi = (0, 1): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 4.19e-15)
+  ok   415  G6(b) N = T(T^2+1), psi = (0, 1): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 9.16e-16), Fr_psi the companion matrix of the beta's
+  ok   416  G6(b) N = T(T^2+1), psi = (0, 1): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 7.32e-15)
+  ok   417  G6(b) N = T(T^2+1), psi = (0, 1): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   418  G6(b) N = T(T^2+1), psi = (0, 2) (even, imprimitive): deg L = 2 = deg N - 1
+  ok   419  G6(b) N = T(T^2+1), psi = (0, 2) IMPRIMITIVE (induced from a proper divisor of N): the root moduli are ['1.0000000', '1.0000000'] -- 2 of them equal 1, from the Euler factors prod_{P|N, P not| M} (1 - psi*(P) u^(deg P)) that the induction inserts; only the primitive part obeys Weil
+  ok   420  G6(b) N = T(T^2+1), psi = (0, 2): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 2.28e-15)
+  ok   421  G6(b) N = T(T^2+1), psi = (0, 2): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 4.44e-16), Fr_psi the companion matrix of the beta's
+  ok   422  G6(b) N = T(T^2+1), psi = (0, 2): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 3.55e-15)
+  ok   423  G6(b) N = T(T^2+1), psi = (0, 2): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   424  G6(b) N = T(T^2+1), psi = (0, 3) (odd, imprimitive): deg L = 2 = deg N - 1
+  ok   425  G6(b) N = T(T^2+1), psi = (0, 3) IMPRIMITIVE (induced from a proper divisor of N): the root moduli are ['1.0000000', '1.7320508'] -- 1 of them equal 1, from the Euler factors prod_{P|N, P not| M} (1 - psi*(P) u^(deg P)) that the induction inserts; only the primitive part obeys Weil
+  ok   426  G6(b) N = T(T^2+1), psi = (0, 3): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 3.47e-15)
+  ok   427  G6(b) N = T(T^2+1), psi = (0, 3): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 7.11e-16), Fr_psi the companion matrix of the beta's
+  ok   428  G6(b) N = T(T^2+1), psi = (0, 3): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 7.54e-15)
+  ok   429  G6(b) N = T(T^2+1), psi = (0, 3): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   430  G6(b) N = T(T^2+1), psi = (0, 4) (even, imprimitive): deg L = 2 = deg N - 1
+  ok   431  G6(b) N = T(T^2+1), psi = (0, 4) IMPRIMITIVE (induced from a proper divisor of N): the root moduli are ['1.0000000', '1.0000000'] -- 2 of them equal 1, from the Euler factors prod_{P|N, P not| M} (1 - psi*(P) u^(deg P)) that the induction inserts; only the primitive part obeys Weil
+  ok   432  G6(b) N = T(T^2+1), psi = (0, 4): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 3.92e-15)
+  ok   433  G6(b) N = T(T^2+1), psi = (0, 4): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 3.34e-16), Fr_psi the companion matrix of the beta's
+  ok   434  G6(b) N = T(T^2+1), psi = (0, 4): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 3.56e-15)
+  ok   435  G6(b) N = T(T^2+1), psi = (0, 4): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   436  G6(b) N = T(T^2+1), psi = (0, 5) (odd, imprimitive): deg L = 2 = deg N - 1
+  ok   437  G6(b) N = T(T^2+1), psi = (0, 5) IMPRIMITIVE (induced from a proper divisor of N): the root moduli are ['1.0000000', '1.7320508'] -- 1 of them equal 1, from the Euler factors prod_{P|N, P not| M} (1 - psi*(P) u^(deg P)) that the induction inserts; only the primitive part obeys Weil
+  ok   438  G6(b) N = T(T^2+1), psi = (0, 5): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.85e-14)
+  ok   439  G6(b) N = T(T^2+1), psi = (0, 5): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 6.28e-16), Fr_psi the companion matrix of the beta's
+  ok   440  G6(b) N = T(T^2+1), psi = (0, 5): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 6.40e-15)
+  ok   441  G6(b) N = T(T^2+1), psi = (0, 5): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   442  G6(b) N = T(T^2+1), psi = (0, 6) (even, imprimitive): deg L = 2 = deg N - 1
+  ok   443  G6(b) N = T(T^2+1), psi = (0, 6) IMPRIMITIVE (induced from a proper divisor of N): the root moduli are ['1.0000000', '1.0000000'] -- 2 of them equal 1, from the Euler factors prod_{P|N, P not| M} (1 - psi*(P) u^(deg P)) that the induction inserts; only the primitive part obeys Weil
+  ok   444  G6(b) N = T(T^2+1), psi = (0, 6): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.69e-14)
+  ok   445  G6(b) N = T(T^2+1), psi = (0, 6): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 7.77e-16), Fr_psi the companion matrix of the beta's
+  ok   446  G6(b) N = T(T^2+1), psi = (0, 6): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 7.11e-15)
+  ok   447  G6(b) N = T(T^2+1), psi = (0, 6): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   448  G6(b) N = T(T^2+1), psi = (0, 7) (odd, imprimitive): deg L = 2 = deg N - 1
+  ok   449  G6(b) N = T(T^2+1), psi = (0, 7) IMPRIMITIVE (induced from a proper divisor of N): the root moduli are ['1.0000000', '1.7320508'] -- 1 of them equal 1, from the Euler factors prod_{P|N, P not| M} (1 - psi*(P) u^(deg P)) that the induction inserts; only the primitive part obeys Weil
+  ok   450  G6(b) N = T(T^2+1), psi = (0, 7): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 3.88e-14)
+  ok   451  G6(b) N = T(T^2+1), psi = (0, 7): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 5.55e-16), Fr_psi the companion matrix of the beta's
+  ok   452  G6(b) N = T(T^2+1), psi = (0, 7): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 5.02e-15)
+  ok   453  G6(b) N = T(T^2+1), psi = (0, 7): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   454  G6(b) N = T(T^2+1), psi = (1, 0) (odd, imprimitive): deg L = 2 = deg N - 1
+  ok   455  G6(b) N = T(T^2+1), psi = (1, 0) IMPRIMITIVE (induced from a proper divisor of N): the root moduli are ['1.0000000', '1.0000000'] -- 2 of them equal 1, from the Euler factors prod_{P|N, P not| M} (1 - psi*(P) u^(deg P)) that the induction inserts; only the primitive part obeys Weil
+  ok   456  G6(b) N = T(T^2+1), psi = (1, 0): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 2.45e-15)
+  ok   457  G6(b) N = T(T^2+1), psi = (1, 0): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 6.66e-16), Fr_psi the companion matrix of the beta's
+  ok   458  G6(b) N = T(T^2+1), psi = (1, 0): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 5.33e-15)
+  ok   459  G6(b) N = T(T^2+1), psi = (1, 0): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   460  G6(b) N = T(T^2+1), psi = (1, 1) (even, primitive): deg L = 2 = deg N - 1
+  ok   461  G6(b) N = T(T^2+1), psi = (1, 1) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   462  G6(b) N = T(T^2+1), psi = (1, 1) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 8.01e-16; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   463  G6(b) N = T(T^2+1), psi = (1, 1): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.17e-14)
+  ok   464  G6(b) N = T(T^2+1), psi = (1, 1): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 4.97e-16), Fr_psi the companion matrix of the beta's
+  ok   465  G6(b) N = T(T^2+1), psi = (1, 1): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 5.62e-15)
+  ok   466  G6(b) N = T(T^2+1), psi = (1, 1): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   467  G6(b) N = T(T^2+1), psi = (1, 2) (odd, primitive): deg L = 2 = deg N - 1
+  ok   468  G6(b) N = T(T^2+1), psi = (1, 2) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   469  G6(b) N = T(T^2+1), psi = (1, 2) ODD: L(1) = 2.828427 != 0, no (1-u) factor
+  ok   470  G6(b) N = T(T^2+1), psi = (1, 2): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.07e-14)
+  ok   471  G6(b) N = T(T^2+1), psi = (1, 2): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 7.56e-16), Fr_psi the companion matrix of the beta's
+  ok   472  G6(b) N = T(T^2+1), psi = (1, 2): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 6.13e-15)
+  ok   473  G6(b) N = T(T^2+1), psi = (1, 2): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   474  G6(b) N = T(T^2+1), psi = (1, 3) (even, primitive): deg L = 2 = deg N - 1
+  ok   475  G6(b) N = T(T^2+1), psi = (1, 3) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   476  G6(b) N = T(T^2+1), psi = (1, 3) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 7.02e-16; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   477  G6(b) N = T(T^2+1), psi = (1, 3): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 7.39e-15)
+  ok   478  G6(b) N = T(T^2+1), psi = (1, 3): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 4.58e-16), Fr_psi the companion matrix of the beta's
+  ok   479  G6(b) N = T(T^2+1), psi = (1, 3): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 3.55e-15)
+  ok   480  G6(b) N = T(T^2+1), psi = (1, 3): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   481  G6(b) N = T(T^2+1), psi = (1, 4) (odd, primitive): deg L = 2 = deg N - 1
+  ok   482  G6(b) N = T(T^2+1), psi = (1, 4) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   483  G6(b) N = T(T^2+1), psi = (1, 4) ODD: L(1) = 4.000000 != 0, no (1-u) factor
+  ok   484  G6(b) N = T(T^2+1), psi = (1, 4): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 5.39e-15)
+  ok   485  G6(b) N = T(T^2+1), psi = (1, 4): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 1.37e-15), Fr_psi the companion matrix of the beta's
+  ok   486  G6(b) N = T(T^2+1), psi = (1, 4): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 1.11e-14)
+  ok   487  G6(b) N = T(T^2+1), psi = (1, 4): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   488  G6(b) N = T(T^2+1), psi = (1, 5) (even, primitive): deg L = 2 = deg N - 1
+  ok   489  G6(b) N = T(T^2+1), psi = (1, 5) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   490  G6(b) N = T(T^2+1), psi = (1, 5) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 2.81e-15; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   491  G6(b) N = T(T^2+1), psi = (1, 5): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 6.94e-15)
+  ok   492  G6(b) N = T(T^2+1), psi = (1, 5): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 1.29e-15), Fr_psi the companion matrix of the beta's
+  ok   493  G6(b) N = T(T^2+1), psi = (1, 5): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 1.14e-14)
+  ok   494  G6(b) N = T(T^2+1), psi = (1, 5): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   495  G6(b) N = T(T^2+1), psi = (1, 6) (odd, primitive): deg L = 2 = deg N - 1
+  ok   496  G6(b) N = T(T^2+1), psi = (1, 6) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 2 nontrivial roots ['1.732050808', '1.732050808'] (Weil)
+  ok   497  G6(b) N = T(T^2+1), psi = (1, 6) ODD: L(1) = 2.828427 != 0, no (1-u) factor
+  ok   498  G6(b) N = T(T^2+1), psi = (1, 6): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 3.47e-14)
+  ok   499  G6(b) N = T(T^2+1), psi = (1, 6): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 2.39e-15), Fr_psi the companion matrix of the beta's
+  ok   500  G6(b) N = T(T^2+1), psi = (1, 6): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 2.12e-14)
+  ok   501  G6(b) N = T(T^2+1), psi = (1, 6): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   502  G6(b) N = T(T^2+1), psi = (1, 7) (even, primitive): deg L = 2 = deg N - 1
+  ok   503  G6(b) N = T(T^2+1), psi = (1, 7) PRIMITIVE: |beta| = sqrt q = 1.7320508 for the 1 nontrivial roots ['1.732050808'] (Weil)
+  ok   504  G6(b) N = T(T^2+1), psi = (1, 7) EVEN (trivial on F_3^x): (1-u) divides L, L(1) = 1.69e-15; the split-off root beta = 1 has |beta| = 1, NOT sqrt q, so that odd mode is off the Weil circle
+  ok   505  G6(b) N = T(T^2+1), psi = (1, 7): the truncated sum agrees with the Euler product prod_P (1 - psi(P) u^(deg P))^(-1) to order u^5 (deviation 1.19e-14)
+  ok   506  G6(b) N = T(T^2+1), psi = (1, 7): det(1 - w Fr_psi) = L(w,psi) coefficient by coefficient (deviation 8.95e-16), Fr_psi the companion matrix of the beta's
+  ok   507  G6(b) N = T(T^2+1), psi = (1, 7): sdet(1 - w E_psi) = det(1 - w q Fr_psi)/det(1 - w Fr_psi) = L(qw,psi)/L(w,psi) = L(2s-1,psi)/L(2s,psi) with w = q^(-2s), as an identity of rational functions of w (numerator deviation 9.06e-15)
+  ok   508  G6(b) N = T(T^2+1), psi = (1, 7): the disc part of the graded divisor is ODD ONLY, nu(beta_i) = -1 for all 2 modes; no even disc eigenvalue (|q beta| >= 5.196152 > q)
+  ok   509  G6(b) N = T(T^2+1): 7 of the 15 nontrivial characters are primitive (not induced from a proper divisor of N); all of them have deg L = deg N - 1
+  --      G6(b) N = T(T^2+1): the level-N graded bond (disc part) is (1)_+ from the trivial character plus 30 odd L-zeros from the 15 nontrivial characters
+  FAIL 510  G6(b) N = T(T^2+1) BRIEF: the level-N graded bond (1)_+ (+) (+)_{psi != 1} (beta_{psi,i})_- has ALL its odd modes on the Weil circle |beta| = sqrt q; characters contributing a mode off that circle: [((0, 1), 1), ((0, 2), 2), ((0, 3), 1), ((0, 4), 2), ((0, 5), 1), ((0, 6), 2), ((0, 7), 1), ((1, 0), 2), ((1, 1), 1), ((1, 3), 1), ((1, 5), 1), ((1, 7), 1)]
+  ok   511  G6(b) N = T(T^2+1) CORRECTED: for a PRIMITIVE psi at most one odd mode is off the Weil circle, namely the trivial zero beta = 1 that the factor (1-u) contributes when psi is even; the imprimitive characters (N composite) contribute one modulus-1 mode per missing Euler factor
+  ok   512  G6(b): the trivial character carries zeta_{F_q(T)}(2s-1)/zeta(2s) = sdet(1 - w E_S) at g = 0, which is (1-w)/(1-q^2 w): a single EVEN disc line at e = 1, the vacuum
+
+====================================================================================================
+TALLY
+====================================================================================================
+  failing checks:
+    #46: G1(d) BRIEF: spec(M_0) u {+-1 with multiplicity |E|-|V|} = spec(B)/sqrt q on the five regular cores (max deviation 7.65e-01)
+    #68: G1(c) BRIEF, applied to a c = 1 junction carrying a LOOP T_vv = 1/2: ord_0 p = 2 dim ker(I-C) = 2; measured ord_0 p = 1, p = z*(6*z**3 - z**2 - z - 3)/6
+    #106: G2(e) D3: [z^2] p = -q^(1-g) = -1  (brief's displayed formula); actual [z^2] p = 0, ord_0 p = 4
+    #131: G3(d) D2 [modal Hasse-Weil reset]: the brief's nu(z_n) = -m_n = -1 at each Hasse-Weil resonance; measured [-2, -2, -2, -2]
+    #133: G3(d) D2 [modal Hasse-Weil reset]: nu(0) = 16; the brief's nu(z_n) = -m_n would give -2 for the double delay root, but the EVEN sector also carries 0 with multiplicity 20 (from Ad_Z), so the delay value is NOT purely odd
+    #134: G3(e) D2 [modal Hasse-Weil reset]: every odd eigenvalue of EE has one modulus; observed moduli [0.0, 0.8408964] -- RH(Y) on the FULL six-dimensional model would require this and it fails, the delay modes give modulus 0
+    #148: G3(d) D2 [random reset]: the brief's nu(z_n) = -m_n = -1 at each Hasse-Weil resonance; measured [-2, -2, -2, -2]
+    #150: G3(d) D2 [random reset]: nu(0) = 14; the brief's nu(z_n) = -m_n would give -2 for the double delay root, but the EVEN sector also carries 0 with multiplicity 18 (from Ad_Z), so the delay value is NOT purely odd
+    #151: G3(e) D2 [random reset]: every odd eigenvalue of EE has one modulus; observed moduli [0.0, 0.8408964] -- RH(Y) on the FULL six-dimensional model would require this and it fails, the delay modes give modulus 0
+    #161: G4(b): vartheta^2 in (1/q, 1) for EVERY 0 < a < q+1 with a != 1 (brief's claim); counterexamples found: [('2', '1/4', '8/5'), ('2', '1/2', '4/3'), ('2', '3/4', '8/7'), ('3', '1/4', '2'), ('3', '1/2', '3/2'), ('3', '3/4', '6/5'), ('5', '1/4', '5/2'), ('5', '1/2', '5/3'), ('5', '3/4', '5/4')]
+    #172: G4(c) D2: at f = 1/5 the four Hasse-Weil moduli are no longer equal at any vertex (the brief's 'the Hasse-Weil quartet leaves the circle |z| = 2^(-1/4)', read as a loss of the equal-modulus property); measured spreads {A:6.7e-16, B:5.6e-16, C:1.6e-15, D:7.8e-16, E:2.0e-15, F:2.0e-15}
+    #175: G4(c) D2: 'the Perron pair moves inward without reaching q^(-1/2) for finite f' (brief), read as vartheta staying above q^(-1/2)
+    #409: G6(b) N = T^3-T-1 BRIEF: the level-N graded bond (1)_+ (+) (+)_{psi != 1} (beta_{psi,i})_- has ALL its odd modes on the Weil circle |beta| = sqrt q; characters contributing a mode off that circle: [((2,), 1), ((4,), 1), ((6,), 1), ((8,), 1), ((10,), 1), ((12,), 1), ((14,), 1), ((16,), 1), ((18,), 1), ((20,), 1), ((22,), 1), ((24,), 1)]
+    #510: G6(b) N = T(T^2+1) BRIEF: the level-N graded bond (1)_+ (+) (+)_{psi != 1} (beta_{psi,i})_- has ALL its odd modes on the Weil circle |beta| = sqrt q; characters contributing a mode off that circle: [((0, 1), 1), ((0, 2), 2), ((0, 3), 1), ((0, 4), 2), ((0, 5), 1), ((0, 6), 2), ((0, 7), 1), ((1, 0), 2), ((1, 1), 1), ((1, 3), 1), ((1, 5), 1), ((1, 7), 1)]
+
+CHECKS: 498 passed, 14 failed

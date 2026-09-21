@@ -209,3 +209,4 @@ TNmeasure	\mu_{\mathrm{sp}}	positive spectral measure for smeared features	conti
 reb	\varOmega	rebound density inside the model space (reinsertion state of the renewal generator)	Riemann channel	RC-04H	never \Omega, which is the Casimir
 rdens	\mathsf s	density (state) on the model space in the renewal channel, also the target density of the inverse problem	Riemann channel	RC-04H	never rho (a zero) or sigma (a real part)
 rvec	\mathsf v	generic vector of the model space in the exit and orbit-state formulas	Riemann channel	RC-04H	-
+jtheta	\theta_{\mathrm J}	Jacobi theta function, the sum over the integers of exp(-pi n^2 y)	Riemann channel	RC-04P	the bond state of the GL_1 dilation bond over Q

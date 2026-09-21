@@ -1,0 +1,218 @@
+GL_1 bond numerics: the class group as bond, the theta functional as its state.
+
+Blind numerics lane for `notes/gl1-bond/brief.md` (claims B1--B5).
+Run BLIND to `notes/gl1-bond/proofs.md`.  Deterministic; seed 20260921;
+author claude:opus.  Ledger rows are D01, D02, ...; the two CURVES are D2 and D3.
+
+====================================================================================================
+SECTION 1   the curves, their point counts and the Weil numbers   [B1(d), 04k]
+====================================================================================================
+  --           curve D2: y^2 + y = x^3 + x + 1 over F_2;  N_k (k=1..6) = [1, 5, 13, 25, 41, 65]
+  ok   [L 421]  D01 curve D2: P(T) = prod_i (1 - alpha_i T) with the 04k Weil numbers [1 + I, 1 - I] equals the 04k numerator 2*T**2 - 2*T + 1
+  ok   [L 424]  D01 curve D2: |alpha_i| = sqrt(q) = sqrt(2) for both Weil numbers (Hasse; B5(b) calls this NOT forced by B1--B4)
+  ok   [L 427]  D01 curve D2: N_1 = 1 + q - sum alpha_i = 1 by direct enumeration of C(F_q) (point at infinity included)
+  ok   [L 438]  D02 curve D2: N_k = 1 + q^k - sum_i alpha_i^k for k = 1..6: enumerated [1, 5, 13, 25, 41, 65] = predicted [1, 5, 13, 25, 41, 65]
+  --           curve D3: y^2 = x^3 + x + 1 over F_3;  N_k (k=1..6) = [4, 16, 28, 64, 244, 784]
+  ok   [L 421]  D01 curve D3: P(T) = prod_i (1 - alpha_i T) with the 04k Weil numbers [sqrt(3)*I, -sqrt(3)*I] equals the 04k numerator 3*T**2 + 1
+  ok   [L 424]  D01 curve D3: |alpha_i| = sqrt(q) = sqrt(3) for both Weil numbers (Hasse; B5(b) calls this NOT forced by B1--B4)
+  ok   [L 427]  D01 curve D3: N_1 = 1 + q - sum alpha_i = 4 by direct enumeration of C(F_q) (point at infinity included)
+  ok   [L 438]  D02 curve D3: N_k = 1 + q^k - sum_i alpha_i^k for k = 1..6: enumerated [4, 16, 28, 64, 244, 784] = predicted [4, 16, 28, 64, 244, 784]
+
+====================================================================================================
+SECTION 2   closed points, effective divisors and a_n   [B1(a), B1(b), B1(c)]
+====================================================================================================
+  --           curve D2: closed-point counts b_d (d = 1..6) = [1, 2, 4, 5, 8, 8]
+  ok   [L 477]  D03 curve D2: sum_(d | k) d b_d = N_k for k = 1..6 (the Frobenius orbits of C(F_(q^k)) partition into closed points)
+  ok   [L 481]  D03 curve D2: b_k = (1/k) sum_(d | k) mu(k/d) N_d for k = 1..6 (Mobius inversion of the same partition)
+  ok   [L 483]  D03 curve D2: the b_1 = 1 degree-one closed points are the F_q-points, and the point at infinity P_0 = O is one of them (a rational cusp of the affine ring)
+  ok   [L 500]  D04 curve D2: a_n = #(effective divisors of degree n) built from the closed points = [1, 1, 3, 7, 15, 31, 63] equals the Taylor coefficients of Z(T) = P(T)/((1-T)(1-qT)) = [1, 1, 3, 7, 15, 31, 63], n = 0..6   [B1(a)]
+  ok   [L 510]  D05 curve D2: a_n = h (q^(n+1-g) - 1)/(q-1) for every n > 2g-2 = 0 (h = 1, g = 1): [1, 3, 7, 15, 31, 63] = [1, 3, 7, 15, 31, 63]   [B1(b)]
+  ok   [L 513]  D05 curve D2: the only deviation from the generic formula sits at n = 0 <= 2g-2 = 0: a_0 = 1 but h(q^(1-g)-1)/(q-1) = 0   [B1(b)]
+  ok   [L 519]  D06 curve D2: for n >= 1 the sequence a_n satisfies a_(n+1) = (q+1) a_n - q a_(n-1), i.e. it is a combination of the two geometric modes q^n and 1 -- the Perron pair of B1(c); the characteristic roots are {q, 1} = {2, 1}
+  ok   [L 525]  D06 curve D2: explicitly a_n = A q^n + B with A = h/(q-1) = 1 and B = -h/(q-1) = -1 for every n >= 1 (the eigenvalues q and 1 of the degree-shift with their Perron weights), while the same closed form gives 0 at n = 0 and a_0 = 1: the whole deviation is the single special degree n = 0 = 2g-2   [B1(b),(c)]
+  --           curve D3: closed-point counts b_d (d = 1..6) = [4, 6, 8, 12, 48, 124]
+  ok   [L 477]  D03 curve D3: sum_(d | k) d b_d = N_k for k = 1..6 (the Frobenius orbits of C(F_(q^k)) partition into closed points)
+  ok   [L 481]  D03 curve D3: b_k = (1/k) sum_(d | k) mu(k/d) N_d for k = 1..6 (Mobius inversion of the same partition)
+  ok   [L 483]  D03 curve D3: the b_1 = 4 degree-one closed points are the F_q-points, and the point at infinity P_0 = O is one of them (a rational cusp of the affine ring)
+  ok   [L 500]  D04 curve D3: a_n = #(effective divisors of degree n) built from the closed points = [1, 4, 16, 52, 160, 484, 1456] equals the Taylor coefficients of Z(T) = P(T)/((1-T)(1-qT)) = [1, 4, 16, 52, 160, 484, 1456], n = 0..6   [B1(a)]
+  ok   [L 510]  D05 curve D3: a_n = h (q^(n+1-g) - 1)/(q-1) for every n > 2g-2 = 0 (h = 4, g = 1): [4, 16, 52, 160, 484, 1456] = [4, 16, 52, 160, 484, 1456]   [B1(b)]
+  ok   [L 513]  D05 curve D3: the only deviation from the generic formula sits at n = 0 <= 2g-2 = 0: a_0 = 1 but h(q^(1-g)-1)/(q-1) = 0   [B1(b)]
+  ok   [L 519]  D06 curve D3: for n >= 1 the sequence a_n satisfies a_(n+1) = (q+1) a_n - q a_(n-1), i.e. it is a combination of the two geometric modes q^n and 1 -- the Perron pair of B1(c); the characteristic roots are {q, 1} = {3, 1}
+  ok   [L 525]  D06 curve D3: explicitly a_n = A q^n + B with A = h/(q-1) = 2 and B = -h/(q-1) = -2 for every n >= 1 (the eigenvalues q and 1 of the degree-shift with their Perron weights), while the same closed form gives 0 at n = 0 and a_0 = 1: the whole deviation is the single special degree n = 0 = 2g-2   [B1(b),(c)]
+
+====================================================================================================
+SECTION 3   the group law and Pic^0 = E(F_q)   [B1(d), B3(a)]
+====================================================================================================
+  ok   [L 542]  D07 curve D2: every enumerated point of C(F_q) satisfies the Weierstrass equation (1 points, infinity included)
+  ok   [L 548]  D07 curve D2: over F_q the group law is closed, commutative, has identity O and inverses (all 1^2 pairs)
+  ok   [L 553]  D07 curve D2: associativity over F_q, all 1^3 triples
+  ok   [L 564]  D07 curve D2: over F_(q^3) (13 points) every point is on the curve and associativity holds on 60 seeded random triples (seed 20260921)
+  ok   [L 579]  D08 curve D2: |Pic^0(K)| = |E(F_q)| = h = 1, matching the class number stated in shard 04k (Z/1)   [B1(d), B3(a)]
+  ok   [L 599]  D08 curve D2: Pic^0 = E(F_2) = {O} is trivial, h = 1 (shard 04k: |Pic(R)| = 1)
+  ok   [L 604]  D09 curve D2: B1(d) P(T) = (1-T)(1-qT) + hT = 1 - (q+1-h)T + qT^2 = 2*T**2 - 2*T + 1 equals the 04k numerator
+  ok   [L 607]  D09 curve D2: B1(d) Z(T) = 1 + hT/((1-T)(1-qT)) as rational functions
+  ok   [L 609]  D09 curve D2: h = P(1) = det(1 - Fr | H^1) = N_1 = 1: the bond dimension of the class-group bond is the zeta numerator at T = 1   [B1(d)]
+  ok   [L 542]  D07 curve D3: every enumerated point of C(F_q) satisfies the Weierstrass equation (4 points, infinity included)
+  ok   [L 548]  D07 curve D3: over F_q the group law is closed, commutative, has identity O and inverses (all 4^2 pairs)
+  ok   [L 553]  D07 curve D3: associativity over F_q, all 4^3 triples
+  ok   [L 564]  D07 curve D3: over F_(q^3) (28 points) every point is on the curve and associativity holds on 60 seeded random triples (seed 20260921)
+  ok   [L 579]  D08 curve D3: |Pic^0(K)| = |E(F_q)| = h = 4, matching the class number stated in shard 04k (Z/4)   [B1(d), B3(a)]
+  ok   [L 583]  D08 curve D3: Pic^0 = E(F_3) is CYCLIC of order 4 (an element of order 4 exists; orders [1, 2, 4, 4]), i.e. Z/4 as shard 04k states; it is not (Z/2)^2
+  ok   [L 594]  D08 curve D3: the discrete logarithm Pic^0 -> Z/4 to the chosen generator is a bijection onto {0,1,2,3}
+  ok   [L 604]  D09 curve D3: B1(d) P(T) = (1-T)(1-qT) + hT = 1 - (q+1-h)T + qT^2 = 3*T**2 + 1 equals the 04k numerator
+  ok   [L 607]  D09 curve D3: B1(d) Z(T) = 1 + hT/((1-T)(1-qT)) as rational functions
+  ok   [L 609]  D09 curve D3: h = P(1) = det(1 - Fr | H^1) = N_1 = 4: the bond dimension of the class-group bond is the zeta numerator at T = 1   [B1(d)]
+  ok   [L 624]  D29 B5(b): for the genus-one shape P(T) = 1 - (q+1-h)T + qT^2 the equal-modulus property |alpha_i| = sqrt q holds EXACTLY when |h - (q+1)| <= 2 sqrt q; the formula of B1(d) by itself does not force it (checked for q = 2,3,4,5 and every h in range)
+  ok   [L 630]  D29 B5(b) witness: q = 2, h = 6 gives P(T) = 2*T**2 + 3*T + 1 with alpha = [-1, -2], moduli 1 and 2, not sqrt 2: 'the Frobenius roots are fixed by h' is true, but nothing in B1(d) forces |alpha| = sqrt q -- Hasse is a separate input, as B5(b) says
+
+====================================================================================================
+SECTION 4   h^0 by explicit linear algebra on L(n P_0)   [B2(a), step 3]
+====================================================================================================
+  ok   [L 687]  D10 curve D2: L(0 P_0) = span{x^i y^j : 2i+3j <= 0, j <= 1} has 1 monomials [(0, 0)] whose value matrix at the 64 affine points of C(F_(q^6)) has rank 1; h^0(0 P_0) = 1 = max(deg, 1)  (explicit linear algebra, no Riemann--Roch)
+  ok   [L 687]  D10 curve D2: L(1 P_0) = span{x^i y^j : 2i+3j <= 1, j <= 1} has 1 monomials [(0, 0)] whose value matrix at the 64 affine points of C(F_(q^6)) has rank 1; h^0(1 P_0) = 1 = max(deg, 1)  (explicit linear algebra, no Riemann--Roch)
+  ok   [L 687]  D10 curve D2: L(2 P_0) = span{x^i y^j : 2i+3j <= 2, j <= 1} has 2 monomials [(0, 0), (1, 0)] whose value matrix at the 64 affine points of C(F_(q^6)) has rank 2; h^0(2 P_0) = 2 = max(deg, 1)  (explicit linear algebra, no Riemann--Roch)
+  ok   [L 687]  D10 curve D2: L(3 P_0) = span{x^i y^j : 2i+3j <= 3, j <= 1} has 3 monomials [(0, 0), (1, 0), (0, 1)] whose value matrix at the 64 affine points of C(F_(q^6)) has rank 3; h^0(3 P_0) = 3 = max(deg, 1)  (explicit linear algebra, no Riemann--Roch)
+  ok   [L 687]  D10 curve D2: L(4 P_0) = span{x^i y^j : 2i+3j <= 4, j <= 1} has 4 monomials [(0, 0), (1, 0), (0, 1), (2, 0)] whose value matrix at the 64 affine points of C(F_(q^6)) has rank 4; h^0(4 P_0) = 4 = max(deg, 1)  (explicit linear algebra, no Riemann--Roch)
+  ok   [L 693]  D10 curve D2: h^0(n P_0) for n = 0..4 by linear algebra = [1, 1, 2, 3, 4], i.e. h^0 = deg for deg >= 1 and h^0 = 1 at deg 0 -- the genus-one Riemann--Roch consequence the brief allows, here DERIVED for the divisors n P_0
+  ok   [L 712]  D11 curve D2: #L(0 P_0) = q^(h^0) = 2^1 = 2 distinct functions, counted by enumerating all 2 F_q-combinations of the basis and separating them by their values -- this is the theta value Theta(x f) = q^(h^0(D)) of B2(a)
+  ok   [L 712]  D11 curve D2: #L(1 P_0) = q^(h^0) = 2^1 = 2 distinct functions, counted by enumerating all 2 F_q-combinations of the basis and separating them by their values -- this is the theta value Theta(x f) = q^(h^0(D)) of B2(a)
+  ok   [L 712]  D11 curve D2: #L(2 P_0) = q^(h^0) = 2^2 = 4 distinct functions, counted by enumerating all 4 F_q-combinations of the basis and separating them by their values -- this is the theta value Theta(x f) = q^(h^0(D)) of B2(a)
+  ok   [L 712]  D11 curve D2: #L(3 P_0) = q^(h^0) = 2^3 = 8 distinct functions, counted by enumerating all 8 F_q-combinations of the basis and separating them by their values -- this is the theta value Theta(x f) = q^(h^0(D)) of B2(a)
+  ok   [L 712]  D11 curve D2: #L(4 P_0) = q^(h^0) = 2^4 = 16 distinct functions, counted by enumerating all 16 F_q-combinations of the basis and separating them by their values -- this is the theta value Theta(x f) = q^(h^0(D)) of B2(a)
+  ok   [L 687]  D10 curve D3: L(0 P_0) = span{x^i y^j : 2i+3j <= 0, j <= 1} has 1 monomials [(0, 0)] whose value matrix at the 783 affine points of C(F_(q^6)) has rank 1; h^0(0 P_0) = 1 = max(deg, 1)  (explicit linear algebra, no Riemann--Roch)
+  ok   [L 687]  D10 curve D3: L(1 P_0) = span{x^i y^j : 2i+3j <= 1, j <= 1} has 1 monomials [(0, 0)] whose value matrix at the 783 affine points of C(F_(q^6)) has rank 1; h^0(1 P_0) = 1 = max(deg, 1)  (explicit linear algebra, no Riemann--Roch)
+  ok   [L 687]  D10 curve D3: L(2 P_0) = span{x^i y^j : 2i+3j <= 2, j <= 1} has 2 monomials [(0, 0), (1, 0)] whose value matrix at the 783 affine points of C(F_(q^6)) has rank 2; h^0(2 P_0) = 2 = max(deg, 1)  (explicit linear algebra, no Riemann--Roch)
+  ok   [L 687]  D10 curve D3: L(3 P_0) = span{x^i y^j : 2i+3j <= 3, j <= 1} has 3 monomials [(0, 0), (1, 0), (0, 1)] whose value matrix at the 783 affine points of C(F_(q^6)) has rank 3; h^0(3 P_0) = 3 = max(deg, 1)  (explicit linear algebra, no Riemann--Roch)
+  ok   [L 687]  D10 curve D3: L(4 P_0) = span{x^i y^j : 2i+3j <= 4, j <= 1} has 4 monomials [(0, 0), (1, 0), (0, 1), (2, 0)] whose value matrix at the 783 affine points of C(F_(q^6)) has rank 4; h^0(4 P_0) = 4 = max(deg, 1)  (explicit linear algebra, no Riemann--Roch)
+  ok   [L 693]  D10 curve D3: h^0(n P_0) for n = 0..4 by linear algebra = [1, 1, 2, 3, 4], i.e. h^0 = deg for deg >= 1 and h^0 = 1 at deg 0 -- the genus-one Riemann--Roch consequence the brief allows, here DERIVED for the divisors n P_0
+  ok   [L 712]  D11 curve D3: #L(0 P_0) = q^(h^0) = 3^1 = 3 distinct functions, counted by enumerating all 3 F_q-combinations of the basis and separating them by their values -- this is the theta value Theta(x f) = q^(h^0(D)) of B2(a)
+  ok   [L 712]  D11 curve D3: #L(1 P_0) = q^(h^0) = 3^1 = 3 distinct functions, counted by enumerating all 3 F_q-combinations of the basis and separating them by their values -- this is the theta value Theta(x f) = q^(h^0(D)) of B2(a)
+  ok   [L 712]  D11 curve D3: #L(2 P_0) = q^(h^0) = 3^2 = 9 distinct functions, counted by enumerating all 9 F_q-combinations of the basis and separating them by their values -- this is the theta value Theta(x f) = q^(h^0(D)) of B2(a)
+  ok   [L 712]  D11 curve D3: #L(3 P_0) = q^(h^0) = 3^3 = 27 distinct functions, counted by enumerating all 27 F_q-combinations of the basis and separating them by their values -- this is the theta value Theta(x f) = q^(h^0(D)) of B2(a)
+  ok   [L 712]  D11 curve D3: #L(4 P_0) = q^(h^0) = 3^4 = 81 distinct functions, counted by enumerating all 81 F_q-combinations of the basis and separating them by their values -- this is the theta value Theta(x f) = q^(h^0(D)) of B2(a)
+
+====================================================================================================
+SECTION 5   the class map, per-class divisor counts, Riemann--Roch   [B1(a), B2, step 3-4]
+====================================================================================================
+  ok   [L 744]  D12 curve D2: for every closed point P of degree d <= 4 the trace Tr(P) = sum over the Frobenius orbit, computed with the group law over F_(q^d), is F_q-RATIONAL; it is the class of P - d P_0 in Pic^0 = E(F_q)
+  ok   [L 748]  D12 curve D2: on degree-one closed points the trace is the identity map E(F_q) -> Pic^0, and Tr(P_0) = O
+  ok   [L 776]  D13 curve D2: the explicit multiset enumeration of effective divisors gives [1, 1, 3, 7, 15] = a_n for n = 0..4, agreeing with the generating-function count of D04
+  ok   [L 801]  D13 curve D2: for n = 1..4 EVERY one of the h = 1 classes in Pic^n contains exactly (q^n - 1)/(q-1) = [1, 3, 7, 15] effective divisors; the empirical h^0 = log_q(1 + (q-1)*count) is therefore deg D, Riemann--Roch read off raw counting
+  ok   [L 807]  D13 curve D2: in degree 0 only the trivial class contains an effective divisor (the empty one), so h^0 = 1 on the trivial class and 0 on the other 0: the theta divisor of Pic^(g-1) = Pic^0 is the single principal class
+  ok   [L 843]  D14 curve D2: a_n = sum_([D] in Pic^n) (q^(h^0(D)) - 1)/(q-1) for n = 0..4, the sum taken over the h = 1 classes with h^0 read off the enumeration   [B1(a)]
+  ok   [L 852]  D14 curve D2: the two h^0 routes agree on every one of the 27 effective divisors of degree <= 4: enumeration-based h^0 == Riemann--Roch-consequence h^0
+  ok   [L 885]  D15 curve D2: Riemann--Roch h^0(D) - h^0(K_C - D) = deg D + 1 - g with g = 1 and K_C = 0, i.e. h^0(D) - h^0(-D) = deg D, on 72 seeded SIGNED divisors of degree 0..4 (multiplicities in -2..2)
+  ok   [L 889]  D15 curve D2: the same Riemann--Roch relation with h^0 taken from the raw enumeration of effective divisors in the class (independent of the Riemann--Roch shortcut), on the same 72 signed divisors
+  ok   [L 744]  D12 curve D3: for every closed point P of degree d <= 4 the trace Tr(P) = sum over the Frobenius orbit, computed with the group law over F_(q^d), is F_q-RATIONAL; it is the class of P - d P_0 in Pic^0 = E(F_q)
+  ok   [L 748]  D12 curve D3: on degree-one closed points the trace is the identity map E(F_q) -> Pic^0, and Tr(P_0) = O
+  ok   [L 776]  D13 curve D3: the explicit multiset enumeration of effective divisors gives [1, 4, 16, 52, 160] = a_n for n = 0..4, agreeing with the generating-function count of D04
+  ok   [L 801]  D13 curve D3: for n = 1..4 EVERY one of the h = 4 classes in Pic^n contains exactly (q^n - 1)/(q-1) = [1, 4, 13, 40] effective divisors; the empirical h^0 = log_q(1 + (q-1)*count) is therefore deg D, Riemann--Roch read off raw counting
+  ok   [L 807]  D13 curve D3: in degree 0 only the trivial class contains an effective divisor (the empty one), so h^0 = 1 on the trivial class and 0 on the other 3: the theta divisor of Pic^(g-1) = Pic^0 is the single principal class
+  ok   [L 843]  D14 curve D3: a_n = sum_([D] in Pic^n) (q^(h^0(D)) - 1)/(q-1) for n = 0..4, the sum taken over the h = 4 classes with h^0 read off the enumeration   [B1(a)]
+  ok   [L 852]  D14 curve D3: the two h^0 routes agree on every one of the 233 effective divisors of degree <= 4: enumeration-based h^0 == Riemann--Roch-consequence h^0
+  ok   [L 885]  D15 curve D3: Riemann--Roch h^0(D) - h^0(K_C - D) = deg D + 1 - g with g = 1 and K_C = 0, i.e. h^0(D) - h^0(-D) = deg D, on 74 seeded SIGNED divisors of degree 0..4 (multiplicities in -2..2)
+  ok   [L 889]  D15 curve D3: the same Riemann--Roch relation with h^0 taken from the raw enumeration of effective divisors in the class (independent of the Riemann--Roch shortcut), on the same 74 signed divisors
+
+====================================================================================================
+SECTION 6   functional equation, the Weyl involution, the superdeterminant   [B1(c), B2(b),(c)]
+====================================================================================================
+  ok   [L 903]  D16 curve D2: the functional equation Z(1/(qT)) = q^(1-g) T^(2-2g) Z(T) holds symbolically; at g = 1 it reads Z(1/(qT)) = Z(T)   [B2(b), step 4]
+  ok   [L 906]  D16 curve D2: the prefactor q^(1-g) T^(2-2g) is exactly 1 at g = 1, so the genus-one form 'Z(1/(qT)) = T^0 Z(T)' of step 4 is right
+  ok   [L 911]  D16 curve D2: P(1) = 1 and P(1/q) = 1/2 are both nonzero, so Z(T) has simple poles exactly at T = 1 and T = 1/q -- the two constant terms of B2(b)
+  ok   [L 903]  D16 curve D3: the functional equation Z(1/(qT)) = q^(1-g) T^(2-2g) Z(T) holds symbolically; at g = 1 it reads Z(1/(qT)) = Z(T)   [B2(b), step 4]
+  ok   [L 906]  D16 curve D3: the prefactor q^(1-g) T^(2-2g) is exactly 1 at g = 1, so the genus-one form 'Z(1/(qT)) = T^0 Z(T)' of step 4 is right
+  ok   [L 911]  D16 curve D3: P(1) = 4 and P(1/q) = 4/3 are both nonzero, so Z(T) has simple poles exactly at T = 1 and T = 1/q -- the two constant terms of B2(b)
+  ok   [L 918]  D16 control: the same general functional equation Z(1/(qT)) = q^(1-g) T^(2-2g) Z(T) holds at g = 0, q = 2 (P = 1) with the nontrivial prefactor 2 T^2, so the prefactor in B2(b) is not an artefact of g = 1
+  ok   [L 928]  D17 curve D2: [D] -> [K_C - D] = [-D] is an involution of Pic^0 (K_C = 0 at genus one) and the degree reflection n -> 2g-2-n is n -> -n   [B2(c)]
+  ok   [L 931]  D17 curve D2: the involution FIXES the theta divisor of Pic^(g-1) = Pic^0, which at genus one is the single principal class {O}   [B2(c)]
+  ok   [L 934]  D17 curve D2: the fixed locus of the involution is the 2-torsion, of size 1; for curve D3 it is STRICTLY LARGER than the theta divisor (2 classes vs 1), so 'the involution fixing the theta divisor' does not characterise it
+  ok   [L 928]  D17 curve D3: [D] -> [K_C - D] = [-D] is an involution of Pic^0 (K_C = 0 at genus one) and the degree reflection n -> 2g-2-n is n -> -n   [B2(c)]
+  ok   [L 931]  D17 curve D3: the involution FIXES the theta divisor of Pic^(g-1) = Pic^0, which at genus one is the single principal class {O}   [B2(c)]
+  ok   [L 934]  D17 curve D3: the fixed locus of the involution is the 2-torsion, of size 2; for curve D3 it is STRICTLY LARGER than the theta divisor (2 classes vs 1), so 'the involution fixing the theta divisor' does not characterise it
+  ok   [L 949]  D21 curve D2: sdet(1 - w E_S) with even spectrum {1, q, q alpha_i} and odd spectrum {alpha_i, q, q^2} equals (1-w) P(qw)/((1-q^2 w) P(w))   [thm:scattering-superdeterminant, cited by B1(c)]
+  ok   [L 954]  D21 curve D2: that superdeterminant is zeta_K(2s-1)/zeta_K(2s) = Z(qw)/Z(w) with w = q^(-2s)
+  ok   [L 959]  D21 curve D2: the FULL odd factor of sdet(1 - w E_S) is P(w)(1-qw)(1-q^2 w), not P(w): B1(c)'s 'P(T) = (1-T)(1-qT)Z(T) is its odd part' is the H^1 factor only, and in the variable w = T^2, not T
+  ok   [L 949]  D21 curve D3: sdet(1 - w E_S) with even spectrum {1, q, q alpha_i} and odd spectrum {alpha_i, q, q^2} equals (1-w) P(qw)/((1-q^2 w) P(w))   [thm:scattering-superdeterminant, cited by B1(c)]
+  ok   [L 954]  D21 curve D3: that superdeterminant is zeta_K(2s-1)/zeta_K(2s) = Z(qw)/Z(w) with w = q^(-2s)
+  ok   [L 959]  D21 curve D3: the FULL odd factor of sdet(1 - w E_S) is P(w)(1-qw)(1-q^2 w), not P(w): B1(c)'s 'P(T) = (1-T)(1-qT)Z(T) is its odd part' is the H^1 factor only, and in the variable w = T^2, not T
+  ok   [L 968]  D30 curve D2: the two Frobenius eigenvalues [1 + I, 1 - I] are DISTINCT, so Frobenius on H^1 (x) C is regular semisimple
+  ok   [L 976]  D30 curve D2: the commutant of Frobenius on H^1 (x) C is the 2-dimensional space of DIAGONAL matrices, so every Frobenius-normal metric is diagonal in the eigenbasis and only its one ratio is free: 'the symmetric ray is the Hodge metric' is vacuous at genus one, exactly as B5(b) says (it can only be tested at g >= 2)
+  ok   [L 968]  D30 curve D3: the two Frobenius eigenvalues [sqrt(3)*I, -sqrt(3)*I] are DISTINCT, so Frobenius on H^1 (x) C is regular semisimple
+  ok   [L 976]  D30 curve D3: the commutant of Frobenius on H^1 (x) C is the 2-dimensional space of DIAGONAL matrices, so every Frobenius-normal metric is diagonal in the eigenbasis and only its one ratio is free: 'the symmetric ray is the Hodge metric' is vacuous at genus one, exactly as B5(b) says (it can only be tested at g >= 2)
+
+====================================================================================================
+SECTION 7   class characters and the Hecke L-polynomials   [B3(b)]
+====================================================================================================
+  ok   [L1003]  D18 curve D2: the TRIVIAL class character gives L(T, 1) = sum_n a_n T^n = Z(T); coefficients [1, 1, 3, 7, 15] = [1, 1, 3, 7, 15]   [B3(b)]
+  ok   [L1029]  D18 curve D2: Pic^0 is trivial, so there is ONLY the trivial character and the single channel is the zeta channel; there are no monomial channels to see
+  ok   [L1003]  D18 curve D3: the TRIVIAL class character gives L(T, 1) = sum_n a_n T^n = Z(T); coefficients [1, 4, 16, 52, 160] = [1, 4, 16, 52, 160]   [B3(b)]
+  ok   [L1014]  D18 curve D3: for each of the 3 NONTRIVIAL class characters, L(T, chi) = sum_([D]) chi([D]) (q^(h^0)-1)/(q-1) T^(deg D) has constant term 1 and all coefficients in degrees 1..4 zero, i.e. L(T, chi) = 1, a polynomial of degree 2g-2 = 0   [B3(b)]
+  ok   [L1020]  D18 curve D3: the reason is character orthogonality, sum_([D] in Pic^n) chi([D]) = 0 for chi != 1, together with the CONSTANT per-class count (q^n-1)/(q-1) of D13
+  ok   [L1024]  D18 curve D3: the 4 class characters of Pic^0 = Z/4 are pairwise distinct; three nontrivial ones see no zeros (L = 1) and the trivial one carries Z(T) -- the three monomial channels plus the zeta channel of thm:d3-channels
+
+====================================================================================================
+SECTION 8   the cusps of the tree quotient   [B3(a),(c), step 7]
+====================================================================================================
+  ok   [L1040]  D19 curve D2: the cusp number STATED in shard 04k (def:elliptic-cavity) is 1 and the class number computed here is h = 1: #cusps = |Pic(R)| = |Pic^0(K)|   [B3(a)]
+  ok   [L1044]  D19 curve D2: Lorscheid's count h * deg(x) for the removed place x = P_0 of degree 1 gives 1 * 1 = 1 = 1   [B3(a), cit:lorscheid-cusp-count]
+  ok   [L1040]  D19 curve D3: the cusp number STATED in shard 04k (def:elliptic-cavity) is 4 and the class number computed here is h = 4: #cusps = |Pic(R)| = |Pic^0(K)|   [B3(a)]
+  ok   [L1044]  D19 curve D3: Lorscheid's count h * deg(x) for the removed place x = P_0 of degree 1 gives 4 * 1 = 4 = 4   [B3(a), cit:lorscheid-cusp-count]
+  ok   [L1052]  D20 curve D2: dim K_HW = 4 (two Frobenius eigenvalues, two square roots each) while the class-group bond has dimension h = 1; they do NOT coincide, as B3(c) says
+  ok   [L1052]  D20 curve D3: dim K_HW = 4 (two Frobenius eigenvalues, two square roots each) while the class-group bond has dimension h = 4; they coincide, as B3(c) says
+  ok   [L1056]  D20 B3(c): at genus one 4 = 4g, so 'the coincidence at D3 is the accident P(1) = 4 = 4g' is arithmetically consistent; the general statement is dim K_HW = 2 * 2g = 4g, equal to 4 only because g = 1
+
+====================================================================================================
+SECTION 9   Jacobi theta, the Mellin transform of its odd part, xi   [B4]
+====================================================================================================
+  ok   [L1096]  D22 theta(1/x) = sqrt(x) theta(x) at x = 0.33333333: |lhs - rhs| = 0.0 < 1e-30 (both sides summed directly, 40 working digits)   [B4(b)]
+  ok   [L1096]  D22 theta(1/x) = sqrt(x) theta(x) at x = 1.0: |lhs - rhs| = 0.0 < 1e-30 (both sides summed directly, 40 working digits)   [B4(b)]
+  ok   [L1096]  D22 theta(1/x) = sqrt(x) theta(x) at x = 7.0: |lhs - rhs| = 9.18e-41 < 1e-30 (both sides summed directly, 40 working digits)   [B4(b)]
+  ok   [L1125]  D23 bookkeeping: exactly (sympy) int_1^A u^(-s/2-1) du = (2/s)(1 - A^(-s/2)) and int_1^A x^((s-1)/2-1) dx = (2/(s-1))(A^((s-1)/2) - 1), so as A -> oo the first tends to 2/s for Re s > 0 and the second to -2/(s-1) for Re s < 1: these are the two elementary tails whose closed forms continue the B4(b) integral off the strip
+  ok   [L1134]  D23 bookkeeping at s = 0.5: at A = 1e200 those antiderivatives read 4.0 -> 2/s = 4.0 and 4.0 -> -2/(s-1) = 4.0, both inside the strip 0 < Re s < 1
+  ok   [L1134]  D23 bookkeeping at s = 0.8: at A = 1e200 those antiderivatives read 2.5 -> 2/s = 2.5 and 10.0 -> -2/(s-1) = 10.0, both inside the strip 0 < Re s < 1
+  ok   [L1145]  D23 at s = 0.5 the B4(b) integral equals 2 xi(s) = -7.95393245101303; |I - 2 xi| = 9.18e-41 < 1e-30
+  FAIL [L1148]  D23 at s = 0.5 the integral equals the value 2 xi(s)/(s(s-1)) = 31.8157298040521 PRINTED IN B4(b); |I - brief| = 39.8 (FAILS: the factor 1/(s(s-1)) is spurious)
+  ok   [L1152]  D23 at s = 0.5: the ratio I(s) / (2 xi(s)/(s(s-1))) = -0.25 is exactly s(s-1) = -0.25, pinning the discrepancy as the spurious factor s(s-1)
+  ok   [L1145]  D23 at s = 0.3 the B4(b) integral equals 2 xi(s) = -9.47772218383099; |I - 2 xi| = 1.84e-40 < 1e-30
+  FAIL [L1148]  D23 at s = 0.3 the integral equals the value 2 xi(s)/(s(s-1)) = 45.1320103991952 PRINTED IN B4(b); |I - brief| = 54.6 (FAILS: the factor 1/(s(s-1)) is spurious)
+  ok   [L1152]  D23 at s = 0.3: the ratio I(s) / (2 xi(s)/(s(s-1))) = -0.21 is exactly s(s-1) = -0.21, pinning the discrepancy as the spurious factor s(s-1)
+  ok   [L1145]  D23 at s = (0.7 + 0.2j) the B4(b) integral equals 2 xi(s) = (-7.21082652169378 - 2.32216652448505j); |I - 2 xi| = 4.59e-41 < 1e-30
+  FAIL [L1148]  D23 at s = (0.7 + 0.2j) the integral equals the value 2 xi(s)/(s(s-1)) = (23.4678274087756 + 16.7983708687484j) PRINTED IN B4(b); |I - brief| = 36.1 (FAILS: the factor 1/(s(s-1)) is spurious)
+  ok   [L1152]  D23 at s = (0.7 + 0.2j): the ratio I(s) / (2 xi(s)/(s(s-1))) = (-0.25 + 0.08j) is exactly s(s-1) = (-0.25 + 0.08j), pinning the discrepancy as the spurious factor s(s-1)
+  ok   [L1164]  D24 at s = 2.0 the tail int_A^(2A) (theta - 1 - x^(-1/2)) x^(s/2-1) dx has magnitudes ['2.6197', '8.2843', '26.197'] for A = 10, 100, 1000: it GROWS, so the B4(b) integral DIVERGES at s = 2 and s = 3 -- 'for all s' holds only after analytic continuation, the raw integral converging only for 0 < Re s < 1
+  ok   [L1164]  D24 at s = 3.0 the tail int_A^(2A) (theta - 1 - x^(-1/2)) x^(s/2-1) dx has magnitudes ['10.0', '100.0', '1000.0'] for A = 10, 100, 1000: it GROWS, so the B4(b) integral DIVERGES at s = 2 and s = 3 -- 'for all s' holds only after analytic continuation, the raw integral converging only for 0 < Re s < 1
+  ok   [L1175]  D24 at s = 2.0 the divergence is exactly the -x^(-1/2) subtraction: the tail on [1000, 4000] is -2(x^((s-1)/2))| = -63.2455532 to relative 0.0
+  ok   [L1175]  D24 at s = 3.0 the divergence is exactly the -x^(-1/2) subtraction: the tail on [1000, 4000] is -2(x^((s-1)/2))| = -3000.0 to relative 0.0
+  ok   [L1185]  D25 at s = 2.0 (analytic continuation) the Mellin transform of the odd part of theta equals 2 xi(s) = 1.0471975511966; deviation 0.0 < 1e-25
+  FAIL [L1189]  D25 at s = 2.0 it equals the B4(b) right-hand side 2 xi(s)/(s(s-1)) = 0.523598775598299 (FAILS by the factor s(s-1) = 2.0)
+  ok   [L1185]  D25 at s = 3.0 (analytic continuation) the Mellin transform of the odd part of theta equals 2 xi(s) = 0.38262659603117; deviation 5.74e-42 < 1e-25
+  FAIL [L1189]  D25 at s = 3.0 it equals the B4(b) right-hand side 2 xi(s)/(s(s-1)) = 0.0637710993385284 (FAILS by the factor s(s-1) = 6.0)
+  ok   [L1192]  D25 sanity: 2 xi(2) = 2 pi^(-1) Gamma(1) zeta(2) = pi/3 exactly
+  ok   [L1201]  D26 at s = 1/2 + 14.134725 i the integral is |I| = 3.919e-12 against |I| ~ 8 elsewhere in the strip: numerically zero to the precision of the quoted zero (|t - t_true| = 1.42e-7, and |I| / |t - t_true| = 2.765e-5 is the finite slope |2 xi'|)   [B4(b)]
+  ok   [L1206]  D26 at the same s the integral equals 2 xi(s) to 1.38e-44: the zeros of zeta ARE the zeros of the Mellin transform of the odd part of theta, which is the qualitative content of B4(b) and survives the constant being wrong
+  ok   [L1210]  D26 xi(1/2 + 14.1347251417 i) = 6.32e-24: the quoted zero is a genuine zero of xi at full precision
+  ok   [L1201]  D26 at s = 1/2 + 21.02204 i the integral is |I| = 5.8e-14 against |I| ~ 8 elsewhere in the strip: numerically zero to the precision of the quoted zero (|t - t_true| = 3.61e-7, and |I| / |t - t_true| = 1.606e-7 is the finite slope |2 xi'|)   [B4(b)]
+  ok   [L1206]  D26 at the same s the integral equals 2 xi(s) to 1.2e-45: the zeros of zeta ARE the zeros of the Mellin transform of the odd part of theta, which is the qualitative content of B4(b) and survives the constant being wrong
+  ok   [L1210]  D26 xi(1/2 + 21.0220396388 i) = 2.98e-26: the quoted zero is a genuine zero of xi at full precision
+  ok   [L1219]  D27 the Mellin transform has a SIMPLE pole at s = 1 with residue 2 (measured 2.0), matching 2 xi(s) exactly; the B4(b) right-hand side 2 xi(s)/(s(s-1)) would have a DOUBLE pole there, which is an independent proof that the factor 1/(s(s-1)) is spurious
+  ok   [L1219]  D27 the Mellin transform has a SIMPLE pole at s = 0 with residue -2 (measured -2.0), matching 2 xi(s) exactly; the B4(b) right-hand side 2 xi(s)/(s(s-1)) would have a DOUBLE pole there, which is an independent proof that the factor 1/(s(s-1)) is spurious
+  ok   [L1231]  D28 at x = 1.7: sum_(n in Z) f_oo(x n) with f_oo(t) = e^(-pi t^2) equals theta(x^2) = 1.00022802493, not theta(x) = 1.00958495861   [B4(a)]
+  FAIL [L1235]  D28 at x = 1.7: the same sum equals theta(x) AS B4(a) WRITES IT (FAILS: |diff| = 0.009357; the dilation parameter of the bond state is |x|^2, or equivalently f_oo(t) = e^(-pi t^2) must be scaled by sqrt of the idele norm)
+  ok   [L1231]  D28 at x = 0.6: sum_(n in Z) f_oo(x n) with f_oo(t) = e^(-pi t^2) equals theta(x^2) = 1.6672073518, not theta(x) = 1.30473467379   [B4(a)]
+  FAIL [L1235]  D28 at x = 0.6: the same sum equals theta(x) AS B4(a) WRITES IT (FAILS: |diff| = 0.3625; the dilation parameter of the bond state is |x|^2, or equivalently f_oo(t) = e^(-pi t^2) must be scaled by sqrt of the idele norm)
+  ok   [L1245]  D31 at x = 0.25: the odd part theta(x) - 1 - x^(-1/2) satisfies u(x) = x^(-1/2) u(1/x), i.e. the two constant terms 1 and x^(-1/2) are exactly the pair exchanged by x -> 1/x and the remainder is anti-invariant in the same sense: the even/odd split of B4(b) is consistent
+  ok   [L1245]  D31 at x = 2.5: the odd part theta(x) - 1 - x^(-1/2) satisfies u(x) = x^(-1/2) u(1/x), i.e. the two constant terms 1 and x^(-1/2) are exactly the pair exchanged by x -> 1/x and the remainder is anti-invariant in the same sense: the even/odd split of B4(b) is consistent
+
+====================================================================================================
+TALLY
+====================================================================================================
+  failing checks:
+    L1148  D23 at s = 0.5 the integral equals the value 2 xi(s)/(s(s-1)) = 31.8157298040521 PRINTED IN B4(b); |I - brief| = 39.8 (FAILS: the factor 1/(s(s-1)) is spurious)
+    L1148  D23 at s = 0.3 the integral equals the value 2 xi(s)/(s(s-1)) = 45.1320103991952 PRINTED IN B4(b); |I - brief| = 54.6 (FAILS: the factor 1/(s(s-1)) is spurious)
+    L1148  D23 at s = (0.7 + 0.2j) the integral equals the value 2 xi(s)/(s(s-1)) = (23.4678274087756 + 16.7983708687484j) PRINTED IN B4(b); |I - brief| = 36.1 (FAILS: the factor 1/(s(s-1)) is spurious)
+    L1189  D25 at s = 2.0 it equals the B4(b) right-hand side 2 xi(s)/(s(s-1)) = 0.523598775598299 (FAILS by the factor s(s-1) = 2.0)
+    L1189  D25 at s = 3.0 it equals the B4(b) right-hand side 2 xi(s)/(s(s-1)) = 0.0637710993385284 (FAILS by the factor s(s-1) = 6.0)
+    L1235  D28 at x = 1.7: the same sum equals theta(x) AS B4(a) WRITES IT (FAILS: |diff| = 0.009357; the dilation parameter of the bond state is |x|^2, or equivalently f_oo(t) = e^(-pi t^2) must be scaled by sqrt of the idele norm)
+    L1235  D28 at x = 0.6: the same sum equals theta(x) AS B4(a) WRITES IT (FAILS: |diff| = 0.3625; the dilation parameter of the bond state is |x|^2, or equivalently f_oo(t) = e^(-pi t^2) must be scaled by sqrt of the idele norm)
+
+CHECKS: 152 passed, 7 failed
