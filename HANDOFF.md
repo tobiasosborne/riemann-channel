@@ -2,6 +2,43 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-21, evening: square roots of Ihara--Bass (shard 08h); branches merged into master; CI smoke list trimmed
+
+TJO asked to tidy the conceptual loose ends around graded Ihara--Bass: is a "square root" version with a
+Dirac-style operator in place of the standard matrices the natural object for the graded spaces? Round with
+astra xhigh as prover and Fable as brief author, numerics and reviewer (no Opus/Sonnet lanes, by instruction):
+`notes/ihara-dirac/` (brief T1--T4, `astra-proofs.md` with a 24-row correction ledger, `numerics.md`,
+`scripts/ihara_dirac.py` 158 checks), review `notes/reviews/ihara-dirac-2026-09-21.md` (10 VALID / 0 MINOR /
+0 INVALID after corrections). Worklog 2026-09-21, evening.
+
+**Registered (08h).** Three different "square roots": (i) the chiral linearisation `N(u) = [[1 + uJ, S],[uR, 1]]`
+on `W (+) V` (Matsuura--Ohta's Dirac + mass on the bouquet with matrix weights): `det N = det(1 - uH)` with two
+Schur evaluations, SUSY pairing of `XY` on `V` and `YX = u(H+J)(1+uJ)^{-1}` on `W` (`str K^k = 0`), the Euler
+exponent `N(D-2)/2` = Berezinian of the rescaled diagonal mass with **vertices odd, edges even** (the `k+1`
+parity of 02d), and no Berezinian of the coupling (ledger item 32 closed); (ii) the oriented half `F`: no prime
+class is self-reverse, `det(1 - uH) = F(u) conj F(conj u)`, and **for Kraus letters `= F(u)^2` on the disc**
+(`F` real, orientation-independent), `F` not a polynomial; Kac--Ward/Kasteleyn/Loebl--Somberg square roots need
+the spinor twist and Aizenman--Warzel's twist anti-symmetry, which Ad-weights lack (neither symmetric nor
+anti-symmetric: traces 0 and 4); (iii) **odd letters make the Hashimoto operator chiral**: `Gamma_c = L_P (x) 1`
+anticommutes with `H`, `J`, `Sigma` (balanced grading forced), the graded zeta is `det(1 - u^2 K_1)/det(1 - u^2 K_0)`
+with `K_k = H_k^2|_+`, the square root of the two-step zeta; `Sigma_k = [[0,a],[a^*,0]]`, Ramanujan band `<=>`
+`a a^* <= 4q`; zeros have order `b_1 - b_0` (cancellation possible), the sector circle condition is the
+modulus-`q` condition on `K_1` on `Hom(V_-,V_+) (x) C^D`, and the manifest Hilbert--Polya form needs
+semisimplicity (band-edge Jordan block example); one even letter breaks `L_P`-chirality but other involutions
+can exist; in the continuum the reflection about `-c` survives for `sum L_i^* L_i = c`. Single layer: `str h^k = 0`,
+induction identity proved, doubled supertrace = squared norm of the amplitude vector, `X,X,Y,Y` example. This
+is the notebook's own square root: the bipartite `z <-> -z`, `Z^2 ~ Fr^{-1}` of 04k/04n.
+
+**Next on this lead.** (i) The two-step block `K_1` of the graded Weil--LPS expanders on `Hom(V_-,V_+)`, where
+the circle is a theorem: an ungraded operator with Frobenius-type spectrum, and its invariant Hermitian form
+(semisimplicity there?). (ii) A sign-twisted reversal `U_{bar i} = -U_i^*` as the channel analogue of the spinor
+twist: does an Ad-weighted oriented half become a Pfaffian? (iii) The centred continuum reflection for the
+notebook's jump Lindbladians (03c(d)) and the cMPS decay modes.
+
+**Repository.** Master now contains both branches (`inspiring-ride`: CCM tensor shards 02i/03g--03l, `zst`
+elliptic/Dirichlet; `beautiful-bohr`: 04n/04o/04p and 08h). `scripts/ci_local.sh`: `weil_positivity.py`
+(minutes) removed from the pre-commit smoke list, the four 25--55 s scripts behind `CI_FULL=1`.
+
 ## Session 2026-09-21: the adelic symplectic space as the bond (shard 04p); the class-group bond, the theta functional, the cusps as the GL_1 bond
 
 TJO returned to the genesis idea (a symplectic space for `Q^x \ (R_+ x prod_p Z)`, Heisenberg–Weyl, an

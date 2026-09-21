@@ -1,0 +1,320 @@
+% SHARD-ID: RC-08H-IHARA-DIRAC
+% SHARD-TITLE: Square Roots of the Ihara--Bass Formula: the Chiral Linearisation, the Oriented Half, and Odd Letters
+% SHARD-SUMMARY: Three things are called a "square root" of Ihara--Bass in the literature and in this book, and they are different: the first-order (Dirac-type) pencil whose one determinant has two Schur evaluations (Matsuura--Ohta), the product over one orientation of each prime cycle (a Pfaffian of a Kasteleyn operator only after the spinor twist of Kac--Ward), and the chirality that odd letters impose on the Hashimoto operator.
+% SHARD-SUMMARY: For an arbitrary Kraus family the pencil exists and its Euler exponent is the Berezinian of the diagonal mass term with vertices odd and edges even, but the coupling is not a Berezinian; the oriented half is a square root only in modulus on the real axis and is not a polynomial; the Ad-weights are twist symmetric, so the Kasteleyn square root does not apply.
+% SHARD-SUMMARY: For all-odd unitary letters (the index-two graded channels) left multiplication by the bond parity anticommutes with the Hashimoto operator: the sector zetas are even in u, the graded zeta is the square root of the zeta of the even two-step channel, the graded Ramanujan property is a bound on the Laplacian block, the zeros are the square roots of the spectrum of the two-step odd block, and the single-layer supertrace zeta is identically one.
+% SHARD-KEYWORDS: Ihara-Bass, Dirac operator, chiral, linearisation, Schur complement, Berezinian, supersymmetry, index, Euler characteristic, Kac-Ward, Kasteleyn, Pfaffian, spin structure, oriented cycle, twist, odd letters, index-two grading, bipartite, square root, two-step channel, Hilbert-Polya
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/ihara_dirac.py
+
+\section{Square Roots of the Ihara--Bass Formula: Chiral Linearisation, the Oriented Half, Odd Letters}
+\label{sec:ihara-dirac}
+
+\emph{Question (TJO, 2026-09-21).} Tidy the conceptual loose ends around graded Ihara--Bass: the
+natural object for this book may be a ``square root'' of the formula with a Dirac-type operator in
+place of the standard matrices; there are papers on this; how natural is it for the graded spaces of
+\cref{sec:graded-ramanujan,sec:graded-toys-network}? \emph{Answer.} Three different things carry that
+name, and the book already met all three without saying so. (i) The \emph{chiral linearisation}: a
+first-order pencil on vertices $\oplus$ edges whose single determinant has two Schur evaluations, Bass's
+and Hashimoto's; Matsuura--Ohta \cite{matsuura2025fermions} write it as a Dirac operator with a mass
+term (\cref{cit:mo-dirac}). It exists for every Kraus family (\cref{prop:chiral-linearisation}), its Euler
+exponent is the Berezinian of the diagonal mass with \emph{vertices odd and edges even}
+(\cref{prop:euler-exponent-berezinian}), the parity $k+1$ of \cref{def:graded-geodesic-determinant}, but
+the coupling is not a Berezinian (\cref{prop:no-super-coupling}); this closes ledger item 32 of
+\texttt{notes/ideation-ledger-2026-09-19/}. (ii) The \emph{oriented half}: the Euler product over one
+orientation of each prime cycle, whose square is the zeta for Kraus letters (\cref{prop:oriented-half});
+it is a polynomial, the Pfaffian of a Kasteleyn (Dirac) operator, only after the spinor twist of Kac--Ward,
+which the Ad-weights lack (\cref{obs:oriented-half-not-polynomial}). (iii) The \emph{chirality of odd
+letters}: for the index-two graded channels of \cref{def:index-two-grading} left multiplication by the
+bond parity anticommutes with the Hashimoto operator, every sector zeta is a function of $\uz^2$, the
+graded zeta is the square root of the zeta of the even two-step channel (\cref{thm:odd-letters-chiral}),
+the zeros are square roots of the spectrum of the two-step odd block and the Ramanujan property is a bound
+on a Laplacian block (\cref{prop:odd-sector-two-step}). The third is the notebook's: the bipartite pairing
+$z\leftrightarrow-z$ of the cavities and $Z^2\simeq\Frob^{-1}$ of \cref{sec:elliptic-cavity-scattering}
+(\cref{obs:square-root-dictionary}). Prover \texttt{codex:gpt-6-astra} at xhigh
+(\texttt{notes/ihara-dirac/astra-proofs.md}, brief \texttt{astra-brief.md}, T1--T4); numerics
+\texttt{scripts/ihara\_dirac.py} ($143$ checks, claude:fable-5.1, first version written before the proofs);
+review by the orchestrator against the prover's text and the numerics,
+\texttt{notes/reviews/ihara-dirac-2026-09-21.md}; no Opus lane (TJO's instruction).
+
+\subsection{The chiral linearisation}
+
+Conventions of \cref{sec:quantum-ihara}: letters $\Eop{1},\dots,\Eop{\Dk}$ on $\Vsp$, reversal $\rev$,
+edge space $\Wsp = \Vsp\otimes\mathbb C^{\Dk}$, $\Hash = \Smap\Rmap-\Jrev$. On $\Wsp\oplus\Vsp$ put
+\[
+  \Npen(\uz) \;=\; \begin{pmatrix} 1_{\Wsp}+\uz\Jrev & \Smap\\ \uz\Rmap & 1_{\Vsp}\end{pmatrix}
+  \;=\; \Mmass(\uz)+\Dch(\uz),\qquad
+  \Mmass(\uz) = \begin{pmatrix} 1+\uz\Jrev & 0\\ 0 & 1\end{pmatrix},\quad
+  \Dch(\uz) = \begin{pmatrix} 0 & \Smap\\ \uz\Rmap & 0\end{pmatrix}.
+\]
+$\Mmass$ is block diagonal (even for the edge/vertex grading), $\Dch$ block off-diagonal (odd): the
+bouquet-with-matrix-weights form of Matsuura--Ohta's deformed incidence Dirac operator (\cref{cit:mo-dirac-definition}).
+
+\begin{proposition}[One pencil, two Schur evaluations, and the pairing of vertex and edge modes]
+\label{prop:chiral-linearisation}
+\claimstatus{prop:chiral-linearisation}{proved}
+For every $\uz$ with $1+\uz\Jrev$ invertible:
+(a) $\det\Npen(\uz) = \det_{\Wsp}(1-\uz\Hash)$ (Schur complement on $\Vsp$) and $\det\Npen(\uz) =
+\det_{\Wsp}(1+\uz\Jrev)\,\det_{\Vsp}\bigl(1-\uz\Rmap(1+\uz\Jrev)^{-1}\Smap\bigr)$ (Schur complement on
+$\Wsp$); the second is $\prod_{\{i,\bari i\}}\det(1-\uz^2\Eop{\bari i}\Eop{i})\cdot\det(1+\Dop-\Aop)$, so
+\cref{thm:qihara-general} is the equality of the two evaluations of one determinant.
+(b) With $X = \uz\Rmap(1+\uz\Jrev)^{-1}\colon\Wsp\to\Vsp$ and $Y = \Smap\colon\Vsp\to\Wsp$, the nonzero
+spectra of $XY$ on $\Vsp$ and $YX = \uz(\Hash+\Jrev)(1+\uz\Jrev)^{-1}$ on $\Wsp$ coincide with algebraic
+multiplicities; on the super space $\Wsp_{\mathrm{even}}\oplus\Vsp_{\mathrm{odd}}$ the even operator
+$\pairop(\uz) = YX\oplus XY$ has $\str\pairop^k = 0$ for all $k\ge1$ and $\sdet(1-\pairop) = 1$. Ihara--Bass
+is $\det(1-\uz\Hash) = \det(1+\uz\Jrev)\det(1-YX) = \det(1+\uz\Jrev)\det(1-XY)$: the nontrivial part of
+the edge determinant is paired with a vertex determinant, and the pairing is exact.
+\end{proposition}
+
+\begin{proposition}[The Euler exponent is the Berezinian of the mass, vertices odd]
+\label{prop:euler-exponent-berezinian}
+\claimstatus{prop:euler-exponent-berezinian}{proved}
+In the inverse-paired case $\Eop{\bari i} = \Eop{i}^{-1}$ (unitary letters),
+\[
+  (1-\uz^2)^{N(\Dk-2)/2} \;=\; \sdet_{\Wsp_{\mathrm{even}}\oplus\Vsp_{\mathrm{odd}}}
+  \begin{pmatrix} 1+\uz\Jrev & 0\\ 0 & (1-\uz^2)1_{\Vsp}\end{pmatrix}
+  \;=\; \frac{\det_{\Wsp}(1+\uz\Jrev)}{\det_{\Vsp}\bigl((1-\uz^2)1\bigr)} ,
+\]
+so the Euler exponent $N\Dk/2-N$ (edges minus vertices, $-\chi$ for a graph) is the superdimension of
+the mass term when the edge block is even and the vertex block odd. This is the parity $k+1$ given to
+$k$-cells in \cref{def:graded-geodesic-determinant}, and it is the sign that the $(1-\uz^2)$ factors of
+\cref{thm:graded-qihara-bass} carry sector by sector.
+\end{proposition}
+
+\begin{proposition}[No Berezinian of the coupling]
+\label{prop:no-super-coupling}
+\claimstatus{prop:no-super-coupling}{proved}
+For the pencil $\Npen(\uz)$ with its scalar off-diagonal blocks the two Schur expressions for a would-be
+Berezinian on $\Wsp_{\mathrm{even}}\oplus\Vsp_{\mathrm{odd}}$ are $\det(1+\uz\Jrev-\uz\Smap\Rmap)/\det1_{\Vsp} =
+\det(1-\uz\Hash)$ and $\det(1+\uz\Jrev)/\det(1-\uz\Rmap(1+\uz\Jrev)^{-1}\Smap) =
+\det(1+\uz\Jrev)^2/\det(1-\uz\Hash)$; they agree iff $\det(1-\uz\Hash)^2 = \det(1+\uz\Jrev)^2$, which
+fails already for one classical loop ($\Vsp = \mathbb C$, $\Dk = 2$, $\Hash = 1$: $(1-\uz)^2$ against
+$1-\uz^2$) and for the bouquet with two loops ($\Dk = 4$), where $\det(1-\uz\Hash) =
+(1-\uz)^2(1+\uz)(1-3\uz)$ and $\det(1+\uz\Jrev) = (1-\uz^2)^2$. The obstruction is parity: an even
+supermatrix has odd entries in its off-diagonal blocks, and the scalar blocks of $\Dch$ are not odd, so a
+term coupling a bosonic field on $\Vsp$ to a fermionic field on $\Wsp$ through $\Dch$ is odd and the
+even-Gaussian Berezinian formula does not apply (Berezin integration of a mixed-parity exponent is itself
+meaningful; it just does not give a Berezinian). The super object in Ihara--Bass is the diagonal mass of
+\cref{prop:euler-exponent-berezinian}, together with the paired operator $\pairop$ of
+\cref{prop:chiral-linearisation}; the coupling is an ordinary determinant, which is how Matsuura--Ohta
+evaluate it, with fermions on both blocks (\cref{cit:mo-dirac}). Pencil chirality and the flow superparity of
+\cref{def:graded-geodesic-determinant} are distinct gradings (\texttt{notes/complex-zeta/astra-proofs.md}, T4.3).
+\end{proposition}
+
+\subsection{The oriented half}
+
+\begin{proposition}[The oriented half is a square root on the real axis]
+\label{prop:oriented-half}
+\claimstatus{prop:oriented-half}{proved}
+Let $\Eop{\bari i} = \Eop{i}^*$ for an inner product on $\Vsp$ (the Kraus case, unitary or not).
+(a) No primitive cyclically non-backtracking class is its own reverse: $[w]\ne[\bar w]$, $\bar w =
+(\bari{i_{\wl}},\dots,\bari{i_1})$, for every $w$.
+(b) $\det_{\Vsp}(1-\uz^{\wl}\Eop{\bar w}) = \overline{\det_{\Vsp}(1-\bar\uz^{\wl}\Eop{w})}$.
+(c) For $|\uz| < \bigl((\Dk-1)\max_i\|\Eop{i}\|\bigr)^{-1}$ the Euler product converges absolutely and
+\[
+  \det\nolimits_{\Wsp}(1-\uz\Hash) \;=\; \orhalf(\uz)\,\overline{\orhalf(\bar\uz)},\qquad
+  \orhalf(\uz) = \prod_{[w]\in\Pi}\det\nolimits_{\Vsp}\bigl(1-\uz^{\wl(w)}\Eop{w}\bigr),
+\]
+$\Pi$ containing exactly one of $[w],[\bar w]$ for each pair, $\orhalf$ holomorphic and nonvanishing there;
+on the real interval $\det(1-\uz\Hash) = |\orhalf(\uz)|^2 > 0$. In general $\orhalf$ is not the real square
+root ($\Vsp = \mathbb C$, $\Eop{1} = i = -\Eop{2}$ gives $\orhalf = 1-i\uz$ against $1+\uz^2$). For Kraus
+letters $\Eop{i} = \Ad(\Kr{i})$ every $\Eop{w}$ preserves the Hermitian matrices, so
+$\det(1-z\Eop{w})$ has real coefficients, $\orhalf$ does not depend on the choice of $\Pi$, and
+$\det(1-\uz\Hash) = \orhalf(\uz)^2$ on the whole disc: the zeta of a Kraus family is a perfect square as a
+power series, with $\orhalf$ its positive square root on the real interval.
+(d) For homogeneous unitary letters with $\Un{\bari i} = \Un{i}^\dagger$ the same holds sector by sector
+(radius $1/\qs$) and for the superdeterminant: $\sdet_{\Wsp}(1-\uz\Hash) = \orhalf^{\mathrm{gr}}(\uz)^2$
+with $\orhalf^{\mathrm{gr}} = \prod_{[w]\in\Pi}\sdet_{\Vsp}(1-\uz^{\wl(w)}\Eop{w})$, real on the real axis.
+\end{proposition}
+
+\begin{observation}[The oriented half is not a polynomial; the Kasteleyn square root needs the spinor twist]
+\label{obs:oriented-half-not-polynomial}
+\claimstatus{obs:oriented-half-not-polynomial}{proved}
+$\orhalf$ is in general not a polynomial, hence not the determinant or Pfaffian of a matrix pencil: for the
+classical bouquet with two loops $\det(1-\uz\Hash) = (1-\uz)^2(1+\uz)(1-3\uz)$ has simple roots at $-1$
+and $1/3$. Aizenman--Warzel prove (\cref{cit:aw-square-lemma}) that for a non-backtracking flow matrix
+that is loopwise time-reversal invariant \emph{and twist anti-symmetric} the determinant is the square of a
+polynomial, each oriented prime loop contributing the square of its unoriented class
+(\cref{cit:aw-unoriented}); the Kac--Ward matrix, with the half-angle phases of a spin structure, is such a
+matrix, its determinant is the square of a polynomial (\cref{cit:cimasoni-kw-square}), and Loebl--Somberg
+identify these square roots with Pfaffians of discrete Dirac operators (\cref{cit:ls-square-roots}). The
+Ad-weighted Hashimoto operator of \cref{def:quantum-hashimoto} is loopwise time-reversal invariant
+($\Tr\Eop{\bar w} = \Tr\Eop{w} = |\Tr\Kr{w}|^2$, real and nonnegative) but not twist anti-symmetric: its
+path traces are nonnegative, so anti-symmetry would force every twisted pair to vanish, and it is not twist
+symmetric either in the transition convention (the terminal letter is not multiplied): the path
+$(e,f,\bar e)$ and its twist $(e,\bar f,\bar e)$ with $\Un{e} = \Un{f} = \operatorname{diag}(1,i)$ have
+traces $0$ and $4$ (prover, T2(e)); the classical weights are twist symmetric, every allowed path having
+weight one. Aizenman--Warzel's lemma is moreover stated for scalar flow matrices. The sign that makes the
+Kac--Ward square root a polynomial is the spinor sign of a $2\pi$ rotation, which a channel does not have.
+The square root channels do have is the power-series one of \cref{prop:oriented-half}: one amplitude per
+prime cycle, the reversal acting as complex conjugation, a perfect square for Kraus letters, not a polynomial.
+\end{observation}
+
+\begin{citedfact}[Aizenman--Warzel: twist anti-symmetry makes the determinant a square]
+\label{cit:aw-square-lemma}
+\claimstatus{cit:aw-square-lemma}{cited}\sloppy
+{\small\texttt{\detokenize{Let $\mathcal{K}$ be a non-backtracking, loopwise  time-reversal invariant and twist anti-symmetric $\widehat{\mathcal E}\times \widehat{\mathcal E} $ flow  matrix over a finite graph. Then for any unoriented weight matrix $ \mathcal{W} $, the determinant $\det(1 - \mathcal{ K W}) $ is the square of a multilinear polynomial in  the weights $(W_e )$.}}}
+(\texttt{1709.06052:2018\_KW\_JSP\_\_Nov1.tex:380-382}) \cite{aizenman2018kacward}.
+\end{citedfact}
+
+\begin{citedfact}[Aizenman--Warzel: each oriented prime loop is the square of its unoriented class]
+\label{cit:aw-unoriented}
+\claimstatus{cit:aw-unoriented}{cited}\sloppy
+{\small\texttt{\detokenize{Therefore, the contribution of every primitive oriented loop $ p $ equals the square of the corresponding primitive unoriented loop $ \gamma $.}}}
+(\texttt{1709.06052:2018\_KW\_JSP\_\_Nov1.tex:502}) \cite{aizenman2018kacward}.
+\end{citedfact}
+
+\begin{citedfact}[Cimasoni: the Kac--Ward determinant is the square of a polynomial]
+\label{cit:cimasoni-kw-square}
+\claimstatus{cit:cimasoni-kw-square}{cited}\sloppy
+{\small\texttt{\detokenize{the determinant of the matrix $\KW^\varphi(\G,x)$ is the square of a polynomial in the variables $\{x_e\}_{e\in E(\G)}$ which only depends on the spin structure}}}
+(\texttt{1307.2494:final.tex:571-572}) \cite{cimasoni2015kacward}.
+\end{citedfact}
+
+\begin{citedfact}[Loebl--Somberg: Ising as square roots of Ihara--Selberg functions]
+\label{cit:ls-square-roots}
+\claimstatus{cit:ls-square-roots}{cited}\sloppy
+{\small\texttt{\detokenize{the Ising partition function, is a linear combination of the square roots of $2^{2g}$ Ihara-Selberg functions $I(\D(s)(x))$ also called Feynman functions.}}}
+(\texttt{0912.3200:lsfinal-ejc16122014.tex:271-272}) \cite{loebl2015dirac}.
+\end{citedfact}
+
+\begin{citedfact}[Matsuura--Ohta: the Dirac operator from deformed incidence matrices]
+\label{cit:mo-dirac-definition}
+\claimstatus{cit:mo-dirac-definition}{cited}\sloppy
+{\small\texttt{\detokenize{Combining the deformed incidence matrices, we define a Dirac operator as \be \slashed{D} = \alpha\begin{pmatrix} 0 & \Lt_{q,u}^T & L_{q,u}^T\\ L_{q,u} & 0 & 0 \\ \Lt_{q,u} & 0 & 0 \end{pmatrix}\ ,}}}
+(\texttt{2501.08803:main.tex:630-636}) \cite{matsuura2025fermions}: block off-diagonal between the vertex
+block and the two edge blocks, the classical instance of $\Dch$.
+\end{citedfact}
+
+\subsection{Odd letters make the Hashimoto operator chiral}
+
+Graded bond $V = V_+\oplus V_-$ with parity $P$ (\cref{def:graded-transfer-channel}), homogeneous unitary
+letters $\Un{i}$ of parities $\epsilon_i$, $\Un{\bari i} = \Un{i}^\dagger$, $\Eop{i} = \Ad(\Un{i})$, $\Gdb = \Ad(P)$
+with sectors $\Hash_0,\Hash_1$ (\cref{def:graded-hashimoto}); $\chir := \mathrm L_P\otimes1$, $\mathrm L_PX = PX$.
+
+\begin{theorem}[Chirality of odd letters]
+\label{thm:odd-letters-chiral}
+\claimstatus{thm:odd-letters-chiral}{proved}
+(a) $\chir^2 = 1$, $\chir$ commutes with $\Gdb\otimes1$, and $\chir\Eop{i}\chir = \epsilon_i\Eop{i}$; hence
+$\chir\Hash\chir = \Hash^{\epsilon}$, $\chir\Jrev\chir = \Jrev^{\epsilon}$, $\chir\Sig\chir = \Sig^{\epsilon}$,
+the same constructions with the letters $\epsilon_i\Eop{i}$ (the sign-character twist), and for every
+graded channel $\det(1-\uz\Hash_k) = \det(1-\uz\Hash_k^{\epsilon})$, $k = 0,1$.
+(b) If every letter is odd (\cref{def:index-two-grading}; this forces $D_+ = D_- = d$, a balanced grading,
+so the $(1-\uz^2)$ factors cancel in the graded zeta), $\chir$ anticommutes with $\Hash$, $\Jrev$, $\Sig$ and
+with each $\Hash_k$, $\Sig_k$: their spectra are symmetric under $\lambda\mapsto-\lambda$ with multiplicities
+and Jordan structure, $\det(1-\uz\Hash_k)$ and $\det(1-\uz\Sig_k+\qs\uz^2)$ are even in $\uz$, and with
+$\Wsp_k = \Wsp_k^+\oplus\Wsp_k^-$ the $\chir = \pm1$ parts of sector $k$ (each of dimension $d^2\Dk$) and
+$K_k := \Hash_k^2|_{\Wsp_k^+}$,
+\[
+  \det(1-\uz\Hash_k) = \det\nolimits_{\Wsp_k^+}(1-\uz^2K_k),\qquad
+  \frac1{\sdet(1-\uz\Hash)} = \frac{\det(1-\uz^2K_1)}{\det(1-\uz^2K_0)} = \Bigl(\frac1{\sdet(1-\uz^2\Hash^2)}\Bigr)^{1/2},
+\]
+the square root normalised to $1$ at $\uz = 0$: the graded quantum Ihara zeta of an odd-letter channel is a
+rational function of $\uz^2$, the square root of the zeta of the even two-step operator $\Hash^2$ (letters
+$\Ad(\Un{j}\Un{i})$, $j\ne\bari i$, with both path restrictions retained; $K_k$ need not be diagonalisable).
+(c) On the Bass side $\Sig_k = \bigl(\begin{smallmatrix}0 & a_k\\ a_k^\dagger & 0\end{smallmatrix}\bigr)$ in
+$\Wsp_k^+\oplus\Wsp_k^-$ and $\det(1-\uz\Sig_k+\qs\uz^2) = \det_{+}\bigl((1+\qs\uz^2)^2-\uz^2a_ka_k^\dagger\bigr)$
+(equal block dimensions are essential); the eigenvalues of $\Sig_k$ are $\pm s_j$ for the singular values
+$s_j$ of $a_k$, so the Ramanujan band $|\lambda|\le2\sqrt\qs$ off the trivial part is equivalent to
+$a_ka_k^\dagger\le4\qs$ there: the graded Ramanujan property of an odd-letter channel is a bound on the
+positive even Laplacian block $\Sig_k^2|_{\Wsp_k^+}$.
+\end{theorem}
+
+\begin{proposition}[Zeros as square roots of the two-step odd block; circle, divisor and manifest form]
+\label{prop:odd-sector-two-step}
+\claimstatus{prop:odd-sector-two-step}{proved}
+All letters odd. (a) $\Wsp_1^+ = \operatorname{Hom}(V_-,V_+)\otimes\mathbb C^{\Dk}$ and $\Wsp_1^- =
+\operatorname{Hom}(V_+,V_-)\otimes\mathbb C^{\Dk}$ ($\mathrm L_P$ records the parity of the range); $K_1$ is
+the two-step operator on the mixed block, $\det(z-\Hash_k) = \det(z^2-K_k)$, so each sign pair $\pm\edgeev$
+of odd edge eigenvalues of multiplicity $m$ is one eigenvalue $\edgeev^2$ of $K_1$ of multiplicity $m$.
+(b) A candidate $\uz_0$ with $\uz_0^2 = 1/y$ is a zero of the graded zeta of order $b_1(y)-b_0(y)$,
+$b_k$ the multiplicity of $y$ in $K_k$ (four letters $X$ on $\mathbb C^{1|1}$: $\sdet(1-\uz\Hash)\equiv1$, $K_1\ne0$).
+(c) Every retained odd edge eigenvalue has $|\edgeev| = \sqrt\qs$ iff every retained eigenvalue of $K_1$ has
+modulus $\qs$ (an entire-sector condition, stronger than the divisor RH of \cref{def:graded-rh-fe-ramanujan}
+unless nothing cancels: a degree-six all-odd tensor on $\mathbb C^2\otimes\mathbb C^2$ has adjacency
+modes $\pm5$ outside the band in both sectors and $\sdet(1-\uz\Hash)\equiv1$). The manifest Hilbert--P\'olya
+form, $\qs^{-1}K_1$ diagonalisable with unimodular retained spectrum, equivalently a positive invariant
+Hermitian form, needs semisimplicity in addition: the odd letters $U_0,U_0,U_{\pi/6},U_{\pi/6}$ on
+$\mathbb C^{1|1}$, $U_t = \bigl(\begin{smallmatrix}0&e^{it}\\ e^{-it}&0\end{smallmatrix}\bigr)$,
+have $\det(1-\uz\Hash_1) = (1-\uz^2)^2(1-3\uz^2)^2$ (band edge $\pm2\sqrt3$, $\qs = 3$) and a nontrivial
+Jordan block of $K_1$ at $3$.
+(d) $\Sig_01 = \Dk\,1$, $\Sig_0P = -\Dk\,P$ (\cref{prop:p-mode}), $\chir$ exchanges $1$ and $P$: in the basis
+$(1,P)$ the operator $\Sig_0$ is $\operatorname{diag}(\Dk,-\Dk)$ and in $(1\pm P)$ it is off-diagonal, the
+Perron mode and the $P$-mode one chiral pair with edge factors $(1-\uz)(1-\qs\uz)(1+\uz)(1+\qs\uz)$. The
+trivial divisor is by sector and multiplicity: $\pm1$ from $(1-\uz^2)^{n_k(\Dk-2)/2}$, $\{\qs,1\}$ per
+common fixed mode and $\{-\qs,-1\}$ per common anti-fixed mode ($\ker(\Sig_k\mp\Dk)$, exchanged by $\chir$);
+$1$ and $P$ are the only extremal modes when the letters act irreducibly.
+\end{proposition}
+
+\begin{observation}[Chirality needs every letter odd for $\mathrm L_P$; in the continuum it is a centred reflection]
+\label{obs:chirality-needs-all-odd}
+\claimstatus{obs:chirality-needs-all-odd}{proved}
+$\chir$ anticommutes with $\Hash$ iff every letter is odd (the $(j,i)$ block of $\chir\Hash\chir+\Hash$ is
+$(\epsilon_i+1)\Eop{i}$); the Pauli channel of \cref{num:graded-ramanujan}(a) has even spectrum $\{6,-2\}$ of
+$\Sig_0$. Mixed parities do not exclude another chiral involution: for $P = Z\otimes1$ and the letters
+$X\otimes X$, $1\otimes X$ (twice each) the operator $\mathrm L_{1\otimes Z}\otimes1$ anticommutes with $\Hash$
+and commutes with $\Gdb$. In the continuum a Lindblad generator with odd jumps $L_i$ is neither even nor odd
+(the jump term anticommutes with $\chir$, $\{L_i^\dagger L_i,\cdot\}$ commutes), but when
+$\sum_iL_i^\dagger L_i = c\,1$, e.g.\ $L_i = \sqrt{r_i}\Un{i}$ with odd unitaries as in
+\cref{num:graded-ramanujan}(d), $\chir(\Lgen+c)\chir = -(\Lgen+c)$: the spectrum is reflected about $-c$. The
+lattice's $\uz\mapsto-\uz$ is its bipartite structure; the continuum keeps the reflection about the decay centre.
+\end{observation}
+
+\subsection{The single layer, and what the square root is for this book}
+
+\begin{proposition}[The single layer with odd letters has no supertrace zeta]
+\label{prop:single-layer-odd}
+\claimstatus{prop:single-layer-odd}{proved}
+All letters odd; $h$ on $V\otimes\mathbb C^{\Dk}$ the Hashimoto operator with the letters $\Un{i}$
+themselves, graded by $P\otimes1$. (a) $h$ is odd, $\det(1-\uz h) = \det_+(1-\uz^2h^2|_+)$ and
+$\str h^k = 0$ for all $k\ge1$, so the supertrace series $\exp\sum_k\uz^k\str h^k/k$ is identically $1$ and
+$\sdet(1-t\,h^2) = 1$ ($1-\uz h$ is not even, so it has no Berezinian). (b) For an index-two graded
+representation $\pi = \operatorname{Ind}_{G_0}^G\pi_+$ with letters in the odd coset, $\det(1-\uz h)^{-1}$
+is the Artin--Ihara $L$-function $L(\uz,\pi)$ of the bouquet, and $L(\uz,\pi) = L(\uz,\pi_+;Y) =
+L(\uz,\pi_-;Y)$ for the two-vertex quotient $Y$ with its induced transports (proved directly, the induction
+formula of the Artin formalism); the single-layer supertrace $\Tr(P\Un{w})$ changes sign under a one-place
+rotation of a rooted word, which is why it sums to zero. (c) On the doubled bond $\str\Hash^n =
+\sum_w|\Tr(P\Un{w})|^2\ge0$: the squared norm of the vector of single-word amplitudes, not the square of
+their sum. For $X,X,Y,Y$ on $\mathbb C^{1|1}$: $\str h^2 = 0$, $\str\Hash^2 = 32$, the graded zeta
+$(1+3\uz^2)^2/((1-\uz^2)(1-9\uz^2))$ has zeros at $\uz^2 = -1/3$, while $\det(1-\uz h) =
+(1-\uz^2)^2(1-2\uz^2+9\uz^4)$ has no edge eigenvalue squaring to $-3$: the zeros of the doubled bond are not
+squares of single-layer eigenvalues; the square root of the doubled ring norm is one amplitude per word.
+\end{proposition}
+
+\begin{observation}[The square root the book already uses]
+\label{obs:square-root-dictionary}
+\claimstatus{obs:square-root-dictionary}{sketched}
+The chirality of \cref{thm:odd-letters-chiral} is the structure of the cavities of
+\cref{sec:elliptic-cavity-scattering,sec:graded-toys-network}: bipartite diagrams, resonance polynomials in
+$z^2$, resonances $z^2 = \alphaw{i}/\qs$ as square roots of Frobenius eigenvalues, $Z^2\simeq\Frob^{-1}\otimes1_2$
+on the F$_2$ curve, the Perron pair $z = \pm\qs^{-1/2}$ as the chiral pair of the pole
+(\cref{thm:d2-zeta,thm:scattering-superdeterminant}). The cavity's transfer operator is the Dirac square
+root of the Frobenius module: its odd spectrum squares to $H^1$, its even spectrum to $H^0\oplus H^2$. For
+odd-letter channels the circle condition is the modulus-$\qs$ condition on the even two-step block
+(\cref{prop:odd-sector-two-step}), as Weil's $|\alphaw{i}|^2 = \qs$ is about $\alphaw{i}\overline{\alphaw{i}}$;
+three levels stay distinct: the band on $a_ka_k^\dagger$, the circle for $K_1$, the manifest form (which
+needs semisimplicity and fails at the band edge). The square root does not produce zeros on the single bond
+(\cref{prop:single-layer-odd}), make the Euler half a determinant (\cref{obs:oriented-half-not-polynomial}),
+or make the coupling a Berezinian (\cref{prop:no-super-coupling}).
+\emph{Next:} the two-step even block $K_1$ of the graded Weil--LPS expanders, where the circle is a theorem,
+as an ungraded operator whose spectrum is a set of Frobenius eigenvalues, and its invariant form; and a
+sign-twisted reversal $\Un{\bari i} = -\Un{i}^\dagger$ as the channel analogue of the spinor twist.
+\end{observation}
+
+\begin{numerical}[Numerics lane, square roots of Ihara--Bass]
+\label{num:ihara-dirac}
+\claimstatus{num:ihara-dirac}{numerical}
+\texttt{scripts/ihara\_dirac.py} (\texttt{outputs/ihara\_dirac.txt}, $158$ checks, all passing; $137$ written
+from the brief before the proofs, the rest after the prover's corrections; ledger
+\texttt{notes/ihara-dirac/numerics.md}). T1: the pencil against $\det(1-\uz\Hash)$, both Schur evaluations
+and \cref{thm:qihara-general} on random non-unitary and unitary Kraus families and the bouquets with two and
+three loops; the paired spectra, $\str\pairop^k = 0$, the mass Berezinian, the two would-be Berezinians. T2:
+no self-reverse class ($1218$ classes, $\Dk = 4$); $\orhalf\overline{\orhalf}$ and, for Kraus letters,
+$\orhalf^2$ at a complex point; the graded version; the simple roots; the twist traces $0$ and $4$.
+T3: $\chir$ against the sign twist on three graded families; for all-odd letters anticommutation, symmetric
+spectra, the square-root formulas, the Laplacian factorisation and band equivalence, $\Wsp_1^+$, the
+$P$-mode and Perron pair; the dihedral $D_5$ reflections ($\Dk = 10$, $\Sig_1 = 0$, four odd eigenvalues on
+$|\edgeev| = 3$); the all-$X$ cancellation, the band-edge Jordan block, the second chiral involution for
+mixed parities, the continuum reflection about $-c$. T4: oddness of $h$, $\str h^k = 0$, the $X,X,Y,Y$
+zeta, single-layer polynomial and amplitude sums.
+\end{numerical}

@@ -1,0 +1,3 @@
+Created [astra-proofs.md](/home/tobiasosborne/Projects/riemann-channel/notes/ihara-dirac/astra-proofs.md) with all 18 parts, Lamport-structured proofs, explicit counterexamples, a hypothesis register, and correction ledger.
+
+Exact symbolic checks passed, including the counterexample to the claimed Hilbert–Pólya equivalence.
