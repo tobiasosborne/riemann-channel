@@ -1,0 +1,219 @@
+% SHARD-ID: RC-04Q-H-THETA-REFUTED
+% SHARD-TITLE: The Phantasm IX: H-THETA I. What the Odd Theta Vector Generates on the GL_1 Bond, the Refutation of conj:h-theta, the Symbol as a Ratio of Two Edge Transforms, and the GL_1 Bad-Zero Defect (Burnol's Causality)
+% SHARD-SUMMARY: The weighted odd theta vector g = y^{1/4}(theta - 1 - y^{-1/2}) is the unique inversion-invariant L^2 weighting of the odd part of the bond state and is Burnol's subtracted theta image of the Gaussian; its Mellin transform is -xi(1/2+2i tau)/(tau^2+1/16), too analytic (exponential decay) to lie in any Beurling--Lax subspace, so its forward dilation orbit is the whole bond, and its outgoing half is outer. Hence conj:h-theta is refuted: no cyclic-and-cut construction from this vector inside the unweighted bond gives the Riemann channel's model space.
+% SHARD-SUMMARY: What survives, unconditionally: the Riemann channel's symbol is the continued ratio of the odd theta's Mellin transforms on the two edge lines of the strip, Theta(tau) = [ghat(tau - i/4)/ghat(tau + i/4)] (tau - i/2)/(tau + i/2), a pure Blaschke product with the zeros at height (1-sigma)/2, in de Branges form E^#/E with E = xi(1-2i tau) Hermite--Biehler unconditionally.
+% SHARD-SUMMARY: The GL_1 statement is Burnol's: for the theta images of unit-ball test functions, the reflected closure is B_bad H^2 with B_bad the Blaschke product over the zeros with Re rho > 1/2; its defect K_bad is the GL_1 bad-zero channel, zero iff RH, while Burnol's scattering multiplier v_+^2 B_bad^{-2} is causal iff RH; on the line the zeros are absorption lines of the cyclic vector's spectral density (Connes), a cokernel only in Connes's weighted topology; Meyer's virtual representation is the Phantasm's grading on the idele class group.
+% SHARD-KEYWORDS: H-THETA, theta bond vector, Mellin transform, Beurling--Lax, Szego condition, outer function, Blaschke product, de Branges space, Hermite--Biehler, Burnol causality, Nyman--Beurling, bad zeros, Connes absorption spectrum, cokernel, Meyer virtual representation
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{The Phantasm IX: H-THETA}
+\label{sec:h-theta}
+
+\emph{Question (TJO, 2026-09-21).} Go hard on H-THETA (\cref{conj:h-theta}): is the compression of the dilation to the
+dilation-cyclic subspace of the odd theta, with the outgoing half removed, the Riemann channel? Brief
+\texttt{notes/h-theta/astra-brief.md} (author \texttt{claude:fable-5.1}, with the mathematics worked out to the point
+of predicting a refutation and the two statements that survive), one codex \texttt{gpt-6-astra} prover lane
+(\texttt{notes/h-theta/astra-proofs.md}, ledger T1--T6, a $41$-row correction ledger against the brief), one Opus
+numerics lane run blind from the brief (\texttt{notes/h-theta/numerics.md}, \texttt{scripts/h\_theta.py}, $98$
+checks, four errors of the brief found), one Opus refutation review (\texttt{notes/reviews/h-theta-2026-09-21.md}).
+Sources fetched for this round (\texttt{refs/src/}): Connes \cite{connes1998trace} (already present), Burnol
+\cite{burnol2001causality,burnol2004systems} and five further Burnol papers, Meyer \cite{meyer2005idele}, Uetake
+\cite{uetake2007lax}. Worklog 2026-09-21.
+
+\subsection{Conventions}
+
+Bond $H = L^2(\mathbb R_+^\times, d^\times y)$, $y = |x|^2$ with $x$ the idele variable at the real place. Mellin
+transform $\widehat f(\tauM) = \int_0^\infty f(y)\,y^{i\tauM}\,d^\times y$, unitary onto $L^2(\mathbb R, d\tauM/2\pi)$;
+dilation $(U_\tsg f)(y) = f(e^{-\tsg}y)$, so $\widehat{U_\tsg f} = e^{i\tsg\tauM}\widehat f$. The \emph{outgoing half} is
+$H_+ = L^2(1,\infty)$, invariant under $U_\tsg$, $\tsg\ge0$, and $\widehat{H_+} = H^2(\mathbb C_+)$; the incoming half
+$H_- = L^2(0,1)$ has $\widehat{H_-} = H^2(\mathbb C_-)$ (the numerics lane checked this orientation, F9; it agrees
+with \cref{sec:rebound-state}). Inversion $(Jf)(y) = f(1/y)$: $JU_\tsg J = U_{-\tsg}$, $\widehat{Jf}(\tauM) =
+\widehat f(-\tauM)$. The odd part of the bond state is $\phi(y) := \jtheta(y) - 1 - y^{-1/2}$, and
+$\thetaM(s) := 4\cxi(s)/(s(s-1)) = 2\pi^{-s/2}\Gamma(s/2)\zeta(s)$, so that $\int_0^\infty\phi(y)y^{s/2}d^\times y =
+\thetaM(s)$ for $0<\re s<1$ (\cref{prop:riemann-theta-dilation-bond}). The upper-half-plane symbol is
+$\Theta(\tauM) = \Ssym(-\tauM) = \cxi(1+2i\tauM)/\cxi(1-2i\tauM)$, with $\KS = H^2(\mathbb C_+)\ominus\Theta H^2$, the
+compressed semigroup $\Zt$ and its adjoint $C_\tsg$ as in \cref{sec:rebound-state}; a zero $\zero = \sigs+i\gam{}$
+gives the zero $w_\zero = \gam{}/2 + i(1-\sigs)/2$ of $\Theta$ and the Cauchy kernel $k_w(\tauM) = (\tauM-\bar w)^{-1}$.
+Write $\cxi_{\mathrm{crit}}(\tauM) := \cxi(\tfrac12 + 2i\tauM)$, even, real on $\mathbb R$, entire, with zeros
+$a_\zero = \gam{}/2 - i(\sigs-\tfrac12)/2$, all real iff RH.
+
+\begin{definition}[Theta bond vector; its halves; edge transforms]
+\label{def:theta-bond-vector}
+The \emph{theta bond vector} is $\gth(y) := y^{1/4}\phi(y) = y^{1/4}(\jtheta(y) - 1 - y^{-1/2})$. Its \emph{outgoing
+half} is ${\gth}_{>} := 1_{(1,\infty)}\gth$, its incoming half ${\gth}_{<} := 1_{(0,1)}\gth = J{\gth}_{>}$. The \emph{half
+transforms} are ${\thetaM}_{>}(s) := \int_1^\infty\phi\,y^{s/2}d^\times y$ ($\re s<1$) and ${\thetaM}_{<}(s) :=
+\int_0^1\phi\,y^{s/2}d^\times y$ ($\re s>0$). The \emph{edge transforms} are the meromorphic continuations of
+$\thetaM$ to the lines $\re s = 1$ and $\re s = 0$, i.e.\ $\thetaM(1+2i\tauM)$ and $\thetaM(2i\tauM)$, the Mellin
+transforms of $y^{1/2}\phi$ and of $\phi$ continued past their divergent ends.
+\end{definition}
+
+\subsection{The theta vector and its transform}
+
+\begin{proposition}[Weight, symmetry, membership; Burnol's theta image]
+\label{prop:theta-vector-weight}
+\claimstatus{prop:theta-vector-weight}{proved}
+(a) $\phi(1/y) = y^{1/2}\phi(y)$ exactly: the two constant terms transform into each other, so ``odd'' names the
+arithmetic grading, not a parity under $J$; $\gth$ is $J$-\emph{even}. (b) $y^a\phi\in H$ iff $0<a<\tfrac12$
+($\phi = -1 + O(y^{-1/2}e^{-\pi/y})$ at $0$, $\phi = -y^{-1/2} + O(e^{-\pi y})$ at $\infty$), and among these weights
+$a = \tfrac14$ is the only one with $J(y^a\phi) = y^a\phi$, since $J(y^a\phi) = y^{1/2-a}\phi$. (c) For
+$f = e^{-\pi t^2}\otimes1_{\hat{\mathbb Z}}$, Burnol's subtracted theta image $E(f)(x) = x^{1/2}\sum_{n\ne0}e^{-\pi n^2x^2}
+- x^{-1/2}$ (\cref{cit:burnol-E-dense}) equals $\gth(x^2)$ pointwise; the unitary change $x\mapsto y = x^2$
+contributes $2^{-1/2}$. Connes's unsubtracted $E$ (\cref{cit:connes-surjective-isometry}) is stated on test functions
+with $f(0) = \widehat f(0) = 0$, which the Gaussian is not.
+\end{proposition}
+
+\begin{proposition}[The Mellin transform of the theta vector, its halves, and the Szeg\H o dichotomy]
+\label{prop:theta-vector-mellin}
+\claimstatus{prop:theta-vector-mellin}{proved}
+(a) $\widehat{\gth}(\tauM) = \thetaM(\tfrac12+2i\tauM) = -\cxi_{\mathrm{crit}}(\tauM)/(\tauM^2+\tfrac1{16})$: even, real on
+$\mathbb R$, meromorphic with simple poles at $\tauM = +i/4$ ($s = 0$, residue $+i$) and $\tauM = -i/4$ ($s = 1$,
+residue $-i$), zeros exactly at $a_\zero$ with multiplicity; $\widehat{\gth}(0) = -16\cxi(\tfrac12)$. On the real line
+$|\widehat{\gth}(u)| = 2\sqrt2\,\pi^{1/4}|u|^{-1/4}e^{-\pi|u|/2}|\zeta(\tfrac12+2iu)|(1+O(1/|u|))$ and
+$|\widehat{\gth}(u)|\le C(1+|u|)^{1/4}e^{-\pi|u|/2}$. (b) With $A(s) := \int_1^\infty(\jtheta-1)y^{s/2}d^\times y$ entire,
+${\thetaM}_{>}(s) = 2/(s-1) + A(s)$, ${\thetaM}_{<}(s) = -2/s + A(1-s) = {\thetaM}_{>}(1-s)$, and $\thetaM = {\thetaM}_{>}+{\thetaM}_{<}$
+in the strip; $\widehat{{\gth}_{>}}(\tauM) = {\thetaM}_{>}(\tfrac12+2i\tauM)\in H^2(\mathbb C_+)$ is holomorphic on $\im\tauM>-\tfrac14$
+with its pole at $-i/4$ on the boundary, $\widehat{{\gth}_{<}}(\tauM) = \widehat{{\gth}_{>}}(-\tauM)\in H^2(\mathbb C_-)$, and
+$|\widehat{{\gth}_{>}}(u)|\sim(2-\jtheta(1))/|u|$. (c) Hence $\log|\widehat{{\gth}_{>}}|\in L^1(du/(1+u^2))$ while
+$\int\log|\widehat{\gth}|\,du/(1+u^2) = -\infty$: the theta vector violates the Szeg\H o condition, its outgoing half
+does not.
+\end{proposition}
+
+\begin{theorem}[H-THETA-EDGE: the symbol is the ratio of the two edge transforms; pure Blaschke; de Branges form]
+\label{thm:symbol-edge-quotient}
+\claimstatus{thm:symbol-edge-quotient}{proved}
+With $r(\tauM) := (\tauM-i/2)/(\tauM+i/2)$, as meromorphic identities,
+\[
+\Theta(\tauM) = \frac{\cxi(1+2i\tauM)}{\cxi(1-2i\tauM)} = \frac{\thetaM(1+2i\tauM)}{\thetaM(2i\tauM)}\,r(\tauM)
+= \frac{\widehat{\gth}(\tauM-i/4)}{\widehat{\gth}(\tauM+i/4)}\,r(\tauM),\qquad
+\cxi(1\pm2i\tauM) = \cxi_{\mathrm{crit}}(\tauM\mp i/4):
+\]
+the Riemann channel's symbol is the critical-line $\cxi$ shifted by $\mp i/4$, i.e.\ the odd theta read on the two
+edge lines of the strip, where the constant terms make the Mellin integral diverge and only the continuation exists.
+(a) In de Branges form $\Theta = E^{\#}/E$ with $E(\tauM) = \cxi(1-2i\tauM) = \cxi(2i\tauM)$, $E^{\#}(\tauM) =
+\overline{E(\bar\tauM)} = \cxi(1+2i\tauM) = E(-\tauM)$; $E$ is Hermite--Biehler unconditionally and $F\mapsto F/E$ is
+unitary from the de Branges space $H(E)$ (norm $\int|F/E|^2du/2\pi$) onto $\KS$. (b) $\cxi$ has no real zeros ($\zeta(\sigs)<0$ and $\sigs(\sigs-1)<0$ on $(0,1)$, so $\cxi(\sigs)>0$ there; none outside the strip), so its zeros pair off as $\zero,\bar\zero$, and $\Theta$ is a pure Blaschke
+product normalised by $\Theta(0) = 1$: with the paired Hadamard factorisation $\cxi(s) = \tfrac12\prod_{\im\zero>0}
+(1-s/\zero)(1-s/\bar\zero)$ (the linear exponent vanishes because $\cxi'(\tfrac12) = 0$ while $P'(\tfrac12)/P(\tfrac12) = -\sum_{\im\zero>0}2(\sigs-\tfrac12)/|\zero-\tfrac12|^2 = 0$, absolutely convergent and cancelling under $\zero\mapsto1-\bar\zero$),
+\[
+\Theta(\tauM) = \prod_{\im\zero>0}\frac{(\tauM-v_{\zero,-})(\tauM-v_{\zero,+})}{(\tauM-\bar v_{\zero,-})(\tauM-\bar v_{\zero,+})},
+\qquad v_{\zero,\pm} = \pm\gam{}/2 + i\sigs/2,
+\]
+with zero set $\{w_\zero\}$, no singular factor (meromorphic across $\mathbb R$) and no delay factor $e^{ia\tauM}$
+(since $\Theta(iv)\sim\sqrt{\pi/v}$). This proves the innerness of \cref{prop:scattering-inner} without a
+Phragm\'en--Lindel\"of step. (c) The unshifted $\cxi_{\mathrm{crit}}$ is never Hermite--Biehler (it equals its own
+$\#$-transform); Hermite--Biehler for every translate $\cxi_{\mathrm{crit}}(\tauM+ih)$, $h>0$, is equivalent to RH.
+\end{theorem}
+
+\subsection{What the theta vector generates: the refutation}
+
+\begin{theorem}[The theta vector is cyclic for the forward dilation; its outgoing half is outer]
+\label{thm:theta-vector-cyclic}
+\claimstatus{thm:theta-vector-cyclic}{proved}
+(a) $\overline{\mathrm{span}}\{U_\tsg\gth:\tsg\in\mathbb R\} = H$ (Fourier uniqueness: $\widehat{\gth}\ne0$ off a discrete
+set). (b) $\overline{\mathrm{span}}\{U_\tsg\gth:\tsg\ge0\} = H$ as well: for $h\in H$ the function $F(z) = (2\pi)^{-1}
+\int\widehat{\gth}\,\overline{\widehat h}\,e^{izu}du$ is holomorphic on $|\im z|<\pi/2$ by \cref{prop:theta-vector-mellin}(a),
+so vanishing for $z\ge0$ forces $h = 0$; equivalently, by the Szeg\H o failure, no simply invariant subspace $qH^2$
+contains $\widehat{\gth}$. (c) $\widehat{{\gth}_{>}}$ is \emph{outer}: ${\thetaM}_{>}(s)\ne0$ throughout $\re s<1$, because with
+$p(X) = 1 - e^{X/2}(\jtheta(e^X)-1)$ on $X\ge0$ one has $-z{\thetaM}_{>}(s) = p(0) + \int_0^\infty p'(X)e^{-zX}dX$ for
+$z = (1-s)/2$, whose real part is at least $3 - 2\jtheta(1)>0$; continuation across $\mathbb R$ excludes a singular
+factor and the support of ${\gth}_{>}$ near $y = 1$ excludes a delay. Hence $\overline{\mathrm{span}}\{U_\tsg{\gth}_{>}:\tsg\ge0\}
+= H_+$ with zero defect. On the critical line $\thetaM(\tfrac12+it) = 2\re{\thetaM}_{>}(\tfrac12+it)$: at a critical zero
+the half transforms are nonzero, purely imaginary and opposite (${\thetaM}_{>}(\zero_1) = -0.13055642\,i$). (d)
+Consequently \cref{conj:h-theta} is \emph{refuted} in each of the following cyclic-and-cut readings, which exhaust those in which it is defined: the compression of $U_\tsg$ to the
+orbit closure of $\gth$ is $U_\tsg$ itself (unitary, absolutely continuous spectrum); removing $H_+$ afterwards gives
+the backward shift on $H_-$, whose generator has the whole open left half-plane as point spectrum; cutting first
+and taking the forward orbit gives the isometric shift on $H_+$. None is the completely non-unitary contraction on
+$\KS$ with the discrete modes of \cref{thm:model-space-jets}. The unweighted outgoing half $\phi\,1_{(1,\infty)}$, which is in $L^2(1,\infty)$ although $\phi\notin H$, has transform ${\thetaM}_{>}(2i\tauM)$ with argument in $\re s<0<1$, zero-free by (c): it is outer too, with defect zero. The same holds for every weight $y^a\phi$,
+$0<a<\tfrac12$, and $\phi$ itself is not in $H$. What can be built from theta is a vector with inner factor
+$\Theta$ (\cref{prop:outgoing-generator}), which uses the continued edge quotient as extra data.
+\end{theorem}
+
+\subsection{The GL$_1$ side: Burnol's causality, the bad-zero defect, the absorption lines}
+
+\begin{citedfact}[Connes: $E$ is a surjective isometry at $\delta = 0$]
+\label{cit:connes-surjective-isometry}
+\claimstatus{cit:connes-surjective-isometry}{cited}
+\cite{connes1998trace}: the map \texttt{\detokenize{E(f) \, (g) = \vert g \vert^{1/2} \sum_{q\in k^*} f(qg)}}
+\texttt{\detokenize{defines a surjective isometry from $L^2(X)_0$ to $L^2(C_k)$}} (\texttt{math/9811068:main.tex:2549-2554},
+his Theorem III.1 at $\delta = 0$): the unweighted bond has no cokernel.
+\end{citedfact}
+
+\begin{citedfact}[Connes: the weighted cokernel carries the critical zeros]
+\label{cit:connes-cokernel-critical}
+\claimstatus{cit:connes-cokernel-critical}{cited}
+\cite{connes1998trace}, Theorem 1 ($\delta>1$): the spectrum of the generator on the cokernel
+\texttt{\detokenize{is the set of imaginary parts of zeros of the $L$ function with Gr\"ossencharakter $\wt{\chi}$ which have real part equal to ${1\over 2}$}}
+(\texttt{math/9811068:main.tex:873-878}), with multiplicity the largest $n<(1+\delta)/2$ not exceeding the order of
+the zero. The representation is not unitary because of the weight.
+\end{citedfact}
+
+\begin{citedfact}[Burnol: the theta image and its density]
+\label{cit:burnol-E-dense}
+\claimstatus{cit:burnol-E-dense}{cited}
+\cite{burnol2001causality} defines
+\texttt{\detokenize{f(\overline{v})=\sqrt{|v|}\sum_{q\in K^\times} \varphi(qv)  - {\int_{\Aa_K} \varphi(x)\, dx \over \sqrt{|v|}}}}
+(\texttt{math/0001013:main.tex:204-207}) and proves
+\texttt{\detokenize{$E(\Ss(\Aa_K)) \subset L^2(\Cc_K, d^*u)$ and is dense in it.}} (\texttt{:218-219}), the
+Fourier--Mellin transform of $E(f)$ being the Tate $L$-function of $f$ on the critical line.
+\end{citedfact}
+
+\begin{citedfact}[Burnol: causality iff RH; the closure criterion; the scattering multiplier]
+\label{cit:burnol-causality}
+\claimstatus{cit:burnol-causality}{cited}
+\cite{burnol2001causality}: with $D_+ = E(\mathcal S_{\le1})^\perp$ ($\mathcal S_{\le1}$ the test functions supported in
+the unit parallelepiped) and $D_- = I(D_+)$, all Lax--Phillips axioms hold except possibly causality, and
+\texttt{\detokenize{The Riemann Hypothesis holds for all abelian L--functions of $K$ if and only if ${\cal D}_-\perp{\cal D}_+$.}}
+(\texttt{math/0001013:main.tex:268-270}). Closure criterion: with $V = 1 - A$ the unitary with multiplier
+$(s-1)/s$, \texttt{\detokenize{$V(\overline{E(\Ss_{\leq 1})}) \subset \HH^2$ with equality if and only if the Riemann Hypothesis holds for all abelian L--functions of $K$.}}
+(\texttt{:291-293}), and exactly \texttt{\detokenize{V(\Delta) = B\cdot\HH^2}} (\texttt{:639}) with $B$ the Blaschke
+product over the zeros with $\re\zero>\tfrac12$. The scattering operator is
+\texttt{\detokenize{S = (V^{-1}B)^{-1}\cdot VB^{-1} = V^2B^{-2}}} (\texttt{:509-511}), inner iff $B$ has no zero.
+\end{citedfact}
+
+\begin{theorem}[H-GL1-BAD: the GL$_1$ bad-zero defect channel]
+\label{thm:gl1-bad-zero-defect}
+\claimstatus{thm:gl1-bad-zero-defect}{proved}
+In the units-invariant trivial-character sector over $\mathbb Q$ (even $f_\infty\otimes1_{\hat{\mathbb Z}}$, which reduces
+Burnol's ``all abelian $L$-functions'' to $\zeta$ alone), transport Burnol's $L^2(\mathbb R_+,dx)$ to the bond by the unitary $R$, $(Rf)(y) = 2^{-1/2}y^{1/4}f(\sqrt y)$ (his Euclidean theta image $E_0$ and the adelic $E$ agree in this sector through $E(f) = 2\sqrt x\,E_0(f)$ for every even $f_\infty$), let $\mathcal N_{\le1}\subset H$ be the closed span of the theta
+images of the unit-ball test functions, $v_\pm(\tauM) := (\tauM\mp i/4)/(\tauM\pm i/4)$ the pole factor (Burnol's multiplier $(s-1)/s$ of $V = 1-A$, read at $s = \tfrac12\mp2i\tauM$; $V_y$ denotes multiplication by
+$v_-$), $B_-(\tauM) := B(\tfrac12+2i\tauM)$ and $B_{\mathrm{bad}}(\tauM) := B(\tfrac12-2i\tauM)$, $B$ Burnol's Blaschke product over the zeros
+with $\re\zero>\tfrac12$ (his $S = ZV^2B^{-2}$ has $Z = 1$ for a number field). (a) Orientation: Burnol's
+$D_+$ is outgoing for the forward time of this notebook, but $V_y\mathcal N_{\le1} = B_-H^2(\mathbb C_-)$ is an
+\emph{incoming}-half subspace; the outgoing invariant space is the reflection $JV_y\mathcal N_{\le1}$, with
+$\widehat{JV_y\mathcal N_{\le1}} = B_{\mathrm{bad}}H^2(\mathbb C_+)$. The forward saturation $\overline{\mathrm{span}}
+\{U_\tsg E(f):\tsg\ge0\}$ is all of $H$ (functions supported in $\log y<\tsg$ are dense). (b) The defect
+$K_{\mathrm{bad}} := H^2(\mathbb C_+)\ominus B_{\mathrm{bad}}H^2(\mathbb C_+)$ is a scalar model space, the \emph{GL$_1$
+bad-zero channel}: one Jordan chain of length $m_\zero$ per zero with $\sigs>\tfrac12$, at $w^{(1)}_\zero = \gam{}/2 +
+i(\sigs-\tfrac12)/2$, decay rate $(\sigs-\tfrac12)/2$ in $y$-time; $K_{\mathrm{bad}} = 0$ iff RH. (c) Burnol's
+scattering multiplier in the outgoing representation is $v_+^2B_{\mathrm{bad}}^{-2}$: a bad zero of multiplicity $m$
+is a pole of order $2m$; under RH it is $v_+^2$, with causal model space $K_{v_+^2}$ of dimension two (the pole
+pair), not $\{0\}$ and not $K_{\mathrm{bad}}$. (d) Dictionary with the GL$_2$ channel: $K_{\mathrm{bad}} = 0
+\iff \mathrm{RH}\iff\im w_\zero = \tfrac14$ for every zero. The two criteria are logically the same statement; no
+intertwining unitary between $K_{\mathrm{bad}}$ and $\KS$ follows, and a critical zero is a mode of $\KS$ at height
+$\tfrac14$, absent from $K_{\mathrm{bad}}$, and a character of Connes's weighted cokernel.
+\end{theorem}
+
+\begin{proposition}[On the line the zeros are absorption lines of the theta vector's spectral density]
+\label{prop:theta-spectral-density}
+\claimstatus{prop:theta-spectral-density}{proved}
+$C(\tsg) := \langle U_\tsg\gth,\gth\rangle = (2\pi)^{-1}\int|\widehat{\gth}(u)|^2e^{i\tsg u}du$ is a continuous,
+real, even, positive-definite function whose spectral density $|\widehat{\gth}|^2$ vanishes exactly at $u = \gam{}/2$
+for the critical zeros, to order twice the multiplicity ($C(0) = \|\gth\|^2 = 3.91496941$, $C(1) = 3.82218144$,
+$C(2) = 3.58315109$). An isolated zero of a density carries no spectral mass: in the unweighted bond the critical
+zeros are absorption lines of a cyclic vector, not missing subspaces; they become a cokernel only in Connes's
+weighted topology (\cref{cit:connes-cokernel-critical}). No identification of $C$ with the ring-norm trace of
+\cref{prop:ringnorm-trace} is established: $C$ is a matrix coefficient, not a trace, and $\widehat{\gth}^2$ has double
+poles at the Weil evaluation points $\pm i/4$.
+\end{proposition}
+
+\begin{citedfact}[Meyer: the virtual representation with the poles even and the zeros odd]
+\label{cit:meyer-virtual-representation}
+\claimstatus{cit:meyer-virtual-representation}{cited}
+\cite{meyer2005idele} constructs a virtual representation $\pi_+\ominus\pi_-$ of the idele class group whose spectrum
+is the poles and zeros of the completed $L$-function with multiplicity the pole order and whose character is the
+Weil distribution: \texttt{\detokenize{The two poles occur in~\(\pi_+\), the zeros in~\(\pi_-\).}}
+(\texttt{math/0311468:main.tex:213-214}). On Connes's construction: \texttt{\detokenize{There zeros on the critical line appear as above, but zeros off the critical line appear as resonances.}}
+(\texttt{:234-235}). This is the Phantasm's ``pole even, zeros odd, supertrace the explicit formula''
+(\cref{sec:phantasm-forced}) realised on Meyer's function spaces, not as an inversion parity of one $L^2$ vector.
+\end{citedfact}

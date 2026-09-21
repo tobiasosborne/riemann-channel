@@ -1,0 +1,1 @@
+Created [astra-proofs.md](/home/tobias/Projects/riemann-channel/notes/h-theta/astra-proofs.md) with T1–T6, the correction ledger, verdict, restated conjectures, and verified numerical targets. No other files edited; no git commands run.

@@ -179,3 +179,16 @@ prov:sorensen-cor92	sorensen-2001	paper.txt	1654	the central scattering trace is
 prov:sorensen-mpm	sorensen-2001	paper.txt	1667	m+ + m = h and m+	cit:sorensen-central-trace
 prov:lorscheid-components	1012.4825	elliptic.tex	309	In particular, $\cG_x$ is connected if and only if the class number of $F$ is odd.	cit:lorscheid-components
 prov:lorscheid-cusp-count	1012.3513	hecke.tex	992	The number of cusps is $\#\Cl\cO_X^x \,=\,\#(\rquot{\Cl X}{\langle x\rangle}) \,=\, \#\Cl^0X\cdot\#(\ZZ/d_x\ZZ)\,=\,h_Xd_x$.	cit:lorscheid-cusp-count
+prov:connes98-surjective	math/9811068	main.tex	2549-2554	defines a surjective isometry from $L^2(X)_0$ to $L^2(C_k)$	cit:connes-surjective-isometry
+prov:connes98-E	math/9811068	main.tex	2551	E(f) \, (g) = \vert g \vert^{1/2} \sum_{q\in k^*} f(qg)	cit:connes-surjective-isometry
+prov:connes98-thm1	math/9811068	main.tex	873-878	is the set of imaginary parts of zeros of the $L$ function with Gr\"ossencharakter $\wt{\chi}$ which have real part equal to ${1\over 2}$	cit:connes-cokernel-critical
+prov:burnol00-E	math/0001013	main.tex	204-207	f(\overline{v})=\sqrt{|v|}\sum_{q\in K^\times} \varphi(qv) - {\int_{\Aa_K} \varphi(x)\, dx \over \sqrt{|v|}}	cit:burnol-E-dense
+prov:burnol00-dense	math/0001013	main.tex	218-219	$E(\Ss(\Aa_K)) \subset L^2(\Cc_K, d^*u)$ and is dense in it.	cit:burnol-E-dense
+prov:burnol00-causality	math/0001013	main.tex	268-270	The Riemann Hypothesis holds for all abelian L--functions of $K$ if and only if ${\cal D}_-\perp{\cal D}_+$.	cit:burnol-causality
+prov:burnol00-closure	math/0001013	main.tex	291-293	$V(\overline{E(\Ss_{\leq 1})}) \subset \HH^2$ with equality if and only if the Riemann Hypothesis holds for all abelian L--functions of $K$.	cit:burnol-causality
+prov:burnol00-VDelta	math/0001013	main.tex	639	V(\Delta) = B\cdot\HH^2	cit:burnol-causality
+prov:burnol00-scattering	math/0001013	main.tex	509-511	S = (V^{-1}B)^{-1}\cdot VB^{-1} = V^2B^{-2}	cit:burnol-causality
+prov:burnol02-thmA	math/0203120	main.tex	516-520	are a minimal system in $L_a$ if and only if $a\leq1$. They are a complete system if and only if $a\geq1$.	cit:burnol-sonine-evaluators
+prov:meyer05-virtual	math/0311468	main.tex	213-214	The two poles occur in~\(\pi_+\), the zeros in~\(\pi_-\).	cit:meyer-virtual-representation
+prov:meyer05-resonances	math/0311468	main.tex	234-235	There zeros on the critical line appear as above, but zeros off the critical line appear as resonances.	cit:meyer-virtual-representation
+prov:uetake07-abstract	uetake-2007	paper.txt	15-16	and coincides with the poles of the scattering matrix, counted with multiplicities.	cit:uetake-causal-factor

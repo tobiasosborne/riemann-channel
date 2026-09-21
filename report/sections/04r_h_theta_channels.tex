@@ -1,0 +1,173 @@
+% SHARD-ID: RC-04R-H-THETA-CHANNELS
+% SHARD-TITLE: The Phantasm IX: H-THETA II. The GL_2 Symbol from Two GL_1 Theta Channels in the Eisenstein Constant Term, the Model Space from the Cut and Damped Absorption Characters, Sonine Evaluators, and H-THETA-1
+% SHARD-SUMMARY: The Siegel theta of the lattice Z z + Z has zeroth Fourier coefficient theta(t/y) + sqrt(y/t)(theta(ty) - 1), two GL_1 theta channels exchanged by the weighted involution F(t) -> t^{-1} F(1/t); their Mellin transforms are the two constant-term coefficients Lambda_J(2s) y^s and Lambda_J(2s-1) y^{1-s} of the completed Eisenstein series, so the scattering coefficient phi_E = Lambda_J(2s-1)/Lambda_J(2s) is the ratio of the two GL_1 edge transforms and the notebook's S is phi_E with the pole pair removed, Uetake's reduced causal factor.
+% SHARD-SUMMARY: The model space K_S is spanned, unconditionally, by the jets (log y)^j y^{-(1-sigma)/2 - i gamma/2} on y > 1: under RH, the absorption characters cut to the outgoing half and damped by y^{-1/4}; the jets are complete and minimal but, under RH, not a Riesz basis, so one kernel per zero is not one exit per mode. An explicit outgoing-half vector with inner factor Theta generates the outgoing subspace, but it is not the theta vector cut or weighted.
+% SHARD-SUMMARY: Burnol's level-one Sonine evaluators are complete and minimal, one per zero with multiplicity; the diagonal Sonine filtration is not a dilation orbit (two-cutoff covariance); the realisation of a one-exit contraction semigroup on the evaluators with the regular dilation as minimal dilation is left open as H-THETA-1 with a finite Gram-matrix falsification test.
+% SHARD-KEYWORDS: Eisenstein constant term, Siegel theta, scattering coefficient, reduced causal factor, Uetake, Cauchy kernels, jets, Riesz basis, absorption characters, Sonine spaces, co-Poisson, two-cutoff covariance, H-THETA-1
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/h_theta.py
+
+\section{The Phantasm IX: H-THETA II. Channels, Model Space, Sonine Evaluators}
+\label{sec:h-theta-channels}
+
+Continuation of \cref{sec:h-theta} (same round, same lanes, same conventions: bond $H$, Mellin transform, outgoing half
+$H_+ = L^2(1,\infty)$, theta bond vector $\gth$, $\thetaM(s) = 4\cxi(s)/(s(s-1))$, edge transforms, symbol $\Theta$, model
+space $\KS$, kernels $k_w$, $r(\tauM) = (\tauM-i/2)/(\tauM+i/2)$).
+
+\subsection{The GL$_2$ side: two GL$_1$ theta channels in the Eisenstein constant term}
+
+\begin{proposition}[Siegel theta constant term; Eisenstein normalisation; the scattering coefficient]
+\label{prop:siegel-constant-term}
+\claimstatus{prop:siegel-constant-term}{proved}
+Let $\Theta_z(t) := \sum_{(m,n)\in\mathbb Z^2}e^{-\pi t|mz+n|^2/y}$, $z = x+iy$. (a) $\int_0^1\Theta_z(t)\,dx = \jtheta(t/y)
++ \sqrt{y/t}\,(\jtheta(ty)-1)$, and by Poisson $\sqrt{y/t}\,\jtheta(ty) = t^{-1}\jtheta(1/(ty))$: the two GL$_1$
+channels are exchanged by the weighted involution $F(t)\mapsto t^{-1}F(1/t)$ at fixed $y$, which fixes $\sqrt{y/t}$.
+(b) $\int_0^\infty(\jtheta(t/y)-1)t^s\,d^\times t = y^s\thetaM(2s)$ ($\re s>\tfrac12$) and $\int_0^\infty\sqrt{y/t}\,
+(\jtheta(ty)-1)t^s\,d^\times t = y^{1-s}\thetaM(2s-1)$ ($\re s>1$); with $E(z,s) = \tfrac12\sum_{\gcd(m,n)=1}y^s|mz+n|^{-2s}$
+and $E^*(z,s) = \pi^{-s}\Gamma(s)\zeta(2s)E(z,s) = \tfrac12\int_0^\infty(\Theta_z(t)-1)t^s\,d^\times t$ ($\re s>1$), the constant
+term of $E^*$ is $\tfrac12\thetaM(2s)y^s + \tfrac12\thetaM(2s-1)y^{1-s}$. (c) Hence the Eisenstein scattering coefficient is
+$\scatdet(s) = \thetaM(2s-1)/\thetaM(2s)$ and $\scatdet(\tfrac12+i\tauM) = r(\tauM)\Ssym(\tauM) = r(\tauM)/\Theta(\tauM)$:
+the notebook's $\Ssym$ is $\scatdet$ with the pole pair removed ($\scatdet(\tfrac12) = -1$, $\Ssym(0) = 1$). The exit data
+of the modular cavity are the GL$_1$ theta vector read on the two edge lines (\cref{thm:symbol-edge-quotient}).
+\end{proposition}
+
+\begin{citedfact}[Uetake: the causal factor of the automorphic scattering matrix]
+\label{cit:uetake-causal-factor}
+\claimstatus{cit:uetake-causal-factor}{cited}
+\cite{uetake2007lax} studies the Lax--Phillips generator for $\mathrm{SL}_2(\mathbb Z)$, whose spectrum
+\texttt{\detokenize{and coincides with the poles of the scattering matrix, counted with multiplicities.}}
+(\texttt{uetake-2007:paper.txt:15-16}), distinguishes projected from intersected incoming/outgoing subspaces, and
+isolates the causal factor $S_{c0}(s) = \cxi(2s)/\cxi(-2s)$ of the scattering matrix (\texttt{:676-682}), with
+\texttt{\detokenize{Let us say Sc0 is causal if Sc0 L2 (R− ) ⊂ L2 (R− ).}} (\texttt{:617}).
+\end{citedfact}
+
+\begin{observation}[The notebook's symbol is the reduced causal factor]
+\label{obs:symbol-is-reduced-causal-factor}
+\claimstatus{obs:symbol-is-reduced-causal-factor}{sketched}
+In Uetake's wave variable $p = i\tauM$, $S_{c0}(i\tauM) = \Ssym(\tauM)$; the projected and intersected wave spaces give
+scattering matrices $-r\Ssym$ and $-r^{-1}\Ssym$, the intersected-space generator has an extra eigenvalue
+$-\tfrac12$, and $\Ssym$ is the causal factor after these elementary factors are removed. So ``deleting the cusp
+forms'' alone does not specify the reduction stated in \cref{sec:riemann-channel}; the choice of radiation-space
+repair is a choice (as the cusp-graph review warned, \cref{sec:cusp-graph-scattering}). Read from the local text,
+not re-derived.
+\end{observation}
+
+\begin{proposition}[An explicit generator of the outgoing subspace; the $i/4$ weight dictionary]
+\label{prop:outgoing-generator}
+\claimstatus{prop:outgoing-generator}{proved}
+(a) For the zero Fourier mode of the cusp wave equation, $u = y^{1/2}v(\log y)$ propagates freely; multiplying $\gth$
+by $y^{\pm1/4}$ shifts $\tauM$ by $\mp i/4$, giving $y^{1/2}\phi$ (in $L^2(0,1)$, not $L^2(1,\infty)$) and $\phi$
+(the reverse); the edge transforms of \cref{thm:symbol-edge-quotient} are continuations, not convergent integrals of
+these half-vectors. (b) $\widehat{h_\Theta}(\tauM) := \Theta(\tauM)/(\tauM+i)^2$ is the transform of a vector
+$h_\Theta\in H_+$ (absolutely convergent inverse transform) whose inner factor is exactly $\Theta$, so
+$\overline{\mathrm{span}}\{U_\tsg h_\Theta:\tsg\ge0\} = \widehat{\phantom{x}}^{-1}(\Theta H^2(\mathbb C_+))$ and
+$H_+\ominus\overline{\mathrm{span}}\{U_\tsg h_\Theta\} = \widehat{\phantom{x}}^{-1}\KS$; by the edge identity this is a
+theta-derived integral formula, but not the theta vector cut or weighted, and no Jacobi-theta closed form for
+$h_\Theta$ is claimed.
+\end{proposition}
+
+\subsection{The model space from the absorption characters; jets; no Riesz basis}
+
+\begin{assumption}[RH]
+\label{asm:rh}
+\claimstatus{asm:rh}{assumed}
+Every nontrivial zero has $\sigs = \tfrac12$. Used only where stated.
+\end{assumption}
+
+\begin{theorem}[The model space is spanned by the cut and damped absorption characters, with jets]
+\label{thm:model-space-jets}
+\claimstatus{thm:model-space-jets}{proved}
+With the boundary measure $d\tauM/2\pi$ fixed here (\cref{sec:rebound-state} uses $d\tauM$, whence its constant $-i\sqrt{2\pi}$), the kernel $k_{w_\zero}$ is $-i\,y^{-(1-\sigs)/2 - i\gam{}/2}1_{y>1}$ in the $y$-picture, and, unconditionally,
+\[
+\widehat{\phantom{x}}^{-1}\KS = \overline{\mathrm{span}}\{(\log y)^j\,y^{-(1-\sigs)/2-i\gam{}/2}1_{y>1}:\ \cxi(\zero) = 0,\ 0\le j<m_\zero\},
+\]
+by \cref{thm:symbol-edge-quotient}(b) (a vector orthogonal to all jets vanishes at every zero to full order and is
+divisible by the Blaschke product). Omitting the logarithmic powers gives a complete system iff every zero is simple.
+$C_\tsg$ acts by $e^{-i\tsg\bar w}$ on the ordinary modes and by the Jordan rule on $(\log y)^j$-modes; the character
+$y^{-i\gam{}/2}$ moves under $U_\tsg$ by $e^{+i\tsg\gam{}/2}$, the mode under the adjoint compression by
+$e^{-i\tsg\gam{}/2-\tsg(1-\sigs)/2}$. Under \cref{asm:rh} every mode is ``cut the absorption character to the outgoing
+half and damp by $y^{-1/4}$''; Connes's weighted cokernel (\cref{cit:connes-cokernel-critical}) contains the
+character of a zero of order $m$ only up to multiplicity $n<(1+\delta)/2$, and no off-line character, so the
+dictionary is a formula for modes, not a unitary identification of the two spaces.
+\end{theorem}
+
+\begin{proposition}[Complete and minimal; not a Riesz basis]
+\label{prop:kernels-not-riesz}
+\claimstatus{prop:kernels-not-riesz}{proved-conditional}
+(a) The jets $\{(\tauM-\bar w_\zero)^{-j-1}\}$ form a complete minimal system in $\KS$ unconditionally (biorthogonal
+system from $\Theta(\tauM)/(\tauM-w)^l$, $1\le l\le m_\zero$); the ordinary kernels alone are complete and minimal
+iff all zeros are simple. (b) Under \cref{asm:rh} the normalised kernels are not a Riesz basis: two kernels at
+height $\tfrac14$ and ordinates $a,a'$ have $|\langle\tilde k,\tilde k'\rangle| = \tfrac12/\sqrt{(a-a')^2+\tfrac14}$, and
+bounded multiplicities force gaps tending to zero (otherwise the counting function would be $O(T)$, contradicting
+$\log|\cxi_{\mathrm{crit}}(iv)| = v\log v + O(v)$), while unbounded multiplicities give consecutive jets of overlap
+$\sqrt{(2j+1)/(2j+2)}\to1$. Consequently no boundedly equivalent Hilbert norm makes the modes orthonormal, and
+``one kernel per zero'' does not mean one exit per mode: the model's exit is the single functional $f\mapsto f(0)$
+in $\log y$ (\cref{lem:exit-one-dimensional}), to which every ordinary mode couples.
+\end{proposition}
+
+\subsection{Sonine spaces: the arithmetic coordinate system, and what is open}
+
+\begin{citedfact}[Burnol: complete and minimal evaluators at the zeros]
+\label{cit:burnol-sonine-evaluators}
+\claimstatus{cit:burnol-sonine-evaluators}{cited}
+\cite{burnol2004systems}, Theorem A: the evaluators $Y^a_{\zero,k}$, $0\le k<m_\zero$, at the nontrivial zeros
+\texttt{\detokenize{are a minimal system in $L_a$ if and only if $a\leq1$. They are a complete system if and only if $a\geq1$.}}
+(\texttt{math/0203120:main.tex:516-520}); for $a<1$ the complement is the co-Poisson subspace. Here $L_a$ is the space of
+$f\in L^2(0,\infty)$ such that $f$ and its cosine transform are constant on $(0,a)$; $K_a$ (both vanish) has an excess of
+two evaluators at $a = 1$ (Theorem A$'$).
+\end{citedfact}
+
+\begin{proposition}[The two-cutoff covariance: the diagonal Sonine filtration is not a dilation orbit]
+\label{prop:sonine-two-cutoff-covariance}
+\claimstatus{prop:sonine-two-cutoff-covariance}{proved}
+With $L_{a,b} := \{f: f\text{ constant on }(0,a),\ \mathcal F_+f\text{ constant on }(0,b)\}$ ($L_a = L_{a,a}$) and the
+unitary $R: L^2(dx)\to H$, $(Rf)(y) = 2^{-1/2}y^{1/4}f(\sqrt y)$: $\mathcal F_+D_c = D_{c^{-1}}\mathcal F_+$,
+$D_c L_{a,b} = L_{ca,\,b/c}$, hence $U_\tsg RL_{a,b} = RL_{ae^{\tsg/2},\,be^{-\tsg/2}}$: one cutoff grows
+while the other shrinks, so $U_\tsg RL_a\ne RL_{ae^{\pm\tsg/2}}$ and the diagonal chain $\{L_a\}$ is not a
+Lax--Phillips filtration $D_+(\tsg) = U_\tsg D_+$. Any construction from support conditions must use the two-cutoff
+family.
+\end{proposition}
+
+\begin{conjecture}[H-THETA-1: a one-exit contraction on the Sonine evaluators]
+\label{conj:h-theta-1}
+\claimstatus{conj:h-theta-1}{open}
+In $RL_1$ put $e_{\zero,k} = R\overline{Y^1_{\zero,k}}$, $\mathrm d_\zero = (\bar\zero-1)/2$, and define on their span the
+algebraic semigroup $T^0_\tsg e_{\zero,k} = e^{\mathrm d_\zero\tsg}\sum_{j\le k}\binom kj(\tsg/2)^{k-j}e_{\zero,j}$. Does $T^0_\tsg$
+extend to a strongly stable contraction semigroup on the Sonine norm with a scalar exit form,
+$-\langle A_0f,h\rangle - \langle f,A_0h\rangle = j_0(f)\overline{j_0(h)}$, whose minimal unitary dilation is the
+regular dilation $U_\tsg$ on the GL$_1$ bond? For simple zeros a necessary condition is that every finite matrix
+$-(\mathrm d_\zero+\bar{\mathrm d}_{\zero'})G_{\zero\zero'}$, $G$ the evaluator Gram matrix, be positive of rank one; more
+basically every finite matrix $\langle e_i,e_j\rangle - \langle T^0_\tsg e_i,T^0_\tsg e_j\rangle$ must be positive. Not
+supplied by completeness and minimality; the first falsification test is three zeros. A robust violation refutes the
+realisation in Burnol's norm and must not be rescued by an unspecified change of norm.
+\end{conjecture}
+
+\begin{numerical}[Blind numerics lane, H-THETA]
+\label{num:h-theta}
+\claimstatus{num:h-theta}{numerical}
+\texttt{scripts/h\_theta.py} ($98$ assertions, $69$ s, mpmath at $25$ digits, deterministic; \texttt{outputs/h\_theta.txt};
+ledger D01--D68 and findings F1--F16 in \texttt{notes/h-theta/numerics.md}; $98$ pass): $\phi(1/y) = y^{1/2}\phi(y)$;
+$L^2$ membership of $y^a\phi$ exactly for $0<a<\tfrac12$ and $J$-invariance only at $a = \tfrac14$; $\widehat{\gth}$ against
+the closed form at four points and $\widehat{\gth}(0) = -16\cxi(\tfrac12) = -7.95393245$; residues $+i$ at $+i/4$, $-i$ at
+$-i/4$; zeros at $\gam{n}/2$; ${\thetaM}_{<} = {\thetaM}_{>}(1-\cdot)$; $|u\,\widehat{{\gth}_{>}}(u)|\to2-\jtheta(1) = 0.91356519$
+against $|\widehat{\gth}(40)| = 1.5\cdot10^{-27}$; ${\thetaM}_{>}(\zero_n)$ purely imaginary and nonzero for $n\le3$; the
+Szeg\H o integrals ($-3.91,-6.02,-8.17$ at cutoffs $10,20,40$, increments non-decaying, against $-0.10,-0.37,-0.54$
+decaying); the edge identity for $\Theta$ at four points, $|\Theta| = 1$ on $\mathbb R$, $<1$ in $\mathbb C_+$, zeros at
+$\gam{n}/2+i/4$, Hermite--Biehler on a grid; Nyman's Mellin formula to $3\cdot10^{-25}$; the Balazard--Saias--Yor
+integral consistent with $0$; the Siegel constant term at three points, the corrected Poisson factor $t^{-1}$ (the
+brief's $y$ was wrong, F1) and the weighted involution (F2), the Mellin identities inside their regions (the
+brief's test point was outside, F3); the mode transforms as Cauchy kernels, $\langle\widehat m_n,\Theta h\rangle = 0$; the
+Gram of $30$ normalised kernels (smallest eigenvalue $0.40, 0.27, 0.20$ at $N = 10,20,30$; inconclusive for the
+Riesz question at these heights); $C(0) = \|\gth\|^2$, $C$ real and even.
+\end{numerical}
+
+\begin{observation}[What the next round should do]
+\label{obs:h-theta-next}
+\claimstatus{obs:h-theta-next}{sketched}
+(i) H-THETA-1: compute the Sonine evaluator Gram matrix at level one for the first three zeros and test the rank-one
+loss condition and finite contractivity. (ii) The GL$_1$ bad-zero channel as a renewal channel (\cref{sec:rebound-state})
+with synthetic off-line zeros: what a rebound sees under $\neg$RH. (iii) The $2$-dimensional causal model $K_{v_+^2}$
+of Burnol's scattering under RH against the even sector of the Phantasm (the pole pair as the only GL$_1$ resonances).
+(iv) The Eisenstein constant term at level $N$: the two GL$_1$ channels become $2\times$(number of cusps), and the
+scattering matrix of $\Gamma_0(N)$ as a matrix of edge quotients (H-ARITH, \cref{sec:elliptic-cavity-channel}).
+\end{observation}

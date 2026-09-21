@@ -2,6 +2,43 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-21, afternoon: H-THETA refuted, the two edge transforms, Burnol's causality, the GL_1 bad-zero defect (shards 04q, 04r)
+
+TJO asked about H-THETA (it was on `claude/beautiful-bohr-e84nm9`; merged into this branch first, commit `5e9c4c3`),
+then "go hard on it with astra xhigh after working out the maths carefully". Brief with the maths worked out
+(`notes/h-theta/astra-brief.md`: the weight `y^{1/4}` is forced, the transform `-xi(1/2+2i tau)/(tau^2+1/16)` violates
+Szegő, the literal conjecture is degenerate, the GL_1 truth is Burnol's causality theorem, the GL_2 symbol is a ratio
+of two GL_1 theta channels), astra prover (`astra-proofs.md`, T1–T6, 41 corrections to the brief), blind Opus numerics
+(`scripts/h_theta.py`, 98/98), Opus REFUTE review (`notes/reviews/h-theta-2026-09-21.md`: 20 VALID / 4 MINOR / 0 INVALID before the fixes, 24 VALID / 0 MINOR / 0 INVALID after; 169 independent evaluations; all 43 byte-cited spans checked). Sources fetched:
+eight Burnol papers, Meyer 2005, Uetake 2007 (`refs/src/uetake-2007/`, pdftotext). Worklog 2026-09-21, afternoon.
+
+**Registered (04q, 04r).** `conj:h-theta` is REFUTED (`thm:theta-vector-cyclic`): the forward dilation orbit of the theta
+vector is the whole bond and its outgoing half is outer (`Lambda_>(s) != 0` on `Re s < 1`), so no cyclic-and-cut
+construction gives `K_S`. Survives, unconditionally: `Theta(tau) = [ghat(tau-i/4)/ghat(tau+i/4)](tau-i/2)/(tau+i/2)`, the odd
+theta on the two edge lines, `Theta = E^#/E` with `E = xi(1-2i tau)` Hermite–Biehler, a pure Blaschke product (the
+innerness of `prop:scattering-inner` now proved by a paired Hadamard product) (`thm:symbol-edge-quotient`); the two
+edge values are the Eisenstein constant-term coefficients, the Siegel theta's zeroth coefficient being
+`theta(t/y) + sqrt(y/t)(theta(ty)-1)` (`prop:siegel-constant-term`), and the notebook's `S` is Uetake's reduced causal
+factor. GL_1 (`thm:gl1-bad-zero-defect`): Burnol's closure is an incoming-half subspace, its reflection has defect
+`K_bad` (one Jordan chain per zero with `sigma > 1/2`), zero iff RH; his scattering multiplier is `v_+^2 B_bad^{-2}`,
+two-dimensional causal model under RH; on the line the zeros are absorption lines of `|ghat|^2`
+(`prop:theta-spectral-density`). `K_S` is spanned by the jets of the cut, damped absorption characters, complete and
+minimal, not a Riesz basis under RH (`thm:model-space-jets`, `prop:kernels-not-riesz`): one kernel per zero is not one
+exit per mode. Sonine: the level-one evaluators are complete and minimal; the diagonal filtration is not a dilation
+orbit; `conj:h-theta-1` (one-exit contraction on the evaluators) is open with a three-zero falsification test.
+
+**Lessons.** The brief was wrong in four places the blind numerics caught (Poisson factor `t^{-1}` not `y`; the
+involution `F(t) -> t^{-1}F(1/t)`; a test point outside the convergence region; the pointwise asymptotic needs
+`|zeta|`), and in the orientation of Burnol's closure (incoming, not outgoing) and the saturation `M = H`, which the
+prover caught. `\Lambda` is the von Mangoldt macro (`\vM`); the theta Mellin transform is `\thetaM`. A shard is capped
+at 320 lines (split 04q/04r). Macros with subscripts (`\gth = g_{\mathrm J}`) need braces before a further subscript.
+
+**Next on this lead (in order).** (i) H-THETA-1: the Sonine evaluator Gram at level one for three zeros; the
+rank-one loss test. (ii) The GL_1 bad-zero channel as a renewal channel with synthetic off-line zeros. (iii) The
+two-dimensional causal model `K_{v_+^2}` of Burnol's scattering under RH against the even sector of the Phantasm.
+(iv) The level-`N` Eisenstein constant term as a matrix of edge quotients (H-ARITH). The 04p list (genus two, the
+Frobenius channel on the class-group bond, the two GL_1 cusps) stands.
+
 ## Session 2026-09-21: the adelic symplectic space as the bond (shard 04p); the class-group bond, the theta functional, the cusps as the GL_1 bond
 
 TJO returned to the genesis idea (a symplectic space for `Q^x \ (R_+ x prod_p Z)`, Heisenberg–Weyl, an
