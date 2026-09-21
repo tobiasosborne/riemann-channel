@@ -1,7 +1,7 @@
 % SHARD-ID: RC-04P-GL1-BOND
 % SHARD-TITLE: The Phantasm VIII: the Adelic Symplectic Space as the Bond. The Class-Group Bond of a Function Field, the Theta Functional as its State, the Cusps as the GL_1 Bond, and Riemann's Theta for Q
 % SHARD-SUMMARY: Taking the adelic symplectic space as the bond of the cMPS (not the bulk, which would be the blind product state over primes) identifies, for a function field, the units-invariant bond with l^2 of the class group times the degree ladder: its ring norms are the effective-divisor counts, its generic Riemann--Roch part is the pole, its special part (the theta divisor) is the zeros, and at genus one the bond dimension is the zeta numerator at T = 1 and determines the Frobenius roots.
-% SHARD-SUMMARY: The theta functional evaluated on the idele class of a divisor D is q^{h^0(D)}, Tate's zeta integral of the unit ball is Z(T), and Poisson summation on A/K for the unit ball is Riemann--Roch, so the adelic Fourier transform (the Weyl element of the Weil representation) acts on the bond state as D -> K_C - D; the cusps of the tree quotient GL_2(R)\T are Pic(R) = Pic^0(K), so the hedgehog's spikes are the GL_1 bond and H-CLASS is the Fourier transform on it, with the nontrivial class characters seeing no zeros at genus one.
+% SHARD-SUMMARY: The theta functional evaluated on the idele class of a divisor D is q^{h^0(D)}, Tate's zeta integral of the unit ball is Z(T), and Poisson summation on A/K for the unit ball is Riemann--Roch, so the adelic Fourier transform (the Weyl element of the Weil representation) acts on the bond state as D -> K_C - D; the cusps of the tree quotient GL_2(R)\T are Pic(R) = Pic^0(K), so the hedgehog's spikes are the GL_1 bond and H-CLASS is a Pic-group matrix block-diagonalised by the Fourier transform on it, with the nontrivial class characters seeing no zeros at genus one.
 % SHARD-SUMMARY: Over Q the units-invariant bond is L^2(R_+^x) with Jacobi's theta as bond state, the constant terms 1 and y^{-1/2} as the even sector exchanged by the automorphism, and the Mellin transform of the odd part equal to 2 pi^{-s/2} Gamma(s/2) zeta(s) in the strip: Riemann's 1859 argument is the Q case; what the bond reading does not supply is the metric, and at genus one the symmetric-ray test is vacuous.
 % SHARD-KEYWORDS: adelic bond, idele class group, class group, Picard group, effective divisors, Riemann--Roch, theta functional, theta divisor, Tate's thesis, Poisson summation, Weyl element, cusps, Pic(R), class characters, Hecke L-function, Jacobi theta, Mellin transform, H-THETA, metric
 % SHARD-NOTES: none
@@ -51,19 +51,19 @@ $h = P(1) = \det(1-\Frob|H^1)$ (Weil): the bond dimension of the class-group bon
 \label{prop:theta-functional-bond-state}
 \claimstatus{prop:theta-functional-bond-state}{sketched}
 Let $f = 1_{O_{\mathbb A}}$ and $x$ an idele with divisor $D$. (a) $\Theta(xf) = \sum_{a\in K}1_{O_{\mathbb A}}(xa) = \qs^{h^0(D)}$.
-(b) With $\mathrm{vol}(\prod_vO_v^\times) = 1$, $\int_{\mathbb A^\times/K^\times}(\Theta(xf)-1)|x|^s\,d^\times x =
+(b) With $\mathrm{vol}(\prod_vO_v^\times) = 1$ and $\re s>1$ (elsewhere by continuation), $\int_{\mathbb A^\times/K^\times}(\Theta(xf)-1)|x|^s\,d^\times x =
 (\qs-1)^{-1}\sum_{[D]}(\qs^{h^0(D)}-1)\qs^{-s\deg D} = Z(\qs^{-s})$ (fibre volume $1/(\qs-1)$ over $\mathrm{Pic}$), and
 $\int_{\mathbb A^\times}f(x)|x|^sd^\times x = Z(\qs^{-s})$ (fibre volume $1$ over the effective divisors). (c) The
 functional equation $Z(1/(\qs T)) = \qs^{1-g}T^{2-2g}Z(T)$ is Poisson summation on $\mathbb A/K$ for $f$, and for
 this $f$ Poisson summation is Riemann--Roch $h^0(D)-h^0(K_C-D) = \deg D+1-g$: the adelic Fourier transform, the
 Weyl element of the Weil representation of $\SL(K)$, acts on the bond state as $[D]\mapsto[K_C-D]$, preserving
 the theta divisor $\{h^0>0\}\subset\mathrm{Pic}^{g-1}$ (its fixed locus is the set of theta characteristics
-$\{2[D] = [K_C]\}$, a $\mathrm{Pic}^0[2]$-torsor of order at most $2^{2g}$). The two poles of $Z$ are the two constant terms of $\Theta$, $a = 0$ and its Fourier image.
+$\{2[D] = [K_C]\}$, a $\mathrm{Pic}^0[2]$-torsor when nonempty, of order at most $2^{2g}$). The two poles of $Z$ are the two constant terms of $\Theta$, $a = 0$ and its Fourier image.
 \end{proposition}
 
 \begin{proposition}[The cusps of the tree quotient are the class-group bond]
 \label{prop:cusps-are-class-group-bond}
-\claimstatus{prop:cusps-are-class-group-bond}{sketched-conditional}
+\claimstatus{prop:cusps-are-class-group-bond}{proved-conditional}
 Let $R = O(C\setminus P_0)$, $\deg P_0 = 1$. (a) The cusps of $\mathrm{GL}_2(R)\backslash\mathcal T$ are in bijection with
 $\mathrm{Pic}(R)\cong\mathrm{Pic}^0(K)$ (Serre for $\mathrm{GL}_2(R)$; the count is byte-cited in \cref{cit:lorscheid-cusp-count} and, for
 APW's $\mathrm{PGL}_2(R)$, in \cref{cit:apw-cusps-pic-no-funnels}): one for D2, four for D3. The
@@ -84,7 +84,7 @@ bijection with the three nontrivial characters (\cref{thm:d3-height-diagonalisat
 
 \begin{proposition}[Over $\mathbb Q$: Riemann's theta on the dilation bond]
 \label{prop:riemann-theta-dilation-bond}
-\claimstatus{prop:riemann-theta-dilation-bond}{sketched}
+\claimstatus{prop:riemann-theta-dilation-bond}{proved}
 (a) $\mathbb A^\times = \mathbb Q^\times\cdot\mathbb R_+^\times\cdot\hat{\mathbb Z}^\times$ with
 $\mathbb Q^\times\cap\mathbb R_+^\times\hat{\mathbb Z}^\times = \{1\}$: the units-invariant GL$_1$ bond over
 $\mathbb Q$ is $L^2(\mathbb R_+^\times,d^\times x)$, one cusp. (b) For $x\in\mathbb R_+^\times$ and
@@ -110,7 +110,7 @@ bond state, with the outgoing half $y>1$ removed, is unitarily equivalent to the
 
 \begin{observation}[What the bond reading does not supply: the metric]
 \label{obs:gl1-bond-no-metric}
-\claimstatus{obs:gl1-bond-no-metric}{sketched}
+\claimstatus{obs:gl1-bond-no-metric}{proved}
 At genus one the Frobenius roots are fixed by $h$ alone and their common modulus $\sqrt{\qs}$ is Hasse's theorem,
 which nothing on the bond forces (the map $h\mapsto P$ gives equal moduli exactly on the Hasse interval; the numerics
 lane's counterexample $\qs = 2$, $h = 6$ has roots $-1,-2$). Any metric in which $\qs^{1/4}Z$ is unitary is diagonal in the eigenbasis of $Z$ and reality and the bipartite

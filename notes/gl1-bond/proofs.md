@@ -46,9 +46,9 @@ and `int_{A^x} f(x)|x|^s d^x x = sum_{D >= 0} q^{-s deg D} = Z(q^{-s})` as well.
 (c) The functional equation `Z(1/(qT)) = q^{1-g} T^{2-2g} Z(T)` is Poisson summation on `A/K` for `f`, and for this
 `f` Poisson summation is Riemann--Roch `h^0(D) - h^0(K_C - D) = deg D + 1 - g`. On `Pic^{g-1}` the map
 `[D] -> [K_C - D]` preserves the theta divisor `W_{g-1} = {[D] : h^0(D) > 0}`; its fixed locus is the set of theta
-characteristics `{[D] : 2[D] = [K_C]}`, a `Pic^0[2]`-torsor (possibly empty over `F_q`) of order at most `2^{2g}`,
-which is larger than `W_0` at genus one (two classes for D3, one for D2) and finite against the
-`(g-1)`-dimensional `W_{g-1}` for `g >= 2` (review).
+characteristics `{[D] : 2[D] = [K_C]}`, a `Pic^0[2]`-torsor when nonempty (a pseudo-torsor over `F_q`) of order at most `2^{2g}`,
+which at genus one is at least as large as `W_0 = {[0]}`, strictly larger for D3 (two classes against one) and
+equal for D2 (one class), and finite against the `(g-1)`-dimensional `W_{g-1}` for `g >= 2` (review).
 
 *Proof.* (a) `x a in O_A` iff `v(x_v) + v(a) >= 0` for every place, i.e. `div(a) + D >= 0`, i.e. `a in L(D)`;
 this set has `q^{h^0(D)}` elements (including `a = 0`). (b) The map `A^x/K^x -> Pic(K)`, `x -> [div x]`, is
@@ -81,7 +81,8 @@ image, exchanged by the automorphism.
 `L(T, chi) = sum_{[D]} chi([D]) (q^{h^0(D)} - 1)/(q-1) T^{deg D}`. Then `L(T, chi) = sum_{D >= 0} chi([D]) T^{deg D}
 = prod_P (1 - chi([P]) T^{deg P})^{-1}`, the Hecke `L`-function of the unramified character `chi`; for `chi != 1`
 it is a polynomial of degree `2g - 2`, and at genus one it equals `1`.
-(c) At genus one, `dim l^2(Pic^0) = h = P(1)` and `dim K_HW = 4`; these coincide iff `h = 4` (D3), not for D2.
+(c) At genus one, `dim l^2(Pic^0) = h = P(1)` and, under `asm:h-diag` (through `prop:d2-spectrum-frobenius`,
+`prop:d3-spectrum`), `dim K_HW = 4`; these coincide iff `h = 4` (D3), not for D2.
 
 *Proof.* (a) The ends of `T` are `P^1(K_{P_0})`, the cusps of the quotient are the `Gamma`-orbits of the
 `K`-rational ends `P^1(K)`, and a `K`-line `L subset K^2` gives the rank-one projective `R`-module `L cap R^2`;
@@ -166,7 +167,7 @@ metric in which `q^{1/4} Z` is unitary is diagonal in the eigenbasis of `Z` (`th
 cone, review), and the reality and bipartite symmetries fix the ratios; on `H^1 (x) C` itself, when the two
 Frobenius eigenvalues are distinct, every Frobenius-normal metric is diagonal in the eigenbasis and reality fixes
 the ratio; so "the symmetric ray is the Hodge metric" carries no content at genus one (it fails to be even
-well-posed at square `q` with `h = 1`, where `P` has a double root); the first genuine test is genus two, where two Klein orbits can have different moduli
+well-posed where `P` has a double root, the locus `|q+1-h| = 2 sqrt q`, e.g. square `q` with `h = 1`); the first genuine test is genus two, where two Klein orbits can have different moduli
 (`lem:funnel-first-order`). The Kraus dichotomy (`obs:kraus-dichotomy`) stands: the automorphism gives the
 functional equation, adjoint pairing gives reality, and the circle needs unitarity of the dynamics itself in a
 canonical metric.
