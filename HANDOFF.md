@@ -2,6 +2,34 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-21: the adelic symplectic space as the bond (shard 04p); the class-group bond, the theta functional, the cusps as the GL_1 bond
+
+TJO returned to the genesis idea (a symplectic space for `Q^x \ (R_+ x prod_p Z)`, Heisenberg–Weyl, an
+automorphism) and asked for it to be reconsidered on the repository's learnings (four Opus distillation lanes,
+recorded in the worklog), then whether the adelic symplectic space is consistently the **bond** rather than the
+bulk. Answers: the naive quotient is `R_+` with commuting dilations, the blind side A; the symplectic space is
+`A (+) A` with the rational Lagrangian, state the theta functional, automorphisms `SL_2(Q)` via the Weil
+representation, functional equation = Poisson; metaplectic unitarity carries no information, the problem is the
+canonical metric. Bond, not bulk: yes, and it identifies the bond. Round `notes/gl1-bond/` (brief B1–B5, proofs,
+blind Opus numerics 159 checks / 152 pass with the 7 failures the brief's own defects, Opus REFUTE review
+REVIEW-COUNTS). Worklog 2026-09-21.
+
+**Registered (04p).** Units-invariant adelic bond of a function field = `l^2(Pic^0) (x) l^2(Z)` with the degree
+shift; ring norms = effective-divisor counts, `Z(T)`; generic Riemann–Roch part = the Perron pair (even),
+special part (theta divisor) = `P(T)` (odd, `H^1`); genus one: `P = 1 - (q+1-h)T + qT^2`, **`h = P(1) = N_1`, the
+bond dimension is the zeta numerator at 1**. Theta functional = bond state `q^{h^0(D)}`; Tate's unit-ball
+integral = `Z`; Poisson on `A/K` = Riemann–Roch; the Weyl element acts as `D -> K_C - D`. **Cusps of
+`GL_2(R)\T` = `Pic(R) = Pic^0`**: the hedgehog's spikes are the GL_1 bond, H-CLASS is its Fourier transform, D3's
+monomial channels are its nontrivial class characters (`L = 1` at genus one); `h = 4 = dim K_HW` at D3 is an
+accident. Over `Q`: bond `L^2(R_+^x)`, Jacobi theta as state, `int (theta - 1 - y^{-1/2}) y^{s/2} d^x y =
+2 pi^{-s/2} Gamma(s/2) zeta(s)` in the strip: Riemann 1859 is the `Q` case; `conj:h-theta` open. Not gained:
+the metric (genus-one tests are vacuous; Kraus dichotomy stands).
+
+**Next on this lead (in order).** (i) H-THETA numerically. (ii) Genus two: class-group bond, theta divisor, the
+first non-vacuous Hodge-versus-symmetric-ray test. (iii) The Frobenius channel on the class-group bond in the
+Hodge metric, and its exit. (iv) The two GL_1 cusps `0, infinity` folded by the automorphism against the single
+cusp and one-dimensional exit of the modular surface.
+
 ## Session 2026-09-20, night: a graded tensor network for the cusp toys (shards 04n, 04o); the four next steps worked through
 
 TJO asked for the four next steps below to be worked through and for a graded tensor-network realisation of the

@@ -33,7 +33,8 @@ exists. Not byte-cited. QED.
 *Reading.* The bond `l^2(Pic^0) (x) l^2(Z)` with the degree shift as transfer has ring norms `a_n`; the generic
 part of (b) has the two eigenvalues `q` and `1`, which are the even (Perron, pole) part of
 `thm:scattering-superdeterminant`, and the finitely many degrees `n <= 2g-2` where `h^0(D)` exceeds
-`n + 1 - g` carry the odd part `P(T)`. At genus one the bond dimension `h` is the zeta numerator at `T = 1`.
+`n + 1 - g` carry `P(T)`, the `H^1` factor of `sdet(1 - wE_S)` in the variable `w = T^2` (the remaining odd factors
+`(1-qw)(1-q^2w)` are the twisted `H^0` and `H^2`; numerics F4). At genus one the bond dimension `h` is the zeta numerator at `T = 1`.
 
 ## B2. The theta functional on the bond; Poisson summation is Riemann--Roch
 
@@ -44,7 +45,8 @@ part of (b) has the two eigenvalues `q` and `1`, which are the even (Perron, pol
 and `int_{A^x} f(x)|x|^s d^x x = sum_{D >= 0} q^{-s deg D} = Z(q^{-s})` as well.
 (c) The functional equation `Z(1/(qT)) = q^{1-g} T^{2-2g} Z(T)` is Poisson summation on `A/K` for `f`, and for this
 `f` Poisson summation is Riemann--Roch `h^0(D) - h^0(K_C - D) = deg D + 1 - g`. On `Pic^{g-1}` the map
-`[D] -> [K_C - D]` preserves the theta divisor `W_{g-1} = {[D] : h^0(D) > 0}`.
+`[D] -> [K_C - D]` preserves the theta divisor `W_{g-1} = {[D] : h^0(D) > 0}` (its fixed locus is the
+`K_C`-translate of the 2-torsion, in general larger than `W_{g-1}`; numerics F5).
 
 *Proof.* (a) `x a in O_A` iff `v(x_v) + v(a) >= 0` for every place, i.e. `div(a) + D >= 0`, i.e. `a in L(D)`;
 this set has `q^{h^0(D)}` elements (including `a = 0`). (b) The map `A^x/K^x -> Pic(K)`, `x -> [div x]`, is
@@ -152,4 +154,6 @@ canonical metric.
 |---|---|---|
 | 1 | B4(b) | the Mellin identity holds for `0 < Re s < 1` only, and equals `4 xi(s)/(s(s-1))` with the notebook's `xi`; the brief's `2 xi(s)/(s(s-1))` and "for all `s`" are wrong |
 | 2 | numerics spec, item 6 | the test points `s = 2, 3` lie outside the strip; the integral diverges there |
+| 4 | B4(a) | the lattice sum with `f_infty = e^{-pi t^2}` is `theta(x^2)`, as stated in B4(b) here; the brief's display wrote `theta(x)` (numerics F3) |
+| 5 | B1(c), B2(c) | `P` is the `H^1` factor of the superdeterminant in `w = T^2`, not the whole odd part (F4); the involution preserves the theta divisor, its fixed locus is the 2-torsion coset (F5) |
 | 3 | B2(b) | `Theta(xf)` in B2(a) is a function of the divisor class only through `h^0`; the Tate integral over `A^x` (not modulo `K^x`) gives `Z` directly with fibre volume `1`, the version over `A^x/K^x` needs the fibre volume `1/(q-1)` and the subtraction of the constant term `a = 0` |
