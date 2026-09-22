@@ -1,0 +1,117 @@
+D01 PASS |S_13| = 14, |S_17| = 18 (got 14, 18)
+D02 PASS |PGL_2(F_5)| = 120 (got 120)
+D03 PASS phi is a projective homomorphism on the generators, images invertible
+D04 PASS 840 horizontal, 1080 vertical undirected edges (got 840, 1080)
+D05 PASS no loops, no repeated edges within a colour, regular of degree 14 / 18, symmetric
+D06 PASS both colour graphs connected and bipartite with the same bipartition
+D07 PASS spec A_13 = +-14 (1), +-4 (34), +-2 (25): [(-14, 1), (-4, 34), (-2, 25), (2, 25), (4, 34), (14, 1)]
+D08 PASS spec A_17 = +-18 (1), +-6 (10), +-5 (12), +-3 (4), +-2 (15), 0 (36): [(-18, 1), (-6, 10), (-5, 12), (-3, 4), (-2, 15), (0, 36), (2, 15), (3, 4), (5, 12), (6, 10), (18, 1)]
+D09 PASS 252 reordering rules a b = +- b' a' exist and are unique; 252 distinct normalised products
+D10 PASS for fixed a, b -> b' is a bijection of S_17
+D11 PASS 7560 squares, each with exactly 4 corner representatives agreeing up to sign (got 7560)
+D12 PASS B_1 B_2 = 0 exactly
+D13 PASS every face column has exactly four nonzero entries +-1
+D14 PASS rank B_1 = 119 (mod 101, = rank over Q since rows sum to zero): 119
+D15 PASS rank B_2 = 1801: rank_101(B_2 B_2^t) = 1801 <= rank_101(B_2) <= rank_Q(B_2) <= 1920 - 119
+D16 PASS Betti numbers (1, 0, 5759): (1, 0, 5759)
+D17 PASS dim K = dim ker D^t = 721 (got 721)
+D18 PASS T_1 is symmetric
+D19 PASS T_1 D = D T_0 with T_0 = A_17, exactly
+D20 PASS K = ker D^t is T_1-invariant (|D^t T_1 V| < 1e-9)
+D21 PASS all eigenvalues of T lie in (-8, 8): max |lambda| = 7.464102 < 8 < 2 sqrt17 = 8.246211
+D22 PASS directed T_1 symmetric; reversal is an involution
+D23 PASS directed T_1 commutes with the edge reversal
+D24 PASS old space (tail and head pull-backs of vertex functions) has dimension 238 (got 238); new = 1442
+D25 PASS new space is 1442-dimensional and T_1-invariant
+D26 PASS reversal splits new = 721 (+1) + 721 (-1) (got 721, 721)
+D27 FAIL T_1 has the same spectrum on the two reversal sectors of new (max dev 1.17e+00)
+D28 PASS the (-1) reversal sector of new has spectrum spec(T on K): dev 3.55e-14 (dev of the (+1) sector 1.17e+00)
+D29 PASS the (+1) sector has the NEGATED spectrum -spec(T on K) (bipartite twist: the transport crosses one 17-edge): dev 2.93e-14
+   first 5 eigenvalues: +1 sector [-7.4641 -7.4641 -7.4641 -7.4641 -7.4641] ; -1 sector [-7.3246 -7.3246 -7.3246 -7.3246 -7.3246] ; K [-7.3246 -7.3246 -7.3246 -7.3246 -7.3246]
+   traces: +1 sector -18.000000, -1 sector 18.000000, K 18.000000
+D30 PASS 307 = 17^2 + 17 + 1 normalised quaternions of norm 289 (a0 > 0 odd, others even), including 17*1: got 307
+D31 PASS 17*1 is among them and phi(17) = identity projectively
+D32 PASS Hecke relation T_17^2 - 17 I = T_289 on vertex functions (all 307 elements)
+D33 PASS the 306 reduced words b1 b2 are exactly the primitive norm-289 elements, each once
+D34 PASS edge version: T_1^2 - 17 I = (double transport over reduced words) + I, exactly, on all antisymmetric fields (hence on K)
+D35 PASS Section 13 table: sum of m deg f = 721 (got 721)
+D36 PASS spec(T on K) equals the roots of the Section 13 factor table with multiplicities (max dev 5.06e-14)
+D37 PASS integer eigenvalue multiplicities of T: [(-7, 4), (-6, 17), (-5, 12), (-3, 6), (-2, 77), (-1, 8), (2, 20), (3, 44), (4, 18), (6, 15), (7, 4)]
+D38 PASS chi_T = chi_{T_1} (x - 18) / chi_{A_17} as multisets of eigenvalues (max dev 4.26e-14)
+D39 PASS Tr T = 18, Tr T_1 = 0
+D40 PASS F_1^t Omega F_1 = 17 Omega
+D41 PASS F_1^t G F_1 = 17 G
+D42 PASS G > 0: smallest eigenvalue 0.172305 (Schur complement 17 - lambda^2/4 >= 3.071797)
+D43 PASS all eigenvalues of F_1 have modulus sqrt(17): max deviation 1.25e-13
+D44 PASS N_n = 1 + 17^n - Tr F_1^n, n = 1..6: [0, 11520, 10080, 126720, 1209600, 23886720]
+D45 PASS PGL_2(F_5) has 7 conjugacy classes (got 7): sizes [15, 24, 20, 10, 30, 20, 1]
+D46 PASS irreducible dimensions of PGL_2(F_5) = [1, 1, 4, 4, 5, 5, 6] (sum of squares 120): [1, 1, 4, 4, 5, 5, 6]
+D47 PASS computed irreducible characters are orthonormal
+
+Representation content of the A_17 eigenspaces on vertex functions (irrep dim, multiplicity):
+  lambda = -18.00  mult   1  ->  [(1, 1)]
+  lambda =  -6.00  mult  10  ->  [(5, 2)]
+  lambda =  -5.00  mult  12  ->  [(4, 3)]
+  lambda =  -3.00  mult   4  ->  [(4, 1)]
+  lambda =  -2.00  mult  15  ->  [(5, 3)]
+  lambda =  -0.00  mult  36  ->  [(6, 6)]
+  lambda =   2.00  mult  15  ->  [(5, 3)]
+  lambda =   3.00  mult   4  ->  [(4, 1)]
+  lambda =   5.00  mult  12  ->  [(4, 3)]
+  lambda =   6.00  mult  10  ->  [(5, 2)]
+  lambda =  18.00  mult   1  ->  [(1, 1)]
+
+Representation content of the T eigenspaces on K (irrep dim, multiplicity):
+  lambda =  -7.324555  mult  12  ->  [(4, 3)]
+  lambda =  -7.000000  mult   4  ->  [(4, 1)]
+  lambda =  -6.898979  mult  15  ->  [(5, 3)]
+  lambda =  -6.684658  mult  18  ->  [(1, 3), (5, 3)]
+  lambda =  -6.670789  mult   6  ->  [(6, 1)]
+  lambda =  -6.322563  mult  18  ->  [(6, 3)]
+  lambda =  -6.000000  mult  17  ->  [(1, 2), (5, 1), (5, 2)]
+  lambda =  -5.666842  mult  12  ->  [(4, 3)]
+  lambda =  -5.350262  mult  18  ->  [(6, 3)]
+  lambda =  -5.000000  mult  12  ->  [(4, 3)]
+  lambda =  -4.772002  mult  12  ->  [(4, 3)]
+  lambda =  -4.641769  mult  10  ->  [(5, 2)]
+  lambda =  -4.372281  mult   8  ->  [(4, 2)]
+  lambda =  -4.230020  mult  18  ->  [(6, 3)]
+  lambda =  -3.464102  mult  15  ->  [(5, 3)]
+  lambda =  -3.078378  mult  18  ->  [(6, 3)]
+  lambda =  -3.000000  mult   6  ->  [(1, 1), (5, 1)]
+  lambda =  -2.000000  mult  77  ->  [(4, 3), (4, 5), (5, 9)]
+  lambda =  -1.000000  mult   8  ->  [(4, 2)]
+  lambda =  -0.828427  mult  15  ->  [(5, 3)]
+  lambda =  -0.703878  mult  10  ->  [(5, 2)]
+  lambda =  -0.340173  mult  12  ->  [(6, 2)]
+  lambda =  -0.019306  mult  12  ->  [(4, 3)]
+  lambda =   0.535898  mult  15  ->  [(5, 3)]
+  lambda =   0.871779  mult  18  ->  [(6, 3)]
+  lambda =   1.293607  mult  18  ->  [(6, 3)]
+  lambda =   1.372281  mult   8  ->  [(4, 2)]
+  lambda =   2.000000  mult  20  ->  [(5, 4)]
+  lambda =   2.387198  mult  18  ->  [(6, 3)]
+  lambda =   2.428639  mult  18  ->  [(6, 3)]
+  lambda =   2.898979  mult  15  ->  [(5, 3)]
+  lambda =   3.000000  mult  44  ->  [(1, 4), (4, 5), (5, 4)]
+  lambda =   3.377784  mult  12  ->  [(6, 2)]
+  lambda =   3.464102  mult  15  ->  [(5, 3)]
+  lambda =   3.580858  mult  12  ->  [(4, 3)]
+  lambda =   3.772002  mult  12  ->  [(4, 3)]
+  lambda =   4.000000  mult  18  ->  [(6, 3)]
+  lambda =   4.802612  mult   6  ->  [(6, 1)]
+  lambda =   4.828427  mult  15  ->  [(5, 3)]
+  lambda =   5.105289  mult  12  ->  [(4, 3)]
+  lambda =   5.324555  mult  12  ->  [(4, 3)]
+  lambda =   5.684658  mult  18  ->  [(1, 3), (5, 3)]
+  lambda =   5.868177  mult   6  ->  [(6, 1)]
+  lambda =   6.000000  mult  15  ->  [(5, 3)]
+  lambda =   6.962389  mult  12  ->  [(6, 2)]
+  lambda =   7.000000  mult   4  ->  [(4, 1)]
+  lambda =   7.345647  mult  10  ->  [(5, 2)]
+  lambda =   7.464102  mult  15  ->  [(5, 3)]
+D48 PASS all multiplicities in the decompositions are integers
+D49 FAIL every irreducible appears in every Hecke eigenspace with multiplicity a multiple of its dimension (isotypic blocks)
+D50 PASS K-eigenspace dimensions equal sum of (dim x multiplicity)
+
+50 checks, 48 pass, 2 fail; runtime 57.7 s
