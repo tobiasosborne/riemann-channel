@@ -10,8 +10,8 @@ run_once() {  # $1 = attempt number
     codex exec -m gpt-6-astra -c 'model_reasoning_effort="xhigh"' -s workspace-write --skip-git-repo-check \
       -o "$D/astra-last.md" "$(cat "$D/astra-brief.md")" >> "$OUT" 2>&1
   else
-    codex exec resume "$(cat "$SID")" -c 'model_reasoning_effort="xhigh"' -s workspace-write --skip-git-repo-check \
-      -o "$D/astra-last.md" "You were interrupted (network failure). Resume: read $LANE/astra-proofs.md and $LANE/progress.txt, keep what is written, continue from the first PENDING claim of the brief ($LANE/astra-brief.md), and finish all sections including the closing ones. Write incrementally as instructed." >> "$OUT" 2>&1
+    codex exec resume -c 'model_reasoning_effort="xhigh"' -c 'sandbox_mode="workspace-write"' --skip-git-repo-check \
+      -o "$D/astra-last.md" "$(cat "$SID")" "You were interrupted (network failure). Resume: read $LANE/astra-proofs.md and $LANE/progress.txt, keep what is written, continue from the first PENDING claim of the brief ($LANE/astra-brief.md), and finish all sections including the closing ones. Write incrementally as instructed." >> "$OUT" 2>&1
   fi
   return $?
 }

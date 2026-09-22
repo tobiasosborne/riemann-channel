@@ -1,0 +1,71 @@
+
+== W1: Theta'(w_j) two ways; ||k||^2 = 1/(2h) = 2; ||b_j|| = sqrt2 / |Theta'(w_j)|
+D01 PASS (6.1) Theta'(w_j) = 2i xi'(rho_j)/xi(2-rho_j) vs direct differentiation, 10 zeros, max rel err 5.5207e-30
+D02 PASS Theta(w_j) = 0 at the ten zeros, max |Theta| 2.37e-30
+D03 PASS |Theta(u)| = 1 on the real line at four points, max deviation 9.86e-32
+D04 PASS (1.2) ||k_{a+i/4}||^2 = 1/(2h) = 2 by quadrature 2.0
+D05 PASS table 6.1: 1/|Theta'(w_j)| for ten zeros, max abs err 4.9e-13
+D06 PASS table 6.1: ||b_j|| = sqrt2/|Theta'(w_j)| for ten zeros, max abs err 4.44e-13
+D07 PASS ratio ||b_j|| : 1/|Theta'| = sqrt2 exactly 1.4142135623731
+
+== W1: truncated product (1.11) over +-3000 ordinates; truncation dependence
+D08 PASS (1.11) truncated product at zero 1 (+-3000 ordinates) = 0.731104461804 0.731104461804
+D09 PASS (1.11) truncated product at zero 10 (+-3000 ordinates) = 0.909452640385 0.909452640385
+D10 PASS truncated products lie below the analytic ||b_j|| for all ten (omitted factors > 1) 
+D11 PASS truncated product at zero 1 increases with the cutoff Nz = 100, 300, 1000, 3000 ['0.729067416', '0.730176367', '0.730819811', '0.731104462']
+D12 PASS remaining tail at Nz = 3000 for zero 1 (analytic minus truncated), small and positive 2.415e-04
+D13 PASS (1.13) lower estimate (R = 50, data tail) <= analytic ||b_1|| 0.731102066 <= 0.731345928
+
+== W1: finite-family biorthogonal norms by Gram inversion versus the global ||b_j||
+  family +-10: finite biorthogonal norms (first three) ['0.7239510957', '0.7488094823', '0.7578757009']
+  family +-20: finite biorthogonal norms (first three) ['0.7260054284', '0.7513964887', '0.7609362537']
+  family +-40: finite biorthogonal norms (first three) ['0.7275763608', '0.7531586739', '0.7628349886']
+D14 PASS finite-family biorthogonal norms increase with the family (+-10, +-20, +-40 ordinates) 
+D15 PASS finite-family norms (+-40) stay below the global ||b_j|| (global biorthogonal is orthogonal to more) 0.72757636 vs 0.73134593
+D16 PASS relative gap of the +-40 finite biorthogonal norm to the global value at zero 1 0.005154
+D17 PASS (1.12) ||b_j|| >= 2^{-1/2} sqrt(1 + r_j^{-2}) with r_j the nearest gap among the first ten 
+
+== W2: F_{delta,c}(s): quadrature vs (2.10) even-delta rational formula vs (2.9) U-series; the 1/tau tail
+D18 PASS (2.10) F_{2,2}(1/2) = 1/s + 2/(c^2 s^3) vs quadrature (6.0 + 0.0j)
+D19 PASS N_{2,2} = F_{2,2}(1/2) = 6 exactly 
+D20 PASS N_{2,1} = F_{2,1}(1/2) = 18 exactly 
+D21 PASS N_{1,1} = F_{1,1}(1/2) = 4.786675510395 (quadrature) (4.786675510395 + 0.0j)
+D22 PASS N_{1,2} = F_{1,2}(1/2) = 3.077724569750 (quadrature) (3.07772456975 + 0.0j)
+D23 PASS (2.9) 35-term Tricomi-U series for F_{1,2}(1/2) vs quadrature (prover: 6.63e-14) 6.63e-14
+D24 PASS (2.9) U-series vs quadrature at s = 1/2 + i(gamma_2-gamma_1)/2, delta=1, c=2 5.3e-16
+D25 PASS (2.11) tail at tau=100, (delta,c)=(1,1): |tau F| and tau^2|sF-1| -> delta/c^2 ('0.9998874789', '1.000275422')
+D26 PASS (2.11) tail at tau=100, (delta,c)=(1,2): |tau F| and tau^2|sF-1| -> delta/c^2 ('0.9999625005', '0.2500125053')
+D27 PASS (2.11) tail at tau=100, (delta,c)=(2,2): |tau F| and tau^2|sF-1| -> delta/c^2 ('0.9999375046', '0.4999875003')
+D28 PASS (2.12) consequence: |M_ij| ~ 2/|gamma_i - gamma_j|, i.e. the weighted tail is 1/gap, not 1/gap^{1+delta} 
+
+== W2: weighted Grams of the first N modes, delta in {0,1,2}, c in {1,2}; extreme eigenvalues
+D29 PASS table 6.2 (delta=0,c=1): common diagonal 2, lambda_min/max of M (10 modes) ('0.799194120242', '3.732838955670')
+D30 PASS table 6.2 (delta=1,c=1): common diagonal 4.78668, lambda_min/max of M (10 modes) ('3.286682737088', '6.287319610746')
+D31 PASS table 6.2 (delta=2,c=1): common diagonal 18, lambda_min/max of M (10 modes) ('16.061270131928', '19.648651607487')
+D32 PASS table 6.2 (delta=1,c=2): common diagonal 3.07772, lambda_min/max of M (10 modes) ('1.826820947857', '4.697353403705')
+D33 PASS table 6.2 (delta=2,c=2): common diagonal 6, lambda_min/max of M (10 modes) ('4.761685465249', '7.460857405104')
+  normalised R^{0,1}: lambda_min 0.399597060121 lambda_max 1.866419477835
+  normalised R^{1,1}: lambda_min 0.686631615189 lambda_max 1.313504455669
+  normalised R^{2,1}: lambda_min 0.892292785107 lambda_max 1.091591755971
+  normalised R^{1,2}: lambda_min 0.593562193905 lambda_max 1.526242292723
+  normalised R^{2,2}: lambda_min 0.793614244208 lambda_max 1.243476234184
+D34 PASS normalised extremes: R^0 lambda_min = 0.399597060121, R^{2,2} lambda_max = 1.243476234184 
+Traceback (most recent call last):
+  File "/home/tobias/Projects/riemann-channel/scripts/connes_weighted_metric.py", line 264, in <module>
+    e12 = abs(Mm[0, 1] - mp.mpc(t12)); e110 = abs(Mm[0, 9] - mp.mpc(t110))
+                         ^^^^^^^^^^^
+  File "/home/tobias/.local/lib/python3.12/site-packages/mpmath/ctx_mp_python.py", line 375, in __new__
+    real = cls.context.mpf(real)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tobias/.local/lib/python3.12/site-packages/mpmath/ctx_mp_python.py", line 79, in __new__
+    v._mpf_ = mpf_pos(cls.mpf_convert_arg(val, prec, rounding), prec, rounding)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tobias/.local/lib/python3.12/site-packages/mpmath/ctx_mp_python.py", line 86, in mpf_convert_arg
+    if isinstance(x, basestring): return from_str(x, prec, rounding)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tobias/.local/lib/python3.12/site-packages/mpmath/libmp/libmpf.py", line 1331, in from_str
+    man, exp = str_to_man_exp(x, base=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tobias/.local/lib/python3.12/site-packages/mpmath/libmp/libmpf.py", line 1294, in str_to_man_exp
+    float(x)
+ValueError: could not convert string to float: '0.041292367714+0.284393522777j'

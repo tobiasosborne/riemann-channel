@@ -1,0 +1,13 @@
+D01 PASS 120 vertices, 840 horizontal and 1080 vertical edges; identity vertex has lexicographic index 20 (prover: 20)
+D02 PASS eps(g) = (det g/5) changes sign along every horizontal and every vertical edge (13, 17 nonsquares mod 5)
+D03 PASS 252 unique reordering rules
+D04 PASS T_1 symmetric and T_1 D = D A_17 exactly
+D05 PASS BFS spanning tree: 119 tree edges, 721 chords
+D06 PASS boundary of every cycle column is zero (D^t Z = 0 exactly)
+D07 PASS chord rows of Z form the identity I_721 (integral basis of the cycle lattice)
+D08 PASS M = Z^t Z = I + Z_tree^t Z_tree exactly, hence M >= I
+D09 PASS M positive definite: smallest eigenvalue 1.000000 (>= 1 exactly), largest 718.0967 (float diagnostic)
+D10 PASS det M = det(I_119 + Z_t Z_t^t) (Sylvester) equals the number of spanning trees tau(Y) from the reduced Laplacian: 134 digits
+D11 PASS tau(Y) equals the spectral formula 28*10^34*18^34*12^25*16^25/120 (spectrum +-14, +-4^34, +-2^25)
+D12 PASS det M = 2^217 3^92 5^33 7 (factorisation {2: 217, 3: 92, 5: 33, 7: 1})
+D13 PASS (A^2-196)(A^2-16)(A^2-4) = 0, tr A^2 = 1680, tr A^4 = 95040 (certifies multiplicities 1, 34, 25)

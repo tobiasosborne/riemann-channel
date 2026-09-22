@@ -18,7 +18,7 @@ trees; $\Omega$ is an alternating pairing. % bare-ok % bare-ok
 
 \begin{theorem}[The quotient Shimura curve and its dual graph]
 \label{thm:shimura-curve-quotient-dual-graph}
-\claimstatus{thm:shimura-curve-quotient-dual-graph}{proved}
+\claimstatus{thm:shimura-curve-quotient-dual-graph}{sketched}
 Let $B'$ be ramified at $\{2,13\}$, identified with the Hamilton algebra $B$ away from $13$, with $U_2$, $U_5$ as in
 \cref{thm:lps-spectrum-hecke} and $V^0_{13} = \mathrm{im}(O^\times_{B',13})$; $C_0$ the canonical Shimura curve of this level, $w_{13}$ its
 Atkin--Lehner involution, $C := C_0/\langle w_{13}\rangle$ (level $V_{13} = PB'^\times(\mathbb Q_{13})$). By Cerednik--Drinfeld in Boutot--Carayol's form
@@ -38,7 +38,7 @@ Steinberg reversal sign is $V_{13}$-invariance ($\chi(13) = +1$), and the discar
 
 \begin{theorem}[The cycle metric is Grothendieck's monodromy pairing; the component group]
 \label{thm:monodromy-pairing-cycle-metric}
-\claimstatus{thm:monodromy-pairing-cycle-metric}{proved}
+\claimstatus{thm:monodromy-pairing-cycle-metric}{sketched}
 (Raynaud; SGA 7 IX; Papikian's graph formulas; not byte-cited.) The character lattice of the toric special fibre of $J = \mathrm{Jac}(C)$
 at $13$ is $X_{13} = \ker(\partial:\mathbb Z^E\to\mathbb Z^V) = H_1(Y,\mathbb Z)$ (a degree-zero bundle on rational components is gluing scalars at nodes
 modulo vertex rescaling), $J$ has totally toric reduction ($\dim T = 721$), and the monodromy pairing $b(c,d) = \sum_et_ec_ed_e$ with all
@@ -57,7 +57,7 @@ exact solution of $(14I-A_{13})x = (A_{17}-18)d$, $x_{20} = 0$, has $x_0 = -364/
 
 \begin{theorem}[The whole-curve zeta at $17$ is the worked example's completed function]
 \label{thm:whole-curve-zeta}
-\claimstatus{thm:whole-curve-zeta}{proved}
+\claimstatus{thm:whole-curve-zeta}{sketched}
 $C$ has good reduction away from $\{2,5,13\}$; its forms are exactly $\Pi_-$ of \cref{thm:lps-spectrum-hecke} (the quotient $V_{13}$ removes
 the unramified Steinberg twist), so by Jacquet--Langlands and the weight-two congruence relation (not byte-cited)
 $\det(1-u\,\mathrm{Frob}_{17}|V_\ell J) = \prod_f(1-a_{17}(f)u+17u^2)^{m_f} = \det(I-uL+17u^2I)$ (arithmetic Frobenius on the Tate module,
@@ -68,7 +68,7 @@ square-walk orbits). ``$T_{17}$ is the trace of Frobenius'' means $a_{17} = \alp
 
 \begin{proposition}[The local toric filtration is not a global Frobenius splitting; $\Omega_M$ and $G_M$] % bare-ok
 \label{prop:toric-filtration-not-frobenius}
-\claimstatus{prop:toric-filtration-not-frobenius}{proved}
+\claimstatus{prop:toric-filtration-not-frobenius}{sketched}
 Raynaud's uniformisation gives $0\to X_{13}^\vee\otimes\mathbb Z_\ell(1)\to T_\ell J\to X_{13}\otimes\mathbb Z_\ell\to0$, the polarisation identifying the period
 lattice with $X_{13}$ and $b$ describing inertia (off-diagonal block $t_\ell(\sigma)M$ in a splitting; the rational extension is not split
 as an inertia module since $M$ is nonsingular; Bertolini--Darmon's multiplicative period pairing, not byte-cited). The torus has
@@ -88,7 +88,7 @@ lattice with $L = 9$ shows monodromy positivity alone does not suffice); $\Omega
 
 \begin{proposition}[Degrees enter normalised period comparisons, not raw norm ratios]
 \label{prop:degree-and-norm-ratio}
-\claimstatus{prop:degree-and-norm-ratio}{proved}
+\claimstatus{prop:degree-and-norm-ratio}{sketched}
 $A_{17}$-eigenspaces are not eigenform lines (one has dimension $77$); Eichler--Shimura gives no canonical map from the integral
 character lattice to holomorphic differentials, and a Hecke-equivariant comparison $j$ can be chosen isometric, so ``two
 canonical, necessarily different points of the cone'' is refuted. For an elliptic quotient $\varphi: C\to E$ of degree $d$ with
@@ -103,10 +103,7 @@ component maps; applying it unchanged to the primary $U_2$, projective principal
 \begin{numerical}[Numerics lane, the character lattice]
 \label{num:cerednik-drinfeld}
 \claimstatus{num:cerednik-drinfeld}{numerical}
-\texttt{scripts/cerednik\_drinfeld.py} (\texttt{outputs/cerednik\_drinfeld.txt}; ledger in \texttt{notes/cerednik-drinfeld/numerics.md};
-written without reading the prover's scripts): the $13$-graph and a spanning-tree cycle basis $Z$, $M = Z^{t}Z$, $\det M$ exactly
-against the Laplacian minor and its factorisation, the Smith normal form of $M$, $L^{t}M = ML$, the action of $T_{17}-18$ on the
-cokernel, positivity of $M$ and of $G_M$, the bipartition/reversal identity.
+\texttt{scripts/cerednik\_drinfeld.py} (\emph{partial}: $13$ assertions, all pass; the lane was cut by the spend limit; \texttt{outputs/cerednik\_drinfeld.txt}; ledger in \texttt{notes/cerednik-drinfeld/numerics.md}; written without reading the prover's scripts): the complex, the bipartite sign, $T_1D = DA_{17}$, the integral cycle basis $Z$, $M = Z^{t}Z\ge I$, and $\det M = \tau(Y) = 2^{217}3^{92}5^{33}\cdot7$ exactly (Sylvester, reduced Laplacian, spectral formula). Pending: the Smith normal form, $L^{t}M = ML$, $T_{17}-18$ on the component group, $G_M$.
 \end{numerical}
 
 \begin{observation}[What geometry supplies and what it does not; next]
