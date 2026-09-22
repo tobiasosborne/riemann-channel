@@ -1,0 +1,122 @@
+% SHARD-ID: RC-04Z-CEREDNIK-DRINFELD
+% SHARD-TITLE: The Phantasm XVI: the LPS Horizontal Cohomology Is the Character Lattice of a Shimura Curve's Toric Reduction. The Quotient Curve C = C_0/w_13 of Genus 721 with Dual Graph X^{13,5}, the Cycle Metric as Grothendieck's Monodromy Pairing with Component Group of Order 2^217 3^92 5^33 7, the Whole-Curve Zeta at 17, the Local Toric Filtration Is Not a Global Frobenius Splitting, and Degrees Enter Normalised Period Comparisons
+% SHARD-SUMMARY: With B' ramified at {2, 13}, level U_2 = image(1 + 2 O_2), projective principal level at 5, and V_13 = PB'^x(Q_13), the Shimura curve C_0 has two geometric components (over Q(sqrt 5), exchanged by Frobenius at 13 and by T_17), each with dual graph Y = Lambda_13(5) \ T_14 = X^{13,5}; the quotient C = C_0/w_13 is geometrically connected over Q, split Mumford over Q_13 with 120 rational components and 840 ordinary double points of thickness one, genus 721, and H_1(Y^dagger)^{w_13 = +1} = K is the geometry of the Steinberg reversal sign.
+% SHARD-SUMMARY: The character lattice of the toric special fibre is X_13 = H_1(Y, Z), Grothendieck's monodromy pairing is the cycle Gram M = Z^t Z (all thicknesses one), Hecke-symmetric (L^t M = M L), positive; the component group has order det M = tau(Y) = 2^217 3^92 5^33 7 (Cauchy--Binet and the matrix-tree theorem, two exact certificates), and T_17 - 18 does not annihilate it (a rational non-integral solution x_0 = -364/135). The good-reduction zeta of C at 17 is the worked example's completed Z(u) = det(I - uL + 17u^2)/((1-u)(1-17u)) (Jacquet--Langlands plus Eichler--Shimura--Igusa), so its N_n are point counts (#C(F_17) = 0, #C(F_289) = 11520).
+% SHARD-SUMMARY: The Raynaud sequence 0 -> X^vee (x) Z_l(1) -> T_l J -> X (x) Z_l -> 0 is local at 13 and not a G_Q-filtration: Frob_17 has no induced action on its graded pieces, so the Bass companion is a noncanonical one-operator realisation; Omega_M is the evaluation pairing pulled back along (a, b) -> (a, Mb) after a splitting, and det Omega_M = (det M)^2 obstructs an integral identification with the Weil pairing at l = 2, 3, 5, 7; G_M is the Bass metric built from monodromy, positive only with the good-prime strict bound. For an elliptic quotient, k^2 b(v, v) = d n_13(E) and |c|^2 ||eta||^2 = d A_E, so the degree cancels in the norm ratio; Ribet--Takahashi is a theorem about degrees and component maps at standard levels, not a raw ratio.
+% SHARD-KEYWORDS: Cerednik--Drinfeld, Shimura curve, Mumford curve, dual graph, character lattice, monodromy pairing, Grothendieck, Raynaud, component group, matrix-tree theorem, Atkin--Lehner, Jacquet--Langlands, Eichler--Shimura, Weil pairing, Bertolini--Darmon, Ribet--Takahashi, parametrisation degree
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/cerednik_drinfeld.py
+
+\section{The Phantasm XVI: the Character Lattice of a Toric Reduction}
+\label{sec:cerednik-drinfeld}
+
+Round of 2026-09-22 (brief \texttt{notes/cerednik-drinfeld/astra-brief.md}, prover \texttt{notes/cerednik-drinfeld/astra-proofs.md},
+numerics \texttt{scripts/cerednik\_drinfeld.py}, review \texttt{notes/reviews/cerednik-drinfeld-2026-09-22.md}). Closes the
+geometric-origin question of \cref{thm:lps-bass-frobenius,prop:lps-metric-cone}: where the positive pairing on the horizontal
+cohomology $K$ of the LPS square complex comes from. Conventions of \cref{sec:deninger-lps}; $\tau(Y)$ is the number of spanning
+trees; $\Omega$ is an alternating pairing. % bare-ok % bare-ok
+
+\begin{theorem}[The quotient Shimura curve and its dual graph]
+\label{thm:shimura-curve-quotient-dual-graph}
+\claimstatus{thm:shimura-curve-quotient-dual-graph}{proved}
+Let $B'$ be ramified at $\{2,13\}$, identified with the Hamilton algebra $B$ away from $13$, with $U_2$, $U_5$ as in
+\cref{thm:lps-spectrum-hecke} and $V^0_{13} = \mathrm{im}(O^\times_{B',13})$; $C_0$ the canonical Shimura curve of this level, $w_{13}$ its
+Atkin--Lehner involution, $C := C_0/\langle w_{13}\rangle$ (level $V_{13} = PB'^\times(\mathbb Q_{13})$). By Cerednik--Drinfeld in Boutot--Carayol's form
+(not byte-cited) the formal completion at $13$ is $G(\mathbb Q)\backslash(\hat\Omega_{13}\times\mathbb Z/2\times G(\mathbb A^{(13)}_f)/U^{(13)})$, one orbit on the last % bare-ok
+factor by the class-set computation; the uniformising group is $\Lambda = \Lambda_{13}(5)$ (units away from $13$; the primary lattice
+$\langle S_{13}\rangle$ intersected with the kernel modulo $5$), not the product lattice $\Gamma(5)$; scalar reduction at $5$ forces the norm
+$13^n$ to be a square modulo $5$, so $n$ is even and $\Lambda$ preserves the tree types. Hence $Y = \Lambda\backslash T_{14}$ is exactly the Cayley
+graph $X^{13,5}$ ($120$, $840$, $b_1 = 721$, bipartition $\varepsilon(g) = (\det g/5)$). The geometric graph of $C_0$ is the bipartite double cover
+$Y^\dagger = Y_+\sqcup Y_-$, disconnected because $Y$ is bipartite: $C_0$ has two geometric components over the component field
+$\mathbb Q(\sqrt5)$ (Shimura's reciprocity; the norm restriction is the square class at $5$), exchanged by Frobenius at $13$ and by
+$T_{17}$; $w_{13}$ sends $(g,s)$ to $(g,-s)$, exchanging the components freely, so $C$ is geometrically connected over $\mathbb Q$ and
+split Mumford over $\mathbb Q_{13}$, $C^{\mathrm{an}}_{\mathbb Q_{13}}\simeq\Lambda\backslash\Omega_{13}$, with special fibre $120$ smooth rational % bare-ok
+components and $840$ ordinary double points, all of thickness one (the primary lattice is free, no inversions, the centre
+removed), genus $721$. On oriented chains of $Y^\dagger$ $w_{13}$ acts as $-R$, so $H_1(Y^\dagger,\mathbb Q)^{w_{13} = +1} = N_{R = -1} = K_{\mathbb Q}$: the
+Steinberg reversal sign is $V_{13}$-invariance ($\chi(13) = +1$), and the discarded $w_{13} = -1$ piece carries the reflected spectrum.
+\end{theorem}
+
+\begin{theorem}[The cycle metric is Grothendieck's monodromy pairing; the component group]
+\label{thm:monodromy-pairing-cycle-metric}
+\claimstatus{thm:monodromy-pairing-cycle-metric}{proved}
+(Raynaud; SGA 7 IX; Papikian's graph formulas; not byte-cited.) The character lattice of the toric special fibre of $J = \mathrm{Jac}(C)$
+at $13$ is $X_{13} = \ker(\partial:\mathbb Z^E\to\mathbb Z^V) = H_1(Y,\mathbb Z)$ (a degree-zero bundle on rational components is gluing scalars at nodes
+modulo vertex rescaling), $J$ has totally toric reduction ($\dim T = 721$), and the monodromy pairing $b(c,d) = \sum_et_ec_ed_e$ with all
+$t_e = 1$ is, in the worked example's integral cycle basis $Z$ (chord rows the identity), $b(x,y) = x^{t}My$, $M = Z^{t}Z$. Prime-to-$13$
+Hecke correspondences extend through the uniformisation; at $17$ the two projections are the $18$-sheeted square correspondence,
+descending to $C$ since $w_{13}$ commutes with $T_{17}$; monodromy is functorial for polarised duals and the Rosati adjoint of $T_{17}$
+is $T_{17}$, so $b(Tx,y) = b(x,Ty)$, i.e. $L^{t}M = ML$: the geometric origin of the symmetry of the transverse operator. With the
+principal polarisation, $0\to X_{13}\xrightarrow{b}X_{13}^\vee\to\Phi_{13}\to0$, split reduction makes the Galois action trivial, and
+$|\Phi_{13}(\mathbb F_{13})| = \det M = \sum_{|S| = 721}\det(Z_S)^2 = \tau(Y)$ (Cauchy--Binet; cycle minors are $\pm1$ exactly on complements of spanning
+trees), which by the matrix-tree theorem and the spectrum $\{\pm14,\pm4^{[34]},\pm2^{[25]}\}$ is
+$28\cdot10^{34}18^{34}12^{25}16^{25}/120 = 2^{217}3^{92}5^{33}\cdot7$, confirmed by fraction-free Bareiss elimination of the reduced Laplacian.
+Ribet's character-lattice sequence $0\to X_p(J')\to X_q(J)\to X_q(J'')\to0$ (not byte-cited) relates different bad primes; the
+naive prediction that $T_r-(r+1)$ annihilates $\Phi$ is refuted: with $\Phi\simeq\mathrm{Div}^0(V)/(14I-A_{13})\mathbb Z^V$ and $d = e_0-e_{20}$, the
+exact solution of $(14I-A_{13})x = (A_{17}-18)d$, $x_{20} = 0$, has $x_0 = -364/135$, so $(T_{17}-18)[d]\ne0$.
+\end{theorem}
+
+\begin{theorem}[The whole-curve zeta at $17$ is the worked example's completed function]
+\label{thm:whole-curve-zeta}
+\claimstatus{thm:whole-curve-zeta}{proved}
+$C$ has good reduction away from $\{2,5,13\}$; its forms are exactly $\Pi_-$ of \cref{thm:lps-spectrum-hecke} (the quotient $V_{13}$ removes
+the unramified Steinberg twist), so by Jacquet--Langlands and the weight-two congruence relation (not byte-cited)
+$\det(1-u\,\mathrm{Frob}_{17}|V_\ell J) = \prod_f(1-a_{17}(f)u+17u^2)^{m_f} = \det(I-uL+17u^2I)$ (arithmetic Frobenius on the Tate module,
+equivalently geometric on $H^1$), and $\mathcal Z(u) = Z(C_{\mathbb F_{17}},u) = \det(I-uL+17u^2I)/((1-u)(1-17u))$: the $N_n$ are point counts,
+$\#C(\mathbb F_{17}) = 0$, $\#C(\mathbb F_{289}) = 11520$, and the M\"obius-inverted exponents count closed points (not identified with signed
+square-walk orbits). ``$T_{17}$ is the trace of Frobenius'' means $a_{17} = \alpha+\beta$ on each constituent, not a Galois action on $X_{13}$.
+\end{theorem}
+
+\begin{proposition}[The local toric filtration is not a global Frobenius splitting; $\Omega_M$ and $G_M$] % bare-ok
+\label{prop:toric-filtration-not-frobenius}
+\claimstatus{prop:toric-filtration-not-frobenius}{proved}
+Raynaud's uniformisation gives $0\to X_{13}^\vee\otimes\mathbb Z_\ell(1)\to T_\ell J\to X_{13}\otimes\mathbb Z_\ell\to0$, the polarisation identifying the period
+lattice with $X_{13}$ and $b$ describing inertia (off-diagonal block $t_\ell(\sigma)M$ in a splitting; the rational extension is not split
+as an inertia module since $M$ is nonsingular; Bertolini--Darmon's multiplicative period pairing, not byte-cited). The torus has
+Tate rank $g$ and $J$ rank $2g$: ``the toric part is $J$'' is refuted; the sequence is attached to the decomposition group at $13$ and
+a Frobenius at $17$ need not preserve the toric subspace, so there is no induced $\mathrm{Frob}_{17}$ on its graded pieces: the Bass
+companion $F_B = \begin{psmallmatrix}L&-17\\1&0\end{psmallmatrix}$ is isomorphic to $\mathrm{Frob}_{17}$ as a semisimple one-operator system
+(all quadratic factors have distinct roots: $\mathrm{rank}_{\mathbb F_{103}}(T_1^2-68) = 840$ excludes $\pm2\sqrt{17}$), by a noncanonical choice.
+The Weil pairing induces, after a symplectic splitting and a trivialisation of the twist, evaluation between $X^\vee(1)$ and $X$,
+whose pullback along $(a,b)\mapsto(a,Mb)$ is exactly $\Omega_M = \begin{psmallmatrix}0&M\\-M&0\end{psmallmatrix}$: a valid rational, % bare-ok
+choice-dependent local meaning of ``Weil pairing composed with monodromy''; integrally $\det\Omega_M = (\det M)^2$, so $\Omega_M$ is not % bare-ok
+perfect over $\mathbb Z_\ell$ for $\ell\in\{2,3,5,7\}$ while the principal Weil pairing is. $G_M = \begin{psmallmatrix}M&-ML/2\\-ML/2&17M\end{psmallmatrix}$
+satisfies $F_B^{t}\Omega_MF_B = 17\Omega_M$, $F_B^{t}G_MF_B = 17G_M$, Schur complement $M(17-L^2/4)$: the worked metric is the Bass % bare-ok
+construction from monodromy, with no free edge scale, positive exactly under the strict good-prime bound (a one-dimensional
+lattice with $L = 9$ shows monodromy positivity alone does not suffice); $\Omega_B\mathsf J = G\,\mathrm{diag}(R^{-1},R^{-1})\ne G$ as in % bare-ok
+\cref{thm:lps-bass-frobenius}.
+\end{proposition}
+
+\begin{proposition}[Degrees enter normalised period comparisons, not raw norm ratios]
+\label{prop:degree-and-norm-ratio}
+\claimstatus{prop:degree-and-norm-ratio}{proved}
+$A_{17}$-eigenspaces are not eigenform lines (one has dimension $77$); Eichler--Shimura gives no canonical map from the integral
+character lattice to holomorphic differentials, and a Hecke-equivariant comparison $j$ can be chosen isometric, so ``two
+canonical, necessarily different points of the cone'' is refuted. For an elliptic quotient $\varphi: C\to E$ of degree $d$ with
+multiplicative reduction at $13$, $\pi^{*}e = kv$ ($v$ primitive), $k^2b_J(v,v) = d\,n_{13}(E)$ (monodromy functoriality) and, for
+$\varphi^{*}\omega_E = c\eta$, $|c|^2\|\eta\|^2_{\mathrm{Hodge}} = dA_E$, so $\|\eta\|^2/b_J(v,v) = k^2A_E/(|c|^2n_{13}(E))$: the degree cancels; against a
+classical parametrisation $\varphi_{\mathrm{mod}}$ of the same $E$, $4\pi^2\|f\|^2_{\mathrm{Pet}}/b_J(v,v) = (d_{\mathrm{mod}}/d_C)k^2A_E/(|c_{\mathrm{mod}}|^2n_{13}(E))$
+is where a ratio of parametrisation degrees legitimately appears. Ribet--Takahashi (1997, Theorems 1--2; Takahashi 2001; not
+byte-cited) is $\delta' = \delta\,\mathcal E^2/(c'_pc_q)$ for optimal quotients at standard squarefree $\Gamma_0$ levels, a theorem about degrees and
+component maps; applying it unchanged to the primary $U_2$, projective principal $U_5$, $w_{13}$ quotient is not justified.
+\end{proposition}
+
+\begin{numerical}[Numerics lane, the character lattice]
+\label{num:cerednik-drinfeld}
+\claimstatus{num:cerednik-drinfeld}{numerical}
+\texttt{scripts/cerednik\_drinfeld.py} (\texttt{outputs/cerednik\_drinfeld.txt}; ledger in \texttt{notes/cerednik-drinfeld/numerics.md};
+written without reading the prover's scripts): the $13$-graph and a spanning-tree cycle basis $Z$, $M = Z^{t}Z$, $\det M$ exactly
+against the Laplacian minor and its factorisation, the Smith normal form of $M$, $L^{t}M = ML$, the action of $T_{17}-18$ on the
+cokernel, positivity of $M$ and of $G_M$, the bipartition/reversal identity.
+\end{numerical}
+
+\begin{observation}[What geometry supplies and what it does not; next]
+\label{obs:cerednik-drinfeld-next}
+\claimstatus{obs:cerednik-drinfeld-next}{sketched}
+The arithmetic model of $C$ over $\mathbb Z_{13}$ supplies the unit edge lengths and the integral positive monodromy pairing on $K$; the
+squares supply the Hecke correspondence; the same curve supplies the whole zeta at $17$. Dictionary: horizontal harmonic
+cohomology $=$ character lattice $X_{13}\otimes\mathbb R$, transverse transport $=$ $T_{17}$ on $X_{13}$, edge metric $=$ monodromy pairing, Bass
+doubling $=$ a noncanonical one-operator realisation of the good-prime Frobenius on all of $H^1(C)$. Closed: the coefficient-metric
+provenance (\cref{prop:lps-metric-cone}) and the whole-curve zeta. Open: a canonical simultaneous Frobenius/pairing comparison,
+the graded CP realisation (\cref{obs:lps-graded-cp-open}), and any GL$_1$ analogue (a theta vector in $L^2(\mathbb R_+^\times)$ is not a
+N\'eron model).
+\end{observation}
