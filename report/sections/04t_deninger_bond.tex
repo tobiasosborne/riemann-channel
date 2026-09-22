@@ -12,15 +12,15 @@
 
 Round of 2026-09-22 (brief \texttt{notes/deninger-bond/astra-brief.md}, prover \texttt{notes/deninger-bond/astra-proofs.md},
 numerics \texttt{scripts/deninger\_bond.py}, review \texttt{notes/reviews/deninger-bond-2026-09-22.md}). The input is a finite
-theorem package (a Codex research note, \texttt{notes/deninger-lps/src/}): for a real symplectic $(H,\Omega)$ and
-$A^{T}\Omega A = q\Omega$, an $A$-invariant compatible positive polarisation $J$ ($J^2 = -1$, $J^{T}\Omega J = \Omega$,
-$\Omega(\cdot,J\cdot)>0$) exists iff a real $G>0$ with $A^{T}GA = qG$ exists iff the powers of $q^{-1/2}A$ are uniformly
-bounded iff $q^{-1/2}A$ is diagonalisable with unimodular spectrum, with $J = -LR^{-1}$, $L = G^{-1}\Omega$, $R = (-L^2)^{1/2}$.
+theorem package (a Codex research note, \texttt{notes/deninger-lps/src/}): for a real symplectic $(H,\Omega)$ and % bare-ok
+$A^{T}\Omega A = q\Omega$, an $A$-invariant compatible positive polarisation $J$ ($J^2 = -1$, $J^{T}\Omega J = \Omega$, % bare-ok
+$\Omega(\cdot,J\cdot)>0$) exists iff a real $G>0$ with $A^{T}GA = qG$ exists iff the powers of $q^{-1/2}A$ are uniformly % bare-ok
+bounded iff $q^{-1/2}A$ is diagonalisable with unimodular spectrum, with $J = -LR^{-1}$, $L = G^{-1}\Omega$, $R = (-L^2)^{1/2}$. % bare-ok
 Conventions as in \cref{sec:h-theta-1}: $C_\tsg f(X) = f(X+\tsg)$ is the adjoint compression carrying the damped modes
 $e_{\zero,j} = X^jm_\zero/j!$ of \cref{thm:model-space-jets} (the brief had them on $Z_\tsg$), $\lambda_\zero = (\bar\zero-1)/2$,
 $De_{\zero,j} = \lambda_\zero e_{\zero,j}+e_{\zero,j-1}$; a finite set of zeros always carries full multiplicities and is closed
 under $\zero\mapsto1-\zero$ and $\zero\mapsto\bar\zero$; $H^1_{\mathrm{fin}}$ is its jet span with the real structure
-$\mathcal R$. Here $\Omega$ is the alternating pairing, not the reset density.
+$\mathcal R$. Here $\Omega$ is the alternating pairing, not the reset density. % bare-ok
 
 \subsection{The graded data and the pairing}
 
@@ -32,7 +32,7 @@ classes, not bond vectors; under the forward dilation $U_\tsg1 = 1$, $U_\tsg y^{
 convention (the action of $U_{-\tsg}$, consistent with $C_\tsg$ on the outgoing modes) $A_0 = 1$, $A_2 = q_\tsg := e^{-\tsg/2}$:
 the pole $s = 1$ is the top class, the reference rates of \cref{def:graded-transfer-channel} are $0,-\tfrac12$ with midpoint
 $-\tfrac14$, and $q_\tsg$ is the ratio of the exponentiated rates. For $\tsg>0$, $|e^{\tsg\lambda_\zero}| = \sqrt{q_\tsg}$ iff
-$\sigs = \tfrac12$. Given the pairing of \cref{thm:fe-pairing-jets}, $x\smile y := \Omega(x,y)\eta$ with $\tau(\eta) = 1$ is a
+$\sigs = \tfrac12$. Given the pairing of \cref{thm:fe-pairing-jets}, $x\smile y := \Omega(x,y)\eta$ with $\tau(\eta) = 1$ is a % bare-ok
 graded-commutative algebra of the package's shape (no geometric cup product is produced), and for every finite real
 dimension $2g$ the determinant $\mathcal Z_\tsg(u) = \det(1-uA_1)/((1-u)(1-q_\tsg u))$ satisfies
 $\mathcal Z_\tsg(1/(q_\tsg u)) = q_\tsg^{1-g}u^{2-2g}\mathcal Z_\tsg(u)$: the package's functional equation extends to
@@ -42,18 +42,18 @@ contraction time $0<q_\tsg<1$ (its theorem is stated for $q>1$).
 \begin{theorem}[The functional-equation pairing on the full jets]
 \label{thm:fe-pairing-jets}
 \claimstatus{thm:fe-pairing-jets}{proved}
-(a) A bilinear $\Omega$ on $H^1_{\mathrm{fin}}$ with $\Omega(C_\tsg x,C_\tsg y) = q_\tsg\Omega(x,y)$ for all $\tsg\ge0$ pairs the
+(a) A bilinear $\Omega$ on $H^1_{\mathrm{fin}}$ with $\Omega(C_\tsg x,C_\tsg y) = q_\tsg\Omega(x,y)$ for all $\tsg\ge0$ pairs the % bare-ok
 root space of $\zero$ only with that of $1-\zero$ ($\lambda_\zero+\lambda_\nu = -\tfrac12$; a single time has phase aliases,
 all times are needed; the Sylvester equation on generalised eigenspaces), so nondegeneracy requires partner root spaces of
 matching Jordan type, which $\cxi(1-s) = \cxi(s)$ and conjugation supply. No zero is fixed by $\zero\mapsto1-\zero$ since
 $\cxi(\tfrac12)>0$ ($\zeta(s)<0$ on $(0,1)$ by the alternating series). (b) With $m = m_\zero = m_{1-\zero}$,
 \[
-\Omega(e_{\zero,j},e_{\nu,k}) = (-i\,\mathrm{sgn}\,\gam{})^m(-1)^j\ \text{ if }\nu = 1-\zero,\ j+k = m-1,\qquad0\text{ otherwise},
+\Omega(e_{\zero,j},e_{\nu,k}) = (-i\,\mathrm{sgn}\,\gam{})^m(-1)^j\ \text{ if }\nu = 1-\zero,\ j+k = m-1,\qquad0\text{ otherwise}, % bare-ok
 \]
-is the complexification of a real alternating form ($\Omega(\mathcal Rx,\mathcal Ry) = \overline{\Omega(x,y)}$), nondegenerate,
-with $D^{T}\Omega+\Omega D = -\tfrac12\Omega$ hence $\Omega(C_\tsg x,C_\tsg y) = e^{-\tsg/2}\Omega(x,y)$ including all polynomial
-jet factors; for simple zeros $\Omega(e_\zero,e_{1-\zero}) = -i\,\mathrm{sgn}\,\gam{}$ (the brief's $\mathrm{sgn}\,\gam{}$ is
-anti-real). (c) On the bond it is the finite-rank integral form $\Omega(f,h) = \sum_{ab}B_{ab}c_a(f)c_b(h)$ with $c_a$ the
+is the complexification of a real alternating form ($\Omega(\mathcal Rx,\mathcal Ry) = \overline{\Omega(x,y)}$), nondegenerate, % bare-ok
+with $D^{T}\Omega+\Omega D = -\tfrac12\Omega$ hence $\Omega(C_\tsg x,C_\tsg y) = e^{-\tsg/2}\Omega(x,y)$ including all polynomial % bare-ok
+jet factors; for simple zeros $\Omega(e_\zero,e_{1-\zero}) = -i\,\mathrm{sgn}\,\gam{}$ (the brief's $\mathrm{sgn}\,\gam{}$ is % bare-ok
+anti-real). (c) On the bond it is the finite-rank integral form $\Omega(f,h) = \sum_{ab}B_{ab}c_a(f)c_b(h)$ with $c_a$ the % bare-ok
 biorthogonal coordinates of the jets (Gram inversion), consistent across nested finite sets; its extension to the energy
 completion is not asserted, and Poisson inversion does not supply it: the unweighted constant terms are exchanged by
 $y^{-1/2}f(1/y)$, the weighted reflection $J_Pf(X) = f(-X)$ maps $\KS$ into $H^2_-$, so $\langle f,\mathcal RJ_Ph\rangle$
@@ -72,14 +72,14 @@ $\Theta(-u) = \overline{\Theta(u)}$). A canonical geometric cup pairing on the b
 zero of the set has $\sigs = \tfrac12$ \emph{and} is simple: a nonzero entry needs $\sigs+\sigs' = 1$, $\gam{} = \gam{}'$, so the
 diagonal forces $\sigs = \tfrac12$; a chain has $q_\tsg^{-1}G(C_\tsg e_1,C_\tsg e_1)$ growing like $\tsg^2$; conversely any positive
 diagonal weights $g_\zero = g_{\bar\zero}$. On ordinary eigenvectors alone simplicity is not needed. (b) With the real form
-$\Omega$ of \cref{thm:fe-pairing-jets} fixed, the four conditions of the package are equivalent on the finite real space:
+$\Omega$ of \cref{thm:fe-pairing-jets} fixed, the four conditions of the package are equivalent on the finite real space: % bare-ok
 an invariant compatible positive $J$; a real certificate $G>0$ with $C_\tsg^{T}GC_\tsg = q_\tsg G$; uniform boundedness of
 $e^{\tsg/4}C_\tsg$ for $\tsg\in\mathbb R$ (forward boundedness suffices here, since eigenvalues of $D+\tfrac14$ come in opposite
 pairs); $D+\tfrac14$ diagonalisable with purely imaginary spectrum. (c) For simple critical modes, $J = -LR^{-1}$ gives
 $Je_\zero = -i\,\mathrm{sgn}(\gam{})e_\zero$, $G_J(e_\zero,e_\nu) = \delta_{\zero\nu}$, and $e^{\tsg/4}C_\tsg$ is $G_J$-unitary:
 the notebook's ``RH $=$ the compressed operator is $\sqrt{q_\tsg}$ times a unitary'' (\cref{thm:arithmetic-metric}, whose
 discrete scale $\qs^{-1/4}$ is a different variable). The certificate cone has one free weight per positive ordinate, while
-for the fixed normalised $\Omega$ the compatible metric $\Omega J = GR$ is fixed: certificates and compatible metrics must be
+for the fixed normalised $\Omega$ the compatible metric $\Omega J = GR$ is fixed: certificates and compatible metrics must be % bare-ok
 distinguished. (d) The conjugation and functional-equation permutations preserve $|\gam{}|$ and select no ray, but the
 diagonal commutant $e_{\pm\gam{}}\mapsto a_{\gam{}}e_{\pm\gam{}}$ acts transitively on certificates (on finite spans; not
 boundedly on $\KS$).
@@ -177,7 +177,7 @@ has no zeros. Open as a programme.
 \claimstatus{thm:cm-torus-class-group-bond}{proved}
 (a) For $\alpha = a+bi\in\mathbb Z[i]$, $q = |\alpha|^2>1$, $f_\alpha(z) = \alpha z$ on $\mathbb C/\mathbb Z[i]$ has
 $\#\mathrm{Fix}(f_\alpha^n) = \det(A^n-1) = |\alpha^n-1|^2$ and $Z_{f_\alpha}(u) = (1-\alpha u)(1-\bar\alpha u)/((1-u)(1-qu))$, with cup
-form $\Omega_T$, star $J_T$ and flat metric $G_T = \Omega_TJ_T = 1$ on real one-forms, both preserved by $A$ up to $q$: positivity
+form $\Omega_T$, star $J_T$ and flat metric $G_T = \Omega_TJ_T = 1$ on real one-forms, both preserved by $A$ up to $q$: positivity % bare-ok
 from the geometry, without an eigenvalue bound. (b) For a prime $p\equiv1\pmod4$ and $E: y^2 = x^3-x$ over $\mathbb F_p$
 (Deuring's ordinary CM reduction, not byte-cited), the Frobenius is the primary generator $\pi = a+bi$, $\pi\bar\pi = p$,
 $\pi\equiv1\pmod{(1+i)^3}$ ($a$ odd, $b$ even, $a+b\equiv1\pmod4$), up to the choice of prime above $p$: the eight points of
@@ -199,7 +199,7 @@ Betti eigenlines.
 \claimstatus{num:deninger-bond}{numerical}
 \texttt{scripts/deninger\_bond.py} ($51$ assertions, $61$ s, mpmath; \texttt{outputs/deninger\_bond.txt}; ledger in
 \texttt{notes/deninger-bond/numerics.md}; $51$ pass; written without reading the prover's scripts): the six-mode similitudes
-for $\Omega$ and $G = 1$ at $\tsg = 1$ to $10^{-16}$ and $\Omega JR = 1$; the energy Gram is not a similitude (residual $0.4956$);
+for $\Omega$ and $G = 1$ at $\tsg = 1$ to $10^{-16}$ and $\Omega JR = 1$; the energy Gram is not a similitude (residual $0.4956$); % bare-ok
 the jet pairing an exact $e^{-\tsg/2}$-similitude for chain lengths $1$--$4$; an off-line quartet admits no positive metric, a
 double zero forces $G(e_0,e_0) = 0$ and the rescaled jet norm grows like $\tsg^2$; the star and $J = -LR^{-1}$ independent of the
 certificate weights; the closest pair among the first $3000$ zeros at $\gam{}\approx1977.17$, gap $0.0975$, $r = 0.99528$, ratio
