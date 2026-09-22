@@ -2,6 +2,65 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-22: astra day. Deninger's programme and the adelic-bond programme, twelve prover lanes (shards 04s–04z, 04w); stopped by quota
+
+TJO: "today is astra day": use `codex gpt-6-astra` xhigh as much as possible (up to four lanes at once) for proofs and
+ideation; Fable keeps the big picture, writes briefs with the maths worked out, merges, reviews; **no Opus/Sonnet
+subagents** (reviews and numerics were Fable forks). Network patchy, so lanes run through the resumable
+`scripts/astra_lane.sh <lane-dir>` (detached; session id in `session.id`; briefs demand incremental writing to
+`astra-proofs.md` + `progress.txt`). The day ended when the Fable spend limit and then the codex quota were exhausted.
+Inputs: the Codex note "Faces, grading, and positive dynamics" and the LPS worked example (staged in
+`notes/deninger-lps/src/`). Worklog `docs/worklog/2026-09-22.md` has the full per-lane record.
+
+**Registered and reviewed (Fable REFUTE review, all VALID / 0 MINOR / 0 INVALID; numerics lanes all pass).**
+- 04s H-THETA III: `conj:h-theta-1` **refuted** unconditionally (real Sonine Gram + non-real cyclic product at three
+  zeros); one-exit realisation = Cauchy-Gram condition; the only rescuing norms are rescalings of `K_S`'s own; bad-zero
+  renewal needs reset + clock; Burnol's `v_+^2` is one damped chain.
+- 04t Deninger on the GL_1 bond: FE pairing on full jets; positive invariant metric iff critical AND simple; **no metric
+  boundedly equivalent to energy even under RH**, and `sup_t e^{t/4}||Z_t|| = infinity` unconditionally; a trace selects no
+  metric (Weil form is RH, not the canonical metric); CM torus = genus-one class-group bond.
+- 04u LPS square complex: horizontal cohomology = `H^1` of the 13-graph, transport = `T_17`, spectrum = weight-two Hecke
+  (Steinberg at 13, level U_2 at 2), metric cone dimension 16539, Weil–LPS channel a different selection; graded CP
+  realisation open.
+- 04w genus two (`y^2 = x^5+x^3+x^2-2`/F_5): `Pic^0 = Z/15`, fourteen `L(T,chi)`, genus-16 class-field cover; two-parameter
+  metric cone; CM field and reference ratio `(25+3√21)/(2√109)`; no rational symmetric marking; the degree cut is not `H^1`;
+  the bond-to-`H^1` comparison is the missing datum.
+- 04x local cavity (review done, but its claims show `sketched` because they depend on 04v): `M_q` has no fixed-cut
+  core; inverse = two-funnel weighted edge, cusp toy = `-z^2 D M D`; orthogonal arithmetic/local cascade with a delay;
+  squarefree level Walsh-diagonalises.
+
+**Registered, REVIEW PENDING (claims downgraded proved → sketched, note column says so; restore after review).**
+- 04v cusp correspondence and level N (numerics 163/163; the review fork died at the spend limit): prime-level
+  `Gamma_1(q)` scattering with all constants, twisted theta edges, pure Blaschke character symbols, exit rank `h`,
+  `asm:h-arith-gamma1` refuted over Q.
+- 04y the arithmetic metric is not Connes's weighted norm (numerics PARTIAL 34 pass, then a script bug at line 264).
+- 04z Cerednik–Drinfeld (numerics PARTIAL 13/13): `K` = character lattice of the toric reduction of the genus-721 Shimura
+  curve `C_0/w_13`; the cycle Gram `M = Z^tZ` is Grothendieck's monodromy pairing; `|Phi| = det M = 2^217 3^92 5^33 7`;
+  whole-curve zeta at 17 = the worked example's `Z(u)`.
+
+**Prover output saved, NOT reviewed, NOT registered (next agent: review, numerics, shard).**
+- `notes/h-arith-fqt/` — H-ARITH over F_q[T] settled at prime level: two diamond torsors, exact cores/stabilisers,
+  completed coefficient `q u^d Lambda_psi(qu^2)/Lambda_psi(u^2)`, literal diagonal H-ARITH refuted, model dimensions
+  `0,14,84` / `0,18,156`.
+- `notes/genus-two-quotient-graph/` — **H-CLASS proved for the genus-two quotient**: nucleus 366 vertices, 915 edges,
+  fifteen rays, exact stabilisers; exact L-ratios, 64 arithmetic resonances, 154 model modes; hyperelliptic inversion is a
+  graph automorphism, the literal Riemann–Roch fold refuted. Highest-value item to review next.
+- `notes/lps-graded-cp/` — the signed walk is a genuine odd CP subblock with compulsory extra modes; the two-register
+  construction and the Bass identification fail; exact inverse CP problem still open.
+- `notes/sonine-enclosure/` — PARTIAL (R1 `||T|| < 0.735785`, R4 done; S1, S2, R2, R3 pending). Lane died on "model at
+  capacity", then all resumes failed on a runner bug (now fixed). Resume: `scripts/astra_lane.sh notes/sonine-enclosure`
+  with `session.id` present (the runner resumes that session) once codex quota is back.
+
+**Gate:** `make check` 0 errors (584 claims, 239 proved). report.pdf NOT rebuilt this session.
+
+**Next (in order).** (i) REFUTE reviews for 04v, 04y, 04z (write `notes/reviews/<lane>-2026-09-22.md` with the
+`VERDICT <alias>: VALID` lines named in each claim's note column; then restore `proved` in `db/claims.tsv` and the shard,
+regen). (ii) Finish the partial numerics (fix `scripts/connes_weighted_metric.py:264`; extend `scripts/cerednik_drinfeld.py`
+past D13). (iii) Review + numerics + shards for genus-two-quotient-graph, h-arith-fqt, lps-graded-cp. (iv) Resume the
+Sonine enclosure. (v) Rebuild report.pdf. Open questions on the frontier: a zero-free construction of the arithmetic
+metric's domain (04y); the bond-to-`H^1` comparison map (04w); a canonical Frobenius/pairing comparison for the Shimura
+curve (04z); the exact graded CP realisation of the LPS net divisor; H-LP.
+
 ## Session 2026-09-21, afternoon: H-THETA refuted, the two edge transforms, Burnol's causality, the GL_1 bad-zero defect (shards 04q, 04r)
 
 TJO asked about H-THETA (it was on `claude/beautiful-bohr-e84nm9`; merged into this branch first, commit `5e9c4c3`),
