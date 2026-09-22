@@ -1,0 +1,218 @@
+% SHARD-ID: RC-04V-DENINGER-CUSP
+% SHARD-TITLE: The Phantasm XII: the Hecke Correspondence with a Cusp. The S-Arithmetic Quotient as a Graph of Modular Surfaces, the Eisenstein Classes Are Neither the Cup Radical Nor the Poles Nor the Exit, the Prime-Level Scattering Matrix of Gamma_1(q) with All Constants, the Twisted Theta Edges, the Pure Blaschke Character Symbols, and the Level Model with Its Local Factors
+% SHARD-SUMMARY: Gamma_1(N)[1/p] \ (H x T_{p+1}) is a graph of surfaces with one edge (two vertex slices Y, one edge slice Y_Delta, degeneracy maps of degree p + 1), not a two-dimensional square complex; the vertex slice's H^1(Y_1(N)) splits Hecke-equivariantly (Eichler--Shimura, Manin--Drinfeld) as parabolic plus Eisenstein, with Eisenstein eigenvalues chi_1(p) + p chi_2(p) (p + 1 only for the trivial packet); the ordinary cup product on H^1(Y) is zero, the compact-support pairing is perfect, and the four-fold identity Eisenstein = radical = even poles = exit is refuted in dimension and parity, while the Eisenstein root moduli 1, p exclude any positive p-similitude metric there.
+% SHARD-SUMMARY: For Gamma_1(q), q prime, the scattering matrix in the diamond-Fourier basis has, per even nebentypus psi, the block [[0, A_psi],[A_{bar psi}, 0]] with A_psi(s) = q^{1/2-s} Lambda_psi(2s-1)/Lambda_psi(2s), and the trivial block phi(s)/(q^{2s}-1) [[q-1, q^s - q^{1-s}],[q^s - q^{1-s}, q-1]] with rank-one residue 3/(pi(q+1)); squarefree trivial level is a tensor product of such blocks; the determinant is explicit. The level-scaled twisted Siegel theta has its two edges at the two cusps (theta_chi(t/y) and sqrt(y/t) theta_chi(fty)), giving A_chi as a quotient of two GL_1 theta channels; odd characters vanish in weight zero; the conjugation-correct symbol Lambda_chi(1+2i tau)/Lambda_{bar chi}(1-2i tau) is pure Blaschke unconditionally.
+% SHARD-SUMMARY: The prime-level inverse symbol factors as arithmetic (Theta_chi) times local inner factors u b_{-+a}(u) (u = q^{i tau}, a = q^{-1/2}) and delays; K_AB = K_A + A K_B; the arithmetic reduction is two copies of K_{Theta_chi} per even character; the exit rank is exactly h = q - 1 (one exit per scalar coordinate; finite-time defects have infinite rank); the spectral positivity criterion is GRH for the represented characters plus no Jordan chains; no boundedly equivalent positive metric exists. asm:h-arith-gamma1 is refuted as a Q statement.
+% SHARD-KEYWORDS: Ihara lattice, graph of spaces, Hecke correspondence, Eichler--Shimura, Manin--Drinfeld, mixed Hodge structure, Eisenstein cohomology, cup product, compact support, scattering matrix, Gamma_1(N), cusps, nebentypus, Dirichlet L-function, Gauss sum, twisted theta, Blaschke product, delay, exit rank, GRH
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/deninger_cusp.py
+
+\section{The Phantasm XII: the Hecke Correspondence with a Cusp}
+\label{sec:deninger-cusp}
+
+Round of 2026-09-22 (brief \texttt{notes/deninger-cusp/astra-brief.md}, prover \texttt{notes/deninger-cusp/astra-proofs.md},
+numerics \texttt{scripts/deninger\_cusp.py}, review \texttt{notes/reviews/deninger-cusp-2026-09-22.md}). The brief proposed
+the non-cocompact twin of \cref{sec:deninger-lps}: Ihara's quotient $\Gamma_1(N)[1/p]\backslash(\mathbb H\times T_{p+1})$ with
+horizontal cohomology $H^1(Y_1(N))$, transverse transport $T_p$, Deninger's package on the cuspidal part and the
+Eisenstein classes as radical, poles and exit at once, and the level-$N$ scattering matrix as a diagonal matrix of GL$_1$
+theta-channel edge quotients (H-ARITH over $\mathbb Q$, \cref{asm:h-arith-gamma1}). Most of that was refuted and replaced
+by explicit statements. In this shard $q$ is the level prime, $p$ the transverse prime, $u = e^{i\tauM\log q}$.
+
+\subsection{The arithmetic correspondence and what the Eisenstein classes are not}
+
+\begin{proposition}[The $S$-arithmetic quotient is a graph of surfaces; the vertex cohomology and its Eisenstein part]
+\label{prop:ihara-graph-of-surfaces}
+\claimstatus{prop:ihara-graph-of-surfaces}{proved}
+For $\Gamma_S = \{\gamma\in\mathrm{SL}_2(\mathbb Z[1/p]):\gamma\bmod N\text{ upper unipotent}\}$ (a finite-index subgroup of
+Ihara's lattice, not byte-cited), the action on $T_{p+1}$ has quotient one edge with two vertex types, stabilisers
+$\Gamma = \Gamma_1(N)$, $g\Gamma g^{-1}$ ($g = \mathrm{diag}(1,p)$) and $\Delta = \Gamma_1(N)\cap\Gamma_0(p)$ (reduction modulo $N$ is
+onto by the Chinese remainder theorem, so the level creates no extra orbits); the quotient of $\mathbb H\times T$ is the graph
+of surfaces $Y\xleftarrow{\alpha}Y_\Delta\xrightarrow{\beta}Y$, $\alpha(z) = z$, $\beta(z) = pz$, both of degree $p+1$. It is
+three-dimensional with two vertex slices, not a square complex; the $p+1$ ``branches'' are the sheets of the degeneracy maps.
+A vertex slice has $H^1(Y;\mathbb R)$ of dimension $2g+h-1$; horizontal cohomology of the whole quotient is a coefficient
+system over the edge, not this single space. Eichler--Shimura and Manin--Drinfeld (not byte-cited) give the
+Hecke-equivariant mixed-Hodge splitting $0\to H^1(X)\to H^1(Y)\to\tilde H^0(C)(-1)\to0$, unique over $\mathbb Q$ (no morphism
+from weight two to weight one), $\mathrm{Eis}$ of dimension $h-1$ and type $(1,1)$; the transport
+$\mathcal T_p = \alpha_{*}\beta^{*}$ on forms (sum over local sheets) commutes with $d$ and preserves compact supports, and its
+cohomology action is the geometric $T_p$ (definition), identified with the holomorphic Hecke operator by
+Eichler--Shimura (theorem). Eisenstein eigenpackets with primitive inducing characters $(\chi_1,\chi_2)$ have
+$a_p = \chi_1(p)+p\chi_2(p)$ ($p\nmid N$); $p+1$ holds for the trivial pair only. At prime level $\ell\ge5$ there is one trivial
+packet and two packets $(1,\chi),(\chi,1)$ per nontrivial even $\chi$, total $\ell-2 = h-1$.
+\end{proposition}
+
+\begin{theorem}[Frobenius, the three pairings, and the refuted four-fold identity]
+\label{thm:eisenstein-not-radical-not-exit}
+\claimstatus{thm:eisenstein-not-radical-not-exit}{proved}
+(a) For a weight-two newform of nebentypus $\psi$ the Frobenius polynomial on its two-dimensional constituent is
+$X^2-a_pX+p\psi(p)$ (Eichler--Shimura congruence relation, Igusa; not byte-cited), and on $H^1_{\mathrm{et}}(X)$ Frobenius is
+semisimple with all roots of modulus $\sqrt p$ (Weil, Tate) and satisfies $F_p^{t}\Omega_XF_p = p\Omega_X$ for the cup form. % bare-ok
+The brief's Bass companion on $H^1(X)\oplus H^1(X)$ has dimension $4g$, not $2g$, omits $\psi(p)$, and is not Frobenius; a
+companion can represent one cyclic two-plane. Poincar\'e duality gives the \emph{adjoint} identity
+$\Omega_X(T_px,y) = \Omega_X(x,\langle p\rangle^{-1}T_py)$, not a similitude. (b) Bass positivity for a real symmetric $T$ on % bare-ok
+$(K,M)$: $G_B = \begin{psmallmatrix}M&-MT/2\\-MT/2&pM\end{psmallmatrix}$ is positive iff $|\lambda|<2\sqrt p$ strictly (equality is
+a Jordan block); the doubled certificate, not the undoubled Petersson metric, is the invariant metric. (c) For a
+punctured curve $H^2(Y) = 0$, so the ordinary cup product on $H^1(Y)$ is identically zero (radical everything), while
+$H^1_c(Y)\times H^1(Y)\to H^2_c(Y)$ is perfect (no radical); the skew form on $H^1_c$ has radical $\ker j = H^0(C)/H^0(X)$ of
+dimension $h-1$ and weight zero; the split form $\Omega_{\mathrm{split}}(x,y) = \Omega_X(rx,ry)$ through the Manin--Drinfeld % bare-ok
+retraction has radical exactly $\mathrm{Eis}$, but is not the cup product and not a face pairing. (d) Eisenstein packets
+have Frobenius roots $\chi_1(p),p\chi_2(p)$ of moduli $1,p$: no positive $p$-similitude metric exists on them (Hermitian
+version for complex packets). The four objects have different dimensions and parities: boundary cohomology $h-1$, the
+continuous spectrum multiplicity $h$, the residual constant one, $H^0(X)$ and $H^2(X)$ two even lines; $Y(1)$ has $h = 1$,
+$H^1 = 0$ and a nonconstant scattering coefficient with a pole at $s = 1$. Hence neither the scattering exit nor the pole
+pair is the degree-one Eisenstein radical. The gamma factor and the $T\log T$ zero count live in the completed
+$L$-ratios of the continuous families, not in any finite-dimensional cohomology; the LPS model already has even poles
+$1,17$ without a cusp and an odd-dimensional horizontal precursor (\cref{sec:deninger-lps}).
+\end{theorem}
+
+\subsection{The prime-level scattering matrix with all constants}
+
+\begin{theorem}[Cusps of $\Gamma_1(N)$; the $\Gamma_1(q)$ scattering matrix]
+\label{thm:prime-level-scattering}
+\claimstatus{thm:prime-level-scattering}{proved}
+(a) The cusps of $\Gamma_1(N)$ ($N\ge5$) are $\{(c\bmod N,a\bmod d): d = (c,N), a\in(\mathbb Z/d)^\times\}/\pm$, a parametrised set
+with $h_1(N) = \tfrac12\sum_{d|N}\varphi(d)\varphi(N/d)$ ($4,6,10,12$ at $N = 5,7,11,13$); the brief's $\gcd(d,N/d)$ count is
+$\Gamma_0(N)$'s. At prime level $q$ the diamond group $G = (\mathbb Z/q)^\times/\pm$ acts freely and transitively on each of two cusp
+orbits, so Fourier transform on $G$ gives a two-dimensional multiplicity space per even nebentypus $\psi$, including real
+$\psi$: not the inverse-pair blocks of \cref{prop:cusps-are-class-group-bond}, which concerns $\mathrm{GL}_2(O(C\setminus P_0))$.
+(b) With width-one scaling matrices, $E^\psi_\infty(z,s) = \tfrac12\sum_{(c,d) = 1,\ q|c}\bar\psi(d)y^s|cz+d|^{-2s}$,
+$E^\psi_0 = E^{\bar\psi}_\infty|W_q$, and $\Phi_\psi(s)_{ab}$ defined by $(E^\psi_b|\sigma_a)_0 = \delta_{ab}y^s+\Phi_\psi(s)_{ab}y^{1-s}$
+(rows observing, columns source), for nontrivial even $\psi$ (all primitive):
+\[
+\Phi_\psi(s) = \begin{pmatrix}0&A_\psi(s)\\A_{\bar\psi}(s)&0\end{pmatrix},\qquad
+A_\psi(s) = q^{1/2-s}\frac{\Lambda_\psi(2s-1)}{\Lambda_\psi(2s)} = q^{1/2-s}\frac{\tau(\psi)}{\sqrt q}\frac{\Lambda_{\bar\psi}(2-2s)}{\Lambda_\psi(2s)},
+\]
+$\det\Phi_\psi = -q^{1-2s}R_\psi R_{\bar\psi}$, $A_\psi(s)A_{\bar\psi}(1-s) = 1$ (the matrix functional equation), unitary on
+$\re s = \tfrac12$, regular at $s = 1$ with $A_\psi(1) = \pi L(1,\psi)/(qL(2,\psi))$ (zero residue); the incoming series has no
+$y^{1-s}$ term at its own cusp (a nontrivial character averages to zero). For real $\psi$ the fixed vectors $(1,\pm1)$ give
+two scalar channels $\pm A_\psi$; for complex $\psi$ no fixed similarity diagonalises the block for all $s$. (c) Trivial
+nebentypus: with $\phi(s) = \Lambda_0(2s-1)/\Lambda_0(2s)$ and the oldform matrix $H(s) = \begin{psmallmatrix}1&q^s\\q^s&1\end{psmallmatrix}$,
+\[
+\Phi_1(s) = \phi(s)H(1-s)H(s)^{-1} = \frac{\phi(s)}{q^{2s}-1}\begin{pmatrix}q-1&q^s-q^{1-s}\\q^s-q^{1-s}&q-1\end{pmatrix},\quad
+\phi_\pm = \phi\frac{1\pm q^{1-s}}{1\pm q^s},\quad\det\Phi_1 = \phi^2\frac{1-q^{2-2s}}{1-q^{2s}},
+\]
+residue at $s = 1$ equal to $\tfrac{3}{\pi(q+1)}$ times the all-ones matrix ($1/\mathrm{vol}(Y_0(q))$ per entry). (d) Squarefree
+trivial level: $\Phi_{0,N} = \phi\bigotimes_{r|N}\tfrac1{r^{2s}-1}\begin{psmallmatrix}r-1&r^s-r^{1-s}\\r^s-r^{1-s}&r-1\end{psmallmatrix}$,
+determinant $\phi^h\prod_{r|N}((1-r^{2-2s})/(1-r^{2s}))^{h/2}$, $h = 2^{\omega(N)}$: no Dirichlet ratio, the scope of
+\cref{obs:level-tower-correction} with ``squarefree'' retained. (e) $\det\Phi_{\Gamma_1(q)} = \phi^2\tfrac{1-q^{2-2s}}{1-q^{2s}}
+(-1)^{m-1}q^{(1-2s)(m-1)}\prod_{\psi\ne1\text{ even}}R_\psi^2$, $m = (q-1)/2$: each $L$-ratio squared; the residue in the width-one
+basis is the all-ones matrix times $6/(\pi(q^2-1))$. At general level the Eisenstein space is spanned by primitive inducing
+pairs $(\chi_1,\chi_2,b)$ and their level raises (Huxley 1984, Hejhal 1983; explicit change of basis in Young 2017; not
+byte-cited); only the spanning structure is used. Verified: \cref{num:deninger-cusp}.
+\end{theorem}
+
+\begin{theorem}[Twisted theta edges; the character symbol is pure Blaschke]
+\label{thm:twisted-theta-edges}
+\claimstatus{thm:twisted-theta-edges}{proved}
+For a primitive even $\chi$ of conductor $f$, $\theta_\chi(v) = \sum_n\chi(n)e^{-\pi n^2v/f}$ and the level-scaled lattice sum
+$\mathcal T_\chi(z,t) = \sum_{m,n}\chi(n)e^{-\pi t|fmz+n|^2/(fy)}$ (periodic in $x$): $\tfrac12\int_0^\infty\mathcal T_\chi t^s\,d^\times t
+= \Lambda_\chi(2s)E^{\bar\chi}_\infty(z,s)$, and the constant terms are $\int_0^1\mathcal T_\chi(x+iy,t)dx = \theta_\chi(t/y)$ at $\infty$
+and $\sqrt{y/t}\,\theta_\chi(fty)$ at $0$: the two edges are at the two cusps (a nontrivial primitive twist has a zero
+character average, so the brief's two terms at one cusp are false), with Mellin edges $\Lambda_\chi(2s)y^s$ and
+$f^{1/2-s}\Lambda_\chi(2s-1)y^{1-s}$, whose quotient is $A_\chi(s)$ of \cref{thm:prime-level-scattering}: a GL$_1$ theta-edge
+derivation of the scattering entry. Poisson with constants: $\theta_\chi(v) = \epsilon_\chi v^{-1/2}\theta_{\bar\chi}(1/v)$,
+the weighted involution $\mathcal WF(t) = t^{-1}F(1/t)$ exchanges the symmetrically scaled edges with $\chi\to\bar\chi$,
+$\tfrac12\int A_\chi t^s\,d^\times t = \Lambda_\chi(2s)y^s$, $\tfrac12\int B_\chi t^s\,d^\times t = \Lambda_\chi(2s-1)y^{1-s}$ for all
+$s$; the functional equation exchanges the character \emph{and} the argument. Odd $\chi$: the unsigned Gaussian sums vanish
+identically and there is no weight-zero scattering matrix (in particular none for the order-four character modulo $5$); the
+GL$_1$ replacement is $\theta_{\chi,a}(v) = \sum n^a\chi(n)e^{-\pi n^2v/f}$ with $\tfrac12\int\theta_{\chi,a}v^{(u+a)/2}d^\times v =
+\Lambda_\chi(u)$. The conjugation-correct symbol $E_\chi(\tauM) = \Lambda_{\bar\chi}(1-2i\tauM)$,
+$\Theta_\chi = E_\chi^\#/E_\chi = \Lambda_\chi(1+2i\tauM)/\Lambda_{\bar\chi}(1-2i\tauM) = \epsilon_\chi\Lambda_\chi(1+2i\tauM)/\Lambda_\chi(2i\tauM)$
+(the same-character quotient is not unimodular for complex $\chi$), with $A_\chi(\tfrac12+i\tauM) = f^{-i\tauM}\epsilon_\chi\Theta_\chi^{-1}$,
+is inner and pure Blaschke unconditionally: zeros $w_\zero = \gam{}/2+i(1-\sigs)/2$ in $\mathbb C_+$ with multiplicity, no
+singular factor, no delay ($\Theta_\chi(iv)\sim\epsilon_\chi\sqrt{\pi/(fv)}$), by the real entire $\epsilon_\chi^{-1/2}\Lambda_\chi(\tfrac12+iz)$
+and its genus-one Hadamard product, as in \cref{thm:symbol-edge-quotient} for $\chi = 1$ (where the pole-removing $r$ of
+\cref{prop:siegel-constant-term} appears; Uetake's reduced causal factor is $\cxi(2s)/\cxi(-2s)$,
+\texttt{uetake-2007:paper.txt:615-680}).
+\end{theorem}
+
+\subsection{The level model: arithmetic modes, local factors, delays, exits}
+
+\begin{theorem}[The prime-level inner model and its decomposition]
+\label{thm:level-model-decomposition}
+\claimstatus{thm:level-model-decomposition}{proved}
+Let $a = q^{-1/2}$, $b_c(u) = (u-c)/(1-cu)$, $L_+ = ub_{-a}(u)$, $L_- = ub_a(u)$, $r(\tauM) = (\tauM-i/2)/(\tauM+i/2)$. Using the
+inverse of the Eisenstein coefficient matrix with its bound-state pole removed (\cref{sec:cusp-graph-scattering},
+\cref{sec:h-theta-channels}), $\phi_\pm(\tfrac12+i\tauM)^{-1} = r^{-1}\Theta_1L_\pm$, and the two trivial-block inner entries are
+$I_+ = \Theta_1L_+$, $I_- = \Theta_1L_-/r$; each nontrivial even $\psi$ gives $I_{\psi,1} = e^{i\tauM\log q}\Theta_\psi$,
+$I_{\psi,2} = e^{i\tauM\log q}\Theta_{\bar\psi}$ up to constant phases and a right permutation. Hence
+$K^{\mathrm{scat}}_q\simeq K_{I_+}\oplus K_{I_-}\oplus\bigoplus_{\psi\ne1}(K_{e^{i\tauM\log q}\Theta_\psi}\oplus K_{e^{i\tauM\log q}\Theta_{\bar\psi}})$,
+including local factors and delays; since $K_{AB} = K_A\oplus AK_B$, discarding them defines a separate \emph{arithmetic
+reduction} $K^{\mathrm{arith}}_q\simeq\bigoplus_{\chi\text{ even}}K_{\Theta_\chi}^{\oplus2}$: two copies per even character
+(also for $\chi = 1$ and quadratic $\chi$), not one per character and no odd characters; the delay $e^{i\tauM\log q}$ has model
+space $L^2(0,\log q)$ with no zeros, and the local factors have periodic zeros at height $\tfrac12$ (the zero of $L_-$ at
+$i/2$ is the cancelled one). At $q = 5$: four cusp coordinates, two zeta channels and two quadratic-character channels.
+Exit: for a matrix inner $\Theta$, $I-Z^{*}Z = J^{*}J$ with $J^{*}e = (\Theta(w)-\Theta(0))e/w$, $JJ^{*} = 1-\Theta(0)^{*}\Theta(0)$, so
+$\mathrm{rank}\,J = \mathrm{rank}(1-\Theta(0)^{*}\Theta(0))\le h$ with equality iff no constant isometric direction; for the
+prime-level symbols every entry is nonconstant inner, so $\mathrm{rank}\,J = q-1 = h$ exactly: one exit per scalar coordinate,
+not per character or per zero. In continuous time the generator has one boundary exit per coordinate, but the finite-time
+defect $I-C_\tsg^{*}C_\tsg$ has infinite rank (independent restrictions of infinitely many exponentials to $[0,\tsg]$): the
+disc shift is a cogenerator convention. Modes: $\mathcal M^{-1}K_{\Theta_\chi} = \overline{\mathrm{span}}\{(\log y)^jy^{-(1-\sigs)/2-i\gam{}/2}1_{y>1}\}$
+over the zeros of $L(s,\chi)$ with jets, complete by divisibility, damped uniformly by $y^{-1/4}$ iff GRH for $\chi$; a
+diamond $\langle d\rangle$ acts on the whole $\psi$-block by $\psi(d)$ while the $L$-labels are $\psi,\bar\psi$ (in general the
+diamond label is $\chi_1\chi_2$ and the $L$-character $\chi_1\bar\chi_2$): ``$L$-character $=$ diamond character, one channel
+each'' is refuted. Only the principal completed $L$ has poles; the pole-even/zero-odd grading of $L$-functions does not
+make the Eisenstein classes even.
+\end{theorem}
+
+\begin{proposition}[Positivity on the level model: GRH plus no Jordan chains; no boundedly equivalent metric]
+\label{prop:level-positivity-criterion}
+\claimstatus{prop:level-positivity-criterion}{proved-conditional}
+On a finite, functional-equation-stable selection of arithmetic zero modes with complete chains and partners, with
+$D = A+\tfrac14$ and eigenvalues $d_\zero = (\sigs-\tfrac12)/2-i\gam{}/2$, a positive metric making $e^{\tsg D}$ unitary for all real
+$\tsg$ exists iff all selected zeros are critical and every Jordan chain has length one (repeated simple zeros in
+independent cusp coordinates are allowed; a multiple analytic zero in one scalar factor is not): the infinitesimal form
+of the finite polarisation criterion, ``semisimple with critical spectrum'', not ``simple spectrum''. A pairing pairs
+$(\chi,\zero)$ with $(\bar\chi,1-\zero)$. On the algebraic direct sum of arithmetic modes a positive diagonal completion
+exists iff GRH and simplicity for all \emph{represented} $L$-functions (even characters at prime level; not all
+characters modulo $N$); it does not apply to the full model with local modes and delays, and proves neither GRH nor
+simplicity. Under GRH and simplicity for one represented character, two normalised kernels at height $\tfrac14$ have
+overlap $\tfrac12/\sqrt{(a-a')^2+\tfrac14}$, the $T\log T$ count forces gaps tending to zero, so no bounded, boundedly
+invertible positive metric makes the centred evolution unitary (the character extension of
+\cref{prop:kernels-not-riesz} and \cref{thm:no-energy-equivalent-metric}); a spectral completion making all modes
+orthonormal changes the exit to $(1-e^{-\tsg/2})I$, of infinite rank.
+\end{proposition}
+
+\begin{observation}[H-ARITH over $\mathbb Q$: the assumption is refuted as stated; what is open]
+\label{obs:h-arith-q-verdict}
+\claimstatus{obs:h-arith-q-verdict}{refuted}
+The literal $\mathbb Q$-analogue of \cref{asm:h-arith-gamma1} (one diagonal monomial-times-$L$ channel per Dirichlet character,
+diamonds acting by the $L$-character) is refuted by \cref{thm:prime-level-scattering,thm:level-model-decomposition}:
+two cusp coordinates per even nebentypus, rational local factors already in the trivial block, odd characters absent
+in weight zero, and diamond label $\ne$ $L$-label. What survives: per even character the completed $L$-ratio with the
+conductor power. Over $\mathbb F_q[T]$ the double-coset, inducing-pair, constant-term and finite-Fourier structure has
+analogues, while the Gaussian, the gamma factor, the continuous clock and the $T\log T$ argument do not transfer; a
+cubic-level calculation must fix the subgroup (determinant and centre), singular cusps, heights, local bases and the
+infinity representation (lane \texttt{notes/h-arith-fqt/}). $\det S = (-1)^hp/\tilde p$ of \cref{thm:multi-exit-scattering} is
+rational in the tree variable; the archimedean matrices have completed $L$-functions, infinitely many modes and
+delays, so no finite $p$ represents them, and determinant agreement loses directional cancellations. The pole pair of
+the completed zeta is not the Eisenstein radical of $H^1$ of this quotient; $\cxi$ is entire.
+\end{observation}
+
+\begin{numerical}[Numerics lane, the cusp correspondence and level $N$]
+\label{num:deninger-cusp}
+\claimstatus{num:deninger-cusp}{numerical}
+\texttt{scripts/deninger\_cusp.py} ($163$ assertions, $115$ s, mpmath; \texttt{outputs/deninger\_cusp.txt}; ledger in
+\texttt{notes/deninger-cusp/numerics.md}; $163$ pass; written without reading the prover's scripts): the six table entries
+of the $\psi$-blocks for $\chi_5,\chi_7,\chi_{13}$ at two points to $12$ decimals, the Gauss-sum form to $10^{-20}$,
+$\Phi_\psi(s)\Phi_\psi(1-s) = I$ and unitarity on the critical line to $10^{-25}$, the determinants, the trivial block, its
+eigenvalues and residue at $q = 5,7$, the full $4\times4$ $\Gamma_1(5)$ matrix (functional equation, residue every entry $1/(4\pi)$
+of rank one), the $\Gamma_1(q)$ determinant, $A_\psi(1) = 0.38293620316254140264$ for $(\cdot/5)$; Poisson for four characters by
+direct summation, the $A_\chi,B_\chi,C_\chi$ table at $y = 1.3$, $t = 0.7$, the constant terms at both cusps by two-dimensional
+lattice sums (errors $\le4\cdot10^{-16}$), the odd unsigned sum identically zero, the Mellin edges and their quotient $= A_\chi$,
+$|\Theta_\chi| = 1$ on $\mathbb R$ and $<1$ on an upper-half-plane grid, the delay identity, the asymptotic ratio $1.0031$ at
+$v = 40$, the non-unimodularity ($0.68$) of the same-character quotient for $\chi_7$; the zeros of $L(s,(\cdot/5))$
+$\gam{1} = 6.648453344727714716$, $\gam{2} = 9.831444432886669616$ to $21$ digits, $\Theta(w_j) = 0$, the mode values, the kernel
+transform and the overlap $0.2997$; the Eisenstein multiset $\{p+1\}\cup\{\chi_1(p)+p\chi_2(p)\}$ for $N = 11$, $p = 2,3$
+against the prover's polynomial to $5\cdot10^{-22}$. Findings: only the first form of $A_\psi$ makes the odd diagnostic
+meaningful; \texttt{mp.quad} on $[0,\infty)$ needs a subdivided range for the oscillatory mode transform.
+\end{numerical}
+
+\begin{observation}[What this changes; next]
+\label{obs:deninger-cusp-next}
+\claimstatus{obs:deninger-cusp-next}{sketched}
+The level-$q$ modular surface's channel is arithmetic modes times local inner factors with one exit per cusp coordinate;
+the local factors are the notebook's finite cusp-graph cavity of the tree quotient at $q$ (lane
+\texttt{notes/level-local-cavity/}); Deninger's package holds on cusp forms through Eichler--Shimura and fails on the
+Eisenstein classes for the reason the finite note gives (moduli $1,p$), which is a statement about weight, not about
+exits. H-ARITH over $\mathbb F_q[T]$ (lane \texttt{notes/h-arith-fqt/}) is where the whole structure is finite and exact.
+\end{observation}
