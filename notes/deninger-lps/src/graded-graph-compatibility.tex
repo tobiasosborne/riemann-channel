@@ -1,0 +1,829 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype,enumitem,longtable,booktabs}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black,citecolor=blue!45!black]{hyperref}
+\usepackage{xcolor}
+\hypersetup{pdftitle={Faces, grading, and positive dynamics: a finite compatibility theorem},pdfauthor={Research note prepared with Codex}}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[definition]{Remark}
+\newlist{steps}{enumerate}{2}
+\setlist[steps,1]{label=$\langle1\rangle$\arabic*.,leftmargin=3.7em,itemsep=5pt,topsep=5pt}
+\setlist[steps,2]{label=$\langle2\rangle$\arabic*.,leftmargin=3.7em,itemsep=3pt,topsep=3pt}
+\newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}\newcommand{\Z}{\mathbb Z}
+\newcommand{\tr}{\operatorname{tr}}\newcommand{\im}{\operatorname{im}}
+\newcommand{\rad}{\operatorname{rad}}\newcommand{\Str}{\operatorname{Str}}
+\newcommand{\sdim}{\operatorname{sdim}}\newcommand{\spec}{\operatorname{spec}}
+\newcommand{\diag}{\operatorname{diag}}\newcommand{\id}{\operatorname{id}}
+\newcommand{\QED}{\textsc{Qed}}
+\newcommand{\Assume}{\textsc{Assume}}\newcommand{\Prove}{\textsc{Prove}}
+\title{Faces, grading, and positive dynamics\\\large A finite compatibility theorem, exact graph realizations, and obstructions}
+\author{Research note prepared with Codex}
+\date{21 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give a self-contained finite-dimensional theorem package connecting cellular parity, a face-induced cup pairing, graded orbit determinants, and a compatible positive Hodge structure. For an arbitrary finite two-dimensional complex, the face pairing descends to its actual first cohomology. For cochain dynamics preserving that pairing with multiplier $q>0$, an invariant positive Hodge structure exists exactly when the normalized cohomological dynamics is semisimple with unit-modulus spectrum. An equivalent finite linear matrix certificate constructs the Hodge operator directly. Graded cochain determinants reduce to cohomology and admit signed primitive-orbit products. We prove a graded Bass identity for every finite undirected multigraph with reciprocal graded matrix transports, and an exact directed non-backtracking realization of every finite cochain transfer system. Explicit conformal torus maps realize the whole geometric package without assuming a spectral bound. An infinite family of reciprocal graded bouquet systems admits a cochain realization on two tori with attached trees: its non-backtracking dynamics, face pairing, and positive polarization are compatible on the same surviving odd space. An anisotropic torus and a cubic graph prove that no corresponding assertion can hold for all graphs or all face-compatible dynamics.
+
+The two graph statements have different scopes. The general Bass identity alone does not identify its transfer spaces with cellular cohomology. The universal realization uses a derived directed transfer graph, not the original one-skeleton. In particular, this note does not prove the desired compatibility for the previously discussed LPS square complex, or an arithmetic Riemann hypothesis. These limitations are theorem-level obstructions, not omitted proof steps. No claim of novelty or machine formalization is made.
+\end{abstract}
+\medskip
+\textbf{Reading guide.} The main explicit construction is Theorem~\ref{thm:bouquet}: it realizes reciprocal graded Hashimoto dynamics on the cochains of a genuine complex with faces, and identifies the surviving odd space by the concrete map (8.2). The general necessary-and-sufficient criterion is Theorem~\ref{thm:polarization}. The obstructions are in Section 9. All proofs use two-level hierarchical steps.
+\clearpage
+\tableofcontents
+\newpage
+
+\section{Scope, conventions, and proof notation}
+
+All spaces and complexes are finite-dimensional over $\R$, unless complexification or formal coefficients are explicitly indicated. A zero-dimensional determinant is $1$. Determinants of $I-uF$ are polynomials, and all quotient and Euler-product identities are identities in $\R(u)$ or its formal expansion at $u=0$. There is no analytic continuation assumption. A zero of a quotient is always counted with its \emph{net} order after cancellation.
+
+The geometric input is a finite ordered triangulated two-dimensional complex $X$, a real simplicial two-cycle $z$, and its cochains
+\[
+C^0(X)\xrightarrow{d_0}C^1(X)\xrightarrow{d_1}C^2(X),\qquad d_1d_0=0.
+\]
+The construction also applies to a cellular or $\Delta$-complex model equipped with its actual cup product, by passing to a triangulation or a cup-preserving cohomological identification. In particular, ordinary square complexes are covered. A raw boundary matrix without the attaching maps or a diagonal does not determine the cup product.
+
+Cell degree supplies parity: $C^{\rm ev}=C^0\oplus C^2$ and $C^{\rm odd}=C^1$. These are degrees $0,1,2$, not $1,2,3$. A flow direction, if introduced, is not an extra degree in this two-dimensional differential complex.
+
+Proofs use Lamport's hierarchical organization: $\langle1\rangle j$ denotes a principal step, and $\langle2\rangle j$ denotes a step within its parent's scope. Every substantive proof is expanded through the second level. This is a written mathematical proof, not a claim of verification in a proof assistant. Basic finite-dimensional linear algebra, the Jordan normal form, and the spectral theorem for real symmetric matrices are used in their standard forms.
+
+\section{The pairing really induced by faces}
+
+\begin{definition}[Face trace and cup pairing]\label{def:face}
+For an ordered triangle $[012]$, set
+\[
+(a\smile b)([012])=a([01])b([12]),\qquad a,b\in C^1(X).
+\]
+Write $\tau([c])=c(z)$ for $[c]\in H^2(X)$. For cocycles $a,b$, define
+\[
+\Omega_z([a],[b])=(a\smile b)(z).
+\]
+The alternating cochain matrix $M_z$ is defined by
+\[
+a^TM_zb=\frac12\sum_{\sigma=[012]}z_\sigma
+\bigl(a([01])b([12])-b([01])a([12])\bigr).
+\tag{2.1}\label{eq:face-matrix}
+\]
+The entries here refer to the chosen orientations and ordering of the triangles. No nondegeneracy is part of this definition.
+\end{definition}
+
+\begin{proposition}[Descent, alternation, and the exact role of a cycle]\label{prop:descent}
+The function $\tau$ and the pairing $\Omega_z$ are well defined on cohomology. The pairing is alternating, and $a^TM_zb=\Omega_z([a],[b])$ for cocycles $a,b$. A collection of oriented faces whose boundary is not zero does not in general give such a pairing on absolute cohomology.
+\end{proposition}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item The trace kills coboundaries.
+\begin{steps}
+\item For $c=d_1h$, evaluation gives $c(z)=h(\partial z)$ by the definition of the simplicial coboundary.
+\item Since $\partial z=0$, this value is zero. Thus $\tau$ is independent of the representative in $C^2/\im d_1$.
+\end{steps}
+\item The pairing kills exact one-cochains against closed ones.
+\begin{steps}
+\item If $d_1b=0$ and $f\in C^0$, define $(f\smile b)([ij])=f(i)b([ij])$. On $[012]$, direct expansion using $b_{02}=b_{01}+b_{12}$ gives $d(f\smile b)=(d_0f)\smile b$.
+\item Similarly, for closed $a$, define $(a\smile f)([ij])=a([ij])f(j)$. Expansion gives $d(a\smile f)=-a\smile d_0f$. Step $\langle1\rangle1$ kills both expressions on $z$.
+\end{steps}
+\item The pairing is alternating.
+\begin{steps}
+\item For closed $a,b$, define the one-cochain $c([ij])=a([ij])b([ij])$ on the chosen increasing edge orientations, and extend it linearly. On a triangle,
+\[
+dc=a_{12}b_{12}-(a_{01}+a_{12})(b_{01}+b_{12})+a_{01}b_{01}
+=-(a\smile b+b\smile a).
+\]
+\item Evaluation on $z$ gives $\Omega_z(a,b)+\Omega_z(b,a)=0$. Over $\R$, this also implies $\Omega_z(a,a)=0$. Taking the alternating part of the cup formula proves \eqref{eq:face-matrix} on cocycles.
+\end{steps}
+\item \QED.
+\begin{steps}
+\item The first three steps prove all positive assertions, including independence of both cocycle representatives.
+\item The equality $dh(z)=h(\partial z)$ identifies precisely the boundary term that need not vanish if $z$ is not a cycle. For example, on one triangle choose $h$ nonzero on one boundary edge; then $dh(z)\ne0$, although $[dh]=0$ in $H^2$.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\begin{definition}[Cup-compatible cochain dynamics]\label{def:dynamics}
+A dynamics is a degree-preserving cochain endomorphism $F=(F_0,F_1,F_2)$:
+\[
+d_iF_i=F_{i+1}d_i.
+\]
+Let $A_i$ be its induced map on $H^i(X)$. It is \emph{cup-compatible with multiplier $q$} if $q>0$ and
+\[
+(A_1\alpha)\smile(A_1\beta)=A_2(\alpha\smile\beta),
+\qquad \tau A_2=q\tau.
+\tag{2.2}\label{eq:cup-compat}
+\]
+Only these cohomological product identities are required; a strictly commutative product on all cochains is not required. Pullback by a continuous self-map satisfies the first identity. When $z$ is an oriented fundamental class and the map has degree $q>0$, it satisfies the second.
+\end{definition}
+
+\begin{proposition}[Geometric similitude and radical]\label{prop:similitude}
+For data in Definition~\ref{def:dynamics}, write $H=H^1(X)$, $A=A_1$, $\Omega=\Omega_z$. Then
+\[
+\Omega(Ax,Ay)=q\Omega(x,y).\tag{2.3}
+\]
+If $\Omega$ is nondegenerate, $A$ is invertible. Even when $\Omega$ is degenerate and $A$ is not invertible, its radical $R=\rad\Omega$ is $A$-invariant, and $H/R$ has an induced nondegenerate alternating form and an invertible similitude. Moreover,
+\[
+\det_H(I-uA)=\det_R(I-uA|_R)\det_{H/R}(I-u\bar A).
+\tag{2.4}\label{eq:rad-factor}
+\]
+Consequently, passing to the symplectic quotient does not silently preserve the original zeta function.
+\end{proposition}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Derive the similitude from faces.
+\begin{steps}
+\item By \eqref{eq:cup-compat}, $\tau((Ax)\smile(Ay))=\tau A_2(x\smile y)$.
+\item The trace multiplier makes this $q\tau(x\smile y)$, which is (2.3). If $Ax=0$ and $\Omega$ is nondegenerate, (2.3) implies $\Omega(x,y)=0$ for every $y$, so $x=0$; finite dimensionality gives invertibility.
+\end{steps}
+\item Reduce a degenerate pairing without losing the missing factor.
+\begin{steps}
+\item Choose a complement $V$ to $R$, so $\Omega=\diag(\Omega_V,0)$ with $\Omega_V$ nondegenerate. Write $A=\left(\begin{smallmatrix}X&Y\\ Z&W\end{smallmatrix}\right)$. The upper-left and upper-right blocks of (2.3) give $X^T\Omega_VX=q\Omega_V$ and $X^T\Omega_VY=0$. The first makes $X$ invertible, so the second gives $Y=0$. Thus $AR\subset R$, and the quotient map is the invertible $X$. The quotient form is well defined and nondegenerate by the definition of $R$.
+\item A basis adapted to $R\subset H$ makes $A$ block triangular. Its determinant factors as \eqref{eq:rad-factor}. The quotient therefore removes a genuine spectral factor unless it is separately accounted for or canceled.
+\end{steps}
+\item \QED\ by the preceding two steps.
+\end{steps}
+\end{proof}
+
+\section{Graded orbit determinants on the same complex}
+
+\begin{definition}[Cell transfer graph and graded zeta]\label{def:transfer}
+Choose oriented cell bases for each $C^i$. The degree-$i$ transfer graph has one state per basis cell, and a directed arrow $\sigma\to\rho$ of weight $(F_i)_{\rho\sigma}$ whenever this entry is nonzero. It is a graph of \emph{cell transitions}, not the one-skeleton of $X$. For a directed cycle $p$, let $\ell(p)$ be its length and $w(p)$ the product of its arrow weights. A primitive cycle is taken modulo cyclic rotation, not modulo reversal. Define
+\[
+\mathcal Z_F(u)=\prod_{i=0}^2\det(I-uF_i)^{(-1)^{i+1}}.
+\tag{3.1}\label{eq:zeta}
+\]
+Thus degree-one states give numerator determinants. No positivity or integrality of orbit weights is assumed.
+\end{definition}
+
+\begin{theorem}[Orbit product, cohomological cancellation, and divisor]\label{thm:cancellation}
+For every finite cochain endomorphism, with no cup or metric assumption,
+\begin{align}
+\mathcal Z_F(u)
+&=\exp\left(\sum_{n\ge1}\frac{u^n}{n}\sum_i(-1)^i\tr F_i^n\right)\label{eq:trace}\tag{3.2}\\
+&=\prod_i\prod_{p\text{ primitive in degree }i}
+(1-w(p)u^{\ell(p)})^{(-1)^{i+1}}\label{eq:orbit}\tag{3.3}\\
+&=\frac{\det(I-uA_1)}{\det(I-uA_0)\det(I-uA_2)}.\label{eq:cohom-zeta}\tag{3.4}
+\end{align}
+For $\lambda\ne0$, the order at $u=\lambda^{-1}$ is $m_1(\lambda)-m_0(\lambda)-m_2(\lambda)$, with algebraic multiplicities. Zero eigenvalues contribute no finite divisor.
+\end{theorem}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Prove the orbit formula before making any cancellation.
+\begin{steps}
+\item The formal matrix identity $-\log\det(I-uT)=\sum_{n\ge1}u^n\tr(T^n)/n$ follows by diagonalization over an algebraic closure, or by triangularizing $T$; both sides are similarity-invariant formal series. Expanding matrix multiplication expresses $\tr(T^n)$ as the sum of weights of all based closed walks of length $n$.
+\item Every such closed walk is a repetition of a unique primitive cyclic word. A primitive word of length $\ell$ has $\ell$ distinct based words, and its $r$th repetition has weight $w^r$. Its contribution to the logarithmic series is $w^ru^{r\ell}/r$. Summing $r$ gives $-\log(1-wu^\ell)$. Summing degrees with sign $(-1)^i$ proves \eqref{eq:trace}--\eqref{eq:orbit}. Finitely many walks occur in each degree of $u$, so rearrangement is legitimate formally.
+\end{steps}
+\item Cancel exact pieces of the cochain complex.
+\begin{steps}
+\item Put $B^i=\im d_{i-1}$ and $Z^i=\ker d_i$. The chain identity makes both subspaces invariant. The quotient $C^i/Z^i$ is equivariantly isomorphic to $B^{i+1}$ through $d_i$. Block triangular determinants therefore give
+\[
+\det(I-uF_i)=\det(I-uF|_{B^i})\det(I-uA_i)\det(I-uF|_{B^{i+1}}).
+\]
+\item On taking the signed product, each boundary factor occurs twice with opposite exponents. All cancel, giving \eqref{eq:cohom-zeta}. The same argument applied to traces proves equality of cochain and cohomology supertraces at every power.
+\end{steps}
+\item Identify the actual divisor.
+\begin{steps}
+\item A Jordan block at $\lambda$ contributes $(1-u\lambda)$ to the characteristic determinant once per dimension of the block. This remains true for nonsemisimple operators.
+\item Subtracting denominator multiplicities from numerator multiplicities gives the stated order. This also explains why the existence of an odd presentation does not itself imply an uncanceled zero. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\begin{proposition}[Invariance under compatible change of model]\label{prop:model}
+Let $P:C^\bullet\to\widetilde C^\bullet$ be a quasi-isomorphism of finite cochain complexes. Suppose $PF$ and $\widetilde FP$ are chain-homotopic. Then $\mathcal Z_F=\mathcal Z_{\widetilde F}$. If $P$ also identifies the cup products and face traces on cohomology, it transports $\Omega$, any compatible polarization, and all conclusions below.
+\end{proposition}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Compare induced dynamics.
+\begin{steps}
+\item A chain homotopy changes the image of a cocycle by a coboundary, so $P^HA_i=\widetilde A_iP^H$.
+\item Since $P$ is a quasi-isomorphism, $P^H$ is an isomorphism. Hence the induced maps are conjugate in every degree, and Theorem~\ref{thm:cancellation} gives equal zeta functions.
+\end{steps}
+\item Compare the geometric structures.
+\begin{steps}
+\item Preservation of cup and trace means $\widetilde\Omega(P^Hx,P^Hy)=\Omega(x,y)$ directly from Definition~\ref{def:face}.
+\item Transport $J$ by conjugation and a metric by pullback. All defining identities and positive definiteness are invariant under an isomorphism. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\section{What can be proved for arbitrary non-backtracking graphs}
+
+\begin{theorem}[Universal graded Bass--Schur identity]\label{thm:schur}
+For finite spaces $E_i,V_i$ and maps $S_i:V_i\to E_i$, $T_i:E_i\to V_i$, $R_i:E_i\to E_i$, put $B_i=S_iT_i-R_i$ and $K_i(u)=I+uR_i$. Then
+\[
+\det_{E_i}(I-uB_i)=\det_{E_i}K_i(u)\,
+\det_{V_i}\bigl(I-uT_iK_i(u)^{-1}S_i\bigr).
+\tag{4.1}\label{eq:schur}
+\]
+Taking any cell-degree signed product yields its graded version. The identity is rational in $u$, including when $K_i$ has zeros. It requires neither positivity nor a differential. A cohomological interpretation additionally requires the chain conditions of Theorem~\ref{thm:cancellation}.
+\end{theorem}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Factor the edge-side determinant.
+\begin{steps}
+\item Since $K_i(0)=I$, it is invertible over $\R(u)$. We have $I-uB_i=K_i(I-uK_i^{-1}S_iT_i)$.
+\item Taking determinants separates the first factor from the second.
+\end{steps}
+\item Compress the second determinant and finish.
+\begin{steps}
+\item The identity $\det(I-AB)=\det(I-BA)$ for rectangular maps follows by evaluating the two Schur complements of $\left(\begin{smallmatrix}I&A\\B&I\end{smallmatrix}\right)$, with the sign absorbed in $A$ if necessary. Apply it to $A=uK_i^{-1}S_i$, $B=T_i$.
+\item This gives \eqref{eq:schur}. Taking signed products preserves an identity in $\R(u)$. Special values where a displayed inverse fails are interpreted through that rational identity. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\begin{theorem}[Graded Ihara--Bass for every reciprocal local system]\label{thm:bass}
+Let $G$ be a finite undirected multigraph, with $n$ vertices and $m$ geometric edges. A loop has two distinct oriented arcs, exchanged by reversal, and counts twice in the degree. Let $W=W_0\oplus W_1$ be a finite graded space. To every oriented arc $a$ assign an invertible parity-preserving map $\rho_a$ on $W$, with $\rho_{\bar a}=\rho_a^{-1}$. Define
+\[
+(Bx)_b=\rho_b\sum_{\substack{t(a)=s(b)\\a\ne\bar b}}x_a,
+\quad (A_\rho f)_v=\sum_{t(a)=v}\rho_af_{s(a)},
+\quad Q=(D-I_n)\otimes I_W.
+\]
+Here $D$ is the degree matrix. If $r_j=\dim W_j$ and
+$P_j(u)=I-uA_{\rho,j}+u^2Q_j$, then
+\[
+\boxed{\frac{\det(I-uB_1)}{\det(I-uB_0)}
+=(1-u^2)^{(m-n)(r_1-r_0)}\frac{\det P_1(u)}{\det P_0(u)}.}
+\tag{4.2}\label{eq:bass}
+\]
+The left side has the graded primitive non-backtracking orbit product with holonomy determinants. This is an unconditional graph theorem. The parity on $W$ is supplied data; if it comes from a face complex, that origin must be specified. The theorem does not assert that $B$ is a cup-compatible map of that complex.
+\end{theorem}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Express non-backtracking by incidence and reversal.
+\begin{steps}
+\item On vertex- and arc-valued copies of $W$, define $(Sf)_b=\rho_bf_{s(b)}$, $(Tx)_v=\sum_{t(a)=v}x_a$, and $(Rx)_b=\rho_bx_{\bar b}$. Then $B=ST-R$ and $R^2=I$.
+\item Direct summation gives $TS=A_\rho$ and $TRS=D\otimes I_W$: in the latter expression inverse transports cancel. Every operator preserves parity.
+\end{steps}
+\item Evaluate the Bass--Schur factors in each parity.
+\begin{steps}
+\item On a geometric edge, $R$ has block form $\left(\begin{smallmatrix}0&\rho_a\\\rho_a^{-1}&0\end{smallmatrix}\right)$. Thus $\det(I+uR_j)=(1-u^2)^{mr_j}$, and $(I+uR)^{-1}=(I-uR)/(1-u^2)$.
+\item The compressed factor is
+\[
+I-uT(I+uR)^{-1}S
+=\frac{I-uA_\rho+u^2((D-I_n)\otimes I_W)}{1-u^2}.
+\]
+Its parity-$j$ determinant has denominator $(1-u^2)^{nr_j}$. Theorem~\ref{thm:schur} therefore gives $\det(I-uB_j)=(1-u^2)^{(m-n)r_j}\det P_j(u)$.
+\end{steps}
+\item Obtain the graded identity and its orbit meaning.
+\begin{steps}
+\item Divide the odd identity by the even identity to get \eqref{eq:bass}. The formula remains valid for trees, loops, parallel edges, and isolated vertices; negative displayed exponents cancel as rational factors.
+\item Expanding $\tr B_j^k$ sums traces of transport holonomies along based reduced closed walks. Grouping repetitions as in Theorem~\ref{thm:cancellation} gives an orbit factor $\det(I-u^{\ell(p)}\rho_p|W_j)^{(-1)^{j+1}}$. Multiplication order is the path order specified by $B$. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\begin{proposition}[Why ordinary graph cohomology misses the Bass spectrum]\label{prop:graph-harmonic}
+Take scalar transports in Theorem~\ref{thm:bass}. Let $R$ be arc reversal and $T$ the terminal incidence sum. The ordinary cycle space, represented on oriented arcs, is
+\[
+\mathcal K=\{x:Rx=-x,\ Tx=0\}.
+\]
+On this space, $Bx=x$. Thus using the ordinary harmonic $H^1$ of the graph as the non-backtracking state space retains only the eigenvalue $1$, rather than the general Bass spectrum.
+\end{proposition}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Identify the cycle space.
+\begin{steps}
+\item Assigning $x_{\bar a}=-x_a$ identifies arc data with an oriented geometric edge chain. At a vertex, $Tx$ is the signed sum of incoming edge coefficients; $Tx=0$ is exactly its zero-boundary condition.
+\item A graph has no two-boundaries. Its first homology is therefore this kernel, and the Euclidean harmonic representative identifies its dual first cohomology with the same space.
+\end{steps}
+\item Compute the operator on it.
+\begin{steps}
+\item From $B=ST-R$, the condition $Tx=0$ makes the first term zero.
+\item Since $Rx=-x$, $Bx=-Rx=x$. Additional faces or a transverse complex must do genuine work if a different cohomological spectrum is sought. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\begin{theorem}[Exact directed non-backtracking realization]\label{thm:gadget}
+Every cell transfer system of Definition~\ref{def:transfer} has a finite directed weighted non-backtracking realization with
+\[
+\mathcal Z_{\rm NB}(t)=\mathcal Z_F(t^3).
+\tag{4.3}\label{eq:gadget}
+\]
+It has the same inherited parity and the same uncanceled cohomological factors after the time change $u=t^3$. The realizing graph is derived from the cell transitions and generally differs from the one-skeleton of $X$. Its edge weights may be negative. This is not a realization by an unweighted undirected graph with reciprocal transports.
+\end{theorem}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Build a directed graph without reverse arrows.
+\begin{steps}
+\item Replace each nonzero arrow $e:\sigma\to\rho$ of weight $w_e$ by a three-arrow path $\sigma\to a_e\to b_e\to\rho$, with weights $1,1,w_e$. All $a_e,b_e$ are new and distinct. They inherit the degree of $\sigma$ and $\rho$.
+\item There are no loops or pairs of opposite arrows in this new graph, even when $\sigma=\rho$. Hence a directed path never immediately reverses an arrow. Every directed cycle consists of concatenated three-arrow paths, and primitive cycles correspond to original primitive cycles with lengths multiplied by three and weights unchanged.
+\end{steps}
+\item Verify the determinant realization as well as the orbit correspondence.
+\begin{steps}
+\item Let $Q_i$ be the weighted adjacency on states $\{\sigma\}\sqcup\{a_e\}\sqcup\{b_e\}$. Eliminating the latter two blocks in $I-tQ_i$ gives $\det(I-tQ_i)=\det(I-t^3F_i)$: each Schur passage contributes one factor $t$, and the auxiliary diagonal blocks are identities.
+\item Alternatively, let $P$ send an arrow basis vector to its target state, and let $(Ly)_e=w_e y_{s(e)}$. The directed arc transition operator is $B_i=LP$ and $Q_i=PL$. With no reverse arrows all directed transitions are non-backtracking. Sylvester's identity gives $\det(I-tB_i)=\det(I-tQ_i)$. Taking the degree-parity quotient proves \eqref{eq:gadget}. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\section{The exact criterion for positive compatibility}
+
+\begin{definition}[Compatible positive polarization]\label{def:polarization}
+Let $(H,\Omega)$ be a real symplectic vector space. A compatible positive polarization is a real endomorphism $J$ such that
+\[
+J^2=-I,\qquad J^T\Omega J=\Omega,\qquad
+g(x,y)=\Omega(x,Jy)\text{ is positive definite}.
+\]
+It is invariant under $A$ if $AJ=JA$. In matrices, the metric is $G_J=\Omega J$. The transpose in these expressions is the ordinary matrix transpose in any basis; the statements are basis independent.
+\end{definition}
+
+\begin{theorem}[Necessary and sufficient compatibility criterion]\label{thm:polarization}
+Suppose $A^T\Omega A=q\Omega$, $q>0$, and $\Omega$ is nondegenerate. Put $U=q^{-1/2}A$. The following conditions are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item There is an $A$-invariant compatible positive polarization $J$.
+\item There is a real symmetric $G>0$ such that $A^TGA=qG$.
+\item The powers $U^n$, $n\in\Z$, are uniformly bounded.
+\item $U$ is diagonalizable over $\C$ and every eigenvalue has modulus $1$.
+\end{enumerate}
+Given a certificate $G$ in (ii), an explicit polarization is
+\[
+L=G^{-1}\Omega,\qquad R=(-L^2)^{1/2},\qquad J=-LR^{-1},
+\qquad \Omega J=GR>0.
+\tag{5.1}\label{eq:J}
+\]
+The square root is the positive one for the $G$-inner product. No spectral assumption on $A$ is used to derive (i) from a supplied certificate (ii).
+\end{theorem}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item An invariant polarization gives an invariant positive metric and bounded powers.
+\begin{steps}
+\item If $J$ satisfies (i), its metric obeys
+$g(Ax,Ay)=\Omega(Ax,JAy)=\Omega(Ax,AJy)=qg(x,y)$.
+Thus (ii) holds with $G=\Omega J$.
+\item Condition (ii) makes $U$ an isometry for $G$. Equivalence of norms in finite dimensions gives one bound for all positive and negative powers, proving (iii).
+\end{steps}
+\item Bounded powers are equivalent to semisimple unit-circle spectrum.
+\begin{steps}
+\item A complex eigenvector with eigenvalue $\lambda$ shows that bounded positive and negative powers force $|\lambda|=1$. A Jordan block of size greater than one at such an eigenvalue has powers with a nonconstant polynomial factor in $n$, contradicting boundedness. Thus (iii) implies (iv).
+\item Under (iv), write $U=S\Lambda S^{-1}$ over $\C$, with diagonal $\Lambda$ and $|\Lambda_{jj}|=1$. Then $\|U^n\|\le\|S\|\|S^{-1}\|$ for every integer $n$, proving (iii).
+\end{steps}
+\item Construct a real invariant positive metric from bounded powers.
+\begin{steps}
+\item Choose $M\ge1$ with $\|U^n\|\le M$ for all integers. Set
+\[
+G_N=\frac1{2N+1}\sum_{k=-N}^{N}(U^k)^TU^k.
+\]
+The inverse-power bound implies $M^{-2}I\le G_N\le M^2I$. Therefore a subsequence converges to a real symmetric $G$ satisfying the same strict lower bound.
+\item The difference $U^TG_NU-G_N$ equals
+\[
+\frac{(U^{N+1})^TU^{N+1}-(U^{-N})^TU^{-N}}{2N+1},
+\]
+which tends to zero. The limit satisfies $U^TGU=G$, yielding (ii).
+\end{steps}
+\item Construct the invariant polarization from (ii).
+\begin{steps}
+\item The operator $L=G^{-1}\Omega$ is $G$-skew-adjoint and invertible. Hence $-L^2$ is $G$-self-adjoint positive definite, since $\langle x,-L^2x\rangle_G=\langle Lx,Lx\rangle_G$. Its positive square root $R$ exists, commutes with $L$, and is invertible.
+\item Formula \eqref{eq:J} gives $J^2=-I$ and $\Omega J=GL(-L)R^{-1}=GR$, a symmetric positive definite matrix. From $J^2=-I$ and the symmetry of $\Omega J$, one obtains $J^T\Omega J=\Omega$.
+\item Both $U^TGU=G$ and $U^T\Omega U=\Omega$ hold. Multiplying these identities gives $UL=LU$. Thus $U$ commutes with $R$ and $J$, and so does $A$. This proves (i).
+\end{steps}
+\item \QED\ by the implication cycle and the explicit construction.
+\end{steps}
+\end{proof}
+
+\begin{proposition}[Finite certificate computed from vertices, edges, and faces]\label{prop:certificate}
+Give cochains their coordinate Euclidean metrics. Choose an orthonormal basis matrix $V$ for
+\[
+\mathcal H^1=\ker d_1\cap\ker d_0^T\subset C^1.
+\]
+Set $\Omega=V^TM_zV$ and $A=V^TF_1V$. These are the actual face pairing and induced dynamics on $H^1$. If $\Omega$ is invertible and $A^T\Omega A=q\Omega$, existence of a positive compatible polarization is exactly feasibility of
+\[
+G=G^T>0,\qquad A^TGA=qG.\tag{5.2}\label{eq:certificate}
+\]
+These are linear equations in the entries of $G$ together with positive definiteness. An exact feasible matrix is a finite certificate; numerical near-feasibility is not a proof.
+\end{proposition}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Identify the harmonic representatives and both matrices.
+\begin{steps}
+\item Since $\im d_0\subset\ker d_1$, orthogonal decomposition within $\ker d_1$ gives
+$\ker d_1=\im d_0\oplus\mathcal H^1$. Thus each cohomology class has a unique representative in $\mathcal H^1$.
+\item For $x\in\mathcal H^1$, $F_1x$ is closed. Its orthogonal projection $VV^TF_1x$ differs from it by an exact cochain, so $V^TF_1V$ is the induced map. Proposition~\ref{prop:descent} gives $V^TM_zV$ for the pairing. No invariance of the chosen harmonic subspace under $F_1$ is assumed.
+\end{steps}
+\item Check exactness of the certificate.
+\begin{steps}
+\item For fixed $A,q$, each entry of $A^TGA-qG$ is linear in $G$. A proposed symmetric certificate can be checked by exact arithmetic; for a real symmetric matrix, Sylvester's positive-leading-minors criterion verifies $G>0$.
+\item Theorem~\ref{thm:polarization} proves necessity and sufficiency and constructs $J$. If rational cohomology coordinates and rational $A,q,\Omega$ are used instead, a feasible real $G$ implies a rational feasible $G$: the rational solution space of the linear equations has a rational basis, and its positive cone is relatively open. Rational approximation within that space preserves positivity. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\begin{remark}[What the certificate does and does not prove]
+The certificate is a precise, finite formulation of the missing compatibility, not a theorem that it is feasible on every graph. Searching for it by a linear matrix problem can be useful. Constructing it from a previously established eigenvalue bound reorganizes that bound. Constructing it directly from geometric energies, as in Section~\ref{sec:torus}, gives an independent verification in that class.
+\end{remark}
+
+\section{The resulting Deninger-type finite package}
+
+\begin{definition}[Two-dimensional Poincare data]
+The face complex has two-dimensional Poincare data if $H^0=\R1$, $H^2=\R\eta$, $\tau(\eta)=1$, and $\Omega_z$ is nondegenerate on $H^1$. Write $\dim H^1=2g$. Require $A_0=1$, $A_2=q$ and cup-compatible $A=A_1$ as above. This definition is a condition on the cohomology ring and trace, not a claim that every complex is a surface.
+\end{definition}
+
+\begin{theorem}[Full finite compatibility]\label{thm:main}
+Assume two-dimensional Poincare data, $q>1$, and any equivalent condition of Theorem~\ref{thm:polarization}. Then
+\[
+\boxed{\mathcal Z_F(u)=\frac{\det(I-uA)}{(1-u)(1-qu)}}.\tag{6.1}\label{eq:main}
+\]
+The parity and pairing both come from the same face complex. The following statements hold.
+\begin{enumerate}[label=(\alph*)]
+\item Every numerator root lies on $|u|=q^{-1/2}$, and none cancels either denominator factor. There are $2g$ roots with multiplicity, and simple poles at $1$ and $q^{-1}$.
+\item The functional equation is
+\[
+\mathcal Z_F\left(\frac1{qu}\right)=q^{1-g}u^{2-2g}\mathcal Z_F(u).
+\tag{6.2}
+\]
+\item If $N_n=\Str(F^n)$, then
+\[
+N_n=1+q^n-\tr A^n,\qquad |N_n-(1+q^n)|\le2gq^{n/2}.
+\tag{6.3}
+\]
+The general $N_n$ are signed weighted orbit sums, not necessarily counts.
+\item With $U=A/\sqrt q$ and $P^\star(z)=\overline{P(1/\bar z)}$,
+\[
+\tr\bigl(P^\star(U)P(U)\bigr)
+=\tr\bigl(P(U)^{\dagger_g}P(U)\bigr)\ge0
+\tag{6.4}\label{eq:weil}
+\]
+for every complex Laurent polynomial $P$. Here the trace is on the complexification of $H^1$, of complex dimension $2g$.
+\item The graph realizations and compressions of Sections 3--4 preserve this graded determinant with their stated hypotheses and time conventions. They introduce no replacement for the native cup pairing on $H^1$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Establish the determinant and the critical circle.
+\begin{steps}
+\item Theorem~\ref{thm:cancellation} and the specified degree-zero and degree-two maps give \eqref{eq:main}. Theorem~\ref{thm:polarization} makes $U$ an isometry for $g$; complex eigenvectors therefore have unit-modulus eigenvalues.
+\item Thus eigenvalues of $A$ have modulus $\sqrt q$ and roots of its determinant have modulus $q^{-1/2}$. Because $q>1$, this radius differs from both $1$ and $q^{-1}$. No denominator cancellation occurs, proving (a).
+\end{steps}
+\item Derive the functional equation from the face pairing.
+\begin{steps}
+\item The relation $A^T\Omega A=q\Omega$ makes $A^T$ similar to $qA^{-1}$, so the spectrum pairs as $\lambda\leftrightarrow q/\lambda$ with algebraic multiplicities. Applying $A$ to the nonzero top exterior power $\Omega^{\wedge g}$ gives $\det A=q^g$. This proof fixes the sign of the determinant.
+\item For $D_A(u)=\det(I-uA)$, factor $I-A/(qu)=-(A/(qu))(I-quA^{-1})$. Dimension $2g$ is even, and similarity to $A^T$ yields
+$D_A(1/(qu))=q^{-g}u^{-2g}D_A(u)$.
+The denominator transforms by
+$(1-1/(qu))(1-1/u)=(1-u)(1-qu)/(qu^2)$.
+Division proves (6.2). If $g=0$, the empty determinant gives the same formula directly.
+\end{steps}
+\item Prove the trace estimate and Weil factorization.
+\begin{steps}
+\item Cochain cancellation also holds for traces, giving the equality in (6.3). The $2g$ unit-modulus eigenvalues of $U$ give $|\tr U^n|\le2g$, which proves the bound.
+\item Since $U^{\dagger_g}=U^{-1}$, Laurent polynomial substitution gives $P^\star(U)=P(U)^{\dagger_g}$. In a $g$-orthonormal basis, the trace of $P(U)^{\dagger_g}P(U)$ is the sum of squared absolute matrix entries. This proves \eqref{eq:weil} without assigning an absolute square to an off-circle eigenvalue.
+\end{steps}
+\item \QED.
+\begin{steps}
+\item The same $A$, $\Omega$, and $J$ occur throughout; no extra copy of $H^1$ was added.
+\item Theorem~\ref{thm:gadget} gives the precise directed non-backtracking realization; Theorem~\ref{thm:schur} gives every specified Bass--Schur factorization, and Theorem~\ref{thm:bass} applies exactly when reciprocal local-system graph data are present. None asserts an unstated identification with the original one-skeleton.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\begin{proposition}[Sharp distinction between Weil positivity and polarization]\label{prop:weil-converse}
+For any real symplectic $U$, with no semisimplicity hypothesis, the form
+$Q(P)=\tr(P^\star(U)P(U))$ is nonnegative for every complex polynomial $P$ if and only if every eigenvalue of $U$ lies on the unit circle. An invariant positive polarization requires, in addition, semisimplicity. Thus positivity of this trace form cannot detect Jordan blocks.
+\end{proposition}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Prove the unit-circle implication without diagonalizability.
+\begin{steps}
+\item The trace of any Laurent polynomial in an invertible matrix is the sum of its values at the eigenvalues, counted algebraically; triangular form proves this even for Jordan blocks.
+\item On the unit circle $1/\bar\lambda=\lambda$. Each summand in $Q(P)$ is therefore $|P(\lambda)|^2$, proving nonnegativity.
+\end{steps}
+\item Detect an off-circle pair.
+\begin{steps}
+\item Reality and symplecticity give invariance of the spectrum, including multiplicities, under $\lambda\mapsto\tau(\lambda)=1/\bar\lambda$. For an off-circle eigenvalue these are two distinct points, with equal multiplicity $m$.
+\item Polynomial interpolation on the finite set of distinct eigenvalues supplies $P$ with values $1$ and $-1$ at this pair, and $0$ at all others. Their contribution is $-2m$, and every other contribution vanishes. Thus $Q(P)<0$.
+\end{steps}
+\item Separate this from positive polarization.
+\begin{steps}
+\item The matrix $U=\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)$ is symplectic in dimension two and has $Q(P)=2|P(1)|^2\ge0$.
+\item Its powers are unbounded, so Theorem~\ref{thm:polarization} rules out an invariant positive polarization. This proves the necessary extra condition and the asserted sharpness. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\section{A complete geometric family with independent positivity}\label{sec:torus}
+
+\begin{theorem}[Conformal integral torus maps]\label{thm:torus}
+Let $a,b\in\Z$ with $q=a^2+b^2>1$, and put
+\[
+A=\begin{pmatrix}a&-b\\b&a\end{pmatrix}.
+\]
+Let $X=\R^2/\Z^2$ with its orientation and flat metric, and let $f$ be the map induced on coordinates by $A^T$. Its action on the basis $dx,dy$ of $H^1(X;\R)$ is $A$. The cup-compatible data of $f$ satisfy Theorem~\ref{thm:main}, with
+\[
+\Omega=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad
+J=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad g=I_2.
+\]
+In particular,
+\[
+\mathcal Z_f(u)=\frac{1-2au+qu^2}{(1-u)(1-qu)}.\tag{7.1}
+\]
+This zeta has \emph{both} the graded cell-transfer realization of Section 3 and the ordinary unsigned Euler product over actual primitive periodic orbits of $f$. Its directed non-backtracking realization is given by Theorem~\ref{thm:gadget}. The positive metric follows directly from the geometry, not from a presumed Ramanujan bound.
+\end{theorem}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Construct the actual face cohomology and its dynamics.
+\begin{steps}
+\item A torus has a cellular model with one vertex, two loop edges, and one oriented face attached along the commutator. Both cellular differentials vanish. Its cohomology is $H^0=\R1$, $H^1=\R x\oplus\R y$, $H^2=\R\eta$, with $x\smile y=\eta$, $y\smile x=-\eta$, and $x^2=y^2=0$. These products can be computed by triangulating the square, or by integrating the representatives $dx,dy$ over the unit square.
+\item Since $A^T$ has integer entries, it descends to the torus. Pullback on $dx,dy$ has matrix $A$, on constants it is $1$, and on oriented area it is $\det A=q$. The explicit ring equations give cup compatibility. This cellular cochain model represents that actual map on cohomology; compatible subdivisions preserve all conclusions by Proposition~\ref{prop:model}.
+\end{steps}
+\item Establish positivity without using the eigenvalues of $A$.
+\begin{steps}
+\item Direct multiplication gives $A^TA=qI_2$, $A^T\Omega A=q\Omega$, $AJ=JA$, and $\Omega J=I_2>0$. The last matrix is the Euclidean energy pairing on the one-forms.
+\item Thus all hypotheses of Theorem~\ref{thm:main} hold with $g=1$. Evaluating the two-by-two determinant gives (7.1). No inequality on the spectrum was an input.
+\end{steps}
+\item Identify the trace coefficients with actual fixed points.
+\begin{steps}
+\item The integer map $f^n-I$ is induced by $(A^T)^n-I$. Its eigenvalues cannot vanish because all eigenvalues of $A$ have modulus $\sqrt q>1$. The number of points in its kernel on $\R^2/\Z^2$ equals $|\det((A^T)^n-I)|$: this follows from the index of the image integer lattice, or its Smith normal form.
+\item For $b\ne0$ the eigenvalues of $A^n$ are conjugate, giving $\det(I-A^n)=|1-(a+ib)^n|^2>0$. If $b=0$ it is $(1-a^n)^2>0$. Therefore
+\[
+\#\operatorname{Fix}(f^n)=\det(I-A^n)=1+q^n-\tr A^n.
+\]
+\end{steps}
+\item Obtain the unsigned orbit product and finish.
+\begin{steps}
+\item Every fixed point of an iterate lies on a finite periodic orbit. If $P_\ell$ denotes the finite number of primitive orbits of length $\ell$, then $\#\operatorname{Fix}(f^n)=\sum_{\ell\mid n}\ell P_\ell$. Expanding logarithms gives
+\[
+\exp\left(\sum_{n\ge1}\frac{u^n}{n}\#\operatorname{Fix}(f^n)\right)
+=\prod_{\ell\ge1}(1-u^\ell)^{-P_\ell}.
+\]
+\item The trace computation and Theorem~\ref{thm:cancellation} identify this with (7.1). Its signed finite cell-transition product is a different orbit presentation of the same rational function; Theorem~\ref{thm:gadget} gives the further derived non-backtracking presentation. These are equal functions, not an assertion that their orbit sets coincide. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\begin{remark}[A fully explicit member]
+For $(a,b)=(2,1)$, $q=5$ and
+\[
+\mathcal Z_f(u)=\frac{1-4u+5u^2}{(1-u)(1-5u)}.
+\]
+The first six fixed-point counts are $2,20,122,640,3202,15860$. The corresponding primitive-orbit counts are $2,9,40,155,640,2620$. The face class, metric, matrix, numerator, and actual orbit counting all belong to the same torus system. Resemblance to a finite-field curve zeta is not an identification with an arithmetic curve.
+\end{remark}
+
+\section{An infinite reciprocal-graph family with an actual face realization}\label{sec:bouquet}
+
+The preceding directed realization works for any finite cochain transfer, but does not by itself answer the stronger reciprocal-graph question. The following family does. It matches the full graded Hashimoto operator to cochain dynamics on a specified complex, and identifies its surviving odd subspace with that complex's actual $H^1$. The extension to contractible modes is not canonical; its existence and choices are explicit. No claim is made that this complex is the original bouquet with some of its own loops filled.
+
+\begin{theorem}[Reciprocal torus-holonomy bouquets]\label{thm:bouquet}
+Choose integers $a,b$ such that $b\ne0$, $q=a^2+b^2>1$ is odd, and set
+\[
+r=\frac{q+1}{2},\quad r_+=\max(a,0),\quad r_-=\max(-a,0),
+\quad r_J=r-|a|.
+\]
+Let $G$ be the bouquet with $r$ geometric loops. Use the coefficient space
+$W=H^*(\mathbb T^2;\R)$ with its geometric parity. The loop transports are induced by torus automorphisms acting on $W_1=H^1$ as $I$ on $r_+$ loops, $-I$ on $r_-$ loops, and
+$J=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$ on $r_J$ loops. On $W_0=H^0\oplus H^2$ all transports are the identity. Reverse arcs have inverse transports. Let $B_0,B_1$ be the resulting even and odd Hashimoto operators.
+
+Then the following assertions hold.
+\begin{enumerate}[label=(\alph*)]
+\item The system is well defined, $r_J\ge1$, and its exact graded Ihara zeta is
+\[
+\boxed{\frac{\det(I-uB_1)}{\det(I-uB_0)}
+=\left(\frac{1-2au+qu^2}{(1-u)(1-qu)}\right)^2.}\tag{8.1}\label{eq:bouquet-zeta}
+\]
+\item There is a specified complex $Y$: two disjoint tori, with $2(r-1)$ pendant edges attached to the root vertex of each torus. Each torus uses its one-vertex, two-edge, one-face cellular model. The cell counts of $Y$ are
+\[
+(\dim C^0,\dim C^1,\dim C^2)=(4r-2,4r,2),
+\quad (b_0,b_1,b_2)=(2,4,2).
+\]
+There is a cellular self-map $f_Y$ and parity-preserving isomorphisms
+\[
+T_0:C^0(Y)\oplus C^2(Y)\longrightarrow W_0^{\vec E(G)},
+\qquad T_1:C^1(Y)\longrightarrow W_1^{\vec E(G)}
+\]
+intertwining $f_Y^*$ and $B$. Thus the transferred cellular differential makes the actual graph operator a cochain map. The graph's parity agrees with cell parity, though its original coefficient degrees $0$ and $2$ need to be mixed to obtain this integer-degree lift.
+\item The induced maps on $H^0(Y)$ and $H^2(Y)$ are $I_2$ and $qI_2$. The surviving odd graph subspace is explicitly isomorphic to
+\[
+H^1(Y)=H^1(\mathbb T^2)\oplus H^1(\mathbb T^2),\qquad
+A_+\oplus A_-,\quad A_\pm=aI\pm bJ.
+\]
+It has the cup pairing obtained by summing the two oriented face traces. The corresponding positive metric is the sum of the two flat metrics, and the normalized dynamics is unitary. This is a face realization on the same surviving odd transfer space, not merely equality of characteristic polynomials.
+\end{enumerate}
+\end{theorem}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Compute the degreewise adjacency and Bass determinants.
+\begin{steps}
+\item The integer $r_J=((|a|-1)^2+b^2)/2$ is positive: it is an integer because $q$ is odd, and its numerator is positive since $b\ne0$. All transports are induced by orientation-preserving torus automorphisms, so their actions on $H^0,H^2$ are $1$ and they preserve the cup product.
+\item Each pair of inverse $J$-transports sums to zero on $H^1$. The inverse pairs $\pm I$ contribute $\pm2I$. Therefore $A_{\rho,1}=2aI_2$ and $A_{\rho,0}=2rI_2=(q+1)I_2$. Since both parity dimensions are two, the reversal factors cancel in Theorem~\ref{thm:bass}. Its vertex factors give \eqref{eq:bouquet-zeta} directly.
+\end{steps}
+\item Identify the odd core by an explicit intertwiner.
+\begin{steps}
+\item For $x,y\in\R^2$, define
+\[
+(\Psi(x,y))_c=\rho_cx-y\qquad(c\in\vec E(G)).
+\]
+If $\Psi(x,y)=0$, the two arcs of a $J$-loop give $Jx=y=-Jx$, so $x=y=0$. Hence $E=\im\Psi$ has dimension four. Direct substitution in the Hashimoto rule gives
+\[
+B_1\Psi(x,y)=\Psi(2ax-qy,x).
+\]
+Thus its core operator is the companion $F_B=\left(\begin{smallmatrix}2aI&-qI\\I&0\end{smallmatrix}\right)$.
+\item Define
+\[
+\Phi(v,w)=(A_+v+A_-w,v+w),\qquad \mathcal I=\Psi\Phi.
+\tag{8.2}\label{eq:core-intertwiner}
+\]
+Since $A_+-A_-=2bJ$ is invertible, $\Phi$ is invertible. The relations $A_++A_-=2aI$ and $A_+A_-=qI$ give
+$F_B\Phi=\Phi(A_+\oplus A_-)$.
+Consequently $\mathcal I$ is an explicit isomorphism of $H^1$-sized spaces intertwining $A_+\oplus A_-$ with $B_1|_E$.
+\end{steps}
+\item Determine the residual graph modes without assuming a spectral bound.
+\begin{steps}
+\item In the notation $B_1=ST-R$, the constant-arc map $H:x\mapsto(x)_c$ equals $RS$, and $E=\im S+\im H$. Expansion gives
+\[
+B_1^2-I=STST-STR-RST,
+\]
+whose image lies in $E$. Thus $(B_1^2-I)$ vanishes on the quotient by $E$. On $E$, the polynomial $p(z)=z^2-2az+q$ annihilates the operator by step $\langle1\rangle2$.
+\item The polynomial $(z^2-1)p(z)$ has no repeated roots: $p$ has roots $a\pm ib$, which are distinct and nonreal. It annihilates $B_1$, so $B_1$ is semisimple. Bass's determinant gives multiplicity $2(r-1)$ for each of $+1,-1$, and the remaining space is exactly $E$. On the even side each scalar copy of $B_0$ has eigenvalue $q$ on constant arc functions, eigenvalue $1$ on reversal-antisymmetric functions (dimension $r$), and eigenvalue $-1$ on reversal-symmetric functions with total sum zero (dimension $r-1$). There are two such copies.
+\end{steps}
+\item Construct the face complex and its cellular dynamics.
+\begin{steps}
+\item Take the two tori with cohomological actions $A_+$ and $A_-$. Their coordinate maps are $A_+^T,A_-^T$ modulo $\Z^2$. Attach $2(r-1)$ interval arms at the root of each torus, and partition them into $r-1$ pairs. Extend each map by swapping the arms within each pair and sending their interval coordinate $t$ to $t^2$. The root is fixed. A cellular approximation on the tori fixing the root gives a cellular self-map with the same stated actions on cells; the arms already map cellularly. Explicitly, each torus cellular differential is zero, the arm differential sends a vertex function to leaf value minus root value, and the arm permutation commutes with it.
+\item The map $F_Y=f_Y^*$ is $A_+\oplus A_-$ on the four torus one-cochains; it swaps each arm pair on the other one-cochains; it swaps paired leaf vertices and fixes the two roots on $C^0$; and it is $qI_2$ on the faces. The arms are contractible. Hence the cohomology is $(\R^2,\R^4,\R^2)$ with induced maps $(I_2,A_+\oplus A_-,qI_2)$ and the native direct-sum torus cup pairing.
+\end{steps}
+\item Match all graph modes to cochains, including the differential.
+\begin{steps}
+\item On $C^0(Y)$, each component's constant function is a fixed vector. Each leaf-pair sum is another $+1$ vector, and each leaf-pair difference is a $-1$ vector. These form a basis. Together with the faces, the even multiplicities are $1$ with multiplicity $2r$, $-1$ with multiplicity $2(r-1)$, and $q$ with multiplicity two, exactly as for $B_0$. Choose any isomorphism of corresponding real eigenspaces to define $T_0$. These eigenspaces and choices have rational bases, obtainable by exact kernel computation.
+\item Set $T_1=\mathcal I$ on the four torus one-cochains. Their complement consists of arm-pair sums and differences, of multiplicities $2(r-1)$ each at $+1,-1$. Choose isomorphisms to the graph's corresponding odd eigenspaces. This gives an invertible real (indeed rational) $T_1$ intertwining the whole odd operators. Define the graph complex by transporting $C^0,C^2$ through $T_0$ and the cellular differential through $(T_0,T_1)$. Then $d^2=0$ and $dB=Bd$ follow from the corresponding cellular identities, and its parity is precisely the graph's given parity. No spectral modes have been dropped without an exact cochain cancellation.
+\end{steps}
+\item Transport the actual face pairing and prove positive compatibility.
+\begin{steps}
+\item The native form on $H^1(Y)$ is $\Omega\oplus\Omega$, where $\Omega=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$. On $E$, define
+\[
+\Omega_E(\mathcal I(v,w),\mathcal I(v',w'))
+=v^T\Omega v'+w^T\Omega w'.
+\]
+This is explicitly the cup pairing transported from the two faces. Its Hodge operator is $J_E=\mathcal I(J\oplus J)\mathcal I^{-1}$ and its positive metric is the transport of $I_2\oplus I_2$. In companion coordinates $(x,y)=\Phi(v,w)$ these have the concrete matrices
+\begin{align*}
+\Omega_{\rm face}&=\frac1{2b^2}\begin{pmatrix}\Omega&-a\Omega\\-a\Omega&q\Omega\end{pmatrix},
+&J_{\rm face}&=\diag(J,J),\\
+G_{\rm face}&=\Omega_{\rm face}J_{\rm face}
+=\frac1{2b^2}\begin{pmatrix}I&-aI\\-aI&qI\end{pmatrix}.
+\end{align*}
+Indeed, $v+w=y$ and $v-w=-J(x-ay)/b$ give these formulas by substitution. Positivity is also immediate from
+$g_{\rm face}((x,y),(x,y))=\tfrac12\|y\|^2+\tfrac1{2b^2}\|x-ay\|^2$.
+\item Direct identities $A_\pm^TA_\pm=qI$, $A_\pm^T\Omega A_\pm=q\Omega$, and $A_\pm J=JA_\pm$ prove all required compatibilities, independently of a graph spectral bound. Theorem~\ref{thm:cancellation} identifies the original graph superdeterminant with this native cohomological determinant. Contractible arm modes cancel; the surviving even modes are exactly $H^0,H^2$. This proves (a)--(c). \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\begin{remark}[The smallest displayed example and the precise generality]
+For $(a,b)=(2,1)$, the bouquet has three loops with transports $I,I,J$. Its face realization has cell counts $(10,12,2)$ and Betti numbers $(2,4,2)$. The odd graph core is identified with the two tori by \eqref{eq:core-intertwiner}; the two face maps have matrices $2I+J$ and $2I-J$. This is an exact reciprocal non-backtracking example with native geometric parity and an independently positive face pairing.
+
+The theorem holds for the entire parameter family, but is not a functorial assignment to arbitrary bare graphs. Its coefficient torus, complex structure, integer-degree lift, and face realization are specified data. The graph Euler product is the specified graded holonomy product; it is not claimed to count the periodic points of the arm-extended map $f_Y$. The identification of contractible modes is noncanonical, although their cancellation and the explicit odd-core pairing are fixed once the stated choices are made. For the original LPS square complex, these data still have to be constructed rather than inferred from this example.
+\end{remark}
+
+\begin{corollary}[All elliptic $\mathrm{SL}_2(\Z)$-holonomy bouquets]\label{cor:sl2}
+Let a bouquet have $r\ge2$ loops with arbitrary torus holonomies
+$M_1,\ldots,M_r\in\mathrm{SL}_2(\Z)$ on $H^1$, inverse holonomies on reverse arcs, and identity on $H^0,H^2$. Put
+\[
+q=2r-1,\qquad t=\sum_{j=1}^r\tr M_j.
+\]
+If $t^2<4q$, the same torus-and-tree cochain realization exists, with surviving odd action
+\[
+A_+\oplus A_-,\qquad A_+=\begin{pmatrix}0&-q\\1&t\end{pmatrix},
+\qquad A_-=tI-A_+,
+\]
+and graded zeta
+\[
+\mathcal Z(u)=\left(\frac{1-tu+qu^2}{(1-u)(1-qu)}\right)^2.
+\]
+Here the positive geometry can be specified exactly by
+\[
+\kappa=\sqrt{q-t^2/4},\qquad J_*=(A_+-tI/2)/\kappa,
+\qquad \Omega J_*=\frac1\kappa\begin{pmatrix}1&t/2\\t/2&q\end{pmatrix}>0.
+\]
+Every odd integer $q\ge3$ and integer $t$ satisfying $t^2<4q$ occurs: take $r-1$ loop holonomies equal to $J$, and the last equal to
+$\left(\begin{smallmatrix}0&-1\\1&t\end{smallmatrix}\right)$.
+This extension makes its strict scalar bound explicit as a hypothesis; it does not prove a new Ramanujan bound for arbitrary holonomies. The parameter family in Theorem~\ref{thm:bouquet} supplies a geometric construction in which that bound follows from $b\ne0$.
+\end{corollary}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Recover the scalar adjacency and injective core for general holonomies.
+\begin{steps}
+\item Cayley--Hamilton for a determinant-one two-by-two matrix gives $M+M^{-1}=(\tr M)I$. Hence the odd adjacency is $tI$, and the even adjacency remains $(q+1)I$. The graded Bass computation yields the stated zeta.
+\item If $\Psi(x,y)_c=M_cx-y=0$ for every arc, inverse pairs also give $M_cy=x$. Summing over all $d=2r$ arcs gives $tx=dy$ and $ty=dx$. Thus $(t^2-d^2)x=0$. Since $|t|<2\sqrt{d-1}<d$, $x=y=0$. The odd core therefore has dimension four and companion action $\left(\begin{smallmatrix}tI&-qI\\I&0\end{smallmatrix}\right)$.
+\end{steps}
+\item Construct the two native polarized torus actions.
+\begin{steps}
+\item The integer matrices $A_\pm$ have trace $t$, determinant $q$, satisfy $A_++A_-=tI$, $A_+A_-=qI$, and have invertible difference since $t^2-4q<0$. Thus $\Phi(v,w)=(A_+v+A_-w,v+w)$ is an invertible intertwiner, exactly as in (8.2).
+\item Cayley--Hamilton gives $J_*^2=-I$. Direct multiplication gives the displayed symmetric form $\Omega J_*$, whose leading principal minors are $1/\kappa$ and $1$. It is positive definite, $J_*$ commutes with $A_\pm$, and $A_\pm^T\Omega A_\pm=q\Omega$. This constant positive complex structure defines flat geometry on the torus. Equivalently the covector energy matrix is the displayed determinant-one form; its inverse is a constant tangent metric. Both integer maps are conformal for this metric.
+\end{steps}
+\item Extend from the core to the full graph complex.
+\begin{steps}
+\item The algebraic proof that $(B_1^2-I)$ has image in $\im S+\im RS$ is unchanged. The annihilating polynomial is now $(z^2-1)(z^2-tz+q)$, again squarefree. The residual $+1,-1$ multiplicities and all even multiplicities are therefore the same as in Theorem~\ref{thm:bouquet}.
+\item Attach the same paired arms to the two new polarized tori and choose isomorphisms of the matching residual eigenspaces. The proof of that theorem then gives the full intertwining cochain isomorphism, differential, and native face pairing. The proposed loop list has determinant-one entries and trace sum $t$, proving the final existence assertion. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\section{Why the hypotheses cannot be removed}
+
+\begin{theorem}[A face-compatible expanding counterexample]\label{thm:anisotropic}
+On the oriented torus, take $f(x,y)=(2x,3y)$ modulo $\Z^2$. Then the grading, native nondegenerate cup pairing, cup-compatible dynamics with $q=6$, and unsigned periodic-orbit formula all exist. Nevertheless,
+\[
+\mathcal Z_f(u)=\frac{(1-2u)(1-3u)}{(1-u)(1-6u)}
+\]
+has zeros off $|u|=6^{-1/2}$. No invariant positive polarization exists. Thus faces, graded orbit determinants, and symplectic similitude together do not imply the desired positivity, even for an expanding covering of a smooth torus.
+\end{theorem}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Check every geometric and orbit hypothesis.
+\begin{steps}
+\item The same torus face complex has $A=\diag(2,3)$ and $A_2=\det A=6$. Thus $A^T\Omega A=6\Omega$ and the cohomology ring identities hold.
+\item The fixed-point lattice calculation gives $\#\operatorname{Fix}(f^n)=(2^n-1)(3^n-1)>0$. The logarithmic orbit argument in Theorem~\ref{thm:torus} gives the displayed zeta.
+\end{steps}
+\item Disprove the missing positive compatibility.
+\begin{steps}
+\item Its two numerator roots are $1/2$ and $1/3$, neither equal in modulus to $1/\sqrt6$.
+\item More directly, if $G>0$ and $A^TGA=6G$, apply the identity to the first coordinate eigenvector: $4G_{11}=6G_{11}$. It forces $G_{11}=0$, contradicting positive definiteness. Theorem~\ref{thm:polarization} then excludes a polarization. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\begin{theorem}[A concrete obstruction for ordinary regular graphs]\label{thm:prism}
+The connected cubic graph $G=C_{16}\mathbin\square K_2$ has a nontrivial adjacency eigenvalue
+\[
+\lambda=1+2\cos(\pi/8)=1+\sqrt{2+\sqrt2}>2\sqrt2.
+\]
+Its nontrivial Bass quadratic $1-\lambda u+2u^2$ has roots off the critical circle $|u|=2^{-1/2}$. Consequently no theorem can retain all nontrivial ordinary Bass factors of every regular graph while supplying a positive $q$-similitude realization of them. Adding faces can avoid the obstruction only by changing, removing, or canceling the offending spectral factor.
+\end{theorem}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Produce and locate the eigenvalue.
+\begin{steps}
+\item The cycle Fourier mode $j\mapsto\exp(2\pi i j/16)$ has adjacency eigenvalue $2\cos(\pi/8)$. Tensor it with the constant eigenvector of $K_2$, of eigenvalue $1$. Adjacency on the Cartesian product is the sum of the two factor adjacencies, giving the displayed $\lambda$. It is nonconstant and is not either trivial cubic eigenvalue $\pm3$.
+\item Both sides of $\sqrt{2+\sqrt2}>2\sqrt2-1$ are positive. Squaring reduces it to $5\sqrt2>7$, whose square is $50>49$. Hence $\lambda>2\sqrt2$ exactly.
+\end{steps}
+\item Convert the violation to the claimed obstruction.
+\begin{steps}
+\item The roots of $z^2-\lambda z+2$ are real, positive, distinct, and have product $2$. Since their sum exceeds $2\sqrt2$, they cannot both have modulus $\sqrt2$. Their reciprocals are the roots of the Bass quadratic.
+\item Any positive $2$-similitude has every eigenvalue of modulus $\sqrt2$ by Theorem~\ref{thm:polarization}. It cannot retain this pair. Changing its presentation by cochain cancellations does not change a surviving determinant factor. This proves the assertion and its stated alternatives. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\begin{proposition}[The exact boundary of Bass doubling]\label{prop:bass-double}
+For a real symmetric operator $T$ on $K$ and $q>0$, define
+\[
+F_B=\begin{pmatrix}T&-qI\\I&0\end{pmatrix},\qquad
+\Omega_B=\begin{pmatrix}0&I\\-I&0\end{pmatrix},\qquad
+G_B=\begin{pmatrix}I&-T/2\\-T/2&qI\end{pmatrix}.
+\]
+Then $F_B^T\Omega_BF_B=q\Omega_B$ and $F_B^TG_BF_B=qG_B$. A positive invariant polarization exists for this \emph{particular companion operator} if and only if $\|T\|<2\sqrt q$. Its determinant roots lie on the critical circle if and only if $\|T\|\le2\sqrt q$. The difference at equality is a genuine Jordan obstruction. The form $\Omega_B$ is the canonical pairing of a doubled space; it is not, without an additional construction, the cup pairing of the original faces.
+\end{proposition}
+\begin{proof}[Hierarchical proof]
+\begin{steps}
+\item Verify the identities and the strict sufficient condition.
+\begin{steps}
+\item Block multiplication using $T^T=T$ gives both displayed similitude identities. The Schur complement of the top-left identity block in $G_B$ is $qI-T^2/4$.
+\item Therefore $G_B>0$ exactly when $\|T\|<2\sqrt q$. Under that condition Theorem~\ref{thm:polarization} constructs the invariant polarization.
+\end{steps}
+\item Prove necessity and the endpoint distinction.
+\begin{steps}
+\item An orthogonal eigenbasis of $T$ decomposes $F_B$ into blocks $\left(\begin{smallmatrix}\lambda&-q\\1&0\end{smallmatrix}\right)$, with characteristic polynomial $z^2-\lambda z+q$. For $|\lambda|>2\sqrt q$, the two real roots have unequal moduli and violate positive similitude. For $|\lambda|<2\sqrt q$, they are distinct conjugates of modulus $\sqrt q$.
+\item At $\lambda=\pm2\sqrt q$, the two roots coincide at $\pm\sqrt q$, but the block is not a scalar matrix because its lower-left entry is $1$. It is a nontrivial Jordan block. The critical-circle divisor remains true, while Theorem~\ref{thm:polarization} excludes every positive invariant metric, not merely $G_B$.
+\end{steps}
+\item Identify the geometric limitation.
+\begin{steps}
+\item The formula for $\Omega_B$ uses the pairing between the two copies of $K$, identifying the second with $K^*$ through the original inner product. No face cycle or cup product enters its construction.
+\item In particular, an odd-dimensional $K$ cannot itself have a nondegenerate alternating form. Doubling repairs that dimension obstruction but does not prove a geometric cup-product identification. \QED.
+\end{steps}
+\end{steps}
+\end{proof}
+
+\section{Application protocol and the earlier LPS model}
+
+For a proposed graph-and-face system, the following is a finite, falsifiable protocol. Its order prevents a determinant presentation from being mistaken for a cohomological realization.
+\begin{enumerate}
+\item Specify the actual complex $C^0\to C^1\to C^2$, the intended face two-cycle or trace, and the cup product. If horizontal, relative, twisted, or reduced cohomology is intended, define that complex and its product explicitly. Ordinary total cohomology cannot be silently replaced by horizontal cohomology.
+\item Specify the successor states, reversals, weights, lengths, and parity. Check the exact transfer matrix. Apply the appropriate Bass identity with its actual auxiliary factors.
+\item Prove that the relevant degreewise transfers commute with the differential. If only a different auxiliary endomorphism commutes, compute its cohomological action: a torsion identity for that endomorphism does not identify the flow itself on $H^1$.
+\item Calculate the induced $A_i$, the face pairing $\Omega_z$, and the radical. Keep all determinant factors removed in any quotient. Verify cup compatibility and the trace multiplier.
+\item Supply an exact positive metric certificate (5.2), preferably from the geometry, and use (5.1) to construct $J$. Theorem~\ref{thm:main} then supplies the critical circle, functional equation, and Weil positivity on the same space.
+\end{enumerate}
+
+The previous conversation reported for its $(13,17)$, level-$5$ square complex that ordinary $H^1(X;\R)=0$, while horizontal cohomology $K$ has dimension $721$, and its odd Bass space is $K\oplus K$. Those numerical dimensions are inputs from that conversation, not recomputed assertions of this note. If they are correct, two conclusions follow immediately. The full ordinary cup pairing on $H^1$ cannot provide its nontrivial odd determinant. A native nondegenerate alternating pairing on the $721$-dimensional horizontal space is impossible. Proposition~\ref{prop:bass-double} explains why the displayed doubled positive model can nevertheless work and why it does not settle the requested face-derived identification.
+
+The strongest general result established here is therefore exact and limited: arbitrary finite cochain-compatible graded transitions have the orbit/cancellation/derived-graph package; a face-induced symplectic cohomology has a positive compatible Hodge structure exactly under Theorem~\ref{thm:polarization}; and explicit conformal torus systems realize all of it without a spectral assumption. Theorem~\ref{thm:bouquet} additionally realizes an infinite family of ordinary reciprocal graded graph operators on actual torus-and-tree cochain complexes, with an explicit native odd pairing. For ordinary reciprocal non-backtracking operators on arbitrary graphs, Theorem~\ref{thm:bass} is unconditional, while the further face/Hodge compatibility is a separate condition and fails in general. The specific LPS face-to-pairing construction remains open in this work.
+
+\section{Provenance and relation to existing work}
+
+The elementary proofs above are included in full and do not assume a general theorem from the higher-rank literature. Their ingredients are standard cohomological cancellation, the cup product, Bass--Schur reduction, and finite symplectic linear algebra. The directed three-step realization is an explicit construction used here to state exactly what can always be realized; it is not evidence of arithmetic content or a novelty claim.
+
+Hoffman's paper \cite{hoffman} interprets Bass's determinant proof through complexes and torsion. Kang--Yu \cite{kangyu} develops a higher-dimensional pointed-facet complex and an alternating geodesic zeta identity. These auxiliary complexes should not be identified with a surface's ordinary cup-product cohomology merely because the parity pattern agrees. Matsuura--Ohta \cite{matsuura} realizes inverse graph zeta as a fermionic determinant; fermionic statistics and cell-degree parity must likewise be distinguished. Deninger's conjectural formalism \cite{deninger} is the motivating model for the compatibility of cup product, trace, and a positive Hodge operator. Its arithmetic realization is not supplied by the finite constructions here.
+
+\section{Supplementary exact verification}
+
+The accompanying \texttt{verify\_compatibility.py} runs 121 exact symbolic assertions, using SymPy. They check five members of the reciprocal bouquet family, including both full graph-to-cellular intertwiners for $(a,b)=(2,1)$ and $(1,2)$; the explicit face and metric matrices; the cellular and transferred graph differentials; both characteristic polynomials; four members of the general $\mathrm{SL}_2(\Z)$-holonomy extension, including a hyperbolic individual holonomy; an irregular reciprocal graph with a loop, parallel edges, and a pendant edge; the directed three-step realization; and the displayed periodic-orbit counts. All assertions passed. The script writes \texttt{compatibility-verification.json} alongside itself. The manuscript's proofs establish the parameter-general statements; these finite computations are supplementary checks, not formal verification of those proofs.
+
+\begin{thebibliography}{9}
+\bibitem{hoffman} J. W. Hoffman, \emph{Remarks on the Zeta Function of a Graph}, Discrete and Continuous Dynamical Systems, Supplement (2003), 413--422. \url{https://www.math.lsu.edu/system/files/jwh2002b.pdf}.
+\bibitem{kangyu} M.-H. Kang and J.-K. Yu, \emph{Zeta functions of $\mathrm{PGL}_n$ over non-Archimedean local fields}, preprint, 23 July 2026. \url{https://arxiv.org/abs/2607.21262}.
+\bibitem{matsuura} S. Matsuura and K. Ohta, \emph{Fermions and Zeta Function on the Graph}, PTEP 2025, 063B01. \url{https://arxiv.org/abs/2501.08803}.
+\bibitem{deninger} C. Deninger, \emph{The Hilbert--Polya strategy and height pairings}, 2010. \url{https://arxiv.org/abs/1001.1621}.
+\bibitem{hatcher} A. Hatcher, \emph{Algebraic Topology}, Chapter 3. \url{https://pi.math.cornell.edu/~hatcher/AT/ATch3.pdf}.
+\end{thebibliography}
+\end{document}
