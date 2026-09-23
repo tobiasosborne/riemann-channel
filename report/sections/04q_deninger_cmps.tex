@@ -1,0 +1,257 @@
+% SHARD-ID: RC-04Q-DENINGER-CMPS
+% SHARD-TITLE: The Phantasm IX: Deninger's Programme in the Supertrace-cMPS Language. The Tate-Twist Identity, the Metric as an Invariant Polarisation, the Model Space against Deninger's H^1, and the Same Gap
+% SHARD-SUMMARY: Deninger's dynamical cohomology, translated term by term into the notebook's graded spectral data, is the forced picture of shard 04b: his Lefschetz formula for Q is prop:ringnorm-trace under the twist lambda -> (lambda-1)/2 with the archimedean term moved to the operator side, the ladder is his R_infty = R[exp(-2y)], and a single-prime suspension is the periodic MPS ring of length log p with the zeros as joint eigenvalues of the commuting Frobenii, the towers collapsing only for a non-product leaf space.
+% SHARD-SUMMARY: His RH mechanism is the manifest form (HP): the cup product gives the transpose Theta^# = 1 - Theta (the functional equation), and a leafwise Hodge star commuting with the flow gives a positive form in which Theta - 1/2 is skew; so the metric is a flow-invariant polarisation of the symplectic odd bond, a point when the spectrum is simple or Krein-definite and the symplectic form is canonical, and the only notebook bond with such a product is the genus-one Hodge ket, where the doubled transfer is a ring automorphism of the exterior algebra.
+% SHARD-SUMMARY: The zero-mode kernels of the model space K_S are not a Riesz basis (the zeros are not hyperbolically separated), so no inner product equivalent to the Hardy one makes the compressed dilation normal: K_S is not Deninger's H^1 with another norm on the same space. Deninger's own words place the gap where the notebook's is (a conformal metric will not exist for number fields; the lifted elliptic curve is misleading; the 2018 spaces have no analytic structure and sit over Connes's adele space): a reformulation with the same missing datum.
+% SHARD-KEYWORDS: Deninger, foliated space, leafwise cohomology, Lefschetz trace formula, Tate twist, archimedean ladder, suspension, solenoid, Poincaré return map, cup product, Hodge star, polarisation, Siegel space, Krein signature, Riesz basis, Carleson condition, model space, exterior algebra, Bost--Connes, adele class space
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: none
+
+\section{The Phantasm IX: Deninger's Programme in the Supertrace-cMPS Language}
+\label{sec:deninger-cmps}
+
+\emph{Question (TJO, 2026-09-23).} The metric is the missing datum of the current strategy; cast Deninger's
+programme as precisely as possible in the notebook's supertrace-cMPS language and see whether a candidate metric
+emerges or the same shortcoming. The reformulation is \texttt{notes/deninger-cmps/reformulation.md} (author
+\texttt{claude:fable-5.1}, alone, propositions R1--R8, suggestions S1--S6, a comparative table over nine
+attacks), reviewed in \texttt{notes/reviews/deninger-cmps-2026-09-23.md} (Opus REFUTE, 278 independent checks,
+30 corrections applied; re-verdicts in the same file). Sources: Deninger 2005 \cite{deninger2005foliated}
+(\texttt{math/0505354:main.tex}), 2007 \cite{deninger2007analogies} (\texttt{0709.2801}), 2018
+\cite{deninger2018dynamical} (\texttt{1807.06400}), Leichtnam \cite{leichtnam2013analogy}
+(\texttt{1307.3851}); the graded picture itself is \cref{cit:deninger-graded-lefschetz}. Deninger's time is
+$t_D$ and the notebook's $\tsg = 2t_D$; $\Theta$ is the generator of the flow $\phi^{t*}$ on reduced leafwise
+cohomology, $c$ the conformal exponent (his $\alpha$), and $H(1)$ the twist $\Theta\mapsto\Theta-1$. The answer: % bare-ok
+a reformulation with the same gap, stated more sharply. Worklog 2026-09-23.
+
+\subsection{Deninger's package, cited}
+
+\begin{citedfact}[The conformal metric will not exist for number fields]
+\label{cit:deninger-conformal-metric}
+\claimstatus{cit:deninger-conformal-metric}{cited}
+\cite{deninger2005foliated}: \texttt{\detokenize{However, I do not think that such a metric will exist for dynamical systems relevant to number fields. In order to verify equation (\ref{eq:11n}) for them one will need the K\"ahler identities on cohomology.}}
+(\texttt{math/0505354:main.tex:674}). Equation (11n) is the conformal covariance $\Theta\circ* = *\circ(d-i+\Theta)$
+of the Hodge star (\texttt{:474-479}); Leichtnam attributes the star argument to Serre's K\"ahler analogue
+(\texttt{1307.3851:main.tex:423}).
+\end{citedfact}
+
+\begin{citedfact}[Compact manifolds force an isometric flow]
+\label{cit:deninger-alpha-zero}
+\claimstatus{cit:deninger-alpha-zero}{cited}
+\cite{deninger2005foliated}: \texttt{\detokenize{the conditions of the corollary force $\alpha = 0$ i.e. the flow must be isometric with respect to $g$.}}
+(\texttt{math/0505354:main.tex:825}); number theory needs $\alpha = 1$ (\texttt{:935}), hence solenoids (\texttt{:940-945}). % bare-ok
+\end{citedfact}
+
+\begin{citedfact}[The lifted elliptic curve is misleading]
+\label{cit:deninger-lift-misleading}
+\claimstatus{cit:deninger-lift-misleading}{cited}
+\cite{deninger2005foliated}: \texttt{\detokenize{The construction of $(X , \phi^t)$ that we made for ordinary elliptic curves is misleading however, since it almost never happens that a variety in characteristic $p$ can be lifted to characteristic zero {\it together with its Frobenius endomorphism}.}}
+(\texttt{math/0505354:main.tex:1230}); the construction is the solenoid $(\mathbb C\times_\Gamma T_\pi\Gamma)\times_{\pp^{\mathbb Z}}\mathbb R^*_+$
+with leaf metric $e^t\re(\xi\bar\eta)$ (\texttt{:1205-1229}). % bare-ok
+\end{citedfact}
+
+\begin{citedfact}[The 2018 system: connected, $H^0$ one-dimensional]
+\label{cit:deninger-2018-connected-h0}
+\claimstatus{cit:deninger-2018-connected-h0}{cited}
+\cite{deninger2018dynamical}: \texttt{\detokenize{We also show the somewhat stronger statement that the zeroth ``foliation cohomology'' of $(X_0 , \Fh)$ is one dimensional.}}
+(\texttt{1807.06400:main.tex:512}), proved through the irreducibility of $\mathbb Q^{>0}\hat{\mathbb Z}^\times\times_{\mathbb Q^{>0}}\mathbb R^{>0}$
+in the adele topology, on which every continuous function is constant (\texttt{:3021-3023, 3068}).
+\end{citedfact}
+
+\begin{citedfact}[The 2018 system has no analytic structure]
+\label{cit:deninger-2018-no-analytic}
+\claimstatus{cit:deninger-2018-no-analytic}{cited}
+\cite{deninger2018dynamical}: \texttt{\detokenize{we have yet to define analytical structures on our spaces and in the $p$-adic case even a topology.}}
+(\texttt{1807.06400:main.tex:559}); the system is infinite-dimensional where $3$ is wanted (\texttt{:2416}).
+\end{citedfact}
+
+\begin{citedfact}[The 2018 system maps to Connes's adele space]
+\label{cit:deninger-2018-adeles}
+\claimstatus{cit:deninger-2018-adeles}{cited}
+\cite{deninger2018dynamical}: \texttt{\detokenize{Thus $\tX = \ceX (\C) \times \R^{> 0}$ maps naturally and $\Q^{> 0}$-equivariantly to $\A^{> 0} = \A_f \times \R^{> 0} \subset \A$ with its $\Q^{> 0}$-action.}}
+(\texttt{1807.06400:main.tex:2363}), followed by the question whether the action can be studied from the
+Bost--Connes point of view.
+\end{citedfact}
+
+\subsection{The dictionary}
+
+\begin{proposition}[The Tate-twist identity of graded spectral data]
+\label{prop:deninger-twist-identity}
+\claimstatus{prop:deninger-twist-identity}{proved}
+Let $D = \{(0,+),(1,+)\}\cup\{(\zero,-m_\zero)\}$ be Deninger's graded spectral datum for $\mathbb Q$ in his time,
+with archimedean term $W_\infty(t_D) = (1-e^{-2t_D})^{-1}$, and $N = \{(0,+)\}\cup\{(-\bar\zero/2,-m_\zero)\}\cup
+\{(-(k+\tfrac12),-)\}_{k\ge1}$ the notebook's datum (\cref{def:riemann-graded-bond}). (a) The twist $H(1)$ followed
+by $\tsg = 2t_D$, $\lambda\mapsto(\lambda-1)/2$, sends $D$ to $\{(-\tfrac12,+),(0,+)\}\cup\{(-\bar\zero/2,-m_\zero)\}$;
+this is the transport printed under \cref{cor:forced-net-spectrum}. (b) $e^{-t_D}$ times Deninger's Lefschetz
+formula $1-\sum_\zero e^{t_D\zero}+e^{t_D} = \sum_\pp\log\pp\sum_{k\ge1}\delta_{k\log\pp}+W_\infty$ is
+$1+e^{-\tsg/2}-\Trd\Zt = 2\primeP(\tsg)+\sum_{k\ge0}e^{-(k+1/2)\tsg}$, which is \cref{prop:ringnorm-trace}
+rearranged: the two identities are the same statement. (c) As net multiplicities
+(\cref{thm:supertrace-rigidity}) the twisted $D$ plus the archimedean term counted odd equals $N$; the
+cancellation at $-\tfrac12$ is what Deninger's distinct-eigenvalue hypothesis excludes, so $N$ is a net datum,
+not a Deninger datum. (d) $D$ is the divisor of $\zeta\,\Gamma_{\mathbb R}$, $\Gamma_{\mathbb R}(s) =
+\pi^{-s/2}\Gamma(s/2)$; the comb datum of \cref{cor:forced-net-spectrum} is the divisor of $\zeta$; the difference is
+the divisor of $\Gamma_{\mathbb R}$, even poles at $-2k$, $k\ge0$, which is the trace of $e^{t_D\Theta}$ on Deninger's
+$R_\infty = \mathbb R[e^{-2y}]$, $\Theta = d/dy$; the notebook's odd ladder is the trivial zeros of $\zeta$, odd
+because they are zeros, and the parity freedom of \cref{prop:ladder-parity-free} is the choice of which side of
+the trace formula carries the archimedean place. A complex place has one simple pole of $\Gamma_{\mathbb C}$ per
+nonpositive integer, and $\Gamma_{\mathbb C}(s) = \Gamma_{\mathbb R}(s)\Gamma_{\mathbb R}(s+1)$ is two real ladders.
+\end{proposition}
+
+\begin{proposition}[Suspension = ring; the zeros as joint eigenvalues; the Bost--Connes shadow]
+\label{prop:deninger-suspension-ring}
+\claimstatus{prop:deninger-suspension-ring}{proved}
+(a) For $X = M\times_{\qs^{\mathbb Z}}\mathbb R^{>0}$ with $M$ a compact manifold and $\qs$ acting by a diffeomorphism
+$f^{-1}$, the reduced leafwise cohomology is the space of smooth sections $u\mapsto c(u)\in H^i(M)$ with
+$c(\qs u) = f^*c(u)$, $\Theta = u\,d/du$ has spectrum $\{(\log\mu+2\pi ik)/\log\qs\}$ over $\mu\in\operatorname{spec}(f^*|H^i(M))$, % bare-ok
+and $\sum_\lambda e^{t\lambda} = \log\qs\sum_{m\in\mathbb Z}\Tr(f^{*m}|H^i(M))\,\delta(t-m\log\qs)$ by Poisson summation:
+the periodic MPS ring of length $\log\qs$ with site tensor $f^*$. A lifted Frobenius is a covering of degree
+$|\pi|^2 = \pp$, not a diffeomorphism; Deninger's solenoid $\mathbb C\times_\Gamma T_\pi\Gamma$ with the shift gives
+the same Lefschetz data, and the net odd spectrum $\{s : \pp^s\in\{\pi,\bar\pi\}\}+2\pi i\mathbb Z/\log\pp$, the zeros
+of $\curvezeta$ with their towers. (b) (Formal.) For $\mathbb Q^{>0}$ acting by commuting Frobenii $F_\pp^*$, the
+$\Theta$-eigenvectors are $u^\zero v$ with $F_\pp^*v = \pp^\zero v$ for all $\pp$; density of $\mathbb Q^{>0}$ collapses
+the towers to points; a product leaf space admits a common exponent only where every local spectrum contains
+$\pp^\zero$, which for Euler factors forces $\zero = 0$ (\cref{obs:prime-by-prime-blind}); the 2018 construction
+couples the primes through the adele topology, not through a joint eigenbasis. (c) On $\ltwo{\mathbb N}$,
+$v_\zero = \sum_nn^{-\zero}e_n$ satisfies $\bciso{\pp}^*v_\zero = \pp^{-\zero}v_\zero$ for all $\pp$ and every
+$\re\zero>\tfrac12$, with $\|v_\zero\|^2 = \zeta(2\re\zero)$; nothing in $\ltwo{\mathbb N}$ selects the zeros, and a
+metric in which $\pp^{-1/2}F_\pp^*$ is unitary for all $\pp$ makes $v_\zero\perp v_{\zero'}$ unless
+$\zero+\bar\zero' = 1$, two primes with $\log\pp/\log\qs$ irrational sufficing.
+\end{proposition}
+
+\begin{proposition}[The local Lefschetz coefficient; a rotation angle per prime]
+\label{prop:deninger-local-coefficient}
+\claimstatus{prop:deninger-local-coefficient}{proved}
+Let $A\in\mathrm{GL}(2,\mathbb R)$ be the linearised Poincar\'e return map on the leaf plane at a closed orbit of
+length $l$. (a) Deninger's coefficient of $\delta_{kl}$ is $\det(1-A^k)/|\det(1-A^k)|$ for $k\ge1$ and
+$\det(A^k)\det(1-A^{-k})/|\det(1-A^{-k})|$ for $k\le-1$, with $\det(1-B) = \sum_i(-1)^i\Tr\Lambda^iB$ the graded trace % bare-ok
+of the exterior algebra of the leaf plane; the coefficient keeps only its sign. (b) For $A = e^{l/2}O$, $O\in\mathrm O(2)$:
+the coefficient is $1$ for all $k\ge1$ iff $O\in\mathrm{SO}(2)$; for $\det O = -1$ it is $(-1)^k$; for $k\le-1$ it is
+$e^{kl}$ in both cases. (c) For $O$ the rotation by $\omega$ and $e^l = \pp$, the spectrum of $\Lambda^*A$ is % bare-ok
+$\{1,\sqrt\pp e^{\pm i\omega},\pp\}$, the Frobenius spectrum of an elliptic curve over $\Fp$ with trace
+$2\sqrt\pp\cos\omega$ whenever that is an integer (Deuring, not byte-cited); the angle is invisible to the Ruelle
+zeta and is data the explicit formula never sees.
+\end{proposition}
+
+\begin{theorem}[The metric is a flow-invariant polarisation of the symplectic odd bond]
+\label{thm:deninger-invariant-polarisation}
+\claimstatus{thm:deninger-invariant-polarisation}{proved}
+Let $V$ be a real vector space, $B$ a nondegenerate alternating form (the cup product $H^1\times H^1\to H^2\cong\mathbb R$),
+and $\Theta$ with $B(\Theta h,h')+B(h,\Theta h') = c\,B(h,h')$. (i) $e^{-ct/2}e^{t\Theta}\in\Sp(V,B)$, the
+$B$-transpose is $\Theta^\# = c-\Theta$, and the spectrum is symmetric under $\lambda\mapsto c-\lambda$: the functional
+equation without RH; in finite dimension a non-canonical similarity realises the operator form (FE) of
+\cref{def:graded-rh-fe-ramanujan}. (ii) A polarisation is $*$ with $*^2 = -1$, $B(*h,*h') = B(h,h')$ and
+$(h,h') := B(h,*h')$ positive definite; if $[\Theta,*] = 0$ then $\Theta = c/2+S$ with $S$ skew for $(\,,)$, the
+manifest form (HP) with $G = (\,,)$ (\cref{prop:hp-inner-product-continuous}), after which nothing remains, unlike
+\cref{obs:kraus-dichotomy}(d), where Hastings' bound remains; conversely (HP) with a $B$-compatible form is a
+flow-invariant polarisation. (iii) In leaf dimension two the star on 1-forms depends only on the conformal class:
+the hypothesis is a flow-invariant leafwise complex structure with area scaled by $e^{ct}$. (iv) For
+$e^{-c/2}e^\Theta$ semisimple with eigenvalues $e^{\pm i\omega_j}$, $\omega_j\in(0,\pi)$ pairwise distinct, the invariant
+polarisation is unique; for a repeated $e^{i\omega}$ with Krein signature $(p,q)$ the invariant polarisations form
+$\mathrm U(p,q)/(\mathrm U(p)\times\mathrm U(q))$, a point iff $pq = 0$; at $\omega\in\{0,\pi\}$ the Siegel space of the
+eigenspace; none if an eigenvalue is off the circle. (v) Invariant alternating forms and invariant metrics have the
+same dimension, so $B$ removes the cone's freedom (\cref{thm:arithmetic-metric}) only when $B$ is canonical;
+\cref{prop:d2-spectrum-frobenius} gives $K_{\mathrm{HW}}\simeq H^1\otimes\mathbb C^2$ as a spectral similarity only, so no cup
+form on $K_{\mathrm{HW}}$ is defined by the notebook.
+\end{theorem}
+
+\begin{proposition}[Compact manifolds force $c = 0$; what the solenoid changes]
+\label{prop:deninger-alpha-zero-solenoid}
+\claimstatus{prop:deninger-alpha-zero-solenoid}{proved}
+(a) On a compact oriented manifold with a transversal flow and its invariant closed one-form $\omega_\phi$
+($\omega_\phi|_{T\mathcal F} = 0$, $\omega_\phi(Y_\phi) = 1$), conformality on $T\mathcal F$ with factor $e^{ct}$ forces $c = 0$:
+$\Omega = \mathrm{vol}_{\mathcal F}\wedge\omega_\phi$ is a volume form with $\phi^{t*}\Omega = e^{ct}\Omega$ and invariant integral. % bare-ok
+(b) On the elliptic solenoid with $g = e^t\re(\xi\bar\eta)$ the gluing $(z,y,t)\sim(\pi^{-1}z,\pi^{-1}y,t+\log\pp)$ is a % bare-ok
+$g$-isometry preserving flat area times Haar measure; the flow scales $g$-area by $e^s$ and the transverse measure
+$e^{-t}\,d\mathrm{Haar}\,dt$ by $e^{-s}$; the return map $(z,y)\mapsto(\pi z,\pi y)$ expands $z$ and contracts $y$, and
+the $\Omega$ of (a) does not exist. In the notebook's normalisations this is the counting growth $\qs$ against the % bare-ok
+channel growth $1$ (\cref{def:graded-transfer-channel}); the adelic objects of \cref{sec:gl1-bond} are not
+suspensions of this type ($\mathbb A/\mathbb Q$ has no closed orbits; $\mathbb Q^{>0}\hat{\mathbb Z}^\times\times_{\mathbb Q^{>0}}\mathbb R^{>0}$
+is irreducible, \cref{cit:deninger-2018-connected-h0}).
+\end{proposition}
+
+\begin{proposition}[Deninger's elliptic example is the Hodge ket bond]
+\label{prop:deninger-elliptic-hodge-ket}
+\claimstatus{prop:deninger-elliptic-hodge-ket}{proved-conditional}
+For an ordinary $E/\Fp$ with Frobenius $\pi$ and CM lift (\cref{asm:deuring-lift}; Deninger takes the maximal order):
+(a) Deninger's leaf-space data $(H^*(\mathbb C/\Gamma),\pi^*,(-1)^{\deg})$ is the doubled bond
+$(V\otimes\bar V,\Edb = \operatorname{diag}(1,\bar\pi,\pi,\pp),\Gdb)$ of \cref{thm:hodge-doubling-tensor}, his $H^1$ the odd sector
+and $H^0\oplus H^2$ the even; (b) his Hodge inner product on $H^1$ is the doubled ket-bond inner product on the odd
+sector; (c) conformality with factor $e^t$ per period $\log\pp$ is $\|\pi^*dz\|^2 = \pp\|dz\|^2$, the ket-bond letter
+$1\oplus\sqrt\pp\,U$ with $U$ unitary on $V_-$, which is \cref{thm:elliptic-ph-unitary}; (d) the net odd
+$\Theta$-spectrum of his solenoid is the zero set of $\curvezeta$ with towers, its trace formula the explicit formula of
+$\curvezeta$. At genus one the metric test is vacuous (\cref{obs:gl1-bond-no-metric}) and Deninger says the same
+(\cref{cit:deninger-lift-misleading}); at higher genus \cref{thm:rosati-ph-genus-two} has the compatibility free and
+the positivity as input, Deninger's Theorem 4 the positivity free and the compatibility as input.
+\end{proposition}
+
+\begin{theorem}[$\KS$ is not Deninger's $H^1$ with an equivalent inner product]
+\label{thm:ks-not-deninger-h1}
+\claimstatus{thm:ks-not-deninger-h1}{proved}
+Let $w_n = -\gam n/2-i(1-\sigs_n)/2$ be the zeros of $\Ssym$ in the lower half plane and $k_n(\tauM) = (\tauM-\bar w_n)^{-1}$
+the reproducing kernels, which lie in $\KS$. (a) In Deninger's picture, with $(\,,)$ positive and $\Theta-\tfrac12$
+skew-adjoint on the completion, eigenvectors at distinct zeros are orthogonal, and under pure point spectrum (an
+assumption) the completion is $\ltwo{\text{zeros}}$ with $\Theta$ diagonal. (b) The normalised $k_n$ are not a Riesz
+basis of their closed span: the Carleson condition fails, since the pseudo-hyperbolic distance of consecutive modes
+satisfies $\varrho(w_n,w_{n+1})^2 = (d_n/2)^2/((d_n/2)^2+\tfrac14)\le d_n^2$ under RH for a gap $d_n$ and % bare-ok
+$\liminf d_n = 0$, and unconditionally the on-line zeros (a positive proportion, Selberg, not byte-cited) supply such
+pairs; the Riesz-basis criterion for kernels of a model space (Shapiro--Shields, Nikolski, not byte-cited) is the
+Carleson condition. Hence no bounded invertible map sends an orthonormal eigenbasis of Deninger's $\Theta$ to
+multiples of the $k_n$, and no inner product on $\KS$ equivalent to the Hardy one makes $\Zt$ normal with the $k_n$
+as eigenvectors. For two normalised kernels $1-|\langle\hat k_a,\hat k_b\rangle|^2 = \varrho(a,b)^2$, so % bare-ok
+$\sigma_{\min}$ of the normalised Gram matrix is at most $1-\sqrt{1-\varrho_{\min}^2}$; on the first $3000$ zeros % bare-ok
+$\varrho_{\min} = 0.097$ and $\sigma_{\min} = 0.40, 0.23, 0.13, 0.075, 0.040, 0.016$ for $N = 10, 25, 50, 100, 200, 400$ % bare-ok
+(\texttt{notes/deninger-cmps/scratch\_riesz.py}, reproduced by the reviewer to three digits). The Gram data
+$\langle k_n,k_m\rangle = i/(\bar w_n-w_m)$ of \cref{prop:mode-diagonal-rebound-rh} is what $\KS$ carries and
+Deninger's $H^1$ discards; H-THETA (\cref{conj:h-theta}), if true, identifies $\KS$ with something that is not
+Deninger's $H^1$.
+\end{theorem}
+
+\begin{proposition}[The bond as an algebra: where the derivation mechanism can act]
+\label{prop:deninger-product-genus-one}
+\claimstatus{prop:deninger-product-genus-one}{proved-conditional}
+(a) Deninger's $\phi^{t*}$ is a ring automorphism of leafwise cohomology, so $\Theta$ is a derivation and the Leibniz
+rule on $H^1\cup H^1\to H^2$ with $\Theta = c$ on $H^2$ is the functional-equation half of
+\cref{thm:deninger-invariant-polarisation}(i). (b) A completely positive map on $\operatorname{End}(V)$ is
+multiplicative for composition iff it is $\Ad(U)$ with $U$ unitary (Skolem--Noether and Choi, not byte-cited), and
+multiplicative up to a scalar iff it is $c'\Ad(U)$; composition is not Deninger's product. (c) At genus one the
+doubled bond is $H^*(\mathbb T^2,\mathbb C) = \Lambda^*(\mathbb C\,dz\oplus\mathbb C\,d\bar z)$ with the exterior product, and for it % bare-ok
+$A\otimes\bar A$ is a ring endomorphism for every even letter $A = 1\oplus a$, an automorphism iff $a\ne0$, although $\operatorname{diag}(1,\pi)$ is not
+a scalar times a unitary: Deninger's derivation argument applies verbatim, with $B$ the $(-,-)$ coefficient of the
+wedge of two odd vectors, and concludes \cref{thm:elliptic-ph-unitary}. At genus two the doubled bond
+$\mathbb C^{1|2}\otimes\overline{\mathbb C^{1|2}}$ is not the cohomology ring of the curve (\cref{sec:ring-norm-genus-two}); whether any other bond
+of this book carries a graded-commutative product for which its transfer is multiplicative up to scale is open.
+\end{proposition}
+
+\subsection{Verdict and next steps}
+
+\begin{observation}[Same gap, stated more sharply]
+\label{obs:deninger-same-gap}
+\claimstatus{obs:deninger-same-gap}{sketched}
+No candidate metric emerges beyond the inequivalent diagonal form on mode coefficients, which is RH. Deninger's
+mechanism is (HP) with the functional equation from the cup product; his own words place the conformal metric out
+of reach for number fields (\cref{cit:deninger-conformal-metric}), the realised example at the notebook's
+genus-one vacuity (\cref{cit:deninger-lift-misleading}), and the 2018 spaces without analytic structure
+(\cref{cit:deninger-2018-no-analytic}), over Connes's adele space (\cref{cit:deninger-2018-adeles}), with their one
+cohomological fact from an irreducible leaf space (\cref{cit:deninger-2018-connected-h0}); his second mechanism,
+a Laplacian with $-(\Theta-\tfrac12)^2$ as its restriction (\texttt{math/0505354:main.tex:852-869}), has the same
+equivariance gap and a metric cone of dimension $3g$. What the translation adds: the metric as a flow-invariant
+polarisation, a point given simple spectrum and a canonical $B$; the notebook has a canonical $B$ only on the
+genus-one Hodge ket; the archimedean ladder as $R_\infty$; the prime letters as one flow sampled at $\log\pp$, the
+blind ansatz unless the leaf space is non-product, with one rotation angle per prime as data $\zeta$ does not fix;
+and $\KS$ not Deninger's $H^1$ under any equivalent norm. In the comparative table of the note, the attacks with a
+metric (Artin--Schreier, Weil, Deninger on elliptic curves) have it given in advance or from a product on the bond
+with a positivity supplied from outside, and the attacks without a product (channels, Lax--Phillips, Connes) have
+one-sided bounds or criteria.
+\end{observation}
+
+\begin{observation}[What the next round should do]
+\label{obs:deninger-next}
+\claimstatus{obs:deninger-next}{sketched}
+(i) A canonical alternating form on $K_{\mathrm{HW}}$ from the D2 or D3 diagram or a Hecke structure, and its parity
+behaviour: the reviewer's eigen-model shows every $B$-compatible polarisation lies in the cone of
+\cref{thm:arithmetic-metric} and on its symmetric ray iff $B$ is parity-(anti)invariant. (ii) A graded-commutative
+product on $K_{\mathrm{HW}}$ or a finite model of $\KS$ for which the transfer is multiplicative up to scale. (iii) The
+linearised return map of the cusp orbit of D2 and D3 on the odd sector: $\qs^{1/2}$ times a rotation, and the
+angle. (iv) Deninger's Laplacian route on the modular surface, where the zeros are resonances, not eigenvalues.
+(v) The fibre of Deninger's 2018 system over the $\pp$-component of the adeles in the language of the Bost--Connes
+MPOs of \cref{sec:bc-symmetry-generators}.
+\end{observation}
