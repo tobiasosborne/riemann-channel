@@ -1,0 +1,15 @@
+nearest-neighbour pseudo-hyperbolic distances of the first 3000 modes
+  first five  : [0.9896 0.97   0.9834 0.929  0.9777]
+  minimum     : 0.09704 at n = 1496
+  last five   : [0.8486 0.6603 0.3437 0.6421 0.7903]
+  mean gap of the last 200 zeros: 0.9964   2 pi / log(gamma/2pi) = 0.9923
+  under RH rho^2 = (d/2)^2 / ((d/2)^2 + 1/4) for a gap d, so rho -> 0 along any subsequence of gaps -> 0
+Gram matrix of the normalised kernels: smallest singular value against N
+  N =   10:  sigma_min = 3.996e-01   sigma_max = 1.866   cond = 4.67e+00
+  N =   25:  sigma_min = 2.331e-01   sigma_max = 2.434   cond = 1.04e+01
+  N =   50:  sigma_min = 1.340e-01   sigma_max = 2.930   cond = 2.19e+01
+  N =  100:  sigma_min = 7.531e-02   sigma_max = 3.464   cond = 4.60e+01
+  N =  200:  sigma_min = 3.951e-02   sigma_max = 4.020   cond = 1.02e+02
+  N =  400:  sigma_min = 1.589e-02   sigma_max = 4.600   cond = 2.90e+02
+  N =  800:  sigma_min = 5.886e-03   sigma_max = 5.188   cond = 8.81e+02
+a Riesz basis would have sigma_min bounded below uniformly in N; the decrease is monotone here
