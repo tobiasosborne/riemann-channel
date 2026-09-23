@@ -2,6 +2,44 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-23: Deninger's programme in the supertrace-cMPS language (shard 04q); the metric as an invariant polarisation; K_S is not Deninger's H^1; the same gap
+
+TJO: the metric is the missing datum of the current strategy; cast Deninger's programme precisely in the notebook's
+language and see whether a candidate metric emerges or the same shortcoming (work alone, then an Opus verifier); and,
+as a standing aim, use the cMPS formulation as the common language in which the clues of independent attacks are
+assembled. Round `notes/deninger-cmps/reformulation.md` (Fable alone: D1–D7 cited, R1–R8 proved, S1–S6, a
+comparative table over nine attacks), review `notes/reviews/deninger-cmps-2026-09-23.md` (Opus: 1 VALID / 6 MINOR /
+1 INVALID on version 1, 295 independent checks, 59 addresses byte-checked, 30 corrections all applied; final
+8 VALID / 0 MINOR / 0 INVALID). Worklog 2026-09-23.
+
+**Registered (04q).** Deninger's Lefschetz formula for `Q` is `prop:ringnorm-trace` under the twist
+`lambda -> (lambda-1)/2` with the archimedean term moved to the operator side and counted odd; the ladder is his
+`R_infty = R[exp(-2y)]`, the trivial zeros, its parity the side of the trace formula carrying the archimedean place;
+the notebook's even line is his `H^2`. A one-prime suspension is the periodic MPS ring of length `log p`, the zeros
+joint eigenvalues of commuting Frobenii; the prime letters are one flow sampled at `log p`, the blind ansatz of
+`obs:prime-by-prime-blind` unless the leaf space is non-product, and the conformal hypothesis adds a rotation angle
+per prime that zeta does not see. **His RH mechanism is (HP):** the cup product gives `Theta^# = 1 - Theta` (FE) and
+a Hodge star commuting with the flow gives a positive form with `Theta - 1/2` skew; so the metric is a
+flow-invariant polarisation of the symplectic odd bond, a point iff the spectrum is simple or Krein-definite and
+the symplectic form is canonical; invariant `B` and invariant metrics have the same dimension, so `B` buys
+uniqueness only when canonical, and the notebook has a canonical `B` only on the genus-one Hodge ket, where the
+doubled transfer is a ring endomorphism of the exterior algebra and Deninger's argument gives
+`thm:elliptic-ph-unitary`. **`K_S` is not Deninger's `H^1` under any equivalent norm** (`thm:ks-not-deninger-h1`):
+the zero-mode kernels are not a Riesz basis (Carleson fails), so no inner product equivalent to the Hardy one makes
+`Z(t)` normal with the modes as eigenvectors. **Verdict:** a reformulation with the same gap, in Deninger's own
+words (`math/0505354:674, 825, 1230`; `1807.06400:512, 559, 2363`, all byte-cited): no conformal metric for number
+fields, the Kähler identities on cohomology needed (Serre's analogue), the lifted elliptic curve misleading, the
+2018 spaces without analytic structure and over Connes's adele space; his Laplacian route has the same equivariance
+gap. Deninger's column of the comparative table is the one that would supply the product (Künneth on `X x X`) the
+README says zeta lacks for a Deligne-type argument.
+
+**Next on this lead (in order).** (i) A canonical alternating form on `K_HW` from the D2/D3 diagram or a Hecke
+structure, and its parity behaviour (the reviewer's eigen-model: every `B`-compatible polarisation lies in the cone
+of `thm:arithmetic-metric`, on its symmetric ray iff `B` is parity-(anti)invariant). (ii) A graded-commutative
+product on `K_HW` or a finite model of `K_S` for which the transfer is multiplicative up to scale. (iii) The
+cusp-orbit return map of D2 and D3 on the odd sector. (iv) Deninger's Laplacian route on the modular surface.
+(v) The `p`-fibre of the 2018 system in the language of the Bost–Connes MPOs of shard 04d.
+
 ## Session 2026-09-21, evening: square roots of Ihara--Bass (shard 08h); branches merged into master; CI smoke list trimmed
 
 TJO asked to tidy the conceptual loose ends around graded Ihara--Bass: is a "square root" version with a

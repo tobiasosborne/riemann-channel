@@ -62,6 +62,8 @@ coefficient of |k_n><k_m|.  Two formulas used throughout:
 """
 import os
 import numpy as np
+_trapz = getattr(np, 'trapezoid', None) or getattr(np, 'trapz')  # numpy 2 renamed trapz
+
 import scipy.linalg as sla
 from numpy.polynomial import polynomial as Pl
 from scipy.optimize import nnls
@@ -332,7 +334,7 @@ for lab, m, oms in (("on-line", M_ON, OMS_ON), ("off-line", M_OFF, OMS_OFF)):
         surv = np.array([np.trace(Ct(m, t) @ Om @ Ct(m, t).conj().T).real for t in ts[::40]])
         dt = ts[40] - ts[0]
         mden = -np.gradient(surv, dt)
-        tot = np.trapz(mden, ts[::40])
+        tot = _trapz(mden, ts[::40])
         check(mden.min() > -1e-9 and abs(tot - 1) < 1e-4,
               f"T1 {lab}, Omega = {name}: m_Omega(t) = -d/dt Tr(C_t Omega C_t^dag) >= 0 and "
               f"int_0^inf m_Omega = {tot:.6f} (a proper holding-time density)")
@@ -403,7 +405,7 @@ for lab, m, oms in (("on-line", M_ON, OMS_ON), ("off-line", M_OFF, OMS_OFF)):
         surv = np.array([np.trace(Ct(m, t) @ Om @ Ct(m, t).conj().T).real for t in ts[::20]])
         tt = ts[::20]
         mden = -np.gradient(surv, tt[1] - tt[0])
-        lap = np.trapz(np.exp(-0.8 * tt) * mden, tt)
+        lap = _trapz(np.exp(-0.8 * tt) * mden, tt)
         check(d < 1e-10 and abs(lap - mhat_rational(m, Om, 0.8).real) < 1e-4,
               f"T4 {lab}, Omega = {name}: mhat(z) = Tr(|j><j|(z-L_0)^(-1)Omega) = "
               f"sum_nm Omega_k[n,m]/(z + i conj w_n - i w_m) = Laplace(m_Omega)(z) "
