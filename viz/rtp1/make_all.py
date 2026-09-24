@@ -33,8 +33,12 @@ STEPS = [
      "explicit-formula comparison."),
     ("step3", "step3_short_range", "Step 3: short-range positivity (lane B1)",
      "The Weil distribution near the origin and the form value of a bump, with lane B1's statements of Yoshida and Bombieri."),
-    ("step4", "step4_commutant", "Step 4: the kinematic commutant (lane B2)", "Pending lane B2."),
-    ("step5", "step5_calibration", "Step 5: the calibration case (lane B2)", "Pending lane B2."),
+    ("step4", "step4_commutant", "Step 4: the kinematic commutant (lane B2)",
+     "Lane B2.1's certified dimension counts, prediction tables and lattice box, and the positive set of prime data drawn "
+     "as exact planar sections (geometry recomputed for display from zst's data)."),
+    ("step5", "step5_calibration", "Step 5: the calibration case (lane B2)",
+     "Lane B2.2's certified Ramanujan cubic graph G40 (78 atoms) next to lane A1's zeta curves: learning, the disc of the "
+     "next datum, fixed-window inertia, and the graph prime number theorem. No spectral data of the graph is used."),
     ("step7", "step7_maxent", "Step 7: the contradiction pathway and MaxEnt",
      "From notes/metric-tomography/metric-as-state.md section 7: the extension disc as the Schur algorithm proceeds, and "
      "the off-line pair as a saddle."),

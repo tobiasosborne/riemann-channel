@@ -1,15 +1,66 @@
 [
  {
-  "caption": "Placeholder: not drawn. lane B2's lane file exists, but this package has no drawing for it yet; re-run lane V after lane B2 (and its review) to draw it. Wanted (viz-brief.md): A 3-dimensional slice of the window's positive cone with the kinematic subspace, the maximum-determinant element from pole and archimedean data only, and the true form.",
-  "id": "s4_placeholder",
-  "kind": "placeholder",
-  "panels": [],
-  "placeholder": true,
+  "caption": "Lane B2.1(a), certified (exact ranks over Q for N = 1..6, each equal to its closed form). Real dimension of the Hermitian forms on the span of V_n, |n| <= N, under the linear kinematic conditions: reality, commuting with the Weyl element gamma, and the Loewner condition [D, H] = |beta><eta| - |eta><beta| (eta = sum V_n fixed). A Loewner form is automatically real (Loewner + real = Loewner, 4N+1; also Hermitian + gamma + real = (N+1)^2, in the table), and Loewner + gamma has dimension 2N+1: exactly the data (a_0..a_N, b_1..b_N). The identity is an interior point of the positive cone, so positivity removes no dimension.",
+  "id": "s4_dimensions",
+  "kind": "certified data",
+  "panels": [
+   "dimension against N, five spaces (certified)"
+  ],
   "script": "viz/rtp1/step4_commutant.py",
   "sources": [
-   "notes/rtp-round-1/lane-B2.md (absent)"
+   "outputs/rtp1_commutant.txt"
   ],
   "step": "Step 4",
-  "title": "The kinematic commutant (pending lane B2)"
+  "title": "Dimension counts of the kinematic conditions"
+ },
+ {
+  "caption": "Lane B2.1(b). P_N = {z : H0 + T(z) >= 0}: z = (u_0..u_20, v_1..v_20) the prime part of the Loewner data, H0 the pole + archimedean form (fixed). Recomputed for display: three exact planar sections of this 41-dimensional set, in Hilbert-Schmidt coordinates (so distances are true), evaluated on a grid in double from zst's data (x = 13, cutoff X = 1 and 13); the minimal-norm and PNT points are lane B2's printed coefficient vectors (4 decimals, so the minimal-norm point sits within 1e-4 of the boundary). (b1) The plane through 0 (no prime data: inadmissible), the truth and the minimal-norm element: the circle of radius 2.36 about 0 touches P_N at the minimal-norm element; the truth is a corner, the only admissible point on its own ray (B2: admissible multiples within 1 - 5.7e-36 .. 1 + 2.0e-38). (b2) The plane through 0, the truth and the identity: P_N contains z_true + C_N (the recession cone, drawn from the truth) and log det grows without bound along it, so no maximum-determinant element exists. (b3) The plane through the truth, the minimal-norm element and the PNT mean (the pole's density, inadmissible). Annotated numbers are lane B2's certified values.",
+  "id": "s4_positive_set",
+  "kind": "recomputed for display (geometry); marked points and annotations from lane B2's output",
+  "panels": [
+   "(b1) section through 0, truth, minimal-norm (recomputed geometry)",
+   "(b2) section through 0, truth, identity; log-det contours (recomputed geometry)",
+   "(b3) section through truth, minimal-norm, PNT (recomputed geometry)"
+  ],
+  "script": "viz/rtp1/step4_commutant.py",
+  "sources": [
+   "outputs/rtp1_commutant.txt",
+   "zst (zst_riemann_ab via viz/rtp1/bridges.py)"
+  ],
+  "step": "Step 4",
+  "title": "The positive set of prime data, x = 13, N = 20"
+ },
+ {
+  "caption": "Lane B2.1(d), certified outer bounds (LP duals re-verified at 100 digits). With the pole, the archimedean place and the possible positions log n, n = 2..12, fixed and the 11 weights w_n free, Weil positivity of the x = 13 window (N = 20) confines each weight to the drawn interval around Lambda(n)/sqrt(n), including the zero weights at the non-prime-powers 6, 10, 12. (c1) weights on their natural scale: the intervals are thinner than the markers. (c2) the intervals as deviations from the truth on a symmetric-log axis, labelled with their widths (1e-12 at n = 4 to 1.3e-3 at n = 12). (c3) the largest width over n <= 7, 10, 12 against N; for N >= 30 the widths are limited by lane B2's certificate construction, not by the set. The same positivity in the free Loewner coordinates leaves an unbounded set (Step 4 positive-set figure).",
+  "id": "s4_lattice_box",
+  "kind": "certified data",
+  "panels": [
+   "weights and intervals (certified)",
+   "deviation intervals, symlog (certified)",
+   "widths against N (certified)"
+  ],
+  "script": "viz/rtp1/step4_commutant.py",
+  "sources": [
+   "outputs/rtp1_commutant.txt"
+  ],
+  "step": "Step 4",
+  "title": "The weight box with the lattice known"
+ },
+ {
+  "caption": "Lane B2.1(c), certified (x = 13; Hilbert-Schmidt inner product on the window). (d1) Fraction of the true prime contribution captured by each prediction against N: the minimal-norm element captures 16%, 8.3%, 5.6%, 4.1%, 2.8% at N = 10, 20, 30, 40, 60. The grey curve is 5.59 / ||z_true||^2, derived from B2's columns: the correction positivity demands is fixed (norm about 2.37) while the truth's norm grows. (d2) Relative distance from the truth; the ball-relaxed maximum-determinant element is farther than predicting no prime data (1.25 to 1.39). (d3, d4) B2's coefficient table at N = 20: the minimal-norm prediction matches (u_1, u_2, v_1, v_2) to about 6%, misses u_0 (0 against -2.94) and is a smooth decaying tail where the true data are O(1) at every n; the ball max-det element raises every u_n by about 1 (\"add the identity\").",
+  "id": "s4_capture",
+  "kind": "certified data",
+  "panels": [
+   "captured fraction against N (certified; reference curve derived)",
+   "relative distance (certified)",
+   "u_n at N = 20 (certified)",
+   "v_n at N = 20 (certified)"
+  ],
+  "script": "viz/rtp1/step4_commutant.py",
+  "sources": [
+   "outputs/rtp1_commutant.txt"
+  ],
+  "step": "Step 4",
+  "title": "Captured fraction of the true prime data"
  }
 ]
