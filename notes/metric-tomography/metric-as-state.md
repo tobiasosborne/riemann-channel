@@ -82,8 +82,9 @@ half-width `delta < delta_max(S, A)`, the Gram entry between lattice points `p^a
 prime contribution only when the ratio is a prime power, that is, when `a = a'` or `b = b'`. Every mixed entry is
 pole plus archimedean, `2 cosh(D/2) |int phi(x) e^{x/2} dx|^2 - W_R(R_delta(. - D))` with `D = |log(ratio)|`. The
 pole part is the larger (first order along the minimal eigenvector: 2.4 to 21 times the archimedean part,
-opposite sign; lane A2), but the pole kernel `e^{+-D/2}` factorises over places, so the only non-factorising
-cross-place kernel is the archimedean `rho(D)` sampled at logarithms of `S`-smooth rationals. On the zero side
+opposite sign; lane A2). The pole kernel `2 cosh(D/2)` is a rank-two sum of two kernels that each factorise
+over places but does not factorise itself (alone it gives a Schmidt defect `6.3e-4` at `{2,3}`, `A = 1`;
+review erratum), so both kernels, sampled at logarithms of `S`-smooth rationals, correlate the places. On the zero side
 the smoothed mixed entries are equal to these known values by the explicit formula; nothing about the zeros is
 measured there beyond that identity. In this regime the inter-place effects are `O(delta)` in eigenvalues and
 `O(delta^2)` in eigenvectors (lane A2; shard 08i). The first version of this paragraph said "carried entirely by

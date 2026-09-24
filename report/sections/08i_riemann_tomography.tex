@@ -57,8 +57,8 @@ fits as well as $1.68\,x^{1.36}$. Below $N_{\mathrm{sat}}$ each new mode pair ca
 $b_{N+1}$ sits at the edge of its interval; above, a fraction of a nat, interior, with half-width $0.5$ to $3.7$
 at every $x$. (b) The minimal even eigenvalue at $N = 120, 260, 360$ is $3.48\cdot10^{-59}$, $2.43\cdot10^{-123}$,
 $2.27\cdot10^{-257}$, falling $5.34$--$5.36$ digits per unit of $x$; the $x = 50$ value is not converged in $N$
-(uncertified inverse iteration: another factor $8$ by $N = 420$), and with the larger-$N$ values the slope from
-$13$ to $50$ is $5.38$ digits per unit of $x$, against $5.39$ for the prolate asymptotic of CCM and $5.46$ for
+(certified $2.81\cdot10^{-258}$ at $N = 420$, review \texttt{scratch\_rtp1\_tail.py}), and with the larger-$N$
+values the slope from $13$ to $50$ is $5.38$ digits per unit of $x$, against $5.39$ for the prolate asymptotic of CCM and $5.46$ for
 $e^{-4\pi x}$. (c) Comparison step (zeros used): for $N\ge N_{\mathrm{sat}}$ the certified first-zero error is
 $7.0\cdot10^3$ to $1.08\cdot10^4$ times the minimal eigenvalue and falls at the same rate. (d) Fixed window
 $L = \log50$: at $N = 60$, pole plus archimedean alone has three negative even eigenvalues; adding prime powers one
@@ -66,7 +66,8 @@ at a time leaves $3$ to $16$ negative eigenvalues until the last one, $49$, ente
 $-5.66\cdot10^{-7}$; with it, $1.75\cdot10^{-116}$); each prime power contributes at least $3.0\cdot10^{10}$ times
 the final eigenvalue ($10^{34}$ at $x = 50$, $N = 360$). The all-but-$49$ value is a resolution effect, not an
 edge effect: it is $-2.0\cdot10^{-2}$ with eight negative eigenvalues at $N = 240$, and the removed term has
-operator norm $0.23$--$0.28$ at every $N$ (review, C12).
+operator norm $0.23$--$0.28$ for every $N\ge60$, nondecreasing in $N$ and bounded by $\log7/7$ (review,
+\texttt{scratch\_rtp1\_fixedL.py}).
 \end{numerical}
 
 \subsection{The prime-content channel}
@@ -164,8 +165,9 @@ $\pm\tfrac i2$ (Connes--Consani, crediting Yoshida).
 \label{num:archimedean-box}
 \claimstatus{num:archimedean-box}{numerical}
 The symbol of \cref{cit:archimedean-symbol-sign} is negative for $|t|<6.2898$; on the even box of width $\log2$
-the archimedean part is $-1.2168$ and the pole part $+1.4002$ (total $+0.1834$), on the odd box $+0.3348$ and
-$-0.0108$ (\texttt{notes/rtp-round-1/lane-B1-arch-check.py}; reproduced in real space by the review).
+the archimedean part is $-1.2168$ and the pole part $+1.4002$ (total $+0.1834$;
+\texttt{notes/rtp-round-1/lane-B1-arch-check.py}), on the odd box $+0.3348$ and $-0.0108$ (review,
+\texttt{scratch\_rtp1\_sources.py}, which also reproduces the even box in real space).
 Positivity on short support is a property of the two together.
 \end{numerical}
 
@@ -182,7 +184,9 @@ iff $x$ is a prime power (Landau 1912, Satz 1; formula byte-present in Ford--Zah
 \begin{citedfact}[Gonek: Landau's formula uniform in $x$ and $T$]
 \label{cit:gonek-uniform-landau}
 \claimstatus{cit:gonek-uniform-landau}{cited}
-Landau's formula holds with an error term uniform in $x$ and $T$, growing linearly in $x$.
+Landau's formula holds uniformly in $x$ and $T$ with error
+$O\big(x\log(2xT)\log\log3x\big)+O\big(\log x\min(T,x/\langle x\rangle)\big)+O\big(\log2T\min(T,1/\log x)\big)$,
+as quoted by Kaczorowski--Languasco--Perelli (\texttt{prov:klp00-gonek-error}).
 
 \par\noindent Quoted (\texttt{prov:klp00-gonek}):
 {\small\texttt{\detokenize{this direction was obtained by Gonek [4], [5]. He proved that for T > 1}}}
@@ -202,8 +206,8 @@ zero reflection coefficients from then on, yields the maximum-entropy spectrum, 
 \label{cit:maxdet-completion}
 \claimstatus{cit:maxdet-completion}{cited}
 A partial real symmetric matrix with a positive definite completion has a unique maximum-determinant
-completion, characterised by its inverse vanishing on the unspecified entries (Dempster;
-Grone--Johnson--S\'a--Wolkowicz).
+completion, characterised by its inverse vanishing on the unspecified entries (Dempster, as cited by
+Vandenberghe--Andersen; the attribution to Grone--Johnson--S\'a--Wolkowicz is from memory).
 
 \par\noindent Quoted (\texttt{prov:va15-inverse-pattern}):
 {\small\texttt{\detokenize{The two equalities show that the inverse of the maximum determinant completion W has sparsity pattern E.}}}
@@ -212,7 +216,7 @@ Grone--Johnson--S\'a--Wolkowicz).
 \begin{citedfact}[The Li coefficients in closed form]
 \label{cit:li-arithmetic-formula}
 \claimstatus{cit:li-arithmetic-formula}{cited}
-$\lambda_n = -\sum_m\binom nm\eta_{m-1}+\sum_m(-1)^m\binom nm(1-2^{-m})\zeta(m)+1-\tfrac n2(\gamma+\log\pi+2\log2)$,
+$\lambda_n = -\sum_{m=1}^n\binom nm\eta_{m-1}+\sum_{m=2}^n(-1)^m\binom nm(1-2^{-m})\zeta(m)+1-\tfrac n2(\gamma+\log\pi+2\log2)$,
 with $\eta_j$ the Laurent coefficients of $\zeta'/\zeta$ at $s = 1$ (Bombieri--Lagarias, via Coffey).
 
 \par\noindent Quoted (\texttt{prov:coffey05-li-formula}):
@@ -222,8 +226,9 @@ with $\eta_j$ the Laurent coefficients of $\zeta'/\zeta$ at $s = 1$ (Bombieri--L
 \begin{citedfact}[RH is a $\Pi^0_1$ sentence]
 \label{cit:rh-pi01}
 \claimstatus{cit:rh-pi01}{cited}
-RH holds iff $\sum_{d\mid n}d\le H_n+e^{H_n}\log H_n$ for every $n\ge1$ (Lagarias), and iff an explicit Diophantine
-inequality holds for every $n$ (Davis--Matiyasevich--Robinson); there is an explicit Turing machine that halts
+RH holds iff $\sum_{d\mid n}d\le H_n+e^{H_n}\log H_n$ for every $n\ge1$, with equality only for $n = 1$ (Lagarias),
+and iff an explicit elementary inequality in harmonic sums and a function $\delta(n)$ holds for every $n$
+(Davis--Matiyasevich--Robinson, as quoted by Yedidia--Aaronson); there is an explicit Turing machine that halts
 iff RH is false.
 
 \par\noindent Quoted (\texttt{prov:lag02-thm}):
@@ -263,9 +268,9 @@ prime-number-theorem mean captures $22\%$ and is inadmissible. The truth sits on
 ($1.6\cdot10^{-39}$), isolated on its ray (admissible multiples in $[1-5.7\cdot10^{-36},\,1+2.0\cdot10^{-38}]$).
 With the positions $\log n$, $n = 2,\dots,12$, fixed and only the eleven weights free, positivity confines each
 weight to an interval about the true von Mangoldt weight (zero at $6, 10, 12$) whose width, from an exact
-LP relaxation with 100-digit dual certificates, is $3.0\cdot10^{-25}$ ($n = 2$) rising to $1.3\cdot10^{-4}$
-($n = 12$), the exact axis sections being $3.0\cdot10^{-36}$ to $2.4\cdot10^{-9}$; the lane's double-precision LP
-gave $10^{-7}$-scale widths, its tolerance. The mechanism is the near-singularity of the true form (16
+LP relaxation with 100-digit dual certificates (review, \texttt{scratch\_rtp1\_commutant.py}), is
+$3.0\cdot10^{-25}$ ($n = 2$) rising to $1.3\cdot10^{-4}$ ($n = 12$), the exact axis sections being $3.0\cdot10^{-36}$
+to $2.4\cdot10^{-9}$; the lane's double-precision LP gave $10^{-7}$-scale widths, its tolerance. The mechanism is the near-singularity of the true form (16
 eigenvalues below $10^{-6}$ against 11 unknowns). Not ball-certified.
 \end{numerical}
 
@@ -289,9 +294,10 @@ $K = 77$. Comparison step: the kernel-root error tracks the minimal eigenvalue a
 information: its inter-place effects are $O(\delta)$ in eigenvalues and $O(\delta^2)$ in eigenvectors, and
 admissibility forces $\delta$ down like the inverse of the largest lattice ratio; $O(1)$ inter-place structure
 needs non-admissible bumps. (ii) The off-axis weight of the two-prime eigenvector is product-state weight; the
-genuine correlation is the $O(\delta^2)$ Schmidt defect. In the entry split the pole part is the larger, but
-the pole kernel $e^{\pm D/2}$ factorises over places, so the only non-factorising cross-place kernel is the
-archimedean one sampled at logarithms of $S$-smooth rationals. (iii) The Schur envelope of the next datum
+genuine correlation is the $O(\delta^2)$ Schmidt defect. In the entry split the pole part is the larger;
+the pole kernel $2\cosh(D/2)$ is a rank-two sum of two kernels that each factorise over places and does not
+factorise itself (on its own it gives a Schmidt defect of $6.3\cdot10^{-4}$ at $\{2,3\}$, $A = 1$; review erratum),
+so both the pole and the archimedean kernel, sampled at logarithms of $S$-smooth rationals, correlate the places. (iii) The Schur envelope of the next datum
 (shard 08g's kinematic envelope) does not decay at $e^{-4\pi x}$: it is $O(1)$ at saturated $N$ and shrinks at
 about $0.7$ digits per unit of $x$ at fixed $N$. The minimal eigenvalue and the first-zero error fall together at
 about $5.38$ digits per unit of $x$ between $x = 13$ and $50$, close to the prolate asymptotic of CCM ($5.39$) and

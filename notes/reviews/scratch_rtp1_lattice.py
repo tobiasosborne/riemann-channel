@@ -188,3 +188,24 @@ for dl in (dc, dc / 10, dc / 100):
 sl = mp.log(ov[0] / ov[2]) / mp.log(100)
 check(1.9 < sl < 2.15 and abs(ov[0] - 4.6e-5) < 0.2e-5, f'{{2}} -> {{2,3}}, A = 1, delta = {dc}, /10, /100: 1 - overlap = {[mp.nstr(x,3) for x in ov]} (lane A2: 4.6e-5, 4.2e-7, 4.1e-9); slope {mp.nstr(sl,3)}')
 print(f'# checks: {NCHK[0]} run, {NCHK[1]} failed')
+# ---- appended in the re-verdict pass: does the pole kernel factorise over places? ----
+# P_full[alpha,beta] = 2 cosh((t_a - t_b)/2) c^2 / ||phi||^2 = c^2/||phi||^2 (X Y^T + Y X^T), X_a = e^{t_a/2} = prod_p p^{a_p/2}, Y = 1/X.
+# Each of the two terms is a tensor product over places; their sum is a rank-two operator that is NOT a tensor product.
+# Test: Schmidt defect of the minimal eigenvector of (a) G, (b) G with the mixed archimedean part removed
+# (= Kronecker sum of the pole-free one-prime forms + the FULL pole matrix), (c) G with the mixed pole part removed.
+for S, A, dl in (((2, 3), 1, 0.06936), ((2, 3), 2, 0.01232), ((2, 3, 5), 1, 0.01475)):
+    pts, G, parts, E, V, _ = results[(S, A, dl)]
+    Ga = G.copy(); Gp = G.copy()
+    for (i, j), (po, ar, pr, mx) in parts.items():
+        if mx: Ga[i, j] = po; Gp[i, j] = -ar
+    t = [sum(a * mp.log(p) for a, p in zip(pt, S)) for pt in pts]
+    cd2n = 2 * c_delta(mp.mpf(dl)) ** 2 / (mp.mpf(dl) * R10)
+    Pf = mp.matrix(len(pts), len(pts))
+    for i in range(len(pts)):
+        for j in range(len(pts)): Pf[i, j] = mp.cosh((t[i] - t[j]) / 2) * cd2n
+    sv = mp.svd_r(Pf, compute_uv=False)
+    rank2 = sum(1 for x in sv if x > mp.mpf(10) ** -20 * max(sv)) == 2
+    dG = schmidt(V[0], pts, S, A); dA = schmidt(eig(Ga)[1][0], pts, S, A); dP = schmidt(eig(Gp)[1][0], pts, S, A)
+    check(rank2 and dA > dG / 10, f'S={S} A={A}: full pole matrix has rank 2 ({rank2}) but is not a tensor product; Schmidt defect of v_min: G {mp.nstr(dG,3)}, '
+          f'G minus mixed arch (Kronecker sum + FULL pole) {mp.nstr(dA,3)}, G minus mixed pole {mp.nstr(dP,3)} -> the pole alone generates inter-place correlation')
+print(f'# checks (with appendix): {NCHK[0]} run, {NCHK[1]} failed')
