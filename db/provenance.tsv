@@ -188,3 +188,55 @@ prov:deninger05-lift-misleading	math/0505354	main.tex	1230	The construction of $
 prov:deninger18-h0	1807.06400	main.tex	512	We also show the somewhat stronger statement that the zeroth ``foliation cohomology'' of $(X_0 , \Fh)$ is one dimensional.	cit:deninger-2018-connected-h0
 prov:deninger18-no-analytic	1807.06400	main.tex	559	we have yet to define analytical structures on our spaces and in the $p$-adic case even a topology.	cit:deninger-2018-no-analytic
 prov:deninger18-adeles	1807.06400	main.tex	2363	Thus $\tX = \ceX (\C) \times \R^{> 0}$ maps naturally and $\Q^{> 0}$-equivariantly to $\A^{> 0} = \A_f \times \R^{> 0} \subset \A$ with its $\Q^{> 0}$-action.	cit:deninger-2018-adeles
+prov:bomb00-yoshida-log2	bombieri-2000	paper.txt	111-112	of this functional for functions supported in a fixed interval [−t; t ] can be reduced to a finite calculation (depending on t ), and verifies this positivity for t = (log 2)=2.	cit:yoshida-short-support
+prov:bomb00-abstract-small-t	bombieri-2000	paper.txt	51-52	prove again Yoshida’s theorem that it is positive definite if t is sufficiently small.	cit:bombieri-short-support
+prov:bomb00-thm12	bombieri-2000	paper.txt	2649	Theorem 12. If F (x) has compact support in an interval I of length |I | < log 2 we have	cit:bombieri-short-support
+prov:bomb00-no-primes	bombieri-2000	paper.txt	2660-2661	a < log 2. Then G (x) is supported in [−a; a] ⊂ (− log 2; log 2). Thus in the Explicit Formula as above for T [G ], the contribution of the sum involving Λ(n) vanishes.	cit:bombieri-short-support
+prov:bomb00-digamma-asymp	bombieri-2000	paper.txt	2693	( + i ) = log+ |v | + O(1);	cit:bombieri-short-support
+prov:bomb00-prime-at-infinity	bombieri-2000	paper.txt	117-119	It is noteworthy that the proof of the first result hinges on the special structure of the term for the «prime at infinity» in the Explicit Formula.	cit:bombieri-short-support
+prov:bomb00-neg-eigen	bombieri-2000	paper.txt	54-56	if the Riemann Hypothesis is false but only with finitely many non-trivial zeros off the critical line we show that the number of negative eigenvalues is precisely one-half of the number of zeros failing to satisfy the Riemann Hypothesis, provided the truncation is big enough.	cit:bombieri-negative-eigenvalues
+prov:yosh92-log2-intro	yoshida-1992	paper.txt	122-123	faithfully, when a= log 2/2: We find ( , )IK(a) is positive definite for a :::; log 2/2 (Theorem 1).	cit:yoshida-short-support
+prov:yosh92-sec6	yoshida-1992	paper.txt	1215	Let k = Q and a= log 2/2. In this section, we shall prove	cit:yoshida-short-support
+prov:yosh92-thm1	yoshida-1992	paper.txt	1740	Theorem 1. Let a= log 2/2. We have	cit:yoshida-short-support
+prov:yosh92-thm1-equality	yoshida-1992	paper.txt	1744	where equality holds if and only if cp = 0.	cit:yoshida-short-support
+prov:yosh92-computer	yoshida-1992	paper.txt	1690-1691	every diagonal entries are positive at the final step. This fact can be verified rather easily on a computer.	cit:yoshida-short-support
+prov:yosh92-small-a	yoshida-1992	paper.txt	64	is positive definite if a is sufficiently small.	cit:yoshida-short-support
+prov:yosh92-local-means-support	yoshida-1992	paper.txt	343	§2. Local positive definiteness	cit:yoshida-short-support
+prov:yosh92-t0	yoshida-1992	paper.txt	1265	We have t 0 = 2.0320 · · ·.	cit:archimedean-symbol-sign
+prov:cc20-weil-ineq-1half-2	2006.13771	weil-compo.tex	116	\textit{For any smooth,  positive definite function $f$ with support in the  interval $(1/2,2)$ and whose Fourier transform vanishes at $\pm \frac i2$ one has: $W_\infty(f)\geq 0$ where $W_\infty:=-W_\R$.}	cit:yoshida-short-support
+prov:cc20-proved-by-yoshida	2006.13771	weil-compo.tex	118	This result was proved in \cite{yoshida} by reducing it to an explicit computation.	cit:yoshida-short-support
+prov:cc20-bombieri-small	2006.13771	weil-compo.tex	2054	In \cite{EB0} and \cite{Burnol}  a positivity result for the distribution ${\mathcal W}_\infty=-{\mathcal W}_\R$ is proven, (for test functions with support in a small enough interval around $1$),	cit:bombieri-short-support
+prov:cc20-hplus	2006.13771	weil-compo.tex	2060	h_+(\tau)=-\log \pi + \Re(\lambda(1/4 +i\tau/2)), \qquad \lambda(z)=\Gamma'(z)/\Gamma(z).	cit:archimedean-symbol-sign
+prov:landau12-satz1	landau-1912	paper.ocr.txt	236	Satz 1: Es ist bei festem «>1	cit:landau-formula
+prov:landau12-satz3	landau-1912	paper.ocr.txt	549	Satz 3: Bei festem x auf der Strecke O<x<1 ist	cit:landau-formula
+prov:fz05-landau	math/0405459	fz.tex	134-137	an old formula of Landau \cite{L}, which states that for each fixed $x>1$, \be\label{eq:Landau} \sum_{0<\gamma\le T} x^{\rho} = -\frac{T}{2\pi} \Lambda(x) + O(\log T). \ee	cit:landau-formula
+prov:fz05-uniform	math/0405459	fz.tex	513-514	This is a uniform version of a theorem of Landau \cite{L}, and the proof is nearly identical to the proof of Theorem 1 of Gonek (\cite{G},	cit:gonek-uniform-landau
+prov:klp00-landau	klp-2000	paper.txt	22	In 1911, Landau [11] proved that for any fixed x > 1	cit:landau-formula
+prov:klp00-gonek	klp-2000	paper.txt	36	this direction was obtained by Gonek [4], [5]. He proved that for T > 1	cit:gonek-uniform-landau
+prov:klp00-gonek-error	klp-2000	paper.txt	38	+ O(x log 2xT log log 3x)	cit:gonek-uniform-landau
+prov:klp00-gonek-bracket	klp-2000	paper.txt	45	where < x > denotes the distance between x and the nearest prime power other that x itself.	cit:gonek-uniform-landau
+prov:burg75-principle	burg-1975	ch1.ocr.txt	34-35	the maximum entropy stationary time series is the gaussian time series whose spectrum maximizes (I-1) under the constraint equations (I-2).	cit:burg-maxent
+prov:burg75-exist-unique	burg-1975	ch2a.ocr.txt	349-350	Fourth, from the derivation, it is clear that the maximum entropy solution for any consistent set of constraint equations (II-2) will always exist	cit:burg-maxent
+prov:burg75-disc	burg-1975	ch2b.ocr.txt	303-304	the value of R(N) in the complex plane lies on or inside a circle of radius	cit:burg-maxent
+prov:burg75-radii	burg-1975	ch2b.ocr.txt	312-314	the radii of the sequence of circles cannot t increase and will decrease unless the c's are zero.	cit:burg-maxent
+prov:burg75-centre	burg-1975	ch2b.ocr.txt	337-340	if one extends the autocorrelation function to infinity by always selecting the center value for each consecutive lag value, one generates the autocorrelation function corresponding to the maximum entropy spectrum.	cit:burg-maxent
+prov:burg75-zero-reflection	burg-1975	ch2b.ocr.txt	607-609	infinite extension of the autocorrelation function corresponding to setting all the rest of the reflection coefficients to zero is generated by using the prediction error filter in a feedback operation.	cit:burg-maxent
+prov:va15-maxent-completion	vandenberghe-andersen-2015	paper.txt	5035-5036	The solution W is also called the maximum entropy completion of A, since it maximizes the entropy	cit:maxdet-completion
+prov:va15-inverse-pattern	vandenberghe-andersen-2015	paper.txt	5066-5067	The two equalities show that the inverse of the maximum determinant completion W has sparsity pattern E.	cit:maxdet-completion
+prov:va15-unique	vandenberghe-andersen-2015	paper.txt	5365-5366	maximum determinant positive definite completion of X. It is also the unique positive definite solution of the nonlinear equation	cit:maxdet-completion
+prov:va15-dempster	vandenberghe-andersen-2015	paper.txt	7597	[68] A. P. Dempster. Covariance selection. Biometrics, 28:157–175, 1972.	cit:maxdet-completion
+prov:va15-gjsw	vandenberghe-andersen-2015	paper.txt	7723-7725	[108] R. Grone, C. R. Johnson, E. M Sá, and H. Wolkowicz. Positive definite completions of partial Hermitian matrices. Linear Algebra and Appl., 58:109–124, 1984.	cit:maxdet-completion
+prov:coffey05-li-formula	math-ph/0505052	lambda2.txt	177-179	$$\lambda_n=-\sum_{m=1}^n {n \choose m} \eta_{m-1}+\sum_{m=2}^n (-1)^m {n \choose m} (1-2^{-m})\zeta(m)+1-{n \over 2}(\gamma +\ln \pi + 2\ln 2), \eqno(10)$$	cit:li-arithmetic-formula
+prov:coffey05-eta	math-ph/0505052	lambda2.txt	187	$${{\zeta'(s)} \over {\zeta(s)}}=-(s-1)^{-1}-\sum_{p=0}^\infty \eta_p (s-1)^p,	cit:li-arithmetic-formula
+prov:coffey05-bl-attrib	math-ph/0505052	lambda2.txt	220-221	Equation (10) has been derived alternatively in Ref. \cite{bombieri} by a method connected with A. Weil's explicit formula.	cit:li-arithmetic-formula
+prov:lag02-problemE	math/0008177	main.tex	101-103	\sum_{d|n} d \le H_n + \exp (H_n) \log (H_n), \eeq with equality only for $n=1$.	cit:rh-pi01
+prov:lag02-thm	math/0008177	main.tex	118	Problem $E$ is equivalent to the Riemann hypothesis.	cit:rh-pi01
+prov:ya16-rh-machine	1605.04343	busybeaver_arxiv_version.tex	65	We also use Laconic to design two Turing machines, $G$ and $R$, that halt if and only if there are counterexamples to Goldbach's Conjecture and the Riemann Hypothesis, respectively.	cit:rh-pi01
+prov:ya16-dmr-statement	1605.04343	busybeaver_arxiv_version.tex	293	$$\left(\left(\sum_{k \le \delta(n)} \frac{1}{k}\right) - \frac{n^2}{2}\right)^2 < 36n^3$$	cit:rh-pi01
+prov:ya16-dmr-bib	1605.04343	busybeaver_arxiv_version.tex	566	\bibitem{riemann} Browder, F. ``Mathematical Developments Arising from Hilbert Problems.'' American Mathematical Society. Volume 28, Part 1.	cit:rh-pi01
+prov:franchini17-eafm	1609.02100	Chap-XXXModel.tex	591	= N \left( {1 \over 4} - \ln 2 \right) \equiv E_{\rm AFM} \; ,	cit:hulthen-energy
+prov:franchini17-hulthen	1609.02100	Chap-XXXModel.tex	593	This result was originally derived by Hulthen \cite{hulthen38}.	cit:hulthen-energy
+prov:franchini17-afm-sign	1609.02100	Chap-XXXModel.tex	30	$J >0$ favors ferromagnetic alignment, while $J<0$ gives an antiferromagnet.	cit:hulthen-energy
+prov:ssnt03-hulthen	cond-mat/0302564	main.tex	771-773	The result \eqref{1st} comes from the ground state energy of \eqref{Hami} derived by Hulth\'{e}n in 1938 \cite{hult}.	cit:hulthen-energy
+prov:coste02-ts-second	coste-2002	paper.txt	178-180	Theorem 2.3 (Tarski-Seidenberg – second form) Let A be a semialge- braic subset of Rn+1 and π : Rn+1 → Rn , the projection on the first n coordi- nates. Then π(A) is a semialgebraic subset of Rn .	cit:tarski-seidenberg
+prov:coste02-ts-third	coste-2002	paper.txt	258-260	Theorem 2.6 (Tarski-Seidenberg – third form) If Φ(X1 , . . . , Xn ) is a first-order formula, the set of (x1 , . . . , xn ) ∈ Rn which satisfy Φ(x1 , . . . , xn ) is semialgebraic.	cit:tarski-seidenberg

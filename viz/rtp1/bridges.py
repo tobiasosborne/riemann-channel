@@ -8,7 +8,8 @@
   and 4, and everything from its measurement loop on (Sections 5-7, including the only place where it
   touches zeros of zeta).  The functions are then called exactly as lane A2 calls them.
 * `defs(path)`: the same, for a script whose functions only are wanted (`scripts/weil_window_extension.py`).
-* `zst_ab(X, N, prec)`: `(a_n, b_n)` of the zst window form at `x = X` (prime powers `<= X`), from
+* `zst_ab(X, N, prec, window=None)`: `(a_n, b_n)` of the zst window form at `x = X` (prime powers `<= X`), or at
+  `x = window` with prime cutoff `X` when `window` is given (`X = 1`: pole plus archimedean only), from
   `zst_riemann_ab` in `zst/build/libzst.a`, through a small C printer compiled at run time in a temporary
   directory (the approach of lane A2's consistency check), printing enough digits for `prec` bits.  zst is
   not modified.  Returns decimal strings (midpoints) and the ball radii.
@@ -77,7 +78,7 @@ int main(int argc, char **argv)
     ulong X = strtoul(argv[1], 0, 10); slong N = atol(argv[2]); slong prec = atol(argv[3]);
     slong digits = atol(argv[4]);
     arb_t x; arb_ptr a = _arb_vec_init(N + 1), b = _arb_vec_init(N + 1); slong n;
-    arb_init(x); arb_set_ui(x, X);
+    arb_init(x); arb_set_ui(x, argc > 5 ? strtoul(argv[5], 0, 10) : X);
     zst_riemann_ab(a, b, N, x, X, prec);
     for (n = 0; n <= N; n++) {
         flint_printf("%wd ", n);
@@ -111,11 +112,12 @@ def _printer():
     return exe
 
 
-def zst_ab(X, N, prec):
-    """(a, b, ra, rb): lists of decimal strings a_n, b_n (n = 0..N) and float radii, from zst at prec bits"""
+def zst_ab(X, N, prec, window=None):
+    """(a, b, ra, rb): lists of decimal strings a_n, b_n (n = 0..N) and float radii, from zst at prec bits
+    (window x = X, or x = window with prime cutoff X)"""
     digits = int(prec * 0.30103) + 5
-    out = subprocess.run([_printer(), str(X), str(N), str(prec), str(digits)], capture_output=True, text=True,
-                         check=True).stdout
+    argv = [_printer(), str(X), str(N), str(prec), str(digits)] + ([str(window)] if window is not None else [])
+    out = subprocess.run(argv, capture_output=True, text=True, check=True).stdout
     a, b, ra, rb = [], [], [], []
     for line in out.strip().splitlines():
         t = line.split()

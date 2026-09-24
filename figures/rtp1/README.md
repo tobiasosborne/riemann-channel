@@ -242,7 +242,7 @@ Pending lane B2.
 
 ### The kinematic commutant (pending lane B2) (placeholder)
 
-Placeholder: not drawn. lane B2 had not reported when this build ran: notes/rtp-round-1/lane-B2.md does not exist. In-progress files were present (outputs/rtp1_commutant.txt, scripts/rtp1_calibration.py, scripts/rtp1_commutant.py) and were not used. Wanted (viz-brief.md): A 3-dimensional slice of the window's positive cone with the kinematic subspace, the maximum-determinant element from pole and archimedean data only, and the true form.
+Placeholder: not drawn. lane B2's lane file exists, but this package has no drawing for it yet; re-run lane V after lane B2 (and its review) to draw it. Wanted (viz-brief.md): A 3-dimensional slice of the window's positive cone with the kinematic subspace, the maximum-determinant element from pole and archimedean data only, and the true form.
 
 Script: `viz/rtp1/step4_commutant.py`.
 
@@ -252,7 +252,7 @@ Pending lane B2.
 
 ### The calibration case (pending lane B2) (placeholder)
 
-Placeholder: not drawn. lane B2 had not reported when this build ran: notes/rtp-round-1/lane-B2.md does not exist. In-progress files were present (outputs/rtp1_commutant.txt, scripts/rtp1_calibration.py, scripts/rtp1_commutant.py) and were not used. Wanted (viz-brief.md): The learning curves of Step 1 for a Ramanujan graph or the genus-one curve next to those of zeta.
+Placeholder: not drawn. lane B2's lane file exists, but this package has no drawing for it yet; re-run lane V after lane B2 (and its review) to draw it. Wanted (viz-brief.md): The learning curves of Step 1 for a Ramanujan graph or the genus-one curve next to those of zeta.
 
 Script: `viz/rtp1/step5_calibration.py`.
 
