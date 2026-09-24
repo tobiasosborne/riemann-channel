@@ -1,0 +1,101 @@
+[
+ {
+  "caption": "Lane A2's Gram matrix G_(alpha beta) = QW(phi_alpha, phi_beta)/||phi||^2 on {2,3}, A = 2 (lattice points (a, b) = exponents of 2 and 3), at delta = 0.01232 = 0.9 delta_max. Left pair, one scale: G and its prime-free part (pole plus archimedean; the difference is the 2- and 3-combs on the axis-type entries). Right triple, one scale: the mixed entries (lattice points differing in both coordinates), and their pole and archimedean parts, which sum to them exactly: the mixed entries carry no prime term. The pole part is positive and dominates; the archimedean part is negative (lane A2's correction of the note: the cross-place information is pole plus archimedean, pole first). Entries from lane A2's certified routines (arb balls, 200 bits), midpoints plotted; lambda_min 0.76015 matches its table.",
+  "id": "s2_gram",
+  "kind": "certified (lane A2 routines, arb midpoints)",
+  "panels": [
+   "G",
+   "prime-free part",
+   "mixed entries",
+   "pole part of mixed",
+   "archimedean part of mixed"
+  ],
+  "script": "viz/rtp1/step2_prime_content.py",
+  "sources": [
+   "scripts/rtp1_prime_content.py (build)",
+   "outputs/rtp1_prime_content.txt (lambda_min check)"
+  ],
+  "step": "Step 2",
+  "title": "Gram matrix of the {2,3} lattice and its mixed entries"
+ },
+ {
+  "caption": "The certified minimal eigenvector of G on the {2,3} lattice (grid a = exponent of 2, b = exponent of 3), for A = 2 (delta = 0.01232) and A = 3 (delta = 0.004147), next to the eigenvector of G with the mixed entries set to zero, which by lane A2's lemma 4.1 is exactly the Kronecker sum of the one-prime forms, so its minimal eigenvector is the product state v_(2) x v_(3) (checked: Schmidt defect < 1e-12). Right: the difference, on its own diverging scale. The inter-place part of the eigenvector is O(delta^2) in the Schmidt defect (9.7e-4 and 1.0e-3 here) and the difference is O(delta). Lane A2 routines, arb midpoints.",
+  "id": "s2_eigvec_23",
+  "kind": "certified (lane A2 routines, arb midpoints)",
+  "panels": [
+   "v_min(G) (certified)",
+   "product state (certified)",
+   "difference (derived)"
+  ],
+  "script": "viz/rtp1/step2_prime_content.py",
+  "sources": [
+   "scripts/rtp1_prime_content.py (build, min_eig)",
+   "outputs/rtp1_prime_content.txt (lambda and Schmidt defect checks)"
+  ],
+  "step": "Step 2",
+  "title": "Minimal eigenvector on the {2,3} lattice vs the product state"
+ },
+ {
+  "caption": "As the previous figure for {2,3,5}, A = 2, delta = 0.001001 (0.9 delta_max): the 27 components shown as three 3 x 3 slices c = 0, 1, 2 (exponent of 5); left the certified minimal eigenvector of G, middle the product state of the Kronecker sum (mixed entries zeroed), right their difference. Schmidt defect 3.7e-4 (lane A2: 3.66e-4).",
+  "id": "s2_eigvec_235",
+  "kind": "certified (lane A2 routines, arb midpoints)",
+  "panels": [
+   "v_min(G) slices (certified)",
+   "product state slices (certified)",
+   "difference (derived)"
+  ],
+  "script": "viz/rtp1/step2_prime_content.py",
+  "sources": [
+   "scripts/rtp1_prime_content.py (build, min_eig)",
+   "outputs/rtp1_prime_content.txt (lambda and Schmidt defect checks)"
+  ],
+  "step": "Step 2",
+  "title": "Minimal eigenvector on the {2,3,5} lattice (three slices)"
+ },
+ {
+  "caption": "Lane A2's certified measurements at delta = 0.9, 0.3, 0.1 delta_max (panels a, b) and at a common delta_c = 0.9 delta_max({2,3,5}, A), delta_c/10, delta_c/100 (panel c). Colour: prime set (or the step that adds a prime); marker: A. (a) The gap lambda(G_nomix) - lambda(G) (negative: the mixed entries raise lambda_min) is linear in delta; lane A2 plots it as gap/delta converging, here log-log with a slope-1 guide. (b) The Schmidt defect of the minimal eigenvector across the cut {p} | rest, with a slope-2 guide. (c) 1 - overlap between the old eigenvector and the restriction of the new one to the old sublattice, for {2} -> {2,3} and {2,3} -> {2,3,5}: fitted slopes 2.00 to 2.06. Guides are drawn, not fitted.",
+  "id": "s2_scaling",
+  "kind": "certified data",
+  "panels": [
+   "gap_mix (certified)",
+   "Schmidt defect (certified)",
+   "eigenvector movement (certified)"
+  ],
+  "script": "viz/rtp1/step2_prime_content.py",
+  "sources": [
+   "outputs/rtp1_prime_content.txt (sections 5b and 6)"
+  ],
+  "step": "Step 2",
+  "title": "Scaling of the inter-place effects with delta"
+ },
+ {
+  "caption": "Lane A2's admissible delta_max(S, A) = (1/2) min |log k - log r| over lattice ratios r and prime powers k != r (log scale), for S = {2}, {2,3}, {2,3,5}. Each point is annotated with its binding pair r vs k: a lattice ratio next to a foreign prime power (6 vs 7, 36 vs 37, 108 vs 109, 1296 vs 1297, ..., 405000 vs 405001). delta_max falls roughly like the reciprocal of the largest lattice ratio, which is why the inter-place effects this channel can see are small. {2}, A = 6 repeats the A = 5 value (32 vs 31). Certified balls, radius < 1e-59.",
+  "id": "s2_deltamax",
+  "kind": "certified data",
+  "panels": [
+   "delta_max (certified)"
+  ],
+  "script": "viz/rtp1/step2_prime_content.py",
+  "sources": [
+   "outputs/rtp1_prime_content.txt (section 2)"
+  ],
+  "step": "Step 2",
+  "title": "Admissible delta_max against A"
+ },
+ {
+  "caption": "Comparison (zeros used), lane A2.4: an implementation check of the explicit formula in this normalisation, never an input to a form. (a) The zero-side partial sums Z_M = sum_(k<=M) 2 cos(gamma_k D) phihat_delta(gamma_k)^2 for two Gram entries at delta = 0.1 (the ratio r = 2, which carries the 2-comb, and r = 3/2, pole plus archimedean only), against the certified prime-side values Psi from lane A2's output (horizontal lines). The curves are recomputed in floating point (certified zeros from python-flint, Gauss-Legendre transform of the bump) and reproduce the certified errors to their 3 printed digits wherever those exceed 1e-14. (b) |Psi - Z_M|: dots are lane A2's certified values for all ten entries (delta = 0.1 circles, 0.05 squares), lines the floating curves (drawn down to 1e-14, the floating-point floor). The error decays like exp(-2.2 sqrt(delta gamma_M)) (lane A2's fit).",
+  "id": "s2_explicit",
+  "kind": "comparison (zeros used)",
+  "panels": [
+   "comparison (zeros used): partial sums (floating) vs certified Psi",
+   "comparison (zeros used): certified truncation errors + floating curves"
+  ],
+  "script": "viz/rtp1/step2_prime_content.py",
+  "sources": [
+   "outputs/rtp1_prime_content.txt (section 7)",
+   "python-flint acb.zeta_zeros"
+  ],
+  "step": "Step 2",
+  "title": "Explicit-formula comparison (zeros used)"
+ }
+]

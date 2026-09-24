@@ -1,0 +1,15 @@
+[
+ {
+  "caption": "Placeholder: not drawn. lane B2 had not reported when this build ran: notes/rtp-round-1/lane-B2.md does not exist. In-progress files were present (outputs/rtp1_commutant.txt, scripts/rtp1_calibration.py, scripts/rtp1_commutant.py) and were not used. Wanted (viz-brief.md): A 3-dimensional slice of the window's positive cone with the kinematic subspace, the maximum-determinant element from pole and archimedean data only, and the true form.",
+  "id": "s4_placeholder",
+  "kind": "placeholder",
+  "panels": [],
+  "placeholder": true,
+  "script": "viz/rtp1/step4_commutant.py",
+  "sources": [
+   "notes/rtp-round-1/lane-B2.md (absent)"
+  ],
+  "step": "Step 4",
+  "title": "The kinematic commutant (pending lane B2)"
+ }
+]

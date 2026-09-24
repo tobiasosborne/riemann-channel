@@ -139,7 +139,7 @@ def fig_testfns():
     L = math.log(13)
     t = np.linspace(-L / 2, L / 2, 1200)
     ns = (0, 1, 2, 5)
-    d = 0.07707533991                      # delta_max({2,3}, A = 1), lane A2 table (certified)
+    d = [r["dmax"] for r in C.a2_admissible() if r["S"] == (2, 3) and r["A"] == 1][0]   # lane A2 table (certified)
     l6, l5, l7 = math.log(6), math.log(5), math.log(7)
     xs = np.linspace(1.5, 2.1, 1500)
     bump = phi(xs - l6, d)
@@ -281,7 +281,7 @@ def fig_convolution():
         for i, (d, lab) in enumerate(deltas):
             for c0 in (l4, l6):
                 b = phi(xs - c0, d)
-                a1.fill_between(xs, 0, b, color=S(i + 1), alpha=T["wash"], lw=0)
+                a1.fill_between(xs, 0, b, color=S(i + 1), alpha=T["wash"], lw=0, rasterized=True)
                 a1.plot(xs, b, color=S(i + 1), label=lab if c0 == l4 else None)
         for k in (3, 4, 5, 7, 8):
             a1.plot([math.log(k)] * 2, [0, 0.55], color=T["muted"], lw=0.9)
@@ -295,7 +295,7 @@ def fig_convolution():
         a1.set_yticks([0, 0.2])
         for i, (d, lab) in enumerate(deltas):
             q = R(ys - D, d) + R(ys + D, d)
-            a2.fill_between(ys, 0, q / q.max(), color=S(i + 1), alpha=T["wash"], lw=0)
+            a2.fill_between(ys, 0, q / q.max(), color=S(i + 1), alpha=T["wash"], lw=0, rasterized=True)
             a2.plot(ys, q / q.max(), color=S(i + 1))
         for k in (2, 3):
             lk = math.log(k)

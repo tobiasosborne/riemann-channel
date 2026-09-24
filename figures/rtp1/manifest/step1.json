@@ -1,0 +1,119 @@
+[
+ {
+  "caption": "Heat maps of the Loewner window matrix tau_nm = (b_n - b_m)/(n - m), tau_nn = a_n, on |n| <= 30 at x = 13 (left), and of its even block (basis V_0, (V_j + V_-j)/sqrt2) and odd block ((V_j - V_-j)/sqrt2) (zst/src/blocks.c). Blue positive, red negative, signed-log colour scale. Recomputed in floating point for display from zst's certified (a_n, b_n) (zst_riemann_ab at 300 bits, midpoints); the block decomposition is checked against the full matrix. The large diagonal a_n + b_n/n at high n dominates; the minimal even eigenvalue near this N (lane A1, certified: 1.57e-39 at N = 20, 9.46e-54 at N = 40) is invisible at this scale.",
+  "id": "s1_window",
+  "kind": "recomputed (floating point)",
+  "panels": [
+   "full tau (recomputed, floating point)",
+   "even block (recomputed)",
+   "odd block (recomputed)"
+  ],
+  "script": "viz/rtp1/step1_dilation.py",
+  "sources": [
+   "zst_riemann_ab (zst/build/libzst.a) via viz/rtp1/bridges.py"
+  ],
+  "step": "Step 1",
+  "title": "The window matrix tau, x = 13, N = 30"
+ },
+ {
+  "caption": "Left: the minimal even eigenvector xi of the window form, drawn as the function sum_j v_j phi_j(log u) on the centred window (phi_0 = L^(-1/2), phi_j = (-1)^j sqrt2 L^(-1/2) cos(2 pi j log u / L); the convention of lane A1's overlap_f), at x = 13, 25, 50 with N = 60, 150, 360 (at or above lane A1's saturation N_sat ~ 1.7 x log x). Right: the absolute coefficients against j/(x log x). Recomputed for display: zst's (a_n, b_n) at 700/1100/1700 bits, zst's even block, inverse iteration in multiprecision midpoint arithmetic; the Rayleigh quotients (1.01e-58, 6.78e-123, 2.27e-257) reproduce lane A1's certified eps_N, which is the check that the eigenvector is the right one. The three functions nearly coincide in log u (lane A1's certified intrinsic overlap between x = 13 and x = 50 at N = 60 is 0.9989): the ground state sits well inside every window and is fixed early. No zeros used.",
+  "id": "s1_ground",
+  "kind": "recomputed (multiprecision midpoint)",
+  "panels": [
+   "xi as a function (recomputed, multiprecision)",
+   "coefficients (recomputed)"
+  ],
+  "script": "viz/rtp1/step1_dilation.py",
+  "sources": [
+   "zst_riemann_ab via viz/rtp1/bridges.py",
+   "outputs/rtp1_a1_axisN_x13.txt, _x25.txt, _x50.txt (eps check)"
+  ],
+  "step": "Step 1",
+  "title": "The ground state of the window, x = 13, 25, 50"
+ },
+ {
+  "caption": "Lane A1.2 at fixed x = 13, 25, 50 (certified ball LDL^T; midpoints plotted). (a) Delta I_N, the log-det gain of the bordering |n| <= N -> N+1 (Gaussian mutual information of the new mode pair with the old ones). Circles: N_sat = argmin log det = 56, 134, 352, i.e. about 1.7 x log x. Diamonds: the benchmark's empirical 7.5 x, which lane A1 finds is not the saturation point (it agrees only near x = 50). (b) The same against N/(x log x): the three curves fall together near 1.7. (c) The half-width r_j of the admissible interval of the next datum b_(N+1) (Lemma A1.1'): tiny below saturation, O(1) above it at every x. (d) The position |tau_j| of the true b_(N+1) in that interval (dots) and its 9-row running mean (lines): on the boundary (|tau| ~ 1, the bordered block is nearly singular) below saturation, interior above.",
+  "id": "s1_axisN",
+  "kind": "certified data",
+  "panels": [
+   "Delta I_N (certified)",
+   "collapse (certified)",
+   "r_j (certified)",
+   "|tau_j| (certified; running mean derived)"
+  ],
+  "script": "viz/rtp1/step1_dilation.py",
+  "sources": [
+   "outputs/rtp1_a1_axisN_x13.txt",
+   "outputs/rtp1_a1_axisN_x25.txt",
+   "outputs/rtp1_a1_axisN_x50.txt"
+  ],
+  "step": "Step 1",
+  "title": "Axis N: Delta I_N, its saturation, and the envelope"
+ },
+ {
+  "caption": "Lane A1.3, CCM protocol: N fixed (60 and 120), x runs through the prime powers, and with it the window L = log x (so every (a_n, b_n) changes between knots; the new prime power enters with weight 0 at x = k). (a) certified eps_N(x), log scale: it falls at 5.0 to 5.3 digits per unit of x (the e^(-4 pi x) law is 5.46) only while N >= N_sat(x) ~ 1.7 x log x, then flattens (N = 60 beyond x ~ 13). (b) 1 - overlap of the minimal eigenvector with the one at the final x: circles use coefficient vectors (window rescaled), squares the intrinsic L^2(d*u) overlap on centred windows. (c) log det of the even block. Every stage is certified positive definite. Ticks: prime powers.",
+  "id": "s1_learning_ccm",
+  "kind": "certified data",
+  "panels": [
+   "eps_N(x) (certified)",
+   "overlaps (certified)",
+   "log det (certified)"
+  ],
+  "script": "viz/rtp1/step1_dilation.py",
+  "sources": [
+   "outputs/rtp1_a1_axisx_ccm_N60.txt",
+   "outputs/rtp1_a1_axisx_ccm_N120.txt"
+  ],
+  "step": "Step 1",
+  "title": "Learning curve along x, CCM protocol"
+ },
+ {
+  "caption": "Lane A1.3, fixed-window protocol (a partial-information form, not the CCM form except in its last row): L = log 50 and N = 60 held fixed, prime powers added one at a time. (a) The certified number of negative even eigenvalues against the number of prime powers included: 3 with no primes (pole plus archimedean only), up to 16, and 0 only when the last prime power 49 enters. (b) The certified minimal eigenvalue on a symmetric-log axis (linear below 1e-6): -1.37 with no primes, -5.66e-7 with every prime power except 49, +1.75e-116 at the end. (c) The overlap of the partial form's minimal eigenvector with the final one (2.7e-48 at X = 47). (d) log |det| of the even block. In this protocol the partial forms are not posteriors: the information arrives as a step at the last prime power.",
+  "id": "s1_learning_fixedL",
+  "kind": "certified data",
+  "panels": [
+   "negative-eigenvalue count (certified inertia)",
+   "lambda_min (certified)",
+   "overlap (certified)",
+   "log |det| (certified)"
+  ],
+  "script": "viz/rtp1/step1_dilation.py",
+  "sources": [
+   "outputs/rtp1_a1_axisx_fixedL_N60.txt"
+  ],
+  "step": "Step 1",
+  "title": "Learning curve along x, fixed-window protocol"
+ },
+ {
+  "caption": "Lane A1's kinematic envelope is the half-width r_j of the admissible interval of the next datum b_(N+1) (the Schur envelope of shard 08g, Lemma A1.1'). (a) Along x in the CCM protocol at N = 60 and 120: r_j (circles) against the certified eps_N (squares) and a reference line of slope e^(-4 pi x) through eps_120(13). r_j shrinks at about 0.7 digits per unit of x at N = 60 and only because N falls below N_sat(x); at saturated N it does not shrink at all (0.5 to 3.7 at x = 13, 25, 50; Step 1 axis-N figure). eps_N follows e^(-4 pi x) while N >= N_sat(x). (b) Comparison (zeros used): the certified bound on |z_1 - gamma_1| from the COMPARISON STEP blocks, against eps_N; the ratio is about 1e4 at every x and N. Lane A1's reading: the e^(-4 pi x) convergence is arithmetic (the residual of a cancellation using every prime power < x), not kinematic.",
+  "id": "s1_envelope",
+  "kind": "certified data; panel (b) comparison (zeros used)",
+  "panels": [
+   "envelope and eps (certified; the reference line is drawn, not fitted)",
+   "comparison (zeros used): |z_1 - gamma_1| (certified comparison step) and eps_N"
+  ],
+  "script": "viz/rtp1/step1_dilation.py",
+  "sources": [
+   "outputs/rtp1_a1_axisx_ccm_N60.txt",
+   "outputs/rtp1_a1_axisx_ccm_N120.txt"
+  ],
+  "step": "Step 1",
+  "title": "The envelope panel: r_j, eps_N, e^(-4 pi x) and the first-zero error"
+ },
+ {
+  "caption": "(a) Certified (lane A1, x = 13): for each N, the joint admissible interval of the next datum b_(N+1) given a_(N+1) and the window |n| <= N (Lemma A1.1', the exact analogue of the extension disc of prop:extension-disc), drawn in its own units: centre (circle) = the structured MaxEnt prediction, diamond = the true b_(N+1), edge = the singular enlargement (a bordered block with a kernel). Labels: half-width r_j and the log-det gain Delta I^s of the truth over the MaxEnt prediction. Below N_sat = 56 the truth sits on the edge; above it, inside. (b) Recomputed for display (multiprecision midpoint, x = 13, N = 60, even block): the unconstrained admissible set of Lemma A1.1, {(c, d): d - c^T G^(-1) c >= 0}, cut by the plane through the MaxEnt point (c = 0, d = d_true) that contains the Loewner line of admissible columns. The line crosses the set in the admissible interval; the point c = 0 is not on the line: the unstructured MaxEnt prediction is not a Loewner column (lane A1's correction). The recomputed Schur complement and half-width reproduce the certified s_e and r_e.",
+  "id": "s1_posterior",
+  "kind": "certified data + recomputed section",
+  "panels": [
+   "intervals (certified)",
+   "unstructured ellipsoid section (recomputed, labelled as such)"
+  ],
+  "script": "viz/rtp1/step1_dilation.py",
+  "sources": [
+   "outputs/rtp1_a1_axisN_x13.txt",
+   "zst_riemann_ab via viz/rtp1/bridges.py"
+  ],
+  "step": "Step 1",
+  "title": "The posterior of the next datum (Lemma A1.1')"
+ }
+]
