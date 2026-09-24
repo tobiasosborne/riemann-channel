@@ -238,23 +238,107 @@ Statements as lane B1 reports them (notes/rtp-round-1/lane-B1.md sections 1-2, b
 
 ## Step 4: the kinematic commutant (lane B2)
 
-Pending lane B2.
+Lane B2.1's certified dimension counts, prediction tables and lattice box, and the positive set of prime data drawn as exact planar sections (geometry recomputed for display from zst's data).
 
-### The kinematic commutant (pending lane B2) (placeholder)
+### Dimension counts of the kinematic conditions (`s4_dimensions`)
 
-Placeholder: not drawn. lane B2's lane file exists, but this package has no drawing for it yet; re-run lane V after lane B2 (and its review) to draw it. Wanted (viz-brief.md): A 3-dimensional slice of the window's positive cone with the kinematic subspace, the maximum-determinant element from pole and archimedean data only, and the true form.
+![Dimension counts of the kinematic conditions](s4_dimensions.png)
 
-Script: `viz/rtp1/step4_commutant.py`.
+Lane B2.1(a), certified (exact ranks over Q for N = 1..6, each equal to its closed form). Real dimension of the Hermitian forms on the span of V_n, |n| <= N, under the linear kinematic conditions: reality, commuting with the Weyl element gamma, and the Loewner condition [D, H] = |beta><eta| - |eta><beta| (eta = sum V_n fixed). A Loewner form is automatically real (Loewner + real = Loewner, 4N+1; also Hermitian + gamma + real = (N+1)^2, in the table), and Loewner + gamma has dimension 2N+1: exactly the data (a_0..a_N, b_1..b_N). The identity is an interior point of the positive cone, so positivity removes no dimension.
+
+- Panels: dimension against N, five spaces (certified)
+- Kind: certified data
+- Data source: `outputs/rtp1_commutant.txt`
+- Script: `viz/rtp1/step4_commutant.py`
+- Files: `s4_dimensions.png`, `s4_dimensions.svg`, `s4_dimensions.dark.png`, `s4_dimensions.dark.svg`, `data/s4_dimensions.csv`
+
+### The positive set of prime data, x = 13, N = 20 (`s4_positive_set`)
+
+![The positive set of prime data, x = 13, N = 20](s4_positive_set.png)
+
+Lane B2.1(b). P_N = {z : H0 + T(z) >= 0}: z = (u_0..u_20, v_1..v_20) the prime part of the Loewner data, H0 the pole + archimedean form (fixed). Recomputed for display: three exact planar sections of this 41-dimensional set, in Hilbert-Schmidt coordinates (so distances are true), evaluated on a grid in double from zst's data (x = 13, cutoff X = 1 and 13); the minimal-norm and PNT points are lane B2's printed coefficient vectors (4 decimals, so the minimal-norm point sits within 1e-4 of the boundary). (b1) The plane through 0 (no prime data: inadmissible), the truth and the minimal-norm element: the circle of radius 2.36 about 0 touches P_N at the minimal-norm element; the truth is a corner, the only admissible point on its own ray (B2: admissible multiples within 1 - 5.7e-36 .. 1 + 2.0e-38). (b2) The plane through 0, the truth and the identity: P_N contains z_true + C_N (the recession cone, drawn from the truth) and log det grows without bound along it, so no maximum-determinant element exists. (b3) The plane through the truth, the minimal-norm element and the PNT mean (the pole's density, inadmissible). Annotated numbers are lane B2's certified values.
+
+- Panels: (b1) section through 0, truth, minimal-norm (recomputed geometry); (b2) section through 0, truth, identity; log-det contours (recomputed geometry); (b3) section through truth, minimal-norm, PNT (recomputed geometry)
+- Kind: recomputed for display (geometry); marked points and annotations from lane B2's output
+- Data source: `outputs/rtp1_commutant.txt`; `zst (zst_riemann_ab via viz/rtp1/bridges.py)`
+- Script: `viz/rtp1/step4_commutant.py`
+- Files: `s4_positive_set.png`, `s4_positive_set.svg`, `s4_positive_set.dark.png`, `s4_positive_set.dark.svg`, `data/s4_positive_set.csv`
+
+### The weight box with the lattice known (`s4_lattice_box`)
+
+![The weight box with the lattice known](s4_lattice_box.png)
+
+Lane B2.1(d), certified outer bounds (LP duals re-verified at 100 digits). With the pole, the archimedean place and the possible positions log n, n = 2..12, fixed and the 11 weights w_n free, Weil positivity of the x = 13 window (N = 20) confines each weight to the drawn interval around Lambda(n)/sqrt(n), including the zero weights at the non-prime-powers 6, 10, 12. (c1) weights on their natural scale: the intervals are thinner than the markers. (c2) the intervals as deviations from the truth on a symmetric-log axis, labelled with their widths (1e-12 at n = 4 to 1.3e-3 at n = 12). (c3) the largest width over n <= 7, 10, 12 against N; for N >= 30 the widths are limited by lane B2's certificate construction, not by the set. The same positivity in the free Loewner coordinates leaves an unbounded set (Step 4 positive-set figure).
+
+- Panels: weights and intervals (certified); deviation intervals, symlog (certified); widths against N (certified)
+- Kind: certified data
+- Data source: `outputs/rtp1_commutant.txt`
+- Script: `viz/rtp1/step4_commutant.py`
+- Files: `s4_lattice_box.png`, `s4_lattice_box.svg`, `s4_lattice_box.dark.png`, `s4_lattice_box.dark.svg`, `data/s4_lattice_box.csv`
+
+### Captured fraction of the true prime data (`s4_capture`)
+
+![Captured fraction of the true prime data](s4_capture.png)
+
+Lane B2.1(c), certified (x = 13; Hilbert-Schmidt inner product on the window). (d1) Fraction of the true prime contribution captured by each prediction against N: the minimal-norm element captures 16%, 8.3%, 5.6%, 4.1%, 2.8% at N = 10, 20, 30, 40, 60. The grey curve is 5.59 / ||z_true||^2, derived from B2's columns: the correction positivity demands is fixed (norm about 2.37) while the truth's norm grows. (d2) Relative distance from the truth; the ball-relaxed maximum-determinant element is farther than predicting no prime data (1.25 to 1.39). (d3, d4) B2's coefficient table at N = 20: the minimal-norm prediction matches (u_1, u_2, v_1, v_2) to about 6%, misses u_0 (0 against -2.94) and is a smooth decaying tail where the true data are O(1) at every n; the ball max-det element raises every u_n by about 1 ("add the identity").
+
+- Panels: captured fraction against N (certified; reference curve derived); relative distance (certified); u_n at N = 20 (certified); v_n at N = 20 (certified)
+- Kind: certified data
+- Data source: `outputs/rtp1_commutant.txt`
+- Script: `viz/rtp1/step4_commutant.py`
+- Files: `s4_capture.png`, `s4_capture.svg`, `s4_capture.dark.png`, `s4_capture.dark.svg`, `data/s4_capture.csv`
 
 ## Step 5: the calibration case (lane B2)
 
-Pending lane B2.
+Lane B2.2's certified Ramanujan cubic graph G40 (78 atoms) next to lane A1's zeta curves: learning, the disc of the next datum, fixed-window inertia, and the graph prime number theorem. No spectral data of the graph is used.
 
-### The calibration case (pending lane B2) (placeholder)
+### Learning curves: G40 against zeta (`s5_learning`)
 
-Placeholder: not drawn. lane B2's lane file exists, but this package has no drawing for it yet; re-run lane V after lane B2 (and its review) to draw it. Wanted (viz-brief.md): The learning curves of Step 1 for a Ramanujan graph or the genus-one curve next to those of zeta.
+![Learning curves: G40 against zeta](s5_learning.png)
 
-Script: `viz/rtp1/step5_calibration.py`.
+Certified, lanes B2.2 and A1. (a) The certified Ramanujan cubic graph G40 (40 vertices, q = 2, R = 78 distinct atoms): lambda_min of the Toeplitz window form T_K against K, which is at once the window and the data cutoff (the analogue of lane A1's CCM axis x), at the rows lane B2 prints (every sixth K and K = 73..77). The top axis is the zeta-comparable window x_eq = 2^K. The curve is a power law in x_eq whose exponent steepens (lane B2's fitted exponents 0.44, 0.83, 1.56, 2.64 on K = 6..30, 30..54, 54..72, 72..77) and then collapses: lambda_min(T_78) = 0, a certified ball of radius 3.7e-175 containing 0. (b) Zeta, lane A1's certified eps_N(x) in the CCM protocol at N = 60 and 120, with an e^(-4 pi x) reference line through eps_120(13) (drawn, not fitted): positive at every x, no collapse. (c) Both against log10 of the window: the graph's power law is a straight line over 23 decades of x_eq; zeta falls 118 decades between x = 2 and 25. The two forms are normalised differently (graph nu_0 = 78, zeta O(1)); compare shapes, not heights.
+
+- Panels: G40 lambda_min against K and x_eq (certified); zeta eps_N(x) (certified; reference line drawn); both against log10 window (certified)
+- Kind: certified data
+- Data source: `outputs/rtp1_calibration.txt`; `outputs/rtp1_a1_axisx_ccm_N60.txt`; `outputs/rtp1_a1_axisx_ccm_N120.txt`
+- Script: `viz/rtp1/step5_calibration.py`
+- Files: `s5_learning.png`, `s5_learning.svg`, `s5_learning.dark.png`, `s5_learning.dark.svg`, `data/s5_learning.csv`
+
+### The disc of the next datum: G40 against zeta (`s5_disc`)
+
+![The disc of the next datum: G40 against zeta](s5_disc.png)
+
+Certified, lanes B2.2 and A1. (a) G40: the radius e_K = det T_K / det T_(K-1) of the disc of the next rescaled trace nu_(K+1) (prop:extension-disc; for Toeplitz data the disc is already the structured section), and the true trace's distance from the disc centre (the Levinson / MaxEnt prediction), |tau_K| e_K from lane B2's printed columns (checked against |nu_(K+1) - c_K| where the printed digits resolve it). The radius falls from nu_0 = 78 to 1.8e-7 and is 0 at K = 78. (b) The position |tau_K| of the truth in its disc at the printed rows, with lane B2's means over every K: interior until K = 77, on the edge there. (c) Zeta: the half-width r_j of the admissible interval of the next datum b_(N+1) against N at x = 13, 25, 50 (lane A1.2; circles N_sat): tiny below saturation, O(1) above it. (d) Zeta: |tau_j| (dots) and its 9-row running mean: on the edge below N_sat, interior above. The graph has no resolution axis; its analogue of N_sat is the collapse at K = R.
+
+- Panels: G40 disc radius and truth's distance (certified; distance derived); G40 |tau_K| (certified); zeta r_j (certified); zeta |tau_j| (certified; running mean derived)
+- Kind: certified data
+- Data source: `outputs/rtp1_calibration.txt`; `outputs/rtp1_a1_axisN_x13.txt`; `outputs/rtp1_a1_axisN_x25.txt`; `outputs/rtp1_a1_axisN_x50.txt`
+- Script: `viz/rtp1/step5_calibration.py`
+- Files: `s5_disc.png`, `s5_disc.svg`, `s5_disc.dark.png`, `s5_disc.dark.svg`, `data/s5_disc.csv`
+
+### Fixed-window inertia: G40 against zeta (`s5_inertia`)
+
+![Fixed-window inertia: G40 against zeta](s5_inertia.png)
+
+Certified, lanes B2.2 (G40, section 4) and A1.3 (zeta, fixed-window protocol). (a) G40, window K = 77: the certified number of negative eigenvalues of the partial form built from the kinematic data and the prime cycles of length <= P, for every P (bars), and at the printed P for window K = 38 (diamonds). One negative direction (the pole) with kinematic data only, up to 39, then exactly one fewer per added length over the last 39, and 0 only when the last length enters. (b) Zeta, L = log 50, N = 60: the negative even eigenvalues against prime powers included: 3 with none, up to 16, 0 only when 49 enters. (c, d) The certified lambda_min on symmetric-log axes. With only the last datum missing it is -3.9e11 for the graph (the lag-K corner of a Toeplitz form carries full weight) against -5.7e-7 for zeta (the prime power at the window edge enters with weight 1 - log k / L -> 0): lane B2 reads the difference as a continuous-versus-discrete edge effect, not arithmetic.
+
+- Panels: G40 negative counts (certified); zeta negative counts (certified); G40 lambda_min (certified); zeta lambda_min (certified)
+- Kind: certified data
+- Data source: `outputs/rtp1_calibration.txt`; `outputs/rtp1_a1_axisx_fixedL_N60.txt`
+- Script: `viz/rtp1/step5_calibration.py`
+- Files: `s5_inertia.png`, `s5_inertia.svg`, `s5_inertia.dark.png`, `s5_inertia.dark.svg`, `data/s5_inertia.csv`
+
+### The graph PNT against the truth (`s5_pnt`)
+
+![The graph PNT against the truth](s5_pnt.png)
+
+Lane B2.2 section 6b. With G40's kinematic data fixed, the positive set of prime data is the moment space (bounded) and its maximum-determinant element is nu = (nu_0, 0, .., 0), i.e. the graph prime number theorem N_k = q^k + 1 + (E - V)(1 + (-1)^k). (a) The true counts N_k = Tr B^k against that prediction for k <= 16, and (b) the rescaled error nu_k, inside the band |nu_k| <= nu_0 = 78; both derived exactly from lane B2's printed prime-cycle counts pi(l), l <= 16 (checked against its printed nu_(K+1) and rho(K)). (c) Certified: the relative error rho of the prediction against the window, for G40 (x_eq = 2^K) and for zeta's PNT mean (x = 13..200 at N = 40 and at N = N_sat(x); lane B2 section 5b). At comparable windows (x_eq = 16..256) the graph PNT is worse than no prediction (rho = 6.7 .. 2.2); it reaches 4.7e-10 at K = 77, where the whole positive set has relative diameter <= 1.1e-08 (open circles: K = 38 and 77). Zeta's positive set in Loewner coordinates has no maximum-determinant element (Step 4).
+
+- Panels: G40 counts vs PNT (derived exactly from certified pi(l)); G40 rescaled error (derived); rho against the window (certified)
+- Kind: certified data (panels a, b derived exactly from printed counts)
+- Data source: `outputs/rtp1_calibration.txt`; `outputs/rtp1_commutant.txt`
+- Script: `viz/rtp1/step5_calibration.py`
+- Files: `s5_pnt.png`, `s5_pnt.svg`, `s5_pnt.dark.png`, `s5_pnt.dark.svg`, `data/s5_pnt.csv`
 
 ## Step 7: the contradiction pathway and MaxEnt
 

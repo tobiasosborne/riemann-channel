@@ -144,3 +144,91 @@ det T_K / det T_(K-1).
     which variable is meant.
 14. **Environment.** matplotlib was not installed; I installed matplotlib 3.11.2 from PyPI. Three SVGs have their
     dense fills rasterised inside the SVG (lines and text stay vector) to keep the package at 14 MB.
+
+## Second pass: Steps 4 and 5 (lane B2)
+
+Author: `claude:opus`, 2026-09-24. Inputs: `notes/rtp-round-1/lane-B2.md`, `outputs/rtp1_commutant.txt` (37 checks, 0
+failed), `outputs/rtp1_calibration.txt` (33 checks, 0 failed), and lane A1's outputs for the zeta side of Step 5. This
+section supersedes first-pass Finding 1 and the two placeholder rows of the figure list: the placeholder pages
+`s4_placeholder.html` and `s5_placeholder.html` are gone, and eight figures replace them. First-pass figures, their
+tables and their manifests are byte-identical to the committed ones.
+
+Changed files: `viz/rtp1/step4_commutant.py` and `viz/rtp1/step5_calibration.py` (rewritten), `viz/rtp1/make_all.py`
+(the Step 4 and 5 intro strings only), and `viz/rtp1/bridges.py`. `zst_ab` gained an optional `window` argument
+(window `x` with a separate prime cutoff `X`, needed for the pole-plus-archimedean form `H0` at `x = 13`). Existing calls
+behave as before. The orchestrator's commit `7ed1f35` already contains this `bridges.py` change. The generated
+`index.html`, `README.md`, `manifest/step4.json` and `manifest/step5.json` are also updated.
+
+Build: `python3 viz/rtp1/make_all.py` now takes **75 to 77 s** (Step 4 22 s, of which the three planar sections are
+most; Step 5 6 s). Two consecutive builds are byte-identical (148 files, `sha256sum`). The build runs 104 checks
+(first pass 56; Step 4 adds 24, Step 5 adds 24), all passing. The package is 21 MB (the new figures add 6.5 MB).
+
+Rule for these figures: every number that lane B2 prints is parsed from its output. The only things computed here are
+(i) the geometry of the Step 4 sections, and (ii) exact integer arithmetic on B2's printed prime-cycle counts
+(Step 5, `s5_pnt` panels a, b). Both are checked against B2's printed values, and the captions say which is which.
+No Step 4 or 5 panel uses zeros of zeta or the graph's spectrum. Lane B2's COMPARISON STEP (Pisarenko roots against
+the true atoms) is not drawn, so no panel carries the "comparison (zeros used)" badge.
+
+| file | one-line caption | kind | data source | script |
+|---|---|---|---|---|
+| `s4_dimensions` | B2.1(a): real dimension against N = 1..6 of Hermitian, real, gamma-commuting, Loewner, Loewner-and-gamma forms; the kinematic space has dimension 2N+1 | certified (exact ranks over Q) | `outputs/rtp1_commutant.txt` section 2 | `step4_commutant.py` |
+| `s4_positive_set` | B2.1(b): three exact planar sections of the positive set P_N of prime data at x = 13, N = 20: pole-plus-archimedean point and PNT mean outside, minimal-norm element and truth on the boundary, recession cone and unbounded log det (no maximum-determinant element) | **recomputed geometry** (double, from zst); marked points from B2's coefficient table; annotations certified | zst via `bridges.zst_ab`; `outputs/rtp1_commutant.txt` sections 3, 4 | `step4_commutant.py` |
+| `s4_lattice_box` | B2.1(d): with the positions log n fixed, the certified interval of each weight w_n (n = 2..12) around Lambda(n)/sqrt(n), zeros at 6, 10, 12 marked; widths against N | certified (100-digit dual certificates) | `outputs/rtp1_commutant.txt` section 6 | `step4_commutant.py` |
+| `s4_capture` | B2.1(c): captured fraction and relative distance against N for the minimal-norm, ball max-det and PNT predictions; the coefficients u_n, v_n at N = 20 | certified; one reference curve derived from B2's columns | `outputs/rtp1_commutant.txt` sections 4, 5 | `step4_commutant.py` |
+| `s5_learning` | lambda_min of G40 against K (top axis x_eq = 2^K): power law, then exactly 0 at K = R = 78; zeta's eps_N(x) against x with the e^(-4 pi x) reference; both against log10 of the window | certified | `outputs/rtp1_calibration.txt` section 3; `outputs/rtp1_a1_axisx_ccm_N{60,120}.txt` | `step5_calibration.py` |
+| `s5_disc` | G40 disc radius e_K and the truth's distance from the centre, and abs(tau_K), against K; zeta's interval half-width r_j and abs(tau_j) against N (x = 13, 25, 50) | certified; the distance is abs(tau_K) e_K | `outputs/rtp1_calibration.txt` section 3; `outputs/rtp1_a1_axisN_x{13,25,50}.txt` | `step5_calibration.py` |
+| `s5_inertia` | fixed window: negative-eigenvalue counts and lambda_min against data included, G40 (cycle lengths, K = 77 and 38) and zeta (prime powers, L = log 50, N = 60); last datum missing: -3.9e11 against -5.7e-7 | certified | `outputs/rtp1_calibration.txt` section 4; `outputs/rtp1_a1_axisx_fixedL_N60.txt` | `step5_calibration.py` |
+| `s5_pnt` | G40: true counts N_k against the graph PNT (the max-det element), the square-root-rescaled error inside the moment-space band abs(nu_k) <= 78, and the relative error rho against the window next to zeta's PNT mean | panels a, b **derived exactly** from B2's printed pi(l); panel c certified | `outputs/rtp1_calibration.txt` sections 2, 6b; `outputs/rtp1_commutant.txt` section 5b | `step5_calibration.py` |
+
+Selected checks: `H0` from zst (`X = 1` at window 13) has lambda_min -1.9613 with 2 + 2 negative eigenvalues;
+`||z_true||_HS = 8.213288`. B2's printed true prime data equal zst's to 7.5e-5 (its 4-decimal rounding). The
+minimal-norm, PNT and ball max-det points rebuilt from B2's coefficient table reproduce B2's norms, relative distances
+and captured fractions to 1e-3, and their lambda_min values (-1.2e-4, -1.2263, 0.8910). `log det(H0 + cI)` = 98.90,
+189.30, 283.27 at c = 10, 100, 1000. The dimension table equals its closed forms. The G40 collapse ball contains 0.
+`nu_1`, `nu_7`, `nu_13` recomputed from the printed `pi(l)` equal B2's printed values. `rho(K)` for K = 4..12 and 16,
+recomputed from the printed `pi(l)`, equals B2's table to 4 digits. The negative-count list agrees with the K = 77
+table.
+
+### Findings against the brief (second pass)
+
+1. **The brief's Step 4 picture cannot be drawn as specified.** The brief asks for "the maximum-determinant element
+   from pole and archimedean data only". Lane B2 shows that it does not exist: `P_N` is unbounded and `sup log det =
+   +infinity` (B2 Finding 1). Panel (b2) of `s4_positive_set` shows this instead. The log-det contours rise without
+   bound along the recession cone `z_true + C_N`, drawn from the truth.
+2. **2-D sections rather than one 3-D slice.** The five objects asked for are 0, the minimal-norm element, the truth,
+   the PNT mean and a recession direction. Their affine span is 4-dimensional, so no single 3-D slice contains them
+   all. The figure uses three exact planar sections, each through the truth. Coordinates are Hilbert-Schmidt, so
+   distances and the tangency circle in (b1) are true. The sections are exact cuts of the set, not projections.
+3. **Geometry observations** (recomputed in double; not claims):
+   - The truth is a corner of every section through 0. This is B2's "isolated on its own ray".
+   - The plane through 0, `z_true` and `z_PNT` meets `P_N` only near the truth. On a 141 x 141 grid, no point of it is
+     admissible (max lambda_min -0.003). So (b3) uses the plane through the truth, the minimal-norm element and the
+     PNT mean instead.
+   - In that plane, the segment from the truth to the minimal-norm element lies on the boundary: lambda_min along it
+     stays within 1e-5 of 0. This suggests the two points share a face. It is at display resolution only, because
+     B2 prints the minimal-norm coefficients to 4 decimals, which puts that point 1.2e-4 outside the boundary.
+4. **Step 4 (c): the weight intervals are invisible on the weight scale.** Their widths run from 2e-12 to 1.3e-3.
+   Panel (c1) shows the weights. Panel (c2) shows the same certified intervals as deviations on a symmetric-log axis
+   (linear below 1e-15), labelled with their widths. Panel (c3) shows the widths against N. B2's note that widths at
+   N >= 30 are limited by its certificate construction is repeated in the panel.
+5. **Step 4 (d): the captured fraction falls like `5.6 / ||z_true||^2`.** The product of B2's two columns is 5.49 to
+   5.65 for N = 10..60. It is drawn as a reference curve and labelled as derived. This is B2's own reading (the
+   correction positivity demands has fixed norm) made visible.
+6. **Step 5 plots only the rows lane B2 prints.** For G40 these are 18 of the 78 values of K: every sixth K, and
+   K = 72..77. Nothing about the graph is recomputed, as instructed. Lane B2's script computes every K, so a full
+   curve needs only a wider print in `scripts/rtp1_calibration.py`, not new mathematics.
+7. **The truth's distance from the disc centre is taken as `|tau_K| e_K`.** The alternative, `|nu_(K+1) - c_K|` from the
+   printed columns, does not work for K >= 54: B2 prints nu and c to 4 decimals, and there they agree to all printed
+   digits. The two forms agree on the 11 rows where the printed digits resolve the difference (checked).
+8. **Axis mapping for Step 5 follows B2 Finding 5.** The graph's K is the window and the data cutoff at once, so it is
+   drawn against lane A1's CCM axis x, with `x_eq = 2^K` as a secondary scale on the same axis (a unit conversion, not
+   a second y-scale). There is no graph analogue of A1's resolution axis N. So `s5_disc` shows the graph against K next
+   to zeta against N, as the brief asks, and the caption names the graph's collapse K = R as the analogue of N_sat.
+9. **Normalisation.** `s5_learning` (c) puts the graph's lambda_min (nu_0 = 78) and zeta's eps_N (O(1)) on one log
+   axis. The caption says to compare shapes, not heights. The shapes are what matter: a straight power law over 23
+   decades of x_eq, against a fall of 118 decades between x = 2 and 25.
+10. **Graph PNT against the truth.** Lane B2 prints the count-level comparison only as bounds (e.g. `|N_k - N_k^PNT| /
+    N_k <= 2.9e-6` for k >= 38 at K = 77). The per-k picture in `s5_pnt` (a, b) is therefore limited to k <= 16. There,
+    B2's printed prime-cycle counts give `N_k = sum_{d|k} d pi(d)` exactly. The rescaled error `nu_k` stays well inside
+    the moment-space bound `|nu_k| <= nu_0 = 78` (largest: -22.5 at k = 2). The K = 77 and K = 38 posterior diameters
+    are plotted as certified points.
