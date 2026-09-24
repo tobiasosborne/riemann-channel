@@ -70,6 +70,24 @@ and the resulting form contains no zeros. RH is a property of the correlations b
 informative observables are exactly those that mix primes, and "how much of the metric a family constrains"
 means "how much inter-place correlation it sees".
 
+**Correction (2026-09-24, later in the day).** The paragraph above conflates two statements. What
+`obs:prime-by-prime-blind` says is that a single-place *ansatz* (a product bond, a `p`-comb) reproduces no
+zero. It does not say that the *restriction of the true form* `W` to test functions with prime content `{p}`
+is uninformative. For `g = sum_k c_k phi(x - k log p)` the transform is `g^(s) = phi^(s) P(p^{-s})` with `P`
+a polynomial, so `W(g * g~) = sum_rho |phi^(rho)|^2 |P(p^{-rho})|^2`: the one-place restriction sees the
+zeros **folded on the `p`-circle**, the distribution of `p^{-i gamma}` on the unit circle, which is the
+content of Landau's formula `sum_{0 < gamma <= T} x^rho = -(T/2 pi) Lambda(x) + O(log T)` (not byte-cited).
+Its positivity is a necessary condition for RH, and an off-line pair is visible to it unless `P` vanishes at
+the pair. Two consequences for the prime-content channel of section 4.2: (a) on the prime side, the Gram
+entry between lattice points `p^a q^b` and `p^{a'} q^{b'}` receives a prime contribution only when the ratio
+is a prime power, that is, when `a = a'` or `b = b'`; every mixed entry (`a != a'` and `b != b'`) is pure
+pole-plus-archimedean, so **the cross-place information of the two-prime channel is carried entirely by the
+archimedean kernel sampled at logarithms of `{p,q}`-smooth rationals** (the additive structure, once more);
+(b) on the zero side, the mixed entries are `sum_rho |phi^(rho)|^2 (p^a q^b / p^{a'} q^{b'})^{i gamma}`-type
+sums, whose Landau main term vanishes because the ratio is not a prime power, so the two-prime channel
+measures the *error term* of Landau's formula at composite `x`. This is what "inter-place correlation"
+means concretely.
+
 ## 4. Channels that provably move the prior
 
 ### 4.1 Dilation windows
