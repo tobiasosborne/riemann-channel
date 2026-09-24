@@ -8,6 +8,7 @@
 # overlap_c: |<v(x), v_final>| of unit coefficient vectors in the even basis (window rescaled to unit length)
 # overlap_f: |<f_x, f_final>| in L^2(R_+^x, d*u) of the unit eigenfunctions on centred windows (intrinsic)
 # eps: certified minimal eigenvalue of the even block; neg: certified number of negative even eigenvalues
+# e-s: even-simple certified; logdet_even: log det of the even block (log |det| when neg > 0)
 # dI, r_j, tau_j: the bordering N -> N+1 at this knot, as in axisN (only when the block is PD)
      x    X  #pp            eps  neg   e-s      logdet_even    overlap_c    overlap_f         dI        r_j   tau_j
      2    2    1     0.00133096    0   yes        66.361834   0.64879794   0.96809606 0.00093007      3.417 -0.00158

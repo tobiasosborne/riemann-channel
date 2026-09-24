@@ -723,6 +723,7 @@ static void mode_axisx(slong N, double xmax, slong prec, int fixedL)
     flint_printf("# overlap_c: |<v(x), v_final>| of unit coefficient vectors in the even basis (window rescaled to unit length)\n");
     if (!fixedL) flint_printf("# overlap_f: |<f_x, f_final>| in L^2(R_+^x, d*u) of the unit eigenfunctions on centred windows (intrinsic)\n");
     flint_printf("# eps: certified minimal eigenvalue of the even block; neg: certified number of negative even eigenvalues\n");
+    flint_printf("# e-s: even-simple certified; logdet_even: log det of the even block (log |det| when neg > 0)\n");
     flint_printf("# dI, r_j, tau_j: the bordering N -> N+1 at this knot, as in axisN (only when the block is PD)\n");
 
     for (i = 0; i < K; i++)
