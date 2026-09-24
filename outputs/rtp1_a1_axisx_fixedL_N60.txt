@@ -1,0 +1,64 @@
+# rtp1_a1 axisx (lane A1.3): the prime axis at fixed resolution N = 60
+# author claude:opus; driver zst/tools/rtp1_a1.c on libzst (FLINT 3.0.1); prec = 2700 bits
+# PROTOCOL fixed-L (partial-information form, NOT the CCM form except in the last row):
+#   held fixed: window L = log 50 = 3.91202300542815, Fourier modes |n| <= N, pole and archimedean terms;
+#   varied: prime-power cutoff X (X = 1: no primes); the form is Psi_X = W02 - W_R - sum_{k<=X} W_k
+#   restricted to the fixed window; each step adds exactly one closed-form prime-power term.
+# overlap_c: |<v(x), v_final>| of unit coefficient vectors in the even basis (window rescaled to unit length)
+# eps: certified minimal eigenvalue of the even block; neg: certified number of negative even eigenvalues
+# dI, r_j, tau_j: the bordering N -> N+1 at this knot, as in axisN (only when the block is PD)
+     x    X  #pp            eps  neg   e-s      logdet_even    overlap_c            -         dI        r_j   tau_j
+    50    1    0       -1.37311    3    no        30.678808   0.70387882            -          -          -       -
+    50    2    1       -1.69273    4    no        28.128990   0.71457135            -          -          -       -
+    50    3    2       -1.57172    6    no        17.662618   0.70503942            -          -          -       -
+    50    4    3       -1.41869    7    no        21.605677   0.69423592            -          -          -       -
+    50    5    4       -1.14858   10    no        21.730467   0.44785981            -          -          -       -
+    50    7    5       -1.10364   12    no        10.696073   0.13539223            -          -          -       -
+    50    8    6       -1.11626   11    no        1.8902982  0.068697157            -          -          -       -
+    50    9    7       -1.12173   14    no       0.38365406  0.018751800            -          -          -       -
+    50   11    8       -1.05919   14    no       -22.476532 0.0020599120            -          -          -       -
+    50   13    9       -1.07417   16    no       -121.51584 1.1924332e-5            -          -          -       -
+    50   16   10       -1.01220   16    no       -127.79588 5.9792615e-6            -          -          -       -
+    50   17   11      -0.956921   16    no       -238.60725 8.9150986e-8            -          -          -       -
+    50   19   12      -0.922967   16    no       -553.66329 7.2469277e-11            -          -          -       -
+    50   23   13      -0.786425   16    no       -759.25597 6.8778331e-13            -          -          -       -
+    50   25   14      -0.722942   15    no       -967.17626 3.4199752e-15            -          -          -       -
+    50   27   15      -0.661781   15    no       -1135.8779 1.1763635e-16            -          -          -       -
+    50   29   16      -0.628038   14    no       -1343.8373 4.3694927e-19            -          -          -       -
+    50   31   17      -0.460153   14    no       -1494.2470 1.5367220e-21            -          -          -       -
+    50   32   18      -0.455082   12    no       -1985.6408 1.3937616e-26            -          -          -       -
+    50   37   19      -0.432007   10    no       -2423.5643 3.4339644e-32            -          -          -       -
+    50   41   20      -0.302952    9    no       -2642.4986 2.4824683e-35            -          -          -       -
+    50   43   21     -0.0698996    6    no       -3079.6564 1.2145719e-43            -          -          -       -
+    50   47   22    -5.66175e-7    3    no       -3298.4319 2.6890790e-48            -          -          -       -
+    50   49   23   1.75010e-116    0   yes       -3389.2557    1.0000000            -     131.37  5.336e-25    1.00
+#
+# COMPARISON STEP (zeros of zeta used HERE ONLY, labelled; nothing above depends on them):
+#   z_1 = 2 pi s_1 / L from the secular roots of the minimal even eigenvector; gamma_1 = 14.134725141734693790
+     x    X    roots    |z1-g1|<=
+    50    1       59         10.8
+    50    2       59         10.8
+    50    3       59         11.0
+    50    4       59         11.1
+    50    5       59         11.4
+    50    7       59         11.7
+    50    8       59         11.8
+    50    9       59         12.0
+    50   11       59         12.2
+    50   13       59         12.4
+    50   16       59         12.4
+    50   17       58         12.5
+    50   19       59         12.7
+    50   23       59         12.8
+    50   25       59         12.9
+    50   27       58         12.9
+    50   29       59         13.0
+    50   31       58         13.1
+    50   32       59         13.1
+    50   37       59         13.2
+    50   41       58         12.9
+    50   43       59         13.3
+    50   47       59         13.3
+    50   49       60    4.40e-112
+#
+# checks: 31 run, 0 failed

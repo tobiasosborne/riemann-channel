@@ -1,0 +1,55 @@
+# rtp1_a1 axisx (lane A1.3): the prime axis at fixed resolution N = 120
+# author claude:opus; driver zst/tools/rtp1_a1.c on libzst (FLINT 3.0.1); prec = 1800 bits
+# PROTOCOL CCM (the zst form at x = lambda^2):
+#   held fixed: number of Fourier modes |n| <= N (so the matrix size), the rule 'prime powers <= x enter';
+#   varied: x through the prime powers <= 25, and with it the window L = log x (all of a_n, b_n change,
+#   the basis V_n is rescaled to the new window, and the prime power k = x enters with weight 0: its
+#   a-weight (1 - log k/L) and b-phase sin(2 pi n log k/L) vanish at x = k, so the form is continuous in x).
+# overlap_c: |<v(x), v_final>| of unit coefficient vectors in the even basis (window rescaled to unit length)
+# overlap_f: |<f_x, f_final>| in L^2(R_+^x, d*u) of the unit eigenfunctions on centred windows (intrinsic)
+# eps: certified minimal eigenvalue of the even block; neg: certified number of negative even eigenvalues
+# dI, r_j, tau_j: the bordering N -> N+1 at this knot, as in axisN (only when the block is PD)
+     x    X  #pp            eps  neg   e-s      logdet_even    overlap_c    overlap_f         dI        r_j   tau_j
+     2    2    1     0.00132983    0   yes        161.11753   0.69258801   0.97599732 0.00027881      3.977 -0.000980
+     3    3    2     5.55204e-8    0   yes        129.28487   0.81147697   0.99402772  0.0086193      3.620  0.0563
+     4    4    3    7.64663e-13    0   yes        93.724937   0.87034789   0.99734580   0.012602      3.413 -0.0704
+     5    5    4    9.75496e-18    0   yes        51.440874   0.90585435   0.99858082   0.015580      3.114  0.0372
+     7    7    5    7.67118e-28    0   yes       -58.974663   0.94620150   0.99945750   0.077503      2.807   0.168
+     8    8    6    4.46887e-33    0   yes       -128.47618   0.95843916   0.99963534   0.026315      2.917 -0.0659
+     9    9    7    2.95406e-38    0   yes       -207.04320   0.96764117   0.99974805   0.045522      2.677   0.100
+    11   11    8    1.12071e-48    0   yes       -391.63157   0.98022361   0.99987254   0.066302      2.503  0.0861
+    13   13    9    3.48399e-59    0   yes       -615.01778   0.98802569   0.99993270    0.35476      2.684  -0.346
+    16   16   10    3.74299e-75    0   yes       -1022.9103   0.99474741   0.99997408    0.18202      1.774  -0.165
+    17   17   11    2.09544e-80    0   yes       -1176.9621   0.99614820   0.99998146    0.19497      1.995  -0.192
+    19   19   12    5.77489e-91    0   yes       -1515.0691   0.99811663   0.99999108    0.33896      1.629   0.265
+    23   23   13   7.83592e-111    0   yes       -2291.9657   0.99983795   0.99999912     2.9339     0.6472   0.835
+    25   25   14   5.25912e-119    0   yes       -2703.9589    1.0000000    1.0000000     9.1994     0.2557   0.992
+#
+# CONTROL (no arithmetic): pole + archimedean only (prime cutoff X = 1) at the same windows and N
+     x       lambda_min    neg
+     2       0.00132983      0
+     3       -0.0739720      1
+     4        -0.239782      1
+     5        -0.372691      1
+     7        -0.556928      1
+     8        -0.624432      1
+     9        -0.681635      2
+    11        -0.774651      2
+    13        -0.848412      2
+    16        -0.936254      2
+    17        -0.961213      2
+    19         -1.00630      2
+    23         -1.08189      2
+    25         -1.11424      3
+#
+# Rayleigh decomposition of eps at x = 25, N = 120: eps = v^T E v (v unit) split over the terms of
+# Psi = W02 - W_R - sum_k W_k (each term's own Loewner block, same v); cumulative = v^T E(Psi_k) v,
+# the Rayleigh quotient of v under the partial form with prime powers <= k only (same window)
+      term           v^T E_term v             cumulative
+      pole            1.538311569            1.538311569
+      arch           -1.470025375          0.06828619460
+   k =   2         -0.06746715513        0.0008190394782
+   k =   3       -0.0008170265365         2.012941684e-6
+   k =   4        -2.001101832e-6         1.183985265e-8
+   k =   5        -1.183981626e-8        3.639026885e-14
+   k =   7       -3.637657114e-14        1.369
