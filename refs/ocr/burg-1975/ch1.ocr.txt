@@ -1,0 +1,147 @@
+1
+I. THE MAXIMUM ENTROPY VARIATIONAL PRINCIPLE FOR SINGLE CHANNEL
+POWER SPECTRAL ANALYSIS
+In its most elementary and useful form, the maximum entropy
+variational principle for estimating the power spectrum of a single
+channel, stationary, complex time series can be stated as:
+Find the power spectrum, P(f) , that maximizes the value of
+W
+(an P(f) df (I-1)
+-W
+under the constraint that P(f) satisfies a set of N linear
+functional measurement equations
+W
+§ P(£) Gi(f) df = g , n=l to N. (1-2)
+-W
+The standard assumptions used in time series analysis are also assumed
+here. That is, the time series is sampled at a uniform period of At ,
+W = 1/(2At)= the Nyquist fold-over frequency and that the power spectrum
+of the time series is band-limited to +W. The Giff) are the probe
+or test functions and the &, are the resulting values of the measure-
+ments. It is also implicitly assumed that the constraint equations
+(I-2) are sufficient to place an upper bound on (I-1).
+The basic assumption involved in maximum entropy spectral analysis
+is that the stationary time series being analyzed is the most random
+or the least predictable time series that is consistent with the measure-
+ments (I-2). In terms of information theory, this statement could be
+interpreted to mean that the entropy per sample of the time series is
+a maximum. For a given power spectrum, it is easily derived from theorems
+in Shannon and Weaver (1959) that the maximum entropy time series is
+2
+governed by a gaussian joint probability function and that the entropy
+is proportional to the integral of the logarithm of the spectrum. Thus,
+the maximum entropy stationary time series is the gaussian time series whose
+spectrum maximizes (I-1) under the constraint equations (I-2).
+
+In retrospect, if one considers that we are simply estimating a
+spectrum from a few measurements of the second order statistics of a
+time series, one could ask why a probability distribution has entered
+into the picture. Actually, there is no need to make a gaussian
+assumption to relate (I-1) to the predictability of a time series. In
+fact, (I-1) is directly related to the least mean square error in
+predicting the next point of a time series by an infinitely long linear
+operator. Thus (I-1) has an importance that is completely independent
+of information theory and any gaussian assumptions. To stress this
+fact, we shall later on use (I-1) to derive the entropy of a gaussian
+time series.
+
+The power spectrum of a stationary time series completely specifies
+the second order statistics of the random process. As an example of the
+information contained in the power spectrum, if we filter the time series
+with two arbitrary linear, time invariant digital filters with complex frequency
+responses H, (£) and H, (£) to get the two output time series y, (¢) and
+Yo (t) » then the average value of yy (t) Y(t) is given by
+
+————___—_ W
+yi(t) y(t) = ) PCE) HE(E) Hy(f) df . (I-3)
+Thus, the power spectrum contains all of the statistical information
+about the time series that is needed to find the average product of two
+linear, time invariant operations. This is of course the reason that
+power spectra are so important in the theory of linear, mean square
+3
+error processing of stationary time series. On the other hand, without
+making any additional assumptions, the only thing the power spectrum tells
+us about the stationary time series is the value of integrals of the form
+(1-2) or (1-3). We should note that our linear functional constraint
+equations (I-2) belong to the class of measurements as expressed by (I-3).
+
+Although knowledge of the second order statistics alone is
+insufficient for determiningthe entropy per sample of the time series,
+it does set an upper bound on the entropy per sample. This upper bound
+is achieved if the time series is a gaussian process. We shall now
+derive the entropy of a gaussian time series, remembering from
+Shannon and Weaver (1959) that the entropy of a zero mean gaussian
+random variable with variance of is + in (2re 0%) .
+
+Consider the situation in which we have received all of the samples up
+to Xo and we wish to determine how much information we will receive when we
+find out the value of Xo - If our time series consists of white gaussian
+noise so that each sample is statistically independent of every other
+sample, then the entropy of Xo will be 5 in(2ne Po)» where Py
+is the average square value of the zero mean time series. However,
+if the time series has a non-white spectrum, then Xo will be at
+least partially predictable from the previous samples and its entropy
+will be less than + $n (2Te Py) .
+
+Tt is known that for a gaussian process, the optimum predictor
+is a linear predictor. That is, the best prediction of Xo from the
+— 0
+previous samples is of the form Sy anxi: In addition, the error
+‘ in the prediction is gaussianly distributed with zero mean. Since the
+unpredictable part of Xo contains the actual new information we will
+4
+receive when the value of Xo becomes known, the actual entropy of
+Xo is + &n(2Te Pi)> where P. is the least mean square error in ,
+predicting XQ from the infinite set of previous samples. It is known
+and will be proven later in chapter LI-C that
+; ; W ene _.
+a \ tn P(f) df = &m(P_/2W) . (1-4)
+-W
+Thus, for a gaussian time series, the entropy per sample is given by
+W
+a ( in(4meWP(£)) df (I-5)
+-W
+and this is the upper bound on the entropy of any time series whose
+power spectrum is P(f) .
+While (I-5) depends on the gaussian assumption, (I-4) is valid
+for any stationary time series. Thus, without making any assumptions
+about probability distributions, one can say that any time series whose
+power spectrum maximizes (I~1) under the constraints (I-2) has the
+largest linear, least mean square prediction error. That is, the
+least mean square error in predicting Xo by a linear combination
+of all previous samples is a maximum. In this sense, the time series
+will belong to the class of the most unpredictable or random time series
+that satisfy the constraint equations. If one now makes the assumption
+that the entropy of a time series is a non-decreasing function of its
+linear, least mean square prediction error, then maximizing (I-1)
+maximizes the entropy. It is easy to generate pairs of time series
+' which do not obey this assumption. However, on an "everything else
+ns ee
+5
+being equal" basis, the larger the mean square error, the larger the
+entropy. This assumption is much less stringent than the gaussian
+assumption. However, it is completely adequate for determining a
+spectrum which maximizes the entropy since it establishes a greater than
+or equal hierarchy among all spectra. Thus, if we have two spectra,
+P, (£) and P, (£) > then if
+W W
+\ an P, (£) df > \ on P,(£) df ,
+-W ~W
+then the entropy of P, (£) is greater than or equal to the entropy of
+P, (£) . Restricting P(f) to the set of spectra that satisfy (1-2),
+a maximum entropy spectrum can then be obtained.
+
+Actually, since we are only attempting to estimate the power
+spectrum of the time series and our measurements (1-2) contain only
+information about the second order statistics, one should perhaps
+be satisfied with interpreting (I-1) as maximizing the linear,
+least mean square prediction error without extending the interpre-
+tation to entropy. An even more pragmatic viewpoint is to say that
+maximizing (I-1) is a straightforward variational problem with
+constraints. It seems to give good spectral estimates and that
+all of the above philosophical considerations do not change a single
+number in calculating the spectral estimate. Each point of view
+has its merits.
+
+t
+

@@ -70,23 +70,25 @@ and the resulting form contains no zeros. RH is a property of the correlations b
 informative observables are exactly those that mix primes, and "how much of the metric a family constrains"
 means "how much inter-place correlation it sees".
 
-**Correction (2026-09-24, later in the day).** The paragraph above conflates two statements. What
-`obs:prime-by-prime-blind` says is that a single-place *ansatz* (a product bond, a `p`-comb) reproduces no
-zero. It does not say that the *restriction of the true form* `W` to test functions with prime content `{p}`
-is uninformative. For `g = sum_k c_k phi(x - k log p)` the transform is `g^(s) = phi^(s) P(p^{-s})` with `P`
-a polynomial, so `W(g * g~) = sum_rho |phi^(rho)|^2 |P(p^{-rho})|^2`: the one-place restriction sees the
-zeros **folded on the `p`-circle**, the distribution of `p^{-i gamma}` on the unit circle, which is the
-content of Landau's formula `sum_{0 < gamma <= T} x^rho = -(T/2 pi) Lambda(x) + O(log T)` (not byte-cited).
-Its positivity is a necessary condition for RH, and an off-line pair is visible to it unless `P` vanishes at
-the pair. Two consequences for the prime-content channel of section 4.2: (a) on the prime side, the Gram
-entry between lattice points `p^a q^b` and `p^{a'} q^{b'}` receives a prime contribution only when the ratio
-is a prime power, that is, when `a = a'` or `b = b'`; every mixed entry (`a != a'` and `b != b'`) is pure
-pole-plus-archimedean, so **the cross-place information of the two-prime channel is carried entirely by the
-archimedean kernel sampled at logarithms of `{p,q}`-smooth rationals** (the additive structure, once more);
-(b) on the zero side, the mixed entries are `sum_rho |phi^(rho)|^2 (p^a q^b / p^{a'} q^{b'})^{i gamma}`-type
-sums, whose Landau main term vanishes because the ratio is not a prime power, so the two-prime channel
-measures the *error term* of Landau's formula at composite `x`. This is what "inter-place correlation"
-means concretely.
+**Correction (2026-09-24, later in the day; re-corrected after the RTP-1 review).** The paragraph above
+conflates two statements. `obs:prime-by-prime-blind` says that a single-place *ansatz* (a product bond, a
+`p`-comb) reproduces no zero. It does not say that the *restriction of the true form* `W` to test functions with
+prime content `{p}` is uninformative. For real `g = sum_k c_k phi(x - k log p)`, `g^(s) = phi^(s) P(p^{-s})` with
+`P` a polynomial and, unconditionally, `W(g * g~) = sum_rho phi^(rho) conj(phi^(1 - conj rho)) P(p^{-rho})
+conj(P(p^{-(1 - conj rho)}))`, which is `|phi^(rho)|^2 |P(p^{-rho})|^2` on zeros on the line. The one-place
+restriction therefore weights the zeros by `|P|^2` on the `p`-circle (a smoothed analogue of Landau's sharp-cutoff
+formula, `cit:landau-formula`), and its positivity is a necessary condition for RH. For test functions `phi` of
+half-width `delta < delta_max(S, A)`, the Gram entry between lattice points `p^a q^b` and `p^{a'} q^{b'}` receives a
+prime contribution only when the ratio is a prime power, that is, when `a = a'` or `b = b'`. Every mixed entry is
+pole plus archimedean, `2 cosh(D/2) |int phi(x) e^{x/2} dx|^2 - W_R(R_delta(. - D))` with `D = |log(ratio)|`. The
+pole part is the larger (first order along the minimal eigenvector: 2.4 to 21 times the archimedean part,
+opposite sign; lane A2), but the pole kernel `e^{+-D/2}` factorises over places, so the only non-factorising
+cross-place kernel is the archimedean `rho(D)` sampled at logarithms of `S`-smooth rationals. On the zero side
+the smoothed mixed entries are equal to these known values by the explicit formula; nothing about the zeros is
+measured there beyond that identity. In this regime the inter-place effects are `O(delta)` in eigenvalues and
+`O(delta^2)` in eigenvectors (lane A2; shard 08i). The first version of this paragraph said "carried entirely by
+the archimedean kernel" and "measures the error term of Landau's formula"; both were wrong (review of
+2026-09-24, Audit A).
 
 ## 4. Channels that provably move the prior
 
@@ -98,8 +100,8 @@ coefficients are the same channel in a rotated basis: RH is equivalent to the Li
 sequence, that is, to Toeplitz positivity (`cit:li-criterion`), and each truncation is computable from primes.
 The notebook has measured the learning rate of this channel on the certified `zst` stack (HANDOFF, benchmark
 of 2026-09-18; `notes/zeta-spectral-triples/benchmark.md`): with `x = lambda^2`, the primes below `x` pin the
-first zero to `e^{-4 pi x}` (5.4 digits per unit of `x`, independent of the number of modes `N`); the error at
-height `gamma` grows like `10^{0.37 gamma}`; `N` saturates at `7.5 x`. In the Bayesian language: each new
+first zero to `e^{-4 pi x}` (5.4 digits per unit of `x`, independent of the number of modes `N` once `N >= N_sat(x) ~ 1.7 x log x`, shard 08i); the error at
+height `gamma` grows like `10^{0.37 gamma}`; the benchmark's `N` saturation at `7.5 x` is `N_sat = 56, 134, 352` at `x = 13, 25, 50`. In the Bayesian language: each new
 prime is a measurement that contracts the posterior on the low part of the spectrum exponentially, and the
 window width sets the resolution. This channel constrains positions. It says little about the shape of the
 purification, because in the window basis the form is the data itself.
@@ -117,12 +119,17 @@ knows about where the low modes sit compared with the `{2}`-form alone. Not in t
 
 ### 4.3 Short-range positivity
 
-For test functions of dilation support smaller than `log 2` (no prime power in the support of `f * f~`), `W`
-reduces to the pole and archimedean terms, and positivity there is a statement about the archimedean local
-factor alone, not about RH. So the state is known to be positive on all short-range observables, and every
-prime `p` opens a new long-range direction at dilation `log p`. The danger lives at long dilation times, and
-the primes are the scales at which it enters. (Archimedean positivity: Yoshida, Bombieri; not byte-cited,
-no local source; to be checked before any use.)
+(Rewritten after the RTP-1 review, Audit B.) For test functions `f` supported in an interval of length at most
+`log 2` (so `f * f~` is supported in `[-log 2, log 2]` and no prime power enters), `W` reduces to the pole term
+minus the archimedean term, and it is positive definite there unconditionally: Yoshida 1992, Theorem 1
+(computer-assisted, `a = log 2/2`; `cit:yoshida-short-support`); Bombieri 2000, Theorem 12, reproves positivity
+for short enough intervals with the lower bound `(log(1/|I|) - log^+ log(1/|I|) - O(1)) ||F||^2`
+(`cit:bombieri-short-support`). This is a statement about the pole and the archimedean place together: the
+archimedean form alone is indefinite (symbol negative on `|t| < 6.2898`; `-1.217` against the pole's `+1.400` on
+the even box of width `log 2`; `num:archimedean-box`) and is positive on `(1/2, 2)` only on the pole-free
+subspace (Connes–Consani 2020, crediting Yoshida; `cit:archimedean-symbol-sign`). Every prime `p` opens a new
+direction at dilation `log p`. The first version of this paragraph attributed the positivity to the archimedean
+local factor alone; that was wrong.
 
 ### 4.4 Mollifiers and density theorems
 

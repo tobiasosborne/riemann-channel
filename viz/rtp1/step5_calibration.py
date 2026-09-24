@@ -368,7 +368,7 @@ def fig_inertia(G):
                          "when 49 enters. (c, d) The certified lambda_min on symmetric-log axes. With only the last datum "
                          "missing it is -3.9e11 for the graph (the lag-K corner of a Toeplitz form carries full weight) "
                          "against -5.7e-7 for zeta (the prime power at the window edge enters with weight 1 - log k / L -> "
-                         "0): lane B2 reads the difference as a continuous-versus-discrete edge effect, not arithmetic."),
+                         "0). Lane B2 read the difference as a continuous-versus-discrete edge effect; the RTP-1 review showed it is a resolution effect instead: at L = log 50 with all prime powers but 49 the value is -5.7e-7 at N = 60 and -2.0e-2 at N = 240, with the negative count rising from 3 to 8."),
                 panels=["G40 negative counts (certified)", "zeta negative counts (certified)", "G40 lambda_min (certified)",
                         "zeta lambda_min (certified)"],
                 kind="certified data", sources=[C.rel(B2_OUT), fl["path"]], script=SCRIPT)

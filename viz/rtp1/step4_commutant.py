@@ -518,7 +518,7 @@ def fig_lattice_box(txt):
                          "Weil positivity of the x = 13 window (N = 20) confines each weight to the drawn interval around "
                          "Lambda(n)/sqrt(n), including the zero weights at the non-prime-powers 6, 10, 12. (c1) weights on "
                          "their natural scale: the intervals are thinner than the markers. (c2) the intervals as deviations "
-                         "from the truth on a symmetric-log axis, labelled with their widths (1e-12 at n = 4 to 1.3e-3 at "
+                         "from the truth on a symmetric-log axis, labelled with the widths lane B2 computed; these are the tolerance of its double-precision LP, and the exact LP of the RTP-1 review gives 3e-25 at n = 2 to 1.3e-4 at n = 12, so the true boxes are 1 to 18 orders tighter than drawn (1e-12 at n = 4 to 1.3e-3 at "
                          "n = 12). (c3) the largest width over n <= 7, 10, 12 against N; for N >= 30 the widths are "
                          "limited by lane B2's certificate construction, not by the set. The same positivity in the free "
                          "Loewner coordinates leaves an unbounded set (Step 4 positive-set figure)."),

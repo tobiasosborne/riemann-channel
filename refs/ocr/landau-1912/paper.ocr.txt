@@ -1,0 +1,738 @@
+x r
+548 E. Lanpav.
+Über die Nullstellen der Zetafunktion.
+[ Von i
+Epmunp Lanpau in Göttingen.
+Einleitung. .
+
+Herr von 'Mangoldt*) hat als erster bewiesen:
+
+Die über alle nicht reellen Nullstellen g=y-+ Bi der Riemannschen
+Zetafunktion erstreckte Summe**)
+
+El
+® Pr
+@
+wo die g nach wachsendem |B| geordnet sind, konvergiert für alle x > 0.
+
+Ferner konstatierte Herr von Mangoldt***), daß die Summe der
+Reihe (1) für «=1 keinen endlichen Limes von rechts oder links hat
+und für jedes x, das eine Primzahlpotenz p" (m>1) oder eine reziproke
+Primzahlpotenz ist, sowohl nach links unstetig als auch nach rechts un-
+stetig ist. Dadurch hatte er bewiesen:
+
+In jedem Intervall ,<2e <a, wo 0<x,<:x, ist und mindestens
+eine der Zahlen 1, 2”, jr dem Intervall (eventuell nur an den Enden) an-
+gehört, ist die Konvergenz der Reihe (1) ungleichmäßig.
+
+*) Vgl. $87 und $89 meines Handbuches der Lehre von der Verteilung der
+Primgahlen [Leipzig und Berlin, 1909].
+
+“) 2? bedeutet 18” hei reellem Logarithmus.
+
+*+) Vgl. $89 des Handbuchs. Das genannte Verhalten für —=1 von links
+und für «= 3 von dem ich dort nicht esplizit spreche, ergibt sich, unmittelbar
+aus dem übrigen mit Hilfe der in der Fußnote zu S. 365 angegebenen Identität, weil
+
+1 R
+mama sa=gl konyvergiert.
+Nullstellen der Zetafunktion. 549
+
+Nun bewies ich*) die Umkehrung, nämlich:
+
+Wem 0<m,<x, ist und das Intervall , <x<x, von 1, den p”
+und den » frei ist, so ist die Reihe (1) in diesem Intervall gleichmäßig
+konvergent.
+
+Diesen bekannten Dingen kann ich jetzt wichtige neue Tatsachen hinzu-
+fügen. Dieselben beziehen sich bei positivem x auf die drei Reihen
+
+Ei
+@) Pr (0<v<1),
+@
+2
+@) 25 (<v<1)
+E20 °®
+und "
+a
+(6) De 0<vrXi),
+P<0
+wo g” den Wert der für s> 0 positiven analytischen Funktion s” bei Fort-
+setzung in der von 0 bis — oo aufgeschnittenen Ebene bedeutet**) und
+jede der drei Reihen nach wachsenden |ß| geordnet ist***); auf die Reihen-
+folge der Glieder mit gleichem |ß|=T7 kommt es bei keiner der auf-
+zuwerfenden Fragen nach Konvergenz, Divergenz, gleichmäßiger Konver-
+genz und ungleichmäßiger Konvergenz an, wie sich sofort aus der Ab-
+schätzung
+*) Vgl. $89 des Handbuchs; in meinen früheren Arbeiten war es noch nicht
+enthalten. Wenn ich auch a. a. O. nur von den &>1 rede, so lehrt doch die Iden-
+tität in der Fußnote zu $. 365 daselbst, daß ich für alle Intervalle rechts von Null
+den im Text genannten Satz damit bewiesen habe.
+
+®) Es ist also g”= e”!%8®, wo der Koeffizient von: in log g zwischen -7 und
+= liegt,
+
+=“) Von »=1 rede ich bei (2) nicht, da dies nur die vorher genannten be-
+kannten Sätze liefern würde; übrigens werden bei »—=1 die bekannten Sätze über
+Konvergenz und gleichmäßige Konvergenz durch das Folgende mitbewiesen, nur der
+bekannte Satz über ungleichmäßige Konvergenz nicht. Von den »<0 rede ich bei
+keiner der drei Reihen wegen offenkundiger Divergen. Von »>1 rede ich bei
+keiner der drei Reihen wegen Trivialität des Problems; wegen der Konvergenz von
+Dir für »>1 (Hadamard; vgl. 8.314 des Handbuchs) wäre ja jede der drei
+
+ei
+
+@
+Reihen für alle 2>>0 (absolut) konvergent und zwar für Oo<=<z,, wo 0 <a, ist,
+gleichmäßig konvergent. Aus allen diesen Gründen liegt selbstverständlich nur in
+der Untersuchung der Fälle 0<»<1 das Problem.
+550 E. Lanpav.
+. Anzahl der Glieder links für >21,
+zielel: -
+er ® = Anzahl der Glieder links für Oo<x=<1
+deswegen ergibt, weil die Anzahl der Glieder links bekanntlich*) O(log 7)
+ist und infolgedessen für ,<z<z,, wo 0 <m,<z, ist, gleichmäßig
+: a8]
+im I [a|-°
+F Iel=T
+ist.
+Ich werde nun folgendes beweisen, immer £>0, »v fest, O<v<i
+bei (3) und (4), 0<v<{1 bei (2) angenommen:
+Jede der Reihen (2), (3), (4)
+konvergiert dann und nur damn, wenn x weder 1 noch p” noch Fi ist;
+konvergiert im Intervall x, <x<x, gleichmäßig dann und nur dann,
+wenn das Intervall einschließlich seiner Endpunkte frei von 1, von den p”
+und den ‚m ist
+Den Beweis aller dieser Behauptungen werde ich nun folgendermaßen
+anordnen. Ich werde für (3) beweisen:
+a) Konvergenz für +1, p”, zei
+b) gleichmäßige Konvergenz in jedem von diesen Punkten freien Intervall;
+ce) Divergenz und (was ich bisher noch nicht gesagt habe) Unbe-
+schränktheit”*) und zwar im Falle O<»<1 sogar Unbeschränktheit der
+Summe der reellen Teile für »—=1, p”, Fr
+Da nach c) die Reihe in den Divergenzpunkten unbeschränkt ist, so
+ist damit eo ipso***) die Ungleichmäßigkeit der Konvergenz in jedem
+Intervall bewiesen, das nicht innen, aber an den Enden mindestens einen
+Divergenzpunkt enthält. Jedenfalls sind damit alle oben ausgesprochenen
+Behauptungen über (3) bewiesen. .
+Aus Symmetriegründen, indem entsprechende Glieder in (3) und (4)
+konjugiert komplex sind, sind damit alle Behauptungen für (4) bewiesen.
+») Vgl. z.B. Handbuch, 8. 337.
+2 m
+*#) Ich nenne eine Reihe u, beschränkt oder unbeschränkt, wenn PA
+n=1 n=1
+für alle ganzen m>1 unterhalb einer festen Schranke liegt oder nicht.
+**) Denn aus der gleichmäßigen Konvergenz für 2, <x<x, würde die gleich-
+mäßige Beschränktheit der Summe der ersten m Glieder für , <2<x,, also die
+Beschränktheit jener Summe für =x, und 2=z, folgen.
+Nullstellen der Zetafunktion. 551
+
+Weil ferner die — nur für 0O<»<1 zu betrachteiide — Reihe (2),
+wenn erlaubtermaßen zwei konjugierte og zusammengefaßt werden, mis der
+Summe der doppelten reellen Teile von (3) übereinstimmt, so sind mit
+dem gesagten auch alle Behauptungen über (2) bewiesen. Nämlich: Kon- -
+vergenz exkl. 1, p”, Fr Divergenz (sogar Unbeschränktheit) in 1, p”, FL
+gleichmäßige Konvergenz in jedem von 1, p”, = freien Intervall; schließ-
+lich (wegen der Unbeschränktheit in den Divergenzpunkten) ungleich-
+mäßige Konvergenz in jedem nicht innen, aber an den Enden mindestens.
+einen dieser Punkte enthaltenden Intervall.
+
+Es wird also in der folgenden Arbeit gar nicht mehr von (2) und
+(4), sondern nur von (3) die Rede sein.
+
+Statt die genannten Ergebnisse a), b), c) bei (3) nachzuweisen, ist es,
+wie ich "Zunächst feststellen will, hinreichend, die folgenden drei Be-
+hauptungen d), e), f) (von denen d) mit a), e) mit b) wörtlich überein-
+stimmt), bei der Reihe
+
+Ei
+(8) Zr -.@>0, 0<r<i1)
+zu beweisen, welche positive und nie abnehmende Nenner hat:
+
+d) Konvergenz für «+1, p”, Fr
+
+e) gleichmäßige Konvergenz in jedem von diesen Punkten freien Intervall;
+
+f) Divergenz und zwar Unbeschränktheit der Summe der reellen Teile,
+Konvergenz der Summe der imaginären Teile für = 1, p", =
+
+In der Tat ist für 6$>0
+
+3 5,|- “fe |
+ee wer
+pt
+sv Paz;
+q
+s pr! >
+63
+or für z>1
+|« =
+Ta lan
+TE, fr 0<a<ı
+pt <ı<si,
+und die Reihe
+1
+re
+552 E. Lunpav.
+konvergiert bekanntlich*). Daher folgt a) aus d), b) aus e) und (da ja
+” für O<»<1 nicht rein imaginär ist) c) aus f).
+
+Also ist das Ziel dieser Arbeit darauf zurückgeführt, d), e) und f)
+zu beweisen. Nun setzt die Beschaffenheit der Nenner in (5) auf Grund
+zweier bekannter Reihensätze**) in Evidenz: Wenn d) für ein » gilt, gilt
+es für jedes größere; wenn e) für ein v gilt, gilt es für jedes größere.
+Es ‚würde also genügen, diese beiden Behauptungen z.B. für O<v< i66
+oder auch nur für eine abzählbare Menge von v»-Werten mit dem Limes 0
+zu beweisen, um sie allgemein für O<v<1 zu besitzen. Für v»—=0 selbst
+findet aber weder d) noch e) statt; sonst wäre es ausreichend, die Be-
+weise für v=0 zu führen; so aber scheint das Gesagte keine Verein-
+fachung zu liefern, da die Untersuchung einer v-Menge nicht einfacher zu
+sein verspricht als die des ganzen Intervalls O<»<1: Und doch ver-
+einfacht der angedeutete Gedanke, wenn man ihn nur etwas anders wendet,
+die Untersuchung sehr. Ich werde tatsächlich nur den Fall v=0 studieren
+und aus ihm dann auf Grund primitivster partieller Summation alles ab-
+leiten; nur muß ich darauf verzichten, mit der unendlichen Reihe
+
+2%
+
+B>0
+die ja überall divergiert, zu operieren; ich werde aber die Art ihrer
+Divergenz studieren, wobei natürlich die feinsten Hilfsmittel aus der
+Theorie der Zetafunktion zur Anwendung kommen, und aus den Er-
+gebnissen über die Funktion zweier positiver Variablen
+
+98, T7)-
+0<p=<?r
+
+die über die Reihe (5) oben angekündigten Behauptungen d), e), f) mit
+Leichtigkeit folgern.
+
+Aus den transzendenten Quellen, und zwar durch das Studium des
+Integrals
+
+RE 1 = . =
+*) Es konvergiert ja P2 ver für »>1, wie schon oben einmal erwähnt wurde.
+e
+@
+*), Erstens: It I a, konvergent oder auch nur beschränkt, 8, >, >---22,2---
+a1
+
+und lim 2,0, so konvergiert S’a,e,. Zweitens: Ist Sa, (a) für, <2 <a, gleich-
+
+n=o® Ft a=1 =
+mäßig konvergent und ist , >, 2---22,2+.:20, so konvergiert PAR) &, gleich-
+mäßig für, <a <a. u
+Nullstellen der Zetafunktion. 553
+[R%)
+Seine
+hole ich — in den 88 1—2 des Folgenden — nur die beiden sehr kurz
+formulierbaren, aber sehr tief liegenden Tatsachen hervor:
+
+Satz 1: Es ist bei festem «>1
+
+” T "m
+Sa- (et OlogT) für z= pn,
+o<Fzr O(logT) für x + p”.
+
+Satz 2: Wem 1<a,<x, und das Intervall x, <xz<x, von den p*
+
+frei ist, so ist für m <x<x, gleichmäßig
+> 2 = O0 (log T).
+0<p=r '
+
+Daraus werden dann in $ 3 die Sätze d), e), f) über (5) folgen und
+damit, ohne daß ich im Text darauf zurückzukommen brauche, alle Be-
+hauptungen über (2), (8), (4).
+
+81.
+
+Ich wähle eine absolute Konstante*) q derart, dd O<g<2 und q
+kleiner ist als die kleinste positive Ordinate ß eines eg. Da ich mir g
+fest denke, nehme ich die Abhängigkeit gewisser jetzt vorkommender
+Konstanten von g nicht erst in die Bezeichnung auf.
+
+Hilfssatz**) 1: Für 6 <—1,1>2g is
+
+[MOu
+I | <D, log |s|.
+Beweis: Bekanntlich***) ist -
+Kae) _ a... _ TO _E@
+car u Ko Bu SE Be Ber 0o5
+Hierin ist für <—q
+*) Es wäre leicht, ein q numerisch anzugeben; doch brauche ich dies für
+meine Zwecke nicht.
+*) Ich beweise dies wörtlich so, wie man die Relation
+Eol<Dkeist
+für 6<—1, t>1 zu beweisen pflegt.
+=) Vgl. z.B. Handbuch, S. 336. -
+. Mathematische Annalen. LXXL 36
+554 - E, Lanpar.
+52 ‚er_ı
+er] u |
+— nt 1
+sa "
+et
+< er —i
+=D,
+und für 6>2 bekanntlich *)
+ır@| .
+\r) | < Ds log Isl;
+also ist für 6 >22, 1<—q
+fü— (2
+ra | <1ee @m) + $ D, + Dog Is] 55)
+<D,log |s|,
+folglich für 6 <—1,t>gq
+179 _
+no |< Ditog 11-4!
+<D,log (D,|s))
+=D, + D, log |s|
+<.D, log |s].
+Hilfssatz 2: Die Dirichletsche Reihe
+I
+R n=1
+sei für 6= 2 absolut konvergent. Dann ist
+2+7i L7
+\\rros) <a al für nicht ganze <>0,
+; ! s21 "106 |
+2+gi ji N
+2+T7i BR , je .
+\frro ds— T-Die,| <22 ar für ganze x >0.
+I+g: az ” os, |
+Beweis: Es ist für alle x >0
+2+Ti © 2+T7i
+frro ds Da, ((7)'@
+2+gi a=1l gi
+2+7i 2+7i
+- I. (4) ds + Ya, (as,
+n22  S4gi n=2  Yıgi
+*) Vgl. z. B. Handbuch, S. 334.
+Nullstellen der Zetafunktion. 555
+wo das letzte Glied eben nur für ganze x auftritt; daher ist
+2+75 \
+Se roas| für nicht ganze 2 >0 3+7i
+d+g: x\8
+ur _ If) as|
+| fergds-T-g)ia,| für ganze > 0 a
+3+92
+2+7i 2+gi
+(
+< Zul
+n2z | log = |
+. !a, |
+< 20 Dr
+= > n? 08 | ’
+%|
+was zu beweisen war.
+Satz 1: Es ist bei festem z«>1
+T er
+>” _ r 31er +0(ogT) für ap",
+oSp=er O (log T) für x + pP”.
+Beweis: Ich setze für ->0, 7>0
+[) ‚ falls x keine Primzahlpotenz ist,
+TN)= 2
+N) =|_ Zt logp, falls = p” ist.
+Dann liefert die Anwendung des Hilfssatzes 2 auf die Dirichletsche Reihe
+eo _ ylr
+KO) => Fi
+Bm
+2+7;
+4 . 2 lo;
+(6) \fe@ as - 2zige,n|<2= 3 Ko
+S+gi PR2Zz P og Fr
+Das Wesentliche ist, daß in (6) die rechte Seite von T* unabhängig ist
+(6) liefert also bei festem x>0 und wachsendem 7
+2+7i
+EG) 1 — Omi
+[69) 2 08 = 2zig9(&,T) + 0(1),
+2+gi ;
+d.h.
+_ 0) ‚ falls z keine Primzahlpotenz ist,
+ 1- Tilogp+ 0(1), falls 2=p" ist. '
+"36*
+556 E. Lanpar.
+
+Nun nehme ich 7>2 und 7 von allen Wurzelordinaten 8 verschieden
+an; wegen q<2 ist dann 7’>g. x sei einstweilen eine beliebige positive
+Zahl. Ich wende den Cauchyschen Satz auf
+
+[a0]
+S: ds
+
+und das Rechteck mit den Ecken 2+gi, 2+ Ti, z2+Ti, z+gi an,
+wo z<0 ist. Der Integrand ist auf dem Wege regulär; er ist in dem
+umlaufenen Gebiete regulär bis auf die Stellen s=-g mit O<ß<7.
+Diese sind für ihn Pole erster Ordnung, und zwar liefert eine Nullstelle
+k“* Ordnung s=_ von &(s) als Pol des Integranden das Residuum kat.
+Daher kommt heraus:
+
+2+Ti +92 +71 247
+(&) S-[+S+ JS + > «-
+
+Irgi I4gi 54: FH 0<p<T
+
+Nun sei 2>1. Dann behaupte ich, daß die drei Integrale rechts
+in (8) für z= — 00 je einen Limes haben, davon das zweite den Limes 0.
+In der Tat ist nach dem Hilfssatz 1 in der Viertelebene 6 <—1,1>g
+
+|
+Fi <D,log s
+6) <Dilg(-6 +0),
+I, Fo!
+ei < Dialog +9;
+daraus folgt es unmittelbar. Somit erhalte ich
+2+7 2+gs 2+Ti
+(10) S[--S + Sid x.
+gg Serge Farm 0<P<r
+Nach (7) und (10) ist bei festem &> 1 und wurzelfrei wachsendem 7
+2+7:
+. . g
+2ni Dar = 2nig(z,T) Sat Qas +00),
+O<P<T Za+71
+° 2+Ti
+r 1 Ko)
+a) Na-s@n- 4, fai®as+ 00.
+0<p<r Horn
+Ich werde nun beweisen, daß bei wurzelfrei wachsendem 7
+2+Ti
+PROF FE -
+(12) ıE FR) ds = O(logT) 5 .
+© -o+7Tı
+“ ist; darin liegt die Hauptschwierigkeit.
+Nullstellen der Zetafunktion. 557
+Es ist
+2+7i „1i+7i 2+7;
+SESER
+. -a+Pi -a+Pi -147i
+Nach (9) ist für o<—1,1=T7T
+[9 <Dilg(-s+7)
+<D,lg(-6sT+T)
+=-D,lgl1-0)+D,lgT,
+also
+gli —i „ı
+as Sa <D, far log (A-o)ds+D, 1087 [ad
+-o+Ti _. -o
+= 001) + OllogT)
+(15) = O(logT).
+Was das Integral von —1+ Ti bis 2 + 7 angeht, so ist unterwegs
+bekanntlich*) für 7>2
+IEXO) 2; .
+0 I 5=| < Drie?;
+1B-ri<ı
+also ist für wurzelfreies 7>2
+9+ 73 3+73 F
+[40] 1
+Sr as fr Das) <DylogT [rdo,
+<1+Ti Z1+ Ti |B-Tı<1 -ı
+2+Ti 2+Ti 2
+£ a
+(16) rs-3 S:4\< Drsr fras,
+1471 B-T <1 14 Ti -ı
+2+7i 2+7Ti
+pR«O) Ex
+[683) S2»-3 SS®+ O(log T).
+i+ri \B-T|<1 <1+7i
+Die Anzahl der Glieder in der Summe rechts in (17) ist bekanntlich**)
+<D,10gT. In jedem dieser Integrale werde der gerade Weg durch einen
+Halbkreis über ihm nach oben oder unten ersetzt, je nachdem
+T-iI<Bß<T odr T<ß<T+l
+ist; dann ergibt sich für jedes dieser Glieder "
+* Vgl. z.B. Handbuch, S. 337 und 339.
+*) Vgl. z.B. Handbuch, S. 337.
+558 E. Lannav.
+2+7i
+E 3x
+Je) <z"
+-1+Ti
+Daher ist für wurzelfreies 7 >2
+2+7i
+. 3
+(18) | »3 Sw|<#- Diigr
+IB-FI<1 Z1+7:
+= Oleg T);
+dies zeigt in Verbindung mit (17) für wurzelfrei wachsendes 7
+2+7i
+[ROFF FEN
+a9) f Eds = 000g).
+—1+7i
+Aus (13), (15) und (19) folgt (12); aus (11) und (12) folgt für
+wurzelfrei wachsendes 7
+Ir-Ir
+O<B=ET 0<p<T
+=9(,T)+ O(logT),
+d.h.
+T .. m
+(20) Na- —3,10gp + O(logT) für = p",
+O<p<r O(log T) für + p”.
+Damit ist (20) eo ipso auch für stetig wachsendes 7 gültig; in der
+Tat ist ja bei festem 7>0 für alle hinreichend kleinen 6 >0
+ei) Da-Da.
+0<P<ZT 0<P<T+ö
+Der Satz 1 ist damit bewiesen.
+82.
+Satz 2: Wem 1<2,<x, und das Intervall x, <x <x, von den p"
+frei ist, so ist für  <z <a, gleichmäßig
+Da = O(logT).
+o<FEr
+Beweis: Ich wähle A>0 und so, daß das Intervall
+%-A<x<nt+A ”
+von 1 und den 9” frei ist. Dann ist für ,<2z<2,T7>0 nach (6)
+Nullstellen der Zetafanktion. 559
+2+Ti ,
+[40] | Fi log p logp
+| f e<ds|<22, ——+ —e—
+Ba (2. Dog za Zu)
+1 logp 1 logp
+ar DE+—Z In
+Vene? war S,
+lo
+<22° . + . ee
+1 nat > »
+weil die rechte Seite von x unabhängig ist, ist bei wachsendem 7’ für
+%<t<x, gleichmäßig
+2+Fi
+[%0) "
+fei® ds—= 0(1).
+2+g
+In Verbindung mit (10) und mit Rücksicht auf
+2+gs {} 2
+79) | f s|6c+ a) ji er |
+fr Eee 1 er zi
+lehrt dies, daß bei wurzelfrei wachsendem 7 für ,<r<x, gleichmäßig
+23+7i
+1 [40]
+(22) Ia-- fe @ası 0
+0<psr -a+7i
+ist. ;
+Nun ist für „<x<x, und wurzelfreies 7>2 nach (14)
+147 -1 -i
+fe @as| <D, fa log 1-0)do+D, 1097 [mrae,
+-o+Ti o Se
+also gleichmäßig
+-1+Ti
+(83) Sr - O(log 7),
+-o+7i
+ferner nach (16) wegen
+2 0 2
+Sras< fra + [arae
+- -ı 0
+gleichmäßig
+3+7i 2475
+Er _ Ei
+(24) S: „ias- 5 S zds + 000g7)
+SAr7ri 18-?I<ı Z1+ 73
+560 E. Lunoav.
+und nach (18) gleichmäßig
+3+7i
+Pr
+(25) > f ds = Oleg T).
+1B-T1<1 147
+Aus (22), (23), (24) und (25) folgt bei wurzelfrei wachsendem 7 für
+m, <x<:a, gleichmäßig
+(26) DI 2 = O(log 7);
+o<pzr
+wegen (21) gilt (26) also auch bei stetig wachsendem 7’ gleichmäßig.
+Damit ist der Satz 2 bewiesen.
+Die Sätze 1 und 2 lassen sich leicht zur Erledigung der Strecke
+0<z<l verwenden. Es gilt nämlich der
+Satz 3: Bei festem x auf der Strecke O<x<1 ist
+%
+T 1
+— > zlogp+O(logT) für =,
+2m
+(27) Da- z
+o<psr O(logT) für Et zw
+Ferner ist für ein von den za freies Intervall ,<x <a, wo 0 <u<m,<i1
+ist, gleichmäßig
+(28) Dr = O(lg 7).
+o<FEr
+Beweis: Es si 0O<2<(1. Dann ist nach Satz 1
+JR ” 1
+6) Sey- —-z,logp+ _(ogT) für um
+0<B<r * O(logT) für St m
+Nun ist die linke Seite von (29) konjugiert zu
+110 111-0
+32-26)
+0>P=—7 0<p=7
+ı .
+-: 3®.
+0<p=r
+Damit ist (27) bewiesen.
+Ferner gilt in einem von den 7= freien Intervall ,<xr<z,, wo
+0<m,<x,<i1 ist, nach Satz 2 die Relation
+Tr /ı1\e
+I (&)- 007)
+o<p<r nr
+gleichmäßig. Damit ist (28) bewiesen.
+Nullstellen der Zetafunktion. 561
+838.
+Satz 4: Es si O<v<1. Dann ist die Reihe ö
+e a
+0) Ir
+B>0
+für =1, p", Zr divergent, und zwar divergiert die Reihe ihrer reellen
+Teile für «= 1 gegen + ©, für x = p” und a gegen — ©, während
+die Reihe ihrer imaginären Teile konvergiert. Für die übrigen x > 0 ist die
+Reihe (5) konvergent.
+Beweis: 1. Essei x >0 und «+1, 9“, Dann ist nach Satz 1
+(falls z> 1 ist) bez. nach Satz 3 (falls e<1 ist)
+(30) 9(2,7) = I) = Ollog T).
+o<ps7
+Nun ordne ich die positiven ß so, daß
+A S<ShRS << ‘
+ist, und verstehe für 7>ß, unter 8, das letzte $<T. Dann ist, falls
+(x, ß,) Nullbedeutet,
+>> Eu -3 92 B,)— 93 B,-:)
+[2 B
+0<ps? na=1
+N-1
+_ 1 __12,\, Pb)
+Zt
+1 Pn+1
+_ du, va Pa)
+2 az + [37
+n-ı Part (@ 84)
+_ Yla,u)du PP,
+=» > N wert + [34
+nz,
+[2.3 (@6)
+plz,u)du , PP a
+en -) Fe
+Hierin konvergiert für T= oo wegen (30) das erste Glied rechts gegen
+einen Limes, das zweite Glied rechts gegen Null. Folglich existiert
+lim > Si
+7=e Zper
+also konvergiert die Reihe (5). .
+562 E. Laxvar.
+2. Es sei x=p" oder = ze Ersterenfalls setze ich = 0, letz-
+terenfalls = 1. Dann ist nach Satz 1 bez. Satz 3
+T
+(82) 9%T)=— z,rlogp + O(logT).
+Nach der auch hier giltigen Identität (31) existiert daher
+i N
+s a verlogp (du welogp .ı-\,
+Im (DE ne für en,
+0<PB=ET Pı
+d.h. es existiert*)
+. a8 zlogP mı-, en
+Im (Yo pt en? ) für O<v<1,
+0<psr
+. Ei z’logp _y7
+im (+ log?) für v1;
+0<ps7T
+es ist die Reihe der reellen Teile von (5) zu — oo divergent, die der
+imaginären Teile konvergent.
+3. Für@=1 ist offenbar (5) zu + oo divergent, da bekanntlich **)
+>?
+: n B>0 £
+divergiert.
+Damit ist der Satz 4 vollständig bewiesen.
+Satz5: Ess 0 <v<1, 0<n,<a, und das Intervall <ı<i,
+von 1, p”, z= frei. Dann ist die Reihe (5) für u <x <a, gleichmäßig
+4
+konvergent.
+*, Daraus, daß nach (32) bei passender Wahl einer Konstanten A von einem N an
+9(& Pyt+AlogPßy)FP( Pr)
+ist, folgt nämlich für alle hinreichend großen T
+T<Py+4AlogPy
+und damit
+fi 1m _H)=0 für 0 1 4 lim (log 7—1 —=0.
+im (7 2) ür 0<»<1, und lim (log 7—logPy)
+Die bekannten Abschätzungen für N—= N(T) sind also hier nicht einmal nötig.
+*) Dies folgt z.B. auch aus dem Vorangehenden so: Wäre die obige Reihe kon-
+vergent, so wäre
+un
+also
+NnNn=o(T),
+Zr=an,
+o<p=r
+im Widerspruch zum Satz 1.
+Nullstellen der Zetafunktion. 563
+
+Beweis: Für „<x<z, gilt (30) nach Satz 2 und Satz 3 gleich-
+mäßig; also strebt dort die rechte Seite von (31) gleichmäßig gegen ihren
+Limes. Satz 5 ist also bewiesen.
+
+Hiermit ist nachgewiesen, daß die Reihe (5) die drei in der Einleitung
+mit d), e), f) bezeichneten Eigenschaften hat. Nach dem in der Einleitung
+Gesagten kommen also die drei Eigenschaften a), b), e) der Reihe (3) zu,
+und alles in der Einleitung über die Reihen (2), (3) und (4) Behauptete
+ist bewiesen.
+
+Zugleich ergibt sich Genaueres über die Art der Divergenz von (3)
+für =p" und 2 Nach dem in der Einleitung Auseinander-
+gesetzten existiert
+
+a vn,
+in (IE Ip)
+T=e opt o<p=7
+nach dem beim Beweise des Satzes 4 Vorgekommenen existiert also
+P vn
+In (Er Een Fr) m Dar,
+0<P=r
+Im ( IE - Ri 10g7) für v_1.
+=> gZper
+
+Ich will noch von dem im Fall*) »—=1 Neuen das, was sich auf
+
+die Konvergenz und Divergenz der Reihe (3), d. h. der Reihe
+
+> Es
+
+7°
+bezieht, in die Bezeichnungsweise der berühmten von Mangoldtschen Arbeit
+vom Jahre 1895 übersetzen und mit dem entsprechenden Ergebnis dort
+zusammenstellen. Herr von Mangoldt versteht unter « diejenigen Null-
+stellen der von Riemann mit &(f) bezeichneten Funktion, deren reeller Teil
+positiv ist; bekanntlich vermutet Riemann, daß alle « positiv sind; man
+wußte zur Zeit der von Mangoldtschen Arbeit, daß ihre Ordinaten zwischen
+_ 4 (inkl) und 4 (inkl.) liegen, und weiß seit 1896, daß diese Ordinaten
+zwischen — + (exkl.) und 4 (exkl) liegen. Die eg mit #>0 hängen mit
+den «& einfach durch die Beziehung o -4+ -+i« zusammen. Für ein be-
+stimmtes 2> 0 konvergiert bez. divergiert
+
+>E
+
+Ey
+
+*) Wenn es sich nur um den Fall »—1 gehandelt hätte, wäre natürlich der
+Weg über »=0 ein Umweg gewesen.
+564 E. Laxpau. Nullstellen der Zetafunktion.
+offenbar*) gleichzeitig mit
+Ei at“
+I“.
+FDIE Zst y @
+wo die « nach wachsenden Abszissen geordnet sind, also mit
+a’ cos («log x) ‚sin («log x)
+SE Znen „menu
+Herr von Mangoldt**) hatte nun bewiesen, daß
+> sin («log x)
+@
+für alle x> 0 konvergiert; ich habe jetzt außerdem bewiesen, daß
+B3 cos («logx)
+«@
+für 2=1 (bekannt), p”, r divergiert und für alle anderen 2 >0 kon-
+vergiert.
+Also
+cos (ey)
+Pi
+divergiert für y=0, mlogp, — mlogp und konvergiert für alle anderen
+reellen y.
+
+Diese Tatsache deutet wiederum ***) auf einen arithmetischen Zu-
+sammenhang zwischen den komplexen Wurzeln o der Zetafunktion (d.h. den
+Wurzeln +« der &-Funktion) und den Primzahlen p hin. Ich habe aber
+keine Ahnung, worin derselbe besteht.
+
+Göttingen, den 1. Juli 1911. .
+
+Bi
+1 3 2 B
+*) Denn I, 4 = —z) -Y x konvergiort absolut
+2 Q 3 e gie 3
+*)1c., 8.292. Es ist dies eine Interpretation der Konvergenz von (1) mit
+Rücksicht auf
+Ei Fa Fi u sin («log x)
+P} 1 -3 7 + 7 20 3 « "
+e 87 @ «
+*) Vgl. Handbuch, 8. 367—368. :
+
