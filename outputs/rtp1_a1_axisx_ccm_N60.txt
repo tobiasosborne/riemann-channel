@@ -1,0 +1,40 @@
+# rtp1_a1 axisx (lane A1.3): the prime axis at fixed resolution N = 60
+# author claude:opus; driver zst/tools/rtp1_a1.c on libzst (FLINT 3.0.1); prec = 2700 bits
+# PROTOCOL CCM (the zst form at x = lambda^2):
+#   held fixed: number of Fourier modes |n| <= N (so the matrix size), the rule 'prime powers <= x enter';
+#   varied: x through the prime powers <= 50, and with it the window L = log x (all of a_n, b_n change,
+#   the basis V_n is rescaled to the new window, and the prime power k = x enters with weight 0: its
+#   a-weight (1 - log k/L) and b-phase sin(2 pi n log k/L) vanish at x = k, so the form is continuous in x).
+# overlap_c: |<v(x), v_final>| of unit coefficient vectors in the even basis (window rescaled to unit length)
+# overlap_f: |<f_x, f_final>| in L^2(R_+^x, d*u) of the unit eigenfunctions on centred windows (intrinsic)
+# eps: certified minimal eigenvalue of the even block; neg: certified number of negative even eigenvalues
+# dI, r_j, tau_j: the bordering N -> N+1 at this knot, as in axisN (only when the block is PD)
+     x    X  #pp            eps  neg   e-s      logdet_even    overlap_c    overlap_f         dI        r_j   tau_j
+     2    2    1     0.00133096    0   yes        66.361834   0.64879794   0.96809606 0.00093007      3.417 -0.00158
+     3    3    2     5.62068e-8    0   yes        40.778166   0.76602399   0.98957404  0.0063118      3.062  0.0182
+     4    4    3    8.12813e-13    0   yes        9.0810937   0.82685810   0.99414255   0.017183      2.934  0.0585
+     5    5    4    1.12435e-17    0   yes       -30.506024   0.86517680   0.99605569   0.026971      2.455  0.0247
+     7    7    5    8.73912e-28    0   yes       -136.67708   0.91128506   0.99766080   0.044322      2.471  0.0179
+     8    8    6    5.21118e-33    0   yes       -204.08836   0.92624185   0.99804752    0.12811      2.199   0.185
+     9    9    7    3.77422e-38    0   yes       -281.04504   0.93798236   0.99832055   0.085264      1.685 -0.0979
+    11   11    8    1.62686e-48    0   yes       -461.30744   0.95510076   0.99867607    0.40405      1.653  -0.240
+    13   13    9    1.01356e-58    0   yes       -677.94914   0.96680213   0.99889672     1.9175      1.169   0.710
+    16   16   10    6.99536e-71    0   yes       -1039.0548   0.97825677   0.99914550     4.7673     0.1766  -0.946
+    17   17   11    5.61383e-74    0   yes       -1148.2236   0.98099989   0.99921853     16.724    0.07021  -0.999
+    19   19   12    1.83173e-79    0   yes       -1369.3228   0.98541055   0.99934957     21.431   0.005501   0.996
+    23   23   13    4.28649e-88    0   yes       -1767.7186   0.99131999   0.99955816     39.516   1.007e-5    1.00
+    25   25   14    1.07936e-91    0   yes       -1944.9255   0.99332283   0.99963909     49.105   4.588e-8   -1.00
+    27   27   15    4.61566e-95    0   yes       -2107.4830   0.99489550   0.99970734     53.933   1.200e-7   -1.00
+    29   29   16    1.62590e-97    0   yes       -2253.8039   0.99611731   0.99976953     65.441  8.390e-11    1.00
+    31   31   17   4.82160e-100    0   yes       -2396.6889   0.99709061   0.99981960     68.855  4.705e-11    1.00
+    32   32   18   3.45553e-101    0   yes       -2467.1385   0.99749345   0.99984248     76.288  8.348e-13    1.00
+    37   37   19   2.47465e-106    0   yes       -2760.4302   0.99892333   0.99992617     92.575  8.296e-17    1.00
+    41   41   20   7.47927e-110    0   yes       -2973.5058   0.99955151   0.99996715     104.81  4.521e-19    1.00
+    43   43   21   1.87098e-111    0   yes       -3079.4815   0.99974557   0.99998091     111.37  5.478e-21    1.00
+    47   47   22   2.13673e-114    0   yes       -3260.9860   0.99995852   0.99999677     123.89  1.917e-23    1.00
+    49   49   23   5.67877e-116    0   yes       -3349.7555   0.99999597   0.99999955     129.31  6.404e-24    1.00
+    50   50   23   1.75010e-116    0   yes       -3389.2557    1.0000000    1.0000000     131.37  5.336e-25    1.00
+#
+# CONTROL (no arithmetic): pole + archimedean only (prime cutoff X = 1) at the same windows and N
+     x       lambda_min    neg
+     2       0.0
