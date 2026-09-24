@@ -27,11 +27,35 @@ extremals are the hermitian characters (critical line), `W` in their closed conv
 not extremal; naive Bochner–Schwartz does not apply (prime side not tempered in `log x`), Weil's off-line
 `2 x 2` block argument plays its role.
 
+**Afternoon: the finite-prime language and the FNW exclusion argument** (TJO: a complexity class of
+quantities computable from finitely many primes, some numbers inside and some outside, MIP* = RE style, a
+value of zeta outside it; precedent Fannes–Nachtergaele–Werner: finite bond dimension produces only
+non-transcendental optimal energy densities, so the Heisenberg ground state at `1/4 - log 2` is not finitely
+correlated). Recorded in `notes/metric-tomography/finite-prime-language.md`; FNW 1992 not byte-citable
+through the proxy. Rigorous form: for fixed bond dimension the FCS class is semialgebraic and the optimal
+energy is a real algebraic number (Tarski–Seidenberg), so a transcendental target excludes every finite `d`;
+three ingredients (semialgebraic class, transcendental target, implicit definition). The language `L_S` is the
+`Q-bar`-span of `1`, `log p` (Baker-independent, one direction per prime = the prime-content filtration) and
+the archimedean `Gamma`-values (Gauss digamma adds `gamma`; polygamma at 1 gives every `zeta(n)`, so the
+archimedean place alone produces the integer zeta values). **Negative finding:** nothing of interest is
+provably outside `L_S`; no zero ordinate is known irrational, Stieltjes constants and `gamma` are open, and
+the known transcendentals are single-place and hence blind to zeros. The FNW route for the *metric* is alive
+in form (implicit target, finite-window classes semialgebraic) and blocked on one open input: irrationality of
+`gamma`, a Stieltjes constant or a zero ordinate. MIP* = RE: exact as `Pi^0_1`/`Sigma^0_1`, empty as
+uncomputability; a tensor-versus-commuting gap cannot occur in the window channel (`prop:extension-disc`(iii))
+and can only live on the noncommutative adelic bond of shard 04p. Side project noted: a Diophantine lower
+bound on matrix-product convergence for the Heisenberg chain from a transcendence measure of `log 2`.
+
 **Next on this lead (in order).** (i) Run the `r_K` diagnostic of shard 08g on `zst` and compare its decay
 with `e^{-4 pi x}` (the MaxEnt contraction rate of the dilation channel; no new theory). (ii) Build the
 prime-content window on `{2}`, `{2,3}`, `{2,3,5}` at fixed dilation width, certified minimal eigenpair,
 contraction rate against primes added. (iii) Byte-cite Burg/Dempster, Bombieri/Yoshida, Selberg/Levinson/
 Conrey before any registration. (iv) REFUTE lane before registering sections 7.2–7.4 of the note as claims.
+(v) From the finite-prime note: register Proposition A (FNW exclusion, Tarski–Seidenberg form) after
+byte-citing quantifier elimination and the Hulthén value; the Baker grading of `W` on point-mass test
+functions as a theorem; formulate finite-bond approximability of the arithmetic state on the adelic Weyl
+bond and test it on the genus-one class-group bond; keep the open-input list (irrationality of a zero
+ordinate, of `gamma`, of a Stieltjes constant) as a standing item.
 
 ## Session 2026-09-23: Deninger's programme in the supertrace-cMPS language (shard 04q); the metric as an invariant polarisation; K_S is not Deninger's H^1; the same gap
 
