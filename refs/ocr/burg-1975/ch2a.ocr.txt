@@ -1,0 +1,344 @@
+8
+II-A. SOLUTION OF THE VARIATIONAL FORMULATION
+The problem is to find the real positive function P(£) which
+maximizes
+W
+Je P(f) df , (II-1)
+-W
+under the constraint equations
++W
+R(n) = f P(g) ef ?TEMAT ae | (C LNcn<n) . (II-2)
+-W
+1. The Functional Form of the Maximum Entropy Spectrum
+One approach to solving this problem is to use Lagrange multipliers.
+However, since that approach will be used for more general cases later
+on, we shall use a different approach here. We begin by explicitly
+requiring that P(f) be expressible in terms of a fourier series, i.e.,
+1 +t? i2nfnd
+P(—) = 37 = R(n) @ eTEMAE (II-3)
+n=-0
+Our constraint equations will be automatically satisfied by
+requiring that the R(n) in (II-2) and (II-3) be the same for
+“-N<n<N.. Substituting (II-3) into (II-1), we get
+; 1 7° i2nfnAt
+foie: R(n) eo ™ | dé. (II-4)
+Taking the partial derivative of (II-4) with respect to R(s) , where
+|s| >N , we require that
+W +o
+1 -i2nfnAt ,-1 1 -i2nfsat
+‘ J [ ay a R(m) e ] ow & df
+-W n
+W
+= & fete e Mmtstt ae 2 9 , |s[ou. (11-5)
+-W
+9
+If we expand p(y in a fourier series,
++ co
+- -i2mfinAt
+Ply = 5 dA e@ t2™indt
+n=- 0 n
+then (II-5) shows that rs = 0 for [n| >N . Thus, we find that the
+functional form of P(f) is given by
+P(E) = ge 1 (11-6)
+-i2T
+5 dh e i2nfsAt
+s=-N &
+
+This is the same equation that would be derived from the Lagrange
+multiplier approach, where the A's would be the Lagrange multipliers.
+
+The next step in our solution procedure is to determine values for
+the A's in (II-6) such that the constraint equations (II-2) will be
+satisfied. We shall do this in two different ways.
+The first method will use analytic integration around the unit
+circle in the complex z plane. The other method will use a simple
+z-transform argument.
+2. The Analytic Integration Derivation
+
+The analytic integration derivation begins by substituting (II-6)
+into (II-2) to get the 2N+l equations,
+
+vw ei 2@mindat
+
+5 WT df = RM) , ( -N<n<N). (LI-7)
+
+“woO re e t2nfsAt
+
+s=-N
+t .
+
+We now convert to z transform notation by setting z = e t@ntat .
+Then, since
+10
+dz = ~i2nat e f27FAt ae _ _ sone on af , or
+df = — a2 equation II-7 b
+inAt 2° qu n ecomes
+vi -—n ~-n-1
+j 2" af | 8 a2. Rn) (1-8)
+“wD aA DA. 2
+s s
+S=-N S=—N
+where the contour integral is around the unit circle in the counter-
+clockwise direction. Noting that since we are requiring P(f) to be
+real and positive for lzl=1 , we see from (II-6) that it must be
+possible to write
+N s -1, N 1 N
+= ko ky
+z Ao? [P At] lta, zt+...tayz J[ l+a¥z Fan z ]
+s=-N
+~1 N s N -
+= [P_At] Zaz EF a®zS , (II-9)
+N s s
+s=0 s=0
+where Py 70 and ay = 1. Furthermore, all of the roots of the first
+polynomial in z can be chosen to lie outside the unit circle and thus
+all of the roots of the second polynomial will lie inside the unit circle.
+Substituting (II-9) into (II-8) gives,
+P -n~-1
+N 4 dz
+Sg - . ~10
+aad § N , ON - R(n) , ( -N<n<N ) (II-10)
+z a2 y ak®z
+s=0 s=0 °
+We now form the summations
+t
+11
+r-1 N —n
+A y ak z
+N Py n=0 n
+- ay R(n-r) Ini N N 7 dz
+n x ajz° z ak z s
+s=0 s=0
+P r-L
+N z dz
+oe SS 2 : -
+Ti § N > F220 (II-11)
+s
+z as 2
+s=0
+Remembering that the denominator polynomial is analytic on and inside
+the unit circle, we see that for r231 , the integrand in (II-11) is
+analytic on and inside our contour of integration and thus the integral
+| is zero. To handle the r=0 case, we note that one form of Cauchy's
+integral formula is
+1 £(z)
+_ a\es = f
+Qni g Zz dz (0) ;
+where f(z) is analytic on and inside the contour of integration, and
+where the contour encloses the origin. Using this formula and remembering
+that ay =1 » we see that for r=0 , (II-11) is equal to Py - Taking
+the complex conjugate of these equations, we have
+N
+~ R(r-n) alc Py for r=0 , and
+n=0
+N
+% R(r-n) a= 0 for r31 . (II-12)
+n=0
+3. The Z-Transform Derivation
+The z-transform derivation of (II-12) starts by substituting (II-3)
+' and (II~9) into (II-6) to get
+12
+Pp. At +0
+= N - i r
+: P(f) = * ; xy _ WW nw Zz . (II-13)
+x a,z XY akg
+s=0 n=0 ™
+Using the fact that 2W At = 1 and multiplying through by the maximum
+phase factor, we get
+PN N _ + r
+oye = EZ a®*z™ FY Rr) z
+N n
+s n=0 r=— ©
+x as 2
+s=0
+N 7 + _ to [Ny _
+= f a®¥z” = R(n-r) z = ¢f Ea R(m-r){ 2” . (11-14)
+n n
+n=0 r=— 0 r=- 0 | n=0
+Noting that since the first expression in (II-14) is minimum phase and
+is thus analytic on and inside the unit circle, its z transform involves
+- only non-negative powers of z. Also since ag=l » the coefficient of
+29 is Py - Thus, equating coefficients of the first and last expres-
+sions in (11-14), and taking complex conjugates, we again derive the
+set of equations (II-12).
+4. The Prediction Error Filter Equation
+Equations (II-12) for O<r<N can be written in matrix form
+as
+t
+13
+R(O) -R(-1) 7] 1 P
+R(1) = R(0) R(1-N) ay 0)
+= . (TI-15)
+R(N) — _R(N-1) R(0) ay 0
+Equation (II-15) is the well-known equation for finding the
+Nth order prediction error filter and will be discussed in that context
+in section II-C. Its solution for Py and ay » N=1toON) , is
+easily accomplished by using a modern version of the Levinson algorithm.
+Once the ay and Py are found, they are substituted into (II-13) to
+obtain the maximum entropy spectrum. We shall now discuss and derive
+the modern version of the Levinson algorithm since it is of central
+importance in the study of autocorrelation functions.
+5. The Modern Levinson Algorithm
+Norman Levinson's algorithm for solving (II-15) was presented in an
+appendix to Norbert Wiener's book, Extrapolation, Interpolation and
+Smoothing of Stationary Time Series. This algorithm takes advantage of
+the Toeplitz form of the matrix in (II-15) which contains the autocorrela-
+tion lag values. The number of arithmetical operations required to
+solve a general set of N linear simultaneous equations in N unknowns
+is on the order of we - The Levinson algorithm is on the order of
+' ne operations and is thus appreciably faster than the general gaussian
+elimination procedure. In addition, the Levinson algorithm only requires
+memory storage on the order of N , compared to an no order for the
+general case. Another advantage of the Levinson algorithm is that it is
+14
+recursive. That is, the solution to the neath set of equations is
+- obtained from the solution of the yth set of equations. This means
+that in solving the yth order set of equations, all lower order
+solutions are obtained and that higher order solutions can be obtained
+without wasted effort.
+
+The original Levinson algorithm requires the equivalent of three
+vector dot products per recursion. One of these is used to calculate
+the value of Pa - Since Py may become quite small, the accumulation
+of round-off error can make the algorithm numerically unstable (see
+Brouwer © 1971; Pagano, 1972). Fortunately, in 1961 Burg discovered that
+Py can be obtained directly from Peed by a single accurate operation.
+Thus, the equivalent of only two vector dot products is required per
+recursion, speeding up the algorithm by a third as well as improving
+the numerical stability. While this discovery was incorporated in the
+papers by Robinson and Wiggins, they did not explicitly note that the
+modern algorithm is different from the one that Levinson derived.
+Unfortunately, Brouwer, 1971 and Pagano, 1972 were unaware of this
+difference.
+
+In deriving the modern algorithm, we shall assume that the N
+by N Toeplitz submatrix is positive definite and that the full
+N+l by N+l Toeplitz matrix is at least non-negative definite. This
+will be true in all practical cases with which we shall be concerned.
+Then (II-15) will always have a solution and this solution will be
+unique. Thus, if we can find a solution to (II-15) in which the first
+element of the left hand column vector is unity and the last N
+
+elements of the right hand column vector are zero, we have found the
+one and only solution to (II-15).
+15
+The fact that Py is real is proven by noting that the autocorrela-
+_ tion matrix is hermitian and that premultiplying (II-15) by the row
+vector (1, at ; as p e885 ay ) gives Py -. Also, since multiplying
+the second column of the autocorrelation matrix by ay and then adding
+it to the first column, etc., does not change the determinant of the
+matrix, we see that this determinant is equal to Py times the
+determinant of the N by N_ submatrix. Thus Py? 0 if the Mt
+matrix is positive definite and Py=0 if the N+l matrix is singular.
+Starting with the solution of the set of N equations,
+R(O) —- R(-1) R(1-N) 1 Pea
+R(1) R(0) R(2-N) by 0
+= >
+R(N-1) R(N-2) R(O) bye 0
+the algorithm for solving the set of N+l equations is most easily
+developed by studying the matrix equation
+(1I-16)
+x
+R(O R(-1 R(1-N) R(-N
+(0) = R(-1) (1-N) R(-N) 1 0 Ped by
+&
+R(1) R(O) R(2-N) R(1-N) by by_ 0 0
+= tey = Tey ry
+*
+R(N-1) R(N-2) R(O) R(-1) b, b 0 0
+N-1 1
+R(N R(N-1 R(1 R(O 0 1
+| (N)—-R(N+1) (1) (0) N Ped
+In looking at this equation, we note that the second column vector
+on both sides of (II-16) is the simple complex conjugate reverse
+16
+of the first column. The reason that the equation is valid for these
+complex conjugate reverse vectors is that the first and last rows of
+the autocorrelation matrix are complex conjugate reverses, the 2nd and
+next to last rows are complex conjugate reverses, etc. From inspection,
+we see that (II-16) defines Ay to be
+
+N-1
+AN = x R(N-n) b, > (II-17 )
+n=0
+where bo = 1. We now form the Nth order prediction error filter
+equation from (II-16) by specifying the value of the Nth reflection
+coefficient, Cy to be
+Cy = 7 AN’ Py >
+so that
+Ay + Cy Pel = 0. (II-18 )
+This equation for Cy will always have a solution since we have assumed
+PyHL > 0. By using this value of Cy to combine the two column vectors
+on both sides of (II-16), we note that the left side column vector starts
+with unity and the right side column vector is all zeros below the first
+element. Thus, we have indeed formed (11-15) from (II-16).
+The Nth order prediction error filter is thus generated from Cy
+and the N-l th order filter by
+1 1 0
+b b.
+*y 1 N-1
+= te. . (TI-19)
+~ b b-
+AN-1 N-1 1
+ay 0 1
+17
+To obtain the value of Py » the Levinson algorithm multiplied the
+7 Nth order prediction error filter through the top row of the autocor-
+*
+relation matrix. However £ II- =
+Ww >» we see from ( 16) that Py Pyel + Cy AN ;
+or using (II-18),
+Po = P 1 *) = 2
+wot Pyey CL ey ey) = Py yd - leyl*) . (II-20)
+To initiate this recursive algorithm, we start with Po = R(O) and the
+th a : . .
+zero order prediction error filter, which is simply the one point filter
+with unity weight.
+One should note that (II-19) is reversible if lev #1. That
+is, given the Nth order prediction error filter, one can obtain Cy
+and the N-lth order prediction error filter if ay = Cy does not
+have unit magnitude. To prove this, we note from (II-19) that
+= b+te be d
+Aas Pg * SN PN~s an
+= b + b*
+"y-sON-s " SN PS *
+Taking the complex conjugate of the second equation, we find in matrix
+form that
+» fa bb
+ar ) | Ny s }
+x» S= |g Li »* > OF
+ay-s| | | N-s
+bo, } , Lo -ey fre
+. * ed A riya (II-21)
+by-s (Jey h | ey lays |
+t
+This inverse of course exists only if lc, l# 1. We can note that
+(II-21) is valid even when s = N-s .
+18
+
+6. General Comments
+
+~ Before concluding this section, a few general comments about the
+solution to the maximum entropy variational principle are in order. First,
+it is implied that the set of measurements (II-2) are consistent with
+some positive function P(f) . In the derivation used in this section,
+(II-3) explicitly requires that the R(n) , |n| <N , be such that some
+positive function P(f) exists that satisfies (II-3). We shall show
+in the next section that this will be true if and only if the N+1 by
+N+l autocorrelation matrix is positive definite. Secondly, it is assumed
+that the constraint equations set a finite upper bound on (II-1). With
+no upper bound, there would be no finite solution to setting the partial
+derivatives equal to zero. It is clear, however, that constraining the
+total power to be R(0) places an upper bound on (II-1) because of the
+convexity of the logarithmic function. Third, equations (II-10) and (II-13)
+both assume that the functional form involving the a's is general enough
+to satisfy any consistent set of R(n) , n <N . This would not be true
+if the two z polynomials appeared in the numerator. The fact that (II-10)
+and (II-13) are general enough is the result of being derived from a vari-
+ational principle in which the P(f) solution is constrained to be positive.
+Fourth, from the derivation, it is clear that the maximum entropy solution
+for any consistent set of constraint equations (II-2) will always exist
+and be uniaue.
+
+t
+

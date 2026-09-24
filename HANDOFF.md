@@ -2,6 +2,45 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-24, evening: the Riemann Tomography Problem, round 1 (shard 08i); five Opus lanes, a figure package, a REFUTE review
+
+TJO: run the RTP next steps with Opus subagents (at most two in parallel) and build a visualisation package
+per step. Brief `notes/rtp-round-1/brief.md`; lanes A1 (dilation channel, certified C on `zst`), A2
+(prime-content channel, python-flint balls), B1 (sources, 52 provenance rows, twelve new source keys), B2
+(kinematic commutant and a certified Ramanujan-graph control), V (28 figures, `viz/rtp1/`, page
+https://claude.ai/artifact/7gsqqKCv3McEFiMKWr62oE); review `notes/reviews/rtp-round-1-2026-09-24.md`
+(207 checks, 3 VALID / 7 MINOR / 2 INVALID on the draft claims; all 15 corrections applied). Worklog 2026-09-24.
+
+**Registered (08i).** `lem:bordering-interval` (sketched): the unstructured MaxEnt column `c = 0` is not a
+Loewner column; the admissible next datum is a per-block interval, joint max-det off-centre.
+`lem:mixed-entries-kronecker` (proved, any even kernel), `prop:burg-is-maxdet` (proved: disc centre = Burg =
+max-det next lag), `prop:window-kinematic-dimension` (proved: Loewner-and-reflection space `2N+1`, positivity
+removes nothing). Numericals: `N_sat = 56, 134, 352` at `x = 13, 25, 50` (`~1.7 x log x`); eps falls 5.38 digits
+per unit `x` from 13 to 50, close to the CCM prolate asymptotic 5.39 and below the bare 5.46; pole plus
+archimedean alone indefinite; fixed-window all-but-49 value `-5.66e-7` at `N = 60` is a resolution effect
+(`-0.020` at `N = 240`); admissible lattice bumps: inter-place effects `O(delta)` / `O(delta^2)`, pole part of the
+mixed entries 2.4–21 x the archimedean, but only the archimedean kernel is non-factorising; with pole and
+archimedean fixed the positive set of prime data is unbounded (**no MaxEnt element in Loewner coordinates**),
+min-norm captures 8%; with positions `log n` fixed, positivity pins the weights to `3e-25`–`1.3e-4` (exact LP,
+review), zeros at 6, 10, 12 included; the graph control has a finite spectrum and collapses at `K = R`, so it
+cannot decide whether the rate is arithmetic. Cited: Yoshida (width `log 2`, pole plus archimedean), Bombieri
+Thm 12 and the conditional negative-eigenvalue count, Landau/Gonek, Burg, Dempster/GJSW, Bombieri–Lagarias,
+Lagarias/DMR (`Pi^0_1`). Corrections to the orchestrator's notes recorded in `metric-as-state.md` (§3
+Correction, §4.3) and in `prop:extension-disc`(i) (conjugate).
+
+**Verdict of the round.** The tomography is posed in the lattice coordinates, not the Loewner ones: MaxEnt is
+empty there, while positivity at known positions pins the primes by the near-singularity of the true form.
+The prime-content channel on admissible bumps is perturbative; O(1) inter-place structure needs impure bumps,
+which the Kronecker lemma still organises. Question 3 (is `e^{-4 pi x}` arithmetic) is **undecided**: the
+Schur envelope does not decay at that rate, the rate matches the prolate asymptotic, and the finite graph
+cannot discriminate.
+
+**Next on this lead (in order).** (i) A Dirichlet `L(s, chi)` through the same window pipeline (`zst` M3): no
+pole, other primes; same rate means the rate is not zeta's primes. (ii) Lattice box widths against `x` with an
+exact (rational or 100-digit) LP: do they track eps? (iii) Non-admissible prime-content bumps, organised by the
+Kronecker lemma. (iv) The `N`-convergence of eps at `x = 50` (certify beyond `N = 420`). (v) Durability: the seven
+non-arXiv source keys have `refs/fetch_extra_sources.sh` and committed OCR text under `refs/ocr/`.
+
 ## Session 2026-09-24: the metric as an unknown state (record only); channels, the contradiction pathway, the MaxEnt ansatz
 
 TJO, after the explanation page *The Metric* (https://claude.ai/artifact/C1f9ZywZYyNc5vbXK6p7XZ): treat the

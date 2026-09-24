@@ -1,0 +1,91 @@
+MAXIMUM ENTROPY SPECTRAL ANALYSIS
+John Parker Burg, Ph.D.
+Stanford University, 1975
+This thesis presents the theoretical development of an
+
+unconventional method of estimating power density spectra of
+
+stationary time series from partial knowledge of their autocorrelation
+
+functions. Conventional methods of estimating a power spectrum from ,
+
+a measured autocorrelation function make the assumption that the
+
+correlation function is zero at all lags for which no estimate is
+
+available and uses some treatment of the estimated lags to reduce the
+
+effect of truncation on the autocorrelation function. The method
+
+discussed in this thesis instead retains all of the estimated lags
+
+without modification and uses a non-zero estimate for the lags not
+
+directly estimated. The particular estimation principle used is that
+
+the spectral estimate must be the most random or have the maximum
+
+entropy of any power spectrum which is consistent with the measured
+
+data. The result of this new analysis technique is that it gives a
+
+much higher resolution spectral estimate than is obtained by
+
+conventional techniques with very little increase in computing time.
+
+The thesis is conceptually divided into three major parts. The
+
+first and largest is concerned wtih single channel spectral analysis
+
+from autocorrelation information. The single channel theory has been
+
+quite thoroughly developed both in theory and practice. All of the
+
+important theorems of the single channel theory are presented and
+proved, often more than once in different contexts. In addition,
+
+the philosophy behind the highly important Burg technique for estimating
+
+the second order statistics from samples of a stationary time series
+
+iii
+is explained and the mathematics presented in a generally useful form.
+
+It is argued that the most important description of the second order
+
+statistics of a stationary time series is in terms of reflection
+
+coefficients (partial correlation coefficients), both from a practical
+
+and a theoretical point of view. It is seriously suggested that the
+
+old Wiener definition of the power spectrum should be replaced by a new |
+definition involving maximum entropy spectra. An interesting theory
+
+of pure line spectra is presented as a limiting case of maximum entropy
+
+spectra,
+
+The second major part of the thesis deals with multichannel spectra.
+Again, all of the important theorems are presented but in less detail
+than in the single channel case. In general, multichannel spectra do
+not have the necessary structure to permit the correspondingly rich
+
+| development as occurs in the single channel case. Because of this, no
+simple extension of the Burg technique to the multichannel case is
+possible. A particularly noteworthy proof is the one showing that the
+multichannel prediction error filter is minimum phase.
+
+The final major portion of the thesis considers the maximum entropy
+philosophy to be a special case of the general variational principle
+approach to estimation of functions. A general solution technique is
+discussed and philosophical comments are presented concerning the
+consistency and usefulness of measurements.
+
+Approved for publication:
+By “OC! phy
+‘ For, Geophysics Department
+By
+Dean of Graduate Studies
+iv
+

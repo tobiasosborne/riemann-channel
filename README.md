@@ -156,7 +156,13 @@ Notes, in reading order:
     python3 scripts/ihara_dirac.py         # square roots of Ihara-Bass: chiral pencil, oriented half, odd-letter chirality
     python3 scripts/graded_toys.py         # graded tensor network of the cusp toys: linearisation, Frobenius superdeterminant, graded MPS, funnels, Frobenius channel, character channels
     python3 scripts/gl1_bond.py            # the class-group bond of the D2 and D3 curves: divisor counts, h^0, Pic^0, class characters, Jacobi theta
+    python3 scripts/rtp1_prime_content.py  # RTP round 1: the Weil form on {2}, {2,3}, {2,3,5} lattice bumps (python-flint balls), Kronecker sum, delta scalings
+    python3 scripts/rtp1_commutant.py      # RTP round 1: kinematic dimensions, the positive set of prime data, the lattice weight box
+    python3 scripts/rtp1_calibration.py    # RTP round 1: the certified Ramanujan-graph control (discs, collapse, fixed-window inertia)
+    (cd zst && make build/rtp1_a1 && tools/rtp1_a1_run.sh)   # RTP round 1: certified dilation-channel driver (about 7 min)
+    python3 viz/rtp1/make_all.py           # RTP round 1 figures into figures/rtp1/ (index.html)
     refs/fetch_sources.sh                  # re-fetch the quoted arXiv TeX sources
+    refs/fetch_extra_sources.sh            # re-fetch the non-arXiv sources of RTP round 1 (OCR text committed under refs/ocr/)
 
 Notes render with `fmd-report notes/<name>.md -o notes/<name>.html`,
 which verifies that every equation typeset.
