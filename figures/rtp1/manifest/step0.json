@@ -1,0 +1,64 @@
+[
+ {
+  "caption": "Weil distribution D(y) on y > 0, in the brief's normalisation: Psi(F) = int_0^L q(y) D(y) dy with q(y) = F(y) + F(-y). Top: the CCM windows for x = 13 and x = 50 (q is supported in [0, log x]; the test functions themselves live on log u in [-L/2, L/2]). Middle: the smooth part, pole +2 cosh(y/2) and archimedean -rho(y), drawn separately and summed; the archimedean finite part and point mass at y = 0 are not drawn. Bottom: the prime comb, a point mass -Lambda(k) k^(-1/2) at y = log k, split into the prime powers inside the x = 13 window and those that enter only by x = 50. The grey band |y| < log 2 carries no prime mass.",
+  "id": "s0_line",
+  "kind": "closed form",
+  "panels": [
+   "windows (closed form)",
+   "smooth part of D (closed form, floating point)",
+   "prime comb (exact weights)"
+  ],
+  "script": "viz/rtp1/step0_objects.py",
+  "sources": [
+   "brief.md Conventions",
+   "notes/zeta-spectral-triples/plan.md section 1"
+  ],
+  "step": "Step 0",
+  "title": "The dilation line: windows, smooth part and prime comb"
+ },
+ {
+  "caption": "Left: real parts of the Fourier test functions V_n(u) = L^(-1/2) exp(2 pi i n (log u + L/2)/L) on the centred x = 13 window, n = 0, 1, 2, 5. Right: the C_c^infinity bump phi_delta centred at log 6 (the lattice point 2 * 3 of {2,3}, A = 1) with delta = delta_max = 0.07708 from lane A2's admissible table, and its autocorrelation phi^* * phi (scaled to peak 1), supported within 2 delta. At delta_max the support reaches log 7 exactly (2 delta_max = log 7 - log 6); any larger delta lets the foreign prime power 7 into the Gram entry of the ratio 6. log 5 is further away.",
+  "id": "s0_testfns",
+  "kind": "closed form",
+  "panels": [
+   "V_n (closed form)",
+   "bump and autocorrelation (floating-point quadrature); delta_max from lane A2 (certified)"
+  ],
+  "script": "viz/rtp1/step0_objects.py",
+  "sources": [
+   "outputs/rtp1_prime_content.txt (admissible delta table)"
+  ],
+  "step": "Step 0",
+  "title": "Test functions: the Fourier basis and the lattice bump"
+ },
+ {
+  "caption": "Lattice points log(prod p^(a_p)) of the prime-content channel, one row per degree sum a_p (colour repeats the degree on a one-hue ramp). Top: {2,3}, A <= 3 (16 points). Bottom: {2,3,5}, A <= 2 (27 points; only degree <= 2 and the binding point are labelled). Grey ticks: prime powers not built from the lattice primes (foreign prime powers), up to the largest lattice point. Annotated: the binding pair of lane A2's admissible-delta table (a lattice ratio next to a foreign prime power), which sets delta_max.",
+  "id": "s0_lattice",
+  "kind": "exact",
+  "panels": [
+   "{2,3} lattice (exact)",
+   "{2,3,5} lattice (exact); delta_max from lane A2 (certified)"
+  ],
+  "script": "viz/rtp1/step0_objects.py",
+  "sources": [
+   "outputs/rtp1_prime_content.txt (admissible delta table)"
+  ],
+  "step": "Step 0",
+  "title": "The prime-content lattices on the line"
+ },
+ {
+  "caption": "Bumps phi_alpha at log 4 and phi_beta at log 6 (lattice points (2,0) and (1,1) of {2,3}, A = 2, which differ in both coordinates: a mixed entry). phi_alpha^* * phi_beta is supported within 2 delta of log(6/4) = log(3/2) = 0.405. At the admissible delta = 0.01232 (0.9 delta_max of lane A2) the support touches no prime power, so the Gram entry is pole plus archimedean only. At delta = 0.16 the support (half-width 0.32) crosses log 2 = 0.693 and the 2-comb enters a mixed entry: admissibility fails. q is scaled to peak 1 for each delta; comb weights are exact.",
+  "id": "s0_convolution",
+  "kind": "closed form",
+  "panels": [
+   "bumps on the log u line (closed form)",
+   "q(y) (floating-point autocorrelation) and comb (exact)"
+  ],
+  "script": "viz/rtp1/step0_objects.py",
+  "sources": [
+   "outputs/rtp1_prime_content.txt (delta grid)"
+  ],
+  "step": "Step 0",
+  "title": "The convolution picture for a mixed pair"
+ }
+]
