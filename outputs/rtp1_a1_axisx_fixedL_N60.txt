@@ -6,6 +6,7 @@
 #   restricted to the fixed window; each step adds exactly one closed-form prime-power term.
 # overlap_c: |<v(x), v_final>| of unit coefficient vectors in the even basis (window rescaled to unit length)
 # eps: certified minimal eigenvalue of the even block; neg: certified number of negative even eigenvalues
+# e-s: even-simple certified; logdet_even: log det of the even block (log |det| when neg > 0)
 # dI, r_j, tau_j: the bordering N -> N+1 at this knot, as in axisN (only when the block is PD)
      x    X  #pp            eps  neg   e-s      logdet_even    overlap_c            -         dI        r_j   tau_j
     50    1    0       -1.37311    3    no        30.678808   0.70387882            -          -          -       -

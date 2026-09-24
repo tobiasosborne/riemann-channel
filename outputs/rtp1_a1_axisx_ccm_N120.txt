@@ -8,6 +8,7 @@
 # overlap_c: |<v(x), v_final>| of unit coefficient vectors in the even basis (window rescaled to unit length)
 # overlap_f: |<f_x, f_final>| in L^2(R_+^x, d*u) of the unit eigenfunctions on centred windows (intrinsic)
 # eps: certified minimal eigenvalue of the even block; neg: certified number of negative even eigenvalues
+# e-s: even-simple certified; logdet_even: log det of the even block (log |det| when neg > 0)
 # dI, r_j, tau_j: the bordering N -> N+1 at this knot, as in axisN (only when the block is PD)
      x    X  #pp            eps  neg   e-s      logdet_even    overlap_c    overlap_f         dI        r_j   tau_j
      2    2    1     0.00132983    0   yes        161.11753   0.69258801   0.97599732 0.00027881      3.977 -0.000980
@@ -52,4 +53,34 @@
    k =   3       -0.0008170265365         2.012941684e-6
    k =   4        -2.001101832e-6         1.183985265e-8
    k =   5        -1.183981626e-8        3.639026885e-14
-   k =   7       -3.637657114e-14        1.369
+   k =   7       -3.637657114e-14        1.369771200e-17
+   k =   8       -1.368017517e-17        1.753683347e-20
+   k =   9       -1.753682257e-20        1.090137420e-26
+   k =  11       -1.090137323e-26        9.693044127e-34
+   k =  13       -9.693044127e-34        3.448118006e-46
+   k =  16       -3.447549776e-46        5.682301832e-50
+   k =  17       -5.682301831e-50        1.184692759e-59
+   k =  19       -1.184692759e-59        4.989643570e-86
+   k =  23       -4.989643570e-86       5.259121584e-119
+   k =  25        [+/- 6.80e-541]       5.259121584e-119
+       eps       5.259121584e-119
+#
+# COMPARISON STEP (zeros of zeta used HERE ONLY, labelled; nothing above depends on them):
+#   z_1 = 2 pi s_1 / L from the secular roots of the minimal even eigenvector; gamma_1 = 14.134725141734693790
+     x    X    roots    |z1-g1|<=
+     2    2      120        0.213
+     3    3      120      4.64e-5
+     4    4      120      1.32e-9
+     5    5      120     2.56e-14
+     7    7      120     3.20e-24
+     8    8      120     2.15e-29
+     9    9      120     1.58e-34
+    11   11      120     7.03e-45
+    13   13      120     2.44e-55
+    16   16      120     2.93e-71
+    17   17      120     1.68e-76
+    19   19      120     4.87e-87
+    23   23      120    7.12e-107
+    25   25      120    4.95e-115
+#
+# checks: 114 run, 0 failed
