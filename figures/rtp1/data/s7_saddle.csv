@@ -1,0 +1,4 @@
+# toy zero set with invented ordinates (6.0, 11.0, 15.0) (not zeros of zeta); packets (centre, width, freq, phase) [(-2.0, 0.6, 11.0, 0.0), (2.0, 0.6, 11.0, 0.9273)]
+case,G11,G12,G22,lambda_min,lambda_max
+on the line,1.134676752,0.6774931975,1.134676752,0.4571835543,1.812169949
+pair at 1/2 +- 0.4,2.399763629,3.704365257,2.399763629,-1.304601628,6.104128886

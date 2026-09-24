@@ -1,0 +1,21 @@
+[
+ {
+  "b1": true,
+  "caption": "Statements as lane B1 reports them (notes/rtp-round-1/lane-B1.md sections 1-2, byte-cited there): Yoshida 1992, Theorem 1 (k = Q, a = log 2 / 2): <phi, phi> = T_Q(phi * phi~) >= 0 for every smooth phi supported in [-a, a], with equality only for phi = 0; unconditional and computer-assisted. On that space the prime sum vanishes, so the theorem is about the pole plus archimedean form; beyond width log 2 nothing is proved. Bombieri 2000, Theorem 12: for F supported in an interval of length |I| < log 2, T[F * F(-x)-bar] >= (log(1/|I|) - log^+ log(1/|I|) - O(1)) ||F||^2, with the O(1) unspecified, so it gives positivity only for |I| small enough; the log 2 range is Yoshida's. The archimedean term alone is not positive on this space (lane B1: for the even box of width log 2 the archimedean part is -1.217, the pole part +1.400). Figure: (a) the Weil distribution near y = 0 (pole, archimedean, their sum; grey: |y| < log 2, where the prime comb has no mass). (b) q(y) = 2 (phi_delta^* * phi_delta)(y) for the bump at delta = 0.25 (support of q inside log 2; its normalised form value is positive) and widened to delta = 0.45 (support past log 2: the 2-comb enters with weight R_delta(log 2)). (c) The normalised form value of one centred bump against delta, split into its pole, archimedean and prime parts. The prime part is zero up to delta = log 2 / 2, where Yoshida's range ends (vertical line; the second line is log 3 / 2, where the 3-comb enters). The archimedean part carries the logarithmic self-energy: positive for small delta, negative past delta ~ 0.135, and it nearly cancels the growing pole part. (d) The total on a log scale: it grows like -log delta as delta -> 0 (lane A2: d = -log delta - 1.9555 + O(delta)), the growth of Bombieri's lower bound, and it falls to 9.7e-03 at log 2 / 2 and to 3.4e-04 near delta = 0.625 while staying positive for this one bump. One test function only: a positive value here is a single diagonal entry, not a theorem. Curves: floating point; dots: lane A2's certified values.",
+  "id": "s3_short_range",
+  "kind": "closed form + floating point; certified check points",
+  "panels": [
+   "Weil distribution near 0 (closed form)",
+   "q for two widths (floating point)",
+   "form value split by term (floating point; certified dots from lane A2)",
+   "total, log scale (floating point; certified dots)"
+  ],
+  "script": "viz/rtp1/step3_short_range.py",
+  "sources": [
+   "notes/rtp-round-1/lane-B1.md (statements)",
+   "scripts/rtp1_prime_content.py (entry, certified dots)"
+  ],
+  "step": "Step 3",
+  "title": "Short-range positivity"
+ }
+]
