@@ -9,7 +9,7 @@ per step. Brief `notes/rtp-round-1/brief.md`; lanes A1 (dilation channel, certif
 (prime-content channel, python-flint balls), B1 (sources, 52 provenance rows, twelve new source keys), B2
 (kinematic commutant and a certified Ramanujan-graph control), V (28 figures, `viz/rtp1/`, page
 https://claude.ai/artifact/7gsqqKCv3McEFiMKWr62oE); review `notes/reviews/rtp-round-1-2026-09-24.md`
-(207 checks, 3 VALID / 7 MINOR / 2 INVALID on the draft claims; all 15 corrections applied). Worklog 2026-09-24.
+(215 checks; 3 VALID / 7 MINOR / 2 INVALID on the draft claims, all 15 corrections applied; re-verdicts 14 VALID / 7 MINOR / 0 INVALID, the seven MINOR points applied). Worklog 2026-09-24.
 
 **Registered (08i).** `lem:bordering-interval` (sketched): the unstructured MaxEnt column `c = 0` is not a
 Loewner column; the admissible next datum is a per-block interval, joint max-det off-centre.
@@ -19,7 +19,7 @@ removes nothing). Numericals: `N_sat = 56, 134, 352` at `x = 13, 25, 50` (`~1.7 
 per unit `x` from 13 to 50, close to the CCM prolate asymptotic 5.39 and below the bare 5.46; pole plus
 archimedean alone indefinite; fixed-window all-but-49 value `-5.66e-7` at `N = 60` is a resolution effect
 (`-0.020` at `N = 240`); admissible lattice bumps: inter-place effects `O(delta)` / `O(delta^2)`, pole part of the
-mixed entries 2.4–21 x the archimedean, but only the archimedean kernel is non-factorising; with pole and
+mixed entries 2.4–21 x the archimedean, and the pole kernel is rank two, not factorising (reviewer erratum), so both kernels correlate the places; with pole and
 archimedean fixed the positive set of prime data is unbounded (**no MaxEnt element in Loewner coordinates**),
 min-norm captures 8%; with positions `log n` fixed, positivity pins the weights to `3e-25`–`1.3e-4` (exact LP,
 review), zeros at 6, 10, 12 included; the graph control has a finite spectrum and collapses at `K = R`, so it

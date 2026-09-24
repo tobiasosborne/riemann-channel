@@ -212,6 +212,20 @@ toe_dev = max(abs(Wopt[i, k] - Wopt[0, k - i]) for i in range(n) for k in range(
 check(toe_dev < 1e-7 and abs(Wopt[0, n - 1] - nuext[n - 1]) < 1e-7 and np.abs(z0 - opt.x).max() > 1e-3,
       f'C8: unconstrained max-det completion of a real band-{K} Toeplitz pattern ({n}x{n}, BFGS from a perturbed PD start) is Toeplitz (dev {toe_dev:.1e}) and equals the centre-by-centre (Burg/AR) extension (corner diff {abs(Wopt[0,n-1]-nuext[n-1]):.1e})')
 
+# re-verdict pass: prop:extension-disc(i) as corrected (conjugate) -- centre and the printed radius formula on complex data
+for trial in range(3):
+    K = 4
+    th = rng.uniform(0, 2 * np.pi, 7); wt = rng.uniform(0.2, 1.0, 7)
+    nu = [complex(np.sum(wt * np.exp(1j * k * th))) + (0.2 if k == 0 else 0) for k in range(K + 1)]
+    TK = toeplitz_prop(nu, K + 1); TKi = np.linalg.inv(TK)
+    w = np.array([0] + [np.conj(nu[K + 1 - i]) for i in range(1, K + 1)])
+    c = -np.conj((TKi @ w)[0]) / TKi[0, 0]
+    r2 = (nu[0].real - (np.conj(w) @ TKi @ w).real) / TKi[0, 0].real + abs(c) ** 2
+    rdet = np.linalg.det(TK).real / np.linalg.det(TK[:K, :K]).real
+    g = lambda x: nu[0].real - (np.conj(np.array([np.conj(x)] + list(w[1:]))) @ TKi @ np.array([np.conj(x)] + list(w[1:]))).real
+    check(abs(r2 - rdet ** 2) < 1e-9 * rdet ** 2 and abs(g(c + np.sqrt(r2) * np.exp(0.7j))) < 1e-9 and g(c) > 0,
+          f'prop:extension-disc(i) corrected, complex trial {trial}: centre -conj((W^-1 w)_0)/(W^-1)_00 and r_K^2 formula = (det W_K/det W_(K-1))^2 (rel diff {abs(r2 - rdet**2)/rdet**2:.1e}); g = 0 on the circle')
+
 # ---------------- C9: dimension counts by exact rank ----------------
 print('## C9 (kinematic dimensions, exact rank over Q)')
 def dims(N):

@@ -132,3 +132,16 @@ for NN in (60, 120, 240):
     Ek = even_block_np(*Pk['prime'])
     print(f'   N={NN}: ||W_49||_even = {np.abs(np.linalg.eigvalsh(Ek)).max():.4g}')
 print(f'# checks: {NCHK[0]} run, {NCHK[1]} failed')
+# ---- appended in the re-verdict pass: "operator norm 0.23-0.28 at every N" ----
+# The even block of W_49 on |n| <= N is a compression of the one on |n| <= N+1, so its norm is nondecreasing in N; on
+# L^2 of the window the form f -> w (f*f~(y0) + f*f~(-y0)), w = log 7/7, y0 = log 49, is bounded by w ||f||^2
+# (Cauchy-Schwarz on the overlap of length L - y0), so the norm is <= log 7/7 = 0.27799 for every N.
+print('# (3e) ||W_49||_even at small N, and the N-independent bound log7/7 =', round(math.log(7) / 7, 5))
+prev = 0.0; mono = True
+for NN in (5, 10, 20, 30, 45, 60, 300):
+    Pk = AB.ab_parts(L50, NN, [(49, 7)], PREC)
+    nv = np.abs(np.linalg.eigvalsh(even_block_np(*Pk['prime']))).max()
+    mono &= nv >= prev - 1e-12; prev = nv
+    print(f'   N={NN}: {nv:.4g}')
+check(mono and prev <= math.log(7) / 7, 'norm nondecreasing in N and below log 7/7 = 0.278: "0.23-0.28" holds for every N >= 60, not for small N')
+print(f'# checks (with appendix): {NCHK[0]} run, {NCHK[1]} failed')
