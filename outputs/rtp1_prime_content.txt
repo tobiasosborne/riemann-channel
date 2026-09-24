@@ -1,0 +1,965 @@
+
+====================================================================================================
+0. ENVIRONMENT AND PRECISION
+====================================================================================================
+  python-flint 0.9.0 (arb balls), working precision 200 bits; mpmath 1.3.0 at 60 digits for the general quadrature path; numpy only for starting vectors
+  prime powers sieved up to 1100000: 85960 of them
+  ok   [L 232]  prime-power sieve sane (2, 1024 are prime powers; 1000 is not)
+
+====================================================================================================
+1. CONSISTENCY CHECK (brief, Conventions; A2.2(iii)): the general Psi reproduces zst's (a_n, b_n)
+====================================================================================================
+  ok   [L 306]  generic (f^* * g)(y) + (f^* * g)(-y) for f, g = U_n, U_m on [0, log 13] equals the paper's q(U_n, U_m) (Lemma polarize0) at 9 (n, m, y) samples: max |diff| = 1.1e-61
+
+  x = lambda^2 = 13, L = log x = 2.56494935746154, prime powers <= 13; zst at 300 bits, printed to 60 digits
+    n          a_n (this implementation) |a - a_zst|          b_n (this implementation) |b - b_zst|  quad err
+    0  0.0453328442159587070934518363426     2.4e-61                                0.0         0.0   1.0e-75
+    1  0.0465118895436779793116060710601     1.1e-61  0.0457203442394000540357853654912     4.4e-62   1.0e-69
+    2  0.0506210483629745920069696920272     3.7e-61  0.0939818448885741857990582354453     5.8e-62   1.0e-63
+    3  0.0603025794859511884689695760125     2.9e-61   0.148752677000255263998143181043     4.7e-61  1.0e-128
+    4  0.0872497966746749009341832841048     6.0e-61    0.21988538069117594050097439295     1.6e-61  1.0e-128
+    5   0.252924087614770812142894085782     2.7e-61   0.358836021187649018523247585298     1.9e-61  2.0e-120
+    6    2.23323820499844083544993661398     1.6e-60  -0.211335726214989118252119885116     7.8e-61  1.1e-110
+    7   0.229331960020890502332233766269     1.3e-60   0.301805100911564459601940071207     2.3e-61  2.0e-102
+    8   0.817730637972975664364870085842     1.6e-60   0.672832051290784203621064555393     7.8e-62   1.1e-94
+    9    1.53942715433169539633397809211     1.6e-60  -0.210626533166646659492353950549     1.9e-62   1.1e-87
+   10     2.4472891909424260504747533245     2.2e-60   0.678615434531657284621423253442         0.0   1.1e-81
+  ok   [L 337]  x = 13: all a_n, b_n (n = 0..10) of the general Psi agree with zst: max deviation 2.18e-60 (zst radii <= 4.8e-87, quad estimates <= 1.0e-63)
+  ok   [L 347]  x = 13: off-column entries Psi(q(U_n, U_m)) = (b_n - b_m)/(n - m) with zst's b for (n,m) = (1,2),(2,5),(3,7),(8,6): max deviation 3.5e-61
+
+  x = lambda^2 = 9, L = log x = 2.19722457733622, prime powers <= 9; zst at 300 bits, printed to 60 digits
+    n          a_n (this implementation) |a - a_zst|          b_n (this implementation) |b - b_zst|  quad err
+    0  0.0408551986827166588669620165252     2.1e-61                                0.0         0.0   1.0e-81
+    1  0.0416981727336981692217489610726     2.0e-61  0.0411332048293540815656843621459     9.2e-62   1.0e-71
+    2  0.0445297651745977576019676902813     2.9e-61  0.0840498256544435334992910650147     8.8e-62   2.0e-64
+    3  0.0506860538786706473989361582229     1.9e-61   0.131267992575988115454175568673         0.0  1.0e-128
+    4  0.0668697911893344298568777365007     4.9e-62   0.188393238495141400428202521008     9.7e-62  1.1e-128
+    5    2.25558785706069061897450101891     4.0e-60   0.125357905071041039735755782727         0.0  2.0e-120
+    6   0.166312479436120402074142223681     8.9e-61   0.354071182282429212781712806927     5.4e-61  2.0e-110
+    7    1.53530489640986055399010424584     9.3e-61   0.807452130511643133354770505312     3.9e-61  2.0e-102
+    8   0.708351653416713473436838921466     6.2e-61   0.185350187180309824855344209722     1.2e-61   1.1e-94
+  ok   [L 337]  x = 9: all a_n, b_n (n = 0..8) of the general Psi agree with zst: max deviation 4.04e-60 (zst radii <= 5.0e-87, quad estimates <= 2.0e-64)
+  ok   [L 347]  x = 9: off-column entries Psi(q(U_n, U_m)) = (b_n - b_m)/(n - m) with zst's b for (n,m) = (1,2),(2,5),(3,7),(8,6): max deviation 1.85e-61
+  ok   [L 362]  x = 9: also agrees with the 50-digit mpmath reference file used by zst/tests/test_ab.c: max deviation 3.07e-50
+  ok   [L 365]  CONSISTENCY CHECK PASSED: the implementation of W used below reproduces zst on the Fourier basis
+
+====================================================================================================
+2. TEST CLASS AND THE ADMISSIBLE delta TABLE (brief A2.1)
+====================================================================================================
+          S  A  dim #ratios                delta_max    binding pair (r vs k)  min log r (r>1)
+        {2}  1    2       2 0.2027325541 (+/- 6.6e-61)                   2 vs 3       0.69314718
+        {2}  2    3       3 0.1115717757 (+/- 7.0e-61)                   4 vs 5       0.69314718
+        {2}  3    4       4 0.05889151783 (+/- 2.6e-60)                   8 vs 9       0.69314718
+        {2}  4    5       5 0.03031231091 (+/- 1.4e-60)                 16 vs 17       0.69314718
+        {2}  5    6       6 0.01587434916 (+/- 2.7e-60)                 32 vs 31       0.69314718
+        {2}  6    7       7 0.01587434916 (+/- 2.7e-60)                 32 vs 31       0.69314718
+     {2, 3}  1    4       5 0.07707533991 (+/- 1.2e-60)                   6 vs 7       0.40546511
+     {2, 3}  2    9      13 0.01369948709 (+/- 2.5e-60)                 36 vs 37       0.28768207
+     {2, 3}  3   16      25 0.004608327552 (+/- 5.0e-60)               108 vs 109       0.11778304
+     {2, 3}  4   25      41 0.0003856537021 (+/- 5.0e-60)             1296 vs 1297       0.11778304
+  {2, 3, 5}  1    8      14 0.01639491141 (+/- 2.5e-60)                 30 vs 31       0.18232156
+  {2, 3, 5}  2   27      63 0.001112347511 (+/- 5.0e-60)               450 vs 449       0.10536052
+  {2, 3, 5}  3   64     172 3.703840885e-5 (+/- 1.0e-59)           13500 vs 13499      0.040821995
+  {2, 3, 5}  4  125     365 1.234566377e-6 (+/- 1.0e-59)         405000 vs 405001      0.012422520
+  ok   [L 432]  S = {2}, A = 1: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2}, A = 2: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2}, A = 3: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2}, A = 4: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2}, A = 5: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2}, A = 6: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2, 3}, A = 1: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2, 3}, A = 2: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2, 3}, A = 3: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2, 3}, A = 4: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2, 3, 5}, A = 1: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2, 3, 5}, A = 2: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2, 3, 5}, A = 3: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+  ok   [L 432]  S = {2, 3, 5}, A = 4: 2 delta_max < min_(r>1) log r and <= log 2, so for admissible delta the translates are disjointly supported and no entry has overlapping bumps (D = 0 or D > 2 delta)
+
+====================================================================================================
+3. BUMP CONSTANTS (delta-independent; certified unless marked)
+====================================================================================================
+  eps (end truncation) = 0.00327885, phi_1(1 - eps) <= 2^-220
+  mu_0 = int phi_1        = 0.4439938161680794378230489211705526637612 (+/- 9.9e-59)
+  mu_2 = int phi_1 t^2    = 0.07020147675297540998837590760637267605930 (+/- 4.9e-60)
+  R_1(0) = int phi_1^2    = 0.1330861208449942715569473279553285713626 (+/- 3.9e-59)
+  ok   [L 507]  mu_0 and R_1(0) certified to better than 1e-55
+  tanh-sinh nodes on [0, 2]: 1177 (level h = 1/128), certified R_1 at each node
+  T_1  = -0.06117053533400677206305511156959494285432 (+/- 2.7e-55)   [NOT certified; level-doubling |T(1/128) - T(1/64)| = 2.6e-56]
+  At_0  = int R_1 |u|^0  du = 0.197130508795494318008631143949 (+/- 5.2e-56)
+  At_1  = int R_1 |u|^1  du = 0.0901816801964401696952525471047 (+/- 9.5e-56)   [NOT certified]
+  At_2  = int R_1 |u|^2  du = 0.0623380431283765327637829591048 (+/- 1.7e-55)
+  At_3  = int R_1 |u|^3  du = 0.0526966188167044967175373196654 (+/- 3.2e-55)   [NOT certified]
+  At_5  = int R_1 |u|^5  du = 0.0526759191294950549149210215559 (+/- 1.1e-54)   [NOT certified]
+  At_11 = int R_1 |u|^11 du = 0.180411160643931275512799549248 (+/- 2.5e-53)   [NOT certified]
+  At_31 = int R_1 |u|^31 du = 602.696552043099840206783701297 (+/- 1.2e-46)   [NOT certified]
+  ok   [L 548]  quadrature At_0 = int R_1 equals (int phi_1)^2 = mu_0^2 (certified): |diff| = 1.6e-58
+  ok   [L 551]  quadrature At_j equals the moment formula Mt_j for all even j <= 100 (relative dev <= 6.3e-56): validates the node table that also gives T_1 and the odd At_j
+  level doubling: |T(1/128) - T(1/64)| = 2.6e-56; max_j |At_j(1/128) - At_j(1/64)|/At_j = 2.3e-45 (attained at the largest j; the balls above carry 10x these differences)
+  ok   [L 557]  level doubling h = 1/64 -> 1/128 moves T_1 by < 1e-50
+  rho_reg(y) = rho(y) - 1/(2y) = 0.25000000000000000000 + (-0.020833333333333333333) y + (-0.031250000000000000000) y^2 + ...
+  ok   [L 568]  rho_reg(0) = 1/4 and rho_reg'(0) = -1/48 (hand expansion of e^{y/2}/(2 sinh y) - 1/(2y))
+  Cauchy bound max_(|y| = 3) |rho_reg(y)| <= 6.69332
+  ok   [L 581]  rho_reg is bounded on |y| = 3 (its nearest singularities are +-i pi)
+  ok   [L 583]  the non-certified At_j balls move the normalised diagonal by at most sum_j |r_j| delta^(j+1) rad(At_j) / R_1(0) <= 2.2e-56 for every delta <= 0.21 used (T_1 adds its own radius 2.7e-55)
+
+====================================================================================================
+4. STRUCTURE OF THE ENTRIES AND CROSS-CHECK OF THE BUMP FORMULAS AGAINST THE GENERAL Psi
+====================================================================================================
+  ok   [L 721]  entry r = 1, delta = 0.05: bump formulas (pole 0.00098574995, arch -0.0067993204, prime 0, prime powers []) = general Psi by quadrature: |diff| = 2.7e-60, parts <= 2.7e-60 (quad est 1.0e-100)
+  ok   [L 721]  entry r = 2, delta = 0.05: bump formulas (pole 0.0010455457, arch 0.00046522005, prime 0.0032614688, prime powers [2]) = general Psi by quadrature: |diff| = 2.1e-63, parts <= 2.4e-62 (quad est 4.0e-100)
+  ok   [L 721]  entry r = 3/2, delta = 0.05: bump formulas (pole 0.0010060768, arch 0.00072725209, prime 0, prime powers []) = general Psi by quadrature: |diff| = 1.0e-62, parts <= 3.4e-62 (quad est 4.0e-100)
+  ok   [L 721]  entry r = 8, delta = 0.1: bump formulas (pole 0.0062751343, arch 0.00070841381, prime 0.0044714524, prime powers [7, 8, 9]) = general Psi by quadrature: |diff| = 1.7e-61, parts <= 1.5e-61 (quad est 4.0e-100)
+  ok   [L 725]  at the NON-admissible delta = 0.1 the entry r = 8 picks up the neighbours 7 and 9 as well as 8 (a generic-R_1 prime contribution; exercised on purpose)
+  ok   [L 735]  S = {2}, A = 1: at delta = delta_max (1 + 1e-12) the ratio 2 sees the foreign prime power 3 (delta_max is sharp)
+  ok   [L 735]  S = {2}, A = 2: at delta = delta_max (1 + 1e-12) the ratio 4 sees the foreign prime power 5 (delta_max is sharp)
+  ok   [L 735]  S = {2}, A = 3: at delta = delta_max (1 + 1e-12) the ratio 8 sees the foreign prime power 9 (delta_max is sharp)
+  ok   [L 735]  S = {2}, A = 4: at delta = delta_max (1 + 1e-12) the ratio 16 sees the foreign prime power 17 (delta_max is sharp)
+  ok   [L 735]  S = {2}, A = 5: at delta = delta_max (1 + 1e-12) the ratio 32 sees the foreign prime power 31 (delta_max is sharp)
+  ok   [L 735]  S = {2}, A = 6: at delta = delta_max (1 + 1e-12) the ratio 32 sees the foreign prime power 31 (delta_max is sharp)
+  ok   [L 735]  S = {2, 3}, A = 1: at delta = delta_max (1 + 1e-12) the ratio 6 sees the foreign prime power 7 (delta_max is sharp)
+  ok   [L 735]  S = {2, 3}, A = 2: at delta = delta_max (1 + 1e-12) the ratio 36 sees the foreign prime power 37 (delta_max is sharp)
+  ok   [L 735]  S = {2, 3}, A = 3: at delta = delta_max (1 + 1e-12) the ratio 108 sees the foreign prime power 109 (delta_max is sharp)
+  ok   [L 735]  S = {2, 3}, A = 4: at delta = delta_max (1 + 1e-12) the ratio 1296 sees the foreign prime power 1297 (delta_max is sharp)
+  ok   [L 735]  S = {2, 3, 5}, A = 1: at delta = delta_max (1 + 1e-12) the ratio 30 sees the foreign prime power 31 (delta_max is sharp)
+  ok   [L 735]  S = {2, 3, 5}, A = 2: at delta = delta_max (1 + 1e-12) the ratio 450 sees the foreign prime power 449 (delta_max is sharp)
+  ok   [L 735]  S = {2, 3, 5}, A = 3: at delta = delta_max (1 + 1e-12) the ratio 13500 sees the foreign prime power 13499 (delta_max is sharp)
+  ok   [L 735]  S = {2, 3, 5}, A = 4: at delta = delta_max (1 + 1e-12) the ratio 405000 sees the foreign prime power 405001 (delta_max is sharp)
+
+====================================================================================================
+5. MEASUREMENTS (brief A2.3): Gram matrices, minimal eigenpairs, the three decompositions
+====================================================================================================
+  Notation (all matrices normalised by ||phi_delta||^2 = delta R_1(0)):
+    G        the Gram matrix on Lambda_S(A);  d = its (constant) diagonal
+    G_X      principal submatrix on the single-prime points X (origin + the |S| axes)
+    G_bd     block-diagonal restriction to the axis subspaces = direct sum of the one-prime forms G_{p}
+             (each on its own copy of the origin); lambda(G_bd) = min_p lambda(G_{p})
+    G_nomix  mixed entries (alpha, beta differing in >= 2 coordinates) set to 0.  EXACT FACT used below:
+             G_nomix = d I + sum_p I x (G_{p} - d I) x I is the Kronecker sum of the one-prime forms
+             (axis-type entries depend only on the ratio p^j), so lambda(G_nomix) = d + sum_p (lambda(G_{p}) - d)
+             and its minimal eigenvector is the tensor product of the one-prime eigenvectors.
+    G_-mixA  only the archimedean part of the mixed entries removed (pole part kept)
+    G_-mixP  only the pole part of the mixed entries removed
+    G_noP    prime terms removed everywhere (pole + archimedean only)
+  Gaps: inter-place = lambda(G_bd) - lambda(G); mixed = lambda(G_nomix) - lambda(G); combs = lambda(G_noP) - lambda(G).
+  'offaxis' = weight of the minimal eigenvector outside X; 'schmidt(p)' = 1 - sigma_1^2 for the cut {p} | S - {p}
+  (0 iff the eigenvector is a product across that cut).
+
+  Gram matrix G/||phi||^2 for S = {2}, A = 2, delta = 0.1004 (rows/cols: [(0,), (1,), (2,)]):
+         0.603658424   -0.315454873  -0.0540396215
+        -0.315454873    0.603658424   -0.315454873
+       -0.0540396215   -0.315454873    0.603658424
+
+  Gram matrix G/||phi||^2 for S = {2, 3}, A = 1, delta = 0.06936 (rows/cols: [(0, 0), (0, 1), (1, 0), (1, 1)]):
+         0.892886406   -0.463763685   -0.369243188    0.250498548
+        -0.463763685    0.892886406   0.0575625969   -0.369243188
+        -0.369243188   0.0575625969    0.892886406   -0.463763685
+         0.250498548   -0.369243188   -0.463763685    0.892886406
+
+  ===== S = {2}, A = 1: delta_max = 0.2027325541
+  ok   [L 911]  S = {2}, A = 1, delta = 0.1824: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 1 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 1, delta = 0.1824: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 1, dim 2, delta = 0.1824  (delta/delta_max = 0.900),  ||phi||^2 = 0.02427490844
+      diagonal d = 0.220167749653127 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.490129], pole-arch part in [3.147e-01, 3.147e-01]
+      lambda_min:  G 0.04473101580031 (+/- 2.0e-54)   (next eigenvalue ~ 0.395604, gap >= 0.1754)
+                   G_X 0.04473101580031   G_bd 0.04473101580031   one-prime: G_(2) 0.04473101580
+                   G_noP -0.09452458822833
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = -1.3926e-01
+      minimal eigenvector (lattice point: component):
+        (0,): 0.70710678  (1,): 0.70710678
+  ok   [L 911]  S = {2}, A = 1, delta = 0.06081: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 1 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 1, delta = 0.06081: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 1, dim 2, delta = 0.06081  (delta/delta_max = 0.300),  ||phi||^2 = 0.008092967009
+      diagonal d = 1.00224961365051 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.490129], pole-arch part in [1.060e-01, 1.060e-01]
+      lambda_min:  G 0.6181440289857 (+/- 2.0e-54)   (next eigenvalue ~ 1.386355, gap >= 0.3841)
+                   G_X 0.6181440289857   G_bd 0.6181440289857   one-prime: G_(2) 0.6181440290
+                   G_noP 0.8962261265810
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 2.7808e-01
+  ok   [L 911]  S = {2}, A = 1, delta = 0.02027: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 1 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 1, delta = 0.02027: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 1, dim 2, delta = 0.02027  (delta/delta_max = 0.100),  ||phi||^2 = 0.002697655670
+      diagonal d = 1.99570145798053 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.490129], pole-arch part in [3.538e-02, 3.538e-02]
+      lambda_min:  G 1.540951778748 (+/- 2.0e-54)   (next eigenvalue ~ 2.450451, gap >= 0.4547)
+                   G_X 1.540951778748   G_bd 1.540951778748   one-prime: G_(2) 1.540951779
+                   G_noP 1.960322065478
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 4.1937e-01
+
+  ===== S = {2}, A = 2: delta_max = 0.1115717757
+  ok   [L 911]  S = {2}, A = 2, delta = 0.1004: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 3 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 2, delta = 0.1004: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 2, dim 3, delta = 0.1004  (delta/delta_max = 0.900),  ||phi||^2 = 0.01336184653
+      diagonal d = 0.603658424047059 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.346574], pole-arch part in [1.747e-01, 2.925e-01]
+      lambda_min:  G 0.1297005601493 (+/- 2.0e-54)   (next eigenvalue ~ 0.657698, gap >= 0.2640)
+                   G_X 0.1297005601493   G_bd 0.1297005601493   one-prime: G_(2) 0.1297005601
+                   G_noP 0.3111244552188
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 1.8142e-01
+      minimal eigenvector (lattice point: component):
+        (0,): 0.51489207  (1,): 0.68539938  (2,): 0.51489207
+  ok   [L 911]  S = {2}, A = 2, delta = 0.03347: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 3 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 2, delta = 0.03347: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 2, dim 3, delta = 0.03347  (delta/delta_max = 0.300),  ||phi||^2 = 0.004454392465
+      diagonal d = 1.52842406035197 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.346574], pole-arch part in [5.841e-02, 9.750e-02]
+      lambda_min:  G 0.7807675294340 (+/- 2.0e-54)   (next eigenvalue ~ 1.777495, gap >= 0.4984)
+                   G_X 0.7807675294340   G_bd 0.7807675294340   one-prime: G_(2) 0.7807675294
+                   G_noP 1.430921126424
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 6.5015e-01
+  ok   [L 911]  S = {2}, A = 2, delta = 0.01115: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 3 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 2, delta = 0.01115: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 2, dim 3, delta = 0.01115  (delta/delta_max = 0.100),  ||phi||^2 = 0.001483910247
+      diagonal d = 2.56975860743578 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.346574], pole-arch part in [1.946e-02, 3.248e-02]
+      lambda_min:  G 1.728814261174 (+/- 2.0e-54)   (next eigenvalue ~ 2.883851, gap >= 0.5775)
+                   G_X 1.728814261174   G_bd 1.728814261174   one-prime: G_(2) 1.728814261
+                   G_noP 2.537277724491
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 8.0846e-01
+
+  ===== S = {2}, A = 3: delta_max = 0.05889151783
+  ok   [L 911]  S = {2}, A = 3, delta = 0.05300: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 6 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 3, delta = 0.05300: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 3, dim 4, delta = 0.05300  (delta/delta_max = 0.900),  ||phi||^2 = 0.007053564405
+      diagonal d = 1.11944474682943 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.245065], pole-arch part in [9.243e-02, 2.216e-01]
+      lambda_min:  G 0.2900410673024 (+/- 2.0e-54)   (next eigenvalue ~ 1.052058, gap >= 0.3810)
+                   G_X 0.2900410673024   G_bd 0.2900410673024   one-prime: G_(2) 0.2900410673
+                   G_noP 0.8728990337851
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 5.8286e-01
+      minimal eigenvector (lattice point: component):
+        (0,): 0.41761567  (1,): 0.57061121  (2,): 0.57061121  (3,): 0.41761567
+  ok   [L 911]  S = {2}, A = 3, delta = 0.01766: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 6 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 3, delta = 0.01766: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 3, dim 4, delta = 0.01766  (delta/delta_max = 0.300),  ||phi||^2 = 0.002350300894
+      diagonal d = 2.12677395828755 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.245065], pole-arch part in [3.082e-02, 7.384e-02]
+      lambda_min:  G 1.043450285296 (+/- 2.0e-54)   (next eigenvalue ~ 2.223631, gap >= 0.5901)
+                   G_X 1.043450285296   G_bd 1.043450285296   one-prime: G_(2) 1.043450285
+                   G_noP 2.044644845565
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 1.0012e+00
+  ok   [L 911]  S = {2}, A = 3, delta = 0.005889: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 6 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 3, delta = 0.005889: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 3, dim 4, delta = 0.005889  (delta/delta_max = 0.100),  ||phi||^2 = 0.0007837441657
+      diagonal d = 3.19447321057436 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.245065], pole-arch part in [1.028e-02, 2.462e-02]
+      lambda_min:  G 2.024732309743 (+/- 2.0e-54)   (next eigenvalue ~ 3.345992, gap >= 0.6606)
+                   G_X 2.024732309743   G_bd 2.024732309743   one-prime: G_(2) 2.024732310
+                   G_noP 3.167086791607
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 1.1424e+00
+
+  ===== S = {2}, A = 4: delta_max = 0.03031231091
+  ok   [L 911]  S = {2}, A = 4, delta = 0.02728: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 10 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 4, delta = 0.02728: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 4, dim 5, delta = 0.02728  (delta/delta_max = 0.900),  ||phi||^2 = 0.003630589377
+      diagonal d = 1.71686679779243 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.173287], pole-arch part in [4.761e-02, 1.616e-01]
+      lambda_min:  G 0.5411824895350 (+/- 2.0e-54)   (next eigenvalue ~ 1.519582, gap >= 0.4892)
+                   G_X 0.5411824895350   G_bd 0.5411824895350   one-prime: G_(2) 0.5411824895
+                   G_noP 1.518213287892
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 9.7703e-01
+      minimal eigenvector (lattice point: component):
+        (0,): 0.35857107  (1,): 0.48265078  (2,): 0.52626041  (3,): 0.48265078  (4,): 0.35857107
+  ok   [L 911]  S = {2}, A = 4, delta = 0.009093: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 10 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 4, delta = 0.009093: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 4, dim 5, delta = 0.009093  (delta/delta_max = 0.300),  ||phi||^2 = 0.001210152097
+      diagonal d = 2.76836050697800 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.173287], pole-arch part in [1.587e-02, 5.386e-02]
+      lambda_min:  G 1.389922672778 (+/- 2.0e-54)   (next eigenvalue ~ 2.702689, gap >= 0.6564)
+                   G_X 1.389922672778   G_bd 1.389922672778   one-prime: G_(2) 1.389922673
+                   G_noP 2.702149972210
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 1.3122e+00
+  ok   [L 911]  S = {2}, A = 4, delta = 0.003031: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 10 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 4, delta = 0.003031: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 4, dim 5, delta = 0.003031  (delta/delta_max = 0.100),  ||phi||^2 = 0.0004033840323
+      diagonal d = 3.85125808576478 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.173287], pole-arch part in [5.291e-03, 1.795e-02]
+      lambda_min:  G 2.403924758415 (+/- 2.0e-54)   (next eigenvalue ~ 3.829379, gap >= 0.7127)
+                   G_X 2.403924758415   G_bd 2.403924758415   one-prime: G_(2) 2.403924758
+                   G_noP 3.829188087865
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 1.4253e+00
+
+  ===== S = {2}, A = 5: delta_max = 0.01587434916
+  ok   [L 911]  S = {2}, A = 5, delta = 0.01428: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 15 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 5, delta = 0.01428: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 5, dim 6, delta = 0.01428  (delta/delta_max = 0.900),  ||phi||^2 = 0.001900469806
+      diagonal d = 2.33045288382391 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.122532], pole-arch part in [2.493e-02, 1.197e-01]
+      lambda_min:  G 0.8570506308041 (+/- 2.0e-54)   (next eigenvalue ~ 1.990670, gap >= 0.5668)
+                   G_X 0.8570506308041   G_bd 0.8570506308041   one-prime: G_(2) 0.8570506308
+                   G_noP 2.169702439979
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 1.3127e+00
+      minimal eigenvector (lattice point: component):
+        (0,): 0.31588272  (1,): 0.41916541  (2,): 0.47383380  (3,): 0.47383380  (4,): 0.41916541  (5,): 0.31588272
+  ok   [L 911]  S = {2}, A = 5, delta = 0.004762: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 15 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 5, delta = 0.004762: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 5, dim 6, delta = 0.004762  (delta/delta_max = 0.300),  ||phi||^2 = 0.0006337561075
+      diagonal d = 3.40397013804185 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.122532], pole-arch part in [8.313e-03, 3.990e-02]
+      lambda_min:  G 1.776652670846 (+/- 2.0e-54)   (next eigenvalue ~ 3.169515, gap >= 0.6964)
+                   G_X 1.776652670846   G_bd 1.776652670846   one-prime: G_(2) 1.776652671
+                   G_noP 3.350365090468
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 1.5737e+00
+  ok   [L 911]  S = {2}, A = 5, delta = 0.001587: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 15 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 5, delta = 0.001587: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 5, dim 6, delta = 0.001587  (delta/delta_max = 0.100),  ||phi||^2 = 0.0002112076738
+      diagonal d = 4.49456208907204 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.122532], pole-arch part in [2.770e-03, 1.330e-02]
+      lambda_min:  G 2.815009472049 (+/- 2.0e-54)   (next eigenvalue ~ 4.295136, gap >= 0.7401)
+                   G_X 2.815009472049   G_bd 2.815009472049   one-prime: G_(2) 2.815009472
+                   G_noP 4.476697527282
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 1.6617e+00
+
+  ===== S = {2}, A = 6: delta_max = 0.01587434916
+  ok   [L 911]  S = {2}, A = 6, delta = 0.01428: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 21 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 6, delta = 0.01428: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 6, dim 7, delta = 0.01428  (delta/delta_max = 0.900),  ||phi||^2 = 0.001900469806
+      diagonal d = 2.33045288382391 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.086643], pole-arch part in [2.493e-02, 1.692e-01]
+      lambda_min:  G 0.7546682379668 (+/- 2.0e-54)   (next eigenvalue ~ 1.730778, gap >= 0.4881)
+                   G_X 0.7546682379668   G_bd 0.7546682379668   one-prime: G_(2) 0.7546682380
+                   G_noP 2.084961592918
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 1.3303e+00
+      minimal eigenvector (lattice point: component):
+        (0,): 0.25914363  (1,): 0.36754080  (2,): 0.43735915  (3,): 0.46146572  (4,): 0.43735915  (5,): 0.36754080  (6,): 0.25914363
+  ok   [L 911]  S = {2}, A = 6, delta = 0.004762: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 21 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 6, delta = 0.004762: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 6, dim 7, delta = 0.004762  (delta/delta_max = 0.300),  ||phi||^2 = 0.0006337561075
+      diagonal d = 3.40397013804185 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.086643], pole-arch part in [8.313e-03, 5.643e-02]
+      lambda_min:  G 1.618849137338 (+/- 2.0e-54)   (next eigenvalue ~ 2.963289, gap >= 0.6722)
+                   G_X 1.618849137338   G_bd 1.618849137338   one-prime: G_(2) 1.618849137
+                   G_noP 3.322106549294
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 1.7033e+00
+  ok   [L 911]  S = {2}, A = 6, delta = 0.001587: all 0 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 21 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2}, A = 6, delta = 0.001587: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+
+  --- S = {2}, A = 6, dim 7, delta = 0.001587  (delta/delta_max = 0.100),  ||phi||^2 = 0.0002112076738
+      diagonal d = 4.49456208907204 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.490129, -0.086643], pole-arch part in [2.770e-03, 1.881e-02]
+      lambda_min:  G 2.637287200068 (+/- 2.0e-54)   (next eigenvalue ~ 4.106564, gap >= 0.7346)
+                   G_X 2.637287200068   G_bd 2.637287200068   one-prime: G_(2) 2.637287200
+                   G_noP 4.467280001856
+      gaps: inter-place lambda(G_bd) - lambda(G) = 0.0000e+00;  mixed lambda(G_nomix) - lambda(G) = 0.0000e+00;  combs lambda(G_noP) - lambda(G) = 1.8300e+00
+
+  ===== S = {2, 3}, A = 1: delta_max = 0.07707533991
+  ok   [L 911]  S = {2, 3}, A = 1, delta = 0.06936: all 2 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 4 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3}, A = 1, delta = 0.06936: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3}, A = 1, delta = 0.06936: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 0.0598795335420466 vs 0.0598795335420466
+  ok   [L 943]  S = {2, 3}, A = 1, delta = 0.06936: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 7.8e-62)
+
+  --- S = {2, 3}, A = 1, dim 4, delta = 0.06936  (delta/delta_max = 0.900),  ||phi||^2 = 0.009230853342
+      diagonal d = 0.892886406109649 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.634284, -0.490129], pole-arch part in [1.209e-01, 1.705e-01]
+      mixed entries (2): max |pole| = 2.937e-01, max |arch| = 1.522e-01, max |total| = 2.505e-01
+      lambda_min:  G 0.2083428792337 (+/- 2.0e-54)   (next eigenvalue ~ 0.603800, gap >= 0.1977)
+                   G_X 0.3273126144668   G_bd 0.4291227214699   one-prime: G_(2) 0.5236432182  G_(3) 0.4291227215
+                   G_nomix 0.05987953354205   G_-mixA 0.3105268704343   G_-mixP -0.03957496824327
+                   G_noP 0.6303677832323
+      gaps: inter-place lambda(G_bd) - lambda(G) = 2.2078e-01;  mixed lambda(G_nomix) - lambda(G) = -1.4846e-01;  combs lambda(G_noP) - lambda(G) = 4.2202e-01
+            of the mixed gap: archimedean-only removal 1.0218e-01, pole-only removal -2.4792e-01
+      first order along v: v^T(G - G_nomix)v = 1.4293e-01 (arch part -1.0394e-01, pole part 2.4688e-01); v^T(G - G_noP)v = -1.1169e+00
+      eigenvector: off-axis weight 2.2124e-01;  Schmidt defects (2|rest) 0.003319, (3|rest) 0.003319;  sin(angle to true eigvec) <= 1.0e-53
+      minimal eigenvector (lattice point: component):
+        (0, 0): 0.47036207  (0, 1): 0.52797682  (1, 0): 0.52797682  (1, 1): 0.47036207
+  ok   [L 911]  S = {2, 3}, A = 1, delta = 0.02312: all 2 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 4 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3}, A = 1, delta = 0.02312: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3}, A = 1, delta = 0.02312: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 0.844318012365306 vs 0.844318012365306
+  ok   [L 943]  S = {2, 3}, A = 1, delta = 0.02312: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 7.8e-62)
+
+  --- S = {2, 3}, A = 1, dim 4, delta = 0.02312  (delta/delta_max = 0.300),  ||phi||^2 = 0.003076951114
+      diagonal d = 1.87153526167973 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.634284, -0.490129], pole-arch part in [4.035e-02, 5.684e-02]
+      mixed entries (2): max |pole| = 9.787e-02, max |arch| = 5.037e-02, max |total| = 8.349e-02
+      lambda_min:  G 0.8953295939448 (+/- 2.0e-54)   (next eigenvalue ~ 1.688419, gap >= 0.3965)
+                   G_X 1.148986230907   G_bd 1.294094912367   one-prime: G_(2) 1.421758362  G_(3) 1.294094912
+                   G_nomix 0.8443180123653   G_-mixA 0.9281096857098   G_-mixP 0.8117827653623
+                   G_noP 1.784046056425
+      gaps: inter-place lambda(G_bd) - lambda(G) = 3.9877e-01;  mixed lambda(G_nomix) - lambda(G) = -5.1012e-02;  combs lambda(G_noP) - lambda(G) = 8.8872e-01
+            of the mixed gap: archimedean-only removal 3.2780e-02, pole-only removal -8.3547e-02
+      first order along v: v^T(G - G_nomix)v = 5.0514e-02 (arch part -3.2938e-02, pole part 8.3452e-02); v^T(G - G_noP)v = -1.1239e+00
+      eigenvector: off-axis weight 2.4222e-01;  Schmidt defects (2|rest) 0.0002421, (3|rest) 0.0002421;  sin(angle to true eigvec) <= 5.1e-54
+  ok   [L 911]  S = {2, 3}, A = 1, delta = 0.007707: all 2 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 4 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3}, A = 1, delta = 0.007707: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3}, A = 1, delta = 0.007707: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 1.83813239542755 vs 1.83813239542755
+  ok   [L 943]  S = {2, 3}, A = 1, delta = 0.007707: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 7.8e-62)
+
+  --- S = {2, 3}, A = 1, dim 4, delta = 0.007707  (delta/delta_max = 0.100),  ||phi||^2 = 0.001025694733
+      diagonal d = 2.93014330788354 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.634284, -0.490129], pole-arch part in [1.345e-02, 1.895e-02]
+      mixed entries (2): max |pole| = 3.262e-02, max |arch| = 1.678e-02, max |total| = 2.783e-02
+      lambda_min:  G 1.855256889942 (+/- 2.0e-54)   (next eigenvalue ~ 2.773899, gap >= 0.4593)
+                   G_X 2.154924977062   G_bd 2.314808075703   one-prime: G_(2) 2.453467628  G_(3) 2.314808076
+                   G_nomix 1.838132395428   G_-mixA 1.866085406481   G_-mixP 1.827329454110
+                   G_noP 2.900979616050
+      gaps: inter-place lambda(G_bd) - lambda(G) = 4.5955e-01;  mixed lambda(G_nomix) - lambda(G) = -1.7124e-02;  combs lambda(G_noP) - lambda(G) = 1.0457e+00
+            of the mixed gap: archimedean-only removal 1.0829e-02, pole-only removal -2.7927e-02
+      first order along v: v^T(G - G_nomix)v = 1.7073e-02 (arch part -1.0845e-02, pole part 2.7917e-02); v^T(G - G_noP)v = -1.1244e+00
+      eigenvector: off-axis weight 2.4756e-01;  Schmidt defects (2|rest) 2.379e-5, (3|rest) 2.379e-5;  sin(angle to true eigvec) <= 4.4e-54
+
+  ===== S = {2, 3}, A = 2: delta_max = 0.01369948709
+  ok   [L 911]  S = {2, 3}, A = 2, delta = 0.01232: all 18 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 18 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3}, A = 2, delta = 0.01232: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3}, A = 2, delta = 0.01232: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 0.612939393171312 vs 0.612939393171312
+  ok   [L 943]  S = {2, 3}, A = 2, delta = 0.01232: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 7.8e-62)
+
+  --- S = {2, 3}, A = 2, dim 9, delta = 0.01232  (delta/delta_max = 0.899),  ||phi||^2 = 0.001639621009
+      diagonal d = 2.47300740710486 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.634284, -0.346574], pole-arch part in [2.151e-02, 5.467e-02]
+      mixed entries (18): max |pole| = 1.125e-01, max |arch| = 3.614e-02, max |total| = 1.095e-01
+      lambda_min:  G 0.7601485618677 (+/- 2.0e-54)   (next eigenvalue ~ 1.645046, gap >= 0.4424)
+                   G_X 1.311799901796   G_bd 1.448978145048   one-prime: G_(2) 1.636968655  G_(3) 1.448978145
+                   G_nomix 0.6129393931713   G_-mixA 0.8205561768355   G_-mixP 0.5532106796824
+                   G_noP 2.303775363092
+      gaps: inter-place lambda(G_bd) - lambda(G) = 6.8883e-01;  mixed lambda(G_nomix) - lambda(G) = -1.4721e-01;  combs lambda(G_noP) - lambda(G) = 1.5436e+00
+            of the mixed gap: archimedean-only removal 6.0408e-02, pole-only removal -2.0694e-01
+      first order along v: v^T(G - G_nomix)v = 1.4304e-01 (arch part -6.0703e-02, pole part 2.0374e-01); v^T(G - G_noP)v = -1.9802e+00
+      eigenvector: off-axis weight 4.9427e-01;  Schmidt defects (2|rest) 0.0009721, (3|rest) 0.0009721;  sin(angle to true eigvec) <= 4.6e-54
+      minimal eigenvector (lattice point: component):
+        (0, 0): 0.27382930  (0, 1): 0.36325915  (0, 2): 0.30492477  (1, 0): 0.33590500  (1, 1): 0.41772964  (1, 2): 0.33590500  (2, 0): 0.30492477  (2, 1): 0.36325915  (2, 2): 0.27382930
+  ok   [L 911]  S = {2, 3}, A = 2, delta = 0.004109: all 18 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 18 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3}, A = 2, delta = 0.004109: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3}, A = 2, delta = 0.004109: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 1.60557443311780 vs 1.60557443311780
+  ok   [L 943]  S = {2, 3}, A = 2, delta = 0.004109: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 1.6e-61)
+
+  --- S = {2, 3}, A = 2, dim 9, delta = 0.004109  (delta/delta_max = 0.300),  ||phi||^2 = 0.0005468508706
+      diagonal d = 3.54976543930631 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.634284, -0.346574], pole-arch part in [7.173e-03, 1.823e-02]
+      mixed entries (18): max |pole| = 3.753e-02, max |arch| = 1.205e-02, max |total| = 3.652e-02
+      lambda_min:  G 1.655856819896 (+/- 2.0e-54)   (next eigenvalue ~ 2.779555, gap >= 0.5618)
+                   G_X 2.318347588233   G_bd 2.476071478887   one-prime: G_(2) 2.679268394  G_(3) 2.476071479
+                   G_nomix 1.605574433118   G_-mixA 1.675812437664   G_-mixP 1.585705133527
+                   G_noP 3.493324970668
+      gaps: inter-place lambda(G_bd) - lambda(G) = 8.2021e-01;  mixed lambda(G_nomix) - lambda(G) = -5.0282e-02;  combs lambda(G_noP) - lambda(G) = 1.8375e+00
+            of the mixed gap: archimedean-only removal 1.9956e-02, pole-only removal -7.0152e-02
+      first order along v: v^T(G - G_nomix)v = 4.9891e-02 (arch part -1.9984e-02, pole part 6.9876e-02); v^T(G - G_noP)v = -1.9858e+00
+      eigenvector: off-axis weight 4.8579e-01;  Schmidt defects (2|rest) 9.179e-5, (3|rest) 9.179e-5;  sin(angle to true eigvec) <= 3.6e-54
+  ok   [L 911]  S = {2, 3}, A = 2, delta = 0.001369: all 18 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 18 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3}, A = 2, delta = 0.001369: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3}, A = 2, delta = 0.001369: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 2.66944518713515 vs 2.66944518713515
+  ok   [L 943]  S = {2, 3}, A = 2, delta = 0.001369: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 1.9e-61)
+
+  --- S = {2, 3}, A = 2, dim 9, delta = 0.001369  (delta/delta_max = 0.100),  ||phi||^2 = 0.0001821948994
+      diagonal d = 4.64176188763106 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.634284, -0.346574], pole-arch part in [2.390e-03, 6.075e-03]
+      mixed entries (18): max |pole| = 1.250e-02, max |arch| = 4.014e-03, max |total| = 1.217e-02
+      lambda_min:  G 2.686312231445 (+/- 2.0e-54)   (next eigenvalue ~ 3.884351, gap >= 0.5990)
+                   G_X 3.386784058227   G_bd 3.551456247774   one-prime: G_(2) 3.759750827  G_(3) 3.551456248
+                   G_nomix 2.669445187135   G_-mixA 2.692936539937   G_-mixP 2.662830658091
+                   G_noP 4.622957639153
+      gaps: inter-place lambda(G_bd) - lambda(G) = 8.6514e-01;  mixed lambda(G_nomix) - lambda(G) = -1.6867e-02;  combs lambda(G_noP) - lambda(G) = 1.9366e+00
+            of the mixed gap: archimedean-only removal 6.6243e-03, pole-only removal -2.3482e-02
+      first order along v: v^T(G - G_nomix)v = 1.6826e-02 (arch part -6.6274e-03, pole part 2.3453e-02); v^T(G - G_noP)v = -1.9863e+00
+      eigenvector: off-axis weight 4.8357e-01;  Schmidt defects (2|rest) 9.663e-6, (3|rest) 9.663e-6;  sin(angle to true eigvec) <= 3.4e-54
+
+  ===== S = {2, 3}, A = 3: delta_max = 0.004608327552
+  ok   [L 911]  S = {2, 3}, A = 3, delta = 0.004147: all 72 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 48 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3}, A = 3, delta = 0.004147: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3}, A = 3, delta = 0.004147: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 0.959284778727266 vs 0.959284778727266
+  ok   [L 943]  S = {2, 3}, A = 3, delta = 0.004147: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect -7.8e-62)
+
+  --- S = {2, 3}, A = 3, dim 16, delta = 0.004147  (delta/delta_max = 0.900),  ||phi||^2 = 0.0005519081431
+      diagonal d = 3.54065845410039 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.634284, -0.211428], pole-arch part in [7.239e-03, 3.192e-02]
+      mixed entries (72): max |pole| = 9.070e-02, max |arch| = 2.760e-02, max |total| = 9.028e-02
+      lambda_min:  G 1.110403162583 (+/- 2.0e-54)   (next eigenvalue ~ 2.168449, gap >= 0.5290)
+                   G_X 2.012748483163   G_bd 2.141872277563   one-prime: G_(2) 2.358070955  G_(3) 2.141872278
+                   G_nomix 0.9592847787273   G_-mixA 1.152094231487   G_-mixP 0.9180056275336
+                   G_noP 3.358807093509
+      gaps: inter-place lambda(G_bd) - lambda(G) = 1.0315e+00;  mixed lambda(G_nomix) - lambda(G) = -1.5112e-01;  combs lambda(G_noP) - lambda(G) = 2.2484e+00
+            of the mixed gap: archimedean-only removal 4.1691e-02, pole-only removal -1.9240e-01
+      first order along v: v^T(G - G_nomix)v = 1.4569e-01 (arch part -4.1861e-02, pole part 1.8755e-01); v^T(G - G_noP)v = -2.6515e+00
+      eigenvector: off-axis weight 6.4887e-01;  Schmidt defects (2|rest) 0.001001, (3|rest) 0.001001;  sin(angle to true eigvec) <= 3.8e-54
+      minimal eigenvector (lattice point: component):
+        (0, 0): 0.17520257  (0, 1): 0.25066425  (0, 2): 0.26112914  (0, 3): 0.20323738  (1, 0): 0.22642422  (1, 1): 0.30674752  (1, 2): 0.30997436  (1, 3): 0.23565135  (2, 0): 0.23565135  (2, 1): 0.30997436  (2, 2): 0.30674752  (2, 3): 0.22642422  (3, 0): 0.20323738  (3, 1): 0.26112914  (3, 2): 0.25066425  (3, 3): 0.17520257
+  ok   [L 911]  S = {2, 3}, A = 3, delta = 0.001382: all 72 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 48 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3}, A = 3, delta = 0.001382: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3}, A = 3, delta = 0.001382: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 1.99947637268932 vs 1.99947637268932
+  ok   [L 943]  S = {2, 3}, A = 3, delta = 0.001382: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 7.8e-62)
+
+  --- S = {2, 3}, A = 3, dim 16, delta = 0.001382  (delta/delta_max = 0.300),  ||phi||^2 = 0.0001839250190
+      diagonal d = 4.63234440697856 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.634284, -0.211428], pole-arch part in [2.412e-03, 1.064e-02]
+      mixed entries (72): max |pole| = 3.022e-02, max |arch| = 9.196e-03, max |total| = 3.009e-02
+      lambda_min:  G 2.051299417579 (+/- 2.0e-54)   (next eigenvalue ~ 3.344259, gap >= 0.6465)
+                   G_X 3.061121980227   G_bd 3.202482487374   one-prime: G_(2) 3.429338292  G_(3) 3.202482487
+                   G_nomix 1.999476372689   G_-mixA 2.065092885436   G_-mixP 1.985738345503
+                   G_noP 4.571742191284
+      gaps: inter-place lambda(G_bd) - lambda(G) = 1.1512e+00;  mixed lambda(G_nomix) - lambda(G) = -5.1823e-02;  combs lambda(G_noP) - lambda(G) = 2.5204e+00
+            of the mixed gap: archimedean-only removal 1.3793e-02, pole-only removal -6.5561e-02
+      first order along v: v^T(G - G_nomix)v = 5.1283e-02 (arch part -1.3810e-02, pole part 6.5093e-02); v^T(G - G_noP)v = -2.6580e+00
+      eigenvector: off-axis weight 6.3601e-01;  Schmidt defects (2|rest) 0.0001003, (3|rest) 0.0001003;  sin(angle to true eigvec) <= 3.1e-54
+  ok   [L 911]  S = {2, 3}, A = 3, delta = 0.0004608: all 72 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 48 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3}, A = 3, delta = 0.0004608: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3}, A = 3, delta = 0.0004608: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 3.07822053759303 vs 3.07822053759303
+  ok   [L 943]  S = {2, 3}, A = 3, delta = 0.0004608: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 3.9e-62)
+
+  --- S = {2, 3}, A = 3, dim 16, delta = 0.0004608  (delta/delta_max = 0.100),  ||phi||^2 = 6.132608449e-5
+      diagonal d = 5.72827939456665 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.634284, -0.211428], pole-arch part in [8.044e-04, 3.546e-03]
+      mixed entries (72): max |pole| = 1.008e-02, max |arch| = 3.066e-03, max |total| = 1.003e-02
+      lambda_min:  G 3.095649003743 (+/- 2.0e-54)   (next eigenvalue ~ 4.456132, gap >= 0.6802)
+                   G_X 4.142560244958   G_bd 4.288036751372   one-prime: G_(2) 4.518463181  G_(3) 4.288036751
+                   G_nomix 3.078220537593   G_-mixA 3.100234136942   G_-mixP 3.073641836542
+                   G_noP 5.708072819824
+      gaps: inter-place lambda(G_bd) - lambda(G) = 1.1924e+00;  mixed lambda(G_nomix) - lambda(G) = -1.7428e-02;  combs lambda(G_noP) - lambda(G) = 2.6124e+00
+            of the mixed gap: archimedean-only removal 4.5851e-03, pole-only removal -2.2007e-02
+      first order along v: v^T(G - G_nomix)v = 1.7371e-02 (arch part -4.5869e-03, pole part 2.1958e-02); v^T(G - G_noP)v = -2.6586e+00
+      eigenvector: off-axis weight 6.3216e-01;  Schmidt defects (2|rest) 1.077e-5, (3|rest) 1.077e-5;  sin(angle to true eigvec) <= 3.0e-54
+
+  ===== S = {2, 3}, A = 4: delta_max = 0.0003856537021
+  ok   [L 911]  S = {2, 3}, A = 4, delta = 0.0003470: all 200 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 100 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3}, A = 4, delta = 0.0003470: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3}, A = 4, delta = 0.0003470: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 2.83050581079518 vs 2.83050581079518
+  ok   [L 943]  S = {2, 3}, A = 4, delta = 0.0003470: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect -1.9e-62)
+
+  --- S = {2, 3}, A = 4, dim 25, delta = 0.0003470  (delta/delta_max = 0.900),  ||phi||^2 = 4.618088393e-5
+      diagonal d = 6.01162373670849 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.634284, -0.122068], pole-arch part in [6.057e-04, 4.626e-03]
+      mixed entries (200): max |pole| = 1.852e-02, max |arch| = 2.309e-03, max |total| = 1.850e-02
+      lambda_min:  G 2.862870787790 (+/- 2.0e-54)   (next eigenvalue ~ 4.277600, gap >= 0.7074)
+                   G_X 4.185562052686   G_bd 4.308515161910   one-prime: G_(2) 4.533614386  G_(3) 4.308515162
+                   G_nomix 2.830505810795   G_-mixA 2.868305168844   G_-mixP 2.825088276332
+                   G_noP 5.967585299423
+      gaps: inter-place lambda(G_bd) - lambda(G) = 1.4456e+00;  mixed lambda(G_nomix) - lambda(G) = -3.2365e-02;  combs lambda(G_noP) - lambda(G) = 3.1047e+00
+            of the mixed gap: archimedean-only removal 5.4344e-03, pole-only removal -3.7783e-02
+      first order along v: v^T(G - G_nomix)v = 3.2086e-02 (arch part -5.4362e-03, pole part 3.7522e-02); v^T(G - G_noP)v = -3.1913e+00
+      eigenvector: off-axis weight 7.3045e-01;  Schmidt defects (2|rest) 4.364e-5, (3|rest) 4.364e-5;  sin(angle to true eigvec) <= 2.9e-54
+      minimal eigenvector, 8 largest components: (2, 2): 0.2581409  (1, 2): 0.2442329  (3, 2): 0.2442329  (2, 1): 0.2387762  (2, 3): 0.2387762  (1, 3): 0.2265431  (3, 1): 0.2265431  (1, 1): 0.2251424
+  ok   [L 911]  S = {2, 3}, A = 4, delta = 0.0001156: all 200 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 100 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3}, A = 4, delta = 0.0001156: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3}, A = 4, delta = 0.0001156: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 3.92209611023623 vs 3.92209611023623
+  ok   [L 943]  S = {2, 3}, A = 4, delta = 0.0001156: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 1.9e-62)
+
+  --- S = {2, 3}, A = 4, dim 25, delta = 0.0001156  (delta/delta_max = 0.300),  ||phi||^2 = 1.538475557e-5
+      diagonal d = 7.11021273677767 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.634284, -0.122068], pole-arch part in [2.018e-04, 1.541e-03]
+      mixed entries (200): max |pole| = 6.169e-03, max |arch| = 7.692e-04, max |total| = 6.164e-03
+      lambda_min:  G 3.932951799795 (+/- 2.0e-54)   (next eigenvalue ~ 5.395338, gap >= 0.7312)
+                   G_X 5.277812370866   G_bd 5.402754821354   one-prime: G_(2) 5.629554026  G_(3) 5.402754821
+                   G_nomix 3.922096110236   G_-mixA 3.934758326909   G_-mixP 3.920291500018
+                   G_noP 7.095541718805
+      gaps: inter-place lambda(G_bd) - lambda(G) = 1.4698e+00;  mixed lambda(G_nomix) - lambda(G) = -1.0856e-02;  combs lambda(G_noP) - lambda(G) = 3.1626e+00
+            of the mixed gap: archimedean-only removal 1.8065e-03, pole-only removal -1.2660e-02
+      first order along v: v^T(G - G_nomix)v = 1.0825e-02 (arch part -1.8067e-03, pole part 1.2632e-02); v^T(G - G_noP)v = -3.1916e+00
+      eigenvector: off-axis weight 7.2761e-01;  Schmidt defects (2|rest) 4.775e-6, (3|rest) 4.775e-6;  sin(angle to true eigvec) <= 2.8e-54
+  ok   [L 911]  S = {2, 3}, A = 4, delta = 0.00003856: all 200 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 100 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3}, A = 4, delta = 0.00003856: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3}, A = 4, delta = 0.00003856: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 5.01748583851982 vs 5.01748583851982
+  ok   [L 943]  S = {2, 3}, A = 4, delta = 0.00003856: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect -1.3e-122)
+
+  --- S = {2, 3}, A = 4, dim 25, delta = 0.00003856  (delta/delta_max = 0.100),  ||phi||^2 = 5.131800820e-6
+      diagonal d = 8.20793352433155 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.634284, -0.122068], pole-arch part in [6.731e-05, 5.140e-04]
+      mixed entries (200): max |pole| = 2.058e-03, max |arch| = 2.566e-04, max |total| = 2.056e-03
+      lambda_min:  G 5.021114984059 (+/- 2.0e-54)   (next eigenvalue ~ 6.496890, gap >= 0.7379)
+                   G_X 6.373420831439   G_bd 6.499026761063   one-prime: G_(2) 6.726392602  G_(3) 6.499026761
+                   G_nomix 5.017485838520   G_-mixA 5.021717130479   G_-mixP 5.016883907064
+                   G_noP 8.203039800701
+      gaps: inter-place lambda(G_bd) - lambda(G) = 1.4779e+00;  mixed lambda(G_nomix) - lambda(G) = -3.6291e-03;  combs lambda(G_noP) - lambda(G) = 3.1819e+00
+            of the mixed gap: archimedean-only removal 6.0215e-04, pole-only removal -4.2311e-03
+      first order along v: v^T(G - G_nomix)v = 3.6258e-03 (arch part -6.0217e-04, pole part 4.2279e-03); v^T(G - G_noP)v = -3.1916e+00
+      eigenvector: off-axis weight 7.2667e-01;  Schmidt defects (2|rest) 5.288e-7, (3|rest) 5.288e-7;  sin(angle to true eigvec) <= 2.7e-54
+
+  ===== S = {2, 3, 5}, A = 1: delta_max = 0.01639491141
+  ok   [L 911]  S = {2, 3, 5}, A = 1, delta = 0.01475: all 16 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 12 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3, 5}, A = 1, delta = 0.01475: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3, 5}, A = 1, delta = 0.01475: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 0.565571067582387 vs 0.565571067582387
+  ok   [L 943]  S = {2, 3, 5}, A = 1, delta = 0.01475: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 1.6e-61)
+
+  --- S = {2, 3, 5}, A = 1, dim 8, delta = 0.01475  (delta/delta_max = 0.900),  ||phi||^2 = 0.001963020282
+      diagonal d = 2.29928829738399 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.719763, -0.490129], pole-arch part in [2.575e-02, 4.845e-02]
+      mixed entries (16): max |pole| = 1.237e-01, max |arch| = 6.540e-02, max |total| = 1.197e-01
+      lambda_min:  G 0.7460496992579 (+/- 2.0e-54)   (next eigenvalue ~ 1.404006, gap >= 0.3290)
+                   G_X 1.307538436522   G_bd 1.627972763023   one-prime: G_(2) 1.834905598  G_(3) 1.701269302  G_(5) 1.627972763
+                   G_nomix 0.5655710675824   G_-mixA 0.8191609598134   G_-mixP 0.4940497199888
+                   G_noP 2.126699003784
+      gaps: inter-place lambda(G_bd) - lambda(G) = 8.8192e-01;  mixed lambda(G_nomix) - lambda(G) = -1.8048e-01;  combs lambda(G_noP) - lambda(G) = 1.3806e+00
+            of the mixed gap: archimedean-only removal 7.3111e-02, pole-only removal -2.5200e-01
+      first order along v: v^T(G - G_nomix)v = 1.7657e-01 (arch part -7.3545e-02, pole part 2.5011e-01); v^T(G - G_noP)v = -1.8400e+00
+      eigenvector: off-axis weight 5.0000e-01;  Schmidt defects (2|rest) 0.0006497, (3|rest) 0.001071, (5|rest) 0.001509;  sin(angle to true eigvec) <= 6.1e-54
+      minimal eigenvector (lattice point: component):
+        (0, 0, 0): 0.33040417  (0, 0, 1): 0.36886291  (0, 1, 0): 0.35963851  (0, 1, 1): 0.35416575  (1, 0, 0): 0.35416575  (1, 0, 1): 0.35963851  (1, 1, 0): 0.36886291  (1, 1, 1): 0.33040417
+  ok   [L 911]  S = {2, 3, 5}, A = 1, delta = 0.004918: all 16 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 12 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3, 5}, A = 1, delta = 0.004918: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3, 5}, A = 1, delta = 0.004918: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 1.56479460201886 vs 1.56479460201886
+  ok   [L 943]  S = {2, 3, 5}, A = 1, delta = 0.004918: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 7.8e-62)
+
+  --- S = {2, 3, 5}, A = 1, dim 8, delta = 0.004918  (delta/delta_max = 0.300),  ||phi||^2 = 0.0006545175423
+      diagonal d = 3.37214033953969 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.719763, -0.490129], pole-arch part in [8.585e-03, 1.615e-02]
+      mixed entries (16): max |pole| = 4.123e-02, max |arch| = 2.177e-02, max |total| = 3.990e-02
+      lambda_min:  G 1.625825136639 (+/- 2.0e-54)   (next eigenvalue ~ 2.500100, gap >= 0.4371)
+                   G_X 2.323417910554   G_bd 2.668531101016   one-prime: G_(2) 2.890596260  G_(3) 2.749947920  G_(5) 2.668531101
+                   G_nomix 1.564794602019   G_-mixA 1.649722310212   G_-mixP 1.541057978011
+                   G_noP 3.314597038382
+      gaps: inter-place lambda(G_bd) - lambda(G) = 1.0427e+00;  mixed lambda(G_nomix) - lambda(G) = -6.1031e-02;  combs lambda(G_noP) - lambda(G) = 1.6888e+00
+            of the mixed gap: archimedean-only removal 2.3897e-02, pole-only removal -8.4767e-02
+      first order along v: v^T(G - G_nomix)v = 6.0655e-02 (arch part -2.3944e-02, pole part 8.4599e-02); v^T(G - G_noP)v = -1.8438e+00
+      eigenvector: off-axis weight 5.0000e-01;  Schmidt defects (2|rest) 5.921e-5, (3|rest) 9.915e-5, (5|rest) 0.0001386;  sin(angle to true eigvec) <= 4.6e-54
+  ok   [L 911]  S = {2, 3, 5}, A = 1, delta = 0.001639: all 16 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 12 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3, 5}, A = 1, delta = 0.001639: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3, 5}, A = 1, delta = 0.001639: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 2.63055450848523 vs 2.63055450848523
+  ok   [L 943]  S = {2, 3, 5}, A = 1, delta = 0.001639: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 7.8e-62)
+
+  --- S = {2, 3, 5}, A = 1, dim 8, delta = 0.001639  (delta/delta_max = 0.100),  ||phi||^2 = 0.0002181281521
+      diagonal d = 4.46245602476456 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.719763, -0.490129], pole-arch part in [2.861e-03, 5.383e-03]
+      mixed entries (16): max |pole| = 1.374e-02, max |arch| = 7.253e-03, max |total| = 1.330e-02
+      lambda_min:  G 2.650976954150 (+/- 2.0e-54)   (next eigenvalue ~ 3.596020, gap >= 0.4725)
+                   G_X 3.394678306953   G_bd 3.748076836487   one-prime: G_(2) 3.975188055  G_(3) 3.832201666  G_(5) 3.748076836
+                   G_nomix 2.630554508485   G_-mixA 2.658893943276   G_-mixP 2.622654805773
+                   G_noP 4.443278901022
+      gaps: inter-place lambda(G_bd) - lambda(G) = 1.0971e+00;  mixed lambda(G_nomix) - lambda(G) = -2.0422e-02;  combs lambda(G_noP) - lambda(G) = 1.7923e+00
+            of the mixed gap: archimedean-only removal 7.9170e-03, pole-only removal -2.8322e-02
+      first order along v: v^T(G - G_nomix)v = 2.0383e-02 (arch part -7.9221e-03, pole part 2.8305e-02); v^T(G - G_noP)v = -1.8441e+00
+      eigenvector: off-axis weight 5.0000e-01;  Schmidt defects (2|rest) 6.174e-6, (3|rest) 1.039e-5, (5|rest) 1.449e-5;  sin(angle to true eigvec) <= 4.3e-54
+
+  ===== S = {2, 3, 5}, A = 2: delta_max = 0.001112347511
+  ok   [L 911]  S = {2, 3, 5}, A = 2, delta = 0.001001: all 270 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 81 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3, 5}, A = 2, delta = 0.001001: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3, 5}, A = 2, delta = 0.001001: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 1.79517980571355 vs 1.79517980571355
+  ok   [L 943]  S = {2, 3, 5}, A = 2, delta = 0.001001: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 7.8e-62)
+
+  --- S = {2, 3, 5}, A = 2, dim 27, delta = 0.001001  (delta/delta_max = 0.900),  ||phi||^2 = 0.0001332192070
+      diagonal d = 4.95388901209198 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.719763, -0.321888], pole-arch part in [1.747e-03, 7.413e-03]
+      mixed entries (270): max |pole| = 4.453e-02, max |arch| = 7.403e-03, max |total| = 4.448e-02
+      lambda_min:  G 1.896009014465 (+/- 2.0e-54)   (next eigenvalue ~ 2.992013, gap >= 0.5480)
+                   G_X 3.405506941646   G_bd 3.771275924476   one-prime: G_(2) 4.070330994  G_(3) 3.861350912  G_(5) 3.771275924
+                   G_nomix 1.795179805714   G_-mixA 1.917018341610   G_-mixP 1.774365586018
+                   G_noP 4.843785752318
+      gaps: inter-place lambda(G_bd) - lambda(G) = 1.8753e+00;  mixed lambda(G_nomix) - lambda(G) = -1.0083e-01;  combs lambda(G_noP) - lambda(G) = 2.9478e+00
+            of the mixed gap: archimedean-only removal 2.1009e-02, pole-only removal -1.2164e-01
+      first order along v: v^T(G - G_nomix)v = 9.8812e-02 (arch part -2.1030e-02, pole part 1.1984e-01); v^T(G - G_noP)v = -3.1757e+00
+      eigenvector: off-axis weight 7.9545e-01;  Schmidt defects (2|rest) 0.0001792, (3|rest) 0.0003129, (5|rest) 0.0003664;  sin(angle to true eigvec) <= 3.7e-54
+      minimal eigenvector, 8 largest components: (1, 1, 1): 0.2629297  (0, 1, 1): 0.2350844  (2, 1, 1): 0.2350844  (1, 0, 1): 0.2237317  (1, 2, 1): 0.2237317  (1, 1, 0): 0.2111407  (1, 1, 2): 0.2111407  (0, 2, 1): 0.2018497
+  ok   [L 911]  S = {2, 3, 5}, A = 2, delta = 0.0003337: all 270 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 81 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3, 5}, A = 2, delta = 0.0003337: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3, 5}, A = 2, delta = 0.0003337: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 2.87919338034756 vs 2.87919338034756
+  ok   [L 943]  S = {2, 3, 5}, A = 2, delta = 0.0003337: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 2.3e-61)
+
+  --- S = {2, 3, 5}, A = 2, dim 27, delta = 0.0003337  (delta/delta_max = 0.300),  ||phi||^2 = 4.441083853e-5
+      diagonal d = 6.05067165525433 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.719763, -0.321888], pole-arch part in [5.825e-04, 2.471e-03]
+      mixed entries (270): max |pole| = 1.485e-02, max |arch| = 2.468e-03, max |total| = 1.483e-02
+      lambda_min:  G 2.913275298130 (+/- 2.0e-54)   (next eigenvalue ~ 4.102670, gap >= 0.5947)
+                   G_X 4.492154407837   G_bd 4.862143935235   one-prime: G_(2) 5.164308190  G_(3) 4.954084566  G_(5) 4.862143935
+                   G_nomix 2.879193380348   G_-mixA 2.920232730278   G_-mixP 2.872258518955
+                   G_noP 6.013966912597
+      gaps: inter-place lambda(G_bd) - lambda(G) = 1.9489e+00;  mixed lambda(G_nomix) - lambda(G) = -3.4082e-02;  combs lambda(G_noP) - lambda(G) = 3.1007e+00
+            of the mixed gap: archimedean-only removal 6.9574e-03, pole-only removal -4.1017e-02
+      first order along v: v^T(G - G_nomix)v = 3.3869e-02 (arch part -6.9597e-03, pole part 4.0829e-02); v^T(G - G_noP)v = -3.1776e+00
+      eigenvector: off-axis weight 7.8785e-01;  Schmidt defects (2|rest) 1.896e-5, (3|rest) 3.32e-5, (5|rest) 3.885e-5;  sin(angle to true eigvec) <= 3.4e-54
+  ok   [L 911]  S = {2, 3, 5}, A = 2, delta = 0.0001112: all 270 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 81 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3, 5}, A = 2, delta = 0.0001112: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3, 5}, A = 2, delta = 0.0001112: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 3.97326983692095 vs 3.97326983692095
+  ok   [L 943]  S = {2, 3, 5}, A = 2, delta = 0.0001112: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 3.5e-61)
+
+  --- S = {2, 3, 5}, A = 2, dim 27, delta = 0.0001112  (delta/delta_max = 0.100),  ||phi||^2 = 1.479917664e-5
+      diagonal d = 7.14900690575173 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.719763, -0.321888], pole-arch part in [1.941e-04, 8.235e-04]
+      mixed entries (270): max |pole| = 4.947e-03, max |arch| = 8.224e-04, max |total| = 4.941e-03
+      lambda_min:  G 3.984677254200 (+/- 2.0e-54)   (next eigenvalue ~ 5.204125, gap >= 0.6097)
+                   G_X 5.587105670136   G_bd 5.958506219030   one-prime: G_(2) 6.261707919  G_(3) 6.051069511  G_(5) 5.958506219
+                   G_nomix 3.973269836921   G_-mixA 3.986990284618   G_-mixP 3.970959340582
+                   G_noP 7.136775658358
+      gaps: inter-place lambda(G_bd) - lambda(G) = 1.9738e+00;  mixed lambda(G_nomix) - lambda(G) = -1.1407e-02;  combs lambda(G_noP) - lambda(G) = 3.1521e+00
+            of the mixed gap: archimedean-only removal 2.3130e-03, pole-only removal -1.3718e-02
+      first order along v: v^T(G - G_nomix)v = 1.1384e-02 (arch part -2.3133e-03, pole part 1.3697e-02); v^T(G - G_noP)v = -3.1778e+00
+      eigenvector: off-axis weight 7.8539e-01;  Schmidt defects (2|rest) 2.071e-6, (3|rest) 3.629e-6, (5|rest) 4.247e-6;  sin(angle to true eigvec) <= 3.3e-54
+
+  ===== S = {2, 3, 5}, A = 3: delta_max = 3.703840885e-5
+  ok   [L 911]  S = {2, 3, 5}, A = 3, delta = 0.00003333: all 1728 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 288 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3, 5}, A = 3, delta = 0.00003333: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3, 5}, A = 3, delta = 0.00003333: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 4.18368799928435 vs 4.18368799928435
+  ok   [L 943]  S = {2, 3, 5}, A = 3, delta = 0.00003333: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 0.0)
+
+  --- S = {2, 3, 5}, A = 3, dim 64, delta = 0.00003333  (delta/delta_max = 0.900),  ||phi||^2 = 4.435760408e-6
+      diagonal d = 8.35367754483579 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.719763, -0.143953], pole-arch part in [5.818e-05, 5.520e-04]
+      mixed entries (1728): max |pole| = 8.112e-03, max |arch| = 6.170e-04, max |total| = 8.112e-03
+      lambda_min:  G 4.199638734652 (+/- 2.0e-54)   (next eigenvalue ~ 5.570995, gap >= 0.6857)
+                   G_X 6.496393508082   G_bd 6.841729769712   one-prime: G_(2) 7.140699982  G_(3) 6.908613337  G_(5) 6.841729770
+                   G_nomix 4.183687999284   G_-mixA 4.201290665555   G_-mixP 4.182038925883
+                   G_noP 8.328066251932
+      gaps: inter-place lambda(G_bd) - lambda(G) = 2.6421e+00;  mixed lambda(G_nomix) - lambda(G) = -1.5951e-02;  combs lambda(G_noP) - lambda(G) = 4.1284e+00
+            of the mixed gap: archimedean-only removal 1.6519e-03, pole-only removal -1.7600e-02
+      first order along v: v^T(G - G_nomix)v = 1.5861e-02 (arch part -1.6521e-03, pole part 1.7513e-02); v^T(G - G_noP)v = -4.1711e+00
+      eigenvector: off-axis weight 8.9939e-01;  Schmidt defects (2|rest) 7.127e-6, (3|rest) 1.247e-5, (5|rest) 1.492e-5;  sin(angle to true eigvec) <= 3.0e-54
+      minimal eigenvector, 8 largest components: (1, 1, 2): 0.1662962  (2, 2, 1): 0.1662962  (1, 2, 1): 0.1662618  (2, 1, 2): 0.1662618  (1, 2, 2): 0.1662094  (2, 1, 1): 0.1662094  (1, 1, 1): 0.1660315  (2, 2, 2): 0.1660315
+  ok   [L 911]  S = {2, 3, 5}, A = 3, delta = 0.00001111: all 1728 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 288 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3, 5}, A = 3, delta = 0.00001111: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3, 5}, A = 3, delta = 0.00001111: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 5.28141754020827 vs 5.28141754020827
+  ok   [L 943]  S = {2, 3, 5}, A = 3, delta = 0.00001111: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 7.8e-62)
+
+  --- S = {2, 3, 5}, A = 3, dim 64, delta = 0.00001111  (delta/delta_max = 0.300),  ||phi||^2 = 1.478586803e-6
+      diagonal d = 9.45223223605014 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.719763, -0.143953], pole-arch part in [1.939e-05, 1.840e-04]
+      mixed entries (1728): max |pole| = 2.704e-03, max |arch| = 2.057e-04, max |total| = 2.704e-03
+      lambda_min:  G 5.286754987674 (+/- 2.0e-54)   (next eigenvalue ~ 6.672125, gap >= 0.6927)
+                   G_X 7.594276775236   G_bd 7.939874363404   one-prime: G_(2) 8.239090325  G_(3) 8.006917324  G_(5) 7.939874363
+                   G_nomix 5.281417540208   G_-mixA 5.287304974316   G_-mixP 5.280867874962
+                   G_noP 9.443695138418
+      gaps: inter-place lambda(G_bd) - lambda(G) = 2.6531e+00;  mixed lambda(G_nomix) - lambda(G) = -5.3374e-03;  combs lambda(G_noP) - lambda(G) = 4.1569e+00
+            of the mixed gap: archimedean-only removal 5.4999e-04, pole-only removal -5.8871e-03
+      first order along v: v^T(G - G_nomix)v = 5.3275e-03 (arch part -5.5000e-04, pole part 5.8775e-03); v^T(G - G_noP)v = -4.1712e+00
+      eigenvector: off-axis weight 8.9818e-01;  Schmidt defects (2|rest) 7.899e-7, (3|rest) 1.382e-6, (5|rest) 1.654e-6;  sin(angle to true eigvec) <= 2.9e-54
+  ok   [L 911]  S = {2, 3, 5}, A = 3, delta = 0.000003703: all 1728 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 288 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3, 5}, A = 3, delta = 0.000003703: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3, 5}, A = 3, delta = 0.000003703: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 6.37982556859202 vs 6.37982556859202
+  ok   [L 943]  S = {2, 3, 5}, A = 3, delta = 0.000003703: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 0.0)
+
+  --- S = {2, 3, 5}, A = 3, dim 64, delta = 0.000003703  (delta/delta_max = 0.100),  ||phi||^2 = 4.928179055e-7
+      diagonal d = 10.5509153377580 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.719763, -0.143953], pole-arch part in [6.464e-06, 6.132e-05]
+      mixed entries (1728): max |pole| = 9.013e-04, max |arch| = 6.855e-05, max |total| = 9.013e-04
+      lambda_min:  G 6.381606834463 (+/- 2.0e-54)   (next eigenvalue ~ 7.771469, gap >= 0.6949)
+                   G_X 8.692736017936   G_bd 9.038420751103   one-prime: G_(2) 9.337718641  G_(3) 9.105516852  G_(5) 9.038420751
+                   G_nomix 6.379825568592   G_-mixA 6.381790072692   G_-mixP 6.379642366211
+                   G_noP 10.54806989469
+      gaps: inter-place lambda(G_bd) - lambda(G) = 2.6568e+00;  mixed lambda(G_nomix) - lambda(G) = -1.7813e-03;  combs lambda(G_noP) - lambda(G) = 4.1665e+00
+            of the mixed gap: archimedean-only removal 1.8324e-04, pole-only removal -1.9645e-03
+      first order along v: v^T(G - G_nomix)v = 1.7802e-03 (arch part -1.8324e-04, pole part 1.9634e-03); v^T(G - G_noP)v = -4.1712e+00
+      eigenvector: off-axis weight 8.9778e-01;  Schmidt defects (2|rest) 8.767e-8, (3|rest) 1.534e-7, (5|rest) 1.836e-7;  sin(angle to true eigvec) <= 2.9e-54
+
+  ===== S = {2, 3, 5}, A = 4: delta_max = 1.234566377e-6
+  ok   [L 911]  S = {2, 3, 5}, A = 4, delta = 0.000001111: all 7000 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 750 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3, 5}, A = 4, delta = 0.000001111: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3, 5}, A = 4, delta = 0.000001111: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 6.82431486414236 vs 6.82431486414236
+  ok   [L 943]  S = {2, 3, 5}, A = 4, delta = 0.000001111: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 4.9e-62)
+
+  --- S = {2, 3, 5}, A = 4, dim 125, delta = 0.000001111  (delta/delta_max = 0.900),  ||phi||^2 = 1.478586803e-7
+      diagonal d = 11.7547914101946 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.719763, -0.064378], pole-arch part in [1.939e-06, 4.114e-05]
+      mixed entries (7000): max |pole| = 1.481e-03, max |arch| = 6.665e-05, max |total| = 1.481e-03
+      lambda_min:  G 6.826351776497 (+/- 2.0e-54)   (next eigenvalue ~ 8.164259, gap >= 0.6690)
+                   G_X 9.698276026679   G_bd 10.01589585018   one-prime: G_(2) 10.27282162  G_(3) 10.04518022  G_(5) 10.01589585
+                   G_nomix 6.824314864142   G_-mixA 6.826453467866   G_-mixP 6.824213201787
+                   G_noP 11.74960910152
+      gaps: inter-place lambda(G_bd) - lambda(G) = 3.1895e+00;  mixed lambda(G_nomix) - lambda(G) = -2.0369e-03;  combs lambda(G_noP) - lambda(G) = 4.9233e+00
+            of the mixed gap: archimedean-only removal 1.0169e-04, pole-only removal -2.1386e-03
+      first order along v: v^T(G - G_nomix)v = 2.0342e-03 (arch part -1.0169e-04, pole part 2.1359e-03); v^T(G - G_noP)v = -4.9305e+00
+      eigenvector: off-axis weight 9.4721e-01;  Schmidt defects (2|rest) 2.179e-7, (3|rest) 3.885e-7, (5|rest) 4.597e-7;  sin(angle to true eigvec) <= 3.0e-54
+      minimal eigenvector, 8 largest components: (2, 2, 2): 0.1356771  (1, 2, 2): 0.1286114  (3, 2, 2): 0.1286114  (2, 1, 2): 0.1260052  (2, 3, 2): 0.1260052  (2, 2, 1): 0.1236698  (2, 2, 3): 0.1236698  (1, 3, 2): 0.1194521
+  ok   [L 911]  S = {2, 3, 5}, A = 4, delta = 0.0000003703: all 7000 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 750 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3, 5}, A = 4, delta = 0.0000003703: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3, 5}, A = 4, delta = 0.0000003703: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 7.92296680975176 vs 7.92296680975176
+  ok   [L 943]  S = {2, 3, 5}, A = 4, delta = 0.0000003703: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 3.9e-62)
+
+  --- S = {2, 3, 5}, A = 4, dim 125, delta = 0.0000003703  (delta/delta_max = 0.300),  ||phi||^2 = 4.928179055e-8
+      diagonal d = 12.8534917919135 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.719763, -0.064378], pole-arch part in [6.464e-07, 1.371e-05]
+      mixed entries (7000): max |pole| = 4.936e-04, max |arch| = 2.221e-05, max |total| = 4.936e-04
+      lambda_min:  G 7.923646333852 (+/- 2.0e-54)   (next eigenvalue ~ 9.264311, gap >= 0.6703)
+                   G_X 10.79693338172   G_bd 11.11457021239   one-prime: G_(2) 11.37151352  G_(3) 11.14386666  G_(5) 11.11457021
+                   G_nomix 7.922966809752   G_-mixA 7.923680221379   G_-mixP 7.922932925455
+                   G_noP 12.85176451117
+      gaps: inter-place lambda(G_bd) - lambda(G) = 3.1909e+00;  mixed lambda(G_nomix) - lambda(G) = -6.7952e-04;  combs lambda(G_noP) - lambda(G) = 4.9281e+00
+            of the mixed gap: archimedean-only removal 3.3888e-05, pole-only removal -7.1341e-04
+      first order along v: v^T(G - G_nomix)v = 6.7922e-04 (arch part -3.3888e-05, pole part 7.1311e-04); v^T(G - G_noP)v = -4.9305e+00
+      eigenvector: off-axis weight 9.4706e-01;  Schmidt defects (2|rest) 2.422e-8, (3|rest) 4.318e-8, (5|rest) 5.11e-8;  sin(angle to true eigvec) <= 3.0e-54
+  ok   [L 911]  S = {2, 3, 5}, A = 4, delta = 0.0000001234: all 7000 mixed entries have NO prime contribution (pole + archimedean only; A2.2(i)); all 750 axis-type entries carry exactly the comb term log p p^(-j/2) ||phi||^2 of their own ratio p^j and nothing else (A2.2(ii)); diagonal: none
+  ok   [L 936]  S = {2, 3, 5}, A = 4, delta = 0.0000001234: every minimal eigenvalue below is certified simple (residual ball + LDL^T inertia of G - s I with exactly one negative pivot)
+  ok   [L 939]  S = {2, 3, 5}, A = 4, delta = 0.0000001234: lambda(G_nomix) = d + sum_p (lambda(G_(p)) - d) (Kronecker sum): 9.02183240075741 vs 9.02183240075741
+  ok   [L 943]  S = {2, 3, 5}, A = 4, delta = 0.0000001234: the minimal eigenvector of G_nomix is a product state across every cut (max Schmidt defect 1.3e-61)
+
+  --- S = {2, 3, 5}, A = 4, dim 125, delta = 0.0000001234  (delta/delta_max = 0.100),  ||phi||^2 = 1.642282731e-8
+      diagonal d = 13.9523735283615 (+/- 2.0e-54)   [d = (2 c^2 - W_R(R_delta))/||phi||^2; its radius is the non-certified T_1/At part]
+      axis-type entries: comb part -Lambda(k)k^-1/2 in [-0.719763, -0.064378], pole-arch part in [2.154e-07, 4.570e-06]
+      mixed entries (7000): max |pole| = 1.645e-04, max |arch| = 7.403e-06, max |total| = 1.645e-04
+      lambda_min:  G 9.022058915898 (+/- 2.0e-54)   (next eigenvalue ~ 10.363639, gap >= 0.6708)
+                   G_X 11.89580077560   G_bd 12.21344327560   one-prime: G_(2) 12.47039243  G_(3) 12.24274376  G_(5) 12.21344328
+                   G_nomix 9.021832400757   G_-mixA 9.022070207961   G_-mixP 9.021821109054
+                   G_noP 13.95179792360
+      gaps: inter-place lambda(G_bd) - lambda(G) = 3.1914e+00;  mixed lambda(G_nomix) - lambda(G) = -2.2652e-04;  combs lambda(G_noP) - lambda(G) = 4.9297e+00
+            of the mixed gap: archimedean-only removal 1.1292e-05, pole-only removal -2.3781e-04
+      first order along v: v^T(G - G_nomix)v = 2.2648e-04 (arch part -1.1292e-05, pole part 2.3777e-04); v^T(G - G_noP)v = -4.9305e+00
+      eigenvector: off-axis weight 9.4701e-01;  Schmidt defects (2|rest) 2.69e-9, (3|rest) 4.796e-9, (5|rest) 5.675e-9;  sin(angle to true eigvec) <= 3.0e-54
+  ok   [L1018]  every Gram matrix measured (42 of them) is positive definite (certified lambda_min > 0)
+
+====================================================================================================
+5b. SUMMARY TABLE (normalised minimal eigenvalues)
+====================================================================================================
+          S  A      delta          d       lam(G)     lam(G_X)    lam(G_bd)   lam(nomix)   lam(noP)    gap_mix   offaxis   schmidt
+        {2}  1     0.1824   0.220168  0.044731016  0.044731016  0.044731016  0.044731016 -0.0945246   0.00e+00  0.00e+00       0.0
+        {2}  1    0.06081    1.00225   0.61814403   0.61814403   0.61814403   0.61814403   0.896226   0.00e+00  0.00e+00       0.0
+        {2}  1    0.02027    1.99570    1.5409518    1.5409518    1.5409518    1.5409518    1.96032   0.00e+00  0.00e+00       0.0
+        {2}  2     0.1004   0.603658   0.12970056   0.12970056   0.12970056   0.12970056   0.311124   0.00e+00  0.00e+00       0.0
+        {2}  2    0.03347    1.52842   0.78076753   0.78076753   0.78076753   0.78076753    1.43092   0.00e+00  0.00e+00       0.0
+        {2}  2    0.01115    2.56976    1.7288143    1.7288143    1.7288143    1.7288143    2.53728   0.00e+00  0.00e+00       0.0
+        {2}  3    0.05300    1.11944   0.29004107   0.29004107   0.29004107   0.29004107   0.872899   0.00e+00  0.00e+00       0.0
+        {2}  3    0.01766    2.12677    1.0434503    1.0434503    1.0434503    1.0434503    2.04464   0.00e+00  0.00e+00       0.0
+        {2}  3   0.005889    3.19447    2.0247323    2.0247323    2.0247323    2.0247323    3.16709   0.00e+00  0.00e+00       0.0
+        {2}  4    0.02728    1.71687   0.54118249   0.54118249   0.54118249   0.54118249    1.51821   0.00e+00  0.00e+00       0.0
+        {2}  4   0.009093    2.76836    1.3899227    1.3899227    1.3899227    1.3899227    2.70215   0.00e+00  0.00e+00       0.0
+        {2}  4   0.003031    3.85126    2.4039248    2.4039248    2.4039248    2.4039248    3.82919   0.00e+00  0.00e+00       0.0
+        {2}  5    0.01428    2.33045   0.85705063   0.85705063   0.85705063   0.85705063    2.16970   0.00e+00  0.00e+00       0.0
+        {2}  5   0.004762    3.40397    1.7766527    1.7766527    1.7766527    1.7766527    3.35037   0.00e+00  0.00e+00       0.0
+        {2}  5   0.001587    4.49456    2.8150095    2.8150095    2.8150095    2.8150095    4.47670   0.00e+00  0.00e+00       0.0
+        {2}  6    0.01428    2.33045   0.75466824   0.75466824   0.75466824   0.75466824    2.08496   0.00e+00  0.00e+00       0.0
+        {2}  6   0.004762    3.40397    1.6188491    1.6188491    1.6188491    1.6188491    3.32211   0.00e+00  0.00e+00       0.0
+        {2}  6   0.001587    4.49456    2.6372872    2.6372872    2.6372872    2.6372872    4.46728   0.00e+00  0.00e+00       0.0
+     {2, 3}  1    0.06936   0.892886   0.20834288   0.32731261   0.42912272  0.059879534   0.630368  -1.48e-01  2.21e-01   0.00332
+     {2, 3}  1    0.02312    1.87154   0.89532959    1.1489862    1.2940949   0.84431801    1.78405  -5.10e-02  2.42e-01  0.000242
+     {2, 3}  1   0.007707    2.93014    1.8552569    2.1549250    2.3148081    1.8381324    2.90098  -1.71e-02  2.48e-01   2.38e-5
+     {2, 3}  2    0.01232    2.47301   0.76014856    1.3117999    1.4489781   0.61293939    2.30378  -1.47e-01  4.94e-01  0.000972
+     {2, 3}  2   0.004109    3.54977    1.6558568    2.3183476    2.4760715    1.6055744    3.49332  -5.03e-02  4.86e-01   9.18e-5
+     {2, 3}  2   0.001369    4.64176    2.6863122    3.3867841    3.5514562    2.6694452    4.62296  -1.69e-02  4.84e-01   9.66e-6
+     {2, 3}  3   0.004147    3.54066    1.1104032    2.0127485    2.1418723   0.95928478    3.35881  -1.51e-01  6.49e-01     0.001
+     {2, 3}  3   0.001382    4.63234    2.0512994    3.0611220    3.2024825    1.9994764    4.57174  -5.18e-02  6.36e-01    0.0001
+     {2, 3}  3  0.0004608    5.72828    3.0956490    4.1425602    4.2880368    3.0782205    5.70807  -1.74e-02  6.32e-01   1.08e-5
+     {2, 3}  4  0.0003470    6.01162    2.8628708    4.1855621    4.3085152    2.8305058    5.96759  -3.24e-02  7.30e-01   4.36e-5
+     {2, 3}  4  0.0001156    7.11021    3.9329518    5.2778124    5.4027548    3.9220961    7.09554  -1.09e-02  7.28e-01   4.78e-6
+     {2, 3}  4 0.00003856    8.20793    5.0211150    6.3734208    6.4990268    5.0174858    8.20304  -3.63e-03  7.27e-01   5.29e-7
+  {2, 3, 5}  1    0.01475    2.29929   0.74604970    1.3075384    1.6279728   0.56557107    2.12670  -1.80e-01  5.00e-01   0.00151
+  {2, 3, 5}  1   0.004918    3.37214    1.6258251    2.3234179    2.6685311    1.5647946    3.31460  -6.10e-02  5.00e-01  0.000139
+  {2, 3, 5}  1   0.001639    4.46246    2.6509770    3.3946783    3.7480768    2.6305545    4.44328  -2.04e-02  5.00e-01   1.45e-5
+  {2, 3, 5}  2   0.001001    4.95389    1.8960090    3.4055069    3.7712759    1.7951798    4.84379  -1.01e-01  7.95e-01  0.000366
+  {2, 3, 5}  2  0.0003337    6.05067    2.9132753    4.4921544    4.8621439    2.8791934    6.01397  -3.41e-02  7.88e-01   3.89e-5
+  {2, 3, 5}  2  0.0001112    7.14901    3.9846773    5.5871057    5.9585062    3.9732698    7.13678  -1.14e-02  7.85e-01   4.25e-6
+  {2, 3, 5}  3 0.00003333    8.35368    4.1996387    6.4963935    6.8417298    4.1836880    8.32807  -1.60e-02  8.99e-01   1.49e-5
+  {2, 3, 5}  3 0.00001111    9.45223    5.2867550    7.5942768    7.9398744    5.2814175    9.44370  -5.34e-03  8.98e-01   1.65e-6
+  {2, 3, 5}  3 0.000003703    10.5509    6.3816068    8.6927360    9.0384208    6.3798256    10.5481  -1.78e-03  8.98e-01   1.84e-7
+  {2, 3, 5}  4 0.000001111    11.7548    6.8263518    9.6982760    10.015896    6.8243149    11.7496  -2.04e-03  9.47e-01    4.6e-7
+  {2, 3, 5}  4 0.0000003703    12.8535    7.9236463    10.796933    11.114570    7.9229668    12.8518  -6.80e-04  9.47e-01   5.11e-8
+  {2, 3, 5}  4 0.0000001234    13.9524    9.0220589    11.895801    12.213443    9.0218324    13.9518  -2.27e-04  9.47e-01   5.68e-9
+  mixed gap / delta for S = {2, 3}, A = 1: -2.1405, -2.2064, -2.2219
+  mixed gap / delta for S = {2, 3}, A = 2: -11.9488, -12.2371, -12.3207
+  mixed gap / delta for S = {2, 3}, A = 3: -36.4404, -37.4986, -37.8222
+  mixed gap / delta for S = {2, 3}, A = 4: -93.2708, -93.9073, -94.1168
+  mixed gap / delta for S = {2, 3, 5}, A = 1: -12.2358, -12.4096, -12.4603
+  mixed gap / delta for S = {2, 3, 5}, A = 2: -100.7285, -102.1334, -102.5847
+  mixed gap / delta for S = {2, 3, 5}, A = 3: -478.5699, -480.4183, -481.0332
+  mixed gap / delta for S = {2, 3, 5}, A = 4: -1833.4045, -1835.0637, -1835.6170
+
+====================================================================================================
+6. EIGENVECTOR MOVEMENT WHEN A PRIME IS ADDED (brief A2.3, last paragraph)
+====================================================================================================
+  At a common delta (admissible for the largest S), restrict the minimal eigenvector of the larger form to the
+  sublattice of the smaller S (new coordinate = 0) and compare with the smaller form's minimal eigenvector.
+  overlap = |<v_small, v_big|_sub>| / ||v_big|_sub||;  weight = ||v_big|_sub||^2.  In the Kronecker-sum model (mixed
+  entries 0) the restriction is EXACTLY proportional to v_small (overlap 1) with weight = v_new[0]^2, the square of
+  the origin component of the new prime's one-prime eigenvector; every deviation is carried by the mixed entries.
+  A = 1, delta =   0.01475:     {2} ->    {2, 3}: 1 - overlap =  4.604e-05, weight on old sublattice 0.50000000 (Kronecker prediction 0.50000000), lambda 1.8349056 -> 1.2695602
+  A = 1, delta =   0.01475:  {2, 3} -> {2, 3, 5}: 1 - overlap =  7.550e-04, weight on old sublattice 0.50000000 (Kronecker prediction 0.50000000), lambda 1.2695602 -> 0.74604970
+  A = 1, delta =  0.001475:     {2} ->    {2, 3}: 1 - overlap =  4.155e-07, weight on old sublattice 0.50000000 (Kronecker prediction 0.50000000), lambda 4.0799050 -> 3.4525330
+  A = 1, delta =  0.001475:  {2, 3} -> {2, 3, 5}: 1 - overlap =  5.848e-06, weight on old sublattice 0.50000000 (Kronecker prediction 0.50000000), lambda 3.4525330 -> 2.7527121
+  A = 1, delta = 0.0001475:     {2} ->    {2, 3}: 1 - overlap =  4.114e-09, weight on old sublattice 0.50000000 (Kronecker prediction 0.50000000), lambda 6.3767316 -> 5.7431389
+  A = 1, delta = 0.0001475:  {2, 3} -> {2, 3, 5}: 1 - overlap =  5.709e-08, weight on old sublattice 0.50000000 (Kronecker prediction 0.50000000), lambda 5.7431389 -> 5.0253733
+  A = 2, delta =  0.001001:     {2} ->    {2, 3}: 1 - overlap =  4.810e-06, weight on old sublattice 0.29865318 (Kronecker prediction 0.29960228), lambda 4.0703310 -> 2.9901367
+  A = 2, delta =  0.001001:  {2, 3} -> {2, 3, 5}: 1 - overlap =  4.128e-04, weight on old sublattice 0.28044060 (Kronecker prediction 0.28833650), lambda 2.9901367 -> 1.8960090
+  A = 2, delta = 0.0001001:     {2} ->    {2, 3}: 1 - overlap =  4.698e-08, weight on old sublattice 0.29986682 (Kronecker prediction 0.29996038), lambda 6.3667932 -> 5.2700254
+  A = 2, delta = 0.0001001:  {2, 3} -> {2, 3, 5}: 1 - overlap =  3.731e-06, weight on old sublattice 0.28821383 (Kronecker prediction 0.28897308), lambda 5.2700254 -> 4.0884602
+  A = 2, delta = 0.00001001:     {2} ->    {2, 3}: 1 - overlap =  4.687e-10, weight on old sublattice 0.29998670 (Kronecker prediction 0.29999604), lambda 8.6687659 -> 7.5703381
+  A = 2, delta = 0.00001001:  {2, 3} -> {2, 3, 5}: 1 - overlap =  3.693e-08, weight on old sublattice 0.28896079 (Kronecker prediction 0.28903641), lambda 7.5703381 -> 6.3798452
+  A = 3, delta = 0.00003333:     {2} ->    {2, 3}: 1 - overlap =  7.173e-08, weight on old sublattice 0.19816542 (Kronecker prediction 0.19827856), lambda 7.1407000 -> 5.6969012
+  A = 3, delta = 0.00003333:  {2, 3} -> {2, 3, 5}: 1 - overlap =  2.376e-05, weight on old sublattice 0.18167469 (Kronecker prediction 0.18333010), lambda 5.6969012 -> 4.1996387
+  A = 3, delta = 0.000003333:     {2} ->    {2, 3}: 1 - overlap =  7.160e-10, weight on old sublattice 0.19829588 (Kronecker prediction 0.19830718), lambda 9.4429854 -> 7.9977094
+  A = 3, delta = 0.000003333:  {2, 3} -> {2, 3, 5}: 1 - overlap =  2.348e-07, weight on old sublattice 0.18322634 (Kronecker prediction 0.18339195), lambda 7.9977094 -> 6.4866848
+  A = 3, delta = 0.0000003333:     {2} ->    {2, 3}: 1 - overlap =  7.158e-12, weight on old sublattice 0.19830891 (Kronecker prediction 0.19831004), lambda 11.745541 -> 10.300117
+  A = 3, delta = 0.0000003333:  {2, 3} -> {2, 3, 5}: 1 - overlap =  2.345e-09, weight on old sublattice 0.18338158 (Kronecker prediction 0.18339814), lambda 10.300117 -> 8.7877077
+  A = 4, delta = 0.000001111:     {2} ->    {2, 3}: 1 - overlap =  7.641e-10, weight on old sublattice 0.13929354 (Kronecker prediction 0.13930350), lambda 10.272822 -> 8.5633151
+  A = 4, delta = 0.000001111:  {2, 3} -> {2, 3, 5}: 1 - overlap =  9.692e-07, weight on old sublattice 0.12371249 (Kronecker prediction 0.12396323), lambda 8.5633151 -> 6.8263518
+  A = 4, delta = 0.0000001111:     {2} ->    {2, 3}: 1 - overlap =  7.640e-12, weight on old sublattice 0.13930425 (Kronecker prediction 0.13930524), lambda 12.575393 -> 10.865773
+  A = 4, delta = 0.0000001111:  {2, 3} -> {2, 3, 5}: 1 - overlap =  9.682e-09, weight on old sublattice 0.12394272 (Kronecker prediction 0.12396782), lambda 10.865773 -> 9.1270359
+  A = 4, delta = 0.00000001111:     {2} ->    {2, 3}: 1 - overlap =  7.640e-14, weight on old sublattice 0.13930532 (Kronecker prediction 0.13930542), lambda 14.877976 -> 13.168346
+  A = 4, delta = 0.00000001111:  {2, 3} -> {2, 3, 5}: 1 - overlap =  9.681e-11, weight on old sublattice 0.12396577 (Kronecker prediction 0.12396828), lambda 13.168346 -> 11.429431
+  ok   [L1087]  in every chain step the movement 1 - overlap decreases strictly as delta decreases (delta_c, delta_c/10, delta_c/100): the movement is carried by the O(delta) mixed entries
+  A = 1, {2} -> +1 prime: log(1 - overlap) vs log delta slope over the three deltas = 2.024
+  A = 1, {2, 3} -> +1 prime: log(1 - overlap) vs log delta slope over the three deltas = 2.061
+  A = 2, {2} -> +1 prime: log(1 - overlap) vs log delta slope over the three deltas = 2.006
+  A = 2, {2, 3} -> +1 prime: log(1 - overlap) vs log delta slope over the three deltas = 2.024
+  A = 3, {2} -> +1 prime: log(1 - overlap) vs log delta slope over the three deltas = 2.000
+  A = 3, {2, 3} -> +1 prime: log(1 - overlap) vs log delta slope over the three deltas = 2.003
+  A = 4, {2} -> +1 prime: log(1 - overlap) vs log delta slope over the three deltas = 2.000
+  A = 4, {2, 3} -> +1 prime: log(1 - overlap) vs log delta slope over the three deltas = 2.000
+
+====================================================================================================
+7. COMPARISON STEP -- ZEROS OF ZETA USED HERE ONLY (brief A2.4, game rule 2; labelled)
+====================================================================================================
+  Explicit formula in this normalisation: Psi(F) = sum_rho Fhat(i(rho - 1/2)), Fhat(t) = int F(y) e^{-ity} dy.
+  For F = phi_alpha^* * phi_beta, Fhat(t) = conj(phihat_alpha(tbar)) phihat_beta(t), i.e. the brief's
+  sum_rho phihat_alpha(rho) conj phihat_beta(1 - rhobar) up to the order of the two slots (real here).
+  With the zeros used as returned (rho = 1/2 + i gamma, gamma > 0, together with conjugates):
+      Z_M(D) = sum_{k <= M} 2 cos(gamma_k D) phihat_delta(gamma_k)^2,   phihat_delta(g) = delta int phi_1(t) cos(delta g t) dt.
+  The prime side is the certified entry (pole - arch - prime) at the same D; no zero entered it.
+  gamma_1 = 14.1347251417347, gamma_2000 = 2515.28648292471 (acb.zeta_zeros)
+  delta =   0.1, r =   1 (D = 0, prime powers []): Psi = 0.008073148743536506
+      M:                   10         30        100        300       1000       2000
+      |Psi - Z_M|:   3.26e-04   4.24e-05   7.66e-07   2.69e-09   1.39e-13   3.39e-17
+      sum_(M<k<=2000) |term|:  3.26e-04   4.24e-05   7.66e-07   2.69e-09   1.39e-13
+  delta =   0.1, r =   2 (D = 0.693147, prime powers [2]): Psi = -0.004207464845970430
+      M:                   10         30        100        300       1000       2000
+      |Psi - Z_M|:   6.74e-05   1.09e-05   1.06e-07   2.90e-10   9.73e-15   2.65e-18
+      sum_(M<k<=2000) |term|:  1.92e-04   2.44e-05   4.48e-07   1.62e-09   8.60e-14
+  delta =   0.1, r =   3 (D = 1.09861, prime powers [3]): Psi = -0.005169800767871517
+      M:                   10         30        100        300       1000       2000
+      |Psi - Z_M|:   8.95e-05   9.13e-06   1.24e-07   3.64e-10   1.87e-14   3.51e-18
+      sum_(M<k<=2000) |term|:  1.88e-04   2.73e-05   4.50e-07   1.63e-09   8.71e-14
+  delta =   0.1, r = 3/2 (D = 0.405465, prime powers []): Psi = 0.001079217216406109
+      M:                   10         30        100        300       1000       2000
+      |Psi - Z_M|:   1.84e-06   3.23e-06   4.00e-09   6.14e-12   4.77e-15   4.83e-20
+      sum_(M<k<=2000) |term|:  2.12e-04   2.40e-05   4.92e-07   1.75e-09   8.74e-14
+  delta =   0.1, r =   6 (D = 1.79176, prime powers [5, 7]): Psi = 0.004716681727668345
+      M:                   10         30        100        300       1000       2000
+      |Psi - Z_M|:   2.66e-07   3.15e-06   5.65e-08   2.48e-11   4.15e-15   7.99e-19
+      sum_(M<k<=2000) |term|:  2.48e-04   3.14e-05   4.11e-07   1.81e-09   8.91e-14
+  delta =   0.1, r =   8 (D = 2.07944, prime powers [7, 8, 9]): Psi = 0.001095268078153812
+      M:                   10         30        100        300       1000       2000
+      |Psi - Z_M|:   6.50e-06   2.79e-06   3.08e-08   1.23e-10   5.64e-15   1.03e-18
+      sum_(M<k<=2000) |term|:  2.22e-04   2.60e-05   4.52e-07   1.72e-09   9.04e-14
+  delta =  0.05, r =   1 (D = 0, prime powers []): Psi = 0.007785070375249993
+      M:                   10         30        100        300       1000       2000
+      |Psi - Z_M|:   1.77e-03   2.10e-04   9.71e-06   2.04e-07   1.50e-10   3.44e-13
+      sum_(M<k<=2000) |term|:  1.77e-03   2.10e-04   9.71e-06   2.04e-07   1.49e-10
+  delta =  0.05, r =   2 (D = 0.693147, prime powers [2]): Psi = -0.002681143180513616
+      M:                   10         30        100        300       1000       2000
+      |Psi - Z_M|:   1.70e-04   3.29e-05   1.31e-06   2.14e-08   1.33e-11   2.62e-14
+      sum_(M<k<=2000) |term|:  9.53e-04   1.23e-04   5.78e-06   1.24e-07   9.19e-11
+  delta =  0.05, r = 3/2 (D = 0.405465, prime powers []): Psi = 0.0002788247399094974
+      M:                   10         30        100        300       1000       2000
+      |Psi - Z_M|:   2.19e-04   4.51e-07   4.14e-07   8.99e-10   8.24e-14   6.18e-15
+      sum_(M<k<=2000) |term|:  1.21e-03   1.35e-04   6.21e-06   1.31e-07   9.57e-11
+  delta =  0.05, r =   6 (D = 1.79176, prime powers []): Psi = 0.001201528610134844
+      M:                   10         30        100        300       1000       2000
+      |Psi - Z_M|:   4.05e-04   1.26e-06   1.79e-07   4.94e-10   3.62e-13   3.60e-15
+      sum_(M<k<=2000) |term|:  1.36e-03   1.47e-04   5.88e-06   1.32e-07   9.62e-11
+  ok   [L1152]  explicit formula, delta = 0.1, r = 1: |Psi - Z_2000| / (|Psi| + ||phi||^2) = 1.58e-15 (< 1e-9)
+  ok   [L1152]  explicit formula, delta = 0.1, r = 2: |Psi - Z_2000| / (|Psi| + ||phi||^2) = 1.51e-16 (< 1e-9)
+  ok   [L1152]  explicit formula, delta = 0.1, r = 3: |Psi - Z_2000| / (|Psi| + ||phi||^2) = 1.90e-16 (< 1e-9)
+  ok   [L1152]  explicit formula, delta = 0.1, r = 3/2: |Psi - Z_2000| / (|Psi| + ||phi||^2) = 3.35e-18 (< 1e-9)
+  ok   [L1152]  explicit formula, delta = 0.1, r = 6: |Psi - Z_2000| / (|Psi| + ||phi||^2) = 4.43e-17 (< 1e-9)
+  ok   [L1152]  explicit formula, delta = 0.1, r = 8: |Psi - Z_2000| / (|Psi| + ||phi||^2) = 7.12e-17 (< 1e-9)
+  ok   [L1152]  explicit formula, delta = 0.05, r = 1: |Psi - Z_2000| / (|Psi| + ||phi||^2) = 2.38e-11 (< 1e-9)
+  ok   [L1152]  explicit formula, delta = 0.05, r = 2: |Psi - Z_2000| / (|Psi| + ||phi||^2) = 2.81e-12 (< 1e-9)
+  ok   [L1152]  explicit formula, delta = 0.05, r = 3/2: |Psi - Z_2000| / (|Psi| + ||phi||^2) = 8.91e-13 (< 1e-9)
+  ok   [L1152]  explicit formula, delta = 0.05, r = 6: |Psi - Z_2000| / (|Psi| + ||phi||^2) = 4.59e-13 (< 1e-9)
+  delta = 0.1: fit of log max_r |Psi - Z_M| against sqrt(delta gamma_M) over M = 30..1000: slope -2.230 (the bump's transform decays like exp(-sqrt(tau)), so its square like exp(-2 sqrt(tau)))
+  delta = 0.05: fit of log max_r |Psi - Z_M| against sqrt(delta gamma_M) over M = 30..1000: slope -2.273 (the bump's transform decays like exp(-sqrt(tau)), so its square like exp(-2 sqrt(tau)))
+
+====================================================================================================
+TALLY
+====================================================================================================
+  no failing checks
+
+CHECKS: 192 passed, 0 failed
