@@ -2,6 +2,37 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-24: the metric as an unknown state (record only); channels, the contradiction pathway, the MaxEnt ansatz
+
+TJO, after the explanation page *The Metric* (https://claude.ai/artifact/C1f9ZywZYyNc5vbXK6p7XZ): treat the
+metric as an unknown unnormalised quantum state under three game rules (RH not assumed, the zeros not used,
+arithmetic data only); which observational data affect it at all; then, to be recorded precisely: the Weil
+form as matrix elements of an unknown operator, a pathway to a *contradiction* (assume positivity, hunt for
+violations via matrix elements; RH = absence of a contradiction), a Jaynes MaxEnt ansatz updated as constraints
+are added, "if you always fail to find a contradiction you are extremal or in the convex hull". Recorded in
+`notes/metric-tomography/metric-as-state.md` (verbatim messages, rules, channels, the precise restatement);
+worklog 2026-09-24. **No claim registered; no lanes run.**
+
+**Content of the record.** `W` is fully known (explicit formula); the unknown is positivity, and at Level 3 a
+construction. `obs:prime-by-prime-blind` organises the channels: only prime-mixing observables carry
+information. Channels: dilation windows (CCM/Li; `zst` laws `e^{-4 pi x}`, `10^{0.37 gamma}`); prime-content
+windows (two-prime lattices, ledger G1-T10-7, untried); short-range positivity (archimedean only below
+`log 2`); mollifiers/density theorems (allowed, not byte-cited); kinematic constraints; family channels (Hodge
+index, Haar; tensor-power channel empty for `GL_1`). Not moving the prior: symmetry alone, the stationary
+state's metric, bounded renormings, single-place marginals, numerical zeros. **The MaxEnt ansatz for the
+window channel is already in the notebook:** Burg's maximum-entropy extension is the centre `c_K` of the disc
+of `prop:extension-disc`, `r_K` the ignorance, the Schur step the update, the true next trace leaving the disc
+the contradiction; for prime-content data it is the maximum-determinant completion. "Convex hull": the
+extremals are the hermitian characters (critical line), `W` in their closed convex hull is RH, `W` itself is
+not extremal; naive Bochner–Schwartz does not apply (prime side not tempered in `log x`), Weil's off-line
+`2 x 2` block argument plays its role.
+
+**Next on this lead (in order).** (i) Run the `r_K` diagnostic of shard 08g on `zst` and compare its decay
+with `e^{-4 pi x}` (the MaxEnt contraction rate of the dilation channel; no new theory). (ii) Build the
+prime-content window on `{2}`, `{2,3}`, `{2,3,5}` at fixed dilation width, certified minimal eigenpair,
+contraction rate against primes added. (iii) Byte-cite Burg/Dempster, Bombieri/Yoshida, Selberg/Levinson/
+Conrey before any registration. (iv) REFUTE lane before registering sections 7.2–7.4 of the note as claims.
+
 ## Session 2026-09-23: Deninger's programme in the supertrace-cMPS language (shard 04q); the metric as an invariant polarisation; K_S is not Deninger's H^1; the same gap
 
 TJO: the metric is the missing datum of the current strategy; cast Deninger's programme precisely in the notebook's
