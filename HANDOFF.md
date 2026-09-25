@@ -26,6 +26,11 @@ hand; 13 of 14 cited text files match lane B1's recorded hashes. **Yoshida 1992 
 expected sha256 e05bd254…): copy it from the machine where lane B1 ran. Gate: 637 claims, 259 proved, **8 errors, all the
 `prov:yosh92-*` rows**, 305 warnings.
 
+**Afternoon (discussion only).** Adeles: existing software and the algorithmic scope of a first-class `A_K`, recorded in
+`notes/adeles/software-and-algorithmic-scope.md` (from memory, not byte-verified, nothing registered). TJO is considering an
+implementation on top of FLINT; the note's section 3 lists what FLINT has and lacks. Three hand-fetched arXiv ids added to
+`refs/fetch_sources.sh`.
+
 **Next.** (i) Restore `refs/src/yoshida-1992/paper.txt` (gate to 0 errors). (ii) The RTP lead, items (i)–(v) of the 2026-09-24
 evening entry. (iii) The astra-day backlog, items (i)–(v) of the 2026-09-22 entry (04v/04y/04z reviews; genus-two-quotient-graph,
 h-arith-fqt, lps-graded-cp unreviewed; Sonine enclosure resume).
