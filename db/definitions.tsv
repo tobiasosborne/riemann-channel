@@ -98,3 +98,4 @@ def:elliptic-cavity	graph with stabiliser function, cusp ray, one-cusp and four-
 def:h-exit-renewal-channel	inner part and model space with h exits, compressed shift, exit map, rebound map, renewal channel and holding instrument, exit renewal channel, fixed and modal reset, Hasse-Weil and delay sectors	report/sections/04l_elliptic_cavity_channel.tex	stipulated	-	session 2026-09-20 evening
 def:graded-renewal-network	graded renewal network of an h-exit contraction, its letters, doubled transfer and twisted ring vectors	report/sections/04n_graded_toys_network.tex	stipulated	-	-
 def:class-group-bond	class-group bond of a function field, its ring norms, bond state, generic and special parts	report/sections/04p_gl1_bond.tex	stipulated	-	-
+def:theta-bond-vector	theta bond vector, its outgoing and incoming halves, half transforms and edge transforms	report/sections/04q_h_theta.tex	stipulated	-	-

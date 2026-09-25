@@ -1,0 +1,252 @@
+{
+  "status": "PASS",
+  "exact_assertions": 121,
+  "examples": [
+    {
+      "a": 2,
+      "b": 1,
+      "q": 5,
+      "loops": 3,
+      "cell_counts": [
+        10,
+        12,
+        2
+      ],
+      "betti": [
+        2,
+        4,
+        2
+      ],
+      "core_dimension": 4
+    },
+    {
+      "a": 1,
+      "b": 2,
+      "q": 5,
+      "loops": 3,
+      "cell_counts": [
+        10,
+        12,
+        2
+      ],
+      "betti": [
+        2,
+        4,
+        2
+      ],
+      "core_dimension": 4
+    },
+    {
+      "a": 0,
+      "b": 3,
+      "q": 9,
+      "loops": 5,
+      "cell_counts": [
+        18,
+        20,
+        2
+      ],
+      "betti": [
+        2,
+        4,
+        2
+      ],
+      "core_dimension": 4
+    },
+    {
+      "a": -2,
+      "b": 1,
+      "q": 5,
+      "loops": 3,
+      "cell_counts": [
+        10,
+        12,
+        2
+      ],
+      "betti": [
+        2,
+        4,
+        2
+      ],
+      "core_dimension": 4
+    },
+    {
+      "a": 2,
+      "b": -1,
+      "q": 5,
+      "loops": 3,
+      "cell_counts": [
+        10,
+        12,
+        2
+      ],
+      "betti": [
+        2,
+        4,
+        2
+      ],
+      "core_dimension": 4
+    }
+  ],
+  "general_examples": [
+    {
+      "q": 3,
+      "trace": 1,
+      "loops": 2
+    },
+    {
+      "q": 7,
+      "trace": 5,
+      "loops": 4
+    },
+    {
+      "q": 5,
+      "trace": -4,
+      "loops": 3
+    },
+    {
+      "q": 9,
+      "trace": 0,
+      "loops": 5
+    }
+  ],
+  "fixed_points": {
+    "1": 2,
+    "2": 20,
+    "3": 122,
+    "4": 640,
+    "5": 3202,
+    "6": 15860
+  },
+  "primitive_orbits": {
+    "1": 2,
+    "2": 9,
+    "3": 40,
+    "4": 155,
+    "5": 640,
+    "6": 2620
+  },
+  "checks": [
+    "a=2,b=1: injective core",
+    "a=2,b=1: core intertwiner",
+    "a=2,b=1: companion intertwiner",
+    "a=2,b=1: actual face form",
+    "a=2,b=1: actual metric",
+    "a=2,b=1: positive metric",
+    "a=2,b=1: metric similitude",
+    "a=2,b=1: cup similitude",
+    "a=2,b=1: cup and star",
+    "a=2,b=1: odd characteristic polynomial",
+    "a=2,b=1: even characteristic polynomial",
+    "a=2,b=1: squarefree annihilator",
+    "a=2,b=1: cellular chain identity",
+    "a=2,b=1: cellular cohomology ranks",
+    "a=2,b=1: full even intertwiner",
+    "a=2,b=1: full odd intertwiner",
+    "a=2,b=1: transferred graph chain identity",
+    "a=2,b=1: graph exact pieces rank",
+    "a=1,b=2: injective core",
+    "a=1,b=2: core intertwiner",
+    "a=1,b=2: companion intertwiner",
+    "a=1,b=2: actual face form",
+    "a=1,b=2: actual metric",
+    "a=1,b=2: positive metric",
+    "a=1,b=2: metric similitude",
+    "a=1,b=2: cup similitude",
+    "a=1,b=2: cup and star",
+    "a=1,b=2: odd characteristic polynomial",
+    "a=1,b=2: even characteristic polynomial",
+    "a=1,b=2: squarefree annihilator",
+    "a=1,b=2: cellular chain identity",
+    "a=1,b=2: cellular cohomology ranks",
+    "a=1,b=2: full even intertwiner",
+    "a=1,b=2: full odd intertwiner",
+    "a=1,b=2: transferred graph chain identity",
+    "a=1,b=2: graph exact pieces rank",
+    "a=0,b=3: injective core",
+    "a=0,b=3: core intertwiner",
+    "a=0,b=3: companion intertwiner",
+    "a=0,b=3: actual face form",
+    "a=0,b=3: actual metric",
+    "a=0,b=3: positive metric",
+    "a=0,b=3: metric similitude",
+    "a=0,b=3: cup similitude",
+    "a=0,b=3: cup and star",
+    "a=0,b=3: odd characteristic polynomial",
+    "a=0,b=3: even characteristic polynomial",
+    "a=0,b=3: squarefree annihilator",
+    "a=0,b=3: cellular chain identity",
+    "a=0,b=3: cellular cohomology ranks",
+    "a=-2,b=1: injective core",
+    "a=-2,b=1: core intertwiner",
+    "a=-2,b=1: companion intertwiner",
+    "a=-2,b=1: actual face form",
+    "a=-2,b=1: actual metric",
+    "a=-2,b=1: positive metric",
+    "a=-2,b=1: metric similitude",
+    "a=-2,b=1: cup similitude",
+    "a=-2,b=1: cup and star",
+    "a=-2,b=1: odd characteristic polynomial",
+    "a=-2,b=1: even characteristic polynomial",
+    "a=-2,b=1: squarefree annihilator",
+    "a=-2,b=1: cellular chain identity",
+    "a=-2,b=1: cellular cohomology ranks",
+    "a=2,b=-1: injective core",
+    "a=2,b=-1: core intertwiner",
+    "a=2,b=-1: companion intertwiner",
+    "a=2,b=-1: actual face form",
+    "a=2,b=-1: actual metric",
+    "a=2,b=-1: positive metric",
+    "a=2,b=-1: metric similitude",
+    "a=2,b=-1: cup similitude",
+    "a=2,b=-1: cup and star",
+    "a=2,b=-1: odd characteristic polynomial",
+    "a=2,b=-1: even characteristic polynomial",
+    "a=2,b=-1: squarefree annihilator",
+    "a=2,b=-1: cellular chain identity",
+    "a=2,b=-1: cellular cohomology ranks",
+    "general q=3,trace=1: scalar adjacency",
+    "general q=3,trace=1: core injective",
+    "general q=3,trace=1: core intertwiner",
+    "general q=3,trace=1: complex structure square",
+    "general q=3,trace=1: symmetric geometric energy",
+    "general q=3,trace=1: positive geometric energy",
+    "general q=3,trace=1: conformal energy",
+    "general q=3,trace=1: characteristic polynomial",
+    "general q=7,trace=5: scalar adjacency",
+    "general q=7,trace=5: core injective",
+    "general q=7,trace=5: core intertwiner",
+    "general q=7,trace=5: complex structure square",
+    "general q=7,trace=5: symmetric geometric energy",
+    "general q=7,trace=5: positive geometric energy",
+    "general q=7,trace=5: conformal energy",
+    "general q=7,trace=5: characteristic polynomial",
+    "general q=5,trace=-4: scalar adjacency",
+    "general q=5,trace=-4: core injective",
+    "general q=5,trace=-4: core intertwiner",
+    "general q=5,trace=-4: complex structure square",
+    "general q=5,trace=-4: symmetric geometric energy",
+    "general q=5,trace=-4: positive geometric energy",
+    "general q=5,trace=-4: conformal energy",
+    "general q=5,trace=-4: characteristic polynomial",
+    "general q=9,trace=0: scalar adjacency",
+    "general q=9,trace=0: core injective",
+    "general q=9,trace=0: core intertwiner",
+    "general q=9,trace=0: complex structure square",
+    "general q=9,trace=0: symmetric geometric energy",
+    "general q=9,trace=0: positive geometric energy",
+    "general q=9,trace=0: conformal energy",
+    "general q=9,trace=0: characteristic polynomial",
+    "irregular graph: inverse transports",
+    "irregular graph: degree identity",
+    "irregular graph: exact Bass at 1/3",
+    "irregular graph: exact Bass at 2/5",
+    "irregular graph: exact Bass at -1/2",
+    "directed realization: determinant",
+    "directed realization: no opposite arcs",
+    "fixed point counts",
+    "primitive orbit counts",
+    "anisotropic torus: cup",
+    "prism: exact strict inequality"
+  ]
+}

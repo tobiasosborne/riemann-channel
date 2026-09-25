@@ -2,6 +2,34 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-25: branches merged onto master; the astra day (shards 04q_h_theta, 04r–04z) was orphaned on `claude/inspiring-ride-n5binf`
+
+TJO: "pick through all the branches and merge everything onto master". State found: master carried the 2026-09-23/24
+sessions (04q_deninger_cmps, metric-as-state, RTP round 1 / 08i) from `claude/beautiful-bohr-e84nm9`; the 2026-09-22
+astra day (30 commits: H-THETA 04q/04r, shards 04s–04z, worklog 2026-09-22, twelve lane directories) lived only on
+`claude/inspiring-ride-n5binf`. `origin/claude/beautiful-bohr-e84nm9` is an author-rewritten copy of `bohr-authored`
+(identical tree), already on master. No beads store exists in this repo (never did); the tracker is this file plus `db/`.
+
+**Merge.** `claude/inspiring-ride-n5binf` merged into master. Databases, bib and macros: union (no duplicate ids on either
+side). `report.tex`: sorted include list. HANDOFF and worklog 2026-09-21: both sides kept, chronological. Generated files
+regenerated. **Two shards now share the prefix 04q** (`04q_deninger_cmps`, RC-04Q-DENINGER-CMPS, and `04q_h_theta`,
+RC-04Q-H-THETA-REFUTED); the gate accepts this (SHARD-IDs distinct, include order = disk order); rename if it grates.
+
+**Fixes needed to build (the astra day never rebuilt report.pdf).** `\gam{}` used as a bare gamma in 04q–04y (double
+subscript) replaced by `\gamma`; `\mathscr` in 04s needs `mathrsfs` (added to the preamble); `\cref{sec:selberg-tower-cusp}`
+→ `sec:selberg-tower` (04x), `sec:weil-lps-channels` → `sec:weil-lps` (04u); the bib union had lost the closing brace of
+`loebl2015dirac`. report.pdf rebuilt: 286 pages, 0 errors, 0 undefined references or citations.
+
+**Sources.** The RTP round's fetched sources were not on this machine. `refs/fetch_sources.sh` now lists the five RTP arXiv
+ids; `refs/fetch_extra_sources.sh` aborts at Yoshida (Project Euclid serves an HTML interstitial), so the rest was fetched by
+hand; 13 of 14 cited text files match lane B1's recorded hashes. **Yoshida 1992 is still missing** (`refs/src/yoshida-1992/paper.txt`,
+expected sha256 e05bd254…): copy it from the machine where lane B1 ran. Gate: 637 claims, 259 proved, **8 errors, all the
+`prov:yosh92-*` rows**, 305 warnings.
+
+**Next.** (i) Restore `refs/src/yoshida-1992/paper.txt` (gate to 0 errors). (ii) The RTP lead, items (i)–(v) of the 2026-09-24
+evening entry. (iii) The astra-day backlog, items (i)–(v) of the 2026-09-22 entry (04v/04y/04z reviews; genus-two-quotient-graph,
+h-arith-fqt, lps-graded-cp unreviewed; Sonine enclosure resume).
+
 ## Session 2026-09-24, evening: the Riemann Tomography Problem, round 1 (shard 08i); five Opus lanes, a figure package, a REFUTE review
 
 TJO: run the RTP next steps with Opus subagents (at most two in parallel) and build a visualisation package
@@ -134,6 +162,65 @@ product on `K_HW` or a finite model of `K_S` for which the transfer is multiplic
 cusp-orbit return map of D2 and D3 on the odd sector. (iv) Deninger's Laplacian route on the modular surface.
 (v) The `p`-fibre of the 2018 system in the language of the Bost–Connes MPOs of shard 04d.
 
+## Session 2026-09-22: astra day. Deninger's programme and the adelic-bond programme, twelve prover lanes (shards 04s–04z, 04w); stopped by quota
+
+TJO: "today is astra day": use `codex gpt-6-astra` xhigh as much as possible (up to four lanes at once) for proofs and
+ideation; Fable keeps the big picture, writes briefs with the maths worked out, merges, reviews; **no Opus/Sonnet
+subagents** (reviews and numerics were Fable forks). Network patchy, so lanes run through the resumable
+`scripts/astra_lane.sh <lane-dir>` (detached; session id in `session.id`; briefs demand incremental writing to
+`astra-proofs.md` + `progress.txt`). The day ended when the Fable spend limit and then the codex quota were exhausted.
+Inputs: the Codex note "Faces, grading, and positive dynamics" and the LPS worked example (staged in
+`notes/deninger-lps/src/`). Worklog `docs/worklog/2026-09-22.md` has the full per-lane record.
+
+**Registered and reviewed (Fable REFUTE review, all VALID / 0 MINOR / 0 INVALID; numerics lanes all pass).**
+- 04s H-THETA III: `conj:h-theta-1` **refuted** unconditionally (real Sonine Gram + non-real cyclic product at three
+  zeros); one-exit realisation = Cauchy-Gram condition; the only rescuing norms are rescalings of `K_S`'s own; bad-zero
+  renewal needs reset + clock; Burnol's `v_+^2` is one damped chain.
+- 04t Deninger on the GL_1 bond: FE pairing on full jets; positive invariant metric iff critical AND simple; **no metric
+  boundedly equivalent to energy even under RH**, and `sup_t e^{t/4}||Z_t|| = infinity` unconditionally; a trace selects no
+  metric (Weil form is RH, not the canonical metric); CM torus = genus-one class-group bond.
+- 04u LPS square complex: horizontal cohomology = `H^1` of the 13-graph, transport = `T_17`, spectrum = weight-two Hecke
+  (Steinberg at 13, level U_2 at 2), metric cone dimension 16539, Weil–LPS channel a different selection; graded CP
+  realisation open.
+- 04w genus two (`y^2 = x^5+x^3+x^2-2`/F_5): `Pic^0 = Z/15`, fourteen `L(T,chi)`, genus-16 class-field cover; two-parameter
+  metric cone; CM field and reference ratio `(25+3√21)/(2√109)`; no rational symmetric marking; the degree cut is not `H^1`;
+  the bond-to-`H^1` comparison is the missing datum.
+- 04x local cavity (review done, but its claims show `sketched` because they depend on 04v): `M_q` has no fixed-cut
+  core; inverse = two-funnel weighted edge, cusp toy = `-z^2 D M D`; orthogonal arithmetic/local cascade with a delay;
+  squarefree level Walsh-diagonalises.
+
+**Registered, REVIEW PENDING (claims downgraded proved → sketched, note column says so; restore after review).**
+- 04v cusp correspondence and level N (numerics 163/163; the review fork died at the spend limit): prime-level
+  `Gamma_1(q)` scattering with all constants, twisted theta edges, pure Blaschke character symbols, exit rank `h`,
+  `asm:h-arith-gamma1` refuted over Q.
+- 04y the arithmetic metric is not Connes's weighted norm (numerics PARTIAL 34 pass, then a script bug at line 264).
+- 04z Cerednik–Drinfeld (numerics PARTIAL 13/13): `K` = character lattice of the toric reduction of the genus-721 Shimura
+  curve `C_0/w_13`; the cycle Gram `M = Z^tZ` is Grothendieck's monodromy pairing; `|Phi| = det M = 2^217 3^92 5^33 7`;
+  whole-curve zeta at 17 = the worked example's `Z(u)`.
+
+**Prover output saved, NOT reviewed, NOT registered (next agent: review, numerics, shard).**
+- `notes/h-arith-fqt/` — H-ARITH over F_q[T] settled at prime level: two diamond torsors, exact cores/stabilisers,
+  completed coefficient `q u^d Lambda_psi(qu^2)/Lambda_psi(u^2)`, literal diagonal H-ARITH refuted, model dimensions
+  `0,14,84` / `0,18,156`.
+- `notes/genus-two-quotient-graph/` — **H-CLASS proved for the genus-two quotient**: nucleus 366 vertices, 915 edges,
+  fifteen rays, exact stabilisers; exact L-ratios, 64 arithmetic resonances, 154 model modes; hyperelliptic inversion is a
+  graph automorphism, the literal Riemann–Roch fold refuted. Highest-value item to review next.
+- `notes/lps-graded-cp/` — the signed walk is a genuine odd CP subblock with compulsory extra modes; the two-register
+  construction and the Bass identification fail; exact inverse CP problem still open.
+- `notes/sonine-enclosure/` — PARTIAL (R1 `||T|| < 0.735785`, R4 done; S1, S2, R2, R3 pending). Lane died on "model at
+  capacity", then all resumes failed on a runner bug (now fixed). Resume: `scripts/astra_lane.sh notes/sonine-enclosure`
+  with `session.id` present (the runner resumes that session) once codex quota is back.
+
+**Gate:** `make check` 0 errors (584 claims, 239 proved). report.pdf NOT rebuilt this session.
+
+**Next (in order).** (i) REFUTE reviews for 04v, 04y, 04z (write `notes/reviews/<lane>-2026-09-22.md` with the
+`VERDICT <alias>: VALID` lines named in each claim's note column; then restore `proved` in `db/claims.tsv` and the shard,
+regen). (ii) Finish the partial numerics (fix `scripts/connes_weighted_metric.py:264`; extend `scripts/cerednik_drinfeld.py`
+past D13). (iii) Review + numerics + shards for genus-two-quotient-graph, h-arith-fqt, lps-graded-cp. (iv) Resume the
+Sonine enclosure. (v) Rebuild report.pdf. Open questions on the frontier: a zero-free construction of the arithmetic
+metric's domain (04y); the bond-to-`H^1` comparison map (04w); a canonical Frobenius/pairing comparison for the Shimura
+curve (04z); the exact graded CP realisation of the LPS net divisor; H-LP.
+
 ## Session 2026-09-21, evening: square roots of Ihara--Bass (shard 08h); branches merged into master; CI smoke list trimmed
 
 TJO asked to tidy the conceptual loose ends around graded Ihara--Bass: is a "square root" version with a
@@ -170,6 +257,44 @@ notebook's jump Lindbladians (03c(d)) and the cMPS decay modes.
 **Repository.** Master now contains both branches (`inspiring-ride`: CCM tensor shards 02i/03g--03l, `zst`
 elliptic/Dirichlet; `beautiful-bohr`: 04n/04o/04p and 08h). `scripts/ci_local.sh`: `weil_positivity.py`
 (minutes) removed from the pre-commit smoke list, the four 25--55 s scripts behind `CI_FULL=1`.
+
+## Session 2026-09-21, afternoon: H-THETA refuted, the two edge transforms, Burnol's causality, the GL_1 bad-zero defect (shards 04q, 04r)
+
+TJO asked about H-THETA (it was on `claude/beautiful-bohr-e84nm9`; merged into this branch first, commit `5e9c4c3`),
+then "go hard on it with astra xhigh after working out the maths carefully". Brief with the maths worked out
+(`notes/h-theta/astra-brief.md`: the weight `y^{1/4}` is forced, the transform `-xi(1/2+2i tau)/(tau^2+1/16)` violates
+Szegő, the literal conjecture is degenerate, the GL_1 truth is Burnol's causality theorem, the GL_2 symbol is a ratio
+of two GL_1 theta channels), astra prover (`astra-proofs.md`, T1–T6, 41 corrections to the brief), blind Opus numerics
+(`scripts/h_theta.py`, 98/98), Opus REFUTE review (`notes/reviews/h-theta-2026-09-21.md`: 20 VALID / 4 MINOR / 0 INVALID before the fixes, 24 VALID / 0 MINOR / 0 INVALID after; 169 independent evaluations; all 43 byte-cited spans checked). Sources fetched:
+eight Burnol papers, Meyer 2005, Uetake 2007 (`refs/src/uetake-2007/`, pdftotext). Worklog 2026-09-21, afternoon.
+
+**Registered (04q, 04r).** `conj:h-theta` is REFUTED (`thm:theta-vector-cyclic`): the forward dilation orbit of the theta
+vector is the whole bond and its outgoing half is outer (`Lambda_>(s) != 0` on `Re s < 1`), so no cyclic-and-cut
+construction gives `K_S`. Survives, unconditionally: `Theta(tau) = [ghat(tau-i/4)/ghat(tau+i/4)](tau-i/2)/(tau+i/2)`, the odd
+theta on the two edge lines, `Theta = E^#/E` with `E = xi(1-2i tau)` Hermite–Biehler, a pure Blaschke product (the
+innerness of `prop:scattering-inner` now proved by a paired Hadamard product) (`thm:symbol-edge-quotient`); the two
+edge values are the Eisenstein constant-term coefficients, the Siegel theta's zeroth coefficient being
+`theta(t/y) + sqrt(y/t)(theta(ty)-1)` (`prop:siegel-constant-term`), and the notebook's `S` is Uetake's reduced causal
+factor. GL_1 (`thm:gl1-bad-zero-defect`): Burnol's closure is an incoming-half subspace, its reflection has defect
+`K_bad` (one Jordan chain per zero with `sigma > 1/2`), zero iff RH; his scattering multiplier is `v_+^2 B_bad^{-2}`,
+two-dimensional causal model under RH; on the line the zeros are absorption lines of `|ghat|^2`
+(`prop:theta-spectral-density`). `K_S` is spanned by the jets of the cut, damped absorption characters, complete and
+minimal, not a Riesz basis under RH (`thm:model-space-jets`, `prop:kernels-not-riesz`): one kernel per zero is not one
+exit per mode. Sonine: the level-one evaluators are complete and minimal; the diagonal filtration is not a dilation
+orbit; `conj:h-theta-1` (one-exit contraction on the evaluators) is open with a three-zero falsification test.
+
+**Lessons.** The brief was wrong in four places the blind numerics caught (Poisson factor `t^{-1}` not `y`; the
+involution `F(t) -> t^{-1}F(1/t)`; a test point outside the convergence region; the pointwise asymptotic needs
+`|zeta|`), and in the orientation of Burnol's closure (incoming, not outgoing) and the saturation `M = H`, which the
+prover caught. `\Lambda` is the von Mangoldt macro (`\vM`); the theta Mellin transform is `\thetaM`. A shard is capped
+at 320 lines (split 04q/04r). Macros with subscripts (`\gth = g_{\mathrm J}`) need braces before a further subscript.
+
+**Next on this lead (in order).** (i) H-THETA-1: the Sonine evaluator Gram at level one for three zeros; the
+rank-one loss test. (ii) The GL_1 bad-zero channel as a renewal channel with synthetic off-line zeros. (iii) The
+two-dimensional causal model `K_{v_+^2}` of Burnol's scattering under RH against the even sector of the Phantasm.
+(iv) The level-`N` Eisenstein constant term as a matrix of edge quotients (H-ARITH). The 04p list (genus two, the
+Frobenius channel on the class-group bond, the two GL_1 cusps) stands.
+
 
 ## Session 2026-09-21: the adelic symplectic space as the bond (shard 04p); the class-group bond, the theta functional, the cusps as the GL_1 bond
 

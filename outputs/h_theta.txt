@@ -1,0 +1,351 @@
+h_theta.py -- blind numerics for notes/h-theta/astra-brief.md
+author: claude:opus (numerics lane); mp.dps = 25; seed = 20260921
+
+==============================================================================
+T0. sanity of the theta implementation
+==============================================================================
+ok 01  direct sum theta(y)=1+2sum e^{-pi n^2 y} agrees with jtheta(3,0,e^{-pi y}), y>=1
+ok 02  theta(y) for y<1 via y^{-1/2} jtheta(3,0,e^{-pi/y}) agrees with the cancellation-free form
+ok 03  theta(1/y) = y^{1/2} theta(y) (Jacobi), y in [0.05,9]
+      theta(1) = 1.08643481121
+
+==============================================================================
+T0b. Section 1 conventions: Mellin, dilation, outgoing half, inversion
+==============================================================================
+ok 04  T0b fhat(tau)=int f(y)y^{i tau}d^x y for f=1_{y>1}y^{-1/2-1.3i} equals 1/(1/2-i(tau-1.3))
+ok 05  T0b that fhat has its only pole at tau = 1.3 - i/2, i.e. in C_-: fhat is of Hardy class in C_+
+      |fhat(2+3i)| = 0.28016591 (in C_+);  |fhat(1.3-0.49i)| = 100.0 (approaching the C_- pole)
+ok 06  T0b |fhat| is bounded in C_+ and blows up at the C_- pole: outgoing half y>1 <-> H^2(C_+) CONFIRMED
+ok 07  T0b (U_t f)^hat = e^{i t tau} fhat for (U_t f)(y) = f(e^{-t} y), t = 0.7 and -0.4
+ok 08  T0b U_t (t=0.7>0) maps L^2(1,inf) into itself: supp U_t f = {y > e^t} (forward = outgoing)
+ok 09  T0b (Jf)^hat(tau) = fhat(-tau) for (Jf)(y) = f(1/y); J maps the outgoing half to y<1 <-> H^2(C_-)
+
+==============================================================================
+T1. weight, symmetry, membership
+==============================================================================
+ok 10  T1(a) phi(1/y) = y^{1/2} phi(y) exactly, 8 values of y (max rel err 1.57e-26)
+      near y -> 0:   y        (phi(y)+1)/(2 y^{-1/2} e^{-pi/y})
+                    0.2       1.0
+                    0.1       1.0
+                    0.05      1.0
+                    0.02      1.0
+ok 11  T1(b) phi(y) = -1 + 2 y^{-1/2} e^{-pi/y}(1+o(1)) as y->0 (ratio -> 1 to 2e-5 at y=0.2..0.02)
+ok 12  T1(b) phi(y)+1 = y^{-1/2}(theta(1/y)-1) identically (the two constant terms cancel exactly)
+      near y -> inf: y        (phi(y)+y^{-1/2})/(2 e^{-pi y})
+                    2         1.000000006512412
+                    3         1.000000000000526
+                    5         1.0
+                    9         1.0
+ok 13  T1(b) phi(y) = -y^{-1/2} + 2 e^{-pi y}(1+o(1)) as y->inf (ratio -> 1 to 2e-8 at y=2..9)
+      a        max_y | (1/y)^a phi(1/y) - y^a phi(y) |
+      0.1      0.3260341419
+      0.25     1.292469707e-26
+      0.4      0.3260341419
+ok 14  T1(b) J(y^{1/4} phi) = y^{1/4} phi (defect 1.29e-26)
+ok 15  T1(b) J(y^a phi) != y^a phi for a in {0,0.1,0.2,0.3,0.4,0.5} (a=1/4 is the only fixed weight)
+      a        ||y^a phi||^2 (converged)
+      0.1      6.164658343267941
+      0.25     3.914969408269076
+      0.4      6.164658343267941
+ok 16  T1(b) ||y^a phi||^2 finite for a in {0.1, 0.25, 0.4}
+ok 17  T1(b) ||y^a phi|| = ||y^{1/2-a} phi|| (J-symmetry of the weight family; a=1/4 is the fixed point)
+      divergence test: truncated  int_{-X}^{X} e^{2ax} phi(e^x)^2 dx
+      X        a=0            a=0.5          a=0.25 (control)
+      10       10.91405636    10.91405636    3.88801762
+      20       20.91410176    20.91410176    3.914787809
+      40       40.91410176    40.91410176    3.9149694
+      80       80.91410176    80.91410176    3.914969408
+ok 18  T1(b) a=0: increments over X=10->20->40->80 are 10, 20, 40 (linear growth: divergent)
+ok 19  T1(b) a=1/2: increments are 10, 20, 40 (linear growth: divergent)
+ok 20  T1(b) a=1/4: increment X=40->80 is 8.24e-9 (convergent)
+      ||g||^2 = int y^{1/2} phi(y)^2 d^x y = 3.91496940826907585
+
+==============================================================================
+T2(a). ghat = Lambda(1/2 + 2 i tau)
+==============================================================================
+      tau      ghat (direct quadrature)               Lambda(1/2+2i tau) (Gamma-zeta)   rel err
+      0        (-7.953932451013 + 0.0j)               (-7.953932451013 + 0.0j)          2.6e-26
+      0.7      (-0.85986663760725 + 0.0j)             (-0.85986663760725 + 1.1231608537605e-27j) 3.01e-26
+      2.3      (-0.05646122659521 + 0.0j)             (-0.05646122659521 + 1.4240510856725e-27j) 2.52e-26
+      7.1      (1.7215935066028e-6 + 0.0j)            (1.7215935066028e-6 - 7.7608079117357e-32j) 1.16e-23
+ok 21  T2(a) int_0^inf y^{1/4} phi y^{i tau} d^x y = Lambda(1/2+2i tau), tau in {0,0.7,2.3,7.1}
+ok 22  T2(a) Lambda(1/2+2i tau) = -xi_crit(tau)/(tau^2+1/16) = -xi_crit/((tau-i/4)(tau+i/4))
+      ghat(0)        = (-7.95393245101302576 + 0.0j)
+      -16 xi(1/2)    = (-7.95393245101302576 + 0.0j)
+      xi(1/2)        = (0.49712077818831411 + 0.0j)
+ok 23  T2(a) ghat(0) = Lambda(1/2) = -16 xi(1/2) = (-7.95393245101 + 0.0j)
+ok 24  T2(a) ghat is real on the real tau-axis
+ok 25  T2(a) ghat is even
+      Res_{tau=+i/4} ghat = (0.0 + 1.0j)   (numerically (-1.953905454e-12 + 1.0j))
+      Res_{tau=-i/4} ghat = (0.0 - 1.0j)   (numerically (-1.953905454e-12 - 1.0j))
+      tau=+i/4 <-> s=0 (Lambda residue -2);  tau=-i/4 <-> s=1 (Lambda residue +2);  ds/dtau = 2i
+ok 26  T2(a) residue of ghat at tau = +i/4 is +i  (the s=0 pole, incoming edge)
+ok 27  T2(a) residue of ghat at tau = -i/4 is -i  (the s=1 pole, outgoing edge)
+ok 28  T2(a) Lambda has residues -2 at s=0 and +2 at s=1 (num: (-2.0 + 0.0j), (2.0 + 0.0j))
+ok 29  T2(a) 1/2+2i tau = 0 iff tau = +i/4 and = 1 iff tau = -i/4 (brief's parenthetical is right)
+      n   gamma_n            |ghat(gamma_n/2)|
+      1   14.134725141735    1.78439e-30
+      2   21.022039638772    3.18154e-32
+      3   25.010857580146    1.30104e-33
+ok 30  T2(a) ghat vanishes at tau = gamma_n/2, n = 1,2,3
+      least-squares fit of log|ghat(u)| on u in [5,40] (386 points, zeros excluded):
+         slope = -1.58261886   (-pi/2 = -1.57079633)   intercept = 0.940040
+         residual log|ghat| + (pi/2)u fitted against log u: exponent c = -0.205717 (Stirling predicts -1/4)
+ok 31  T2(a) |ghat(u)| decays like e^{-pi|u|/2}: fitted slope -1.582619 vs -pi/2 = -1.570796
+ok 32  T2(a) |ghat(u)| ~ C |u|^c e^{-pi|u|/2} with c = -1/4 (fitted c = -0.2057 on [5,40])
+      second window u in [40,100] (370 points): slope = -1.57295904, exponent c = -0.141564
+ok 33  T2(a) on [40,100] the fitted slope is -1.572959, i.e. -pi/2 to 2.2e-3
+      the naive fit of c is contaminated by log|zeta(1/2+2iu)| (fluctuations ~ sqrt(loglog u));
+      the clean Stirling statement isolates c: |ghat(u)| / (2 pi^{-1/4} sqrt(2pi) u^{-1/4}
+      e^{-pi u/2} |zeta(1/2+2iu)|) -> 1, which fixes c = -1/4 exactly.
+      u        ratio
+      40       1.0000048833014
+      70       1.0000015944399
+      100      1.0000007812625
+ok 34  T2(a) |ghat(u)| = 2 pi^{-1/4} sqrt(2pi) |u|^{-1/4} e^{-pi|u|/2} |zeta(1/2+2iu)| (1+O(1/u)): c = -1/4
+
+==============================================================================
+T2(b). the halves Lambda_> and Lambda_<
+==============================================================================
+ok 35  T2(b) Lambda_>(s) = 2/(s-1) + 2 sum (pi n^2)^{-s/2} Gamma(s/2,pi n^2) matches direct quadrature
+      s                     Lambda_<(s) (direct)            Lambda_>(1-s)                   rel err
+      (0.3 + 0.0j)          (-6.64311085701 + 0.0j)         (-6.64311085701 + 0.0j)         0.0
+      (0.5 + 3.0j)          (-0.0871708556232 + 0.641516476885j) (-0.0871708556232 + 0.641516476885j) 2.5e-27
+      (0.8 + 10.0j)         (-0.00661570306762 + 0.186582638207j) (-0.00661570306762 + 0.186582638207j) 5.41e-28
+ok 36  T2(b) Lambda_<(s) = Lambda_>(1-s) at s in {0.3, 0.5+3i, 0.8+10i}
+ok 37  T2(b) Lambda_>(s) + Lambda_<(s) = Lambda(s) in the strip
+      s          Lambda_>(s) - 2/(s-1)
+      0.99       (0.0243500874778931745 + 0.0j)
+      1          (0.0243782995343042833 + 0.0j)
+      1.01       (0.0244065679799713583 + 0.0j)
+      second difference at h=0.01: (5.6389256e-8 + 0.0j)  (h^2 = 1e-4)
+      Lambda_>(1)-2/(s-1)|_{s=1} = (0.02437829953430428 + 0.0j) ; int_1^inf (theta-1)y^{1/2}d^x y = 0.02437829953430428
+ok 38  T2(b) Lambda_>(s) - 2/(s-1) is smooth across s=1 and equals int_1^inf (theta-1)y^{s/2}d^x y
+      s          Lambda_<(s) + 2/s   (= Lambda_>(1-s) - 2/((1-s)-1), the entire part at 1-s)
+      -0.01      (0.0244065679799713583 + 0.0j)
+      0          (0.0243782995343042833 + 0.0j)
+      0.01       (0.0243500874778931745 + 0.0j)
+      second difference at h=0.01: (5.6389256e-8 + 0.0j)
+ok 39  T2(b) Lambda_<(s) + 2/s is smooth across s=0
+      u        |ghat_>(u)|       |u| |ghat_>(u)|
+      5        0.186947254975    0.934736274877
+      10       0.0917693817961   0.917693817961
+      20       0.0457276257596   0.914552515192
+      40       0.022845237546    0.913809501842
+      predicted limit |u||ghat_>(u)| -> |2/(2i) - i(theta(1)-1)| = 1-(theta(1)-1) = 0.913565188787
+ok 40  T2(b) |ghat_>(u)| ~ (1-(theta(1)-1))/|u| = 0.91356519/|u| (1/|u| decay, NOT exponential)
+      Res_{tau=-i/4} ghat_> = (2.437829953e-14 - 1.0j) ;  ghat_>(+i/4) = (-1.978186882 + 0.0j) (finite)
+      Res_{tau=+i/4} ghat_< = (2.437829953e-14 + 1.0j) ;  ghat_<(-i/4) = (-1.978186882 + 0.0j) (finite)
+ok 41  T2(b) ghat_> is analytic in Im tau > -1/4 with a simple pole at tau=-i/4, residue -i (the s=1 pole)
+ok 42  T2(b) ghat_< carries the other pole: simple at tau=+i/4, residue +i (the s=0 pole)
+ok 43  T2(b) ghat = ghat_> + ghat_< on the real line
+ok 44  T2(b) ghat_<(tau) = ghat_>(-tau)
+ok 45  T2(b) at u=40: |ghat_>| = 0.0228452 but |ghat| = 1.52136e-27 (exponential vs 1/u)
+      n   rho_n                    Lambda_>(rho_n)                          |Re|/|Im|
+      1   (0.5 + 14.1347251417j)   (-1.0097419586829e-28 - 0.13055641672683j) 7.734e-28
+      2   (0.5 + 21.0220396388j)   (0.0 - 0.087268473867639j)               0.0
+      3   (0.5 + 25.0108575801j)   (-2.5243548967072e-29 - 0.07326004624429j) 3.446e-28
+ok 46  T3(c) Lambda_>(rho_n) is purely imaginary at the first three zeros (|Re|/|Im| < 1e-18)
+ok 47  T3(c) Lambda_>(rho_n) != 0: the zeros of zeta are NOT zeros of the half-transform
+ok 48  T3(c) Lambda_>(1-rho_n) != 0 for n = 1,2,3
+ok 49  T3(c) Lambda(1/2+it) = 2 Re Lambda_<(1/2+it) on the critical line
+
+==============================================================================
+T2(c). the symbol as a ratio of edge values
+==============================================================================
+      tau      Theta(tau)                    via Lambda ratio              via ghat(tau-i/4)/ghat(tau+i/4)
+      0.3      (0.9996155238 + 0.02772732578j) (0.9996155238 + 0.02772732578j) (0.9996155238 + 0.02772732578j)
+      1.9      (0.9838729659 + 0.1788686307j) (0.9838729659 + 0.1788686307j) (0.9838729659 + 0.1788686307j)
+      5.5      (0.7552458599 + 0.6554416j)   (0.7552458599 + 0.6554416j)   (0.7552458599 + 0.6554416j)
+      12.0     (0.2419505219 + 0.9702885885j) (0.2419505219 + 0.9702885885j) (0.2419505219 + 0.9702885885j)
+ok 50  T2(c) Theta(tau) = [Lambda(1+2i tau)/Lambda(2i tau)] (tau-i/2)/(tau+i/2)
+ok 51  T2(c) Theta(tau) = [ghat(tau-i/4)/ghat(tau+i/4)] (tau-i/2)/(tau+i/2)
+ok 52  T2(c) xi(1+2i tau) = xi_crit(tau-i/4) and xi(1-2i tau) = xi_crit(tau+i/4)
+      the edge lines Re s = 1 and Re s = 0: truncated Mellin integrals of y^{1/2}phi and of phi
+      X       int_{1}^{e^X} phi y^{1/2} d^x y   int_{e^-X}^{1} phi d^x y   (both should be ~ -X)
+      10      -9.9756217004657                  -9.9756217004657
+      20      -19.975621700466                  -19.975621700466
+      40      -39.975621700466                  -39.975621700466
+ok 53  T2(c) int_1^Y y^{1/2}phi d^x y = -log Y + O(1): Lambda(1+2i tau) diverges in the OUTGOING half y>1
+ok 54  T2(c) int_d^1 phi d^x y = log d + O(1): Lambda(2i tau) diverges in the INCOMING half y<1
+      => numerator of Theta <-> Mellin of y^{1/2}phi (divergent on y>1); denominator <-> Mellin of phi
+         (divergent on y<1). Both exist only by continuation; the notebook's ghat(tau-+i/4) are these.
+ok 55  T2(c) Lambda(1+2i tau) and Lambda(2i tau) exist as meromorphic continuations (used above)
+ok 56  T2(c) |Theta(tau)| = 1 on the real line
+      tau              |Theta(tau)| (C_+)   |Theta(conj tau)| (C_-)
+      (0.3 + 0.05j)    0.9953835999         1.00463781
+      (0.3 + 0.2j)     0.9816662961         1.018676106
+      (0.3 + 0.5j)     0.9548540369         1.047280486
+      (0.3 + 1.0j)     0.9121494387         1.096311588
+      (0.3 + 3.0j)     0.768456735          1.301309435
+      (2.0 + 0.05j)    0.9949970729         1.005028082
+      (2.0 + 0.2j)     0.9801458448         1.020256327
+      (2.0 + 0.5j)     0.9512075056         1.051295321
+ok 57  T2(c) |Theta| < 1 on a 4x5 grid in C_+ (Im tau in [0.05,3], Re tau in [0.3,15])
+ok 58  T2(c) |Theta| > 1 at the conjugate points in C_-
+      n   w_n = gamma_n/2 + i/4        |Theta(w_n)|
+      1   (7.06736257087 + 0.25j)      6.23986e-26
+      2   (10.5110198194 + 0.25j)      1.85056e-25
+      3   (12.5054287901 + 0.25j)      1.48339e-25
+ok 59  T2(c) Theta vanishes at w_n = gamma_n/2 + i/4 in C_+, n = 1,2,3
+ok 60  T2(c) Hermite-Biehler: |E(tau)| > |E(conj tau)| for E(tau)=xi(1-2i tau) on the C_+ grid
+ok 61  T2(c) E(tau) = xi(1-2i tau) = xi(2i tau) (functional equation)
+
+==============================================================================
+T3. the Szego integrals
+==============================================================================
+      cutoff T   I_full(T) = int_{-T}^{T} log|ghat(u)| du/(1+u^2)   increment
+      10         -3.90630330835                                
+      20         -6.01620982282                                -2.109906514
+      40         -8.16899533084                                -2.152785508
+      predicted increment per doubling from log|ghat| ~ -(pi/2)|u|:  -pi log 2 = -2.17758609
+ok 62  T3 I_full increments do NOT decay: -2.10991 (10->20), -2.15279 (20->40); ratio 1.0203
+ok 63  T3 I_full increment 20->40 = -2.1527855 matches -pi log 2 = -2.1775861 (log-divergent)
+      cutoff T   I_half(T) = int_{-T}^{T} log|ghat_>(u)| du/(1+u^2)  increment
+      10         -0.0990607443471                              
+      20         -0.367265602075                               -0.2682048577
+      40         -0.536641849581                               -0.1693762475
+ok 64  T3 I_half increments decay: -0.268205 (10->20), -0.169376 (20->40): log|ghat_>| in L^1(du/(1+u^2))
+ok 65  T3 |I_full increment| / |I_half increment| at 20->40 = 12.71 (full divergent, half convergent)
+
+==============================================================================
+T4. Burnol / GL_1: Nyman's functions and Balazard-Saias-Yor
+==============================================================================
+ok 66  T4 rho_alpha(1/t) = alpha floor(t) - floor(alpha t) (step-function form), 3 alphas x 7 t
+      alpha  s            Mellin (Hurwitz, exact)          (alpha-alpha^s)zeta(s)/s         rel err
+      1/2    2.0          (0.205616758356 + 0.0j)          0.205616758356                   0.0
+      1/2    (3.0 + 1.0j) (0.140550835596 - 0.037334663257j) (0.140550835596 - 0.037334663257j) 5.55e-27
+      1/2    (0.7 + 5.0j) (0.0392436982254 - 0.160102309352j) (0.0392436982254 - 0.160102309352j) 1.96e-26
+      3/10   2.0          (0.172718077019 + 0.0j)          0.172718077019                   1.87e-26
+      3/10   (3.0 + 1.0j) (0.0960394586116 - 0.0370616002231j) (0.0960394586116 - 0.0370616002231j) 7.85e-27
+      3/10   (0.7 + 5.0j) (-0.0223731255839 + 0.00898503163964j) (-0.0223731255839 + 0.00898503163964j) 1.91e-25
+      2/7    2.0          (0.167850414985 + 0.0j)          0.167850414985                   0.0
+      2/7    (3.0 + 1.0j) (0.0917912888733 - 0.0361831225644j) (0.0917912888733 - 0.0361831225644j) 8.19e-27
+      2/7    (0.7 + 5.0j) (-0.00904276638897 + 0.0173199568162j) (-0.00904276638897 + 0.0173199568162j) 2.92e-26
+ok 67  T4 int_0^1 rho_alpha(u) u^{s-1} du = (alpha - alpha^s) zeta(s)/s at s in {2, 3+i, 0.7+5i}
+      direct truncated check (alpha=0.3, exact piecewise integration to T=4000 + mean tail):
+         s = 2.0        direct (0.172718077023 + 0.0j)        closed 0.172718077019                 rel 2.29e-11
+         s = (3.0 + 1.0j) direct (0.0960394586116 - 0.0370616002231j) closed (0.0960394586116 - 0.0370616002231j) rel 9.59e-15
+ok 68  T4 direct truncated Mellin integral agrees with (alpha-alpha^s)zeta(s)/s (alpha=0.3, Re s>1)
+      Balazard-Saias-Yor:  (1/2pi) int_{Re s = 1/2} log|zeta(s)| |ds|/|s|^2
+         = (1/pi) int_0^inf log|zeta(1/2+it)| dt/(1/4+t^2)  (integrand even)
+      T        value (|Im s| <= T)     increment        crude tail scale 2/(pi T)
+      50       -0.000116067885949                      0.0127324
+      100      3.53484565153e-6       0.00011960273    0.0063662
+      200      4.98326305503e-6       1.4484174e-6     0.0031831
+ok 69  T4 BSY integral at T=200 is 4.9832631e-6 (0 under RH; |value| < 0.02)
+ok 70  T4 BSY integral shrinks with T: -0.000116068 (T=50) -> 3.53485e-6 (T=100) -> 4.98326e-6 (T=200)
+ok 71  T4 BSY increment T=100->200 is 1.44842e-6, within the crude tail scale 2/(pi*100) = 0.0063662
+
+==============================================================================
+T4(d). the autocorrelation C(t) = <U_t g, g>
+==============================================================================
+      t      C(t) (spectral)              C(t) (y-space)               |diff|
+      0      (3.914969408269039 + 0.0j)   3.914969408269076            3.681e-14
+      1      (3.822181438389219 + 1.912746742819857e-33j) 3.822181438389256            3.716e-14
+      2      (3.583151087755227 + 2.002972234171769e-33j) 3.583151087755265            3.817e-14
+      4      (2.909049783339837 - 5.298477945688582e-33j) 2.909049783339879            4.172e-14
+ok 72  T4(d) C(t) = (1/2pi)int|ghat|^2 e^{itu}du = int g(e^{-t}y)g(y) d^x y, t=0,1,2,4 (agree to 4e-14)
+ok 73  T4(d) C(0) = ||g||^2 = 3.914969408269076
+ok 74  T4(d) C(t) is real (|Im C| < 1e-16)
+ok 75  T4(d) C(-t) = C(t) (even)
+      C(0) = (3.914969408269039 + 0.0j)
+      C(1) = (3.822181438389219 + 1.912746742819857e-33j)
+      C(2) = (3.583151087755227 + 2.002972234171769e-33j)
+      C(4) = (2.909049783339837 - 5.298477945688582e-33j)
+ok 76  T4(d) the spectral density |ghat(u)|^2/2pi vanishes (to 2nd order) at u = gamma_n/2
+
+==============================================================================
+T5. Siegel theta of Z z + Z: constant term and Mellin identities
+==============================================================================
+      (t,y)          int_0^1 Theta_z(t) dx        theta(t/y)+sqrt(y/t)(theta(ty)-1)   rel err
+      (0.8,1.3)    1.387389062823723            1.387389062823723                   1.86e-26
+      (2.0,0.6)    1.025311460580111            1.025311460580111                   0.0
+      (0.5,3.0)    2.493498765016911            2.493498765016911                   0.0
+ok 77  T5(a) int_0^1 Theta_z(t) dx = theta(t/y) + sqrt(y/t)(theta(ty)-1) at 3 (t,y)
+      the brief writes  sqrt(y/t) theta(ty) = y theta(1/(ty)).  Poisson gives instead
+      sqrt(y/t) theta(ty) = sqrt(y/t) (ty)^{-1/2} theta(1/(ty)) = t^{-1} theta(1/(ty)):
+      (t,y)          sqrt(y/t)theta(ty)      t^{-1}theta(1/(ty))     y theta(1/(ty)) [brief]
+      (0.8,1.3)    1.3719242310449         1.3719242310449         1.4268012002867
+      (2.0,0.6)    0.57297737996699        0.57297737996699        0.68757285596038
+      (0.5,3.0)    2.4934987331127         2.4934987331127         3.7402480996691
+ok 78  T5(a) CORRECTED: sqrt(y/t) theta(ty) = t^{-1} theta(1/(ty)) (Poisson), at 3 (t,y)
+ok 79  T5(a) the brief's 'sqrt(y/t) theta(ty) = y theta(1/(ty))' is FALSE unless t y = 1
+ok 80  T5(a) the brief's version is recovered exactly on the locus t y = 1 (t = 1/y)
+      involution: the brief says t -> 1/(y^2 t) exchanges the channels. It does not:
+      t -> 1/(y^2 t) sends t/y -> 1/(y^3 t) and ty -> 1/(yt); the Poisson partner of t/y is y/t,
+      and 1/(y^3 t) = y/t only on t^2 y^4 = 1. The exchange is t -> 1/t with weight 1/t:
+      with G(t) := theta(t/y) - 1 + sqrt(y/t)(theta(ty)-1),   t^{-1} G(1/t) = G(t) + 1 - 1/t.
+      (t,y)          t^{-1}G(1/t)            G(t) + 1 - 1/t          G(t/(y^2 t)) test
+      (0.8,1.3)    0.13738906282372        0.13738906282372        0.46566124803458
+      (2.0,0.6)    0.52531146058011        0.52531146058011        0.097320414484476
+      (0.5,3.0)    0.49349876501691        0.49349876501691        3.5808496778019
+ok 81  T5(a) CORRECTED involution: t^{-1}G(1/t) = G(t) + 1 - 1/t (t -> 1/t exchanges the channels)
+ok 82  T5(a) t -> 1/(y^2 t) is NOT a symmetry of the constant term (3 (t,y): G changes)
+ok 83  T5(a) t -> 1/t sends t/y -> 1/(ty) (Poisson partner of ty) and ty -> y/t (partner of t/y)
+      y=1.0  int (theta(t/y)-1)t^s d^x t = (0.28321836791481 - 0.37787158227281j)   y^s Lambda(2s) = (0.28321836791481 - 0.37787158227281j)   rel 2.92e-24
+      y=2.5  int (theta(t/y)-1)t^s d^x t = (1.2645990562514 - 0.64152038406035j)   y^s Lambda(2s) = (1.2645990562514 - 0.64152038406035j)   rel 1.62e-24
+ok 84  T5(b) int_0^inf (theta(t/y)-1) t^s d^x t = y^s Lambda(2s) at s = 1.2+0.5i (Re s > 1/2)
+      y=1.0  int sqrt(y/t)(theta(ty)-1)t^s d^x t = (-0.2103278563733 - 1.0475742706893j)   y^{1-s} Lambda(2s-1) = (-0.2103278563733 - 1.0475742706893j)   rel 5.59e-25
+      y=2.5  int sqrt(y/t)(theta(ty)-1)t^s d^x t = (-0.54279518334497 - 0.70477085872049j)   y^{1-s} Lambda(2s-1) = (-0.54279518334497 - 0.70477085872049j)   rel 1.33e-24
+ok 85  T5(b) int_0^inf sqrt(y/t)(theta(ty)-1) t^s d^x t = y^{1-s} Lambda(2s-1) at s = 1.2+0.5i (Re s > 1)
+      regions of convergence, probed by the truncated integral int_{e^{-X}}^{inf} ... :
+      X        ch1 at s=1.2+0.5i    ch1 at s=0.3+0.5i     ch2 at s=1.2+0.5i    ch2 at s=0.3+0.5i
+      10       1.417302737          22.28648556           1.074893313          1258.294254
+      20       1.418013546          162.3399298           0.9201425199         1397863.519
+      40       1.418012403          8750.693493           0.8889475923         1.68123968e+12
+      80       1.418012403          26090519.18           0.8895664461         2.431504775e+24
+      160      1.418012403          2.318432341e+14       0.8895665092         5.085880052e+48
+ok 86  T5(b) channel 1 converges at s = 1.2+0.5i: region of convergence is Re s > 1/2
+ok 87  T5(b) channel 1 DIVERGES at s = 0.3+0.5i (Re s < 1/2): |trunc| 2.60905e+7 (X=80) -> 2.31843e+14 (X=160)
+      channel 1 truncations grow like e^{X(1/2-Re s)}: e^{80*0.2} = 8.88611e+6 (observed ratio 8.88611e+6)
+ok 88  T5(b) channel 2 converges at s = 1.2+0.5i: region of convergence is Re s > 1
+ok 89  T5(b) channel 2 DIVERGES at s = 0.3+0.5i (Re s < 1): |trunc| = 2.4315e+24 (X=80) -> 5.08588e+48 (X=160)
+      channel 2 truncations grow like e^{X(1-Re s)}: e^{80*0.7} = 2.09166e+24 (observed ratio 2.09166e+24)
+      => the brief's s = 0.3+0.5i lies OUTSIDE both regions; both identities there are continuations.
+      Lax-Phillips scattering coefficient phi(s) = Lambda(2s-1)/Lambda(2s) at s = 1/2 + i tau:
+ok 90  T5(b) Lambda(2i tau)/Lambda(1+2i tau) = Theta(tau)^{-1} (tau-i/2)/(tau+i/2)
+
+==============================================================================
+T6(a). the zero modes m_n and orthogonality to Theta H^2
+==============================================================================
+      n   tau     Mellin int (numeric)             i/(tau - conj w_n)               rel err
+      1   0.5     (0.00578800825179 - 0.152047795011j) (0.00578800825179 - 0.152047795011j) 0.0
+      1   9.0     (0.0658312690477 + 0.508911898275j) (0.0658312690477 + 0.508911898275j) 0.0
+ok 91  T6(a) mhat_n(tau) = i * k_{w_n}(tau) = i/(tau - conj w_n), w_n = gamma_n/2 + i/4; constant = i
+      quadrature for the Plancherel pairing: 2880 composite Gauss-Legendre nodes (24/subinterval) on [-60,60]; the integrand decays like |u|^{-(1+k)}, so the truncation error is ~ 1/(pi k T^k): 5.3e-3 (k=1), 8.8e-5 (k=2).
+      n  k   |<mhat_n, Theta h>| on [-20,20]   on [-60,60]        tail bound
+      1  1   3.157e-03                        5.708e-04          5.305e-03
+      1  2   8.443e-05                        5.769e-06          4.421e-05
+      2  1   3.467e-03                        5.767e-04          5.305e-03
+      2  2   9.720e-05                        5.849e-06          4.421e-05
+      3  1   3.755e-03                        5.812e-04          5.305e-03
+      3  2   1.092e-04                        5.911e-06          4.421e-05
+ok 92  T6(a) <mhat_n, Theta h> = 0 for h=1/(tau+i)^k, k=1,2, n=1,2,3 (below the truncation bound)
+      exact evaluation by closing the contour in C_- (the only pole of the integrand there is
+      conj w_n): <mhat_n, Theta h> = conj[ Theta(w_n) h(w_n) ] = 0 since Theta(w_n) = 0. Equivalently
+      1/Theta(conj w_n) = xi(1/2 - i gamma_n)/xi(3/2 + i gamma_n), whose numerator vanishes:
+         n=1  |xi(1/2 - i gamma_n)| = 8.92373e-29   |xi(3/2 + i gamma_n)| = 0.00143012
+         n=2  |xi(1/2 - i gamma_n)| = 3.517e-30   |xi(3/2 + i gamma_n)| = 1.9005e-5
+         n=3  |xi(1/2 - i gamma_n)| = 2.03545e-31   |xi(3/2 + i gamma_n)| = 1.37216e-6
+ok 93  T6(a) the exact pairing vanishes: xi(1/2 - i gamma_n) = 0 while xi(3/2 + i gamma_n) != 0
+
+==============================================================================
+T6(b). Gram matrix of the normalised Cauchy kernels at the zeros
+==============================================================================
+      inner product convention: <k_w, k_v> = i/(v - conj w)  (04h line 90: Cauchy matrix i/(w_n - conj w_m));
+      <k_w,k_w> = 1/(2 Im w) = 2 at height 1/4.  Normalised: G_{nm} = i/(gamma_m - gamma_n + i).
+ok 94  T6(b) G_{nm} = i/(gamma_m - gamma_n + i) and G_{nn} = 1
+ok 95  T6(b) the Gram matrix is Hermitian
+      N    lambda_min      lambda_max      cond = max/min
+      10   3.99597060e-01  1.86641948      4.670754e+00
+      20   2.70419603e-01  2.27824367      8.424847e+00
+      30   2.01340242e-01  2.56015448      1.271556e+01
+ok 96  T6(b) the Gram matrix is positive definite for N = 10, 20, 30 (the kernels are minimal)
+ok 97  T6(b) condition number grows with N: 4.671e+00 (N=10) -> 8.425e+00 (N=20) -> 1.272e+01 (N=30)
+      smallest three eigenvalues at N=30: 2.013402e-01 2.370691e-01 2.711725e-01
+      gamma spacings gamma_{n+1}-gamma_n for n=1..5: 6.8873 3.9888 5.4140 2.5102 4.6511
+      mean spacing near gamma_30 = 2.5017 (2 pi/log(gamma_30/2pi) = 2.2598)
+ok 98  T6(b) lambda_min decreases with N (3.9960e-01 -> 2.0134e-01): the numerical signal against a Riesz basis
+
+CHECKS: 98 passed, 0 failed

@@ -1,0 +1,130 @@
+% SHARD-ID: RC-04X-LEVEL-LOCAL-CAVITY
+% SHARD-TITLE: The Phantasm XIV: the Local Factor of the Prime-Level Scattering Matrix as a Finite Cavity. No Core Realises It at the Fixed Cut, Its Inverse Is a Two-Funnel Weighted Edge, the Genuine Two-Cusp Tree Toy Is -z^2 D M D, the Level Model Is an Orthogonal Arithmetic/Local Cascade with a Delay, Squarefree Level Walsh-Diagonalises, and the Two Combs Are Different Objects
+% SHARD-SUMMARY: The trivial-nebentypus local matrix M_q(z) = (qz^2 - 1)^{-1} [[q - 1, sqrt q (z - 1/z)],[sqrt q (z - 1/z), q - 1]] has a pole at z = 0 while every finite symmetric-core scattering matrix of thm:multi-exit-scattering is regular there: no core realises M at the 04k cut. Its inverse is realised, up to explicit phases, by two vertices joined by an edge of weight a = q^{-1/2} with one standard ray each (resonances +-a, two delays, no bound states), and the genuine two-cusp regular-tree toy (edge weight sqrt q) satisfies S = -z^2 D M D with bound poles +-a and no nonzero resonances. Gamma_0(q) is not a one-edge tree quotient; the finite datum is the oldform matrix B_q(s).
+% SHARD-SUMMARY: K_AB = K_A + A K_B orthogonally; the reduced minus channel uses L_-/r; the delay e^{i l tau} has model space L^2(0, l), infinite-dimensional, and the local factor u b_c(u) has model space L^2(0, l) (x) C^2 (a disk system of degree two suspended with a delay; one comb zero per period); the forward compression is lower triangular (arithmetic feeds the local factor; the adjoint reverses it), with explicit output profile and exits; arithmetic initial data produce no final output before the delay log q. Squarefree trivial level: Phi = phi B_N(1-s) B_N(s)^{-1} with B_N a tensor product, Walsh-diagonalised, 2^omega(N) arithmetic copies and exits, with the composite-level i/2 collisions counted; the cusps form a Boolean group, not a Picard group, and no product-building scattering theorem follows.
+% SHARD-SUMMARY: The spectral comb at height 1/2 with spacing 2 pi/log q and the trace-side prime comb of shard 09c are different objects related by a phase derivative and Fourier transform; the Selberg shift tower is not a congruence tower. What survives: the reduced prime-level model is two Riemann channels each cascaded with an explicit local delay/comb factor; H-LP and the geometric gluing remain open.
+% SHARD-KEYWORDS: scattering matrix, oldforms, finite cavity, cusp, funnel, weighted edge, bound state, resonance, delay line, model space, orthogonal cascade, exit functional, Walsh transform, squarefree level, Boolean group, comb, Selberg tower
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/level_local_cavity.py
+
+\section{The Phantasm XIV: the Local Factor as a Finite Cavity}
+\label{sec:level-local-cavity}
+
+Round of 2026-09-22 (brief \texttt{notes/level-local-cavity/astra-brief.md}, prover \texttt{notes/level-local-cavity/astra-proofs.md},
+numerics \texttt{scripts/level\_local\_cavity.py}, review \texttt{notes/reviews/level-local-cavity-2026-09-22.md}). Input:
+the prime-level trivial-nebentypus matrix of \cref{thm:prime-level-scattering}, $\Phi_1 = \phi(s)M_q(s)$, and the inner
+factors of \cref{thm:level-model-decomposition}. Conventions: $z = q^{-s}$, $a = q^{-1/2}$, $\ell = \log q$,
+$u = e^{i\tauM\ell}$, $b_c(z) = (z-c)/(1-cz)$, $F = \begin{psmallmatrix}0&1\\1&0\end{psmallmatrix}$, $D = \mathrm{diag}(1,-1)$,
+$H = 2^{-1/2}\begin{psmallmatrix}1&1\\1&-1\end{psmallmatrix}$. The brief's proposal was that $M_q$ is the scattering matrix of the
+notebook's finite two-cusp tree cavity; it is not, and what is true is more precise.
+
+\subsection{What the local matrix is}
+
+\begin{proposition}[The local matrix and its eigenchannels; no core at the fixed cut]
+\label{prop:local-matrix-no-fixed-cut-core}
+\claimstatus{prop:local-matrix-no-fixed-cut-core}{sketched}
+$M(z) = (qz^2-1)^{-1}\begin{psmallmatrix}q-1&\sqrt q(z-z^{-1})\\\sqrt q(z-z^{-1})&q-1\end{psmallmatrix}$, $H^{T}MH = \mathrm{diag}(m_+,m_-)$ with
+$m_\pm = 1/(zb_{\mp a}(z))$, $\det M = (z^2-q)/(z^2(1-qz^2)) = (1-q^{2-2s})/(1-q^{2s})$, and $\mathcal L := M^{-1} = H\,\mathrm{diag}(zb_{-a},zb_a)H^{T}$,
+$\det\mathcal L = z^2(z^2-a^2)/(1-a^2z^2)$. For every finite real symmetric core and coupling $W$ of \cref{thm:multi-exit-scattering},
+$\mathsf G(z) = zW^{*}W+O(z^2)$, so $Q(z) = I+O(z^2)$, $Q(1/z) = I-W^{*}W+O(z)$ and $S(0) = W^{*}W-I$ is regular, whereas
+$M_{12} = \sqrt q/z+O(z)$ and $\det M$ has a double pole at $0$: no core, of any size, gives $M$ as its fixed-cut scattering matrix,
+and no $p,\tilde p$ of the theorem represent it. Constant basis changes and width scalings do not remove the pole.
+\end{proposition}
+
+\begin{proposition}[The inverse is a two-funnel weighted edge; the genuine two-cusp tree toy is $-z^2DMD$]
+\label{prop:local-inverse-weighted-edge}
+\claimstatus{prop:local-inverse-weighted-edge}{sketched}
+For $t>0$ take two vertices, one edge of normalised weight $t$ ($T_t = tF$), one standard ray at each vertex ($W = I$, $C = I$).
+Then $S_t = -z(I-tzF)^{-1}(zI-tF)$, $p_t = z^2(z^2-t^2)$, $\tilde p_t = 1-t^2z^2$, $\det S_t = p_t/\tilde p_t$; at $t = a$ the eigenvalues
+are $-zb_a$ (symmetric channel) and $-zb_{-a}$ (antisymmetric), and since $DFD = -F$,
+$\mathcal L = -DS_aD$, $M = -DS_a^{-1}D$: unitarily equivalent Hardy models, not an equality of scattering matrices with both
+bases fixed; $S_a$ has resonances $\pm a$, two delay zeros at $z = 0$, no bound states, disk dimension four. The genuine
+two-cusp regular-tree toy (each core vertex with one cusp of coupling $1$ forces the core-edge index $q$ and normalised
+weight $\sqrt q$; stabiliser data $S(v_j) = q$, $S(v_1v_2) = 1$, $S(r_{j,k}) = q^{k+1}$, a regular-tree diagram in the notebook's
+sense, realisable by cyclic vertex groups) satisfies $S_{\sqrt q} = -z^2DMD$, $p_{\sqrt q} = z^2(z^2-q)$, $\tilde p_{\sqrt q} = 1-qz^2$:
+two delay zeros, no nonzero disk resonances, two simple disk poles $\pm a$ (bound states $\pm(\sqrt q+1/\sqrt q)$, the
+weighted constant and its bipartite twin). The brief's comb belongs to the inverse/funnel realisation as resonances and to
+the cusp toy as bound poles; the ray-origin shift $z^{-2}$ is the integer cut change of \cref{sec:elliptic-cavity-scattering}.
+$\Gamma_0(q)$ fixes a vertex of the $q$-adic tree (its closure is the Iwahori subgroup), so its quotient is not one edge; the
+finite datum behind $M_q$ is the oldform matrix $B_q(s) = \begin{psmallmatrix}1&q^s\\q^s&1\end{psmallmatrix}$, $M_q = B_q(1-s)B_q(s)^{-1}$.
+The comb: $L_-$ has zeros $\tauM = 2\pi k/\ell+i/2$, $L_+$ at $(2k+1)\pi/\ell+i/2$ (images on $\re s = 0$, poles of the raw $M$);
+$M_q(1)$ is the all-ones matrix over $q+1$ and the modular pole at $s = 1$ belongs to $\phi$, not to $M_q$; the reduction removes the
+single $k = 0$ zero of the minus comb. Verified: \cref{num:level-local-cavity}.
+\end{proposition}
+
+\subsection{The cascade}
+
+\begin{theorem}[The level model is an orthogonal arithmetic/local cascade with a delay]
+\label{thm:level-model-cascade}
+\claimstatus{thm:level-model-cascade}{sketched}
+(a) For scalar inner $A,B$: $K_{AB} = K_A\oplus AK_B$ orthogonally; with $A = \Theta_1$, $B_+ = L_+$, $B_- = L_-/r$ (the reduced minus
+channel uses $L_-/r$, not $L_-$), $U_A(f,g) = f+Ag$ is unitary $K_A\oplus K_{B_\pm}\to K_{I_\pm}$; the trivial-nebentypus model has two
+copies of $K_{\Theta_1}$ and is a scattering model, not the modular surface's $L^2$ (no Maass forms, no residual state).
+(b) Paley--Wiener: $\mathcal F^{-1}K_{e^{i\ell\tauM}} = L^2(0,\ell)$, infinite-dimensional; cutting the half-line into cells of length $\ell$,
+$\mathcal F^{-1}K_{B_c} = \{f(n\ell+x) = \sqrt{1-c^2}c^nh(x)\}$ and $K_{ub_c(u)}\simeq L^2(0,\ell)\otimes\mathbb C^2$: a disk system of
+degree two ($e_0 = 1$, $e_1 = z\sqrt{1-c^2}/(1-cz)$, $Z_c = \begin{psmallmatrix}0&0\\\sqrt{1-c^2}&c\end{psmallmatrix}$,
+$J_c = (-c,\sqrt{1-c^2})$, $I-Z_c^{*}Z_c = J_c^{*}J_c$) suspended with a delay, one comb zero per period $2\pi/\ell$; the reduced
+$K_{L_-/r} = K_u\oplus uK_{\hat B_-}$ is no longer periodic in $u$. (c) With $Z_I(\tsg) = P_{K_I}V_\tsg|_{K_I}$ ($V_\tsg = M_{e^{i\tsg\tauM}}$),
+$C_I = Z_I^{*}$, and the output profile $E^A_\tsg f = M_A^{*}(I-P_{K_A})V_\tsg f\in K_{e^{i\tsg\tauM}}$:
+$U_A^{*}Z_{AB}(\tsg)U_A = \begin{psmallmatrix}Z_A(\tsg)&0\\P_{K_B}E^A_\tsg&Z_B(\tsg)\end{psmallmatrix}$ and the adjoint is upper triangular:
+forward compression feeds arithmetic into the local factor, the kernel convention reverses it; the final output
+$E^{AB}_\tsg U_A(f,g) = M_B^{*}(I-P_{K_B})E^A_\tsg f+E^B_\tsg g$ with $\|h\|^2-\|Z_{AB}(\tsg)h\|^2 = \|E^{AB}_\tsg h\|^2$, and for arithmetic
+initial data $(f,0)$ the final output vanishes for $0\le\tsg\le\ell$: the output traverses the local delay. (d) Disk exits:
+$U_A^{*}Z_{AB}U_A = \begin{psmallmatrix}Z_A&0\\k^B_0J_A&Z_B\end{psmallmatrix}$, $J_{AB}U_A(f,g) = \overline{B(0)}J_Af+J_Bg$, $\|J_I\|^2 = 1-|I(0)|^2$
+(in a Cayley coordinate); in continuous time the instantaneous exit is the boundary trace $f(0)$ on the generator domain,
+unbounded on the full model (the delay contains $L^2(0,\ell)$), and $I-Z_I(\tsg)^{*}Z_I(\tsg)$ is not of finite rank.
+\end{theorem}
+
+\begin{theorem}[Squarefree trivial level: tensor coefficients, Walsh channels, cascade states]
+\label{thm:squarefree-walsh-cascade}
+\claimstatus{thm:squarefree-walsh-cascade}{sketched}
+For squarefree $N = \prod_{j\le k}q_j$, $h = 2^k$: $\Phi_{0,N} = \phi\,\mathcal M_N$, $\mathcal M_N = \bigotimes_jM_{q_j}$ (one scalar $\phi$, from
+$B_N = \bigotimes B_{q_j}$), Walsh-diagonalised by $H^{\otimes k}$ into $\phi_\epsilon = \phi\prod_qm_{q,\epsilon_q}$,
+$\phi_\epsilon(\tfrac12+i\tauM)^{-1} = r^{-1}\Theta_1\prod_qL_{q,\epsilon_q}$; with $m(\epsilon)$ minus signs the minimal pole-removed symbols are
+$I_\epsilon = \Theta_1B_\epsilon$, $B_\epsilon = \prod L_{q,+}$ ($m = 0$) or $r^{-1}\prod L_{q,\epsilon_q}$ ($m\ge1$), all inner, a channel with $m\ge1$
+retaining order $m-1$ at $i/2$ (at $N = 35$ the $--$ channel retains one such zero); $K^{\mathrm{scat}}_N\simeq\bigoplus_\epsilon(K_{\Theta_1}\oplus\Theta_1K_{B_\epsilon})$:
+$h$ arithmetic copies and exactly $h$ Cayley disk exits, no Dirichlet zeros. The local state space is a cascade
+$\bigoplus_j(\prod_{i<j}L_i)K_{L_j}$ with the delays combined into $L^2(0,\log N)$, not a tensor product (dimensions add); the
+periods $2\pi/\log q_j$ are incommensurate, so no common disk variable exists. The cusps $1/d$, $d|N$, form the Boolean group
+$(\mathbb Z/2)^k$ under symmetric difference and the Walsh transform is its character Fourier transform; this is not
+\cref{prop:cusps-are-class-group-bond} (a rational-field Picard group is trivial), and the tensor of coefficient matrices is not
+the scattering theorem of a product building with four rays (Cartesian products have Kronecker-sum adjacencies and transverse
+continua): a geometric realisation is open. Prime powers: $h_0(q^n) = \sum_{j\le n}\varphi(q^{\min(j,n-j)})$ ($q+1$ at $q^2$), not a tensor;
+the full $\Gamma_0(q^2)$ matrix is open.
+\end{theorem}
+
+\begin{observation}[The two combs are different objects; the Selberg tower is not a congruence tower]
+\label{obs:two-combs-different}
+\claimstatus{obs:two-combs-different}{refuted}
+Refuted: the comb of $L_\pm$ is a complex spectral zero divisor at height $\tfrac12$ with real spacing $2\pi/\ell$, while the cusp comb
+of \cref{sec:selberg-tower} is a real-time distribution $-P+A_{\mathrm{arch}}$ with $P$ supported at $\pm2\log n$; they are related
+by $\tfrac1i\partial_\tauM\log(ub_c(u)) = \ell[2+2\sum c^n\cos(n\ell\tauM)]$ (the two-channel sum $4\ell[1+\sum q^{-m}\cos(2m\ell\tauM)]$: a
+prime-power-supported phase transform), not equal as objects; the Selberg tower $D_{\mathrm{tow}}(v) = \prod_{j\ge1}Z_{\mathrm{Sel}}(v+j)$ is a
+spectral shift tower, not the level tower $q,q^2,\dots$, and nothing predicts a spacing $2\pi/(n\ell)$ at level $q^n$.
+\end{observation}
+
+\begin{numerical}[Numerics lane, the local cavity]
+\label{num:level-local-cavity}
+\claimstatus{num:level-local-cavity}{numerical}
+\texttt{scripts/level\_local\_cavity.py} ($68$ assertions, $7$ s, mpmath at $40$ digits; \texttt{outputs/level\_local\_cavity.txt}; ledger in
+\texttt{notes/level-local-cavity/numerics.md}; $68$ pass; written without reading the prover's scripts): $M_q$ from the oldform
+definition against the closed form to $10^{-35}$ at $q = 5,7$, $\det M$, $M(s)M(1-s) = I$, the eigenchannels; the pole at $z = 0$
+($zM_{12}\to\sqrt q$, $z^2\det M\to-q$) against three random symmetric two-ray cores ($S(0) = W^{*}W-I$ regular); $S_t$, $\det S_t$,
+$\mathcal L = -DS_aD$, the false $M = S_a$ (errors $1.506$, $1.664$), $S_a$'s eigenvalues and absence of bound states, $S_{\sqrt q} = -z^2DMD$
+with bound states $\pm a$; the combs with spacings $3.90396$, $3.22892$, $(L_-/r)(i/2) = -\ell/(q-1)$, $M_q(1)$; the disk model
+identities, eight delay exponentials on $(0,\log5)$ with identity Gram, the two-factor cascade (orthogonality, lower-triangular
+compression, coupling $\sqrt{1-|c_1|^2}\sqrt{1-|c_2|^2}$, rank-one disk defect); $N = 35$: $B_{35}(1-s)B_{35}(s)^{-1} = M_5\otimes M_7$
+exactly, Walsh eigenvalues $m_{5,\epsilon}m_{7,\epsilon}$, reduced orders at $i/2$ equal to $0,0,0,1$; the phase-derivative comb identity.
+\end{numerical}
+
+\begin{observation}[What survives: the arithmetic-cavity statement; next]
+\label{obs:level-local-next}
+\claimstatus{obs:level-local-next}{sketched}
+The reduced prime-level trivial-character model is two Riemann channels, each cascaded with an explicit local delay/comb
+factor, the arithmetic output traversing the local delay before exiting: ``a cusp per prime'' survives as one binary local
+factor per prime doubling the squarefree cusps, with the arithmetic modes seeing the cusps only through the local cascade.
+The Schur-resolvent theorem and $p/\tilde p$ of \cref{sec:elliptic-cavity-scattering} and the disk model of
+\cref{sec:elliptic-cavity-channel} apply verbatim to the two weighted-edge toys. Open: H-LP (the wave-compression
+identification), a geometric product-building realisation of the squarefree cascade, prime-power level, and the function-field
+version (\texttt{notes/h-arith-fqt/}).
+\end{observation}

@@ -1,0 +1,239 @@
+% SHARD-ID: RC-04S-H-THETA-1-REFUTED
+% SHARD-TITLE: The Phantasm IX: H-THETA III. The One-Exit Cauchy Criterion, the Refutation of conj:h-theta-1 in Burnol's Norm, the Classification of One-Exit Norms, the Bad-Zero Renewal Channel, and Burnol's Length-Two Chain
+% SHARD-SUMMARY: A finite family of stable modes admits a one-exit (scalar exit form) realisation in a given Hilbert norm iff its loss Gram -(d_i + conj d_j) G_ij is positive of rank one, iff the modes are Cauchy kernels up to scalars; the Riemann model space passes identically (loss Gram all ones). Burnol's level-one evaluators at critical-line zeros have a real Gram (they are fixed by the cosine antiunitary), and three distinct critical zeros give a non-real cyclic product of the loss factors: conj:h-theta-1 is refuted unconditionally, without RH, simplicity or numerics.
+% SHARD-SUMMARY: The augmented cosine Sonine space L_1 (not K_1) is a de Branges space after multiplying by s(s-1); its evaluator Gram is computable from one compact integral equation on (0,1), and at the first three zeros the normalised loss matrix has a negative eigenvalue -0.0924 (numerical; a certified enclosure is open). Every norm in which H-THETA-1 holds is a diagonally rescaled Cauchy norm whose completion is K_S with full multiplicities: the only rescue is the model-space norm itself.
+% SHARD-SUMMARY: The GL_1 bad-zero channel with synthetic off-line zeros is a one-exit contraction at the generator level only (finite-time defects have full rank); its renewal channel needs a reset and a clock, with explicit holding laws and the one-zero mean 1/(sigma - 1/2). Under RH Burnol's elementary factor v_+^2 gives one damped length-two chain span{y^{-1/4}, (log y) y^{-1/4}} on y > 1, not two constant terms; the square comes from the quotient of his two radiation maps; the Eisenstein factor r has degree one.
+% SHARD-KEYWORDS: H-THETA-1, Sonine spaces, de Branges spaces, Cauchy kernels, Nevanlinna--Pick, one-exit contraction, Gram matrix, cyclic product, cosine transform, Burnol, bad-zero channel, renewal channel, holding time, Jordan chain, even sector, radiation maps
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/h_theta_1.py
+
+\section{The Phantasm IX: H-THETA III. H-THETA-1 Refuted}
+\label{sec:h-theta-1}
+
+Continuation of \cref{sec:h-theta,sec:h-theta-channels} (same conventions: bond $H = L^2(\mathbb R, dX)$ with $X = \log y$,
+inner products linear in the first slot, outgoing half $X>0$, model space $\KS$, kernels $k_w(u) = 1/(u-\bar w)$, zeros
+$w_\zero = \gamma/2 + i(1-\sigs)/2$, modes $m_\zero = e^{\lambda_\zero X}1_{X>0}$ with $\lambda_\zero = (\bar\zero-1)/2$,
+adjoint compression $C_\tsg f(X) = f(X+\tsg)$ and forward compression $Z_\tsg = C_\tsg^{*}$). Round of 2026-09-22
+(brief \texttt{notes/h-theta-1/astra-brief.md}, prover \texttt{notes/h-theta-1/astra-proofs.md} with 28 corrections to
+the brief, numerics \texttt{scripts/h\_theta\_1.py}, review \texttt{notes/reviews/h-theta-1-2026-09-22.md}). The question
+was \cref{conj:h-theta-1}: whether Burnol's level-one Sonine evaluators at the zeros carry, in Burnol's own norm, a
+strongly stable contraction semigroup with a scalar exit form whose minimal unitary dilation is the dilation of the bond.
+
+\subsection{The one-exit Cauchy criterion}
+
+\begin{theorem}[One-exit realisation of stable modes is a Cauchy-Gram condition]
+\label{thm:continuous-one-exit-cauchy}
+\claimstatus{thm:continuous-one-exit-cauchy}{proved}
+Let $e_1,\dots,e_n$ be nonzero vectors of a Hilbert space with Gram matrix $G_{ij} = \langle e_i,e_j\rangle$, and let
+$d_1,\dots,d_n$ with $\re d_i<0$ be prescribed. (a) If $T_\tsg = e^{\tsg A}$ is a contraction semigroup on the closed span
+with $Ae_i = d_ie_i$ and a scalar exit form $-\langle Af,h\rangle-\langle f,Ah\rangle = j(f)\overline{j(h)}$, then the loss
+Gram $N_{ij} := -(d_i+\bar d_j)G_{ij} = c_i\bar c_j$ with $c_i = j(e_i)\ne0$: $N$ is positive of rank one. (b) Conversely,
+if $N = cc^{*}$ with all $c_i\ne0$, then $e_i\mapsto c_ie^{d_iX}1_{X>0}$ is an isometry of the span into $L^2(0,\infty)$,
+the backward translations $S_\tsg f(X) = f(X+\tsg)$ restrict to a strongly continuous, strongly stable contraction
+semigroup with the prescribed eigenvalues and exit $j(f) = f(0)$, and its minimal unitary dilation is the translation
+group of $L^2(\mathbb R)$, unitarily the bond's dilation (reflection converts backward into forward). The realisation is
+unique up to unitary equivalence of minimal dilations; it does not identify the given embedding with the observation
+embedding. (c) Jets: for a chain $Ae_{i,k} = d_ie_{i,k}+\tfrac k2e_{i,k-1}$ the criterion is
+$-(d_i+\bar d_j)G_{ik,jl}-\tfrac k2G_{i,k-1;j,l}-\tfrac l2G_{i,k;j,l-1} = c_{i,k}\bar c_{j,l}$, equivalently the Gram of
+$q_{i,k}(X) = e^{d_iX}\sum_{r\le k}\binom kr(X/2)^{k-r}c_{i,r}$, with $c_{i,0}\ne0$. In the Mellin picture of
+\cref{sec:h-theta} the realising vectors are $ic_ik_{i\bar d_i}$ (the pole of $1/(z-\bar d)$ lies in the wrong half-plane
+for the Hardy kernel; ledger correction 1).
+\end{theorem}
+
+\begin{proposition}[The Riemann channel passes identically]
+\label{prop:riemann-one-exit-gram}
+\claimstatus{prop:riemann-one-exit-gram}{proved}
+With the boundary measure $d\tauM/2\pi$ and the first slot linear, the kernels of $\KS$ at the zeros have Gram
+$\langle k_{w_i},k_{w_j}\rangle = i/(w_j-\bar w_i)$, and for critical zeros ($d_n = -\tfrac14-i\gam{n}/2$,
+$w_n = \gam{n}/2+i/4$) the loss Gram $-(d_i+\bar d_j)\langle k_{w_i},k_{w_j}\rangle$ is identically $1$: the single exit of
+\cref{lem:exit-one-dimensional} couples every mode with weight one. (The coordinate metric $x^{*}Hx$ is the transpose.)
+The Cauchy kernels diagonalise the adjoint compression $C_\tsg$; the forward compression has eigenvectors
+$\Theta(z)/(z-w_i)$ with conjugated frequencies (ledger corrections 3, 4). Verified: \cref{num:h-theta-1}.
+\end{proposition}
+
+\subsection{The actual Sonine space and the refutation}
+
+\begin{proposition}[The augmented cosine space is a de Branges space; its evaluators at critical points have a real Gram]
+\label{prop:sonine-critical-gram-real}
+\claimstatus{prop:sonine-critical-gram-real}{proved}
+Let $\mathcal C$ be the cosine transform (kernel $2\cos2\pi xy$), $m(s) = \pi^{-s/2}\Gamma(s/2)$, $M_f(s) = m(s)\int_0^\infty
+f(x)x^{-s}dx$. \Cref{conj:h-theta-1} concerns Burnol's augmented space $L_a$ (both $f$ and $\mathcal Cf$ constant on
+$(0,a)$), not $K_a$ (both vanish; $\dim L_a/K_a = 2$), and its evaluators $Y^a_{s,k}$ with $\langle f,\overline{Y^a_{s,k}}\rangle
+= M_f^{(k)}(s)$ (\texttt{math/0203120:main.tex:460-484}; the vectors are called $W$ in \texttt{math/0112254:fzforumc.tex:2416-2475},
+and 0203120, not 0112254, is the paper ``Two complete and minimal systems''; ledger corrections 5, 6). (a) With $p(s) = s(s-1)$,
+$\mathscr H_a = \{p\,M_f: f\in L_a\}$ with $\|pM_f\| = \|f\|$ is a de Branges space of entire functions with symmetry axis
+$\re s = \tfrac12$; the gamma factor is already inside $Y$, and the entire-function repair multiplies by $p$, which for jets is
+triangular, not a scalar (correction 7). (b) For $E$ a structure function real on the real axis, $E^\#(s) = E(1-s)$, the
+Gram of $v_s = \overline{Y^a_{s,0}}$ is
+\[
+G_{ij} = \frac{\overline{E(s_i)}E(s_j)-\overline{E^\#(s_i)}E^\#(s_j)}{(\bar s_i+s_j-1)\,\overline{p(s_i)}p(s_j)}
+\]
+(\texttt{math/0208121:main.tex:150-181}), with removable diagonal values; in the variable $z = \tfrac i2(s-\tfrac12)$ the
+critical zeros are \emph{real} points $z = -\gamma/2$, boundary points of the de Branges space, where $|E^\#/E| = 1$
+(correction 8). (c) The antiunitary $\mathcal Af = \mathcal C\bar f$ satisfies $M_{\mathcal Af}(s) = \overline{M_f(1-\bar s)}$
+and fixes $v_s$ for $\re s = \tfrac12$; hence $\langle v_s,v_t\rangle$ is real for all critical-line $s,t$, with no use of RH,
+of the structure function, or of any determinant.
+\end{proposition}
+
+\begin{observation}[The brief's numerator test is inapplicable]
+\label{obs:sonine-numerator-test-refuted}
+\claimstatus{obs:sonine-numerator-test-refuted}{refuted}
+The brief proposed that the loss Gram be a constant multiple of $E(s_j)\overline{E(s_i)}-E^\#(s_j)\overline{E^\#(s_i)}$, hence
+rank one iff $E^\#/E$ is a constant of modulus $<1$ on the zeros. Refuted: the multiplier from the de Branges denominator
+$\bar s_i+s_j-1$ (distance from $\re s = \tfrac12$) to the loss denominator $2-\bar s_i-s_j$ (distance from $\re s = 1$)
+is not constant (correction 9), and at critical points $|E^\#/E| = 1$, never $<1$. The isolated lemma ``$aa^{*}-cc^{*}$ is
+positive of rank one iff $c = \lambda a$, $|\lambda|<1$'' is true and irrelevant here.
+\end{observation}
+
+\begin{theorem}[H-THETA-1 is refuted in Burnol's norm: the three-point obstruction]
+\label{thm:h-theta-1-refuted}
+\claimstatus{thm:h-theta-1-refuted}{proved}
+Let $e_1,e_2,e_3$ be nonzero vectors with a \emph{real} Gram matrix and $d_i = -a+ib_i$ with $a>0$ and $b_1,b_2,b_3$
+distinct. Then $N_{ij} = -(d_i+\bar d_j)G_{ij}$ is not positive of rank one: rank one and positive diagonal force all
+$G_{ij}\ne0$ and $N_{12}N_{23}N_{31} = |c_1c_2c_3|^2>0$, while with $q_{ij} = b_j-b_i$,
+$\im[(2a+iq_{12})(2a+iq_{23})(2a+iq_{31})] = -q_{12}q_{23}q_{31}\ne0$, and a nonzero real factor $G_{12}G_{23}G_{31}$ cannot make
+the product real. Applied to any three distinct critical-line zeros (they exist unconditionally; $a = \tfrac14$,
+$b_i = -\gam{i}/2$; the evaluators are nonzero and independent by \cref{cit:burnol-sonine-evaluators}) with the real Gram of
+\cref{prop:sonine-critical-gram-real}(c), no scalar exit form exists on these three ordinary evaluators; no closure,
+domain extension, regular dilation or treatment of the remaining zeros can repair a finite obstruction. Simplicity is
+not needed (the $k = 0$ vector at a multiple zero is an eigenvector), RH is not needed, and no numerical Gram value is
+used. For the first three zeros the scalar prefactor is $\prod[-(d_i+\bar d_j)] = 11.4772516480-37.3489700175i$.
+\end{theorem}
+
+The conjecture's scalar-exit requirement is what is refuted; contractivity without a scalar exit is a different
+question (\cref{obs:sonine-enclosure-open}). \Cref{conj:h-theta-1} is accordingly registered \texttt{refuted}.
+
+\begin{proposition}[The augmented Sonine evaluator Gram from one compact integral equation]
+\label{prop:sonine-augmented-gram-resolvent}
+\claimstatus{prop:sonine-augmented-gram-resolvent}{proved}
+Let $P$ restrict to $(0,1)$, $Q = P-|1_{(0,1)}\rangle\langle1_{(0,1)}|$, $T = Q\mathcal CQ$ on $L^2_0(0,1)$ (compact, $\|T\|<1$
+by Fourier uniqueness), $q_s(x) = 1_{x<1}/(1-s)+x^{-s}1_{x>1}$, $r_s = Q\mathcal Cq_s$. The orthogonal complement of $L_1$ is
+the range of $D(u,v) = u+\mathcal Cv$, $D^{*}D = \begin{psmallmatrix}I&T\\T&I\end{psmallmatrix}$, and the uncompleted
+bilinear kernel is
+\[
+H(s,t) = \frac1{(1-s)(1-t)}+\frac1{s+t-1}-\int_0^1r_s\,(I-T^2)^{-1}r_t\,dx\qquad(\re s,\re t>\tfrac12),
+\]
+continued in $s$ through the explicit cosine transform of $q_s$ (a Bessel-type series with $\chi(s) = \pi^{s-1/2}
+\Gamma((1-s)/2)/\Gamma(s/2)$) to $\re s>0$ away from its poles; the term $1/(s+t-1)$ is removable at $s = -1$ when
+$t = 2$. With $F(s) = p(s)p(2)m(s)m(2)H(s,2)$, $b = \sqrt{3F(2)}$, $E_{*}(s) = (s+1)F(s)/b$ is a structure function of
+$\mathscr H_1$ normalised by $E_{*}(2) = b>0$, $E_{*}(-1) = 0$ (a real hyperbolic rotation of any real structure function;
+structure functions are not unique, correction 13), and the evaluator Gram is the de Branges formula of
+\cref{prop:sonine-critical-gram-real}(b) with $E = E_{*}$, the diagonal by a derivative limit. Shifted-Legendre
+expansion with the exact moments $\int_0^1x^{s-1}P_n(2x-1)dx = s^{-1}\prod_{k\le n}(s-k)/(s+k)$ gives a convergent scheme.
+\end{proposition}
+
+\begin{observation}[The loss spectrum at three zeros, and what remains open]
+\label{obs:sonine-enclosure-open}
+\claimstatus{obs:sonine-enclosure-open}{open}
+At the first three zeros, in the normalisation of \cref{prop:sonine-augmented-gram-resolvent}, $E_{*}^\#/E_{*}$ takes the
+three distinct unimodular values $-0.99880741-0.04882370i$, $-0.99983369+0.01823721i$, $-0.99790571-0.06468528i$, the normalised
+Sonine Gram is real with off-diagonal entries $-0.12772518$, $-0.01980716$, $0.19503489$, and the loss matrix
+$-(d_i+\bar d_j)O_{ij}$ has spectrum $(-0.09239752,\ 0.46931541,\ 1.12308212)$: the evaluator dynamics is not even
+dissipative on three modes. Reproduced by two independent implementations (\cref{num:h-theta-1}, and the review). A
+certified enclosure of the resolvent scheme is required to register ``not contractive without a scalar exit'' as a
+theorem; the replacement open question on this lead is whether such an enclosure excludes every contraction
+realisation of the prescribed evaluator dynamics once the scalar-exit requirement is dropped.
+\end{observation}
+
+\subsection{Which norms rescue H-THETA-1}
+
+\begin{theorem}[Classification of one-exit norms on the evaluators]
+\label{thm:sonine-one-exit-norm-classification}
+\claimstatus{thm:sonine-one-exit-norm-classification}{proved}
+On a family of simple modes with prescribed distinct $d_i$, the Hilbert norms in which every finite loss matrix is
+positive of rank one are exactly the Cauchy norms $G_{ij} = c_i\bar c_j/(-(d_i+\bar d_j))$, $c_i\ne0$ (coherent factors from
+rank-one minors), with triangular jet freedom on Jordan chains: a genuine diagonal freedom, not a unique norm on the named
+vectors (correction 16). In the Mellin picture the completion is the closed span of the kernels at $w_i = i\bar d_i$; when
+the divisor satisfies the Blaschke condition this is $K_B$ for the Blaschke product with that divisor, and for the full
+zeta divisor with multiplicities it is $\KS$ unconditionally (\cref{thm:symbol-edge-quotient}: no RH and no outer
+multiplier needed, correction 17). Hence the only norms in which \cref{conj:h-theta-1} could hold are diagonal
+rescalings of the model-space norm: H-THETA-1 is refuted in Burnol's norm and tautological in $\KS$'s.
+\end{theorem}
+
+\subsection{The bad-zero renewal channel and Burnol's length-two chain}
+
+\begin{theorem}[The GL$_1$ bad-zero channel with synthetic zeros as a renewal channel]
+\label{thm:gl1-bad-zero-renewal}
+\claimstatus{thm:gl1-bad-zero-renewal}{proved}
+Take finitely many hypothetical right-hand zeros $\zero_i = \sigs_i+i\gam{i}$, $\tfrac12<\sigs_i<1$, with conjugates and
+multiplicities; $B_{\mathrm{bad}}$ contains the right-hand zeros only, not their partners $1-\zero_i$
+(\texttt{math/0001013:main.tex:628-631}; ``real on the axis'' means $B(-\bar z) = \overline{B(z)}$, correction 18). With
+$\beta_i = (\sigs_i-\tfrac12)/2$, $a_i = \gam{i}/2$, $w_i = a_i+i\beta_i$: (a) on $K_B$ the forward compression has
+eigenvectors $h_i = B(z)/(z-w_i)$, $Z_\tsg h_i = e^{iw_i\tsg}h_i$, Gram $i/(w_i-\bar w_j)$, and the adjoint compression the
+kernels $k_{w_i}$; both decay at rate $\beta_i$ and both have a scalar \emph{generator} exit, $j_+h_i = 1$, normalised
+amplitude $\sqrt{2\beta_i}$. (b) The finite-time loss $I-Z_\tsg^{*}Z_\tsg = \int_0^\tsg Z_s^{*}j_+^{*}j_+Z_s\,ds$ is positive
+definite for every $\tsg>0$: the exit is one scalar per instant, and its history on an interval has full rank (the disc
+statement of \cref{thm:h-exit-model} does not transfer to sampled continuous time unchanged; correction 19). (c) A
+holding time needs a reset $\reb$ and a clock. For the continuous generator $\mathcal L_{\reb}(\varrho) = A\varrho+\varrho A^{*}
++\Tr(j_+\varrho j_+^{*})\reb$ (\cref{def:h-exit-renewal-channel} in continuous time) the survival is $S_{\reb}(\tsg) =
+\Tr(Z_\tsg\reb Z_\tsg^{*})$, the holding density $-S_{\reb}'$, the stationary density unique, and the mean
+$\bar\tsg = \sum_{ij}\reb_{ij}/\alpha_{ij}$-type with $\alpha_{ij} = -(d_i+\bar d_j)$, coherences contributing; the sampled
+fixed-reset channel (step $\varepsilon$) and the Cayley-step channel have different means (corrections 20, 21). (d) For one
+synthetic pair $\zero_\pm = \sigs\pm i\gamma$ the modal holding law is $2\beta e^{-2\beta\tsg}$ for every modal mixture, mean
+exactly $1/(\sigs-\tfrac12)$ in continuous $y$-time; as $\sigs\to\tfrac12^{+}$ the mean diverges and the zero-dimensional
+limit carries no density and no reset: ``the identity channel'' is a different, one-dimensional identification
+(correction 22). Verified on the examples of \cref{num:h-theta-1}.
+\end{theorem}
+
+\begin{proposition}[Burnol's elementary factor under RH is one damped length-two chain]
+\label{prop:burnol-even-sector-chain}
+\claimstatus{prop:burnol-even-sector-chain}{proved}
+With $\beta = \tfrac14$ and $v_+(z) = (z-i\beta)/(z+i\beta)$,
+$\mathcal F^{-1}K_{v_+^2} = \mathrm{span}\{e^{-\beta X},Xe^{-\beta X}\}1_{X>0} = \mathrm{span}\{y^{-1/4},(\log y)y^{-1/4}\}1_{y>1}$
+(kernels $(z+i\beta)^{-1},(z+i\beta)^{-2}$ of the double zero). Neither $1_{y>1}$ nor $(\log y)1_{y>1}$ nor $y^{-1/2}1_{y>1}$
+is in the bond: the brief's undamped identifications mixed the bad-zero dictionary $w = \gamma/2+i(\sigs-\tfrac12)/2$ (kernel
+wave $-iy^{-(\sigs-1/2)/2-i\gamma/2}$) with the Riemann-channel dictionary of \cref{thm:model-space-jets}, in which
+$w = i/4$ is $\sigs = \tfrac12$, not $\sigs = 1$ (corrections 23, 24). In the orthonormal basis $b_0 = \sqrt{2\beta}e^{-\beta X}$,
+$b_1 = \sqrt{2\beta}(1-2\beta X)e^{-\beta X}$: $A_C = \begin{psmallmatrix}-\beta&-2\beta\\0&-\beta\end{psmallmatrix}$,
+$C_\tsg = e^{-\beta\tsg}\begin{psmallmatrix}1&-2\beta\tsg\\0&1\end{psmallmatrix}$, $A_Z = A_C^{*}$, scalar generator exit
+$j = \sqrt{2\beta}(1,1)$ with $-(A_C+A_C^{*}) = j^{*}j$; $\det(I-C_\tsg^{*}C_\tsg) = (1-e^{-2\beta\tsg})^2-(2\beta\tsg)^2e^{-2\beta\tsg}>0$
+(finite-time rank two). All reset laws for $\reb = \begin{psmallmatrix}p&c\\\bar c&1-p\end{psmallmatrix}$:
+$S_{\reb}(\tsg) = e^{-2\beta\tsg}[1-4\beta\tsg\re c+4\beta^2\tsg^2(1-p)]$, mean $(3-2p-2\re c)/(2\beta)$; the exit reset
+$\reb_j = \tfrac12\begin{psmallmatrix}1&1\\1&1\end{psmallmatrix}$ gives $S_j = e^{-\tsg/2}(1-\tsg/2+\tsg^2/8)$, mean $2$,
+stationary $I_2/2$; the two basis resets give means $2$ and $6$: a Jordan block prescribes no holding law (correction 28).
+This sharpens the reading of \cref{thm:gl1-bad-zero-defect}(c).
+\end{proposition}
+
+\begin{proposition}[The even-sector dictionary: two radiation maps, degree two; one Eisenstein factor, degree one]
+\label{prop:burnol-even-sector-dictionary}
+\claimstatus{prop:burnol-even-sector-dictionary}{proved}
+Burnol's $V = 1-A$ ($A$ the convolution with $\sqrt{|u|}1_{|u|\le1}$, \texttt{math/0001013:main.tex:275-288}) has
+multiplier $(s-1)/s$ (\texttt{:586-595}); his incoming and outgoing identifications carry $V^{-1}B$ and $VB^{-1}$, so
+$S = (V^{-1}B)^{-1}(VB^{-1}) = V^2B^{-2}$ (\texttt{:500-514}; adelically $ZV^2B^{-2}$ with $Z = 1$ over a number field,
+\texttt{:682-699}): the square is the quotient of two radiation maps, not $V$ applied twice to one theta vector
+(correction 25). In the outgoing variable $(s-1)/s = v_+(\tauM)$ has one zero ($s = 1$) and its reflected pole ($s = 0$);
+squaring one Blaschke factor gives one length-two chain, eigenvalue $-\tfrac14$. The Eisenstein factor
+$r(\tauM) = (\tauM-i/2)/(\tauM+i/2)$ of \cref{prop:siegel-constant-term} has degree one, $\dim K_r = 1$, model
+$\mathrm{span}\{y^{-1/2}1_{y>1}\}$, eigenvalue $-\tfrac12$; the reflected pole is not a second mode, and $\cxi$ is entire (the
+pole pair belongs to the theta Mellin transform; correction 26). Burnol's subtraction does not make the endpoint
+$s = 0$ invisible: both endpoint asymptotics ($y^{1/4}$ at $0$, $y^{-1/4}$ at $\infty$ after the symmetric weighting)
+survive in the theta image (correction 27). Neither model is the formal graded span of the two unweighted constant
+terms. Away from RH, $v_+^2B_{\mathrm{bad}}^{-2}$ is not inner and the chain is the model of its elementary inner part.
+\end{proposition}
+
+\begin{numerical}[Numerics lane, H-THETA-1]
+\label{num:h-theta-1}
+\claimstatus{num:h-theta-1}{numerical}
+\texttt{scripts/h\_theta\_1.py} ($48$ assertions, $27$ s, mpmath at $25$ digits, deterministic; \texttt{outputs/h\_theta\_1.txt};
+ledger in \texttt{notes/h-theta-1/numerics.md}; $48$ pass; written without reading the prover's scripts): the Cauchy Gram
+$i/(w_j-\bar w_i)$ at the first three zeros to $7\cdot10^{-9}$ and the loss matrix identically $1$ (to $10^{-32}$), also from
+the notebook's $y$-picture kernels of \cref{thm:model-space-jets}; the cyclic product $11.4772516480-37.3489700175i$; the
+augmented Sonine Gram by an independent Nystr\"om implementation of \cref{prop:sonine-augmented-gram-resolvent} on $40$ and
+$64$ Gauss--Legendre nodes ($F(2) = 0.0411594372>0$, $b = 0.3513948086$, convergence $3\cdot10^{-14}$), the three unimodular
+phases, the real Gram to $1.6\cdot10^{-11}$ relative, the loss spectrum $(-0.0923975213, 0.469315406, 1.12308212)$, the
+cyclic product of the actual loss matrix $0.00566-0.01843i$ (non-real); the holding laws (mean $5$ modal, $(1-e^{-0.2})^{-1}$
+sampled, $4.43125$ Cayley), the coherent two-zero reset mean $4.61864473922355$ three ways; the chain matrices, the defect
+spectrum $(0.00505426, 0.63025175)$, basis-reset means $2$ and $6$, the general reset law; the jet identity to $10^{-31}$.
+Presentation point F3: ``$E_{*}(-1) = 0$'' is a removable-singularity statement.
+\end{numerical}
+
+\begin{observation}[What this changes on the lead]
+\label{obs:h-theta-1-next}
+\claimstatus{obs:h-theta-1-next}{sketched}
+Items (i)--(iii) of \cref{obs:h-theta-next} are settled: (i) H-THETA-1 refuted, the Sonine coordinate system does not
+carry the Riemann channel with one exit, and no norm other than the model space's own can; (ii) the bad-zero channel is a
+renewal channel only with a reset and a clock, and RH is not ``the identity channel'' but the absence of a bond;
+(iii) Burnol's causal model under RH is one damped chain at the pole $s = 1$, the Eisenstein pole factor a single mode.
+Item (iv) is the level-$N$ round of the same day (\texttt{notes/deninger-cusp/}). Open: the certified enclosure of
+\cref{obs:sonine-enclosure-open}.
+\end{observation}

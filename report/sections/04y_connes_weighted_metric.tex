@@ -1,0 +1,125 @@
+% SHARD-ID: RC-04Y-CONNES-WEIGHTED-METRIC
+% SHARD-TITLE: The Phantasm XV: the Arithmetic Metric of the Riemann Channel Is Not Connes's Weighted Norm. The Unit-Coefficient Closed Form and Its Exact Domain, G_0 e_rho = b_rho with Blaschke-Derivative Norms, Connes's Norm Transported with Neither Riesz Bound for Any Exponent, the Cokernel Dual and the Cut-and-Damp Map, One Scalar Exit Versus an Exit per Mode, and the Three-Metric Dictionary
+% SHARD-SUMMARY: Under RH with simple zeros the biorthogonal system to the modes is b_j = Theta/(Theta'(w_j)(u - w_j)) with ||b_j||^2 = 2/|Theta'(w_j)|^2; the unit-coefficient form has the minimal closed graph domain (finite modal sums as core), representing operator G_0 = B^* B with G_0 e_j = b_j, an all-time e^{-t/2}-similitude, and its biorthogonal norms see every neighbouring zero (a nearest-gap rule is false). Connes's weighted norm transported to the bond is int |f|^2 (1 + X^2/4)^{delta/2} dX; on the cut modes its Gram is F_delta(1/2 + i(gamma_i - gamma_j)/2) with a 1/gap tail, and for every fixed exponent it has neither an upper nor a lower Riesz bound (clusters versus vanishing gaps), so it is not equivalent to the arithmetic form.
+% SHARD-SUMMARY: Connes's delta-cokernel has dual the closed span of the uncut critical characters and jets X^r e^{-i gamma X/2} with r < (delta - 1)/2 (a sign typo at his line 4100 corrected); cut-and-damp T h = 1_{X>0} e^{-X/4} h is bounded from the weighted dual into K and injective on the annihilator, with C_t T = e^{-t/4} T R_t, but it is synthesis in the modal coordinates, not the inverse of kernel evaluation, and its image is not contained in the arithmetic domain. The energy exit is one scalar boundary trace with modal loss all ones; the arithmetic loss is I/2 with an infinite-dimensional instantaneous exit; the metric cannot be obtained by conjugating with the exit (the summation row is non-closable), only through the inverse of the observation-history synthesis; scalar-exit Cauchy metrics form a diagonal congruence class disjoint from the similitude cone in dimension > 1.
+% SHARD-SUMMARY: Three constructions, none equivalent: energy (Cauchy Gram, one exit, not Riesz), arithmetic unit-coefficient (identity Gram, exit per mode, unbounded comparison), Connes's polynomial weight (uncut dual characters, admissibility of jets controlled by delta). The required Hodge metric of the bond package is the diagonal arithmetic form once the cup normalisation is fixed; a zero-free construction of its graph domain is the open problem.
+% SHARD-KEYWORDS: biorthogonal system, closed form, unbounded operator, Riesz basis, weighted Sobolev space, Connes, cokernel, spectral realisation, cut-and-damp, exit functional, observation history, Cauchy Gram, similitude cone, Struve function, Tricomi function
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/connes_weighted_metric.py
+
+\section{The Phantasm XV: the Arithmetic Metric Is Not Connes's Weighted Norm}
+\label{sec:connes-weighted-metric}
+
+Round of 2026-09-22 (brief \texttt{notes/connes-weighted-metric/astra-brief.md}, prover
+\texttt{notes/connes-weighted-metric/astra-proofs.md}, numerics \texttt{scripts/connes\_weighted\_metric.py}, review
+\texttt{notes/reviews/connes-weighted-metric-2026-09-22.md}). Follows \cref{thm:no-energy-equivalent-metric,prop:unit-coefficient-form}:
+the brief conjectured that the unit-coefficient form is Connes's $\delta$-weighted norm restricted to the outgoing model space. It
+is not, and the three objects are now separated exactly. Conventions of \cref{sec:deninger-bond}: $K = \KS$ in the Fourier picture,
+$e_j = m_{\zero_j} = ik_j$ the named modes ($\langle F,ik_w\rangle = F(w)$), $w_j = \gam{j}/2+ih_j$, $C_\tsg f(X) = f(X+\tsg)$,
+$\mathcal C_\Theta F = \Theta\bar F$. RH and simplicity are assumed where stated.
+
+\subsection{The unit-coefficient form}
+
+\begin{theorem}[Biorthogonals, the exact domain, and the representing operator]
+\label{thm:unit-coefficient-form-domain}
+\claimstatus{thm:unit-coefficient-form-domain}{sketched-conditional}
+Under simplicity, $b_j(u) = \Theta(u)/(\Theta'(w_j)(u-w_j)) = \Theta'(w_j)^{-1}\mathcal C_\Theta k_j$ satisfies $\langle e_i,b_j\rangle = \delta_{ij}$,
+$\|k_j\|^2 = 1/(2h_j)$, $\|b_j\|^2 = 1/(2h_j|\Theta'(w_j)|^2) = 2/|\Theta'(w_j)|^2$ under RH; the $b_j$ are complete. The synthesis $S_0a = \sum a_je_j$
+on $c_{00}$ and the coefficient map $B_0S_0a = a$ on finite sums are closable with mutually inverse closures $S = B^{-1}$;
+$\mathcal D(Q_0) = \mathcal D(B) = \{f: \exists a^{(n)}\in c_{00}, a^{(n)}\to a, S_0a^{(n)}\to f\}$, $Bf = (\langle f,b_j\rangle)_j$, $Q_0(f) = \sum|a_j(f)|^2$: an exact
+domain with a finite-sum graph core, not an assertion that modal series converge, and not asserted equal to the maximal
+domain $\{f:(\langle f,b_j\rangle)\in\ell^2\}$. $Q_0$ is densely defined, closed, positive definite, with $G_0 = B^{*}B$,
+$G_0e_j = b_j$ ($B^{*}h = v$ iff $\langle v,e_j\rangle = h_j$ for all $j$), so the modes are not eigenvectors of $G_0$; the all-time
+similitude holds on the domain, and the rescaled flow is a unitary group on the arithmetic completion $\ell^2$. The
+biorthogonal norm at a zero is the full local Blaschke product, not a nearest-gap rule: a nearest gap gives a sharp lower bound
+on one factor and no uniform upper bound.
+\end{theorem}
+
+\subsection{Connes's norm transported}
+
+\begin{theorem}[Connes's weight on the bond; the weighted Gram; no Riesz bound for any exponent]
+\label{thm:connes-norm-transported}
+\claimstatus{thm:connes-norm-transported}{sketched-conditional}
+Connes's square norm $\int|\xi(g)|^2(1+\log^2|g|)^{\delta/2}d^{*}g$ (\texttt{math/9811068:main.tex:736-753}; ``comparable to''
+$(1+|u|)^\delta$, \texttt{:3574-3588}; the representation is ``not unitary'', \texttt{:755-766}) transports, with $X = 2\log|g|$, to
+$\|f\|^2_{\delta,2} = \int|f(X)|^2(1+X^2/4)^{\delta/2}dX$ (the brief's $(1+X^2)^{\delta/2}$ is equivalent, not equal), a derivative norm of
+order $\delta/2$ in the frequency variable; restricted to $K$ it is a closed form with dense domain containing every full-jet
+sum. Under RH, with $\tau_{ij} = (\gam{i}-\gam{j})/2$ and $F_{\delta,c}(s) = \int_0^\infty e^{-sX}(1+X^2/c^2)^{\delta/2}dX$, the weighted Gram of the
+modes is $M^{\delta,c}_{ij} = F_{\delta,c}(\tfrac12+i\tau_{ij})$ with constant diagonal $N_{\delta,c} = F_{\delta,c}(\tfrac12)$ and nonzero off-diagonals;
+$F_{\delta,c}$ is a Laplace--Struve combination $\mathbf H_{\nu}-Y_{\nu}$, $\nu = \delta/2+\tfrac12$, or the absolutely convergent Tricomi series
+$c\sum_n(-2)^n\binom{\delta/2}n n!\,U(n+1,\delta-n+2,cs)$, and for even $\delta = 2m$ the finite sum $\sum_r\binom mr(2r)!/(c^{2r}s^{2r+1})$; the tail
+is $F_{\delta,c}(\alpha+i\tau) = 1/(\alpha+i\tau)+\delta/(c^2(\alpha+i\tau)^3)+O(|\tau|^{-5})$, so $|M^{\delta,c}_{ij}|\sim2/|\gam{i}-\gam{j}|$: the cut at zero
+leaves a jump and the brief's $|\gam{i}-\gam{j}|^{-1-\delta}$ decay is refuted. For every fixed real $\delta$ and $c>0$: no lower Riesz bound
+($\|v_i-v_j\|^2_{\delta,c}\le\tau_{ij}^2\int X^2e^{-X/2}w\,dX/N\to0$ along vanishing gaps) and no upper bound (clusters of $n$ ordinates in an
+interval where $\re R\ge\tfrac12$ give $\|\sum v_j\|^2\ge n^2/2$ against $n$): no Schur threshold in $\delta$; the weighted form and $Q_0$
+satisfy neither inequality on finite modal sums, hence are not equivalent, and a diagonal-conformal metric would need
+distinct frequencies orthogonal, which the weighted Gram violates.
+\end{theorem}
+
+\begin{theorem}[Connes's cokernel dual and the cut-and-damp map]
+\label{thm:connes-cokernel-cut-damp}
+\claimstatus{thm:connes-cokernel-cut-damp}{sketched}
+Connes's $E(f)(g) = |g|^{1/2}\sum_{q\in\mathbb Q^{*}}f(qg)$ is an isometry with closed range on the completed Schwartz functions with
+$f(0) = \int f = 0$ (\texttt{:773-808,3760-3791}); the anti-dual of its $\delta>1$ cokernel is the closed annihilator
+$\mathcal N_\delta\subset H_{-\delta} = L^2(w_{\delta,2}^{-1}dX)$ (bilinear pairing at \texttt{:3656-3678,3795-3835}), and
+$\mathcal N_\delta = \overline{\mathrm{span}}\{\chi_{\gamma,r}(X) = X^re^{-i\gamma X/2}/r!: 0\le r<m_\gamma,\ r<(\delta-1)/2\}$: the uncut critical
+characters and jets (annihilator equation $L(\tfrac12+it)\hat\psi = 0$, \texttt{:4012-4017}; spectral localisation \texttt{:4058-4087};
+sufficiency \texttt{:4106-4136}; density via approximate units \texttt{:4145-4149}); the integrability condition is $2r-\delta<-1$ (his
+line \texttt{:4100} prints $2k+\delta<-1$, a typo), so the multiplicity is the largest $n\le m_\gamma$ with $n<(1+\delta)/2$, $r = 1$ needing
+$\delta>3$ strictly; the dual characters are $|g|^{\pm i\gamma}$, the $-\tfrac12$ belonging to the additive normalisation. The map
+$(Th)(X) = 1_{X>0}e^{-X/4}h(X)$ is bounded $H_{-\delta}\to L^2(w_{\eta,2}dX)$ for every $\eta$, sends $\chi_{\gamma,r}$ to the model jet
+$e_{\zero,r}$, so $T\mathcal N_\delta\subset K\cap\bigcap_\eta L^2(w_{\eta,2}dX)$ with dense range under RH and simplicity (a proper closed
+span otherwise), is injective on $\mathcal N_\delta$, and $C_\tsg T = e^{-\tsg/4}TR_\tsg$ ($R_\tsg$ translation). It is not the inverse of kernel
+evaluation: $A_e = -i\mathcal A = S_0^{*}$, $A_e^{*} = S$, $B^{*} = A_e^{-1}$, $\mathcal A^{-1}\delta_j = -ib_j$, whereas $T(\sum a_j\chi_{\gam{j},0}) = S_0a$:
+synthesis on the finite coordinates, with model conjugation the extra antilinear operation. Domain separation: in $H_{-\delta}$,
+$\|\chi_{\gam{i},0}-\chi_{\gam{j},0}\|\to0$ along vanishing gaps while the arithmetic coefficient norm stays $\sqrt2$, so $T$ does not extend
+boundedly into $\ell^2$ and $T\mathcal N_\delta\not\subset\mathcal D(Q_0)$ (closed graph): membership in every polynomially weighted outgoing
+norm does not give membership in the arithmetic domain. All cut-and-damped jets are in $K$ unconditionally; the uncut dual
+jet of order $r$ needs $\delta>2r+1$.
+\end{theorem}
+
+\subsection{Exits and the classification}
+
+\begin{proposition}[One scalar exit versus an exit coordinate per mode; the metric classes]
+\label{prop:two-exits-two-metrics}
+\claimstatus{prop:two-exits-two-metrics}{sketched-conditional}
+On the generator domain $-\langle f',g\rangle-\langle f,g'\rangle = f(0)\overline{g(0)}$ (\cref{lem:exit-one-dimensional}), $j(e_j) = 1$, the energy Gram
+$M_{ij} = 2/(1+i(\gam{i}-\gam{j}))$ under RH with loss $-(d_i+\bar d_j)M_{ij} = 1$, and the exit is an isometric observation history
+$(\mathcal Of)(s) = f(s)$, $\|f\|^2 = \int_0^\infty|j(C_sf)|^2ds$; on modal coordinates $M^{T} = \int_0^\infty e^{sD^{*}}\mathbf 1\mathbf 1^{*}e^{sD}ds$,
+$D^{*}H+HD = -\mathbf 1\mathbf 1^{*}$: the Cauchy metric is the all-ones exit integrated over the whole history. On the arithmetic completion
+$D_{\mathrm{ar}} = -\tfrac14+i\,\mathrm{diag}(-\gam{j}/2)$, $-(D_{\mathrm{ar}}+D_{\mathrm{ar}}^{*}) = \tfrac12I$, $I-C_{\tsg,\mathrm{ar}}^{*}C_{\tsg,\mathrm{ar}} = (1-e^{-\tsg/2})I$: the
+minimal instantaneous exit space is $\ell^2$. The metric cannot be obtained by conjugating with the exit: the summation row
+$\ell a = \sum a_j$ is non-invertible and non-closable on $\ell^2$; the replacement is $G_0 = (S^{-1})^{*}S^{-1} = B^{*}B$, $Q_0(Sa) = \|a\|^2$
+(on a finite family $H_F^{-1}$ in modal coordinates; $G_0 = UH_S^{-1}U^{*}$ by polar decomposition). The finite-time energy defect
+$(M_\tsg)_{ij} = (1-e^{\tsg(d_i+\bar d_j)})/(-(d_i+\bar d_j))$ is positive definite on every finite family (infinite rank): rank one refers
+to the instantaneous form only. Classification: the metrics with a scalar generator exit on fixed modes are exactly the
+diagonal congruences $G^c_{ij} = c_i\bar c_j/(-(d_i+\bar d_j))$, $c_i\ne0$ (many metrics; the energy Gram is the one with $j(e_i) = 1$),
+while the all-time similitude cone under RH and simplicity is $G(e_i,e_j) = g_i\delta_{ij}$ with loss $\tfrac12g_i\delta_{ij}$ of rank
+equal to the number of modes: no similitude metric has a rank-one loss when two modes are present, and no scalar-exit
+metric is in the cone. The polynomially weighted metric has loss $f(0)\overline{g(0)}+\int_0^\infty w'f\bar g\,dX$, boundary plus bulk,
+a third object.
+\end{proposition}
+
+\begin{observation}[Three metrics; the required Hodge metric; what is open]
+\label{obs:three-metrics-dictionary}
+\claimstatus{obs:three-metrics-dictionary}{sketched}
+Energy (cut damped characters and all jets; Cauchy Gram; one scalar boundary trace; $C_\tsg$ a contraction; modes complete and
+minimal, not Riesz), arithmetic unit-coefficient (the same modes made orthonormal under RH and simplicity; identity Gram;
+loss $I/2$; $e^{-\tsg/4}$ times a unitary group on $\ell^2$; unbounded comparison both ways), Connes's weighted realisation (uncut
+characters and admitted jets in the weighted dual; on cut modes the Gram $F_{\delta,2}$; boundary plus bulk loss; polynomially
+bounded non-unitary translations; $\delta$ controls admissibility of uncut jets at infinity, not which cut jets have finite norm,
+which all do). If ``positive Hodge metric'' means a positive metric with the conformal evolution of
+\cref{thm:bond-positive-metric-criterion}, its form is diagonal in the simple critical modes, and with the normalised pairing and
+star it is $Q_0$; without a fixed cup normalisation the positive diagonal family remains. Open: a construction from theta,
+adelic or geometric data, without listing the zeros, of a closed positive form on the outgoing model whose graph domain is
+$\mathcal D(B)$, whose pairing restricts to the unit form, and which obeys the similitude; Connes's polynomial topology does not
+supply it.
+\end{observation}
+
+\begin{numerical}[Numerics lane, the weighted metric]
+\label{num:connes-weighted-metric}
+\claimstatus{num:connes-weighted-metric}{numerical}
+\texttt{scripts/connes\_weighted\_metric.py} (\emph{partial}: $34$ assertions pass, then a script bug stops the run; the lane was cut by the spend limit; \texttt{outputs/connes\_weighted\_metric.txt}; ledger in \texttt{notes/connes-weighted-metric/numerics.md}; written without reading the prover's scripts). Done: the biorthogonal norms
+$\|b_\zero\|$ for the first ten zeros by the Blaschke-derivative formula against Gram inversion on truncated sets; the weighted
+Gram of the first $10$ normalised modes at five $(\delta,c)$ and its extremes against the unweighted Cauchy Gram (common diagonals $2, 4.787, 18, 3.078, 6$), the Tricomi series and closed forms against quadrature, the $1/\mathrm{gap}$ tail. Pending: $N = 20,40$, the losses, the cut-and-damp checks.
+\end{numerical}

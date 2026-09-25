@@ -1,0 +1,220 @@
+% SHARD-ID: RC-04T-DENINGER-BOND
+% SHARD-TITLE: The Phantasm X: Deninger's Package on the GL_1 Bond. The Constant Terms as H^0 and H^2 with the Reference Rates, the Functional-Equation Pairing on the Jets, the Positive Metric as RH plus Simplicity, No Energy-Equivalent Metric, the Rescaled Semigroup Unbounded, Weil's Form, and the CM Torus
+% SHARD-SUMMARY: The finite Deninger-type package (an invariant positive polarisation exists iff the normalised dynamics is semisimple with unimodular spectrum) is transcribed to the Riemann channel: the theta constant terms are formal even classes with rates 0 and -1/2, q_t = e^{-t/2}, the functional equation supplies an explicit real alternating pairing on the full jets with Omega(C_t x, C_t y) = e^{-t/2} Omega(x, y), and a positive invariant Hermitian form on a finite full-jet span exists iff its zeros are critical and simple, with the star J e_rho = -i sgn(gamma) e_rho.
+% SHARD-SUMMARY: No positive metric boundedly equivalent to the energy metric makes the compression a similitude, even under RH with simple zeros (it would make the kernels a Riesz basis), and sup_t e^{t/4} ||Z_t|| = infinity unconditionally by a two-close-kernel estimate; a uniformly bounded semigroup with dense unimodular eigenvectors would unitarise. The unit-coefficient form is an unbounded closed positive form; Weil's form is RH but a trace does not select a metric; the evaluation map to l^2(zeros) is closed, injective, densely defined, unbounded both ways.
+% SHARD-SUMMARY: The real two-prime orbit quotient of the bond is non-Hausdorff, not a solenoid. The conformal torus map z -> alpha z on C/Z[i], q = |alpha|^2, has Z(u) = (1 - alpha u)(1 - conj(alpha) u)/((1-u)(1-qu)) with the flat metric as positivity; at a split prime p = 1 mod 4 the primary alpha = pi = 1 mod (1+i)^3 is the Frobenius of y^2 = x^3 - x, h = |pi - 1|^2 = #E(F_p): the genus-one class-group bond of shard 04p, with the metric ray vacuous.
+% SHARD-KEYWORDS: Deninger, Hodge structure, polarisation, symplectic similitude, reference rates, jets, Jordan chain, Riesz basis, energy metric, Weil criterion, explicit formula, trace formula, spectral realisation, Connes, Meyer, solenoid, CM torus, primary Frobenius
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/deninger_bond.py
+
+\section{The Phantasm X: Deninger's Package on the GL$_1$ Bond}
+\label{sec:deninger-bond}
+
+Round of 2026-09-22 (brief \texttt{notes/deninger-bond/astra-brief.md}, prover \texttt{notes/deninger-bond/astra-proofs.md},
+numerics \texttt{scripts/deninger\_bond.py}, review \texttt{notes/reviews/deninger-bond-2026-09-22.md}). The input is a finite
+theorem package (a Codex research note, \texttt{notes/deninger-lps/src/}): for a real symplectic $(H,\Omega)$ and % bare-ok
+$A^{T}\Omega A = q\Omega$, an $A$-invariant compatible positive polarisation $J$ ($J^2 = -1$, $J^{T}\Omega J = \Omega$, % bare-ok
+$\Omega(\cdot,J\cdot)>0$) exists iff a real $G>0$ with $A^{T}GA = qG$ exists iff the powers of $q^{-1/2}A$ are uniformly % bare-ok
+bounded iff $q^{-1/2}A$ is diagonalisable with unimodular spectrum, with $J = -LR^{-1}$, $L = G^{-1}\Omega$, $R = (-L^2)^{1/2}$. % bare-ok
+Conventions as in \cref{sec:h-theta-1}: $C_\tsg f(X) = f(X+\tsg)$ is the adjoint compression carrying the damped modes
+$e_{\zero,j} = X^jm_\zero/j!$ of \cref{thm:model-space-jets} (the brief had them on $Z_\tsg$), $\lambda_\zero = (\bar\zero-1)/2$,
+$De_{\zero,j} = \lambda_\zero e_{\zero,j}+e_{\zero,j-1}$; a finite set of zeros always carries full multiplicities and is closed
+under $\zero\mapsto1-\zero$ and $\zero\mapsto\bar\zero$; $H^1_{\mathrm{fin}}$ is its jet span with the real structure
+$\mathcal R$. Here $\Omega$ is the alternating pairing, not the reset density. % bare-ok
+
+\subsection{The graded data and the pairing}
+
+\begin{proposition}[The constant terms as formal $H^0$ and $H^2$; the reference rates]
+\label{prop:bond-graded-data}
+\claimstatus{prop:bond-graded-data}{proved}
+The even terms $1$ and $\eta = y^{-1/2}$ of the bond state (poles $s = 0,1$, residues $-2,+2$ of $\thetaM$) are formal
+classes, not bond vectors; under the forward dilation $U_\tsg1 = 1$, $U_\tsg y^{-1/2} = e^{\tsg/2}y^{-1/2}$, and in the decaying
+convention (the action of $U_{-\tsg}$, consistent with $C_\tsg$ on the outgoing modes) $A_0 = 1$, $A_2 = q_\tsg := e^{-\tsg/2}$:
+the pole $s = 1$ is the top class, the reference rates of \cref{def:graded-transfer-channel} are $0,-\tfrac12$ with midpoint
+$-\tfrac14$, and $q_\tsg$ is the ratio of the exponentiated rates. For $\tsg>0$, $|e^{\tsg\lambda_\zero}| = \sqrt{q_\tsg}$ iff
+$\sigs = \tfrac12$. Given the pairing of \cref{thm:fe-pairing-jets}, $x\smile y := \Omega(x,y)\eta$ with $\tau(\eta) = 1$ is a % bare-ok
+graded-commutative algebra of the package's shape (no geometric cup product is produced), and for every finite real
+dimension $2g$ the determinant $\mathcal Z_\tsg(u) = \det(1-uA_1)/((1-u)(1-q_\tsg u))$ satisfies
+$\mathcal Z_\tsg(1/(q_\tsg u)) = q_\tsg^{1-g}u^{2-2g}\mathcal Z_\tsg(u)$: the package's functional equation extends to
+contraction time $0<q_\tsg<1$ (its theorem is stated for $q>1$).
+\end{proposition}
+
+\begin{theorem}[The functional-equation pairing on the full jets]
+\label{thm:fe-pairing-jets}
+\claimstatus{thm:fe-pairing-jets}{proved}
+(a) A bilinear $\Omega$ on $H^1_{\mathrm{fin}}$ with $\Omega(C_\tsg x,C_\tsg y) = q_\tsg\Omega(x,y)$ for all $\tsg\ge0$ pairs the % bare-ok
+root space of $\zero$ only with that of $1-\zero$ ($\lambda_\zero+\lambda_\nu = -\tfrac12$; a single time has phase aliases,
+all times are needed; the Sylvester equation on generalised eigenspaces), so nondegeneracy requires partner root spaces of
+matching Jordan type, which $\cxi(1-s) = \cxi(s)$ and conjugation supply. No zero is fixed by $\zero\mapsto1-\zero$ since
+$\cxi(\tfrac12)>0$ ($\zeta(s)<0$ on $(0,1)$ by the alternating series). (b) With $m = m_\zero = m_{1-\zero}$,
+\[
+\Omega(e_{\zero,j},e_{\nu,k}) = (-i\,\mathrm{sgn}\,\gamma)^m(-1)^j\ \text{ if }\nu = 1-\zero,\ j+k = m-1,\qquad0\text{ otherwise}, % bare-ok
+\]
+is the complexification of a real alternating form ($\Omega(\mathcal Rx,\mathcal Ry) = \overline{\Omega(x,y)}$), nondegenerate, % bare-ok
+with $D^{T}\Omega+\Omega D = -\tfrac12\Omega$ hence $\Omega(C_\tsg x,C_\tsg y) = e^{-\tsg/2}\Omega(x,y)$ including all polynomial % bare-ok
+jet factors; for simple zeros $\Omega(e_\zero,e_{1-\zero}) = -i\,\mathrm{sgn}\,\gamma$ (the brief's $\mathrm{sgn}\,\gamma$ is % bare-ok
+anti-real). (c) On the bond it is the finite-rank integral form $\Omega(f,h) = \sum_{ab}B_{ab}c_a(f)c_b(h)$ with $c_a$ the % bare-ok
+biorthogonal coordinates of the jets (Gram inversion), consistent across nested finite sets; its extension to the energy
+completion is not asserted, and Poisson inversion does not supply it: the unweighted constant terms are exchanged by
+$y^{-1/2}f(1/y)$, the weighted reflection $J_Pf(X) = f(-X)$ maps $\KS$ into $H^2_-$, so $\langle f,\mathcal RJ_Ph\rangle$
+vanishes on $\KS\times\KS$. (d) The natural transport between the two cuts is the Hankel-type unitary involution
+$\mathsf H_\Theta = P_+M_\Theta J_P|_{H^2_+} = \mathcal C_\Theta\mathcal R$, $(\mathsf H_\Theta F)(u) = \Theta(u)F(-u)$ on $\KS$,
+with $\mathsf H_\Theta C_\tsg\mathsf H_\Theta = Z_\tsg$ (model conjugation $\mathcal C_\Theta F = \Theta\bar F$;
+$\Theta(-u) = \overline{\Theta(u)}$). A canonical geometric cup pairing on the bond remains open.
+\end{theorem}
+
+\subsection{Positive metrics: the finite criterion, and the two obstructions}
+
+\begin{theorem}[Positive invariant metric on a full jet span iff critical and simple; the star]
+\label{thm:bond-positive-metric-criterion}
+\claimstatus{thm:bond-positive-metric-criterion}{proved}
+(a) On a finite full-jet span a positive Hermitian $G$ with $G(C_\tsg x,C_\tsg y) = q_\tsg G(x,y)$ ($\tsg\ge0$) exists iff every
+zero of the set has $\sigs = \tfrac12$ \emph{and} is simple: a nonzero entry needs $\sigs+\sigs' = 1$, $\gamma = \gamma'$, so the
+diagonal forces $\sigs = \tfrac12$; a chain has $q_\tsg^{-1}G(C_\tsg e_1,C_\tsg e_1)$ growing like $\tsg^2$; conversely any positive
+diagonal weights $g_\zero = g_{\bar\zero}$. On ordinary eigenvectors alone simplicity is not needed. (b) With the real form
+$\Omega$ of \cref{thm:fe-pairing-jets} fixed, the four conditions of the package are equivalent on the finite real space: % bare-ok
+an invariant compatible positive $J$; a real certificate $G>0$ with $C_\tsg^{T}GC_\tsg = q_\tsg G$; uniform boundedness of
+$e^{\tsg/4}C_\tsg$ for $\tsg\in\mathbb R$ (forward boundedness suffices here, since eigenvalues of $D+\tfrac14$ come in opposite
+pairs); $D+\tfrac14$ diagonalisable with purely imaginary spectrum. (c) For simple critical modes, $J = -LR^{-1}$ gives
+$Je_\zero = -i\,\mathrm{sgn}(\gamma)e_\zero$, $G_J(e_\zero,e_\nu) = \delta_{\zero\nu}$, and $e^{\tsg/4}C_\tsg$ is $G_J$-unitary:
+the notebook's ``RH $=$ the compressed operator is $\sqrt{q_\tsg}$ times a unitary'' (\cref{thm:arithmetic-metric}, whose
+discrete scale $\qs^{-1/4}$ is a different variable). The certificate cone has one free weight per positive ordinate, while
+for the fixed normalised $\Omega$ the compatible metric $\Omega J = GR$ is fixed: certificates and compatible metrics must be % bare-ok
+distinguished. (d) The conjugation and functional-equation permutations preserve $|\gamma|$ and select no ray, but the
+diagonal commutant $e_{\pm\gamma}\mapsto a_{\gamma}e_{\pm\gamma}$ acts transitively on certificates (on finite spans; not
+boundedly on $\KS$).
+\end{theorem}
+
+\begin{theorem}[No energy-equivalent invariant metric]
+\label{thm:no-energy-equivalent-metric}
+\claimstatus{thm:no-energy-equivalent-metric}{proved-conditional}
+There is no bounded, boundedly invertible positive $G$ on $\KS$ with $C_\tsg^{*}GC_\tsg = e^{-\tsg/2}G$ for all $\tsg\ge0$
+(equivalently for $Z_\tsg$, by \cref{thm:fe-pairing-jets}(d)). Restriction to finite root spans forces RH and simplicity
+(\cref{thm:bond-positive-metric-criterion}); then $u_\gamma = k_\zero/\sqrt2$ are unit eigenvectors with unimodular
+eigenphases, $G$-orthogonal for distinct ordinates, and $cI\le G\le CI$ makes them a Riesz basis, against
+\cref{prop:kernels-not-riesz}. The cone of \cref{thm:arithmetic-metric} is disjoint from the bounded equivalence class of the
+energy metric in the arithmetic case; this obstructs the specified channel realisation, not an unspecified cohomology.
+\end{theorem}
+
+\begin{theorem}[The rescaled semigroup is not uniformly bounded]
+\label{thm:rescaled-semigroup-unbounded}
+\claimstatus{thm:rescaled-semigroup-unbounded}{proved-conditional}
+$\sup_{\tsg\ge0}e^{\tsg/4}\|C_\tsg\| = \sup_{\tsg\ge0}e^{\tsg/4}\|Z_\tsg\| = \infty$ unconditionally. If RH fails a zero with
+$\sigs>\tfrac12$ grows exponentially; a multiple zero grows polynomially; under RH with simple zeros take ordinates
+$\gamma,\delta$ with $a = \gamma/2$, $a' = \delta/2$, $r = |\langle u_\gamma,u_\delta\rangle| = \tfrac12/\sqrt{(a-a')^2+\tfrac14}$,
+$f = u_\gamma-cu_\delta$ with $|c| = 1$ aligning the overlap: at $\tsg_{*} = 2\pi/|\gamma-\delta|$ the eigenphases differ by a
+sign and $e^{\tsg_{*}/4}\|C_{\tsg_{*}}\|\ge\sqrt{(1+r)/(1-r)}$, which is the exact two-mode norm and tends to infinity along
+close pairs (the zero count forces gaps tending to zero). Numerically the closest pair below height $3000$ has gap $0.0975$
+and ratio $20.56$ (\cref{num:deninger-bond}).
+\end{theorem}
+
+\begin{proposition}[A uniformly bounded semigroup with dense unimodular eigenvectors unitarises]
+\label{prop:bounded-semigroup-unitarises}
+\claimstatus{prop:bounded-semigroup-unitarises}{proved}
+A uniformly bounded $C_0$-semigroup on a Hilbert space with a dense span of eigenvectors of purely imaginary generator
+eigenvalues extends to a uniformly bounded group (simultaneous recurrence of finitely many phases gives $\|f\|\le M\|T_sf\|$
+on the dense span) and admits an equivalent invariant Hilbert metric (a weak limit of $\tfrac1T\int_0^TT_\tsg^{*}T_\tsg\,d\tsg$);
+distinct eigenvalues become orthogonal and a complete normalised eigenvector system is a Riesz basis. Dense unimodular
+eigenvectors without uniform boundedness have no such consequence.
+\end{proposition}
+
+\begin{proposition}[Bounded non-coercive invariant forms; the unit-coefficient form is closed and unbounded]
+\label{prop:unit-coefficient-form}
+\claimstatus{prop:unit-coefficient-form}{proved-conditional}
+Under RH with simple zeros let $b_\zero$ be the global biorthogonal system to the modes $e_\zero = m_\zero$ (nonzero multiples of
+$\mathcal C_\Theta k_\zero$, complete). For positive conjugation-symmetric weights with $\sum g_\zero\|b_\zero\|^2<\infty$,
+$G(f,f) = \sum g_\zero|\langle f,b_\zero\rangle|^2$ is a bounded, positive, injective, compact invariant form with unbounded inverse:
+a genuine bounded metric form, an incomplete norm, not equivalent to the energy norm. The unit-coefficient map
+$B_0(\sum a_\zero e_\zero) = (a_\zero)$ is densely defined, closable and unbounded (close pairs), and $\|\overline{B_0}f\|^2_{\ell^2}$ is
+a densely defined closed positive form, represented by an unbounded positive self-adjoint operator, whose form domain is
+$C_\tsg$-invariant with $\overline{B_0}C_\tsg = \mathrm{diag}(e^{\tsg\lambda_\zero})\overline{B_0}$ and the similitude. The theorem above
+excludes boundedly equivalent metrics, not these.
+\end{proposition}
+
+\subsection{Weil's form and the spectral spaces}
+
+\begin{proposition}[Weil's form is RH; a trace selects no metric; three spectral spaces]
+\label{prop:weil-form-not-metric}
+\claimstatus{prop:weil-form-not-metric}{proved}
+For $f\in C_c^\infty(\mathbb R)$ put $F_f(s) = \int f(\tsg)e^{(s-1/2)\tsg/2}d\tsg$ (the half-time normalisation of
+\cref{sec:weil-positivity-continuous}), $W(f,g) = \sum_\zero m_\zero F_f(\zero)\overline{F_g(1-\bar\zero)}$ over distinct zeros,
+absolutely convergent and Hermitian. (a) $W\ge0$ on all tests iff RH (\cref{cit:weil-criterion}); under RH
+$W(f,g) = \sum m_\zero F_f(\zero)\overline{F_g(\zero)}$, the counting norm of evaluations with multiplicity, positive
+semidefinite on tests; off RH it pairs distinct coordinates and is represented by the involution $v_\zero\mapsto v_{1-\bar\zero}$,
+with a negative direction per two-cycle. (b) The centred supertrace of the package is the explicit formula
+$F_h(0)+F_h(1)-\sum^{\mathrm{mult}}_\zero F_h(\zero) = 2\log(\pi)h(0)-\mathcal A_\Gamma(h)+2\sum_{n\ge2}\vM(n)n^{-1/2}[h(2\log n)+h(-2\log n)]$
+($h = f*\tilde f$; gamma and contact terms included; fixed-time operators are not trace class, these are tested
+distributional traces). A trace is independent of positive diagonal modal weights, so the explicit formula cannot select
+all weights one: unit weights are tied to a chosen evaluation normalisation, and pole orders (not the theta residues
+$-2,+2$) give the even coefficients. (c) Three spaces must not be conflated: the full jet model (positive all-time invariant
+metric iff RH and simplicity, comparison with energy unbounded); the diagonal semisimplification $\ell^2\{(\zero,j)\}$
+($G = 1$ invariant iff RH regardless of multiplicity, with the pairing and star: the RH-only algebraic package); the Weil
+test quotient (evaluation repeats a value on the $m_\zero$ copies of a multiple zero, blind to jets, \cref{prop:weil-blind-jordan}).
+Connes's weighted realisation is nonunitary and sees a zero of order $m$ only to multiplicity $n<(1+\delta)/2$
+(\cref{cit:connes-cokernel-critical}); Meyer's is virtual (\cref{cit:meyer-virtual-representation}); neither is a unit-diagonal
+$\ell^2$ model. (d) Under RH with simple zeros the evaluation map $\mathcal Af = (\langle f,k_\zero\rangle)_\zero$ on
+$\{f\in\KS:\sum|\langle f,k_\zero\rangle|^2<\infty\}$ is closed, injective, densely defined with dense range, unbounded (the
+kernels are not Bessel: clusters of ordinates in unit intervals) and with unbounded inverse (biorthogonal norms
+$\ge(1-r^2)^{-1/2}$), and $\mathcal AZ_\tsg = \mathrm{diag}(e^{i\tsg w_\zero})\mathcal A$ on its domain. The brief's ``the metric is
+forced, only its second description is missing'' is too strong: a zero-free positive geometric comparison is what is open.
+\end{proposition}
+
+\begin{observation}[The two-prime orbit quotient is not a solenoid]
+\label{obs:gl1-two-prime-solenoid}
+\claimstatus{obs:gl1-two-prime-solenoid}{refuted}
+Refuted: for distinct primes $\mathbb Z\log p+\mathbb Z\log r$ is dense in $\mathbb R$, so $\mathbb R/(\mathbb Z\log p+\mathbb Z\log r)$
+is non-Hausdorff; principal rational ideles act trivially on the idele class group. A compact $S$-adic solenoid
+$(\mathbb R\times\mathbb Q_p\times\mathbb Q_r)/\mathbb Z[1/pr]$ with its two commuting automorphisms, its Koszul complex
+$M\to M\oplus M\to M$ as a candidate horizontal cohomology, and a leafwise trace are additional data; commutation alone
+supplies neither a Lefschetz trace nor the two reference rates, and the partial Euler product $(1-p^{-s})^{-1}(1-r^{-s})^{-1}$
+has no zeros. Open as a programme.
+\end{observation}
+
+\subsection{The conformal torus map is the CM class-group bond}
+
+\begin{theorem}[The CM torus map, the primary Frobenius, and the genus-one class-group bond]
+\label{thm:cm-torus-class-group-bond}
+\claimstatus{thm:cm-torus-class-group-bond}{proved}
+(a) For $\alpha = a+bi\in\mathbb Z[i]$, $q = |\alpha|^2>1$, $f_\alpha(z) = \alpha z$ on $\mathbb C/\mathbb Z[i]$ has
+$\#\mathrm{Fix}(f_\alpha^n) = \det(A^n-1) = |\alpha^n-1|^2$ and $Z_{f_\alpha}(u) = (1-\alpha u)(1-\bar\alpha u)/((1-u)(1-qu))$, with cup
+form $\Omega_T$, star $J_T$ and flat metric $G_T = \Omega_TJ_T = 1$ on real one-forms, both preserved by $A$ up to $q$: positivity % bare-ok
+from the geometry, without an eigenvalue bound. (b) For a prime $p\equiv1\pmod4$ and $E: y^2 = x^3-x$ over $\mathbb F_p$
+(Deuring's ordinary CM reduction, not byte-cited), the Frobenius is the primary generator $\pi = a+bi$, $\pi\bar\pi = p$,
+$\pi\equiv1\pmod{(1+i)^3}$ ($a$ odd, $b$ even, $a+b\equiv1\pmod4$), up to the choice of prime above $p$: the eight points of
+$\ker[(1+i)^3]$ are $\mathbb F_p$-rational and fixed by Frobenius, so $\pi-1$ factors through $[(1+i)^3]$; other associates are
+the Frobenii of the quartic twists $y^2 = x^3-dx$. Its real part is not in general positive ($p = 5$: $\pi = -1+2i$;
+$p = 13$: $3+2i$; $p = 17$: $1+4i$). (c) Hence $Z_E = Z_{f_\pi}$ and $h = \#\mathrm{Pic}^0(E)(\mathbb F_p) = \#E(\mathbb F_p) = P(1) =
+|\pi-1|^2 = (a-1)^2+b^2$ ($8, 8, 16$ at $p = 5,13,17$): the genus-one class-group bond of \cref{prop:class-group-bond}, an equality of
+zeta functions and graded data, not an identification of underlying spaces ($h$ is not the Gaussian class number).
+(d) On the complex lift the flat metric is diagonal with equal weights on $\alpha,\bar\alpha$; for $b\ne0$ the invariant
+Hermitian forms are diagonal (multiplier $\alpha^2\ne p$) and reality equates the weights: the certificate cone is one
+ray containing the flat Hodge metric, the single-pair case of \cref{obs:gl1-bond-no-metric}, not a new constraint. D2 of
+\cref{sec:elliptic-cavity-scattering} is $y^2+y = x^3+x+1$ over $\mathbb F_2$ (numerator $1-2u+2u^2$), not the singular
+$y^2 = x^3-x$ in characteristic two; its four channel modes are a bipartite/inverse-Frobenius realisation, not the two
+Betti eigenlines.
+\end{theorem}
+
+\begin{numerical}[Numerics lane, Deninger on the bond]
+\label{num:deninger-bond}
+\claimstatus{num:deninger-bond}{numerical}
+\texttt{scripts/deninger\_bond.py} ($51$ assertions, $61$ s, mpmath; \texttt{outputs/deninger\_bond.txt}; ledger in
+\texttt{notes/deninger-bond/numerics.md}; $51$ pass; written without reading the prover's scripts): the six-mode similitudes
+for $\Omega$ and $G = 1$ at $\tsg = 1$ to $10^{-16}$ and $\Omega JR = 1$; the energy Gram is not a similitude (residual $0.4956$); % bare-ok
+the jet pairing an exact $e^{-\tsg/2}$-similitude for chain lengths $1$--$4$; an off-line quartet admits no positive metric, a
+double zero forces $G(e_0,e_0) = 0$ and the rescaled jet norm grows like $\tsg^2$; the star and $J = -LR^{-1}$ independent of the
+certificate weights; the closest pair among the first $3000$ zeros at $\gamma\approx1977.17$, gap $0.0975$, $r = 0.99528$, ratio
+$\sqrt{(1+r)/(1-r)} = 20.56$ attained at $\tsg_{*} = 64.44$, biorthogonal norm $10.30$; the explicit formula on a Gaussian test,
+zero side against analytic side to $7.6\cdot10^{-17}$ (the review: $2.5\cdot10^{-31}$ with high-precision zeros); the CM counts
+$\#E(\mathbb F_p) = 8,8,16$ and $\#E(\mathbb F_{p^2}) = 32,160,320 = |\pi^2-1|^2$, the torus identities to order $8$.
+\end{numerical}
+
+\begin{observation}[What this changes; next]
+\label{obs:deninger-bond-next}
+\claimstatus{obs:deninger-bond-next}{sketched}
+Deninger's positive Hodge structure on the Riemann channel cannot be the energy metric or anything equivalent to it;
+the natural candidate is an unbounded closed form (the arithmetic metric), one exit per mode instead of one exit,
+and its relation to Connes's $\delta$-weighted norm is the next question (\texttt{notes/connes-weighted-metric/}). The
+functional equation supplies the pairing but not a cup product; the trace formula does not select the metric; the finite
+LPS model (\cref{sec:deninger-lps}) has both because of an arithmetic surface. The genus-one CM torus is the vacuous case
+of the metric test; the genus-two lane (\texttt{notes/genus-two-bond/}) is the first non-vacuous one.
+\end{observation}
