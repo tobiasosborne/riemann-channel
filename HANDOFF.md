@@ -2,6 +2,138 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-24, evening: the Riemann Tomography Problem, round 1 (shard 08i); five Opus lanes, a figure package, a REFUTE review
+
+TJO: run the RTP next steps with Opus subagents (at most two in parallel) and build a visualisation package
+per step. Brief `notes/rtp-round-1/brief.md`; lanes A1 (dilation channel, certified C on `zst`), A2
+(prime-content channel, python-flint balls), B1 (sources, 52 provenance rows, twelve new source keys), B2
+(kinematic commutant and a certified Ramanujan-graph control), V (28 figures, `viz/rtp1/`, page
+https://claude.ai/artifact/7gsqqKCv3McEFiMKWr62oE); review `notes/reviews/rtp-round-1-2026-09-24.md`
+(215 checks; 3 VALID / 7 MINOR / 2 INVALID on the draft claims, all 15 corrections applied; re-verdicts 14 VALID / 7 MINOR / 0 INVALID, the seven MINOR points applied). Worklog 2026-09-24.
+
+**Registered (08i).** `lem:bordering-interval` (sketched): the unstructured MaxEnt column `c = 0` is not a
+Loewner column; the admissible next datum is a per-block interval, joint max-det off-centre.
+`lem:mixed-entries-kronecker` (proved, any even kernel), `prop:burg-is-maxdet` (proved: disc centre = Burg =
+max-det next lag), `prop:window-kinematic-dimension` (proved: Loewner-and-reflection space `2N+1`, positivity
+removes nothing). Numericals: `N_sat = 56, 134, 352` at `x = 13, 25, 50` (`~1.7 x log x`); eps falls 5.38 digits
+per unit `x` from 13 to 50, close to the CCM prolate asymptotic 5.39 and below the bare 5.46; pole plus
+archimedean alone indefinite; fixed-window all-but-49 value `-5.66e-7` at `N = 60` is a resolution effect
+(`-0.020` at `N = 240`); admissible lattice bumps: inter-place effects `O(delta)` / `O(delta^2)`, pole part of the
+mixed entries 2.4–21 x the archimedean, and the pole kernel is rank two, not factorising (reviewer erratum), so both kernels correlate the places; with pole and
+archimedean fixed the positive set of prime data is unbounded (**no MaxEnt element in Loewner coordinates**),
+min-norm captures 8%; with positions `log n` fixed, positivity pins the weights to `3e-25`–`1.3e-4` (exact LP,
+review), zeros at 6, 10, 12 included; the graph control has a finite spectrum and collapses at `K = R`, so it
+cannot decide whether the rate is arithmetic. Cited: Yoshida (width `log 2`, pole plus archimedean), Bombieri
+Thm 12 and the conditional negative-eigenvalue count, Landau/Gonek, Burg, Dempster/GJSW, Bombieri–Lagarias,
+Lagarias/DMR (`Pi^0_1`). Corrections to the orchestrator's notes recorded in `metric-as-state.md` (§3
+Correction, §4.3) and in `prop:extension-disc`(i) (conjugate).
+
+**Verdict of the round.** The tomography is posed in the lattice coordinates, not the Loewner ones: MaxEnt is
+empty there, while positivity at known positions pins the primes by the near-singularity of the true form.
+The prime-content channel on admissible bumps is perturbative; O(1) inter-place structure needs impure bumps,
+which the Kronecker lemma still organises. Question 3 (is `e^{-4 pi x}` arithmetic) is **undecided**: the
+Schur envelope does not decay at that rate, the rate matches the prolate asymptotic, and the finite graph
+cannot discriminate.
+
+**Next on this lead (in order).** (i) A Dirichlet `L(s, chi)` through the same window pipeline (`zst` M3): no
+pole, other primes; same rate means the rate is not zeta's primes. (ii) Lattice box widths against `x` with an
+exact (rational or 100-digit) LP: do they track eps? (iii) Non-admissible prime-content bumps, organised by the
+Kronecker lemma. (iv) The `N`-convergence of eps at `x = 50` (certify beyond `N = 420`). (v) Durability: the seven
+non-arXiv source keys have `refs/fetch_extra_sources.sh` and committed OCR text under `refs/ocr/`.
+
+## Session 2026-09-24: the metric as an unknown state (record only); channels, the contradiction pathway, the MaxEnt ansatz
+
+TJO, after the explanation page *The Metric* (https://claude.ai/artifact/C1f9ZywZYyNc5vbXK6p7XZ): treat the
+metric as an unknown unnormalised quantum state under three game rules (RH not assumed, the zeros not used,
+arithmetic data only); which observational data affect it at all; then, to be recorded precisely: the Weil
+form as matrix elements of an unknown operator, a pathway to a *contradiction* (assume positivity, hunt for
+violations via matrix elements; RH = absence of a contradiction), a Jaynes MaxEnt ansatz updated as constraints
+are added, "if you always fail to find a contradiction you are extremal or in the convex hull". Recorded in
+`notes/metric-tomography/metric-as-state.md` (verbatim messages, rules, channels, the precise restatement);
+worklog 2026-09-24. **No claim registered; no lanes run.**
+
+**Content of the record.** `W` is fully known (explicit formula); the unknown is positivity, and at Level 3 a
+construction. `obs:prime-by-prime-blind` organises the channels: only prime-mixing observables carry
+information. Channels: dilation windows (CCM/Li; `zst` laws `e^{-4 pi x}`, `10^{0.37 gamma}`); prime-content
+windows (two-prime lattices, ledger G1-T10-7, untried); short-range positivity (archimedean only below
+`log 2`); mollifiers/density theorems (allowed, not byte-cited); kinematic constraints; family channels (Hodge
+index, Haar; tensor-power channel empty for `GL_1`). Not moving the prior: symmetry alone, the stationary
+state's metric, bounded renormings, single-place marginals, numerical zeros. **The MaxEnt ansatz for the
+window channel is already in the notebook:** Burg's maximum-entropy extension is the centre `c_K` of the disc
+of `prop:extension-disc`, `r_K` the ignorance, the Schur step the update, the true next trace leaving the disc
+the contradiction; for prime-content data it is the maximum-determinant completion. "Convex hull": the
+extremals are the hermitian characters (critical line), `W` in their closed convex hull is RH, `W` itself is
+not extremal; naive Bochner–Schwartz does not apply (prime side not tempered in `log x`), Weil's off-line
+`2 x 2` block argument plays its role.
+
+**Afternoon: the finite-prime language and the FNW exclusion argument** (TJO: a complexity class of
+quantities computable from finitely many primes, some numbers inside and some outside, MIP* = RE style, a
+value of zeta outside it; precedent Fannes–Nachtergaele–Werner: finite bond dimension produces only
+non-transcendental optimal energy densities, so the Heisenberg ground state at `1/4 - log 2` is not finitely
+correlated). Recorded in `notes/metric-tomography/finite-prime-language.md`; FNW 1992 not byte-citable
+through the proxy. Rigorous form: for fixed bond dimension the FCS class is semialgebraic and the optimal
+energy is a real algebraic number (Tarski–Seidenberg), so a transcendental target excludes every finite `d`;
+three ingredients (semialgebraic class, transcendental target, implicit definition). The language `L_S` is the
+`Q-bar`-span of `1`, `log p` (Baker-independent, one direction per prime = the prime-content filtration) and
+the archimedean `Gamma`-values (Gauss digamma adds `gamma`; polygamma at 1 gives every `zeta(n)`, so the
+archimedean place alone produces the integer zeta values). **Negative finding:** nothing of interest is
+provably outside `L_S`; no zero ordinate is known irrational, Stieltjes constants and `gamma` are open, and
+the known transcendentals are single-place and hence blind to zeros. The FNW route for the *metric* is alive
+in form (implicit target, finite-window classes semialgebraic) and blocked on one open input: irrationality of
+`gamma`, a Stieltjes constant or a zero ordinate. MIP* = RE: exact as `Pi^0_1`/`Sigma^0_1`, empty as
+uncomputability; a tensor-versus-commuting gap cannot occur in the window channel (`prop:extension-disc`(iii))
+and can only live on the noncommutative adelic bond of shard 04p. Side project noted: a Diophantine lower
+bound on matrix-product convergence for the Heisenberg chain from a transcendence measure of `log 2`.
+
+**Next on this lead (in order).** (i) Run the `r_K` diagnostic of shard 08g on `zst` and compare its decay
+with `e^{-4 pi x}` (the MaxEnt contraction rate of the dilation channel; no new theory). (ii) Build the
+prime-content window on `{2}`, `{2,3}`, `{2,3,5}` at fixed dilation width, certified minimal eigenpair,
+contraction rate against primes added. (iii) Byte-cite Burg/Dempster, Bombieri/Yoshida, Selberg/Levinson/
+Conrey before any registration. (iv) REFUTE lane before registering sections 7.2–7.4 of the note as claims.
+(v) From the finite-prime note: register Proposition A (FNW exclusion, Tarski–Seidenberg form) after
+byte-citing quantifier elimination and the Hulthén value; the Baker grading of `W` on point-mass test
+functions as a theorem; formulate finite-bond approximability of the arithmetic state on the adelic Weyl
+bond and test it on the genus-one class-group bond; keep the open-input list (irrationality of a zero
+ordinate, of `gamma`, of a Stieltjes constant) as a standing item.
+
+## Session 2026-09-23: Deninger's programme in the supertrace-cMPS language (shard 04q); the metric as an invariant polarisation; K_S is not Deninger's H^1; the same gap
+
+TJO: the metric is the missing datum of the current strategy; cast Deninger's programme precisely in the notebook's
+language and see whether a candidate metric emerges or the same shortcoming (work alone, then an Opus verifier); and,
+as a standing aim, use the cMPS formulation as the common language in which the clues of independent attacks are
+assembled. Round `notes/deninger-cmps/reformulation.md` (Fable alone: D1–D7 cited, R1–R8 proved, S1–S6, a
+comparative table over nine attacks), review `notes/reviews/deninger-cmps-2026-09-23.md` (Opus: 1 VALID / 6 MINOR /
+1 INVALID on version 1, 295 independent checks, 59 addresses byte-checked, 30 corrections all applied; final
+8 VALID / 0 MINOR / 0 INVALID). Worklog 2026-09-23.
+
+**Registered (04q).** Deninger's Lefschetz formula for `Q` is `prop:ringnorm-trace` under the twist
+`lambda -> (lambda-1)/2` with the archimedean term moved to the operator side and counted odd; the ladder is his
+`R_infty = R[exp(-2y)]`, the trivial zeros, its parity the side of the trace formula carrying the archimedean place;
+the notebook's even line is his `H^2`. A one-prime suspension is the periodic MPS ring of length `log p`, the zeros
+joint eigenvalues of commuting Frobenii; the prime letters are one flow sampled at `log p`, the blind ansatz of
+`obs:prime-by-prime-blind` unless the leaf space is non-product, and the conformal hypothesis adds a rotation angle
+per prime that zeta does not see. **His RH mechanism is (HP):** the cup product gives `Theta^# = 1 - Theta` (FE) and
+a Hodge star commuting with the flow gives a positive form with `Theta - 1/2` skew; so the metric is a
+flow-invariant polarisation of the symplectic odd bond, a point iff the spectrum is simple or Krein-definite and
+the symplectic form is canonical; invariant `B` and invariant metrics have the same dimension, so `B` buys
+uniqueness only when canonical, and the notebook has a canonical `B` only on the genus-one Hodge ket, where the
+doubled transfer is a ring endomorphism of the exterior algebra and Deninger's argument gives
+`thm:elliptic-ph-unitary`. **`K_S` is not Deninger's `H^1` under any equivalent norm** (`thm:ks-not-deninger-h1`):
+the zero-mode kernels are not a Riesz basis (Carleson fails), so no inner product equivalent to the Hardy one makes
+`Z(t)` normal with the modes as eigenvectors. **Verdict:** a reformulation with the same gap, in Deninger's own
+words (`math/0505354:674, 825, 1230`; `1807.06400:512, 559, 2363`, all byte-cited): no conformal metric for number
+fields, the Kähler identities on cohomology needed (Serre's analogue), the lifted elliptic curve misleading, the
+2018 spaces without analytic structure and over Connes's adele space; his Laplacian route has the same equivariance
+gap. Deninger's column of the comparative table is the one that would supply the product (Künneth on `X x X`) the
+README says zeta lacks for a Deligne-type argument.
+
+**Next on this lead (in order).** (i) A canonical alternating form on `K_HW` from the D2/D3 diagram or a Hecke
+structure, and its parity behaviour (the reviewer's eigen-model: every `B`-compatible polarisation lies in the cone
+of `thm:arithmetic-metric`, on its symmetric ray iff `B` is parity-(anti)invariant). (ii) A graded-commutative
+product on `K_HW` or a finite model of `K_S` for which the transfer is multiplicative up to scale. (iii) The
+cusp-orbit return map of D2 and D3 on the odd sector. (iv) Deninger's Laplacian route on the modular surface.
+(v) The `p`-fibre of the 2018 system in the language of the Bost–Connes MPOs of shard 04d.
+
 ## Session 2026-09-21, evening: square roots of Ihara--Bass (shard 08h); branches merged into master; CI smoke list trimmed
 
 TJO asked to tidy the conceptual loose ends around graded Ihara--Bass: is a "square root" version with a

@@ -1,0 +1,47 @@
+# G40 count: k, N_k = sum_{d|k} d pi(d), PNT count q^k + 1 + (E-V)(1+(-1)^k), nu_k (DERIVED exactly from the printed pi(l), outputs/rtp1_calibration.txt section 2)
+# G40 rho(K): K, x_eq, rho, captured (certified, section 6b); zeta rho(x): x, N, rho, captured (outputs/rtp1_commutant.txt section 5b)
+# G40 posterior: K, relative distance of the max-det (PNT) element, relative diameter bound of the positive set, count-unit bound (section 6b)
+series,k_or_K_or_x,col_a,col_b,col_c
+G40 count,1,0,3,-2.121320344
+G40 count,2,0,45,-22.5
+G40 count,3,0,9,-3.181980515
+G40 count,4,24,57,-8.25
+G40 count,5,30,33,-0.5303300859
+G40 count,6,36,105,-8.625
+G40 count,7,112,129,-1.50260191
+G40 count,8,280,297,-1.0625
+G40 count,9,612,513,4.375223209
+G40 count,10,1150,1065,2.65625
+G40 count,11,2002,2049,-1.038563085
+G40 count,12,4140,4137,0.046875
+G40 count,13,8346,8193,1.690427149
+G40 count,14,16716,16425,2.2734375
+G40 count,15,32280,32769,-2.701368875
+G40 count,16,65976,65577,1.55859375
+G40 rho(K),4,16,6.7187,2.375
+G40 rho(K),5,32,4.7027,2.0169
+G40 rho(K),6,64,3.9495,2.0457
+G40 rho(K),7,128,3.1079,1.8148
+G40 rho(K),8,256,2.2186,1.4951
+G40 rho(K),9,512,1.536,1.2071
+G40 rho(K),10,1020,1.1039,1.0742
+G40 rho(K),11,2050,0.833,1.0328
+G40 rho(K),12,4100,0.6277,1.0142
+G40 rho(K),16,65500,0.1914,0.9967
+G40 rho(K),20,1050000,0.0552,0.9976
+G40 rho(K),30,1070000000,0.0023,1
+G40 rho(K),38,2.75e+11,0.000172,1
+G40 rho(K),50,1.13e+15,3.41e-06,1
+G40 rho(K),60,1.15e+18,1.29e-07,1
+G40 rho(K),77,1.51e+23,4.72e-10,1
+zeta rho(x),13,40,0.957,0.11
+zeta rho(x),13,57,0.97,0.079
+zeta rho(x),25,40,0.925,0.166
+zeta rho(x),25,137,0.979,0.048
+zeta rho(x),50,40,0.875,0.252
+zeta rho(x),50,333,0.986,0.03
+zeta rho(x),100,40,0.802,0.372
+zeta rho(x),100,783,0.991,0.019
+zeta rho(x),200,40,0.692,0.533
+G40 posterior K=38,38,0.0001724,0.00405,0.006402
+G40 posterior K=77,77,4.718e-10,1.1e-08,2.877e-06

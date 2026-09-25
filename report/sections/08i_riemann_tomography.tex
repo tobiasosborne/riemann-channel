@@ -1,0 +1,317 @@
+% SHARD-ID: RC-08I-RIEMANN-TOMOGRAPHY
+% SHARD-TITLE: The Riemann Tomography Problem, Round 1: the Dilation Channel, the Prime-Content Channel, the Kinematic Commutant, and the Graph Control
+% SHARD-SUMMARY: The Weil functional is known exactly from primes, pole and archimedean place; treating its positivity as the unknown state of a tomography problem, the round measures what each family of arithmetic observations teaches: along the dilation window the information per Fourier mode saturates at N of order x log x, pole plus archimedean alone is indefinite, and the minimal eigenvalue falls at 5.38 digits per unit of x between x = 13 and 50, close to the prolate asymptotic of CCM; along prime content, on admissible lattice bumps, the inter-place structure is of the order of the bump width.
+% SHARD-SUMMARY: The maximum-entropy ansatz in the Loewner coordinates is empty (the admissible next datum is a per-block interval whose unstructured centre is not a Loewner column, and the positive set of prime data with pole and archimedean fixed is unbounded), while in the lattice coordinates positivity alone confines the von Mangoldt weights at the known positions log n to boxes of width 3e-25 to 1.3e-4 at x = 13; a certified Ramanujan graph control has a finite spectrum and collapses at a finite window, so it cannot decide whether the rate is arithmetic.
+% SHARD-SUMMARY: Sources fixed: Yoshida's unconditional positivity up to support width log 2 is a pole-plus-archimedean statement (the archimedean form alone is indefinite), Landau's formula is the sharp-cutoff statement of what a single-place restriction sees, Burg's extension is the disc centre, and RH is a Pi^0_1 sentence.
+% SHARD-KEYWORDS: tomography, Weil form, explicit formula, window, Loewner, Schur complement, mutual information, maximum entropy, Burg, prolate, prime content, lattice, Kronecker sum, product state, Schmidt defect, Landau formula, Yoshida, Bombieri, short support, commutant, recession cone, von Mangoldt, Ramanujan graph, calibration, Pi^0_1
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: scripts/rtp1_prime_content.py, scripts/rtp1_commutant.py, scripts/rtp1_calibration.py
+
+\section{The Riemann Tomography Problem, Round 1}
+\label{sec:riemann-tomography}
+
+\emph{Question (TJO, 2026-09-24).} Treat the metric as an unknown, unnormalised quantum state. RH is not
+assumed, the zeros are not used, and only arithmetic data are admitted as observations. Which observations
+affect the state at all, and how fast does each family contract the prior? Records:
+\texttt{notes/metric-tomography/metric-as-state.md}, \texttt{notes/rtp-round-1/} (brief, lanes A1, A2, B1,
+B2, V), review \texttt{notes/reviews/rtp-round-1-2026-09-24.md} (207 independent checks). Conventions: the
+Weil form of Connes--Consani--Moscovici as implemented in \texttt{zst/}, $Q(f,g) = \Psi(f^**g)$,
+$\Psi = W_{0,2}-W_{\mathbb R}-\sum_pW_p$, window $[\lambda^{-1},\lambda]$, $x = \lambda^2$, $L = \log x$, Fourier
+basis $V_n$, $|n|\le N$, Loewner matrix $T_{nm} = (b_n-b_m)/(n-m)$, $T_{nn} = a_n$, $(a_n,b_n)$ certified balls.
+Zeros of $\zeta$ enter only the labelled comparison steps.
+
+\subsection{The problem and the two coordinate systems}
+An \emph{observation} is a finite family $f_1,\dots,f_n$ of admissible test functions with Gram matrix $G_{ij} = Q(f_i,f_j)$, computable from primes.
+The \emph{posterior} after an observation is the set of positive extensions of the data; the \emph{MaxEnt
+ansatz} is the maximum-determinant extension; the \emph{learning rate} of a channel is the contraction of the
+posterior as arithmetic data are added. Two coordinate systems appear, the Loewner coordinates $(a_n,b_n)$ of
+the window and the lattice coordinates (weights at the positions $\log n$), and they are not equivalent for the
+tomography (\cref{obs:rtp-round-1-reading}).
+
+\begin{lemma}[Bordering, mutual information, and the Loewner interval]
+\label{lem:bordering-interval}
+\claimstatus{lem:bordering-interval}{sketched}
+Let $G_K$ be positive definite Hermitian and border it by a column $c$ and diagonal $d$. (i) The bordered
+matrix is positive semidefinite iff $d-c^*G_K^{-1}c\ge0$; with $d$ known, the maximum-determinant completion is
+$c = 0$, and the log-determinant gain of the true column over it, $\varDelta I = \log\big(d/(d-c^*G_K^{-1}c)\big)\ge0$,
+is twice the mutual information of the corresponding real centred Gaussian. (ii) In the window form the
+bordering $|n|\le N\to N+1$ adds one even and one odd basis vector whose columns and diagonals are affine in the
+single new datum $b_{N+1}$ once $a_{N+1}$ is given; each block's Schur complement is a concave quadratic in
+$b_{N+1}$, so each block's admissible set is an interval whose centre is that block's maximum-determinant
+value and whose endpoints are the singular enlargements; the joint admissible set is the intersection of the
+two intervals, and the joint maximum-determinant point (the maximiser of $s_es_o$ on it) is in general not its
+centre (offsets of $0.3$ half-widths at small $N$). (iii) The unconstrained point $c = 0$ is not a Loewner
+column unless $b_1=\dots=b_{N+1} = 0$.
+\end{lemma}
+
+Part (ii) is the analogue of \cref{prop:extension-disc}(i)--(iv) for the non-Toeplitz window. Proof: lane A1,
+section A1.1, re-proved in the review (C1).
+
+\begin{numerical}[The dilation channel: resolution saturates at $N$ of order $x\log x$; the rate and the prolate asymptotic]
+\label{num:rtp-dilation-channel}
+\claimstatus{num:rtp-dilation-channel}{numerical}
+Certified in ball arithmetic (\texttt{zst/tools/rtp1\_a1.c}; \texttt{outputs/rtp1\_a1\_*.txt}). (a) At
+$x = 13, 25, 50$ the log-determinant of the window (even plus odd blocks) is minimal at $N = 56, 134, 352$
+(the even block alone: $144$ at $x = 25$); on these three points $N_{\mathrm{sat}} = c\,x\log x$ with $c = 1.67$--$1.80$
+fits as well as $1.68\,x^{1.36}$. Below $N_{\mathrm{sat}}$ each new mode pair carries tens of nats and the true
+$b_{N+1}$ sits at the edge of its interval; above, a fraction of a nat, interior, with half-width $0.5$ to $3.7$
+at every $x$. (b) The minimal even eigenvalue at $N = 120, 260, 360$ is $3.48\cdot10^{-59}$, $2.43\cdot10^{-123}$,
+$2.27\cdot10^{-257}$, falling $5.34$--$5.36$ digits per unit of $x$; the $x = 50$ value is not converged in $N$
+(certified $2.81\cdot10^{-258}$ at $N = 420$, review \texttt{scratch\_rtp1\_tail.py}), and with the larger-$N$
+values the slope from $13$ to $50$ is $5.38$ digits per unit of $x$, against $5.39$ for the prolate asymptotic of CCM and $5.46$ for
+$e^{-4\pi x}$. (c) Comparison step (zeros used): for $N\ge N_{\mathrm{sat}}$ the certified first-zero error is
+$7.0\cdot10^3$ to $1.08\cdot10^4$ times the minimal eigenvalue and falls at the same rate. (d) Fixed window
+$L = \log50$: at $N = 60$, pole plus archimedean alone has three negative even eigenvalues; adding prime powers one
+at a time leaves $3$ to $16$ negative eigenvalues until the last one, $49$, enters (with all but $49$:
+$-5.66\cdot10^{-7}$; with it, $1.75\cdot10^{-116}$); each prime power contributes at least $3.0\cdot10^{10}$ times
+the final eigenvalue ($10^{34}$ at $x = 50$, $N = 360$). The all-but-$49$ value is a resolution effect, not an
+edge effect: it is $-2.0\cdot10^{-2}$ with eight negative eigenvalues at $N = 240$, and the removed term has
+operator norm $0.23$--$0.28$ for every $N\ge60$, nondecreasing in $N$ and bounded by $\log7/7$ (review,
+\texttt{scratch\_rtp1\_fixedL.py}).
+\end{numerical}
+
+\subsection{The prime-content channel}
+
+For a finite prime set $S$ and exponent box $\{0\le a_p\le A\}$, take a $C_c^\infty$ bump of half-width
+$\delta$ in the log coordinate centred at each $\log\prod_pp^{a_p}$. Admissibility: $\delta$ below half the
+distance from the lattice ratios to the nearest foreign prime power (binding pairs $6/7$, $36/37$, $108/109$,
+$1296/1297$ for $\{2,3\}$, $A = 1,\dots,4$; $30/31$, $450/449$ for $\{2,3,5\}$, $A = 1,2$). For admissible $\delta$ a
+prime term enters a Gram entry only when the two lattice points differ in at most one coordinate; every
+\emph{mixed} entry is pole plus archimedean, $2\cosh(D/2)\,|\!\int\phi(x)e^{x/2}dx|^2-W_{\mathbb R}$-part, $D = |\log(\text{ratio})|$.
+
+\begin{lemma}[Zeroing the mixed entries gives the Kronecker sum]
+\label{lem:mixed-entries-kronecker}
+\claimstatus{lem:mixed-entries-kronecker}{proved}
+For any even kernel (admissibility not needed), replacing every Gram entry between lattice points differing in
+two or more coordinates by zero yields exactly the Kronecker sum of the one-prime forms (the shared diagonal
+counted once); its minimal eigenvector is the product of the one-prime minimal eigenvectors.
+\end{lemma}
+
+\begin{numerical}[On admissible lattice bumps the inter-place structure is perturbative in $\delta$]
+\label{num:rtp-prime-content}
+\claimstatus{num:rtp-prime-content}{numerical}
+Certified balls at 200 bits (\texttt{scripts/rtp1\_prime\_content.py}, 192 checks; two diagonal archimedean
+constants by quadrature with error $<3\cdot10^{-55}$, a multiple of the identity). The general implementation
+reproduces \texttt{zst}'s $(a_n,b_n)$ to $2.2\cdot10^{-60}$. All 42 Gram matrices ($S = \{2\},\{2,3\},\{2,3,5\}$,
+$A\le6,4,4$, $\delta = 0.9,0.3,0.1$ of the maximum) are positive definite with simple minimal eigenvalue. The
+mixed entries raise the minimal eigenvalue by an amount linear in $\delta$; the eigenvector movement on adding
+a prime ($\{2\}\to\{2,3\}$: $4.6\cdot10^{-5}$ to $7.6\cdot10^{-10}$) scales as $\delta^2$ (fitted slopes
+$2.00$--$2.06$), and the Schmidt defect across $\{p\}\,|\,$rest has local slopes $2.00$--$2.39$ tending to $2$.
+Inside the mixed entries the pole part exceeds the archimedean part by a factor $2.4$ to $21$ with opposite
+sign; removing the pole part alone makes $\{2,3\}$, $A = 1$ indefinite. Comparison step (zeros used): the
+prime-side values agree with the zero-side sums over 2000 certified zeros to relative $3\cdot10^{-18}$ to
+$2\cdot10^{-15}$ at $\delta = 0.1$, with truncation error $\sim\exp(-2.2\sqrt{\delta\gamma_M})$.
+\end{numerical}
+
+\begin{observation}[What a single-place restriction sees]
+\label{obs:single-place-restriction}
+\claimstatus{obs:single-place-restriction}{sketched}
+\cref{obs:prime-by-prime-blind} concerns single-place \emph{ansätze}. For the \emph{restriction} of the true
+form to real $g = \sum_kc_k\,\phi(x-k\log p)$ one has $\hat g(s) = \hat\phi(s)P(p^{-s})$ with $P$ a polynomial and,
+unconditionally, $Q(g,g) = \sum_\zero\hat\phi(\zero)\overline{\hat\phi(1-\bar\zero)}\,P(p^{-\zero})\overline{P(p^{-(1-\bar\zero)})}$,
+which is $|\hat\phi(\zero)|^2|P(p^{-\zero})|^2$ on zeros on the line. The one-place restriction therefore weights
+the zeros by $|P|^2$ on the $p$-circle, a smoothed analogue of Landau's sharp-cutoff formula
+(\cref{cit:landau-formula}), and its positivity is a necessary condition for RH. For bumps narrower than the
+admissible width the mixed $\{p,q\}$ entries carry no prime term and equal pole minus archimedean exactly, by
+the explicit formula; nothing about the zeros is measured there beyond that identity.
+\end{observation}
+
+\subsection{Sources: short support, Landau, Burg, and the $\Pi^0_1$ form}
+
+\begin{citedfact}[Yoshida: unconditional positivity up to support width $\log2$]
+\label{cit:yoshida-short-support}
+\claimstatus{cit:yoshida-short-support}{cited}
+For $a = \tfrac12\log2$ the Weil form is nonnegative on every smooth test function supported in $[-a,a]$ in
+the log coordinate, with equality only for the zero function; the proof is computer-assisted. On that space
+the prime sum vanishes, so this is a statement about the pole-plus-archimedean form.
+
+\par\noindent Quoted (\texttt{prov:yosh92-log2-intro}):
+{\small\texttt{\detokenize{faithfully, when a= log 2/2: We find ( , )IK(a) is positive definite for a :::; log 2/2 (Theorem 1).}}}
+\end{citedfact}
+
+\begin{citedfact}[Bombieri: a lower bound for short support]
+\label{cit:bombieri-short-support}
+\claimstatus{cit:bombieri-short-support}{cited}
+For $F$ supported in an interval $I$ of length $|I|<\log2$, the Weil form satisfies
+$\ge\big(\log(1/|I|)-\log^+\log(1/|I|)-O(1)\big)\|F\|^2$, unconditionally, with the $O(1)$ unspecified (the
+inequality read from the page image, p.~226; the text layer is garbled there).
+
+\par\noindent Quoted (\texttt{prov:bomb00-thm12}):
+{\small\texttt{\detokenize{Theorem 12. If F (x) has compact support in an interval I of length |I | < log 2 we have}}}
+\end{citedfact}
+
+\begin{citedfact}[Bombieri: negative eigenvalues if RH fails with finitely many exceptions]
+\label{cit:bombieri-negative-eigenvalues}
+\claimstatus{cit:bombieri-negative-eigenvalues}{cited}
+If RH fails with only finitely many zeros off the critical line, then for large enough truncations the number
+of negative eigenvalues of the truncated Weil form is exactly one half of the number of those zeros.
+
+\par\noindent Quoted (\texttt{prov:bomb00-neg-eigen}):
+{\small\texttt{\detokenize{if the Riemann Hypothesis is false but only with finitely many non-trivial zeros off the critical line we show that the number of negative eigenvalues is precisely one-half of the number of zeros failing to satisfy the Riemann Hypothesis, provided the truncation is big enough.}}}
+\end{citedfact}
+
+\begin{citedfact}[The archimedean symbol and the pole-free subspace]
+\label{cit:archimedean-symbol-sign}
+\claimstatus{cit:archimedean-symbol-sign}{cited}
+The Fourier symbol of the archimedean term is $-\log\pi+\mathrm{Re}\,(\Gamma'/\Gamma)(\tfrac14+\tfrac{it}2)$; on
+$(\tfrac12,2)$ the archimedean form is positive on the subspace of test functions whose transform vanishes at
+$\pm\tfrac i2$ (Connes--Consani, crediting Yoshida).
+
+\par\noindent Quoted (\texttt{prov:cc20-hplus}):
+{\small\texttt{\detokenize{h_+(\tau)=-\log \pi + \Re(\lambda(1/4 +i\tau/2)), \qquad \lambda(z)=\Gamma'(z)/\Gamma(z).}}}
+\end{citedfact}
+
+\begin{numerical}[The archimedean form alone is indefinite]
+\label{num:archimedean-box}
+\claimstatus{num:archimedean-box}{numerical}
+The symbol of \cref{cit:archimedean-symbol-sign} is negative for $|t|<6.2898$; on the even box of width $\log2$
+the archimedean part is $-1.2168$ and the pole part $+1.4002$ (total $+0.1834$;
+\texttt{notes/rtp-round-1/lane-B1-arch-check.py}), on the odd box $+0.3348$ and $-0.0108$ (review,
+\texttt{scratch\_rtp1\_sources.py}, which also reproduces the even box in real space).
+Positivity on short support is a property of the two together.
+\end{numerical}
+
+\begin{citedfact}[Landau's formula]
+\label{cit:landau-formula}
+\claimstatus{cit:landau-formula}{cited}
+For fixed $x>1$, $\sum_{0<\gamma\le T}x^{\zero} = -\tfrac{T}{2\pi}\vM(x)+O(\log T)$; the main term is present
+iff $x$ is a prime power (Landau 1912, Satz 1; formula byte-present in Ford--Zaharescu).
+
+\par\noindent Quoted (\texttt{prov:fz05-landau}):
+{\small\texttt{\detokenize{an old formula of Landau \cite{L}, which states that for each fixed $x>1$, \be\label{eq:Landau} \sum_{0<\gamma\le T} x^{\rho} = -\frac{T}{2\pi} \Lambda(x) + O(\log T). \ee}}}
+\end{citedfact}
+
+\begin{citedfact}[Gonek: Landau's formula uniform in $x$ and $T$]
+\label{cit:gonek-uniform-landau}
+\claimstatus{cit:gonek-uniform-landau}{cited}
+Landau's formula holds uniformly in $x$ and $T$ with error
+$O\big(x\log(2xT)\log\log3x\big)+O\big(\log x\min(T,x/\langle x\rangle)\big)+O\big(\log2T\min(T,1/\log x)\big)$,
+as quoted by Kaczorowski--Languasco--Perelli (\texttt{prov:klp00-gonek-error}).
+
+\par\noindent Quoted (\texttt{prov:klp00-gonek}):
+{\small\texttt{\detokenize{this direction was obtained by Gonek [4], [5]. He proved that for T > 1}}}
+\end{citedfact}
+
+\begin{citedfact}[Burg: the disc centre is the maximum-entropy extension]
+\label{cit:burg-maxent}
+\claimstatus{cit:burg-maxent}{cited}
+Given a positive Toeplitz window, the admissible next autocorrelation fills a disc; choosing its centre, i.e.
+zero reflection coefficients from then on, yields the maximum-entropy spectrum, which exists and is unique.
+
+\par\noindent Quoted (\texttt{prov:burg75-centre}):
+{\small\texttt{\detokenize{if one extends the autocorrelation function to infinity by always selecting the center value for each consecutive lag value, one generates the autocorrelation function corresponding to the maximum entropy spectrum.}}}
+\end{citedfact}
+
+\begin{citedfact}[Maximum-determinant completion]
+\label{cit:maxdet-completion}
+\claimstatus{cit:maxdet-completion}{cited}
+A partial real symmetric matrix with a positive definite completion has a unique maximum-determinant
+completion, characterised by its inverse vanishing on the unspecified entries (Dempster, as cited by
+Vandenberghe--Andersen; the attribution to Grone--Johnson--S\'a--Wolkowicz is from memory).
+
+\par\noindent Quoted (\texttt{prov:va15-inverse-pattern}):
+{\small\texttt{\detokenize{The two equalities show that the inverse of the maximum determinant completion W has sparsity pattern E.}}}
+\end{citedfact}
+
+\begin{citedfact}[The Li coefficients in closed form]
+\label{cit:li-arithmetic-formula}
+\claimstatus{cit:li-arithmetic-formula}{cited}
+$\lambda_n = -\sum_{m=1}^n\binom nm\eta_{m-1}+\sum_{m=2}^n(-1)^m\binom nm(1-2^{-m})\zeta(m)+1-\tfrac n2(\gamma+\log\pi+2\log2)$,
+with $\eta_j$ the Laurent coefficients of $\zeta'/\zeta$ at $s = 1$ (Bombieri--Lagarias, via Coffey).
+
+\par\noindent Quoted (\texttt{prov:coffey05-li-formula}):
+{\small\texttt{\detokenize{$$\lambda_n=-\sum_{m=1}^n {n \choose m} \eta_{m-1}+\sum_{m=2}^n (-1)^m {n \choose m} (1-2^{-m})\zeta(m)+1-{n \over 2}(\gamma +\ln \pi + 2\ln 2), \eqno(10)$$}}}
+\end{citedfact}
+
+\begin{citedfact}[RH is a $\Pi^0_1$ sentence]
+\label{cit:rh-pi01}
+\claimstatus{cit:rh-pi01}{cited}
+RH holds iff $\sum_{d\mid n}d\le H_n+e^{H_n}\log H_n$ for every $n\ge1$, with equality only for $n = 1$ (Lagarias),
+and iff an explicit elementary inequality in harmonic sums and a function $\delta(n)$ holds for every $n$
+(Davis--Matiyasevich--Robinson, as quoted by Yedidia--Aaronson); there is an explicit Turing machine that halts
+iff RH is false.
+
+\par\noindent Quoted (\texttt{prov:lag02-thm}):
+{\small\texttt{\detokenize{Problem $E$ is equivalent to the Riemann hypothesis.}}}
+\end{citedfact}
+
+\begin{proposition}[Burg's extension is the maximum-determinant completion of the next lag]
+\label{prop:burg-is-maxdet}
+\claimstatus{prop:burg-is-maxdet}{proved}
+For Toeplitz data $\nuseq{0},\dots,\nuseq{K}$ with $\Wform_K$ positive definite, the maximum-determinant
+positive completion of the next lag is the centre $c_K$ of the disc of \cref{prop:extension-disc}, and
+coincides with Burg's zero-reflection-coefficient extension; iterated, the multi-step maximum-determinant
+completion is Burg's extension at every lag (banded inverse).
+\end{proposition}
+
+\subsection{The kinematic commutant and the two coordinate systems}
+
+\begin{proposition}[Dimension of the kinematic space; positivity removes nothing]
+\label{prop:window-kinematic-dimension}
+\claimstatus{prop:window-kinematic-dimension}{proved}
+In the basis $V_n$, $|n|\le N$: Hermitian forms commuting with the reflection $V_j\mapsto V_{-j}$ form a space
+of dimension $(N+1)^2+N^2$; real ones $(N+1)(2N+1)$; Loewner forms with the fixed vector $\eta = \sum V_n$ have
+dimension $4N+1$ and are automatically real; Loewner and reflection-commuting: $2N+1$, exactly the data
+$(a_0,\dots,a_N,b_1,\dots,b_N)$. The identity is interior to the positive cone of the last space, so
+positivity removes no dimension before arithmetic data enter.
+\end{proposition}
+
+\begin{numerical}[MaxEnt is empty in Loewner coordinates; positivity pins the weights in lattice coordinates]
+\label{num:rtp-commutant}
+\claimstatus{num:rtp-commutant}{numerical}
+$x = 13$, $N = 20$ (\texttt{scripts/rtp1\_commutant.py}, 37 checks; reproduced by a different method in the
+review). With pole and archimedean data fixed and the prime data $(u,v)$ free: the positive set is
+full-dimensional and unbounded (recession cone the whole positive cone), so no maximum-determinant element
+exists; zero prime data are inadmissible (minimal eigenvalue $-1.96$); the minimal-norm admissible element has
+norm $2.36$ against the truth's $8.21$ and captures $8.3\%$ of the true prime data ($2.8\%$ at $N = 60$); the
+prime-number-theorem mean captures $22\%$ and is inadmissible. The truth sits on the boundary
+($1.6\cdot10^{-39}$), isolated on its ray (admissible multiples in $[1-5.7\cdot10^{-36},\,1+2.0\cdot10^{-38}]$).
+With the positions $\log n$, $n = 2,\dots,12$, fixed and only the eleven weights free, positivity confines each
+weight to an interval about the true von Mangoldt weight (zero at $6, 10, 12$) whose width, from an exact
+LP relaxation with 100-digit dual certificates (review, \texttt{scratch\_rtp1\_commutant.py}), is
+$3.0\cdot10^{-25}$ ($n = 2$) rising to $1.3\cdot10^{-4}$ ($n = 12$), the exact axis sections being $3.0\cdot10^{-36}$
+to $2.4\cdot10^{-9}$; the lane's double-precision LP gave $10^{-7}$-scale widths, its tolerance. The mechanism is the near-singularity of the true form (16
+eigenvalues below $10^{-6}$ against 11 unknowns). Not ball-certified.
+\end{numerical}
+
+\begin{numerical}[The graph control: finite spectrum, collapse at a finite window]
+\label{num:rtp-calibration}
+\claimstatus{num:rtp-calibration}{numerical}
+A random cubic graph on 40 vertices (seed 20260924), certified Ramanujan by exact arithmetic, $R = 78$ atoms
+(\texttt{scripts/rtp1\_calibration.py}, 33 checks; certified enclosures at 600 bits). Along the window $K$ (also
+the data cutoff) the minimal eigenvalue falls exponentially in $K$ with a rate rising from $0.13$ to $0.79$
+digits per unit $K$ and reaches exactly zero at $K = R$; the next trace is interior to its disc for $K<77$ and
+on the boundary at $K = 77$; at fixed window every partial form is indefinite until the last cycle length
+enters, and the minimal eigenvalue is a cancellation residual there too. The graph prime number theorem is the
+maximum-determinant element at every $K$ (Hadamard), at relative distance $4.7\cdot10^{-10}$ from the truth at
+$K = 77$. Comparison step: the kernel-root error tracks the minimal eigenvalue as its $0.88$ power.
+\end{numerical}
+
+\begin{observation}[The round's reading]
+\label{obs:rtp-round-1-reading}
+\claimstatus{obs:rtp-round-1-reading}{sketched}
+(i) On the admissible lattice-bump class the prime-content channel has no contracting signal at matched
+information: its inter-place effects are $O(\delta)$ in eigenvalues and $O(\delta^2)$ in eigenvectors, and
+admissibility forces $\delta$ down like the inverse of the largest lattice ratio; $O(1)$ inter-place structure
+needs non-admissible bumps. (ii) The off-axis weight of the two-prime eigenvector is product-state weight; the
+genuine correlation is the $O(\delta^2)$ Schmidt defect. In the entry split the pole part is the larger;
+the pole kernel $2\cosh(D/2)$ is a rank-two sum of two kernels that each factorise over places and does not
+factorise itself (on its own it gives a Schmidt defect of $6.3\cdot10^{-4}$ at $\{2,3\}$, $A = 1$; review erratum),
+so both the pole and the archimedean kernel, sampled at logarithms of $S$-smooth rationals, correlate the places. (iii) The Schur envelope of the next datum
+(shard 08g's kinematic envelope) does not decay at $e^{-4\pi x}$: it is $O(1)$ at saturated $N$ and shrinks at
+about $0.7$ digits per unit of $x$ at fixed $N$. The minimal eigenvalue and the first-zero error fall together at
+about $5.38$ digits per unit of $x$ between $x = 13$ and $50$, close to the prolate asymptotic of CCM ($5.39$) and
+below the bare $4\pi/\log10 = 5.46$. Whether the rate is set by the prolate concentration (kinematic after
+Poisson summation) or by the primes is not decided by this round; the finite graph control cannot decide it,
+and a Dirichlet $L(s,\chi)$ through the same pipeline (no pole, other primes) is the discriminating experiment.
+(iv) The maximum-entropy ansatz of the tomography note is empty in the Loewner coordinates
+(\cref{lem:bordering-interval}(iii), \cref{num:rtp-commutant}); in the lattice coordinates, at $x = 13$,
+$N\ge20$, with pole and archimedean data exact and the positions given, positivity alone confines the weights
+to the boxes of \cref{num:rtp-commutant}, by the near-singularity of the true form. The tomography problem is
+therefore posed in the lattice coordinates, with the window as the resolution and $\delta$ as the price of
+prime purity.
+\end{observation}
+
+\paragraph{Not established, and what is next.} No statement here bears on RH. Whether the lattice box widths track
+the minimal eigenvalue as $x$ grows is the direct test of ``positivity pins the primes'' (exact LP needed); the
+Kronecker lemma also organises the non-admissible regime. Sources are byte-cited in \texttt{db/provenance.tsv}.

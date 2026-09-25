@@ -1,0 +1,48 @@
+6
+It. SINGLE CHANNEL MAXIMUM ENTROPY SPECTRAL ANALYSIS FROM
+AUTOCORRELATION MEASUREMENTS
+
+The most important application of maximum entropy spectral
+analysis (MESA) has been in estimating a power spectrum from partial
+knowledge of its autocorrelation function, R(n) . In this situation,
+the measurement equations are
+
+W
+R(n) = j p(é) ef@mimAt ae | ( N<n<n).
+-W
+Here, At is the sampling period and W=1/(2At) is the Nyquist
+foldover frequency. We note that R(n) = R¥(-n) , so that n could
+be restricted to range from 0 to N. However, it is mathematically
+more convenient to assume the +N range for n.
+
+As indicated in section I, maximum entropy spectral analysis is not
+limited to autocorrelation information for the estimation of power
+spectra. However, the past development of MESA theory has been based
+on autocorrelation measurements for two main reasons. First,
+spectral estimation from the autocorrelation function has been the
+classical approach since Wiener “discovered (or defined) the fourier
+transform relation between the power spectrum and the autocorrelation
+function. Direct implementation of Wiener's work calls for estimation
+of the autocorrelation function first, followed by fourier transformation
+to get the power spectrum. These autocorrelation values can be
+easily estimated from digital time series data by calculating average
+
+' lag products. Thus, from both an historical and practical point of
+view, it was natural for second order statistics of a stationary time
+7
+series to be presented in terms of the autocorrelation function for
+maximum entropy spectral analysis.
+
+Second, it is computationally very easy to solve the maximum
+entropy variational problem in terms of the autocorrelation measurements.
+Much of the practical success of MESA is due to the highly fortunate
+fact that, starting with autocorrelation lag values, the computation
+of maximum entropy spectra is not appreciably more complex than the
+computation of conventional spectral estimates. In fact, the depth
+and breadth of this subject are the result of the analytical elegance
+given to the maximum entropy theory by the autocorrelation measurements.
+When general measurement constraint equations are considered, the
+variational approach is far more difficult and not so well understood.
+
+t
+

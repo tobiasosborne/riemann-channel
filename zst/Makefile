@@ -54,3 +54,7 @@ mutate:
 
 clean:
 	rm -rf build
+
+# RTP round 1, lane A1 driver (not part of the certified pipeline; reuses libzst unchanged)
+build/rtp1_a1: tools/rtp1_a1.c build/libzst.a
+	$(CC) $(CFLAGS) $< build/libzst.a $(LDLIBS) -o $@

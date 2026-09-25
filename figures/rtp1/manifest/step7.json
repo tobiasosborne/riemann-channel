@@ -1,0 +1,34 @@
+[
+ {
+  "caption": "prop:extension-disc (shard 08g) for the two explicit examples of scripts/weil_window_extension.py, computed with that script's own disc and levinson_centre functions. Given the Toeplitz window up to lag K, the admissible next trace t_(K+1) is a closed disc in the complex plane; its centre is the Levinson one-step predictor, i.e. Burg's maximum-entropy extension (the MaxEnt prediction of metric-as-state.md 7.3), and its radius r_K = det T_K / det T_(K-1) does not increase. (a, d) Discs for K = 1, 2, 3 in place, with the true next trace (diamond). (b, e) The same discs recentred on their MaxEnt centres: nested, with the truth inside each. (c, f) The radius. Both examples have four distinct atoms, so T_4 is singular: at K = 3 the truth sits on the boundary of the disc, and at K = 4 the disc has radius 0 and pins the next trace. Upper row: the permutation (1 2)(3 4 5) (t_k = number of fixed points of sigma^k). Lower row: the Petersen graph, rescaled retained traces. Exact data, floating point.",
+  "id": "s7_disc",
+  "kind": "exact examples (floating point)",
+  "panels": [
+   "discs in place",
+   "recentred (nested)",
+   "radius"
+  ],
+  "script": "viz/rtp1/step7_maxent.py",
+  "sources": [
+   "scripts/weil_window_extension.py (disc, levinson_centre, toeplitz)"
+  ],
+  "step": "Step 7",
+  "title": "The extension disc as the Schur algorithm proceeds"
+ },
+ {
+  "caption": "A cartoon of metric-as-state.md 7.2 and 7.4. A toy zero set with invented ordinates 6, 11, 15 (not zeros of zeta) defines W_toy(f * f~) = sum_rho f^(rho) conj f^(1 - rho-bar), f^(s) = int f(y) e^((s - 1/2) y) dy. On the span of two Gaussian wave packets f_1, f_2 (width 0.6, frequency 11, centred at y = -2 and +2, phase offset arccos 0.6) the form is the quadratic Q(s, t) = W((s f_1 + t f_2) * (s f_1 + t f_2)~). (a) All toy zeros on the line: each zero adds |f^(rho)|^2 >= 0 and Q is a bowl. (b) The pair at ordinate 11 moved to 1/2 +- 0.4: it contributes an indefinite 2 x 2 block, here with off-diagonal entry proportional to cosh(0.4 * 4) cos(phase offset) > 1, and Q becomes a saddle (black: Q = 0). (c) The test function along the negative eigenvector: the finite, checkable certificate of a violation. The pair is invisible to test functions whose transforms vanish at it; here the two packets are separated in log u, which is what makes the factors e^(+-beta y) differ. Exact closed forms (Gaussian transforms), floating point.",
+  "id": "s7_saddle",
+  "kind": "toy model (closed form)",
+  "panels": [
+   "bowl",
+   "saddle",
+   "exposing test function"
+  ],
+  "script": "viz/rtp1/step7_maxent.py",
+  "sources": [
+   "notes/metric-tomography/metric-as-state.md section 7"
+  ],
+  "step": "Step 7",
+  "title": "The off-line pair cartoon: bowl versus saddle"
+ }
+]

@@ -1,0 +1,10 @@
+# prop:extension-disc for the examples of scripts/weil_window_extension.py (its disc and levinson_centre)
+example,K,centre_c_K (MaxEnt),radius_r_K,true_next_trace,|t - c|/r
+permutation (1 2)(3 4 5),1,np.float64(-0.0),5,2,0.4
+permutation (1 2)(3 4 5),2,np.float64(-0.0),4.2,3,0.7142857143
+permutation (1 2)(3 4 5),3,-0.05714285714,2.057142857,2,1
+permutation (1 2)(3 4 5),4,-9.008666828e-16,9.008666828e-16,0,nan
+Petersen graph,1,0.25,17.75,-7.5,0.4366197183
+Petersen graph,2,2.196014722,14.36619718,-3.181980515,0.3743506489
+Petersen graph,3,5.602941176,12.35294118,-6.75,1
+Petersen graph,4,15.37957249,0.0,15.37957249,nan

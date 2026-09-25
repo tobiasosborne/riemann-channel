@@ -1,0 +1,287 @@
+
+====================================================================================================
+0. ENVIRONMENT AND PRECISION
+====================================================================================================
+  python-flint 0.9.0: exact integers (traces, characteristic polynomials), arb balls at 600 bits (nu_k, certified eigenvalue enclosures); mpmath 1.3.0 at 180 digits (Levinson recursion, overlaps, kernel roots)
+
+====================================================================================================
+1. REPRODUCTION OF SHARD 08G (num:weil-window-extension): the extension disc on its two examples
+====================================================================================================
+  ok   [L 165]  permutation: Tr P^k = #Fix = [5, 0, 2, 3, 2, 0, 5, 0, 2, 3, 2, 0]
+  ok   [L 168]  permutation: disc radii e_K = det T_K/det T_(K-1) at K = 1, 2, 3: 5.0, 4.2, 2.05714 (shard: 5, 4.2, 2.0571)
+  ok   [L 171]  permutation: at K = 3 the truth nu_4 = 2 is on the boundary (tau_3 = 1.0)
+  ok   [L 207]  Petersen: Tr B^k from the Hashimoto matrix = [30, 0, 0, 0, 0, 120, 120, 0] (shard's values)
+  ok   [L 222]  Petersen: disc radii in count units q^((K+1)/2) e_K at K = 1, 2, 3: 35.5, 40.63, 49.41 (shard: 35.5, 40.6, 49.4)
+
+====================================================================================================
+2. THE THREE CALIBRATION CASES AND THEIR DATA
+====================================================================================================
+  ok   [L 272]  G40: random cubic graph on 40 vertices (configuration model, seed 20260924, accepted draw 1) is Ramanujan: all 39 nontrivial adjacency eigenvalues certified in (-2 sqrt 2, 2 sqrt 2) (exact charpoly + arb isolation)
+  ok   [L 274]  G40: nontrivial spectrum simple (39 distinct eigenvalues): R = 78 distinct retained atoms on the circle, so T_K is definite for K < 78 and singular from K = 78 (prop:extension-disc(iv))
+  ok   [L 280]  G40: N_0 = Tr I = 2E = 120
+  ok   [L 306]  G40: l pi(l) = sum_{d|l} mu(l/d) N_d is a nonnegative multiple of l for every l (prime cycle counts are integers)
+  G40: V = 40, E = 60, q = 2, girth 4; prime cycle counts pi(l), l = 1..16: [0, 0, 0, 6, 6, 6, 16, 32, 68, 112, 182, 340, 642, 1186, 2150, 4106]
+       pi(l) q^-l for l = 10, 20, 40, 78: 0.1094, 0.0503, 0.0250, 0.0128 (prime cycle theorem: pi(l) ~ q^l / l)
+  ok   [L 314]  Petersen: no prime cycle of length <= 4 (girth 5); pi(5) = 24, pi(6) = 20 (12 pentagons and 10 hexagons, each in two orientations: prime cycles of the Ihara zeta are oriented)
+  --           Petersen's critical window is K = 4 (four distinct retained atoms) and its girth is 5: every entry of T_K,
+  --           K <= 4, is kinematic (dimension, pole, trivial terms). Its window form contains NO prime datum at all.
+  ok   [L 331]  G40: nu_0 = 2V - 2 = 78 retained atoms (kinematic)
+
+====================================================================================================
+3. AXIS K (window = data cutoff; the analogue of lane A1's CCM axis-x protocol)
+====================================================================================================
+
+  permutation (1 2)(3 4 5), 4 distinct atoms: K = 0..3 (Kfin = last definite window)
+    K  lambda_min(T_K)  log det T_K  e_K (radius)         c_K    nu_(K+1)    tau_K  Delta I_K  Delta I^s  1-overlap
+    0        5.000e+00        1.609     5.000e+00      0.0000      0.0000   0.0000      0.000      0.000   3.68e-01
+    1        5.000e+00        3.219     5.000e+00      0.0000      2.0000   0.4000      0.174      0.174   3.68e-01
+    2        3.000e+00        4.654     4.200e+00      0.0000      3.0000   0.7143      0.888      0.714   3.29e-01
+    3        1.000e+00        5.375     2.057e+00     -0.0571      2.0000   1.0000        inf        inf          0
+  ok   [L 413]  permutation: T_K definite for K <= 3, lambda_min(T_4) = 0 (7.635e-181, mpmath fallback: repeated eigenvalues; 4 atoms)
+
+  Petersen (q = 2), 4 distinct atoms, girth 5: all data kinematic: K = 0..3 (Kfin = last definite window)
+    K  lambda_min(T_K)  log det T_K  e_K (radius)         c_K    nu_(K+1)    tau_K  Delta I_K  Delta I^s  1-overlap
+    0        1.800e+01        2.890     1.800e+01      0.0000     -2.1213  -0.1179      0.014      0.014   4.86e-01
+    1        1.588e+01        5.767     1.775e+01      0.2500     -7.5000  -0.4366      0.225      0.212   2.93e-01
+    2        9.448e+00        8.432     1.437e+01      2.1960     -3.1820  -0.3744      0.376      0.151   1.72e-01
+    3        5.712e+00       10.946     1.235e+01      5.6029     -6.7500  -1.0000        inf        inf  1.20e-181
+  ok   [L 419]  Petersen: definite for K <= 3, singular at K = 4, truth on the boundary at K = 3 (|tau_3| = 1): the posterior collapses to a point using kinematic data only
+
+  G40 (q = 2, V = 40), R = 78 distinct atoms: K = 0..77 (Kfin = last definite window)
+    K  lambda_min(T_K)  log det T_K  e_K (radius)         c_K    nu_(K+1)    tau_K  Delta I_K  Delta I^s  1-overlap
+    0        7.800e+01        4.357     7.800e+01      0.0000     -2.1213  -0.0272      0.001      0.001   7.54e-01
+    6        2.688e+01       29.827     6.337e+01      5.4814     -1.5026  -0.1102      0.220      0.012   3.84e-01
+   12        6.849e+00       54.209     5.452e+01      8.1693      1.6904  -0.1188      0.372      0.014   1.89e-01
+   18        1.335e+00       77.650     4.433e+01     12.4257      4.1943  -0.1857      0.600      0.035   9.33e-02
+   24        1.626e-01       99.579     3.382e+01     -0.7141     -2.4347  -0.0509      0.838      0.003   4.98e-02
+   30        1.685e-02      119.652     2.075e+01      4.1849      4.8913   0.0340      1.325      0.001   2.71e-02
+   36        9.769e-04      135.991     1.105e+01      5.5593      4.0895  -0.1330      1.972      0.018   1.58e-02
+   42        3.454e-05      148.700     5.860e+00      7.8655      8.1365   0.0462      2.591      0.002   9.79e-03
+   48        6.630e-07      155.858     1.736e+00     -9.1105     -9.2391  -0.0741      3.811      0.006   5.90e-03
+   54        1.811e-08      156.465     7.777e-01      2.9161      2.9102  -0.0076      4.608      0.000   3.65e-03
+   60        3.041e-10      151.233     2.279e-01      1.5194      1.5203   0.0040      5.835      0.000   1.89e-03
+   66        6.906e-13      134.149     9.603e-03     19.1688     19.1677  -0.1103      9.015      0.012   1.08e-03
+   72        6.554e-17       93.223     5.851e-05    -16.0107    -16.0107  -0.0833     14.110      0.007   8.13e-04
+   73        3.140e-17       83.470     5.811e-05      7.8688      7.8688  -0.9315     16.132      2.022   3.83e-05
+   74        2.008e-18       71.694     7.692e-06     13.9950     13.9950   0.0206     16.132      0.000   7.74e-04
+   75        1.059e-18       59.919     7.689e-06    -11.2770    -11.2770  -0.9882     19.881      3.748   1.03e-05
+   76        1.324e-20       44.395     1.811e-07    -11.6941    -11.6941   0.0491     19.883      0.002   7.54e-04
+   77        6.998e-21       28.868     1.807e-07      9.3775      9.3775  -1.0000        inf        inf          0
+  ok   [L 427]  G40: T_K certified positive definite for every K <= 77
+  ok   [L 428]  G40: lambda_min(T_78) = 0 (certified ball -2.042e-179 +- 3.730e-175 contains 0): exact collapse at K = R
+  ok   [L 430]  G40: at K = R - 1 = 77 the true nu_(K+1) is on the boundary of its disc (|tau| = 1 to 1e-60), prop:extension-disc(iv)
+  ok   [L 433]  G40: lambda_min(T_K) is non-increasing in K (interlacing)
+
+  G40 learning rate of lambda_min along K (decimal digits per unit of K): K = 6..30: -0.133, K = 30..54: -0.249, K = 54..72: -0.469, K = 72..77: -0.794
+  G40 |tau_K|: mean over K < 39: 0.189; mean over 39 <= K < 77: 0.372; K = 77: 1.000000
+  G40 Delta I_K (nats): K = 0..9: 0.00, 0.09, 0.09, 0.14, 0.14, 0.21, 0.22, 0.27, 0.28, 0.31; K = 72..76: 14.11, 16.13, 16.13, 19.88, 19.88
+  G40 Delta I^s_K (nats): K = 0..9: 0.001, 0.087, 0.004, 0.046, 0.004, 0.065, 0.012, 0.052, 0.006, 0.030; K = 72..76: 0.007, 2.022, 0.000, 3.748, 0.002
+  ok   [L 450]  G40: the truth is interior to its disc for every K < 77 (max |tau| = 0.9882) and on the boundary at K = 77
+  G40 1 - overlap(v_K, v_final) at K = 12, 24, 36, 48, 60, 66, 72, 76: 1.89e-01, 4.98e-02, 1.58e-02, 5.90e-03, 1.89e-03, 1.08e-03, 8.13e-04, 7.54e-04
+
+====================================================================================================
+4. DATA AXIS (fixed window, prime cycles of length <= P added; the analogue of lane A1's fixed-L protocol)
+====================================================================================================
+
+  permutation (1 2)(3 4 5), window K = 3: data = its cycles (lengths 2, 3); the kinematic form is 5 I
+  P = 0: nu = [5, 0, 0, 0], lambda_min = 5.0000, #neg = 0, overlap = 0.6325  (lambda_min degenerate: the overlap depends on the eigenvector chosen)
+  P = 1: nu = [5, 0, 0, 0], lambda_min = 5.0000, #neg = 0, overlap = 0.6325  (lambda_min degenerate: the overlap depends on the eigenvector chosen)
+  P = 2: nu = [5, 0, 2, 0], lambda_min = 3.0000, #neg = 0, overlap = 0.6708
+  P = 3: nu = [5, 0, 2, 3], lambda_min = 1.0000, #neg = 0, overlap = 1.0000
+  ok   [L 503]  permutation: every partial form is positive definite (no pole: each partial datum is the moment sequence of a positive measure, the included cycles' atoms plus a flat density)
+
+  G40, window K = 77: window K = 77, P = max prime-cycle length included (P = 0: kinematic data only)
+    P  #cycles <= P   lambda_min  #neg   log|det|  overlap w. final
+    0             0   -7.775e+11     1     372.68         5.977e-04
+    3             0   -7.775e+11     1     372.68         5.977e-04
+    4             6   -7.775e+11     1     380.99         5.977e-04
+    5            12   -7.775e+11     1     379.86         5.977e-04
+    6            18   -7.775e+11     1     381.53         5.977e-04
+    8            66   -7.775e+11     1     373.86         5.977e-04
+   10           246   -7.775e+11     7     378.82         5.977e-04
+   15          4746   -7.775e+11    32     441.36         5.977e-04
+   20        111442   -7.775e+11    37     573.41         5.977e-04
+   30      74252738   -7.775e+11    31     755.54         5.976e-04
+   40   56466123928   -7.775e+11    37    1068.75         5.942e-04
+   50 45996068534950   -7.775e+11    27    1050.52         5.387e-04
+   60 39105821052409626   -7.774e+11    17     869.26         2.692e-04
+   70 34235111288763458376   -7.585e+11     7     489.48         1.580e-05
+   74 517722593401042517456   -6.248e+11     3     258.93         1.202e-06
+   75 1021441684943406677906   -5.310e+11     2     188.83         4.529e-07
+   76 2015624102345244267266   -3.887e+11     1     113.29         1.913e-07
+   77 3978166017245019762858    6.998e-21     0      28.87         1.000e+00
+
+  G40, window K = 38: window K = 38, P = max prime-cycle length included (P = 0: kinematic data only)
+    P  #cycles <= P   lambda_min  #neg   log|det|  overlap w. final
+    0             0   -1.049e+06     1     184.56         8.172e-02
+    3             0   -1.049e+06     1     184.56         8.172e-02
+    4             6   -1.049e+06     1     187.19         8.172e-02
+    6            18   -1.049e+06     1     187.25         8.171e-02
+   10           246   -1.049e+06     4     183.41         8.166e-02
+   20        111442   -1.048e+06    18     275.02         7.895e-02
+   30      74252738   -1.034e+06     8     264.34         4.547e-02
+   34    1043343736   -9.232e+05     4     216.69         1.960e-02
+   35    2024999650   -8.425e+05     3     200.35         1.422e-02
+   36    3933882094   -7.161e+05     2     182.24         9.052e-03
+   37    7648489380   -5.242e+05     1     162.33         5.730e-03
+   38   14882124070    3.255e-04     0     140.59         1.000e+00
+  ok   [L 512]  G40, K = 77: every partial form with P < K is indefinite (certified negative counts); positive only when the last cycle length P = K enters
+  ok   [L 515]  G40, K = 38: same: indefinite until the last cycle length
+  ok   [L 518]  G40, K = 77: with every cycle length except the last, lambda_min = -3.887e+11 (O(q^(K/2)) scale), overlap with the final eigenvector 1.913e-07
+
+  G40, K = 77: #neg against P = 0..77: [1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 7, 12, 15, 22, 27, 32, 33, 35, 37, 39, 37, 35, 33, 31, 30, 28, 28, 29, 30, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
+====================================================================================================
+5. RAYLEIGH DECOMPOSITION OF lambda_min AT THE FINAL WINDOW (the analogue of lane A1's decomposition)
+====================================================================================================
+
+  G40, K = 77: lambda_min = 6.9978e-21; sum of the parts = 6.9978e-21
+    dimension N_0 = 2E                   1.2000e+02
+    pole (q^k)                          -2.7774e+05
+    trivial (1 + (E-V)(1+(-1)^k))       -1.2051e+02
+    kinematic total                     -2.7774e+05
+    cycles of length 4                   1.4501e+01
+    cycles of length 5                   1.1415e+01
+    cycles of length 6                   8.8627e+00
+    cycles of length 7                   1.8099e+01
+    cycles of length 8                   2.7343e+01
+    cycles of length 9                   4.3301e+01
+    cycles of length 10                  5.2451e+01
+    cycles of length 11                  6.1883e+01
+    ... (74 cycle lengths in all); smallest |contribution| 1.42e-02, largest 1.23e+04 (cycles of length 45)
+  ok   [L 561]  K = 77: the parts sum to lambda_min (to 1e-60 relative)
+  ok   [L 562]  K = 77: lambda_min is a cancellation residual: kinematic total -2.78e+05 against cycle terms, each of which exceeds lambda_min by at least a factor 2.0e+18
+
+  G40, K = 38: lambda_min = 3.2552e-04; sum of the parts = 3.2552e-04
+    dimension N_0 = 2E                   1.2000e+02
+    pole (q^k)                          -6.9957e+03
+    trivial (1 + (E-V)(1+(-1)^k))       -1.1805e+02
+    kinematic total                     -6.9938e+03
+    cycles of length 4                   1.3812e+01
+    cycles of length 5                   1.0738e+01
+    cycles of length 6                   8.2152e+00
+    cycles of length 7                   1.6464e+01
+    cycles of length 8                   2.4334e+01
+    cycles of length 9                   3.7521e+01
+    cycles of length 10                  4.4091e+01
+    cycles of length 11                  5.0198e+01
+    ... (35 cycle lengths in all); smallest |contribution| 8.22e+00, largest 4.50e+02 (cycles of length 27)
+  ok   [L 561]  K = 38: the parts sum to lambda_min (to 1e-60 relative)
+  ok   [L 562]  K = 38: lambda_min is a cancellation residual: kinematic total -6.99e+03 against cycle terms, each of which exceeds lambda_min by at least a factor 2.5e+04
+
+====================================================================================================
+6. COMPARISON STEP (the graph's spectrum used here only): Pisarenko roots against the true atoms, G40
+====================================================================================================
+  true atoms: 78 angles +-theta_j, theta_j in (0, pi); lowest theta_1 = 0.373154754027, highest 2.97207155796; minimal gap between distinct angles 1.258e-02
+    K  lambda_min(T_K)  |theta(root) - theta_1|  | |root| - 1 |  err / lambda_min
+   12        6.849e+00                2.118e-01               0          3.09e-02
+   18        1.335e+00                7.794e-02               0          5.84e-02
+   24        1.626e-01                2.559e-02               0          1.57e-01
+   30        1.685e-02                7.943e-03               0          4.71e-01
+   36        9.769e-04                1.273e-03               0          1.30e+00
+   42        3.454e-05                1.115e-04        2.1e-177          3.23e+00
+   48        6.630e-07                4.698e-06        2.5e-177          7.09e+00
+   54        1.811e-08                2.782e-07        2.5e-175          1.54e+01
+   60        3.041e-10                9.885e-09        1.5e-175          3.25e+01
+   66        6.906e-13                4.185e-11        1.9e-175          6.06e+01
+   72        6.554e-17                6.135e-15        1.7e-175          9.36e+01
+   76        1.324e-20                1.656e-18        1.5e-174          1.25e+02
+   77        6.998e-21                9.052e-19        6.6e-175          1.29e+02
+  ok   [L 603]  every kernel root used lies on the unit circle to 1e-100 (Caratheodory-Fejer)
+  ok   [L 607]  K = R = 78: the kernel polynomial of the singular T_R has the true atoms as roots (max |theta error| over the 39 upper-half atoms: 2.403e-162)
+  err/lambda_min for K >= 36 ranges over 1.30e+00 .. 1.29e+02
+
+====================================================================================================
+6b. B2.1 ON THE CALIBRATION CASE: the positive set of prime data with the kinematic data fixed (G40)
+====================================================================================================
+  Kinematic space: real symmetric Toeplitz forms T_K(nu_0..nu_K) (dimension K+1; displacement rank 2, the Toeplitz
+  analogue of the Loewner commutator); the identity is interior, so the positive cone spans it.  Fix the kinematic
+  data (nu_0 = 2V - 2 and the pole and trivial parts of nu_k); the prime data are x_k = q^{-k/2} N_k, k = 1..K:
+    P^graph_K = {x : T_K(nu_0, nu^kin + x) >= 0} = M_K - nu^kin,  M_K = the moment space of positive measures of
+  mass nu_0 on the circle (Caratheodory-Toeplitz).  It has dimension K (x = -nu^kin gives nu_0 I > 0) and is
+  BOUNDED: every 2x2 principal minor gives |nu_k| <= nu_0.  Its maximum-determinant element is nu = (nu_0, 0, .., 0)
+  (Hadamard), i.e. x_k = -nu^kin_k, N_k = trivial_k = q^k + 1 + (E-V)(1+(-1)^k): the graph prime number theorem.
+  Norm: Hilbert-Schmidt norm of the Toeplitz prime part, ||x||^2 = sum_k 2 (K+1-k) x_k^2.
+
+  K = 77: ||x_true||_HS = 1.100e+12; max-det (PNT) prediction: lambda_min = 78.0 (= nu_0), relative distance 4.718e-10, captured fraction 1.00000000001;
+          relative diameter of the whole positive set <= 1.100e-08; in count units |N_k - N_k^PNT| / N_k <= 2.877e-06 for k >= 38
+
+  K = 38: ||x_true||_HS = 1.483e+06; max-det (PNT) prediction: lambda_min = 78.0 (= nu_0), relative distance 1.724e-04, captured fraction 0.999998349513;
+          relative diameter of the whole positive set <= 4.050e-03; in count units |N_k - N_k^PNT| / N_k <= 6.402e-03 for k >= 19
+  ok   [L 643]  G40: the maximum-determinant element exists and is the prime number theorem; it predicts the prime data of the window to relative error 4.7e-10 (K = 77) and 1.7e-04 (K = 38)
+  ok   [L 646]  G40: the whole positive set of prime data has relative diameter <= 1.1e-08 (K = 77) and 4.0e-03 (K = 38)
+
+  like-for-like scale: the relative error rho(K) of the PNT (max-det) prediction against the window, with the
+  equivalent zeta window x_eq = q^K (a prime cycle of length l has norm q^l; zeta's window x = e^L):
+    K  x_eq = q^K    rho(K)  captured
+    4    1.60e+01    6.7187    2.3750
+    5    3.20e+01    4.7027    2.0169
+    6    6.40e+01    3.9495    2.0457
+    7    1.28e+02    3.1079    1.8148
+    8    2.56e+02    2.2186    1.4951
+    9    5.12e+02    1.5360    1.2071
+   10    1.02e+03    1.1039    1.0742
+   11    2.05e+03    0.8330    1.0328
+   12    4.10e+03    0.6277    1.0142
+   16    6.55e+04    0.1914    0.9967
+   20    1.05e+06    0.0552    0.9976
+   30    1.07e+09    0.0023    1.0000
+   38    2.75e+11  1.72e-04    1.0000
+   50    1.13e+15  3.41e-06    1.0000
+   60    1.15e+18  1.29e-07    1.0000
+   77    1.51e+23  4.72e-10    1.0000
+  ok   [L 663]  G40: at windows comparable to zeta's x = 16..256 (K = 4..8) the PNT prediction is worse than none (rho = 6.719 at K = 4, 2.219 at K = 8); rho falls like q^(-K/2) for large K (square-root cancellation, the graph's RH)
+  --           reading.  (i) Structure: the graph's positive set is bounded and has a maximum-determinant element (the PNT),
+  --           because the diagonal nu_0 (lag 0) carries no prime datum; zeta's, in the Loewner coordinates, is unbounded with no
+  --           maximum-determinant element, because every Loewner datum, including the diagonal a_n, carries prime content
+  --           (rtp1_commutant.py section 3).  (ii) Scale: the graph's tight RELATIVE posterior at K = 77 is the square-root law
+  --           at x_eq = 2^77 ~ 1.5e23.  At comparable windows (x_eq = 16..256) the graph's PNT prediction is no better than
+  --           zeta's (rho = 6.7 .. 2.2 here, against 0.96 .. 0.80 for zeta at x = 13..100, N = 40, rtp1_commutant.py section 5b).
+  --           (iii) Absolute size: the graph's positive set is the moment space, of diameter O(nu_0) = O(78) in rescaled units,
+  --           never small; zeta's lattice-restricted weights are pinned in absolute terms (rtp1_commutant.py section 6).
+
+====================================================================================================
+7. THE CONTROL SIGNATURE, AND HOW IT DIFFERS FROM ZETA (lane A1)
+====================================================================================================
+  Calibration (finite transfer operators, RH a theorem):
+  (1) Window K and data are one axis.  lambda_min(T_K) falls smoothly, at -0.13 .. -0.79 decimal digits
+      per unit of K for G40 (steepening towards the end), and reaches EXACTLY 0 at the finite critical window K = R
+      (number of distinct atoms, a Weyl count fixed by V): the posterior collapses to a point.
+  (2) The next trace is interior to its disc (|tau_K| < 1) at every K < R - 1 and on the boundary at K = R - 1;
+      the disc radius e_K shrinks from nu_0 = 78 to 1.81e-07 and then to 0.
+  (3) At fixed window, every partial form is indefinite until the last cycle length enters, and at a scale
+      O(q^(K/2)): the pole term q^k is cancelled only by the full prime-cycle count (the graph prime number theorem).
+      A permutation (no pole) has positive partial forms at every stage.  Petersen (girth 5 > critical window) has no
+      prime datum in its window at all: kinematics alone give the exact, singular form at K = 4.
+  (4) lambda_min is a cancellation residual at the final window (section 5), as for zeta.
+  ok   [L 690]  G40: lambda_min decreases on every stretch of K (negative slopes)
+  ok   [L 692]  G40: in the zeta-comparable variable x_eq = q^K the learning curve is a POWER law, lambda_min ~ x_eq^(-p) with p = 0.44 (K = 6..30), 0.83 (K = 30..54), 1.56 (K = 54..72), 2.64 (K = 72..77); zeta's (lane A1) is exponential in x, eps ~ e^(-4 pi x)
+
+  Contrast with zeta (lane A1), item by item:
+  - zeta's window form never collapses (infinitely many zeros): eps_N(x) > 0 at every x, falling like e^(-4 pi x), i.e.
+    exponentially in x and doubly exponentially in the window length L = log x.  The graph's lambda_min falls like a
+    power of x_eq = q^K (above) and then hits 0 exactly at the finite critical window K = R = 2V - 2.
+  - zeta has a resolution axis N with a saturation at N_sat ~ 1.7 x log x; the graph's window form is exact and
+    finite-dimensional, so there is no resolution axis.  The graph analogue of the Weyl-count scale N_sat is the
+    collapse point K = R (a count of atoms fixed by V alone).
+  - disc/interval of the next datum: zeta's stays O(1) above N_sat (half-width 0.5..3.7) with the truth interior, and
+    the truth sits on the boundary below N_sat; the graph's disc shrinks from nu_0 = 78 to 1.81e-07
+    with the truth interior (max |tau| = 0.988) until K = R - 1, where it is on the boundary.
+  - fixed window, data added: both are indefinite until the last datum.  With only the last datum missing, zeta's
+    lambda_min is -5.66e-7 (x = 50, k = 49 missing; the prime power at the window edge enters with weight 1 - log k / L
+    -> 0, because the continuous autocorrelation of a window function vanishes at the edge); the graph's is
+    -3.89e+11 (the lag-K corner of a Toeplitz form carries full weight, and the missing count is ~ q^K).
+  - the kinematic (pole + trivial) form: zeta's is indefinite by O(1) (1 to 3 negative even eigenvalues, lambda_min
+    -0.07 .. -1.37); the graph's has ONE negative eigenvalue of size ~ q^(K/2) (-7.77e+11 at K = 77),
+    the pole direction; the permutation (no pole) has a positive kinematic form (5 I).
+  - lambda_min at the final window is a cancellation residual in both (zeta: pole +1.55 vs archimedean -1.48 vs primes;
+    graph: pole -2.8e5 vs cycle terms, each > 1e18 lambda_min at K = 77); the signs are opposite (zeta's primes enter
+    the Weil form with a minus sign, the graph's cycle counts with a plus sign).
+
+
+====================================================================================================
+TALLY
+====================================================================================================
+  no failing checks
+
+CHECKS: 33 passed, 0 failed

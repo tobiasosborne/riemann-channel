@@ -1,0 +1,679 @@
+_ 19
+II-B. EXTENDING THE AUTOCORRELATION FUNCTION |
+a The general problem of starting with an incomplete set of auto-
+correlation function lag values and determining some particular power
+spectrum that is consistent with these values is equivalent to determining
+a particular completion of the infinite autocorrelation function. In
+this section, we shall look at the practical problem in which the known
+autocorrelation lag values are R(n) , |n| <N . Thus, specifying a
+consistent power spectrum is identical to specifying an infinite, allowable,
+extension of these first N+l lag values. By allowable, we mean that the
+fourier transform of the extended function is non-negative, i.e., a
+power spectrum.
+It should be clearly recognized that this section deals with the
+general problem of spectral estimation from autocorrelation information.
+In this context, we shall develop and prove the Fundamental Autocorrelation
+i Matrix Theorem which governs the general extension of autocorrelation
+functions. Later on, we shall see that the special extension which
+corresponds to generating a maximum entropy spectrum has some particularly
+appealing properties.
+In section II-A, the solution to equation (II-15) was derived
+and shown to be unique under the assumption that the N by N
+Toeplitz submatrix was positive definite. The following useful
+theorem generalizes this result.
+l. The Shortest Prediction Error Filter Theorem
+A solution to the Nth order prediction error filter equation
+~ 4 v
+‘ R(0) R(-1) R(-N) | 1 Py |
+R(1) R(0) R(1-N) | ‘| | 0 \
+p= \ / (II-22)
+R(N) ——-R(NE1) no) | ia! \o
+20
+always exists if the N+l by N41 hermitian Toeplitz matrix is
+non-negative definite. If the rank of the matrix is less than N ;
+
+~ then there is more than one solution to the equation. However, the
+solution corresponding to the shortest prediction error filter is
+unique.
+Proof: The cases inwhich the rank of the matrix is either zero or
+Ntl are trivial. Thus, suppose the rank is M where N>M>l1.
+Then the solution to the Mtl by M+tl equation is unique and of the
+form
+R(0) R(-1) R(-M) 1 } ; 0
+R(1) R(Q) R(1-M) by { 0
+= Z ’ (11-23)
+\ f
+{ \ j
+| |
+R(M) R(M-1) R(0) > | 0 |
+M ; ‘
+i /
+where bu is not zero. Using (II-23), we canwrite for the next higher order
+matrix, ; . .
+
+; fr | - \) f ge 7 cad *\
+
+R(O) R(-1) R(-M) R(-1-M)If{/1 | 0 | | 0} , A i
+fo Aa | if
+
+R(1) ~—-R(0) R(I-M) R(-M) {}\b bal | 0! 0 | |
+1 MI \ ‘ \
+‘ft > + , s_ \4 \ + < f i
+
+| \ ; q \ ft \ f 1 { ;
+
+| Rat) R(M-1) (0) R(-1) | ifp, | | pe || ilo ‘ | 0 1
+
+| 4 | | 1 | i + { \ i
+
+«4 ‘ } it :
+
+;RM@M-1) RM) R(1) R(O) HO? \1 ji (iA / (0 }
+
+L \ me oo
+where A is defined implicitly and q is an arbitrary complex number.
+If we now premultiply by the complex conjugate transpose of the left-side
+
+k *
+column vector, we end up with the real scalar qh +qA. If A is not
+zero, then q can be chosen to make this quantity negative which contra-
+dicts the non-negative definiteness condition. Thus, A must be zero.
+
+' Thus, choosing q to be zero, which is equivalent to augmenting the Mth
+order prediction error filter by a zero, we have the shortest solution to
+the Mtl th order equation. Continuing with this argument, we see
+that the Mth order filter is also a solution to the Nth order
+21
+equation. Also, it is clearly both the shortest such filter and is
+. unique.
+The next theorem concerns a Cholesky type factorization of the
+Toeplitz matrix. The usual Cholesky factorization requires that the
+matrix be positive definite. This condition is not necessary for the
+Toeplitz case.
+2. Factorization of the Toeplitz Matrix.
+Given an N+l by N+l non-negative definite hermitian Toeplitz
+matrix, one can uniquely solve the matrix equation
+- (1-24)
+R(O) R(-1) R(-2) R(-N) 1 0O 0 0 Pa * Rove. ‘|
+R(1) R(O) ~—-R(-11) = a, 1 0 0 O Py, eo *|
+R(2) R(1) R(O) R(2-N) ay by 1 0; =/0 O Pye2 *
+; RO) R(N-1) R(N-2) R(O) an by Cy 1 0 oO O |
+where the * terms are not required explicitly. This equation is
+in effect (II-22) N+l times. We make (II-24) unique when the
+Toeplitz matrix is singular by using the shortest prediction error
+filters. Premultiplying (11-24) by the complex conjugate transpose
+of the prediction error filter matrix we have
+(11-25)
+Lay at | R(O) R(-1) = =RCN)|{1 0 0} |P, 0 0
+0 1 bya} | RG) RC) R(1-N)} Ja, 1 of_]o me, of.
+° 0 1 R(n) R(N-1) R(0) ay by-1 1 ° 0 Py
+‘ The right-hand matrix is diagonal because it was obtained from
+(II-24) by multiplying two upper triangular matrices together and thus
+must be upper triangular. However, the left-hand side of (11-25) is also
+22
+hermitian and thus must be diagonal. Now, since the prediction error filter
+matrix is clearly non-singular, one can express the autocorrelation
+matrix in the Cholesky type factorization of
+
+(II-26)
+[ r * « 71 [~ ~1
+R(0) R(-1) R(-N) 1 a, ay | Py 0 0 1 0 9
+
+* ! t
+R(1) R(O) R(1-N) _ Ol by \° Pred 0 ay 1 0)
+|
+R(N)  R(N-1) R(0) [9 0 1 | 0 Oo Po ay by y '
+One important consequence of this theorem is that any non-negative
+definite Toeplitz matrix can be extended indefinitely to higher order
+non-negative definite Toeplitz matrices. That is, if the Nth order
+Toeplitz matrix is non-negative definite, then there exists an N+1 th
+order non-negative definite Toeplitz matrix with the Nth order matrix
+as a submatrix. To prove this, we note that there isalways a unique value for
+R(N+1) such that
+. . _ ~
+R(O) -R(-1) R(-N-1) 1 0 0 | Py *
+R(1) R(0) R(-N) ay 1 0 0 Py *
+~ - *
+R(N) R(N-1) R(-1) ay ayy 0 0 0
+R(N+1) R(N) R(0) 0 a 1 0 0 P
+a a ot N J 0!
+One can then express this N+l th order matrix in the form of (II-26).
+Since the P's are non-negative, the N+tl th order matrix will be
+non-negative definite. It is clear that this extension of the matrix
+can be continued indefinitely.
+t
+23
+
+The study of sampled autocorrelation functions relies almost
+
+_ completely on the following theorem.
+3. The Fundamental Autocorrelation Matrix Theorem
+
+Given a set of complex numbers, R(n) , In| <N » where R(n) = R*(-n),
+then these numbers are the beginning of an autocorrelation function if
+and only if the matrix
+
+/R(O) R(-1) R(-N)
+R(1) R(0) R(1-N)
+(II-27)
+R(N) R(N-1) R(O)
+is non-negative definite.
+
+To prove the necessary condition of this theorem, we begin with the
+definition of the autocorrelation function of the stationary time series,
+xX,» as
+
+*
+R(@@) = xo x (11-28)
+Knowing R(n) , we can write the average square value of
+N
+y= Y a_x » where the a's are arbitrary, as
+n s n-s
+s=0
+t
+24
+- a : kok :
+yy = ax a x =
+n-n e0 © BS yeg YF OT
+N N * >_ N N e
+= z z a,4. ke % r+ 7 » y a a_R(s-r) =
+s=0 r=0 ns 7 s=0 r=0 © *
+{a a. * 4 RCO R(-1) R 7
+ap ay e+ ag } | R(O) ( min
+R(1) R(O) RCI-N)} ) a, |. (11-29)
+|
+| R(N) R(N-1) R(O) \ a |
+‘ N/
+Le Ne
+zs
+Since Yn Jn > 0 and the a's are arbitrary, we see that the
+matrix (II-27) must be non-negative definite. Thus, we have proved
+that if the R(n) , |n|<N, are the beginning of an autocorrelation
+function, then the N+l by N+l Toeplitz matrix formed from these ;
+values is necessarily non-negative definite.
+
+To provethe sufficiency part of the theorem, we shall use a
+procedure similar to the one that Wiener used in the continuous case. .
+The proof uses the argument that the average square output of any
+narrow-band filter must be non-negative.
+
+The digital filter
+-1 N- N-1 NN
++ (1 to2 40727 4... +08 PN1l)l il yy gan ld l-aws
+YN YN n=0 JN 1-az ?
+i2nvf At
+
+where a= e *“"*9 » has the power response of
+' NN -N -N sin? [1N At (£-f£
+
+B(f,f,) <2 dev z lew” 0
+
+N’?0 N 1l-az -l -1 2 . (II-30)
+
+l-a z N sin [wAt (£-£,) ]
+25
+The integral of By (£,£5) from ~W to +W is unity. Furthermore,
+if f does not lie within Af of fo (taking aliasing into
+consideration),the maximum value of BY (ff) is less than
+1 / N(wAtA£)? . Thus, as N-~ , the entire unity area of By Cf, £5)
+begins to lie within an arbitrarily small Af of fy .
+ee
+Let us assume the converse of the fundamental theorem, namely,
+that for all functions Q(f) , such that
+1 7° i2nfnd
+Qf) = 57 2 RM) e ney
+W
+n=- ©
+where for |n| <N the R(n) arethe given R(n) , Q(f) will be negative
+at some frequency, fy - This means that Q(f) must be negative within
+some region Af about fy - Thus, for N large enough, say N=M ,
+we will have
+oo +W
+if Be (f,£,) Q(f) dé < oO. (II-31)
+-W
+But this integral is also equal to
+-1 2 -M +1 / ‘\
+{1 OO Oy } | RCO) R(-1) R(- M41) 1{ 1 [
+RC(1) R(0) R(-M +2) Oy \
+, 3
+1 |
+"
+M-1}
+ROM-1) R(M ~2) R(0) a, |
+t
+26
+
+where a = e i2nf At - Thus, the M by M matrix is not
+
+7 non-negative definite. Therefore, assuming the converse of the funda-
+mental theorem, we conclude that there are some non-negative definite
+Toeplitz matrices which cannot be extended indefinitely in a non-
+negative definite way. Since the factorization theorem has shown
+this to be false, we have proved the sufficiency part of the fundamental
+autocorrelation matrix theorem.
+4. Allowable Values for the Next Autocorrelation Lag
+
+Suppose we have the first N values of an autocorrelation function,
+R(n) , ( n=0 to N-1 ), and we wish to determine what values are possible
+for R(N) . If we form the N+tl by N+l autocorrelation matrix, the
+Fundamental Autocorrelation Matrix Theorem tells us that the N by N
+Toeplitz submatrix will be non-negative definite and that R(N) will
+have a permissible value only if the full N+1 by N+l matrix is also
+non-negative definite.
+
+Let us first look at the situation in which the N by N Toeplitz
+submatrix is singular. In this case, if (1, by> eens by ) is the
+shortest prediction error filter, we see from (TI-23) and the argument
+following that equation, that for the N+1l by N+l matrix to be
+non-negative definite, we must have
+
+M
+co R(N-n) bo = 0, ¢ by =1), or
+M
+R(N) = ~- ££ R(N-n) bo . (II-32)
+n=1
+t
+27
+Thus, if an autocorrelation matrix is singular, the next value of the
+autocorrelation function is uniquely specified. It then follows by
+simple induction that the entire autocorrelation function is determined.
+We shall see that this situation means that the autocorrelation function
+consists of a finite set of cosine functions, i.e., the spectrum consists
+of a set of delta functions and the time function is a sum of pure
+frequencies.
+
+If the N by N Toeplitz submatrix is non-singular, then the only
+condition on the N+l by N+l matrix is that its determinant be non-negative .
+In discussing (I-15),we noticed that the determinant of the N+1 by N+1
+matrix was equal to Py times the determinant of the N by N_ sub-
+matrix. Thus our requirement is that Py be non-negative, which from
+(II-20), means that le. | <1. By combining (II-17) and (1II-18),
+we can write
+
+N-1
+R(N) = - a R(N-n) bo ~ Cy Pye . (II-33)
+Tf ley <i » we See that the value of R(N) in the complex plane lies
+on or inside a circle of radius Pel centered at - R(N-n) bo .
+n=1
+
+If one chooses a value for R(N) and calculates the next higher
+order prediction error filter and its mean square error, Py » then
+(II-33) can be used again to determine the permissible values for
+R(N+1) . In this manner, one can generate any permissible extension of
+the autocorrelation function. It is interesting to note that since
+Py = Py _1 6 1-|c,| 2 ) , the radii of the sequence of circles cannot
+
+t increase and will decrease unless the c's are zero. That is, if
+one chooses a value for R(X) other than the center of its circular
+range, the circle for R(X+1) will have a reduced radius. In fact,
+28
+. if RX) is chosen to be on the perimeter of its circular range, i.e.,
+Iey| =l, Py will be zero and there is no longer any choice in
+selecting the value of R(X+1) . This moves (II-33) into the singular
+situation that is governed by (II-32).
+
+From the above observations, if one had to make the "best" selection
+for R(X) , choosing the value in the center of the circle is the most
+appealing. One "argument" for the center is that is is the only unique
+point in the disk. Any other point has an infinite number of other
+points of equal radius, etc., and to argue that a particular one of them
+is better than the rest would be difficult. A second "reason" for
+choosing the center is that this gives one the biggest disk for selecting
+the value of R(Xtl) . That is, one maintains the maximum freedom of
+choice in the further extension of the autocorrelation function. A
+third "reason" could be that selecting a value for R(X) on the perimeter
+should be a "worst" choice since a spectrum consisting of a pure set
+of spectral lines is improbable. The center of the disk is the point
+that is the furthest from these bad points. As will be shown later,
+if one extends the autocorrelation function to infinity by always
+selecting the center value for each consecutive lag value, one generates
+the autocorrelation function corresponding to the maximum entropy
+spectrum.
+
+We are now ready to prove the following theorem which relates
+the cL of (II-18) to the autocorrelation function and vice versa.
+
+5. The Autocorrelation-Reflection Coefficient Theorem
+t There exists a one to one correspondence between an autocorrelation
+function and the set of numbers, ( R(O) , Cys Co o eee ) , where
+R(O) is the zero lag value of the autocorrelation function and is
+thus real and non-negative and where the Cc, are the reflection
+29
+coefficients of (II-18) with the Ic | <1. This set of numbers
+7 terminates with R(0O) if R(O) = 0 or at cy if Ic =l1.
+
+Proof: If one is given the set ( R(O) , ne ) , then one
+can recursively generate the unique set of numbers ( R(0), R(1), R(2),...)
+by using (11-33). This is seen to be true if one notes that the
+b, and Puy values needed to find R(N) are uniquely determined
+by ( RCO), RQ), ..., RQW-1) ). If lc| = 1 at some stage, then
+the mean square error will become zero and the further extension of
+the autocorrelation function will be governed by (II-32). Thus,
+the sequence of reflection coefficients can be terminated.
+
+Likewise, if one is given the set ( R(0), R(1), R(2), ... ),
+then the unique set ( R(0), Cys Cos ee ) can be generated by
+inversion of (II-33) as long as the Pel is non-zero. Of course, if
+Pel = 0 , then le. 4! must have been equal to one and the c
+sequence can be terminated since the values of R(N), R(N+1), ...
+are then rigidly determined by the condition that the input set
+( RCO), R(1), R(2), ... ) be an autocorrelation function. A simple
+corollary of this theorem is that there is a one-to-one correspondence
+of the finite sets ( R(0), R(1), R(2), ..., R(N) ) and
+( RCO), Cys Cos tees Cy ) with a suitable statement made about the
+special case when some c_ has unit magnitude.
+
+The most important observation to be made about the Autocorrelation-
+Reflection Coefficient Theorem is that it shows that the set
+( RCO), Cys Cos see ) gives us a new representation of the second
+
+order statistics of a stationary time series. The best known
+
+representations are, of course, the autocorrelation function and the
+power spectrum. The "best" representation normally depends on how and
+why the time series is being analyzed. It will be seen later in
+30
+chapter III that the reflection coefficient representation is
+particularly well suited for estimating the second order statistics
+from finite data samples of the stationary time series.
+
+6. The Prediction Error Filter ~ Minimum Phase Theorem
+
+Our proof of the sufficiency part of the Fundamental Autocorrela-
+tion Matrix Theorem was by contradiction. In the next section, we
+shall prove the sufficiency part of this theorem for positive
+definite autocorrelation matrices by actually constructing the
+corresponding maximum entropy spectrum. To do this first requires that
+we prove that the prediction error filters as generated by (II-19) are
+minimum phase, i.e., they have all of their zeros outside of the unit
+circle. The proof will use the following simplified theorem by
+Rouche.
+
+If F(z) is a polynomial in z and G(z) is also a polynomial
+in z , but where |G(z) | < |F(z) | on the unit circle, then F(z)
+and F(z) + G(z) have the same number of roots inside the unit circle.
+
+The proof uses the fact that if a polynomial H(z) has N
+zeros inside the unit circle, then as one moves z on a complete
+counter-clockwise circuit around the unit circle, the net phase shift
+in H(z) is 2mN , and vice versa. We write
+
+F(z) + G(z) = F(z) [1+ G(z)/F(z) ]
+and note that the net phase shift in F(z) + G(z) as z goes
+around the unit circle will be the sum of the net phase shifts in
+' F(z) and 1+ G(z)/F(z) - Since |G(z)| <|F(z)| on |zl=1,
+
+the real part of 1+ G(z)/F(z) must always be positive and tus it can have
+31
+no net phase shift as z goes around the unit circle. Thus, G(z) + F(z)
+and F(z) have the same net phase shift and thus have the same number
+of zeros inside the unit circle.
+
+We can now show that if the magnitudes of all of the reflection
+coefficients in the sequence ( Cys Cos seers Cy ) are less than unity,
+which means that the Nth order autocorrelation matrix is positive
+definite, then the Nth order prediction error filter (P.E.F.) is
+minimum phase.
+
+N-1
+Let F(z) = £ db, z” be the N-lth order prediction error
+filter, where b me Then if G(z) =c b. zNn =c 2N F(z) >
+0 N n=0 2 N
+where Ic. <1 , then when | z| = 1, we have
+Jecz)| < feX w*@y| = [eXtrcyy*| = [rw] .
+From (II-19), we see that the Nth order prediction error filter is
+F(z) + G(z). Thus, if the N-lth order P.E.F. has no zeros inside
+the unit circle, neither does the Nth order P.E.F. This induction
+proof is completed by noting that the zero th order P.E.F. has no
+zeros at all and is thus minimum phase.
+A different and perhaps more basic approach is used in III-C.2 to
+prove that multichannel prediction error filters are minimum phase. The
+“multichannel proof of course applies to the single channel case.
+7. The Maximum Entropy Extension
+Suppose we have the first N+l values of a positive definite
+autocorrelation function and we solve (II-15) for the Nth order
+prediction error filter, A(z) =1+ ayz + ay2” +e. + ayZ . If
+we now choose the zero extension of the reflection coefficient sequence,
+starting with Cuyz > We see from (II-32) or (II-33) that the corresponding
+extension of the autocorrelation function will be given by the convolu-
+tional feedback operation of
+32
+N
+R(m) =~ = R(m=n) a,» m>N , or (11-34)
+. n=1
+N
+= R(m-n) a,=0 , m>N , ay=l.
+n=0
+Let us define the function H(z) as
+H(z) = R(0)/2+R()2 +R(2)2° +... (11-35)
+koe
+It is clear that H(z) +H (z 1) is the z transform of the autocorrela-
+tion function. Furthermore, since the cosine transform of H(z) is
+one half of the cosine transform of the autocorrelation function, we
+see that the real part of H(z) is non-negative. If we convolve
+H(z) with the Nth order prediction error filter, A(z) , the result
+must be of the form
+n(z) A(z) = B® [a tae tart... tae% ] -2O de), cr-36)
+2 1 2 N 2
+since (11-34) tells us that d 70 for m>N. We see from (II-36)
+that
+R(O) D(z)
+=e a 11-37
+H(z) 2 RS) (11-37)
+and that H(z) is a legitimate z-transform expression, that is, as
+a Taylor series in z , it converges on the unit circle because A(z)
+has no zeros inside the unit circle.
+We now wish to derive the relationship between D(z) and A(z) .
+The derivation is by induction and will be illustrated by going from
+N=2 to N=3.
+e
+33
+The first three terms in the convolution of the second order
+7 prediction error filter, 1+ ayz + a,z” » with H(z) can be written
+in a matrix equation as
+” ao
+R(0)/2 0 0 1 | 1
+. RO) -
+R(1) R(O)/2 0 ayy , dy an (11-38)
+R(2) R(1) R(0)/2 a, d, |
+This 2nd order prediction error filter of course obeys the
+Toeplitz matrix equation
+Tory ff
+R(0) R(-1) R(-2) 1 | P, |
+R(1) R(0) R(-1) a, > = 40 \ , (11-39)
+i
+R(2) R(1) R(0) a, | t
+}
+Subtracting (II-38) from (II-39), one gets
+<? _ \ at \
+R(O)/2 R(-1) R(-2) 1 "2 1 ;
+_}o°, _R@) (
+0 R(0)/2 R(-1) ay = \. a a dy .
+i
+| 0 0 R(0)/2 | 22) \° |
+L \
+Taking the complex conjugates of these equations and rearranging
+the order, one finds that
+r lose) 6.) i x )
+/R(0)/2 0 0 | lay \° ( \ a2
+. Ea *
+R(1) R(0)/2 0 a, /~ {0 - ROO) g* > (11-40)
+{
+R(2)—s-R(1)——s«R(O)/2| 44 P, | L |
+\
+t
+34
+Using (II-38) and (I1-40),we can generate the 3rd order equi-
+valent of (II-38) by
+r Te Y NN
+'R(0)/2 0 0 Oo | {ta OF,
+1 4 ef
+i
+R(1) R(0)/2 0 0 | , “1 Stes) “7 | =
+' * f
+R(2) R(1) R(0)/2 0 | a, | bali |
+\ 2) poly:
+i \ i it
+R(3) R(2) -RG.)RO)/2} fp to} tad
+\ \ . \ ‘y
+a * a “ oa aaa
+1) fo) “9 | (0 | fj.) o |
+} }
+P \ Jo 0 dai d | \a* |
+R(O) ¥ “1 \ _ RCO) 2\ _ R@) Li “2
+2 an ot C4 \ C4 2 a = 2 > “34 ‘ \ . (II-41)
+\ ; / { {
+2 | 10\ ‘| "| 149 | dy
+bo; ji \
+fo} tay P (1) Lo | |
+\ 13 . 2} . \ \ a
+We note that the last equality is valid because A. + C3 Py =O.
+Applying inductive reasoning to (II-41), we see that the D(z)
+polynomials are built up from the sequence of reflection coefficients
+in exactly the same manner as are the prediction error filters, except
+that the negatives of the reflection coefficients are used. Since,
+if we have the Nth order prediction error filter, we can uniquely
+decompose it into its sequence of N_ reflection coefficients, we can
+then build up the corresponding Nth order D(z) polynomial by
+using the negative of the reflection coefficient sequence. We also
+go from D(z) to A(z) by the identical algorithm.
+We will now prove that the extension of the autocorrelation
+function given by (II-34) does indeed correspond to the maximum entropy
+‘ spectrum by showing that
+35
+N 2
+R(O) I (1-|c_ | )
+x) 1 n=1
+H(z) +H (2 7") = rr ca (II-42)
+A(z) A (z 7°)
+which is a combination of (II-13) and (II-20). The proof again uses
+induction and is illustrated by going from N-1 to N.
+If we let A(z) and D(z) be the N-1th order polynomials,
+then if (II-42) is true for the N-lth order case, we discover that
+N-1 9
+R(O) fH (1-|e, |") & -1 Pn eee
+n=1 — RO) | Dj) 4 D (2 )/_ RCO) D(z)A (2 ~)4+D (2 ~)A(z)
+xk x x
+A(z) A(z) 2 (AQ) ah} ? A(z) Av (27)
+or
+* -1 * -1 Nel 2
+D(z) A (2 ~) +D (2 7) A(z) = 271 Qd- Ic, | ). (11-43)
+n=1
+The Nth order case can be written in terms of A(z) , D(z) and
+cy as
+ko ko koe ~
+R(0) D(z) - Cy D (z 1) D (z 1) — Cy 2 N D(z)
+Sans PPS Cy MC Pes Ce (TT-44)
+A(z) + Cuz A (z -) A(z) + Cy 2 A(z)
+eH] ko =] 2 kom ko =]
+R(0) [D(z)A (2 “) + D (2 ~)A(z)] - ley [D(z)A (z 1) +D (z ~)A(z)]
+= x x k ’
+, [A(z) + yaa" (2 *) fa" (2) + ene Na(z)]
+*
+where the numerator terms in Cy and Cy vanish. Using (11-43), this
+becomes our desired result of
+N 2
+R(0) 1 (1 - Je, |*)
+n=1 ;
+: TI~
+N ,*, -1l.,,.%, -1 * —N ’ (11-45)
+[A(z) + Cy A (z )][A (z 7) + Cy2 A(z)]
+Since (11-42) is trivially true for the zeroth order case, our
+t
+inductive proof is finished.
+36
+In this section, we have proved the sufficiency condition of the
+
+. Fundamental Autocorrelation Matrix Theorem in the case of a positive
+definite matrix by actually constructing a power spectrum which agrees
+with the autocorrelation values. Furthermore, we have shown that the
+infinite extension of the autocorrelation function corresponding to setting
+all the rest of the reflection coefficients to zero is generated by
+using the prediction error filter in a feedback operation. The fact
+that the prediction error filter is minimum phase is necessary and
+sufficient for the extension to be stable. Finally, since we have
+constructed the maximum entropy spectrum from the autocorrelation lag
+values by a straightforward algebraic procedure, all of the general
+questions that were raised about the variational derivation can be
+answered in the positive.
+8. Pure Spectral Line Extensions
+
+Our previous section treated the case when the finite autocorrelation
+matrix was positive definite. Here we shall look at the case when the
+finite matrix is strictly non-negative definite.
+
+Since we have already seen in section II-B-4 that the extension of
+the autocorrelation function is uniquely determined once the matrix
+becomes singular, we shall concentrate our attention at the transition
+point when the N by N matrix is positive definite but the N+l by
+N+l matrix is singular. When this happens, we have already seen that
+lea will be unity and the mean square error, Py » will be equal to
+zero. Also, if A(z) is the N-1 th order prediction error filter,
+
+' then the Nth order filter igs A(z) + cuz. AN (21) - Since Py=0 ,
+this filter does a perfect job of predicting the next point in the time
+series. We shall now show in two ways that this perfect prediction error
+37
+filter is not minimum phase but instead has all of its zeros on the
+: unit circle.
+For the first proof, suppose that we replace Cy by AC where oa
+is real and slightly less than unity. Then all N roots of
+N .*, -1 . : :
+A(z) + acy Z A (2) are outside the unit circle. Next suppose o
+kM
+is real and slightly greater than unity. Then Jac," A (2 ly] > lacz)|
+ke
+for |z| = 1 and since oNa (z 1, has all of its N roots inside the
+. : N ,*,_~-1
+unit circle, so does A(z) + acy z A(z). Thus, as a goes from
+slightly less than unity to slightly more than unity, the N roots
+go from outside to inside the unit circle. Since the roots of a poly-
+nomial are continuous functions of the coefficients of the polynomial,
+we see that when a=1 , all of the roots must lie on the unit circle.
+The second proof simply relies on the fact that as z goes around
+the unit circle once, the phase of A(z) varies but does not have
+any net phase shift. However, at the same time, the phase of
+N .*, -1 . :
+Cy Z A (z ~) makes a total of N complete revolutions. Since
+N ,*, -1 ‘ :
+|A(z) | = ley, z A (z ) | » and the phases are continuous functions of
+z , there must be at least N places on the unit circle where A(z)
+N ,*, -1 . . . eae
+and Cy A (z ~) are opposite in phase. Since the prediction error
+filter is of order N , these N places are all of the zeros of the filter.
+This second proof also shows that the N roots are distinct, i.e., there
+are no double or higher order zeros.
+Since the mean square error is zero, the output spectrum must be
+zero at all frequencies. This means that the input spectrum can be non-
+‘ zero only where the power response of the filter is zero, namely at the
+N zeros of the filter. Furthermore, there must be power at each of these
+38
+N frequencies, since otherwise a shorter prediction error filter
+would have been able to do perfect prediction. However, the amount
+of power at each of the N frequencies cannot be found from the Nth
+order prediction error filter since this filter is the same perfect
+predictor independent of how the power is distributed at the N
+frequencies. This is curious since the sequence of prediction
+error filters up to the Nth depends on the amount of power in the
+N delta functions, but the Nth filter is the same for all such
+sequences. This, however, agrees with our observation in section II-A-5,
+(11-21), that when |e, |=2 >» we cannot generate the N-lth order
+filter from the Nth order filter.
+One way of finding the power in the delta functions is to realize
+that the autocorrelation function must be expressible as
+Rin) = NL g7i2nf_nat
+m=1 ™
+where the nr, «are positive and the fn are the delta function
+frequencies. Knowing R(n) , n=0 to N-1 , allows one to solve for
+the Th One method is to form the N-lth order filter
+N
+-4
+n=l “ m )
+>
+t-a, Zz
+where a ett timAt and do a dot product into the autocorrelation
+; values. Since this filter has zero response to each delta function
+except the nth one, the strength of the nth delta function can be
+determined from this dot product. A much deeper study of the properties
+of the delta functions is given in Appendix A.
+

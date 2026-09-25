@@ -1,0 +1,8 @@
+# certified, outputs/rtp1_commutant.txt section 5 (x = 13); coefficient table (section 4, N = 20) in the panels (d3), (d4)
+# derived for the reference curve: mean of captured * ||z_true||^2 = 5.5902
+N,norm_true_HS,min_norm_HS,minnorm_rel_dist,minnorm_captured,maxdet_ball_rel_dist,maxdet_ball_captured,PNT_rel_dist,PNT_captured,lambda_min_true
+10,5.855,2.336,0.916,0.16,1.248,0.221,0.817,0.439,2.83e-26
+20,8.213,2.36,0.957,0.083,1.336,0.107,0.911,0.224,1.57e-39
+30,9.998,2.369,0.971,0.056,1.384,0.042,0.941,0.152,4.92e-48
+40,11.739,2.373,0.979,0.041,1.378,0.051,0.957,0.11,9.46e-54
+60,14.167,2.378,0.986,0.028,1.389,0.035,0.971,0.076,1.01e-58
