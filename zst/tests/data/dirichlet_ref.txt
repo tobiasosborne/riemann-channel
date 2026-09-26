@@ -145,7 +145,7 @@ end
 
 # RTP-2 COMPARISON seeds: checks/generate_references.py, FLINT Hardy Z, 2026-09-26.
 # 40-digit midpoints; certified enclosures and two-precision checks retained in lane checks/.
-# First-index identification from sign scan (not a certified global zero count).
+# First positive zero of Hardy's Z certified by notes/rtp-round-2/dirichlet/checks/first_zero_prefix.py (interval exclusion; critical-line statement only).
 chi -7 7 1
 zero 1 4.475738283728683131974628487193130920401
 end

@@ -1,0 +1,7 @@
+transcript lines from partial x50 files (D=8,-7,12,21,13): 39 by kind {'SAT': 10, 'EIG': 24, '#': 5}; not found verbatim in regenerated files: 0
+D=  8: recorded-value and completeness checks 11/11
+D= -7: recorded-value and completeness checks 11/11
+D= 12: recorded-value and completeness checks 11/11
+D= 21: recorded-value and completeness checks 11/11
+D= 13: recorded-value and completeness checks 11/11
+files passing all: 5/5
