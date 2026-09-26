@@ -1,0 +1,8 @@
+PASS x=13 N=20: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=20: independent prime-atom sum agrees with zst cutoff split, error=3.556e-161
+64 False {'cost': '-0.00017721800636', 'slack': '-4.6875e-121', 'repair': '1.99202693871e-11'}
+64 True None
+128 False {'cost': '-5.2284105398e-5', 'slack': '-4.84375e-121', 'repair': '4.39956892764e-11'}
+128 True None
+256 False {'cost': '-8.15313837417e-6', 'slack': '-4.921875e-121', 'repair': '2.4544485613e-8'}
+256 True None

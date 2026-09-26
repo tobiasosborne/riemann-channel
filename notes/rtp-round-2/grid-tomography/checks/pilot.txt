@@ -1,0 +1,43 @@
+DATA x13_N20.data
+DATA x13_N40.data
+DATA x13_N60.data
+DATA x25_N60.data
+DATA x25_N134.data
+PASS x=13 N=20: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=20: independent prime-atom sum agrees with zst cutoff split, error=3.556e-161
+CASE x=13 N=20 min_eig=1.56610785511e-39
+GRID M=64 union=False FARKAS cost=-0.00017721800636 residual=-4.687e-121
+GRID M=64 union=True FARKAS none
+GRID M=128 union=False FARKAS cost=-5.2284105398e-5 residual=-4.844e-121
+GRID M=128 union=True FARKAS none
+GRID M=256 union=False FARKAS cost=-8.15313837417e-6 residual=-4.922e-121
+GRID M=256 union=True FARKAS none
+PASS x=13 N=40: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=40: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+CASE x=13 N=40 min_eig=9.4628098483e-54
+GRID M=64 union=False FARKAS cost=-0.000176874875812 residual=-4.687e-121
+GRID M=64 union=True FARKAS none
+GRID M=128 union=False FARKAS cost=-5.19936149409e-5 residual=-3.75e-121
+GRID M=128 union=True FARKAS none
+GRID M=256 union=False FARKAS cost=-7.99157226501e-6 residual=-7.422e-121
+GRID M=256 union=True FARKAS none
+PASS x=13 N=60: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=60: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+CASE x=13 N=60 min_eig=1.01356290717e-58
+GRID M=64 union=False FARKAS cost=-0.000177041384553 residual=-3.437e-121
+GRID M=64 union=True FARKAS none
+GRID M=128 union=False FARKAS cost=-5.15631496452e-5 residual=-1.25e-121
+GRID M=128 union=True FARKAS none
+GRID M=256 union=False FARKAS cost=-8.00093935025e-6 residual=-7.422e-121
+GRID M=256 union=True FARKAS none
+PASS x=25 N=60: true blocks positive by 1280-bit Arb Cholesky
+PASS x=25 N=60: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+CASE x=25 N=60 min_eig=1.07936480137e-91
+GRID M=128 union=False FARKAS cost=-8.49321221948e-5 residual=-7.031e-121
+GRID M=128 union=True FARKAS none
+PASS x=25 N=134: true blocks positive by 1280-bit Arb Cholesky
+PASS x=25 N=134: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+CASE x=25 N=134 min_eig=1.25553923336e-121
+GRID M=128 union=False FARKAS cost=-8.47189232157e-5 residual=-6.25e-121
+GRID M=128 union=True FARKAS none
+CHECKS 10 FAILURES 0

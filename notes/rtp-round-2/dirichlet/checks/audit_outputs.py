@@ -54,6 +54,16 @@ for x in [13,25,50]:
             a,b=[d['CONTROL'][-1] for d in dd]
             for block in ['E','O']:
                 check(float(b['min'+block])>float(a['min'+block]),f'gamma parity multiplier {x} {block}')
+# At equal x,N and character parity, controls differ by an identity shift.
+import math
+for x in [13,25,50]:
+    for D1,D2 in [(-3,-4),(-4,-7),(-7,-8),(-8,-20),(5,8),(8,12),(12,13),(13,21)]:
+        paths=[ROOT/f'outputs/rtp2_dirichlet_D{D}_axisN_x{x}.txt' for D in [D1,D2]]
+        if all(p.exists() and 'CONTROL' in read(p) for p in paths):
+            a,b=[read(p)['CONTROL'][-1] for p in paths]
+            if a['N']!=b['N']:continue
+            for key in ['minE','minO']:
+                check(abs(float(b[key])-float(a[key])-math.log(abs(D2)/abs(D1)))<3e-11,f'conductor identity shift {D1},{D2},x={x},{key}')
 print(f'checks: {n} run, {len(failed)} failed (floating/structural audit)')
 for f in failed:print('FAIL:',f)
 sys.exit(bool(failed))

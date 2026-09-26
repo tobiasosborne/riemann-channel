@@ -156,3 +156,14 @@ MP_VALIDATION {"A": 2, "S": [2, 3], "delta": "0.2", "float_discrepancy": "3.1179
 PASS mpmath full matrix validation (2, 3) A=2
 MP_VALIDATION {"A": 3, "S": [2, 3], "delta": "0.2", "float_discrepancy": "7.40394e-14", "gap": "0.00074299703168531138286", "lam": "0.000180074626644884946545645748266", "max_entry_level_diff": "4.13791e-22", "quad_est": "2.66141e-42", "residual": "1.9364e-41", "schmidt": 0.02941071123436459}
 PASS mpmath full matrix validation (2, 3) A=3
+MP_VALIDATION {"A": 2, "S": [2, 3, 5], "delta": "0.2", "float_discrepancy": "1.49173e-13", "gap": "0.000054118588659011783408", "lam": "0.0000382190776467145009573133850316", "max_entry_level_diff": "1.07125e-21", "quad_est": "2.66141e-42", "residual": "3.3344e-41", "schmidt": 0.0015005925219149239}
+PASS mpmath full matrix validation (2, 3, 5) A=2
+I6 COMPARISON STEP: zeros loaded ONLY here, never used in any form or certificate.
+PASS 2000 increasing cached float64 zero ordinates
+cached zeros dtype=float64; gamma1=14.1347251417347; gamma2000=2515.28648292471; no certified ordinate radii
+Fourier quadrature 1024 vs 1536 max |difference|=2.949e-15
+COMPARISON {"Ms": [10, 30, 100, 300, 1000, 2000], "active": [5, 7], "delta": 0.1, "errors": [2.658388513262361e-07, 3.1472989835690246e-06, 5.653225689655761e-08, 2.4841666917962968e-11, 5.227589194856108e-15, 1.0807327255335508e-15], "finite_absolute_tails": [0.00024789786733227356, 3.137728144654217e-05, 4.113989783304658e-07, 1.807198004544698e-09, 8.90502838555248e-14, 0.0], "prime_side": 0.004716681727668169, "ratio": "6"}
+PASS 2000-zero comparison within float64 ordinate and quadrature floor at r=6
+COMPARISON {"Ms": [10, 30, 100, 300, 1000, 2000], "active": [7, 8, 9], "delta": 0.1, "errors": [6.497488949990795e-06, 2.7905536338105816e-06, 3.084801011854488e-08, 1.2281584386639177e-10, 5.968966640401696e-15, 3.3219954564955856e-16], "finite_absolute_tails": [0.00022150079035522922, 2.596679353548299e-05, 4.5162545820993533e-07, 1.7238648947568995e-09, 9.035713305922389e-14, 0.0], "prime_side": 0.0010952680781536927, "ratio": "8"}
+PASS 2000-zero comparison within float64 ordinate and quadrature floor at r=8
+CHECKS: 62 passed, 0 failed

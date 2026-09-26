@@ -1,0 +1,117 @@
+CASE x=23 N=123 m=21 mp_search_dps=200 audit_dps=260 arb_bits=1280
+PASS ball Cholesky certifies both true finite blocks positive
+PASS prime-cutoff split reproduced, error=6.04e-199
+SPECTRUM eps=2.733120368e-111 lambda_m=4.250070527e-46 lambda_mplus1=1.338870778e-43
+PD 0 1
+MIN 0 1 [2.73312036757875210565571895009505437778874968257834769608211943623425768511037451091691637600160172228736216656540668549e-111 +/- 2.41e-231]
+PD 1 1
+MIN 1 1 [6.14804746615042561603787924888304195830236734961157408335562837977937577020975057104911225055860990746837620703806873517e-107 +/- 3.73e-227]
+PASS smallest eigenpair in each positive block independently certified by zst_eigmin
+PASS LP n=2 sign=+1: residual=8.3e-265, min_reduced=-8.0e-317, gap=1.4e-332
+PASS LP n=2 sign=-1: residual=1.5e-266, min_reduced=-1.4e-312, gap=1.5e-337
+WIDTH n=2 LP=2.07558427958e-73 lower=-2.075498512e-73 upper=8.576773876e-78 highs_width=4.30562e-15
+PASS LP n=3 sign=+1: residual=3.8e-263, min_reduced=-1.4e-312, gap=5.0e-334
+PASS LP n=3 sign=-1: residual=4.9e-264, min_reduced=-8.0e-317, gap=5.9e-331
+WIDTH n=3 LP=1.41802021028e-71 lower=-2.629179383e-75 upper=1.417757292e-71 highs_width=2.53984e-19
+PASS LP n=4 sign=+1: residual=3.0e-262, min_reduced=-8.0e-317, gap=1.3e-328
+PASS LP n=4 sign=-1: residual=1.3e-260, min_reduced=-1.4e-312, gap=2.1e-331
+WIDTH n=4 LP=1.59323351131e-69 lower=-1.5924818e-69 upper=7.517110155e-73 highs_width=7.68405e-18
+PASS LP n=5 sign=+1: residual=3.0e-258, min_reduced=-1.4e-312, gap=2.4e-329
+PASS LP n=5 sign=-1: residual=1.7e-260, min_reduced=-8.0e-317, gap=2.4e-326
+WIDTH n=5 LP=2.23225730218e-67 lower=-2.148582786e-70 upper=2.230108719e-67 highs_width=-1.97689e-26
+PASS LP n=6 sign=+1: residual=4.3e-258, min_reduced=-8.0e-317, gap=4.9e-324
+PASS LP n=6 sign=-1: residual=6.3e-256, min_reduced=-1.4e-312, gap=1.9e-326
+WIDTH n=6 LP=3.65608908375e-65 lower=-3.649782606e-65 upper=6.306477586e-68 highs_width=-1.87824e-20
+PASS LP n=7 sign=+1: residual=6.4e-254, min_reduced=-1.4e-312, gap=2.9e-324
+PASS LP n=7 sign=-1: residual=2.2e-256, min_reduced=-8.0e-317, gap=1.2e-321
+WIDTH n=7 LP=6.82570930285e-63 lower=-1.936528785e-65 upper=6.806344015e-63 highs_width=-6.4462e-20
+PASS LP n=8 sign=+1: residual=5.4e-254, min_reduced=-8.0e-317, gap=2.8e-319
+PASS LP n=8 sign=-1: residual=5.0e-251, min_reduced=-1.4e-312, gap=7.9e-323
+WIDTH n=8 LP=1.4404236501e-60 lower=-1.434098375e-60 upper=6.325274769e-63 highs_width=3.70569e-23
+PASS LP n=9 sign=+1: residual=2.0e-248, min_reduced=-1.4e-312, gap=6.6e-320
+PASS LP n=9 sign=-1: residual=4.9e-252, min_reduced=-8.0e-317, gap=5.2e-317
+WIDTH n=9 LP=3.43963801038e-58 lower=-2.234993997e-60 upper=3.41728807e-58 highs_width=5.11822e-15
+PASS LP n=10 sign=+1: residual=1.8e-249, min_reduced=-8.0e-317, gap=1.3e-314
+PASS LP n=10 sign=-1: residual=7.4e-247, min_reduced=-1.4e-312, gap=5.2e-317
+WIDTH n=10 LP=9.36565515064e-56 lower=-9.278643091e-56 upper=8.701205998e-58 highs_width=2.91874e-22
+PASS LP n=11 sign=+1: residual=3.6e-244, min_reduced=-1.4e-312, gap=1.2e-314
+PASS LP n=11 sign=-1: residual=6.5e-247, min_reduced=-8.0e-317, gap=4.9e-312
+WIDTH n=11 LP=2.94647434588e-53 lower=-3.811036418e-55 upper=2.908363982e-53 highs_width=7.9649e-14
+PASS LP n=12 sign=+1: residual=3.7e-245, min_reduced=-8.0e-317, gap=1.8e-309
+PASS LP n=12 sign=-1: residual=7.9e-242, min_reduced=-1.4e-312, gap=1.8e-311
+WIDTH n=12 LP=1.09134733604e-50 lower=-1.072102845e-50 upper=1.924449106e-52 highs_width=1.60486e-14
+PASS LP n=13 sign=+1: residual=6.4e-239, min_reduced=-1.4e-312, gap=6.4e-309
+PASS LP n=13 sign=-1: residual=6.0e-243, min_reduced=-8.0e-317, gap=8.0e-307
+WIDTH n=13 LP=4.8802733513e-48 lower=-1.154065364e-49 upper=4.764866815e-48 highs_width=3.16919e-12
+PASS LP n=14 sign=+1: residual=5.7e-240, min_reduced=-8.0e-317, gap=3.0e-304
+PASS LP n=14 sign=-1: residual=5.3e-236, min_reduced=-1.4e-312, gap=3.4e-306
+WIDTH n=14 LP=2.72364424313e-45 lower=-2.638374737e-45 upper=8.526950566e-47 highs_width=2.79366e-14
+PASS LP n=15 sign=+1: residual=2.4e-234, min_reduced=-1.4e-312, gap=4.5e-303
+PASS LP n=15 sign=-1: residual=9.6e-237, min_reduced=-8.0e-317, gap=1.8e-301
+WIDTH n=15 LP=1.982331512e-42 lower=-8.136399754e-44 upper=1.900967514e-42 highs_width=7.79947e-15
+PASS LP n=16 sign=+1: residual=1.4e-234, min_reduced=-8.0e-317, gap=1.9e-298
+PASS LP n=16 sign=-1: residual=7.4e-231, min_reduced=-1.4e-312, gap=4.1e-300
+WIDTH n=16 LP=1.99674385195e-39 lower=-1.890046323e-39 upper=1.066975289e-40 highs_width=1.08956e-13
+PASS LP n=17 sign=+1: residual=6.4e-227, min_reduced=-1.4e-312, gap=6.9e-297
+PASS LP n=17 sign=-1: residual=2.7e-231, min_reduced=-8.0e-317, gap=2.5e-295
+WIDTH n=17 LP=3.02376679118e-36 lower=-2.09453107e-37 upper=2.814313684e-36 highs_width=4.5095e-13
+PASS LP n=18 sign=+1: residual=8.9e-228, min_reduced=-8.0e-317, gap=5.3e-292
+PASS LP n=18 sign=-1: residual=7.7e-224, min_reduced=-1.4e-312, gap=2.2e-293
+WIDTH n=18 LP=7.76696354071e-33 lower=-7.070557284e-33 upper=6.964062567e-34 highs_width=3.30721e-12
+PASS LP n=19 sign=+1: residual=4.0e-220, min_reduced=-1.4e-312, gap=1.1e-289
+PASS LP n=19 sign=-1: residual=1.5e-224, min_reduced=-8.0e-317, gap=2.2e-288
+WIDTH n=19 LP=4.08069554237e-29 lower=-4.745253755e-30 upper=3.606170167e-29 highs_width=2.82661e-12
+PASS LP n=20 sign=+1: residual=1.9e-220, min_reduced=-8.0e-317, gap=2.4e-284
+PASS LP n=20 sign=-1: residual=5.8e-216, min_reduced=-1.4e-312, gap=1.7e-285
+WIDTH n=20 LP=6.03057454698e-25 lower=-5.114999077e-25 upper=9.155754697e-26 highs_width=7.86755e-11
+PASS LP n=21 sign=+1: residual=2.7e-211, min_reduced=-1.4e-312, gap=1.1e-280
+PASS LP n=21 sign=-1: residual=6.8e-216, min_reduced=-8.0e-317, gap=1.3e-279
+WIDTH n=21 LP=4.69998219239e-20 lower=-9.455292989e-21 upper=3.754452894e-20 highs_width=1.06141e-09
+PASS LP n=22 sign=+1: residual=7.2e-210, min_reduced=-8.0e-317, gap=1.3e-273
+PASS LP n=22 sign=-1: residual=4.7e-205, min_reduced=-1.4e-312, gap=1.7e-274
+WIDTH n=22 LP=1.00083975306e-13 lower=-7.246947118e-14 upper=2.761450412e-14 highs_width=8.27176e-07
+PASS ALL supported duals solved and certified nonnegative in 1280-bit balls
+CERT 0 1 1 [2.07549851184593173894978325477e-73 +/- 6.98e-105] OPT=1
+CERT 0 -1 1 [8.57677387577794065830393706385e-78 +/- 4.35e-108] OPT=1
+CERT 1 1 1 [2.62917938267179672853242820264e-75 +/- 2.04e-105] OPT=1
+CERT 1 -1 1 [1.41775729234586781907761739156e-71 +/- 4.68e-101] OPT=1
+CERT 2 1 1 [1.59248180029100243416884238682e-69 +/- 4.56e-99] OPT=1
+CERT 2 -1 1 [7.51711015465932367605347104155e-73 +/- 1.16e-103] OPT=1
+CERT 3 1 1 [2.14858278598602414626886112381e-70 +/- 3.09e-100] OPT=1
+CERT 3 -1 1 [2.23010871939535308553376476023e-67 +/- 1.67e-98] OPT=1
+CERT 4 1 1 [3.64978260616531912409504543281e-65 +/- 1.13e-95] OPT=1
+CERT 4 -1 1 [6.30647758552334403701492684728e-68 +/- 2.67e-98] OPT=1
+CERT 5 1 1 [1.93652878542457360104204359196e-65 +/- 2.43e-95] OPT=1
+CERT 5 -1 1 [6.80634401500047771357820462811e-63 +/- 6.38e-94] OPT=1
+CERT 6 1 1 [1.43409837533333041804885714177e-60 +/- 1.48e-90] OPT=1
+CERT 6 -1 1 [6.32527476864411430812001373872e-63 +/- 3.66e-93] OPT=1
+CERT 7 1 1 [2.23499399654679344129191891484e-60 +/- 2.31e-90] OPT=1
+CERT 7 -1 1 [3.41728807041858237422725201645e-58 +/- 2.28e-88] OPT=1
+CERT 8 1 1 [9.27864309066366083724234366782e-56 +/- 9.11e-87] OPT=1
+CERT 8 -1 1 [8.70120599766891034067041518513e-58 +/- 2.02e-88] OPT=1
+CERT 9 1 1 [3.81103641844973592468390100730e-55 +/- 8.35e-86] OPT=1
+CERT 9 -1 1 [2.90836398169094731483703661977e-53 +/- 5.51e-84] OPT=1
+CERT 10 1 1 [1.07210284497970800273783174385e-50 +/- 4.23e-81] OPT=1
+CERT 10 -1 1 [1.92444910566486475727328741711e-52 +/- 7.71e-83] OPT=1
+CERT 11 1 1 [1.15406536430197400350619227244e-49 +/- 7.73e-80] OPT=1
+CERT 11 -1 1 [4.76486681486782555287255830076e-48 +/- 2.06e-78] OPT=1
+CERT 12 1 1 [2.63837473747454487417046514666e-45 +/- 2.34e-75] OPT=1
+CERT 12 -1 1 [8.52695056563003518674674678510e-47 +/- 4.63e-77] OPT=1
+CERT 13 1 1 [8.13639975415937558482706727228e-44 +/- 3.32e-74] OPT=1
+CERT 13 -1 1 [1.90096751445993205523077530798e-42 +/- 1.70e-72] OPT=1
+CERT 14 1 1 [1.89004632307365331676696728627e-39 +/- 6.47e-70] OPT=1
+CERT 14 -1 1 [1.06697528874292079907125584034e-40 +/- 4.52e-70] OPT=1
+CERT 15 1 1 [2.09453107006713403052707889335e-37 +/- 1.56e-67] OPT=1
+CERT 15 -1 1 [2.81431368416997062658638612376e-36 +/- 3.65e-66] OPT=1
+CERT 16 1 1 [7.07055728399002948831109867780e-33 +/- 2.71e-63] OPT=1
+CERT 16 -1 1 [6.96406256715029484468466154452e-34 +/- 1.32e-64] OPT=1
+CERT 17 1 1 [4.74525375521115330544378991006e-30 +/- 4.24e-60] OPT=1
+CERT 17 -1 1 [3.60617016684500388964174917100e-29 +/- 1.42e-60] OPT=1
+CERT 18 1 1 [5.11499907726294984653659142999e-25 +/- 1.07e-55] OPT=1
+CERT 18 -1 1 [9.15575469713359630562767943595e-26 +/- 5.31e-57] OPT=1
+CERT 19 1 1 [9.45529298871234956531715852644e-21 +/- 4.71e-51] OPT=1
+CERT 19 -1 1 [3.75445289351756148144472800753e-20 +/- 1.64e-50] OPT=1
+CERT 20 1 1 [7.24694711814557768198026307559e-14 +/- 4.55e-44] OPT=1
+CERT 20 -1 1 [2.76145041246690573300297214563e-14 +/- 6.54e-45] OPT=1
+PASS ball primal inequalities and dual equalities certify optimality of every fixed-vector LP
+CHECKS 47 FAILED 0

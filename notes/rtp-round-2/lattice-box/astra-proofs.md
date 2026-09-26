@@ -48,6 +48,8 @@ For fixed `N`, as `t -> 0+`, `T_N(t) -> -2I` entrywise. Hence `-T_N(t)>0` for su
 
 Finally, absence of a nonzero supporting functional implies that the conic hull of the atom-evaluation vectors is all of `R^m`: its closure has polar `{0}`, hence is all of `R^m`, and a convex cone dense in a finite-dimensional vector space equals that space (its relative interior agrees with that of its closure). The sign `T=-q` does not change this conclusion.
 
+**Corollary (PROVED).** At a cutoff with zero recession cone, if there is a strictly feasible weight vector, the lattice problem has a unique maximum-determinant solution. The determinant attains its positive maximum on the compact feasible set; the maximizing form is positive definite, and strict concavity of `log det`, together with injectivity of `T`, gives uniqueness. This does not identify that maximizer with truth. The corresponding Loewner-coordinate MaxEnt problem remains unbounded.
+
 ## L2. Duality and the controlling spectral quantity — SHARPENED / PROVED
 
 **H-FIN:** `H*=H_N(w*)>=0`. Write `delta=w-w*`, choose orthonormal eigenvectors, and let `G_ik=v_i^*T_k v_i`, `lambda_i=v_i^*H*v_i`.
@@ -124,7 +126,9 @@ There are more than linearly many **distinct** zeta ordinates under RH; multipli
 
 The script is `scripts/rtp2_lattice_box.py`; the reproducible output is `outputs/rtp2_lattice_box.txt`. It builds a C bridge under this lane's `checks/`, linking the existing `zst/build/libzst.a`. Totals and the prime-free data use the same window with prime cutoffs `X=x` and `X=1`. Independently summed atom formulas reproduce their difference to at least 190 decimal places. The interior positions are always `log 2,...,log(x-1)`; all five chosen endpoints are prime powers, but the endpoint exclusion is valid for any endpoint.
 
-Precision: data and certificate solves are Arb balls at 1280 bits. Approximate eigenvectors come from FLINT/Arb's QR routine at 1152 bits (requested tolerance `2^-1100`). Each chosen vector is then frozen as exact dyadic coordinates; its Rayleigh cost and atom sensitivities are evaluated as balls. Python runs a two-phase Bland simplex at 200 decimal digits, with HiGHS double values recorded as search diagnostics. Supported dual systems are then solved **again in balls**. Positivity of all dual coefficients and feasibility of the exact basic primal solution certify both outer bounds and optimality for this fixed-vector LP. These are exact certificates for the chosen dyadic cuts; agreement with ideal eigenvector cuts is a high-precision numerical statement. Printed short decimals round the ball centers; the detailed `CERT` lines retain enclosures.
+Precision: data and certificate solves are Arb balls at 1280 bits. Approximate eigenvectors come from FLINT/Arb's QR routine at 1152 bits (requested tolerance `2^-1100`). Each chosen vector is then frozen as exact dyadic coordinates; its Rayleigh cost and atom sensitivities are evaluated as balls. Python runs a two-phase Bland simplex at 200 decimal digits, with HiGHS double values recorded as search diagnostics and supported-system audits at 260 digits. The guard digits address dual multipliers as large as `1e67` at the edge; the initial 200-digit residual check was insufficient for a `1e-150` absolute threshold in five x=25 cases, although all their ball certificates already passed. Supported dual systems are then solved **again in balls**. Positivity of all dual coefficients and feasibility of the exact basic primal solution certify both outer bounds and optimality for this fixed-vector LP. These are exact certificates for the chosen dyadic cuts; agreement with ideal eigenvector cuts is a high-precision numerical statement. Printed short decimals round the ball centers; the detailed `CERT` lines retain enclosures, and `CERTIFIED_WIDTH` prints an upper bound rounded outward to twelve significant digits using exact decimal arithmetic.
+
+The minimum eigenvalue in each parity block is independently enclosed with `zst_eigmin`. A rank-one positive-definiteness check on `H-2lambda I+4lambda vv^T/(v^Tv)` verifies minimality: its positivity bounds the negative index of `H-2lambda I` by one, while the enclosed eigenvalue gives one negative direction. This avoids the unstable unpivoted LDL test at x=25. All these checks use only prime-side matrices. The higher spectral quantiles below are QR/Rayleigh numerical estimates, not interval eigenvalue enclosures.
 
 The saturation cutoff minimizes the total log determinant on the scanned integer range `0<=N<=200`, using the two blocks' Cholesky pivots at 1280 bits. It is a sampled argmin, not a proof of a global-in-N minimum. The cutoffs found are:
 
@@ -136,7 +140,81 @@ The saturation cutoff minimizes the total log determinant on the scanned integer
 | 23 | 21 | 123 | -4460.944825 |
 | 25 | 23 | 134 | -5328.600491 |
 
-The spectrum/width and section tables will be appended after all cases complete.
+### 4.1 Spectrum at both resolutions
+
+`eps` is the minimum of the two certified block eigenvalues, rounded below; `lambda_m` and `lambda_(m+1)` are numerical estimates from the 1152-bit eigensolve, rounded to six digits. `r_used` is the largest spectral rank appearing in any of the verified optimal LP bases; it describes these certificates and is not asserted minimal.
+
+| x | N | eps | lambda_m | lambda_(m+1) | r_used |
+|---:|---:|---:|---:|---:|---:|
+| 13 | 56 | 1.95538e-58 | 8.51088e-27 | 2.05492e-24 | 12 |
+| 17 | 83 | 1.33448e-79 | 1.59319e-34 | 5.23208e-32 | 16 |
+| 19 | 94 | 5.86601e-90 | 2.06928e-38 | 6.92568e-36 | 18 |
+| 23 | 123 | 2.73312e-111 | 4.25007e-46 | 1.33887e-43 | 24 |
+| 25 | 134 | 1.25554e-121 | 8.15342e-50 | 3.23283e-47 | 26 |
+| 13 | 60 | 1.01356e-58 | 7.22103e-27 | 1.67788e-24 | 12 |
+| 17 | 60 | 5.61383e-74 | 2.12382e-32 | 4.08226e-30 | 18 |
+| 19 | 60 | 1.83173e-79 | 1.22968e-33 | 1.77066e-31 | 20 |
+| 23 | 60 | 4.28649e-88 | 2.59386e-34 | 2.06171e-32 | 26 |
+| 25 | 60 | 1.07936e-91 | 7.03993e-34 | 8.39927e-32 | 28 |
+
+The `m` smallest eigenvalues by themselves do not describe these certificates: more directions are needed, and their sensitivities are very uneven across positions. At fixed N, `lambda_m` even increases from x=23 to 25 while `eps` continues to decrease.
+
+### 4.2 LP boxes, and the certified bounds
+
+The entries are rounded **LP widths**. Every endpoint has a ball-certified dual bound and a matching ball-certified primal optimum for the fixed-vector relaxation. The twelve-digit outward upper bounds and all coordinates `n=2..x-1`, not only the selected columns here, are printed in the output. `n=6` and `n=12` have true weight zero throughout. The last column changes its coordinate with x.
+
+| x | N | width at n=2 | width at n=6 | width at n=12 | worst width, n=x-1 |
+|---:|---:|---:|---:|---:|---:|
+| 13 | 56 | 1.192655524e-38 | 4.251260e-30 | 2.328012649e-10 | 2.328012649e-10 |
+| 17 | 83 | 1.646086672e-52 | 3.759632e-44 | 2.171886e-28 | 8.288468325e-12 |
+| 19 | 94 | 2.080215547e-59 | 4.228656e-51 | 5.769689e-36 | 2.027492338e-12 |
+| 23 | 123 | 2.075584280e-73 | 3.656089084e-65 | 1.091347336e-50 | 1.000839753e-13 |
+| 25 | 134 | 2.000607387e-80 | 3.364439e-72 | 6.450034e-58 | 2.225924060e-14 |
+| 13 | 60 | 1.000472324e-38 | 3.579417e-30 | 2.121317700e-10 | 2.121317700e-10 |
+| 17 | 60 | 6.079486546e-50 | 1.293759e-41 | 3.545446e-26 | 1.459510808e-10 |
+| 19 | 60 | 1.069682249e-53 | 1.878670e-45 | 6.699063e-31 | 4.152016052e-10 |
+| 23 | 60 | 4.470869087e-59 | 5.916416e-51 | 1.894371e-37 | 9.172920091e-9 |
+| 25 | 60 | 8.231774550e-61 | 9.668708e-53 | 1.313248e-39 | 4.364656164e-8 |
+
+At x=13, N=20 the new computation reproduces the review's endpoints and widths (`2.984430119e-25` at n=2, `1.252865705e-4` at n=12). At N=40 these become `2.332954265e-36` and `4.249427115e-9`. Thus the old tolerance-limited, nonmonotone table was not a property of positivity.
+
+### 4.3 Rates: the widths do not track eps
+
+Define an endpoint rate by `[log10(value at x=13)-log10(value at x=25)]/12`; the fit column is ordinary least squares on all five x values. These slopes are floating derived statistics, not certified asymptotic laws.
+
+| quantity | saturation: endpoint / five-point fit | fixed N=60: endpoint / five-point fit |
+|---|---:|---:|
+| eps | 5.26603 / 5.27134 | 2.74772 / 2.69166 |
+| lambda_m | 1.91822 / 1.92103 | 0.58425 / 0.54912 |
+| width at n=2 | 3.48128 / 3.48145 | 1.84039 / 1.79853 |
+| width at n=6 | 3.50847 / 3.50741 | 1.88070 / 1.83799 |
+| width at n=12 | 3.96312 / 3.92534 | 2.43402 / 2.35612 |
+| worst width at n=x-1 | 0.33496 / 0.33255 | **-0.19278 / -0.20962** |
+
+At saturation the selected fixed coordinates shrink substantially more slowly than eps, and the moving edge is much slower still. At fixed N=60, the edge width grows by a factor about 206 between x=13 and 25. The previously quoted 5.38 uses a wider x range and more fully converged N; it must not be substituted for the 5.26603 measured at these actual log-det minima. Neither the minimal eigenvalue alone nor `lambda_m` alone predicts these widths. L2's weighted, conditioned dual formula is the correct statement.
+
+The widths increase strictly with n in every requested box. This points to location, not to zero/nonzero von Mangoldt weight: the worst position at x=17 is n=16, a prime power with positive true weight. As an atom approaches the edge, the overlap interval in its autocorrelation shortens; at any fixed N its entire matrix tends to zero. The sensitivities of the low eigendirections are correspondingly poorly conditioned near the edge. A vanishing true weight at a composite does not by itself create that mechanism.
+
+### 4.4 Two-coordinate SDP sections (the permitted fallback)
+
+The **full SDP coordinate boxes with all other weights free were not computed**. Instead, for N=20 and 40 the script computes all four support endpoints of each section with only `(2,3)`, `(4,5)`, `(6,7)`, `(8,9)`, `(10,12)` or `(11,12)` allowed to vary. This is the explicitly permitted two-coordinate fallback; other weights are fixed at truth.
+
+Method, independent of the eigenvector LP: Cholesky-whiten `H*` at 200 digits. For the upper endpoint in a chosen coordinate, minimize the convex function `r -> lambda_max(-A-rB)` in double. The reciprocal is the boundary radius of `I+t(A+rB)>=0`. Two test vectors on opposite sides of the scalar minimizer give a rank-two PSD dual: their nonnegative weights are solved at 200 digits so the other coordinate's sensitivity cancels. An interior primal point is chosen at `(1-1e-12)` of the high-precision ray endpoint. Both the primal matrices and the two-vector dual systems are then reconstructed in **1280-bit balls in the original, unwhitened coordinates** and certified. The relative endpoint gaps are below `3.2e-11` (typically about `1e-12`); the selected section widths below have matching inner/outer ten-digit displays.
+
+| N | free pair | projected coordinate | section width (inner/outer agree to shown digits) | full eigenvector-LP width |
+|---:|---|---:|---:|---:|
+| 20 | 2,3 | 2 | 3.556569160e-34 | 2.984430119e-25 |
+| 20 | 2,3 | 3 | 7.418235870e-33 | 1.762261183e-23 |
+| 20 | 6,7 | 6 | 3.223418895e-27 | 1.362526363e-17 |
+| 20 | 11,12 | 11 | 2.890880148e-13 | 2.665999400e-7 |
+| 20 | 11,12 | 12 | 1.407613711e-8 | 1.252865705e-4 |
+| 40 | 2,3 | 2 | 1.544802860e-47 | 2.332954265e-36 |
+| 40 | 2,3 | 3 | 4.836374734e-46 | 1.66756677e-34 |
+| 40 | 6,7 | 6 | 2.315849543e-39 | 7.11364748e-28 |
+| 40 | 11,12 | 11 | 2.641558656e-20 | 1.61023177e-13 |
+| 40 | 11,12 | 12 | 1.440107066e-13 | 4.249427115e-9 |
+
+These section projections give **lower bounds** on the full SDP widths. The LP gives upper bounds. Their large separation leaves the tightness of the full LP relaxation OPEN; a ratio between a section and an LP is not a proved relaxation gap for the full SDP. Every other two-coordinate endpoint is recorded in the output and `checks/sections_N*.certificates`.
 
 ## L5. First recession cutoff at x=13 — PROVED by numerical ball certificates
 

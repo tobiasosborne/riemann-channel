@@ -9,8 +9,9 @@ No RH assumption; no zero ordinates are used as data. This is a research deliver
 1. **P1 — SHARPENED.** A Gaussian log determinant requires positive definiteness. `log(d/s)` is the loss of determinant relative to the maximum determinant, not a gain of the true determinant. The odd block at `N=0` has an affine Schur complement, not a strictly concave quadratic. Intervals may be empty or singletons; a joint log-det maximiser requires a positive definite extension.
 2. **P2 — REFUTED as requested.** The proposed archimedean set contains logarithms of *all* algebraic numbers, including all `log q`. Thus the proposed `L_S` is independent of `S`, and no numerical prime-coordinate projection annihilating the archimedean span exists. Baker independence within the logarithmic subspace does not repair this overlap. A point mass is not a test function for the explicit-formula distribution: its self-convolution contains a mass at zero, and prime evaluation and the archimedean diagonal are undefined. A labelled discrete model must not be called the Weil form.
 3. **P3 — SHARPENED.** Semialgebraicity applies to a finite parameter space and every fixed finite marginal image, not literally to an infinite sequence of state coordinates in a Euclidean space. Auxiliary C*-algebra dimension and matrix bond dimension differ. Individual energies need not be algebraic; finite semialgebraic optima over algebraic data are algebraic.
-4. **P4 — conditional conclusion.** Numerical bounds require numerical constants in both the elimination and transcendence hypotheses; big-O citations alone are insufficient. A priority claim (“first”) requires a literature audit and is not asserted here. Irrationality alone cannot exclude optima over the real algebraic numbers.
-5. **Source convention correction.** The present CCM copy places `bombtest` at `refs/src/2511.22755/mc2arXiv.tex:465–467`, not lines 385–388 of the briefs. The formula itself is unchanged.
+4. **P4 — conditional conclusion.** Numerical bounds require numerical constants in both the elimination and transcendence hypotheses; big-O citations alone are insufficient. A priority claim (“first”) requires a literature audit and is not asserted here. Irrationality alone cannot exclude optima over the real algebraic numbers. The explicit CAD envelope in P4 is derived from determinant-size estimates; its constants are not guessed from a big-O theorem.
+5. **Source inventory correction.** A local Tarski–Seidenberg/CAD source does exist: Coste (2002), `refs/src/coste-2002/paper.txt`. The requested H-TS and H-BPR labels are retained. H-LOG2 was located and checked online; it remains to be byte-cited locally.
+6. **Source convention correction.** The present CCM copy places `bombtest` at `refs/src/2511.22755/mc2arXiv.tex:465–467`, not lines 385–388 of the briefs. The formula itself is unchanged.
 
 ## P1. Bordering and the exact Loewner interval — PROVED / SHARPENED
 
@@ -418,7 +419,7 @@ Reference: S. Basu, R. Pollack, M.-F. Roy, *Algorithms in Real Algebraic Geometr
 
 **Derivation of the numerical envelope from full CAD (PROVED conditional on its projection theorem).**
 
-1. Start with degree `δ_0=δ` and log-base-two coefficient **length** bound `h_0=τ+k log₂(δ+1)`; there are at most `(δ+1)^k` monomials. At each projection include all coefficients, all leading truncations, principal subresultants of each truncation and its derivative, and pairwise principal subresultants of truncations. The full projection theorem supplies a sign-invariant cylindrical decomposition, even where leading coefficients vanish. After `k-1` projections its nonzero univariate polynomials cut the line into cells on each of which the existential formula is constant. Every finite boundary point is therefore a root of one of them.
+1. Start with degree `δ_0=δ` and log-base-two coefficient **length** bound `h_0=τ+k log₂(δ+1)`; there are at most `(δ+1)^k` monomials. At each projection form all leading truncations of the input polynomials, then output their coefficients, principal subresultants of each truncation and its derivative, and pairwise principal subresultants of truncations. The output polynomials involve only the remaining variables. The full projection theorem supplies a sign-invariant cylindrical decomposition, even where leading coefficients vanish. After `k-1` projections its nonzero univariate polynomials cut the line into cells on each of which the existential formula is constant. Every finite boundary point is therefore a root of one of them.
 2. A principal subresultant is a determinant of size at most `2δ_i`, with entries coefficients of the relevant polynomials or their derivatives. Truncation and coefficient extraction do not increase length; differentiation increases it by at most `δ_i`. Consequently valid simultaneous degree and log-length recurrences are
 
 \[
@@ -533,3 +534,110 @@ If one only wants the auxiliary-algebra-dimension convention, the direct-sum cou
 **Priority — OPEN, not a theorem.** The qualitative argument is FNW's precedent. A directly relevant subsequent paper is V. Blakaj and M. M. Wolf, *On the set of reduced states of translation invariant, infinite quantum systems*, Lett. Math. Phys. **114**, 28 (2024), [DOI/source](https://doi.org/10.1007/s11005-024-01776-1), Introduction and Theorem 1: it discusses the FNW transcendental-energy obstruction and proves non-semialgebraicity of the full marginal set. It does not supply the explicit degree/height-to-error calculation (P4.3–P4.5) in the material inspected. Targeted searches for a Heisenberg/MPS Diophantine rate found no such rate, but this is not an exhaustive priority search. Therefore the note's “first” and “nobody appears to have written it down” (`finite-prime-language.md:72–74`) must be labelled unverified, not promoted to a rigorous historical claim. This lane proves a conditional quantitative obstruction; it does not prove novelty or a sharp convergence rate.
 
 **Metric analogue and open inputs — SHARPENED / OPEN.** One needs a specific finite semialgebraic candidate class defined over a fixed real closed coefficient field, an algebraically definable *optimal* invariant on that class, an independent identification of the true metric's value with a number outside that field, and an effective separation measure plus coefficient bounds for a rate. Knowing a listed constant to be transcendental would not automatically identify it as the required invariant; the arithmetic/archimedean data already in the candidate class may themselves include it. The irrationality of any specified nonzero zeta-zero ordinate, the irrationality/transcendence of Euler's `γ`, and of the usual first Stieltjes constant `γ_1` remain open inputs here. For `γ` and Stieltjes constants, a standard primary survey is J. C. Lagarias, *Euler's constant: Euler's work and modern developments*, Bull. AMS **50** (2013), 527–628, [source](https://doi.org/10.1090/S0273-0979-2013-01423-X). The zero-ordinate statement is retained as the notebook's open problem, not a theorem about absence of future progress; no verified resolution was found. Most importantly, **irrationality of an ordinate is insufficient for P3's exclusion** because algebraic irrational minima are permitted. Transcendence (or nonmembership in the actual coefficient field) and an invariant-realisation argument are needed. Nor would transcendence of `γ` or `γ_1` alone settle the original Baker grading: independence from an entire archimedean span is stronger. The assertion that *any one* of the three listed inputs automatically unlocks metric exclusion (`finite-prime-language.md:230–232`) is therefore refuted in that unqualified form.
+
+## Numerical checks for the blind lane
+
+All checks use arithmetic data or symbolic kinematic examples and contain no zero calls. They are independent checks of the formulas, not implementations of a new full Weil form. Accordingly no uncalibrated alternative `W` is reported; the mandatory `zst` calibration for such an implementation is not being bypassed. Source-only substitutions in (P2.2) use exactly CCM's `Ψ`, and all P1 block formulas are verified against the full Loewner matrix symbolically.
+
+Run from the repository root:
+
+```
+python3 notes/rtp-round-2/prover/checks/p1_p2.py
+python3 notes/rtp-round-2/prover/checks/p3_choi.py
+python3 notes/rtp-round-2/prover/checks/p4_bound.py
+```
+
+Outputs are retained alongside the scripts as `p1_p2.txt`, `p3_choi.txt`, `p4_bound.txt`.
+
+### P1: exact offset, with decimals for orientation
+
+`checks/p1_p2.py` uses SymPy exact rational/radical arithmetic. It constructs the full `5×5` Loewner matrix and checks the parity transformation, both enlarged determinants, both even endpoints, strict positivity of the odd complement there, and the product's derivative at zero. The proof of unique global optimality is P1.3, not numerical root selection.
+
+| quantity | exact value | decimal (display only) |
+|---|---|---|
+| left endpoint of the joint interval | `(9-3√337)/82` | `-0.561861942098261681652136079953` |
+| right endpoint | `(9+3√337)/82` | `0.781374137220212901164331201904` |
+| midpoint | `9/82` | `0.109756097560975609756097560976` |
+| joint maximum | `0` | `0` |
+| maximum minus midpoint | `-9/82` | `-0.109756097560975609756097560976` |
+| offset / half-width | `-3/√337` | `-0.163420413210852990787760114410` |
+
+### P2: three atom centres, and the legitimate direct sum
+
+Take centres `M={1,2,6}`, coefficients `(1,2,-1)`, `S={2,3}`, and any admissible normalised bump from P2.4. Equivalently use the formal atoms only to enumerate the pairs. The script factors each integer ratio exactly:
+
+| pair ratio | finite-place local coefficient | pole kernel | archimedean off-origin kernel |
+|---|---|---|---|
+| `2/1=2` | `A_2=2√2` | `3√2/2` | `2√2/3` |
+| `6/2=3` | `A_3=-4/√3` | `4√3/3` | `3√3/8` |
+| `6/1=6` | no prime-power term | `7√6/6` | `6√6/35` |
+
+Consequently
+
+\[
+ R_{\rm fin}=-2\sqrt2\log2+\frac4{\sqrt3}\log3
+       =0.576620115453161525317747642908\ldots,
+\]
+
+with Baker coordinates `(constant,iπ,log2,log3)=(0,0,-2√2,4/√3)`. Each other prime coordinate is zero. The symbolic coefficients are exact; the decimal is not evidence for independence (H-BAKER is). This is a three-centre instance of the **corrected** theorem. The original `L_S` has no claimed coordinates, and a full atomic Weil value is undefined; there is no fabricated three-atom check of that false statement.
+
+### P3: energy and Choi conventions
+
+`checks/p3_choi.py` checks the cubic contraction (P4.6) on an exact complex product channel with pure physical density `[[1/2,i/2],[-i/2,1/2]]` and auxiliary density `I_2/2`. Its Choi matrix is PSD of trace 2, its generating map is unital, and the boundary is stationary. The contraction equals the direct product-state expectation `1/4`. It also checks the local Hamiltonian spectrum `{-3/4,1/4,1/4,1/4}`. Complex off-diagonal entries make this a check of the index/conjugation convention as well as the energy scale.
+
+### P4: explicit conditional decimal lower bounds
+
+Let `E(d)=log₁₀(-log₁₀ B(d))`. The exact quantity computed, without ever materialising the astronomical integer `D_d`, is
+
+\[
+ E(d)=\log_{10}(200000(\tau_d+2))
+                  +2^{k_d+3}\log_{10}(2s_d\delta_d).
+\]
+
+| `d` | `k_d` | `δ_d` | `s_d` | `τ_d` |
+|---:|---:|---:|---:|---:|
+| 2 | 69 | 8 | 268 | 512 |
+| 3 | 334 | 18 | 262170 | 2592 |
+| 4 | 1041 | 32 | 4294967344 | 8192 |
+| 8 | 16449 | 128 | `340282366920938463463374607431768211840` | 131072 |
+
+| `d` | `E(d)` (approximation, 17 significant digits) | conservative rounded **lower bound** on the gap |
+|---:|---|---|
+| 2 | `1.71528382146590596 × 10^22` | `10^{-10^{1.7152839 × 10^22}}` |
+| 3 | `1.95274538929341369 × 10^102` | `10^{-10^{1.9527454 × 10^102}}` |
+| 4 | `2.15629830912744022 × 10^315` | `10^{-10^{2.1562984 × 10^315}}` |
+| 8 | `1.43759761809591357 × 10^4954` | `10^{-10^{1.4375977 × 10^4954}}` |
+
+These are positive decimal powers, not numerical underflow to zero. For scale, even the `d=2` bound has about `10^{1.7153×10^22}` zeros before its first nonzero decimal digit. The displayed conservative exponents are rounded **up**, so the resulting powers are smaller than the exact bound (P4.5). Computation uses `mpmath` at 100 decimal digits for display and `mpmath.iv` at 80 decimal digits to enclose the logarithms and verify the direction of each rounding; input-height inequalities use exact Python integers. This certifies the arithmetic of the **conditional** bound, not H-LOG2 or CAD itself. No variational optimisation or numerical estimate of the actual `e_d` is claimed. The huge weakness comes mainly from deliberately extravagant CAD degree and height bounds; these numbers are not estimates of physical convergence.
+
+## What this changes in the notebook
+
+No claim database or report shard was edited; these are proposed changes for REFUTE review.
+
+| existing claim row | proposed treatment |
+|---|---|
+| `lem:bordering-interval` (lemma, sketched) | **PROVED after wording corrections** in P1: `d>0`, positive definite completion for finite information; `N>=1` for two strictly concave quadratics; allow empty/singleton feasible sets; determinant deficit rather than gain; two columns together in (iii). Add P1.2's explicit `u,w,ℓ` and P1.3's midpoint iff criterion. |
+| `prop:extension-disc` (proposition, sketched) | **Unchanged**; P1 only supplies the general Schur-complement step. The database summary still omits the conjugate in its complex disc-centre formula, unlike corrected shard `report/sections/08g_weil_window_extension.tex:91`; synchronise that wording when editing. |
+| `obs:prime-by-prime-blind` (observation, sketched) | **Do not upgrade from P2**. The proposed numerical proof is refuted for `L_S`. Separate the existing ansatz claim from P2.4's precise foreign-comb blindness; a restriction of the full Weil form can carry information about zeros, as the correction in `metric-as-state.md:73–89` already says. |
+| `thm:weil-positivity-finite` (theorem, proved) | **Unchanged**; a finite spectral/trace criterion is not a definition of the analytic form on point masses. |
+| `prop:trace-supertrace-criterion` (proposition, proved) | **Unchanged**; finite graded trace rationality is independent of the new optimal-value obstruction. |
+| `obs:factor-by-factor-limits` (observation, sketched) | **Unchanged**; append the precisely scoped P3.4 transposition as a separate result, not a proof of all limits/continuation assertions. |
+
+Suggested new rows (labels provisional; the status column expresses proof status, with dependencies to be recorded explicitly):
+
+| suggested id | kind | status and scope |
+|---|---|---|
+| `prop:loewner-midpoint-condition` | proposition | **PROVED**; P1.3, nonempty interior and positive old blocks |
+| `obs:finite-prime-language-collapse` | observation | **PROVED / REFUTATION**; P2.1, original `L_S` independent of `S` |
+| `prop:atomic-weil-domain-obstruction` | proposition | **PROVED**; P2.3, no unprescribed atomic extension |
+| `thm:baker-prime-remainder` | theorem | **PROVED-conditional on H-BAKER**; P2.4, genuine normalised admissible bumps and subtracted finite-place remainder |
+| `prop:finite-bond-semialgebraic-optimum` | proposition | **PROVED-conditional on H-TS**; P3.2–P3.4, compact parametrisation, attained algebraic energy, finite semialgebraic optima |
+| `thm:fnw-transcendental-exclusion` | theorem | **PROVED-conditional on H-TS and a transcendental target**; P3.3; Heisenberg also H-HULTHEN and H-LOG2 or H-BAKER |
+| `thm:diophantine-heisenberg-floor` | theorem | **PROVED-conditional on H-TS, H-BPR, H-LOG2, H-HULTHEN**; P4.1 with the explicit envelope derived above |
+| `num:diophantine-heisenberg-floor` | numerical | **NUMERICAL, conditional formula evaluation**; exact parameter counts and interval-enclosed logarithmic displays, not an optimisation run |
+
+The future-directions note needs more than a status upgrade. Replace its proposed whole-value Baker grading and foreign-prime exclusion; remove the point-mass inclusion until a new regularisation is specified and justified; distinguish logarithmic coordinates from archimedean provenance; retain the compact semialgebraic optimum theorem; replace the quantitative sketch by P4 with its explicit hypotheses; remove the automatic inference from mere irrationality to metric exclusion; mark novelty as **OPEN**. Membership of the bump archimedean integrals in the named `A`, a useful transcendental metric invariant and a much sharper effective degree bound remain **OPEN**.
+
+**Sources still to byte-cite.** H-BAKER (Baker 1975, Chapter 2; additionally the theorem is stated in Baker's own 1970 ICM lecture, p. 20, [primary proceedings](https://www.mathunion.org/fileadmin/ICM/Proceedings/ICM1970.1/ICM1970.1.ocr.pdf)); H-TS in its coefficient-field form; the full CAD theorem under H-BPR (BPR Chapter 11, with the local Coste projection source and our explicit elementary coefficient proof); Nesterenko–Waldschmidt Theorem 3(1), including the definition of length; and H-HULTHEN in precisely the `S=σ/2`, per-site normalisation. FNW's exact original wording and historical attribution remain to be checked against its 1992 paper rather than inferred from the notebook; Blakaj–Wolf supplies a useful later primary attribution. The numerical bound's constants do **not** require guessing a constant in BPR Theorem 14.16.
+
+**Local source audit.** `refs/src` and `refs/ocr` were listed. The latter contains the Burg and Landau OCR texts. Burg's autocorrelation setting is visible at `refs/ocr/burg-1975/ch2.ocr.txt:5–24`; none of P1's algebra depends on a new Burg quotation. A Lagarias source is present at `refs/src/math/0404394/main.tex` (*Li Coefficients for Automorphic L-Functions*, title/author `:143–146`); it reports the Bombieri–Lagarias arithmetic decomposition at `:322–330`. `refs/src/math/0008177/main.tex` is the elementary RH criterion source. No original Bombieri–Lagarias 1999 source was identified in this scan; no claim here is inferred from an absent copy. All actual Weil signs, domain restrictions and kernels used in P2 were read from the CCM file at the exact lines cited above.

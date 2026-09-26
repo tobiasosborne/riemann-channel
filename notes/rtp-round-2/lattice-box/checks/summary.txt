@@ -1,0 +1,33 @@
+SUMMARY: slopes are derived floating values; positive means contraction in digits per unit x
+PASS saturation x=13: LP widths increase strictly toward the edge
+ROW saturation x=13 N=56 eps=1.9553772e-58 lambda_m=8.5108815e-27 lambda_mplus1=2.0549167e-24 active_rank=12 width2=1.192655524e-38 width_edge=2.328012649e-10
+PASS saturation x=17: LP widths increase strictly toward the edge
+ROW saturation x=17 N=83 eps=1.3344813e-79 lambda_m=1.5931877e-34 lambda_mplus1=5.2320769e-32 active_rank=16 width2=1.646086672e-52 width_edge=8.288468325e-12
+PASS saturation x=19: LP widths increase strictly toward the edge
+ROW saturation x=19 N=94 eps=5.8660097e-90 lambda_m=2.0692789e-38 lambda_mplus1=6.9256816e-36 active_rank=18 width2=2.080215547e-59 width_edge=2.027492338e-12
+PASS saturation x=23: LP widths increase strictly toward the edge
+ROW saturation x=23 N=123 eps=2.7331204e-111 lambda_m=4.2500705e-46 lambda_mplus1=1.3388708e-43 active_rank=24 width2=2.07558428e-73 width_edge=1.000839753e-13
+PASS saturation x=25: LP widths increase strictly toward the edge
+ROW saturation x=25 N=134 eps=1.2555392e-121 lambda_m=8.1534244e-50 lambda_mplus1=3.2328331e-47 active_rank=26 width2=2.000607387e-80 width_edge=2.22592406e-14
+SLOPE saturation eps endpoint=5.266033356 five_point_fit=5.2713436573
+SLOPE saturation lambda_m endpoint=1.918219541 five_point_fit=1.9210293310
+SLOPE saturation width2 endpoint=3.48127943 five_point_fit=3.4814497167
+SLOPE saturation width6 endpoint=3.508467081 five_point_fit=3.5074097725
+SLOPE saturation width12 endpoint=3.963118613 five_point_fit=3.9253438817
+SLOPE saturation width_edge endpoint=0.3349562493 five_point_fit=0.3325488796
+PASS fixed60 x=13: LP widths increase strictly toward the edge
+ROW fixed60 x=13 N=60 eps=1.0135629e-58 lambda_m=7.2210343e-27 lambda_mplus1=1.6778797e-24 active_rank=12 width2=1.000472324e-38 width_edge=2.1213177e-10
+PASS fixed60 x=17: LP widths increase strictly toward the edge
+ROW fixed60 x=17 N=60 eps=5.6138266e-74 lambda_m=2.1238211e-32 lambda_mplus1=4.0822619e-30 active_rank=18 width2=6.079486546e-50 width_edge=1.459510808e-10
+PASS fixed60 x=19: LP widths increase strictly toward the edge
+ROW fixed60 x=19 N=60 eps=1.8317291e-79 lambda_m=1.2296824e-33 lambda_mplus1=1.7706628e-31 active_rank=20 width2=1.069682249e-53 width_edge=4.152016052e-10
+PASS fixed60 x=23: LP widths increase strictly toward the edge
+ROW fixed60 x=23 N=60 eps=4.2864898e-88 lambda_m=2.5938599e-34 lambda_mplus1=2.0617082e-32 active_rank=26 width2=4.470869087e-59 width_edge=9.172920091e-9
+PASS fixed60 x=25: LP widths increase strictly toward the edge
+ROW fixed60 x=25 N=60 eps=1.0793648e-91 lambda_m=7.0399314e-34 lambda_mplus1=8.3992731e-32 active_rank=28 width2=8.23177455e-61 width_edge=4.364656164e-8
+SLOPE fixed60 eps endpoint=2.747723538 five_point_fit=2.6916612055
+SLOPE fixed60 lambda_m endpoint=0.5842525822 five_point_fit=0.5491167303
+SLOPE fixed60 width2 endpoint=1.840392634 five_point_fit=1.7985320234
+SLOPE fixed60 width6 endpoint=1.880703659 five_point_fit=1.8379924648
+SLOPE fixed60 width12 endpoint=2.434021577 five_point_fit=2.3561214489
+SLOPE fixed60 width_edge endpoint=-0.1927786934 five_point_fit=-0.2096169940

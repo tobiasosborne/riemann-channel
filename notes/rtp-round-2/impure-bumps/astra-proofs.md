@@ -47,6 +47,8 @@ For C=E,H the exact onset is `delta_C=min_(r in ratios,k in C)|log(k/r)|/2`. Ful
 
 ## I3. Positivity and the contradiction pathway (SHARPENED; PROVED)
 
+**Proposition I3 (H-test; positivity conditional on H-RH).**
+
 Write `z_rho=i(rho-1/2)` and `hat f(z)=int f(y)exp(-izy)dy`. Unconditionally,
 
 `G_ab=N_delta^(-1) sum_rho overline(hat phi_a(conj z_rho)) hat phi_b(z_rho)`.
@@ -84,7 +86,7 @@ Since `||u||^2=t^2/(1+t^2)`, this yields two-sided bounds for departure from the
 
 `defect(v) <= ||u||^2 <= eta^2/((g-2epsilon)^2+eta^2)`.
 
-*Proof.* Project the eigenvalue equation by Q and use that the inverse bracket is positive definite with spectrum between g-2epsilon and W+2epsilon. Compare its action on b using its extreme singular values. The best product overlap is at least the overlap with v0. Simplicity of the perturbed ground follows from g-2epsilon>0.
+*Proof.* Project the eigenvalue equation by Q. The bracket is positive definite with spectrum between g-2epsilon and W+2epsilon, so its inverse has singular values between 1/(W+2epsilon) and 1/(g-2epsilon). Compare its action on b. The best product overlap is at least the overlap with v0. Simplicity of the perturbed ground follows from g-2epsilon>0.
 
 There is no positive lower Schmidt bound in terms of eta and g alone: a perturbation `M_L tensor I` rotates a local ground vector while leaving the full ground vector a product. This refutes that reading of the brief's requested bound.
 
@@ -104,7 +106,7 @@ For an explicitly small parameter s, `G(s)=K+sM`, write `z=B^-1 QMv0` and let `N
 
 `defect(v(s)) = s^2 ||Nz||^2 + O(s^3)`.
 
-Indeed x,y,Z are O(s), a=1+O(s^2), and `Z=-s Nz+O(s^2)`; therefore T=-s Nz+O(s^2), while the two norm bounds differ by a factor 1+O(s). This is the precise quadratic law, with the normal excitation rather than eta as its coefficient. It does not force an O(1) defect at finite width. At the measured crossings we additionally evaluate the finite I2c bounds, without pretending H-small holds if its norm test fails.
+Indeed x,y,Z are O(s), a=1+O(s^2), and `Z=-s Nz+O(s^2)`; therefore T=-s Nz+O(s^2), while the two norm bounds differ by a factor 1+O(s). This is the precise quadratic law, with the normal excitation rather than eta as its coefficient. It does not force an O(1) defect at finite width. At the diagnostic width we additionally evaluate the finite I2c bounds, without pretending H-small holds if its norm test fails.
 
 **Log-det statement (PROVED).** Where K and G are positive definite, `log det K-log det G` is a log-det gap. K is a Kronecker sum, not the direct sum of covariance principal blocks corresponding to a partition of variables. The Gaussian identity of A1.1(4), `2I=log det G_L+log det G_R-log det G`, therefore does not identify this gap as mutual information. It has no general nonnegativity guarantee. If K is indefinite, neither an absolute determinant nor an even number of negative eigenvalues repairs the covariance interpretation; we report the gap as undefined.
 
@@ -322,3 +324,68 @@ The two raw, unnormalised prime-side entries at delta=0.1 are 0.0047166817276681
 | 8 | 6.4975e-6 | 2.7906e-6 | 3.0848e-8 | 1.2282e-10 | 5.9690e-15 | 3.3220e-16 |
 
 Fourier integrals are evaluated by Gaussian rules of orders 1024 and 1536, whose maximum difference is printed. The last errors reach the float64 ordinate/quadrature floor and must not be read as measured infinite-tail errors at 1e-18. The output additionally gives the sum of absolute terms from M+1 through 2000 (a finite remainder, **not** a bound on the omitted infinite tail). Signed errors need not decrease monotonically: the r=6 error increases from M=10 to 30. Repeated integration by parts gives faster-than-any-power decay of the smooth bump transform; the rapid drop before the numerical floor agrees with A2's Gevrey-bump truncation behaviour. No new fitted asymptotic constant is asserted. This is an implementation comparison of I3, not an RH assumption or certificate.
+
+## Precision regimes and reproducibility
+
+Run from the repository root:
+
+`python3 -u -B scripts/rtp2_impure_bumps.py > outputs/rtp2_impure_bumps.txt 2>&1`
+
+The implementation is deterministic, uses one BLAS thread, prints no timestamps, and reads zeros only in I6. Reusable Chebyshev tables, the convention printer and its output, complete validation matrices, and machine-readable results live in `notes/rtp-round-2/impure-bumps/checks/`. No repository claims, shards, libraries or input data were edited, and no git commands were run.
+
+- **Exact arithmetic:** prime-power sieve, lattice ratios, comparison of multiplicative separations for the threshold table. The logarithms of the winning rational separations use mpmath at 40 decimal digits.
+- **Convention calibration:** before reporting any bump form, the copied general Psi integral is applied to the Fourier basis at x=9, n=0,...,8 and compared with the existing `zst_riemann_ab` library at 240 bits. The maximum discrepancy is 4.81e-35; mpmath's maximum quadrature estimate is 1.1e-43. The 25 printed a,b digits agree. This does not use zeros.
+- **Sweep and sensitivities:** float64 matrices, Gaussian quadrature of order 128, repeated at order 256 for every one of the 36 requested sweep matrices; mpmath is set to 40 digits throughout the program. The largest entry difference is 6.93e-14. Multiplying the entry difference by matrix dimension gives the displayed empirical spectral-error estimate, at most 1.9e-12. Every sweep minimum is positive by more than a million times that estimate. The largest eigenpair residual is 3.83e-15. These estimates are **not certified bounds**, and digits beyond these absolute floors are computational output, not independently certified accuracy. The dense scans and finite-removal tables use the same numerical kernels.
+- **Independent precision path:** three complete forms at delta=0.2 use mpmath entries and `mp.eigsy` at 40 digits. Autocorrelations are first integrated directly with `mp.quad`, then represented separately on [0,1] and [1,2] by Chebyshev expansions. Degrees 112 and 160 are compared on the complete matrices. Direct 41-point checks give maximum interpolation discrepancies 6.96e-23 and 5.56e-29 respectively. Adaptive integration splits at every support edge, interpolation knot and absolute-value change. The small quadrature error estimate refers to the interpolated integrand; interpolation error is measured separately and must not be conflated with it. The final matrix table below records both.
+- **Comparison only:** the zeros have float64 precision with no supplied radii; 1024/1536-node Fourier quadrature and the observed comparison floor are reported separately. None of these zeros influences the prime-side matrices, eigenvectors, thresholds or tests.
+
+Development correction: the initial arbitrary-precision comparison used degrees 80 and 112. Their full-matrix differences reached 1.50e-17 and failed the preselected 1e-18 test. The orders were increased to 112 and 160; the tolerance was not loosened. No ball certification is claimed for the mpmath or float64 results.
+
+**Full mpmath validation matrices (NUMERICAL; delta=0.2).**
+
+| S | A | lambda_min | max entry change, degrees 112 -> 160 | max difference from float64 | quad estimate | eigenpair residual |
+|---|---:|---:|---:|---:|---:|---:|
+| [2, 3] | 2 | 0.0013537206331838351233 | 9.96962e-23 | 3.1179e-14 | 2.66141e-42 | 1.31909e-41 |
+| [2, 3] | 3 | 0.0001800746266448849465 | 4.13791e-22 | 7.40394e-14 | 2.66141e-42 | 1.9364e-41 |
+| [2, 3, 5] | 2 | 0.0000382190776467145009 | 1.07125e-21 | 1.49173e-13 | 2.66141e-42 | 3.3344e-41 |
+
+The largest degree-change matrix norm estimate is `27*1.07125e-21=2.90e-20`. The float64 discrepancies, up to 1.50e-13 per entry on these independent checks, show why the much smaller adaptive quadrature estimates alone must not be used as error bars for the sweep. The printed Fourier-transform quadrature difference in I6 is 2.95e-15. Final run: **62 checks passed, 0 failed**. Every claimed check uses the script's single `check(cond,msg)` helper; a failing final check makes the process exit nonzero.
+
+## Numerical checks for the blind lane
+
+Use the unmodified bump of A2, all supported prime powers, lexicographic coefficient order, and divide the form by `delta R_1(0)`; do not solve a generalised eigenproblem. These three values use the mpmath path, with delta exactly 0.2:
+
+| S | A | minimum eigenvalue |
+|---|---:|---:|
+| {2,3} | 2 | 0.00135372063318383512 |
+| {2,3} | 3 | 0.000180074626644884947 |
+| {2,3,5} | 2 | 0.0000382190776467145010 |
+
+One Schmidt defect: **0.00319814799166319** for {2,3}, A=2, delta=0.2. The independent validation target is 1e-18 absolute for the three eigenvalues with sufficiently accurate quadrature, or 1e-11 for a float64 implementation; 1e-9 is sufficient for the defect. These are suggested comparison tolerances, not certified interval radii.
+
+One exact impurity threshold: **delta_H({2,3,5},2)=log(25/24)/2=0.02041099726012756477728853257766**, binding ratio r=25/3 and k=8. At equality the weight is zero; just above it this previously absent power of 2 enters. The corresponding first external threshold is log(450/449)/2=0.0011123475110555740778597354647466. A threshold for defect>0.1 was not observed; it must not be substituted for either of these support thresholds.
+
+## What this changes in the notebook
+
+`lem:mixed-entries-kronecker` remains valid for every width, with uniqueness conditional on simple local ground eigenvalues. Its one-prime matrices must be the full one-prime restrictions at that width. Add the mixed-mask prime remainder with a **minus** sign and split it into E/H/R; do not put full P_k matrices on top of a baseline that already contains their axis entries. Replace the proposed rank bound by the exact weighted adjacency/tensor-shift description.
+
+`obs:rtp-round-1-reading`(i) should retain its admissible-regime conclusion and state the quadratic rate for the Schmidt defect and squared-overlap movement, not for the vector norm itself. Non-admissibility is a way to leave the small-width argument, not a sufficient condition for a 0.1 Schmidt defect: none was seen in these three requested sweeps, even on the 401-point grids. The analytic gap-and-normal-projection result gives the precise perturbative statement. `obs:rtp-round-1-reading`(ii) should retain the corrected rank-two pole contribution and add the full mixed-prime remainder at non-admissible widths, including represented-prime leakage. The new data do not establish an intrinsic two-place correlation or a Gaussian mutual information. Neither the coefficient eigenvector nor its defect should silently be identified with an orthonormal bump-basis observable after overlaps begin.
+
+Candidate rows for shard 08j (proposals only; no registration or shard edits):
+
+| candidate id | kind | status | content |
+|---|---|---|---|
+| lem:impure-mixed-kronecker | lemma | PROVED | all-width Kronecker baseline and mixed-mask negative prime remainder; E/H/R classification |
+| prop:impure-pattern-rank | proposition | PROVED | weighted distance adjacency matrices; explicit rank-two counterexample to rank-one-per-pattern |
+| prop:impure-prime-response | proposition | PROVED | finite affine dependence on external/local prime amplitudes and simple-eigenpair response formulas |
+| prop:schmidt-schur-bounds | proposition | PROVED | finite upper/lower Schur-complement bounds; normal-projection quadratic coefficient under H-gap |
+| prop:impure-weil-positivity | proposition | PROVED-conditional (H-RH) | squares and positivity for all widths under RH; unconditional paired formula and negative-certificate implication |
+| num:impure-thresholds | finite enumeration | PROVED binding pairs; NUMERICAL decimal logs | exact twelve-row E/H onset table with exhaustive sieve-range check |
+| num:impure-bump-sweep | numerical | NUMERICAL | 36 positive matrices with precision estimates; no 0.1 defect on the specified 401-point grids |
+| num:impure-prime-sensitivity | numerical | NUMERICAL | fixed-width coordinate-addition movement and external-prime removal/amplitude response |
+| obs:impure-logdet-gap | observation | PROVED distinction; NUMERICAL examples | Kronecker log-det gap is not Gaussian mutual information and is often undefined |
+| question:impure-continuous-crossing | question | OPEN | certify the whole interval, or find a 0.1 crossing in a larger class |
+
+**Channel verdict.** The impure form genuinely couples the lattice coordinates, but its newly admitted prime data are explicit local masses of third primes sampled near the chosen ratios, together with leakage from primes already in S. It is therefore not a clean correlation between 2 and 3 alone. Pole and archimedean terms and the represented-prime leakage are genuine coordinate couplings; nonlinear spectral response mixes them with the third-prime data. In the measured example, the latter enforce a cancellation that leaves the true ground vector close to a product, while removing them often produces order-one defect and indefiniteness. The measured learning quantities are sensitivities to known arithmetic weights and changes of a finite coefficient eigenvector, not an established contraction rate of a MaxEnt posterior.
+
+**Next step.** At fixed lattice and width, turn the measured prime-amplitude derivatives into certified positivity intervals for individual weights, keeping the external-prime nuisance parameters explicit. Separately use interval quadrature plus gap/derivative enclosures between widths to settle whether the sampled absence of a 0.1 crossing holds on the entire interval. Any function-space version should specify the overlap metric H and the tensor-coordinate convention before comparing its eigenvectors. No RH consequence follows from the present positive samples.

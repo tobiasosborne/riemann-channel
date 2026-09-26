@@ -105,7 +105,7 @@ int main(int argc,char **argv) {
  arb_t X,L,t,u,v,s;arb_init(X);arb_init(L);arb_init(t);arb_init(u);arb_init(v);arb_init(s);arb_set_ui(X,x);arb_log(L,X,P);
  arb_ptr a=_arb_vec_init(N+1),b=_arb_vec_init(N+1),a0=_arb_vec_init(N+1),b0=_arb_vec_init(N+1),ta=_arb_vec_init(N+1),tb=_arb_vec_init(N+1);
  zst_riemann_ab(a,b,N,X,x,P);zst_riemann_ab(a0,b0,N,X,1,P);
- for(int i=0;i<=N;i++){printf("AB %d ",i);pr(a+i);printf(" ");pr(b+i);printf(" ");pr(a0+i);printf(" ");pr(b0+i);printf("\n");}
+ if(argc<=4 || strcmp(argv[4],"mins"))for(int i=0;i<=N;i++){printf("AB %d ",i);pr(a+i);printf(" ");pr(b+i);printf(" ");pr(a0+i);printf(" ");pr(b0+i);printf("\n");}
  arb_mat_t G;arb_mat_init(G,2*N+1,m);arb_ptr costs=_arb_vec_init(2*N+1);
  char path[4096];snprintf(path,sizeof(path),"%s.vec",prefix);FILE *vf=fopen(path,"w");
  for(int parity=0;parity<2;parity++) {
@@ -113,6 +113,17 @@ int main(int argc,char **argv) {
   arb_mat_t H,C,V,T,W;arb_mat_init(H,d,d);arb_mat_init(C,d,d);arb_mat_init(V,d,d);arb_mat_init(T,d,d);arb_mat_init(W,d,d);
   if(parity)zst_odd_block(H,a,b,N,P);else zst_even_block(H,a,b,N,P);
   int pd=arb_mat_cho(C,H,P);printf("PD %d %d\n",parity,pd);
+  if(argc>4 && !strcmp(argv[4],"mins")){
+   arb_ptr vv=_arb_vec_init(d);int certified=zst_eigmin(t,vv,H,80,P);
+   /* Rank-one inertia certificate, avoiding unstable unpivoted LDL near zero. */
+   arb_zero(s);for(int i=0;i<d;i++){arb_get_mid_arb(vv+i,vv+i);arb_addmul(s,vv+i,vv+i,P);}
+   arb_mul_2exp_si(u,t,2);arb_div(u,u,s,P);arb_mat_set(T,H);
+   for(int i=0;i<d;i++)for(int j=0;j<d;j++){arb_mul(v,vv+i,vv+j,P);arb_addmul(arb_mat_entry(T,i,j),u,v,P);}
+   arb_mul_2exp_si(u,t,1);for(int i=0;i<d;i++)arb_sub(arb_mat_entry(T,i,i),arb_mat_entry(T,i,i),u,P);
+   certified=certified&&arb_is_positive(t)&&arb_mat_cho(C,T,P);
+   printf("MIN %d %d ",parity,certified);arb_printn(t,120,0);printf("\n");_arb_vec_clear(vv,d);
+   arb_mat_clear(H);arb_mat_clear(C);arb_mat_clear(V);arb_mat_clear(T);arb_mat_clear(W);continue;
+  }
   if(pd)for(int i=0;i<d;i++){arb_log(t,arb_mat_entry(C,i,i),P);arb_mul_2exp_si(t,t,1);printf("PIV %d %d ",parity,i);pr(t);printf("\n");}
   if(argc>4 && !strcmp(argv[4],"scan")){arb_mat_clear(H);arb_mat_clear(C);arb_mat_clear(V);arb_mat_clear(T);arb_mat_clear(W);continue;}
   acb_mat_t A,R;acb_mat_init(A,d,d);acb_mat_init(R,d,d);acb_ptr eig=_acb_vec_init(d);mag_t tol;mag_init(tol);mag_set_ui_2exp_si(tol,1,-1100);
@@ -132,7 +143,8 @@ int main(int argc,char **argv) {
   }
   arb_mat_clear(H);arb_mat_clear(C);arb_mat_clear(V);arb_mat_clear(T);arb_mat_clear(W);acb_mat_clear(A);acb_mat_clear(R);_acb_vec_clear(eig,d);mag_clear(tol);
  }
- fclose(vf);snprintf(path,sizeof(path),"%s.balls",prefix);FILE *bf=fopen(path,"w");fprintf(bf,"%d %d\n",m,2*N+1);
+ fclose(vf);if(argc>4 && (!strcmp(argv[4],"scan") || !strcmp(argv[4],"mins")))return 0;
+ snprintf(path,sizeof(path),"%s.balls",prefix);FILE *bf=fopen(path,"w");fprintf(bf,"%d %d\n",m,2*N+1);
  for(int i=0;i<2*N+1;i++){dump(bf,costs+i);printf("G %d",i);for(int k=0;k<m;k++){dump(bf,arb_mat_entry(G,i,k));printf(" ");pr(arb_mat_entry(G,i,k));}printf("\n");}
  fclose(bf);return 0;
 }

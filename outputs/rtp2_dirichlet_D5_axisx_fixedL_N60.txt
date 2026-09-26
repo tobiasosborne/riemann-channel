@@ -1,0 +1,123 @@
+# rtp2_dirichlet; author codex:gpt-6-astra; FLINT 3.0.1; certified balls unless explicitly floating
+# axisx D=5 kappa=0 N=60 xmax=50 prec=2700 fixedL=1
+# CCM changes window and primes; fixedL changes only cutoff, including zero character weights.
+EIG x=50 X=1 N=60 epsE=-1.93499839851 epsO=-0.229190800787 parity=1 even_simple=1 negE=1 negO=1
+KNOT x=50 X=1 N=60 status=INDEFINITE
+EIG x=50 X=2 N=60 epsE=-1.08880416234 epsO=0.268610359082 parity=1 even_simple=1 negE=1 negO=0
+KNOT x=50 X=2 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=3 N=60 epsE=-0.529132103911 epsO=-0.580588926691 parity=-1 even_simple=0 negE=2 negO=1
+KNOT x=50 X=3 N=60 status=INDEFINITE
+EIG x=50 X=4 N=60 epsE=-0.639650897722 epsO=-0.440313168412 parity=1 even_simple=1 negE=2 negO=1
+KNOT x=50 X=4 N=60 status=INDEFINITE
+EIG x=50 X=5 N=60 epsE=-0.639650897722 epsO=-0.440313168412 parity=1 even_simple=1 negE=2 negO=1
+KNOT x=50 X=5 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=7 N=60 epsE=-0.499302133355 epsO=-0.501115067662 parity=-1 even_simple=0 negE=3 negO=3
+KNOT x=50 X=7 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=8 N=60 epsE=-0.728538820719 epsO=-0.732989440341 parity=-1 even_simple=0 negE=3 negO=3
+KNOT x=50 X=8 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=9 N=60 epsE=-0.554287647091 epsO=-0.608908091736 parity=-1 even_simple=0 negE=3 negO=3
+KNOT x=50 X=9 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=11 N=60 epsE=-0.837593574000 epsO=-0.798692557245 parity=1 even_simple=1 negE=5 negO=4
+KNOT x=50 X=11 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=13 N=60 epsE=-0.571834320628 epsO=-0.481983042100 parity=1 even_simple=1 negE=5 negO=4
+KNOT x=50 X=13 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=16 N=60 epsE=-0.634455998344 epsO=-0.546316472720 parity=1 even_simple=1 negE=5 negO=4
+KNOT x=50 X=16 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=17 N=60 epsE=-0.600676131668 epsO=-0.553819353728 parity=1 even_simple=1 negE=4 negO=4
+KNOT x=50 X=17 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=19 N=60 epsE=-0.559904562726 epsO=-0.507755612692 parity=1 even_simple=1 negE=5 negO=4
+KNOT x=50 X=19 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=23 N=60 epsE=-0.494272772920 epsO=-0.479892195374 parity=1 even_simple=1 negE=6 negO=5
+KNOT x=50 X=23 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=25 N=60 epsE=-0.494272772920 epsO=-0.479892195374 parity=1 even_simple=1 negE=6 negO=5
+KNOT x=50 X=25 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=27 N=60 epsE=-0.541711676950 epsO=-0.638382583263 parity=-1 even_simple=0 negE=6 negO=6
+KNOT x=50 X=27 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=29 N=60 epsE=-0.314117377474 epsO=-0.270668737723 parity=1 even_simple=1 negE=6 negO=6
+KNOT x=50 X=29 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=31 N=60 epsE=-0.466054331421 epsO=-0.175549672587 parity=1 even_simple=1 negE=6 negO=5
+KNOT x=50 X=31 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=32 N=60 epsE=-0.378405434132 epsO=-0.182972247039 parity=1 even_simple=1 negE=6 negO=5
+KNOT x=50 X=32 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=37 N=60 epsE=-0.230889801725 epsO=-0.137788007558 parity=1 even_simple=1 negE=5 negO=5
+KNOT x=50 X=37 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=41 N=60 epsE=-0.394435020672 epsO=-0.0791651777262 parity=1 even_simple=1 negE=5 negO=4
+KNOT x=50 X=41 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=43 N=60 epsE=-0.121450928503 epsO=-0.000311068548829 parity=1 even_simple=1 negE=3 negO=3
+KNOT x=50 X=43 N=60 status=INDEFINITE
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=50 X=47 N=60 epsE=-1.18909219699e-12 epsO=-0.000121535867110 parity=-1 even_simple=0 negE=1 negO=2
+KNOT x=50 X=47 N=60 status=INDEFINITE
+EIG x=50 X=49 N=60 epsE=1.43283593401e-50 epsO=1.82177146066e-46 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=50 X=49 N=60 logdetE=-457.591617528 logdetO=-398.486293326 dI=1.860408837 rj=0.9124038541 tau=0.5249787972
+OVERLAP x=50 X=1 coefficient=0.687938888970
+OVERLAP x=50 X=2 coefficient=0.657063849554
+OVERLAP x=50 X=3 coefficient=0
+OVERLAP x=50 X=4 coefficient=0.630625780577
+OVERLAP x=50 X=5 coefficient=0.630625780577
+OVERLAP x=50 X=7 coefficient=0
+OVERLAP x=50 X=8 coefficient=0
+OVERLAP x=50 X=9 coefficient=0
+OVERLAP x=50 X=11 coefficient=0.0306920860017
+OVERLAP x=50 X=13 coefficient=0.00441047687030
+OVERLAP x=50 X=16 coefficient=0.00964769027037
+OVERLAP x=50 X=17 coefficient=0.00399721221206
+OVERLAP x=50 X=19 coefficient=0.000414245131858
+OVERLAP x=50 X=23 coefficient=3.97663561535e-6
+OVERLAP x=50 X=25 coefficient=3.97663561535e-6
+OVERLAP x=50 X=27 coefficient=0
+OVERLAP x=50 X=29 coefficient=8.91928860514e-7
+OVERLAP x=50 X=31 coefficient=4.38791298328e-8
+OVERLAP x=50 X=32 coefficient=5.26004517623e-10
+OVERLAP x=50 X=37 coefficient=1.43847652653e-12
+OVERLAP x=50 X=41 coefficient=1.65658629072e-14
+OVERLAP x=50 X=43 coefficient=1.28327753661e-18
+OVERLAP x=50 X=47 coefficient=0
+OVERLAP x=50 X=49 coefficient=1.00000000000
+RAY x=50 N=60 parity=1 term=arch value=-0.635062456015
+RAY x=50 N=60 term=k2 value=0.473899154318 cumulative=-0.161163301697
+RAY x=50 N=60 term=k3 value=0.188984702610 cumulative=0.0278214009126
+RAY x=50 N=60 term=k4 value=-0.0290565439828 cumulative=-0.00123514307026
+RAY x=50 N=60 term=k5 value=0 cumulative=-0.00123514307026
+RAY x=50 N=60 term=k7 value=0.00117672912727 cumulative=-5.84139429894e-5
+RAY x=50 N=60 term=k8 value=0.000101319868784 cumulative=4.29059257949e-5
+RAY x=50 N=60 term=k9 value=-3.84966750010e-5 cumulative=4.40925079385e-6
+RAY x=50 N=60 term=k11 value=-4.67237566270e-6 cumulative=-2.63124868855e-7
+RAY x=50 N=60 term=k13 value=2.63254903356e-7 cumulative=1.30034500353e-10
+RAY x=50 N=60 term=k16 value=-7.59809362955e-10 cumulative=-6.29774862601e-10
+RAY x=50 N=60 term=k17 value=6.58615783596e-10 cumulative=2.88409209942e-11
+RAY x=50 N=60 term=k19 value=-2.88818326081e-11 cumulative=-4.09116138314e-14
+RAY x=50 N=60 term=k23 value=4.09006053914e-14 cumulative=-1.10084400018e-17
+RAY x=50 N=60 term=k25 value=0 cumulative=-1.10084400018e-17
+RAY x=50 N=60 term=k27 value=1.18657169212e-17 cumulative=8.57276919413e-19
+RAY x=50 N=60 term=k29 value=-8.41060236862e-19 cumulative=1.62166825513e-20
+RAY x=50 N=60 term=k31 value=-1.66514267631e-20 cumulative=-4.34744211827e-22
+RAY x=50 N=60 term=k32 value=4.34712331449e-22 cumulative=-3.18803775069e-26
+RAY x=50 N=60 term=k37 value=3.18812180966e-26 cumulative=8.40589666656e-31
+RAY x=50 N=60 term=k41 value=-8.42378213658e-31 cumulative=-1.78854700272e-33
+RAY x=50 N=60 term=k43 value=1.78854677398e-33 cumulative=-2.28745625775e-40
+RAY x=50 N=60 term=k47 value=2.28745939459e-40 cumulative=3.13684610813e-46
+RAY x=50 N=60 term=k49 value=-3.13670282454e-46 cumulative=1.43283593401e-50
+RAY_TOTAL x=50 N=60 arch=-0.635062456015 primes=0.635062456015 sum=1.43283593401e-50 eps=1.43283593401e-50
+# COMPARISON STEP; indefinite partial forms have no CCM interpretation
+REFERENCE D=5 gamma1=6.64845334472771471612327845998 certified_unique=1 index=PARI_or_sign_scan
+COMP x=50 X=49 N=60 parity=1 roots=60 z1=6.64845334472771472 error=3.64405707661e-48 ratio=254.324796729
+# checks: 202 run, 0 failed

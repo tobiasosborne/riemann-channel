@@ -1,0 +1,181 @@
+# Lane G: grid tomography
+
+Author: `codex:gpt-6-astra`.
+
+Incremental record. No RH or zero ordinates enter a computation. The binding
+round-2 brief, lane L's L1–L3 and current L4/L5, round-1 B2 §§2,4, the commutant
+driver, shard 08i and metric-as-state §§2,3,7 were read. Lane L's progress marks
+L1–L3,L5,L6 DONE and L4 PARTIAL. We take its atom convention, recession-cone
+identity, distinction between LP outer boxes and axis sections, and conditional
+coercivity obstruction; no unfinished L4 numerical claim is assumed.
+
+## Correction ledger
+
+1. The point `y=L` is invisible, not an atom of weight zero. On `[0,L]` its
+   arbitrary nonnegative mass defeats boundedness and uniqueness. The requested
+   grids are interior, where this defect is absent.
+2. Positivity depends **only on** the `2N+1` moments; it does not determine
+   their values. In particular this is not an equality-constrained moment problem.
+3. The atom quadratic form is a signed autocorrelation, not a nonnegative
+   trigonometric polynomial. G3's proposed implication is false.
+4. Extremality in a moment fiber is necessary for uniqueness, not sufficient.
+   Conversely finitely many exact moments can uniquely determine a sparse
+   measure. The actual prime measure has a direct uniqueness certificate at
+   the cutoffs in this brief, after deleting the invisible endpoint.
+5. `L/(2N)` is a sampling scale, not an exact impossibility threshold for sparse
+   recovery. Grid approximation error and matrix positivity tolerance must both
+   be specified; a grid missing the atoms need not have any feasible measure.
+
+## G1. What the window sees — PROVED / SHARPENED
+
+**H-INT:** the finite grid has distinct points `0<y_j<L`.
+**H-SIGN:** `w_j>=0`; in the continuum, the unknown measure is nonnegative.
+**H-FIN:** the prime-side true finite-section matrix is PSD, whenever its
+membership is invoked. This is a finite hypothesis, not RH.
+
+Write `t=y/L`. The atom data, with the brief's sign, are
+
+`A_n(t)=-2(1-t)cos(2πnt) (0<=n<=N)`,
+`B_n(t)=sin(2πnt)/π (1<=n<=N)`.
+
+Let `φ=(A_0,...,A_N,B_1,...,B_N)`, `Mμ=∫φ dμ`, and let `K` be the Loewner
+assembly map. Its diagonal recovers every `a_n`; row zero recovers
+`b_n=n H_{n0}`. Thus `K` is injective and
+
+`H(μ)=H0+K(Mμ)`, and `H(μ)=H(ν) iff Mμ=Mν`.
+
+These are exactly the observable linear data, not moments of every harmonic
+through `2N`. Their span has dimension `2N+1`: a relation is
+`(1-t)C(t)+S(t)=0`, where `C` is a cosine polynomial and `S` a sine polynomial.
+Reflecting `t` to `1-t` gives `t C(t)-S(t)=0`; hence `C=S=0`.
+
+The grid set is a closed convex spectrahedron (include diagonal `diag(w)` in
+the LMI). Its cheapest mass bound is already the constant test:
+
+`2 Σ_j (1-t_j)w_j <= H0_00 = C`.
+
+Under H-SIGN and H-INT this proves compactness, even at `N=0`, with
+`Σw_j <= C/[2 min_j(1-t_j)]` when nonempty. If `C<0` the set is empty.
+For a continuum of points approaching `L`, only the weighted mass is bounded;
+compactness of ordinary total mass does not follow. At `L`, `φ(L)=0`.
+
+Without H-SIGN, for a nonempty set the recession cone is exactly
+`{d:K(Md)>=0}` (lane L1), and its lineality space is exactly `ker M`.
+Thus every feasible point contains the entire affine fiber `w+ker M`, of
+dimension `J-rank M >= J-(2N+1)`. The statement requires nonemptiness.
+A particular coordinate is unbounded in both directions along the fiber iff
+its coordinate functional does not annihilate `ker M`; a kernel dimension
+count alone does not prove this for **every** coordinate. The projected
+feasible set is `{z in im M:H0+K(z)>=0}` and can itself be unbounded.
+With H-SIGN it is intersected with the finitely generated moment cone
+`cone{φ(t_j)}`; fibers are `M^{-1}(z)∩R_+^J`. All assertions follow directly
+from the factorization and injectivity of K.
+
+For an unconstrained dense grid, `J>2N+1` forces a kernel. With a prescribed
+sparse support there can be exact recovery below the sampling spacing.
+The phase perturbation from moving an atom by `δy` is `O(N|δy|/L)`, so
+`h << L/N` controls ordinary moment approximation. It is not enough for a
+matrix with an extremely small positivity margin: using normalized Fourier
+basis entries gives, conservatively, `||T(y+δ)-T(y)|| <=
+(2N+1)(2+4πN)|δ|/L`. This bound times the displaced mass must be below the
+available spectral gap to guarantee feasibility by rounding.
+
+## G2. Moment fibers and the actual prime measure — PROVED / SHARPENED
+
+Let `F_m={μ>=0:Mμ=m}` consist of finite measures. Under H-FIN all of
+`F_{Mμ*}` is admissible. The converse is false: admissibility imposes an LMI
+on m, not the equality `m=Mμ*`.
+
+**Extremality theorem.** A member μ of F_m is extreme iff it is finitely
+atomic and its occupied moment vectors `φ(t_k)` are linearly independent.
+In particular it has at most `d=2N+1` atoms and no atom at L.
+
+Proof. A dependence allows a sufficiently small plus/minus perturbation of
+the positive occupied weights. If the support has more than d points,
+choose d+1 disjoint sets of positive μ mass; the d+1 vectors
+`∫_{E_i}φ dμ` are dependent, giving a bounded nonzero signed density with
+zero moments and hence the same perturbation. Conversely, a decomposition
+of μ as the average of two positive measures forces both to be supported
+on its finite support; independence forces identical weights. This also
+proves the assertion for non-atomic measures.
+
+Every attainable m has an atomic representation with at most d atoms
+(conic Carathéodory). One elementary justification: after normalization by
+the finite original total mass, integration puts m in the convex hull of
+the compact curve φ([0,1]); an affine Carathéodory representation is finite,
+then conic dependence eliminates atoms down to d. Endpoint atoms can be
+discarded. This is the bound proved here; an `N+1` Toeplitz quadrature bound
+cannot simply be imported for these different moments.
+
+**Exact sparse uniqueness theorem.** Suppose μ* has s distinct interior
+atoms, and `N>=2s`. Then F_{Mμ*}, on `[0,L)` (or with mass at L fixed to
+zero), is the singleton `{μ*}`.
+
+Proof. Put `c_k=cos(2πt_k)`. The nonnegative function
+
+`p(t)=(1-t) ∏_{k=1}^s (cos(2πt)-c_k)^2`
+
+lies in the span of `A_0,...,A_{2s}`, has zero integral against μ*, and
+vanishes in `[0,1)` only at the t_k and their reflections `1-t_k`.
+Any positive measure with the same moments must live on that finite set.
+Group that set by distinct values c. The cosine moments (Chebyshev
+Vandermonde) determine each grouped weighted sum
+`(1-t)w_t+t w_{1-t}`; the sine moments (the polynomials U_{n-1}) determine
+`w_t-w_{1-t}`. These two equations determine both weights. The single
+point t=1/2 uses only the cosine equation. This proves uniqueness, including
+coincident reflected pairs. The bound is sufficient, not claimed sharp.
+
+For x=13 the eight visible atoms are 2,3,4,5,7,8,9,11, with weights
+`log p/sqrt(p^m)`. Thus `N>=16` suffices for exact-moment uniqueness. For
+x=25 the thirteen visible atoms are 2,3,4,5,7,8,9,11,13,16,17,19,23;
+`N>=26` suffices. Both are below the full-window determinant saturation
+cutoffs 56 and 134 from the reviewed round-1 computation. At the endpoints
+13 and 25 the true weights are nonzero but invisible; allowing that mass to
+vary destroys uniqueness. No zero information enters this argument.
+
+Extremality alone does not imply uniqueness: at N=0 each single interior
+atom with adjusted weight gives the same prescribed A_0 and is extreme.
+At the present larger cutoffs uniqueness follows from the explicit p,
+not just from the atom count. Sparse exact-moment recovery is therefore
+possible; recovering those moments from the positivity inequality remains
+the separate question. If H*>0 at a finite cutoff, small new positive
+atoms remain feasible by `||T(y)||<=2`; exact support recovery from this
+inequality alone fails at every such cutoff.
+
+## G3. The proposed near-kernel support theorem — REFUTED; replacement PROVED
+
+Extend f by zero beyond its window and normalize the Fourier modes in
+L². The actual sensitivity is
+
+`q_v(y)=-v* T(y)v = 2 Re ∫ conjugate(f(u)) f(u+y) du`.
+
+It is a positive-definite autocorrelation function, which does **not** mean
+pointwise nonnegative. For a single Fourier mode,
+`q(y)=2(1-t)cos(2πnt)`, negative for example at n=1,t=1/2.
+It is an affine-envelope trigonometric function, not a trigonometric
+polynomial. Its Fourier transform, rather than its pointwise value, is
+nonnegative. Even an exact null vector says only
+
+`∫q_v dμ* = v*H0 v`,
+
+not that this integral is zero or that individual atoms occur at zeros.
+The right side can have either sign. For arbitrary admissible μ it gives
+the one-sided inequality `∫q_v dμ <= v*H0 v`. Near-singularity does not
+repair these two missing steps. This refutes the requested theorem.
+
+**Replacement (dual localization).** If `Z>=0` and
+`p_Z(y)=tr(Z T(y))>=0` on the allowed set, then every admissible μ obeys
+`∫p_Z dμ >= -tr(ZH0)`; this sign gives no small upper bound. To obtain
+the useful upper bound instead require `q_Z(y)=-tr(Z T(y))>=0`. Then
+
+`∫q_Z dμ <= tr(ZH0)`.
+
+Consequently `μ({q_Z>=η}) <= tr(ZH0)/η`. This becomes informative only
+when the cost is small and q_Z is nonnegative. More generally with known
+moment equalities one may add their dual functions and subtract their
+known costs. Near-kernel eigenvectors supply candidate cuts but establish
+neither nonnegativity nor a small pole/archimedean cost automatically.
+An exact-moment support certificate such as p in G2 is of this latter
+kind. Proof of all bounds: take the trace of the PSD inequality against Z,
+then use nonnegativity of the measure. These conditions, not the zeros of
+individual autocorrelations, are the appropriate position certificates.

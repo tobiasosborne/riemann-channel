@@ -10,6 +10,8 @@ os.environ['OMP_NUM_THREADS'] = '1'
 import argparse
 import concurrent.futures
 import json
+import re
+from decimal import Decimal, localcontext, ROUND_CEILING
 from pathlib import Path
 import subprocess
 import sys
@@ -139,7 +141,7 @@ int main(int argc,char **argv) {
  arb_t X,L,t,u,v,s;arb_init(X);arb_init(L);arb_init(t);arb_init(u);arb_init(v);arb_init(s);arb_set_ui(X,x);arb_log(L,X,P);
  arb_ptr a=_arb_vec_init(N+1),b=_arb_vec_init(N+1),a0=_arb_vec_init(N+1),b0=_arb_vec_init(N+1),ta=_arb_vec_init(N+1),tb=_arb_vec_init(N+1);
  zst_riemann_ab(a,b,N,X,x,P);zst_riemann_ab(a0,b0,N,X,1,P);
- for(int i=0;i<=N;i++){printf("AB %d ",i);pr(a+i);printf(" ");pr(b+i);printf(" ");pr(a0+i);printf(" ");pr(b0+i);printf("\n");}
+ if(argc<=4 || strcmp(argv[4],"mins"))for(int i=0;i<=N;i++){printf("AB %d ",i);pr(a+i);printf(" ");pr(b+i);printf(" ");pr(a0+i);printf(" ");pr(b0+i);printf("\n");}
  arb_mat_t G;arb_mat_init(G,2*N+1,m);arb_ptr costs=_arb_vec_init(2*N+1);
  char path[4096];snprintf(path,sizeof(path),"%s.vec",prefix);FILE *vf=fopen(path,"w");
  for(int parity=0;parity<2;parity++) {
@@ -147,6 +149,17 @@ int main(int argc,char **argv) {
   arb_mat_t H,C,V,T,W;arb_mat_init(H,d,d);arb_mat_init(C,d,d);arb_mat_init(V,d,d);arb_mat_init(T,d,d);arb_mat_init(W,d,d);
   if(parity)zst_odd_block(H,a,b,N,P);else zst_even_block(H,a,b,N,P);
   int pd=arb_mat_cho(C,H,P);printf("PD %d %d\n",parity,pd);
+  if(argc>4 && !strcmp(argv[4],"mins")){
+   arb_ptr vv=_arb_vec_init(d);int certified=zst_eigmin(t,vv,H,80,P);
+   /* Rank-one inertia certificate, avoiding unstable unpivoted LDL near zero. */
+   arb_zero(s);for(int i=0;i<d;i++){arb_get_mid_arb(vv+i,vv+i);arb_addmul(s,vv+i,vv+i,P);}
+   arb_mul_2exp_si(u,t,2);arb_div(u,u,s,P);arb_mat_set(T,H);
+   for(int i=0;i<d;i++)for(int j=0;j<d;j++){arb_mul(v,vv+i,vv+j,P);arb_addmul(arb_mat_entry(T,i,j),u,v,P);}
+   arb_mul_2exp_si(u,t,1);for(int i=0;i<d;i++)arb_sub(arb_mat_entry(T,i,i),arb_mat_entry(T,i,i),u,P);
+   certified=certified&&arb_is_positive(t)&&arb_mat_cho(C,T,P);
+   printf("MIN %d %d ",parity,certified);arb_printn(t,120,0);printf("\n");_arb_vec_clear(vv,d);
+   arb_mat_clear(H);arb_mat_clear(C);arb_mat_clear(V);arb_mat_clear(T);arb_mat_clear(W);continue;
+  }
   if(pd)for(int i=0;i<d;i++){arb_log(t,arb_mat_entry(C,i,i),P);arb_mul_2exp_si(t,t,1);printf("PIV %d %d ",parity,i);pr(t);printf("\n");}
   if(argc>4 && !strcmp(argv[4],"scan")){arb_mat_clear(H);arb_mat_clear(C);arb_mat_clear(V);arb_mat_clear(T);arb_mat_clear(W);continue;}
   acb_mat_t A,R;acb_mat_init(A,d,d);acb_mat_init(R,d,d);acb_ptr eig=_acb_vec_init(d);mag_t tol;mag_init(tol);mag_set_ui_2exp_si(tol,1,-1100);
@@ -166,7 +179,8 @@ int main(int argc,char **argv) {
   }
   arb_mat_clear(H);arb_mat_clear(C);arb_mat_clear(V);arb_mat_clear(T);arb_mat_clear(W);acb_mat_clear(A);acb_mat_clear(R);_acb_vec_clear(eig,d);mag_clear(tol);
  }
- fclose(vf);snprintf(path,sizeof(path),"%s.balls",prefix);FILE *bf=fopen(path,"w");fprintf(bf,"%d %d\n",m,2*N+1);
+ fclose(vf);if(argc>4 && (!strcmp(argv[4],"scan") || !strcmp(argv[4],"mins")))return 0;
+ snprintf(path,sizeof(path),"%s.balls",prefix);FILE *bf=fopen(path,"w");fprintf(bf,"%d %d\n",m,2*N+1);
  for(int i=0;i<2*N+1;i++){dump(bf,costs+i);printf("G %d",i);for(int k=0;k<m;k++){dump(bf,arb_mat_entry(G,i,k));printf(" ");pr(arb_mat_entry(G,i,k));}printf("\n");}
  fclose(bf);return 0;
 }
@@ -201,15 +215,25 @@ def load_case(x,N):
         if s[0]=='PIV':piv[int(s[1])].append(mp.mpf(s[3]))
     return dict(x=x,N=N,G=mp.matrix(G),c=mp.matrix(c),ab=ab,piv=piv,pd=pd)
 
+def minimum_certificates(x,N):
+    path=CHECKS/f'x{x}_N{N}.minima_v3'
+    if not path.exists():
+        result=subprocess.run([str(CHECKS/'bridge'),str(x),str(N),str(CHECKS/f'x{x}_N{N}_mins'),'mins'],capture_output=True,text=True,check=True).stdout
+        path.write_text(result)
+    return path.read_text()
+
 def simplex(c,A,b,warm=None):
     """200-digit two-phase tableau with Bland pivots; full primal/dual audit follows."""
     m,n=A.rows,A.cols
     def audit(basis):
-        B=mp.matrix([[A[i,j] for j in basis] for i in range(m)])
-        y=mp.lu_solve(B,b);z=mp.lu_solve(B.T,mp.matrix([c[j] for j in basis]))
-        residual=mp.norm(B*y-b,mp.inf);slack=c-A.T*z
-        val=mp.fdot(y,[c[j] for j in basis]);gap=abs(val-mp.fdot(b,z))
-        return val,basis,y,residual,min(slack),gap
+        # Guard digits resolve large dual multipliers near the window edge.
+        # The independent Arb solve below certifies the unrounded coefficients.
+        with mp.workdps(260):
+            B=mp.matrix([[A[i,j] for j in basis] for i in range(m)])
+            y=mp.lu_solve(B,b);z=mp.lu_solve(B.T,mp.matrix([c[j] for j in basis]))
+            residual=mp.norm(B*y-b,mp.inf);slack=c-A.T*z
+            val=mp.fdot(y,[c[j] for j in basis]);gap=abs(val-mp.fdot(b,z))
+            return val,basis,y,residual,min(slack),gap
     if warm is not None:
         out=audit(warm)
         if min(out[2])>=0 and out[4]>=-mp.mpf('1e-150'):return out
@@ -245,7 +269,7 @@ def simplex(c,A,b,warm=None):
 
 def solve_case(x,N):
     D=load_case(x,N);G=D['G'];c=D['c'];m=x-2
-    print(f'CASE x={x} N={N} m={m} mp_dps=200 arb_bits=1280',flush=True)
+    print(f'CASE x={x} N={N} m={m} mp_search_dps=200 audit_dps=260 arb_bits=1280',flush=True)
     check(D['pd']==[1,1], 'ball Cholesky certifies both true finite blocks positive')
     # Cross-check the atom convention independently of C's construction.
     err=mp.mpf(0)
@@ -257,7 +281,11 @@ def solve_case(x,N):
         err=max(err,abs(a-a0-pa),abs(b-b0-pb))
     check(err<mp.mpf('1e-190'),f'prime-cutoff split reproduced, error={ns(err,3)}')
     lams=sorted(c);print('SPECTRUM eps='+ns(lams[0])+' lambda_m='+ns(lams[m-1])+' lambda_mplus1='+ns(lams[m]))
+    minimum=minimum_certificates(x,N);print(minimum,end='')
+    check(sum(s.startswith('MIN ') and s.split()[2]=='1' for s in minimum.splitlines())==2,'smallest eigenpair in each positive block independently certified by zst_eigmin')
     A=G.T;rows=[];basislines=[];certs=[]
+    order=sorted(range(len(c)),key=lambda i:c[i]);inverse_order={j:i for i,j in enumerate(order)}
+    ordered_c=mp.matrix([c[j] for j in order]);ordered_A=mp.matrix([[A[i,j] for j in order] for i in range(m)])
     cache=CHECKS/f'x{x}_N{N}.json'
     warm={(q['k'],q['sign']):q['basis'] for q in json.loads(cache.read_text())['certs']} if cache.exists() else {}
     for k in range(m):
@@ -268,7 +296,9 @@ def solve_case(x,N):
             gd=np.array(A.tolist(),float);cd=np.array(list(c),float)
             rr=linprog(cd,A_eq=gd,b_eq=np.array(list(b),float),bounds=(0,None),method='highs')
             search.append(float(rr.fun) if rr.success else None)
-            val,ix,y,res,slack,gap=simplex(c,A,b,warm.get((k,sign)))
+            wb=warm.get((k,sign));wb=[inverse_order[j] for j in wb] if wb is not None else None
+            val,ix,y,res,slack,gap=simplex(ordered_c,ordered_A,b,wb)
+            ix=[order[j] for j in ix]
             good=min(y)>=0 and res<mp.mpf('1e-150') and slack>=-mp.mpf('1e-150') and gap<mp.mpf('1e-150')
             check(good,f'LP n={k+2} sign={sign:+d}: residual={ns(res,2)}, min_reduced={ns(slack,2)}, gap={ns(gap,2)}')
             vals.append(val);basislines.append(' '.join(map(str,[k,sign]+ix)))
@@ -282,6 +312,20 @@ def solve_case(x,N):
     check(len(result.splitlines())==2*m and all(s.split()[3]=='1' for s in result.splitlines()),'ALL supported duals solved and certified nonnegative in 1280-bit balls')
     print(result,end='')
     check(all(s.endswith('OPT=1') for s in result.splitlines()),'ball primal inequalities and dual equalities certify optimality of every fixed-vector LP')
+    ball_upper={}
+    for line in result.splitlines():
+        fields=line.split();match=re.search(r'\[([^ ]+) \+/- ([^\]]+)\]',line)
+        if match is None:raise RuntimeError('unexpected certificate printer format')
+        with localcontext() as ctx:
+            ctx.prec=80
+            ball_upper[int(fields[1]),int(fields[2])]=Decimal(match[1])+Decimal(match[2])
+    for k,row in enumerate(rows):
+        with localcontext() as ctx:
+            ctx.prec=80
+            bound=ball_upper[k,1]+ball_upper[k,-1]
+            bound=bound.quantize(Decimal(1).scaleb(bound.adjusted()-11),rounding=ROUND_CEILING)
+        row['certified_width_upper']=str(bound)
+        print(f'CERTIFIED_WIDTH n={k+2} upper={bound} LP={ns(mp.mpf(row["width"]),12)}')
     out=dict(x=x,N=N,eps=str(lams[0]),lambda_m=str(lams[m-1]),lambda_mplus1=str(lams[m]),rows=rows,certs=certs)
     prefix.with_suffix('.json').write_text(json.dumps(out,indent=2)+'\n')
     return out
@@ -449,6 +493,24 @@ def two_sections(N):
     check(len(result.splitlines())==24 and all('primal=1 dual=1' in s for s in result.splitlines()),f'all N={N} section primal and rank-two dual witnesses certified in 1280-bit balls')
     return rows
 
+def summary(cases):
+    print('SUMMARY: slopes are derived floating values; positive means contraction in digits per unit x')
+    sets={'saturation':[(13,56),(17,83),(19,94),(23,123),(25,134)],'fixed60':[(x,60) for x in (13,17,19,23,25)]}
+    for name,pairs in sets.items():
+        js=[json.loads((CHECKS/f'x{x}_N{N}.json').read_text()) for x,N in pairs]
+        for J in js:
+            D=load_case(J['x'],J['N']);rank={i:r+1 for r,i in enumerate(sorted(range(len(D['c'])),key=lambda i:D['c'][i]))}
+            active=max(rank[i] for q in J['certs'] for i in q['basis'])
+            widths=[mp.mpf(q['width']) for q in J['rows']]
+            check(all(a<b for a,b in zip(widths,widths[1:])),f'{name} x={J["x"]}: LP widths increase strictly toward the edge')
+            print(f'ROW {name} x={J["x"]} N={J["N"]} eps={ns(mp.mpf(J["eps"]),8)} lambda_m={ns(mp.mpf(J["lambda_m"]),8)} lambda_mplus1={ns(mp.mpf(J["lambda_mplus1"]),8)} active_rank={active} width2={ns(widths[0],10)} width_edge={ns(widths[-1],10)}')
+        metrics={'eps':lambda j:mp.mpf(j['eps']),'lambda_m':lambda j:mp.mpf(j['lambda_m']),'width2':lambda j:mp.mpf(j['rows'][0]['width']),'width6':lambda j:mp.mpf(j['rows'][4]['width']),'width12':lambda j:mp.mpf(j['rows'][10]['width']),'width_edge':lambda j:mp.mpf(j['rows'][-1]['width'])}
+        for label,fn in metrics.items():
+            endpoint=mp.log10(fn(js[0])/fn(js[-1]))/12
+            xs=np.array([j['x'] for j in js],float);ys=np.array([-float(mp.log10(fn(j))) for j in js])
+            fit=np.polyfit(xs,ys,1)[0]
+            print(f'SLOPE {name} {label} endpoint={ns(endpoint,10)} five_point_fit={fit:.10f}')
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--case',nargs=2,type=int);parser.add_argument('--produce',nargs=2,type=int);parser.add_argument('--recession',action='store_true');parser.add_argument('--sections',type=int)
     args=parser.parse_args();build()
@@ -468,6 +530,7 @@ def main():
         for x,N in cases:solve_case(x,N)
         for N in (20,40):two_sections(N)
         recession()
+        summary(cases)
     print(f'CHECKS {COUNTS[0]} FAILED {COUNTS[1]}',flush=True)
     if COUNTS[1]:sys.exit(1)
 

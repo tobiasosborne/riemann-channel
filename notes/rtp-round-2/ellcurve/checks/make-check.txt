@@ -1,0 +1,15 @@
+make: Entering directory '/home/tobiasosborne/Projects/riemann-channel/zst'
+test_ab: PASS
+test_dirichlet: PASS
+test_dirichlet_pipeline: PASS
+test_eigmin: PASS
+test_ell_ref: PASS
+test_ellcurve: 1468 a_p on 4 curves match PARI
+test_ellcurve: PASS
+test_kernel: PASS
+test_parity: PASS
+test_pipeline: PASS
+test_pipeline_ell: PASS
+test_secular: PASS
+test_weil: PASS
+make: Leaving directory '/home/tobiasosborne/Projects/riemann-channel/zst'

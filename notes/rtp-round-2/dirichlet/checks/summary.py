@@ -48,8 +48,18 @@ for D in DS:
 for p in sorted(OUT.glob('rtp2_dirichlet_D*.txt')):
     s=p.read_text();m=re.search(r'# checks: (\d+) run, (\d+) failed',s)
     runs.append([p.name,*(m.groups() if m else ['RUNNING','-'])])
+# Existing zeta results enter the same comparison tables, without a rerun.
+sys.path.insert(0,str(ROOT/'zst/tools'))
+from rtp1_a1_summary import axisN
+zeta={}
+for x in [13,25,50]:
+    _,rr,cc=axisN(OUT/f'rtp1_a1_axisN_x{x}.txt')
+    n,e,z=cc[-1];ns=min(rr,key=lambda r:r['logdet'])['N']
+    zeta[x]={'x':str(x),'N':str(n),'epsE':e,'error':z,'ns':str(ns)}
+
 print('# D4 run status (exact counts)\n')
 table(['file','checks','failed'],runs)
+print('Total completed checks:',sum(int(r[1]) for r in runs if r[1].isdigit()),'; failures:',sum(int(r[2]) for r in runs if r[2].isdigit()),'\n')
 print('# D5. Saturation and final-N results\n')
 print('Eigenvalues are rounded certified-ball results. N_sat is over 1..Nmax, certified unique. Final N is a finite-resolution proxy; it is not an infinite-N certificate.\n')
 rows=[]
@@ -58,6 +68,8 @@ for D in DS:
         if (D,x) not in data:continue
         d=data[D,x];e=d['end'];s=d['sat'];a=d['atsat']
         rows.append([D,x,e['N'],'/'.join(s[k]['N'] for k in ['full','even','odd']),a['epsE'],e['epsE'],e['epsO'],e['parity']])
+for x,z in zeta.items():rows.append(['zeta R1',x,z['N'],z['ns']+'/—/—','—',z['epsE'],'—',1])
+rows.append(['zeta review',50,420,'352/—/—','—','2.80881e-258','—',1])
 table(['D','x','N final','N_sat full/even/odd','epsE at N_sat','epsE final','epsO final','parity'],rows)
 print('# COMPARISON: first root, final N\n')
 table(['D','x','N','error (ball)','error/eps (ball)','gamma1'],[[D,x,d['end']['N'],d['cmp'].get('error','NA'),d['cmp'].get('ratio','NA'),d['all']['REFERENCE'][0]['gamma1']] for (D,x),d in data.items()])
@@ -70,6 +82,10 @@ for D in DS:
             da,db=data[D,a],data[D,b]
             row.extend([fmt(slope(da['end'],db['end'])),fmt(slope(da['end'],db['end'],'epsO')),fmt(slope(da['cmp'],db['cmp'],'error'))])
         else:row.extend(['NA']*3)
+    slopes.append(row)
+for label,zs in [('zeta R1',zeta),('zeta review',{**zeta,50:{'x':'50','epsE':'2.80881e-258','error':'3.0346e-254'}})]:
+    row=[label]
+    for a,b in [(13,25),(25,50),(13,50)]:row.extend([fmt(slope(zs[a],zs[b])),'—',fmt(slope(zs[a],zs[b],'error'))])
     slopes.append(row)
 table(['D','E 13–25','O 13–25','error 13–25','E 25–50','O 25–50','error 25–50','E 13–50','O 13–50','error 13–50'],slopes)
 print('# FLOATING conductor scaling and polynomial fit\n')
@@ -112,7 +128,7 @@ rows=[]
 for D in DS:
     for kind,N in [('ccm',60),('ccm',120),('fixedL',60)]:
         p=OUT/f'rtp2_dirichlet_D{D}_axisx_{kind}_N{N}.txt'
-        if not p.exists():continue
+        if not p.exists() or '# checks:' not in p.read_text():continue
         d=parse(p)
         if 'EIG' not in d:continue
         es=d['EIG'];last=es[-1];neg=[r for r in es if int(r['negE'])+int(r['negO'])>0]
