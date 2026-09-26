@@ -1,0 +1,19 @@
+H-BPR full CAD projection and H-LOG2 are hypotheses; the coefficient envelope is derived in the note, not tested here.
+Exact formula: B(d)=10^[-200000*(tau+2)*(2*s*degree)^(2^(k+3))].
+d=2; k=69; degree=8; s=268; tau=512
+  E=log10(-log10 B)= 1.71528382146590596e+22
+  conservative decimal lower bound = 10^(-10^(17152839e15))
+  log10(E)= 22.2343359913747496
+d=3; k=334; degree=18; s=262170; tau=2592
+  E=log10(-log10 B)= 1.95274538929341369e+102
+  conservative decimal lower bound = 10^(-10^(19527454e95))
+  log10(E)= 102.290645621048543
+d=4; k=1041; degree=32; s=4294967344; tau=8192
+  E=log10(-log10 B)= 2.15629830912744022e+315
+  conservative decimal lower bound = 10^(-10^(21562984e308))
+  log10(E)= 315.333708842343124
+d=8; k=16449; degree=128; s=340282366920938463463374607431768211840; tau=131072
+  E=log10(-log10 B)= 1.43759761809591357e+4954
+  conservative decimal lower bound = 10^(-10^(14375977e4947))
+  log10(E)= 4954.15763734453452
+PASS: exact input-height inequalities; 80-digit interval verification of conservative rounded exponents.

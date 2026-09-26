@@ -395,9 +395,14 @@ static int pair_min(pair_t *p,const arb_mat_t E,const arb_mat_t O,int pd,slong p
     if(!e2&&pd)e2=eig_min(p->o,p->vo,&so,O,E,0,prec);
     check(e1&&e2,"Rump plus deflation certifies both simple block minima");
     check(b1&&e1&&arb_overlaps(be,p->e)&&b2&&e2&&arb_overlaps(bo,p->o),"independent minimum certificates agree");
-    /* Strict order of independent bracket balls implements zst_parity's decision. */
-    p->par=(b1&&b2&&arb_lt(be,bo))?1:(b1&&b2&&arb_lt(bo,be))?-1:0;
-    check(p->par!=0,"global minimum parity separated by independent brackets");
+    /* Intersect two independent certificates of the SAME minima. The Rump route above
+     * also proves block minimality by deflated PD, so this is not mere root overlap. */
+    int rawpar=(b1&&b2&&arb_lt(be,bo))?1:(b1&&b2&&arb_lt(bo,be))?-1:0;
+    if(b1&&e1)check(arb_intersection(be,be,p->e,prec),"intersect certified even minima");
+    if(b2&&e2)check(arb_intersection(bo,bo,p->o,prec),"intersect certified odd minima");
+    p->par=(b1&&b2&&e1&&e2&&arb_lt(be,bo))?1:(b1&&b2&&e1&&e2&&arb_lt(bo,be))?-1:0;
+    if(!rawpar)flint_printf("# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them\n");
+    check(p->par!=0,"global minimum parity separated by certified minimum intersections");
     p->es=se;p->ok=e1&&e2&&p->par!=0;
     arb_clear(be);arb_clear(bo);return p->ok;
 }
@@ -576,6 +581,10 @@ int main(int argc,char **argv)
         else {fprintf(stderr,"unknown option %s\n",argv[i]);return 2;}
     }
     if(!cprec)cprec=prec;
+    slong d=discriminant, r=((d%4)+4)%4;
+    int fundamental=(r==1&&n_is_squarefree(labs(d))) ||
+       (r==0&&(((((d/4)%4)+4)%4)==2||((((d/4)%4)+4)%4)==3)&&n_is_squarefree(labs(d/4)));
+    if(!fundamental){fprintf(stderr,"D must be a nonprincipal fundamental discriminant\n");return 2;}
     if(discriminant==0||discriminant==1||xd<=1||xmax<=1||xmax>250||N<1||Nmax<3||prec<128)return 2;
     flint_printf("# rtp2_dirichlet; author codex:gpt-6-astra; FLINT %s; certified balls unless explicitly floating\n",FLINT_VERSION);
     if(!strcmp(mode,"axisN"))mode_axisN(xd,Nmax,prec,cmp,cprec);

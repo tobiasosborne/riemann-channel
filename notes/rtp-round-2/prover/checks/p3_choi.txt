@@ -1,0 +1,3 @@
+PASS: exact Choi Hermiticity/positivity, trace, unitality and stationary functional.
+PASS: exact cubic energy contraction equals product-state energy 1/4, including complex offdiagonal signs.
+PASS: Heisenberg local spectrum {-3/4, 1/4, 1/4, 1/4}.

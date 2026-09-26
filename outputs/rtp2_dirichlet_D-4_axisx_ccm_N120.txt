@@ -1,0 +1,25 @@
+# rtp2_dirichlet; author codex:gpt-6-astra; FLINT 3.0.1; certified balls unless explicitly floating
+# axisx D=-4 kappa=1 N=120 xmax=25 prec=1800 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero character weights.
+EIG x=2 X=2 N=120 epsE=0.432577347455 epsO=1.47555278810 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=2 X=2 N=120 logdetE=203.384193811 logdetO=203.384865398 dI=6.693511552e-5 rj=5.043858811 tau=-0.001473198137
+CONTROL x=2 N=120 minE=0.432577347455 minO=1.47555278810 negE=0 posE=121 negO=0 posO=120
+EIG x=3 X=3 N=120 epsE=0.0695636051013 epsO=1.01627606154 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=3 X=3 N=120 logdetE=190.731867015 logdetO=192.370108015 dI=8.478215662e-5 rj=4.688646850 tau=-0.001311450937
+CONTROL x=3 N=120 minE=0.0695636051013 minO=1.01627606154 negE=0 posE=121 negO=0 posO=120
+EIG x=4 X=4 N=120 epsE=0.00749016716040 epsO=0.370401738712 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=4 X=4 N=120 logdetE=182.296780819 logdetO=185.137172898 dI=0.005407681586 rj=4.560993772 tau=0.04600338972
+CONTROL x=4 N=120 minE=-0.0951817664694 minO=0.786189349771 negE=1 posE=120 negO=0 posO=120
+EIG x=5 X=5 N=120 epsE=0.000489108549690 epsO=0.0707479228389 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=5 X=5 N=120 logdetE=175.253754496 logdetO=179.449054432 dI=0.002571049486 rj=4.377956483 tau=0.01609785954
+CONTROL x=5 N=120 minE=-0.192847551846 minO=0.640009754467 negE=1 posE=120 negO=0 posO=120
+EIG x=7 X=7 N=120 epsE=1.98269685964e-6 epsO=0.000781750831413 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=7 X=7 N=120 logdetE=161.332799162 logdetO=168.910609271 dI=0.02055585006 rj=4.270682724 tau=-0.07650950018
+CONTROL x=7 N=120 minE=-0.306896804166 minO=0.456862846377 negE=1 posE=120 negO=0 posO=120
+EIG x=8 X=8 N=120 epsE=9.92055466960e-8 epsO=6.51755246951e-5 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=8 X=8 N=120 logdetE=154.012155052 logdetO=163.039047595 dI=0.009266437155 rj=3.966418529 tau=-0.01071666049
+CONTROL x=8 N=120 minE=-0.343902492194 minO=0.393865747139 negE=1 posE=120 negO=0 posO=120
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=9 X=9 N=120 epsE=5.04540007127e-9 epsO=4.84138697345e-6 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=9 X=9 N=120 logdetE=146.690613438 logdetO=157.277749242 dI=0.01257155001 rj=3.832849091 tau=-0.04869594483
+CONTROL x=9 N=120 minE=-0.373450224005 minO=0.342083777400 negE=1 posE=120 negO=0 posO=120

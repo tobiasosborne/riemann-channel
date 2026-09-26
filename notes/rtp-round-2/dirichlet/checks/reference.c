@@ -2,6 +2,8 @@
  * The real character is identified by its complete residue table, not a guessed index.
  * Existing PARI values supply guesses only; interval Newton certifies a unique zero.
  * Missing discriminants are scanned in steps 1/16 at 128 bits before refinement. */
+#include <stdio.h>
+#include <stdlib.h>
 #include <flint/acb_dirichlet.h>
 #include <flint/dirichlet.h>
 static int ref_character(dirichlet_group_t G, dirichlet_char_t chi, slong D)

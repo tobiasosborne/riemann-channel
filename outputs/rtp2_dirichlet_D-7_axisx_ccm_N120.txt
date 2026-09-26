@@ -1,0 +1,25 @@
+# rtp2_dirichlet; author codex:gpt-6-astra; FLINT 3.0.1; certified balls unless explicitly floating
+# axisx D=-7 kappa=1 N=120 xmax=25 prec=1800 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero character weights.
+EIG x=2 X=2 N=120 epsE=0.992193135390 epsO=2.03516857604 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=2 X=2 N=120 logdetE=216.103502509 logdetO=215.418368264 dI=5.386302166e-5 rj=5.474380428 tau=-0.001610764936
+CONTROL x=2 N=120 minE=0.992193135390 minO=2.03516857604 negE=0 posE=121 negO=0 posO=120
+# parity: raw block_min brackets overlap; independent deflated-minimum certificates separate them
+EIG x=3 X=3 N=120 epsE=0.305441816754 epsO=1.96347731874 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=3 X=3 N=120 logdetE=204.893126383 logdetO=205.401597249 dI=0.004083473822 rj=5.120618187 tau=0.03888961545
+CONTROL x=3 N=120 minE=0.629179393037 minO=1.57589184948 negE=0 posE=121 negO=0 posO=120
+EIG x=4 X=4 N=120 epsE=0.152563375942 epsO=1.00972346272 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=4 X=4 N=120 logdetE=198.530625496 logdetO=199.192397520 dI=0.004314078166 rj=5.072904908 tau=0.04116730684
+CONTROL x=4 N=120 minE=0.464434021466 minO=1.34580513771 negE=0 posE=121 negO=0 posO=120
+EIG x=5 X=5 N=120 epsE=0.0506996917703 epsO=0.872413667953 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=5 X=5 N=120 logdetE=193.404356285 logdetO=195.356934312 dI=0.009897210550 rj=4.666227831 tau=0.06549970075
+CONTROL x=5 N=120 minE=0.366768236089 minO=1.19962554240 negE=0 posE=121 negO=0 posO=120
+EIG x=7 X=7 N=120 epsE=0.00286901757246 epsO=0.293066287108 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=7 X=7 N=120 logdetE=184.945078282 logdetO=188.448884036 dI=0.003577498408 rj=4.376081598 tau=0.001083260730
+CONTROL x=7 N=120 minE=0.252718983770 minO=1.01647863431 negE=0 posE=121 negO=0 posO=120
+EIG x=8 X=8 N=120 epsE=0.000678374414719 epsO=0.110491862791 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=8 X=8 N=120 logdetE=181.238036879 logdetO=185.447039090 dI=0.009671342314 rj=4.663174467 tau=0.06314462623
+CONTROL x=8 N=120 minE=0.215713295741 minO=0.953481535074 negE=0 posE=121 negO=0 posO=120
+EIG x=9 X=9 N=120 epsE=0.000182102119482 epsO=0.0378114390433 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=9 X=9 N=120 logdetE=178.052113829 logdetO=182.905377133 dI=0.02910382735 rj=4.218864701 tau=0.1172146583
+CONTROL x=9 N=120 minE=0.186165563930 minO=0.901699565335 negE=0 posE=121 negO=0 posO=120

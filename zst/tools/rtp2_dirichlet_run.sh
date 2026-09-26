@@ -24,15 +24,21 @@ def run(task):
     print(f'{name}: exit={r.returncode}',flush=True)
     return r.returncode
 stages=[]
+phase_names=[]
 for x,m,p,cp,cmp in [(13,200,1000,700,'20,40,80,120'),(25,260,1800,1200,'40,80,120,180')]:
-    stages.append([(f'D{D}_axisN_x{x}',['--D',D,'--mode','axisN','--x',x,'--Nmax',m,'--prec',p,'--cprec',cp,'--cmp',cmp]) for D in Ds])
+    phase_names.append(f'x{x}')
+    stages.append([(f'D{D}_axisN_x{x}',['--D',D,'--mode','axisN','--x',x,'--Nmax',m,'--prec',p,'--cprec',(1400 if D==12 and x==25 else cp),'--cmp',cmp]) for D in Ds])
+phase_names.append('axisx')
 stages.append([(f'D{D}_axisx_ccm_N{N}',['--D',D,'--mode','axisx','--N',N,'--xmax',xm,'--prec',p]) for D in Ds for N,xm,p in [(60,50,2700),(120,25,1800)] ]+
  [(f'D{D}_axisx_fixedL_N60',['--D',D,'--mode','axisx','--N',60,'--xmax',50,'--prec',2700,'--fixedL',1]) for D in [-4,5] if D in Ds])
 large=Ds if os.environ.get('X50_ALL','1')=='1' else [D for D in [-4,5] if D in Ds]
+phase_names.append('x50')
 stages.append([(f'D{D}_axisN_x50',['--D',D,'--mode','axisN','--x',50,'--Nmax',420,'--prec',4200,'--cprec',2400,'--cmp','80,160,260']) for D in large])
 failed=[]
 with concurrent.futures.ThreadPoolExecutor(max_workers=jobs) as pool:
-    for stage in stages:
+    phases=os.environ.get('PHASES','x13,x25,axisx,x50').split(',')
+    for phase,stage in zip(phase_names,stages):
+        if phase not in phases: continue
         for task,rc in zip(stage,pool.map(run,stage)):
             if rc: failed.append(task[0])
 if failed: print('FAILED: '+', '.join(failed),file=sys.stderr)

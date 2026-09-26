@@ -52,3 +52,22 @@ Arithmetic: FLINT 3 arb balls throughout forms, LDL, eigenvalues, inertia, error
 ## D4. Runs (incremental)
 
 The run script starts with all x=13 cases, then x=25, then axis-x protocols, then x=50. It runs at most 12 independent processes, with timings retained under `checks/runlogs/`. The requested six characters and optional -20,21,13 are included, plus -8 to compare both character parities at exactly the same conductor 8. The x=50 extension is attempted for all ten characters; eigenvalues at several N will test convergence beyond the determinant minimum. All outputs are `outputs/rtp2_dirichlet_*.txt`.
+
+D3 correction during validation: the inherited shifted helper needs an explicit scalar (1x1) branch; otherwise its QR-based second-eigenvalue gap is infinite. This affected the N=1 odd *control* for D=-20, not the form eigenvalue. Fixed locally in the new driver. Also `zst_block_min` sometimes returns a broad but valid minimum bracket (D=12,x=25,N=40,80). The separate Rump-plus-deflated-PD minimum certificates were already sharp and decisive. The driver now intersects the two valid certificates of each block minimum before the parity comparison; raw bracket overlap is disclosed. This uses a certified *minimum*, not an arbitrary eigenpair. Failed development outputs are retained in checks and the affected cases will be rerun.
+
+Missing-reference exception authorized by the brief: `checks/generate_references.py --append` adds D=-7,-20,21 to `zst/tests/data/dirichlet_ref.txt` in its existing format. Only 40-digit comparison seeds are appended; standalone runs at 800 and 1200 bits give overlapping certified Hardy-Z root balls, retained in checks. Existing records are unchanged. This supersedes the earlier plan not to append to that file. No reference datum enters the form or its certificates.
+
+**PROVED D2b (additional control comparison).** At a fixed conductor and window, the odd-character archimedean form exceeds the even-character one as a quadratic form. Indeed, digamma reflection gives
+`Re psi(3/4+it/2)-Re psi(1/4+it/2)=pi/cosh(pi t)>0`.
+Plancherel expresses the difference of the two controls as the integral of this positive multiplier times the squared Fourier transform of the test function. Thus every nonzero finite-window function has strictly larger odd-character archimedean value, and the negative count for kappa=1 is at most that for kappa=0 in either reflection block. Character parity kappa and window reflection parity E/O are distinct notions.
+
+| protocol | discriminants | resolution/window | bits for LDL / eigenpairs | planned files |
+|---|---|---|---|---:|
+| axis N | -4,-3,5,8,-7,12,-20,21,13,-8 | x=13, Nmax=200 | 1000 / 700 | 10 |
+| axis N | same ten | x=25, Nmax=260 | 1800 / 1200 (D=12: 1400 on rerun) | 10 |
+| axis N | same ten | x=50, Nmax=420 | 4200 / 2400 | 10 |
+| axis x CCM | same ten | N=60, x through prime powers to 50 | 2700 | 10 |
+| axis x CCM | same ten | N=120, x through prime powers to 25 | 1800 | 10 |
+| axis x fixed L | -4,5 | N=60, L=log 50, cutoff 1 through 49 | 2700 | 2 |
+
+The original low-cost stages used the development certifier before the two edge-case corrections. Both stages are being rerun with the final driver so all released outputs have the same check logic. D=12 at x=25 also raises eigenpair precision from 1200 to 1400 bits; the form precision stays 1800. The two development failures are preserved as `checks/development_*_failed.txt`, not counted as final successes. No precision increase has been needed for construction of a Weil form.

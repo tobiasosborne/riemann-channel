@@ -1,0 +1,13 @@
+P1 se = -41*b**2/18 + b/2 + 1 ; so = -4*b**2/9 - b/2 + 1
+P1 Ie = 9/82 - 3*sqrt(337)/82 9/82 + 3*sqrt(337)/82
+P1 midpoint = 9/82 ; unique max = 0; exact offset = -9/82
+P1 normalised offset = -3*sqrt(337)/337
+P1 decimals: -0.56186194209826168165213607995270143 0.78137413722021290116433120190392095 -0.10975609756097560975609756097560976 -0.16342041321085299078776011440985614
+P2 atom centres: [1, 2, 6] ; coefficients: [1, 2, -1]
+P2 local coefficients A_p: {2: 2*sqrt(2), 3: -4*sqrt(3)/3}
+P2 Baker coordinates of remainder: {2: -2*sqrt(2), 3: 4*sqrt(3)/3}
+P2 remainder = -2*sqrt(2)*log(2) + 4*sqrt(3)*log(3)/3 = 0.57662011545316152531774764290812946
+P2 r = 2 ; pole = 3*sqrt(2)/2 ; rho = 2*sqrt(2)/3
+P2 r = 3 ; pole = 4*sqrt(3)/3 ; rho = 3*sqrt(3)/8
+P2 r = 6 ; pole = 7*sqrt(6)/6 ; rho = 6*sqrt(6)/35
+PASS: exact symbolic identities and interval inequalities; decimals only for display.

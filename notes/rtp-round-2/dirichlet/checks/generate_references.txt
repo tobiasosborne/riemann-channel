@@ -1,0 +1,3 @@
+D=-7: two certified root enclosures overlap; first-index scan; seed=4.475738283728683131974628487193130920401
+D=-20: two certified root enclosures overlap; first-index scan; seed=2.358934994086656048615012369773900451772
+D=21: two certified root enclosures overlap; first-index scan; seed=2.31518706430314115204629295971248679334

@@ -209,8 +209,7 @@ SAT block=full N=1 logdet=0.17733605354685 unique=1 range_max=200
 SAT block=even N=1 logdet=-0.80627882067997 unique=1 range_max=200
 SAT block=odd N=1 logdet=0.98361487422683 unique=1 range_max=200
 EIG x=13 X=13 N=1 epsE=0.158693673555 epsO=2.67410534577 parity=1 even_simple=1 negE=0 negO=0
-CHECK FAIL: archimedean control minima and inertia certified
-CONTROL x=13 N=1 minE=1.17230950453 minO=nan negE=0 posE=2 negO=0 posO=1
+CONTROL x=13 N=1 minE=1.17230950453 minO=1.87363703118 negE=0 posE=2 negO=0 posO=1
 EIG x=13 X=13 N=20 epsE=0.0996075078912 epsO=1.84985574399 parity=1 even_simple=1 negE=0 negO=0
 CONTROL x=13 N=20 minE=1.15898382799 minO=1.81490380310 negE=0 posE=21 negO=0 posO=20
 EIG x=13 X=13 N=40 epsE=0.0990706509764 epsO=1.82493524909 parity=1 even_simple=1 negE=0 negO=0
@@ -219,3 +218,25 @@ EIG x=13 X=13 N=80 epsE=0.0988759054601 epsO=1.81213057800 parity=1 even_simple=
 CONTROL x=13 N=80 minE=1.15883181960 minO=1.80975656963 negE=0 posE=81 negO=0 posO=80
 EIG x=13 X=13 N=120 epsE=0.0988144496297 epsO=1.80804317783 parity=1 even_simple=1 negE=0 negO=0
 CONTROL x=13 N=120 minE=1.15882151781 minO=1.80913132664 negE=0 posE=121 negO=0 posO=120
+EIG x=13 X=13 N=200 epsE=0.0987740569268 epsO=1.80464336194 parity=1 even_simple=1 negE=0 negO=0
+CONTROL x=13 N=200 minE=1.15881463534 minO=1.80861902772 negE=0 posE=201 negO=0 posO=200
+RAY x=13 N=200 parity=1 term=arch value=1.25644196864
+RAY x=13 N=200 term=k2 value=0 cumulative=1.25644196864
+RAY x=13 N=200 term=k3 value=-0.738852160214 cumulative=0.517589808427
+RAY x=13 N=200 term=k4 value=0 cumulative=0.517589808427
+RAY x=13 N=200 term=k5 value=0 cumulative=0.517589808427
+RAY x=13 N=200 term=k7 value=-0.377201770582 cumulative=0.140388037845
+RAY x=13 N=200 term=k8 value=0 cumulative=0.140388037845
+RAY x=13 N=200 term=k9 value=-0.103570361184 cumulative=0.0368176766607
+RAY x=13 N=200 term=k11 value=0.0619563802662 cumulative=0.0987740569268
+RAY x=13 N=200 term=k13 value=[+/- 4.06e-210] cumulative=0.0987740569268
+RAY_TOTAL x=13 N=200 arch=1.25644196864 primes=-1.15766791171 sum=0.0987740569268 eps=0.0987740569268
+# COMPARISON STEP: zeros used only below, never to choose a form or eigenpair
+REFERENCE D=-20 gamma1=2.35893499408665604861501236977 certified_unique=1 index=PARI_or_sign_scan
+COMP x=13 X=13 N=1 parity=1 roots=1 z1=2.51503202422755672 error=0.156097030141 ratio=0.983637385434
+COMP x=13 X=13 N=20 parity=1 roots=20 z1=2.45042487129450359 error=0.0914898772078 ratio=0.918503827119
+COMP x=13 X=13 N=40 parity=1 roots=40 z1=2.44993034890193312 error=0.0909953548153 ratio=0.918489521553
+COMP x=13 X=13 N=80 parity=1 roots=80 z1=2.44975122453623685 error=0.0908162304496 ratio=0.918486966334
+COMP x=13 X=13 N=120 parity=1 roots=120 z1=2.44969471823738922 error=0.0907597241507 ratio=0.918486359949
+COMP x=13 X=13 N=200 parity=1 roots=200 z1=2.44965758281702632 error=0.0907225887304 ratio=0.918486002833
+# checks: 1255 run, 0 failed

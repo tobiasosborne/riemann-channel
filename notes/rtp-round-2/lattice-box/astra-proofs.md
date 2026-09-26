@@ -100,6 +100,8 @@ Conversely, when the nested finite spectrahedra are eventually compact and conta
 
 H-POS alone does not imply uniqueness even within the distribution/Loewner framework: take the true form `I`, represented by `D=(1/2)delta_0`, and let `H0=I-T(w*)`. All the same interior atom matrices are present and H-GAP holds. No additional numerical smallness changes this logical counterexample.
 
+Adding a constraint `w>=0` does not restore uniqueness under H-GAP. A sufficiently small positive displacement on the zero composite coordinates, leaving all prime-power coordinates unchanged, is feasible. Thus even strictly positive weights at **every** interior lattice position occur nearby; positivity cannot force the exact zero pattern at a fixed coercive window.
+
 Even `eps_N -> 0` does not suffice in general nested PSD affine families: take `H*=diag(1,1,1/2,1/3,...)`, and `T(delta)=diag(delta,-delta,0,...)`. The finite minima tend to zero while the feasible interval remains `[-1,1]`. This last example illustrates the missing sensitivity hypothesis; it is not claimed to have the zeta kernel.
 
 ### 3.3 What is known for the zeta operator without RH (PROVED with cited input)
@@ -117,3 +119,52 @@ Proof. The explicit formula under RH writes the form as a nonnegative sum of `|f
 There are more than linearly many **distinct** zeta ordinates under RH; multiplicities must not be overlooked here. Indeed `N(T)~T log T/(2 pi)` and Littlewood's RH bound `S(T)=O(log T/log log T)` bound every jump, hence every multiplicity near height `T`, by `O(log T/log log T)`. Consequently the number of distinct ordinates up to `T` is at least a constant times `T log log T`. The two counting inputs and the RH bound are recorded in [Carneiro–Chirre, Section 1.1, equations (1.2)–(1.3)](https://arxiv.org/html/1702.04099#S1.SS1). This contradicts the exponential-type zero count unless `f=0`. Thus the lowest attained eigenvalue is strictly positive. No zero location or RH assumption enters any numerical matrix or certificate in this lane.
 
 **Reading.** Positivity at a fixed window can pin weights to an exceptionally small neighborhood, but exact recovery is not a consequence of RH; RH implies a nonzero neighborhood instead. The general H-PIN theorem is valid for any family of window forms, and is incompatible with H-GAP at a fixed window. For the specific fixed windows here, unconditional infinite-dimensional positivity and a prime-side quantitative lower bound remain unproved in this lane.
+
+## L4. Multi-window boxes — NUMERICAL, with ball certificates
+
+The script is `scripts/rtp2_lattice_box.py`; the reproducible output is `outputs/rtp2_lattice_box.txt`. It builds a C bridge under this lane's `checks/`, linking the existing `zst/build/libzst.a`. Totals and the prime-free data use the same window with prime cutoffs `X=x` and `X=1`. Independently summed atom formulas reproduce their difference to at least 190 decimal places. The interior positions are always `log 2,...,log(x-1)`; all five chosen endpoints are prime powers, but the endpoint exclusion is valid for any endpoint.
+
+Precision: data and certificate solves are Arb balls at 1280 bits. Approximate eigenvectors come from FLINT/Arb's QR routine at 1152 bits (requested tolerance `2^-1100`). Each chosen vector is then frozen as exact dyadic coordinates; its Rayleigh cost and atom sensitivities are evaluated as balls. Python runs a two-phase Bland simplex at 200 decimal digits, with HiGHS double values recorded as search diagnostics. Supported dual systems are then solved **again in balls**. Positivity of all dual coefficients and feasibility of the exact basic primal solution certify both outer bounds and optimality for this fixed-vector LP. These are exact certificates for the chosen dyadic cuts; agreement with ideal eigenvector cuts is a high-precision numerical statement. Printed short decimals round the ball centers; the detailed `CERT` lines retain enclosures.
+
+The saturation cutoff minimizes the total log determinant on the scanned integer range `0<=N<=200`, using the two blocks' Cholesky pivots at 1280 bits. It is a sampled argmin, not a proof of a global-in-N minimum. The cutoffs found are:
+
+| x | interior atoms m | N_sat in scan | log det at N_sat (rounded) |
+|---|---:|---:|---:|
+| 13 | 11 | 56 | -1291.664798 |
+| 17 | 15 | 83 | -2327.523807 |
+| 19 | 17 | 94 | -2962.401357 |
+| 23 | 21 | 123 | -4460.944825 |
+| 25 | 23 | 134 | -5328.600491 |
+
+The spectrum/width and section tables will be appended after all cases complete.
+
+## L5. First recession cutoff at x=13 — PROVED by numerical ball certificates
+
+Atoms are the first `m` positions, `log 2,...,log(m+1)`, in the common window `L=log 13`.
+
+| m | first N with zero recession cone | certificate at previous cutoff |
+|---:|---:|---|
+| 2 | 2 | positive definite recession matrix at N=1 |
+| 3 | 2 | positive definite recession matrix at N=1 |
+| 4 | 2 | nontrivial kernel: m>2N+1 at N=1 |
+| 5 | 3 | positive definite recession matrix at N=2 |
+| 6 | 3 | nontrivial kernel at N=2 |
+| 7 | 4 | positive definite recession matrix at N=3 |
+| 8 | 4 | nontrivial kernel at N=3 |
+| 9 | 5 | positive definite recession matrix at N=4 |
+| 10 | 5 | nontrivial kernel at N=4 |
+| 11 | 6 | positive definite recession matrix at N=5 |
+
+### 5.1 Construction and exact meaning of the certificates
+
+At each candidate cutoff the double search solves `max t` subject to `T(delta)>=tI`, `tr T(delta)=1`, using an orthonormal basis of the atom span and eigenvector separation cuts. Positive primal values give candidate recession rays. Negative dual values give candidate positive definite matrices orthogonal to the atom span. This normalization detects every **nonzero PSD matrix**. The kernel of `T` is handled separately; imposing only `sum delta=+-1`, as suggested in the brief, would miss every zero-sum recession direction.
+
+The C verifier reconstructs all atom matrices in 1280-bit balls. For a ray it certifies `T(delta)>0` by Cholesky. For a candidate dual `Z0`, it forms the atom Gram matrix `M_ij=tr(T_i T_j)`, solves `M h=(tr(T_i Z0))_i` in balls and certifies
+
+`Z=Z0-sum h_i T_i > 0`.
+
+This defines an exactly orthogonal matrix, not a matrix whose residual is merely small. The successful interval solve proves injectivity of the atom map. Hence a PSD `T(delta)` has `tr(Z T(delta))=0`, forcing `T(delta)=0` and then `delta=0`. Six primal and ten dual certificates pass. Dimension `2N+1` of the Loewner data proves the remaining lower-cutoff kernels exactly. At N=0 the recession cone is plainly nonzero.
+
+### 5.2 All requested cutoffs
+
+Compression makes the recession cones decrease with `N`. The certified lower-cutoff witnesses therefore establish every earlier case; the first zero-cone certificate establishes every later cutoff through `N=40` and beyond. Thus the table settles the entire requested range without treating noisy minimum eigenvalues as exact zero tests. For m=10 and 11 the double dual margins are only about `1.85e-8` and `1.21e-9`; they pass the exact ball projection/Cholesky verification. The results do not assert a universal atom-count threshold, which L1 refutes.

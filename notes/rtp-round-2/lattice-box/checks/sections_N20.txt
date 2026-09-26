@@ -1,0 +1,62 @@
+PASS section N=20 pair=2,3 target=2 sign=-1: relative primal-dual gap=5.62e-12
+PASS section N=20 pair=2,3 target=2 sign=+1: relative primal-dual gap=1.34e-12
+SECTION N=20 pair=2,3 n=2 width_in=3.55656916034e-34 width_out=3.55656916036e-34
+PASS section N=20 pair=2,3 target=3 sign=-1: relative primal-dual gap=1.09e-12
+PASS section N=20 pair=2,3 target=3 sign=+1: relative primal-dual gap=1.01e-12
+SECTION N=20 pair=2,3 n=3 width_in=7.41823587029e-33 width_out=7.4182358703e-33
+PASS section N=20 pair=4,5 target=4 sign=-1: relative primal-dual gap=1.9e-12
+PASS section N=20 pair=4,5 target=4 sign=+1: relative primal-dual gap=1.28e-12
+SECTION N=20 pair=4,5 n=4 width_in=2.34542539621e-31 width_out=2.34542539621e-31
+PASS section N=20 pair=4,5 target=5 sign=-1: relative primal-dual gap=1.17e-12
+PASS section N=20 pair=4,5 target=5 sign=+1: relative primal-dual gap=1.19e-12
+SECTION N=20 pair=4,5 n=5 width_in=2.87983006381e-29 width_out=2.87983006382e-29
+PASS section N=20 pair=6,7 target=6 sign=-1: relative primal-dual gap=1.57e-12
+PASS section N=20 pair=6,7 target=6 sign=+1: relative primal-dual gap=1.22e-12
+SECTION N=20 pair=6,7 n=6 width_in=3.22341889452e-27 width_out=3.22341889453e-27
+PASS section N=20 pair=6,7 target=7 sign=-1: relative primal-dual gap=1.16e-12
+PASS section N=20 pair=6,7 target=7 sign=+1: relative primal-dual gap=1.23e-12
+SECTION N=20 pair=6,7 n=7 width_in=8.63882887598e-25 width_out=8.63882887599e-25
+PASS section N=20 pair=8,9 target=8 sign=-1: relative primal-dual gap=1.37e-12
+PASS section N=20 pair=8,9 target=8 sign=+1: relative primal-dual gap=1.14e-12
+SECTION N=20 pair=8,9 n=8 width_in=2.14555182761e-22 width_out=2.14555182762e-22
+PASS section N=20 pair=8,9 target=9 sign=-1: relative primal-dual gap=1.11e-12
+PASS section N=20 pair=8,9 target=9 sign=+1: relative primal-dual gap=1.18e-12
+SECTION N=20 pair=8,9 n=9 width_in=1.47775603778e-19 width_out=1.47775603778e-19
+PASS section N=20 pair=10,12 target=10 sign=-1: relative primal-dual gap=1.04e-12
+PASS section N=20 pair=10,12 target=10 sign=+1: relative primal-dual gap=1.01e-12
+SECTION N=20 pair=10,12 n=10 width_in=3.97682000403e-17 width_out=3.97682000403e-17
+PASS section N=20 pair=10,12 target=12 sign=-1: relative primal-dual gap=1.01e-12
+PASS section N=20 pair=10,12 target=12 sign=+1: relative primal-dual gap=1.01e-12
+SECTION N=20 pair=10,12 n=12 width_in=9.13412171379e-9 width_out=9.1341217138e-9
+PASS section N=20 pair=11,12 target=11 sign=-1: relative primal-dual gap=1.07e-12
+PASS section N=20 pair=11,12 target=11 sign=+1: relative primal-dual gap=1.02e-12
+SECTION N=20 pair=11,12 n=11 width_in=2.89088014777e-13 width_out=2.89088014777e-13
+PASS section N=20 pair=11,12 target=12 sign=-1: relative primal-dual gap=1.02e-12
+PASS section N=20 pair=11,12 target=12 sign=+1: relative primal-dual gap=1.04e-12
+SECTION N=20 pair=11,12 n=12 width_in=1.40761371112e-8 width_out=1.40761371112e-8
+SECTIONCERT N=20 target=2 other=3 sign=-1 primal=1 dual=1 [3.54633634868200247408163609427e-34 +/- 3.85e-64]
+SECTIONCERT N=20 target=2 other=3 sign=1 primal=1 dual=1 [1.02328116789860306322752125045e-36 +/- 3.70e-66]
+SECTIONCERT N=20 target=3 other=2 sign=-1 primal=1 dual=1 [8.19014893108069456534468497428e-35 +/- 2.59e-66]
+SECTIONCERT N=20 target=3 other=2 sign=1 primal=1 dual=1 [7.33633438098488727361574994661e-33 +/- 2.33e-63]
+SECTIONCERT N=20 target=4 other=5 sign=-1 primal=1 dual=1 [2.28713732721080906442017282871e-31 +/- 4.48e-62]
+SECTIONCERT N=20 target=4 other=5 sign=1 primal=1 dual=1 [5.82880690003346058955197190526e-33 +/- 8.59e-65]
+SECTIONCERT N=20 target=5 other=4 sign=-1 primal=1 dual=1 [1.20249645556055376766317542903e-30 +/- 4.93e-60]
+SECTIONCERT N=20 target=5 other=4 sign=1 primal=1 dual=1 [2.75958041825996673974758881262e-29 +/- 2.10e-59]
+SECTIONCERT N=20 target=6 other=7 sign=-1 primal=1 dual=1 [3.01685733083473388868315386632e-27 +/- 3.50e-57]
+SECTIONCERT N=20 target=6 other=7 sign=1 primal=1 dual=1 [2.06561563694859915419485470606e-28 +/- 4.28e-58]
+SECTIONCERT N=20 target=7 other=6 sign=-1 primal=1 dual=1 [7.70491472295869212441665937105e-26 +/- 3.32e-56]
+SECTIONCERT N=20 target=7 other=6 sign=1 primal=1 dual=1 [7.86833740369509387739362555080e-25 +/- 2.75e-55]
+SECTIONCERT N=20 target=8 other=9 sign=-1 primal=1 dual=1 [1.88746889039288946243475999377e-22 +/- 3.92e-52]
+SECTIONCERT N=20 target=8 other=9 sign=1 primal=1 dual=1 [2.58082937222398421258314478816e-23 +/- 3.73e-53]
+SECTIONCERT N=20 target=9 other=8 sign=-1 primal=1 dual=1 [2.29367155095290655815819385879e-20 +/- 2.52e-50]
+SECTIONCERT N=20 target=9 other=8 sign=1 primal=1 dual=1 [1.24838888268601292466201009365e-19 +/- 2.83e-49]
+SECTIONCERT N=20 target=10 other=12 sign=-1 primal=1 dual=1 [3.17553249172011190124421913053e-17 +/- 1.47e-47]
+SECTIONCERT N=20 target=10 other=12 sign=1 primal=1 dual=1 [8.01287512310088972042913304322e-18 +/- 9.83e-49]
+SECTIONCERT N=20 target=12 other=10 sign=-1 primal=1 dual=1 [2.94281535035729204947169287818e-9 +/- 2.65e-39]
+SECTIONCERT N=20 target=12 other=10 sign=1 primal=1 dual=1 [6.19130636344446597212631767057e-9 +/- 4.54e-39]
+SECTIONCERT N=20 target=11 other=12 sign=-1 primal=1 dual=1 [2.15520786387294589051367122884e-13 +/- 2.28e-43]
+SECTIONCERT N=20 target=11 other=12 sign=1 primal=1 dual=1 [7.35672283901607635524196240470e-14 +/- 2.79e-44]
+SECTIONCERT N=20 target=12 other=11 sign=-1 primal=1 dual=1 [4.55038314053813999901934106670e-9 +/- 8.96e-41]
+SECTIONCERT N=20 target=12 other=11 sign=1 primal=1 dual=1 [9.52575397071051599850496815410e-9 +/- 3.62e-40]
+PASS all N=20 section primal and rank-two dual witnesses certified in 1280-bit balls
+CHECKS 25 FAILED 0

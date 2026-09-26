@@ -1,0 +1,10 @@
+CASE x=23 N=123 m=21 mp_dps=200 arb_bits=1280
+PASS ball Cholesky certifies both true finite blocks positive
+PASS prime-cutoff split reproduced, error=6.04e-199
+SPECTRUM eps=2.733120368e-111 lambda_m=4.250070527e-46 lambda_mplus1=1.338870778e-43
+PASS LP n=2 sign=+1: residual=1.0e-206, min_reduced=-1.0e-252, gap=3.2e-256
+PASS LP n=2 sign=-1: residual=2.3e-206, min_reduced=-8.7e-255, gap=5.3e-254
+WIDTH n=2 LP=2.07558427958e-73 lower=-2.075498512e-73 upper=8.576773876e-78 highs_width=4.30562e-15
+PASS LP n=3 sign=+1: residual=2.0e-203, min_reduced=-8.7e-255, gap=6.9e-255
+PASS LP n=3 sign=-1: residual=3.5e-203, min_reduced=-1.0e-252, gap=2.3e-250
+WIDTH n=3 LP=1.41802021028e-71 lower=-2.629179383e-75 upper=1.417757292e-71 highs_width=2.53984e-19

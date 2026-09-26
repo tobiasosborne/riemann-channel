@@ -1,0 +1,16 @@
+CONE RAY N=1 m=2 certified=1
+CONE ZERO N=2 m=2 certified=1
+CONE RAY N=1 m=3 certified=1
+CONE ZERO N=2 m=3 certified=1
+CONE ZERO N=2 m=4 certified=1
+CONE RAY N=2 m=5 certified=1
+CONE ZERO N=3 m=5 certified=1
+CONE ZERO N=3 m=6 certified=1
+CONE RAY N=3 m=7 certified=1
+CONE ZERO N=4 m=7 certified=1
+CONE ZERO N=4 m=8 certified=1
+CONE RAY N=4 m=9 certified=1
+CONE ZERO N=5 m=9 certified=1
+CONE ZERO N=5 m=10 certified=1
+CONE RAY N=5 m=11 certified=1
+CONE ZERO N=6 m=11 certified=1

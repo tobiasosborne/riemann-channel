@@ -165,6 +165,107 @@ class FastKernel:
         h=R0/self.R0
         return po,ar,byq,active,h
 
+class MPKernel:
+    """All-mpmath 40-digit path. Chebyshev autocorrelation on [0,1],[1,2].
+    Separate levels are compared; no claim of interval certification is made.
+    """
+    def __init__(self,degree):
+        self.degree=degree; self.quaderr=mp.mpf(0); self.co=[]
+        cache=CHK/f'R1_cheb_{degree}_dps{mp.mp.dps}.json'
+        if cache.exists():
+            data=json.loads(cache.read_text());self.co=[[mp.mpf(x) for x in c] for c in data['coefficients']]
+            self.quaderr=mp.mpf(data['quad_est'])
+        else:
+            angles=[mp.pi*(j+mp.mpf('.5'))/degree for j in range(degree)]
+            for lo in (0,1):
+                vals=[self.direct(lo+(1+mp.cos(th))/2)[0] for th in angles]
+                cs=[2*mp.fsum(v*mp.cos(k*th) for v,th in zip(vals,angles))/degree for k in range(degree)]
+                cs[0]/=2;self.co.append(cs)
+            cache.write_text(json.dumps(dict(coefficients=[[str(v) for v in cs] for cs in self.co],quad_est=str(self.quaderr)),indent=2)+'\n')
+        self.R0,self.R0err=self.direct(mp.mpf(0))
+        self.testerr=mp.mpf(0)
+        for j in range(41):
+            u=mp.mpf(j)/20
+            val,er=self.direct(u);self.testerr=max(self.testerr,abs(val-self.R(u)))
+        print(f'MP_R1 degree={degree} direct_quad_est={mp.nstr(self.quaderr,4)} 41-point interpolation discrepancy={mp.nstr(self.testerr,4)}',flush=True)
+    def direct(self,u):
+        if u>=2:return mp.mpf(0),mp.mpf(0)
+        lo=u-1;hi=mp.mpf(1)
+        val,er=mp.quad(lambda t:phi1(t)*phi1(t-u),[lo,(lo+hi)/2,hi],error=True)
+        self.quaderr=max(self.quaderr,er)
+        return val,er
+    def R(self,u):
+        u=abs(u)
+        if u>=2:return mp.mpf(0)
+        lo=0 if u<1 else 1;z=2*(u-lo)-1
+        b1=b2=mp.mpf(0)
+        for c in reversed(self.co[lo][1:]):
+            b=2*z*b1-b2+c;b2=b1;b1=b
+        return z*b1-b2+self.co[lo][0]
+    @lru_cache(None)
+    def cd(self,d):
+        val,er=mp.quad(lambda t:phi1(t)*mp.exp(d*t/2),[-1,0,1],error=True)
+        self.quaderr=max(self.quaderr,er);return d*val
+    @lru_cache(None)
+    def entry(self,r,ds):
+        d=mp.mpf(ds);D=mp.log(r.numerator)-mp.log(r.denominator);Y=D+2*d
+        norm=d*self.R0;po=2*mp.cosh(D/2)*self.cd(d)**2/norm
+        if D>2*d:
+            val,er=mp.quad(lambda u:self.R(u)*rho(D+d*u),[-2,-1,0,1,2],error=True)
+            ar=d*d*val/norm
+        else:
+            q0=2*d*self.R(D/d)
+            def q(y):return d*(self.R((y-D)/d)+self.R((y+D)/d))
+            # Split at every knot and absolute-value change of the interpolant.
+            pts=sorted(set([mp.mpf(0),Y]+[s for j in range(-2,3) for s in (D+j*d,-D+j*d) if 0<s<Y]))
+            def ai(y):
+                if not y:return q0/4
+                return (q(y)-mp.exp(-y/2)*q0)*rho(y)
+            val,er=mp.quad(ai,pts,error=True)
+            ar=((mp.log(4*mp.pi)+mp.euler)*q0/2+val+q0/2*mp.log(mp.tanh(Y/2)))/norm
+        self.quaderr=max(self.quaderr,er)
+        lo=bisect.bisect_left(KS,mp.exp(max(0,D-2*d)));hi=bisect.bisect_right(KS,mp.exp(Y))
+        pr=mp.fsum(mp.log(PP[k])/mp.sqrt(k)*(self.R((mp.log(k)-D)/d)+self.R((mp.log(k)+D)/d))/self.R0 for k in KS[lo:hi])
+        return po-ar-pr
+    def matrix(self,S,A,ds):
+        _,rr,_=geometry(S,A)
+        return mp.matrix([[self.entry(r,ds) for r in row] for row in rr])
+
+def high_precision(ker):
+    print('HIGH PRECISION VALIDATION: mpmath 40 digits, two interpolation orders, mp.eigsy; no zeros',flush=True)
+    results=[]; kernels=[MPKernel(112),MPKernel(160)]
+    for S,A,ds in [((2,3),2,'0.2'),((2,3),3,'0.2'),((2,3,5),2,'0.2')]:
+        mats=[k.matrix(S,A,ds) for k in kernels]
+        err=max(abs(x-y) for x,y in zip(mats[0],mats[1]))
+        G=mats[1];E,V=mp.eigsy(G);v=V[:,0]
+        residual=mp.norm(G*v-E[0]*v)
+        fast=build(ker,S,A,float(ds))['G']
+        dev=max(abs(G[i,j]-fast[i,j]) for i in range(G.rows) for j in range(G.cols))
+        rr=dict(S=list(S),A=A,delta=ds,lam=mp.nstr(E[0],30),gap=mp.nstr(E[1]-E[0],20),
+                schmidt=schmidt(np.array([float(x) for x in v]),S,A),max_entry_level_diff=mp.nstr(err,6),
+                float_discrepancy=mp.nstr(dev,6),residual=mp.nstr(residual,6),quad_est=mp.nstr(max(k.quaderr for k in kernels),6))
+        print('MP_VALIDATION '+json.dumps(rr,sort_keys=True),flush=True);results.append(rr)
+        check(err<mp.mpf('1e-18') and dev<mp.mpf('2e-10'),'mpmath full matrix validation '+str(S)+f' A={A}')
+        # Save complete arbitrary-precision matrices for blind verification.
+        (CHK/('mp_G_'+''.join(map(str,S))+f'_A{A}_delta02.json')).write_text(json.dumps([[str(G[i,j]) for j in range(G.cols)] for i in range(G.rows)],indent=2)+'\n')
+    return results
+
+def schur_bounds(ker,S,A,d):
+    b=build(ker,S,A,d);_,v=eig(b['G']);_,v0=eig(b['K']); out=[]
+    if v@v0<0:v=-v
+    for cut in range(len(S)):
+        def mat(w):return np.moveaxis(w.reshape((A+1,)*len(S)),cut,0).reshape(A+1,-1)
+        U,_,Vh=np.linalg.svd(mat(v0),full_matrices=True)
+        C=U.T@mat(v)@Vh.T
+        a=C[0,0]
+        if a<0:C=-C;a=-a
+        x=C[1:,0];y=C[0,1:];T=C[1:,1:]-np.outer(x,y)/a
+        h=float(np.linalg.norm(T,'fro'));den=(1+np.linalg.norm(x)/a)*(1+np.linalg.norm(y)/a)
+        cond=a>=np.linalg.norm(T,2)
+        out.append(dict(cut=cut,condition=bool(cond),lower=h*h/den**2 if cond else 0.,upper=h*h))
+    print('SCHUR_BOUNDS '+json.dumps(dict(S=list(S),A=A,delta=d,defect=schmidt(v,S,A),bounds=out),sort_keys=True))
+    return out
+
 @lru_cache(None)
 def geometry(S,A):
     pts=list(itertools.product(range(A+1),repeat=len(S)))
@@ -252,9 +353,37 @@ def sensitivity(ker,S,A,d):
         first=-float(v@P@v)
         ww,V=np.linalg.eigh(b['G']); proj=V[:,1:].T@(-P@v)
         deriv=float(np.linalg.norm(proj/(ww[0]-ww[1:])))
+        # Symmetric lattice reflection reverses lexicographic coefficient order.
         result.append(dict(q=q,lam_off=float(wm[0]),shift=float(wm[0]-w[0]),one_minus_overlap=max(0.,1-abs(float(v@vm))),
+                           parity_off=float(vm@vm[::-1]),parity_full=float(v@v[::-1]),
                            schmidt_off=schmidt(vm,S,A),dlam_dtheta=first,dv_norm=deriv))
     print('SENSITIVITY '+json.dumps(dict(S=list(S),A=A,delta=d,baseline=w[0],rows=result),sort_keys=True),flush=True)
+    for q in (5,7,37):
+        if q not in b['qp']:continue
+        P=b['qp'][q];h=1e-6
+        ep,vp=eig(b['G']-h*P);em,vm=eig(b['G']+h*P)
+        if vp@v<0:vp=-vp
+        if vm@v<0:vm=-vm
+        fd=(ep[0]-em[0])/(2*h);dv=np.linalg.norm((vp-vm)/(2*h))
+        exact=next(r for r in result if r['q']==q)
+        check(abs(fd-exact['dlam_dtheta'])<2e-7 and abs(dv-exact['dv_norm'])<2e-5,
+              f'q={q} Hellmann-Feynman and vector derivative finite-difference check; errors {abs(fd-exact["dlam_dtheta"]):.3e}, {abs(dv-exact["dv_norm"]):.3e}')
+    return result
+
+def sectors(ker,S,A,d):
+    b=build(ker,S,A,d);_,v=eig(b['G']);_,v0=eig(b['K']);_,rs,mix=geometry(S,A)
+    E=-sum((P for q,P in b['qp'].items() if q not in S),np.zeros_like(b['G']))*mix
+    R=np.zeros_like(E)
+    for i in range(len(v)):
+        for j in range(i,len(v)):
+            if not mix[i,j]:continue
+            r=rs[i][j];D=math.log(r.numerator)-math.log(r.denominator)
+            val=sum(math.log(p)/math.sqrt(p**m)*float(ker.R((math.log(p**m)-D)/d)+ker.R((math.log(p**m)+D)/d))/ker.R0 for p in S for m in range(1,A+1))
+            R[i,j]=R[j,i]=-val
+    H=b['imp']-E-R
+    result={name:dict(along=float(v@M@v),first=float(v0@M@v0),norm=float(np.linalg.norm(M,2))) for name,M in [('E',E),('H',H),('R',R)]}
+    print('PRIME_SECTORS '+json.dumps(dict(S=list(S),A=A,delta=d,parts=result),sort_keys=True))
+    check(np.linalg.norm(E+H+R-b['imp'])<1e-12,'external/excess/represented mixed-prime decomposition')
     return result
 
 def learning(ker,delta):
@@ -301,6 +430,7 @@ def main():
         for A in range(1,5):
             t=dict(S=list(S),A=A,values=thresholds(S,A));ts.append(t)
             print('THRESHOLD '+json.dumps(t,sort_keys=True))
+            check(all(Fraction(v['exact'])*max(ratios(S,A))<1700000 for v in t['values'].values()),'threshold sieve upper range suffices '+str(S)+f' A={A}')
     ker=FastKernel(128); fine=FastKernel(256)
     # No prime side result was printed before convention calibration.
     print(f'2. QUADRATURE: float64 Gaussian levels 128/256; mp.dps={mp.mp.dps}; no ball certification')
@@ -329,8 +459,18 @@ def main():
                      ('no_mixed_prime',b['G']-b['imp']),('no_mixed_pole',b['G']-b['po']),('no_mixed_arch',b['G']-b['ar'])]:
         w,v=eig(mat);ablations[name]=dict(lam=float(w[0]),schmidt=schmidt(v,(2,3),2))
     print('ABLATIONS '+json.dumps(dict(delta=dstar,values=ablations),sort_keys=True))
+    bounds=schur_bounds(fine,(2,3),2,dstar)
+    split=sectors(fine,(2,3),2,dstar)
+    # Concrete external-prime lists at common, requested widths.
+    lists=[]
+    for A in (2,3):
+        for d in (.02,.05,.1,.2):
+            b=build(fine,(2,3),A,d)
+            rr=dict(A=A,delta=d,external=sorted(q for q in b['qp'] if q not in (2,3)))
+            lists.append(rr);print('EXTERNAL_LIST '+json.dumps(rr,sort_keys=True))
+    high=high_precision(fine)
     comp=comparison(fine)
-    data=dict(consistency=con,thresholds=ts,sweep=rows,crossings=cross,dense_scans=scans,quadrature=errs,learning=learn,sensitivity=sens,delta_star=dstar,ablations=ablations,comparison=comp)
+    data=dict(consistency=con,thresholds=ts,sweep=rows,crossings=cross,dense_scans=scans,quadrature=errs,learning=learn,sensitivity=sens,delta_star=dstar,ablations=ablations,schur_bounds=bounds,prime_sectors=split,external_lists=lists,high_precision=high,comparison=comp)
     (CHK/'results.json').write_text(json.dumps(data,sort_keys=True,indent=2)+'\n')
     print(f'CHECKS: {PASS} passed, {FAIL} failed')
     if FAIL:sys.exit(1)
