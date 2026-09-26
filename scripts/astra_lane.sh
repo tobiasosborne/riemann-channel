@@ -6,7 +6,7 @@ LANE="$1"; REPO="$(cd "$(dirname "$0")/.." && pwd)"; cd "$REPO"
 D="$REPO/$LANE"; OUT="$D/astra.stdout"; LOG="$D/lane.log"; SID="$D/session.id"
 MAXRETRY=${MAXRETRY:-8}
 run_once() {  # $1 = attempt number
-  if [ "$1" -eq 1 ] || [ ! -s "$SID" ]; then
+  if [ ! -s "$SID" ]; then   # a present session.id means: resume that session (2026-09-26; was: attempt 1 always fresh)
     codex exec -m gpt-6-astra -c 'model_reasoning_effort="xhigh"' -s workspace-write --skip-git-repo-check \
       -o "$D/astra-last.md" "$(cat "$D/astra-brief.md")" >> "$OUT" 2>&1
   else
@@ -20,7 +20,7 @@ while [ $attempt -le $MAXRETRY ]; do
   echo "$(date -Is) attempt $attempt start" >> "$LOG"
   run_once $attempt; rc=$?
   # capture the session id from stdout (first occurrence)
-  if [ ! -s "$SID" ]; then grep -m1 -oE 'session id: [0-9a-f-]{36}' "$OUT" | awk '{print $3}' > "$SID" 2>/dev/null || true; fi
+  if [ ! -s "$SID" ]; then grep -oE 'session id: [0-9a-f-]{36}' "$OUT" | tail -1 | awk '{print $3}' > "$SID" 2>/dev/null || true; fi
   echo "$(date -Is) attempt $attempt exit $rc" >> "$LOG"
   if [ $rc -eq 0 ] && grep -q 'What this changes in the notebook' "$D/astra-proofs.md" 2>/dev/null; then
     echo "codex exit: 0" >> "$OUT"; echo "$(date -Is) DONE" >> "$LOG"; exit 0
