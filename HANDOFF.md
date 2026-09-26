@@ -2,6 +2,38 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-26: tutorial "Weil Positivity, Contracted" (Weil positivity in tensor-network terms), Opus lanes, REFUTE review
+
+TJO: a tutorial artifact mirroring *The Weil Functional* that poses Weil positivity in MPS terms example by example
+(permutations, Ihara–Bass, ...), with animations and interactive demos, Opus helping. Built in
+`notes/weil-tn-tutorial/` (sources: `index.html`, `theme.css`, `core.js`, `tn.js`, `demos-*.js`, `data-riemann.js`;
+`build.py` → the published single file `weil-positivity-contracted.html`; `CONTRACT.md`; lane reports and numpy
+checks under `lanes/`, REFUTE review `lanes/review.md`). Published as a Claude artifact (link in the worklog).
+
+**The spine of the page** (all quoted claims are `proved` rows): the Weil/Toeplitz form is the Gram matrix of open
+transfer strips, `T_{jk} = Tr((E^j)^♯ E^k) = t_{k−j}`, in a metric `G` with `E^*GE = G` (`prop:ccm-tn-operator-gram`);
+such a metric exists iff the retained transfer is semisimple on the circle (`prop:hp-inner-product-discrete`);
+positivity alone is the one-sided bound (`thm:weil-positivity-finite`), the reflection symmetry makes it the circle
+(`thm:weil-duality-pairing`). Stations: permutation with point letters (shard 03b; native metric), shift of finite
+type (the pole; the golden mean passes positivity and fails RH; `1 + C_4` satisfies both), regular graph (edge
+reversal = inverse pairing = functional equation; Ramanujan = existence of the metric on the retained edge space;
+Huang's `h_k`), Kraus family on a 16-dimensional edge lift (the Kraus dichotomy, Hastings' bound), Artin–Schreier
+(`EE† = q`, RH manifest, sign law `thm:as-sign-law`), zeta (strips known from the explicit formula, metric unknown;
+lattice-bump Gram from primes vs zeros; the x = 13 CCM window from the notebook's data).
+
+**Worker findings worth keeping.** With the correct bipartite trivial set the prism `C_16 × K_2`'s Weil form is
+positive at K = 12 and first negative at K = 14 (Huang's `h_k` first negative at k = 22; the Toeplitz form catches
+the failure earlier); Huang's literal formula uses `N_k = Tr B^k − (|E|−|V|)(1+(−1)^k)` and holds for non-bipartite
+graphs; for a perturbed Artin–Schreier matrix with `a = (0,1)` one eigenvalue stays on the circle and the rest move
+inside for every perturbation (observed, unexplained), so the Weil form stays positive while `N_m` stops being an
+integer; `charpoly + Durand–Kerner` is unreliable for repeated eigenvalues at dimension 25.
+
+**Nothing registered**; no shard; gate unchanged (the 256 "not present" errors in this container are the absent
+`refs/src/`; on the machine with the sources the count is the 8 Yoshida rows). Next, if wanted: (i) a shard
+distilling the "Weil form = Gram of strips" dictionary table as a citedfact/observation row set; (ii) the unexplained
+on-circle eigenvalue of the perturbed `a = (0,1)` Artin–Schreier matrix; (iii) the Weil–LPS channels as a preset in
+the Kraus demo (needs `n = p`, heavier numerics).
+
 ## Session 2026-09-25: branches merged onto master; the astra day (shards 04q_h_theta, 04r–04z) was orphaned on `claude/inspiring-ride-n5binf`
 
 TJO: "pick through all the branches and merge everything onto master". State found: master carried the 2026-09-23/24

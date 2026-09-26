@@ -1,0 +1,292 @@
+<title>Weil Positivity, Contracted</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] } };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+<style>
+/*__THEME_CSS__*/
+</style>
+
+<header class="hero wrap">
+  <div class="eyebrow">A guided build-up, with live computations · companion to <a href="https://claude.ai/artifact/FwqdU6JyRpunBjLDuThVnV">The Weil Functional</a></div>
+  <h1>Weil Positivity, Contracted</h1>
+  <p class="lede">The Weil form of a zeta function is an overlap of two open pieces of a tensor network. This page poses Weil positivity in that language, one example at a time: a permutation, a shift, a regular graph, a quantum channel, a curve over a finite field, and finally the Riemann zeta function, where the network is known and the metric that would contract it is the unknown.</p>
+  <p class="small">Dotted terms open a definition. Every panel is computed live; eigenvalues appear only in panels marked <span class="pill spec">comparison</span>, everything else is built from ring norms. Colour is used consistently: <span class="pill orbit">rings, cycles, primes, counts</span> <span class="pill spec">eigenvalues, zeros, anything negative</span> <span class="pill pole">the trivial set: pole, leading eigenvalue, the ±1</span> <span class="pill bond">bond legs, strips, Gram matrices</span> <span class="pill metric">the metric</span> <span class="pill arch">the conjugate layer; the archimedean place</span>.</p>
+</header>
+
+<nav class="steps" aria-label="Steps"><ol>
+  <li><a href="#s0">0 · Rings</a></li>
+  <li><a href="#s1">1 · Strips and the metric</a></li>
+  <li><a href="#s2">2 · Permutations</a></li>
+  <li><a href="#s3">3 · Shifts and the pole</a></li>
+  <li><a href="#s4">4 · Graphs</a></li>
+  <li><a href="#s5">5 · Channels</a></li>
+  <li><a href="#s6">6 · Curves</a></li>
+  <li><a href="#s7">7 · Zeta</a></li>
+</ol></nav>
+
+<!-- ============================================================ 0 -->
+<section class="step wrap" id="s0">
+  <h2>0. The counting side is a sequence of ring norms</h2>
+  <p>A <button class="term" data-term="mps">matrix product state</button> is a fixed local tensor \(A\) with one physical index \(s\) and two bond indices, i.e. a family of matrices \(A_s\) on a bond space \(V\) of dimension \(n\). Closing \(L\) copies into a ring gives the state \(\psi_L = \sum_w \operatorname{Tr}(A_{w_L}\cdots A_{w_1})\,|w\rangle\), and its norm is a trace of a power of the <button class="term" data-term="transfer">transfer matrix</button>:</p>
+  <div class="eq">\[ \|\psi_L\|^2 \;=\; \sum_{w}\big|\operatorname{Tr}(A_{w_L}\cdots A_{w_1})\big|^2 \;=\; \operatorname{Tr} E^L, \qquad E = \sum_s A_s\otimes\overline{A_s}\ \text{ on } V\otimes\overline V . \]</div>
+  <p>The left side is a sum over closed words, one nonnegative term per ring configuration: this is side A of the parent page, the counting side. The right side is a power sum of the eigenvalues of \(E\): side B. The identity \(\exp\sum_L \operatorname{Tr}E^L\,u^L/L = 1/\det(1-uE)\) is the one identity of the parent page, and the <button class="term" data-term="ringnorm">ring norms</button> \(t_L = \operatorname{Tr}E^L\) are its counting data. Everything on this page is a statement about the sequence \(t_L\) and the operator \(E\) behind it.</p>
+
+  <div class="demo wide" id="demo-movieRing">
+    <p class="cap"><b>Movie 1 · the ring norm.</b> A chain of five tensors, its conjugate layer, the doubled bond, the ring, and the sequence of ring norms. Scrub or play.</p>
+  </div>
+
+  <div class="dict"><h4>Dictionary so far</h4><table>
+    <tr class="new"><td>local tensor, letters</td><td>matrices \(A_s\) on the bond \(V\); the physical index \(s\) is a letter</td></tr>
+    <tr class="new"><td>transfer matrix</td><td>\(E = \sum_s A_s\otimes\overline{A_s}\) on the doubled bond \(V\otimes\overline V\)</td></tr>
+    <tr class="new"><td>counting side (side A)</td><td>ring norms \(t_L = \|\psi_L\|^2 = \sum_w|\operatorname{Tr}A_w|^2\)</td></tr>
+    <tr class="new"><td>spectral side (side B)</td><td>eigenvalues of \(E\); \(t_L = \sum_\mu \mu^L\); zeta \(= 1/\det(1-uE)\)</td></tr>
+  </table></div>
+</section>
+
+<!-- ============================================================ 1 -->
+<section class="step wrap" id="s1">
+  <h2>1. The Weil form is an overlap of two open strips</h2>
+  <p>On the parent page the Weil form was the Toeplitz form \(\sum_{j,k}c_j\overline{c_k}\,t_{k-j}\) built from counts, and its positivity for every window was the Riemann hypothesis in each example. Here is what the same form is in the network. Cut the ring open: an <button class="term" data-term="strip">open strip</button> of length \(j\) is the operator \(E^j\) on the doubled bond. Two strips of lengths \(j\) and \(k\) can be glued end to end, one of them reversed and conjugated, and the glued diagram is the Hilbert–Schmidt overlap \(\operatorname{Tr}\big((E^j)^*E^k\big)\). If \(E\) is unitary, \((E^j)^* = E^{-j}\) and the glued diagram <em>is</em> the ring of length \(k-j\):</p>
+  <div class="eq">\[ E^*E = 1 \quad\Longrightarrow\quad \operatorname{Tr}\big((E^j)^*E^k\big) = \operatorname{Tr}E^{k-j} = t_{k-j}, \qquad\text{so}\qquad T_{jk} = t_{k-j} = \big\langle E^j, E^k\big\rangle_{\mathrm{HS}} . \]</div>
+  <p>A matrix of inner products is a <button class="term" data-term="gram">Gram matrix</button>, and a Gram matrix is positive semidefinite. That is the whole of Weil positivity in the unitary case, and it is why the permutation of the parent page had a positive form for free.</p>
+
+  <div class="demo wide" id="demo-movieGram">
+    <p class="cap"><b>Movie 2 · gluing two strips.</b> \(E^j\) against \(E^k\); the reversed conjugate layer; the glued ring; the pairwise annihilation \(E^*E = 1\) that leaves a ring of length \(k-j\); the Toeplitz matrix as a grid of glued diagrams.</p>
+  </div>
+
+  <h3>Where the metric sits</h3>
+  <p>In every interesting example \(E\) is not unitary in the metric the bond came with. The gluing then needs a <button class="term" data-term="metric">metric</button> \(G>0\) on the bond, and the statement becomes an identity about a twisted adjoint \(X^\sharp = G^{-1}X^*G\):</p>
+  <div class="claim"><span class="tag">prop:ccm-tn-operator-gram · proved</span> If \(E^*GE = G>0\), then for every window \(T_{jk} = \operatorname{Tr}\big((E^j)^\sharp E^k\big)\) and \(c^*Tc = \|p_c(E)\|^2_{\mathrm{HS},G}\) with \(p_c(z) = \sum_j c_jz^j\). The Toeplitz form is the Gram matrix of the strips in the \(G\)-twisted Hilbert–Schmidt product, hence positive semidefinite. Conversely, Gram equality for all windows forces \(E\) to be unitary in some metric.</div>
+  <p>Writing \(\tilde E = G^{1/2}EG^{-1/2}\), the condition \(E^*GE = G\) is \(\tilde E^*\tilde E = 1\): the metric is a seam of \(G^{\pm1/2}\) tensors inserted on every bond leg, after which the unitary picture applies verbatim. When does such a \(G\) exist?</p>
+  <div class="claim"><span class="tag">prop:hp-inner-product-discrete · proved</span> A positive \(G\) with \(E^*GE = G\) (on the retained space, with critical radius \(1\)) exists iff \(E\) is diagonalisable with every eigenvalue of modulus one. It is a Hilbert–Pólya inner product: in it \(E\) is unitary and \(-i\log E\) is self-adjoint.</div>
+  <p>So the two halves of the problem separate. Positivity of the Toeplitz form is computable from counts. Existence of the metric is the statement that the spectrum lies on the circle and is semisimple. The finite Weil theorem of the parent page links them, and adds the one thing positivity cannot see: a Jordan block on the circle has positive counts but no metric.</p>
+
+  <div class="demo wide" id="demo-movieMetric">
+    <p class="cap"><b>Movie 3 · the metric seam.</b> The naive gluing fails for a non-unitary \(E\); inserting \(G\) on the seam repairs it; the seam splits into \(G^{1/2}\) caps that whiten every tensor; the existence criterion; and the question mark for zeta.</p>
+  </div>
+
+  <div class="demo wide" id="demo-gram">
+    <p class="cap"><b>Demo A · the three matrices, live.</b> \(E = V\Lambda V^{-1}\) on a three-dimensional retained space, with \(V = 1 + \kappa N\) non-unitary for \(\kappa>0\). Left: the Toeplitz matrix from traces alone. Middle: the naive Hilbert–Schmidt Gram matrix. Right: the Gram matrix with the metric \(G = (V^{-1})^*V^{-1}\). Move one eigenvalue off the circle, or replace two of them by a Jordan block, and read what each matrix does.</p>
+  </div>
+
+  <h3>The disc and the circle</h3>
+  <p>The parent page proved, in finite form, that positivity of the Toeplitz form is a statement about the retained spectrum. In the notebook's general version the two inputs are kept apart:</p>
+  <div class="claim"><span class="tag">thm:weil-positivity-finite · proved</span> For any operator \(X\), <button class="term" data-term="trivial">trivial set</button> \(S\) and <button class="term" data-term="radius">critical radius</button> \(r\), the rescaled sequence \(\nu_\ell = r^{-\ell}\big(\operatorname{Tr}X^\ell - \sum_{\mu\in S}\mu^\ell\big)\) is positive definite iff \(|\mu|\le r\) for every retained \(\mu\). A mode inside the disc passes.</div>
+  <div class="claim"><span class="tag">thm:weil-duality-pairing · proved</span> If the retained multiset is invariant under the <button class="term" data-term="reflection">reflection</button> \(J(\mu) = r^2/\bar\mu\), then \(W(c) = \sum_\mu p_c(\mu/r)\,\overline{p_c(J\mu/r)}\) (each mode paired with its partner) and positivity is equivalent to every retained mode lying on \(|\mu| = r\).</div>
+  <p>Positivity alone is the spectral-gap half of RH, "\(\operatorname{Re}\rho\le\frac12\)". The functional equation is the reflection symmetry, and only together do they put the spectrum on the circle. In network terms the reflection has a concrete origin, which step 4 exhibits: a pairing of the letters.</p>
+
+  <div class="demo wide" id="demo-movieCircle">
+    <p class="cap"><b>Movie 4 · disc versus circle.</b> One conjugate pair of modes moves inside the circle, then outside, while the minimal eigenvalue of the Toeplitz form is recomputed at every frame; then the reflected partners appear.</p>
+  </div>
+
+  <div class="dict"><h4>Dictionary so far</h4><table>
+    <tr class="new"><td>open strip</td><td>\(E^j\), the ring cut open; two dangling doubled-bond legs</td></tr>
+    <tr class="new"><td>Weil form</td><td>the Gram matrix of the strips, \(T_{jk} = \operatorname{Tr}((E^j)^\sharp E^k) = t_{k-j}\)</td></tr>
+    <tr class="new"><td>the metric \(G\)</td><td>the seam that makes \(E\) unitary: \(E^*GE = G\); exists iff semisimple on the circle</td></tr>
+    <tr class="new"><td>positivity</td><td>the one-sided bound \(|\mu|\le r\) on the retained spectrum</td></tr>
+    <tr class="new"><td>functional equation</td><td>invariance of the retained set under \(J(\mu) = r^2/\bar\mu\); with positivity, the circle</td></tr>
+    <tr><td>ring norms, transfer matrix, sides A and B</td><td>as in step 0</td></tr>
+  </table></div>
+</section>
+
+<!-- ============================================================ 2 -->
+<section class="step wrap" id="s2">
+  <h2>2. Permutations: point letters, a unitary transfer matrix</h2>
+  <p>The parent page began with a permutation \(\sigma\) of \(n\) points and its matrix \(P\). As a network (the notebook's shard 03b, \(\pi = (1\,2)(3\,4\,5)\)): the bond is \(\mathbb C^n\), and the natural letters are the <em>points</em>, one matrix per point,</p>
+  <div class="eq">\[ A_x = |\sigma x\rangle\langle x|, \qquad \sum_x A_x = P, \qquad E = \sum_x |\sigma x\rangle\langle x|\otimes|\sigma x\rangle\langle x| . \]</div>
+  <p>A word \(w = (x_1,\dots,x_L)\) has \(\operatorname{Tr}(A_{x_L}\cdots A_{x_1}) = 1\) exactly when \(x_{k+1} = \sigma x_k\) around the ring, i.e. when it is the orbit of a point of period dividing \(L\); so the ring of length \(L\) is the sum of one orthonormal term per fixed point of \(\sigma^L\), and \(\|\psi_L\|^2 = \#\operatorname{Fix}(\sigma^L) = \operatorname{Tr}P^L\). On the doubled bond, \(E\) acts as \(P\) on the diagonal vectors \(|x\rangle\otimes|x\rangle\) and kills every off-diagonal one: its spectrum is that of \(P\) together with \(n^2-n\) zeros. The zeros are the trivial set here, \(r = 1\), and \(P\) is unitary in the native metric, so \(G = 1\) and step 1 applies with no work: the Toeplitz matrix of fixed-point counts is the Gram matrix of the strips \(P^0,\dots,P^{K-1}\).</p>
+  <p>The notebook's shard also grades a cycle odd and closes the ring with the parity operator inserted, \(t_k = \operatorname{Tr}(\Pi P^k)\). The odd cycle's eigenvalues then appear in the <em>numerator</em> of the graded zeta function: they are zeros, not poles, and the supertrace sequence is not positive definite. That is the sign convention of the curve on the parent page, \(T_k = q^{k/2}+q^{-k/2}-N_kq^{-k/2}\), seen at the level of letters: a positive form for zeros counts them with the sign reversed.</p>
+
+  <div class="demo wide" id="demo-perm">
+    <p class="cap"><b>Demo B · the permutation network.</b> The permutation, its letters, the transfer matrix on the doubled bond, the ring words of length \(L\), and the Weil matrix of ring norms. Grade a cycle odd (click its label) to see the twisted closure produce an indefinite form.</p>
+  </div>
+
+  <div class="dict"><h4>Dictionary so far</h4><table>
+    <tr class="new"><td>letters</td><td>the points, \(A_x = |\sigma x\rangle\langle x|\); bond \(\mathbb C^n\)</td></tr>
+    <tr class="new"><td>rings</td><td>orbits of periodic points; \(t_L = \#\operatorname{Fix}(\sigma^L)\)</td></tr>
+    <tr class="new"><td>trivial set, radius, metric</td><td>the \(n^2-n\) zero modes of \(E\); \(r = 1\); \(G = 1\) (\(P\) unitary)</td></tr>
+    <tr class="new"><td>zeros versus poles</td><td>an odd cycle under the twisted closure enters with a minus sign: a zero</td></tr>
+  </table></div>
+</section>
+
+<!-- ============================================================ 3 -->
+<section class="step wrap" id="s3">
+  <h2>3. Shifts: the pole, and why positivity is only half</h2>
+  <p>Let the letters be the symbols \(a\) of an alphabet and the allowed transitions a \(0/1\) matrix \(M\): the network has one letter per allowed transition, \(A_{a\to b} = |b\rangle\langle a|\), and \(E\) acts as \(M\) on the diagonal of the doubled bond. The ring norm \(t_L = \operatorname{Tr}M^L\) counts closed walks. Now there is a pole: the counts grow like \(\lambda_{\max}^L\), the Perron eigenvalue, which is the fixed point of the channel and carries no information about the rest of the spectrum. Subtracting it and rescaling by \(r = \sqrt{\lambda_{\max}}\) gives the retained sequence \(\nu_\ell = \lambda_{\max}^{-\ell/2}(t_\ell - \lambda_{\max}^\ell)\), and "RH for the shift" is the statement that every remaining nonzero eigenvalue has modulus \(\sqrt{\lambda_{\max}}\): the fluctuation of the counts is the square root of the leading term.</p>
+  <p>The golden-mean shift (\(M = \begin{pmatrix}1&1\\1&0\end{pmatrix}\), eigenvalues \(\varphi, -1/\varphi\)) shows the gap between positivity and RH. Its retained mode \(-1/\varphi\) has modulus \(0.618 < \sqrt\varphi = 1.272\): the Toeplitz form is positive (the mode is inside the disc) and RH fails. The 4-symbol cyclic rule \(M = 1 + C_4\) has eigenvalues \(2, 1\pm i, 0\): the retained modes have modulus \(\sqrt2 = \sqrt{\lambda_{\max}}\), the form is positive, RH holds, and the retained set is invariant under \(\mu\mapsto 2/\bar\mu\). What the golden mean lacks is exactly the reflection symmetry. In the network, nothing in a general transition matrix pairs the letter \(a\to b\) with a letter \(b\to a\); the next example supplies that pairing.</p>
+
+  <div class="demo wide" id="demo-subshift">
+    <p class="cap"><b>Demo C · a shift and its pole.</b> Edit the transition matrix. The counts, the pole, the rescaled sequence, the minimal eigenvalue of the Weil form, and the verdicts: positive? on the circle? reflection-invariant?</p>
+  </div>
+
+  <div class="dict"><h4>Dictionary so far</h4><table>
+    <tr class="new"><td>letters</td><td>allowed transitions \(a\to b\); bond \(\mathbb C^{\text{alphabet}}\)</td></tr>
+    <tr class="new"><td>the pole</td><td>the Perron eigenvalue \(\lambda_{\max}\): the channel's fixed point, the growth of the counts</td></tr>
+    <tr class="new"><td>critical radius</td><td>\(r = \sqrt{\lambda_{\max}}\)</td></tr>
+    <tr class="new"><td>positivity without duality</td><td>the one-sided bound; the golden mean passes it and fails RH</td></tr>
+  </table></div>
+</section>
+
+<!-- ============================================================ 4 -->
+<section class="step wrap" id="s4">
+  <h2>4. Regular graphs: the reversal of an edge is the functional equation</h2>
+  <p>A \((q+1)\)-regular graph is a shift whose alphabet is the set of directed edges and whose allowed transitions are \(e\to e'\) with \(\operatorname{head}(e) = \operatorname{tail}(e')\) and \(e'\ne\bar e\): the walk may not immediately reverse. The transition matrix is the <button class="term" data-term="hashimoto">Hashimoto matrix</button> \(B\), the ring norm \(t_L = \operatorname{Tr}B^L\) counts closed non-backtracking walks, and the zeta function \(1/\det(1-uB)\) is the <button class="term" data-term="ihara">Ihara zeta function</button>. The alphabet now has an involution, edge reversal \(e\mapsto\bar e\), and that single extra structure produces the functional equation:</p>
+  <div class="eq">\[ \det(1-uB) \;=\; (1-u^2)^{|E|-|V|}\,\det\big(1-uA+qu^2\big), \]</div>
+  <p>the Ihara–Bass formula. The spectrum of \(B\) is \(\pm1\) with multiplicity \(|E|-|V|\) together with, for each eigenvalue \(a\) of the adjacency matrix \(A\), the two roots of \(\mu^2 - a\mu + q = 0\). Those two roots multiply to \(q\): the retained set is invariant under \(\mu\mapsto q/\mu\), which with real coefficients is the reflection \(J\) for \(r = \sqrt q\). The trivial set is \(\{q,1\}\) from \(a = q+1\) (the pole), \(\{-q,-1\}\) from \(a = -(q+1)\) if the graph is bipartite, and the \(\pm1\). Now both theorems of step 1 apply, and Weil positivity of the non-backtracking ring norms is equivalent to every retained mode lying on \(|\mu| = \sqrt q\), which is \(|a|\le2\sqrt q\) for every nontrivial \(a\): the <button class="term" data-term="ramanujan">Ramanujan property</button>. Huang's criterion \(h_k = \nu_0 - \nu_k\ge0\) is the same statement in the form of the \(2\times2\) minors (the notebook's observation X1).</p>
+
+  <div class="demo wide" id="demo-graphWalk">
+    <p class="cap"><b>Demo D · the non-backtracking ring.</b> A graph, a closed non-backtracking walk of length \(L\) as a word of directed edges, the ring it forms in the network, and the ring norms \(\operatorname{Tr}B^L\) against the backtracking counts \(\operatorname{Tr}A^L\).</p>
+  </div>
+
+  <div class="demo wide" id="demo-graphs">
+    <p class="cap"><b>Demo E · Weil positivity for a graph.</b> Adjacency spectrum with the Ramanujan band, Hashimoto spectrum on the circle \(\sqrt q\) <span class="pill spec">comparison</span>, the rescaled retained sequence and Huang's \(h_k\) computed from matrix powers of \(B\) alone, and the Toeplitz Weil matrix with its minimal eigenvalue. The prism \(C_{16}\times K_2\) is cubic and not Ramanujan.</p>
+  </div>
+
+  <p>In the network the metric \(G\) of step 1 is now a nontrivial object: \(B\) is not unitary on the edge space, and a Hilbert–Pólya inner product on the retained space exists iff the graph is Ramanujan and \(B\) is semisimple there. When it exists, it is the inner product in which the non-backtracking walk, restricted to the modes off the trivial set and rescaled by \(\sqrt q\), is a unitary. The Ramanujan property of the graph is the existence of that metric.</p>
+
+  <div class="dict"><h4>Dictionary so far</h4><table>
+    <tr class="new"><td>letters</td><td>directed edges; bond \(\mathbb C^{2|E|}\); transitions non-backtracking</td></tr>
+    <tr class="new"><td>ring norms</td><td>\(\operatorname{Tr}B^L\), closed non-backtracking walks</td></tr>
+    <tr class="new"><td>trivial set</td><td>\(\{q,1\}\), \(\{-q,-1\}\) if bipartite, \(\pm1\) with multiplicity \(|E|-|V|\)</td></tr>
+    <tr class="new"><td>functional equation</td><td>edge reversal \(e\mapsto\bar e\) → \(\mu\mapsto q/\mu\) (Ihara–Bass)</td></tr>
+    <tr class="new"><td>Weil positivity</td><td>⇔ Ramanujan ⇔ \(h_k\ge0\) ⇔ a Hilbert–Pólya metric on the retained edge space</td></tr>
+  </table></div>
+</section>
+
+<!-- ============================================================ 5 -->
+<section class="step wrap" id="s5">
+  <h2>5. Kraus families: which pairing buys which half</h2>
+  <p>Replace the permutation matrices behind a graph by arbitrary matrices. A family \(B_1,\dots,B_D\) on a bond \(V\) of dimension \(n\), with a fixed-point-free reversal \(i\mapsto\bar i\) of the letters, defines the maps \(\mathcal E_i = \operatorname{Ad}(B_i)\) on \(\operatorname{End}(V)\) and the <button class="term" data-term="edgelift">edge lift</button>: a letter register \(\mathbb C^D\) is added to the doubled bond, and the non-backtracking transfer operator on \(W = \mathbb C^D\otimes\operatorname{End}(V)\) is</p>
+  <div class="eq">\[ T\,(v\otimes|i\rangle) = \sum_{j\ne\bar i}\mathcal E_i v\otimes|j\rangle, \qquad \operatorname{Tr}T^\ell = \sum_{\substack{w\in[D]^\ell\\ w_{k+1}\ne\bar w_k}}\big|\operatorname{Tr}(B_{w_\ell}\cdots B_{w_1})\big|^2 \;\ge\;0 . \]</div>
+  <p>The second identity says that the ring norms of the lifted network are genuine MPS ring norms, summed over non-backtracking words only, and that they are nonnegative for every family whatever: it uses only \(\operatorname{Ad}(A)\operatorname{Ad}(B) = \operatorname{Ad}(AB)\) and \(\operatorname{Tr}\operatorname{Ad}(A) = |\operatorname{Tr}A|^2\). The spectrum of \(T\) is also always closed under conjugation. Beyond that, the two natural ways to pair the letters buy the two halves of RH separately (the notebook's Kraus dichotomy, shard 08b):</p>
+  <div class="claim"><span class="tag">thm:kraus-inverse-pairing-duality · proved</span> Inverse pairing \(B_{\bar i} = B_i^{-1}\): \(\det(1-uT) = (1-u^2)^{N(D-2)/2}\det(1-u\Sigma+(D-1)u^2)\) with \(\Sigma = \sum_i\mathcal E_i\) and \(N = n^2\). The retained set is invariant under \(\mu\mapsto q/\mu\), \(q = D-1\): the functional equation.</div>
+  <div class="claim"><span class="tag">thm:kraus-weil-criterion · proved</span> Adjoint pairing \(B_{\bar i} = B_i^\dagger\): \(\Sigma\) is Hilbert–Schmidt self-adjoint, so its spectrum is real, but there is no duality, and Weil positivity is exactly the one-sided bound \(|\mu|\le r\). Both pairings hold iff every \(B_i\) is unitary, and then Weil positivity of the retained rescaled ring norms is Hastings' bound \(|\lambda|\le 2\sqrt{D-1}/D\) on the nontrivial eigenvalues of the channel \(\Phi = \Sigma/D\).</div>
+  <p>A quantum channel that is a Ramanujan quantum expander is therefore a Kraus family whose non-backtracking ring norms form a positive definite sequence, in the same sense, with the same trivial set and the same radius \(\sqrt{D-1}\), as a Ramanujan graph. The classical graph is the case where the \(B_i\) are the permutation matrices of the generators; the Weil–LPS channels of the notebook are exact examples with \(V = \ell^2(\mathbb F_p)\).</p>
+
+  <div class="demo wide" id="demo-kraus">
+    <p class="cap"><b>Demo F · the Kraus dichotomy.</b> Bond dimension \(2\), four letters in two reversal pairs. Choose the pairing: unitary (both), inverse only, adjoint only, or the notebook's no-duality example. The ring norms are computed from the sixteen-dimensional lifted transfer operator and checked against the word sum; the retained sequence uses the trivial set of the theorem; the spectrum panels are <span class="pill spec">comparison</span>.</p>
+  </div>
+
+  <div class="dict"><h4>Dictionary so far</h4><table>
+    <tr class="new"><td>letters</td><td>\(D\) matrices \(B_i\) on the bond \(V\), paired by a reversal</td></tr>
+    <tr class="new"><td>edge lift</td><td>letter register \(\mathbb C^D\) on the doubled bond; \(T\) non-backtracking</td></tr>
+    <tr class="new"><td>ring norms</td><td>\(\operatorname{Tr}T^\ell = \sum_{\text{nb words}}|\operatorname{Tr}B_w|^2\ge0\), for any family</td></tr>
+    <tr class="new"><td>functional equation</td><td>inverse pairing</td></tr>
+    <tr class="new"><td>reality (Hilbert–Pólya half)</td><td>adjoint pairing</td></tr>
+    <tr class="new"><td>both</td><td>unitary letters; Weil positivity = Hastings' bound = Ramanujan quantum expander</td></tr>
+  </table></div>
+</section>
+
+<!-- ============================================================ 6 -->
+<section class="step wrap" id="s6">
+  <h2>6. Artin–Schreier curves: a transfer matrix that is a scaled unitary</h2>
+  <p>For the curve \(y^q - y = g(x)\) over \(\mathbb F_q\) with \(g(x) = \sum_{j=0}^{J}a_jx^{1+q^j}\) quadratic in the Frobenius-shift sense, the notebook's note <em>artin-schreier-mps</em> exhibits an honest MPS. An element of \(\mathbb F_{q^m}\) in a self-dual normal basis is a ring of \(m\) sites with alphabet \(\mathbb F_q\) on which Frobenius is the shift; \(\operatorname{Tr}g(x)\) becomes a translation-invariant quadratic form of range \(J\); and the exponential sum \(S_m(g) = \sum_{x\in\mathbb F_{q^m}}\psi(\operatorname{Tr}g(x))\) is the ring contraction of a transfer matrix of size \(q^J\),</p>
+  <div class="eq">\[ E_{(s_1,\dots,s_J)\to(s_2,\dots,s_J,x)} = \psi\Big(a_0x^2 + \sum_{j=1}^{J}a_j\,s_{J+1-j}\,x\Big), \qquad S_m = \epsilon_m\operatorname{Tr}E^m, \qquad N_m = q^m + \sum_{a\in\mathbb F_q^\times}S_m(ag) , \]</div>
+  <p>with a sign \(\epsilon_m = \pm1\) fixed by the sign law of shard 06b (thm:as-sign-law): \(\epsilon_m = -(-1)^m\) when \(P_g(-1)\ne0\), as for \(g = x^{1+q}\), and periodic with a longer period otherwise. The transfer matrix is, up to that sign, the Frobenius matrix of the exponential sum, uniformly in \(m\).</p>
+  <p>The physical index is \(x\in\mathbb F_q\), the bond is \(\mathbb F_q^J\). Here the metric of step 1 is the native one: in \((EE^\dagger)_{s's''}\) the oldest bond spin \(s_1\) appears only in the linear term \(a_Js_1(x'-x'')\), so the sum over \(s_1\) is \(q\,\delta_{x'x''}\) whenever \(a_J\ne0\), and</p>
+  <div class="eq">\[ EE^\dagger = q\,1 . \]</div>
+  <p>\(E/\sqrt q\) is unitary, every eigenvalue has modulus \(\sqrt q\), and the Toeplitz form of \(t_k = \operatorname{Tr}(E/\sqrt q)^k\) is the Gram matrix of the open strips in the standard Hilbert–Schmidt product with \(G = 1\). The Riemann hypothesis for this family is manifest: it is Parseval for additive characters, the same mechanism as the permutation of step 2. The functional equation is \(E\mapsto qE^{-\dagger}\), rationality is finiteness of the bond. The note also records where this stops: for \(g\) of degree three or more in any digit the trace form is not local in the shift basis, there is no fixed local tensor, and the Weil bound is Deligne's theorem, not a property of a transfer structure.</p>
+
+  <div class="demo wide" id="demo-artinSchreier">
+    <p class="cap"><b>Demo G · the Artin–Schreier transfer matrix.</b> Choose \(q\), the range \(J\) and the coefficients. The matrix of characters, its unitarity residual, the counts \(S_m\) and \(N_m\) with brute-force point counts alongside, the spectrum on the circle \(\sqrt q\) <span class="pill spec">comparison</span>, and the Weil form. The perturbation slider changes one entry's phase: unitarity fails and the eigenvalues leave the circle. Whether the Weil form built from traces turns negative depends on whether a mode leaves the <em>disc</em> (the one-sided bound of step 1); the counting side always notices, because \(N_m\) stops being an integer.</p>
+  </div>
+
+  <div class="dict"><h4>Dictionary so far</h4><table>
+    <tr class="new"><td>letters</td><td>\(x\in\mathbb F_q\); bond \(\mathbb F_q^J\) (the last \(J\) spins)</td></tr>
+    <tr class="new"><td>ring norms</td><td>\(\operatorname{Tr}E^m\), the exponential sum \(S_m\) up to sign</td></tr>
+    <tr class="new"><td>the pole</td><td>\(q^m\) in \(N_m\); absent from the exponential sum itself (its \(L\)-function is a polynomial)</td></tr>
+    <tr class="new"><td>metric</td><td>native: \(EE^\dagger = q\); RH manifest by Parseval</td></tr>
+    <tr class="new"><td>where it stops</td><td>non-quadratic \(g\): no local tensor; Dwork's \(p\)-adic operator sees rationality, not RH</td></tr>
+  </table></div>
+</section>
+
+<!-- ============================================================ 7 -->
+<section class="step wrap" id="s7">
+  <h2>7. The Riemann zeta function: the strips are known, the metric is not</h2>
+  <p>Read the parent page's explicit formula in the language above. Time is now the log coordinate \(x\in\mathbb R\) and the strip of length \(x\) is dilation by \(e^x\), the operator \(E^x\) of a continuous transfer semigroup. Its "ring norm" is a distribution, not a number: the explicit formula says that</p>
+  <div class="eq">\[ \text{“}\operatorname{Tr}E^x\text{”} \;=\; 2\cosh(x/2)\;-\;\sum_{n}\frac{\Lambda(n)}{\sqrt n}\big(\delta_{\log n}+\delta_{-\log n}\big)\;-\;(\text{archimedean kernel}), \]</div>
+  <p>pole minus primes minus archimedean place, and that its Fourier transform is \(\sum_\rho \delta_{\gamma_\rho}\), the spectral side. A smeared strip \(E^g = \int g(x)E^x\,dx\) has finite overlaps, and the Gram matrix of a family of smeared strips is exactly the parent page's Gram matrix of the Weil functional:</p>
+  <div class="eq">\[ G_{ij} = \big\langle E^{g_i},E^{g_j}\big\rangle = W(g_i*\tilde g_j) . \]</div>
+  <p>Every entry is a finite computation from the primes, the pole and the archimedean term. Under RH this is the Gram matrix of the functions \(\hat g_i\) restricted to the zeros in \(\ell^2(\text{zeros})\): the metric that step 1 asked for exists, and in it the dilation semigroup, restricted to the zero modes, is unitary (Hilbert–Pólya). Without RH, it is the notebook's question. The network is completely known: the letters are the prime dilations, the counts are the explicit formula. What is unknown is whether there is any metric \(G\) on the retained bond in which the strips have these overlaps, i.e. whether the sequence of overlaps is a Gram sequence at all. That is Weil's criterion, and it is what the notebook's Riemann tomography programme treats as an unknown quantum state: the Gram matrices computable from arithmetic are its measurable moments.</p>
+
+  <div class="demo wide" id="demo-riemann">
+    <p class="cap"><b>Demo H · a Gram matrix of smeared strips.</b> Strips \(g_n\) centred at \(\log n\); every entry from the primes, the pole and the archimedean integral; compared with the zero-side Gram matrix <span class="pill spec">comparison</span>. Switch off the primes to see that the pole and the archimedean place alone give no positive form.</p>
+  </div>
+
+  <p>The second family the notebook studies is the Connes–Consani–Moscovici window: Fourier modes on a dilation window \([\lambda^{-1},\lambda]\), \(x = \lambda^2\), whose Gram matrix is a Loewner matrix computed in certified ball arithmetic by the <code>zst</code> code. There the counts-to-spectrum step of the finite examples reappears: in step 2 the strips \(P^0,\dots,P^{K-1}\) become linearly dependent once \(K\) exceeds the number of distinct eigenvalues, and the kernel polynomial's roots are the spectrum. For zeta the spectrum is infinite, so the Gram matrix has no kernel, but its minimal eigenvector is a near-dependence among the strips, and the CCM correction turns that direction into an operator whose spectrum reproduces the low zeros to dozens of digits from the primes below \(x\).</p>
+
+  <div class="demo wide" id="demo-ccm">
+    <p class="cap"><b>Demo I · the window Gram matrix at \(x = 13\).</b> Precomputed by the notebook's mpmath prototype and cross-checked against the certified <code>zst</code> run: the even block of the window matrix, its minimal eigenvector, and the recovered ordinates against the zeros <span class="pill spec">comparison</span>.</p>
+  </div>
+
+  <div class="dict"><h4>Complete dictionary</h4><table>
+    <tr><td>letters</td><td>points of \(\sigma\) → transitions → directed edges → matrices \(B_i\) → \(x\in\mathbb F_q\) → the prime dilations</td></tr>
+    <tr><td>bond</td><td>\(\mathbb C^n\) → alphabet → edges \(\mathbb C^{2|E|}\) → \(V\), lifted by \(\mathbb C^D\) → \(\mathbb F_q^J\) → the retained (zero) modes of the dilation semigroup</td></tr>
+    <tr><td>ring norms (side A)</td><td>\(\#\operatorname{Fix}(\sigma^L)\) → \(\operatorname{Tr}M^L\) → \(\operatorname{Tr}B^L\) → \(\sum_{\text{nb}}|\operatorname{Tr}B_w|^2\) → \(\operatorname{Tr}E^m\) → the explicit-formula distribution</td></tr>
+    <tr><td>trivial set</td><td>zero modes → \(\lambda_{\max}\) → \(\{q,1\},\{\pm1\}\) → the same → \(q^m\) in \(N_m\) → the pole at \(s = 1\) and its mirror</td></tr>
+    <tr><td>critical radius</td><td>\(1\) → \(\sqrt{\lambda_{\max}}\) → \(\sqrt q\) → \(\sqrt{D-1}\) → \(\sqrt q\) → the line \(\operatorname{Re}s = \tfrac12\)</td></tr>
+    <tr><td>functional equation</td><td>free → generally absent → edge reversal → inverse pairing → \(E\mapsto qE^{-\dagger}\) → \(\xi(s) = \xi(1-s)\)</td></tr>
+    <tr><td>Weil form</td><td>in every case the Gram matrix of open strips, \(T_{jk} = \operatorname{Tr}((E^j)^\sharp E^k)\), built from counts</td></tr>
+    <tr><td>the metric \(G\)</td><td>\(1\) → none in general → Hilbert–Pólya on the edge space iff Ramanujan → iff Hastings → native, \(EE^\dagger = q\) → the unknown</td></tr>
+    <tr><td>Riemann hypothesis</td><td>free → \(|\mu| = \sqrt{\lambda_{\max}}\) → Ramanujan → Hastings → manifest → \(W(g*\tilde g)\ge0\) for all \(g\): the strips have a Gram sequence</td></tr>
+  </table></div>
+</section>
+
+<footer class="wrap">
+  <p>Conventions follow the lab book of the notebook <em>riemann-channel</em>: \(E = \sum_s A_s\otimes\overline{A_s}\), ring norm \(t_L = \operatorname{Tr}E^L\), rescaled retained sequence \(\nu_\ell = r^{-\ell}(\operatorname{Tr}X^\ell - \sum_{S}\mu^\ell)\), Weil form \(\sum c_j\bar c_k\nu_{j-k}\), reflection \(J(\mu) = r^2/\bar\mu\). Claim labels in the margin tags refer to <code>db/claims.tsv</code>; every one quoted is <code>proved</code> there (author and reviewer from different model families where stated). Numerics: cyclic Jacobi for symmetric and Hermitian forms, characteristic polynomials with Durand–Kerner for the small complex spectra in comparison panels; the graph and Kraus spectra come from the Ihara–Bass formula. The Riemann window data are the notebook's, cross-checked against the certified <code>zst</code> run. Nothing on this page assumes the Riemann hypothesis except where a comparison is labelled as such. Sources: <code>notes/weil-tn-tutorial/</code> in the repository.</p>
+</footer>
+
+<div class="modal-back" id="modalBack" role="dialog" aria-modal="true">
+  <div class="modal"><button class="close" id="modalClose">close</button><h3 id="modalTitle"></h3><div class="vis" id="modalVis"></div><div id="modalBody"></div></div>
+</div>
+
+<script>/*__DATA_JS__*/</script>
+<script>/*__CORE_JS__*/</script>
+<script>/*__TN_JS__*/</script>
+<script>/*__DEMOS_CORE_JS__*/</script>
+<script>/*__DEMOS_GRAPHS_JS__*/</script>
+<script>/*__DEMOS_KRAUS_JS__*/</script>
+<script>/*__DEMOS_AS_JS__*/</script>
+<script>
+(function(){
+const $ = id => document.getElementById(id); const S = WT.svg.el, txt = WT.svg.text;
+function mini(c, w, h){ const svg = S('svg', {viewBox:`0 0 ${w} ${h}`, class:'plot'}); c.appendChild(svg); return svg; }
+function box(svg, x, y, w, h, label, cls){ S('rect',{x, y, width:w, height:h, rx:4, class:'tn-box'+(cls?' '+cls:'')}, svg); txt(svg, x+w/2, y+h/2+4, label, {class:'tn-label','text-anchor':'middle'}); }
+function leg(svg, x1,y1,x2,y2, cls){ S('line',{x1,y1,x2,y2, class:'tn-leg'+(cls?' '+cls:'')}, svg); }
+const TERMS = {
+  mps: { title:'Matrix product state', body:`<p>A state of \\(L\\) sites with local dimension \\(d\\) whose amplitudes are traces of products of \\(d\\) fixed matrices, \\(\\psi_L(w) = \\operatorname{Tr}(A_{w_L}\\cdots A_{w_1})\\), with \\(A_s\\) acting on a bond space of dimension \\(n\\). The matrices are the local tensor: one physical index \\(s\\), two bond indices. In this notebook the same object is read as a family of Kraus operators: \\(\\sum_s A_s\\otimes\\overline{A_s}\\) is the transfer matrix and \\(\\sum_s \\operatorname{Ad}(A_s)\\) the channel.</p>`,
+    vis(c){ const svg = mini(c, 400, 120); for(let i=0;i<5;i++){ box(svg, 40+i*70, 50, 34, 30, 'A'); leg(svg, 57+i*70, 50, 57+i*70, 22, 'phys'); if(i<4) leg(svg, 74+i*70, 65, 110+i*70, 65, 'bond'); } leg(svg, 10, 65, 40, 65, 'bond'); leg(svg, 354, 65, 390, 65, 'bond'); txt(svg, 20, 105, 'bond legs (blue) carry ℂⁿ; physical legs (teal) carry the letter s', {class:'tn-dim'}); } },
+  transfer: { title:'Transfer matrix', body:`<p>\\(E = \\sum_s A_s\\otimes\\overline{A_s}\\) on the doubled bond \\(V\\otimes\\overline V\\simeq\\operatorname{End}(V)\\): the ket layer and the bra layer of one site with the physical index contracted. Ring norms are its power traces. Its leading eigenvalue is the fixed point of the channel (the pole); the remaining spectrum sets the correlation lengths of the state. The Riemann hypothesis, in every instance on this page, says the nontrivial spectrum has a single modulus.</p>`,
+    vis(c){ const svg = mini(c, 400, 130); box(svg, 60, 20, 34, 30, 'A'); box(svg, 60, 70, 34, 30, 'Ā', 'bar'); leg(svg, 77, 50, 77, 70, 'phys'); leg(svg, 20, 35, 60, 35, 'bond'); leg(svg, 94, 35, 134, 35, 'bond'); leg(svg, 20, 85, 60, 85, 'bond'); leg(svg, 94, 85, 134, 85, 'bond'); txt(svg, 170, 65, '=', {class:'tn-label'}); box(svg, 210, 25, 40, 70, 'E'); leg(svg, 170+0, 60, 210, 60, 'doubled'); leg(svg, 250, 60, 290, 60, 'doubled'); txt(svg, 300, 64, 'on V ⊗ V̄', {class:'tn-dim'}); } },
+  ringnorm: { title:'Ring norm', body:`<p>\\(t_L = \\|\\psi_L\\|^2 = \\sum_w|\\operatorname{Tr}A_w|^2 = \\operatorname{Tr}E^L\\), the squared norm of the periodic \\(L\\)-site state. It is the notebook's name for side A: a nonnegative count of closed configurations, whose generating function \\(\\exp\\sum_L t_Lu^L/L = 1/\\det(1-uE)\\) is the zeta function of the state. For the permutation it is the number of periodic points, for a graph the number of closed non-backtracking walks, for a curve the number of points, for \\(\\zeta\\) the explicit-formula distribution.</p>`,
+    vis(c){ const svg = mini(c, 400, 130); for(let i=0;i<6;i++){ const a=i/6*2*Math.PI; const x=200+50*Math.cos(a), y=65+45*Math.sin(a); box(svg, x-14, y-11, 28, 22, 'E'); } S('circle',{cx:200, cy:65, r:50, fill:'none', class:'tn-leg doubled'}, svg); txt(svg, 290, 60, 'Tr E⁶ = t₆', {class:'tn-label'}); } },
+  strip: { title:'Open strip', body:`<p>The ring cut open: \\(E^j\\), a product of \\(j\\) transfer tensors with the two end legs left dangling. It is an operator on the doubled bond, not a physical state; states of different lengths live in different tensor powers and would have zero overlap, whereas strips of different lengths live in one space, \\(\\operatorname{End}(V\\otimes\\overline V)\\), and can be compared. That comparison is the Weil form (shard 03g).</p>`,
+    vis(c){ const svg = mini(c, 400, 100); for(let i=0;i<3;i++){ box(svg, 120+i*50, 35, 36, 30, 'E'); if(i<2) leg(svg, 156+i*50, 50, 170+i*50, 50, 'doubled'); } leg(svg, 80, 50, 120, 50, 'doubled'); leg(svg, 256, 50, 296, 50, 'doubled'); txt(svg, 310, 54, 'E³', {class:'tn-label'}); } },
+  gram: { title:'Gram matrix', body:`<p>For vectors \\(v_1,\\dots,v_K\\) in an inner-product space, \\(G_{jk} = \\langle v_j,v_k\\rangle\\). It is always positive semidefinite (\\(c^*Gc = \\|\\sum_k c_kv_k\\|^2\\)), and every positive semidefinite matrix is a Gram matrix. Its kernel is the set of linear dependences among the \\(v_k\\). On this page the vectors are the open strips \\(E^0,\\dots,E^{K-1}\\) and the inner product is Hilbert–Schmidt, twisted by a metric.</p>`,
+    vis(c){ const svg = mini(c, 400, 110); for(let j=0;j<3;j++) for(let k=0;k<3;k++){ S('rect',{x:130+k*46, y:10+j*30, width:42, height:26, rx:3, fill:'var(--bond-soft)'}, svg); txt(svg, 151+k*46, 27+j*30, `⟨E${'⁰¹²'[j]},E${'⁰¹²'[k]}⟩`, {class:'tn-dim','text-anchor':'middle'}); } txt(svg, 20, 60, '= T_{jk} = t_{k−j} ≥ 0', {class:'tn-dim'}); } },
+  metric: { title:'The metric G and the twisted adjoint', body:`<p>A positive operator \\(G\\) on the retained bond space defines the inner product \\(\\langle X,Y\\rangle_G = \\operatorname{Tr}(X^\\sharp Y)\\) with \\(X^\\sharp = G^{-1}X^*G\\), equivalently the ordinary Hilbert–Schmidt product of the whitened operators \\(G^{1/2}XG^{-1/2}\\). \\(E\\) is unitary for \\(G\\) iff \\(E^*GE = G\\). In the network the metric is a seam of \\(G^{\\pm1/2}\\) tensors on the bond legs. The notebook's Level 2 of the metric problem is the existence of such a \\(G\\) for the Riemann channel; Level 3 is a construction of it whose positivity is a theorem.</p>`,
+    vis(c){ const svg = mini(c, 400, 100); box(svg, 60, 35, 30, 30, 'G½', 'metric'); box(svg, 110, 35, 36, 30, 'E'); box(svg, 166, 35, 34, 30, 'G⁻½', 'metric'); leg(svg, 20, 50, 60, 50, 'doubled'); leg(svg, 90, 50, 110, 50, 'doubled'); leg(svg, 146, 50, 166, 50, 'doubled'); leg(svg, 200, 50, 240, 50, 'doubled'); txt(svg, 260, 54, '= Ẽ, unitary', {class:'tn-label'}); } },
+  trivial: { title:'Trivial set and retained spectrum', body:`<p>The part of the spectrum of the transfer operator that carries no information about the Riemann hypothesis: the pole (the leading eigenvalue \\(q\\), the Perron root, the pole of \\(\\zeta\\) at \\(s=1\\)), its mirror under the functional equation, and structural eigenvalues such as the \\(\\pm1\\) of the Ihara–Bass factor \\((1-u^2)^{|E|-|V|}\\) or the zero modes of a permutation's doubled bond. It is a sub-multiset \\(S\\) of the spectrum, subtracted from the traces: \\(\\nu_\\ell = r^{-\\ell}(\\operatorname{Tr}X^\\ell - \\sum_S\\mu^\\ell)\\). The retained multiset is the rest.</p>`,
+    vis(c){ const svg = mini(c, 400, 120); const C = WT.col(); const P = WT.svg.plane(svg, 200, 60, 32, 1.41, C); S('circle',{cx:P.X(2), cy:P.Y(0), r:5, fill:C.pole}, svg); S('circle',{cx:P.X(1), cy:P.Y(0), r:5, fill:C.pole}, svg); [[1,1],[1,-1],[-0.5,1.32],[-0.5,-1.32]].forEach(z=>S('circle',{cx:P.X(z[0]), cy:P.Y(z[1]), r:5, fill:C.spec}, svg)); txt(svg, P.X(2)+6, P.Y(0)-6, 'q', {class:'tn-dim'}); txt(svg, P.X(1)-3, P.Y(0)+16, '1', {class:'tn-dim'}); txt(svg, 300, 20, 'ochre: trivial; orange: retained', {class:'tn-dim'}); } },
+  radius: { title:'Critical radius', body:`<p>The modulus \\(r\\) that all retained eigenvalues should share: \\(1\\) for a permutation, \\(\\sqrt{\\lambda_{\\max}}\\) for a shift, \\(\\sqrt q\\) for a graph or a curve, \\(\\sqrt{D-1}\\) for a Kraus family with \\(D\\) letters. Dividing the traces by \\(r^\\ell\\) puts the critical circle at radius one, where the unit circle of the parent page and the critical line \\(\\operatorname{Re}s = \\tfrac12\\) of \\(\\zeta\\) sit.</p>`,
+    vis(c){ const svg = mini(c, 400, 100); const C = WT.col(); const P = WT.svg.plane(svg, 200, 50, 28, 1, C); [0.4,1.7,2.9,4.1,5.4].forEach(a=>S('circle',{cx:P.X(Math.cos(a)), cy:P.Y(Math.sin(a)), r:4.5, fill:C.spec}, svg)); txt(svg, 250, 20, '|μ|/r = 1', {class:'tn-dim'}); } },
+  reflection: { title:'Reflection in the critical circle', body:`<p>\\(J(\\mu) = r^2/\\bar\\mu\\) on \\(\\mathbb C^\\times\\): inversion in the circle \\(|\\mu| = r\\), whose fixed points are exactly that circle. It is the finite form of \\(\\rho\\mapsto1-\\bar\\rho\\). When the retained spectrum is \\(J\\)-invariant (a functional equation together with real coefficients), the Weil form equals the mode-pairing form \\(\\sum_\\mu p_c(\\mu/r)\\overline{p_c(J\\mu/r)}\\), each mode paired with its partner, and it is positive iff every mode is its own partner (thm:weil-duality-pairing). An off-circle pair \\(\\{\\mu,J\\mu\\}\\) contributes \\(2\\operatorname{Re}[p_c(\\mu)\\overline{p_c(J\\mu)}]\\), which a suitable \\(c\\) makes negative.</p>`,
+    vis(c){ const svg = mini(c, 400, 120); const C = WT.col(); const P = WT.svg.plane(svg, 200, 60, 36, 1, C); const z=[0.5,0.35]; const n=z[0]*z[0]+z[1]*z[1]; const j=[z[0]/n, z[1]/n]; S('circle',{cx:P.X(z[0]),cy:P.Y(z[1]),r:5,fill:C.spec},svg); S('circle',{cx:P.X(j[0]),cy:P.Y(j[1]),r:5,fill:'none',stroke:C.ink2,'stroke-width':1.5},svg); S('line',{x1:P.X(0),y1:P.Y(0),x2:P.X(j[0]*1.1),y2:P.Y(j[1]*1.1),stroke:C.line,'stroke-dasharray':'2 2'},svg); txt(svg, P.X(z[0])+6, P.Y(z[1])+12, 'μ', {class:'tn-dim'}); txt(svg, P.X(j[0])+6, P.Y(j[1])-6, 'Jμ = r²/μ̄', {class:'tn-dim'}); } },
+  hashimoto: { title:'Hashimoto (non-backtracking) matrix', body:`<p>For a graph, the \\(2|E|\\times2|E|\\) matrix on directed edges with \\(B_{ee'} = 1\\) iff \\(\\operatorname{head}(e) = \\operatorname{tail}(e')\\) and \\(e'\\ne\\bar e\\). Its power traces count closed non-backtracking walks, and its eigenvalues are the reciprocals of the poles of the Ihara zeta function. As a network it is the transition matrix of a shift of finite type on the alphabet of directed edges, i.e. an MPS with one letter per allowed step.</p>`,
+    vis(c){ const svg = mini(c, 400, 110); const C = WT.col(); const V=[[60,55],[130,20],[200,55],[130,90]]; [[0,1],[1,2],[2,3],[3,0],[0,2]].forEach(([a,b])=>S('line',{x1:V[a][0],y1:V[a][1],x2:V[b][0],y2:V[b][1],stroke:C.line,'stroke-width':1.5},svg)); V.forEach(v=>S('circle',{cx:v[0],cy:v[1],r:6,fill:C.bg3,stroke:C.ink},svg)); S('path',{d:`M${V[0][0]+8},${V[0][1]-4} L${V[1][0]-6},${V[1][1]+4}`,stroke:C.orbit,'stroke-width':3,fill:'none'},svg); S('path',{d:`M${V[1][0]+6},${V[1][1]+4} L${V[2][0]-8},${V[2][1]-4}`,stroke:C.orbit,'stroke-width':3,fill:'none'},svg); S('path',{d:`M${V[2][0]-8},${V[2][1]+4} L${V[1][0]+6},${V[1][1]+4}`,stroke:C.spec,'stroke-width':3,fill:'none','stroke-dasharray':'4 3'},svg); txt(svg, 230, 40, 'allowed: e → e′ with head(e) = tail(e′)', {class:'tn-dim'}); txt(svg, 230, 60, 'forbidden: e → ē (backtrack, dashed)', {class:'tn-dim'}); } },
+  ihara: { title:'Ihara zeta function and the Ihara–Bass formula', body:`<p>\\(\\zeta_X(u) = \\prod_{[\\gamma]}(1-u^{|\\gamma|})^{-1}\\) over primitive closed non-backtracking cycles, equal to \\(1/\\det(1-uB)\\). Ihara–Bass: \\(\\det(1-uB) = (1-u^2)^{|E|-|V|}\\det(1-uA+qu^2)\\) for a \\((q+1)\\)-regular graph. The quadratic \\(\\mu^2-a\\mu+q\\) pairs the eigenvalues \\(\\mu,\\mu' = q/\\mu\\): this is the functional equation, and \\(|a|\\le2\\sqrt q\\) puts the pair on \\(|\\mu| = \\sqrt q\\): the Riemann hypothesis for the graph is the Ramanujan property. The notebook's quantum Ihara–Bass formula (shard 08) is the same identity for an arbitrary Kraus family.</p>`,
+    vis(c){ const svg = mini(c, 400, 110); const C = WT.col(); const X=a=>200+a*40; WT.svg.axis(svg, 20, 60, 380, 60); S('rect',{x:X(-2*Math.SQRT2), y:40, width:X(2*Math.SQRT2)-X(-2*Math.SQRT2), height:40, fill:C.spec, opacity:.12},svg); [-2,-2,-2,-2,1,1,1,1,1].forEach((a,i)=>S('circle',{cx:X(a), cy:60-(i%4)*6, r:4, fill:C.spec},svg)); S('circle',{cx:X(3),cy:60,r:5,fill:C.pole},svg); txt(svg, X(-2*Math.SQRT2)-10, 95, '−2√q', {class:'tn-dim'}); txt(svg, X(2*Math.SQRT2)-10, 95, '2√q', {class:'tn-dim'}); txt(svg, X(3)-4, 95, 'q+1', {class:'tn-dim'}); txt(svg, 20, 20, 'Petersen graph: adjacency spectrum inside the Ramanujan band', {class:'tn-dim'}); } },
+  ramanujan: { title:'Ramanujan property', body:`<p>A \\((q+1)\\)-regular graph is Ramanujan when every adjacency eigenvalue other than \\(\\pm(q+1)\\) satisfies \\(|a|\\le2\\sqrt q\\), the spectral radius of the infinite \\((q+1)\\)-regular tree. Equivalent, through Ihara–Bass, to the Riemann hypothesis for the Ihara zeta function; equivalent, by the notebook's theorems, to Weil positivity of the rescaled non-backtracking ring norms and to the existence of a Hilbert–Pólya metric on the retained edge space. For a quantum channel with \\(D\\) Kraus operators the analogue is Hastings' bound \\(|\\lambda|\\le2\\sqrt{D-1}/D\\).</p>`,
+    vis(c){ const svg = mini(c, 400, 100); const C = WT.col(); const X=a=>200+a*40; WT.svg.axis(svg, 20, 60, 380, 60); S('rect',{x:X(-2*Math.SQRT2), y:40, width:X(2*Math.SQRT2)-X(-2*Math.SQRT2), height:40, fill:C.orbit, opacity:.15},svg); S('circle',{cx:X(2.848),cy:60,r:5,fill:C.spec},svg); S('circle',{cx:X(-2.848),cy:60,r:5,fill:C.spec},svg); txt(svg, X(2.848)-14, 30, 'prism C₁₆×K₂: a = 1+2cos(π/8) = 2.848 > 2√2', {class:'tn-dim'}); txt(svg, 20, 90, 'shaded: the tree spectrum [−2√q, 2√q]', {class:'tn-dim'}); } },
+  edgelift: { title:'Edge lift and the non-backtracking transfer operator', body:`<p>Given letters \\(B_1,\\dots,B_D\\) with a reversal \\(i\\mapsto\\bar i\\), adjoin a letter register \\(\\mathbb C^D\\) to the doubled bond: \\(W = \\mathbb C^D\\otimes\\operatorname{End}(V)\\), and let \\(T(v\\otimes|i\\rangle) = \\sum_{j\\ne\\bar i}\\operatorname{Ad}(B_i)v\\otimes|j\\rangle\\). The register remembers the last letter so that the next one can be forbidden from being its reverse. \\(\\operatorname{Tr}T^\\ell\\) is the sum of \\(|\\operatorname{Tr}B_w|^2\\) over cyclically non-backtracking words: the ring norms of the original network restricted to those words. For permutation matrices this is the Hashimoto matrix of the Cayley graph.</p>`,
+    vis(c){ const svg = mini(c, 400, 120); box(svg, 100, 30, 44, 60, 'Ad(Bᵢ)'); leg(svg, 40, 50, 100, 50, 'doubled'); leg(svg, 144, 50, 204, 50, 'doubled'); leg(svg, 40, 78, 100, 78, 'bond'); leg(svg, 144, 78, 204, 78, 'bond'); txt(svg, 44, 44, 'End(V)', {class:'tn-dim'}); txt(svg, 44, 92, '|i⟩ ∈ ℂᴰ', {class:'tn-dim'}); txt(svg, 150, 105, 'letter register: output |j⟩ for every j ≠ ī', {class:'tn-dim'}); txt(svg, 230, 55, 'T on W = ℂᴰ ⊗ End(V)', {class:'tn-label'}); } },
+};
+(function initTerms(){ const back = $('modalBack'); function open(id){ const t = TERMS[id]; if (!t) return; $('modalTitle').textContent = t.title; const vis = $('modalVis'); WT.svg.clear(vis); try { t.vis(vis); } catch(e){} $('modalBody').innerHTML = t.body; back.classList.add('open'); WT.typeset($('modalBody')); $('modalClose').focus(); }
+  document.querySelectorAll('.term').forEach(b => { b.setAttribute('type','button'); b.addEventListener('click', () => open(b.dataset.term)); });
+  const close = () => back.classList.remove('open'); $('modalClose').addEventListener('click', close); back.addEventListener('click', e => { if (e.target === back) close(); }); document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); }); })();
+(function nav(){ const links=[...document.querySelectorAll('nav.steps a')]; const secs=links.map(a=>document.querySelector(a.getAttribute('href'))); const io=new IntersectionObserver(es=>{ es.forEach(en=>{ if(en.isIntersecting){ links.forEach(l=>l.classList.remove('here')); links[secs.indexOf(en.target)].classList.add('here'); } }); },{rootMargin:'-40% 0px -55% 0px'}); secs.forEach(s=>io.observe(s)); })();
+WT.mountAll();
+})();
+</script>
