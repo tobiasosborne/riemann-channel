@@ -1,0 +1,31 @@
+/home/tobiasosborne/Projects/riemann-channel/notes/rtp-round-2/lattice-box/checks/bridge.c: In function ‘verify’:
+/home/tobiasosborne/Projects/riemann-channel/notes/rtp-round-2/lattice-box/checks/bridge.c:17:63: warning: ignoring return value of ‘fscanf’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   17 |  FILE *f=fopen(ballfile,"r"),*b=fopen(basisfile,"r"); int m,r;fscanf(f,"%d %d",&m,&r);
+      |                                                               ^~~~~~~~~~~~~~~~~~~~~~~
+/home/tobiasosborne/Projects/riemann-channel/notes/rtp-round-2/lattice-box/checks/bridge.c:22:23: warning: ignoring return value of ‘fscanf’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   22 |   for(int i=0;i<m;i++)fscanf(b,"%d",idx+i);
+      |                       ^~~~~~~~~~~~~~~~~~~~
+CASE x=13 N=20 m=11 mp_dps=200 arb_bits=1280
+PASS ball Cholesky certifies both true finite blocks positive
+PASS prime-cutoff split reproduced, error=5.43e-200
+SPECTRUM eps=1.566107855e-39 lambda_m=2.417251944e-15 lambda_mplus1=1.26722226e-13
+Traceback (most recent call last):
+  File "/home/tobiasosborne/Projects/riemann-channel/scripts/rtp2_lattice_box.py", line 233, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/tobiasosborne/Projects/riemann-channel/scripts/rtp2_lattice_box.py", line 219, in main
+    if args.case:solve_case(*args.case)
+                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tobiasosborne/Projects/riemann-channel/scripts/rtp2_lattice_box.py", line 191, in solve_case
+    val,ix,y,res,slack,gap=simplex(c,A,b)
+                           ^^^^^^^^^^^^^^
+  File "/home/tobiasosborne/Projects/riemann-channel/scripts/rtp2_lattice_box.py", line 163, in simplex
+    B=A[:,basis];y=mp.lu_solve(B,b);z=mp.lu_solve(B.T,mp.matrix([c[j] for j in basis]))
+      ~^^^^^^^^^
+  File "/home/tobiasosborne/.local/lib/python3.12/site-packages/mpmath/matrices/matrices.py", line 484, in __getitem__
+    m.__set_element((i,j),self.__get_element((x,y)))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tobiasosborne/.local/lib/python3.12/site-packages/mpmath/matrices/matrices.py", line 412, in __get_element
+    if key in self.__data:
+       ^^^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'list'

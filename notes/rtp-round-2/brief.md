@@ -61,3 +61,11 @@ never hold results back for a final write. Label every statement PROVED, PROVED-
 `H-*`), REFUTED, SHARPENED, NUMERICAL or OPEN. Keep a correction ledger (what the brief got wrong). End with the
 sections "Numerical checks for the blind lane" and "What this changes in the notebook" (the runner treats the
 latter as the completion signal). Do not run git. Do not pad.
+
+## Wave 2 (prepared 2026-09-26, launched as wave-1 slots free up and while the quota has not reset)
+
+| lane | directory | question | depends on |
+|---|---|---|---|
+| E | `ellcurve/` | weight two: `L(E, s)` through the pipeline; H-RATE (`sqrt(x/C_E)` as the window variable) | lane D's driver if finished |
+| G | `grid-tomography/` | free nonnegative measure on a fine grid: does positivity recover the prime positions; moments, sign, near-kernel | lane L if finished |
+| S | `scale/` | `eps_N` converged at `x = 50`; the rate to `x = 70+`; certified fit against the prolate asymptotic | none |
