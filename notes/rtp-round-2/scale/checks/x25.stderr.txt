@@ -1,29 +1,41 @@
-build x=25 N=260 seconds=2.093962
-factor n=261 p=1800 neg=0 seconds=0.235558
-gap n=261 neg=1 seconds=6.945829
-row x=25 N=260 seconds=9.047140
-build x=25 N=300 seconds=2.383131
-factor n=301 p=1800 neg=0 seconds=0.320252
-gap n=301 neg=1 seconds=9.010813
-row x=25 N=300 seconds=11.405938
-build x=25 N=340 seconds=2.506956
-factor n=341 p=1800 neg=0 seconds=0.448461
-gap n=341 neg=1 seconds=9.718444
-row x=25 N=340 seconds=12.240555
-build x=25 N=380 seconds=2.448209
-factor n=381 p=1800 neg=0 seconds=0.523619
-gap n=381 neg=1 seconds=11.376006
-row x=25 N=380 seconds=13.839796
-build x=25 N=420 seconds=2.783916
-factor n=421 p=1800 neg=0 seconds=0.570030
-gap n=421 neg=1 seconds=12.552168
-row x=25 N=420 seconds=15.355537
-build x=25 N=460 seconds=2.852239
-factor n=461 p=1800 neg=0 seconds=0.875441
-gap n=461 neg=1 seconds=15.442289
-row x=25 N=460 seconds=18.312686
-build x=25 N=500 seconds=2.881139
-factor n=501 p=1800 neg=0 seconds=1.107928
-gap n=501 neg=1 seconds=43.317411
-row x=25 N=500 seconds=46.247330
-build x=25 N=540 seconds=8.380114
+build x=25 N=260 seconds=3.504802
+factor n=261 p=1800 neg=0 seconds=1.241677
+iteration n=261 count=20 seconds=5.130650
+gap n=261 neg=1 seconds=6.525796
+row x=25 N=260 seconds=10.051377
+build x=25 N=300 seconds=4.306584
+factor n=301 p=1800 neg=0 seconds=1.431567
+iteration n=301 count=20 seconds=5.360532
+gap n=301 neg=1 seconds=7.474633
+row x=25 N=300 seconds=11.807231
+build x=25 N=340 seconds=3.562345
+factor n=341 p=1800 neg=0 seconds=1.563283
+iteration n=341 count=20 seconds=6.635241
+gap n=341 neg=1 seconds=8.398582
+row x=25 N=340 seconds=11.976397
+build x=25 N=380 seconds=3.265402
+factor n=381 p=1800 neg=0 seconds=1.759493
+iteration n=381 count=20 seconds=8.537571
+gap n=381 neg=1 seconds=9.473288
+row x=25 N=380 seconds=12.759682
+build x=25 N=420 seconds=3.356267
+factor n=421 p=1800 neg=0 seconds=0.877898
+iteration n=421 count=20 seconds=6.177966
+gap n=421 neg=1 seconds=6.933702
+row x=25 N=420 seconds=10.312389
+build x=25 N=460 seconds=3.339645
+factor n=461 p=1800 neg=0 seconds=0.977032
+iteration n=461 count=20 seconds=7.474296
+gap n=461 neg=1 seconds=8.459672
+row x=25 N=460 seconds=11.829321
+build x=25 N=500 seconds=3.686124
+factor n=501 p=1800 neg=0 seconds=1.064342
+iteration n=501 count=20 seconds=8.959951
+gap n=501 neg=1 seconds=10.282403
+row x=25 N=500 seconds=14.003161
+build x=25 N=540 seconds=4.115366
+factor n=541 p=1800 neg=0 seconds=1.496690
+iteration n=541 count=20 seconds=11.489103
+gap n=541 neg=1 seconds=12.982009
+row x=25 N=540 seconds=444.573089
+total x=25 seconds=527.677607

@@ -8,3 +8,8 @@ eps=[2.425617541041462e-123 +/- 3.66e-139]
 FINAL N=260 N_conv=-1 converged=0
 odd_below_twice_eps=0
 rump_eps=[2.425617541041462e-123 +/- 3.66e-139]
+secular_roots=260 unresolved=0
+# COMPARISON STEP: zeros used only from here
+first_zero_error=[+/- 3.67e-103]
+first_zero_error_over_eps=[+/- 1.52e+20]
+prime_free_negative_even=3 odd=3 prec=512

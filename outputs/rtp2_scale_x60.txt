@@ -2,3 +2,31 @@
 # All numeric enclosures are arb balls; timings only on stderr.
 x=60 prec=5200 start=418 end=1538 step=40
 ROW N=418
+residual_norm=[3.477390205930710e-664 +/- 2.88e-680]
+eigenvector_component_error=[8.244686581449773e-356 +/- 1.41e-373]
+eps=[8.435469733330323e-309 +/- 4.10e-325]
+ROW N=458
+residual_norm=[5.641076181742755e-672 +/- 3.68e-688]
+eigenvector_component_error=[9.507415500099192e-361 +/- 4.48e-378]
+eps=[1.186668697015272e-311 +/- 1.99e-327]
+previous_over_current=[710.8529747643423 +/- 1.01e-14]
+ROW N=498
+residual_norm=[3.931855391809304e-676 +/- 4.36e-692]
+eigenvector_component_error=[3.436173059467366e-364 +/- 2.02e-380]
+eps=[2.288508363090870e-312 +/- 2.54e-328]
+previous_over_current=[5.185336947655074 +/- 4.29e-16]
+ROW N=538
+residual_norm=[2.801879857753163e-676 +/- 2.46e-692]
+eigenvector_component_error=[3.093427597395626e-364 +/- 3.93e-380]
+eps=[1.811505050328045e-312 +/- 3.31e-328]
+previous_over_current=[1.263318787146878 +/- 3.70e-16]
+ROW N=578
+residual_norm=[1.865874762477078e-676 +/- 1.83e-692]
+eigenvector_component_error=[2.301181981600823e-364 +/- 4.05e-380]
+eps=[1.621666410910343e-312 +/- 2.51e-328]
+previous_over_current=[1.117063927661382 +/- 3.57e-16]
+ROW N=618
+residual_norm=[3.345577655117177e-677 +/- 3.72e-694]
+eigenvector_component_error=[4.530157409713763e-365 +/- 2.31e-383]
+eps=[1.477024903348145e-312 +/- 8.25e-329]
+previous_over_current=[1.097927602462438 +/- 2.67e-16]

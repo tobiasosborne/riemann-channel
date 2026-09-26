@@ -440,3 +440,39 @@ CONTROL x=50 N=60 minE=-0.573153210215 minO=0.543054818784 negE=1 posE=60 negO=0
 EIG x=50 X=50 N=120 epsE=9.69809402546e-6 epsO=5.50078729449e-8 parity=-1 even_simple=0 negE=0 negO=0
 CONTROL x=50 N=120 minE=-0.573193808804 minO=0.540843018817 negE=1 posE=120 negO=0 posO=120
 EIG x=50 X=50 N=200 epsE=9.66516488788e-6 epsO=5.35982930182e-8 parity=-1 even_simple=0 negE=0 negO=0
+EIG x=50 X=50 N=420 epsE=9.64405083618e-6 epsO=5.24270827475e-8 parity=-1 even_simple=0 negE=0 negO=0
+RAY x=50 N=420 parity=-1 term=arch value=1.14319718603
+RAY x=50 N=420 term=k2 value=0.304527344317 cumulative=1.44772453035
+RAY x=50 N=420 term=k3 value=-0.729595770958 cumulative=0.718128759388
+RAY x=50 N=420 term=k4 value=0 cumulative=0.718128759388
+RAY x=50 N=420 term=k5 value=-0.581316727011 cumulative=0.136812032377
+RAY x=50 N=420 term=k7 value=-0.163172163758 cumulative=-0.0263601313814
+RAY x=50 N=420 term=k8 value=0.154690203567 cumulative=0.128330072186
+RAY x=50 N=420 term=k9 value=0.122296993550 cumulative=0.250627065735
+RAY x=50 N=420 term=k11 value=-0.198982934729 cumulative=0.0516441310064
+RAY x=50 N=420 term=k13 value=-0.0388499722456 cumulative=0.0127941587608
+RAY x=50 N=420 term=k16 value=-0.0133980832447 cumulative=-0.000603924483874
+RAY x=50 N=420 term=k17 value=0 cumulative=-0.000603924483874
+RAY x=50 N=420 term=k19 value=0 cumulative=-0.000603924483874
+RAY x=50 N=420 term=k23 value=0.00115364780962 cumulative=0.000549723325745
+RAY x=50 N=420 term=k25 value=-0.000854828860903 cumulative=-0.000305105535158
+RAY x=50 N=420 term=k27 value=0 cumulative=-0.000305105535158
+RAY x=50 N=420 term=k29 value=0.000404628105256 cumulative=9.95225700972e-5
+RAY x=50 N=420 term=k31 value=-0.000127968804405 cumulative=-2.84462343078e-5
+RAY x=50 N=420 term=k32 value=3.49411894453e-5 cumulative=6.49495513751e-6
+RAY x=50 N=420 term=k37 value=-2.83311736627e-6 cumulative=3.66183777124e-6
+RAY x=50 N=420 term=k41 value=-3.81860198701e-6 cumulative=-1.56764215765e-7
+RAY x=50 N=420 term=k43 value=2.79751614873e-7 cumulative=1.22987399108e-7
+RAY x=50 N=420 term=k47 value=-6.70263563005e-8 cumulative=5.59610428075e-8
+RAY x=50 N=420 term=k49 value=-3.53396005995e-9 cumulative=5.24270827475e-8
+RAY_TOTAL x=50 N=420 arch=1.14319718603 primes=-1.14319713360 sum=5.24270827475e-8 eps=5.24270827475e-8
+# COMPARISON STEP: zeros used only below, never to choose a form or eigenpair
+REFERENCE curve=37a1 gamma1=0 certified_unique=0 index=PARI radius=1e-38 rank=1
+COMP x=50 X=50 N=4 parity=-1 roots=0 status=RANK_POSITIVE_NO_COMPARISON
+COMP x=50 X=50 N=20 parity=-1 roots=0 status=RANK_POSITIVE_NO_COMPARISON
+COMP x=50 X=50 N=40 parity=-1 roots=0 status=RANK_POSITIVE_NO_COMPARISON
+COMP x=50 X=50 N=60 parity=-1 roots=0 status=RANK_POSITIVE_NO_COMPARISON
+COMP x=50 X=50 N=120 parity=-1 roots=0 status=RANK_POSITIVE_NO_COMPARISON
+COMP x=50 X=50 N=200 parity=-1 roots=0 status=RANK_POSITIVE_NO_COMPARISON
+COMP x=50 X=50 N=420 parity=-1 roots=0 status=RANK_POSITIVE_NO_COMPARISON
+# checks: 2573 run, 0 failed

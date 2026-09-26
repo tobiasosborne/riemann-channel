@@ -21,7 +21,7 @@ Author: `codex:gpt-6-astra`. Unreviewed research record. No RH assumption. Refer
 
 `eps_E(x) ~ A_E x^b exp(-4 pi x)`.
 
-The asymptotic rate is `4 pi/log(10)=5.4575054` decimal digits per unit x. Importing also zeta's pole-constrained sector `b=9/2` gives 5.3863535 digits/x over 13–50; that power is not justified for a pole-free weight-two form. The unchanged log window `[0,log x]` and Fourier basis do not establish H-WINDOW-ONLY. The archimedean data change from `rho_(2,1/2)(y)` to `rho_(1,1)(y)=exp(-y)/(1-exp(-y))`, and the atoms and pole constraints also change.
+CCM §7 prints the zeta leakage `const x^(9/2) exp(-4 pi x)` in `refs/src/2511.22755/mc2arXiv.tex:1324–1329`; transfer to the Weil minimizer is explicitly heuristic there. The asymptotic rate is `4 pi/log(10)=5.4575054` decimal digits per unit x. Importing also zeta's pole-constrained sector `b=9/2` gives 5.3863535 digits/x over 13–50; that power is not justified for a pole-free weight-two form. The unchanged log window `[0,log x]` and Fourier basis do not establish H-WINDOW-ONLY. The archimedean data change from `rho_(2,1/2)(y)` to `rho_(1,1)(y)=exp(-y)/(1-exp(-y))`, and the atoms and pole constraints also change.
 
 **PROVED (kernel identities; no minimizer conclusion).** Write lambda=sqrt(x), and u for the positive multiplicative variable before taking logs. The elementary Mellin identity is
 
@@ -91,16 +91,16 @@ Eigenvalues and inertia are certified in the raw files. COMPARISON errors use ap
 | rtp2_ellcurve_11a1_axisN_x100.txt | RUNNING | — |
 | rtp2_ellcurve_11a1_axisN_x13.txt | 1255 | 0 |
 | rtp2_ellcurve_11a1_axisN_x25.txt | 1623 | 0 |
-| rtp2_ellcurve_11a1_axisN_x50.txt | RUNNING | — |
+| rtp2_ellcurve_11a1_axisN_x50.txt | 2581 | 0 |
 | rtp2_ellcurve_11a1_axisx_ccm_N120.txt | 213 | 0 |
-| rtp2_ellcurve_11a1_axisx_ccm_N200.txt | RUNNING | — |
+| rtp2_ellcurve_11a1_axisx_ccm_N200.txt | 612 | 0 |
 | rtp2_ellcurve_11a1_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_ellcurve_11a1_spectra_x13.txt | 492 | 0 |
 | rtp2_ellcurve_11a1_spectra_x25.txt | 492 | 0 |
 | rtp2_ellcurve_11a1_spectra_x50.txt | 492 | 0 |
 | rtp2_ellcurve_14a1_axisN_x13.txt | 1255 | 0 |
 | rtp2_ellcurve_14a1_axisN_x25.txt | 1623 | 0 |
-| rtp2_ellcurve_14a1_axisN_x50.txt | RUNNING | — |
+| rtp2_ellcurve_14a1_axisN_x50.txt | 2581 | 0 |
 | rtp2_ellcurve_14a1_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_ellcurve_14a1_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_ellcurve_14a1_spectra_x13.txt | 492 | 0 |
@@ -108,24 +108,30 @@ Eigenvalues and inertia are certified in the raw files. COMPARISON errors use ap
 | rtp2_ellcurve_14a1_spectra_x50.txt | 492 | 0 |
 | rtp2_ellcurve_37a1_axisN_x13.txt | 1248 | 0 |
 | rtp2_ellcurve_37a1_axisN_x25.txt | 1615 | 0 |
-| rtp2_ellcurve_37a1_axisN_x50.txt | RUNNING | — |
+| rtp2_ellcurve_37a1_axisN_x50.txt | 2573 | 0 |
 | rtp2_ellcurve_37a1_axisx_ccm_N120.txt | 198 | 0 |
 | rtp2_ellcurve_37a1_axisx_ccm_N60.txt | 338 | 0 |
+| rtp2_ellcurve_389a1_record.txt | 16 | 0 |
 | rtp2_ellcurve_diagnostic_x2_N200.txt | 1223 | 0 |
 | rtp2_ellcurve_pilot_11a1.txt | 399 | 0 |
 
-Completed checks: 14881 
+Completed checks: 23244 
 
 ### Resolution and parity
+
+N_sat is certified only on 1..Nmax. A value of 1 is left-censored (N=0 is not scanned).
 
 | curve | x | final N | N_sat full/E/O | N_sat/[sqrt(x/C) log x] | epsE at N_sat | epsE final | epsO final | min parity |
 |---|---|---|---|---|---|---|---|---|
 | 11a1 | 13 | 200 | 3/3/3 | 1.075888 | 2.43947834223e-6 | 7.60586827693e-7 | 0.000145476586851 | E |
 | 11a1 | 25 | 260 | 6/6/6 | 1.236441 | 1.23500169465e-10 | 2.42148388413e-11 | 1.16472149147e-8 | E |
+| 11a1 | 50 | 420 | 10/10/10 | 1.198974 | 2.96546081715e-16 | 9.12480919174e-18 | 1.40828068046e-14 | E |
 | 14a1 | 13 | 200 | 2/2/2 | 0.809177 | 2.34714132383e-5 | 5.47398082239e-6 | 0.000879747523219 | E |
 | 14a1 | 25 | 260 | 4/4/4 | 0.929929 | 1.14921916973e-8 | 1.00853123507e-9 | 4.92836083075e-7 | E |
+| 14a1 | 50 | 420 | 10/10/10 | 1.352626 | 1.60944223785e-14 | 2.82763646403e-15 | 3.39392540313e-12 | E |
 | 37a1 | 13 | 200 | 1/1/1 | 0.6577341 | 0.444699197675 | 0.203253993996 | 0.0121747434397 | O |
 | 37a1 | 25 | 260 | 3/2/3 | 1.13383 | 0.0154330254295 | 0.00638896651436 | 8.14692310352e-5 | O |
+| 37a1 | 50 | 420 | 4/4/4 | 0.8795782 | 4.58659785715e-5 | 9.64405083618e-6 | 5.24270827475e-8 | O |
 
 ### COMPARISON at final N
 
@@ -133,10 +139,13 @@ Completed checks: 14881
 |---|---|---|---|---|
 | 11a1 | 13 | 200 | 0.000406325112562 | 534.225807978 |
 | 11a1 | 25 | 260 | 3.07075607533e-8 | 1268.12988327 |
+| 11a1 | 50 | 420 | 2.23555751598e-14 | 2449.97727515 |
 | 14a1 | 13 | 200 | 0.000850124715393 | 155.302830422 |
 | 14a1 | 25 | 260 | 3.46751133644e-7 | 343.817941960 |
+| 14a1 | 50 | 420 | 1.73314985464e-12 | 612.932347098 |
 | 37a1 | 13 | 200 | inapplicable | — |
 | 37a1 | 25 | 260 | inapplicable | — |
+| 37a1 | 50 | 420 | inapplicable | — |
 
 ### Finite-N tails and Schur envelopes
 
@@ -144,18 +153,27 @@ Completed checks: 14881
 |---|---|---|---|---|---|---|---|---|---|---|
 | 11a1 | 13 | 120→200 | 1.00162 | 1.014255 | 1.009299 | 8.560739087 | 0.009474191792 | -0.06574159550 | 10.48797386 | 10.48091321 |
 | 11a1 | 25 | 200→260 | 1.001408 | 1.008096 | 1.03953 | 9.331564655 | 0.005152022584 | -0.03400086471 | 12.51575012 | 12.50887664 |
+| 11a1 | 50 | 200→420 | 1.018217 | 1.028053 | 1.239153 | 8.304630421 | 0.009342921749 | -0.04101800643 | 8.947251868 | 8.942136536 |
 | 14a1 | 13 | 120→200 | 1.000946 | 1.010945 | 1.004876 | 9.061980277 | 0.003337548209 | -0.03726779845 | 12.13535849 | 12.13008886 |
 | 14a1 | 25 | 200→260 | 1.001068 | 1.007451 | 1.028396 | 9.165456007 | 0.009095556477 | -0.06129854322 | 12.87675022 | 12.87175599 |
+| 14a1 | 50 | 200→420 | 1.009904 | 1.031173 | 1.145924 | 8.620815502 | 0.03742308982 | -0.1280645303 | 11.07171177 | 11.06539386 |
 | 37a1 | 13 | 120→200 | 1.000303 | 1.007172 | 1.001335 | 10.16449852 | 0.01007585665 | -0.05741680830 | 13.06752973 | 13.06151881 |
 | 37a1 | 25 | 200→260 | 1.000285 | 1.006108 | 1.005063 | 10.43396171 | 0.008180241610 | -0.05374122031 | 13.08917020 | 13.08321148 |
+| 37a1 | 50 | 200→420 | 1.002189 | 1.02234 | 1.026978 | 10.23933127 | 0.01705629816 | -0.08580483924 | 13.16772720 | 13.16303506 |
 
 ### Final-N endpoint slopes (FLOATING, positive digits gained)
 
 | curve | range x | E digits/x | E digits/sqrt x | E digits/sqrt(x/C) | O digits/x | error digits/x |
 |---|---|---|---|---|---|---|
 | 11a1 | 13–25 | 0.3747556 | 3.224979 | 10.69604 | 0.3413809 | 0.343469 |
+| 11a1 | 25–50 | 0.2569543 | 3.101713 | 10.28722 | 0.2367013 | 0.2455144 |
+| 11a1 | 13–50 | 0.2951601 | 3.151312 | 10.45172 | 0.2706515 | 0.2772835 |
 | 14a1 | 13–25 | 0.3112178 | 2.678201 | 10.02091 | 0.2709713 | 0.2824554 |
+| 14a1 | 25–50 | 0.2220906 | 2.680871 | 10.0309 | 0.20648 | 0.2120473 |
+| 14a1 | 13–50 | 0.2509967 | 2.679797 | 10.02688 | 0.2273961 | 0.2348823 |
 | 37a1 | 13–25 | 0.1252174 | 1.077565 | 6.554569 | 0.1812055 | — |
+| 37a1 | 25–50 | 0.1128468 | 1.362182 | 8.285829 | 0.1276575 | — |
+| 37a1 | 13–50 | 0.1168589 | 1.247658 | 7.589208 | 0.1450244 | — |
 
 ### CCM axis-x coverage
 
@@ -163,6 +181,7 @@ Completed checks: 14881
 |---|---|---|---|---|---|---|---|
 | 11a1 | 60 | 24 | 50 | 1.13070309175e-17 | 1.50548637447e-14 | 0 | none |
 | 11a1 | 120 | 14 | 25 | 2.44005541640e-11 | 1.19859483614e-8 | 0 | none |
+| 11a1 | 200 | 36 | 100 | 6.15767339764e-27 | 1.19447712984e-23 | 0 | none |
 | 14a1 | 60 | 24 | 50 | 3.24025668567e-15 | 3.70122291569e-12 | 0 | none |
 | 14a1 | 120 | 14 | 25 | 1.01431791973e-9 | 5.06225076986e-7 | 0 | none |
 | 37a1 | 60 | 24 | 50 | 9.90422454756e-6 | 5.74730912207e-8 | 0 | 4,5,7,8,9,11,13,16,17,19,23,25,27,29,31,32,37,41,43,47,49,50 |
@@ -180,6 +199,9 @@ Fit log10(epsE)=intercept−slope×variable over every printed knot with x≥13.
 | 11a1 | 120 | 13–25 | 6 | x | 0.3711897 | 0.1078897 | 0.1624078 |
 | 11a1 | 120 | 13–25 | 6 | sqrt(x) | 3.225089 | 0.03522068 | 0.0542738 |
 | 11a1 | 120 | 13–25 | 6 | sqrt(x/C) | 10.69641 | 0.03522068 | 0.0542738 |
+| 11a1 | 200 | 13–100 | 28 | x | 0.2270742 | 0.7290918 | 1.745904 |
+| 11a1 | 200 | 13–100 | 28 | sqrt(x) | 3.148805 | 0.1221076 | 0.2790916 |
+| 11a1 | 200 | 13–100 | 28 | sqrt(x/C) | 10.4434 | 0.1221076 | 0.2790916 |
 | 14a1 | 60 | 13–50 | 16 | x | 0.2441695 | 0.2913558 | 0.5033498 |
 | 14a1 | 60 | 13–50 | 16 | sqrt(x) | 2.676512 | 0.07435942 | 0.115821 |
 | 14a1 | 60 | 13–50 | 16 | sqrt(x/C) | 10.01459 | 0.07435942 | 0.115821 |
@@ -195,6 +217,7 @@ Fit ln eps=a+b ln z−k z, z=sqrt(x/C), on the same knots (three parameters). Al
 |---|---|---|---|---|---|---|---|---|
 | 11a1 | 60 | 0.4206909 | 0.9439995 | 0.08781864 | 2.648671 | 0.08980753 | -17.24384 | 0.1729728 |
 | 11a1 | 120 | -13.69513 | 0.5594814 | 0.01262519 | 0.6161512 | 0.03664619 | -15.62753 | 0.01345265 |
+| 11a1 | 200 | 0.7031034 | 0.9710677 | 0.1215419 | 2.103295 | 0.1238092 | -22.09439 | 0.4027925 |
 | 14a1 | 60 | -2.707515 | 0.8414132 | 0.07079716 | 2.885152 | 0.08507807 | -14.74768 | 0.1238119 |
 | 14a1 | 120 | 31.09725 | 2.015498 | 0.02910617 | 1.853983 | 0.07608491 | -12.5445 | 0.1088726 |
 
@@ -204,10 +227,13 @@ Fit ln eps=a+b ln z−k z, z=sqrt(x/C), on the same knots (three parameters). Al
 |---|---|---|---|---|---|---|---|---|---|
 | 11a1 | 13 | 200 | 200 | -1.38957064134 | 0.0566717962475 | 1/0 | -0.867338025611 | 0.867338786198 | 7.60586827693e-7 |
 | 11a1 | 25 | 260 | 260 | -1.61780175257 | -0.346411393408 | 1/1 | -0.939853026777 | 0.939853026801 | 2.42148388413e-11 |
+| 11a1 | 50 | 420 | 120 | -1.78621644865 | -0.672179621029 | 1/1 | -0.991414691509 | 0.991414691509 | 9.12480919174e-18 |
 | 14a1 | 13 | 200 | 200 | -1.14840858453 | 0.297833853064 | 1/0 | -0.722202911951 | 0.722208385932 | 5.47398082239e-6 |
 | 14a1 | 25 | 260 | 260 | -1.37663969576 | -0.105249336591 | 1/1 | -0.799400476500 | 0.799400477508 | 1.00853123507e-9 |
+| 14a1 | 50 | 420 | 120 | -1.54505439183 | -0.431017564212 | 1/1 | -0.847021092403 | 0.847021092403 | 2.82763646403e-15 |
 | 37a1 | 13 | 200 | 200 | -0.176548001496 | 1.26969443609 | 1/0 | 1.40825013735 | -1.39607539391 | 0.0121747434397 |
 | 37a1 | 25 | 260 | 260 | -0.404779112728 | 0.866611246438 | 1/0 | 1.23351378318 | -1.23343231395 | 8.14692310352e-5 |
+| 37a1 | 50 | 420 | 120 | -0.573193808804 | 0.540843018817 | 1/0 | 1.14319718603 | -1.14319713360 | 5.24270827475e-8 |
 
 ### Complete control spectra, N=60
 
@@ -246,15 +272,22 @@ Fit ln eps=a+b ln z−k z, z=sqrt(x/C), on the same knots (three parameters). Al
 
 ### Cross-object comparison on round-1 axes (FLOATING slopes)
 
-| object | N_sat at 13,25,50 | epsE at 13 | epsE at 25 | epsE at 50 | digits/x 13–50 | provenance |
-|---|---|---|---|---|---|---|
-| zeta | 56,134,352 | 2.85407e-59 | 2.42562e-123 | 2.80881e-258 | 5.378566 | review N=420 at x50 |
-| chi_-4 | 11,30,pending | 3.55108899176e-14 | 5.39464993971e-30 | pending | pending | completed lane D only |
-| chi_-3 | 17,41,pending | 1.25308864637e-19 | 5.92330252137e-41 | pending | pending | completed lane D only |
-| chi_5 | 7,23,pending | 2.10790657667e-12 | 3.66818026982e-25 | pending | pending | completed lane D only |
-| chi_8 | 4,13,pending | 2.17699319902e-7 | 2.30737261661e-15 | pending | pending | completed lane D only |
-| chi_12 | 2,7,pending | 0.000115817314349 | 6.71343285554e-10 | pending | pending | completed lane D only |
-| chi_-8 | 2,13,pending | 4.53702800257e-6 | 1.00380725322e-13 | pending | pending | completed lane D only |
+| object | N_sat at 13,25,50 | epsE at 13 | epsE at 25 | epsE at 50 | digits/x 13–25 | digits/x 13–50 | provenance |
+|---|---|---|---|---|---|---|---|
+| zeta | 56,134,352 | 2.85407e-59 | 2.42562e-123 | 2.80881e-258 | 5.33922 | 5.378566 | review N=420 at x50 |
+| chi_-4 | 11,30,pending | 3.55108899176e-14 | 5.39464993971e-30 | pending | 1.3182 | pending | completed lane D only |
+| chi_-3 | 17,41,pending | 1.25308864637e-19 | 5.92330252137e-41 | pending | 1.777118 | pending | completed lane D only |
+| chi_5 | 7,23,pending | 2.10790657667e-12 | 3.66818026982e-25 | pending | 1.063283 | pending | completed lane D only |
+| chi_8 | 4,13,pending | 2.17699319902e-7 | 2.30737261661e-15 | pending | 0.6645616 | pending | completed lane D only |
+| chi_-7 | 4,13,pending | 2.03745394328e-7 | 3.27263403207e-16 | pending | 0.7328492 | pending | completed lane D only |
+| chi_12 | 2,7,pending | 0.000115817314349 | 6.71343285554e-10 | pending | 0.4364024 | pending | completed lane D only |
+| chi_-20 | 1,3,pending | 0.0987740569268 | 0.000267954162959 | pending | 0.2138819 | pending | completed lane D only |
+| chi_21 | 2,2,pending | 0.0232509738349 | 3.58458347666e-5 | pending | 0.2343335 | pending | completed lane D only |
+| chi_13 | 2,7,pending | 0.000402786486930 | 4.55002293950e-9 | pending | 0.4122551 | pending | completed lane D only |
+| chi_-8 | 2,13,pending | 4.53702800257e-6 | 1.00380725322e-13 | pending | 0.6379268 | pending | completed lane D only |
+| 11a1 | 3,6,10 | 7.60586827693e-7 | 2.42148388413e-11 | 9.12480919174e-18 | 0.3747556 | 0.2951601 | E block; 37a1 global O |
+| 14a1 | 2,4,10 | 5.47398082239e-6 | 1.00853123507e-9 | 2.82763646403e-15 | 0.3112178 | 0.2509967 | E block; 37a1 global O |
+| 37a1 | 1,3,4 | 0.203253993996 | 0.00638896651436 | 9.64405083618e-6 | 0.1252174 | 0.1168589 | E block; 37a1 global O |
 
 Zeta uses existing A1 outputs and the certified N=420 supplement in notes/reviews/rtp-round-1-2026-09-24.md:651. Other lanes are read only; pending results are not extrapolated.
 
@@ -288,6 +321,10 @@ Both rank-zero curves at N=60, x≥13: separate intercepts, one common slope. Ea
 | 11a1 | 60 | error | 13–50 | 0.2645802 | 0.2466754 | 9.598545 | 0.09792132 |
 | 11a1 | 120 | epsE | 13–25 | 0.3711897 | 0.1078897 | 10.69641 | 0.03522068 |
 | 11a1 | 120 | error | 13–25 | 0.3411622 | 0.08827327 | 9.827228 | 0.02373476 |
+| 11a1 | 200 | epsE | 13–100 | 0.2270742 | 0.7290918 | 10.4434 | 0.1221076 |
+| 11a1 | 200 | epsE | 53–100 | 0.1747772 | 0.1085843 | 10.07894 | 0.07865293 |
+| 11a1 | 200 | error | 13–100 | 0.2187673 | 0.6435573 | 10.04783 | 0.1471212 |
+| 11a1 | 200 | error | 53–100 | 0.1710572 | 0.1036404 | 9.863292 | 0.08174534 |
 | 14a1 | 60 | epsE | 13–50 | 0.2441695 | 0.2913558 | 10.01459 | 0.07435942 |
 | 14a1 | 60 | error | 13–50 | 0.2300957 | 0.2453149 | 9.427203 | 0.07564523 |
 | 14a1 | 120 | epsE | 13–25 | 0.3162483 | 0.0339899 | 10.24197 | 0.08013304 |
@@ -306,8 +343,44 @@ Both rank-zero curves at N=60, x≥13: separate intercepts, one common slope. Ea
 | 23 | -1.052993032e-40 | 4.96886063076e-16 | 6.72232584814e-8 | 0 | 0.00113912304248 |
 | 49 | -5.304360530e-106 | -9.53373420948e-53 | 4.08111561210e-18 | -6.70642211702e-17 | -1.37156749856e-9 |
 
+### Leading phase-space normalization (FLOATING)
+
+S_max=x for zeta, x/q for primitive degree one, 2 sqrt(x/C) for weight two. The conditional universal prediction is 4pi/log(10)=5.457505 digits per unit S_max.
+
+| object | range | digits per S_max |
+|---|---|---|
+| zeta | 13–25 | 5.33922 |
+| zeta | 13–50 | 5.378566 |
+| chi_-4 | 13–25 | 5.272799 |
+| chi_-3 | 13–25 | 5.331354 |
+| chi_5 | 13–25 | 5.316417 |
+| chi_8 | 13–25 | 5.316493 |
+| chi_-7 | 13–25 | 5.129944 |
+| chi_12 | 13–25 | 5.236829 |
+| chi_-20 | 13–25 | 4.277637 |
+| chi_21 | 13–25 | 4.921004 |
+| chi_13 | 13–25 | 5.359316 |
+| chi_-8 | 13–25 | 5.103414 |
+| 11a1 | 13–25 | 5.348022 |
+| 11a1 | 13–50 | 5.22586 |
+| 14a1 | 13–25 | 5.010455 |
+| 14a1 | 13–50 | 5.013441 |
+
+### Fixed-N Schur envelope at matched windows
+
+| curve | x | N | epsE | joint radius | Delta I | truth tau | first-zero error (PARI) | error/eps |
+|---|---|---|---|---|---|---|---|---|
+| 11a1 | 13 | 60 | 7.67659737296e-7 | 6.207542468 | 0.009347975332 | -0.03236896692 | 0.000409577219972 | 533.540056972 |
+| 11a1 | 25 | 60 | 2.51720545071e-11 | 6.700113821 | 0.01102715488 | 0.03785857335 | 3.18346151920e-8 | 1264.68084609 |
+| 11a1 | 50 | 60 | 1.13070309175e-17 | 5.971490306 | 0.02766198528 | -0.06956115282 | 2.75848146010e-14 | 2439.61609394 |
+| 14a1 | 13 | 60 | 5.50067277783e-6 | 6.852889139 | 0.005081645411 | -0.03407901961 | 0.000853571315821 | 155.175803088 |
+| 14a1 | 25 | 60 | 1.03716912030e-9 | 6.442750617 | 0.006318856650 | -0.008505970666 | 3.56036486397e-7 | 343.277175756 |
+| 14a1 | 50 | 60 | 3.24025668567e-15 | 6.358497438 | 0.01413511748 | -0.04653131703 | 1.97887413662e-12 | 610.715239126 |
+
 
 <!-- E4_TABLES_END -->
+
+**NUMERICAL visualization.** [Rate fits and residuals](checks/rate_fits.png), also [PDF](checks/rate_fits.pdf), generated by `checks/plot.py`. The figure uses 11a1 at N=200 through 100 and 14a1 at N=60 through 50; fits and residuals are floating. It does not extrapolate outside those ranges.
 
 ## E5. Interpretation (incremental)
 
@@ -327,4 +400,16 @@ namely `4 pi sqrt(x/C)`, `2 pi x/q`, `2 pi x`. This identity is just integration
 
 **SHARPENED causal conclusion.** The absence of a pole alone cannot explain the square-root rate: lane D's pole-free degree-one examples already have conductor-scaled linear-x behavior. Nor is a uniform doubling of prime atoms the mechanism—there is no such doubling in the implemented distribution. The archimedean degree and conductor specify a different functional-equation transform (Hankel rather than additive Fourier) and a different phase-space scale. Arithmetic still supplies the cancellation, the actual minimizing vector and finite-range fluctuations. The experiments support concentration kinematics **after incorporating the gamma factor, conductor and arithmetic functional equation**. They do not prove that rho alone, a Weyl law alone, arbitrary signed atoms of degree two, or the empty-prime control forces the rate. These distinctions resolve the ambiguity of “kinematic”: the bare window/Loewner structure is insufficient; the proposed invariant is the transform concentration action A, conditional on H-CONCENTRATION-TRANSFER.
 
-**NUMERICAL provisional verdict from completed x≤50 runs.** H-WINDOW-ONLY is refuted as a description of the tested range: roughly 0.28/0.24 digits per x in the fixed-N elliptic fits versus 5.38 for resolved zeta, and sqrt(x) gives much smaller residuals over 13–50. H-RATE receives quantitative support: a common slope in sqrt(x/C), with separate curve intercepts, has RMS 0.08569 digits, versus 0.22907 for a common slope in sqrt(x). Both have three fitted parameters. This does not logically rule out a completely different eventual asymptotic after the sampled range. A final verdict on the preferred leading constant awaits the long run below.
+**NUMERICAL verdict from the two-curve x≤50 comparison.** H-WINDOW-ONLY is refuted as a description of the tested range: roughly 0.28/0.24 digits per x in the fixed-N elliptic fits versus 5.38 for resolved zeta, and sqrt(x) gives much smaller residuals over 13–50. H-RATE receives quantitative support: a common slope in sqrt(x/C), with separate curve intercepts, has RMS 0.08569 digits, versus 0.22907 for a common slope in sqrt(x). Both have three fitted parameters. This does not logically rule out a completely different eventual asymptotic after the sampled range. The long run supplies the additional test below.
+
+**PROVED / NUMERICAL extra control.** The digamma series gives `Re psi(1+it)>=psi(1)=-EulerGamma`. Hence the elliptic control is positive on every window and every finite Fourier space whenever `C>4 pi^2 exp(2 EulerGamma)`. This is a sufficient, not necessary, condition. As a further check using the fourth existing PARI model, `outputs/rtp2_ellcurve_389a1_record.txt` records x=13,N=60 at 700 bits: the full form has an odd minimum (rank 2, root number +1), while its prime-free control is positive in both blocks. No zero comparison is made. Thus even within weight two, “the archimedean control must be indefinite” would be false. Positivity of a control does not establish a concentration rate for the full form.
+
+
+**NUMERICAL long-window verdict.** All 36 independently certified N=200 CCM knots through x=100 are complete. On the 28 knots from 13 through 100, fitting log10 eps against x gives 0.227074 digits/x with RMS residual 0.729092 digits; against sqrt(x/C) it gives 10.4434 digits per unit with RMS 0.122108 digits. Thus the square-root variable reduces RMS by a factor 5.97. The comparison error similarly gives RMS 0.643557 (x) versus 0.147121 (sqrt(x/C)). The last point is epsE `6.15767339764e-27`, epsO `1.19447712984e-23`, error `2.35516405250e-23`, error/eps `3824.76286158`; its 2000-bit recheck agrees with the 1000-bit point to every displayed digit.
+
+**SHARPENED H-RATE status.** Supported numerically as the correct tested window variable; OPEN as an asymptotic theorem. E1b's stronger leading constant is compatible with the long data, but is not determined by them: fitting `ln eps=a+b ln z-k z` at z=sqrt(x/11) gives k/(8pi)=0.971068 and b=0.703103, RMS 0.121542 digits. Fixing k=8pi and refitting only a,b gives b=2.10330 and RMS 0.123809, nearly as good; fixing k=4pi gives b=-22.0944 and RMS 0.402793. This favors the optimized-Hankel prediction over the bare squared-Mellin-tail constant within the tested model class. It does not prove the coefficient 8pi, the power b, or convergence of the prefactor. The shorter 53–100 segment has slope 10.0789 in z with RMS 0.07865, so a single fitted slope must not be advertised as an asymptotic limit. The error/eps ratio changes from about 534 to 3825 across the long interval; equality of their leading exponential is compatible with a drifting algebraic factor, not a constant ratio.
+
+**NUMERICAL Schur conclusion.** The Loewner posterior interval is a different observable from eps. At fixed N=60, the joint half-width for 11a1 is 6.20754, 6.70011, 5.97149 at x=13,25,50, while eps loses nearly eleven decimal digits. For 14a1 those widths are 6.85289, 6.44275, 6.35850. The truth positions stay interior, and Delta I remains below 0.028 nats at these six points. H-RATE describes the near-null eigenvalue and associated spectral error, not exponential contraction of this one-coordinate Schur envelope.
+
+
+**NUMERICAL resolution audit at x=50.** At N=420 the rank-zero minima are `9.12480919174e-18` (11a1) and `2.82763646403e-15` (14a1). Their 13–50 endpoint rates are respectively 0.2951601 and 0.2509967 digits/x, or 10.45172 and 10.02688 digits per sqrt(x/C); the first-zero-error rates are 0.2772835 and 0.2348823 digits/x. At the same x,N the 37a1 even/odd minima are `9.64405083618e-6` and `5.24270827475e-8`, decisively odd. The final 200→420 reductions are 1.82% and 0.99% for the two rank-zero even minima. Thus the large object-dependent rate difference survives a direct finite-N tail check. This is empirical saturation, not a rigorous bound on all further N.

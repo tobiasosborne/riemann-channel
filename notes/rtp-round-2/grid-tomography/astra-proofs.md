@@ -470,3 +470,58 @@ Farkas inputs, dual box vectors, repaired residual summaries, axis
 brackets and profile tables are saved under `checks/`. The 100-digit
 axis upper threshold at `17L/64` is 9.20188701152767829123e−39, much
 smaller than a coordinate projection outer bound.
+
+
+## What this changes in the notebook
+
+The reproducible run ends with **117 checks passed, zero failed**. Eleven
+uniform-grid infeasibility certificates pass a separate Arb verifier;
+eleven feasible-union box tables have independently bounded residual
+corrections; five axis endpoints have 100-digit inside/outside inertia
+brackets. Source/output hashes are in `checks/manifest.json`. No claim
+has been registered in a shard or database by this lane.
+
+The measure formulation is the correct tomography problem, with an
+explicit distinction between **observing moments** and **imposing positivity
+on their assembled matrix**. At the present cutoffs the exact moments
+uniquely determine the sparse visible prime measure. Positivity alone
+allows a neighborhood of weights and positions whenever the finite true
+matrix is positive definite. Lane L's conditional fixed-window coercivity
+obstruction therefore persists when positions are freed. Nothing here
+establishes infinite-window positivity or assumes RH.
+
+H-SIGN changes the geometry decisively: it makes each finite interior
+grid set compact when nonempty and turns near-kernel cuts into useful
+support constraints after suitable nonnegative dual combinations. It
+also exposes the failure of the chosen discretization: every prescribed
+pure grid is empty. The union controls show strong interior concentration
+and a weaker edge region; they do not discover positions independently,
+since the true logarithmic positions and eigenvectors enter their
+construction. A single small eigenvalue or the zeros of its individual
+signed autocorrelation are insufficient support certificates. Full SDP
+coordinate projections and continuum stability bounds are not supplied
+by these LP outer boxes.
+
+Candidate claim rows for shard 08j (for REFUTE review, not registration):
+
+| candidate label | status | precise content |
+|---|---|---|
+| `prop:window-measure-moment-factorization` | PROVED | The window sees exactly the 2N+1 Loewner moments; it need not determine their values. |
+| `prop:window-sign-grid-compactness` | PROVED | On a finite interior grid, the constant test bounds weighted mass; H-SIGN gives compactness even at N=0. |
+| `prop:loewner-sparse-measure-uniqueness` | PROVED | Given exact moments, N>=2s recovers an s-atom interior measure; the invisible endpoint must be fixed or quotiented out. |
+| `obs:near-kernel-support-correction` | PROVED / REFUTED | Individual q_v are signed autocorrelations; localization requires a nonnegative dual function with small known cost. |
+| `num:rtp-grid-infeasibility` | NUMERICAL, ball-certified | All eleven specified uniform grids are infeasible with H-SIGN. |
+| `num:rtp-grid-union-localization` | NUMERICAL | Selected-cut outer boxes on grids containing the true positions; x=25 far-mass bound improves by about 3.324e4. |
+
+**Next experiment.** First exclude a specified edge strip, or constrain
+weighted mass instead of ordinary mass. Then solve the unknown-position
+problem with movable atoms and adaptive separating eigenvectors computed
+from the current candidate, without seeding log n. Compare this with
+shifted uniform grids under the explicit relaxation `H(mu)>=-tau I`.
+Track the minimum required tau versus h, and the recovered support versus
+tau; the Farkas witnesses here already give lower bounds on the required
+relaxation. This separates discretization error, conditioning of the
+moments, and the information supplied by positivity. In particular,
+compare **dual nonnegative support certificates** with the exact-moment
+annihilator of G2, rather than searching for prime locations among zeros
+of individual near-kernel autocorrelations.

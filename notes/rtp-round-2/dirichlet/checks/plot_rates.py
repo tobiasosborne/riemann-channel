@@ -29,7 +29,8 @@ K=math.log10(50/13)/37
 for D,s in rows:
     k=D<0;color='#b34b31' if k else '#246d97';mark='s' if k else 'o'
     ax[0].scatter(1/abs(D),s,color=color,marker=mark,s=48,zorder=3)
-    ax[0].annotate(str(D),(1/abs(D),s),xytext=(4,4),textcoords='offset points',fontsize=8)
+    offset={-20:(-28,-12),21:(7,9),13:(6,-12),12:(4,9),8:(4,9),-8:(4,-12)}.get(D,(4,4))
+    ax[0].annotate(str(D),(1/abs(D),s),xytext=offset,textcoords='offset points',fontsize=8)
     # Correcting by the heuristic lowest-sector powers 1+kappa is explicitly labelled.
     ax[1].scatter(abs(D),abs(D)*(s+(1+int(k))*K),color=color,marker=mark,s=48,zorder=3)
     ax[1].annotate(str(D),(abs(D),abs(D)*(s+(1+int(k))*K)),xytext=(4,4),textcoords='offset points',fontsize=8)

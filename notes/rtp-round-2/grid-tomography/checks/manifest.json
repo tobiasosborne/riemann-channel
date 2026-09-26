@@ -1,0 +1,11 @@
+{
+  "script_sha256": "10c7237b0874b960db9279fbd8eb083bf03161c7d1c6d3c65d8e45f65365d6ea",
+  "output_sha256": "6e73e04da09d12981580a8c77fb9af1f716e5c55303da59215facc7f2b58654d",
+  "checks_passed": 117,
+  "checks_failed": 0,
+  "ball_certified_empty_grids": 11,
+  "union_box_cases": 11,
+  "near_kernel_vectors": 8,
+  "detected_crossings": 32,
+  "crossings_within_h_of_prime_power": 0
+}

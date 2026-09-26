@@ -1,0 +1,38 @@
+# RTP-2 scale author codex:gpt-6-astra FLINT 3.0.1
+# All numeric enclosures are arb balls; timings only on stderr.
+x=25 prec=1800 start=260 end=1100 step=40
+ROW N=260
+residual_norm=[1.097610197952608e-188 +/- 4.56e-205]
+eigenvector_component_error=[9.050150564802882e-66 +/- 3.77e-82]
+eps=[2.425617541041462e-123 +/- 3.66e-139]
+ROW N=300
+residual_norm=[1.608720865489079e-188 +/- 1.19e-204]
+eigenvector_component_error=[1.399151014430378e-65 +/- 8e-85]
+eps=[2.299567164512289e-123 +/- 4.84e-139]
+previous_over_current=[1.054814827100693 +/- 6.43e-17]
+ROW N=340
+residual_norm=[2.431066397471143e-188 +/- 1.04e-204]
+eigenvector_component_error=[2.233193444533047e-65 +/- 2.74e-81]
+eps=[2.177210759258225e-123 +/- 1.57e-139]
+previous_over_current=[1.056198695846860 +/- 9.22e-17]
+ROW N=380
+residual_norm=[2.875593735688877e-188 +/- 4.66e-204]
+eigenvector_component_error=[2.745351704258951e-65 +/- 8.89e-82]
+eps=[2.094881855193910e-123 +/- 3.42e-139]
+previous_over_current=[1.039300022509716 +/- 3.66e-16]
+ROW N=420
+residual_norm=[3.591237921162525e-188 +/- 3.93e-204]
+eigenvector_component_error=[3.499194151835720e-65 +/- 1.16e-81]
+eps=[2.052608552331123e-123 +/- 1.68e-140]
+previous_over_current=[1.020594917045813 +/- 4.32e-16]
+ROW N=460
+residual_norm=[4.072164028584505e-188 +/- 3.56e-205]
+eigenvector_component_error=[4.091113614279646e-65 +/- 4.76e-81]
+eps=[1.990736221243527e-123 +/- 3.96e-139]
+previous_over_current=[1.031080125245798 +/- 4.70e-16]
+ROW N=500
+residual_norm=[5.180623452428570e-188 +/- 2.26e-204]
+eigenvector_component_error=[5.314947822398822e-65 +/- 2.48e-81]
+eps=[1.949454115276854e-123 +/- 3.36e-139]
+previous_over_current=[1.021176238847155 +/- 1.88e-16]
+ROW N=540

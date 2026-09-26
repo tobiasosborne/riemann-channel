@@ -1,0 +1,4 @@
+# RTP-2 scale author codex:gpt-6-astra FLINT 3.0.1
+# All numeric enclosures are arb balls; timings only on stderr.
+x=85 prec=5500 start=642 end=1122 step=40 fast=1
+ROW N=642

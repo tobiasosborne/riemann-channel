@@ -1,6 +1,11 @@
 residual_norm=[1.298755818183984e-33 +/- 2.23e-49]
 eigenvector_component_error=[2.597511636367968e-33 +/- 4.45e-49]
+residual_norm=[1.298755818183984e-33 +/- 2.23e-49]
+eigenvector_component_error=[2.597511636367968e-33 +/- 4.45e-49]
 SELFTEST PASS
-factor n=3 p=512 neg=0 seconds=0.000002
-iteration n=3 count=44 seconds=0.000225
-gap n=3 neg=1 seconds=0.000265
+factor n=3 p=512 neg=0 seconds=0.000004
+iteration n=3 count=44 seconds=0.000266
+gap n=3 neg=1 seconds=0.000319
+factor n=3 p=512 neg=0 seconds=0.000000
+iteration n=3 count=44 seconds=0.000164
+gap n=3 neg=1 seconds=0.000215

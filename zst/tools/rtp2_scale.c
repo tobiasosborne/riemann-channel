@@ -29,7 +29,9 @@ static slong ldl(arb_mat_t L,arb_ptr d,const arb_mat_t A,const arb_t shift,slong
   for(slong j=i+1;j<n;j++) {
    arb_ptr q=arb_mat_entry(L,j,i);
    arb_dot(q,arb_mat_entry(A,j,i),1,arb_mat_entry(L,j,0),1,w,1,i,p);
-   if(midpoint) arb_get_mid_arb(q,q); arb_div(q,q,d+i,p); if(midpoint) arb_get_mid_arb(q,q);
+   if(midpoint) arb_get_mid_arb(q,q);
+   arb_div(q,q,d+i,p);
+   if(midpoint) arb_get_mid_arb(q,q);
   }
  }
  _arb_vec_clear(w,n); arb_clear(t); return neg;
@@ -49,6 +51,47 @@ static void solve(arb_ptr u,const arb_mat_t L,arb_srcptr d,slong n,slong p)
   arb_get_mid_arb(u+i,u+i);
  }
 }
+/* Rump's residual proof of PD, as in zst/src/eigmin.c verify_pd,
+ * with dot products and parallel independent columns/rows in this driver.
+ * T is arbitrary exact dyadic: F >= (delta-||F-delta I-T T^T||_inf) I. */
+static int pd(const arb_mat_t F,slong p)
+{
+ slong n=arb_mat_nrows(F);arb_mat_t T;arb_mat_init(T,n,n);
+ arb_t delta,t;arb_init(delta);arb_init(t);mag_ptr rows=flint_malloc(n*sizeof(mag_struct));
+ for(slong i=0;i<n;i++) { mag_init(rows+i);arb_get_mid_arb(t,arb_mat_entry(F,i,i));arb_abs(t,t);if(arb_gt(t,delta))arb_set(delta,t); }
+ arb_mul_2exp_si(delta,delta,-p/2);arb_get_mid_arb(delta,delta);int ok=arb_is_positive(delta);
+ for(slong j=0;j<n&&ok;j++) {
+  arb_get_mid_arb(t,arb_mat_entry(F,j,j));arb_sub(t,t,delta,p);
+  arb_dot(t,t,1,arb_mat_entry(T,j,0),1,arb_mat_entry(T,j,0),1,j,p);arb_get_mid_arb(t,t);
+  if(!arb_is_positive(t)){ok=0;break;}
+  arb_sqrt(arb_mat_entry(T,j,j),t,p);arb_get_mid_arb(arb_mat_entry(T,j,j),arb_mat_entry(T,j,j));
+  #pragma omp parallel for schedule(static) if(n>80)
+  for(slong i=j+1;i<n;i++) {
+   arb_ptr q=arb_mat_entry(T,i,j);
+   arb_dot(q,arb_mat_entry(F,i,j),1,arb_mat_entry(T,i,0),1,arb_mat_entry(T,j,0),1,j,p);
+   arb_get_mid_arb(q,q);arb_div(q,q,arb_mat_entry(T,j,j),p);arb_get_mid_arb(q,q);
+  }
+ }
+ if(ok) {
+  #pragma omp parallel for schedule(static) if(n>80)
+  for(slong i=0;i<n;i++) {
+   arb_t r;arb_init(r);mag_t a;mag_init(a);
+   for(slong j=0;j<n;j++) {
+    arb_dot(r,arb_mat_entry(F,i,j),1,arb_mat_entry(T,i,0),1,arb_mat_entry(T,j,0),1,FLINT_MIN(i,j)+1,p);
+    if(i==j)arb_sub(r,r,delta,p);
+    arb_get_mag(a,r);mag_add(rows+i,rows+i,a);
+   }
+   arb_clear(r);mag_clear(a);
+  }
+  mag_t dl;mag_init(dl);arb_get_mag_lower(dl,delta);
+  for(slong i=0;i<n;i++)if(mag_cmp(rows+i,dl)>=0)ok=0;
+  mag_clear(dl);
+ }
+ for(slong i=0;i<n;i++)mag_clear(rows+i);
+ flint_free(rows);
+ arb_mat_clear(T);arb_clear(delta);arb_clear(t);return ok;
+}
+static int fast_method=0;
 /* Rigorous residual of the unit vector obtained by normalising exact dyadic u. */
 static void residual(arb_t rho,arb_t r,arb_ptr v,const arb_mat_t A,arb_srcptr u,slong p)
 {
@@ -66,7 +109,7 @@ static int certified(arb_t eps,arb_ptr v,const arb_mat_t E,slong p)
  slong n=arb_mat_nrows(E); arb_mat_t L;arb_mat_init(L,n,n);
  arb_ptr d=_arb_vec_init(n),u=_arb_vec_init(n); arb_t zero,rho,r,s,t,gap,err;
  arb_init(zero);arb_init(rho);arb_init(r);arb_init(s);arb_init(t);arb_init(gap);arb_init(err);
- int ok=0; double tm=now(); slong ne=ldl(L,d,E,zero,p,0);
+ int ok=0; double tm=now(); slong ne=fast_method?0:ldl(L,d,E,zero,p,0);
  fprintf(stderr,"factor n=%ld p=%ld neg=%ld seconds=%.6f\n",n,p,ne,now()-tm);
  if(ne!=0) goto done;
  /* Recompute midpoint factors: reusing interval-factor midpoints can inherit
@@ -91,7 +134,14 @@ static int certified(arb_t eps,arb_ptr v,const arb_mat_t E,slong p)
  arb_get_mid_arb(s,rho);arb_mul_2exp_si(s,s,1);
  arb_add(t,rho,r,p);if(!arb_lt(t,s)) goto done;
  arb_sub(t,rho,r,p);if(!arb_is_positive(t)) goto done;
- ne=inertia(E,s,p); fprintf(stderr,"gap n=%ld neg=%ld seconds=%.6f\n",n,ne,now()-tm);
+ if(fast_method) {
+  arb_mat_t F;arb_mat_init(F,n,n);arb_add_ui(gap,s,1,p);
+  for(slong i=0;i<n;i++) for(slong j=0;j<n;j++) {
+   arb_mul(t,v+i,v+j,p);arb_mul(t,t,gap,p);arb_add(arb_mat_entry(F,i,j),arb_mat_entry(E,i,j),t,p);
+   if(i==j)arb_sub(arb_mat_entry(F,i,j),arb_mat_entry(F,i,j),s,p);
+  }
+  ne=pd(F,p)?1:-1;arb_mat_clear(F);
+ } else ne=inertia(E,s,p); fprintf(stderr,"gap n=%ld neg=%ld seconds=%.6f\n",n,ne,now()-tm);
  if(ne!=1) goto done;
  /* Exactly one eigenvalue below s, and a spectral value in rho+/-r.
   * Distance of unit v to signed true unit eigenvector <=2r/(s-rho). */
@@ -130,7 +180,7 @@ static void selftest(void)
  arb_t e,er,t;arb_init(e);arb_init(er);arb_init(t);
  /* Eigenvalues 1,6,7; nontrivial 2-by-2 block. */
  arb_set_ui(arb_mat_entry(A,0,0),5);arb_set_ui(arb_mat_entry(A,0,1),2);arb_set_ui(arb_mat_entry(A,1,0),2);arb_set_ui(arb_mat_entry(A,1,1),2);arb_set_ui(arb_mat_entry(A,2,2),7);
- must(inertia(A,t,512)==0,"positive matrix inertia");
+ must(inertia(A,t,512)==0,"positive matrix inertia");must(pd(A,512),"PD residual certificate");
  arb_set_ui(t,2);must(inertia(A,t,512)==1,"one negative shifted eigenvalue");
  arb_set_ui(t,13);arb_mul_2exp_si(t,t,-1);must(inertia(A,t,512)==2,"two negative shifted eigenvalues");
  must(certified(e,v,A,512),"residual eigenpair");must(arb_contains_si(e,1),"exact eigenvalue contained");
@@ -139,6 +189,7 @@ static void selftest(void)
  if(arb_is_negative(v)) arb_neg(t,t);
  must(arb_overlaps(v,t),"first component");arb_mul_si(t,t,-2,512);must(arb_overlaps(v+1,t),"second component");must(arb_contains_zero(v+2),"third component");
  must(zst_eigmin(er,vr,A,100,512),"Rump reference");must(arb_overlaps(er,e),"Rump eigenvalue agreement");
+ fast_method=1;must(certified(er,vr,A,512),"deflated PD eigenpair");must(arb_overlaps(er,e),"two certificate methods agree");fast_method=0;
  arb_zero(t);arb_zero(arb_mat_entry(A,2,2));must(inertia(A,t,512)==-1,"zero pivot rejected");
  flint_printf("SELFTEST PASS\n");arb_mat_clear(A);_arb_vec_clear(v,3);_arb_vec_clear(vr,3);arb_clear(e);arb_clear(er);arb_clear(t);
 }
@@ -150,18 +201,21 @@ int main(int argc,char **argv)
   must(i+1<argc,"option argument");const char *key=argv[i++],*val=argv[i];
   if(!strcmp(key,"--x"))X=atol(val);else if(!strcmp(key,"--start"))start=atol(val);else if(!strcmp(key,"--end"))end=atol(val);
   else if(!strcmp(key,"--prec"))p=atol(val);else if(!strcmp(key,"--step"))step=atol(val);else if(!strcmp(key,"--endpoint"))endpoint=atoi(val);
-  else if(!strcmp(key,"--rump"))rump=atoi(val);else if(!strcmp(key,"--threads"))threads=atoi(val);else if(!strcmp(key,"--vector"))vecpath=val;else must(0,"unknown option");
+  else if(!strcmp(key,"--fast"))fast_method=atoi(val);else if(!strcmp(key,"--rump"))rump=atoi(val);else if(!strcmp(key,"--threads"))threads=atoi(val);else if(!strcmp(key,"--vector"))vecpath=val;else must(0,"unknown option");
  }
  must(X>1&&start>0&&end>=start&&p>=256&&step>0&&threads>0,"parameters");omp_set_num_threads(threads);
  setvbuf(stdout,NULL,_IOLBF,0);double total=now();
  arb_t x,eps,prev,ratio,threshold,t,zero;arb_init(x);arb_init(eps);arb_init(prev);arb_init(ratio);arb_init(threshold);arb_init(t);arb_init(zero);
  arb_set_si(x,X);arb_set_ui(threshold,101);arb_div_ui(threshold,threshold,100,p);
  flint_printf("# RTP-2 scale author codex:gpt-6-astra FLINT %s\n# All numeric enclosures are arb balls; timings only on stderr.\n",FLINT_VERSION);
- flint_printf("x=%wd prec=%wd start=%wd end=%wd step=%wd\n",X,p,start,end,step);
+ flint_printf("x=%wd prec=%wd start=%wd end=%wd step=%wd fast=%d\n",X,p,start,end,step,fast_method);
+ arb_ptr all_a=_arb_vec_init(end+1),all_b=_arb_vec_init(end+1);
+ zst_riemann_ab(all_a,all_b,end,x,X,p);
+ fprintf(stderr,"data x=%ld Nmax=%ld seconds=%.6f\n",X,end,now()-total);
  int haveprev=0,converged=0;
  for(slong N=start;N<=end;N+=step) {
   double row=now();arb_ptr a=_arb_vec_init(N+1),b=_arb_vec_init(N+1),v=_arb_vec_init(N+1);arb_mat_t E,O;arb_mat_init(E,N+1,N+1);arb_mat_init(O,N,N);
-  zst_riemann_ab(a,b,N,x,X,p);zst_even_block(E,a,b,N,p);
+  _arb_vec_set(a,all_a,N+1);_arb_vec_set(b,all_b,N+1);zst_even_block(E,a,b,N,p);
   flint_printf("ROW N=%wd\n",N);fprintf(stderr,"build x=%ld N=%ld seconds=%.6f\n",X,N,now()-row);
   must(certified(eps,v,E,p),"minimal even eigenpair (raise precision on failure)");pr("eps",eps);
   if(haveprev) {
@@ -173,12 +227,21 @@ int main(int argc,char **argv)
   int final=endpoint||(converged&&step==40);
   if(final) {
    flint_printf("FINAL N=%wd N_conv=%wd converged=%d\n",N,converged?N-step:-1,converged);
-   zst_odd_block(O,a,b,N,p);arb_get_mid_arb(t,eps);arb_mul_2exp_si(t,t,1);slong odd=inertia(O,t,p);
+   zst_odd_block(O,a,b,N,p);arb_get_ubound_arf(arb_midref(t),eps,p);mag_zero(arb_radref(t));arb_mul_2exp_si(t,t,1);must(arb_gt(t,eps),"odd shift above eps");
+   slong odd;
+   if(fast_method) { for(slong i=0;i<N;i++)arb_sub(arb_mat_entry(O,i,i),arb_mat_entry(O,i,i),t,p);odd=pd(O,p)?0:-1; }
+   else odd=inertia(O,t,p);
    flint_printf("odd_below_twice_eps=%wd\n",odd);must(odd==0,"even-simple odd gap");
    if(rump) {
     arb_t er;arb_init(er);arb_ptr vr=_arb_vec_init(N+1);double rt=now();
     must(zst_eigmin(er,vr,E,120,p),"Rump cross-check");must(arb_overlaps(er,eps),"Rump/residual overlap");
-    pr("rump_eps",er);fprintf(stderr,"rump x=%ld N=%ld seconds=%.6f\n",X,N,now()-rt);arb_clear(er);_arb_vec_clear(vr,N+1);
+    pr("rump_eps",er);
+    arb_t nv,dot;arb_init(nv);arb_init(dot);arb_dot(nv,NULL,0,vr,1,vr,1,N+1,p);arb_sqrt(nv,nv,p);
+    for(slong i=0;i<=N;i++) arb_div(vr+i,vr+i,nv,p);
+    arb_dot(dot,NULL,0,vr,1,v,1,N+1,p);
+    if(arb_is_negative(dot)) for(slong i=0;i<=N;i++) arb_neg(vr+i,vr+i);
+    for(slong i=0;i<=N;i++) must(arb_overlaps(vr+i,v+i),"Rump/residual unit eigenvector overlap");
+    arb_clear(nv);arb_clear(dot);fprintf(stderr,"rump x=%ld N=%ld seconds=%.6f\n",X,N,now()-rt);arb_clear(er);_arb_vec_clear(vr,N+1);
    }
    if(vecpath) {
     FILE *fp=fopen(vecpath,"w");must(fp!=NULL,"vector file");fprintf(fp,"%ld %ld %ld\n",X,N,p);
@@ -195,5 +258,6 @@ int main(int argc,char **argv)
   if(final)break;
  }
  fprintf(stderr,"total x=%ld seconds=%.6f\n",X,now()-total);
+ _arb_vec_clear(all_a,end+1);_arb_vec_clear(all_b,end+1);
  arb_clear(x);arb_clear(eps);arb_clear(prev);arb_clear(ratio);arb_clear(threshold);arb_clear(t);arb_clear(zero);flint_cleanup();return 0;
 }

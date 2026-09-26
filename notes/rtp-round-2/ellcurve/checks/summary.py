@@ -50,6 +50,7 @@ for c in CURVES:
         d=done(OUT/f'rtp2_ellcurve_{c}_axisN_x{x}.txt')
         if d:D[c,x]=d
 print('### Resolution and parity\n')
+print('N_sat is certified only on 1..Nmax. A value of 1 is left-censored (N=0 is not scanned).\n')
 rows=[]
 for (c,x),d in D.items():
     e=latest(d);s={r['block']:int(r['N']) for r in d['SAT']};ns=s['full'];at=row_at(d,'EIG',ns)
@@ -199,3 +200,13 @@ for c in ['11a1','14a1']:
         if (c,a) in D and (c,b) in D:
             rows.append([c,f'{a}–{b}',slope(latest(D[c,a]),latest(D[c,b]),axis=lambda x:2*math.sqrt(x/CURVES[c]))])
 table(['object','range','digits per S_max'],rows)
+print('### Fixed-N Schur envelope at matched windows\n')
+rows=[]
+for c in ['11a1','14a1']:
+    d=A.get((c,60))
+    if not d:continue
+    for r in d['KNOT']:
+        if int(r['x']) in [13,25,50]:
+            e=next(q for q in d['EIG'] if q['x']==r['x']);co=next(q for q in d['COMP'] if q['x']==r['x'])
+            rows.append([c,r['x'],60,e['epsE'],r['rj'],r['dI'],r['tau'],co['error'],co['ratio']])
+table(['curve','x','N','epsE','joint radius','Delta I','truth tau','first-zero error (PARI)','error/eps'],rows)
