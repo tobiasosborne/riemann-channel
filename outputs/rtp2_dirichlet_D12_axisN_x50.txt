@@ -438,3 +438,36 @@ EIG x=50 X=50 N=260 epsE=4.42305658493e-21 epsO=3.61677589828e-17 parity=1 even_
 CONTROL x=50 N=260 minE=-1.05958565651 minO=0.643243766910 negE=1 posE=260 negO=0 posO=260
 EIG x=50 X=50 N=420 epsE=4.27129546329e-21 epsO=3.54390522474e-17 parity=1 even_simple=1 negE=0 negO=0
 CONTROL x=50 N=420 minE=-1.05959019349 minO=0.642880855803 negE=1 posE=420 negO=0 posO=420
+RAY x=50 N=420 parity=1 term=arch value=-0.286421515018
+RAY x=50 N=420 term=k2 value=0 cumulative=-0.286421515018
+RAY x=50 N=420 term=k3 value=0 cumulative=-0.286421515018
+RAY x=50 N=420 term=k4 value=0 cumulative=-0.286421515018
+RAY x=50 N=420 term=k5 value=0.220627577295 cumulative=-0.0657939377232
+RAY x=50 N=420 term=k7 value=0.0753953210041 cumulative=0.00960138328091
+RAY x=50 N=420 term=k8 value=0 cumulative=0.00960138328091
+RAY x=50 N=420 term=k9 value=0 cumulative=0.00960138328091
+RAY x=50 N=420 term=k11 value=-0.00756252713336 cumulative=0.00203885614756
+RAY x=50 N=420 term=k13 value=-0.00226814621375 cumulative=-0.000229290066189
+RAY x=50 N=420 term=k16 value=0 cumulative=-0.000229290066189
+RAY x=50 N=420 term=k17 value=0.000183463263748 cumulative=-4.58268024408e-5
+RAY x=50 N=420 term=k19 value=4.92568238902e-5 cumulative=3.43002144935e-6
+RAY x=50 N=420 term=k23 value=-3.10718650734e-6 cumulative=3.22834942010e-7
+RAY x=50 N=420 term=k25 value=-3.61420204032e-7 cumulative=-3.85852620221e-8
+RAY x=50 N=420 term=k27 value=0 cumulative=-3.85852620221e-8
+RAY x=50 N=420 term=k29 value=3.24567847290e-8 cumulative=-6.12847729309e-9
+RAY x=50 N=420 term=k31 value=6.15075093983e-9 cumulative=2.22736467439e-11
+RAY x=50 N=420 term=k32 value=0 cumulative=2.22736467439e-11
+RAY x=50 N=420 term=k37 value=-2.25349877388e-11 cumulative=-2.61340994896e-13
+RAY x=50 N=420 term=k41 value=2.44245666403e-13 cumulative=-1.70953284922e-14
+RAY x=50 N=420 term=k43 value=1.71120735812e-14 cumulative=1.67450890111e-17
+RAY x=50 N=420 term=k47 value=-1.67138883622e-17 cumulative=3.12006488845e-20
+RAY x=50 N=420 term=k49 value=-2.69293534212e-20 cumulative=4.27129546329e-21
+RAY_TOTAL x=50 N=420 arch=-0.286421515018 primes=0.286421515018 sum=4.27129546329e-21 eps=4.27129546329e-21
+# COMPARISON STEP: zeros used only below, never to choose a form or eigenpair
+REFERENCE D=12 gamma1=3.80462763305086509714431754004 certified_unique=1 index=PARI_or_sign_scan
+COMP x=50 X=50 N=21 parity=1 roots=21 z1=3.80462763305086510 error=1.84035355169e-18 ratio=9.20998441235
+COMP x=50 X=50 N=80 parity=1 roots=80 z1=3.80462763305086510 error=4.89147078776e-20 ratio=9.09840251316
+COMP x=50 X=50 N=160 parity=1 roots=160 z1=3.80462763305086510 error=4.36613677324e-20 ratio=9.10047983212
+COMP x=50 X=50 N=260 parity=1 roots=260 z1=3.80462763305086510 error=4.02592247140e-20 ratio=9.10212744082
+COMP x=50 X=50 N=420 parity=1 roots=420 z1=3.80462763305086510 error=3.88810152315e-20 ratio=9.10286248415
+# checks: 2567 run, 0 failed
