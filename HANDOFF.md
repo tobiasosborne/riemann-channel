@@ -47,7 +47,16 @@ astras shared the window; 26% -> 100% in two hours.
   `n = 2,3,4,5,7,8,9,11`, at `x = 13, N = 20` (centroids within `4e-3`, masses within 2% of `Lambda(n)/sqrt n`; three
   refinement levels reach `3e-7`); `x = 25, N = 60`: twelve clusters within one grid step of a prime power (16 and 17
   unresolved). Float64; the certified version with controls (pole only, archimedean flipped, wrong residue, signed
-  weights) is the last lane of the day (`notes/rtp-round-2/blind-recovery/`, see below). Reading: the explicit formula
+  weights) is done (`notes/rtp-round-2/blind-recovery/lane.md`, `scripts/rtp2_blind_recovery.py`, 102 checks, 80-digit
+  certificates, mpmath bounds not balls): **at `x = 13`, `N = 60`, three refinements (`h = 2e-5`) put one cluster on each
+  of the eight prime powers with position errors `4.5e-10` (n = 2) to `1.0e-7` (n = 11) and mass errors `2e-9` to `3e-6`,
+  falling like `h^2` with no floor down to `1e-8`; stray mass `<= 1e-9`; total mass 4.2604977 vs 4.2604954.** At `N = 10`
+  (below the atom count) recovery fails: the maximiser is a different feasible measure with `lambda_min = +3.7e-7`, lane
+  L's interior made concrete. At `x = 25`, `N = 134`, grid `L/512`: all thirteen prime powers, 16 and 17 separated,
+  positions within `3.5e-5`. Controls: pole only or archimedean negated give an even comb at spacing `~L/(N+1)`; pole
+  scaled by 0.9 or 1.1 gives offsets up to 0.16 and mass errors up to 236%; signed weights unbounded (`H0 + T(w) = cI`
+  explicitly). So the recovery needs the exact pole–archimedean balance and the sign constraint, and it works only for
+  `N` above the atom count. Reading: the explicit formula
   with the zero side switched off by the prolate concentration is a smoothed prime number theorem exact to `1e-39` in
   the near-null directions; positivity plus sparsity then super-resolves the atoms (Carathéodory). "Positivity plus
   kinematics gives arithmetic", the easy direction of the identity whose hard direction is RH.
@@ -83,9 +92,8 @@ GRH for the family.
 lane reports, register the candidate rows each review recommends (`lem:bordering-interval` -> proved with the new
 wording and `deps -`; the lattice recession/width/coercivity rows; the grid moment rows; the impure Kronecker rows; the
 Dirichlet and elliptic numerical rows; H-CONCENTRATION-TRANSFER as open), byte-cite Baker, Coste (on disk), Nesterenko–
-Waldschmidt, Hulthén, Carneiro–Chirre; regen, gate, rebuild report.pdf. (ii) Blind recovery certified and with controls
-(lane running at session end; if unfinished, `scripts/rtp2_blind_recovery.py` and `notes/rtp-round-2/blind-recovery/`).
-(iii) LP/SDP width ratio at `x = 25` (port the reviewer's barrier to arb) to decide whether the 3.48-digit rate is the
+Waldschmidt, Hulthén, Carneiro–Chirre; regen, gate, rebuild report.pdf. (ii) Blind recovery: a REFUTE review of `notes/rtp-round-2/blind-recovery/lane.md` (unreviewed), then its row
+`num:rtp-grid-blind-recovery-certified` in 08j. (iii) LP/SDP width ratio at `x = 25` (port the reviewer's barrier to arb) to decide whether the 3.48-digit rate is the
 true box's. (iv) Finish lane S (`x = 60, 70, 85`; `zst/tools/rtp2_scale.c`, no codex needed) and the `8 pi` constant for
 weight two with `x > 250` (lift the driver cap). (v) Merge `claude/project-familiarization-8gondy`. (vi) Yoshida source.
 

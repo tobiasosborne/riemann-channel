@@ -1,0 +1,1143 @@
+
+==============================================================================================================
+rtp2_blind_recovery.py -- claude:opus; RTP round 2, blind-recovery lane; no zeros of zeta anywhere (the only comparison is with log n and Lambda(n)/sqrt n, labelled); deterministic
+==============================================================================================================
+  float IPM (HKM, Mehrotra) + mp IPM at 50 digits on a restricted set with column generation; certificate at 80 digits
+  support threshold 0.0001 of the total mass; refinement: level-0 uniform grid UNION 17-point patches at h/8^k
+
+==============================================================================================================
+1. Data and assembly self-tests (no primes enter H0)
+==============================================================================================================
+  ok   [L1021]  zst printer compiled against zst/build/libzst.a and run (pole + archimedean, prime cutoff X = 1)
+  ok   [L1023]  certificate data (reviewer mp (a0_n, b0_n) at 80 digits) = zst ball data: max |diff| + radius = 2.11e-81 (x=13, n<=60), 2.1e-81 (x=25, n<=134)
+  --           data error bound used in the certificates: delta = 4.21e-81 (x=13), 4.19e-81 (x=25); controls: 3 delta + 1e-78
+  ok   [L1031]  rank-two basis assembly K(m) = reviewer blocks_np (float), N = 20
+  ok   [L1037]  Schur kernel G_kl = tr(B_k X B_l W) and adjoint co(X) = (tr B_k X)_k agree with brute force (float)
+  ok   [L1043]  mp Schur kernel and mp adjoint agree with the float versions
+
+==============================================================================================================
+2. COMPARISON value (primes enter; no zeros): lambda_min of the true form at x = 13
+==============================================================================================================
+  N = 10: lambda_min(even) = 2.83123772119e-26, lambda_min(odd) = 1.64492447826e-23
+  N = 20: lambda_min(even) = 1.56610785511e-39, lambda_min(odd) = 2.10726395097e-36
+  N = 40: lambda_min(even) = 9.4628098483e-54, lambda_min(odd) = 3.54311192892e-50
+  N = 60: lambda_min(even) = 1.01356290717e-58, lambda_min(odd) = 8.54687683011e-55
+  ok   [L1093]  truth lambda_min at N = 20 = 1.56610785511e-39 agrees with lane L ball value 1.56610785511e-39 to 1e-30 relative
+  --           coercivity floor (lane L, not recomputed): eps_N at x = 13 is 3.48e-59 (N = 120), 2.85e-59 (N = 200); under RH it decreases to a positive attained mu_L
+
+==============================================================================================================
+3. Blind recovery at x = 13 (pole + archimedean data only), uniform grids L/M and three refinement levels
+==============================================================================================================
+
+  --- x13_N10_M64 ---
+  [x13_N10_M64] level 0: h = 4.0077e-02, grid 63 pts; max lambda_min in [-1.79538954015e-4, -1.79538954015e-4] (rel. width 2.2e-23); tau* in [1.79538954e-4, 1.79538954e-4]; repair rho = 1.1e-27; mp IPM iters 16, col.gen rounds 1, |S| 28; 7 clusters, total mass 4.8172907509, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = +1.879e-03, mass/(Lambda(n)/sqrt n) - 1 = +9.082e-03, mass 0.49458047, 2 pts, span 4.01e-02
+      COMPARISON n =  3: centroid - log n = +6.240e-03, mass/(Lambda(n)/sqrt n) - 1 = +2.637e-02, mass 0.65101261, 2 pts, span 4.01e-02
+      COMPARISON n =  4: centroid - log n = +2.412e-02, mass/(Lambda(n)/sqrt n) - 1 = +8.703e-02, mass 0.37673437, 2 pts, span 4.01e-02
+      COMPARISON n =  5: centroid - log n = +1.534e-02, mass/(Lambda(n)/sqrt n) - 1 = -2.769e-02, mass 0.69983116, 2 pts, span 4.01e-02
+      COMPARISON n =  7: centroid - log n = +2.405e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.764e-01, mass 0.86519969, 2 pts, span 4.01e-02
+      COMPARISON n =  9: centroid - log n = +1.620e-03, mass/(Lambda(n)/sqrt n) - 1 = +4.087e-01, mass 0.51588485, 2 pts, span 4.01e-02
+      COMPARISON n = 11: centroid - log n = +5.095e-02, mass/(Lambda(n)/sqrt n) - 1 = +6.792e-01, mass 1.21404760, 2 pts, span 4.01e-02
+  [x13_N10_M64] level 1: h = 5.0097e-03, grid 210 pts; max lambda_min in [-2.78255662385e-6, -2.78255662385e-6] (rel. width 9.7e-22); tau* in [2.782556624e-6, 2.782556624e-6]; repair rho = 1.2e-27; mp IPM iters 17, col.gen rounds 1, |S| 70; 7 clusters, total mass 4.6922249707, stray mass 5.70e-23
+      COMPARISON n =  2: centroid - log n = +3.425e-05, mass/(Lambda(n)/sqrt n) - 1 = +1.799e-04, mass 0.49021727, 2 pts, span 5.01e-03
+      COMPARISON n =  3: centroid - log n = +1.544e-04, mass/(Lambda(n)/sqrt n) - 1 = +8.953e-04, mass 0.63485196, 2 pts, span 5.01e-03
+      COMPARISON n =  4: centroid - log n = +1.216e-03, mass/(Lambda(n)/sqrt n) - 1 = +7.665e-03, mass 0.34923014, 2 pts, span 5.01e-03
+      COMPARISON n =  5: centroid - log n = +1.302e-03, mass/(Lambda(n)/sqrt n) - 1 = +6.519e-04, mass 0.72023173, 2 pts, span 5.01e-03
+      COMPARISON n =  7: centroid - log n = +8.371e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.162e-01, mass 0.82095849, 2 pts, span 5.01e-03
+      COMPARISON n =  9: centroid - log n = -2.529e-02, mass/(Lambda(n)/sqrt n) - 1 = +4.579e-01, mass 0.53388331, 2 pts, span 5.01e-03
+      COMPARISON n = 11: centroid - log n = +3.471e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.807e-01, mass 1.14285208, 2 pts, span 5.01e-03
+  [x13_N10_M64] level 2: h = 6.2621e-04, grid 235 pts; max lambda_min in [3.52809734464e-7, 3.52809734464e-7] (rel. width 1.3e-19); tau* in [-3.528097345e-7, -3.528097345e-7]; repair rho = 0.0; mp IPM iters 23, col.gen rounds 1, |S| 152; 7 clusters, total mass 4.6900907795, stray mass 3.13e-18
+      COMPARISON n =  2: centroid - log n = +3.558e-06, mass/(Lambda(n)/sqrt n) - 1 = +2.772e-05, mass 0.49014266, 2 pts, span 6.26e-04
+      COMPARISON n =  3: centroid - log n = +5.694e-05, mass/(Lambda(n)/sqrt n) - 1 = +5.021e-04, mass 0.63460258, 2 pts, span 6.26e-04
+      COMPARISON n =  4: centroid - log n = +8.974e-04, mass/(Lambda(n)/sqrt n) - 1 = +6.884e-03, mass 0.34895955, 2 pts, span 6.26e-04
+      COMPARISON n =  5: centroid - log n = +1.110e-03, mass/(Lambda(n)/sqrt n) - 1 = +9.031e-04, mass 0.72041254, 2 pts, span 6.26e-04
+      COMPARISON n =  7: centroid - log n = +8.143e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.154e-01, mass 0.82037789, 2 pts, span 6.26e-04
+      COMPARISON n =  9: centroid - log n = -2.566e-02, mass/(Lambda(n)/sqrt n) - 1 = +4.586e-01, mass 0.53413953, 2 pts, span 6.26e-04
+      COMPARISON n = 11: centroid - log n = +3.444e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.788e-01, mass 1.14145603, 2 pts, span 6.26e-04
+  [x13_N10_M64] level 3: h = 7.8276e-05, grid 238 pts; max lambda_min in [3.7336060421e-7, 3.7336060421e-7] (rel. width 9.9e-19); tau* in [-3.733606042e-7, -3.733606042e-7]; repair rho = 0.0; mp IPM iters 18, col.gen rounds 1, |S| 184; 7 clusters, total mass 4.6900572198, stray mass 2.00e-15
+      COMPARISON n =  2: centroid - log n = +3.401e-06, mass/(Lambda(n)/sqrt n) - 1 = +2.702e-05, mass 0.49014232, 2 pts, span 7.83e-05
+      COMPARISON n =  3: centroid - log n = +5.595e-05, mass/(Lambda(n)/sqrt n) - 1 = +4.967e-04, mass 0.63459914, 2 pts, span 7.83e-05
+      COMPARISON n =  4: centroid - log n = +8.933e-04, mass/(Lambda(n)/sqrt n) - 1 = +6.872e-03, mass 0.34895519, 2 pts, span 7.83e-05
+      COMPARISON n =  5: centroid - log n = +1.108e-03, mass/(Lambda(n)/sqrt n) - 1 = +9.094e-04, mass 0.72041709, 2 pts, span 7.83e-05
+      COMPARISON n =  7: centroid - log n = +8.140e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.154e-01, mass 0.82036577, 2 pts, span 7.83e-05
+      COMPARISON n =  9: centroid - log n = -2.566e-02, mass/(Lambda(n)/sqrt n) - 1 = +4.586e-01, mass 0.53414371, 2 pts, span 7.83e-05
+      COMPARISON n = 11: centroid - log n = +3.443e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.788e-01, mass 1.14143401, 2 pts, span 7.83e-05
+
+  --- x13_N10_M128 ---
+  [x13_N10_M128] level 0: h = 2.0039e-02, grid 127 pts; max lambda_min in [-5.22010125329e-5, -5.22010125329e-5] (rel. width 2.1e-23); tau* in [5.220101253e-5, 5.220101253e-5]; repair rho = 2.2e-28; mp IPM iters 17, col.gen rounds 1, |S| 28; 7 clusters, total mass 4.7227124064, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = +5.164e-04, mass/(Lambda(n)/sqrt n) - 1 = +2.634e-03, mass 0.49142029, 2 pts, span 2.00e-02
+      COMPARISON n =  3: centroid - log n = +1.279e-03, mass/(Lambda(n)/sqrt n) - 1 = +4.025e-03, mass 0.63683710, 2 pts, span 2.00e-02
+      COMPARISON n =  4: centroid - log n = +5.130e-03, mass/(Lambda(n)/sqrt n) - 1 = +2.231e-02, mass 0.35430609, 2 pts, span 2.00e-02
+      COMPARISON n =  5: centroid - log n = +3.927e-03, mass/(Lambda(n)/sqrt n) - 1 = -3.027e-03, mass 0.71758414, 2 pts, span 2.00e-02
+      COMPARISON n =  7: centroid - log n = +1.187e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.308e-01, mass 0.83165901, 2 pts, span 2.00e-02
+      COMPARISON n =  9: centroid - log n = -1.951e-02, mass/(Lambda(n)/sqrt n) - 1 = +4.441e-01, mass 0.52882849, 2 pts, span 2.00e-02
+      COMPARISON n = 11: centroid - log n = +3.864e-02, mass/(Lambda(n)/sqrt n) - 1 = +6.073e-01, mass 1.16207729, 2 pts, span 2.00e-02
+  [x13_N10_M128] level 1: h = 2.5048e-03, grid 274 pts; max lambda_min in [-3.18955680797e-7, -3.18955680797e-7] (rel. width 1.7e-20); tau* in [3.189556808e-7, 3.189556808e-7]; repair rho = 2.7e-27; mp IPM iters 18, col.gen rounds 1, |S| 62; 7 clusters, total mass 4.6904225472, stray mass 9.86e-22
+      COMPARISON n =  2: centroid - log n = +9.865e-06, mass/(Lambda(n)/sqrt n) - 1 = +5.878e-05, mass 0.49015788, 2 pts, span 2.50e-03
+      COMPARISON n =  3: centroid - log n = +7.888e-05, mass/(Lambda(n)/sqrt n) - 1 = +5.966e-04, mass 0.63466252, 2 pts, span 2.50e-03
+      COMPARISON n =  4: centroid - log n = +9.816e-04, mass/(Lambda(n)/sqrt n) - 1 = +7.178e-03, mass 0.34906132, 2 pts, span 2.50e-03
+      COMPARISON n =  5: centroid - log n = +1.157e-03, mass/(Lambda(n)/sqrt n) - 1 = +7.666e-04, mass 0.72031429, 2 pts, span 2.50e-03
+      COMPARISON n =  7: centroid - log n = +8.189e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.156e-01, mass 0.82051329, 2 pts, span 2.50e-03
+      COMPARISON n =  9: centroid - log n = -2.559e-02, mass/(Lambda(n)/sqrt n) - 1 = +4.584e-01, mass 0.53405623, 2 pts, span 2.50e-03
+      COMPARISON n = 11: centroid - log n = +3.448e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.791e-01, mass 1.14165702, 2 pts, span 2.50e-03
+  [x13_N10_M128] level 2: h = 3.1310e-04, grid 300 pts; max lambda_min in [3.65658608588e-7, 3.65658608588e-7] (rel. width 2.6e-18); tau* in [-3.656586086e-7, -3.656586086e-7]; repair rho = 0.0; mp IPM iters 19, col.gen rounds 1, |S| 169; 7 clusters, total mass 4.6900624474, stray mass 2.08e-16
+      COMPARISON n =  2: centroid - log n = +3.481e-06, mass/(Lambda(n)/sqrt n) - 1 = +2.743e-05, mass 0.49014252, 2 pts, span 3.13e-04
+      COMPARISON n =  3: centroid - log n = +5.612e-05, mass/(Lambda(n)/sqrt n) - 1 = +4.971e-04, mass 0.63459937, 2 pts, span 3.13e-04
+      COMPARISON n =  4: centroid - log n = +8.939e-04, mass/(Lambda(n)/sqrt n) - 1 = +6.875e-03, mass 0.34895611, 2 pts, span 3.13e-04
+      COMPARISON n =  5: centroid - log n = +1.108e-03, mass/(Lambda(n)/sqrt n) - 1 = +9.088e-04, mass 0.72041663, 2 pts, span 3.13e-04
+      COMPARISON n =  7: centroid - log n = +8.140e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.154e-01, mass 0.82036701, 2 pts, span 3.13e-04
+      COMPARISON n =  9: centroid - log n = -2.566e-02, mass/(Lambda(n)/sqrt n) - 1 = +4.586e-01, mass 0.53414323, 2 pts, span 3.13e-04
+      COMPARISON n = 11: centroid - log n = +3.444e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.788e-01, mass 1.14143758, 2 pts, span 3.13e-04
+  [x13_N10_M128] level 3: h = 3.9138e-05, grid 302 pts; max lambda_min in [3.7370753555e-7, 3.7370753555e-7] (rel. width 1.6e-18); tau* in [-3.737075355e-7, -3.737075355e-7]; repair rho = 0.0; mp IPM iters 27, col.gen rounds 1, |S| 190; 7 clusters, total mass 4.6900568896, stray mass 3.71e-14
+      COMPARISON n =  2: centroid - log n = +3.398e-06, mass/(Lambda(n)/sqrt n) - 1 = +2.701e-05, mass 0.49014231, 2 pts, span 3.91e-05
+      COMPARISON n =  3: centroid - log n = +5.594e-05, mass/(Lambda(n)/sqrt n) - 1 = +4.966e-04, mass 0.63459911, 2 pts, span 3.91e-05
+      COMPARISON n =  4: centroid - log n = +8.932e-04, mass/(Lambda(n)/sqrt n) - 1 = +6.872e-03, mass 0.34895515, 2 pts, span 3.91e-05
+      COMPARISON n =  5: centroid - log n = +1.108e-03, mass/(Lambda(n)/sqrt n) - 1 = +9.095e-04, mass 0.72041712, 2 pts, span 3.91e-05
+      COMPARISON n =  7: centroid - log n = +8.140e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.154e-01, mass 0.82036564, 2 pts, span 3.91e-05
+      COMPARISON n =  9: centroid - log n = -2.566e-02, mass/(Lambda(n)/sqrt n) - 1 = +4.586e-01, mass 0.53414376, 2 pts, span 3.91e-05
+      COMPARISON n = 11: centroid - log n = +3.443e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.788e-01, mass 1.14143380, 2 pts, span 3.91e-05
+
+  --- x13_N10_M256 ---
+  [x13_N10_M256] level 0: h = 1.0019e-02, grid 255 pts; max lambda_min in [-7.88867326325e-6, -7.88867326325e-6] (rel. width 4.2e-22); tau* in [7.888673263e-6, 7.888673263e-6]; repair rho = 9.3e-28; mp IPM iters 17, col.gen rounds 1, |S| 37; 7 clusters, total mass 4.6977679676, stray mass 2.47e-22
+      COMPARISON n =  2: centroid - log n = +8.178e-05, mass/(Lambda(n)/sqrt n) - 1 = +4.019e-04, mass 0.49032608, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +3.536e-04, mass/(Lambda(n)/sqrt n) - 1 = +1.837e-03, mass 0.63544947, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = +2.107e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.101e-02, mass 0.35038833, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +1.795e-03, mass/(Lambda(n)/sqrt n) - 1 = -6.957e-04, mass 0.71926178, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = +8.933e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.188e-01, mass 0.82282476, 2 pts, span 1.00e-02
+      COMPARISON n =  9: centroid - log n = -2.427e-02, mass/(Lambda(n)/sqrt n) - 1 = +4.559e-01, mass 0.53314228, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = +3.540e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.856e-01, mass 1.14637527, 2 pts, span 1.00e-02
+  [x13_N10_M256] level 1: h = 1.2524e-03, grid 402 pts; max lambda_min in [1.64069627537e-7, 1.64069627537e-7] (rel. width 1.8e-20); tau* in [-1.640696275e-7, -1.640696275e-7]; repair rho = 4.1e-28; mp IPM iters 22, col.gen rounds 1, |S| 143; 7 clusters, total mass 4.6901577268, stray mass 4.84e-20
+      COMPARISON n =  2: centroid - log n = +5.470e-06, mass/(Lambda(n)/sqrt n) - 1 = +3.739e-05, mass 0.49014740, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +6.191e-05, mass/(Lambda(n)/sqrt n) - 1 = +5.186e-04, mass 0.63461302, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = +9.160e-04, mass/(Lambda(n)/sqrt n) - 1 = +6.959e-03, mass 0.34898545, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +1.121e-03, mass/(Lambda(n)/sqrt n) - 1 = +8.730e-04, mass 0.72039083, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = +8.154e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.155e-01, mass 0.82040876, 2 pts, span 1.25e-03
+      COMPARISON n =  9: centroid - log n = -2.564e-02, mass/(Lambda(n)/sqrt n) - 1 = +4.585e-01, mass 0.53411833, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = +3.445e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.788e-01, mass 1.14149394, 2 pts, span 1.25e-03
+  [x13_N10_M256] level 2: h = 1.5655e-04, grid 427 pts; max lambda_min in [3.7080401659e-7, 3.7080401659e-7] (rel. width 6.7e-19); tau* in [-3.708040166e-7, -3.708040166e-7]; repair rho = 0.0; mp IPM iters 23, col.gen rounds 1, |S| 220; 7 clusters, total mass 4.6900581950, stray mass 4.41e-16
+      COMPARISON n =  2: centroid - log n = +3.428e-06, mass/(Lambda(n)/sqrt n) - 1 = +2.716e-05, mass 0.49014238, 2 pts, span 1.57e-04
+      COMPARISON n =  3: centroid - log n = +5.601e-05, mass/(Lambda(n)/sqrt n) - 1 = +4.968e-04, mass 0.63459923, 2 pts, span 1.57e-04
+      COMPARISON n =  4: centroid - log n = +8.935e-04, mass/(Lambda(n)/sqrt n) - 1 = +6.872e-03, mass 0.34895537, 2 pts, span 1.57e-04
+      COMPARISON n =  5: centroid - log n = +1.108e-03, mass/(Lambda(n)/sqrt n) - 1 = +9.093e-04, mass 0.72041703, 2 pts, span 1.57e-04
+      COMPARISON n =  7: centroid - log n = +8.140e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.154e-01, mass 0.82036620, 2 pts, span 1.57e-04
+      COMPARISON n =  9: centroid - log n = -2.566e-02, mass/(Lambda(n)/sqrt n) - 1 = +4.586e-01, mass 0.53414345, 2 pts, span 1.57e-04
+      COMPARISON n = 11: centroid - log n = +3.443e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.788e-01, mass 1.14143454, 2 pts, span 1.57e-04
+  [x13_N10_M256] level 3: h = 1.9569e-05, grid 429 pts; max lambda_min in [3.73880814652e-7, 3.73880814652e-7] (rel. width 6.3e-19); tau* in [-3.738808147e-7, -3.738808147e-7]; repair rho = 0.0; mp IPM iters 23, col.gen rounds 1, |S| 237; 7 clusters, total mass 4.6900567619, stray mass 5.18e-14
+      COMPARISON n =  2: centroid - log n = +3.396e-06, mass/(Lambda(n)/sqrt n) - 1 = +2.700e-05, mass 0.49014230, 2 pts, span 1.96e-05
+      COMPARISON n =  3: centroid - log n = +5.594e-05, mass/(Lambda(n)/sqrt n) - 1 = +4.966e-04, mass 0.63459910, 2 pts, span 1.96e-05
+      COMPARISON n =  4: centroid - log n = +8.932e-04, mass/(Lambda(n)/sqrt n) - 1 = +6.872e-03, mass 0.34895512, 2 pts, span 1.96e-05
+      COMPARISON n =  5: centroid - log n = +1.108e-03, mass/(Lambda(n)/sqrt n) - 1 = +9.095e-04, mass 0.72041714, 2 pts, span 1.96e-05
+      COMPARISON n =  7: centroid - log n = +8.140e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.154e-01, mass 0.82036561, 2 pts, span 1.96e-05
+      COMPARISON n =  9: centroid - log n = -2.566e-02, mass/(Lambda(n)/sqrt n) - 1 = +4.586e-01, mass 0.53414378, 2 pts, span 1.96e-05
+      COMPARISON n = 11: centroid - log n = +3.443e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.788e-01, mass 1.14143371, 2 pts, span 1.96e-05
+
+  --- x13_N20_M64 ---
+  [x13_N20_M64] level 0: h = 4.0077e-02, grid 63 pts; max lambda_min in [-1.79678071205e-4, -1.79678071205e-4] (rel. width 4.4e-24); tau* in [1.796780712e-4, 1.796780712e-4]; repair rho = 2.6e-29; mp IPM iters 19, col.gen rounds 1, |S| 32; 7 clusters, total mass 4.4469427591, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = +1.877e-03, mass/(Lambda(n)/sqrt n) - 1 = +9.071e-03, mass 0.49457519, 2 pts, span 4.01e-02
+      COMPARISON n =  3: centroid - log n = +6.222e-03, mass/(Lambda(n)/sqrt n) - 1 = +2.622e-02, mass 0.65091471, 2 pts, span 4.01e-02
+      COMPARISON n =  4: centroid - log n = +2.364e-02, mass/(Lambda(n)/sqrt n) - 1 = +8.246e-02, mass 0.37515276, 2 pts, span 4.01e-02
+      COMPARISON n =  5: centroid - log n = +1.478e-02, mass/(Lambda(n)/sqrt n) - 1 = -2.723e-02, mass 0.70016567, 2 pts, span 4.01e-02
+      COMPARISON n =  7: centroid - log n = +1.987e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.260e-01, mass 0.82813893, 2 pts, span 4.01e-02
+      COMPARISON n =  9: centroid - log n = -9.554e-04, mass/(Lambda(n)/sqrt n) - 1 = +5.428e-01, mass 0.56497520, 4 pts, span 1.60e-01
+      COMPARISON n = 11: centroid - log n = +2.780e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.522e-01, mass 0.83302031, 2 pts, span 4.01e-02
+  [x13_N20_M64] level 1: h = 5.0097e-03, grid 231 pts; max lambda_min in [-3.15311145725e-6, -3.15311145725e-6] (rel. width 6.5e-22); tau* in [3.153111457e-6, 3.153111457e-6]; repair rho = 7.5e-28; mp IPM iters 24, col.gen rounds 1, |S| 98; 9 clusters, total mass 4.2694744961, stray mass 3.80e-21
+      COMPARISON n =  2: centroid - log n = +3.084e-05, mass/(Lambda(n)/sqrt n) - 1 = +1.529e-04, mass 0.49020403, 2 pts, span 5.01e-03
+      COMPARISON n =  3: centroid - log n = +9.714e-05, mass/(Lambda(n)/sqrt n) - 1 = +3.861e-04, mass 0.63452899, 2 pts, span 5.01e-03
+      COMPARISON n =  4: centroid - log n = +3.480e-04, mass/(Lambda(n)/sqrt n) - 1 = +1.063e-03, mass 0.34694197, 2 pts, span 5.01e-03
+      COMPARISON n =  5: centroid - log n = +2.093e-04, mass/(Lambda(n)/sqrt n) - 1 = -3.601e-04, mass 0.71950333, 2 pts, span 5.01e-03
+      COMPARISON n =  7: centroid - log n = +2.896e-04, mass/(Lambda(n)/sqrt n) - 1 = +3.653e-04, mass 0.73575358, 2 pts, span 5.01e-03
+      COMPARISON n =  8: centroid - log n = -3.550e-02, mass/(Lambda(n)/sqrt n) - 1 = -9.147e-01, mass 0.02090929, 1 pts, span 0.00e+00
+      COMPARISON n =  8: centroid - log n = +4.580e-03, mass/(Lambda(n)/sqrt n) - 1 = -6.598e-02, mass 0.22889640, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = +1.243e-03, mass/(Lambda(n)/sqrt n) - 1 = -1.004e-02, mass 0.36252818, 2 pts, span 5.01e-03
+      COMPARISON n = 11: centroid - log n = +9.685e-04, mass/(Lambda(n)/sqrt n) - 1 = +9.981e-03, mass 0.73020872, 2 pts, span 5.01e-03
+  [x13_N20_M64] level 2: h = 6.2621e-04, grid 267 pts; max lambda_min in [-2.17645243222e-8, -2.17645243222e-8] (rel. width 1.6e-18); tau* in [2.176452432e-8, 2.176452432e-8]; repair rho = 0.0; mp IPM iters 27, col.gen rounds 1, |S| 155; 8 clusters, total mass 4.2631543415, stray mass 1.59e-17
+      COMPARISON n =  2: centroid - log n = +1.745e-07, mass/(Lambda(n)/sqrt n) - 1 = +7.927e-07, mass 0.49012946, 2 pts, span 6.26e-04
+      COMPARISON n =  3: centroid - log n = +1.003e-06, mass/(Lambda(n)/sqrt n) - 1 = +5.410e-06, mass 0.63428753, 2 pts, span 6.26e-04
+      COMPARISON n =  4: centroid - log n = +4.268e-06, mass/(Lambda(n)/sqrt n) - 1 = +1.329e-05, mass 0.34657820, 2 pts, span 6.26e-04
+      COMPARISON n =  5: centroid - log n = +2.396e-06, mass/(Lambda(n)/sqrt n) - 1 = -4.916e-06, mass 0.71975898, 2 pts, span 6.26e-04
+      COMPARISON n =  7: centroid - log n = +8.590e-06, mass/(Lambda(n)/sqrt n) - 1 = +1.242e-04, mass 0.73557627, 2 pts, span 6.26e-04
+      COMPARISON n =  8: centroid - log n = +8.859e-05, mass/(Lambda(n)/sqrt n) - 1 = +6.679e-04, mass 0.24522822, 2 pts, span 6.26e-04
+      COMPARISON n =  9: centroid - log n = +7.873e-05, mass/(Lambda(n)/sqrt n) - 1 = -2.927e-04, mass 0.36609689, 2 pts, span 6.26e-04
+      COMPARISON n = 11: centroid - log n = +1.885e-04, mass/(Lambda(n)/sqrt n) - 1 = +3.466e-03, mass 0.72549880, 2 pts, span 6.26e-04
+  [x13_N20_M64] level 3: h = 7.8276e-05, grid 263 pts; max lambda_min in [-4.51569610443e-10, -4.51569610443e-10] (rel. width 3.9e-16); tau* in [4.515696104e-10, 4.515696104e-10]; repair rho = 0.0; mp IPM iters 31, col.gen rounds 1, |S| 209; 8 clusters, total mass 4.2624996990, stray mass 2.76e-12
+      COMPARISON n =  2: centroid - log n = +4.506e-09, mass/(Lambda(n)/sqrt n) - 1 = +2.265e-08, mass 0.49012908, 2 pts, span 7.83e-05
+      COMPARISON n =  3: centroid - log n = +1.257e-08, mass/(Lambda(n)/sqrt n) - 1 = +4.458e-08, mass 0.63428413, 2 pts, span 7.83e-05
+      COMPARISON n =  4: centroid - log n = +5.508e-08, mass/(Lambda(n)/sqrt n) - 1 = +2.536e-07, mass 0.34657368, 2 pts, span 7.83e-05
+      COMPARISON n =  5: centroid - log n = +3.914e-08, mass/(Lambda(n)/sqrt n) - 1 = -4.825e-08, mass 0.71976248, 2 pts, span 7.83e-05
+      COMPARISON n =  7: centroid - log n = +5.018e-07, mass/(Lambda(n)/sqrt n) - 1 = +1.162e-05, mass 0.73549345, 2 pts, span 7.83e-05
+      COMPARISON n =  8: centroid - log n = +1.637e-05, mass/(Lambda(n)/sqrt n) - 1 = +2.410e-04, mass 0.24512359, 2 pts, span 7.83e-05
+      COMPARISON n =  9: centroid - log n = +2.832e-05, mass/(Lambda(n)/sqrt n) - 1 = +2.148e-05, mass 0.36621196, 2 pts, span 7.83e-05
+      COMPARISON n = 11: centroid - log n = +1.288e-04, mass/(Lambda(n)/sqrt n) - 1 = +2.668e-03, mass 0.72492132, 2 pts, span 7.83e-05
+
+  --- x13_N20_M128 ---
+  [x13_N20_M128] level 0: h = 2.0039e-02, grid 127 pts; max lambda_min in [-5.25374176652e-5, -5.25374176652e-5] (rel. width 1.2e-22); tau* in [5.253741767e-5, 5.253741767e-5]; repair rho = 1.9e-27; mp IPM iters 18, col.gen rounds 1, |S| 48; 8 clusters, total mass 4.2974339163, stray mass 8.46e-21
+      COMPARISON n =  2: centroid - log n = +5.135e-04, mass/(Lambda(n)/sqrt n) - 1 = +2.611e-03, mass 0.49140862, 2 pts, span 2.00e-02
+      COMPARISON n =  3: centroid - log n = +1.238e-03, mass/(Lambda(n)/sqrt n) - 1 = +3.662e-03, mass 0.63660714, 2 pts, span 2.00e-02
+      COMPARISON n =  4: centroid - log n = +4.390e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.627e-02, mass 0.35221116, 2 pts, span 2.00e-02
+      COMPARISON n =  5: centroid - log n = +2.990e-03, mass/(Lambda(n)/sqrt n) - 1 = -3.642e-03, mass 0.71714088, 2 pts, span 2.00e-02
+      COMPARISON n =  7: centroid - log n = +5.790e-03, mass/(Lambda(n)/sqrt n) - 1 = +4.684e-02, mass 0.76993532, 2 pts, span 2.00e-02
+      COMPARISON n =  8: centroid - log n = +2.082e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.131e-02, mass 0.24783691, 2 pts, span 2.00e-02
+      COMPARISON n =  9: centroid - log n = +1.072e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.873e-02, mass 0.33737248, 2 pts, span 2.00e-02
+      COMPARISON n = 11: centroid - log n = +5.557e-03, mass/(Lambda(n)/sqrt n) - 1 = +3.033e-02, mass 0.74492139, 2 pts, span 2.00e-02
+  [x13_N20_M128] level 1: h = 2.5048e-03, grid 295 pts; max lambda_min in [-6.97868242786e-7, -6.97868242786e-7] (rel. width 1.8e-20); tau* in [6.978682428e-7, 6.978682428e-7]; repair rho = 0.0; mp IPM iters 27, col.gen rounds 1, |S| 132; 8 clusters, total mass 4.2641414118, stray mass 3.46e-19
+      COMPARISON n =  2: centroid - log n = +6.461e-06, mass/(Lambda(n)/sqrt n) - 1 = +3.165e-05, mass 0.49014458, 2 pts, span 2.50e-03
+      COMPARISON n =  3: centroid - log n = +2.279e-05, mass/(Lambda(n)/sqrt n) - 1 = +9.737e-05, mass 0.63434586, 2 pts, span 2.50e-03
+      COMPARISON n =  4: centroid - log n = +8.776e-05, mass/(Lambda(n)/sqrt n) - 1 = +2.794e-04, mass 0.34667041, 2 pts, span 2.50e-03
+      COMPARISON n =  5: centroid - log n = +5.286e-05, mass/(Lambda(n)/sqrt n) - 1 = -8.492e-05, mass 0.71970139, 2 pts, span 2.50e-03
+      COMPARISON n =  7: centroid - log n = +9.287e-05, mass/(Lambda(n)/sqrt n) - 1 = +7.557e-04, mass 0.73604074, 2 pts, span 2.50e-03
+      COMPARISON n =  8: centroid - log n = +3.200e-04, mass/(Lambda(n)/sqrt n) - 1 = -8.701e-05, mass 0.24504321, 2 pts, span 2.50e-03
+      COMPARISON n =  9: centroid - log n = +1.933e-04, mass/(Lambda(n)/sqrt n) - 1 = -7.442e-04, mass 0.36593156, 2 pts, span 2.50e-03
+      COMPARISON n = 11: centroid - log n = +3.114e-04, mass/(Lambda(n)/sqrt n) - 1 = +4.524e-03, mass 0.72626365, 2 pts, span 2.50e-03
+  [x13_N20_M128] level 2: h = 3.1310e-04, grid 323 pts; max lambda_min in [-8.91049450064e-9, -8.91049450064e-9] (rel. width 2.9e-18); tau* in [8.910494501e-9, 8.910494501e-9]; repair rho = 0.0; mp IPM iters 29, col.gen rounds 1, |S| 199; 8 clusters, total mass 4.2630771230, stray mass 1.55e-16
+      COMPARISON n =  2: centroid - log n = +8.486e-08, mass/(Lambda(n)/sqrt n) - 1 = +4.188e-07, mass 0.49012928, 2 pts, span 3.13e-04
+      COMPARISON n =  3: centroid - log n = +2.817e-07, mass/(Lambda(n)/sqrt n) - 1 = +1.158e-06, mass 0.63428484, 2 pts, span 3.13e-04
+      COMPARISON n =  4: centroid - log n = +1.156e-06, mass/(Lambda(n)/sqrt n) - 1 = +4.297e-06, mass 0.34657508, 2 pts, span 3.13e-04
+      COMPARISON n =  5: centroid - log n = +7.752e-07, mass/(Lambda(n)/sqrt n) - 1 = -8.158e-07, mass 0.71976193, 2 pts, span 3.13e-04
+      COMPARISON n =  7: centroid - log n = +4.329e-06, mass/(Lambda(n)/sqrt n) - 1 = +7.936e-05, mass 0.73554327, 2 pts, span 3.13e-04
+      COMPARISON n =  8: centroid - log n = +7.570e-05, mass/(Lambda(n)/sqrt n) - 1 = +7.722e-04, mass 0.24525377, 2 pts, span 3.13e-04
+      COMPARISON n =  9: centroid - log n = +7.749e-05, mass/(Lambda(n)/sqrt n) - 1 = -2.732e-04, mass 0.36610404, 2 pts, span 3.13e-04
+      COMPARISON n = 11: centroid - log n = +1.817e-04, mass/(Lambda(n)/sqrt n) - 1 = +3.364e-03, mass 0.72542492, 2 pts, span 3.13e-04
+  [x13_N20_M128] level 3: h = 3.9138e-05, grid 327 pts; max lambda_min in [-1.81968485743e-10, -1.81968485743e-10] (rel. width 3.7e-16); tau* in [1.819684857e-10, 1.819684857e-10]; repair rho = 0.0; mp IPM iters 31, col.gen rounds 1, |S| 240; 8 clusters, total mass 4.2618517450, stray mass 9.57e-12
+      COMPARISON n =  2: centroid - log n = +1.806e-09, mass/(Lambda(n)/sqrt n) - 1 = +9.060e-09, mass 0.49012908, 2 pts, span 3.91e-05
+      COMPARISON n =  3: centroid - log n = +5.265e-09, mass/(Lambda(n)/sqrt n) - 1 = +1.975e-08, mass 0.63428411, 2 pts, span 3.91e-05
+      COMPARISON n =  4: centroid - log n = +2.143e-08, mass/(Lambda(n)/sqrt n) - 1 = +8.863e-08, mass 0.34657362, 2 pts, span 3.91e-05
+      COMPARISON n =  5: centroid - log n = +1.513e-08, mass/(Lambda(n)/sqrt n) - 1 = -1.553e-08, mass 0.71976250, 2 pts, span 3.91e-05
+      COMPARISON n =  7: centroid - log n = +1.961e-07, mass/(Lambda(n)/sqrt n) - 1 = +4.688e-06, mass 0.73548835, 2 pts, span 3.91e-05
+      COMPARISON n =  8: centroid - log n = +7.136e-06, mass/(Lambda(n)/sqrt n) - 1 = +1.110e-04, mass 0.24509175, 2 pts, span 3.91e-05
+      COMPARISON n =  9: centroid - log n = +1.377e-05, mass/(Lambda(n)/sqrt n) - 1 = +2.475e-05, mass 0.36621316, 2 pts, span 3.91e-05
+      COMPARISON n = 11: centroid - log n = +8.149e-05, mass/(Lambda(n)/sqrt n) - 1 = +1.821e-03, mass 0.72430917, 2 pts, span 3.91e-05
+
+  --- x13_N20_M256 ---
+  [x13_N20_M256] level 0: h = 1.0019e-02, grid 255 pts; max lambda_min in [-8.25371406741e-6, -8.25371406741e-6] (rel. width 4.0e-22); tau* in [8.253714067e-6, 8.253714067e-6]; repair rho = 0.0; mp IPM iters 23, col.gen rounds 1, |S| 79; 8 clusters, total mass 4.2782939864, stray mass 3.75e-20
+      COMPARISON n =  2: centroid - log n = +7.824e-05, mass/(Lambda(n)/sqrt n) - 1 = +3.740e-04, mass 0.49031239, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +2.993e-04, mass/(Lambda(n)/sqrt n) - 1 = +1.355e-03, mass 0.63514348, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = +1.215e-03, mass/(Lambda(n)/sqrt n) - 1 = +3.953e-03, mass 0.34794349, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +7.062e-04, mass/(Lambda(n)/sqrt n) - 1 = -1.313e-03, mass 0.71881711, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = +1.432e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.243e-02, mass 0.74462760, 2 pts, span 1.00e-02
+      COMPARISON n =  8: centroid - log n = +4.120e-03, mass/(Lambda(n)/sqrt n) - 1 = -1.772e-02, mass 0.24072091, 2 pts, span 1.00e-02
+      COMPARISON n =  9: centroid - log n = +1.944e-03, mass/(Lambda(n)/sqrt n) - 1 = -6.442e-03, mass 0.36384487, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = +2.171e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.921e-02, mass 0.73688413, 2 pts, span 1.00e-02
+  [x13_N20_M256] level 1: h = 1.2524e-03, grid 423 pts; max lambda_min in [-2.08017562152e-7, -2.08017562152e-7] (rel. width 1.6e-20); tau* in [2.080175622e-7, 2.080175622e-7]; repair rho = 3.3e-28; mp IPM iters 25, col.gen rounds 1, |S| 191; 8 clusters, total mass 4.2632952278, stray mass 4.64e-19
+      COMPARISON n =  2: centroid - log n = +2.089e-06, mass/(Lambda(n)/sqrt n) - 1 = +1.053e-05, mass 0.49013423, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +5.813e-06, mass/(Lambda(n)/sqrt n) - 1 = +2.100e-05, mass 0.63429742, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = +2.033e-05, mass/(Lambda(n)/sqrt n) - 1 = +6.879e-05, mass 0.34659743, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +1.244e-05, mass/(Lambda(n)/sqrt n) - 1 = -2.600e-05, mass 0.71974380, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = +2.216e-05, mass/(Lambda(n)/sqrt n) - 1 = +2.100e-04, mass 0.73563933, 2 pts, span 1.25e-03
+      COMPARISON n =  8: centroid - log n = +1.251e-04, mass/(Lambda(n)/sqrt n) - 1 = +6.645e-04, mass 0.24522739, 2 pts, span 1.25e-03
+      COMPARISON n =  9: centroid - log n = +1.012e-04, mass/(Lambda(n)/sqrt n) - 1 = -4.143e-04, mass 0.36605236, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = +2.055e-04, mass/(Lambda(n)/sqrt n) - 1 = +3.611e-03, mass 0.72560326, 2 pts, span 1.25e-03
+  [x13_N20_M256] level 2: h = 1.5655e-04, grid 453 pts; max lambda_min in [-3.26090768958e-9, -3.26090768958e-9] (rel. width 1.1e-17); tau* in [3.26090769e-9, 3.26090769e-9]; repair rho = 0.0; mp IPM iters 33, col.gen rounds 1, |S| 251; 8 clusters, total mass 4.2631377538, stray mass 4.26e-15
+      COMPARISON n =  2: centroid - log n = +3.140e-08, mass/(Lambda(n)/sqrt n) - 1 = +1.555e-07, mass 0.49012915, 2 pts, span 1.57e-04
+      COMPARISON n =  3: centroid - log n = +1.045e-07, mass/(Lambda(n)/sqrt n) - 1 = +4.387e-07, mass 0.63428438, 2 pts, span 1.57e-04
+      COMPARISON n =  4: centroid - log n = +3.952e-07, mass/(Lambda(n)/sqrt n) - 1 = +1.306e-06, mass 0.34657404, 2 pts, span 1.57e-04
+      COMPARISON n =  5: centroid - log n = +2.723e-07, mass/(Lambda(n)/sqrt n) - 1 = -1.747e-07, mass 0.71976239, 2 pts, span 1.57e-04
+      COMPARISON n =  7: centroid - log n = +2.334e-06, mass/(Lambda(n)/sqrt n) - 1 = +4.881e-05, mass 0.73552081, 2 pts, span 1.57e-04
+      COMPARISON n =  8: centroid - log n = +5.596e-05, mass/(Lambda(n)/sqrt n) - 1 = +6.867e-04, mass 0.24523282, 2 pts, span 1.57e-04
+      COMPARISON n =  9: centroid - log n = +7.086e-05, mass/(Lambda(n)/sqrt n) - 1 = -1.462e-04, mass 0.36615057, 2 pts, span 1.57e-04
+      COMPARISON n = 11: centroid - log n = +1.873e-04, mass/(Lambda(n)/sqrt n) - 1 = +3.445e-03, mass 0.72548360, 2 pts, span 1.57e-04
+  [x13_N20_M256] level 3: h = 1.9569e-05, grid 455 pts; max lambda_min in [-4.74286831833e-11, -4.74286831833e-11] (rel. width 1.4e-14); tau* in [4.742868318e-11, 4.742868318e-11]; repair rho = 0.0; mp IPM iters 34, col.gen rounds 1, |S| 271; 8 clusters, total mass 4.2612578180, stray mass 9.75e-10
+      COMPARISON n =  2: centroid - log n = +4.541e-10, mass/(Lambda(n)/sqrt n) - 1 = +2.243e-09, mass 0.49012907, 2 pts, span 1.96e-05
+      COMPARISON n =  3: centroid - log n = +1.547e-09, mass/(Lambda(n)/sqrt n) - 1 = +6.584e-09, mass 0.63428410, 2 pts, span 1.96e-05
+      COMPARISON n =  4: centroid - log n = +6.310e-09, mass/(Lambda(n)/sqrt n) - 1 = +2.380e-08, mass 0.34657360, 2 pts, span 1.96e-05
+      COMPARISON n =  5: centroid - log n = +4.436e-09, mass/(Lambda(n)/sqrt n) - 1 = -3.106e-09, mass 0.71976251, 2 pts, span 1.96e-05
+      COMPARISON n =  7: centroid - log n = +6.705e-08, mass/(Lambda(n)/sqrt n) - 1 = +1.629e-06, mass 0.73548610, 2 pts, span 1.96e-05
+      COMPARISON n =  8: centroid - log n = +2.592e-06, mass/(Lambda(n)/sqrt n) - 1 = +4.185e-05, mass 0.24507479, 2 pts, span 1.96e-05
+      COMPARISON n =  9: centroid - log n = +5.465e-06, mass/(Lambda(n)/sqrt n) - 1 = +1.495e-05, mass 0.36620957, 2 pts, span 1.96e-05
+      COMPARISON n = 11: centroid - log n = +4.250e-05, mass/(Lambda(n)/sqrt n) - 1 = +1.031e-03, mass 0.72373806, 2 pts, span 1.96e-05
+
+  --- x13_N40_M64 ---
+  [x13_N40_M64] level 0: h = 4.0077e-02, grid 63 pts; max lambda_min in [-1.79678299603e-4, -1.79678299603e-4] (rel. width 6.8e-24); tau* in [1.796782996e-4, 1.796782996e-4]; repair rho = 4.5e-28; mp IPM iters 19, col.gen rounds 1, |S| 32; 7 clusters, total mass 4.4175467932, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = +1.877e-03, mass/(Lambda(n)/sqrt n) - 1 = +9.071e-03, mass 0.49457518, 2 pts, span 4.01e-02
+      COMPARISON n =  3: centroid - log n = +6.222e-03, mass/(Lambda(n)/sqrt n) - 1 = +2.622e-02, mass 0.65091453, 2 pts, span 4.01e-02
+      COMPARISON n =  4: centroid - log n = +2.364e-02, mass/(Lambda(n)/sqrt n) - 1 = +8.245e-02, mass 0.37514946, 2 pts, span 4.01e-02
+      COMPARISON n =  5: centroid - log n = +1.478e-02, mass/(Lambda(n)/sqrt n) - 1 = -2.723e-02, mass 0.70016533, 2 pts, span 4.01e-02
+      COMPARISON n =  7: centroid - log n = +1.984e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.254e-01, mass 0.82774030, 2 pts, span 4.01e-02
+      COMPARISON n =  9: centroid - log n = -2.605e-03, mass/(Lambda(n)/sqrt n) - 1 = +5.267e-01, mass 0.55909291, 4 pts, span 1.60e-01
+      COMPARISON n = 11: centroid - log n = +2.507e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.202e-01, mass 0.80990907, 2 pts, span 4.01e-02
+  [x13_N40_M64] level 1: h = 5.0097e-03, grid 231 pts; max lambda_min in [-3.15339392014e-6, -3.15339392014e-6] (rel. width 7.9e-20); tau* in [3.15339392e-6, 3.15339392e-6]; repair rho = 0.0; mp IPM iters 19, col.gen rounds 1, |S| 104; 9 clusters, total mass 4.2652320184, stray mass 3.37e-19
+      COMPARISON n =  2: centroid - log n = +3.083e-05, mass/(Lambda(n)/sqrt n) - 1 = +1.529e-04, mass 0.49020402, 2 pts, span 5.01e-03
+      COMPARISON n =  3: centroid - log n = +9.709e-05, mass/(Lambda(n)/sqrt n) - 1 = +3.857e-04, mass 0.63452873, 2 pts, span 5.01e-03
+      COMPARISON n =  4: centroid - log n = +3.473e-04, mass/(Lambda(n)/sqrt n) - 1 = +1.057e-03, mass 0.34693985, 2 pts, span 5.01e-03
+      COMPARISON n =  5: centroid - log n = +2.081e-04, mass/(Lambda(n)/sqrt n) - 1 = -3.625e-04, mass 0.71950162, 2 pts, span 5.01e-03
+      COMPARISON n =  7: centroid - log n = +2.652e-04, mass/(Lambda(n)/sqrt n) - 1 = -1.737e-04, mass 0.73535719, 2 pts, span 5.01e-03
+      COMPARISON n =  8: centroid - log n = -3.550e-02, mass/(Lambda(n)/sqrt n) - 1 = -9.080e-01, mass 0.02254798, 1 pts, span 0.00e+00
+      COMPARISON n =  8: centroid - log n = +4.580e-03, mass/(Lambda(n)/sqrt n) - 1 = -7.335e-02, mass 0.22708859, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = +1.067e-03, mass/(Lambda(n)/sqrt n) - 1 = -9.361e-03, mass 0.36277621, 2 pts, span 5.01e-03
+      COMPARISON n = 11: centroid - log n = +6.404e-04, mass/(Lambda(n)/sqrt n) - 1 = +4.558e-03, mass 0.72628784, 2 pts, span 5.01e-03
+  [x13_N40_M64] level 2: h = 6.2621e-04, grid 267 pts; max lambda_min in [-2.18064310309e-8, -2.18064310309e-8] (rel. width 9.1e-20); tau* in [2.180643103e-8, 2.180643103e-8]; repair rho = 6.9e-29; mp IPM iters 28, col.gen rounds 1, |S| 184; 8 clusters, total mass 4.2605750162, stray mass 1.70e-19
+      COMPARISON n =  2: centroid - log n = +1.741e-07, mass/(Lambda(n)/sqrt n) - 1 = +7.896e-07, mass 0.49012946, 2 pts, span 6.26e-04
+      COMPARISON n =  3: centroid - log n = +9.962e-07, mass/(Lambda(n)/sqrt n) - 1 = +5.349e-06, mass 0.63428749, 2 pts, span 6.26e-04
+      COMPARISON n =  4: centroid - log n = +4.149e-06, mass/(Lambda(n)/sqrt n) - 1 = +1.231e-05, mass 0.34657786, 2 pts, span 6.26e-04
+      COMPARISON n =  5: centroid - log n = +2.213e-06, mass/(Lambda(n)/sqrt n) - 1 = -5.324e-06, mass 0.71975868, 2 pts, span 6.26e-04
+      COMPARISON n =  7: centroid - log n = +4.536e-06, mass/(Lambda(n)/sqrt n) - 1 = +3.948e-05, mass 0.73551394, 2 pts, span 6.26e-04
+      COMPARISON n =  8: centroid - log n = +1.165e-05, mass/(Lambda(n)/sqrt n) - 1 = -6.503e-05, mass 0.24504860, 2 pts, span 6.26e-04
+      COMPARISON n =  9: centroid - log n = +6.033e-06, mass/(Lambda(n)/sqrt n) - 1 = -1.033e-05, mass 0.36620031, 2 pts, span 6.26e-04
+      COMPARISON n = 11: centroid - log n = +8.286e-06, mass/(Lambda(n)/sqrt n) - 1 = +9.135e-05, mass 0.72305868, 2 pts, span 6.26e-04
+  [x13_N40_M64] level 3: h = 7.8276e-05, grid 263 pts; max lambda_min in [-4.5295578976e-10, -4.5295578976e-10] (rel. width 2.0e-16); tau* in [4.529557898e-10, 4.529557898e-10]; repair rho = 0.0; mp IPM iters 30, col.gen rounds 1, |S| 211; 8 clusters, total mass 4.2605069728, stray mass 7.16e-15
+      COMPARISON n =  2: centroid - log n = +4.493e-09, mass/(Lambda(n)/sqrt n) - 1 = +2.255e-08, mass 0.49012908, 2 pts, span 7.83e-05
+      COMPARISON n =  3: centroid - log n = +1.234e-08, mass/(Lambda(n)/sqrt n) - 1 = +4.240e-08, mass 0.63428413, 2 pts, span 7.83e-05
+      COMPARISON n =  4: centroid - log n = +5.043e-08, mass/(Lambda(n)/sqrt n) - 1 = +2.123e-07, mass 0.34657366, 2 pts, span 7.83e-05
+      COMPARISON n =  5: centroid - log n = +3.048e-08, mass/(Lambda(n)/sqrt n) - 1 = -7.849e-08, mass 0.71976246, 2 pts, span 7.83e-05
+      COMPARISON n =  7: centroid - log n = +5.959e-08, mass/(Lambda(n)/sqrt n) - 1 = +5.340e-07, mass 0.73548530, 2 pts, span 7.83e-05
+      COMPARISON n =  8: centroid - log n = +2.228e-07, mass/(Lambda(n)/sqrt n) - 1 = +2.715e-07, mass 0.24506460, 2 pts, span 7.83e-05
+      COMPARISON n =  9: centroid - log n = +1.650e-07, mass/(Lambda(n)/sqrt n) - 1 = -4.420e-07, mass 0.36620393, 2 pts, span 7.83e-05
+      COMPARISON n = 11: centroid - log n = +6.058e-07, mass/(Lambda(n)/sqrt n) - 1 = +1.546e-05, mass 0.72300381, 2 pts, span 7.83e-05
+
+  --- x13_N40_M128 ---
+  [x13_N40_M128] level 0: h = 2.0039e-02, grid 127 pts; max lambda_min in [-5.25379226259e-5, -5.25379226259e-5] (rel. width 5.2e-22); tau* in [5.253792263e-5, 5.253792263e-5]; repair rho = 4.7e-28; mp IPM iters 18, col.gen rounds 1, |S| 47; 8 clusters, total mass 4.2883406871, stray mass 4.08e-20
+      COMPARISON n =  2: centroid - log n = +5.135e-04, mass/(Lambda(n)/sqrt n) - 1 = +2.611e-03, mass 0.49140860, 2 pts, span 2.00e-02
+      COMPARISON n =  3: centroid - log n = +1.238e-03, mass/(Lambda(n)/sqrt n) - 1 = +3.662e-03, mass 0.63660677, 2 pts, span 2.00e-02
+      COMPARISON n =  4: centroid - log n = +4.388e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.626e-02, mass 0.35220731, 2 pts, span 2.00e-02
+      COMPARISON n =  5: centroid - log n = +2.988e-03, mass/(Lambda(n)/sqrt n) - 1 = -3.646e-03, mass 0.71713842, 2 pts, span 2.00e-02
+      COMPARISON n =  7: centroid - log n = +5.753e-03, mass/(Lambda(n)/sqrt n) - 1 = +4.611e-02, mass 0.76939604, 2 pts, span 2.00e-02
+      COMPARISON n =  8: centroid - log n = +2.013e-02, mass/(Lambda(n)/sqrt n) - 1 = +3.950e-03, mass 0.24603246, 2 pts, span 2.00e-02
+      COMPARISON n =  9: centroid - log n = +9.917e-03, mass/(Lambda(n)/sqrt n) - 1 = -7.662e-02, mass 0.33814433, 2 pts, span 2.00e-02
+      COMPARISON n = 11: centroid - log n = +4.731e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.994e-02, mass 0.73740675, 2 pts, span 2.00e-02
+  [x13_N40_M128] level 1: h = 2.5048e-03, grid 295 pts; max lambda_min in [-6.97930289547e-7, -6.97930289547e-7] (rel. width 2.2e-20); tau* in [6.979302895e-7, 6.979302895e-7]; repair rho = 0.0; mp IPM iters 26, col.gen rounds 1, |S| 126; 8 clusters, total mass 4.2614917275, stray mass 4.92e-19
+      COMPARISON n =  2: centroid - log n = +6.460e-06, mass/(Lambda(n)/sqrt n) - 1 = +3.164e-05, mass 0.49014458, 2 pts, span 2.50e-03
+      COMPARISON n =  3: centroid - log n = +2.278e-05, mass/(Lambda(n)/sqrt n) - 1 = +9.728e-05, mass 0.63434580, 2 pts, span 2.50e-03
+      COMPARISON n =  4: centroid - log n = +8.759e-05, mass/(Lambda(n)/sqrt n) - 1 = +2.780e-04, mass 0.34666992, 2 pts, span 2.50e-03
+      COMPARISON n =  5: centroid - log n = +5.260e-05, mass/(Lambda(n)/sqrt n) - 1 = -8.544e-05, mass 0.71970102, 2 pts, span 2.50e-03
+      COMPARISON n =  7: centroid - log n = +8.807e-05, mass/(Lambda(n)/sqrt n) - 1 = +6.571e-04, mass 0.73596816, 2 pts, span 2.50e-03
+      COMPARISON n =  8: centroid - log n = +2.308e-04, mass/(Lambda(n)/sqrt n) - 1 = -9.091e-04, mass 0.24484175, 2 pts, span 2.50e-03
+      COMPARISON n =  9: centroid - log n = +1.120e-04, mass/(Lambda(n)/sqrt n) - 1 = -4.189e-04, mass 0.36605071, 2 pts, span 2.50e-03
+      COMPARISON n = 11: centroid - log n = +1.198e-04, mass/(Lambda(n)/sqrt n) - 1 = +1.075e-03, mass 0.72376978, 2 pts, span 2.50e-03
+  [x13_N40_M128] level 2: h = 3.1310e-04, grid 323 pts; max lambda_min in [-8.93291948138e-9, -8.93291948138e-9] (rel. width 4.5e-18); tau* in [8.932919481e-9, 8.932919481e-9]; repair rho = 0.0; mp IPM iters 27, col.gen rounds 1, |S| 206; 8 clusters, total mass 4.2605281559, stray mass 2.80e-17
+      COMPARISON n =  2: centroid - log n = +8.466e-08, mass/(Lambda(n)/sqrt n) - 1 = +4.172e-07, mass 0.49012928, 2 pts, span 3.13e-04
+      COMPARISON n =  3: centroid - log n = +2.781e-07, mass/(Lambda(n)/sqrt n) - 1 = +1.125e-06, mass 0.63428481, 2 pts, span 3.13e-04
+      COMPARISON n =  4: centroid - log n = +1.088e-06, mass/(Lambda(n)/sqrt n) - 1 = +3.716e-06, mass 0.34657488, 2 pts, span 3.13e-04
+      COMPARISON n =  5: centroid - log n = +6.628e-07, mass/(Lambda(n)/sqrt n) - 1 = -1.116e-06, mass 0.71976171, 2 pts, span 3.13e-04
+      COMPARISON n =  7: centroid - log n = +1.120e-06, mass/(Lambda(n)/sqrt n) - 1 = +8.422e-06, mass 0.73549110, 2 pts, span 3.13e-04
+      COMPARISON n =  8: centroid - log n = +3.101e-06, mass/(Lambda(n)/sqrt n) - 1 = -9.235e-06, mass 0.24506227, 2 pts, span 3.13e-04
+      COMPARISON n =  9: centroid - log n = +1.660e-06, mass/(Lambda(n)/sqrt n) - 1 = -5.170e-06, mass 0.36620220, 2 pts, span 3.13e-04
+      COMPARISON n = 11: centroid - log n = +2.680e-06, mass/(Lambda(n)/sqrt n) - 1 = +4.049e-05, mass 0.72302190, 2 pts, span 3.13e-04
+  [x13_N40_M128] level 3: h = 3.9138e-05, grid 327 pts; max lambda_min in [-1.82438083183e-10, -1.82438083183e-10] (rel. width 1.3e-15); tau* in [1.824380832e-10, 1.824380832e-10]; repair rho = 0.0; mp IPM iters 31, col.gen rounds 1, |S| 244; 8 clusters, total mass 4.2605014004, stray mass 4.67e-13
+      COMPARISON n =  2: centroid - log n = +1.802e-09, mass/(Lambda(n)/sqrt n) - 1 = +9.024e-09, mass 0.49012908, 2 pts, span 3.91e-05
+      COMPARISON n =  3: centroid - log n = +5.185e-09, mass/(Lambda(n)/sqrt n) - 1 = +1.900e-08, mass 0.63428411, 2 pts, span 3.91e-05
+      COMPARISON n =  4: centroid - log n = +1.982e-08, mass/(Lambda(n)/sqrt n) - 1 = +7.414e-08, mass 0.34657362, 2 pts, span 3.91e-05
+      COMPARISON n =  5: centroid - log n = +1.203e-08, mass/(Lambda(n)/sqrt n) - 1 = -2.692e-08, mass 0.71976250, 2 pts, span 3.91e-05
+      COMPARISON n =  7: centroid - log n = +1.875e-08, mass/(Lambda(n)/sqrt n) - 1 = +1.474e-07, mass 0.73548501, 2 pts, span 3.91e-05
+      COMPARISON n =  8: centroid - log n = +6.227e-08, mass/(Lambda(n)/sqrt n) - 1 = +3.423e-08, mass 0.24506454, 2 pts, span 3.91e-05
+      COMPARISON n =  9: centroid - log n = +4.912e-08, mass/(Lambda(n)/sqrt n) - 1 = -6.681e-08, mass 0.36620407, 2 pts, span 3.91e-05
+      COMPARISON n = 11: centroid - log n = +2.778e-07, mass/(Lambda(n)/sqrt n) - 1 = +8.082e-06, mass 0.72299847, 2 pts, span 3.91e-05
+
+  --- x13_N40_M256 ---
+  [x13_N40_M256] level 0: h = 1.0019e-02, grid 255 pts; max lambda_min in [-8.25410807428e-6, -8.25410807428e-6] (rel. width 4.6e-21); tau* in [8.254108074e-6, 8.254108074e-6]; repair rho = 3.1e-28; mp IPM iters 20, col.gen rounds 1, |S| 70; 8 clusters, total mass 4.2713627301, stray mass 2.71e-19
+      COMPARISON n =  2: centroid - log n = +7.823e-05, mass/(Lambda(n)/sqrt n) - 1 = +3.740e-04, mass 0.49031238, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +2.992e-04, mass/(Lambda(n)/sqrt n) - 1 = +1.354e-03, mass 0.63514313, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = +1.214e-03, mass/(Lambda(n)/sqrt n) - 1 = +3.943e-03, mass 0.34794029, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +7.046e-04, mass/(Lambda(n)/sqrt n) - 1 = -1.316e-03, mass 0.71881523, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = +1.400e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.180e-02, mass 0.74416332, 2 pts, span 1.00e-02
+      COMPARISON n =  8: centroid - log n = +3.649e-03, mass/(Lambda(n)/sqrt n) - 1 = -2.117e-02, mass 0.23987614, 2 pts, span 1.00e-02
+      COMPARISON n =  9: centroid - log n = +1.578e-03, mass/(Lambda(n)/sqrt n) - 1 = -4.536e-03, mass 0.36454293, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = +1.599e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.048e-02, mass 0.73056932, 2 pts, span 1.00e-02
+  [x13_N40_M256] level 1: h = 1.2524e-03, grid 423 pts; max lambda_min in [-2.08056184261e-7, -2.08056184261e-7] (rel. width 1.7e-19); tau* in [2.080561843e-7, 2.080561843e-7]; repair rho = 9.6e-28; mp IPM iters 31, col.gen rounds 1, |S| 191; 8 clusters, total mass 4.2607477172, stray mass 1.99e-17
+      COMPARISON n =  2: centroid - log n = +2.089e-06, mass/(Lambda(n)/sqrt n) - 1 = +1.052e-05, mass 0.49013423, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +5.807e-06, mass/(Lambda(n)/sqrt n) - 1 = +2.095e-05, mass 0.63429739, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = +2.022e-05, mass/(Lambda(n)/sqrt n) - 1 = +6.787e-05, mass 0.34659711, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +1.227e-05, mass/(Lambda(n)/sqrt n) - 1 = -2.642e-05, mass 0.71974350, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = +1.815e-05, mass/(Lambda(n)/sqrt n) - 1 = +1.252e-04, mass 0.73557700, 2 pts, span 1.25e-03
+      COMPARISON n =  8: centroid - log n = +4.606e-05, mass/(Lambda(n)/sqrt n) - 1 = -1.028e-04, mass 0.24503935, 2 pts, span 1.25e-03
+      COMPARISON n =  9: centroid - log n = +2.603e-05, mass/(Lambda(n)/sqrt n) - 1 = -1.202e-04, mass 0.36616009, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = +2.674e-05, mass/(Lambda(n)/sqrt n) - 1 = +2.855e-04, mass 0.72319906, 2 pts, span 1.25e-03
+  [x13_N40_M256] level 2: h = 1.5655e-04, grid 453 pts; max lambda_min in [-3.26957518283e-9, -3.26957518283e-9] (rel. width 4.3e-18); tau* in [3.269575183e-9, 3.269575183e-9]; repair rho = 0.0; mp IPM iters 32, col.gen rounds 1, |S| 249; 8 clusters, total mass 4.2605136322, stray mass 9.64e-17
+      COMPARISON n =  2: centroid - log n = +3.132e-08, mass/(Lambda(n)/sqrt n) - 1 = +1.549e-07, mass 0.49012915, 2 pts, span 1.57e-04
+      COMPARISON n =  3: centroid - log n = +1.030e-07, mass/(Lambda(n)/sqrt n) - 1 = +4.253e-07, mass 0.63428437, 2 pts, span 1.57e-04
+      COMPARISON n =  4: centroid - log n = +3.670e-07, mass/(Lambda(n)/sqrt n) - 1 = +1.059e-06, mass 0.34657396, 2 pts, span 1.57e-04
+      COMPARISON n =  5: centroid - log n = +2.223e-07, mass/(Lambda(n)/sqrt n) - 1 = -3.315e-07, mass 0.71976228, 2 pts, span 1.57e-04
+      COMPARISON n =  7: centroid - log n = +3.966e-07, mass/(Lambda(n)/sqrt n) - 1 = +3.173e-06, mass 0.73548724, 2 pts, span 1.57e-04
+      COMPARISON n =  8: centroid - log n = +1.253e-06, mass/(Lambda(n)/sqrt n) - 1 = -1.548e-06, mass 0.24506416, 2 pts, span 1.57e-04
+      COMPARISON n =  9: centroid - log n = +6.798e-07, mass/(Lambda(n)/sqrt n) - 1 = -3.274e-06, mass 0.36620290, 2 pts, span 1.57e-04
+      COMPARISON n = 11: centroid - log n = +1.179e-06, mass/(Lambda(n)/sqrt n) - 1 = +2.346e-05, mass 0.72300959, 2 pts, span 1.57e-04
+  [x13_N40_M256] level 3: h = 1.9569e-05, grid 455 pts; max lambda_min in [-4.7583558622e-11, -4.7583558622e-11] (rel. width 1.6e-14); tau* in [4.758355862e-11, 4.758355862e-11]; repair rho = 0.0; mp IPM iters 34, col.gen rounds 1, |S| 265; 8 clusters, total mass 4.2604980502, stray mass 6.90e-12
+      COMPARISON n =  2: centroid - log n = +4.527e-10, mass/(Lambda(n)/sqrt n) - 1 = +2.232e-09, mass 0.49012907, 2 pts, span 1.96e-05
+      COMPARISON n =  3: centroid - log n = +1.520e-09, mass/(Lambda(n)/sqrt n) - 1 = +6.338e-09, mass 0.63428410, 2 pts, span 1.96e-05
+      COMPARISON n =  4: centroid - log n = +5.778e-09, mass/(Lambda(n)/sqrt n) - 1 = +1.903e-08, mass 0.34657360, 2 pts, span 1.96e-05
+      COMPARISON n =  5: centroid - log n = +3.415e-09, mass/(Lambda(n)/sqrt n) - 1 = -6.884e-09, mass 0.71976251, 2 pts, span 1.96e-05
+      COMPARISON n =  7: centroid - log n = +6.225e-09, mass/(Lambda(n)/sqrt n) - 1 = +5.389e-08, mass 0.73548494, 2 pts, span 1.96e-05
+      COMPARISON n =  8: centroid - log n = +2.224e-08, mass/(Lambda(n)/sqrt n) - 1 = +9.992e-09, mass 0.24506454, 2 pts, span 1.96e-05
+      COMPARISON n =  9: centroid - log n = +1.659e-08, mass/(Lambda(n)/sqrt n) - 1 = -2.755e-08, mass 0.36620409, 2 pts, span 1.96e-05
+      COMPARISON n = 11: centroid - log n = +1.132e-07, mass/(Lambda(n)/sqrt n) - 1 = +3.554e-06, mass 0.72299520, 2 pts, span 1.96e-05
+
+  --- x13_N60_M64 ---
+  [x13_N60_M64] level 0: h = 4.0077e-02, grid 63 pts; max lambda_min in [-1.79678317888e-4, -1.79678317888e-4] (rel. width 1.9e-22); tau* in [1.796783179e-4, 1.796783179e-4]; repair rho = 0.0; mp IPM iters 18, col.gen rounds 1, |S| 32; 7 clusters, total mass 4.4136678572, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = +1.877e-03, mass/(Lambda(n)/sqrt n) - 1 = +9.071e-03, mass 0.49457518, 2 pts, span 4.01e-02
+      COMPARISON n =  3: centroid - log n = +6.222e-03, mass/(Lambda(n)/sqrt n) - 1 = +2.622e-02, mass 0.65091452, 2 pts, span 4.01e-02
+      COMPARISON n =  4: centroid - log n = +2.364e-02, mass/(Lambda(n)/sqrt n) - 1 = +8.245e-02, mass 0.37514920, 2 pts, span 4.01e-02
+      COMPARISON n =  5: centroid - log n = +1.478e-02, mass/(Lambda(n)/sqrt n) - 1 = -2.723e-02, mass 0.70016531, 2 pts, span 4.01e-02
+      COMPARISON n =  7: centroid - log n = +1.983e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.254e-01, mass 0.82770793, 2 pts, span 4.01e-02
+      COMPARISON n =  9: centroid - log n = -2.755e-03, mass/(Lambda(n)/sqrt n) - 1 = +5.252e-01, mass 0.55854847, 4 pts, span 1.60e-01
+      COMPARISON n = 11: centroid - log n = +2.475e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.157e-01, mass 0.80660724, 2 pts, span 4.01e-02
+  [x13_N60_M64] level 1: h = 5.0097e-03, grid 231 pts; max lambda_min in [-3.15343869955e-6, -3.15343869955e-6] (rel. width 1.9e-20); tau* in [3.1534387e-6, 3.1534387e-6]; repair rho = 0.0; mp IPM iters 22, col.gen rounds 1, |S| 105; 9 clusters, total mass 4.2646269988, stray mass 3.84e-20
+      COMPARISON n =  2: centroid - log n = +3.083e-05, mass/(Lambda(n)/sqrt n) - 1 = +1.529e-04, mass 0.49020402, 2 pts, span 5.01e-03
+      COMPARISON n =  3: centroid - log n = +9.709e-05, mass/(Lambda(n)/sqrt n) - 1 = +3.856e-04, mass 0.63452869, 2 pts, span 5.01e-03
+      COMPARISON n =  4: centroid - log n = +3.471e-04, mass/(Lambda(n)/sqrt n) - 1 = +1.056e-03, mass 0.34693951, 2 pts, span 5.01e-03
+      COMPARISON n =  5: centroid - log n = +2.080e-04, mass/(Lambda(n)/sqrt n) - 1 = -3.628e-04, mass 0.71950136, 2 pts, span 5.01e-03
+      COMPARISON n =  7: centroid - log n = +2.615e-04, mass/(Lambda(n)/sqrt n) - 1 = -2.553e-04, mass 0.73529711, 2 pts, span 5.01e-03
+      COMPARISON n =  8: centroid - log n = -3.550e-02, mass/(Lambda(n)/sqrt n) - 1 = -9.070e-01, mass 0.02279267, 1 pts, span 0.00e+00
+      COMPARISON n =  8: centroid - log n = +4.580e-03, mass/(Lambda(n)/sqrt n) - 1 = -7.444e-02, mass 0.22682229, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = +1.043e-03, mass/(Lambda(n)/sqrt n) - 1 = -9.254e-03, mass 0.36281507, 2 pts, span 5.01e-03
+      COMPARISON n = 11: centroid - log n = +5.951e-04, mass/(Lambda(n)/sqrt n) - 1 = +3.781e-03, mass 0.72572627, 2 pts, span 5.01e-03
+  [x13_N60_M64] level 2: h = 6.2621e-04, grid 267 pts; max lambda_min in [-2.18065583121e-8, -2.18065583121e-8] (rel. width 2.8e-19); tau* in [2.180655831e-8, 2.180655831e-8]; repair rho = 1.4e-29; mp IPM iters 29, col.gen rounds 1, |S| 182; 8 clusters, total mass 4.2605667173, stray mass 4.80e-19
+      COMPARISON n =  2: centroid - log n = +1.741e-07, mass/(Lambda(n)/sqrt n) - 1 = +7.896e-07, mass 0.49012946, 2 pts, span 6.26e-04
+      COMPARISON n =  3: centroid - log n = +9.962e-07, mass/(Lambda(n)/sqrt n) - 1 = +5.349e-06, mass 0.63428749, 2 pts, span 6.26e-04
+      COMPARISON n =  4: centroid - log n = +4.148e-06, mass/(Lambda(n)/sqrt n) - 1 = +1.230e-05, mass 0.34657785, 2 pts, span 6.26e-04
+      COMPARISON n =  5: centroid - log n = +2.213e-06, mass/(Lambda(n)/sqrt n) - 1 = -5.325e-06, mass 0.71975868, 2 pts, span 6.26e-04
+      COMPARISON n =  7: centroid - log n = +4.527e-06, mass/(Lambda(n)/sqrt n) - 1 = +3.929e-05, mass 0.73551380, 2 pts, span 6.26e-04
+      COMPARISON n =  8: centroid - log n = +1.150e-05, mass/(Lambda(n)/sqrt n) - 1 = -6.636e-05, mass 0.24504827, 2 pts, span 6.26e-04
+      COMPARISON n =  9: centroid - log n = +5.896e-06, mass/(Lambda(n)/sqrt n) - 1 = -9.794e-06, mass 0.36620051, 2 pts, span 6.26e-04
+      COMPARISON n = 11: centroid - log n = +7.815e-06, mass/(Lambda(n)/sqrt n) - 1 = +8.025e-05, mass 0.72305064, 2 pts, span 6.26e-04
+  [x13_N60_M64] level 3: h = 7.8276e-05, grid 263 pts; max lambda_min in [-4.529648834e-10, -4.529648834e-10] (rel. width 6.0e-16); tau* in [4.529648834e-10, 4.529648834e-10]; repair rho = 0.0; mp IPM iters 26, col.gen rounds 1, |S| 211; 8 clusters, total mass 4.2605023422, stray mass 7.97e-15
+      COMPARISON n =  2: centroid - log n = +4.493e-09, mass/(Lambda(n)/sqrt n) - 1 = +2.254e-08, mass 0.49012908, 2 pts, span 7.83e-05
+      COMPARISON n =  3: centroid - log n = +1.233e-08, mass/(Lambda(n)/sqrt n) - 1 = +4.239e-08, mass 0.63428413, 2 pts, span 7.83e-05
+      COMPARISON n =  4: centroid - log n = +5.040e-08, mass/(Lambda(n)/sqrt n) - 1 = +2.121e-07, mass 0.34657366, 2 pts, span 7.83e-05
+      COMPARISON n =  5: centroid - log n = +3.044e-08, mass/(Lambda(n)/sqrt n) - 1 = -7.856e-08, mass 0.71976246, 2 pts, span 7.83e-05
+      COMPARISON n =  7: centroid - log n = +5.879e-08, mass/(Lambda(n)/sqrt n) - 1 = +5.171e-07, mass 0.73548528, 2 pts, span 7.83e-05
+      COMPARISON n =  8: centroid - log n = +2.059e-07, mass/(Lambda(n)/sqrt n) - 1 = +8.400e-08, mass 0.24506456, 2 pts, span 7.83e-05
+      COMPARISON n =  9: centroid - log n = +1.428e-07, mass/(Lambda(n)/sqrt n) - 1 = -4.483e-07, mass 0.36620393, 2 pts, span 7.83e-05
+      COMPARISON n = 11: centroid - log n = +3.937e-07, mass/(Lambda(n)/sqrt n) - 1 = +9.140e-06, mass 0.72299924, 2 pts, span 7.83e-05
+
+  --- x13_N60_M128 ---
+  [x13_N60_M128] level 0: h = 2.0039e-02, grid 127 pts; max lambda_min in [-5.25379688724e-5, -5.25379688724e-5] (rel. width 4.7e-22); tau* in [5.253796887e-5, 5.253796887e-5]; repair rho = 0.0; mp IPM iters 18, col.gen rounds 1, |S| 48; 8 clusters, total mass 4.2873401371, stray mass 2.45e-20
+      COMPARISON n =  2: centroid - log n = +5.135e-04, mass/(Lambda(n)/sqrt n) - 1 = +2.611e-03, mass 0.49140860, 2 pts, span 2.00e-02
+      COMPARISON n =  3: centroid - log n = +1.238e-03, mass/(Lambda(n)/sqrt n) - 1 = +3.662e-03, mass 0.63660674, 2 pts, span 2.00e-02
+      COMPARISON n =  4: centroid - log n = +4.388e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.625e-02, mass 0.35220696, 2 pts, span 2.00e-02
+      COMPARISON n =  5: centroid - log n = +2.988e-03, mass/(Lambda(n)/sqrt n) - 1 = -3.646e-03, mass 0.71713820, 2 pts, span 2.00e-02
+      COMPARISON n =  7: centroid - log n = +5.750e-03, mass/(Lambda(n)/sqrt n) - 1 = +4.604e-02, mass 0.76934698, 2 pts, span 2.00e-02
+      COMPARISON n =  8: centroid - log n = +2.007e-02, mass/(Lambda(n)/sqrt n) - 1 = +3.282e-03, mass 0.24586891, 2 pts, span 2.00e-02
+      COMPARISON n =  9: centroid - log n = +9.843e-03, mass/(Lambda(n)/sqrt n) - 1 = -7.644e-02, mass 0.33821174, 2 pts, span 2.00e-02
+      COMPARISON n = 11: centroid - log n = +4.647e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.875e-02, mass 0.73655201, 2 pts, span 2.00e-02
+  [x13_N60_M128] level 1: h = 2.5048e-03, grid 295 pts; max lambda_min in [-6.97931255915e-7, -6.97931255915e-7] (rel. width 2.9e-20); tau* in [6.979312559e-7, 6.979312559e-7]; repair rho = 0.0; mp IPM iters 26, col.gen rounds 1, |S| 126; 8 clusters, total mass 4.2614351799, stray mass 3.44e-19
+      COMPARISON n =  2: centroid - log n = +6.460e-06, mass/(Lambda(n)/sqrt n) - 1 = +3.164e-05, mass 0.49014458, 2 pts, span 2.50e-03
+      COMPARISON n =  3: centroid - log n = +2.278e-05, mass/(Lambda(n)/sqrt n) - 1 = +9.728e-05, mass 0.63434580, 2 pts, span 2.50e-03
+      COMPARISON n =  4: centroid - log n = +8.759e-05, mass/(Lambda(n)/sqrt n) - 1 = +2.779e-04, mass 0.34666992, 2 pts, span 2.50e-03
+      COMPARISON n =  5: centroid - log n = +5.260e-05, mass/(Lambda(n)/sqrt n) - 1 = -8.545e-05, mass 0.71970102, 2 pts, span 2.50e-03
+      COMPARISON n =  7: centroid - log n = +8.800e-05, mass/(Lambda(n)/sqrt n) - 1 = +6.556e-04, mass 0.73596707, 2 pts, span 2.50e-03
+      COMPARISON n =  8: centroid - log n = +2.294e-04, mass/(Lambda(n)/sqrt n) - 1 = -9.209e-04, mass 0.24483885, 2 pts, span 2.50e-03
+      COMPARISON n =  9: centroid - log n = +1.108e-04, mass/(Lambda(n)/sqrt n) - 1 = -4.141e-04, mass 0.36605244, 2 pts, span 2.50e-03
+      COMPARISON n = 11: centroid - log n = +1.163e-04, mass/(Lambda(n)/sqrt n) - 1 = +9.998e-04, mass 0.72371551, 2 pts, span 2.50e-03
+  [x13_N60_M128] level 2: h = 3.1310e-04, grid 323 pts; max lambda_min in [-8.93300090495e-9, -8.93300090495e-9] (rel. width 1.4e-17); tau* in [8.933000905e-9, 8.933000905e-9]; repair rho = 0.0; mp IPM iters 28, col.gen rounds 1, |S| 209; 8 clusters, total mass 4.2605196933, stray mass 6.00e-17
+      COMPARISON n =  2: centroid - log n = +8.465e-08, mass/(Lambda(n)/sqrt n) - 1 = +4.172e-07, mass 0.49012928, 2 pts, span 3.13e-04
+      COMPARISON n =  3: centroid - log n = +2.781e-07, mass/(Lambda(n)/sqrt n) - 1 = +1.124e-06, mass 0.63428481, 2 pts, span 3.13e-04
+      COMPARISON n =  4: centroid - log n = +1.088e-06, mass/(Lambda(n)/sqrt n) - 1 = +3.714e-06, mass 0.34657488, 2 pts, span 3.13e-04
+      COMPARISON n =  5: centroid - log n = +6.625e-07, mass/(Lambda(n)/sqrt n) - 1 = -1.116e-06, mass 0.71976171, 2 pts, span 3.13e-04
+      COMPARISON n =  7: centroid - log n = +1.113e-06, mass/(Lambda(n)/sqrt n) - 1 = +8.289e-06, mass 0.73549100, 2 pts, span 3.13e-04
+      COMPARISON n =  8: centroid - log n = +2.984e-06, mass/(Lambda(n)/sqrt n) - 1 = -1.031e-05, mass 0.24506201, 2 pts, span 3.13e-04
+      COMPARISON n =  9: centroid - log n = +1.548e-06, mass/(Lambda(n)/sqrt n) - 1 = -4.815e-06, mass 0.36620233, 2 pts, span 3.13e-04
+      COMPARISON n = 11: centroid - log n = +2.220e-06, mass/(Lambda(n)/sqrt n) - 1 = +2.911e-05, mass 0.72301367, 2 pts, span 3.13e-04
+  [x13_N60_M128] level 3: h = 3.9138e-05, grid 327 pts; max lambda_min in [-1.82438833194e-10, -1.82438833194e-10] (rel. width 2.4e-15); tau* in [1.824388332e-10, 1.824388332e-10]; repair rho = 0.0; mp IPM iters 32, col.gen rounds 1, |S| 224; 8 clusters, total mass 4.2604997602, stray mass 2.17e-13
+      COMPARISON n =  2: centroid - log n = +1.802e-09, mass/(Lambda(n)/sqrt n) - 1 = +9.024e-09, mass 0.49012908, 2 pts, span 3.91e-05
+      COMPARISON n =  3: centroid - log n = +5.185e-09, mass/(Lambda(n)/sqrt n) - 1 = +1.900e-08, mass 0.63428411, 2 pts, span 3.91e-05
+      COMPARISON n =  4: centroid - log n = +1.981e-08, mass/(Lambda(n)/sqrt n) - 1 = +7.412e-08, mass 0.34657362, 2 pts, span 3.91e-05
+      COMPARISON n =  5: centroid - log n = +1.203e-08, mass/(Lambda(n)/sqrt n) - 1 = -2.692e-08, mass 0.71976250, 2 pts, span 3.91e-05
+      COMPARISON n =  7: centroid - log n = +1.867e-08, mass/(Lambda(n)/sqrt n) - 1 = +1.456e-07, mass 0.73548501, 2 pts, span 3.91e-05
+      COMPARISON n =  8: centroid - log n = +6.027e-08, mass/(Lambda(n)/sqrt n) - 1 = +8.767e-09, mass 0.24506454, 2 pts, span 3.91e-05
+      COMPARISON n =  9: centroid - log n = +4.576e-08, mass/(Lambda(n)/sqrt n) - 1 = -7.623e-08, mass 0.36620407, 2 pts, span 3.91e-05
+      COMPARISON n = 11: centroid - log n = +2.125e-07, mass/(Lambda(n)/sqrt n) - 1 = +5.828e-06, mass 0.72299684, 2 pts, span 3.91e-05
+
+  --- x13_N60_M256 ---
+  [x13_N60_M256] level 0: h = 1.0019e-02, grid 255 pts; max lambda_min in [-8.25414666179e-6, -8.25414666179e-6] (rel. width 6.9e-21); tau* in [8.254146662e-6, 8.254146662e-6]; repair rho = 1.0e-27; mp IPM iters 19, col.gen rounds 1, |S| 77; 8 clusters, total mass 4.2706410058, stray mass 2.49e-19
+      COMPARISON n =  2: centroid - log n = +7.823e-05, mass/(Lambda(n)/sqrt n) - 1 = +3.740e-04, mass 0.49031238, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +2.992e-04, mass/(Lambda(n)/sqrt n) - 1 = +1.354e-03, mass 0.63514310, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = +1.214e-03, mass/(Lambda(n)/sqrt n) - 1 = +3.943e-03, mass 0.34793998, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +7.044e-04, mass/(Lambda(n)/sqrt n) - 1 = -1.316e-03, mass 0.71881504, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = +1.397e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.174e-02, mass 0.74411893, 2 pts, span 1.00e-02
+      COMPARISON n =  8: centroid - log n = +3.604e-03, mass/(Lambda(n)/sqrt n) - 1 = -2.149e-02, mass 0.23979869, 2 pts, span 1.00e-02
+      COMPARISON n =  9: centroid - log n = +1.544e-03, mass/(Lambda(n)/sqrt n) - 1 = -4.354e-03, mass 0.36460951, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = +1.544e-03, mass/(Lambda(n)/sqrt n) - 1 = +9.559e-03, mass 0.72990338, 2 pts, span 1.00e-02
+  [x13_N60_M256] level 1: h = 1.2524e-03, grid 423 pts; max lambda_min in [-2.08056259685e-7, -2.08056259685e-7] (rel. width 2.7e-18); tau* in [2.080562597e-7, 2.080562597e-7]; repair rho = 0.0; mp IPM iters 26, col.gen rounds 1, |S| 189; 8 clusters, total mass 4.2607403025, stray mass 2.98e-16
+      COMPARISON n =  2: centroid - log n = +2.089e-06, mass/(Lambda(n)/sqrt n) - 1 = +1.052e-05, mass 0.49013423, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +5.807e-06, mass/(Lambda(n)/sqrt n) - 1 = +2.095e-05, mass 0.63429739, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = +2.022e-05, mass/(Lambda(n)/sqrt n) - 1 = +6.787e-05, mass 0.34659711, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +1.227e-05, mass/(Lambda(n)/sqrt n) - 1 = -2.642e-05, mass 0.71974350, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = +1.814e-05, mass/(Lambda(n)/sqrt n) - 1 = +1.251e-04, mass 0.73557689, 2 pts, span 1.25e-03
+      COMPARISON n =  8: centroid - log n = +4.593e-05, mass/(Lambda(n)/sqrt n) - 1 = -1.041e-04, mass 0.24503903, 2 pts, span 1.25e-03
+      COMPARISON n =  9: centroid - log n = +2.591e-05, mass/(Lambda(n)/sqrt n) - 1 = -1.197e-04, mass 0.36616027, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = +2.632e-05, mass/(Lambda(n)/sqrt n) - 1 = +2.756e-04, mass 0.72319189, 2 pts, span 1.25e-03
+  [x13_N60_M256] level 2: h = 1.5655e-04, grid 453 pts; max lambda_min in [-3.26961566133e-9, -3.26961566133e-9] (rel. width 1.8e-17); tau* in [3.269615661e-9, 3.269615661e-9]; repair rho = 0.0; mp IPM iters 33, col.gen rounds 1, |S| 244; 8 clusters, total mass 4.2605060805, stray mass 2.59e-16
+      COMPARISON n =  2: centroid - log n = +3.132e-08, mass/(Lambda(n)/sqrt n) - 1 = +1.549e-07, mass 0.49012915, 2 pts, span 1.57e-04
+      COMPARISON n =  3: centroid - log n = +1.030e-07, mass/(Lambda(n)/sqrt n) - 1 = +4.253e-07, mass 0.63428437, 2 pts, span 1.57e-04
+      COMPARISON n =  4: centroid - log n = +3.669e-07, mass/(Lambda(n)/sqrt n) - 1 = +1.059e-06, mass 0.34657396, 2 pts, span 1.57e-04
+      COMPARISON n =  5: centroid - log n = +2.221e-07, mass/(Lambda(n)/sqrt n) - 1 = -3.319e-07, mass 0.71976228, 2 pts, span 1.57e-04
+      COMPARISON n =  7: centroid - log n = +3.930e-07, mass/(Lambda(n)/sqrt n) - 1 = +3.098e-06, mass 0.73548718, 2 pts, span 1.57e-04
+      COMPARISON n =  8: centroid - log n = +1.183e-06, mass/(Lambda(n)/sqrt n) - 1 = -2.236e-06, mass 0.24506399, 2 pts, span 1.57e-04
+      COMPARISON n =  9: centroid - log n = +6.060e-07, mass/(Lambda(n)/sqrt n) - 1 = -3.119e-06, mass 0.36620295, 2 pts, span 1.57e-04
+      COMPARISON n = 11: centroid - log n = +7.909e-07, mass/(Lambda(n)/sqrt n) - 1 = +1.325e-05, mass 0.72300220, 2 pts, span 1.57e-04
+  [x13_N60_M256] level 3: h = 1.9569e-05, grid 455 pts; max lambda_min in [-4.75836289934e-11, -4.75836289934e-11] (rel. width 7.0e-15); tau* in [4.758362899e-11, 4.758362899e-11]; repair rho = 0.0; mp IPM iters 36, col.gen rounds 1, |S| 268; 8 clusters, total mass 4.2604977064, stray mass 1.52e-12
+      COMPARISON n =  2: centroid - log n = +4.527e-10, mass/(Lambda(n)/sqrt n) - 1 = +2.232e-09, mass 0.49012907, 2 pts, span 1.96e-05
+      COMPARISON n =  3: centroid - log n = +1.520e-09, mass/(Lambda(n)/sqrt n) - 1 = +6.338e-09, mass 0.63428410, 2 pts, span 1.96e-05
+      COMPARISON n =  4: centroid - log n = +5.778e-09, mass/(Lambda(n)/sqrt n) - 1 = +1.903e-08, mass 0.34657360, 2 pts, span 1.96e-05
+      COMPARISON n =  5: centroid - log n = +3.414e-09, mass/(Lambda(n)/sqrt n) - 1 = -6.884e-09, mass 0.71976251, 2 pts, span 1.96e-05
+      COMPARISON n =  7: centroid - log n = +6.217e-09, mass/(Lambda(n)/sqrt n) - 1 = +5.373e-08, mass 0.73548494, 2 pts, span 1.96e-05
+      COMPARISON n =  8: centroid - log n = +2.204e-08, mass/(Lambda(n)/sqrt n) - 1 = +7.390e-09, mass 0.24506454, 2 pts, span 1.96e-05
+      COMPARISON n =  9: centroid - log n = +1.622e-08, mass/(Lambda(n)/sqrt n) - 1 = -2.920e-08, mass 0.36620409, 2 pts, span 1.96e-05
+      COMPARISON n = 11: centroid - log n = +1.009e-07, mass/(Lambda(n)/sqrt n) - 1 = +3.080e-06, mass 0.72299485, 2 pts, span 1.96e-05
+  ok   [L1106]  x13_N10_M64: certified brackets consistent (lb <= ub) at every level
+  ok   [L1107]  x13_N10_M64: certified relative bracket width < 1e-12 at every level (max 9.9e-19)
+  ok   [L1111]  x13_N10_M64: N = 10 FAILS to recover: refinement makes the grid feasible (finest max lambda_min >= 3.734e-7 > 0, truth 2.8e-26), the maximiser has 7 clusters (not 8) and mass 4.6901 (truth 4.2605)
+  ok   [L1106]  x13_N10_M128: certified brackets consistent (lb <= ub) at every level
+  ok   [L1107]  x13_N10_M128: certified relative bracket width < 1e-12 at every level (max 2.6e-18)
+  ok   [L1111]  x13_N10_M128: N = 10 FAILS to recover: refinement makes the grid feasible (finest max lambda_min >= 3.737e-7 > 0, truth 2.8e-26), the maximiser has 7 clusters (not 8) and mass 4.6901 (truth 4.2605)
+  ok   [L1106]  x13_N10_M256: certified brackets consistent (lb <= ub) at every level
+  ok   [L1107]  x13_N10_M256: certified relative bracket width < 1e-12 at every level (max 6.7e-19)
+  ok   [L1111]  x13_N10_M256: N = 10 FAILS to recover: refinement makes the grid feasible (finest max lambda_min >= 3.739e-7 > 0, truth 2.8e-26), the maximiser has 7 clusters (not 8) and mass 4.6901 (truth 4.2605)
+  ok   [L1106]  x13_N20_M64: certified brackets consistent (lb <= ub) at every level
+  ok   [L1107]  x13_N20_M64: certified relative bracket width < 1e-12 at every level (max 3.9e-16)
+  ok   [L1115]  x13_N20_M64: every level grid certified EMPTY (ub < 0: no nonnegative measure on the grid makes the section PSD)
+  ok   [L1119]  x13_N20_M64 level 0 (h = 4.008e-02): 7 clusters, log 8 and log 9 (2.9 h apart) merged into one; every centroid within 0.69 h of its nearest log n
+  ok   [L1127]  x13_N20_M64 level 3 (h = 7.83e-05): exactly one cluster per visible prime power, stray mass 2.8e-12
+  ok   [L1106]  x13_N20_M128: certified brackets consistent (lb <= ub) at every level
+  ok   [L1107]  x13_N20_M128: certified relative bracket width < 1e-12 at every level (max 3.7e-16)
+  ok   [L1115]  x13_N20_M128: every level grid certified EMPTY (ub < 0: no nonnegative measure on the grid makes the section PSD)
+  ok   [L1123]  x13_N20_M128 level 0: one cluster at each visible prime power [2, 3, 4, 5, 7, 8, 9, 11], nothing else; max |centroid - log n| = 1.04 h
+  ok   [L1127]  x13_N20_M128 level 3 (h = 3.91e-05): exactly one cluster per visible prime power, stray mass 9.6e-12
+  ok   [L1106]  x13_N20_M256: certified brackets consistent (lb <= ub) at every level
+  ok   [L1107]  x13_N20_M256: certified relative bracket width < 1e-12 at every level (max 1.4e-14)
+  ok   [L1115]  x13_N20_M256: every level grid certified EMPTY (ub < 0: no nonnegative measure on the grid makes the section PSD)
+  ok   [L1123]  x13_N20_M256 level 0: one cluster at each visible prime power [2, 3, 4, 5, 7, 8, 9, 11], nothing else; max |centroid - log n| = 0.41 h
+  ok   [L1127]  x13_N20_M256 level 3 (h = 1.96e-05): exactly one cluster per visible prime power, stray mass 9.7e-10
+  ok   [L1106]  x13_N40_M64: certified brackets consistent (lb <= ub) at every level
+  ok   [L1107]  x13_N40_M64: certified relative bracket width < 1e-12 at every level (max 2.0e-16)
+  ok   [L1115]  x13_N40_M64: every level grid certified EMPTY (ub < 0: no nonnegative measure on the grid makes the section PSD)
+  ok   [L1119]  x13_N40_M64 level 0 (h = 4.008e-02): 7 clusters, log 8 and log 9 (2.9 h apart) merged into one; every centroid within 0.63 h of its nearest log n
+  ok   [L1127]  x13_N40_M64 level 3 (h = 7.83e-05): exactly one cluster per visible prime power, stray mass 7.2e-15
+  ok   [L1106]  x13_N40_M128: certified brackets consistent (lb <= ub) at every level
+  ok   [L1107]  x13_N40_M128: certified relative bracket width < 1e-12 at every level (max 1.3e-15)
+  ok   [L1115]  x13_N40_M128: every level grid certified EMPTY (ub < 0: no nonnegative measure on the grid makes the section PSD)
+  ok   [L1123]  x13_N40_M128 level 0: one cluster at each visible prime power [2, 3, 4, 5, 7, 8, 9, 11], nothing else; max |centroid - log n| = 1.00 h
+  ok   [L1127]  x13_N40_M128 level 3 (h = 3.91e-05): exactly one cluster per visible prime power, stray mass 4.7e-13
+  ok   [L1106]  x13_N40_M256: certified brackets consistent (lb <= ub) at every level
+  ok   [L1107]  x13_N40_M256: certified relative bracket width < 1e-12 at every level (max 1.6e-14)
+  ok   [L1115]  x13_N40_M256: every level grid certified EMPTY (ub < 0: no nonnegative measure on the grid makes the section PSD)
+  ok   [L1123]  x13_N40_M256 level 0: one cluster at each visible prime power [2, 3, 4, 5, 7, 8, 9, 11], nothing else; max |centroid - log n| = 0.36 h
+  ok   [L1127]  x13_N40_M256 level 3 (h = 1.96e-05): exactly one cluster per visible prime power, stray mass 6.9e-12
+  ok   [L1106]  x13_N60_M64: certified brackets consistent (lb <= ub) at every level
+  ok   [L1107]  x13_N60_M64: certified relative bracket width < 1e-12 at every level (max 6.0e-16)
+  ok   [L1115]  x13_N60_M64: every level grid certified EMPTY (ub < 0: no nonnegative measure on the grid makes the section PSD)
+  ok   [L1119]  x13_N60_M64 level 0 (h = 4.008e-02): 7 clusters, log 8 and log 9 (2.9 h apart) merged into one; every centroid within 0.62 h of its nearest log n
+  ok   [L1127]  x13_N60_M64 level 3 (h = 7.83e-05): exactly one cluster per visible prime power, stray mass 8.0e-15
+  ok   [L1106]  x13_N60_M128: certified brackets consistent (lb <= ub) at every level
+  ok   [L1107]  x13_N60_M128: certified relative bracket width < 1e-12 at every level (max 2.4e-15)
+  ok   [L1115]  x13_N60_M128: every level grid certified EMPTY (ub < 0: no nonnegative measure on the grid makes the section PSD)
+  ok   [L1123]  x13_N60_M128 level 0: one cluster at each visible prime power [2, 3, 4, 5, 7, 8, 9, 11], nothing else; max |centroid - log n| = 1.00 h
+  ok   [L1127]  x13_N60_M128 level 3 (h = 3.91e-05): exactly one cluster per visible prime power, stray mass 2.2e-13
+  ok   [L1106]  x13_N60_M256: certified brackets consistent (lb <= ub) at every level
+  ok   [L1107]  x13_N60_M256: certified relative bracket width < 1e-12 at every level (max 7.0e-15)
+  ok   [L1115]  x13_N60_M256: every level grid certified EMPTY (ub < 0: no nonnegative measure on the grid makes the section PSD)
+  ok   [L1123]  x13_N60_M256 level 0: one cluster at each visible prime power [2, 3, 4, 5, 7, 8, 9, 11], nothing else; max |centroid - log n| = 0.36 h
+  ok   [L1127]  x13_N60_M256 level 3 (h = 1.96e-05): exactly one cluster per visible prime power, stray mass 1.5e-12
+  ok   [L1132]  x13_N40_M128 finest level: |centroid - log n| <= 6.2e-08 (n <= 9), 2.8e-07 (n = 11); |mass/(Lambda(n)/sqrt n) - 1| <= 1.5e-07 (n <= 9), 8.1e-06 (n = 11)
+  ok   [L1139]  x13_N40_M128: tau*, position error and mass error all fall like h^p with p in [1.6, 2.6] at every refinement (p = 2.08/2.15/2.13, 2.10/2.07/2.21, 1.87/1.88/1.99)
+  ok   [L1132]  x13_N40_M256 finest level: |centroid - log n| <= 2.2e-08 (n <= 9), 1.1e-07 (n = 11); |mass/(Lambda(n)/sqrt n) - 1| <= 5.4e-08 (n <= 9), 3.6e-06 (n = 11)
+  ok   [L1139]  x13_N40_M256: tau*, position error and mass error all fall like h^p with p in [1.6, 2.6] at every refinement (p = 1.77/2.10/2.47, 2.00/1.73/1.75, 2.03/1.94/1.97)
+  ok   [L1132]  x13_N60_M128 finest level: |centroid - log n| <= 6.0e-08 (n <= 9), 2.1e-07 (n = 11); |mass/(Lambda(n)/sqrt n) - 1| <= 1.5e-07 (n <= 9), 5.8e-06 (n = 11)
+  ok   [L1139]  x13_N60_M128: tau*, position error and mass error all fall like h^p with p in [1.6, 2.6] at every refinement (p = 2.08/2.15/2.13, 2.10/2.09/2.16, 1.87/1.88/2.05)
+  ok   [L1132]  x13_N60_M256 finest level: |centroid - log n| <= 2.2e-08 (n <= 9), 1.0e-07 (n = 11); |mass/(Lambda(n)/sqrt n) - 1| <= 5.4e-08 (n <= 9), 3.1e-06 (n = 11)
+  ok   [L1139]  x13_N60_M256: tau*, position error and mass error all fall like h^p with p in [1.6, 2.6] at every refinement (p = 1.77/2.10/2.47, 2.00/1.76/1.78, 2.03/1.92/1.95)
+  ok   [L1145]  x13_N20_M64 finest level: the edge atom n = 11 lags (mass error 2.7e-03 at N = 20 against 1.5e-05 at N = 40 on the same grid family)
+  ok   [L1150]  x13 M=64: tau* at N = 40 and N = 60 agree to 2.0e-05 relative at every level (N-independent)
+  ok   [L1145]  x13_N20_M128 finest level: the edge atom n = 11 lags (mass error 1.8e-03 at N = 20 against 8.1e-06 at N = 40 on the same grid family)
+  ok   [L1150]  x13 M=128: tau* at N = 40 and N = 60 agree to 9.1e-06 relative at every level (N-independent)
+  ok   [L1145]  x13_N20_M256 finest level: the edge atom n = 11 lags (mass error 1.0e-03 at N = 20 against 3.6e-06 at N = 40 on the same grid family)
+  ok   [L1150]  x13 M=256: tau* at N = 40 and N = 60 agree to 1.2e-05 relative at every level (N-independent)
+  --           COMPARISON: at N = 20, 40, 60 every grid maximiser has lambda_min < 0 < lambda_min(truth) (section 2); the grid optimum approaches 0 from below like h^2 and would reach the truth scale 1e-39 .. 1e-58 only at h ~ 1e-20 .. 1e-30
+
+==============================================================================================================
+4. Error tables (COMPARISON WITH THE PRIMES; uses no zeros)
+==============================================================================================================
+  max |centroid - log n| over n in {2,...,9} / at n = 11 ; max |mass ratio - 1| over n in {2,...,9} / at n = 11
+  x13_N10_M64     L0: 2.4e-02/5.1e-02; 4.1e-01/6.8e-01; tau 1.80e-04 | L1: 2.5e-02/3.5e-02; 4.6e-01/5.8e-01; tau 2.78e-06 | L2: 2.6e-02/3.4e-02; 4.6e-01/5.8e-01; tau -3.53e-07 | L3: 2.6e-02/3.4e-02; 4.6e-01/5.8e-01; tau -3.73e-07
+  x13_N10_M128    L0: 2.0e-02/3.9e-02; 4.4e-01/6.1e-01; tau 5.22e-05 | L1: 2.6e-02/3.4e-02; 4.6e-01/5.8e-01; tau 3.19e-07 | L2: 2.6e-02/3.4e-02; 4.6e-01/5.8e-01; tau -3.66e-07 | L3: 2.6e-02/3.4e-02; 4.6e-01/5.8e-01; tau -3.74e-07
+  x13_N10_M256    L0: 2.4e-02/3.5e-02; 4.6e-01/5.9e-01; tau 7.89e-06 | L1: 2.6e-02/3.4e-02; 4.6e-01/5.8e-01; tau -1.64e-07 | L2: 2.6e-02/3.4e-02; 4.6e-01/5.8e-01; tau -3.71e-07 | L3: 2.6e-02/3.4e-02; 4.6e-01/5.8e-01; tau -3.74e-07
+  x13_N20_M64     L0: 2.4e-02/2.8e-02; 5.4e-01/1.5e-01; tau 1.80e-04 | L1: 3.5e-02/9.7e-04; 9.1e-01/1.0e-02; tau 3.15e-06 | L2: 8.9e-05/1.9e-04; 6.7e-04/3.5e-03; tau 2.18e-08 | L3: 2.8e-05/1.3e-04; 2.4e-04/2.7e-03; tau 4.52e-10
+  x13_N20_M128    L0: 2.1e-02/5.6e-03; 7.9e-02/3.0e-02; tau 5.25e-05 | L1: 3.2e-04/3.1e-04; 7.6e-04/4.5e-03; tau 6.98e-07 | L2: 7.7e-05/1.8e-04; 7.7e-04/3.4e-03; tau 8.91e-09 | L3: 1.4e-05/8.1e-05; 1.1e-04/1.8e-03; tau 1.82e-10
+  x13_N20_M256    L0: 4.1e-03/2.2e-03; 1.8e-02/1.9e-02; tau 8.25e-06 | L1: 1.3e-04/2.1e-04; 6.6e-04/3.6e-03; tau 2.08e-07 | L2: 7.1e-05/1.9e-04; 6.9e-04/3.4e-03; tau 3.26e-09 | L3: 5.5e-06/4.3e-05; 4.2e-05/1.0e-03; tau 4.74e-11
+  x13_N40_M64     L0: 2.4e-02/2.5e-02; 5.3e-01/1.2e-01; tau 1.80e-04 | L1: 3.5e-02/6.4e-04; 9.1e-01/4.6e-03; tau 3.15e-06 | L2: 1.2e-05/8.3e-06; 6.5e-05/9.1e-05; tau 2.18e-08 | L3: 2.2e-07/6.1e-07; 5.3e-07/1.5e-05; tau 4.53e-10
+  x13_N40_M128    L0: 2.0e-02/4.7e-03; 7.7e-02/2.0e-02; tau 5.25e-05 | L1: 2.3e-04/1.2e-04; 9.1e-04/1.1e-03; tau 6.98e-07 | L2: 3.1e-06/2.7e-06; 9.2e-06/4.0e-05; tau 8.93e-09 | L3: 6.2e-08/2.8e-07; 1.5e-07/8.1e-06; tau 1.82e-10
+  x13_N40_M256    L0: 3.6e-03/1.6e-03; 2.1e-02/1.0e-02; tau 8.25e-06 | L1: 4.6e-05/2.7e-05; 1.3e-04/2.9e-04; tau 2.08e-07 | L2: 1.3e-06/1.2e-06; 3.3e-06/2.3e-05; tau 3.27e-09 | L3: 2.2e-08/1.1e-07; 5.4e-08/3.6e-06; tau 4.76e-11
+  x13_N60_M64     L0: 2.4e-02/2.5e-02; 5.3e-01/1.2e-01; tau 1.80e-04 | L1: 3.5e-02/6.0e-04; 9.1e-01/3.8e-03; tau 3.15e-06 | L2: 1.1e-05/7.8e-06; 6.6e-05/8.0e-05; tau 2.18e-08 | L3: 2.1e-07/3.9e-07; 5.2e-07/9.1e-06; tau 4.53e-10
+  x13_N60_M128    L0: 2.0e-02/4.6e-03; 7.6e-02/1.9e-02; tau 5.25e-05 | L1: 2.3e-04/1.2e-04; 9.2e-04/1.0e-03; tau 6.98e-07 | L2: 3.0e-06/2.2e-06; 1.0e-05/2.9e-05; tau 8.93e-09 | L3: 6.0e-08/2.1e-07; 1.5e-07/5.8e-06; tau 1.82e-10
+  x13_N60_M256    L0: 3.6e-03/1.5e-03; 2.1e-02/9.6e-03; tau 8.25e-06 | L1: 4.6e-05/2.6e-05; 1.3e-04/2.8e-04; tau 2.08e-07 | L2: 1.2e-06/7.9e-07; 3.1e-06/1.3e-05; tau 3.27e-09 | L3: 2.2e-08/1.0e-07; 5.4e-08/3.1e-06; tau 4.76e-11
+
+  refinement rates: log_8 of the level-to-level ratio (h shrinks by 8 per level) of tau*, of max position error (n <= 9) and of max relative mass error (n <= 9)
+  x13_N10_M64     L0->L1: tau 2.00, pos -0.02, mass -0.05 | L1->L2: tau nan, pos -0.01, mass -0.00 | L2->L3: tau -0.03, pos -0.00, mass -0.00
+  x13_N10_M128    L0->L1: tau 2.45, pos -0.13, mass -0.02 | L1->L2: tau nan, pos -0.00, mass -0.00 | L2->L3: tau -0.01, pos -0.00, mass -0.00
+  x13_N10_M256    L0->L1: tau nan, pos -0.03, mass -0.00 | L1->L2: tau -0.39, pos -0.00, mass -0.00 | L2->L3: tau -0.00, pos -0.00, mass -0.00
+  x13_N20_M64     L0->L1: tau 1.94, pos -0.20, mass -0.25 | L1->L2: tau 2.39, pos 2.88, mass 3.47 | L2->L3: tau 1.86, pos 0.55, mass 0.49
+  x13_N20_M128    L0->L1: tau 2.08, pos 2.01, mass 2.23 | L1->L2: tau 2.10, pos 0.68, mass -0.01 | L2->L3: tau 1.87, pos 0.83, mass 0.93
+  x13_N20_M256    L0->L1: tau 1.77, pos 1.68, mass 1.58 | L1->L2: tau 2.00, pos 0.27, mass -0.02 | L2->L3: tau 2.03, pos 1.23, mass 1.35
+  x13_N40_M64     L0->L1: tau 1.94, pos -0.20, mass -0.26 | L1->L2: tau 2.39, pos 3.86, mass 4.59 | L2->L3: tau 1.86, pos 1.90, mass 2.31
+  x13_N40_M128    L0->L1: tau 2.08, pos 2.15, mass 2.13 | L1->L2: tau 2.10, pos 2.07, mass 2.21 | L2->L3: tau 1.87, pos 1.88, mass 1.99
+  x13_N40_M256    L0->L1: tau 1.77, pos 2.10, mass 2.47 | L1->L2: tau 2.00, pos 1.73, mass 1.75 | L2->L3: tau 2.03, pos 1.94, mass 1.97
+  x13_N60_M64     L0->L1: tau 1.94, pos -0.20, mass -0.26 | L1->L2: tau 2.39, pos 3.86, mass 4.58 | L2->L3: tau 1.86, pos 1.93, mass 2.33
+  x13_N60_M128    L0->L1: tau 2.08, pos 2.15, mass 2.13 | L1->L2: tau 2.10, pos 2.09, mass 2.16 | L2->L3: tau 1.87, pos 1.88, mass 2.05
+  x13_N60_M256    L0->L1: tau 1.77, pos 2.10, mass 2.47 | L1->L2: tau 2.00, pos 1.76, mass 1.78 | L2->L3: tau 2.03, pos 1.92, mass 1.95
+
+  per-atom errors at the finest level, grid L/256:
+  N = 10, h = 1.96e-05: n=2: dy +3.40e-06, dm +2.70e-05; n=3: dy +5.59e-05, dm +4.97e-04; n=4: dy +8.93e-04, dm +6.87e-03; n=5: dy +1.11e-03, dm +9.09e-04; n=7: dy +8.14e-03, dm +1.15e-01; n=9: dy -2.57e-02, dm +4.59e-01; n=11: dy +3.44e-02, dm +5.79e-01
+  N = 20, h = 1.96e-05: n=2: dy +4.54e-10, dm +2.24e-09; n=3: dy +1.55e-09, dm +6.58e-09; n=4: dy +6.31e-09, dm +2.38e-08; n=5: dy +4.44e-09, dm -3.11e-09; n=7: dy +6.70e-08, dm +1.63e-06; n=8: dy +2.59e-06, dm +4.18e-05; n=9: dy +5.46e-06, dm +1.49e-05; n=11: dy +4.25e-05, dm +1.03e-03
+  N = 40, h = 1.96e-05: n=2: dy +4.53e-10, dm +2.23e-09; n=3: dy +1.52e-09, dm +6.34e-09; n=4: dy +5.78e-09, dm +1.90e-08; n=5: dy +3.41e-09, dm -6.88e-09; n=7: dy +6.22e-09, dm +5.39e-08; n=8: dy +2.22e-08, dm +9.99e-09; n=9: dy +1.66e-08, dm -2.76e-08; n=11: dy +1.13e-07, dm +3.55e-06
+  N = 60, h = 1.96e-05: n=2: dy +4.53e-10, dm +2.23e-09; n=3: dy +1.52e-09, dm +6.34e-09; n=4: dy +5.78e-09, dm +1.90e-08; n=5: dy +3.41e-09, dm -6.88e-09; n=7: dy +6.22e-09, dm +5.37e-08; n=8: dy +2.20e-08, dm +7.39e-09; n=9: dy +1.62e-08, dm -2.92e-08; n=11: dy +1.01e-07, dm +3.08e-06
+
+==============================================================================================================
+5. x = 25: N = 60 (mp IPM, two refinements, grid L/128) and N = 134 (mp IPM at 34 digits, one refinement, grids L/128 and L/512)
+==============================================================================================================
+
+  --- x25_N60_M128 ---
+  [x25_N60_M128] level 0: h = 2.5147e-02, grid 127 pts; max lambda_min in [-8.56613283304e-5, -8.56613283304e-5] (rel. width 2.2e-21); tau* in [8.566132833e-5, 8.566132833e-5]; repair rho = 0.0; mp IPM iters 20, col.gen rounds 1, |S| 62; 12 clusters, total mass 7.1017626825, stray mass 2.96e-21
+      COMPARISON n =  2: centroid - log n = +8.081e-04, mass/(Lambda(n)/sqrt n) - 1 = +4.049e-03, mass 0.49211362, 2 pts, span 2.51e-02
+      COMPARISON n =  3: centroid - log n = +2.281e-03, mass/(Lambda(n)/sqrt n) - 1 = +8.211e-03, mass 0.63949230, 2 pts, span 2.51e-02
+      COMPARISON n =  4: centroid - log n = +8.727e-03, mass/(Lambda(n)/sqrt n) - 1 = +3.381e-02, mass 0.35829151, 2 pts, span 2.51e-02
+      COMPARISON n =  5: centroid - log n = +5.570e-03, mass/(Lambda(n)/sqrt n) - 1 = -1.109e-02, mass 0.71177972, 2 pts, span 2.51e-02
+      COMPARISON n =  7: centroid - log n = +8.585e-03, mass/(Lambda(n)/sqrt n) - 1 = +6.093e-02, mass 0.78030065, 2 pts, span 2.51e-02
+      COMPARISON n =  8: centroid - log n = +2.377e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.684e-02, mass 0.23113506, 2 pts, span 2.51e-02
+      COMPARISON n =  9: centroid - log n = +1.104e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.393e-02, mass 0.34279369, 2 pts, span 2.51e-02
+      COMPARISON n = 11: centroid - log n = +7.461e-03, mass/(Lambda(n)/sqrt n) - 1 = +3.225e-02, mass 0.74631032, 2 pts, span 2.51e-02
+      COMPARISON n = 13: centroid - log n = +9.917e-03, mass/(Lambda(n)/sqrt n) - 1 = -1.966e-02, mass 0.69740174, 2 pts, span 2.51e-02
+      COMPARISON n = 17: centroid - log n = -2.118e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.317e-02, mass 0.64375030, 2 pts, span 2.51e-02
+      COMPARISON n = 19: centroid - log n = -1.007e-02, mass/(Lambda(n)/sqrt n) - 1 = +3.535e-01, mass 0.91431019, 4 pts, span 1.01e-01
+      COMPARISON n = 23: centroid - log n = +1.163e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.678e-01, mass 0.54408358, 3 pts, span 7.54e-02
+  [x25_N60_M128] level 1: h = 3.1434e-03, grid 414 pts; max lambda_min in [-1.3497787984e-6, -1.3497787984e-6] (rel. width 1.9e-20); tau* in [1.349778798e-6, 1.349778798e-6]; repair rho = 0.0; mp IPM iters 40, col.gen rounds 1, |S| 246; 14 clusters, total mass 7.1671795482, stray mass 2.53e-15
+      COMPARISON n =  2: centroid - log n = +1.302e-05, mass/(Lambda(n)/sqrt n) - 1 = +6.455e-05, mass 0.49016071, 2 pts, span 3.14e-03
+      COMPARISON n =  3: centroid - log n = +4.311e-05, mass/(Lambda(n)/sqrt n) - 1 = +1.812e-04, mass 0.63439906, 2 pts, span 3.14e-03
+      COMPARISON n =  4: centroid - log n = +1.568e-04, mass/(Lambda(n)/sqrt n) - 1 = +5.031e-04, mass 0.34674795, 2 pts, span 3.14e-03
+      COMPARISON n =  5: centroid - log n = +8.985e-05, mass/(Lambda(n)/sqrt n) - 1 = -2.241e-04, mass 0.71960122, 2 pts, span 3.14e-03
+      COMPARISON n =  7: centroid - log n = +1.032e-04, mass/(Lambda(n)/sqrt n) - 1 = +5.474e-04, mass 0.73588749, 2 pts, span 3.14e-03
+      COMPARISON n =  8: centroid - log n = +2.114e-04, mass/(Lambda(n)/sqrt n) - 1 = -3.517e-04, mass 0.24497836, 2 pts, span 3.14e-03
+      COMPARISON n =  9: centroid - log n = +1.423e-04, mass/(Lambda(n)/sqrt n) - 1 = -6.687e-04, mass 0.36595921, 2 pts, span 3.14e-03
+      COMPARISON n = 11: centroid - log n = +9.082e-05, mass/(Lambda(n)/sqrt n) - 1 = +4.108e-04, mass 0.72328964, 2 pts, span 3.14e-03
+      COMPARISON n = 13: centroid - log n = +1.161e-04, mass/(Lambda(n)/sqrt n) - 1 = -4.187e-04, mass 0.71109107, 2 pts, span 3.14e-03
+      COMPARISON n = 16: centroid - log n = -3.151e-02, mass/(Lambda(n)/sqrt n) - 1 = -9.919e-01, mass 0.00140418, 1 pts, span 0.00e+00
+      COMPARISON n = 16: centroid - log n = +5.052e-04, mass/(Lambda(n)/sqrt n) - 1 = -3.686e-03, mass 0.17264806, 3 pts, span 9.43e-03
+      COMPARISON n = 17: centroid - log n = +5.632e-05, mass/(Lambda(n)/sqrt n) - 1 = -1.531e-03, mass 0.68610310, 2 pts, span 3.14e-03
+      COMPARISON n = 19: centroid - log n = +5.567e-05, mass/(Lambda(n)/sqrt n) - 1 = +1.030e-03, mass 0.67619661, 2 pts, span 3.14e-03
+      COMPARISON n = 23: centroid - log n = +3.784e-04, mass/(Lambda(n)/sqrt n) - 1 = +7.521e-03, mass 0.65871290, 2 pts, span 3.14e-03
+  [x25_N60_M128] level 2: h = 3.9293e-04, grid 479 pts; max lambda_min in [-4.09318639739e-9, -4.09318639739e-9] (rel. width 6.5e-17); tau* in [4.093186397e-9, 4.093186397e-9]; repair rho = 0.0; mp IPM iters 32, col.gen rounds 1, |S| 354; 14 clusters, total mass 7.1633982531, stray mass 8.90e-05
+      COMPARISON n =  2: centroid - log n = +3.965e-08, mass/(Lambda(n)/sqrt n) - 1 = +1.968e-07, mass 0.49012917, 2 pts, span 3.93e-04
+      COMPARISON n =  3: centroid - log n = +1.196e-07, mass/(Lambda(n)/sqrt n) - 1 = +4.483e-07, mass 0.63428438, 2 pts, span 3.93e-04
+      COMPARISON n =  4: centroid - log n = +5.091e-07, mass/(Lambda(n)/sqrt n) - 1 = +2.160e-06, mass 0.34657434, 2 pts, span 3.93e-04
+      COMPARISON n =  5: centroid - log n = +2.791e-07, mass/(Lambda(n)/sqrt n) - 1 = -9.998e-07, mass 0.71976180, 1 pts, span 0.00e+00
+      COMPARISON n =  7: centroid - log n = +6.237e-07, mass/(Lambda(n)/sqrt n) - 1 = +4.863e-06, mass 0.73548848, 2 pts, span 3.93e-04
+      COMPARISON n =  8: centroid - log n = +1.069e-07, mass/(Lambda(n)/sqrt n) - 1 = -2.841e-05, mass 0.24505757, 2 pts, span 3.93e-04
+      COMPARISON n =  9: centroid - log n = +1.434e-06, mass/(Lambda(n)/sqrt n) - 1 = -3.755e-05, mass 0.36619035, 2 pts, span 3.93e-04
+      COMPARISON n = 11: centroid - log n = +7.315e-07, mass/(Lambda(n)/sqrt n) - 1 = +4.125e-06, mass 0.72299561, 2 pts, span 3.93e-04
+      COMPARISON n = 13: centroid - log n = +9.478e-07, mass/(Lambda(n)/sqrt n) - 1 = -1.201e-06, mass 0.71138810, 2 pts, span 3.93e-04
+      COMPARISON n = 16: centroid - log n = +1.225e-05, mass/(Lambda(n)/sqrt n) - 1 = +2.890e-04, mass 0.17333688, 2 pts, span 3.93e-04
+      COMPARISON n = 17: centroid - log n = +2.130e-06, mass/(Lambda(n)/sqrt n) - 1 = -8.468e-05, mass 0.68709698, 2 pts, span 3.93e-04
+      COMPARISON n = 19: centroid - log n = -9.723e-07, mass/(Lambda(n)/sqrt n) - 1 = +2.925e-06, mass 0.67550260, 2 pts, span 3.93e-04
+      COMPARISON n = 23: centroid - log n = -4.635e-03, mass/(Lambda(n)/sqrt n) - 1 = -9.428e-01, mass 0.03741699, 1 pts, span 0.00e+00
+      COMPARISON n = 23: centroid - log n = +3.604e-04, mass/(Lambda(n)/sqrt n) - 1 = -5.462e-02, mass 0.61808595, 2 pts, span 3.93e-04
+  ok   [L1186]  x25_N60_M128: certified brackets consistent (lb <= ub) at every level
+  --           x25_N60_M128 level 0: clusters nearest to 16: 0, to 17: 1; clusters matched: [2, 3, 4, 5, 7, 8, 9, 11, 13, 17, 19, 23]; stray mass 3.0e-21
+  --           x25_N60_M128 level 1: clusters nearest to 16: 2, to 17: 1; clusters matched: [2, 3, 4, 5, 7, 8, 9, 11, 13, 16, 16, 17, 19, 23]; stray mass 2.5e-15
+  --           x25_N60_M128 level 2: clusters nearest to 16: 1, to 17: 1; clusters matched: [2, 3, 4, 5, 7, 8, 9, 11, 13, 16, 17, 19, 23, 23]; stray mass 8.9e-05
+
+  --- x25_N134_M128 ---
+  [x25_N134_M128] level 0: h = 2.5147e-02, grid 127 pts; max lambda_min in [-2.44379104775e-1, -2.44379104775e-1] (rel. width 3.9e-16); tau* in [2.443791048e-1, 2.443791048e-1]; repair rho = 0.0; mp IPM iters 9, col.gen rounds 1, |S| 82; 3 clusters, total mass 5.4856929022, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = +1.711e-01, mass/(Lambda(n)/sqrt n) - 1 = +1.435e-02, mass 0.49716486, 4 pts, span 7.54e-02
+      COMPARISON n =  7: centroid - log n = -1.440e-01, mass/(Lambda(n)/sqrt n) - 1 = +2.382e+00, mass 2.48737433, 45 pts, span 1.11e+00
+      COMPARISON n = 16: centroid - log n = -4.411e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.343e+01, mass 2.50115371, 27 pts, span 6.54e-01
+  [x25_N134_M128] level 1: h = 3.1434e-03, grid 680 pts; max lambda_min in [-8.52755934232e-5, -8.52755934232e-5] (rel. width 2.0e-14); tau* in [8.527559342e-5, 8.527559342e-5]; repair rho = 3.3e-20; mp IPM iters 27, col.gen rounds 1, |S| 336; 21 clusters, total mass 7.4404392911, stray mass 1.27e-08
+      COMPARISON n =  2: centroid - log n = -1.417e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.939e-01, mass 0.19902947, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = +1.098e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.020e-01, mass 0.29309863, 1 pts, span 0.00e+00
+      COMPARISON n =  3: centroid - log n = -1.727e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.781e-01, mass 0.14074629, 1 pts, span 0.00e+00
+      COMPARISON n =  3: centroid - log n = +7.876e-03, mass/(Lambda(n)/sqrt n) - 1 = -2.130e-01, mass 0.49917636, 1 pts, span 0.00e+00
+      COMPARISON n =  4: centroid - log n = +8.215e-03, mass/(Lambda(n)/sqrt n) - 1 = +2.878e-02, mass 0.35654812, 2 pts, span 3.14e-03
+      COMPARISON n =  5: centroid - log n = +5.026e-03, mass/(Lambda(n)/sqrt n) - 1 = -1.213e-02, mass 0.71102980, 2 pts, span 3.14e-03
+      COMPARISON n =  7: centroid - log n = +4.839e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.979e-02, mass 0.75003682, 2 pts, span 3.14e-03
+      COMPARISON n =  8: centroid - log n = +1.007e-02, mass/(Lambda(n)/sqrt n) - 1 = +2.019e-02, mass 0.25001200, 2 pts, span 3.14e-03
+      COMPARISON n =  9: centroid - log n = +8.382e-03, mass/(Lambda(n)/sqrt n) - 1 = -4.744e-02, mass 0.34883008, 2 pts, span 3.14e-03
+      COMPARISON n = 11: centroid - log n = +1.840e-03, mass/(Lambda(n)/sqrt n) - 1 = -2.568e-02, mass 0.70442625, 2 pts, span 3.14e-03
+      COMPARISON n = 11: centroid - log n = +4.649e-02, mass/(Lambda(n)/sqrt n) - 1 = -9.716e-01, mass 0.02051270, 2 pts, span 3.14e-03
+      COMPARISON n = 13: centroid - log n = -1.178e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.325e-01, mass 0.33256032, 2 pts, span 3.14e-03
+      COMPARISON n = 13: centroid - log n = +6.379e-03, mass/(Lambda(n)/sqrt n) - 1 = -9.559e-01, mass 0.03137742, 1 pts, span 0.00e+00
+      COMPARISON n = 13: centroid - log n = +2.167e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.974e-01, mass 0.35756179, 2 pts, span 3.14e-03
+      COMPARISON n = 16: centroid - log n = +2.100e-02, mass/(Lambda(n)/sqrt n) - 1 = +8.176e-01, mass 0.31496474, 2 pts, span 3.14e-03
+      COMPARISON n = 17: centroid - log n = -7.267e-03, mass/(Lambda(n)/sqrt n) - 1 = -8.422e-01, mass 0.10843444, 1 pts, span 0.00e+00
+      COMPARISON n = 17: centroid - log n = +5.070e-03, mass/(Lambda(n)/sqrt n) - 1 = -7.430e-01, mass 0.17662700, 2 pts, span 3.14e-03
+      COMPARISON n = 17: centroid - log n = +3.413e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.639e-01, mass 0.29963802, 2 pts, span 3.14e-03
+      COMPARISON n = 19: centroid - log n = +7.861e-03, mass/(Lambda(n)/sqrt n) - 1 = -3.375e-02, mass 0.65270218, 2 pts, span 3.14e-03
+      COMPARISON n = 23: centroid - log n = +7.939e-03, mass/(Lambda(n)/sqrt n) - 1 = -4.401e-01, mass 0.36603714, 1 pts, span 0.00e+00
+      COMPARISON n = 23: centroid - log n = +3.309e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.938e-01, mass 0.52708973, 1 pts, span 0.00e+00
+  ok   [L1186]  x25_N134_M128: certified brackets consistent (lb <= ub) at every level
+  --           x25_N134_M128 level 0: clusters nearest to 16: 1, to 17: 0; clusters matched: [2, 7, 16]; stray mass 0.0e+00
+  --           x25_N134_M128 level 1: clusters nearest to 16: 1, to 17: 3; clusters matched: [2, 2, 3, 3, 4, 5, 7, 8, 9, 11, 11, 13, 13, 13, 16, 17, 17, 17, 19, 23, 23]; stray mass 1.3e-08
+
+  --- x25_N134_M512 ---
+  [x25_N134_M512] level 0: h = 6.2869e-03, grid 511 pts; max lambda_min in [-4.05799221404e-6, -4.05799221404e-6] (rel. width 3.0e-13); tau* in [4.057992214e-6, 4.057992214e-6]; repair rho = 3.5e-20; mp IPM iters 25, col.gen rounds 1, |S| 158; 14 clusters, total mass 7.1710792546, stray mass 6.41e-09
+      COMPARISON n =  2: centroid - log n = +4.001e-05, mass/(Lambda(n)/sqrt n) - 1 = +1.975e-04, mass 0.49022588, 2 pts, span 6.29e-03
+      COMPARISON n =  3: centroid - log n = +1.254e-04, mass/(Lambda(n)/sqrt n) - 1 = +4.984e-04, mass 0.63460020, 2 pts, span 6.29e-03
+      COMPARISON n =  4: centroid - log n = +5.079e-04, mass/(Lambda(n)/sqrt n) - 1 = +1.963e-03, mass 0.34725376, 2 pts, span 6.29e-03
+      COMPARISON n =  5: centroid - log n = +2.942e-04, mass/(Lambda(n)/sqrt n) - 1 = -8.069e-04, mass 0.71918171, 2 pts, span 6.29e-03
+      COMPARISON n =  7: centroid - log n = +4.488e-04, mass/(Lambda(n)/sqrt n) - 1 = +3.212e-03, mass 0.73784725, 2 pts, span 6.29e-03
+      COMPARISON n =  8: centroid - log n = +7.857e-04, mass/(Lambda(n)/sqrt n) - 1 = -7.992e-03, mass 0.24310601, 2 pts, span 6.29e-03
+      COMPARISON n =  9: centroid - log n = +4.152e-04, mass/(Lambda(n)/sqrt n) - 1 = +2.996e-04, mass 0.36631383, 2 pts, span 6.29e-03
+      COMPARISON n = 11: centroid - log n = +4.756e-04, mass/(Lambda(n)/sqrt n) - 1 = +2.494e-03, mass 0.72479603, 2 pts, span 6.29e-03
+      COMPARISON n = 13: centroid - log n = +5.965e-04, mass/(Lambda(n)/sqrt n) - 1 = -1.849e-03, mass 0.71007386, 2 pts, span 6.29e-03
+      COMPARISON n = 16: centroid - log n = +4.282e-03, mass/(Lambda(n)/sqrt n) - 1 = +1.616e-01, mass 0.20129312, 2 pts, span 6.29e-03
+      COMPARISON n = 17: centroid - log n = +2.095e-03, mass/(Lambda(n)/sqrt n) - 1 = -3.917e-02, mass 0.66023985, 2 pts, span 6.29e-03
+      COMPARISON n = 19: centroid - log n = -2.783e-02, mass/(Lambda(n)/sqrt n) - 1 = -9.584e-01, mass 0.02812417, 2 pts, span 6.29e-03
+      COMPARISON n = 19: centroid - log n = +1.642e-03, mass/(Lambda(n)/sqrt n) - 1 = -4.032e-02, mass 0.64826655, 2 pts, span 6.29e-03
+      COMPARISON n = 23: centroid - log n = +1.302e-03, mass/(Lambda(n)/sqrt n) - 1 = +9.118e-03, mass 0.65975703, 2 pts, span 6.29e-03
+  [x25_N134_M512] level 1: h = 7.8586e-04, grid 805 pts; max lambda_min in [-8.40493523889e-9, -8.40493522885e-9] (rel. width 1.2e-9); tau* in [8.404935229e-9, 8.404935239e-9]; repair rho = 3.3e-20; mp IPM iters 24, col.gen rounds 1, |S| 405; 13 clusters, total mass 7.1618317705, stray mass 2.47e-04
+      COMPARISON n =  2: centroid - log n = +8.155e-08, mass/(Lambda(n)/sqrt n) - 1 = +4.044e-07, mass 0.49012927, 2 pts, span 7.86e-04
+      COMPARISON n =  3: centroid - log n = +2.434e-07, mass/(Lambda(n)/sqrt n) - 1 = +8.998e-07, mass 0.63428467, 2 pts, span 7.86e-04
+      COMPARISON n =  4: centroid - log n = +1.031e-06, mass/(Lambda(n)/sqrt n) - 1 = +4.354e-06, mass 0.34657510, 2 pts, span 7.86e-04
+      COMPARISON n =  5: centroid - log n = +5.513e-07, mass/(Lambda(n)/sqrt n) - 1 = -2.106e-06, mass 0.71976100, 1 pts, span 0.00e+00
+      COMPARISON n =  7: centroid - log n = +1.292e-06, mass/(Lambda(n)/sqrt n) - 1 = +9.309e-06, mass 0.73549175, 2 pts, span 7.86e-04
+      COMPARISON n =  8: centroid - log n = -1.809e-06, mass/(Lambda(n)/sqrt n) - 1 = -9.539e-05, mass 0.24504116, 2 pts, span 7.86e-04
+      COMPARISON n =  9: centroid - log n = +2.685e-06, mass/(Lambda(n)/sqrt n) - 1 = -6.781e-05, mass 0.36617926, 2 pts, span 7.86e-04
+      COMPARISON n = 11: centroid - log n = +1.679e-06, mass/(Lambda(n)/sqrt n) - 1 = +1.335e-05, mass 0.72300228, 2 pts, span 7.86e-04
+      COMPARISON n = 13: centroid - log n = +2.371e-06, mass/(Lambda(n)/sqrt n) - 1 = -3.453e-06, mass 0.71138650, 2 pts, span 7.86e-04
+      COMPARISON n = 16: centroid - log n = +3.464e-05, mass/(Lambda(n)/sqrt n) - 1 = +7.833e-04, mass 0.17342254, 2 pts, span 7.86e-04
+      COMPARISON n = 17: centroid - log n = +5.158e-06, mass/(Lambda(n)/sqrt n) - 1 = -2.311e-04, mass 0.68699640, 2 pts, span 7.86e-04
+      COMPARISON n = 19: centroid - log n = -2.605e-06, mass/(Lambda(n)/sqrt n) - 1 = +1.165e-05, mass 0.67550850, 2 pts, span 7.86e-04
+      COMPARISON n = 23: centroid - log n = +1.907e-05, mass/(Lambda(n)/sqrt n) - 1 = +1.608e-05, mass 0.65380625, 2 pts, span 7.86e-04
+  ok   [L1186]  x25_N134_M512: certified brackets consistent (lb <= ub) at every level
+  --           x25_N134_M512 level 0: clusters nearest to 16: 1, to 17: 1; clusters matched: [2, 3, 4, 5, 7, 8, 9, 11, 13, 16, 17, 19, 19, 23]; stray mass 6.4e-09
+  --           x25_N134_M512 level 1: clusters nearest to 16: 1, to 17: 1; clusters matched: [2, 3, 4, 5, 7, 8, 9, 11, 13, 16, 17, 19, 23]; stray mass 2.5e-04
+  ok   [L1197]  x25_N60: log 16 and log 17 (0.0606 apart) are NOT separated on L/128 (h = 0.025) but ARE separated after one and two refinements (a cluster within h of each, masses within 20%)
+  ok   [L1201]  x25_N134 on L/512 (h = 0.0063): log 16 and log 17 separated at level 0 and level 1
+  ok   [L1203]  x25_N134 on L/128: under-resolved (h = 0.025 > L/(2N+1) = 0.012): tau* >= 2.444e-1, 3 clusters at level 0
+  --           x25_N134_M512 level 1: max |centroid - log n| = 1.9e-05, max |mass ratio - 1| = 2.3e-04 over n not in (5, 16); n = 16: +3.5e-05 / +7.8e-04; n = 5 (log 5 = L/2 on the grid): +5.5e-07 / -2.1e-06
+
+==============================================================================================================
+6. Controls at x = 13, grid L/256
+==============================================================================================================
+
+  --- ctl_pole_only_N20 ---
+  [ctl_pole_only_N20] level 0: h = 1.0019e-02, grid 255 pts; max lambda_min in [2.45790556092e-1, 2.45790556092e-1] (rel. width 3.2e-24); tau* in [-2.457905561e-1, -2.457905561e-1]; repair rho = 0.0; mp IPM iters 13, col.gen rounds 1, |S| 80; 20 clusters, total mass 6.3446751656, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = -5.699e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.946e-01, mass 0.24768922, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -4.463e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.917e-01, mass 0.24914810, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -3.230e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.894e-01, mass 0.25023737, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -1.997e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.809e-01, mass 0.25443960, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -7.623e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.716e-01, mass 0.25898950, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = +4.709e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.629e-01, mass 0.26322738, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = +1.703e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.498e-01, mass 0.26966457, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = -1.119e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.624e-01, mass 0.27755422, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +1.137e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.502e-01, mass 0.28528668, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +1.344e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.370e-01, mass 0.29364889, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = -3.031e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.192e-01, mass 0.30526866, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = +9.284e-02, mass/(Lambda(n)/sqrt n) - 1 = -8.590e-02, mass 0.31680236, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = -7.400e-03, mass/(Lambda(n)/sqrt n) - 1 = -5.438e-01, mass 0.32833101, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +1.153e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.244e-01, mass 0.34232743, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = -9.841e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.129e-01, mass 0.35823048, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = +2.434e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.909e-01, mass 0.37442697, 2 pts, span 1.00e-02
+      COMPARISON n =  8: centroid - log n = +1.327e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.955e-01, mass 0.39099857, 2 pts, span 1.00e-02
+      COMPARISON n =  9: centroid - log n = +1.753e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.160e-01, mass 0.40867844, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = -6.149e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.077e-01, mass 0.42825161, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = +5.903e-02, mass/(Lambda(n)/sqrt n) - 1 = -3.894e-01, mass 0.44147411, 2 pts, span 1.00e-02
+  [ctl_pole_only_N20] level 1: h = 1.2524e-03, grid 675 pts; max lambda_min in [2.46792188744e-1, 2.46792188744e-1] (rel. width 4.3e-25); tau* in [-2.467921887e-1, -2.467921887e-1]; repair rho = 0.0; mp IPM iters 14, col.gen rounds 1, |S| 80; 20 clusters, total mass 6.3433738562, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = -5.697e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.955e-01, mass 0.24728595, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -4.463e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.927e-01, mass 0.24865220, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -3.230e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.879e-01, mass 0.25100065, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -1.996e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.813e-01, mass 0.25424403, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -7.626e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.726e-01, mass 0.25848622, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = +4.705e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.621e-01, mass 0.26364066, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = +1.703e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.495e-01, mass 0.26983927, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = -1.119e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.633e-01, mass 0.27699864, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +1.125e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.504e-01, mass 0.28520152, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +1.344e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.357e-01, mass 0.29447367, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = -3.025e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.205e-01, mass 0.30481298, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = +9.274e-02, mass/(Lambda(n)/sqrt n) - 1 = -8.747e-02, mass 0.31625847, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = -7.493e-03, mass/(Lambda(n)/sqrt n) - 1 = -5.431e-01, mass 0.32887212, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +1.153e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.239e-01, mass 0.34266636, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = -9.842e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.137e-01, mass 0.35765561, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = +2.417e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.917e-01, mass 0.37383340, 2 pts, span 1.25e-03
+      COMPARISON n =  8: centroid - log n = +1.307e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.964e-01, mass 0.39120977, 2 pts, span 1.25e-03
+      COMPARISON n =  9: centroid - log n = +1.746e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.183e-01, mass 0.40951402, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = -6.150e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.082e-01, mass 0.42789706, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = +5.891e-02, mass/(Lambda(n)/sqrt n) - 1 = -3.903e-01, mass 0.44083127, 2 pts, span 1.25e-03
+  [ctl_pole_only_N20] level 2: h = 1.5655e-04, grid 744 pts; max lambda_min in [2.46808766445e-1, 2.46808766445e-1] (rel. width 5.9e-26); tau* in [-2.468087664e-1, -2.468087664e-1]; repair rho = 0.0; mp IPM iters 14, col.gen rounds 1, |S| 80; 20 clusters, total mass 6.3433516355, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = -5.697e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.955e-01, mass 0.24727244, 2 pts, span 1.57e-04
+      COMPARISON n =  2: centroid - log n = -4.463e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.927e-01, mass 0.24866416, 2 pts, span 1.57e-04
+      COMPARISON n =  2: centroid - log n = -3.230e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.879e-01, mass 0.25098892, 2 pts, span 1.57e-04
+      COMPARISON n =  2: centroid - log n = -1.996e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.812e-01, mass 0.25425485, 2 pts, span 1.57e-04
+      COMPARISON n =  2: centroid - log n = -7.626e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.726e-01, mass 0.25847316, 2 pts, span 1.57e-04
+      COMPARISON n =  2: centroid - log n = +4.705e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.621e-01, mass 0.26365783, 2 pts, span 1.57e-04
+      COMPARISON n =  2: centroid - log n = +1.703e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.495e-01, mass 0.26982743, 2 pts, span 1.57e-04
+      COMPARISON n =  3: centroid - log n = -1.119e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.633e-01, mass 0.27700175, 2 pts, span 1.57e-04
+      COMPARISON n =  3: centroid - log n = +1.125e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.504e-01, mass 0.28520512, 2 pts, span 1.57e-04
+      COMPARISON n =  3: centroid - log n = +1.344e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.358e-01, mass 0.29446388, 2 pts, span 1.57e-04
+      COMPARISON n =  4: centroid - log n = -3.025e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.205e-01, mass 0.30480774, 2 pts, span 1.57e-04
+      COMPARISON n =  4: centroid - log n = +9.274e-02, mass/(Lambda(n)/sqrt n) - 1 = -8.744e-02, mass 0.31626834, 2 pts, span 1.57e-04
+      COMPARISON n =  5: centroid - log n = -7.493e-03, mass/(Lambda(n)/sqrt n) - 1 = -5.431e-01, mass 0.32887687, 2 pts, span 1.57e-04
+      COMPARISON n =  5: centroid - log n = +1.153e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.239e-01, mass 0.34266422, 2 pts, span 1.57e-04
+      COMPARISON n =  7: centroid - log n = -9.842e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.137e-01, mass 0.35765387, 2 pts, span 1.57e-04
+      COMPARISON n =  7: centroid - log n = +2.418e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.917e-01, mass 0.37385064, 2 pts, span 1.57e-04
+      COMPARISON n =  8: centroid - log n = +1.307e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.963e-01, mass 0.39120595, 2 pts, span 1.57e-04
+      COMPARISON n =  9: centroid - log n = +1.746e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.183e-01, mass 0.40950916, 2 pts, span 1.57e-04
+      COMPARISON n = 11: centroid - log n = -6.150e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.082e-01, mass 0.42788759, 2 pts, span 1.57e-04
+      COMPARISON n = 11: centroid - log n = +5.891e-02, mass/(Lambda(n)/sqrt n) - 1 = -3.903e-01, mass 0.44081772, 2 pts, span 1.57e-04
+  ok   [L1217]  ctl_pole_only_N20: certified brackets consistent at every level
+  ok   [L1219]  ctl_pole_only_N20: the grid is FEASIBLE with a large margin (max lambda_min >= 2.468e-1); the maximiser has 20 clusters, max |centroid - nearest log n| = 0.570, max mass error 0.60: no recovery
+
+  --- ctl_pole_only_N40 ---
+  [ctl_pole_only_N40] level 0: h = 1.0019e-02, grid 255 pts; max lambda_min in [1.23975521789e-1, 1.23975521789e-1] (rel. width 1.6e-24); tau* in [-1.239755218e-1, -1.239755218e-1]; repair rho = 0.0; mp IPM iters 13, col.gen rounds 1, |S| 160; 40 clusters, total mass 6.4989529310, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = -6.305e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.422e-01, mass 0.12634666, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -5.674e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.410e-01, mass 0.12693848, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -5.044e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.429e-01, mass 0.12603433, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -4.417e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.430e-01, mass 0.12593902, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -3.788e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.386e-01, mass 0.12812002, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -3.156e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.374e-01, mass 0.12868980, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -2.529e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.398e-01, mass 0.12753698, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -1.902e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.352e-01, mass 0.12980999, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -1.271e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.312e-01, mass 0.13176564, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -6.406e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.303e-01, mass 0.13220169, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -1.416e-03, mass/(Lambda(n)/sqrt n) - 1 = -7.310e-01, mass 0.13182724, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = +6.129e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.237e-01, mass 0.13541937, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = +1.244e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.200e-01, mass 0.13725019, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = +1.873e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.196e-01, mass 0.13742715, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = -1.555e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.804e-01, mass 0.13929685, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = -9.262e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.748e-01, mass 0.14283606, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = -2.952e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.718e-01, mass 0.14472999, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +3.315e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.719e-01, mass 0.14471020, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +9.575e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.653e-01, mass 0.14886979, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = -1.289e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.604e-01, mass 0.15236974, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = -6.591e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.549e-01, mass 0.15426813, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = -3.344e-03, mass/(Lambda(n)/sqrt n) - 1 = -5.529e-01, mass 0.15494740, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = +5.926e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.369e-01, mass 0.16049381, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = -1.008e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.720e-01, mass 0.16409258, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = -3.798e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.694e-01, mass 0.16594706, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +2.457e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.659e-01, mass 0.16850166, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +8.727e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.578e-01, mass 0.17433391, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +1.503e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.523e-01, mass 0.17825125, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = -1.235e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.550e-01, mass 0.18019697, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = -6.100e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.491e-01, mass 0.18453870, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = +1.733e-03, mass/(Lambda(n)/sqrt n) - 1 = -7.406e-01, mass 0.19077973, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = +6.466e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.347e-01, mass 0.19514021, 2 pts, span 1.00e-02
+      COMPARISON n =  8: centroid - log n = -6.282e-03, mass/(Lambda(n)/sqrt n) - 1 = -1.946e-01, mass 0.19737858, 2 pts, span 1.00e-02
+      COMPARISON n =  8: centroid - log n = +5.612e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.714e-01, mass 0.20306900, 2 pts, span 1.00e-02
+      COMPARISON n =  9: centroid - log n = +1.007e-03, mass/(Lambda(n)/sqrt n) - 1 = -4.268e-01, mass 0.20990405, 2 pts, span 1.00e-02
+      COMPARISON n =  9: centroid - log n = +6.382e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.132e-01, mass 0.21488842, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = -7.439e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.987e-01, mass 0.21785874, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = -1.224e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.913e-01, mass 0.22320158, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = +4.993e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.818e-01, mass 0.23007095, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = +1.118e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.778e-01, mass 0.23297100, 2 pts, span 1.00e-02
+  [ctl_pole_only_N40] level 1: h = 1.2524e-03, grid 1095 pts; max lambda_min in [1.25766252463e-1, 1.25766252463e-1] (rel. width 8.6e-24); tau* in [-1.257662525e-1, -1.257662525e-1]; repair rho = 0.0; mp IPM iters 13, col.gen rounds 1, |S| 159; 40 clusters, total mass 6.4963174302, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = -6.303e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.432e-01, mass 0.12586158, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -5.674e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.428e-01, mass 0.12605544, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -5.045e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.422e-01, mass 0.12636160, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -4.416e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.413e-01, mass 0.12677475, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -3.787e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.402e-01, mass 0.12732924, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -3.158e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.388e-01, mass 0.12803425, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -2.529e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.371e-01, mass 0.12884684, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -1.900e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.352e-01, mass 0.12977514, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -1.271e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.331e-01, mass 0.13081013, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -6.424e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.306e-01, mass 0.13201706, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -1.369e-03, mass/(Lambda(n)/sqrt n) - 1 = -7.279e-01, mass 0.13335193, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = +6.151e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.250e-01, mass 0.13480465, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = +1.244e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.217e-01, mass 0.13638036, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = +1.872e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.183e-01, mass 0.13807135, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = -1.554e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.794e-01, mass 0.13993445, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = -9.254e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.762e-01, mass 0.14193881, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = -2.969e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.729e-01, mass 0.14406981, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +3.315e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.693e-01, mass 0.14633507, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +9.598e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.655e-01, mass 0.14873606, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = -1.289e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.635e-01, mass 0.15126411, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = -6.608e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.557e-01, mass 0.15398851, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = -3.278e-03, mass/(Lambda(n)/sqrt n) - 1 = -5.474e-01, mass 0.15685243, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = +5.952e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.387e-01, mass 0.15986119, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = -1.008e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.735e-01, mass 0.16302119, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = -3.805e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.689e-01, mass 0.16633615, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +2.472e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.641e-01, mass 0.16980897, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +8.747e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.590e-01, mass 0.17344129, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +1.502e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.538e-01, mass 0.17722870, 1 pts, span 0.00e+00
+      COMPARISON n =  7: centroid - log n = -1.235e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.536e-01, mass 0.18122531, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = -6.082e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.479e-01, mass 0.18538044, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = +1.882e-03, mass/(Lambda(n)/sqrt n) - 1 = -7.421e-01, mass 0.18970577, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = +6.457e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.359e-01, mass 0.19420489, 2 pts, span 1.25e-03
+      COMPARISON n =  8: centroid - log n = -6.297e-03, mass/(Lambda(n)/sqrt n) - 1 = -1.885e-01, mass 0.19887892, 2 pts, span 1.25e-03
+      COMPARISON n =  8: centroid - log n = +5.634e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.687e-01, mass 0.20372620, 2 pts, span 1.25e-03
+      COMPARISON n =  9: centroid - log n = +1.172e-03, mass/(Lambda(n)/sqrt n) - 1 = -4.300e-01, mass 0.20873977, 2 pts, span 1.25e-03
+      COMPARISON n =  9: centroid - log n = +6.374e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.159e-01, mass 0.21390088, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = -7.442e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.969e-01, mass 0.21915896, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = -1.202e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.897e-01, mass 0.22434038, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = +5.017e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.830e-01, mass 0.22917453, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = +1.118e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.811e-01, mass 0.23059033, 2 pts, span 1.25e-03
+  ok   [L1217]  ctl_pole_only_N40: certified brackets consistent at every level
+  ok   [L1219]  ctl_pole_only_N40: the grid is FEASIBLE with a large margin (max lambda_min >= 1.258e-1); the maximiser has 40 clusters, max |centroid - nearest log n| = 0.630, max mass error 0.78: no recovery
+
+  --- ctl_arch_neg_N20 ---
+  [ctl_arch_neg_N20] level 0: h = 1.0019e-02, grid 255 pts; max lambda_min in [-7.55098863369e-1, -7.55098863369e-1] (rel. width 6.7e-25); tau* in [7.550988634e-1, 7.550988634e-1]; repair rho = 0.0; mp IPM iters 18, col.gen rounds 1, |S| 70; 20 clusters, total mass 8.7786119997, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = -6.030e-01, mass/(Lambda(n)/sqrt n) - 1 = +1.088e+00, mass 1.02318864, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -4.827e-01, mass/(Lambda(n)/sqrt n) - 1 = +2.790e-02, mass 0.50380215, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -3.595e-01, mass/(Lambda(n)/sqrt n) - 1 = +2.266e-02, mass 0.50123760, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -2.343e-01, mass/(Lambda(n)/sqrt n) - 1 = -1.590e-01, mass 0.41221686, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -1.120e-01, mass/(Lambda(n)/sqrt n) - 1 = -2.458e-01, mass 0.36964494, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = +8.206e-03, mass/(Lambda(n)/sqrt n) - 1 = -1.846e-01, mass 0.39965637, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = +1.297e-01, mass/(Lambda(n)/sqrt n) - 1 = -3.521e-01, mass 0.31753427, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = -1.568e-01, mass/(Lambda(n)/sqrt n) - 1 = -3.642e-01, mass 0.40330266, 1 pts, span 0.00e+00
+      COMPARISON n =  3: centroid - log n = -3.521e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.980e-01, mass 0.31842773, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +9.369e-02, mass/(Lambda(n)/sqrt n) - 1 = -3.113e-01, mass 0.43681893, 1 pts, span 0.00e+00
+      COMPARISON n =  4: centroid - log n = -7.261e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.561e-01, mass 0.29246660, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = +4.647e-02, mass/(Lambda(n)/sqrt n) - 1 = +2.246e-01, mass 0.42442651, 1 pts, span 0.00e+00
+      COMPARISON n =  5: centroid - log n = -5.419e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.177e-01, mass 0.34713383, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +7.381e-02, mass/(Lambda(n)/sqrt n) - 1 = -3.900e-01, mass 0.43907136, 1 pts, span 0.00e+00
+      COMPARISON n =  7: centroid - log n = -1.400e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.868e-01, mass 0.37747011, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = -1.512e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.057e-01, mass 0.43711321, 2 pts, span 1.00e-02
+      COMPARISON n =  8: centroid - log n = -2.548e-02, mass/(Lambda(n)/sqrt n) - 1 = +7.646e-01, mass 0.43244224, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = -2.303e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.182e-01, mass 0.40948017, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = +9.939e-02, mass/(Lambda(n)/sqrt n) - 1 = +4.387e-01, mass 0.52687278, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = +2.448e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.380e-01, mass 0.40630505, 2 pts, span 1.00e-02
+  [ctl_arch_neg_N20] level 1: h = 1.2524e-03, grid 605 pts; max lambda_min in [-7.52553884899e-1, -7.52553884899e-1] (rel. width 9.8e-27); tau* in [7.525538849e-1, 7.525538849e-1]; repair rho = 0.0; mp IPM iters 19, col.gen rounds 1, |S| 70; 20 clusters, total mass 8.7747577392, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = -6.030e-01, mass/(Lambda(n)/sqrt n) - 1 = +1.097e+00, mass 1.02764492, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -4.815e-01, mass/(Lambda(n)/sqrt n) - 1 = +6.527e-03, mass 0.49332833, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -3.600e-01, mass/(Lambda(n)/sqrt n) - 1 = +4.927e-02, mass 0.51427929, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -2.373e-01, mass/(Lambda(n)/sqrt n) - 1 = -2.463e-01, mass 0.36942571, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -1.151e-01, mass/(Lambda(n)/sqrt n) - 1 = -1.277e-01, mass 0.42752572, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = +6.954e-03, mass/(Lambda(n)/sqrt n) - 1 = -3.090e-01, mass 0.33868356, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = +1.303e-01, mass/(Lambda(n)/sqrt n) - 1 = -1.787e-01, mass 0.40254756, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = -1.530e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.819e-01, mass 0.32865100, 1 pts, span 0.00e+00
+      COMPARISON n =  3: centroid - log n = -3.030e-02, mass/(Lambda(n)/sqrt n) - 1 = -3.775e-01, mass 0.39481039, 1 pts, span 0.00e+00
+      COMPARISON n =  3: centroid - log n = +9.197e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.750e-01, mass 0.33301625, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = -7.251e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.564e-01, mass 0.40078216, 1 pts, span 0.00e+00
+      COMPARISON n =  4: centroid - log n = +4.979e-02, mass/(Lambda(n)/sqrt n) - 1 = -9.559e-03, mass 0.34326063, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = -4.979e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.203e-01, mass 0.41722658, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +7.256e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.042e-01, mass 0.35688725, 1 pts, span 0.00e+00
+      COMPARISON n =  7: centroid - log n = -1.410e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.018e-01, mass 0.43998393, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = -1.844e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.848e-01, mass 0.37893031, 1 pts, span 0.00e+00
+      COMPARISON n =  8: centroid - log n = -2.822e-02, mass/(Lambda(n)/sqrt n) - 1 = +9.400e-01, mass 0.47543414, 2 pts, span 1.25e-03
+      COMPARISON n =  9: centroid - log n = -2.410e-02, mass/(Lambda(n)/sqrt n) - 1 = +8.145e-02, mass 0.39603149, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = -1.003e-01, mass/(Lambda(n)/sqrt n) - 1 = -2.582e-01, mass 0.53634175, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = +2.342e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.468e-01, mass 0.39996677, 2 pts, span 1.25e-03
+  [ctl_arch_neg_N20] level 2: h = 1.5655e-04, grid 666 pts; max lambda_min in [-7.52503812375e-1, -7.52503812375e-1] (rel. width 2.2e-27); tau* in [7.525038124e-1, 7.525038124e-1]; repair rho = 0.0; mp IPM iters 19, col.gen rounds 1, |S| 70; 20 clusters, total mass 8.7747383528, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = -6.029e-01, mass/(Lambda(n)/sqrt n) - 1 = +1.097e+00, mass 1.02783735, 2 pts, span 1.57e-04
+      COMPARISON n =  2: centroid - log n = -4.818e-01, mass/(Lambda(n)/sqrt n) - 1 = +3.973e-03, mass 0.49207658, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -3.598e-01, mass/(Lambda(n)/sqrt n) - 1 = +5.332e-02, mass 0.51626425, 2 pts, span 1.57e-04
+      COMPARISON n =  2: centroid - log n = -2.378e-01, mass/(Lambda(n)/sqrt n) - 1 = -2.536e-01, mass 0.36581504, 2 pts, span 1.57e-04
+      COMPARISON n =  2: centroid - log n = -1.150e-01, mass/(Lambda(n)/sqrt n) - 1 = -1.175e-01, mass 0.43254387, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = +7.039e-03, mass/(Lambda(n)/sqrt n) - 1 = -3.175e-01, mass 0.33450714, 2 pts, span 1.57e-04
+      COMPARISON n =  2: centroid - log n = +1.300e-01, mass/(Lambda(n)/sqrt n) - 1 = -1.743e-01, mass 0.40470387, 1 pts, span 0.00e+00
+      COMPARISON n =  3: centroid - log n = -1.532e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.839e-01, mass 0.32736585, 1 pts, span 0.00e+00
+      COMPARISON n =  3: centroid - log n = -3.011e-02, mass/(Lambda(n)/sqrt n) - 1 = -3.732e-01, mass 0.39758182, 2 pts, span 1.57e-04
+      COMPARISON n =  3: centroid - log n = +9.212e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.791e-01, mass 0.33040514, 1 pts, span 0.00e+00
+      COMPARISON n =  4: centroid - log n = -7.235e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.638e-01, mass 0.40333404, 2 pts, span 1.57e-04
+      COMPARISON n =  4: centroid - log n = +4.991e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.804e-02, mass 0.34032216, 1 pts, span 0.00e+00
+      COMPARISON n =  5: centroid - log n = -4.993e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.183e-01, mass 0.41866461, 2 pts, span 1.57e-04
+      COMPARISON n =  5: centroid - log n = +7.226e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.068e-01, mass 0.35501616, 2 pts, span 1.57e-04
+      COMPARISON n =  7: centroid - log n = -1.408e-01, mass/(Lambda(n)/sqrt n) - 1 = -3.964e-01, mass 0.44392714, 2 pts, span 1.57e-04
+      COMPARISON n =  7: centroid - log n = -1.844e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.918e-01, mass 0.37375371, 1 pts, span 0.00e+00
+      COMPARISON n =  8: centroid - log n = -2.861e-02, mass/(Lambda(n)/sqrt n) - 1 = +9.567e-01, mass 0.47952081, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = -2.381e-02, mass/(Lambda(n)/sqrt n) - 1 = +7.511e-02, mass 0.39371110, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = +1.001e-01, mass/(Lambda(n)/sqrt n) - 1 = +4.683e-01, mass 0.53769562, 2 pts, span 1.57e-04
+      COMPARISON n = 11: centroid - log n = +2.365e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.472e-01, mass 0.39969209, 1 pts, span 0.00e+00
+  ok   [L1217]  ctl_arch_neg_N20: certified brackets consistent at every level
+  ok   [L1223]  ctl_arch_neg_N20: the grid is far from feasible (max lambda_min <= -7.525e-1); the maximiser has 20 clusters, max |centroid - nearest log n| = 0.603, max mass error 1.10: no recovery
+
+  --- ctl_arch_neg_N40 ---
+  [ctl_arch_neg_N40] level 0: h = 1.0019e-02, grid 255 pts; max lambda_min in [-1.69838634227, -1.69838634227] (rel. width 3.4e-26); tau* in [1.698386342, 1.698386342]; repair rho = 0.0; mp IPM iters 17, col.gen rounds 1, |S| 146; 40 clusters, total mass 9.4753585414, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = -6.481e-01, mass/(Lambda(n)/sqrt n) - 1 = +8.949e-02, mass 0.53399117, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -5.829e-01, mass/(Lambda(n)/sqrt n) - 1 = -1.943e-01, mass 0.39489158, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -5.228e-01, mass/(Lambda(n)/sqrt n) - 1 = -9.776e-02, mass 0.44221593, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -4.613e-01, mass/(Lambda(n)/sqrt n) - 1 = -1.435e-01, mass 0.41980384, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -3.982e-01, mass/(Lambda(n)/sqrt n) - 1 = -1.708e-01, mass 0.40641410, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -3.359e-01, mass/(Lambda(n)/sqrt n) - 1 = -2.597e-01, mass 0.36282065, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -2.732e-01, mass/(Lambda(n)/sqrt n) - 1 = -3.852e-01, mass 0.30131829, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -2.116e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.795e-01, mass 0.25510351, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -1.521e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.105e-01, mass 0.19088432, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -9.187e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.914e-01, mass 0.10226542, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = -2.222e-02, mass/(Lambda(n)/sqrt n) - 1 = -8.123e-01, mass 0.09199942, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = +3.845e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.303e-01, mass 0.13216706, 2 pts, span 1.00e-02
+      COMPARISON n =  2: centroid - log n = +9.838e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.109e-01, mass 0.14172072, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = +1.636e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.092e-01, mass 0.14255301, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = -1.768e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.915e-01, mass 0.19569042, 1 pts, span 0.00e+00
+      COMPARISON n =  3: centroid - log n = -1.159e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.331e-01, mass 0.23274509, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = -5.316e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.361e-01, mass 0.23082864, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +1.127e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.451e-01, mass 0.22513643, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +7.365e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.229e-01, mass 0.23921671, 1 pts, span 0.00e+00
+      COMPARISON n =  3: centroid - log n = +1.338e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.689e-01, mass 0.21004210, 1 pts, span 0.00e+00
+      COMPARISON n =  4: centroid - log n = -9.204e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.425e-01, mass 0.15855318, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = -2.658e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.264e-01, mass 0.12947043, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = +3.645e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.667e-01, mass 0.15016599, 1 pts, span 0.00e+00
+      COMPARISON n =  4: centroid - log n = +9.667e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.564e-01, mass 0.15374248, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = -6.276e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.812e-01, mass 0.15751021, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +2.567e-03, mass/(Lambda(n)/sqrt n) - 1 = -7.303e-01, mass 0.19412710, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +6.412e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.465e-01, mass 0.25446514, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +1.259e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.395e-01, mass 0.25950757, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = -1.457e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.346e-01, mass 0.26873587, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = -8.231e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.903e-01, mass 0.30135454, 1 pts, span 0.00e+00
+      COMPARISON n =  7: centroid - log n = -2.220e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.969e-01, mass 0.29646474, 1 pts, span 0.00e+00
+      COMPARISON n =  7: centroid - log n = +3.933e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.109e-01, mass 0.21260779, 2 pts, span 1.00e-02
+      COMPARISON n =  8: centroid - log n = -2.897e-02, mass/(Lambda(n)/sqrt n) - 1 = -3.587e-01, mass 0.15715479, 2 pts, span 1.00e-02
+      COMPARISON n =  8: centroid - log n = +3.464e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.939e-01, mass 0.12402808, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = -2.122e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.462e-01, mass 0.09294351, 2 pts, span 1.00e-02
+      COMPARISON n =  9: centroid - log n = +4.567e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.699e-01, mass 0.08425267, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = -9.345e-02, mass/(Lambda(n)/sqrt n) - 1 = -8.422e-01, mass 0.11410857, 1 pts, span 0.00e+00
+      COMPARISON n = 11: centroid - log n = -2.754e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.723e-01, mass 0.16463999, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = +3.680e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.247e-01, mass 0.34367078, 1 pts, span 0.00e+00
+      COMPARISON n = 11: centroid - log n = +9.692e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.618e-01, mass 0.60604671, 1 pts, span 0.00e+00
+  [ctl_arch_neg_N40] level 1: h = 1.2524e-03, grid 997 pts; max lambda_min in [-1.67645475411, -1.67645475411] (rel. width 1.8e-25); tau* in [1.676454754, 1.676454754]; repair rho = 0.0; mp IPM iters 17, col.gen rounds 1, |S| 139; 40 clusters, total mass 9.3661492054, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = -6.489e-01, mass/(Lambda(n)/sqrt n) - 1 = +1.032e+00, mass 0.99592273, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -5.867e-01, mass/(Lambda(n)/sqrt n) - 1 = -3.292e-01, mass 0.32877328, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -5.239e-01, mass/(Lambda(n)/sqrt n) - 1 = -1.727e-01, mass 0.40546021, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -4.615e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.615e-01, mass 0.21490781, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -3.979e-01, mass/(Lambda(n)/sqrt n) - 1 = -3.847e-01, mass 0.30155744, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -3.362e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.271e-01, mass 0.18275939, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -2.730e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.759e-01, mass 0.25688935, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -2.110e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.419e-01, mass 0.17550971, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = -1.471e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.258e-01, mass 0.23243028, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -8.512e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.521e-01, mass 0.17052282, 2 pts, span 1.25e-03
+      COMPARISON n =  2: centroid - log n = -2.185e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.587e-01, mass 0.21631472, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = +4.077e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.500e-01, mass 0.17156377, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = +1.034e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.859e-01, mass 0.20295312, 1 pts, span 0.00e+00
+      COMPARISON n =  2: centroid - log n = +1.660e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.431e-01, mass 0.17491675, 1 pts, span 0.00e+00
+      COMPARISON n =  3: centroid - log n = -1.768e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.931e-01, mass 0.19466036, 1 pts, span 0.00e+00
+      COMPARISON n =  3: centroid - log n = -1.142e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.178e-01, mass 0.17901909, 1 pts, span 0.00e+00
+      COMPARISON n =  3: centroid - log n = -5.105e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.976e-01, mass 0.19181917, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +1.163e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.144e-01, mass 0.18117207, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +7.465e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.990e-01, mass 0.19093012, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +1.374e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.111e-01, mass 0.18322561, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = -8.754e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.457e-01, mass 0.19211834, 1 pts, span 0.00e+00
+      COMPARISON n =  4: centroid - log n = -2.492e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.662e-01, mass 0.18499966, 1 pts, span 0.00e+00
+      COMPARISON n =  4: centroid - log n = +3.770e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.347e-01, mass 0.19591981, 1 pts, span 0.00e+00
+      COMPARISON n =  4: centroid - log n = +1.003e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.606e-01, mass 0.18692793, 1 pts, span 0.00e+00
+      COMPARISON n =  5: centroid - log n = -6.020e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.193e-01, mass 0.20205484, 1 pts, span 0.00e+00
+      COMPARISON n =  5: centroid - log n = +2.450e-03, mass/(Lambda(n)/sqrt n) - 1 = -7.367e-01, mass 0.18949788, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +6.568e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.054e-01, mass 0.21207694, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +1.281e-01, mass/(Lambda(n)/sqrt n) - 1 = -7.374e-01, mass 0.18901822, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = -1.450e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.948e-01, mass 0.22449291, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = -8.276e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.461e-01, mass 0.18672358, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = -1.969e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.746e-01, mass 0.23935621, 1 pts, span 0.00e+00
+      COMPARISON n =  7: centroid - log n = +4.293e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.470e-01, mass 0.18611397, 1 pts, span 0.00e+00
+      COMPARISON n =  8: centroid - log n = -2.788e-02, mass/(Lambda(n)/sqrt n) - 1 = +3.661e-02, mass 0.25403588, 2 pts, span 1.25e-03
+      COMPARISON n =  8: centroid - log n = +3.464e-02, mass/(Lambda(n)/sqrt n) - 1 = -2.392e-01, mass 0.18644912, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = -1.956e-02, mass/(Lambda(n)/sqrt n) - 1 = -2.449e-01, mass 0.27651089, 2 pts, span 1.25e-03
+      COMPARISON n =  9: centroid - log n = +4.335e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.051e-01, mass 0.18123835, 1 pts, span 0.00e+00
+      COMPARISON n = 11: centroid - log n = -9.429e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.842e-01, mass 0.30062002, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = -3.208e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.665e-01, mass 0.16880980, 1 pts, span 0.00e+00
+      COMPARISON n = 11: centroid - log n = +3.231e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.101e-01, mass 0.35422736, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = +9.567e-02, mass/(Lambda(n)/sqrt n) - 1 = -8.566e-01, mass 0.10364970, 1 pts, span 0.00e+00
+  ok   [L1217]  ctl_arch_neg_N40: certified brackets consistent at every level
+  ok   [L1223]  ctl_arch_neg_N40: the grid is far from feasible (max lambda_min <= -1.676); the maximiser has 40 clusters, max |centroid - nearest log n| = 0.649, max mass error 1.03: no recovery
+
+  --- ctl_pole0.9_N20 ---
+  [ctl_pole0.9_N20] level 0: h = 1.0019e-02, grid 255 pts; max lambda_min in [-1.18623088013e-1, -1.18623088013e-1] (rel. width 1.1e-26); tau* in [1.18623088e-1, 1.18623088e-1]; repair rho = 1.9e-28; mp IPM iters 20, col.gen rounds 1, |S| 72; 8 clusters, total mass 4.3053205488, stray mass 4.58e-20
+      COMPARISON n =  2: centroid - log n = +8.456e-02, mass/(Lambda(n)/sqrt n) - 1 = +2.336e-02, mass 0.50157740, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +1.298e-01, mass/(Lambda(n)/sqrt n) - 1 = +3.149e-02, mass 0.65426075, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = -7.279e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.007e-01, mass 0.35938064, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = -1.587e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.739e-02, mass 0.69327596, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = -6.630e-02, mass/(Lambda(n)/sqrt n) - 1 = -8.286e-01, mass 0.12608049, 2 pts, span 1.00e-02
+      COMPARISON n =  9: centroid - log n = -2.146e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.203e+00, mass 0.80683198, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = -3.715e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.266e-01, mass 0.41459497, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = +1.103e-01, mass/(Lambda(n)/sqrt n) - 1 = +3.641e-02, mass 0.74931836, 2 pts, span 1.00e-02
+  [ctl_pole0.9_N20] level 1: h = 1.2524e-03, grid 423 pts; max lambda_min in [-1.18612726128e-1, -1.18612726128e-1] (rel. width 1.4e-25); tau* in [1.186127261e-1, 1.186127261e-1]; repair rho = 0.0; mp IPM iters 21, col.gen rounds 1, |S| 200; 8 clusters, total mass 4.2827691598, stray mass 1.33e-17
+      COMPARISON n =  2: centroid - log n = +8.445e-02, mass/(Lambda(n)/sqrt n) - 1 = +2.284e-02, mass 0.50132537, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +1.294e-01, mass/(Lambda(n)/sqrt n) - 1 = +2.989e-02, mass 0.65324293, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = -7.439e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.035e-01, mass 0.35732799, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = -1.615e-01, mass/(Lambda(n)/sqrt n) - 1 = -9.062e-02, mass 0.66883860, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = -7.519e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.931e-01, mass 0.15220167, 2 pts, span 1.25e-03
+      COMPARISON n =  9: centroid - log n = -2.215e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.204e+00, mass 0.80696934, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = -3.584e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.132e-01, mass 0.42422926, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = +1.103e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.029e-03, mass 0.71863400, 2 pts, span 1.25e-03
+  [ctl_pole0.9_N20] level 2: h = 1.5655e-04, grid 452 pts; max lambda_min in [-1.18612648994e-1, -1.18612648994e-1] (rel. width 2.3e-25); tau* in [1.18612649e-1, 1.18612649e-1]; repair rho = 0.0; mp IPM iters 24, col.gen rounds 1, |S| 258; 8 clusters, total mass 4.2821879328, stray mass 5.58e-15
+      COMPARISON n =  2: centroid - log n = +8.445e-02, mass/(Lambda(n)/sqrt n) - 1 = +2.284e-02, mass 0.50132383, 2 pts, span 1.57e-04
+      COMPARISON n =  3: centroid - log n = +1.294e-01, mass/(Lambda(n)/sqrt n) - 1 = +2.987e-02, mass 0.65322938, 2 pts, span 1.57e-04
+      COMPARISON n =  5: centroid - log n = -7.441e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.036e-01, mass 0.35730440, 2 pts, span 1.57e-04
+      COMPARISON n =  7: centroid - log n = -1.616e-01, mass/(Lambda(n)/sqrt n) - 1 = -9.103e-02, mass 0.66853643, 2 pts, span 1.57e-04
+      COMPARISON n =  7: centroid - log n = -7.528e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.926e-01, mass 0.15252812, 2 pts, span 1.57e-04
+      COMPARISON n =  9: centroid - log n = -2.216e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.204e+00, mass 0.80695004, 2 pts, span 1.57e-04
+      COMPARISON n = 11: centroid - log n = -3.583e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.131e-01, mass 0.42434708, 2 pts, span 1.57e-04
+      COMPARISON n = 11: centroid - log n = +1.102e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.949e-03, mass 0.71796866, 2 pts, span 1.57e-04
+  ok   [L1217]  ctl_pole0.9_N20: certified brackets consistent at every level
+  ok   [L1223]  ctl_pole0.9_N20: the grid is far from feasible (max lambda_min <= -1.186e-1); the maximiser has 8 clusters, max |centroid - nearest log n| = 0.162, max mass error 1.20: no recovery
+
+  --- ctl_pole0.9_N40 ---
+  [ctl_pole0.9_N40] level 0: h = 1.0019e-02, grid 255 pts; max lambda_min in [-1.18623088085e-1, -1.18623088085e-1] (rel. width 1.2e-26); tau* in [1.186230881e-1, 1.186230881e-1]; repair rho = 0.0; mp IPM iters 22, col.gen rounds 1, |S| 72; 8 clusters, total mass 4.0621212228, stray mass 1.69e-19
+      COMPARISON n =  2: centroid - log n = +8.456e-02, mass/(Lambda(n)/sqrt n) - 1 = +2.336e-02, mass 0.50157740, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = +1.298e-01, mass/(Lambda(n)/sqrt n) - 1 = +3.149e-02, mass 0.65426064, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = -7.280e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.007e-01, mass 0.35937847, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = -1.587e-01, mass/(Lambda(n)/sqrt n) - 1 = -5.756e-02, mass 0.69314702, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = -6.637e-02, mass/(Lambda(n)/sqrt n) - 1 = -8.284e-01, mass 0.12619858, 2 pts, span 1.00e-02
+      COMPARISON n =  9: centroid - log n = -2.149e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.203e+00, mass 0.80656935, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = -3.788e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.349e-01, mass 0.40853259, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = +9.800e-02, mass/(Lambda(n)/sqrt n) - 1 = -2.912e-01, mass 0.51245717, 2 pts, span 1.00e-02
+  [ctl_pole0.9_N40] level 1: h = 1.2524e-03, grid 423 pts; max lambda_min in [-1.18612726215e-1, -1.18612726215e-1] (rel. width 2.4e-24); tau* in [1.186127262e-1, 1.186127262e-1]; repair rho = 0.0; mp IPM iters 23, col.gen rounds 1, |S| 209; 8 clusters, total mass 4.0409224882, stray mass 4.80e-16
+      COMPARISON n =  2: centroid - log n = +8.445e-02, mass/(Lambda(n)/sqrt n) - 1 = +2.284e-02, mass 0.50132537, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = +1.294e-01, mass/(Lambda(n)/sqrt n) - 1 = +2.989e-02, mass 0.65324279, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = -7.439e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.036e-01, mass 0.35732536, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = -1.615e-01, mass/(Lambda(n)/sqrt n) - 1 = -9.083e-02, mass 0.66867891, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = -7.525e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.929e-01, mass 0.15235107, 2 pts, span 1.25e-03
+      COMPARISON n =  9: centroid - log n = -2.217e-02, mass/(Lambda(n)/sqrt n) - 1 = +1.203e+00, mass 0.80673913, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = -3.656e-02, mass/(Lambda(n)/sqrt n) - 1 = -4.220e-01, mass 0.41788802, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = +9.759e-02, mass/(Lambda(n)/sqrt n) - 1 = -3.314e-01, mass 0.48337184, 2 pts, span 1.25e-03
+  ok   [L1217]  ctl_pole0.9_N40: certified brackets consistent at every level
+  ok   [L1223]  ctl_pole0.9_N40: the grid is far from feasible (max lambda_min <= -1.186e-1); the maximiser has 8 clusters, max |centroid - nearest log n| = 0.162, max mass error 1.20: no recovery
+
+  --- ctl_pole1.1_N20 ---
+  [ctl_pole1.1_N20] level 0: h = 1.0019e-02, grid 255 pts; max lambda_min in [1.06268589779e-1, 1.06268589779e-1] (rel. width 1.0e-26); tau* in [-1.062685898e-1, -1.062685898e-1]; repair rho = 3.8e-28; mp IPM iters 18, col.gen rounds 1, |S| 47; 9 clusters, total mass 4.6032705882, stray mass 2.04e-23
+      COMPARISON n =  2: centroid - log n = -6.817e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.563e-02, mass 0.48246959, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = -1.055e-01, mass/(Lambda(n)/sqrt n) - 1 = -2.295e-02, mass 0.61972924, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = -1.253e-01, mass/(Lambda(n)/sqrt n) - 1 = -3.817e-02, mass 0.33334548, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = +6.916e-02, mass/(Lambda(n)/sqrt n) - 1 = +9.198e-01, mass 0.66533771, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +1.551e-01, mass/(Lambda(n)/sqrt n) - 1 = -2.712e-02, mass 0.70024028, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = -7.619e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.327e-01, mass 0.19656635, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = +4.848e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.417e-01, mass 0.33705640, 2 pts, span 1.00e-02
+      COMPARISON n =  9: centroid - log n = -2.878e-02, mass/(Lambda(n)/sqrt n) - 1 = +7.491e-01, mass 0.64054403, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = -8.284e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.314e-01, mass 0.62798151, 2 pts, span 1.00e-02
+  [ctl_pole1.1_N20] level 1: h = 1.2524e-03, grid 444 pts; max lambda_min in [1.06283369352e-1, 1.06283369352e-1] (rel. width 2.0e-25); tau* in [-1.062833694e-1, -1.062833694e-1]; repair rho = 0.0; mp IPM iters 33, col.gen rounds 1, |S| 196; 11 clusters, total mass 4.6069979589, stray mass 7.15e-20
+      COMPARISON n =  2: centroid - log n = -6.831e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.641e-02, mass 0.48208624, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = -1.058e-01, mass/(Lambda(n)/sqrt n) - 1 = -2.423e-02, mass 0.61891503, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = -1.269e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.738e-02, mass 0.33015432, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = -2.367e-02, mass/(Lambda(n)/sqrt n) - 1 = -9.948e-01, mass 0.00179425, 1 pts, span 0.00e+00
+      COMPARISON n =  4: centroid - log n = +6.817e-02, mass/(Lambda(n)/sqrt n) - 1 = +9.204e-01, mass 0.66557675, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +1.529e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.659e-02, mass 0.68622842, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = -7.898e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.137e-01, mass 0.21056318, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = +4.461e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.552e-01, mass 0.32714354, 2 pts, span 1.25e-03
+      COMPARISON n =  8: centroid - log n = +4.580e-03, mass/(Lambda(n)/sqrt n) - 1 = -9.942e-01, mass 0.00141895, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = -3.172e-02, mass/(Lambda(n)/sqrt n) - 1 = +7.600e-01, mass 0.64450696, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = -8.257e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.167e-01, mass 0.63861031, 2 pts, span 1.25e-03
+  [ctl_pole1.1_N20] level 2: h = 1.5655e-04, grid 507 pts; max lambda_min in [1.06283461718e-1, 1.06283461718e-1] (rel. width 2.6e-26); tau* in [-1.062834617e-1, -1.062834617e-1]; repair rho = 1.3e-28; mp IPM iters 34, col.gen rounds 2, |S| 299; 11 clusters, total mass 4.6062558057, stray mass 1.01e-18
+      COMPARISON n =  2: centroid - log n = -6.831e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.641e-02, mass 0.48208456, 2 pts, span 1.57e-04
+      COMPARISON n =  3: centroid - log n = -1.058e-01, mass/(Lambda(n)/sqrt n) - 1 = -2.426e-02, mass 0.61889353, 2 pts, span 1.57e-04
+      COMPARISON n =  4: centroid - log n = -1.270e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.904e-02, mass 0.32957707, 2 pts, span 1.57e-04
+      COMPARISON n =  4: centroid - log n = -2.445e-02, mass/(Lambda(n)/sqrt n) - 1 = -9.903e-01, mass 0.00335831, 1 pts, span 0.00e+00
+      COMPARISON n =  4: centroid - log n = +6.829e-02, mass/(Lambda(n)/sqrt n) - 1 = +9.180e-01, mass 0.66473323, 2 pts, span 1.57e-04
+      COMPARISON n =  5: centroid - log n = +1.530e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.515e-02, mass 0.68726248, 2 pts, span 1.57e-04
+      COMPARISON n =  7: centroid - log n = -7.887e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.156e-01, mass 0.20920208, 2 pts, span 1.57e-04
+      COMPARISON n =  7: centroid - log n = +4.466e-02, mass/(Lambda(n)/sqrt n) - 1 = -5.551e-01, mass 0.32725400, 2 pts, span 1.57e-04
+      COMPARISON n =  8: centroid - log n = +5.832e-03, mass/(Lambda(n)/sqrt n) - 1 = -9.866e-01, mass 0.00329044, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = -3.154e-02, mass/(Lambda(n)/sqrt n) - 1 = +7.540e-01, mass 0.64232241, 2 pts, span 1.57e-04
+      COMPARISON n = 11: centroid - log n = -8.280e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.172e-01, mass 0.63827769, 1 pts, span 0.00e+00
+  ok   [L1217]  ctl_pole1.1_N20: certified brackets consistent at every level
+  ok   [L1219]  ctl_pole1.1_N20: the grid is FEASIBLE with a large margin (max lambda_min >= 1.063e-1); the maximiser has 11 clusters, max |centroid - nearest log n| = 0.153, max mass error 0.99: no recovery
+
+  --- ctl_pole1.1_N40 ---
+  [ctl_pole1.1_N40] level 0: h = 1.0019e-02, grid 255 pts; max lambda_min in [1.06268377707e-1, 1.06268377707e-1] (rel. width 4.3e-25); tau* in [-1.062683777e-1, -1.062683777e-1]; repair rho = 0.0; mp IPM iters 22, col.gen rounds 1, |S| 51; 12 clusters, total mass 5.4662079581, stray mass 0.00e+00
+      COMPARISON n =  2: centroid - log n = -6.817e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.564e-02, mass 0.48246225, 2 pts, span 1.00e-02
+      COMPARISON n =  3: centroid - log n = -1.055e-01, mass/(Lambda(n)/sqrt n) - 1 = -2.326e-02, mass 0.61953215, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = -1.260e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.775e-02, mass 0.33002624, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = -2.265e-02, mass/(Lambda(n)/sqrt n) - 1 = -9.800e-01, mass 0.00694700, 2 pts, span 1.00e-02
+      COMPARISON n =  4: centroid - log n = +6.936e-02, mass/(Lambda(n)/sqrt n) - 1 = +9.091e-01, mass 0.66163727, 2 pts, span 1.00e-02
+      COMPARISON n =  5: centroid - log n = +1.540e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.510e-02, mass 0.68730190, 1 pts, span 0.00e+00
+      COMPARISON n =  7: centroid - log n = -8.206e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.286e-01, mass 0.19959664, 2 pts, span 1.00e-02
+      COMPARISON n =  7: centroid - log n = +3.792e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.430e-01, mass 0.26254642, 1 pts, span 0.00e+00
+      COMPARISON n =  8: centroid - log n = -6.193e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.613e-01, mass 0.08301087, 2 pts, span 1.00e-02
+      COMPARISON n =  9: centroid - log n = -2.898e-02, mass/(Lambda(n)/sqrt n) - 1 = +7.615e-01, mass 0.64508137, 3 pts, span 3.01e-02
+      COMPARISON n = 11: centroid - log n = -8.212e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.356e-01, mass 0.62493061, 2 pts, span 1.00e-02
+      COMPARISON n = 11: centroid - log n = +1.570e-01, mass/(Lambda(n)/sqrt n) - 1 = +1.938e-01, mass 0.86313524, 1 pts, span 0.00e+00
+  [ctl_pole1.1_N40] level 1: h = 1.2524e-03, grid 500 pts; max lambda_min in [1.06283120588e-1, 1.06283120588e-1] (rel. width 1.6e-25); tau* in [-1.062831206e-1, -1.062831206e-1]; repair rho = 0.0; mp IPM iters 35, col.gen rounds 1, |S| 223; 13 clusters, total mass 7.0311602092, stray mass 6.35e-19
+      COMPARISON n =  2: centroid - log n = -6.831e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.643e-02, mass 0.48207760, 2 pts, span 1.25e-03
+      COMPARISON n =  3: centroid - log n = -1.059e-01, mass/(Lambda(n)/sqrt n) - 1 = -2.459e-02, mass 0.61868649, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = -1.281e-01, mass/(Lambda(n)/sqrt n) - 1 = -6.388e-02, mass 0.32443608, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = -2.138e-02, mass/(Lambda(n)/sqrt n) - 1 = -9.531e-01, mass 0.01625825, 2 pts, span 1.25e-03
+      COMPARISON n =  4: centroid - log n = +6.897e-02, mass/(Lambda(n)/sqrt n) - 1 = +8.970e-01, mass 0.65743841, 2 pts, span 1.25e-03
+      COMPARISON n =  5: centroid - log n = +1.531e-01, mass/(Lambda(n)/sqrt n) - 1 = -4.465e-02, mass 0.68762519, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = -7.902e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.217e-01, mass 0.20470339, 2 pts, span 1.25e-03
+      COMPARISON n =  7: centroid - log n = +3.835e-02, mass/(Lambda(n)/sqrt n) - 1 = -6.173e-01, mass 0.28148359, 2 pts, span 1.25e-03
+      COMPARISON n =  8: centroid - log n = -5.929e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.952e-01, mass 0.05017940, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = -5.309e-02, mass/(Lambda(n)/sqrt n) - 1 = -7.458e-01, mass 0.09308111, 1 pts, span 0.00e+00
+      COMPARISON n =  9: centroid - log n = -2.741e-02, mass/(Lambda(n)/sqrt n) - 1 = +5.264e-01, mass 0.55895631, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = -8.228e-02, mass/(Lambda(n)/sqrt n) - 1 = -1.311e-01, mass 0.62817926, 2 pts, span 1.25e-03
+      COMPARISON n = 11: centroid - log n = +1.579e-01, mass/(Lambda(n)/sqrt n) - 1 = +2.358e+00, mass 2.42805513, 2 pts, span 1.25e-03
+  ok   [L1217]  ctl_pole1.1_N40: certified brackets consistent at every level
+  ok   [L1219]  ctl_pole1.1_N40: the grid is FEASIBLE with a large margin (max lambda_min >= 1.063e-1); the maximiser has 13 clusters, max |centroid - nearest log n| = 0.158, max mass error 2.36: no recovery
+
+  ok   [L1229]  signed_N20: signed w with H0 + T(w) = c I, c = 1: lambda_min >= 1.0; sum|w| = 5.9095e+00, sum w = 4.3945e+00, min w = -1.025e-01, max w = 1.318e-01, 28 negative weights, moment residual 2.1e-81
+  ok   [L1229]  signed_N20: signed w with H0 + T(w) = c I, c = 10: lambda_min >= 1.0e+1; sum|w| = 1.7759e+01, sum w = -2.3272e+00, min w = -1.852e+00, max w = 2.562e-01, 96 negative weights, moment residual 1.6e-81
+  ok   [L1229]  signed_N20: signed w with H0 + T(w) = c I, c = 100: lambda_min >= 1.0e+2; sum|w| = 2.1096e+02, sum w = -6.9544e+01, min w = -2.126e+01, max w = 3.687e+00, 128 negative weights, moment residual 1.3e-79
+  ok   [L1229]  signed_N60: signed w with H0 + T(w) = c I, c = 1: lambda_min >= 1.0; sum|w| = 9.2834e+00, sum w = 4.8031e+00, min w = -4.762e-01, max w = 7.182e-01, 43 negative weights, moment residual 4.2e-81
+  ok   [L1229]  signed_N60: signed w with H0 + T(w) = c I, c = 10: lambda_min >= 1.0e+1; sum|w| = 2.7642e+01, sum w = -2.7316e+00, min w = -5.084e+00, max w = 1.226e+00, 107 negative weights, moment residual 1.7e-80
+  ok   [L1229]  signed_N60: signed w with H0 + T(w) = c I, c = 100: lambda_min >= 1.0e+2; sum|w| = 3.6751e+02, sum w = -7.8079e+01, min w = -6.310e+01, max w = 1.825e+01, 128 negative weights, moment residual 2.7e-79
+
+# checks: 102 passed, 0 failed
