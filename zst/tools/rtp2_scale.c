@@ -245,8 +245,9 @@ static void selftest(void)
   zst_riemann_ab(aa,bb,20,xx,13,1200);zst_even_block(EE,aa,bb,20,1200);zst_odd_block(OO,aa,bb,20,1200);
   for(int k=0;k<4;k++) {
    arb_set_si(ss,k);arb_mul_2exp_si(ss,ss,-5);
-   must(sinertia(EE,ss,bb,0,1200)==inertia(EE,ss,1200),"structured even inertia vs dense");
-   must(sinertia(OO,ss,bb,1,1200)==inertia(OO,ss,1200),"structured odd inertia vs dense");
+   slong re=inertia(EE,ss,1200),ro=inertia(OO,ss,1200);
+   must(re>=0&&sinertia(EE,ss,bb,0,1200)==re,"structured even inertia vs dense");
+   must(ro>=0&&sinertia(OO,ss,bb,1,1200)==ro,"structured odd inertia vs dense");
   }
   arb_mat_clear(EE);arb_mat_clear(OO);_arb_vec_clear(aa,21);_arb_vec_clear(bb,21);arb_clear(xx);arb_clear(ss);
  }

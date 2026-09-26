@@ -1,0 +1,8 @@
+data x=70 Nmax=1626 seconds=67.546303
+build x=70 N=986 seconds=1.388190
+factor n=987 p=4600 neg=0 seconds=0.000000
+iteration n=987 count=40 seconds=105.206951
+gap n=987 neg=1 seconds=172.302159
+row x=70 N=986 seconds=173.851602
+build x=70 N=1026 seconds=1.052251
+factor n=1027 p=4600 neg=0 seconds=0.000000

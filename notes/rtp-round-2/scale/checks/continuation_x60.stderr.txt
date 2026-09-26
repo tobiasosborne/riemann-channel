@@ -1,3 +1,18 @@
 data x=60 Nmax=1538 seconds=106.384249
 build x=60 N=858 seconds=1.418995
 factor n=859 p=5200 neg=0 seconds=17.071161
+iteration n=859 count=36 seconds=170.529903
+gap n=859 neg=1 seconds=187.565261
+row x=60 N=858 seconds=189.151049
+build x=60 N=898 seconds=1.109553
+factor n=899 p=5200 neg=0 seconds=18.320464
+iteration n=899 count=36 seconds=182.039997
+gap n=899 neg=1 seconds=195.045211
+row x=60 N=898 seconds=196.283243
+build x=60 N=938 seconds=0.907265
+factor n=939 p=5200 neg=0 seconds=15.651807
+iteration n=939 count=36 seconds=202.490515
+gap n=939 neg=1 seconds=219.092270
+row x=60 N=938 seconds=220.106504
+build x=60 N=978 seconds=0.969149
+factor n=979 p=5200 neg=0 seconds=17.447448

@@ -41,3 +41,14 @@ gap n=923 neg=1 seconds=252.970430
 row x=85 N=922 seconds=254.219689
 build x=85 N=962 seconds=1.188066
 factor n=963 p=5500 neg=0 seconds=0.000000
+iteration n=963 count=48 seconds=147.618817
+gap n=963 neg=1 seconds=218.609253
+row x=85 N=962 seconds=219.876571
+build x=85 N=1002 seconds=0.954019
+factor n=1003 p=5500 neg=0 seconds=0.000000
+iteration n=1003 count=48 seconds=144.250001
+gap n=1003 neg=1 seconds=219.722837
+row x=85 N=1002 seconds=220.752996
+build x=85 N=1042 seconds=1.036708
+factor n=1043 p=5500 neg=0 seconds=0.000000
+iteration n=1043 count=48 seconds=166.615546
