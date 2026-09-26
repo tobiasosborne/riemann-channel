@@ -58,3 +58,15 @@ clean:
 # RTP round 1, lane A1 driver (not part of the certified pipeline; reuses libzst unchanged)
 build/rtp1_a1: tools/rtp1_a1.c build/libzst.a
 	$(CC) $(CFLAGS) $< build/libzst.a $(LDLIBS) -o $@
+
+# RTP round 2, lane D (standalone experiment; not part of all)
+build/rtp2_dirichlet: tools/rtp2_dirichlet.c ../notes/rtp-round-2/dirichlet/checks/reference.c build/libzst.a
+	$(CC) $(CFLAGS) $< build/libzst.a $(LDLIBS) -o $@
+
+# RTP round 2, lane E (standalone weight-two experiment; not part of all)
+build/rtp2_ellcurve: tools/rtp2_ellcurve.c ../notes/rtp-round-2/ellcurve/checks/spectra.c build/libzst.a
+	$(CC) $(CFLAGS) $< build/libzst.a $(LDLIBS) -o $@
+
+# RTP round 2, lane S (driver-only OpenMP; not part of all)
+build/rtp2_scale: tools/rtp2_scale.c build/libzst.a
+	$(CC) $(CFLAGS) -fopenmp $< build/libzst.a $(LDLIBS) -o $@

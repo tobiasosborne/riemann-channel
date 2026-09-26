@@ -142,3 +142,16 @@ zero 20 36.727547051537073200591290509603571163200
 zero 21 38.385325478928250266716510557600750107112
 zero 22 39.036784716190239997285005567453830736121
 end
+
+# RTP-2 COMPARISON seeds: checks/generate_references.py, FLINT Hardy Z, 2026-09-26.
+# 40-digit midpoints; certified enclosures and two-precision checks retained in lane checks/.
+# First-index identification from sign scan (not a certified global zero count).
+chi -7 7 1
+zero 1 4.475738283728683131974628487193130920401
+end
+chi -20 20 1
+zero 1 2.358934994086656048615012369773900451772
+end
+chi 21 21 0
+zero 1 2.31518706430314115204629295971248679334
+end
