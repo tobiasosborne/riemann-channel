@@ -287,7 +287,7 @@ svg.plot .tn-dim{fill:var(--ink2);font-size:10px}
   <p>A quantum channel that is a Ramanujan quantum expander is therefore a Kraus family whose non-backtracking ring norms form a positive definite sequence, in the same sense, with the same trivial set and the same radius \(\sqrt{D-1}\), as a Ramanujan graph. The classical graph is the case where the \(B_i\) are the permutation matrices of the generators; the Weil–LPS channels of the notebook are exact examples with \(V = \ell^2(\mathbb F_p)\).</p>
 
   <div class="demo wide" id="demo-kraus">
-    <p class="cap"><b>Demo F · the Kraus dichotomy.</b> Bond dimension \(2\), four letters in two reversal pairs. Choose the pairing: unitary (both), inverse only, adjoint only, or the notebook's no-duality example. The ring norms are computed from the sixteen-dimensional lifted transfer operator and checked against the word sum; the retained sequence uses the trivial set of the theorem; the spectrum panels are <span class="pill spec">comparison</span>.</p>
+    <p class="cap"><b>Demo F · the Kraus dichotomy.</b> Bond dimension \(2\), four letters in two reversal pairs. Choose the pairing: unitary (both), inverse only, adjoint only, or the notebook's no-duality example. The ring norms are computed from the sixteen-dimensional lifted transfer operator and checked against the word sum; the retained sequence subtracts the trivial set appropriate to the regime (the theorem's in the unitary case; the Perron root alone with only the adjoint pairing); the spectrum panels are <span class="pill spec">comparison</span>.</p>
   </div>
 
   <div class="dict"><h4>Dictionary so far</h4><table>
@@ -1306,23 +1306,27 @@ function plane(svg, ext, title, sub){ const cx = 220, cy = 166, sc = 116 / ext, 
   TX(svg, 432, 16, 'comparison', { 'text-anchor': 'end', 'font-size': '10', 'font-style': 'italic' });
   TX(svg, X(ext), cy + 13, WT.fmtF(ext, 1), { 'text-anchor': 'middle', 'font-size': '9' }); TX(svg, X(-ext), cy + 13, WT.fmtF(-ext, 1), { 'text-anchor': 'middle', 'font-size': '9' });
   return { X, Y, sc, cx, cy }; }
-function drawSigma(svg, M){ WT.svg.clear(svg); const b = 2 * Math.sqrt(Q), ext = Math.max(5, 1.12 * Math.max(...M.sig.map(C.abs)));
-  const P = plane(svg, ext, '(a) spec Σ, Σ = Σᵢ Ad(Bᵢ)  (4 values)', 'band |α| ≤ 2√3 on the real axis; pole colour = trivial (Φ = ±1, or Perron α₀)');
+/* points beyond the plotted range are pinned to its edge (value in the label), so a Perron outlier does not shrink the circle */
+const pin = (svg, P, ext, z, draw) => { const a = C.abs(z); if (a <= 1.05 * ext) return draw(z); const w = [z[0] * ext / a, z[1] * ext / a]; draw(w);
+  TX(svg, P.X(w[0]), P.Y(w[1]) - 9, '→ ' + WT.fmtC(z[0], z[1], 2), { 'text-anchor': 'end', 'font-size': '9' }); };
+function drawSigma(svg, M){ WT.svg.clear(svg); const b = 2 * Math.sqrt(Q), a0 = M.kind === 'inverse' ? M.sig.reduce((m, a) => C.abs(a) > C.abs(m) ? a : m) : null,
+    ext = Math.max(5, 1.12 * Math.max(0, ...M.sig.filter(a => a !== a0).map(C.abs)));
+  const P = plane(svg, ext, '(a) spec Σ, Σ = Σᵢ Ad(Bᵢ)  (4 values)', 'band |α| ≤ 2√3; pole colour: trivial (Φ = ±1, Perron α₀)');
   SV('rect', { x: P.X(-b), y: P.cy - 5, width: P.X(b) - P.X(-b), height: 10, rx: 3, fill: V.bondSoft, stroke: V.bond, 'stroke-width': 0.8 }, svg);
   TX(svg, P.X(b), P.cy - 9, '2√3', { 'text-anchor': 'middle', 'font-size': '9', fill: V.bond }); TX(svg, P.X(-b), P.cy - 9, '−2√3', { 'text-anchor': 'middle', 'font-size': '9', fill: V.bond });
   dot(svg, P.X(D), P.cy, 8, 'none', V.pole, 'D = 4'); TX(svg, P.X(D), P.cy + 24, 'D', { 'text-anchor': 'middle', 'font-size': '9', fill: V.pole });
-  const a0 = M.kind === 'inverse' ? M.sig.reduce((m, a) => C.abs(a) > C.abs(m) ? a : m) : null;
   M.sig.forEach(a => { const triv = (M.kind === 'unitary' && (Math.abs(a[0] - D) < 1e-8 * D || Math.abs(a[0] + D) < 1e-8 * D)) || (a0 && a === a0);
-    dot(svg, P.X(a[0]), P.Y(a[1]), 4.5, triv ? V.pole : V.spec, V.bg2, 'α = ' + WT.fmtC(a[0], a[1], 4)); }); }
-function drawT(svg, M){ WT.svg.clear(svg); const ext = Math.max(1.3 * M.r, 1.1 * Math.max(...M.specQ.map(C.abs)));
-  const P = plane(svg, ext, '(b) spec T, 16 modes' + (M.kind === 'nodual' ? '' : '; circle |μ| = √3'), 'filled: eigenvalues of the 16×16 T (QR)' + (M.ref ? '; hollow: ' + (M.kind === 'nodual' ? 'closed form (prop)' : 'Ihara–Bass') : ''));
+    pin(svg, P, ext, a, w => dot(svg, P.X(w[0]), P.Y(w[1]), 4.5, triv ? V.pole : V.spec, V.bg2, 'α = ' + WT.fmtC(a[0], a[1], 4))); }); }
+function drawT(svg, M){ WT.svg.clear(svg); const big = M.kind === 'inverse' ? Math.max(...M.S.map(C.abs)) : Infinity,
+    ext = Math.max(1.3 * M.r, 1.1 * Math.max(...M.specQ.map(C.abs).filter(a => a < 0.999 * big)));
+  const P = plane(svg, ext, '(b) spec T, 16 modes' + (M.kind === 'nodual' ? '' : '; circle |μ| = √3'), 'filled: eigenvalues of T (QR)' + (M.ref ? '; hollow: ' + (M.kind === 'nodual' ? 'closed form (prop)' : 'Ihara–Bass') : ''));
   SV('circle', { cx: P.cx, cy: P.cy, r: M.r * P.sc, fill: 'none', stroke: V.metric, 'stroke-dasharray': '4 3', 'stroke-width': 1.2 }, svg);
   TX(svg, P.X(M.r * 0.72), P.Y(M.r * 0.72) - 4, 'r = ' + WT.fmtF(M.r, 4), { 'font-size': '9', fill: V.metric });
-  if (M.ref) M.ref.forEach(z => dot(svg, P.X(z[0]), P.Y(z[1]), 6.5, 'none', V.ink2));
-  M.specQ.forEach((z, k) => dot(svg, P.X(z[0]), P.Y(z[1]), 3.2, M.trivQ.has(k) ? V.pole : V.spec, 'none', 'μ = ' + WT.fmtC(z[0], z[1], 4) + '  |μ| = ' + WT.fmtF(C.abs(z), 4))); }
+  if (M.ref) M.ref.forEach(z => pin(svg, P, ext, z, w => dot(svg, P.X(w[0]), P.Y(w[1]), 6.5, 'none', V.ink2)));
+  M.specQ.forEach((z, k) => { const a = C.abs(z), w = a > 1.05 * ext ? [z[0] * ext / a, z[1] * ext / a] : z; dot(svg, P.X(w[0]), P.Y(w[1]), 3.2, M.trivQ.has(k) ? V.pole : V.spec, 'none', 'μ = ' + WT.fmtC(z[0], z[1], 4) + '  |μ| = ' + WT.fmtF(a, 4)); }); }
 function drawCount(svg, M){ WT.svg.clear(svg); TX(svg, 8, 16, '(c) side A: ring sums and the retained sequence', { fill: V.ink, 'font-size': '12' });
   const L = 12, lg = M.tr.slice(1, L + 1).map(z => Math.log10(1 + Math.max(0, z[0]))), hs = 86 / Math.max(1, ...lg), x0 = 44, w = 31, y0 = 128;
-  TX(svg, 8, 32, 'log₁₀(1 + Tr Tˡ), l = 1..12;  Tr Tˡ = Σ_w |Tr B_w|² ≥ 0  (hollow: word sums, l ≤ 4)', { 'font-size': '9.5' });
+  TX(svg, 8, 32, 'log₁₀(1 + Tr Tˡ) ≥ 0, l = 1..12; hollow: Σ_w |Tr B_w|², l ≤ 4', { 'font-size': '9.5' });
   SV('line', { x1: x0 - 4, y1: y0, x2: x0 + L * w, y2: y0, class: 'axis' }, svg);
   WT.svg.bars(svg, lg, x0, y0, w, hs, null, { color: V.orbit, labels: lg.map((_, i) => i + 1) });
   M.words.forEach(o => dot(svg, x0 + (o.l - 1) * w + (w - 2) / 2, y0 - Math.log10(1 + o.sum) * hs, 4, 'none', V.ink2, 'Σ_w |Tr B_w|² = ' + WT.fmt(o.sum, 8) + ' over ' + o.count + ' words'));
@@ -1333,16 +1337,17 @@ function drawCount(svg, M){ WT.svg.clear(svg); TX(svg, 8, 16, '(c) side A: ring 
   M.nu.forEach((v, l) => TX(svg, x0 + l * w2 + w2 / 2 - 1, 296, String(l), { 'text-anchor': 'middle', 'font-size': '9' })); }
 function drawWeil(svg, M, K){ WT.svg.clear(svg); TX(svg, 8, 16, '(d) Weil matrix (ν_{k−j}) and its λ_min', { fill: V.ink, 'font-size': '12' });
   const cell = Math.min(22, 196 / K), Wm = WT.toeplitz(M.nu, K);
-  WT.svg.heat(svg, Wm, 12, 44, cell, { orbit: V.orbit, spec: V.spec, ink: V.ink }, { title: 'K = ' + K + ' (blue-green ≥ 0, red < 0)' });
+  WT.svg.heat(svg, Wm, 12, 44, cell, { orbit: V.orbit, spec: V.spec, ink: V.ink }, { title: 'K = ' + K + ' (teal ≥ 0, red < 0)' });
   const x0 = 236, w = 14, y0 = 150, v = M.mins.map(x => Math.abs(x) < TOL * M.nuScale ? 0 : x), s = v.map(sl), hs = 100 / Math.max(0.3, ...s.map(Math.abs));
   TX(svg, x0 - 4, 36, 'λ_min(K), K = 1..14 (signed log)', { 'font-size': '9.5' });
   SV('line', { x1: x0 - 3, y1: y0, x2: x0 + KMAX * w, y2: y0, class: 'axis' }, svg);
   s.forEach((val, i) => { const hh = Math.max(1.5, Math.abs(val) * hs); SV('rect', { x: x0 + i * w, y: val >= 0 ? y0 - hh : y0, width: w - 3, height: hh, fill: v[i] < 0 ? V.spec : V.orbit, opacity: 0.9 }, svg);
     if (i + 1 === K) SV('rect', { x: x0 + i * w - 1.5, y: y0 - 104, width: w, height: 208, fill: 'none', stroke: V.ink, 'stroke-width': 1, 'stroke-dasharray': '2 2' }, svg);
     if (i % 2 === 1 || i === 0) TX(svg, x0 + i * w + (w - 3) / 2, y0 + 118, String(i + 1), { 'text-anchor': 'middle', 'font-size': '9' }); });
-  TX(svg, x0 + KMAX * w / 2, 290, 'λ_min(' + K + ') = ' + WT.fmtF(M.mins[K - 1], 6), { 'text-anchor': 'middle', 'font-size': '10', fill: M.mins[K - 1] < -TOL * M.nuScale ? V.spec : V.orbit }); }
+  TX(svg, x0 + KMAX * w / 2, 290, 'λ_min(' + K + ') = ' + fmtW(M.mins[K - 1], M.nuScale), { 'text-anchor': 'middle', 'font-size': '10', fill: M.mins[K - 1] < -TOL * M.nuScale ? V.spec : V.orbit }); }
 
 // ---------- readout ----------
+const fmtW = (x, sc) => Math.abs(x) < TOL * sc ? '0' : WT.fmt(x, 5);   // lambda_min: 5 significant digits (cancellation in nu_l)
 const e1 = x => x === 0 ? '0' : x.toExponential(0).replace('e+', 'e');
 function verdict(M, K){ const neg = M.mins.findIndex(x => x < -TOL * M.nuScale), pos = neg < 0;
   const at = pos ? 'λ_min ≥ 0 for K = 1..14' : 'λ_min < 0 from K = ' + (neg + 1);
@@ -1350,12 +1355,12 @@ function verdict(M, K){ const neg = M.mins.findIndex(x => x < -TOL * M.nuScale),
     (M.hast.holds === pos ? '.  Consistent.' : '.  (Finite window: a mode just off the circle only shows at larger K.)');
   if (M.kind === 'inverse') return 'duality holds, Σ-spectrum ' + (M.sigReal ? 'real' : 'non-real') + ': retained modes ' + (M.circle < 1e-6 ? 'on' : 'off') + ' the circle, form ' + (pos ? 'positive' : 'indefinite') + ' (' + at + ').';
   if (M.kind === 'nodual') return 'no duality (prop:kraus-no-duality-example): positivity is the one-sided bound |μ| ≤ r only (thm:kraus-weil-criterion (i)); at r = p₄ one mode sits on the circle, the rest inside: ' + at +
-    '.  At r = √3 instead: λ_min(' + K + ') = ' + WT.fmtF(M.mins3[K - 1], 4) + '.';
+    '.  At r = √3 instead: λ_min(' + K + ') = ' + fmtW(M.mins3[K - 1], M.nuScale) + '.';
   return 'no duality: positivity is the one-sided bound |μ| ≤ √3 only (thm:kraus-weil-criterion (i)); modes inside the disc pass.  Here max |μ| off S = ' + WT.fmtF(M.maxRet, 4) +
     (M.maxRet <= M.r * (1 + 1e-9) ? ' ≤ √3' : ' > √3') + '; ' + at + (M.maxRet > M.r * (1 + 1e-9) && pos ? ' (finite window: the outside mode shows at larger K)' : '') + '.'; }
 function readout(el, M, K){ const k = s => '<span class="k">' + s + '</span>', yes = b => b ? 'yes' : 'no';
   const st = M.st, fam = st.regime === 'unitary' ? (st.preset === 'sqrt' ? 'unitary preset (1 − iX)/√2, (1 − iZ)/√2' : st.preset === 'pauli' ? 'unitary preset X, Z (self-inverse: B₃ = B₁, B₄ = B₂)' : 'unitary Haar pair, seed ' + st.seed) + (st.eps > 0 ? ', deformed Uᵢ + ε Rᵢ, ε = ' + st.eps.toFixed(2) + ' (adjoint pairing kept)' : '')
-    : st.regime === 'inverse' ? 'inverse-paired B₃ = B₁⁻¹, B₄ = B₂⁻¹, |det Bᵢ| = 1, seed ' + st.seed : st.regime === 'adjoint' ? 'adjoint-paired B₃ = B₁†, B₄ = B₂†, seed ' + st.seed : 'B₁ = B₃ = diag(1,2), B₂ = B₄ = 1';
+    : st.regime === 'inverse' ? 'inverse-paired B₃ = B₁⁻¹, B₄ = B₂⁻¹ (B₁, B₂ complex Gaussian), seed ' + st.seed : st.regime === 'adjoint' ? 'adjoint-paired B₃ = B₁†, B₄ = B₂†, seed ' + st.seed : 'B₁ = B₃ = diag(1,2), B₂ = B₄ = 1';
   const L = [];
   L.push(k('family    ') + fam);
   L.push(k('pairings  ') + '‖B_ī Bᵢ − 1‖ = ' + e1(M.pe.inv) + ', ‖B_ī − Bᵢ†‖ = ' + e1(M.pe.adj) + '  →  inverse-paired ' + yes(M.invP) + ', adjoint-paired ' + yes(M.adjP) + ', unitary ' + yes(M.invP && M.adjP));
@@ -1368,7 +1373,7 @@ function readout(el, M, K){ const k = s => '<span class="k">' + s + '</span>', y
   L.push(k('side B    ') + 'spec T by QR' + (M.ref ? ' vs ' + (M.kind === 'nodual' ? 'closed form' : 'Ihara–Bass') + ': ' + e1(M.disc.qr) : '') + ';  from the 16 power sums (Newton identities): off by ' + e1(M.disc.newton) +
     ' (ill-conditioned: a root of multiplicity m moves by δ^{1/m}, small roots drown under the largest)');
   L.push(k('retained  ') + M.ret.length + ' modes;  J-invariant (μ ↦ r²/μ̄): ' + yes(M.Jinv) + ';  max ||μ| − r| = ' + WT.fmtF(M.circle, 4) + ';  max |μ| = ' + WT.fmtF(M.maxRet, 4));
-  L.push(k('Weil form ') + 'λ_min(K = ' + K + ') = ' + WT.fmtF(M.mins[K - 1], 6) + ';  K = 4, 8, 12: ' + [4, 8, 12].map(q => WT.fmtF(M.mins[q - 1], 6)).join(', '));
+  L.push(k('Weil form ') + 'λ_min(K = ' + K + ') = ' + fmtW(M.mins[K - 1], M.nuScale) + ';  K = 4, 8, 12: ' + [4, 8, 12].map(q => fmtW(M.mins[q - 1], M.nuScale)).join(', '));
   L.push(k('verdict   ') + verdict(M, K));
   el.innerHTML = L.join('\n'); }
 
