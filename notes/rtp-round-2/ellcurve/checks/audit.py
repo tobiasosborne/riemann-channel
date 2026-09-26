@@ -28,7 +28,7 @@ for p in sorted(OUT.glob('rtp2_ellcurve_*.txt')):
         ev,_=ball(e['epsE']);ov,_=ball(e['epsO'])
         assert (ev<ov)==(e['parity']=='1');checks+=1
     for c in r.get('COMP',[]):
-        if '37a1' in p.name:assert 'error' not in c;checks+=1
+        if '37a1' in p.name or '389a1' in p.name:assert 'error' not in c;checks+=1
         elif c.get('roots')!='0':assert c['N']==c['roots'];checks+=1
     for e in r.get('SPECTRUM',[]):
         assert e['certified']=='1' and int(e['upper_count'])==int(e['index']) and int(e['lower_count'])==int(e['index'])-1;checks+=1
@@ -52,3 +52,16 @@ for x in [13,25,50]:
     assert [e for e in a['SPECTRUM'] if e['object']!='11a1']==[e for e in b['SPECTRUM'] if e['object']!='14a1'];checks+=1
 print('AUDIT:',len(files),'complete files,',checks,'checks passed')
 for p in files:print(hashlib.sha256(p.read_bytes()).hexdigest(),p.relative_to(ROOT))
+
+# Independent precision checks at identical curve/window/resolution, rounded display.
+for c,x,n in [('11a1',13,60),('14a1',25,60),('37a1',50,60),('11a1',100,200)]:
+    p=ROOT/f'notes/rtp-round-2/ellcurve/checks/recheck_{c}_x{x}_N{n}.txt'
+    if not p.exists() or '# checks:' not in p.read_text():continue
+    _,a=parse(p)
+    source=OUT/f'rtp2_ellcurve_{c}_axisx_ccm_N{n}.txt'
+    if x==25 and c=='14a1':source=OUT/'rtp2_ellcurve_14a1_axisN_x25.txt'
+    if source not in files:continue
+    _,b=parse(source);aa=a['EIG'][0];bb=next(r for r in b['EIG'] if int(r['N'])==n and int(r['x'])==x)
+    assert all(aa[k]==bb[k] for k in ['epsE','epsO','parity']);checks+=1
+    print('PRECISION_RECHECK',c,x,n,'same printed epsE,epsO,parity')
+print('AUDIT_WITH_RECHECKS',checks,'passed')

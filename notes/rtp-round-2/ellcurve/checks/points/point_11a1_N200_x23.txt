@@ -1,0 +1,26 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=11a1 C=11 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=11a1 C=11 N=200 xmax=23 prec=1000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=23 X=23 N=200 epsE=9.73622581789e-11 epsO=4.86946394781e-8 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=23 X=23 N=200 logdetE=387.353960964 logdetO=399.477969925 dI=0.03593873752 rj=7.841686847 tau=0.1239459206
+OVERLAP x=23 X=23 coefficient=1.00000000000
+RAY x=23 N=200 parity=1 term=arch value=-0.932599856610
+RAY x=23 N=200 term=k2 value=0.782153366083 cumulative=-0.150446490528
+RAY x=23 N=200 term=k3 value=0.167265042067 cumulative=0.0168185515393
+RAY x=23 N=200 term=k4 value=0 cumulative=0.0168185515393
+RAY x=23 N=200 term=k5 value=-0.0225161419533 cumulative=-0.00569759041398
+RAY x=23 N=200 term=k7 value=0.00624723716104 cumulative=0.000549646747065
+RAY x=23 N=200 term=k8 value=-0.00158213895420 cumulative=-0.00103249220714
+RAY x=23 N=200 term=k9 value=0.00113470680563 cumulative=0.000102214598495
+RAY x=23 N=200 term=k11 value=-6.62492805776e-5 cumulative=3.59653179177e-5
+RAY x=23 N=200 term=k13 value=-3.69809139555e-5 cumulative=-1.01559603779e-6
+RAY x=23 N=200 term=k16 value=7.73627962783e-7 cumulative=-2.41968075005e-7
+RAY x=23 N=200 term=k17 value=2.42065437264e-7 cumulative=9.73622581789e-11
+RAY x=23 N=200 term=k19 value=0 cumulative=9.73622581789e-11
+RAY x=23 N=200 term=k23 value=[+/- 6.38e-301] cumulative=9.73622581789e-11
+RAY_TOTAL x=23 N=200 arch=-0.932599856610 primes=0.932599856708 sum=9.73622581789e-11 eps=9.73622581789e-11
+# COMPARISON STEP; indefinite partial forms have no CCM interpretation
+REFERENCE curve=11a1 gamma1=6.36261389471308870138602900888 certified_unique=0 index=PARI radius=1e-38 rank=0
+COMP x=23 X=23 N=200 parity=1 roots=200 z1=6.36261400661188888 error=1.11898800175e-7 ratio=1149.30366518
+# checks: 17 run, 0 failed

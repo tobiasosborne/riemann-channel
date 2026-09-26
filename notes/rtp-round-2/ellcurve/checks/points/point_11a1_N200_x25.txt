@@ -1,0 +1,27 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=11a1 C=11 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=11a1 C=11 N=200 xmax=25 prec=1000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=25 X=25 N=200 epsE=2.42489302939e-11 epsO=1.17415150328e-8 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=25 X=25 N=200 logdetE=382.318942163 logdetO=395.129276123 dI=0.004144699561 rj=8.178725703 tau=-0.03795697199
+OVERLAP x=25 X=25 coefficient=1.00000000000
+RAY x=25 N=200 parity=1 term=arch value=-0.939846846984
+RAY x=25 N=200 term=k2 value=0.787035515368 cumulative=-0.152811331616
+RAY x=25 N=200 term=k3 value=0.170190969534 cumulative=0.0173796379181
+RAY x=25 N=200 term=k4 value=0 cumulative=0.0173796379181
+RAY x=25 N=200 term=k5 value=-0.0235887345654 cumulative=-0.00620909664721
+RAY x=25 N=200 term=k7 value=0.00680237807106 cumulative=0.000593281423846
+RAY x=25 N=200 term=k8 value=-0.00176398011343 cumulative=-0.00117069868959
+RAY x=25 N=200 term=k9 value=0.00130011711939 cumulative=0.000129418429806
+RAY x=25 N=200 term=k11 value=-8.12940284598e-5 cumulative=4.81244013458e-5
+RAY x=25 N=200 term=k13 value=-4.98968093429e-5 cumulative=-1.77240799713e-6
+RAY x=25 N=200 term=k16 value=1.31165539032e-6 cumulative=-4.60752606813e-7
+RAY x=25 N=200 term=k17 value=4.60715416794e-7 cumulative=-3.71900191185e-11
+RAY x=25 N=200 term=k19 value=0 cumulative=-3.71900191185e-11
+RAY x=25 N=200 term=k23 value=6.14389494124e-11 cumulative=2.42489302939e-11
+RAY x=25 N=200 term=k25 value=[+/- 2.43e-300] cumulative=2.42489302939e-11
+RAY_TOTAL x=25 N=200 arch=-0.939846846984 primes=0.939846847009 sum=2.42489302939e-11 eps=2.42489302939e-11
+# COMPARISON STEP; indefinite partial forms have no CCM interpretation
+REFERENCE curve=11a1 gamma1=6.36261389471308870138602900888 certified_unique=0 index=PARI radius=1e-38 rank=0
+COMP x=25 X=25 N=200 parity=1 roots=200 z1=6.36261392546078033 error=3.07476916289e-8 ratio=1268.00198014
+# checks: 17 run, 0 failed

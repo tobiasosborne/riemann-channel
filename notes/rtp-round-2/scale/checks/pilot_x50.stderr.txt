@@ -1,0 +1,3 @@
+build x=50 N=420 seconds=19.736486
+factor n=421 p=4200 neg=0 seconds=3.026333
+FAIL minimal even eigenpair (raise precision on failure)

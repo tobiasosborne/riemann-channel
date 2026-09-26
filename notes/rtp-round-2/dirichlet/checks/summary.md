@@ -249,3 +249,20 @@ Review supplement (not recomputed): zeta x=50,N=420 eps=2.80881e-258; error=3.03
 | -8 | 60 | 0.628993 | 0.657306 | 50 | pending |
 | -8 | 120 | 0.635859 | — | 25 | 0.0263973 |
 
+# x50 determinant and precision audit
+
+These LDL/bordering certificates complete before the expensive eigenpair comparisons. All values below are ball-certified; N_sat is the unique argmin over 1..420.
+
+| D | N_sat full/even/odd | minimum full logdet | worst pivot accuracy (bits of 4200) | joint half-width at N420 |
+|---|---|---|---|---|
+| -4 | 80/80/80 | -1287.1115063921 | 3553 | 4.470290981 |
+| -3 | 110/110/110 | -2401.2069788692 | 3238 | 3.549872308 |
+| 5 | 60/60/60 | -856.07791085415 | 3708 | 4.258373727 |
+| 8 | 35/35/30 | -302.47559909992 | 3824 | 5.794128371 |
+| -7 | 41/41/39 | -373.15804027167 | 3807 | 5.729216772 |
+| 12 | 21/21/21 | -117.12155458100 | 3873 | 5.500469183 |
+| -20 | 7/10/7 | -24.953377726696 | 3908 | 5.663447680 |
+| 21 | 10/10/10 | -31.159762225705 | 3906 | 4.905560988 |
+| 13 | 21/21/15 | -99.791521188752 | 3877 | 5.022479853 |
+| -8 | 33/33/33 | -268.76034318545 | 3829 | 4.589664255 |
+

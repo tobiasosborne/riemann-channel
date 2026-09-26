@@ -2,7 +2,7 @@
 
 Author: `codex:gpt-6-astra`.
 
-Status: incremental research record. Computations use prime, pole and archimedean data only. No files in `zst/` are modified.
+Status: completed lane report, unregistered and ready for independent REFUTE review. Computations use prime, pole and archimedean data only. No files in `zst/` are modified.
 
 ## Correction ledger
 
@@ -274,4 +274,26 @@ One threshold: for all eleven interior atoms at x=13, **N=6** is the first cutof
 
 One slope: the n=2 LP width at the sampled saturation cutoffs contracts at **3.481279430 digits per unit x** from 13 to 25 (five-point fit 3.481449717). The matching eps rate is 5.266033356, so this is not the same rate. Rates are derived floating statistics, not asymptotic assertions.
 
-Reproduction: `python3 scripts/rtp2_lattice_box.py > outputs/rtp2_lattice_box.txt`. The full run has **513 checks, zero failures**. The artifacts and individual verification modes are documented in `checks/README.md`.
+Reproduction: `python3 scripts/rtp2_lattice_box.py > outputs/rtp2_lattice_box.txt`. The full run has **513 checks, zero failures**, and two complete runs are byte-identical (`checks/replay.txt`). A separate `checks/audit.py` passes **18 checks**: six cold/warm LP audit identities and twelve comparisons with the independently certified minimum eigenvalues, including even/odd separation. All approximate eigenvalues, including the entire smallest-m group, are retained in the case `.data` files; the tables summarize their extreme quantiles. The artifacts and individual verification modes are documented in `checks/README.md`.
+
+## What this changes in the notebook
+
+**`num:rtp-commutant`.** Retain its Loewner-coordinate and minimum-norm numerical findings. Split off the lattice geometry into a theorem: interior atom positions have zero recession cone at a sufficiently large, geometry-dependent cutoff; at x=13 the exact first cutoff for the eleven atoms is N=6. Strict finite feasibility then makes the lattice set compact with nonempty interior and gives a unique maximum-determinant optimizer. Its identity with truth is not established. At N=20 retain the review's widths `2.9844e-25` through `1.2529e-4`, now with ball-certified LP optimality; append the multi-window tables above. Describe truth as strictly interior with a tiny spectral margin and a very narrow admissible ray interval. Full SDP widths remain bracketed between section lower bounds and LP upper bounds.
+
+**`obs:rtp-round-1-reading`(iv).** The supported statement is quantitative confinement of weights at known positions, with explicit dependence on the low spectrum **and** the sensitivities of those eigendirections to the atoms. The statement must not imply exact prime-weight recovery at a fixed window. At the sampled saturation cutoffs, the n=2 width contracts at 3.48 digits per unit x, the moving edge at 0.335, and eps at 5.27. At fixed N=60 the edge box expands. Finite-section data do not establish infinite-window positivity or `eps_N -> 0`. The labelled theoretical comparison proves that RH gives a positive fixed-window floor and an open neighborhood of admissible weights, even after imposing nonnegative weights.
+
+Candidate rows for shard 08j (proposed only; nothing registered):
+
+| proposed claim | kind | status and scope |
+|---|---|---|
+| `lem:rtp-lattice-recession` | lemma | **PROVED**: H-INT, explicit geometry-dependent cutoff; no threshold depending only on m; edge coordinates invisible |
+| `prop:rtp-lattice-maxdet` | proposition | **PROVED**: zero recession cone plus strict finite feasibility gives a unique lattice MaxEnt optimizer |
+| `lem:rtp-lattice-width-dual` | lemma | **PROVED**: signed dual-pair width bound, optimal for the fixed cuts; positive-spanning and full-compression conditioning bounds |
+| `prop:rtp-lattice-limit-dual-pin` | proposition | **PROVED-conditional**: H-POS + H-PIN imply singleton intersection; full SDP certificates are necessary under eventual compactness and strict finite feasibility |
+| `prop:rtp-coercive-window-nonunique` | proposition | **PROVED**: H-GAP gives the feasible open ball `2||delta||_1<mu_L` for these bounded atom operators |
+| `cor:rtp-rh-window-nonunique` | corollary | **PROVED-conditional on H-RH**: compact resolvent and the explicit formula give H-GAP at every fixed finite zeta window; theoretical COMPARISON STEP |
+| `num:rtp2-lattice-widths` | numerical | **NUMERICAL, ball-certified bounds**: twelve finite cases, exact optimality for the chosen dyadic eigenvector cuts; derived slopes are floating, finite-range statistics |
+| `num:rtp2-lattice-recession` | numerical | **NUMERICAL, ball-certified decisions**: first cutoffs `2,2,2,3,3,4,4,5,5,6` for m=2..11 at x=13 |
+| `num:rtp2-lattice-sections` | numerical | **NUMERICAL, ball-certified brackets**: six two-coordinate sections at each of N=20,40; full SDP box tightness **OPEN** |
+
+**The one next step:** compute the full eleven-coordinate SDP box at x=13, N=20 with matching primal and general PSD dual certificates, using the present section and LP bounds as brackets. That resolves the outstanding relaxation gap without conflating a two-coordinate section with a full coordinate projection.

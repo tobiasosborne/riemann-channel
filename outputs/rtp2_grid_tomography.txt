@@ -1,0 +1,174 @@
+RTP-2 LANE G / codex:gpt-6-astra / no RH, no zero ordinates / deterministic
+PRECISION: 1280-bit Arb input and PD; 1024-bit ball Farkas; 160-digit LP; 180-digit residual repair; 100-digit axis inertia.
+DATA x13_N20.data
+DATA x13_N40.data
+DATA x13_N60.data
+DATA x25_N60.data
+DATA x25_N134.data
+PASS x=13 N=20: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=20: independent prime-atom sum agrees with zst cutoff split, error=3.556e-161
+CASE x=13 N=20 min_eig=1.56610785511e-39
+GRID M=64 union=False FARKAS cost=-0.00017721800636 residual=-4.687e-121
+GRID M=64 union=True FARKAS none
+GRID M=128 union=False FARKAS cost=-5.2284105398e-5 residual=-4.844e-121
+GRID M=128 union=True FARKAS none
+GRID M=256 union=False FARKAS cost=-8.15313837417e-6 residual=-4.922e-121
+GRID M=256 union=True FARKAS none
+PASS x=13 N=40: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=40: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+CASE x=13 N=40 min_eig=9.4628098483e-54
+GRID M=64 union=False FARKAS cost=-0.000176874875812 residual=-4.687e-121
+GRID M=64 union=True FARKAS none
+GRID M=128 union=False FARKAS cost=-5.19936149409e-5 residual=-3.75e-121
+GRID M=128 union=True FARKAS none
+GRID M=256 union=False FARKAS cost=-7.99157226501e-6 residual=-7.422e-121
+GRID M=256 union=True FARKAS none
+PASS x=13 N=60: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=60: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+CASE x=13 N=60 min_eig=1.01356290717e-58
+GRID M=64 union=False FARKAS cost=-0.000177041384553 residual=-3.437e-121
+GRID M=64 union=True FARKAS none
+GRID M=128 union=False FARKAS cost=-5.15631496452e-5 residual=-1.25e-121
+GRID M=128 union=True FARKAS none
+GRID M=256 union=False FARKAS cost=-8.00093935025e-6 residual=-7.422e-121
+GRID M=256 union=True FARKAS none
+PASS x=25 N=60: true blocks positive by 1280-bit Arb Cholesky
+PASS x=25 N=60: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+CASE x=25 N=60 min_eig=1.07936480137e-91
+GRID M=128 union=False FARKAS cost=-8.49321221948e-5 residual=-7.031e-121
+GRID M=128 union=True FARKAS none
+PASS x=25 N=134: true blocks positive by 1280-bit Arb Cholesky
+PASS x=25 N=134: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+CASE x=25 N=134 min_eig=1.25553923336e-121
+GRID M=128 union=False FARKAS cost=-8.47189232157e-5 residual=-6.25e-121
+GRID M=128 union=True FARKAS none
+PASS LP boxes x=13 N=20 M=64: generated or loaded; dual re-verification follows
+BOX {"x": 13, "N": 20, "M": 64, "cuts": 20, "mass": ["4.260436206511733611", "4.4149449700808938625"], "near": ["4.2586818859998609907", "4.2622756137243256953"], "far_upper": "0.15482432636888813531", "true_mass": "4.260495442124349047", "ratio_lower": "27.506542323672210814", "audit": ["1.1328262e-152", "-6.9861871e-150", "0.0"]}
+PASS LP boxes x=13 N=20 M=128: generated or loaded; dual re-verification follows
+BOX {"x": 13, "N": 20, "M": 128, "cuts": 20, "mass": ["4.2604101495306779989", "5.0962549782359827235"], "near": ["4.2540736379554782545", "4.2628868580575853138"], "far_upper": "0.83601257163666870292", "true_mass": "4.260495442124349047", "ratio_lower": "5.0885283096009468209", "audit": ["8.7783513e-152", "-1.8273366e-149", "0.0"]}
+PASS LP boxes x=13 N=20 M=256: generated or loaded; dual re-verification follows
+BOX {"x": 13, "N": 20, "M": 256, "cuts": 20, "mass": ["4.2603910519560749763", "6.931883967384128655"], "near": ["4.2400495942859730411", "4.2632977353716071685"], "far_upper": "2.6715440158188945366", "true_mass": "4.260495442124349047", "ratio_lower": "1.5871157537287637095", "audit": ["2.3913611e-151", "-6.8344094e-149", "0.0"]}
+PASS LP boxes x=13 N=40 M=64: generated or loaded; dual re-verification follows
+BOX {"x": 13, "N": 40, "M": 64, "cuts": 20, "mass": ["4.2604954419036959753", "4.2606545880605264648"], "near": ["4.2604954378339025811", "4.2604954534747467227"], "far_upper": "0.00015914701680670964327", "true_mass": "4.260495442124349047", "ratio_lower": "26770.815584991097103", "audit": ["1.6815676e-146", "-9.3887527e-144", "0.0"]}
+PASS LP boxes x=13 N=40 M=128: generated or loaded; dual re-verification follows
+BOX {"x": 13, "N": 40, "M": 128, "cuts": 20, "mass": ["4.26049544175508616", "4.2709350730967421847"], "near": ["4.2604954264714069754", "4.2604954582041771094"], "far_upper": "0.010439632381729318304", "true_mass": "4.260495442124349047", "ratio_lower": "408.10780214136799739", "audit": ["2.2744106e-144", "-7.5235227e-142", "0.0"]}
+PASS LP boxes x=13 N=40 M=256: generated or loaded; dual re-verification follows
+BOX {"x": 13, "N": 40, "M": 256, "cuts": 20, "mass": ["4.2604954416161439905", "4.4931470517357171346"], "near": ["4.2604953943785784727", "4.2604954619740956793"], "far_upper": "0.23265161122484507227", "true_mass": "4.260495442124349047", "ratio_lower": "18.312769776010888783", "audit": ["3.7240376e-144", "-9.7855804e-142", "0.0"]}
+PASS LP boxes x=13 N=60 M=64: generated or loaded; dual re-verification follows
+BOX {"x": 13, "N": 60, "M": 64, "cuts": 20, "mass": ["4.2604954420991315987", "4.2605400617173064958"], "near": ["4.2604954415371555998", "4.2604954438575864143"], "far_upper": "0.000044619728938065448273", "true_mass": "4.260495442124349047", "ratio_lower": "95484.56575007323277", "audit": ["7.1418243e-146", "-4.5954161e-143", "0.0"]}
+PASS LP boxes x=13 N=60 M=128: generated or loaded; dual re-verification follows
+BOX {"x": 13, "N": 60, "M": 128, "cuts": 20, "mass": ["4.2604954420824150875", "4.2642995882432796297"], "near": ["4.2604954399760420488", "4.2604954445536983654"], "far_upper": "0.0038041462891222536852", "true_mass": "4.260495442124349047", "ratio_lower": "1119.9609889237681444", "audit": ["1.5609785e-143", "-5.0931299e-141", "0.0"]}
+PASS LP boxes x=13 N=60 M=256: generated or loaded; dual re-verification follows
+BOX {"x": 13, "N": 60, "M": 256, "cuts": 20, "mass": ["4.2604954420664572278", "4.368963114576988678"], "near": ["4.2604954355599695252", "4.2604954451161939494"], "far_upper": "0.10846767265025539563", "true_mass": "4.260495442124349047", "ratio_lower": "39.278942116676252433", "audit": ["3.4412212e-142", "-6.9616905e-140", "0.0"]}
+PASS LP boxes x=25 N=60 M=128: generated or loaded; dual re-verification follows
+BOX {"x": 25, "N": 60, "M": 128, "cuts": 30, "mass": ["7.1616227309256698214", "7.1616316903438347101"], "near": ["7.1616227309008886526", "7.1616227312250488496"], "far_upper": "8.9594283855217231482e-6", "true_mass": "7.1616227309285040987", "ratio_lower": "799339.24606997736102", "audit": ["9.4994637e-125", "-9.6143343e-123", "0.0"]}
+PASS LP boxes x=25 N=134 M=128: generated or loaded; dual re-verification follows
+BOX {"x": 25, "N": 134, "M": 128, "cuts": 30, "mass": ["7.1616227309285040987", "7.161622731198028829"], "near": ["7.1616227309285040984", "7.1616227309285041099"], "far_upper": "2.695247303845772479e-10", "true_mass": "7.1616227309285040987", "ratio_lower": "26571300973.791111104", "audit": ["3.3199491e-113", "-3.368587e-111", "0.0"]}
+PASS x=13 N=20: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=20: independent prime-atom sum agrees with zst cutoff split, error=3.556e-161
+FARKAS_BALL x=13 N=20 M=64 certified=1 cost=[-0.000177218006359887550325116385754 +/- 1.43e-34]
+PASS grid x=13 N=20 M=64: exact Farkas contradiction certified with 1024-bit balls
+FARKAS_BALL x=13 N=20 M=128 certified=1 cost=[-5.22841053979977972554045784623e-5 +/- 8.64e-36]
+PASS grid x=13 N=20 M=128: exact Farkas contradiction certified with 1024-bit balls
+FARKAS_BALL x=13 N=20 M=256 certified=1 cost=[-8.15313837417036745938183831156e-6 +/- 2.47e-36]
+PASS grid x=13 N=20 M=256: exact Farkas contradiction certified with 1024-bit balls
+PASS x=13 N=40: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=40: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+FARKAS_BALL x=13 N=40 M=64 certified=1 cost=[-0.000176874875811687787034750930015 +/- 4.92e-34]
+PASS grid x=13 N=40 M=64: exact Farkas contradiction certified with 1024-bit balls
+FARKAS_BALL x=13 N=40 M=128 certified=1 cost=[-5.19936149409319085210618801206e-5 +/- 1.41e-35]
+PASS grid x=13 N=40 M=128: exact Farkas contradiction certified with 1024-bit balls
+FARKAS_BALL x=13 N=40 M=256 certified=1 cost=[-7.99157226500837670424531597885e-6 +/- 4.76e-36]
+PASS grid x=13 N=40 M=256: exact Farkas contradiction certified with 1024-bit balls
+PASS x=13 N=60: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=60: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+FARKAS_BALL x=13 N=60 M=64 certified=1 cost=[-0.000177041384553280768479433782853 +/- 1.83e-35]
+PASS grid x=13 N=60 M=64: exact Farkas contradiction certified with 1024-bit balls
+FARKAS_BALL x=13 N=60 M=128 certified=1 cost=[-5.15631496451863869958984896763e-5 +/- 2.06e-35]
+PASS grid x=13 N=60 M=128: exact Farkas contradiction certified with 1024-bit balls
+FARKAS_BALL x=13 N=60 M=256 certified=1 cost=[-8.00093935025007530093842118758e-6 +/- 2.86e-36]
+PASS grid x=13 N=60 M=256: exact Farkas contradiction certified with 1024-bit balls
+PASS x=25 N=60: true blocks positive by 1280-bit Arb Cholesky
+PASS x=25 N=60: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+FARKAS_BALL x=25 N=60 M=128 certified=1 cost=[-8.49321221948079988048797213586e-5 +/- 2.07e-35]
+PASS grid x=25 N=60 M=128: exact Farkas contradiction certified with 1024-bit balls
+PASS x=25 N=134: true blocks positive by 1280-bit Arb Cholesky
+PASS x=25 N=134: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+FARKAS_BALL x=25 N=134 M=128 certified=1 cost=[-8.47189232157064367313042391226e-5 +/- 3.22e-35]
+PASS grid x=25 N=134 M=128: exact Farkas contradiction certified with 1024-bit balls
+PASS x=13 N=20: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=20: independent prime-atom sum agrees with zst cutoff split, error=4.82e-181
+PASS boxes x=13 N=20 M=64: truth contained, residuals repaired using constant-test mass scale
+VERIFIED_BOX {"x": 13, "N": 20, "M": 64, "cuts": 20, "mass": ["4.260436206511733611", "4.4149449700808938625"], "near": ["4.2586818859998609907", "4.2622756137243256953"], "far_upper": "0.15482432636888813531", "true_mass": "4.260495442124349047", "ratio_lower": "27.506542323672210814", "audit": ["1.1328262e-152", "-6.9861871e-150", "0.0"], "residual_correction_max": "2.78429738078e-150", "negative_dual_clipped": "0.0", "verification_dps": 180}
+PASS x=13 N=20: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=20: independent prime-atom sum agrees with zst cutoff split, error=4.82e-181
+PASS boxes x=13 N=20 M=128: truth contained, residuals repaired using constant-test mass scale
+VERIFIED_BOX {"x": 13, "N": 20, "M": 128, "cuts": 20, "mass": ["4.2604101495306779989", "5.0962549782359827235"], "near": ["4.2540736379554782545", "4.2628868580575853138"], "far_upper": "0.83601257163666870292", "true_mass": "4.260495442124349047", "ratio_lower": "5.0885283096009468209", "audit": ["8.7783513e-152", "-1.8273366e-149", "0.0"], "residual_correction_max": "2.58079802504e-149", "negative_dual_clipped": "0.0", "verification_dps": 180}
+PASS x=13 N=20: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=20: independent prime-atom sum agrees with zst cutoff split, error=4.82e-181
+PASS boxes x=13 N=20 M=256: truth contained, residuals repaired using constant-test mass scale
+VERIFIED_BOX {"x": 13, "N": 20, "M": 256, "cuts": 20, "mass": ["4.2603910519560749763", "6.931883967384128655"], "near": ["4.2400495942859730411", "4.2632977353716071685"], "far_upper": "2.6715440158188945366", "true_mass": "4.260495442124349047", "ratio_lower": "1.5871157537287637095", "audit": ["2.3913611e-151", "-6.8344094e-149", "0.0"], "residual_correction_max": "1.16169757306e-148", "negative_dual_clipped": "0.0", "verification_dps": 180}
+PASS x=13 N=40: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=40: independent prime-atom sum agrees with zst cutoff split, error=4.82e-181
+PASS boxes x=13 N=40 M=64: truth contained, residuals repaired using constant-test mass scale
+VERIFIED_BOX {"x": 13, "N": 40, "M": 64, "cuts": 20, "mass": ["4.2604954419036959753", "4.2606545880605264648"], "near": ["4.2604954378339025811", "4.2604954534747467227"], "far_upper": "0.00015914701680670964327", "true_mass": "4.260495442124349047", "ratio_lower": "26770.815584991097103", "audit": ["1.6815676e-146", "-9.3887527e-144", "0.0"], "residual_correction_max": "6.68460329645e-144", "negative_dual_clipped": "0.0", "verification_dps": 180}
+PASS x=13 N=40: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=40: independent prime-atom sum agrees with zst cutoff split, error=4.82e-181
+PASS boxes x=13 N=40 M=128: truth contained, residuals repaired using constant-test mass scale
+VERIFIED_BOX {"x": 13, "N": 40, "M": 128, "cuts": 20, "mass": ["4.26049544175508616", "4.2709350730967421847"], "near": ["4.2604954264714069754", "4.2604954582041771094"], "far_upper": "0.010439632381729318304", "true_mass": "4.260495442124349047", "ratio_lower": "408.10780214136799739", "audit": ["2.2744106e-144", "-7.5235227e-142", "0.0"], "residual_correction_max": "7.65801081905e-142", "negative_dual_clipped": "0.0", "verification_dps": 180}
+PASS x=13 N=40: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=40: independent prime-atom sum agrees with zst cutoff split, error=4.82e-181
+PASS boxes x=13 N=40 M=256: truth contained, residuals repaired using constant-test mass scale
+VERIFIED_BOX {"x": 13, "N": 40, "M": 256, "cuts": 20, "mass": ["4.2604954416161439905", "4.4931470517357171346"], "near": ["4.2604953943785784727", "4.2604954619740956793"], "far_upper": "0.23265161122484507227", "true_mass": "4.260495442124349047", "ratio_lower": "18.312769776010888783", "audit": ["3.7240376e-144", "-9.7855804e-142", "0.0"], "residual_correction_max": "1.05004801955e-141", "negative_dual_clipped": "0.0", "verification_dps": 180}
+PASS x=13 N=60: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=60: independent prime-atom sum agrees with zst cutoff split, error=9.64e-181
+PASS boxes x=13 N=60 M=64: truth contained, residuals repaired using constant-test mass scale
+VERIFIED_BOX {"x": 13, "N": 60, "M": 64, "cuts": 20, "mass": ["4.2604954420991315987", "4.2605400617173064958"], "near": ["4.2604954415371555998", "4.2604954438575864143"], "far_upper": "0.000044619728938065448273", "true_mass": "4.260495442124349047", "ratio_lower": "95484.56575007323277", "audit": ["7.1418243e-146", "-4.5954161e-143", "0.0"], "residual_correction_max": "6.08075956658e-144", "negative_dual_clipped": "0.0", "verification_dps": 180}
+PASS x=13 N=60: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=60: independent prime-atom sum agrees with zst cutoff split, error=9.64e-181
+PASS boxes x=13 N=60 M=128: truth contained, residuals repaired using constant-test mass scale
+VERIFIED_BOX {"x": 13, "N": 60, "M": 128, "cuts": 20, "mass": ["4.2604954420824150875", "4.2642995882432796297"], "near": ["4.2604954399760420488", "4.2604954445536983654"], "far_upper": "0.0038041462891222536852", "true_mass": "4.260495442124349047", "ratio_lower": "1119.9609889237681444", "audit": ["1.5609785e-143", "-5.0931299e-141", "0.0"], "residual_correction_max": "9.3489301651e-142", "negative_dual_clipped": "0.0", "verification_dps": 180}
+PASS x=13 N=60: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=60: independent prime-atom sum agrees with zst cutoff split, error=9.64e-181
+PASS boxes x=13 N=60 M=256: truth contained, residuals repaired using constant-test mass scale
+VERIFIED_BOX {"x": 13, "N": 60, "M": 256, "cuts": 20, "mass": ["4.2604954420664572278", "4.368963114576988678"], "near": ["4.2604954355599695252", "4.2604954451161939494"], "far_upper": "0.10846767265025539563", "true_mass": "4.260495442124349047", "ratio_lower": "39.278942116676252433", "audit": ["3.4412212e-142", "-6.9616905e-140", "0.0"], "residual_correction_max": "3.4735788753e-140", "negative_dual_clipped": "0.0", "verification_dps": 180}
+PASS x=25 N=60: true blocks positive by 1280-bit Arb Cholesky
+PASS x=25 N=60: independent prime-atom sum agrees with zst cutoff split, error=9.64e-181
+PASS boxes x=25 N=60 M=128: truth contained, residuals repaired using constant-test mass scale
+VERIFIED_BOX {"x": 25, "N": 60, "M": 128, "cuts": 30, "mass": ["7.1616227309256698214", "7.1616316903438347101"], "near": ["7.1616227309008886526", "7.1616227312250488496"], "far_upper": "8.9594283855217231482e-6", "true_mass": "7.1616227309285040987", "ratio_lower": "799339.24606997736102", "audit": ["9.4994637e-125", "-9.6143343e-123", "0.0"], "residual_correction_max": "3.44958491881e-122", "negative_dual_clipped": "0.0", "verification_dps": 180}
+PASS x=25 N=134: true blocks positive by 1280-bit Arb Cholesky
+PASS x=25 N=134: independent prime-atom sum agrees with zst cutoff split, error=9.64e-181
+PASS boxes x=25 N=134 M=128: truth contained, residuals repaired using constant-test mass scale
+VERIFIED_BOX {"x": 25, "N": 134, "M": 128, "cuts": 30, "mass": ["7.1616227309285040987", "7.161622731198028829"], "near": ["7.1616227309285040984", "7.1616227309285041099"], "far_upper": "2.695247303845772479e-10", "true_mass": "7.1616227309285040987", "ratio_lower": "26571300973.791111104", "audit": ["3.3199491e-113", "-3.368587e-111", "0.0"], "residual_correction_max": "3.51569186935e-113", "negative_dual_clipped": "0.0", "verification_dps": 180}
+PASS x=13 N=20: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=20: independent prime-atom sum agrees with zst cutoff split, error=3.556e-161
+PASS signed grid: explicit feasible weights assemble H=I to 140 digits
+PASS signed grid: rank 41, nullity 22, every weight varies in the kernel
+SIGNED rank=41 nullity=22 smallest_singular=1.2837685112e+00 H_identity_residual=8.89103e-162 negative_weights=7
+SIGNED_PROJECTION a_n in [-H0_nn,+infinity), b_n in (-infinity,+infinity); all weight boxes (-infinity,+infinity)
+PASS x=13 N=60: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=60: independent prime-atom sum agrees with zst cutoff split, error=7.113e-161
+PASS near-kernel vector 0: normalization q(0)=2; interior sign changes=0
+NEAR_KERNEL {"vector": 0, "eigenvalue": "1.013562907169199e-58", "parity": 0, "q_min": 1.6011992039616763e-54, "q_max": 1.998910710393398, "negative_fraction": 0.0, "spearman_small_q_near_prime": 0.6192073876794812, "zeros_y": [], "zero_hits_within_h": 0, "prime_values": ["0.124124192448681281", "0.000882317836679668784", "2.45427713992096292e-6", "3.37322029992253053e-9", "8.2382957116975058e-16", "1.23623523565747215e-19", "6.48054087331168887e-24", "1.0919383252618063e-34"], "prime_abs_relative": [0.06209591644253728, 0.0004413993241879339, 1.2278072888197923e-06, 1.6875292539998747e-09, 4.1213925508839553e-16, 6.184544558341845e-20, 3.2420361948214675e-24, 5.462666839415284e-35], "nearest_zero_distance_y": [null, null, null, null, null, null, null, null], "pole_arch_cost": "0.0613973684156760996"}
+PASS near-kernel vector 1: normalization q(0)=2; interior sign changes=1
+NEAR_KERNEL {"vector": 1, "eigenvalue": "8.546876830109044e-55", "parity": 1, "q_min": -0.9441077883171217, "q_max": 1.9968840426886423, "negative_fraction": 0.8823529411764706, "spearman_small_q_near_prime": 0.5674473135710978, "zeros_y": ["0.307108616089253715988577"], "zero_hits_within_h": 0, "prime_values": ["-0.657703803546298307", "-0.0199249725444315754", "-0.000131876349952165302", "-3.4846367877202074e-7", "-2.36502805472989831e-13", "-5.51890411997057781e-17", "-4.41855560495328049e-21", "-1.78252402657859391e-31"], "prime_abs_relative": [0.32936504548393986, 0.009978031832837032, 6.604106554660254e-05, 1.7450371244533694e-07, 1.1843592337718217e-13, 2.7637579358588198e-17, 2.2127251810796457e-21, 8.926527472163932e-32], "nearest_zero_distance_y": [0.38603856447069157, 0.791503672578856, 1.0791857450306368, 1.3023292963448467, 1.6388015329660597, 1.7723329255905822, 1.8901159612469656, 2.090786656709117], "pole_arch_cost": "-0.335043803669368079"}
+PASS near-kernel vector 2: normalization q(0)=2; interior sign changes=2
+NEAR_KERNEL {"vector": 2, "eigenvalue": "3.70021138457937e-51", "parity": 0, "q_min": -0.855212731679684, "q_max": 1.9951574976103155, "negative_fraction": 0.13333333333333333, "spearman_small_q_near_prime": 0.5643679075961093, "zeros_y": ["0.24474935021752803421725", "0.581393833324111911878144"], "zero_hits_within_h": 0, "prime_values": ["0.626501116846318771", "0.1710964140741158", "0.00306115648475179725", "0.0000164739113870712015", "3.28480096996341384e-11", "1.21036617241135424e-14", "1.49583901332988861e-18", "1.45704928309122021e-28"], "prime_abs_relative": [0.3140108575872861, 0.08575584347553775, 0.0015342931515022115, 8.256947838354968e-06, 1.6463868009907786e-11, 6.066519429473919e-15, 7.497348029524077e-19, 7.302928640151917e-29], "nearest_zero_distance_y": [0.1117533472358334, 0.5172184553439978, 0.8049005277957787, 1.0280440791099885, 1.3645163157312015, 1.498047708355724, 1.6158307440121076, 1.8165014394742587], "pole_arch_cost": "0.416662919278233222"}
+PASS near-kernel vector 3: normalization q(0)=2; interior sign changes=3
+NEAR_KERNEL {"vector": 3, "eigenvalue": "1.075514049903149e-47", "parity": 1, "q_min": -0.8175507692290369, "q_max": 1.9936384529757243, "negative_fraction": 0.8, "spearman_small_q_near_prime": 0.4784499478925429, "zeros_y": ["0.214573755704675956962975", "0.501441021991258102375039", "0.809069822368725807250653"], "zero_hits_within_h": 0, "prime_values": ["0.626475975681128013", "-0.625658538375937123", "-0.0387646648216661517", "-0.000464055774285589401", "-2.9388093179310878e-9", "-1.74883435335150027e-12", "-3.39814287211623459e-16", "-8.26542972184011777e-26"], "prime_abs_relative": [0.3142375061767312, 0.3138274833343393, 0.01944417994336216, 0.00023276827029140377, 1.4740934162583953e-09, 8.772073746577134e-13, 1.7044930423789397e-16, 4.1459020363010435e-26], "nearest_zero_distance_y": [0.1159226418087805, 0.2895424662993839, 0.5772245387511649, 0.8003680900653746, 1.1368403266865874, 1.2703717193111101, 1.3881547549674935, 1.5888254504296448], "pole_arch_cost": "-0.103559996047133266"}
+PASS near-kernel vector 4: normalization q(0)=2; interior sign changes=4
+NEAR_KERNEL {"vector": 4, "eigenvalue": "2.538152621660947e-44", "parity": 0, "q_min": -0.7310619714593571, "q_max": 1.9917779041514063, "negative_fraction": 0.21176470588235294, "spearman_small_q_near_prime": 0.49602318781843446, "zeros_y": ["0.192521067621207945154874", "0.457570169609321917264507", "0.736397484761326149281261", "1.01506740420949872261859"], "zero_hits_within_h": 0, "prime_values": ["0.267182280049177648", "0.558427780155578369", "0.265000243071922082", "0.00820724215536020551", "1.83792198608694949e-7", "1.81485349243588268e-10", "5.6611300575999568e-14", "3.5608102503410758e-23"], "prime_abs_relative": [0.13414260670946151, 0.28036649015518406, 0.13304708447643163, 0.0041205609010191765, 9.227544809369664e-08, 9.1117262052824e-11, 2.8422496533376656e-14, 1.7877546702970146e-23], "nearest_zero_distance_y": [0.04325030420138084, 0.08354488445861097, 0.37122695691039187, 0.5943705082246017, 0.9308427448458145, 1.0643741374703373, 1.1821571731267206, 1.3828278685888717], "pole_arch_cost": "0.582905151335910387"}
+PASS near-kernel vector 5: normalization q(0)=2; interior sign changes=5
+NEAR_KERNEL {"vector": 5, "eigenvalue": "4.596820682321716e-41", "parity": 1, "q_min": -0.7604642287420912, "q_max": 1.987730871464394, "negative_fraction": 0.7019607843137254, "spearman_small_q_near_prime": 0.3336643121815655, "zeros_y": ["0.159389637764840043922479", "0.374831902767537642086174", "0.744931886523004899859715", "0.970222229931111662823671", "1.20441461902832608284228"], "zero_hits_within_h": 0, "prime_values": ["0.151092802851417515", "0.600010048870477205", "-0.724914680457361095", "-0.0808179347764669842", "-7.50979500337394009e-6", "-1.2725671511268487e-8", "-6.52835820149126085e-12", "-1.10430159745813133e-20"], "prime_abs_relative": [0.0760127062574145, 0.3018567842780647, 0.3646945825836596, 0.04065838888789159, 3.7780743415437074e-06, 6.402109910328694e-09, 3.2843270159011578e-12, 5.5555891057051104e-21], "nearest_zero_distance_y": [0.05178470596305959, 0.1058023303602164, 0.18187974209156454, 0.4050232934057743, 0.7414955300269872, 0.8750269226515098, 0.9928099583078933, 1.1934806537700444], "pole_arch_cost": "0.14522027945342377"}
+PASS near-kernel vector 6: normalization q(0)=2; interior sign changes=8
+NEAR_KERNEL {"vector": 6, "eigenvalue": "5.101181117124104e-38", "parity": 0, "q_min": -0.9089496999088179, "q_max": 1.980639508595019, "negative_fraction": 0.2784313725490196, "spearman_small_q_near_prime": 0.45495310328855953, "zeros_y": ["0.120868432881648213054984", "0.284909766486247155459152", "0.458616196311604334168884", "0.637500246385473848583409", "0.817930129928086875325579", "0.997281708083984138572878", "1.17558357984616605234116", "1.36532293973473326280214"], "zero_hits_within_h": 0, "prime_values": ["0.553637676528887949", "0.468127485000704203", "0.158626788051187258", "0.32009274189799014", "0.000158852812041559777", "4.8072564408395539e-7", "4.15825062409447365e-10", "1.94224941563985606e-18"], "prime_abs_relative": [0.27952470609940266, 0.2363516848822095, 0.08008867204901428, 0.16161080323246216, 8.02027887216302e-05, 2.427123371001327e-07, 2.0994484892630255e-10, 9.806173244608278e-19], "nearest_zero_distance_y": [0.05564693417447146, 0.07697129117805636, 0.020971421385157354, 0.2441149726993671, 0.58058720932058, 0.7141186019451027, 0.8319016376014862, 1.0325723330636374], "pole_arch_cost": "0.853763305637622113"}
+PASS near-kernel vector 7: normalization q(0)=2; interior sign changes=9
+NEAR_KERNEL {"vector": 7, "eigenvalue": "3.395680827520753e-35", "parity": 1, "q_min": -1.0209356810713006, "q_max": 1.9772657009135255, "negative_fraction": 0.6901960784313725, "spearman_small_q_near_prime": 0.4375904643353404, "zeros_y": ["0.110346942918758687288409", "0.268071653421099477497091", "0.44148026735461026207832", "0.622689960934584531977601", "0.807979715792728458907696", "0.995732367021702063488032", "1.1796207771081332089943", "1.33751443763595895162325", "1.47385789920873111430432"], "zero_hits_within_h": 0, "prime_values": ["0.911825599346421828", "0.563897102845189062", "0.190096567587993111", "-0.476963360953951792", "-0.00181408098773145008", "-0.0000102506730807696172", "-1.53869106838070701e-8", "-2.06512272530882609e-16"], "prime_abs_relative": [0.46115481542270476, 0.285190352811289, 0.09614113444650647, 0.2412237064212401, 0.0009174695069526156, 5.184266877250567e-06, 7.781913516579028e-09, 1.0444335955227005e-16], "nearest_zero_distance_y": [0.07045721962536078, 0.08100848844002352, 0.04877992348393167, 0.13558001322536925, 0.4720522498465822, 0.6055836424711049, 0.7233666781274882, 0.9240373735896394], "pole_arch_cost": "0.525828555828375563"}
+PASS x=13 N=20: true blocks positive by 1280-bit Arb Cholesky
+PASS x=13 N=20: independent prime-atom sum agrees with zst cutoff split, error=2.857e-101
+PASS SDP axis grid1/64 sign=1: 100-digit LDL brackets boundary
+AXIS_SECTION {"point": "grid1/64", "y": "0.0400773337103365115008357412745", "bounds": [{"sign": 1, "inside": "7.89437249044180517518583991984e-40", "outside": "7.89437249044180517518584736447e-40"}]}
+PASS SDP axis grid17/64 sign=1: 100-digit LDL brackets boundary
+AXIS_SECTION {"point": "grid17/64", "y": "0.681314673075720695514207601666", "bounds": [{"sign": 1, "inside": "9.20188701152767829123384935455e-39", "outside": "9.20188701152767829123385679917e-39"}]}
+PASS SDP axis grid63/64 sign=1: 100-digit LDL brackets boundary
+AXIS_SECTION {"point": "grid63/64", "y": "2.52487202375120022455265170029", "bounds": [{"sign": 1, "inside": "0.00000141188496521917254173730404422", "outside": "0.00000141188496521917254173731148884"}]}

@@ -1,0 +1,2 @@
+build x=60 N=418 seconds=54.461754
+factor n=419 p=5200 neg=0 seconds=11.001504

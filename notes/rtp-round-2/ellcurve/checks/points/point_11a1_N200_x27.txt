@@ -1,0 +1,28 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=11a1 C=11 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=11a1 C=11 N=200 xmax=27 prec=1000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=27 X=27 N=200 epsE=6.54432411648e-12 epsO=3.41698905355e-9 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=27 X=27 N=200 logdetE=377.465359982 logdetO=390.908417700 dI=0.007098794321 rj=8.353210920 tau=0.04159356404
+OVERLAP x=27 X=27 coefficient=1.00000000000
+RAY x=27 N=200 parity=1 term=arch value=-0.946828906087
+RAY x=27 N=200 term=k2 value=0.791725941771 cumulative=-0.155102964317
+RAY x=27 N=200 term=k3 value=0.173023298085 cumulative=0.0179203337686
+RAY x=27 N=200 term=k4 value=0 cumulative=0.0179203337686
+RAY x=27 N=200 term=k5 value=-0.0246476183336 cumulative=-0.00672728456505
+RAY x=27 N=200 term=k7 value=0.00736489684764 cumulative=0.000637612282590
+RAY x=27 N=200 term=k8 value=-0.00195120637527 cumulative=-0.00131359409268
+RAY x=27 N=200 term=k9 value=0.00147358601147 cumulative=0.000159991918789
+RAY x=27 N=200 term=k11 value=-9.78131515492e-5 cumulative=6.21787672399e-5
+RAY x=27 N=200 term=k13 value=-6.50000373309e-5 cumulative=-2.82127009108e-6
+RAY x=27 N=200 term=k16 value=2.04127763836e-6 cumulative=-7.79992452717e-7
+RAY x=27 N=200 term=k17 value=7.79511135586e-7 cumulative=-4.81317130890e-10
+RAY x=27 N=200 term=k19 value=0 cumulative=-4.81317130890e-10
+RAY x=27 N=200 term=k23 value=4.20192987666e-10 cumulative=-6.11241432231e-11
+RAY x=27 N=200 term=k25 value=6.76684673395e-11 cumulative=6.54432411648e-12
+RAY x=27 N=200 term=k27 value=[+/- 1.40e-300] cumulative=6.54432411648e-12
+RAY_TOTAL x=27 N=200 arch=-0.946828906087 primes=0.946828906094 sum=6.54432411648e-12 eps=6.54432411648e-12
+# COMPARISON STEP; indefinite partial forms have no CCM interpretation
+REFERENCE curve=11a1 gamma1=6.36261389471308870138602900888 certified_unique=0 index=PARI radius=1e-38 rank=0
+COMP x=27 X=27 N=200 parity=1 roots=200 z1=6.36261390382815997 error=9.11507126746e-9 ratio=1392.82087886
+# checks: 17 run, 0 failed

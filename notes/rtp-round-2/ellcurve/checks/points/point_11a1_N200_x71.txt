@@ -1,0 +1,42 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=11a1 C=11 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=11a1 C=11 N=200 xmax=71 prec=1000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=71 X=71 N=200 epsE=5.01765141485e-22 epsO=6.71498882101e-19 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=71 X=71 N=200 logdetE=282.328998858 logdetO=307.895881537 dI=0.04005610607 rj=6.421715477 tau=0.1189914016
+OVERLAP x=71 X=71 coefficient=1.00000000000
+RAY x=71 N=200 parity=1 term=arch value=-1.00800656067
+RAY x=71 N=200 term=k2 value=0.832240119351 cumulative=-0.175766441315
+RAY x=71 N=200 term=k3 value=0.198377013856 cumulative=0.0226105725405
+RAY x=71 N=200 term=k4 value=0 cumulative=0.0226105725405
+RAY x=71 N=200 term=k5 value=-0.0350337359196 cumulative=-0.0124231633790
+RAY x=71 N=200 term=k7 value=0.0135721488641 cumulative=0.00114898548507
+RAY x=71 N=200 term=k8 value=-0.00416798883152 cumulative=-0.00301900334645
+RAY x=71 N=200 term=k9 value=0.00369736724456 cumulative=0.000678363898108
+RAY x=71 N=200 term=k11 value=-0.000354262176944 cumulative=0.000324101721164
+RAY x=71 N=200 term=k13 value=-0.000365123557465 cumulative=-4.10218363014e-5
+RAY x=71 N=200 term=k16 value=2.64378530792e-5 cumulative=-1.45839832221e-5
+RAY x=71 N=200 term=k17 value=1.41797781901e-5 cumulative=-4.04205032000e-7
+RAY x=71 N=200 term=k19 value=0 cumulative=-4.04205032000e-7
+RAY x=71 N=200 term=k23 value=1.95681528121e-7 cumulative=-2.08523503879e-7
+RAY x=71 N=200 term=k25 value=2.76368641765e-7 cumulative=6.78451378861e-8
+RAY x=71 N=200 term=k27 value=-5.19551058375e-8 cumulative=1.58900320487e-8
+RAY x=71 N=200 term=k29 value=0 cumulative=1.58900320487e-8
+RAY x=71 N=200 term=k31 value=-1.39519267575e-8 cumulative=1.93810529118e-9
+RAY x=71 N=200 term=k32 value=-1.80493492700e-9 cumulative=1.33170364181e-10
+RAY x=71 N=200 term=k37 value=-1.93300914606e-10 cumulative=-6.01305504254e-11
+RAY x=71 N=200 term=k41 value=4.98462773155e-11 cumulative=-1.02842731098e-11
+RAY x=71 N=200 term=k43 value=1.13312145533e-11 cumulative=1.04694144347e-12
+RAY x=71 N=200 term=k47 value=-1.28951791338e-12 cumulative=-2.42576469914e-13
+RAY x=71 N=200 term=k49 value=2.24483554317e-13 cumulative=-1.80929155970e-14
+RAY x=71 N=200 term=k53 value=1.83270748664e-14 cumulative=2.34159269473e-16
+RAY x=71 N=200 term=k59 value=-1.64016893122e-16 cumulative=7.01423763515e-17
+RAY x=71 N=200 term=k61 value=-7.01993358741e-17 cumulative=-5.69595225841e-20
+RAY x=71 N=200 term=k64 value=0 cumulative=-5.69595225841e-20
+RAY x=71 N=200 term=k67 value=5.74612877256e-20 cumulative=5.01765141485e-22
+RAY x=71 N=200 term=k71 value=[+/- 1.40e-300] cumulative=5.01765141485e-22
+RAY_TOTAL x=71 N=200 arch=-1.00800656067 primes=1.00800656067 sum=5.01765141485e-22 eps=5.01765141485e-22
+# COMPARISON STEP; indefinite partial forms have no CCM interpretation
+REFERENCE curve=11a1 gamma1=6.36261389471308870138602900888 certified_unique=0 index=PARI radius=1e-38 rank=0
+COMP x=71 X=71 N=200 parity=1 roots=200 z1=6.36261389471308870 error=1.56720078770e-18 ratio=3123.37517720
+# checks: 17 run, 0 failed

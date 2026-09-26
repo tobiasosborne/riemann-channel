@@ -1,0 +1,7 @@
+build x=13 N=120 seconds=0.564716
+factor n=121 p=1000 neg=0 seconds=0.174384
+iteration n=121 count=16 seconds=0.256332
+gap n=121 neg=1 seconds=0.389600
+rump x=13 N=120 seconds=2.154898
+row x=13 N=120 seconds=14.210357
+total x=13 seconds=14.214874

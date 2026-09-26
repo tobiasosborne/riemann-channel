@@ -10,7 +10,7 @@ Eigenvalues and inertia are certified in the raw files. COMPARISON errors use ap
 | rtp2_ellcurve_11a1_axisN_x13.txt | 1255 | 0 |
 | rtp2_ellcurve_11a1_axisN_x25.txt | 1623 | 0 |
 | rtp2_ellcurve_11a1_axisN_x50.txt | RUNNING | — |
-| rtp2_ellcurve_11a1_axisx_ccm_N120.txt | RUNNING | — |
+| rtp2_ellcurve_11a1_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_ellcurve_11a1_axisx_ccm_N200.txt | RUNNING | — |
 | rtp2_ellcurve_11a1_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_ellcurve_11a1_spectra_x13.txt | 492 | 0 |
@@ -19,7 +19,7 @@ Eigenvalues and inertia are certified in the raw files. COMPARISON errors use ap
 | rtp2_ellcurve_14a1_axisN_x13.txt | 1255 | 0 |
 | rtp2_ellcurve_14a1_axisN_x25.txt | 1623 | 0 |
 | rtp2_ellcurve_14a1_axisN_x50.txt | RUNNING | — |
-| rtp2_ellcurve_14a1_axisx_ccm_N120.txt | RUNNING | — |
+| rtp2_ellcurve_14a1_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_ellcurve_14a1_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_ellcurve_14a1_spectra_x13.txt | 492 | 0 |
 | rtp2_ellcurve_14a1_spectra_x25.txt | 492 | 0 |
@@ -27,12 +27,12 @@ Eigenvalues and inertia are certified in the raw files. COMPARISON errors use ap
 | rtp2_ellcurve_37a1_axisN_x13.txt | 1248 | 0 |
 | rtp2_ellcurve_37a1_axisN_x25.txt | 1615 | 0 |
 | rtp2_ellcurve_37a1_axisN_x50.txt | RUNNING | — |
-| rtp2_ellcurve_37a1_axisx_ccm_N120.txt | RUNNING | — |
+| rtp2_ellcurve_37a1_axisx_ccm_N120.txt | 198 | 0 |
 | rtp2_ellcurve_37a1_axisx_ccm_N60.txt | 338 | 0 |
-| rtp2_ellcurve_diagnostic_x2_N200.txt | RUNNING | — |
+| rtp2_ellcurve_diagnostic_x2_N200.txt | 1223 | 0 |
 | rtp2_ellcurve_pilot_11a1.txt | 399 | 0 |
 
-Completed checks: 13034 
+Completed checks: 14881 
 
 ### Resolution and parity
 
@@ -80,8 +80,11 @@ Completed checks: 13034
 | curve | N | knots | last x | last epsE | last epsO | indefinite knots | odd-minimum windows |
 |---|---|---|---|---|---|---|---|
 | 11a1 | 60 | 24 | 50 | 1.13070309175e-17 | 1.50548637447e-14 | 0 | none |
+| 11a1 | 120 | 14 | 25 | 2.44005541640e-11 | 1.19859483614e-8 | 0 | none |
 | 14a1 | 60 | 24 | 50 | 3.24025668567e-15 | 3.70122291569e-12 | 0 | none |
+| 14a1 | 120 | 14 | 25 | 1.01431791973e-9 | 5.06225076986e-7 | 0 | none |
 | 37a1 | 60 | 24 | 50 | 9.90422454756e-6 | 5.74730912207e-8 | 0 | 4,5,7,8,9,11,13,16,17,19,23,25,27,29,31,32,37,41,43,47,49,50 |
+| 37a1 | 120 | 14 | 25 | 0.00639699049973 | 8.33896278277e-5 | 0 | 4,5,7,8,9,11,13,16,17,19,23,25 |
 
 ### Linearising variable: equal-weight least squares (FLOATING)
 
@@ -92,9 +95,15 @@ Fit log10(epsE)=intercept−slope×variable over every printed knot with x≥13.
 | 11a1 | 60 | 13–50 | 16 | x | 0.2805567 | 0.2995184 | 0.7558394 |
 | 11a1 | 60 | 13–50 | 16 | sqrt(x) | 3.072212 | 0.08788969 | 0.1852243 |
 | 11a1 | 60 | 13–50 | 16 | sqrt(x/C) | 10.18937 | 0.08788969 | 0.1852243 |
+| 11a1 | 120 | 13–25 | 6 | x | 0.3711897 | 0.1078897 | 0.1624078 |
+| 11a1 | 120 | 13–25 | 6 | sqrt(x) | 3.225089 | 0.03522068 | 0.0542738 |
+| 11a1 | 120 | 13–25 | 6 | sqrt(x/C) | 10.69641 | 0.03522068 | 0.0542738 |
 | 14a1 | 60 | 13–50 | 16 | x | 0.2441695 | 0.2913558 | 0.5033498 |
 | 14a1 | 60 | 13–50 | 16 | sqrt(x) | 2.676512 | 0.07435942 | 0.115821 |
 | 14a1 | 60 | 13–50 | 16 | sqrt(x/C) | 10.01459 | 0.07435942 | 0.115821 |
+| 14a1 | 120 | 13–25 | 6 | x | 0.3162483 | 0.0339899 | 0.05790865 |
+| 14a1 | 120 | 13–25 | 6 | sqrt(x) | 2.737282 | 0.08013304 | 0.1274878 |
+| 14a1 | 120 | 13–25 | 6 | sqrt(x/C) | 10.24197 | 0.08013304 | 0.1274878 |
 
 ### Exponential with an algebraic prefactor (FLOATING)
 
@@ -103,18 +112,20 @@ Fit ln eps=a+b ln z−k z, z=sqrt(x/C), on the same knots (three parameters). Al
 | curve | N | b free | k/(8pi) free | RMS free | b at k=8pi | RMS 8pi | b at k=4pi | RMS 4pi |
 |---|---|---|---|---|---|---|---|---|
 | 11a1 | 60 | 0.4206909 | 0.9439995 | 0.08781864 | 2.648671 | 0.08980753 | -17.24384 | 0.1729728 |
+| 11a1 | 120 | -13.69513 | 0.5594814 | 0.01262519 | 0.6161512 | 0.03664619 | -15.62753 | 0.01345265 |
 | 14a1 | 60 | -2.707515 | 0.8414132 | 0.07079716 | 2.885152 | 0.08507807 | -14.74768 | 0.1238119 |
+| 14a1 | 120 | 31.09725 | 2.015498 | 0.02910617 | 1.853983 | 0.07608491 | -12.5445 | 0.1088726 |
 
 ### Archimedean controls and Rayleigh cancellation
 
-| curve | x | N | control min E | control min O | negative E/O | Rayleigh gamma+log C | Rayleigh primes | sum |
-|---|---|---|---|---|---|---|---|---|
-| 11a1 | 13 | 200 | -1.38957064134 | 0.0566717962475 | 1/0 | -0.867338025611 | 0.867338786198 | 7.60586827693e-7 |
-| 11a1 | 25 | 260 | -1.61780175257 | -0.346411393408 | 1/1 | -0.939853026777 | 0.939853026801 | 2.42148388413e-11 |
-| 14a1 | 13 | 200 | -1.14840858453 | 0.297833853064 | 1/0 | -0.722202911951 | 0.722208385932 | 5.47398082239e-6 |
-| 14a1 | 25 | 260 | -1.37663969576 | -0.105249336591 | 1/1 | -0.799400476500 | 0.799400477508 | 1.00853123507e-9 |
-| 37a1 | 13 | 200 | -0.176548001496 | 1.26969443609 | 1/0 | 1.40825013735 | -1.39607539391 | 0.0121747434397 |
-| 37a1 | 25 | 260 | -0.404779112728 | 0.866611246438 | 1/0 | 1.23351378318 | -1.23343231395 | 8.14692310352e-5 |
+| curve | x | N form | N control | control min E | control min O | negative E/O | Rayleigh gamma+log C | Rayleigh primes | sum |
+|---|---|---|---|---|---|---|---|---|---|
+| 11a1 | 13 | 200 | 200 | -1.38957064134 | 0.0566717962475 | 1/0 | -0.867338025611 | 0.867338786198 | 7.60586827693e-7 |
+| 11a1 | 25 | 260 | 260 | -1.61780175257 | -0.346411393408 | 1/1 | -0.939853026777 | 0.939853026801 | 2.42148388413e-11 |
+| 14a1 | 13 | 200 | 200 | -1.14840858453 | 0.297833853064 | 1/0 | -0.722202911951 | 0.722208385932 | 5.47398082239e-6 |
+| 14a1 | 25 | 260 | 260 | -1.37663969576 | -0.105249336591 | 1/1 | -0.799400476500 | 0.799400477508 | 1.00853123507e-9 |
+| 37a1 | 13 | 200 | 200 | -0.176548001496 | 1.26969443609 | 1/0 | 1.40825013735 | -1.39607539391 | 0.0121747434397 |
+| 37a1 | 25 | 260 | 260 | -0.404779112728 | 0.866611246438 | 1/0 | 1.23351378318 | -1.23343231395 | 8.14692310352e-5 |
 
 ### Complete control spectra, N=60
 
@@ -153,15 +164,19 @@ Fit ln eps=a+b ln z−k z, z=sqrt(x/C), on the same knots (three parameters). Al
 
 ### Cross-object comparison on round-1 axes (FLOATING slopes)
 
-| object | N_sat at 13,25,50 | epsE at 13 | epsE at 25 | epsE at 50 | digits/x 13–50 | provenance |
-|---|---|---|---|---|---|---|
-| zeta | 56,134,352 | 2.85407e-59 | 2.42562e-123 | 2.80881e-258 | 5.378566 | review N=420 at x50 |
-| chi_-4 | 11,30,pending | 3.55108899176e-14 | 5.39464993971e-30 | pending | pending | completed lane D only |
-| chi_-3 | 17,41,pending | 1.25308864637e-19 | 5.92330252137e-41 | pending | pending | completed lane D only |
-| chi_5 | 7,23,pending | 2.10790657667e-12 | 3.66818026982e-25 | pending | pending | completed lane D only |
-| chi_8 | 4,13,pending | 2.17699319902e-7 | 2.30737261661e-15 | pending | pending | completed lane D only |
-| chi_12 | 2,7,pending | 0.000115817314349 | 6.71343285554e-10 | pending | pending | completed lane D only |
-| chi_-8 | 2,13,pending | 4.53702800257e-6 | 1.00380725322e-13 | pending | pending | completed lane D only |
+| object | N_sat at 13,25,50 | epsE at 13 | epsE at 25 | epsE at 50 | digits/x 13–25 | digits/x 13–50 | provenance |
+|---|---|---|---|---|---|---|---|
+| zeta | 56,134,352 | 2.85407e-59 | 2.42562e-123 | 2.80881e-258 | 5.33922 | 5.378566 | review N=420 at x50 |
+| chi_-4 | 11,30,pending | 3.55108899176e-14 | 5.39464993971e-30 | pending | 1.3182 | pending | completed lane D only |
+| chi_-3 | 17,41,pending | 1.25308864637e-19 | 5.92330252137e-41 | pending | 1.777118 | pending | completed lane D only |
+| chi_5 | 7,23,pending | 2.10790657667e-12 | 3.66818026982e-25 | pending | 1.063283 | pending | completed lane D only |
+| chi_8 | 4,13,pending | 2.17699319902e-7 | 2.30737261661e-15 | pending | 0.6645616 | pending | completed lane D only |
+| chi_-7 | 4,13,pending | 2.03745394328e-7 | 3.27263403207e-16 | pending | 0.7328492 | pending | completed lane D only |
+| chi_12 | 2,7,pending | 0.000115817314349 | 6.71343285554e-10 | pending | 0.4364024 | pending | completed lane D only |
+| chi_-20 | 1,3,pending | 0.0987740569268 | 0.000267954162959 | pending | 0.2138819 | pending | completed lane D only |
+| chi_21 | 2,2,pending | 0.0232509738349 | 3.58458347666e-5 | pending | 0.2343335 | pending | completed lane D only |
+| chi_13 | 2,7,pending | 0.000402786486930 | 4.55002293950e-9 | pending | 0.4122551 | pending | completed lane D only |
+| chi_-8 | 2,13,pending | 4.53702800257e-6 | 1.00380725322e-13 | pending | 0.6379268 | pending | completed lane D only |
 
 Zeta uses existing A1 outputs and the certified N=420 supplement in notes/reviews/rtp-round-1-2026-09-24.md:651. Other lanes are read only; pending results are not extrapolated.
 
@@ -177,4 +192,39 @@ Zeta uses existing A1 outputs and the certified N=420 supplement in notes/review
 | 37a1 | 0 | 1.14380303702 | -1.14380297955 | 5.74730912207e-8 |
 
 The displayed O(1) parts must not be subtracted at their printed precision to recover epsilon; the raw ball computations verify the cancellation before rounding.
+
+### Shared conductor-scaled slope test (FLOATING)
+
+Both rank-zero curves at N=60, x≥13: separate intercepts, one common slope. Each model has three parameters and uses exactly the same knots.
+
+| common variable | points | common slope | RMS residual | max residual |
+|---|---|---|---|---|
+| sqrt(x) | 32 | 2.874362 | 0.2290725 | 0.4743257 |
+| sqrt(x/C) | 32 | 10.11247 | 0.08568873 | 0.1810935 |
+
+### Error fits and late-window robustness (FLOATING)
+
+| curve | N | quantity | range | digits/x | RMS x | digits/sqrt(x/C) | RMS sqrt |
+|---|---|---|---|---|---|---|---|
+| 11a1 | 60 | epsE | 13–50 | 0.2805567 | 0.2995184 | 10.18937 | 0.08788969 |
+| 11a1 | 60 | error | 13–50 | 0.2645802 | 0.2466754 | 9.598545 | 0.09792132 |
+| 11a1 | 120 | epsE | 13–25 | 0.3711897 | 0.1078897 | 10.69641 | 0.03522068 |
+| 11a1 | 120 | error | 13–25 | 0.3411622 | 0.08827327 | 9.827228 | 0.02373476 |
+| 14a1 | 60 | epsE | 13–50 | 0.2441695 | 0.2913558 | 10.01459 | 0.07435942 |
+| 14a1 | 60 | error | 13–50 | 0.2300957 | 0.2453149 | 9.427203 | 0.07564523 |
+| 14a1 | 120 | epsE | 13–25 | 0.3162483 | 0.0339899 | 10.24197 | 0.08013304 |
+| 14a1 | 120 | error | 13–25 | 0.2886464 | 0.04732317 | 9.338886 | 0.09677314 |
+
+### Individual prime-power Rayleigh terms at x=50,N=60
+
+| prime power | zeta | chi_-4 | 11a1 | 14a1 | 37a1 |
+|---|---|---|---|---|---|
+| 2 | -0.08983809962 | 0 | 0.821134188485 | 0.442518830164 | 0.304000513398 |
+| 3 | -0.002139120699 | 0.193965236725 | 0.191264351986 | 0.463344985304 | -0.730379119736 |
+| 4 | -1.457698748e-5 | 0 | 0 | -0.0532766445839 | 0 |
+| 5 | -3.345071777e-7 | -0.0146576233203 | -0.0319530755788 | 0 | -0.581156686974 |
+| 7 | -4.030585190e-11 | 0.000783411111207 | 0.0116071670276 | -0.0110131768598 | -0.162982418906 |
+| 11 | -8.351439361e-19 | 1.37446566465e-6 | -0.000259415805614 | 0 | -0.198363144227 |
+| 23 | -1.052993032e-40 | 4.96886063076e-16 | 6.72232584814e-8 | 0 | 0.00113912304248 |
+| 49 | -5.304360530e-106 | -9.53373420948e-53 | 4.08111561210e-18 | -6.70642211702e-17 | -1.37156749856e-9 |
 

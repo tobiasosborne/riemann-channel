@@ -1,0 +1,9 @@
+Author: codex:gpt-6-astra
+Primary run: python3 scripts/rtp2_lattice_box.py > outputs/rtp2_lattice_box.txt
+Replay: python3 scripts/rtp2_lattice_box.py > notes/rtp-round-2/lattice-box/checks/replay.txt
+Comparison: cmp outputs/rtp2_lattice_box.txt notes/rtp-round-2/lattice-box/checks/replay.txt
+Result: byte-identical; CHECKS 513 FAILED 0 in each run.
+Additional audit: python3 notes/rtp-round-2/lattice-box/checks/audit.py
+Result: CHECKS 18 FAILED 0.
+SHA256 outputs/rtp2_lattice_box.txt:
+6ac1df360f97b816a2774a81ea01bf8ecb04e978e586f44c1f2cea659960392d

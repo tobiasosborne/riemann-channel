@@ -25,6 +25,10 @@ coercivity obstruction; no unfinished L4 numerical claim is assumed.
 5. `L/(2N)` is a sampling scale, not an exact impossibility threshold for sparse
    recovery. Grid approximation error and matrix positivity tolerance must both
    be specified; a grid missing the atoms need not have any feasible measure.
+6. All eleven prescribed uniform grids are in fact infeasible. Their requested
+   optimization tables are undefined, not zero-width boxes or diffuse fits.
+7. At x=25 the union must deduplicate `log 5=L/2`. Separate variables at an
+   identical position would manufacture a spurious weight ambiguity.
 
 ## G1. What the window sees — PROVED / SHARPENED
 
@@ -58,6 +62,11 @@ Under H-SIGN and H-INT this proves compactness, even at `N=0`, with
 `Σw_j <= C/[2 min_j(1-t_j)]` when nonempty. If `C<0` the set is empty.
 For a continuum of points approaching `L`, only the weighted mass is bounded;
 compactness of ordinary total mass does not follow. At `L`, `φ(L)=0`.
+Indeed, if one strictly positive finite-section measure is feasible, arbitrarily
+large extra mass can be put sufficiently close to L: `T(y)->0` in operator norm,
+so choose its distance to L small enough that this bounded perturbation lies
+below the spectral margin. A continuum formulation needs an edge exclusion
+or a weighted-mass topology even after deleting the endpoint itself.
 
 Without H-SIGN, for a nonempty set the recession cone is exactly
 `{d:K(Md)>=0}` (lane L1), and its lineality space is exactly `ker M`.
@@ -79,6 +88,17 @@ matrix with an extremely small positivity margin: using normalized Fourier
 basis entries gives, conservatively, `||T(y+δ)-T(y)|| <=
 (2N+1)(2+4πN)|δ|/L`. This bound times the displaced mass must be below the
 available spectral gap to guarantee feasibility by rounding.
+
+For the even-M uniform grids in this brief there is an exact resolution
+statement: `rank M_N = min(M-1,2N+1)`. Reflect the M/2−1 pairs and keep
+the midpoint. In weighted-sum/difference pair coordinates, the cosine
+block has rank `min(N+1,M/2)` and the sine block rank
+`min(N,M/2−1)`, by the Chebyshev Vandermonde argument used in the signed
+control below. The ranks add to the stated formula. Thus unrestricted
+weights on this grid are determined by **given moments** iff
+`M<=2N+2`, equivalently `h>=L/(2N+2)`. This exact sampling count does
+not prevent a sparse positive measure from being determined by moments
+on a much finer grid, as G2 shows.
 
 ## G2. Moment fibers and the actual prime measure — PROVED / SHARPENED
 
@@ -247,6 +267,9 @@ certificates. The uniform-grid **emptiness** results above are ball-certified.
 The eigenvectors are selected using true prime data. They are legal
 prime-side verification witnesses under the brief, but this selection is
 not a blind algorithm for discovering primes without using their locations.
+Likewise the numerical dual functions are checked on their finite allowed
+grids. Their sign between grid points is not certified, so these boxes
+cannot be transferred unchanged to a free continuum of positions.
 
 ### Signed grid control — PROVED / NUMERICAL
 
@@ -269,3 +292,181 @@ diagonal lower endpoint cancel all H0 entries and choose a diagonal PSD
 remainder with that diagonal zero; any sine datum can be made feasible
 by adding a sufficiently large identity. Thus projecting to moments
 removes the kernel ambiguity but does **not** restore bounded boxes.
+
+### Union-grid mass localization — NUMERICAL
+
+`near` means within h of any **visible** prime-power position; `far` is
+its complement, including the upper-edge strip. These are optimized
+linear mass objectives, not sums of separately optimized coordinate
+upper bounds. `R` is the guaranteed lower bound `near_lower/far_upper`
+for any feasible measure (infinite if its far mass is zero). Digits below
+are rounded for readability; full precision and every coordinate are in
+the output and `checks/boxes_x*_N*_M*.json`.
+
+| x | N | M | total mass outer interval | near mass lower | far mass upper | R lower |
+|---:|---:|---:|---|---:|---:|---:|
+|13|20|64|[4.26043620,4.41494498]|4.25868188|0.154824327|27.5065|
+|13|20|128|[4.26041014,5.09625498]|4.25407363|0.836012572|5.08852|
+|13|20|256|[4.26039105,6.93188397]|4.24004959|2.67154402|1.58711|
+|13|40|64|[4.2604954419,4.2606545881]|4.2604954378|1.59147017e−4|26770.8|
+|13|40|128|[4.2604954417,4.2709350731]|4.2604954264|1.04396324e−2|408.107|
+|13|40|256|[4.2604954416,4.4931470518]|4.2604953943|0.232651612|18.3127|
+|13|60|64|[4.26049544209,4.26054006172]|4.26049544153|4.461972894e−5|95484.5|
+|13|60|128|[4.26049544208,4.26429958825]|4.26049543997|3.804146290e−3|1119.96|
+|13|60|256|[4.26049544206,4.36896311458]|4.26049543555|0.108467673|39.2789|
+|25|60|128|[7.161622730925,7.161631690344]|7.161622730900|8.959428386e−6|799339|
+|25|134|128|[7.161622730928504098,7.161622731198028830]|7.161622730928504098|2.695247304e−10|2.657130097e10|
+
+The upper edge is the main weakness of these outer bounds: for the
+x=13 cases the far-mass optimum equals the last grid coordinate's
+individual upper bound to the printed precision. At N=60 this is
+4.46197e−5 at `63L/64`, but 0.108468 at `255L/256`. Increasing M adds
+points closer to the invisible endpoint; worse total-mass localization
+on a finer grid is therefore not evidence of worse interior resolution.
+Nor does a large outer bound establish that the full SDP permits that
+much edge mass.
+
+At x=13,N=60,M=256 the logarithmic coordinates have these outer boxes;
+the eight nonzero weights form the prominent interior peaks. Zero
+lower endpoints on all other coordinates follow from feasible truth.
+
+| n | lower | upper |
+|---:|---:|---:|
+|2|0.490129071734273595832270|0.490129071734273595856951|
+|3|0.634284100597563976781468|0.634284100597563977186388|
+|4|0.346573590279972649056929|0.346573590279972654708616|
+|5|0.719762515553600451927669|0.719762515553600491218663|
+|6|0|7.36813464191e−19|
+|7|0.735484904010973427280049|0.735484904010998296299369|
+|8|0.245064535866101579606591|0.245064535867136798165156|
+|9|0.366204096199711445995026|0.366204096222703247855314|
+|10|0|2.60106226514e−12|
+|11|0.722992574831081834842185|0.722992627858829142097575|
+|12|0|2.69709148669e−7|
+
+The tabulated last digits are numerical values, not directed-rounding
+ball endpoints. The independent residual corrections are at most
+3.48e−140 in the x=13 boxes, 3.45e−122 at x=25,N=60, and 3.52e−113 at
+x=25,N=134. They use a genuine a priori mass scale; we do not infer
+validity from a small dual residual without bounding its effect.
+
+### Exact SDP axis sections — NUMERICAL, 100-digit inertia
+
+For the feasible x=13,N=20 union with M=64, hold every other weight at
+truth and change the displayed coordinate by δ. Bisection of the full
+even and odd matrices with unpivoted LDL positivity tests brackets each
+endpoint to relative width below 1e−23. These are the full PSD constraint
+**on an axis**, hence inner sections of coordinate projections, not
+optimal boxes with other coordinates free.
+
+| coordinate | sign of δ | magnitude at boundary |
+|---|---:|---:|
+|L/64|+|7.89437249044180517518584e−40|
+|17L/64|+|9.20188701152767829123385e−39|
+|63L/64|+|1.41188496521917254173731e−6|
+|log 2|−|2.94704199030315828891318e−36|
+|log 2|+|1.00762957312922033924240e−38|
+
+Both inside-positive and outside-indefinite endpoints are retained in
+`checks/axis_sections.json`. The large edge/interior disparity is already
+present in actual feasible sections, though the outer LP bounds are much
+larger than these section widths.
+
+For completeness, on each feasible finite union grid the minimum squared
+norm and the minimum of `Σw log w` exist uniquely by compactness and strict
+convexity (`0 log 0=0`). Since H* is positive definite, adding a sufficiently
+small positive amount at **every** grid position gives a strictly positive
+weight vector with PSD form. Convex mixing with that vector shows that the
+`Σw log w` minimizer has every weight positive: the `t log t` improvement
+at a zero coordinate dominates the O(t) change elsewhere. Thus even an
+entropy optimizer cannot literally recover the sparse support. This is
+an existence/support statement, not a computed union-grid optimizer;
+the requested uniform-grid optimizers are absent as proved above.
+
+## G5. Near-kernel profiles — NUMERICAL; G3's location rule fails
+
+We take the eight smallest eigenvectors of the x=13,N=60 true matrix.
+Their sensitivities are evaluated on all 255 interior points of the
+L/256 grid, and independently at the eight exact prime-power positions.
+`checks/near_kernel_profiles.tsv` is the plot-data table. Every sign
+crossing detected on that grid is refined by 180 bisections in 160-digit
+arithmetic. This counts **detected crossings**, not a certified global
+zero count; tangencies and crossings within one cell could be missed.
+
+The correlation below is Spearman between `−|q_v|` and minus distance
+to the nearest prime-power position. It can be moderately positive
+because both quantities depend strongly on y; it is not a zero-set
+identification statistic.
+
+| vector (0-based) | eigenvalue | fraction q<0 | detected crossings | crossings within h of a prime power | correlation |
+|---:|---:|---:|---:|---:|---:|
+|0|1.01356e−58|0|0|0|0.619207|
+|1|8.54688e−55|0.882353|1|0|0.567447|
+|2|3.70021e−51|0.133333|2|0|0.564368|
+|3|1.07551e−47|0.8|3|0|0.478450|
+|4|2.53815e−44|0.211765|4|0|0.496023|
+|5|4.59682e−41|0.701961|5|0|0.333664|
+|6|5.10118e−38|0.278431|8|0|0.454953|
+|7|3.39568e−35|0.690196|9|0|0.437590|
+
+The smallest-vector q is positive on this whole interior grid and has
+`q(log 2)=0.124124192448681281`,
+`q(log 3)=0.000882317836679668784`,
+`q(log 11)=1.0919383252618063e−34`.
+Smallness at large y is an envelope effect, not evidence for isolated
+prime support: values between the later primes are small as well.
+The next vector has its first detected root at
+`y=0.307108616089253715988577`, distance
+`0.38603856447069159` from the first prime position log 2. All 32 detected
+crossings across these eight vectors miss every prime-power position by
+more than h. The exact prime evaluations, complete root lists and
+nearest-root distances are retained in `checks/near_kernel.json`.
+
+## G6. Larger window — NUMERICAL, with certified uniform-grid infeasibility
+
+Both x=25 uniform grids remain empty under H-SIGN, with strict Arb
+Farkas margins around −8.5e−5. The union, containing thirteen visible
+prime powers among all integer positions, has true total mass
+`7.1616227309285040987`. On that feasible control the far-mass bound
+improves from `8.95942838552e−6` at N=60 to
+`2.69524730385e−10` at N=134, a factor of approximately 33,241.6.
+The near/far ratio lower bound rises from 7.99339e5 to 2.65713e10.
+This is improvement at a fixed grid spacing within the larger window,
+not an assertion that the pure grid becomes feasible.
+
+At N=134 the composite coordinate log 6 has upper bound
+`2.46551636223e−57` and log 12 has upper bound
+`1.13084665287e−48`; the log 23 lower bound is
+`0.653795739213813699696398` against true weight
+`0.65379573921381370155`. All coordinates, including the deduplicated
+log 5 point, are tabulated in the output.
+
+## Numerical checks for the blind lane
+
+Reproduce with `python3 scripts/rtp2_grid_tomography.py >
+outputs/rtp2_grid_tomography.txt`. The script compiles only under this lane's
+`checks/`, linking the existing `zst/build/libzst.a`; it never builds or
+modifies zst. `--prepare`, `--boxes`, `--verify`, `--supplemental` and
+`--report` expose the individual stages. The default runs them all.
+All number-producing inputs are primes, pole and archimedean data.
+
+For the following three boxes, use x=13,N=60,M=64 and the union with
+log 2,...,log 12. The 20 smallest eigenvector cuts, zero-coordinate sign
+constraints, and free occupied-coordinate displacements define the stated
+outer LP; do not compare these values to full-SDP projections.
+
+| check | target |
+|---|---|
+|upper weight at L/64|1.19432844295284757877e−25|
+|upper weight at 17L/64|4.53241895982741147708e−22|
+|upper weight at log 6|6.62432918801208870802e−19|
+|x=25,N=134,M=128 union: near/far mass ratio lower|2.6571300973791111104e10|
+|x=13,N=60, second-smallest vector: first detected q root|0.307108616089253715988577|
+
+Additional discriminating check: on the **pure** x=13,N=20,M=256 grid,
+`b^T y = -8.15313837417e−6`, `y>=0`, `G^T y<0`, all independently
+verified in Arb. The 200-digit matrix data, test vectors, 170-digit
+Farkas inputs, dual box vectors, repaired residual summaries, axis
+brackets and profile tables are saved under `checks/`. The 100-digit
+axis upper threshold at `17L/64` is 9.20188701152767829123e−39, much
+smaller than a coordinate projection outer bound.

@@ -19,6 +19,7 @@ static fmpz *ainvs;
 static fmpz_t conductor;
 static slong curve_rank;
 static int root_number;
+static int control_cap=0, point_mode=0;
 
 /* K=0 reads only arithmetic metadata. Zero ordinates are read later, in COMPARISON. */
 static int reference_zero(arb_t gamma, slong prec)
@@ -520,7 +521,8 @@ static void mode_axisN(double xd,slong Nmax,slong prec,const char *cmp,slong cpr
         for(slong i=0;i<=n;i++)for(slong j=0;j<=n;j++)arb_set_round(arb_mat_entry(Ew,i,j),arb_mat_entry(E,i,j),cprec);
         for(slong i=0;i<n;i++)for(slong j=0;j<n;j++)arb_set_round(arb_mat_entry(Ow,i,j),arb_mat_entry(O,i,j),cprec);
         pair_init(pairs+n,n);pair_min(pairs+n,Ew,Ow,1,cprec);eigen_line(xd,X,pairs+n,0,0);
-        control(xd,n,prec);arb_mat_clear(Ew);arb_mat_clear(Ow);
+        if(!control_cap||n<=control_cap)control(xd,n,prec);
+        arb_mat_clear(Ew);arb_mat_clear(Ow);
         fprintf(stderr,"curve=%s x=%g N=%ld eigenpair/control finished %.1fs\n",curve,xd,(long)n,now()-start);fflush(stdout);
     }
     rayleigh_table(xd,X,L,pairs+Nmax,cprec);
@@ -540,6 +542,7 @@ static void mode_axisx(slong N,double xmax,slong prec,int fixedL)
     if(fixedL)ks[K++]=1;
     for(ulong k=2;k<=Xmax;k++)if(is_prime_power(k,NULL))ks[K++]=k;
     if(!fixedL&&!is_prime_power(Xmax,NULL))ks[K++]=Xmax;
+    if(point_mode){K=1;ks[0]=Xmax;}
     pair_t *pairs=calloc(K,sizeof(pair_t));arb_ptr lengths=_arb_vec_init(K);
     arb_t x,t,z;arb_init(x);arb_init(t);arb_init(z);
     arb_ptr a=_arb_vec_init(N+2),b=_arb_vec_init(N+2),fa=_arb_vec_init(N+2),fb=_arb_vec_init(N+2),ta=_arb_vec_init(N+2),tb=_arb_vec_init(N+2);
@@ -567,7 +570,7 @@ static void mode_axisx(slong N,double xmax,slong prec,int fixedL)
             flint_printf("KNOT x=%g X=%wu N=%wd logdetE=%s logdetO=%s dI=%s rj=%s tau=%s\n",xd,ks[i],N,sb(de,12),sb(doo,12),sb(r.dI,10),sb(r.rj,10),sb(r.tau_j,10));arb_clear(de);arb_clear(doo);border_clear(&r);
         } else flint_printf("KNOT x=%g X=%wu N=%wd status=INDEFINITE\n",xd,ks[i],N);
         arb_mat_window_clear(Ew);arb_mat_window_clear(Ow);
-        if(!fixedL)control(xd,N,prec);
+        if(!fixedL&&(!control_cap||N<=control_cap))control(xd,N,prec);
         fprintf(stderr,"curve=%s knot x=%g X=%lu %.1fs\n",curve,xd,ks[i],now()-start);fflush(stdout);
     }
     for(slong i=0;i<K;i++) {
@@ -604,6 +607,7 @@ int main(int argc,char **argv)
         else if(!strcmp(argv[i],"--prec"))prec=atol(argv[i+1]);
         else if(!strcmp(argv[i],"--cprec"))cprec=atol(argv[i+1]);
         else if(!strcmp(argv[i],"--fixedL"))fixedL=atoi(argv[i+1]);
+        else if(!strcmp(argv[i],"--control-cap"))control_cap=atoi(argv[i+1]);
         else if(!strcmp(argv[i],"--cmp"))cmp=argv[i+1];
         else {fprintf(stderr,"unknown option %s\n",argv[i]);return 2;}
     }
@@ -617,6 +621,7 @@ int main(int argc,char **argv)
     flint_printf("# curve=%s C=%wd rank=%wd root_number=%d; gamma (Q,d,mu)=(1/(2pi),1,1); no poles\n",curve,fmpz_get_si(conductor),curve_rank,root_number);
     if(!strcmp(mode,"axisN"))mode_axisN(xd,Nmax,prec,cmp,cprec);
     else if(!strcmp(mode,"axisx"))mode_axisx(N,xmax,prec,fixedL);
+    else if(!strcmp(mode,"point")){point_mode=1;mode_axisx(N,xmax,prec,0);}
     else if(!strcmp(mode,"spectra"))mode_spectra(xd,N);else return 2;
     flint_printf("# checks: %wd run, %wd failed\n",n_checks,n_fail);_fmpz_vec_clear(ainvs,5);fmpz_clear(conductor);flint_cleanup();return n_fail?1:0;
 }

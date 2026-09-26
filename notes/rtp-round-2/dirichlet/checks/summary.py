@@ -147,3 +147,15 @@ for D in DS:
         loss=fmt(mp.log10(num(es[xm]['epsE'])/num(data[D,xm]['end']['epsE']))) if (D,xm) in data else 'pending'
         rows.append([D,N,s1,s2,xm,loss])
 table(['D','N fixed','slope 13–25','slope 25–50','terminal x','decimal digits lost vs final-N proxy'],rows)
+print('# x50 determinant and precision audit\n')
+print('These LDL/bordering certificates complete before the expensive eigenpair comparisons. All values below are ball-certified; N_sat is the unique argmin over 1..420.\n')
+rows=[]
+for D in DS:
+    p=OUT/f'rtp2_dirichlet_D{D}_axisN_x50.txt'
+    if not p.exists():continue
+    txt=p.read_text();d=parse(p)
+    if 'SAT' not in d or len(d.get('ROW',[]))!=420:continue
+    s={r['block']:r for r in d['SAT']}
+    acc=re.search(r'pivot_accuracy_bits=(\d+)',txt)
+    rows.append([D,'/'.join(s[k]['N'] for k in ['full','even','odd']),s['full']['logdet'],acc[1],d['ROW'][-1]['rj']])
+table(['D','N_sat full/even/odd','minimum full logdet','worst pivot accuracy (bits of 4200)','joint half-width at N420'],rows)

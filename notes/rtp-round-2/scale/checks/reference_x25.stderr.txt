@@ -1,0 +1,5 @@
+build x=25 N=260 seconds=1.536085
+factor n=261 p=1800 neg=0 seconds=0.198398
+iteration n=261 count=20 seconds=1.779236
+gap n=261 neg=1 seconds=1.995166
+rump x=25 N=260 seconds=28.879739

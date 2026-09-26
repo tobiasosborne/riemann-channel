@@ -1,0 +1,14 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=11a1 C=11 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=11a1 C=11 N=200 xmax=2 prec=1000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=2 X=2 N=200 epsE=0.475789145951 epsO=2.58365410995 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=2 X=2 N=200 logdetE=489.197310533 logdetO=489.000538155 dI=3.657241563e-5 rj=10.62665636 tau=-0.0008726075926
+OVERLAP x=2 X=2 coefficient=1.00000000000
+RAY x=2 N=200 parity=1 term=arch value=0.475789145951
+RAY x=2 N=200 term=k2 value=[+/- 1.94e-300] cumulative=0.475789145951
+RAY_TOTAL x=2 N=200 arch=0.475789145951 primes=[+/- 1.94e-300] sum=0.475789145951 eps=0.475789145951
+# COMPARISON STEP; indefinite partial forms have no CCM interpretation
+REFERENCE curve=11a1 gamma1=6.36261389471308870138602900888 certified_unique=0 index=PARI radius=1e-38 rank=0
+COMP x=2 X=2 N=200 parity=1 roots=200 z1=10.4829421720175464 error=4.12032827730 ratio=8.65998796393
+# checks: 17 run, 0 failed

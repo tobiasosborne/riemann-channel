@@ -1,0 +1,23 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=389a1 C=389 rank=2 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=389a1 C=389 N=60 xmax=13 prec=700 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=13 X=13 N=60 epsE=3.16384739214 epsO=1.64014011817 parity=-1 even_simple=0 negE=0 negO=0
+KNOT x=13 X=13 N=60 logdetE=140.019017604 logdetO=137.084437007 dI=0.02552695755 rj=9.060552140 tau=-0.1144806050
+CONTROL x=13 N=60 minE=2.17617816901 minO=3.62586872020 negE=0 posE=61 negO=0 posO=60
+OVERLAP x=13 X=13 coefficient=1.00000000000
+RAY x=13 N=60 parity=-1 term=arch value=3.67372899817
+RAY x=13 N=60 term=k2 value=0.287111042218 cumulative=3.96084004038
+RAY x=13 N=60 term=k3 value=-0.372304767792 cumulative=3.58853527259
+RAY x=13 N=60 term=k4 value=0 cumulative=3.58853527259
+RAY x=13 N=60 term=k5 value=-0.925163878204 cumulative=2.66337139439
+RAY x=13 N=60 term=k7 value=-1.00248979919 cumulative=1.66088159519
+RAY x=13 N=60 term=k8 value=0.180919212607 cumulative=1.84180080780
+RAY x=13 N=60 term=k9 value=-0.0874389058519 cumulative=1.75436190195
+RAY x=13 N=60 term=k11 value=-0.114221783778 cumulative=1.64014011817
+RAY x=13 N=60 term=k13 value=[+/- 2.91e-209] cumulative=1.64014011817
+RAY_TOTAL x=13 N=60 arch=3.67372899817 primes=-2.03358888000 sum=1.64014011817 eps=1.64014011817
+# COMPARISON STEP; indefinite partial forms have no CCM interpretation
+REFERENCE curve=389a1 gamma1=0 certified_unique=0 index=PARI radius=1e-38 rank=2
+COMP x=13 X=13 N=60 parity=-1 roots=0 status=RANK_POSITIVE_NO_COMPARISON
+# checks: 16 run, 0 failed

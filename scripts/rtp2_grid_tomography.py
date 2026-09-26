@@ -8,17 +8,17 @@ All auxiliary files are under this lane's checks directory.
 import os
 os.environ['OPENBLAS_NUM_THREADS'] = '1'
 os.environ['OMP_NUM_THREADS'] = '1'
-import argparse
 import concurrent.futures
+import contextlib
+import io
 import json
 from pathlib import Path
 import subprocess
 import sys
 import mpmath as mp
 import numpy as np
-from scipy.optimize import linprog, minimize
+from scipy.optimize import linprog
 from scipy.linalg import null_space
-from scipy.optimize import brentq
 from scipy.stats import spearmanr
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -156,7 +156,7 @@ def grid_case(c,M,union=False):
                 lattice_idx[n]=j-1
             else:
                 lattice_idx[n]=len(ts);inds.append(255+n-2);ts.append(t);tags.append(f'log{n}')
-    G=c['G'][:,inds] if False else mp.matrix([[c['G'][i,j] for j in inds] for i in range(c['G'].rows)])
+    G=mp.matrix([[c['G'][i,j] for j in inds] for i in range(c['G'].rows)])
     # Include constant test exactly; eigenvector cuts alone need not bound mass.
     G=mp.matrix([list(G[i,:]) for i in range(G.rows)]+[[-2*(1-t) for t in ts]])
     b=mp.matrix(list(c['cost'])+[c['ab'][0][2]])
@@ -275,8 +275,15 @@ def box_run(pair):
 def run_boxes():
     pairs=[(13,N,M) for N in [20,40,60] for M in [64,128,256]]+[(25,N,128) for N in [60,134]]
     with concurrent.futures.ProcessPoolExecutor(max_workers=11) as pool:
-        for r in pool.map(box_run,pairs):
-            print('BOX '+json.dumps({k:v for k,v in r.items() if k!='boxes'}),flush=True)
+        for r,transcript,counts in pool.map(box_task,pairs):
+            check(counts[1]==0,f'LP boxes x={r["x"]} N={r["N"]} M={r["M"]}: generated or loaded; dual re-verification follows')
+            keys=['x','N','M','cuts','mass','near','far_upper','true_mass','ratio_lower','audit']
+            print('BOX '+json.dumps({k:r[k] for k in keys}),flush=True)
+
+def box_task(pair):
+    COUNTS[:]=[0,0];stream=io.StringIO()
+    with contextlib.redirect_stdout(stream):result=box_run(pair)
+    return result,stream.getvalue(),COUNTS[:]
 
 def moments(N,t):
     return [-2*(1-t)*mp.cos(2*mp.pi*n*t) for n in range(N+1)]+[mp.sin(2*mp.pi*n*t)/mp.pi for n in range(1,N+1)]
@@ -335,6 +342,7 @@ def near_kernel_run():
         corr=float(spearmanr(-abs(qs),-dist).statistic)
         hit=int(sum(min(abs(float(z)-primes))<=1/M for z in zeros))
         record=dict(vector=r,eigenvalue=ns(c['lam'][r],16),parity=c['vec'][r][0],q_min=float(min(qs)),q_max=float(max(qs)),negative_fraction=float(np.mean(qs<0)),spearman_small_q_near_prime=corr,zeros_y=[ns(z*L,24) for z in zeros],zero_hits_within_h=hit,prime_values=[ns(v,18) for v in primevals],prime_abs_relative=normalized,nearest_zero_distance_y=[min((float(abs(z*L-mp.log(n))) for z in zeros),default=None) for n,w in c['atoms']])
+        record['pole_arch_cost']=ns(c['cost'][r],18)
         check(abs(q(0)-2)<mp.mpf('1e-140'),f'near-kernel vector {r}: normalization q(0)=2; interior sign changes={len(zeros)}')
         print('NEAR_KERNEL '+json.dumps(record),flush=True)
         tab.append(record)
@@ -471,11 +479,46 @@ def verification_run():
     verify_farkas()
     pairs=[(13,N,M) for N in [20,40,60] for M in [64,128,256]]+[(25,N,128) for N in [60,134]]
     with concurrent.futures.ProcessPoolExecutor(max_workers=11) as pool:
-        for result in pool.map(verify_box,pairs):print('VERIFIED_BOX '+json.dumps(result),flush=True)
+        for result,transcript,counts in pool.map(verify_task,pairs):
+            print(transcript,end='');COUNTS[0]+=counts[0];COUNTS[1]+=counts[1]
+            print('VERIFIED_BOX '+json.dumps(result),flush=True)
+
+def verify_task(pair):
+    COUNTS[:]=[0,0];stream=io.StringIO()
+    with contextlib.redirect_stdout(stream):result=verify_box(pair)
+    return result,stream.getvalue(),COUNTS[:]
+
+def report_tables():
+    print('UNIFORM_GRID_OPTIMIZERS: all eleven feasible sets empty; weight boxes, mass ranges, min-norm/entropy measures and histogram distances undefined.')
+    print('UNION_GRID_BOXES: high-precision outer bounds; selected cuts=20 (x13),30 (x25); exact coordinate SDP projections not claimed.')
+    for x,N in [(13,20),(13,40),(13,60),(25,60),(25,134)]:
+        c=load_case(x,N)
+        for M in ([64,128,256] if x==13 else [128]):
+            g=grid_case(c,M,False);hist=[mp.mpf(0)]*(M-1);displacement=mp.mpf(0)
+            for n,w in c['atoms']:
+                t=mp.log(n)/mp.log(x);j=max(1,min(M-1,int(mp.nint(M*t))))
+                hist[j-1]+=w;displacement=max(displacement,abs(t-mp.mpf(j)/M)*mp.log(x))
+            ray=g['b']+g['G']*mp.matrix(hist)
+            check(min(ray)<0,f'x={x} N={N} M={M}: nearest-grid truth histogram fails a true-eigenvector cut')
+            print(f'HISTOGRAM x={x} N={N} M={M} max_displacement={ns(displacement)} minimum_cut={ns(min(ray))}')
+            r=json.loads((CHECKS/f'boxes_x{x}_N{N}_M{M}.json').read_text())
+            print('UNION_SUMMARY '+json.dumps({k:v for k,v in r.items() if k!='boxes'}))
+            print('point\ty\ttrue_weight\tlower_outer\tupper_outer')
+            for row in sorted(r['boxes'],key=lambda row:mp.mpf(row[1])):print('\t'.join(row))
+            near=[row for row in r['boxes'] if min(abs(mp.mpf(row[1])-mp.log(n)) for n,w in c['atoms'])<=mp.log(x)/M]
+            far=[row for row in r['boxes'] if row not in near]
+            print('LARGEST_OFF_PRIME_BOX '+json.dumps(max(far,key=lambda row:mp.mpf(row[4]))))
+    print('NEAR_KERNEL_PROFILE_FILE notes/rtp-round-2/grid-tomography/checks/near_kernel_profiles.tsv')
 
 if __name__=='__main__':
     if '--boxes' in sys.argv:run_boxes()
     elif '--supplemental' in sys.argv:supplemental_run()
     elif '--verify' in sys.argv:verification_run()
-    else:initial_run()
+    elif '--prepare' in sys.argv:initial_run()
+    elif '--report' in sys.argv:report_tables()
+    else:
+        print('RTP-2 LANE G / codex:gpt-6-astra / no RH, no zero ordinates / deterministic')
+        print('PRECISION: 1280-bit Arb input and PD; 1024-bit ball Farkas; 160-digit LP; 180-digit residual repair; 100-digit axis inertia.')
+        initial_run();run_boxes();verification_run();supplemental_run();report_tables()
     print(f'CHECKS {COUNTS[0]} FAILURES {COUNTS[1]}')
+    sys.exit(bool(COUNTS[1]))

@@ -1,0 +1,31 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=11a1 C=11 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=11a1 C=11 N=200 xmax=32 prec=1000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=32 X=32 N=200 epsE=4.27640160763e-13 epsO=2.25430745010e-10 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=32 X=32 N=200 logdetE=366.193834454 logdetO=381.120092368 dI=0.004168788317 rj=8.378192850 tau=-0.02470603867
+OVERLAP x=32 X=32 coefficient=1.00000000000
+RAY x=32 N=200 parity=1 term=arch value=-0.962274187786
+RAY x=32 N=200 term=k2 value=0.802055711631 cumulative=-0.160218476155
+RAY x=32 N=200 term=k3 value=0.179333696711 cumulative=0.0191152205558
+RAY x=32 N=200 term=k4 value=0 cumulative=0.0191152205558
+RAY x=32 N=200 term=k5 value=-0.0270782916381 cumulative=-0.00796307108240
+RAY x=32 N=200 term=k7 value=0.00870734976853 cumulative=0.000744278686134
+RAY x=32 N=200 term=k8 value=-0.00240862881820 cumulative=-0.00166435013207
+RAY x=32 N=200 term=k9 value=0.00190884570657 cumulative=0.000244495574502
+RAY x=32 N=200 term=k11 value=-0.000142049339788 cumulative=0.000102446234713
+RAY x=32 N=200 term=k13 value=-0.000109072911662 cumulative=-6.62667694819e-6
+RAY x=32 N=200 term=k16 value=4.61372410698e-6 cumulative=-2.01295284121e-6
+RAY x=32 N=200 term=k17 value=2.00546471132e-6 cumulative=-7.48812988518e-9
+RAY x=32 N=200 term=k19 value=0 cumulative=-7.48812988518e-9
+RAY x=32 N=200 term=k23 value=4.81910952267e-9 cumulative=-2.66902036251e-9
+RAY x=32 N=200 term=k25 value=2.83964895692e-9 cumulative=1.70628594404e-10
+RAY x=32 N=200 term=k27 value=-1.69740012973e-10 cumulative=8.88581430972e-13
+RAY x=32 N=200 term=k29 value=0 cumulative=8.88581430972e-13
+RAY x=32 N=200 term=k31 value=-4.60941270209e-13 cumulative=4.27640160763e-13
+RAY x=32 N=200 term=k32 value=[+/- 8.34e-301] cumulative=4.27640160763e-13
+RAY_TOTAL x=32 N=200 arch=-0.962274187786 primes=0.962274187786 sum=4.27640160763e-13 eps=4.27640160763e-13
+# COMPARISON STEP; indefinite partial forms have no CCM interpretation
+REFERENCE curve=11a1 gamma1=6.36261389471308870138602900888 certified_unique=0 index=PARI radius=1e-38 rank=0
+COMP x=32 X=32 N=200 parity=1 roots=200 z1=6.36261389543305656 error=7.19967853907e-10 ratio=1683.58334873
+# checks: 17 run, 0 failed

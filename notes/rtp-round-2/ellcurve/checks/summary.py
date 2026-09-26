@@ -106,9 +106,9 @@ table(['curve','N','b free','k/(8pi) free','RMS free','b at k=8pi','RMS 8pi','b 
 print('### Archimedean controls and Rayleigh cancellation\n')
 rows=[]
 for (c,x),d in D.items():
-    e=latest(d);co=row_at(d,'CONTROL',int(e['N']));r=d['RAY_TOTAL'][0]
-    rows.append([c,x,e['N'],co['minE'],co['minO'],co['negE']+'/'+co['negO'],r['arch'],r['primes'],r['sum']])
-table(['curve','x','N','control min E','control min O','negative E/O','Rayleigh gamma+log C','Rayleigh primes','sum'],rows)
+    e=latest(d);co=latest(d,'CONTROL');r=d['RAY_TOTAL'][0]
+    rows.append([c,x,e['N'],co['N'],co['minE'],co['minO'],co['negE']+'/'+co['negO'],r['arch'],r['primes'],r['sum']])
+table(['curve','x','N form','N control','control min E','control min O','negative E/O','Rayleigh gamma+log C','Rayleigh primes','sum'],rows)
 print('### Complete control spectra, N=60\n')
 rows=[]
 for c in ['11a1','14a1']:
@@ -129,19 +129,19 @@ for x in [13,25,50]:
     _,rs,cs=axisN(OUT/f'rtp1_a1_axisN_x{x}.txt');n,e,err=cs[-1];zd[x]=(min(rs,key=lambda r:r['logdet'])['N'],n,e,err)
 # Supplement from the reviewed certified tail; preserve provenance and precision.
 zd[50]=(zd[50][0],420,'2.80881e-258','3.0346e-254')
-rows.append(['zeta',','.join(str(zd[x][0]) for x in [13,25,50]),*[zd[x][2] for x in [13,25,50]],(math.log10(float(zd[13][2]))-math.log10(float(zd[50][2])))/37,'review N=420 at x50'])
-for dsc in [-4,-3,5,8,12,-8]:
+rows.append(['zeta',','.join(str(zd[x][0]) for x in [13,25,50]),*[zd[x][2] for x in [13,25,50]],(math.log10(float(zd[13][2]))-math.log10(float(zd[25][2])))/12,(math.log10(float(zd[13][2]))-math.log10(float(zd[50][2])))/37,'review N=420 at x50'])
+for dsc in [-4,-3,5,8,-7,12,-20,21,13,-8]:
     ds=[done(OUT/f'rtp2_dirichlet_D{dsc}_axisN_x{x}.txt') for x in [13,25,50]]
     if ds[0] is None:continue
     ns=','.join(next(r['N'] for r in d['SAT'] if r['block']=='full') if d else 'pending' for d in ds)
     eps=[latest(d)['epsE'] if d else 'pending' for d in ds]
     s=slope(latest(ds[0]),latest(ds[2])) if ds[2] else 'pending'
-    rows.append([f'chi_{dsc}',ns,*eps,s,'completed lane D only'])
+    rows.append([f'chi_{dsc}',ns,*eps,slope(latest(ds[0]),latest(ds[1])) if ds[1] else 'pending',s,'completed lane D only'])
 for c in CURVES:
     ds=[D.get((c,x)) for x in [13,25,50]]
     if not all(ds):continue
-    rows.append([c,','.join(next(r['N'] for r in d['SAT'] if r['block']=='full') for d in ds),*[latest(d)['epsE'] for d in ds],slope(latest(ds[0]),latest(ds[2])),'E block; 37a1 global O'])
-table(['object','N_sat at 13,25,50','epsE at 13','epsE at 25','epsE at 50','digits/x 13–50','provenance'],rows)
+    rows.append([c,','.join(next(r['N'] for r in d['SAT'] if r['block']=='full') for d in ds),*[latest(d)['epsE'] for d in ds],slope(latest(ds[0]),latest(ds[1])),slope(latest(ds[0]),latest(ds[2])),'E block; 37a1 global O'])
+table(['object','N_sat at 13,25,50','epsE at 13','epsE at 25','epsE at 50','digits/x 13–25','digits/x 13–50','provenance'],rows)
 print('Zeta uses existing A1 outputs and the certified N=420 supplement in notes/reviews/rtp-round-1-2026-09-24.md:651. Other lanes are read only; pending results are not extrapolated.\n')
 print('### Rayleigh parts at matched x=50, N=60\n')
 rows=[]
@@ -155,3 +155,47 @@ for label,p in [('chi_-4',OUT/'rtp2_dirichlet_D-4_axisx_ccm_N60.txt'),('chi_5',O
         r=d['RAY_TOTAL'][0];rows.append([label,0,r['arch'],r['primes'],r['sum']])
 table(['object','pole','gamma plus conductor','primes','epsilon (actual minimizing block)'],rows)
 print('The displayed O(1) parts must not be subtracted at their printed precision to recover epsilon; the raw ball computations verify the cancellation before rounding.\n')
+print('### Shared conductor-scaled slope test (FLOATING)\n')
+print('Both rank-zero curves at N=60, x≥13: separate intercepts, one common slope. Each model has three parameters and uses exactly the same knots.\n')
+if all((c,60) in A for c in ['11a1','14a1']):
+    pooled=[]
+    for c in ['11a1','14a1']:
+        for e in A[c,60]['EIG']:
+            if float(e['x'])>=13:pooled.append((c,float(e['x']),math.log10(num(e['epsE']))))
+    rows=[]
+    for kind in ['sqrt(x)','sqrt(x/C)']:
+        X=np.array([[float(c=='11a1'),float(c=='14a1'),-math.sqrt(x/(CURVES[c] if kind=='sqrt(x/C)' else 1))] for c,x,y in pooled]);Y=np.array([y for c,x,y in pooled]);b=np.linalg.lstsq(X,Y,rcond=None)[0];r=Y-X@b
+        rows.append([kind,len(Y),b[2],np.sqrt(np.mean(r*r)),max(abs(r))])
+    table(['common variable','points','common slope','RMS residual','max residual'],rows)
+print('### Error fits and late-window robustness (FLOATING)\n')
+rows=[]
+for (c,N),d in A.items():
+    if c=='37a1':continue
+    for field,tag in [('epsE','EIG'),('error','COMP')]:
+        for start in ([13,50] if N==200 else [13]):
+            es=[e for e in d[tag] if float(e['x'])>=start and field in e]
+            if len(es)<3:continue
+            x=np.array([float(e['x']) for e in es]);y=np.array([math.log10(num(e[field])) for e in es]);sx,rx,_=fit(x,y);sz,rz,_=fit(np.sqrt(x/CURVES[c]),y)
+            rows.append([c,N,field,f'{x[0]:g}–{x[-1]:g}',sx,rx,sz,rz])
+table(['curve','N','quantity','range','digits/x','RMS x','digits/sqrt(x/C)','RMS sqrt'],rows)
+print('### Individual prime-power Rayleigh terms at x=50,N=60\n')
+zterms={int(m[1]):m[2] for m in re.finditer(r'^\s+k =\s*(\d+)\s+(\S+)',s,re.M)}
+parts={'zeta':zterms}
+for label,p in [('chi_-4',OUT/'rtp2_dirichlet_D-4_axisx_ccm_N60.txt')]+[(c,OUT/f'rtp2_ellcurve_{c}_axisx_ccm_N60.txt') for c in CURVES]:
+    d=done(p)
+    if d:parts[label]={int(r['term'][1:]):r['value'] for r in d.get('RAY',[]) if r['term'].startswith('k')}
+table(['prime power',*parts],[[k,*[pp.get(k,'—') for pp in parts.values()]] for k in [2,3,4,5,7,11,23,49]])
+print('### Leading phase-space normalization (FLOATING)\n')
+print('S_max=x for zeta, x/q for primitive degree one, 2 sqrt(x/C) for weight two. The conditional universal prediction is 4pi/log(10)=5.457505 digits per unit S_max.\n')
+rows=[]
+for a,b in [(13,25),(13,50)]:
+    rows.append(['zeta',f'{a}–{b}',(math.log10(float(zd[a][2]))-math.log10(float(zd[b][2])))/(b-a)])
+for dsc in [-4,-3,5,8,-7,12,-20,21,13,-8]:
+    for a,b in [(13,25),(13,50)]:
+        da=done(OUT/f'rtp2_dirichlet_D{dsc}_axisN_x{a}.txt');db=done(OUT/f'rtp2_dirichlet_D{dsc}_axisN_x{b}.txt')
+        if da and db:rows.append([f'chi_{dsc}',f'{a}–{b}',abs(dsc)*slope(latest(da),latest(db))])
+for c in ['11a1','14a1']:
+    for a,b in [(13,25),(13,50),(50,100)]:
+        if (c,a) in D and (c,b) in D:
+            rows.append([c,f'{a}–{b}',slope(latest(D[c,a]),latest(D[c,b]),axis=lambda x:2*math.sqrt(x/CURVES[c]))])
+table(['object','range','digits per S_max'],rows)

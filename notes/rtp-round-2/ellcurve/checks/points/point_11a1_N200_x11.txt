@@ -1,0 +1,21 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=11a1 C=11 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=11a1 C=11 N=200 xmax=11 prec=1000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=11 X=11 N=200 epsE=5.02893805453e-6 epsO=0.000509913129436 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=11 X=11 N=200 logdetE=422.390957470 logdetO=428.568339296 dI=0.005373041979 rj=9.164032113 tau=-0.04717375035
+OVERLAP x=11 X=11 coefficient=1.00000000000
+RAY x=11 N=200 parity=1 term=arch value=-0.829709228008
+RAY x=11 N=200 term=k2 value=0.711309663671 cumulative=-0.118399564337
+RAY x=11 N=200 term=k3 value=0.127573804539 cumulative=0.00917424020202
+RAY x=11 N=200 term=k4 value=0 cumulative=0.00917424020202
+RAY x=11 N=200 term=k5 value=-0.0103366478703 cumulative=-0.00116240766823
+RAY x=11 N=200 term=k7 value=0.00129248003248 cumulative=0.000130072364245
+RAY x=11 N=200 term=k8 value=-0.000181588926155 cumulative=-5.15165619097e-5
+RAY x=11 N=200 term=k9 value=5.65454999642e-5 cumulative=5.02893805453e-6
+RAY x=11 N=200 term=k11 value=[+/- 8.25e-301] cumulative=5.02893805453e-6
+RAY_TOTAL x=11 N=200 arch=-0.829709228008 primes=0.829714256946 sum=5.02893805453e-6 eps=5.02893805453e-6
+# COMPARISON STEP; indefinite partial forms have no CCM interpretation
+REFERENCE curve=11a1 gamma1=6.36261389471308870138602900888 certified_unique=0 index=PARI radius=1e-38 rank=0
+COMP x=11 X=11 N=200 parity=1 roots=200 z1=6.36450061156271824 error=0.00188671684963 ratio=375.172020250
+# checks: 17 run, 0 failed
