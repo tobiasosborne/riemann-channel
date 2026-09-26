@@ -1,0 +1,4 @@
+data x=50 Nmax=420 seconds=16.622063
+build x=50 N=420 seconds=0.269851
+factor n=421 p=4200 neg=-1 seconds=0.295566
+FAIL minimal even eigenpair (raise precision on failure)

@@ -36,18 +36,57 @@ static slong ldl(arb_mat_t L,arb_ptr d,const arb_mat_t A,const arb_t shift,slong
  }
  _arb_vec_clear(w,n); arb_clear(t); return neg;
 }
+/* Rank-two displacement LDL, valid specifically for the zst parity blocks.
+ * Even nodes n^2, generators g_n=2 n b_n, h_n=1 (h_0=1/sqrt2).
+ * Odd nodes n^2 (n>=1), g_n=2 b_n, h_n=n.
+ * A_ij=(g_i h_j-h_i g_j)/(node_i-node_j). A diagonal shift
+ * preserves the generators. Schur update: g_i-=L_ik g_k,
+ * h_i-=L_ik h_k; diag_i-=L_ik^2 d_k. All updates are balls.
+ * Thus two generators plus the diagonal suffice: O(N^2) arithmetic.
+ */
+static int structured_method=0;
+static arb_srcptr form_b=NULL;
+static slong sldl(arb_mat_t L,arb_ptr d,const arb_mat_t A,const arb_t shift,arb_srcptr b,int odd,slong p,int midpoint)
+{
+ slong n=arb_mat_nrows(A),neg=0;arb_ptr g=_arb_vec_init(n),h=_arb_vec_init(n),diag=_arb_vec_init(n);
+ for(slong i=0;i<n;i++) {
+  slong k=i+odd;arb_mul_ui(g+i,b+k,2*(odd?1:k),p);
+  if(odd)arb_set_si(h+i,k);else if(i)arb_one(h+i);else{arb_sqrt_ui(h+i,2,p);arb_inv(h+i,h+i,p);}
+  arb_sub(diag+i,arb_mat_entry(A,i,i),shift,p);
+  if(midpoint){arb_get_mid_arb(g+i,g+i);arb_get_mid_arb(h+i,h+i);arb_get_mid_arb(diag+i,diag+i);}
+ }
+ for(slong k=0;k<n;k++) {
+  arb_set(d+k,diag+k);if(arb_contains_zero(d+k)){neg=-1;break;}neg+=arb_is_negative(d+k);arb_one(arb_mat_entry(L,k,k));
+  #pragma omp parallel for schedule(static) if(n>80)
+  for(slong i=k+1;i<n;i++) {
+   arb_t r;arb_init(r);arb_mul(r,g+i,h+k,p);arb_submul(r,h+i,g+k,p);
+   arb_div_si(r,r,(i+odd)*(i+odd)-(k+odd)*(k+odd),p);
+   arb_ptr ell=arb_mat_entry(L,i,k);arb_div(ell,r,d+k,p);
+   if(midpoint){arb_get_mid_arb(r,r);arb_get_mid_arb(ell,ell);}
+   arb_submul(diag+i,ell,r,p);arb_submul(g+i,ell,g+k,p);arb_submul(h+i,ell,h+k,p);
+   if(midpoint){arb_get_mid_arb(diag+i,diag+i);arb_get_mid_arb(g+i,g+i);arb_get_mid_arb(h+i,h+i);}
+   arb_clear(r);
+  }
+ }
+ _arb_vec_clear(g,n);_arb_vec_clear(h,n);_arb_vec_clear(diag,n);return neg;
+}
+static slong sinertia(const arb_mat_t A,const arb_t shift,arb_srcptr b,int odd,slong p)
+{
+ slong n=arb_mat_nrows(A);arb_mat_t L;arb_mat_init(L,n,n);arb_ptr d=_arb_vec_init(n);
+ slong neg=sldl(L,d,A,shift,b,odd,p,0);arb_mat_clear(L);_arb_vec_clear(d,n);return neg;
+}
 static slong inertia(const arb_mat_t A,const arb_t shift,slong p)
 {
  slong n=arb_mat_nrows(A); arb_mat_t L; arb_mat_init(L,n,n); arb_ptr d=_arb_vec_init(n);
  slong r=ldl(L,d,A,shift,p,0); arb_mat_clear(L); _arb_vec_clear(d,n); return r;
 }
 /* Approximate inverse application; certification is entirely in residuals/inertia. */
-static void solve(arb_ptr u,const arb_mat_t L,arb_srcptr d,slong n,slong p)
+static void solve(arb_ptr u,const arb_mat_t L,const arb_mat_t U,arb_srcptr d,slong n,slong p)
 {
  for(slong i=0;i<n;i++) { arb_dot(u+i,u+i,1,arb_mat_entry(L,i,0),1,u,1,i,p); arb_get_mid_arb(u+i,u+i); }
  for(slong i=0;i<n;i++) { arb_div(u+i,u+i,d+i,p); arb_get_mid_arb(u+i,u+i); }
  for(slong i=n-1;i>=0;i--) {
-  arb_dot(u+i,u+i,1,arb_mat_entry(L,i+1<n?i+1:i,i),n,u+i+1,1,n-i-1,p);
+  arb_dot(u+i,u+i,1,arb_mat_entry(U,i,i+1<n?i+1:i),1,u+i+1,1,n-i-1,p);
   arb_get_mid_arb(u+i,u+i);
  }
 }
@@ -91,7 +130,9 @@ static int pd(const arb_mat_t F,slong p)
  flint_free(rows);
  arb_mat_clear(T);arb_clear(delta);arb_clear(t);return ok;
 }
-static int fast_method=0;
+static int fast_method=0,warm_method=0;
+static arb_ptr warm_vector=NULL;
+static slong warm_length=0;
 /* Rigorous residual of the unit vector obtained by normalising exact dyadic u. */
 static void residual(arb_t rho,arb_t r,arb_ptr v,const arb_mat_t A,arb_srcptr u,slong p)
 {
@@ -106,19 +147,23 @@ static void residual(arb_t rho,arb_t r,arb_ptr v,const arb_mat_t A,arb_srcptr u,
 }
 static int certified(arb_t eps,arb_ptr v,const arb_mat_t E,slong p)
 {
- slong n=arb_mat_nrows(E); arb_mat_t L;arb_mat_init(L,n,n);
+ slong n=arb_mat_nrows(E); arb_mat_t L,U;arb_mat_init(L,n,n);arb_mat_init(U,n,n);
  arb_ptr d=_arb_vec_init(n),u=_arb_vec_init(n); arb_t zero,rho,r,s,t,gap,err;
  arb_init(zero);arb_init(rho);arb_init(r);arb_init(s);arb_init(t);arb_init(gap);arb_init(err);
- int ok=0; double tm=now(); slong ne=fast_method?0:ldl(L,d,E,zero,p,0);
+ int ok=0; double tm=now(); slong ne=fast_method?0:(structured_method?sldl(L,d,E,zero,form_b,0,p,0):ldl(L,d,E,zero,p,0));
  fprintf(stderr,"factor n=%ld p=%ld neg=%ld seconds=%.6f\n",n,p,ne,now()-tm);
  if(ne!=0) goto done;
  /* Recompute midpoint factors: reusing interval-factor midpoints can inherit
   * the precision that arb_dot discards when radii are large. */
- if(ldl(L,d,E,zero,p,1)!=0) goto done;
+ if((structured_method?sldl(L,d,E,zero,form_b,0,p,1):ldl(L,d,E,zero,p,1))!=0) goto done;
  /* Discard radii only in the approximate solver. */
- for(slong i=0;i<n;i++) { arb_get_mid_arb(d+i,d+i); for(slong j=0;j<=i;j++) arb_get_mid_arb(arb_mat_entry(L,i,j),arb_mat_entry(L,i,j)); arb_one(u+i); arb_div_ui(u+i,u+i,(i+1)*(i+1),p); arb_get_mid_arb(u+i,u+i); }
+ for(slong i=0;i<n;i++) { arb_get_mid_arb(d+i,d+i); for(slong j=0;j<=i;j++) arb_get_mid_arb(arb_mat_entry(L,i,j),arb_mat_entry(L,i,j)); if(warm_vector) { if(i<warm_length)arb_get_mid_arb(u+i,warm_vector+i);else arb_zero(u+i); }
+  else {arb_one(u+i); arb_div_ui(u+i,u+i,(i+1)*(i+1),p); arb_get_mid_arb(u+i,u+i);} }
+ /* Contiguous backward-substitution rows avoid strided high-precision reads. */
+ #pragma omp parallel for schedule(static) if(n>80)
+ for(slong i=0;i<n;i++)for(slong j=i+1;j<n;j++)arb_set(arb_mat_entry(U,i,j),arb_mat_entry(L,j,i));
  for(slong it=0;it<160;it++) {
-  solve(u,L,d,n,p);slong m=0;
+  solve(u,L,U,d,n,p);slong m=0;
   for(slong i=1;i<n;i++) if(arf_cmpabs(arb_midref(u+i),arb_midref(u+m))>0) m=i;
   arb_set(t,u+m);
   for(slong i=0;i<n;i++) { arb_div(u+i,u+i,t,p);arb_get_mid_arb(u+i,u+i); }
@@ -141,7 +186,7 @@ static int certified(arb_t eps,arb_ptr v,const arb_mat_t E,slong p)
    if(i==j)arb_sub(arb_mat_entry(F,i,j),arb_mat_entry(F,i,j),s,p);
   }
   ne=pd(F,p)?1:-1;arb_mat_clear(F);
- } else ne=inertia(E,s,p); fprintf(stderr,"gap n=%ld neg=%ld seconds=%.6f\n",n,ne,now()-tm);
+ } else ne=structured_method?sinertia(E,s,form_b,0,p):inertia(E,s,p); fprintf(stderr,"gap n=%ld neg=%ld seconds=%.6f\n",n,ne,now()-tm);
  if(ne!=1) goto done;
  /* Exactly one eigenvalue below s, and a spectral value in rho+/-r.
   * Distance of unit v to signed true unit eigenvector <=2r/(s-rho). */
@@ -150,7 +195,7 @@ static int certified(arb_t eps,arb_ptr v,const arb_mat_t E,slong p)
  for(slong i=0;i<n;i++) arb_add_error(v+i,err);
  pr("residual_norm",r);pr("eigenvector_component_error",err);ok=1;
  done:
- arb_mat_clear(L);_arb_vec_clear(d,n);_arb_vec_clear(u,n);
+ arb_mat_clear(L);arb_mat_clear(U);_arb_vec_clear(d,n);_arb_vec_clear(u,n);
  arb_clear(zero);arb_clear(rho);arb_clear(r);arb_clear(s);arb_clear(t);arb_clear(gap);arb_clear(err);return ok;
 }
 /* Form-only initial root: bracket by a positive real grid before any zeta query.
@@ -176,6 +221,7 @@ static void comparison(arb_srcptr v,slong N,const arb_t x,const arb_t eps,slong 
 }
 static void selftest(void)
 {
+ fast_method=0;structured_method=0;form_b=NULL;
  arb_mat_t A;arb_mat_init(A,3,3);arb_ptr v=_arb_vec_init(3),vr=_arb_vec_init(3);
  arb_t e,er,t;arb_init(e);arb_init(er);arb_init(t);
  /* Eigenvalues 1,6,7; nontrivial 2-by-2 block. */
@@ -193,17 +239,28 @@ static void selftest(void)
  arb_zero(t);arb_zero(arb_mat_entry(A,2,2));must(inertia(A,t,512)==-1,"zero pivot rejected");must(!pd(A,512),"singular matrix rejected by PD proof");
  arb_mat_zero(A);arb_one(arb_mat_entry(A,0,0));arb_one(arb_mat_entry(A,1,1));arb_set_ui(arb_mat_entry(A,2,2),7);
  fast_method=1;must(!certified(er,vr,A,512),"multiple minimum rejected by deflation certificate");fast_method=0;
+ {
+  arb_t xx,ss;arb_init(xx);arb_init(ss);arb_set_ui(xx,13);
+  arb_ptr aa=_arb_vec_init(21),bb=_arb_vec_init(21);arb_mat_t EE,OO;arb_mat_init(EE,21,21);arb_mat_init(OO,20,20);
+  zst_riemann_ab(aa,bb,20,xx,13,1200);zst_even_block(EE,aa,bb,20,1200);zst_odd_block(OO,aa,bb,20,1200);
+  for(int k=0;k<4;k++) {
+   arb_set_si(ss,k);arb_mul_2exp_si(ss,ss,-5);
+   must(sinertia(EE,ss,bb,0,1200)==inertia(EE,ss,1200),"structured even inertia vs dense");
+   must(sinertia(OO,ss,bb,1,1200)==inertia(OO,ss,1200),"structured odd inertia vs dense");
+  }
+  arb_mat_clear(EE);arb_mat_clear(OO);_arb_vec_clear(aa,21);_arb_vec_clear(bb,21);arb_clear(xx);arb_clear(ss);
+ }
  flint_printf("SELFTEST PASS\n");arb_mat_clear(A);_arb_vec_clear(v,3);_arb_vec_clear(vr,3);arb_clear(e);arb_clear(er);arb_clear(t);
 }
 int main(int argc,char **argv)
 {
- slong X=13,start=200,end=1000,p=1000,step=40;int endpoint=0,rump=0,threads=4,do_compare=1;const char *vecpath=NULL;
+ slong X=13,start=200,end=1000,p=1000,step=40;int endpoint=0,rump=0,threads=4,do_compare=1;const char *vecpath=NULL,*previous_eps=NULL;
  for(int i=1;i<argc;i++) {
   if(!strcmp(argv[i],"--selftest")) { selftest();return 0; }
   must(i+1<argc,"option argument");const char *key=argv[i++],*val=argv[i];
   if(!strcmp(key,"--x"))X=atol(val);else if(!strcmp(key,"--start"))start=atol(val);else if(!strcmp(key,"--end"))end=atol(val);
   else if(!strcmp(key,"--prec"))p=atol(val);else if(!strcmp(key,"--step"))step=atol(val);else if(!strcmp(key,"--endpoint"))endpoint=atoi(val);
-  else if(!strcmp(key,"--compare"))do_compare=atoi(val);else if(!strcmp(key,"--fast"))fast_method=atoi(val);else if(!strcmp(key,"--rump"))rump=atoi(val);else if(!strcmp(key,"--threads"))threads=atoi(val);else if(!strcmp(key,"--vector"))vecpath=val;else must(0,"unknown option");
+  else if(!strcmp(key,"--warm"))warm_method=atoi(val);else if(!strcmp(key,"--previous-eps"))previous_eps=val;else if(!strcmp(key,"--structured"))structured_method=atoi(val);else if(!strcmp(key,"--compare"))do_compare=atoi(val);else if(!strcmp(key,"--fast"))fast_method=atoi(val);else if(!strcmp(key,"--rump"))rump=atoi(val);else if(!strcmp(key,"--threads"))threads=atoi(val);else if(!strcmp(key,"--vector"))vecpath=val;else must(0,"unknown option");
  }
  must(X>1&&start>0&&end>=start&&p>=256&&step>0&&threads>0,"parameters");omp_set_num_threads(threads);
  setvbuf(stdout,NULL,_IOLBF,0);double total=now();
@@ -214,25 +271,29 @@ int main(int argc,char **argv)
  arb_ptr all_a=_arb_vec_init(end+1),all_b=_arb_vec_init(end+1);
  zst_riemann_ab(all_a,all_b,end,x,X,p);
  fprintf(stderr,"data x=%ld Nmax=%ld seconds=%.6f\n",X,end,now()-total);
+ if(warm_method)flint_printf("# warm_start=1 (preceding prime-side eigenvector, zero padded)\n");
+ if(structured_method)flint_printf("# displacement_rank=2 structured_ldl=1\n");
  int haveprev=0,converged=0;
+ if(previous_eps) { must(arb_set_str(prev,previous_eps,p)==0&&arb_is_positive(prev),"previous certified epsilon input");haveprev=1;flint_printf("# continuation previous_N=%wd\n",start-step);pr("previous_eps_input",prev); }
  for(slong N=start;N<=end;N+=step) {
   double row=now();arb_ptr a=_arb_vec_init(N+1),b=_arb_vec_init(N+1),v=_arb_vec_init(N+1);arb_mat_t E,O;arb_mat_init(E,N+1,N+1);arb_mat_init(O,N,N);
   _arb_vec_set(a,all_a,N+1);_arb_vec_set(b,all_b,N+1);zst_even_block(E,a,b,N,p);
   flint_printf("ROW N=%wd\n",N);fprintf(stderr,"build x=%ld N=%ld seconds=%.6f\n",X,N,now()-row);
-  must(certified(eps,v,E,p),"minimal even eigenpair (raise precision on failure)");pr("eps",eps);
+  form_b=b;must(certified(eps,v,E,p),"minimal even eigenpair (raise precision on failure)");pr("eps",eps);
   if(haveprev) {
    arb_div(ratio,prev,eps,p);pr("previous_over_current",ratio);
    must(arb_ge(prev,eps)||arb_overlaps(prev,eps),"monotonicity");
    converged=arb_lt(ratio,threshold);
   }
   arb_set(prev,eps);haveprev=1;
+  if(warm_method) { if(warm_vector)_arb_vec_clear(warm_vector,warm_length);warm_length=N+1;warm_vector=_arb_vec_init(warm_length);_arb_vec_set(warm_vector,v,warm_length); }
   int final=endpoint||(converged&&step==40);
   if(final) {
    flint_printf("FINAL N=%wd N_conv=%wd converged=%d\n",N,converged?N-step:-1,converged);
    zst_odd_block(O,a,b,N,p);arb_get_ubound_arf(arb_midref(t),eps,p);mag_zero(arb_radref(t));arb_mul_2exp_si(t,t,1);must(arb_gt(t,eps),"odd shift above eps");
    slong odd;
    if(fast_method) { for(slong i=0;i<N;i++)arb_sub(arb_mat_entry(O,i,i),arb_mat_entry(O,i,i),t,p);odd=pd(O,p)?0:-1; }
-   else odd=inertia(O,t,p);
+   else odd=structured_method?sinertia(O,t,b,1,p):inertia(O,t,p);
    flint_printf("odd_below_twice_eps=%wd\n",odd);must(odd==0,"even-simple odd gap");
    if(rump) {
     arb_t er;arb_init(er);arb_ptr vr=_arb_vec_init(N+1);double rt=now();
@@ -261,6 +322,7 @@ int main(int argc,char **argv)
   if(final)break;
  }
  fprintf(stderr,"total x=%ld seconds=%.6f\n",X,now()-total);
+ if(warm_vector)_arb_vec_clear(warm_vector,warm_length);
  _arb_vec_clear(all_a,end+1);_arb_vec_clear(all_b,end+1);
  arb_clear(x);arb_clear(eps);arb_clear(prev);arb_clear(ratio);arb_clear(threshold);arb_clear(t);arb_clear(zero);flint_cleanup();return 0;
 }

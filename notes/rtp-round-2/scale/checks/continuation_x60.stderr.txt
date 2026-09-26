@@ -1,0 +1,3 @@
+data x=60 Nmax=1538 seconds=106.384249
+build x=60 N=858 seconds=1.418995
+factor n=859 p=5200 neg=0 seconds=17.071161

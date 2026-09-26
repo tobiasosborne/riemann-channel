@@ -1,0 +1,8 @@
+# RTP-2 scale author codex:gpt-6-astra FLINT 3.0.1
+# All numeric enclosures are arb balls; timings only on stderr.
+x=50 prec=3400 start=420 end=420 step=40 fast=1
+# displacement_rank=2 structured_ldl=1
+ROW N=420
+residual_norm=[9.332494444122928e-571 +/- 2.49e-587]
+eigenvector_component_error=[6.645161715669245e-313 +/- 7.81e-330]
+eps=[2.808808827666894e-258 +/- 2.67e-274]

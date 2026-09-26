@@ -1,0 +1,7 @@
+{
+  "x": 50,
+  "matrix_wall_seconds": 1755.41589,
+  "start_file_birth": "2026-09-26 12:48:51.376633701 +0200",
+  "final_certificate_write": "2026-09-26 13:18:06.792523928 +0200",
+  "timing_kind": "floating filesystem wall time through even-simple certificate, excludes abandoned full-root work"
+}

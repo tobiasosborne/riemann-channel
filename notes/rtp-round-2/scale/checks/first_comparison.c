@@ -23,7 +23,10 @@ int main(int argc,char **argv)
  arb_set_si(x,X);arb_log(L,x,p);arb_sqrt_ui(t,2,p);arb_set(xi,v);
  for(slong i=1;i<=N;i++)arb_div(xi+i,v+i,t,p);
  flint_printf("# RTP-2 scale first-root completion author codex:gpt-6-astra\nx=%wd N=%wd prec=%wd\n",(slong)X,(slong)N,(slong)p);
- pr("eps_input",eps);scale_first_root(root,xi,N,p);
+ pr("eps_input",eps);
+ arb_set(t,xi);for(slong i=1;i<=N;i++){arb_add(t,t,xi+i,p);arb_add(t,t,xi+i,p);}
+ must(!arb_contains_zero(t),"edge functional nonzero without dividing by it");
+ flint_printf("edge_normalisation_nonzero=1\n");scale_first_root(root,xi,N,p);
  arb_const_pi(t,p);arb_mul_2exp_si(t,t,1);arb_mul(z,root,t,p);arb_div(z,z,L,p);
  flint_printf("# COMPARISON STEP: zeros used only from here\n");zst_zeta_zeros(g,1,p);arb_sub(err,z,g,p);arb_abs(err,err);arb_div(ratio,err,eps,p);pr("first_zero_error",err);pr("first_zero_error_over_eps",ratio);
  arb_ptr a=_arb_vec_init(N+1),b=_arb_vec_init(N+1);arb_mat_t E,O;arb_mat_init(E,N+1,N+1);arb_mat_init(O,N,N);

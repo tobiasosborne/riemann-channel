@@ -1,6 +1,6 @@
 # RTP-2 scale author codex:gpt-6-astra FLINT 3.0.1
 # All numeric enclosures are arb balls; timings only on stderr.
-x=50 prec=4200 start=420 end=1420 step=40
+x=50 prec=4200 start=420 end=1420 step=40 fast=0
 ROW N=420
 residual_norm=[9.332494444122928e-571 +/- 2.49e-587]
 eigenvector_component_error=[6.645161715669245e-313 +/- 7.81e-330]
@@ -56,3 +56,19 @@ eigenvector_component_error=[1.255485795713137e-313 +/- 1.81e-329]
 eps=[1.569323507616212e-258 +/- 1.34e-274]
 previous_over_current=[1.026226856597598 +/- 4.51e-16]
 ROW N=860
+residual_norm=[9.449283685868732e-572 +/- 1.19e-588]
+eigenvector_component_error=[1.224602754243553e-313 +/- 1.60e-329]
+eps=[1.543240639158227e-258 +/- 2.16e-274]
+previous_over_current=[1.016901361846077 +/- 1.99e-16]
+ROW N=900
+residual_norm=[8.015285365731547e-572 +/- 2.56e-588]
+eigenvector_component_error=[1.056392878643721e-313 +/- 3.30e-329]
+eps=[1.517481900488044e-258 +/- 4.52e-274]
+previous_over_current=[1.016974659573797 +/- 1.89e-16]
+ROW N=940
+residual_norm=[1.005856301279639e-571 +/- 2.00e-587]
+eigenvector_component_error=[1.335810036652508e-313 +/- 5.05e-330]
+eps=[1.505987039594760e-258 +/- 7.68e-275]
+previous_over_current=[1.007632775442993 +/- 1.58e-16]
+FINAL N=940 N_conv=900 converged=1
+odd_below_twice_eps=0

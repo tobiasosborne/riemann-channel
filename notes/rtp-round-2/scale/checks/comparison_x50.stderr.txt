@@ -1,0 +1,1 @@
+first_comparison x=50 N=940 seconds=41.511028

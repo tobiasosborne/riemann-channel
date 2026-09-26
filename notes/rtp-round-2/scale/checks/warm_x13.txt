@@ -1,0 +1,20 @@
+# RTP-2 scale author codex:gpt-6-astra FLINT 3.0.1
+# All numeric enclosures are arb balls; timings only on stderr.
+x=13 prec=1000 start=360 end=480 step=40 fast=0
+# warm_start=1 (preceding prime-side eigenvector, zero padded)
+ROW N=360
+residual_norm=[1.966038891559599e-173 +/- 2.75e-190]
+eigenvector_component_error=[1.522319783939988e-114 +/- 4.45e-130]
+eps=[2.582951246250247e-59 +/- 2.25e-75]
+ROW N=400
+residual_norm=[5.927845976273495e-149 +/- 2.41e-165]
+eigenvector_component_error=[4.638757361041659e-90 +/- 1.82e-106]
+eps=[2.555790490814705e-59 +/- 3.61e-75]
+previous_over_current=[1.010627144726125 +/- 2.26e-17]
+ROW N=440
+residual_norm=[1.614144046183654e-149 +/- 3.27e-165]
+eigenvector_component_error=[1.267859411843544e-90 +/- 1.58e-107]
+eps=[2.546250839967488e-59 +/- 4.11e-75]
+previous_over_current=[1.003746547943147 +/- 4.95e-16]
+FINAL N=440 N_conv=400 converged=1
+odd_below_twice_eps=0

@@ -1,6 +1,6 @@
 # RTP-2 scale author codex:gpt-6-astra FLINT 3.0.1
 # All numeric enclosures are arb balls; timings only on stderr.
-x=60 prec=5200 start=418 end=818 step=40 fast=0
+x=60 prec=5200 start=418 end=1538 step=40
 ROW N=418
 residual_norm=[3.477390205930710e-664 +/- 2.88e-680]
 eigenvector_component_error=[8.244686581449773e-356 +/- 1.41e-373]
@@ -55,9 +55,4 @@ residual_norm=[3.382859669642441e-677 +/- 3.96e-693]
 eigenvector_component_error=[5.767244773952016e-365 +/- 9.83e-382]
 eps=[1.173128522278526e-312 +/- 4.22e-328]
 previous_over_current=[1.025722404831280 +/- 3.04e-16]
-# RTP-2 scale author codex:gpt-6-astra FLINT 3.0.1
-# All numeric enclosures are arb balls; timings only on stderr.
-x=60 prec=5200 start=858 end=1538 step=40 fast=0
-# continuation previous_N=818
-previous_eps_input=[1.173128522278526e-312 +/- 4.23e-328]
 ROW N=858

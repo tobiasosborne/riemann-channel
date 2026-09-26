@@ -1,6 +1,7 @@
 # RTP-2 scale first-root completion author codex:gpt-6-astra
 x=13 N=440 prec=1000
 eps_input=[2.546250839967488e-59 +/- 4.12e-75]
+edge_normalisation_nonzero=1
 secular_first_root_certified=1 lower_range_excluded=1 cells=1092
 # COMPARISON STEP: zeros used only from here
 first_zero_error=[1.781925403772520e-55 +/- 3.70e-71]

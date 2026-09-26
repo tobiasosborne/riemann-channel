@@ -1,1 +1,1 @@
-first_comparison x=13 N=440 seconds=3.056622
+first_comparison x=13 N=440 seconds=4.774237

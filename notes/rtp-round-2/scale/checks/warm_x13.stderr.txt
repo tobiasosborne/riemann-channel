@@ -1,0 +1,17 @@
+data x=13 Nmax=480 seconds=1.230714
+build x=13 N=360 seconds=0.107077
+factor n=361 p=1000 neg=0 seconds=0.439007
+iteration n=361 count=16 seconds=2.330620
+gap n=361 neg=1 seconds=2.795220
+row x=13 N=360 seconds=2.931145
+build x=13 N=400 seconds=0.101489
+factor n=401 p=1000 neg=0 seconds=0.631325
+iteration n=401 count=12 seconds=2.780420
+gap n=401 neg=1 seconds=3.502361
+row x=13 N=400 seconds=3.641700
+build x=13 N=440 seconds=0.097231
+factor n=441 p=1000 neg=0 seconds=0.952064
+iteration n=441 count=12 seconds=3.730997
+gap n=441 neg=1 seconds=4.571602
+row x=13 N=440 seconds=5.662686
+total x=13 seconds=13.566832

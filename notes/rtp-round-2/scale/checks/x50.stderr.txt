@@ -55,3 +55,16 @@ gap n=821 neg=1 seconds=123.887349
 row x=50 N=820 seconds=152.214466
 build x=50 N=860 seconds=32.252219
 factor n=861 p=4200 neg=0 seconds=11.870578
+iteration n=861 count=32 seconds=131.911921
+gap n=861 neg=1 seconds=143.948846
+row x=50 N=860 seconds=176.298875
+build x=50 N=900 seconds=37.754494
+factor n=901 p=4200 neg=0 seconds=13.400714
+iteration n=901 count=32 seconds=146.114220
+gap n=901 neg=1 seconds=156.916740
+row x=50 N=900 seconds=194.773361
+build x=50 N=940 seconds=43.618788
+factor n=941 p=4200 neg=0 seconds=15.294113
+iteration n=941 count=32 seconds=181.344333
+gap n=941 neg=1 seconds=202.399973
+matrix_wall x=50 seconds=1755.415890 source=filesystem_birth_to_final_certificate_write

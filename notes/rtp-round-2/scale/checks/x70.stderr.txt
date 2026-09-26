@@ -37,3 +37,22 @@ row x=70 N=746 seconds=109.414109
 build x=70 N=786 seconds=0.611992
 factor n=787 p=4600 neg=0 seconds=0.000000
 iteration n=787 count=40 seconds=83.759331
+gap n=787 neg=1 seconds=140.044892
+row x=70 N=786 seconds=140.721601
+build x=70 N=826 seconds=0.746781
+factor n=827 p=4600 neg=0 seconds=0.000001
+iteration n=827 count=40 seconds=89.807244
+gap n=827 neg=1 seconds=155.821646
+row x=70 N=826 seconds=156.623412
+build x=70 N=866 seconds=0.777617
+factor n=867 p=4600 neg=0 seconds=0.000000
+iteration n=867 count=40 seconds=93.790503
+gap n=867 neg=1 seconds=180.049806
+row x=70 N=866 seconds=180.909184
+build x=70 N=906 seconds=0.936991
+factor n=907 p=4600 neg=0 seconds=0.000000
+iteration n=907 count=40 seconds=120.845903
+gap n=907 neg=1 seconds=222.428573
+row x=70 N=906 seconds=223.439986
+build x=70 N=946 seconds=0.876988
+factor n=947 p=4600 neg=0 seconds=0.000000

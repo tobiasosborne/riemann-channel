@@ -26,3 +26,18 @@ gap n=803 neg=1 seconds=140.664170
 row x=85 N=802 seconds=141.538776
 build x=85 N=842 seconds=0.674341
 factor n=843 p=5500 neg=0 seconds=0.000000
+iteration n=843 count=48 seconds=118.405167
+gap n=843 neg=1 seconds=166.153000
+row x=85 N=842 seconds=166.883321
+build x=85 N=882 seconds=0.925871
+factor n=883 p=5500 neg=0 seconds=0.000001
+iteration n=883 count=48 seconds=127.315370
+gap n=883 neg=1 seconds=192.070712
+row x=85 N=882 seconds=193.067482
+build x=85 N=922 seconds=1.174246
+factor n=923 p=5500 neg=0 seconds=0.000001
+iteration n=923 count=48 seconds=170.955204
+gap n=923 neg=1 seconds=252.970430
+row x=85 N=922 seconds=254.219689
+build x=85 N=962 seconds=1.188066
+factor n=963 p=5500 neg=0 seconds=0.000000

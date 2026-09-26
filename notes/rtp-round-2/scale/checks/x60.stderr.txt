@@ -45,3 +45,12 @@ gap n=739 neg=1 seconds=129.427991
 row x=60 N=738 seconds=173.495192
 build x=60 N=778 seconds=54.163666
 factor n=779 p=5200 neg=0 seconds=12.483368
+iteration n=779 count=36 seconds=146.797821
+gap n=779 neg=1 seconds=160.590319
+row x=60 N=778 seconds=214.830312
+build x=60 N=818 seconds=54.653320
+factor n=819 p=5200 neg=0 seconds=17.844460
+iteration n=819 count=36 seconds=170.114155
+gap n=819 neg=1 seconds=187.354729
+row x=60 N=818 seconds=242.114169
+build x=60 N=858 seconds=59.650423

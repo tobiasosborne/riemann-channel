@@ -1,0 +1,3 @@
+make: Entering directory '/home/tobiasosborne/Projects/riemann-channel/zst'
+cc -O2 -std=c11 -Wall -Wextra -Wno-unused-parameter -Iinclude tools/rtp2_dirichlet.c build/libzst.a -lflint -lmpfr -lgmp -lm -o build/rtp2_dirichlet
+make: Leaving directory '/home/tobiasosborne/Projects/riemann-channel/zst'

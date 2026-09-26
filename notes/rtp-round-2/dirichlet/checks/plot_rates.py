@@ -16,8 +16,10 @@ for D in Ds:
     vals=[]
     for x,N in [(13,200),(50,420)]:
         p=ROOT/f'outputs/rtp2_dirichlet_D{D}_axisN_x{x}.txt'
-        if not p.exists() or '# checks:' not in p.read_text():break
-        s=p.read_text();r=re.search(rf'EIG x={x} X={x} N={N} epsE=([^ ]+)',s)
+        if not p.exists():break
+        s=p.read_text();assert 'CHECK FAIL' not in s
+        r=re.search(rf'EIG x={x} X={x} N={N} epsE=([^ ]+)',s)
+        if not r:break
         vals.append(float(r[1]))
     if len(vals)==2:
         rate=math.log10(vals[0]/vals[1])/37

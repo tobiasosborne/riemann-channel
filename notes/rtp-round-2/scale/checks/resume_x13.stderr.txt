@@ -1,0 +1,7 @@
+data x=13 Nmax=440 seconds=1.044294
+build x=13 N=440 seconds=0.135862
+factor n=441 p=1000 neg=0 seconds=0.953969
+iteration n=441 count=16 seconds=3.907921
+gap n=441 neg=1 seconds=4.698308
+row x=13 N=440 seconds=5.876775
+total x=13 seconds=6.979011
