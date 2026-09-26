@@ -1,5 +1,5 @@
-PENDING rtp2_ellcurve_11a1_axisN_x100.txt
-AUDIT: 25 complete files, 3765 checks passed
+AUDIT: 26 complete files, 3779 checks passed
+962c6bc7f5422968f899106544fd7ef8b70188f02812379ae4ae9e637d7881df outputs/rtp2_ellcurve_11a1_axisN_x100.txt
 73f9d3ac437569a3210ca5e3e74c024e316ca882da3947418f07929eb8318741 outputs/rtp2_ellcurve_11a1_axisN_x13.txt
 052d3f182716402c4466228f28933c3aa3a19030904e60b3f3f5fa16cd156888 outputs/rtp2_ellcurve_11a1_axisN_x25.txt
 9fb76713fbf98146f74e9648e0a50e838965e243034f4afc7d1720d04f164a57 outputs/rtp2_ellcurve_11a1_axisN_x50.txt
@@ -29,4 +29,4 @@ PRECISION_RECHECK 11a1 13 60 same printed epsE,epsO,parity
 PRECISION_RECHECK 14a1 25 60 same printed epsE,epsO,parity
 PRECISION_RECHECK 37a1 50 60 same printed epsE,epsO,parity
 PRECISION_RECHECK 11a1 100 200 same printed epsE,epsO,parity
-AUDIT_WITH_RECHECKS 3769 passed
+AUDIT_WITH_RECHECKS 3783 passed

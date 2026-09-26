@@ -190,18 +190,20 @@ static void selftest(void)
  must(arb_overlaps(v,t),"first component");arb_mul_si(t,t,-2,512);must(arb_overlaps(v+1,t),"second component");must(arb_contains_zero(v+2),"third component");
  must(zst_eigmin(er,vr,A,100,512),"Rump reference");must(arb_overlaps(er,e),"Rump eigenvalue agreement");
  fast_method=1;must(certified(er,vr,A,512),"deflated PD eigenpair");must(arb_overlaps(er,e),"two certificate methods agree");fast_method=0;
- arb_zero(t);arb_zero(arb_mat_entry(A,2,2));must(inertia(A,t,512)==-1,"zero pivot rejected");
+ arb_zero(t);arb_zero(arb_mat_entry(A,2,2));must(inertia(A,t,512)==-1,"zero pivot rejected");must(!pd(A,512),"singular matrix rejected by PD proof");
+ arb_mat_zero(A);arb_one(arb_mat_entry(A,0,0));arb_one(arb_mat_entry(A,1,1));arb_set_ui(arb_mat_entry(A,2,2),7);
+ fast_method=1;must(!certified(er,vr,A,512),"multiple minimum rejected by deflation certificate");fast_method=0;
  flint_printf("SELFTEST PASS\n");arb_mat_clear(A);_arb_vec_clear(v,3);_arb_vec_clear(vr,3);arb_clear(e);arb_clear(er);arb_clear(t);
 }
 int main(int argc,char **argv)
 {
- slong X=13,start=200,end=1000,p=1000,step=40;int endpoint=0,rump=0,threads=4;const char *vecpath=NULL;
+ slong X=13,start=200,end=1000,p=1000,step=40;int endpoint=0,rump=0,threads=4,do_compare=1;const char *vecpath=NULL;
  for(int i=1;i<argc;i++) {
   if(!strcmp(argv[i],"--selftest")) { selftest();return 0; }
   must(i+1<argc,"option argument");const char *key=argv[i++],*val=argv[i];
   if(!strcmp(key,"--x"))X=atol(val);else if(!strcmp(key,"--start"))start=atol(val);else if(!strcmp(key,"--end"))end=atol(val);
   else if(!strcmp(key,"--prec"))p=atol(val);else if(!strcmp(key,"--step"))step=atol(val);else if(!strcmp(key,"--endpoint"))endpoint=atoi(val);
-  else if(!strcmp(key,"--fast"))fast_method=atoi(val);else if(!strcmp(key,"--rump"))rump=atoi(val);else if(!strcmp(key,"--threads"))threads=atoi(val);else if(!strcmp(key,"--vector"))vecpath=val;else must(0,"unknown option");
+  else if(!strcmp(key,"--compare"))do_compare=atoi(val);else if(!strcmp(key,"--fast"))fast_method=atoi(val);else if(!strcmp(key,"--rump"))rump=atoi(val);else if(!strcmp(key,"--threads"))threads=atoi(val);else if(!strcmp(key,"--vector"))vecpath=val;else must(0,"unknown option");
  }
  must(X>1&&start>0&&end>=start&&p>=256&&step>0&&threads>0,"parameters");omp_set_num_threads(threads);
  setvbuf(stdout,NULL,_IOLBF,0);double total=now();
@@ -247,11 +249,12 @@ int main(int argc,char **argv)
     FILE *fp=fopen(vecpath,"w");must(fp!=NULL,"vector file");fprintf(fp,"%ld %ld %ld\n",X,N,p);
     for(slong i=0;i<=N;i++) { arb_dump_file(fp,v+i);fputc('\n',fp); }fclose(fp);
    }
-   comparison(v,N,x,eps,p);
+   if(do_compare) { comparison(v,N,x,eps,p);
    /* Prime-free control uses original zst builder with cutoff one. */
    zst_riemann_ab(a,b,N,x,1,512);zst_even_block(E,a,b,N,512);zst_odd_block(O,a,b,N,512);
    slong ne=inertia(E,zero,512),no=inertia(O,zero,512);
    flint_printf("prime_free_negative_even=%wd odd=%wd prec=512\n",ne,no);must(ne>=0&&no>=0,"control inertia");
+   }
   }
   fprintf(stderr,"row x=%ld N=%ld seconds=%.6f\n",X,N,now()-row);
   _arb_vec_clear(a,N+1);_arb_vec_clear(b,N+1);_arb_vec_clear(v,N+1);arb_mat_clear(E);arb_mat_clear(O);

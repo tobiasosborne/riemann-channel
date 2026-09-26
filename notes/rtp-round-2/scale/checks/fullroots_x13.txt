@@ -37,3 +37,8 @@ eps=[2.546250839967488e-59 +/- 4.11e-75]
 previous_over_current=[1.003746547943147 +/- 4.95e-16]
 FINAL N=440 N_conv=400 converged=1
 odd_below_twice_eps=0
+secular_roots=440 unresolved=0
+# COMPARISON STEP: zeros used only from here
+first_zero_error=[1.781925403772520e-55 +/- 3.70e-71]
+first_zero_error_over_eps=[6998.231972287823 +/- 1.34e-13]
+prime_free_negative_even=2 odd=2 prec=512

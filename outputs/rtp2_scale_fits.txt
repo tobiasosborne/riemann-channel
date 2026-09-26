@@ -1,0 +1,9 @@
+# All fits below are FLOATING descriptive fits to the certified printed midpoints.
+# They contain no bound on the N=infinity tail or on the prolate asymptotic remainder.
+x=13 log10_eps=-58.594098814724942 eps/P=9.27178716508335763
+x=25 log10_eps=-122.712061532577865 eps/P=11.5154460953628954
+slope 13->25: eps=5.3431635598210769 prolate=5.35100666923041507 difference=-0.00784310940933817968
+COMPARISON STEP zero-error slope 13->25: 5.33293008179170923
+all_points linear y=-a*x+c: a=5.3431635598210769 c=10.8670274629490576 rms_dex=0.0 residuals_dex=[0.0, 0.0]
+all_points fixed b=4.5: a=5.44966230595802721 c=7.23876607734864625 multiplier_10^c/C=7.33167206675864856 rms_dex=1.63925301373120419e-69 residuals_dex=[-2.3182538441796384e-69, 0.0]
+all_points fixed a=a0,b=4.5: c=7.38778515612607167 multiplier_10^c/C=10.3328972368448027 residuals_dex=[-0.04705865645602908, 0.04705865645602908]

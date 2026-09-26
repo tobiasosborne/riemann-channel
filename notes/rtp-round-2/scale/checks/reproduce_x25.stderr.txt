@@ -1,0 +1,42 @@
+data x=25 Nmax=1100 seconds=6.830390
+build x=25 N=260 seconds=0.060804
+factor n=261 p=1800 neg=0 seconds=0.355046
+iteration n=261 count=20 seconds=2.271876
+gap n=261 neg=1 seconds=2.743531
+row x=25 N=260 seconds=2.813813
+build x=25 N=300 seconds=0.075360
+factor n=301 p=1800 neg=0 seconds=0.395017
+iteration n=301 count=20 seconds=2.843328
+gap n=301 neg=1 seconds=3.340671
+row x=25 N=300 seconds=3.427574
+build x=25 N=340 seconds=0.085197
+factor n=341 p=1800 neg=0 seconds=0.497201
+iteration n=341 count=20 seconds=3.812114
+gap n=341 neg=1 seconds=4.289623
+row x=25 N=340 seconds=4.391069
+build x=25 N=380 seconds=0.096418
+factor n=381 p=1800 neg=0 seconds=0.598517
+iteration n=381 count=20 seconds=4.888229
+gap n=381 neg=1 seconds=5.498371
+row x=25 N=380 seconds=5.614371
+build x=25 N=420 seconds=0.132001
+factor n=421 p=1800 neg=0 seconds=0.845484
+iteration n=421 count=20 seconds=6.390341
+gap n=421 neg=1 seconds=7.207812
+row x=25 N=420 seconds=7.365834
+build x=25 N=460 seconds=0.146712
+factor n=461 p=1800 neg=0 seconds=1.039766
+iteration n=461 count=20 seconds=7.716122
+gap n=461 neg=1 seconds=8.765231
+row x=25 N=460 seconds=8.942970
+build x=25 N=500 seconds=0.181485
+factor n=501 p=1800 neg=0 seconds=1.378618
+iteration n=501 count=20 seconds=9.315579
+gap n=501 neg=1 seconds=10.638890
+row x=25 N=500 seconds=10.853983
+build x=25 N=540 seconds=0.197463
+factor n=541 p=1800 neg=0 seconds=1.630492
+iteration n=541 count=20 seconds=12.089705
+gap n=541 neg=1 seconds=13.773374
+row x=25 N=540 seconds=15.425810
+total x=25 seconds=65.996473

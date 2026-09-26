@@ -15,6 +15,8 @@ Author: `codex:gpt-6-astra`. Unreviewed research record. No RH assumption. Refer
 9. **NUMERICAL qualification.** The small range 13–25 is not independently discriminating in every case: for 14a1 at N=120, the linear-x fit has RMS 0.0340 digits versus 0.0801 for sqrt(x). The longer 13–50 range reverses that ordering. No assertion of exact linearity or a uniform local slope is warranted.
 10. **NUMERICAL protocol correction.** The inherited precision and repeated large-control QR spectra made the serial N=200 run too slow (206 seconds for its first knot). It was interrupted along with the unfinished high-N jobs; their partial files are preserved under `checks/interrupted_*`, and completed files were retained. The final script runs the long-axis knots in parallel, with 1000-bit forms/eigenpairs, and caps routine controls at N=120. The x=50 resolution reruns use 1000/700 bits, and x=100 uses 1400/1000. These are still far above the elliptic eigenvalue scale; all requested ball certificates must pass. Complete N=60 control spectra remain available. The aggregate long-axis file contains no cross-window overlap; the original serial N=60/120 files do.
 
+11. **SHARPENED.** MVP-3's “only twice as bad” for conductor 14 was a short-window observation. The first-zero-error ratio 14a1/11a1 is about 2.09 at x=13 but 77.53 at x=50 (final-N proxies). It is not a window-independent conductor prefactor.
+
 ## E1. Predictions recorded before new runs
 
 **PREDICTION E1a — OPEN (H-WINDOW-ONLY).** If the very same CCM Fourier-prolate parameter controls the new Weil minimizer, then
@@ -88,7 +90,7 @@ Eigenvalues and inertia are certified in the raw files. COMPARISON errors use ap
 
 | file | checks | failures |
 |---|---|---|
-| rtp2_ellcurve_11a1_axisN_x100.txt | RUNNING | — |
+| rtp2_ellcurve_11a1_axisN_x100.txt | 2565 | 0 |
 | rtp2_ellcurve_11a1_axisN_x13.txt | 1255 | 0 |
 | rtp2_ellcurve_11a1_axisN_x25.txt | 1623 | 0 |
 | rtp2_ellcurve_11a1_axisN_x50.txt | 2581 | 0 |
@@ -115,7 +117,7 @@ Eigenvalues and inertia are certified in the raw files. COMPARISON errors use ap
 | rtp2_ellcurve_diagnostic_x2_N200.txt | 1223 | 0 |
 | rtp2_ellcurve_pilot_11a1.txt | 399 | 0 |
 
-Completed checks: 23244 
+Completed checks: 25809 
 
 ### Resolution and parity
 
@@ -126,6 +128,7 @@ N_sat is certified only on 1..Nmax. A value of 1 is left-censored (N=0 is not sc
 | 11a1 | 13 | 200 | 3/3/3 | 1.075888 | 2.43947834223e-6 | 7.60586827693e-7 | 0.000145476586851 | E |
 | 11a1 | 25 | 260 | 6/6/6 | 1.236441 | 1.23500169465e-10 | 2.42148388413e-11 | 1.16472149147e-8 | E |
 | 11a1 | 50 | 420 | 10/10/10 | 1.198974 | 2.96546081715e-16 | 9.12480919174e-18 | 1.40828068046e-14 | E |
+| 11a1 | 100 | 420 | 18/18/18 | 1.296353 | 1.58348262006e-25 | 5.86752032195e-27 | 1.17910130007e-23 | E |
 | 14a1 | 13 | 200 | 2/2/2 | 0.809177 | 2.34714132383e-5 | 5.47398082239e-6 | 0.000879747523219 | E |
 | 14a1 | 25 | 260 | 4/4/4 | 0.929929 | 1.14921916973e-8 | 1.00853123507e-9 | 4.92836083075e-7 | E |
 | 14a1 | 50 | 420 | 10/10/10 | 1.352626 | 1.60944223785e-14 | 2.82763646403e-15 | 3.39392540313e-12 | E |
@@ -140,6 +143,7 @@ N_sat is certified only on 1..Nmax. A value of 1 is left-censored (N=0 is not sc
 | 11a1 | 13 | 200 | 0.000406325112562 | 534.225807978 |
 | 11a1 | 25 | 260 | 3.07075607533e-8 | 1268.12988327 |
 | 11a1 | 50 | 420 | 2.23555751598e-14 | 2449.97727515 |
+| 11a1 | 100 | 420 | 2.24609323766e-23 | 3828.01100706 |
 | 14a1 | 13 | 200 | 0.000850124715393 | 155.302830422 |
 | 14a1 | 25 | 260 | 3.46751133644e-7 | 343.817941960 |
 | 14a1 | 50 | 420 | 1.73314985464e-12 | 612.932347098 |
@@ -154,6 +158,7 @@ N_sat is certified only on 1..Nmax. A value of 1 is left-censored (N=0 is not sc
 | 11a1 | 13 | 120→200 | 1.00162 | 1.014255 | 1.009299 | 8.560739087 | 0.009474191792 | -0.06574159550 | 10.48797386 | 10.48091321 |
 | 11a1 | 25 | 200→260 | 1.001408 | 1.008096 | 1.03953 | 9.331564655 | 0.005152022584 | -0.03400086471 | 12.51575012 | 12.50887664 |
 | 11a1 | 50 | 200→420 | 1.018217 | 1.028053 | 1.239153 | 8.304630421 | 0.009342921749 | -0.04101800643 | 8.947251868 | 8.942136536 |
+| 11a1 | 100 | 200→420 | 1.049451 | 1.01304 | 1.213812 | 7.955294327 | 0.006068803734 | 0.01252111548 | 10.16302903 | 10.15903376 |
 | 14a1 | 13 | 120→200 | 1.000946 | 1.010945 | 1.004876 | 9.061980277 | 0.003337548209 | -0.03726779845 | 12.13535849 | 12.13008886 |
 | 14a1 | 25 | 200→260 | 1.001068 | 1.007451 | 1.028396 | 9.165456007 | 0.009095556477 | -0.06129854322 | 12.87675022 | 12.87175599 |
 | 14a1 | 50 | 200→420 | 1.009904 | 1.031173 | 1.145924 | 8.620815502 | 0.03742308982 | -0.1280645303 | 11.07171177 | 11.06539386 |
@@ -168,6 +173,8 @@ N_sat is certified only on 1..Nmax. A value of 1 is left-censored (N=0 is not sc
 | 11a1 | 13–25 | 0.3747556 | 3.224979 | 10.69604 | 0.3413809 | 0.343469 |
 | 11a1 | 25–50 | 0.2569543 | 3.101713 | 10.28722 | 0.2367013 | 0.2455144 |
 | 11a1 | 13–50 | 0.2951601 | 3.151312 | 10.45172 | 0.2706515 | 0.2772835 |
+| 11a1 | 50–100 | 0.1838354 | 3.138266 | 10.40845 | 0.1815428 | 0.1799592 |
+| 11a1 | 13–100 | 0.2311804 | 3.145337 | 10.4319 | 0.2194396 | 0.22135 |
 | 14a1 | 13–25 | 0.3112178 | 2.678201 | 10.02091 | 0.2709713 | 0.2824554 |
 | 14a1 | 25–50 | 0.2220906 | 2.680871 | 10.0309 | 0.20648 | 0.2120473 |
 | 14a1 | 13–50 | 0.2509967 | 2.679797 | 10.02688 | 0.2273961 | 0.2348823 |
@@ -228,6 +235,7 @@ Fit ln eps=a+b ln z−k z, z=sqrt(x/C), on the same knots (three parameters). Al
 | 11a1 | 13 | 200 | 200 | -1.38957064134 | 0.0566717962475 | 1/0 | -0.867338025611 | 0.867338786198 | 7.60586827693e-7 |
 | 11a1 | 25 | 260 | 260 | -1.61780175257 | -0.346411393408 | 1/1 | -0.939853026777 | 0.939853026801 | 2.42148388413e-11 |
 | 11a1 | 50 | 420 | 120 | -1.78621644865 | -0.672179621029 | 1/1 | -0.991414691509 | 0.991414691509 | 9.12480919174e-18 |
+| 11a1 | 100 | 420 | 120 | -1.90745980173 | -0.928628119398 | 2/1 | -1.02220094661 | 1.02220094661 | 5.86752032195e-27 |
 | 14a1 | 13 | 200 | 200 | -1.14840858453 | 0.297833853064 | 1/0 | -0.722202911951 | 0.722208385932 | 5.47398082239e-6 |
 | 14a1 | 25 | 260 | 260 | -1.37663969576 | -0.105249336591 | 1/1 | -0.799400476500 | 0.799400477508 | 1.00853123507e-9 |
 | 14a1 | 50 | 420 | 120 | -1.54505439183 | -0.431017564212 | 1/1 | -0.847021092403 | 0.847021092403 | 2.82763646403e-15 |
@@ -363,6 +371,7 @@ S_max=x for zeta, x/q for primitive degree one, 2 sqrt(x/C) for weight two. The 
 | chi_-8 | 13–25 | 5.103414 |
 | 11a1 | 13–25 | 5.348022 |
 | 11a1 | 13–50 | 5.22586 |
+| 11a1 | 50–100 | 5.204226 |
 | 14a1 | 13–25 | 5.010455 |
 | 14a1 | 13–50 | 5.013441 |
 
@@ -412,4 +421,45 @@ namely `4 pi sqrt(x/C)`, `2 pi x/q`, `2 pi x`. This identity is just integration
 **NUMERICAL Schur conclusion.** The Loewner posterior interval is a different observable from eps. At fixed N=60, the joint half-width for 11a1 is 6.20754, 6.70011, 5.97149 at x=13,25,50, while eps loses nearly eleven decimal digits. For 14a1 those widths are 6.85289, 6.44275, 6.35850. The truth positions stay interior, and Delta I remains below 0.028 nats at these six points. H-RATE describes the near-null eigenvalue and associated spectral error, not exponential contraction of this one-coordinate Schur envelope.
 
 
-**NUMERICAL resolution audit at x=50.** At N=420 the rank-zero minima are `9.12480919174e-18` (11a1) and `2.82763646403e-15` (14a1). Their 13–50 endpoint rates are respectively 0.2951601 and 0.2509967 digits/x, or 10.45172 and 10.02688 digits per sqrt(x/C); the first-zero-error rates are 0.2772835 and 0.2348823 digits/x. At the same x,N the 37a1 even/odd minima are `9.64405083618e-6` and `5.24270827475e-8`, decisively odd. The final 200→420 reductions are 1.82% and 0.99% for the two rank-zero even minima. Thus the large object-dependent rate difference survives a direct finite-N tail check. This is empirical saturation, not a rigorous bound on all further N.
+**NUMERICAL resolution audit at x=50.** At N=420 the rank-zero minima are `9.12480919174e-18` (11a1) and `2.82763646403e-15` (14a1). Their 13–50 endpoint rates are respectively 0.2951601 and 0.2509967 digits/x, or 10.45172 and 10.02688 digits per sqrt(x/C); the first-zero-error rates are 0.2772835 and 0.2348823 digits/x. At the same x,N the 37a1 even/odd minima are `9.64405083618e-6` and `5.24270827475e-8`, decisively odd. At N=200 the two rank-zero even minima exceed their N=420 values by 1.82% and 0.99%, respectively. Thus the large object-dependent rate difference survives a direct finite-N tail check. This is empirical saturation, not a rigorous bound on all further N.
+
+
+**NUMERICAL final long-window tail.** At `(11a1,x=100,N=420)`, epsE is `5.86752032195e-27`, epsO is `1.17910130007e-23`, and the minimum remains even. The full/even/odd determinant minima are all N=18 over 1..420. The N=200 even value exceeds the N=420 value by 4.9451%, so the measured long-range law survives the resolution check. Using the final-N endpoints gives 0.1838354 digits/x over 50–100 and 0.2311804 over 13–100; the corresponding sqrt(x/11) rates are 10.40845 and 10.43190. The first-zero error at N=420 is `2.24609323766e-23`, ratio `3828.01100706`. The 1000/1400-bit long runs needed no precision rescue; the extra 2000-bit check was an independent validation.
+
+**NUMERICAL completion and provenance.** All 26 final output files are complete: 25,809 driver checks, zero failures. The separate output audit passes 3,783 checks; independent quadrature passes 36; four precision reruns agree in both eigenvalues and parity; the pilot reruns byte-identically. `make -C zst check` passes. `checks/audit.txt`, `checks/source_manifest.sha256`, `checks/final_check_count.txt`, `checks/byte_reproducibility.txt` and `checks/make-check.txt` retain the evidence. Numerical job timings are in `checks/runlogs`; the experiment finished comfortably inside the 90-minute allowance (about 38 minutes from the recorded pre-run predictions to the last numerical job). A shell coordinator reread its file during editing after all its numerical jobs had succeeded; the final settled `RESUME=1` run rebuilt the aggregate and exited zero. This affected no certificate. Interrupted development outputs are separate from the final outputs.
+
+**NUMERICAL lane-D boundary at completion.** All ten characters' x=13 and x=25 completed outputs and the completed N=60 CCM Rayleigh tables were reused. Lane D's x=50 resolution files still lack completion markers at this snapshot and were excluded, as were any final-asymptotic claims depending on those pending jobs. The comparative table marks them pending; this is not missing elliptic work. The old zeta supplement at x=50,N=420 is explicitly attributed to the round-1 review, not to an invented rerun.
+
+## Numerical checks for the blind lane
+
+**NUMERICAL; certified eigenvalues, rounded to the displayed digits.** The first three cards are the global eps_N, together with the other block so parity can be checked independently:
+
+| curve | x | N | epsE | epsO | global minimum |
+|---|---:|---:|---|---|---|
+| 11a1 | 13 | 200 | 7.60586827693e-7 | 0.000145476586851 | even |
+| 14a1 | 25 | 260 | 1.00853123507e-9 | 4.92836083075e-7 | even |
+| 37a1 | 50 | 420 | 9.64405083618e-6 | 5.24270827475e-8 | odd |
+
+**NUMERICAL certificate cards.** For 11a1 at x=50, the unique full/even/odd determinant minimizers over 1..420 are all N=10. At x=50,N=60 its gamma-plus-conductor control has inertia (negative,zero,positive) `(1,0,60)` in E and `(1,0,59)` in O. Its least control eigenvalues are `-1.78617585006` and `-0.66996782106` (complete isolating intervals in the spectrum file).
+
+**FLOATING slope card.** From `(11a1,13,200)` to `(11a1,50,420)`, the positive epsE slope is `0.2951601` decimal digits per x, or `10.45172` per sqrt(x/11). This endpoint slope differs from a least-squares slope across knots; the fit definition matters. **NUMERICAL COMPARISON card:** at `(11a1,50,420)`, the PARI-based first-zero error is `2.23555751598e-14`, ratio to eps `2449.97727515`; the construction's 420 roots are certified, the external PARI zero is approximate.
+
+Reproduce the main experiment with `make -C zst build/rtp2_ellcurve` then `zst/tools/rtp2_ellcurve_run.sh` (12 jobs by default, optional RESUME=1). `checks/summary.py` prints the tables; `checks/audit.py` checks the output protocol, parity, roots, determinant extraction and all control spectral shifts; `checks/reproduce_extras.sh` reproduces the pilot byte check, extra precision checks and independent quadrature; `checks/plot.py` regenerates the figure. All scripts run from the repository root or find it from their own location. The run script builds the driver outside `all`.
+
+## What this changes in the notebook
+
+**SHARPENED H-RATE.** Replace “open, untested window-scale suggestion” by **numerically supported on 11a1/14a1 through x=50 and 11a1 through x=100; asymptotic theorem OPEN**. Specify the scale z=sqrt(x/C), distinguish the elementary Mellin kernel from the gamma-ratio Hankel kernel, and keep `exp(-8pi z)` under H-HANKEL-TRANSFER / H-CONCENTRATION-TRANSFER. The evidence does not establish an exact prefactor, a limiting coefficient, or positivity at all windows.
+
+**Proposed replacement for `obs:rtp-round-1-reading`(iii) — NUMERICAL with an OPEN mechanism.** At resolved finite N, a common dilation window and Loewner/Fourier structure permit very different rates: zeta gives about 5.38 digits/x, whereas 11a1 and 14a1 give 0.295 and 0.251 over the same 13–50 interval. Degree-one character results available from lane D are consistent with scaling x by conductor; weight-two results favor sqrt(x/C). The Schur envelope is not the decaying observable. The proposed common concentration action is `A=2pi S_max`, with `S_max=x`, `x/q`, or `2sqrt(x/C)`; the transfer `log eps=-2A+O(log A)` from Fourier/Hankel concentration to the true Weil minimizer remains OPEN. Arithmetic is necessary for the measured cancellation, while the data support gamma degree and conductor as organizers of its scale. Neither “window kinematics alone determines the rate” nor “the cancellation proves the rate is specific to zeta's individual primes” survives this experiment as an adequate interpretation.
+
+**Candidate claim rows (proposals only; no registration).**
+
+| candidate | status | content / scope |
+|---|---|---|
+| `num:rtp2-ellcurve-window-rate` | NUMERICAL | E4 finite-N eps, comparison errors, parity and residual tables; H-RATE scale supported on the stated curves and ranges |
+| `obs:rtp2-gamma-concentration-action` | OPEN / PROVED-conditional on H-CONCENTRATION-TRANSFER | leading Weyl algebra gives A=d T*; conditional leakage gives degree/conductor rate normalization; no proved link to the Weil minimum |
+| `num:rtp2-ellcurve-resolution` | NUMERICAL | determinant minima track sqrt(x/C) log x with order-one factors, not 2x log x; finite-N tails separately quantified |
+| `lem:gamma-control-shift-and-lower-bound` | PROVED | at fixed atoms/gamma, conductor changes by an identity shift; elliptic control is uniformly positive for C>4pi² exp(2 EulerGamma), via the digamma series |
+| `num:rtp2-ellcurve-parity-window` | NUMERICAL | rank-zero tested minima even; 37a1 switches from even at x=2,3 to odd at tested knots x≥4; 389a1 odd at x=13 despite root number +1 |
+
+**Next experiment — OPEN.** Compute finite Hankel concentration eigenvalues for the gamma-ratio kernel, identify the correct sector and normalization, and compare their defects directly with eps at matched z and several N. In parallel, compare distinct rank-zero isogeny classes at the same conductor and multiple widely separated conductors at matched z. That separates the proposed transform scale from arithmetic-dependent prefactors more sharply than the present pair C=11,14. Extend x only while checking the N tail and the reference-zero precision; none of this licenses an RH assumption or an all-window positivity conclusion.

@@ -1,3 +1,28 @@
 data x=85 Nmax=1122 seconds=78.749942
 build x=85 N=642 seconds=0.729081
 factor n=643 p=5500 neg=0 seconds=0.000000
+iteration n=643 count=48 seconds=61.451206
+gap n=643 neg=1 seconds=84.055931
+row x=85 N=642 seconds=84.820870
+build x=85 N=682 seconds=0.434822
+factor n=683 p=5500 neg=0 seconds=0.000000
+iteration n=683 count=48 seconds=70.204935
+gap n=683 neg=1 seconds=95.761977
+row x=85 N=682 seconds=96.230772
+build x=85 N=722 seconds=0.580034
+factor n=723 p=5500 neg=0 seconds=0.000000
+iteration n=723 count=48 seconds=77.055964
+gap n=723 neg=1 seconds=108.509882
+row x=85 N=722 seconds=109.128562
+build x=85 N=762 seconds=0.674701
+factor n=763 p=5500 neg=0 seconds=0.000000
+iteration n=763 count=48 seconds=87.160533
+gap n=763 neg=1 seconds=132.636279
+row x=85 N=762 seconds=133.367709
+build x=85 N=802 seconds=0.825105
+factor n=803 p=5500 neg=0 seconds=0.000000
+iteration n=803 count=48 seconds=94.277558
+gap n=803 neg=1 seconds=140.664170
+row x=85 N=802 seconds=141.538776
+build x=85 N=842 seconds=0.674341
+factor n=843 p=5500 neg=0 seconds=0.000000

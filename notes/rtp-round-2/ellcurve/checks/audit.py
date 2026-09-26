@@ -19,10 +19,10 @@ def ball(s):
     if s.startswith('['):
         a,b=s[1:-1].split('+/-');return m.mpf(a.strip()),m.mpf(b.strip())
     return m.mpf(s),m.mpf('1e-11')*abs(m.mpf(s)) # display rounding for 12 digits
-checks=0;files=[]
+checks=0;files=[];pending=[]
 for p in sorted(OUT.glob('rtp2_ellcurve_*.txt')):
     s,r=parse(p);mch=re.search(r'# checks: (\d+) run, (\d+) failed',s)
-    if not mch: print('PENDING',p.name);continue
+    if not mch: print('PENDING',p.name);pending.append(p.name);continue
     assert int(mch[2])==0 and 'CHECK FAIL' not in s;checks+=1;files.append(p)
     for e in r.get('EIG',[]):
         ev,_=ball(e['epsE']);ov,_=ball(e['epsO'])
@@ -65,3 +65,6 @@ for c,x,n in [('11a1',13,60),('14a1',25,60),('37a1',50,60),('11a1',100,200)]:
     assert all(aa[k]==bb[k] for k in ['epsE','epsO','parity']);checks+=1
     print('PRECISION_RECHECK',c,x,n,'same printed epsE,epsO,parity')
 print('AUDIT_WITH_RECHECKS',checks,'passed')
+
+if pending and "--allow-pending" not in sys.argv:
+    raise SystemExit("incomplete numerical outputs: "+", ".join(pending))

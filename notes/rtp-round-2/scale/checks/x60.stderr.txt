@@ -28,3 +28,20 @@ factor n=619 p=5200 neg=0 seconds=7.657810
 iteration n=619 count=36 seconds=75.345275
 gap n=619 neg=1 seconds=83.866932
 row x=60 N=618 seconds=122.242497
+build x=60 N=658 seconds=41.898983
+factor n=659 p=5200 neg=0 seconds=10.158817
+iteration n=659 count=36 seconds=89.726698
+gap n=659 neg=1 seconds=99.367164
+row x=60 N=658 seconds=141.333210
+build x=60 N=698 seconds=43.653006
+factor n=699 p=5200 neg=0 seconds=9.272584
+iteration n=699 count=36 seconds=105.458328
+gap n=699 neg=1 seconds=114.580732
+row x=60 N=698 seconds=158.293868
+build x=60 N=738 seconds=43.981314
+factor n=739 p=5200 neg=0 seconds=12.787938
+iteration n=739 count=36 seconds=118.385485
+gap n=739 neg=1 seconds=129.427991
+row x=60 N=738 seconds=173.495192
+build x=60 N=778 seconds=54.163666
+factor n=779 p=5200 neg=0 seconds=12.483368

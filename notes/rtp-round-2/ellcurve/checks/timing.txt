@@ -1,0 +1,2 @@
+2026-09-26 12:27:49.768648762 +0200 outputs/rtp2_ellcurve_11a1_axisN_x13.txt
+2026-09-26 12:32:18.300712923 +0200 outputs/rtp2_ellcurve_11a1_axisN_x100.txt

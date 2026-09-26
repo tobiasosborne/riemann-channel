@@ -75,13 +75,17 @@ report=report.replace('## D5. Extraction conventions (tables appended as runs fi
 report=report.replace('both will appear in the table.','both appear in the table.')
 validation=f'''\n**NUMERICAL D4 (final validation).** All 52 final files pass: {sum(counts)} driver checks, zero failed. The final unchanged-library `make -C zst check` passes all 12 test executables. `checks/audit_outputs.txt` records the independent structural/floating audit; `checks/bytecheck.txt` records three representative full outputs, each rerun byte-identically. The first-positive-Hardy-Z index is independently certified for all ten characters. The two development failures were corrected and replayed; they remain archived under checks. The initial suite log still records those historical failures, while every released file ends with zero failed checks.\n'''
 if wall is not None:validation+=f'\nThe interval from creation of the first run file to completion of the last is approximately {wall:.1f} minutes, including the replays (filesystem timestamps, not embedded in raw outputs).\n'
-report=report.replace('\n## D5.',validation+'\n## D5.',1)
+a='<!-- D4_VALIDATION_BEGIN -->';b='<!-- D4_VALIDATION_END -->'
+if a in report:report=report[:report.index(a)]+report[report.index(b)+len(b):]
+report=report.replace('\n## D5.',a+'\n'+validation+b+'\n\n## D5.',1)
 ledger=f'''\n5. **REFUTED numerically.** The raw-x rate is not character-independent: the 13–50 spread is {f(spread(core))} digits/x for the six required characters and {f(spread(Ds))} for all ten. Conductor changes the leading scale; it cannot be relegated to a multiplicative amplitude in an unscaled exp(-4pi x) law.
 6. **SHARPENED.** The determinant argmin is not a precision criterion for eps. At x=50 the coefficient q N_sat/(x log x) ranges from {f(min(v for _,v in coeff))} to {f(max(v for _,v in coeff))}; a universal factor 1.7 is too crude, particularly when x/q is small. Finite-N tails and both block argmins are reported separately.
 7. **PROVED correction to A1.1'(4).** The nonnegative structured log-determinant difference is the gain of MaxEnt over truth, not the gain of truth over MaxEnt.
 8. **SHARPENED.** The prime-free Dirichlet control includes log q I and need not be indefinite. D=-20 is positive on every window by D2c. Odd global minima do occur in the fixed-L partial forms, so even-only diagnostics can be badly misleading.
 '''
-report=report.replace('\n## D1.',ledger+'\n## D1.',1)
+a='<!-- D_LEDGER_RUN_BEGIN -->';b='<!-- D_LEDGER_RUN_END -->'
+if a in report:report=report[:report.index(a)]+report[report.index(b)+len(b):]
+report=report.replace('\n## D1.',a+'\n'+ledger+b+'\n\n## D1.',1)
 verdict=f'''
 ## D6. Verdict
 

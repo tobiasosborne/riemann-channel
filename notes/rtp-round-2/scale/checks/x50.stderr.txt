@@ -35,3 +35,23 @@ gap n=661 neg=1 seconds=71.973705
 row x=50 N=660 seconds=99.876655
 build x=50 N=700 seconds=25.930083
 factor n=701 p=4200 neg=0 seconds=7.635090
+iteration n=701 count=32 seconds=71.967813
+gap n=701 neg=1 seconds=80.363755
+row x=50 N=700 seconds=106.366884
+build x=50 N=740 seconds=30.513078
+factor n=741 p=4200 neg=0 seconds=6.765066
+iteration n=741 count=32 seconds=85.414823
+gap n=741 neg=1 seconds=92.741578
+row x=50 N=740 seconds=123.338345
+build x=50 N=780 seconds=29.970269
+factor n=781 p=4200 neg=0 seconds=8.157448
+iteration n=781 count=32 seconds=99.911150
+gap n=781 neg=1 seconds=108.414434
+row x=50 N=780 seconds=138.461617
+build x=50 N=820 seconds=28.239755
+factor n=821 p=4200 neg=0 seconds=10.199961
+iteration n=821 count=32 seconds=113.507539
+gap n=821 neg=1 seconds=123.887349
+row x=50 N=820 seconds=152.214466
+build x=50 N=860 seconds=32.252219
+factor n=861 p=4200 neg=0 seconds=11.870578
