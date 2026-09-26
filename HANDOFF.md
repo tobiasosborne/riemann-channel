@@ -2,6 +2,93 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-09-26: RTP round 2, the astra quota day (seven codex lanes, six Opus REFUTE reviews, three Opus follow-ups); codex finished
+
+TJO: use the codex quota before it resets, 100% RTP, up to four gpt-6-astra xhigh lanes at once, stop at the reset;
+"set things up so that partial work from astra subagents is not lost"; then, at 100% of the window (11:40Z): "codex is
+finished, please no more codex usage in this session". Worklog `docs/worklog/2026-09-26.md`. Round directory
+`notes/rtp-round-2/` (brief, seven lane directories with `astra-brief.md` / `astra-proofs.md` / `progress.txt` /
+`session.id`, `quota.log`, `STOP`). Reviews `notes/reviews/rtp-round-2-*-2026-09-26.md` with scratch scripts.
+**Nothing registered; no shard yet; gate unchanged (8 Yoshida errors).** The branch `claude/project-familiarization-8gondy`
+(the tutorial "Weil Positivity, Contracted", 2026-09-26 morning, purely additive) is still unmerged; its
+`docs/worklog/2026-09-26.md` must be concatenated with this session's on merge.
+
+**Infrastructure.** `scripts/codex_quota.py` (rate limits via `codex app-server`), `scripts/rtp2_watch.sh` (ten-minute
+checkpoint commits, reset detection), `rtp2_stop.sh` / `rtp2_adopt.sh` / `rtp2_map.sh` / `rtp2_launch.sh` /
+`rtp2_monitor.sh`; `scripts/astra_lane.sh` now resumes whenever `session.id` exists. Another session's four Bennett.jl
+astras shared the window; 26% -> 100% in two hours.
+
+**Results, with review verdicts (VALID / MINOR / INVALID).**
+
+- **P prover** (15/2/0). `lem:bordering-interval` proved in full (deficit not gain; `N >= 1`; empty/singleton sets;
+  exact midpoint iff condition; rational example, offset `-3/sqrt 337`); upgrade to proved needs the review's wording
+  and `deps = -`. The finite-prime language `L_S` of `finite-prime-language.md` is **refuted**: `A` contains `log` of
+  every algebraic number, and even without that every `log q` is a rational combination of digamma values at
+  rationals, so `L_S` is independent of `S`; point masses are not admissible in the CCM class. Surviving: the Baker
+  direct sum on `span{1, i pi, log p}` and the finite-place remainder of admissible bumps (conditional on H-BAKER);
+  FNW exclusion PROVED-conditional on Tarski–Seidenberg (Coste's CAD theorem is on disk); an explicit Diophantine
+  floor `e_d - e_0 >= B(d)` for the Heisenberg chain (needs an infimum-vs-limit lemma for Hulthén; "first" not asserted).
+- **I impure bumps** (12/4/0). All-width Kronecker lemma with the mixed-mask prime remainder entering with a minus
+  sign (E/H/R classes); rank-one-per-pattern refuted; **no Schmidt defect above 0.1 at any width** (36 points, 401- and
+  4001-point scans, opposite-parity ground states at every gap minimum); the impure two-prime observable is a
+  **pole-versus-third-prime cancellation** (mixed pole 1.6–5.4x the external-prime part), not a 2–3 correlation.
+- **L lattice box** (10/5/0). Recession cone trivial above a geometry-dependent cutoff (`N = 6` for the eleven atoms at
+  `x = 13`; converse `N >= ceil(m/2)`); dual-pair width bound; the `N -> oo` pinning statement **refuted in general**:
+  under RH the fixed-window zeta form has a positive floor `mu_L` (compact resolvent, explicit formula, more than
+  linearly many distinct ordinates) and the ball `2||delta||_1 < mu_L` is admissible, so "positivity pins the primes"
+  is a finite-resolution effect. Reviewer's full SDP box at `x = 13, N = 20`: widths `1.23e-25` (n = 2) to `4.90e-5`
+  (n = 12), the eigenvector LP 2.4–2.6x too wide, the admissible set a two-vertex needle; lattice max-det misses the
+  truth by 23–49% of the box. Widths at saturated `N`: LP-box `n = 2` contracts 3.48 digits per unit `x`, `eps` 5.27.
+- **G grid tomography** (9/3/0). What the window sees is exactly the `2N+1` Loewner moments; the sparse true
+  measure is unique from exact moments (`N >= 16/26` sufficient, ~11 in practice); every prescribed pure uniform grid
+  is certified EMPTY (onset `N = 7..9`, the atom count); the brief's near-kernel premise refuted, dual localisation
+  theorem in its place. **Reviewer's blind recovery:** maximising `lambda_min(H0 + T(w))` over `w >= 0` on a uniform
+  grid from pole and archimedean data alone puts all mass on the two grid neighbours of each `log n`,
+  `n = 2,3,4,5,7,8,9,11`, at `x = 13, N = 20` (centroids within `4e-3`, masses within 2% of `Lambda(n)/sqrt n`; three
+  refinement levels reach `3e-7`); `x = 25, N = 60`: twelve clusters within one grid step of a prime power (16 and 17
+  unresolved). Float64; the certified version with controls (pole only, archimedean flipped, wrong residue, signed
+  weights) is the last lane of the day (`notes/rtp-round-2/blind-recovery/`, see below). Reading: the explicit formula
+  with the zero side switched off by the prolate concentration is a smoothed prime number theorem exact to `1e-39` in
+  the near-null directions; positivity plus sparsity then super-resolves the atoms (Carathéodory). "Positivity plus
+  kinematics gives arithmetic", the easy direction of the identity whose hard direction is RH.
+- **D Dirichlet** (2/4/0 on the PARTIAL report; completed by Opus from the finished runs, all 52 outputs, 60526
+  checks). **Character-independence of the rate in raw `x` is refuted for all ten characters**: 13–50 slopes 0.241
+  (D = -20) to 1.794 (D = -3) digits per unit `x` against zeta's 5.379; `q x slope` in `[4.82, 5.39]`, `slope = 5.349/q`
+  (rms 0.012); pooled fit with one exponent and one prefactor power per parity: **`c/(4 pi) = 1.0039`, rms 0.043
+  digits** (raw `x`: rms 6.8); parity enters only the prefactor power (0.90 even, 2.03 odd; zeta ~5.0); the
+  per-character "0.7% of 4 pi" claim withdrawn (0.970–1.083); four points not shown converged in `N`.
+- **E elliptic curves** (3/7/0) + **conductor sweep** (Opus, 19 rank-zero curves from Cremona's ecdata, PARI- and
+  LMFDB-cross-checked, eps only, no zeros). `sqrt x` shape established for 11a1 over `x = 13..100` (free power 0.505);
+  the conductor exponent on a matched `z = sqrt(x/C)` window is **`alpha = 0.488 [0.473, 0.502]`** (the lane's 0.57 and
+  the fixed-window 0.55 are window artefacts); digits per unit `S_max = 2 sqrt(x/C)`: mean 5.124, s.d. 0.051 (6% below
+  `4 pi/ln 10`; zeta 1.4% below); common slope 0.94–0.96 of `8 pi/ln 10`, the constant open; 37a1 has an odd minimum.
+- **S scale** (PARTIAL, stopped by the limit; unreviewed): `eps_N` at `x = 50` converges only at `N ~ 900`
+  (`eps_900/eps_940 = 1.0076`), not 420; `N_conv = 400, 500, 900` at `x = 13, 25, 50`; `x = 60/70/85` sweeps unfinished.
+
+**The round's reading.** (i) The dilation-channel margin is kinematic once the gamma factor and conductor are counted:
+`log eps ~ -4 pi S_max` with `S_max = x` (zeta), `x/q` (real characters), `2 sqrt(x/C)` (weight two), the Weyl surplus of
+the window; arithmetic supplies the cancellation and the prefactor. Record as the OPEN hypothesis H-CONCENTRATION-TRANSFER,
+not a finding. (ii) Under RH positivity at a fixed window is strict and open, so no finite window determines the
+primes exactly; what it does determine, to `1e-39`, are their Loewner moments, from which positivity plus sparsity
+recovers positions and weights blind. (iii) No inter-place correlation is visible in two- or three-prime lattice forms
+at any width. (iv) The transcendence route is closed as formulated. (v) The metric blocker is untouched; the one new
+precise object is the blind-recovery variational statement, and the one structural remark worth keeping (discussion
+with TJO, not registered): theta is the stabiliser state of the Lagrangian `Q x Q` in the adelic Weyl–Heisenberg group
+(shard 04p already has this as `prop:theta-functional-bond-state`), the Weil form is the pole-subtracted two-point
+function of its dilation orbit, and RH is the Pontryagin-index-two statement that the indefiniteness of that orbit Gram
+sits entirely in the pole directions (de Branges/Burnol form); one state per Hecke character, so the natural target is
+GRH for the family.
+
+**Next (in order).** (i) **Shard 08j** (Riemann tomography, round 2): apply the six reviews' replacement texts to the
+lane reports, register the candidate rows each review recommends (`lem:bordering-interval` -> proved with the new
+wording and `deps -`; the lattice recession/width/coercivity rows; the grid moment rows; the impure Kronecker rows; the
+Dirichlet and elliptic numerical rows; H-CONCENTRATION-TRANSFER as open), byte-cite Baker, Coste (on disk), Nesterenko–
+Waldschmidt, Hulthén, Carneiro–Chirre; regen, gate, rebuild report.pdf. (ii) Blind recovery certified and with controls
+(lane running at session end; if unfinished, `scripts/rtp2_blind_recovery.py` and `notes/rtp-round-2/blind-recovery/`).
+(iii) LP/SDP width ratio at `x = 25` (port the reviewer's barrier to arb) to decide whether the 3.48-digit rate is the
+true box's. (iv) Finish lane S (`x = 60, 70, 85`; `zst/tools/rtp2_scale.c`, no codex needed) and the `8 pi` constant for
+weight two with `x > 250` (lift the driver cap). (v) Merge `claude/project-familiarization-8gondy`. (vi) Yoshida source.
+
 ## Session 2026-09-25: branches merged onto master; the astra day (shards 04q_h_theta, 04r–04z) was orphaned on `claude/inspiring-ride-n5binf`
 
 TJO: "pick through all the branches and merge everything onto master". State found: master carried the 2026-09-23/24
