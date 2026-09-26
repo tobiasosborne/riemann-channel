@@ -1,0 +1,80 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=67a1 C=67 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=67a1 C=67 N=120 xmax=250 prec=2000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=250 X=250 N=120 epsE=6.67214153474e-17 epsO=1.45159271722e-13 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=250 X=250 N=120 logdetE=165.173005294 logdetO=184.851696931 dI=0.01649468196 rj=7.067807581 tau=0.01382002807
+CONTROL x=250 N=120 minE=-0.215140808854 minO=0.615084818627 negE=1 posE=120 negO=0 posO=120
+OVERLAP x=250 X=250 coefficient=1.00000000000
+RAY x=250 N=120 parity=1 term=arch value=0.226060753786
+RAY x=250 N=120 term=k2 value=-1.15261287898 cumulative=-0.926552125197
+RAY x=250 N=120 term=k3 value=0.916735681750 cumulative=-0.00981644344768
+RAY x=250 N=120 term=k4 value=0 cumulative=-0.00981644344768
+RAY x=250 N=120 term=k5 value=-0.459910399314 cumulative=-0.469726842762
+RAY x=250 N=120 term=k7 value=0.238530893869 cumulative=-0.231195948892
+RAY x=250 N=120 term=k8 value=0.117247872547 cumulative=-0.113948076346
+RAY x=250 N=120 term=k9 value=0.0657701792982 cumulative=-0.0481778970476
+RAY x=250 N=120 term=k11 value=0.152738552261 cumulative=0.104560655213
+RAY x=250 N=120 term=k13 value=-0.0462000431011 cumulative=0.0583606121123
+RAY x=250 N=120 term=k16 value=0.0230883458909 cumulative=0.0814489580032
+RAY x=250 N=120 term=k17 value=-0.0278476562339 cumulative=0.0536013017693
+RAY x=250 N=120 term=k19 value=-0.0427095390117 cumulative=0.0108917627577
+RAY x=250 N=120 term=k23 value=-0.0250543875275 cumulative=-0.0141626247698
+RAY x=250 N=120 term=k25 value=0.00576817947331 cumulative=-0.00839444529651
+RAY x=250 N=120 term=k27 value=-0.00448128781880 cumulative=-0.0128757331153
+RAY x=250 N=120 term=k29 value=0.00475090858841 cumulative=-0.00812482452690
+RAY x=250 N=120 term=k31 value=0.00677982816951 cumulative=-0.00134499635739
+RAY x=250 N=120 term=k32 value=0.000919276864835 cumulative=-0.000425719492555
+RAY x=250 N=120 term=k37 value=0.000258198748760 cumulative=-0.000167520743795
+RAY x=250 N=120 term=k41 value=0 cumulative=-0.000167520743795
+RAY x=250 N=120 term=k43 value=0.000207876339596 cumulative=4.03555958003e-5
+RAY x=250 N=120 term=k47 value=5.80241417888e-5 cumulative=9.83797375892e-5
+RAY x=250 N=120 term=k49 value=0.000218053600803 cumulative=0.000316433338392
+RAY x=250 N=120 term=k53 value=-0.000248894157096 cumulative=6.75391812965e-5
+RAY x=250 N=120 term=k59 value=-9.87087401044e-5 cumulative=-3.11695588079e-5
+RAY x=250 N=120 term=k61 value=1.67748437952e-5 cumulative=-1.43947150127e-5
+RAY x=250 N=120 term=k64 value=0 cumulative=-1.43947150127e-5
+RAY x=250 N=120 term=k67 value=-3.79791386093e-6 cumulative=-1.81926288736e-5
+RAY x=250 N=120 term=k71 value=0 cumulative=-1.81926288736e-5
+RAY x=250 N=120 term=k73 value=1.22260463725e-5 cumulative=-5.96658250115e-6
+RAY x=250 N=120 term=k79 value=6.50436454596e-6 cumulative=5.37782044803e-7
+RAY x=250 N=120 term=k81 value=2.21030566383e-6 cumulative=2.74808770863e-6
+RAY x=250 N=120 term=k83 value=-1.96392716125e-6 cumulative=7.84160547381e-7
+RAY x=250 N=120 term=k89 value=-1.62293868433e-6 cumulative=-8.38778136952e-7
+RAY x=250 N=120 term=k97 value=0 cumulative=-8.38778136952e-7
+RAY x=250 N=120 term=k101 value=-1.04930044709e-7 cumulative=-9.43708181661e-7
+RAY x=250 N=120 term=k103 value=6.55995235455e-7 cumulative=-2.87712946206e-7
+RAY x=250 N=120 term=k107 value=1.75323904785e-7 cumulative=-1.12389041421e-7
+RAY x=250 N=120 term=k109 value=-3.91534036613e-8 cumulative=-1.51542445082e-7
+RAY x=250 N=120 term=k113 value=1.43485703191e-7 cumulative=-8.05674189136e-9
+RAY x=250 N=120 term=k121 value=1.33461701417e-8 cumulative=5.28942825034e-9
+RAY x=250 N=120 term=k125 value=1.98532205151e-8 cumulative=2.51426487654e-8
+RAY x=250 N=120 term=k127 value=-1.47716253864e-8 cumulative=1.03710233791e-8
+RAY x=250 N=120 term=k128 value=-4.25749398951e-9 cumulative=6.11352938955e-9
+RAY x=250 N=120 term=k131 value=1.53561912194e-8 cumulative=2.14697206090e-8
+RAY x=250 N=120 term=k137 value=-7.21019167466e-9 cumulative=1.42595289343e-8
+RAY x=250 N=120 term=k139 value=-1.02556126517e-8 cumulative=4.00391628265e-9
+RAY x=250 N=120 term=k149 value=-2.70633153733e-9 cumulative=1.29758474532e-9
+RAY x=250 N=120 term=k151 value=-2.97802176213e-10 cumulative=9.99782569103e-10
+RAY x=250 N=120 term=k157 value=-4.04557726082e-10 cumulative=5.95224843021e-10
+RAY x=250 N=120 term=k163 value=-3.80694494707e-10 cumulative=2.14530348314e-10
+RAY x=250 N=120 term=k167 value=-2.77778197150e-10 cumulative=-6.32478488359e-11
+RAY x=250 N=120 term=k169 value=9.64375855805e-11 cumulative=3.31897367446e-11
+RAY x=250 N=120 term=k173 value=-5.49258556517e-11 cumulative=-2.17361189070e-11
+RAY x=250 N=120 term=k179 value=2.52311530141e-11 cumulative=3.49503410709e-12
+RAY x=250 N=120 term=k181 value=-1.09645972094e-11 cumulative=-7.46956310231e-12
+RAY x=250 N=120 term=k191 value=2.04250312710e-12 cumulative=-5.42705997521e-12
+RAY x=250 N=120 term=k193 value=5.69846819717e-12 cumulative=2.71408221957e-13
+RAY x=250 N=120 term=k197 value=2.58672064052e-13 cumulative=5.30080286009e-13
+RAY x=250 N=120 term=k199 value=-6.48936481344e-13 cumulative=-1.18856195335e-13
+RAY x=250 N=120 term=k211 value=1.31375171965e-13 cumulative=1.25189766299e-14
+RAY x=250 N=120 term=k223 value=-1.00980000382e-14 cumulative=2.42097659165e-15
+RAY x=250 N=120 term=k227 value=-1.07010532300e-15 cumulative=1.35087126865e-15
+RAY x=250 N=120 term=k229 value=-8.61647364458e-16 cumulative=4.89223904188e-16
+RAY x=250 N=120 term=k233 value=-7.24144744999e-16 cumulative=-2.34920840811e-16
+RAY x=250 N=120 term=k239 value=2.09062248619e-16 cumulative=-2.58585921919e-17
+RAY x=250 N=120 term=k241 value=9.17730695596e-17 cumulative=6.59144773677e-17
+RAY x=250 N=120 term=k243 value=8.06937979642e-19 cumulative=6.67214153474e-17
+RAY_TOTAL x=250 N=120 arch=0.226060753786 primes=-0.226060753786 sum=6.67214153474e-17 eps=6.67214153474e-17
+# COMPARISON STEP skipped (--compare 0): no reference zero read or used
+# checks: 16 run, 0 failed

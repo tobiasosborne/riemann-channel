@@ -20,6 +20,9 @@ static fmpz_t conductor;
 static slong curve_rank;
 static int root_number;
 static int control_cap=0, point_mode=0;
+/* --compare 0 (claude:opus, 2026-09-26, lane ellcurve-conductors): skip the COMPARISON STEP entirely;
+ * no zero is read. Default 1 leaves every existing output unchanged. */
+static int compare_step=1;
 
 /* K=0 reads only arithmetic metadata. Zero ordinates are read later, in COMPARISON. */
 static int reference_zero(arb_t gamma, slong prec)
@@ -526,12 +529,17 @@ static void mode_axisN(double xd,slong Nmax,slong prec,const char *cmp,slong cpr
         fprintf(stderr,"curve=%s x=%g N=%ld eigenpair/control finished %.1fs\n",curve,xd,(long)n,now()-start);fflush(stdout);
     }
     rayleigh_table(xd,X,L,pairs+Nmax,cprec);
+    if(!compare_step){flint_printf("# COMPARISON STEP skipped (--compare 0): no reference zero read or used\n");
+        for(slong n=1;n<=Nmax;n++)if(selected[n])pair_clear(pairs+n);}
+    else {
     flint_printf("# COMPARISON STEP: zeros used only below, never to choose a form or eigenpair\n");
     arb_t gamma;arb_init(gamma);
     if(curve_rank==0)check(reference_zero(gamma,cprec),"PARI reference read in comparison only");
     flint_printf("REFERENCE curve=%s gamma1=%s certified_unique=0 index=PARI radius=1e-38 rank=%wd\n",curve,sb(gamma,30),curve_rank);
     for(slong n=1;n<=Nmax;n++)if(selected[n]){comparison(xd,X,L,pairs+n,gamma,cprec);pair_clear(pairs+n);}
-    arb_clear(gamma);free(selected);free(pairs);
+    arb_clear(gamma);
+    }
+    free(selected);free(pairs);
 done:
     arb_clear(x);arb_clear(L);arb_clear(t);_arb_vec_clear(a,M+1);_arb_vec_clear(b,M+1);_arb_vec_clear(de,M+1);_arb_vec_clear(doo,M+1);_arb_vec_clear(df,M+1);
     arb_mat_clear(E);arb_mat_clear(O);arb_mat_clear(LE);arb_mat_clear(LO);
@@ -579,6 +587,9 @@ static void mode_axisx(slong N,double xmax,slong prec,int fixedL)
         arb_abs(t,t);flint_printf("OVERLAP x=%g X=%wu coefficient=%s\n",fixedL?xmax:(double)ks[i],ks[i],sb(t,12));
     }
     rayleigh_table(xmax,ks[K-1],lengths+K-1,pairs+K-1,prec);
+    if(!compare_step){flint_printf("# COMPARISON STEP skipped (--compare 0): no reference zero read or used\n");
+        for(slong i=0;i<K;i++)pair_clear(pairs+i);}
+    else {
     flint_printf("# COMPARISON STEP; indefinite partial forms have no CCM interpretation\n");
     arb_t gamma;arb_init(gamma);
     if(curve_rank==0)check(reference_zero(gamma,prec),"PARI reference read in comparison only");
@@ -587,7 +598,9 @@ static void mode_axisx(slong N,double xmax,slong prec,int fixedL)
         if(arb_is_positive(pairs[i].e)&&arb_is_positive(pairs[i].o))comparison(fixedL?xmax:(double)ks[i],ks[i],lengths+i,pairs+i,gamma,prec);
         pair_clear(pairs+i);
     }
-    arb_clear(gamma);free(pairs);_arb_vec_clear(lengths,K);arb_clear(x);arb_clear(t);arb_clear(z);
+    arb_clear(gamma);
+    }
+    free(pairs);_arb_vec_clear(lengths,K);arb_clear(x);arb_clear(t);arb_clear(z);
     _arb_vec_clear(a,N+2);_arb_vec_clear(b,N+2);_arb_vec_clear(fa,N+2);_arb_vec_clear(fb,N+2);_arb_vec_clear(ta,N+2);_arb_vec_clear(tb,N+2);
     arb_mat_clear(E);arb_mat_clear(O);arb_mat_clear(LE);arb_mat_clear(LO);
 }
@@ -609,6 +622,7 @@ int main(int argc,char **argv)
         else if(!strcmp(argv[i],"--fixedL"))fixedL=atoi(argv[i+1]);
         else if(!strcmp(argv[i],"--control-cap"))control_cap=atoi(argv[i+1]);
         else if(!strcmp(argv[i],"--cmp"))cmp=argv[i+1];
+        else if(!strcmp(argv[i],"--compare"))compare_step=atoi(argv[i+1]);
         else {fprintf(stderr,"unknown option %s\n",argv[i]);return 2;}
     }
     if(!cprec)cprec=prec;

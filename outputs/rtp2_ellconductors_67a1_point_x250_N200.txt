@@ -1,0 +1,79 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=67a1 C=67 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=67a1 C=67 N=200 xmax=250 prec=2000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=250 X=250 N=200 epsE=6.39369978146e-17 epsO=1.42263303892e-13 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=250 X=250 N=200 logdetE=352.730476486 logdetO=372.359054053 dI=0.07077761847 rj=9.216130586 tau=0.1788931449
+OVERLAP x=250 X=250 coefficient=1.00000000000
+RAY x=250 N=200 parity=1 term=arch value=0.226029375148
+RAY x=250 N=200 term=k2 value=-1.15262608147 cumulative=-0.926596706321
+RAY x=250 N=200 term=k3 value=0.916762879225 cumulative=-0.00983382709573
+RAY x=250 N=200 term=k4 value=0 cumulative=-0.00983382709573
+RAY x=250 N=200 term=k5 value=-0.459942323065 cumulative=-0.469776150161
+RAY x=250 N=200 term=k7 value=0.238557497721 cumulative=-0.231218652441
+RAY x=250 N=200 term=k8 value=0.117263513544 cumulative=-0.113955138897
+RAY x=250 N=200 term=k9 value=0.0657804257551 cumulative=-0.0481747131418
+RAY x=250 N=200 term=k11 value=0.152769421141 cumulative=0.104594707999
+RAY x=250 N=200 term=k13 value=-0.0462116119504 cumulative=0.0583830960490
+RAY x=250 N=200 term=k16 value=0.0230958850414 cumulative=0.0814789810904
+RAY x=250 N=200 term=k17 value=-0.0278574833992 cumulative=0.0536214976912
+RAY x=250 N=200 term=k19 value=-0.0427269261564 cumulative=0.0108945715348
+RAY x=250 N=200 term=k23 value=-0.0250674615596 cumulative=-0.0141728900248
+RAY x=250 N=200 term=k25 value=0.00577153973121 cumulative=-0.00840135029361
+RAY x=250 N=200 term=k27 value=-0.00448418126049 cumulative=-0.0128855315541
+RAY x=250 N=200 term=k29 value=0.00475428791918 cumulative=-0.00813124363491
+RAY x=250 N=200 term=k31 value=0.00678511335542 cumulative=-0.00134613027949
+RAY x=250 N=200 term=k32 value=0.000920025779081 cumulative=-0.000426104500406
+RAY x=250 N=200 term=k37 value=0.000258457167004 cumulative=-0.000167647333402
+RAY x=250 N=200 term=k41 value=0 cumulative=-0.000167647333402
+RAY x=250 N=200 term=k43 value=0.000208135871249 cumulative=4.04885378468e-5
+RAY x=250 N=200 term=k47 value=5.81070554489e-5 cumulative=9.85955932956e-5
+RAY x=250 N=200 term=k49 value=0.000218385899659 cumulative=0.000316981492954
+RAY x=250 N=200 term=k53 value=-0.000249323156357 cumulative=6.76583365969e-5
+RAY x=250 N=200 term=k59 value=-9.89109144110e-5 cumulative=-3.12525778141e-5
+RAY x=250 N=200 term=k61 value=1.68111322260e-5 cumulative=-1.44414455882e-5
+RAY x=250 N=200 term=k64 value=0 cumulative=-1.44414455882e-5
+RAY x=250 N=200 term=k67 value=-3.80752250809e-6 cumulative=-1.82489680962e-5
+RAY x=250 N=200 term=k71 value=0 cumulative=-1.82489680962e-5
+RAY x=250 N=200 term=k73 value=1.22618737708e-5 cumulative=-5.98709432541e-6
+RAY x=250 N=200 term=k79 value=6.52626349225e-6 cumulative=5.39169166833e-7
+RAY x=250 N=200 term=k81 value=2.21808751305e-6 cumulative=2.75725667988e-6
+RAY x=250 N=200 term=k83 value=-1.97115247958e-6 cumulative=7.86104200304e-7
+RAY x=250 N=200 term=k89 value=-1.62972505219e-6 cumulative=-8.43620851889e-7
+RAY x=250 N=200 term=k97 value=0 cumulative=-8.43620851889e-7
+RAY x=250 N=200 term=k101 value=-1.05488626022e-7 cumulative=-9.49109477911e-7
+RAY x=250 N=200 term=k103 value=6.59625047338e-7 cumulative=-2.89484430574e-7
+RAY x=250 N=200 term=k107 value=1.76370874535e-7 cumulative=-1.13113556038e-7
+RAY x=250 N=200 term=k109 value=-3.93961733824e-8 cumulative=-1.52509729421e-7
+RAY x=250 N=200 term=k113 value=1.44443994458e-7 cumulative=-8.06573496263e-9
+RAY x=250 N=200 term=k121 value=1.34492579904e-8 cumulative=5.38352302781e-9
+RAY x=250 N=200 term=k125 value=2.00179245561e-8 cumulative=2.54014475839e-8
+RAY x=250 N=200 term=k127 value=-1.48985946730e-8 cumulative=1.05028529109e-8
+RAY x=250 N=200 term=k128 value=-4.29474152117e-9 cumulative=6.20811138976e-9
+RAY x=250 N=200 term=k131 value=1.54978209170e-8 cumulative=2.17059323067e-8
+RAY x=250 N=200 term=k137 value=-7.28403876202e-9 cumulative=1.44218935447e-8
+RAY x=250 N=200 term=k139 value=-1.03643661773e-8 cumulative=4.05752736737e-9
+RAY x=250 N=200 term=k149 value=-2.74045461018e-9 cumulative=1.31707275719e-9
+RAY x=250 N=200 term=k151 value=-3.01689209066e-10 cumulative=1.01538354812e-9
+RAY x=250 N=200 term=k157 value=-4.10416791850e-10 cumulative=6.04966756271e-10
+RAY x=250 N=200 term=k163 value=-3.86815953384e-10 cumulative=2.18150802887e-10
+RAY x=250 N=200 term=k167 value=-2.82570117526e-10 cumulative=-6.44193146390e-11
+RAY x=250 N=200 term=k169 value=9.81611238441e-11 cumulative=3.37418092051e-11
+RAY x=250 N=200 term=k173 value=-5.59800286485e-11 cumulative=-2.22382194434e-11
+RAY x=250 N=200 term=k179 value=2.57709523644e-11 cumulative=3.53273292099e-12
+RAY x=250 N=200 term=k181 value=-1.12079515279e-11 cumulative=-7.67521860691e-12
+RAY x=250 N=200 term=k191 value=2.09725723877e-12 cumulative=-5.57796136814e-12
+RAY x=250 N=200 term=k193 value=5.85730806165e-12 cumulative=2.79346693520e-13
+RAY x=250 N=200 term=k197 value=2.66479730507e-13 cumulative=5.45826424026e-13
+RAY x=250 N=200 term=k199 value=-6.69336731702e-13 cumulative=-1.23510307676e-13
+RAY x=250 N=200 term=k211 value=1.36729906029e-13 cumulative=1.32195983531e-14
+RAY x=250 N=200 term=k223 value=-1.06534931822e-14 cumulative=2.56610517089e-15
+RAY x=250 N=200 term=k227 value=-1.13606048858e-15 cumulative=1.43004468231e-15
+RAY x=250 N=200 term=k229 value=-9.18055556064e-16 cumulative=5.11989126244e-16
+RAY x=250 N=200 term=k233 value=-7.77984899899e-16 cumulative=-2.65995773656e-16
+RAY x=250 N=200 term=k239 value=2.28227566876e-16 cumulative=-3.77682067791e-17
+RAY x=250 N=200 term=k241 value=1.00814895760e-16 cumulative=6.30466889811e-17
+RAY x=250 N=200 term=k243 value=8.90308833533e-19 cumulative=6.39369978146e-17
+RAY_TOTAL x=250 N=200 arch=0.226029375148 primes=-0.226029375148 sum=6.39369978146e-17 eps=6.39369978146e-17
+# COMPARISON STEP skipped (--compare 0): no reference zero read or used
+# checks: 15 run, 0 failed

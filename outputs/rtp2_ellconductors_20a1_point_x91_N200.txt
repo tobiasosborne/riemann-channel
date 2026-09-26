@@ -1,0 +1,45 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=20a1 C=20 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=20a1 C=20 N=200 xmax=91 prec=2000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=91 X=91 N=200 epsE=4.65430565578e-18 epsO=8.59873035010e-15 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=91 X=91 N=200 logdetE=333.157664791 logdetO=354.138907293 dI=0.04047490610 rj=8.473763100 tau=-0.1229498910
+OVERLAP x=91 X=91 coefficient=1.00000000000
+RAY x=91 N=200 parity=1 term=arch value=-0.640950778820
+RAY x=91 N=200 term=k2 value=0 cumulative=-0.640950778820
+RAY x=91 N=200 term=k3 value=0.599510859914 cumulative=-0.0414399189058
+RAY x=91 N=200 term=k4 value=0 cumulative=-0.0414399189058
+RAY x=91 N=200 term=k5 value=0.0882090112499 cumulative=0.0467690923441
+RAY x=91 N=200 term=k7 value=-0.0550860741481 cumulative=-0.00831698180398
+RAY x=91 N=200 term=k8 value=0 cumulative=-0.00831698180398
+RAY x=91 N=200 term=k9 value=0.00937992287797 cumulative=0.00106294107398
+RAY x=91 N=200 term=k11 value=0 cumulative=0.00106294107398
+RAY x=91 N=200 term=k13 value=-0.00264937682311 cumulative=-0.00158643574912
+RAY x=91 N=200 term=k16 value=0 cumulative=-0.00158643574912
+RAY x=91 N=200 term=k17 value=0.00134134124811 cumulative=-0.000245094501012
+RAY x=91 N=200 term=k19 value=0.000384644032267 cumulative=0.000139549531256
+RAY x=91 N=200 term=k23 value=-0.000114000142660 cumulative=2.55493885960e-5
+RAY x=91 N=200 term=k25 value=-4.33115537377e-6 cumulative=2.12182332222e-5
+RAY x=91 N=200 term=k27 value=-1.33354643188e-5 cumulative=7.88276890339e-6
+RAY x=91 N=200 term=k29 value=-1.12032183144e-5 cumulative=-3.32044941096e-6
+RAY x=91 N=200 term=k31 value=3.51533020909e-6 cumulative=1.94880798125e-7
+RAY x=91 N=200 term=k32 value=0 cumulative=1.94880798125e-7
+RAY x=91 N=200 term=k37 value=-1.89343125490e-7 cumulative=5.53767263483e-9
+RAY x=91 N=200 term=k41 value=-1.30121978991e-7 cumulative=-1.24584306357e-7
+RAY x=91 N=200 term=k43 value=1.03727160026e-7 cumulative=-2.08571463307e-8
+RAY x=91 N=200 term=k47 value=1.41228523582e-8 cumulative=-6.73429397246e-9
+RAY x=91 N=200 term=k49 value=5.56858812061e-9 cumulative=-1.16570585186e-9
+RAY x=91 N=200 term=k53 value=1.46536121017e-9 cumulative=2.99655358315e-10
+RAY x=91 N=200 term=k59 value=-2.78840235829e-10 cumulative=2.08151224859e-11
+RAY x=91 N=200 term=k61 value=-2.06286924780e-11 cumulative=1.86430007960e-13
+RAY x=91 N=200 term=k64 value=0 cumulative=1.86430007960e-13
+RAY x=91 N=200 term=k67 value=-1.59999673912e-12 cumulative=-1.41356673116e-12
+RAY x=91 N=200 term=k71 value=1.52256207406e-12 cumulative=1.08995342899e-13
+RAY x=91 N=200 term=k73 value=-9.54893001206e-14 cumulative=1.35060427787e-14
+RAY x=91 N=200 term=k79 value=-1.45386946352e-14 cumulative=-1.03265185649e-15
+RAY x=91 N=200 term=k81 value=1.81421221579e-15 cumulative=7.81560359294e-16
+RAY x=91 N=200 term=k83 value=-7.78916886393e-16 cumulative=2.64347290123e-18
+RAY x=91 N=200 term=k89 value=2.01083275455e-18 cumulative=4.65430565578e-18
+RAY_TOTAL x=91 N=200 arch=-0.640950778820 primes=0.640950778820 sum=4.65430565578e-18 eps=4.65430565578e-18
+# COMPARISON STEP skipped (--compare 0): no reference zero read or used
+# checks: 15 run, 0 failed

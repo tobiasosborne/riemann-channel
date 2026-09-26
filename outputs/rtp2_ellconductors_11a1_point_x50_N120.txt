@@ -1,0 +1,35 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=11a1 C=11 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=11a1 C=11 N=120 xmax=50 prec=2000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=50 X=50 N=120 epsE=9.71539348803e-18 epsO=1.48225008034e-14 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=50 X=50 N=120 logdetE=145.570285370 logdetO=166.280685451 dI=0.01410191827 rj=7.114752465 tau=0.06389778472
+CONTROL x=50 N=120 minE=-1.78621644865 minO=-0.672179621029 negE=1 posE=120 negO=1 posO=119
+OVERLAP x=50 X=50 coefficient=1.00000000000
+RAY x=50 N=120 parity=1 term=arch value=-0.991328777627
+RAY x=50 N=120 term=k2 value=0.821303808501 cumulative=-0.170024969126
+RAY x=50 N=120 term=k3 value=0.191372031914 cumulative=0.0213470627876
+RAY x=50 N=120 term=k4 value=0 cumulative=0.0213470627876
+RAY x=50 N=120 term=k5 value=-0.0319987237200 cumulative=-0.0106516609323
+RAY x=50 N=120 term=k7 value=0.0116355467194 cumulative=0.000983885787054
+RAY x=50 N=120 term=k8 value=-0.00345101765779 cumulative=-0.00246713187073
+RAY x=50 N=120 term=k9 value=0.00295018537949 cumulative=0.000483053508760
+RAY x=50 N=120 term=k11 value=-0.000260699835375 cumulative=0.000222353673385
+RAY x=50 N=120 term=k13 value=-0.000245329297531 cumulative=-2.29756241466e-5
+RAY x=50 N=120 term=k16 value=1.51705535944e-5 cumulative=-7.80507055224e-6
+RAY x=50 N=120 term=k17 value=7.67068892186e-6 cumulative=-1.34381630385e-7
+RAY x=50 N=120 term=k19 value=0 cumulative=-1.34381630385e-7
+RAY x=50 N=120 term=k23 value=6.84391339208e-8 cumulative=-6.59424964639e-8
+RAY x=50 N=120 term=k25 value=8.04252935324e-8 cumulative=1.44827970685e-8
+RAY x=50 N=120 term=k27 value=-1.22747526021e-8 cumulative=2.20804446639e-9
+RAY x=50 N=120 term=k29 value=0 cumulative=2.20804446639e-9
+RAY x=50 N=120 term=k31 value=-1.97975817943e-9 cumulative=2.28286286962e-10
+RAY x=50 N=120 term=k32 value=-2.20105587760e-10 cumulative=8.18069920194e-12
+RAY x=50 N=120 term=k37 value=-8.97197177704e-12 cumulative=-7.91272575094e-13
+RAY x=50 N=120 term=k41 value=7.19713846402e-13 cumulative=-7.15587286924e-14
+RAY x=50 N=120 term=k43 value=7.21167513467e-14 cumulative=5.58022654293e-16
+RAY x=50 N=120 term=k47 value=-5.53297166446e-16 cumulative=4.72548784757e-18
+RAY x=50 N=120 term=k49 value=4.98990564046e-18 cumulative=9.71539348803e-18
+RAY_TOTAL x=50 N=120 arch=-0.991328777627 primes=0.991328777627 sum=9.71539348803e-18 eps=9.71539348803e-18
+# COMPARISON STEP skipped (--compare 0): no reference zero read or used
+# checks: 16 run, 0 failed

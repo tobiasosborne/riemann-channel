@@ -1,0 +1,62 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=36a1 C=36 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=36a1 C=36 N=200 xmax=164 prec=2000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=164 X=164 N=200 epsE=2.66184038911e-18 epsO=6.91656420813e-15 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=164 X=164 N=200 logdetE=339.944277669 logdetO=361.307608558 dI=0.02052848681 rj=7.562894941 tau=0.07703777834
+OVERLAP x=164 X=164 coefficient=1.00000000000
+RAY x=164 N=200 parity=1 term=arch value=-0.285652443107
+RAY x=164 N=200 term=k2 value=0 cumulative=-0.285652443107
+RAY x=164 N=200 term=k3 value=0 cumulative=-0.285652443107
+RAY x=164 N=200 term=k4 value=0 cumulative=-0.285652443107
+RAY x=164 N=200 term=k5 value=0 cumulative=-0.285652443107
+RAY x=164 N=200 term=k7 value=0.316049170381 cumulative=0.0303967272737
+RAY x=164 N=200 term=k8 value=0 cumulative=0.0303967272737
+RAY x=164 N=200 term=k9 value=0 cumulative=0.0303967272737
+RAY x=164 N=200 term=k11 value=0 cumulative=0.0303967272737
+RAY x=164 N=200 term=k13 value=-0.0194201422157 cumulative=0.0109765850580
+RAY x=164 N=200 term=k16 value=0 cumulative=0.0109765850580
+RAY x=164 N=200 term=k17 value=0 cumulative=0.0109765850580
+RAY x=164 N=200 term=k19 value=-0.0130738632273 cumulative=-0.00209727816925
+RAY x=164 N=200 term=k23 value=0 cumulative=-0.00209727816925
+RAY x=164 N=200 term=k25 value=0.00165188302214 cumulative=-0.000445395147110
+RAY x=164 N=200 term=k27 value=0 cumulative=-0.000445395147110
+RAY x=164 N=200 term=k29 value=0 cumulative=-0.000445395147110
+RAY x=164 N=200 term=k31 value=0.000300790522100 cumulative=-0.000144604625010
+RAY x=164 N=200 term=k32 value=0 cumulative=-0.000144604625010
+RAY x=164 N=200 term=k37 value=0.000185733063026 cumulative=4.11284380163e-5
+RAY x=164 N=200 term=k41 value=0 cumulative=4.11284380163e-5
+RAY x=164 N=200 term=k43 value=-3.88994066917e-5 cumulative=2.22903132459e-6
+RAY x=164 N=200 term=k47 value=0 cumulative=2.22903132459e-6
+RAY x=164 N=200 term=k49 value=-1.32741199170e-6 cumulative=9.01619332898e-7
+RAY x=164 N=200 term=k53 value=0 cumulative=9.01619332898e-7
+RAY x=164 N=200 term=k59 value=0 cumulative=9.01619332898e-7
+RAY x=164 N=200 term=k61 value=-1.49981012901e-6 cumulative=-5.98190796110e-7
+RAY x=164 N=200 term=k64 value=0 cumulative=-5.98190796110e-7
+RAY x=164 N=200 term=k67 value=4.97916702009e-7 cumulative=-1.00274094101e-7
+RAY x=164 N=200 term=k71 value=0 cumulative=-1.00274094101e-7
+RAY x=164 N=200 term=k73 value=9.08704133696e-8 cumulative=-9.40368073175e-9
+RAY x=164 N=200 term=k79 value=1.06003147430e-8 cumulative=1.19663401123e-9
+RAY x=164 N=200 term=k81 value=0 cumulative=1.19663401123e-9
+RAY x=164 N=200 term=k83 value=0 cumulative=1.19663401123e-9
+RAY x=164 N=200 term=k89 value=0 cumulative=1.19663401123e-9
+RAY x=164 N=200 term=k97 value=-8.56962092745e-10 cumulative=3.39671918488e-10
+RAY x=164 N=200 term=k101 value=0 cumulative=3.39671918488e-10
+RAY x=164 N=200 term=k103 value=-3.32690871674e-10 cumulative=6.98104681326e-12
+RAY x=164 N=200 term=k107 value=0 cumulative=6.98104681326e-12
+RAY x=164 N=200 term=k109 value=-8.71037200489e-12 cumulative=-1.72932519163e-12
+RAY x=164 N=200 term=k113 value=0 cumulative=-1.72932519163e-12
+RAY x=164 N=200 term=k121 value=2.80400749692e-12 cumulative=1.07468230529e-12
+RAY x=164 N=200 term=k125 value=0 cumulative=1.07468230529e-12
+RAY x=164 N=200 term=k127 value=-1.10370514833e-12 cumulative=-2.90228430396e-14
+RAY x=164 N=200 term=k128 value=0 cumulative=-2.90228430396e-14
+RAY x=164 N=200 term=k131 value=0 cumulative=-2.90228430396e-14
+RAY x=164 N=200 term=k137 value=0 cumulative=-2.90228430396e-14
+RAY x=164 N=200 term=k139 value=2.89463964286e-14 cumulative=-7.64466110466e-17
+RAY x=164 N=200 term=k149 value=0 cumulative=-7.64466110466e-17
+RAY x=164 N=200 term=k151 value=9.62192416506e-17 cumulative=1.97726306040e-17
+RAY x=164 N=200 term=k157 value=-1.70659047949e-17 cumulative=2.70672580914e-18
+RAY x=164 N=200 term=k163 value=-4.48854200289e-20 cumulative=2.66184038911e-18
+RAY_TOTAL x=164 N=200 arch=-0.285652443107 primes=0.285652443107 sum=2.66184038911e-18 eps=2.66184038911e-18
+# COMPARISON STEP skipped (--compare 0): no reference zero read or used
+# checks: 15 run, 0 failed

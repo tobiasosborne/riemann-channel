@@ -1,0 +1,52 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=27a1 C=27 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=27a1 C=27 N=200 xmax=123 prec=2000 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=123 X=123 N=200 epsE=3.45961998128e-18 epsO=6.55807288678e-15 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=123 X=123 N=200 logdetE=337.351821282 logdetO=358.441009588 dI=0.01235459572 rj=8.177196032 tau=-0.04966936226
+OVERLAP x=123 X=123 coefficient=1.00000000000
+RAY x=123 N=200 parity=1 term=arch value=-0.461697887855
+RAY x=123 N=200 term=k2 value=0 cumulative=-0.461697887855
+RAY x=123 N=200 term=k3 value=0 cumulative=-0.461697887855
+RAY x=123 N=200 term=k4 value=0.431403353831 cumulative=-0.0302945340238
+RAY x=123 N=200 term=k5 value=0 cumulative=-0.0302945340238
+RAY x=123 N=200 term=k7 value=0.0494276046403 cumulative=0.0191330706164
+RAY x=123 N=200 term=k8 value=0 cumulative=0.0191330706164
+RAY x=123 N=200 term=k9 value=0 cumulative=0.0191330706164
+RAY x=123 N=200 term=k11 value=0 cumulative=0.0191330706164
+RAY x=123 N=200 term=k13 value=-0.0201243116055 cumulative=-0.000991240989049
+RAY x=123 N=200 term=k16 value=-0.00266648232689 cumulative=-0.00365772331594
+RAY x=123 N=200 term=k17 value=0 cumulative=-0.00365772331594
+RAY x=123 N=200 term=k19 value=0.00329927644985 cumulative=-0.000358446866083
+RAY x=123 N=200 term=k23 value=0 cumulative=-0.000358446866083
+RAY x=123 N=200 term=k25 value=0.000338202434120 cumulative=-2.02444319623e-5
+RAY x=123 N=200 term=k27 value=0 cumulative=-2.02444319623e-5
+RAY x=123 N=200 term=k29 value=0 cumulative=-2.02444319623e-5
+RAY x=123 N=200 term=k31 value=4.40158633265e-5 cumulative=2.37714313642e-5
+RAY x=123 N=200 term=k32 value=0 cumulative=2.37714313642e-5
+RAY x=123 N=200 term=k37 value=-2.13421640056e-5 cumulative=2.42926735860e-6
+RAY x=123 N=200 term=k41 value=0 cumulative=2.42926735860e-6
+RAY x=123 N=200 term=k43 value=-2.87976677738e-6 cumulative=-4.50499418782e-7
+RAY x=123 N=200 term=k47 value=0 cumulative=-4.50499418782e-7
+RAY x=123 N=200 term=k49 value=4.47020747294e-7 cumulative=-3.47867148784e-9
+RAY x=123 N=200 term=k53 value=0 cumulative=-3.47867148784e-9
+RAY x=123 N=200 term=k59 value=0 cumulative=-3.47867148784e-9
+RAY x=123 N=200 term=k61 value=2.56107705111e-9 cumulative=-9.17594436730e-10
+RAY x=123 N=200 term=k64 value=2.97950009626e-9 cumulative=2.06190565953e-9
+RAY x=123 N=200 term=k67 value=-2.42135537708e-9 cumulative=-3.59449717552e-10
+RAY x=123 N=200 term=k71 value=0 cumulative=-3.59449717552e-10
+RAY x=123 N=200 term=k73 value=6.19388932952e-10 cumulative=2.59939215400e-10
+RAY x=123 N=200 term=k79 value=-2.60849209292e-10 cumulative=-9.09993892388e-13
+RAY x=123 N=200 term=k81 value=0 cumulative=-9.09993892388e-13
+RAY x=123 N=200 term=k83 value=0 cumulative=-9.09993892388e-13
+RAY x=123 N=200 term=k89 value=0 cumulative=-9.09993892388e-13
+RAY x=123 N=200 term=k97 value=8.51888515065e-13 cumulative=-5.81053773221e-14
+RAY x=123 N=200 term=k101 value=0 cumulative=-5.81053773221e-14
+RAY x=123 N=200 term=k103 value=5.87537197048e-14 cumulative=6.48342382739e-16
+RAY x=123 N=200 term=k107 value=0 cumulative=6.48342382739e-16
+RAY x=123 N=200 term=k109 value=-6.45604598985e-16 cumulative=2.73778375349e-18
+RAY x=123 N=200 term=k113 value=0 cumulative=2.73778375349e-18
+RAY x=123 N=200 term=k121 value=7.21836227793e-19 cumulative=3.45961998128e-18
+RAY_TOTAL x=123 N=200 arch=-0.461697887855 primes=0.461697887855 sum=3.45961998128e-18 eps=3.45961998128e-18
+# COMPARISON STEP skipped (--compare 0): no reference zero read or used
+# checks: 15 run, 0 failed
