@@ -8,7 +8,7 @@ TJO: a tutorial artifact mirroring *The Weil Functional* that poses Weil positiv
 (permutations, Ihara–Bass, ...), with animations and interactive demos, Opus helping. Built in
 `notes/weil-tn-tutorial/` (sources: `index.html`, `theme.css`, `core.js`, `tn.js`, `demos-*.js`, `data-riemann.js`;
 `build.py` → the published single file `weil-positivity-contracted.html`; `CONTRACT.md`; lane reports and numpy
-checks under `lanes/`, REFUTE review `lanes/review.md`). Published as a Claude artifact (link in the worklog).
+checks under `lanes/`, REFUTE review `lanes/review.md`). Published as a Claude artifact: https://claude.ai/artifact/RtYb5hLPebAZcnrCUUTz9m (Opus REFUTE review of the prose: 102 statements, 58 VALID / 35 MINOR / 9 INVALID, all applied before publication).
 
 **The spine of the page** (all quoted claims are `proved` rows): the Weil/Toeplitz form is the Gram matrix of open
 transfer strips, `T_{jk} = Tr((E^j)^♯ E^k) = t_{k−j}`, in a metric `G` with `E^*GE = G` (`prop:ccm-tn-operator-gram`);
@@ -16,12 +16,12 @@ such a metric exists iff the retained transfer is semisimple on the circle (`pro
 positivity alone is the one-sided bound (`thm:weil-positivity-finite`), the reflection symmetry makes it the circle
 (`thm:weil-duality-pairing`). Stations: permutation with point letters (shard 03b; native metric), shift of finite
 type (the pole; the golden mean passes positivity and fails RH; `1 + C_4` satisfies both), regular graph (edge
-reversal = inverse pairing = functional equation; Ramanujan = existence of the metric on the retained edge space;
-Huang's `h_k`), Kraus family on a 16-dimensional edge lift (the Kraus dichotomy, Hastings' bound), Artin–Schreier
+reversal = inverse pairing = functional equation; Ramanujan = Weil positivity, while the Hilbert–Pólya metric on the
+retained edge space also needs semisimplicity, which fails exactly at `a = ±2√q`; Huang's `h_k`), Kraus family on a 16-dimensional edge lift (the Kraus dichotomy, Hastings' bound), Artin–Schreier
 (`EE† = q`, RH manifest, sign law `thm:as-sign-law`), zeta (strips known from the explicit formula, metric unknown;
 lattice-bump Gram from primes vs zeros; the x = 13 CCM window from the notebook's data).
 
-**Worker findings worth keeping.** With the correct bipartite trivial set the prism `C_16 × K_2`'s Weil form is
+**Worker and reviewer findings worth keeping.** The reviewer's counterexamples: the 5-regular `C_3 × C_6 × K_2` is Ramanujan with `a = ±2√q = ±4`, its Hashimoto matrix has 2×2 Jordan blocks at `±2` and a positive Weil form (`λ_min(T_16) = +0.31`), so no Hilbert–Pólya metric; a `Z_24` unitary family with letters `P(±1), P(±11)` meets Hastings' bound with equality and has Jordan blocks of `T` at `√3`. `Ad(P_i)` of permutation matrices is the graph on ordered pairs (`K_5`: `Tr T^3 = 300` vs `60`); the graph itself is Theorem 1 with `E_i = P_i`. With point letters the parity-twisted ring norm is still `Tr P^k` (`lem:sector-separating-letters`). With the correct bipartite trivial set the prism `C_16 × K_2`'s Weil form is
 positive at K = 12 and first negative at K = 14 (Huang's `h_k` first negative at k = 22; the Toeplitz form catches
 the failure earlier); Huang's literal formula uses `N_k = Tr B^k − (|E|−|V|)(1+(−1)^k)` and holds for non-bipartite
 graphs; for a perturbed Artin–Schreier matrix with `a = (0,1)` one eigenvalue stays on the circle and the rest move

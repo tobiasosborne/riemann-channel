@@ -55,7 +55,7 @@ the movies is small at that width (the captions carry the statements).
 - Three worker findings changed the prose: the Artin–Schreier sign law is `thm:as-sign-law` (the founding
   note's −(−1)^m holds only when P_g(−1) ≠ 0); a perturbed transfer matrix need not make the form negative
   (one-sided positivity); the prism C₁₆×K₂'s form first goes negative at K = 14 with the bipartite trivial set.
-- The REFUTE review's verdicts are in `review.md` and were applied before publication.
+- The REFUTE review (`review.md`, claude:opus-5.5: 102 statements, 58 VALID / 35 MINOR / 9 INVALID) was applied in full before publication. The nine INVALID items reduce to four errors of the first draft: Ramanujan (or Hastings) is not equivalent to the existence of the Hilbert–Pólya metric (a = ±2√q gives Jordan blocks; counterexamples C₃×C₆×K₂ and a Z₂₄ unitary family); Ad of permutation matrices gives the graph on ordered pairs, not the graph (K₅: Tr T³ = 300 vs 60); the parity-twisted point-letter ring norm carries no sign (shard 03b), the sign lives in the bond supertrace; −E is the Frobenius matrix only when P_g(−1) ≠ 0; and the Weil form is a Gram matrix only when the metric exists.
 
 ## Open
 
