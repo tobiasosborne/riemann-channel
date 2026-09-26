@@ -1,0 +1,7 @@
+# rtp2_ellcurve; author codex:gpt-6-astra; FLINT 3.0.1; certified forms/eigenpairs; PARI comparisons approximate
+# curve=11a1 C=11 rank=0 root_number=1; gamma (Q,d,mu)=(1/(2pi),1,1); no poles
+# axisx curve=11a1 C=11 N=200 xmax=100 prec=2700 fixedL=0
+# CCM changes window and primes; fixedL changes only cutoff, including zero elliptic weights.
+EIG x=2 X=2 N=200 epsE=0.475789145951 epsO=2.58365410995 parity=1 even_simple=1 negE=0 negO=0
+KNOT x=2 X=2 N=200 logdetE=489.197310533 logdetO=489.000538155 dI=3.657241563e-5 rj=10.62665636 tau=-0.0008726075926
+CONTROL x=2 N=200 minE=0.475789145951 minO=2.58365410995 negE=0 posE=201 negO=0 posO=200

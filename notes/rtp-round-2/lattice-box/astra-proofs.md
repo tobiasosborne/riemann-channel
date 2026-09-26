@@ -11,6 +11,7 @@ Status: incremental research record. Computations use prime, pole and archimedea
 3. With `G delta >= -lambda`, `G^T y=+e_k` bounds **minus** `delta_k`, and `G^T y=-e_k` bounds **plus** `delta_k`. The signs in L2(i), read literally, are reversed.
 4. A full-rank sensitivity matrix need not positively span the parameter space. Rank and a small eigenvalue alone do not give a two-sided width bound.
 5. Finite-section positivity at `x=13` is not a certificate of positivity on the infinite window. Nor do the cited values establish `eps_N -> 0`: the reported sequence is saturating near a positive, very small floor.
+6. A strictly positive finite matrix puts truth in the **interior** of the feasible weight set. "On the boundary" and "isolated on its ray" can describe numerical scales informally, but are not literal geometric statements when the displayed minimum eigenvalue is positive.
 
 ## L1. Recession cone — SHARPENED / PROVED
 
@@ -76,9 +77,15 @@ Suppose the rows of `G_I` positively span `R^m`, equivalently `G_I` has rank `m`
 
 One can optimize `h,p_k`, or use the pseudoinverse right inverse to obtain an explicit bound. Normalize `sum h_i=1`; if these are the `r` smallest eigendirections, then `width_k<=2 a_k lambda_r`. The exact weighted expression retains more information than `lambda_r`. Necessarily `r>=m+1` for positive spanning; merely the `m` smallest eigenvalues and full column rank cannot suffice. Equivalently put `eta=min_{||d||_2=1} max_i(-g_i.d)>0`; feasibility gives `||delta||_2<=lambda_r/eta`, hence `width_k<=2lambda_r/eta`.
 
+The corresponding stronger compression statement retains off-diagonal information. Put `K_k=V_r^*T_k V_r` and `Lambda_r=diag(lambda_1,...,lambda_r)`. Then
+
+`width_k <= inf tr(Lambda_r(Z^++Z^-))`,
+
+where `Z^+,Z^->=0` and `tr(Z^+ K_l)=delta_kl`, `tr(Z^- K_l)=-delta_kl`. Restricting these matrices to be diagonal recovers `B_k(I)`. Also, if `eta_SDP=min_{||d||=1}[-lambda_min(sum d_k K_k)]>0`, then `width_k<=2lambda_r/eta_SDP`, by testing a minimum eigenvector of the perturbation in the compressed PSD inequality. The requirement `r>=m+1` above is specific to diagonal cuts; it is not asserted for this full compressed matrix condition. This identifies precisely where a full SDP can improve the eigenvector LP.
+
 ### 2.4 Why the minimum eigenvalue is insufficient
 
-For example `H(delta)=diag(eps,1+delta,1-delta)` has minimum eigenvalue `eps` at truth but feasible width two for all `eps>0`. Even with `H=diag(eps+delta,1-delta)` the width tends to one. Any bound with constant permitted to grow like `1/eps` is tautological. A useful `C eps` statement needs a quantitative positive-spanning certificate supported on eigenvalues of order `eps`, including control of its dual mass. The width is controlled jointly by the low spectrum and the **positive-spanning conditioning** of its sensitivities.
+For example `H(delta)=diag(eps,1+delta,1-delta)` has minimum eigenvalue `eps` at truth but feasible width two for every `0<eps<=1`. Even with `H=diag(eps+delta,1-delta)` the width tends to one. Any bound with constant permitted to grow like `1/eps` is tautological. A useful `C eps` statement needs a quantitative positive-spanning certificate supported on eigenvalues of order `eps`, including control of its dual mass. The width is controlled jointly by the low spectrum and the **positive-spanning conditioning** of its sensitivities.
 
 ### 2.5 Residuals are not exact certificates
 
@@ -142,7 +149,7 @@ The saturation cutoff minimizes the total log determinant on the scanned integer
 
 ### 4.1 Spectrum at both resolutions
 
-`eps` is the minimum of the two certified block eigenvalues, rounded below; `lambda_m` and `lambda_(m+1)` are numerical estimates from the 1152-bit eigensolve, rounded to six digits. `r_used` is the largest spectral rank appearing in any of the verified optimal LP bases; it describes these certificates and is not asserted minimal.
+`eps` is the minimum of the two certified block eigenvalues, rounded to six significant digits; `lambda_m` and `lambda_(m+1)` are numerical estimates from the 1152-bit eigensolve, likewise rounded. `r_used` is the largest spectral rank appearing in any of the verified optimal LP bases; it describes these certificates and is not asserted minimal.
 
 | x | N | eps | lambda_m | lambda_(m+1) | r_used |
 |---:|---:|---:|---:|---:|---:|
@@ -161,7 +168,7 @@ The `m` smallest eigenvalues by themselves do not describe these certificates: m
 
 ### 4.2 LP boxes, and the certified bounds
 
-The entries are rounded **LP widths**. Every endpoint has a ball-certified dual bound and a matching ball-certified primal optimum for the fixed-vector relaxation. The twelve-digit outward upper bounds and all coordinates `n=2..x-1`, not only the selected columns here, are printed in the output. `n=6` and `n=12` have true weight zero throughout. The last column changes its coordinate with x.
+The entries are rounded **LP widths**. Every endpoint has a ball-certified dual bound and a matching ball-certified primal optimum for the fixed-vector relaxation. The output's `lower` and `upper` columns are displacements from `w*_n=Lambda(n)/sqrt(n)`, not absolute weights. The twelve-digit outward upper bounds and all coordinates `n=2..x-1`, not only the selected columns here, are printed in the output. `n=6` and `n=12` have true weight zero throughout. The last column changes its coordinate with x. HiGHS diagnostics can even give negative apparent widths at its feasibility tolerance; only the high-precision values and independently verified certificates are used.
 
 | x | N | width at n=2 | width at n=6 | width at n=12 | worst width, n=x-1 |
 |---:|---:|---:|---:|---:|---:|
@@ -246,3 +253,25 @@ This defines an exactly orthogonal matrix, not a matrix whose residual is merely
 ### 5.2 All requested cutoffs
 
 Compression makes the recession cones decrease with `N`. The certified lower-cutoff witnesses therefore establish every earlier case; the first zero-cone certificate establishes every later cutoff through `N=40` and beyond. Thus the table settles the entire requested range without treating noisy minimum eigenvalues as exact zero tests. For m=10 and 11 the double dual margins are only about `1.85e-8` and `1.21e-9`; they pass the exact ball projection/Cholesky verification. The results do not assert a universal atom-count threshold, which L1 refutes.
+
+## L6. Comparison protocol — DONE
+
+No zero value enters any form, candidate vector, LP, SDP section, or certificate. H-RH appears only in the explicitly labelled **theoretical COMPARISON STEP** in Section 3.4. Numerical finite positivity is certified from primes, the pole and the archimedean factor; it is never inferred from RH.
+
+## Numerical checks for the blind lane
+
+Five ball-certified outward upper bounds on the worst LP width, always at `n=x-1`:
+
+| x | N_sat | certified width upper bound |
+|---:|---:|---:|
+| 13 | 56 | 2.32801264888e-10 |
+| 17 | 83 | 8.28846832474e-12 |
+| 19 | 94 | 2.02749233771e-12 |
+| 23 | 123 | 1.00083975307e-13 |
+| 25 | 134 | 2.22592405955e-14 |
+
+One threshold: for all eleven interior atoms at x=13, **N=6** is the first cutoff with zero recession cone, certified with a positive definite dual annihilator; a positive definite recession ray exists at N=5.
+
+One slope: the n=2 LP width at the sampled saturation cutoffs contracts at **3.481279430 digits per unit x** from 13 to 25 (five-point fit 3.481449717). The matching eps rate is 5.266033356, so this is not the same rate. Rates are derived floating statistics, not asymptotic assertions.
+
+Reproduction: `python3 scripts/rtp2_lattice_box.py > outputs/rtp2_lattice_box.txt`. The full run has **513 checks, zero failures**. The artifacts and individual verification modes are documented in `checks/README.md`.

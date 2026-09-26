@@ -82,10 +82,40 @@ done:
     return ok;
 }
 #ifdef REF_MAIN
+/* Optional independent certificate that no earlier positive Hardy-Z root was skipped.
+ * Interval exclusion on [0, gamma-2^-10], followed by nonzero derivative on the
+ * remaining neighborhood of the already certified unique zero. No GRH input. */
+static slong prefix_boxes=0;
+static int prefix_free(const arb_t a,const arb_t b,const dirichlet_group_t G,
+                       const dirichlet_char_t chi,int depth)
+{
+    arb_t mid,box;acb_t z,v;arb_init(mid);arb_init(box);acb_init(z);acb_init(v);
+    arb_union(box,a,b,160);acb_set_arb(z,box);acb_dirichlet_hardy_z(v,z,G,chi,1,160);prefix_boxes++;
+    int ok=!arb_contains_zero(acb_realref(v));
+    if(!ok&&depth<24) {
+        arb_add(mid,a,b,160);arb_mul_2exp_si(mid,mid,-1);arb_get_mid_arb(mid,mid);
+        ok=prefix_free(a,mid,G,chi,depth+1)&&prefix_free(mid,b,G,chi,depth+1);
+    }
+    arb_clear(mid);arb_clear(box);acb_clear(z);acb_clear(v);return ok;
+}
+static int reference_first(const arb_t root,slong D)
+{
+    dirichlet_group_t G;dirichlet_char_t chi;
+    if(!ref_character(G,chi,D))return 0;
+    arb_t zero,lo,box,step;arb_init(zero);arb_init(lo);arb_init(box);arb_init(step);
+    acb_t z;acb_init(z);acb_ptr v=_acb_vec_init(2);
+    arb_get_mid_arb(box,root);arb_set_round(box,box,160);arb_get_mid_arb(box,box);
+    arb_one(step);arb_mul_2exp_si(step,step,-10);arb_sub(lo,box,step,160);
+    arb_add_error(box,step);acb_set_arb(z,box);acb_dirichlet_hardy_z(v,z,G,chi,2,160);
+    int ok=arb_contains(box,root)&&!arb_contains_zero(acb_realref(v+1))&&prefix_free(zero,lo,G,chi,0);
+    arb_clear(zero);arb_clear(lo);arb_clear(box);arb_clear(step);acb_clear(z);_acb_vec_clear(v,2);
+    dirichlet_char_clear(chi);dirichlet_group_clear(G);return ok;
+}
 int main(int argc,char **argv) {
     slong D=argc>1?atol(argv[1]):-7, prec=argc>2?atol(argv[2]):800;
     arb_t r;arb_init(r);int ok=reference_zero(r,D,prec);
-    flint_printf("# COMPARISON ONLY; unique Hardy Z zero certified=%d; first index from PARI or floating sign scan\n",ok);
+    flint_printf("# COMPARISON ONLY; unique Hardy Z zero certified=%d; guess from PARI or sign scan\n",ok);
+    if(argc>3) {int first=ok&&reference_first(r,D);flint_printf("# FIRST_POSITIVE_HARDY_Z_CERTIFIED=%d interval_boxes=%wd\n",first,prefix_boxes);ok=ok&&first;}
     flint_printf("chi %wd %wd %d\nzero 1 ",D,labs(D),D<0);
     arb_printn(r,prec/4,0);flint_printf("\nend\n");arb_clear(r);flint_cleanup();return !ok;
 }

@@ -35,31 +35,39 @@ For each block `s(beta)=s0+l beta-C beta²`, where `C=w^T G^-1 w>0` and `l=±1/j
 
 Proof: congruence of the bordered matrix with `diag(G,d-c^T G^-1 c)` gives positivity and determinant factorization; substitution and completion of the square give the interval formulas. Strict concavity of the logarithm of each positive, strictly concave quadratic gives uniqueness. The even zeroth entry forces b=0 for a zero column, then its remaining entries force b_i=0. These are exactly A1.1' algebra, unchanged when pole terms vanish. The absent pole directions only change the numerical input G and the control, which is now gamma plus conductor, X=1.
 
+**PROVED D2b (additional control comparison).** At a fixed conductor and window, the odd-character archimedean form exceeds the even-character one as a quadratic form. Indeed, digamma reflection gives
+`Re psi(3/4+it/2)-Re psi(1/4+it/2)=pi/cosh(pi t)>0`.
+Plancherel expresses the difference of the two controls as the integral of this positive multiplier times the squared Fourier transform of the test function. Thus every nonzero finite-window function has strictly larger odd-character archimedean value, and the negative count for kappa=1 is at most that for kappa=0 in either reflection block. Character parity kappa and window reflection parity E/O are distinct notions.
+
+**PROVED D2c (why a positive control is possible).** The gamma multiplier is minimized at t=0: the digamma series gives
+`Re psi(a+ib)-psi(a)=sum_(n>=0) b²/((n+a)((n+a)²+b²)) >= 0` for a>0.
+Thus `log(q/pi)+psi((kappa+1/2)/2)>0` is sufficient for positivity on every window and at every N. For kappa=1 this lower bound is `log(q/(8pi))-EulerGamma+pi/2`; it is positive at q=20 (for example, EulerGamma<1, pi>3, and log(20/(8pi))>-1/4 give a lower bound >1/4). Therefore the positive X=1 control for D=-20 is a theorem, not a failure to resolve small negative eigenvalues. For a fixed kappa the entire control spectra at different q differ by exactly log(q2/q1), which the output minima can independently check.
+
 ## D3. Driver and certification
 
 **NUMERICAL (implementation).** `zst/tools/rtp2_dirichlet.c` retains A1's Schur quadratic, structured interval, joint MaxEnt and shifted Rump/deflation helpers. Its form builder is exactly `zst_weil_dirichlet; zst_weil_ab`; no library source or include behavior is changed. The independent local prime increment is multiplied by Kronecker(D,k), and its accumulated data are checked against the generic builder (every fixed-L knot and every final Rayleigh decomposition).
 
 Options: `--D`, `--mode axisN|axisx`, `--x`, `--Nmax`, `--cmp N1,N2,...`, `--prec`, `--cprec`, `--N`, `--xmax`, `--fixedL 1`. Axis N automatically certifies eigenpairs at the full determinant minimizer and Nmax in addition to `--cmp`. It certifies the unique determinant argmin over the scanned range for full, even and odd blocks. This is a finite-range certificate, not an assertion about all N.
 
-Both block minima first receive independent Rayleigh/positive-definiteness brackets from `zst_block_min`. Their strict ball ordering implements `zst_parity`'s criterion. Separate Rump eigenpair and deflated positivity certificates produce normalized eigenvectors and sharp eigenvalue balls in both blocks, checked against those independent brackets. The even-simple flag is reported separately. The X=1 control includes `log |D| I`; its positive and negative counts are certified by LDL at zero. Successful nonzero pivots imply zero nullity. The Rayleigh decomposition uses the actual minimizing block.
+Both block minima first receive independent Rayleigh/positive-definiteness brackets from `zst_block_min`. Separate Rump eigenpair and deflated positivity certificates produce normalized eigenvectors and sharp minimum-eigenvalue balls in both blocks. Intersecting the two certificates before strict ball comparison implements `zst_parity`'s ordering criterion even when its raw brackets are broad. The even-simple flag is reported separately. The X=1 control includes `log |D| I`; its positive and negative counts are certified by LDL at zero. Successful nonzero pivots imply zero nullity. The Rayleigh decomposition uses the actual minimizing block.
 
-COMPARISON uses `checks/reference.c`: identify the primitive character by checking its full residue table against Kronecker(D,n), read a starting guess from `zst/tests/data/dirichlet_ref.txt`, and refine a unique real Hardy-Z root by interval Newton using FLINT's `acb_dirichlet_hardy_z` and its derivative. Missing guesses are located by a comparison-only sign scan. The root ball is certified; the assertion that it is the *first* zero inherits PARI's indexing or that scan (not a certified zero-free prefix). All generated reference enclosures are kept in the lane outputs; the original reference file is not overwritten with uncertified high-precision midpoints. Secular roots come from the minimizer without reference-zero input; a complete N-root list is checked for even cases. The existing CCM construction is undefined for odd minima (sum normalization zero), which is reported explicitly. No odd case is silently replaced by the even one.
+COMPARISON uses `checks/reference.c`: identify the primitive character by checking its full residue table against Kronecker(D,n), read a starting guess from `zst/tests/data/dirichlet_ref.txt`, and refine a unique real Hardy-Z root by interval Newton using FLINT's `acb_dirichlet_hardy_z` and its derivative. Missing guesses are located by a comparison-only sign scan. The root ball is certified. A separate comparison-only audit, `checks/first_zero_prefix.py`, now certifies that it is the first positive Hardy-Z zero: interval exclusion on the preceding segment and a nonvanishing derivative throughout the final root neighborhood. All ten certificates pass at 160 bits for exclusion and 800 bits for root refinement (435–1369 interval boxes). This proves the critical-line index without assuming anything about off-line zeros; the raw output label records the original guess source. All generated reference enclosures are kept in the lane outputs; the original reference file is not overwritten with uncertified high-precision midpoints. Secular roots come from the minimizer without reference-zero input; a complete N-root list is checked for even cases. The existing CCM construction is undefined for odd minima (sum normalization zero), which is reported explicitly. No odd case is silently replaced by the even one.
 
 Arithmetic: FLINT 3 arb balls throughout forms, LDL, eigenvalues, inertia, error differences and Rayleigh parts. Printed scalar values are rounded midpoints only when the relative ball error is smaller than their displayed precision with guard bits; otherwise the complete ball is printed. Joint MaxEnt's location and QR shift candidates are floating; the evaluated Schur values and admissibility checks are balls. Derived slopes, ratios calculated from printed values, and fitted prefactors in `checks/summary.py` will be labelled floating. Output has no time or addresses; elapsed times are stderr only.
 
 **NUMERICAL (pilot).** Before launching the suite, `(D,x,N)=(-4,13,40)` reproduced MVP-3: `eps_E=4.93772909768e-14`, first-zero error `1.89828037683e-12`, all 40 roots certified. The pilot completed 265 checks, zero failed. `make -C zst check` passed all existing tests.
 
+D3 correction during validation: the inherited shifted helper needs an explicit scalar (1x1) branch; otherwise its QR-based second-eigenvalue gap is infinite. This affected the N=1 odd *control* for D=-20, not the form eigenvalue. Fixed locally in the new driver. Also `zst_block_min` sometimes returns a broad but valid minimum bracket (D=12,x=25,N=40,80). The separate Rump-plus-deflated-PD minimum certificates were already sharp and decisive. The driver now intersects the two valid certificates of each block minimum before the parity comparison; raw bracket overlap is disclosed. This uses a certified *minimum*, not an arbitrary eigenpair. Failed development outputs are retained in checks and the affected cases were rerun successfully.
+
+Missing-reference exception authorized by the brief: `checks/generate_references.py --append` adds D=-7,-20,21 to `zst/tests/data/dirichlet_ref.txt` in its existing format. Only 40-digit comparison seeds are appended; standalone runs at 800 and 1200 bits give overlapping certified Hardy-Z root balls, retained in checks. Existing records are unchanged. This supersedes the earlier plan not to append to that file. No reference datum enters the form or its certificates.
+
+
+
 ## D4. Runs (incremental)
 
 The run script starts with all x=13 cases, then x=25, then axis-x protocols, then x=50. It runs at most 12 independent processes, with timings retained under `checks/runlogs/`. The requested six characters and optional -20,21,13 are included, plus -8 to compare both character parities at exactly the same conductor 8. The x=50 extension is attempted for all ten characters; eigenvalues at several N will test convergence beyond the determinant minimum. All outputs are `outputs/rtp2_dirichlet_*.txt`.
 
-D3 correction during validation: the inherited shifted helper needs an explicit scalar (1x1) branch; otherwise its QR-based second-eigenvalue gap is infinite. This affected the N=1 odd *control* for D=-20, not the form eigenvalue. Fixed locally in the new driver. Also `zst_block_min` sometimes returns a broad but valid minimum bracket (D=12,x=25,N=40,80). The separate Rump-plus-deflated-PD minimum certificates were already sharp and decisive. The driver now intersects the two valid certificates of each block minimum before the parity comparison; raw bracket overlap is disclosed. This uses a certified *minimum*, not an arbitrary eigenpair. Failed development outputs are retained in checks and the affected cases will be rerun.
 
-Missing-reference exception authorized by the brief: `checks/generate_references.py --append` adds D=-7,-20,21 to `zst/tests/data/dirichlet_ref.txt` in its existing format. Only 40-digit comparison seeds are appended; standalone runs at 800 and 1200 bits give overlapping certified Hardy-Z root balls, retained in checks. Existing records are unchanged. This supersedes the earlier plan not to append to that file. No reference datum enters the form or its certificates.
-
-**PROVED D2b (additional control comparison).** At a fixed conductor and window, the odd-character archimedean form exceeds the even-character one as a quadratic form. Indeed, digamma reflection gives
-`Re psi(3/4+it/2)-Re psi(1/4+it/2)=pi/cosh(pi t)>0`.
-Plancherel expresses the difference of the two controls as the integral of this positive multiplier times the squared Fourier transform of the test function. Thus every nonzero finite-window function has strictly larger odd-character archimedean value, and the negative count for kappa=1 is at most that for kappa=0 in either reflection block. Character parity kappa and window reflection parity E/O are distinct notions.
 
 | protocol | discriminants | resolution/window | bits for LDL / eigenpairs | planned files |
 |---|---|---|---|---:|
@@ -70,17 +78,15 @@ Plancherel expresses the difference of the two controls as the integral of this 
 | axis x CCM | same ten | N=120, x through prime powers to 25 | 1800 | 10 |
 | axis x fixed L | -4,5 | N=60, L=log 50, cutoff 1 through 49 | 2700 | 2 |
 
-The original low-cost stages used the development certifier before the two edge-case corrections. Both stages are being rerun with the final driver so all released outputs have the same check logic. D=12 at x=25 also raises eigenpair precision from 1200 to 1400 bits; the form precision stays 1800. The two development failures are preserved as `checks/development_*_failed.txt`, not counted as final successes. No precision increase has been needed for construction of a Weil form.
+The original low-cost stages used the development certifier before the two edge-case corrections. Both stages were rerun successfully with the final driver so all released outputs have the same check logic. D=12 at x=25 also raises eigenpair precision from 1200 to 1400 bits; the form precision stays 1800. The two development failures are preserved as `checks/development_*_failed.txt`, not counted as final successes. No precision increase has been needed for construction of a Weil form.
 
-**PROVED D2c (why a positive control is possible).** The gamma multiplier is minimized at t=0: the digamma series gives
-`Re psi(a+ib)-psi(a)=sum_(n>=0) b²/((n+a)((n+a)²+b²)) >= 0` for a>0.
-Thus `log(q/pi)+psi((kappa+1/2)/2)>0` is sufficient for positivity on every window and at every N. For kappa=1 this lower bound is `log(q/(8pi))-EulerGamma+pi/2`; it is positive at q=20. Therefore the positive X=1 control for D=-20 is a theorem, not a failure to resolve small negative eigenvalues. For a fixed kappa the entire control spectra at different q differ by exactly log(q2/q1), which the output minima can independently check.
+
 
 ## D5. Extraction conventions (tables appended as runs finish)
 
 **NUMERICAL.** The primary saturated proxy is the largest tested N at each x: 200,260,420. The driver also evaluates eps exactly at the determinant argmin; both will appear in the table. “Saturated” here means well beyond the measured determinant minimum, not a rigorous limit as N tends to infinity. Ratios against the previous sampled N quantify the remaining tail. The N_sat certificate covers integers 1..Nmax only; an argmin at 1 is left-censored and must not be fitted as an interior transition.
 
-Every eigenvalue, reported inertia, determinant comparison, Rayleigh sum, and error difference in the raw files is obtained in ball arithmetic. Displayed values are rounded as described in D3. Slopes use `s(a,b)=(log10 eps(a)-log10 eps(b))/(b-a)` and are explicitly **floating postprocessing**, as are fitted exponents and amplitudes. `checks/summary.py` regenerates all tables from the output files. The reference-root ball certifies a unique zero; the first-index identification remains the labelled comparison convention explained in D3.
+Every eigenvalue, reported inertia, determinant comparison, Rayleigh sum, and error difference in the raw files is obtained in ball arithmetic. Displayed values are rounded as described in D3. Slopes use `s(a,b)=(log10 eps(a)-log10 eps(b))/(b-a)` and are explicitly **floating postprocessing**, as are fitted exponents and amplitudes. `checks/summary.py` regenerates all tables from the output files. The reference-root ball certifies a unique zero, and the independent zero-free-prefix certificate in D3 verifies its first positive Hardy-Z index.
 
 The old zeta output has x=50 eigenpairs only through N=360. Its existing value is retained in the extraction. Where the corrected round-1 13–50 slope is compared, I separately cite the review's already certified N=420 value (2.80881e-258; comparison error 3.0346e-254), rather than claim that it came from `rtp1_a1_axisN_x50.txt` or rerun zeta.
 
@@ -244,11 +250,46 @@ Review supplement (not recomputed): zeta x=50,N=420 eps=2.80881e-258; error=3.03
 | 12 | ccm | 60 | 24 | 0 | none | 5.75113733890e-21 | 4.51318365274e-17 |
 | 12 | ccm | 120 | 14 | 0 | none | 6.80989556112e-10 | 1.24123071322e-6 |
 | -20 | ccm | 60 | 24 | 0 | none | 1.43407523933e-10 | 4.86253222952e-7 |
+| -20 | ccm | 120 | 14 | 0 | none | 0.000268874531039 | 0.106335257818 |
 | 21 | ccm | 60 | 24 | 0 | none | 2.95394939571e-11 | 5.02080091588e-8 |
+| 21 | ccm | 120 | 14 | 0 | none | 3.59846816725e-5 | 0.0146210626418 |
 | 13 | ccm | 60 | 24 | 0 | none | 3.56044415876e-19 | 2.35329747011e-15 |
+| 13 | ccm | 120 | 14 | 0 | none | 4.61245847185e-9 | 6.61815739516e-6 |
 | -8 | ccm | 60 | 24 | 0 | none | 4.82698622448e-30 | 6.49698307009e-26 |
+| -8 | ccm | 120 | 14 | 0 | none | 1.06671299424e-13 | 3.77026181317e-10 |
+
+### FLOATING fixed-resolution slopes and loss relative to final-N proxy
+
+| D | N fixed | slope 13–25 | slope 25–50 | terminal x | decimal digits lost vs final-N proxy |
+|---|---|---|---|---|---|
+| -4 | 60 | 1.31466 | 1.12318 | 50 | pending |
+| -4 | 120 | 1.31681 | — | 25 | 0.0316739 |
+| -3 | 60 | 1.76958 | 1.18641 | 50 | pending |
+| -3 | 120 | 1.7748 | — | 25 | 0.0603417 |
+| 5 | 60 | 1.05783 | 1.02036 | 50 | pending |
+| 5 | 120 | 1.06008 | — | 25 | 0.0447869 |
+| 8 | 60 | 0.657367 | 0.670482 | 50 | pending |
+| 8 | 120 | 0.662547 | — | 25 | 0.0259329 |
+| -7 | 60 | 0.722952 | 0.750958 | 50 | pending |
+| -7 | 120 | 0.729265 | — | 25 | 0.0450603 |
+| 12 | 60 | 0.433752 | 0.444052 | 50 | pending |
+| 12 | 120 | 0.435925 | — | 25 | 0.0061958 |
+| -20 | 60 | 0.213377 | 0.251133 | 50 | pending |
+| -20 | 120 | 0.213773 | — | 25 | 0.00148916 |
+| 21 | 60 | 0.233867 | 0.243633 | 50 | pending |
+| 21 | 120 | 0.234216 | — | 25 | 0.00167897 |
+| 13 | 60 | 0.40981 | 0.405541 | 50 | pending |
+| 13 | 120 | 0.411811 | — | 25 | 0.00591888 |
+| -8 | 60 | 0.628993 | 0.657306 | 50 | pending |
+| -8 | 120 | 0.635859 | — | 25 | 0.0263973 |
 
 
 <!-- D5_TABLES_END -->
 
 **NUMERICAL D4/D5 (fixed-window parity).** Odd minima really occur in partial-information forms, even though the complete CCM forms examined so far have even minima. For D=5 at x=50,N=60,X=47, the even minimum is `-1.18909219699e-12` and the odd minimum is `-0.000121535867110` (one negative even eigenvalue, two negative odd eigenvalues). Thus reporting only the even block would conceal the much larger obstruction to positivity. The driver reports these odd minima and both inertias. No CCM zero comparison is defined for an indefinite partial form or an odd minimizer; those are not silently assigned the even block's roots. Rates in D5 refer to the complete positive forms, whose minimizing parity is certified case by case.
+
+## D6. Interim verdict from the completed 13–25 sweep (x=50 audit pending)
+
+**REFUTED numerically on this interval:** the rate is not chi-independent in the raw coordinate x. The ten even-minimum slopes range from 0.213882 (D=-20) to 1.77712 (D=-3), a spread of about 1.56324 digits/x; for the six required characters the spread is 1.34072. Zeta's existing 13–25 slope is 5.33922. The first-zero error has the same conductor ordering and tracks eps with a slowly changing, character-dependent ratio. These are floating slopes derived from certified finite-window values, not an asymptotic theorem.
+
+**NUMERICAL support for D1a:** the leading scale changes approximately as 1/q. At matched q=8 the even-character slope is 0.664562 and the odd-character slope 0.637927; their difference 0.026635 is of the order expected from a one-power change in a polynomial prefactor. This does not establish an exact prefactor law. The conductor-aware prolate interpretation remains the simplest proposed explanation, to be tested against all three windows below. In particular this experiment does not justify saying that arithmetic determines only the floor while a universal exp(-4pi x) rate comes from the unscaled window.

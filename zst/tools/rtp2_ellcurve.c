@@ -588,6 +588,7 @@ static void mode_axisx(slong N,double xmax,slong prec,int fixedL)
     _arb_vec_clear(a,N+2);_arb_vec_clear(b,N+2);_arb_vec_clear(fa,N+2);_arb_vec_clear(fb,N+2);_arb_vec_clear(ta,N+2);_arb_vec_clear(tb,N+2);
     arb_mat_clear(E);arb_mat_clear(O);arb_mat_clear(LE);arb_mat_clear(LO);
 }
+#include "../../notes/rtp-round-2/ellcurve/checks/spectra.c"
 int main(int argc,char **argv)
 {
     const char *mode="axisN",*cmp="";double xd=13,xmax=50;slong Nmax=200,N=60,prec=1000,cprec=0;int fixedL=0;
@@ -615,6 +616,7 @@ int main(int argc,char **argv)
     flint_printf("# rtp2_ellcurve; author codex:gpt-6-astra; FLINT %s; certified forms/eigenpairs; PARI comparisons approximate\n",FLINT_VERSION);
     flint_printf("# curve=%s C=%wd rank=%wd root_number=%d; gamma (Q,d,mu)=(1/(2pi),1,1); no poles\n",curve,fmpz_get_si(conductor),curve_rank,root_number);
     if(!strcmp(mode,"axisN"))mode_axisN(xd,Nmax,prec,cmp,cprec);
-    else if(!strcmp(mode,"axisx"))mode_axisx(N,xmax,prec,fixedL);else return 2;
+    else if(!strcmp(mode,"axisx"))mode_axisx(N,xmax,prec,fixedL);
+    else if(!strcmp(mode,"spectra"))mode_spectra(xd,N);else return 2;
     flint_printf("# checks: %wd run, %wd failed\n",n_checks,n_fail);_fmpz_vec_clear(ainvs,5);fmpz_clear(conductor);flint_cleanup();return n_fail?1:0;
 }

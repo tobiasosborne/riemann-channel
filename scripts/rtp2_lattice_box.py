@@ -226,6 +226,7 @@ def simplex(c,A,b,warm=None):
     """200-digit two-phase tableau with Bland pivots; full primal/dual audit follows."""
     m,n=A.rows,A.cols
     def audit(basis):
+        basis=sorted(basis)  # Canonical order makes cold and warm basis audits agree.
         # Guard digits resolve large dual multipliers near the window edge.
         # The independent Arb solve below certifies the unrounded coefficients.
         with mp.workdps(260):

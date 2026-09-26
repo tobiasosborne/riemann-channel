@@ -4,48 +4,58 @@
 |---|---|---|
 | rtp2_dirichlet_D-20_axisN_x13.txt | 1255 | 0 |
 | rtp2_dirichlet_D-20_axisN_x25.txt | 1615 | 0 |
-| rtp2_dirichlet_D-20_axisx_ccm_N120.txt | RUNNING | - |
+| rtp2_dirichlet_D-20_axisN_x50.txt | RUNNING | - |
+| rtp2_dirichlet_D-20_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_dirichlet_D-20_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_dirichlet_D-3_axisN_x13.txt | 1255 | 0 |
 | rtp2_dirichlet_D-3_axisN_x25.txt | 1615 | 0 |
+| rtp2_dirichlet_D-3_axisN_x50.txt | RUNNING | - |
 | rtp2_dirichlet_D-3_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_dirichlet_D-3_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_dirichlet_D-4_axisN_x13.txt | 1255 | 0 |
 | rtp2_dirichlet_D-4_axisN_x25.txt | 1615 | 0 |
+| rtp2_dirichlet_D-4_axisN_x50.txt | RUNNING | - |
 | rtp2_dirichlet_D-4_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_dirichlet_D-4_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_dirichlet_D-4_axisx_fixedL_N60.txt | 202 | 0 |
 | rtp2_dirichlet_D-7_axisN_x13.txt | 1255 | 0 |
 | rtp2_dirichlet_D-7_axisN_x25.txt | 1615 | 0 |
+| rtp2_dirichlet_D-7_axisN_x50.txt | RUNNING | - |
 | rtp2_dirichlet_D-7_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_dirichlet_D-7_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_dirichlet_D-8_axisN_x13.txt | 1255 | 0 |
 | rtp2_dirichlet_D-8_axisN_x25.txt | 1615 | 0 |
-| rtp2_dirichlet_D-8_axisx_ccm_N120.txt | RUNNING | - |
+| rtp2_dirichlet_D-8_axisN_x50.txt | RUNNING | - |
+| rtp2_dirichlet_D-8_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_dirichlet_D-8_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_dirichlet_D12_axisN_x13.txt | 1255 | 0 |
 | rtp2_dirichlet_D12_axisN_x25.txt | 1615 | 0 |
+| rtp2_dirichlet_D12_axisN_x50.txt | RUNNING | - |
 | rtp2_dirichlet_D12_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_dirichlet_D12_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_dirichlet_D13_axisN_x13.txt | 1255 | 0 |
 | rtp2_dirichlet_D13_axisN_x25.txt | 1615 | 0 |
-| rtp2_dirichlet_D13_axisx_ccm_N120.txt | RUNNING | - |
+| rtp2_dirichlet_D13_axisN_x50.txt | RUNNING | - |
+| rtp2_dirichlet_D13_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_dirichlet_D13_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_dirichlet_D21_axisN_x13.txt | 1255 | 0 |
 | rtp2_dirichlet_D21_axisN_x25.txt | 1615 | 0 |
-| rtp2_dirichlet_D21_axisx_ccm_N120.txt | RUNNING | - |
+| rtp2_dirichlet_D21_axisN_x50.txt | RUNNING | - |
+| rtp2_dirichlet_D21_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_dirichlet_D21_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_dirichlet_D5_axisN_x13.txt | 1255 | 0 |
 | rtp2_dirichlet_D5_axisN_x25.txt | 1615 | 0 |
+| rtp2_dirichlet_D5_axisN_x50.txt | RUNNING | - |
 | rtp2_dirichlet_D5_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_dirichlet_D5_axisx_ccm_N60.txt | 363 | 0 |
 | rtp2_dirichlet_D5_axisx_fixedL_N60.txt | 202 | 0 |
 | rtp2_dirichlet_D8_axisN_x13.txt | 1255 | 0 |
 | rtp2_dirichlet_D8_axisN_x25.txt | 1615 | 0 |
+| rtp2_dirichlet_D8_axisN_x50.txt | RUNNING | - |
 | rtp2_dirichlet_D8_axisx_ccm_N120.txt | 213 | 0 |
 | rtp2_dirichlet_D8_axisx_ccm_N60.txt | 363 | 0 |
 
-Total completed checks: 34012 ; failures: 0 
+Total completed checks: 34864 ; failures: 0 
 
 # D5. Saturation and final-N results
 
@@ -206,7 +216,36 @@ Review supplement (not recomputed): zeta x=50,N=420 eps=2.80881e-258; error=3.03
 | 12 | ccm | 60 | 24 | 0 | none | 5.75113733890e-21 | 4.51318365274e-17 |
 | 12 | ccm | 120 | 14 | 0 | none | 6.80989556112e-10 | 1.24123071322e-6 |
 | -20 | ccm | 60 | 24 | 0 | none | 1.43407523933e-10 | 4.86253222952e-7 |
+| -20 | ccm | 120 | 14 | 0 | none | 0.000268874531039 | 0.106335257818 |
 | 21 | ccm | 60 | 24 | 0 | none | 2.95394939571e-11 | 5.02080091588e-8 |
+| 21 | ccm | 120 | 14 | 0 | none | 3.59846816725e-5 | 0.0146210626418 |
 | 13 | ccm | 60 | 24 | 0 | none | 3.56044415876e-19 | 2.35329747011e-15 |
+| 13 | ccm | 120 | 14 | 0 | none | 4.61245847185e-9 | 6.61815739516e-6 |
 | -8 | ccm | 60 | 24 | 0 | none | 4.82698622448e-30 | 6.49698307009e-26 |
+| -8 | ccm | 120 | 14 | 0 | none | 1.06671299424e-13 | 3.77026181317e-10 |
+
+# FLOATING fixed-resolution slopes and loss relative to final-N proxy
+
+| D | N fixed | slope 13–25 | slope 25–50 | terminal x | decimal digits lost vs final-N proxy |
+|---|---|---|---|---|---|
+| -4 | 60 | 1.31466 | 1.12318 | 50 | pending |
+| -4 | 120 | 1.31681 | — | 25 | 0.0316739 |
+| -3 | 60 | 1.76958 | 1.18641 | 50 | pending |
+| -3 | 120 | 1.7748 | — | 25 | 0.0603417 |
+| 5 | 60 | 1.05783 | 1.02036 | 50 | pending |
+| 5 | 120 | 1.06008 | — | 25 | 0.0447869 |
+| 8 | 60 | 0.657367 | 0.670482 | 50 | pending |
+| 8 | 120 | 0.662547 | — | 25 | 0.0259329 |
+| -7 | 60 | 0.722952 | 0.750958 | 50 | pending |
+| -7 | 120 | 0.729265 | — | 25 | 0.0450603 |
+| 12 | 60 | 0.433752 | 0.444052 | 50 | pending |
+| 12 | 120 | 0.435925 | — | 25 | 0.0061958 |
+| -20 | 60 | 0.213377 | 0.251133 | 50 | pending |
+| -20 | 120 | 0.213773 | — | 25 | 0.00148916 |
+| 21 | 60 | 0.233867 | 0.243633 | 50 | pending |
+| 21 | 120 | 0.234216 | — | 25 | 0.00167897 |
+| 13 | 60 | 0.40981 | 0.405541 | 50 | pending |
+| 13 | 120 | 0.411811 | — | 25 | 0.00591888 |
+| -8 | 60 | 0.628993 | 0.657306 | 50 | pending |
+| -8 | 120 | 0.635859 | — | 25 | 0.0263973 |
 

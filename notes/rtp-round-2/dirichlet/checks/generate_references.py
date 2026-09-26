@@ -3,7 +3,7 @@
 Generate missing reference first zeros using reference.c's Hardy-Z isolation.
 Two precisions must overlap. Append 40-digit guesses in the legacy format only
 when --append is specified; retain rigorous root balls separately under checks/.
-The index 'first' is from a 1/16 sign scan, not a global zero-count certificate.
+Initial indices come from a 1/16 sign scan; first_zero_prefix.py independently certifies the first positive Hardy-Z index.
 """
 from pathlib import Path
 import re,subprocess,sys

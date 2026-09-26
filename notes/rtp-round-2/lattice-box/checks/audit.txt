@@ -1,0 +1,19 @@
+PASS cold/warm audit identity x=13 N=20 n=2 sign=+1
+PASS cold/warm audit identity x=13 N=20 n=2 sign=-1
+PASS cold/warm audit identity x=13 N=20 n=12 sign=+1
+PASS cold/warm audit identity x=13 N=20 n=12 sign=-1
+PASS cold/warm audit identity x=25 N=134 n=24 sign=+1
+PASS cold/warm audit identity x=25 N=134 n=24 sign=-1
+PASS x=13 N=20: eps lies in certified even enclosure below odd minimum
+PASS x=13 N=40: eps lies in certified even enclosure below odd minimum
+PASS x=13 N=56: eps lies in certified even enclosure below odd minimum
+PASS x=13 N=60: eps lies in certified even enclosure below odd minimum
+PASS x=17 N=83: eps lies in certified even enclosure below odd minimum
+PASS x=17 N=60: eps lies in certified even enclosure below odd minimum
+PASS x=19 N=94: eps lies in certified even enclosure below odd minimum
+PASS x=19 N=60: eps lies in certified even enclosure below odd minimum
+PASS x=23 N=123: eps lies in certified even enclosure below odd minimum
+PASS x=23 N=60: eps lies in certified even enclosure below odd minimum
+PASS x=25 N=134: eps lies in certified even enclosure below odd minimum
+PASS x=25 N=60: eps lies in certified even enclosure below odd minimum
+CHECKS 18 FAILED 0

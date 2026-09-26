@@ -1,0 +1,13 @@
+PASS x=13 N=20: reported eps agrees with its ball enclosure and is strictly below odd minimum
+PASS x=13 N=40: reported eps agrees with its ball enclosure and is strictly below odd minimum
+PASS x=13 N=56: reported eps agrees with its ball enclosure and is strictly below odd minimum
+PASS x=13 N=60: reported eps agrees with its ball enclosure and is strictly below odd minimum
+PASS x=17 N=83: reported eps agrees with its ball enclosure and is strictly below odd minimum
+PASS x=17 N=60: reported eps agrees with its ball enclosure and is strictly below odd minimum
+PASS x=19 N=94: reported eps agrees with its ball enclosure and is strictly below odd minimum
+PASS x=19 N=60: reported eps agrees with its ball enclosure and is strictly below odd minimum
+PASS x=23 N=123: reported eps agrees with its ball enclosure and is strictly below odd minimum
+PASS x=23 N=60: reported eps agrees with its ball enclosure and is strictly below odd minimum
+PASS x=25 N=134: reported eps agrees with its ball enclosure and is strictly below odd minimum
+PASS x=25 N=60: reported eps agrees with its ball enclosure and is strictly below odd minimum
+CHECKS 12 0

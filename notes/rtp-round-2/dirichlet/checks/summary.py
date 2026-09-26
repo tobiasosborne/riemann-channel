@@ -135,3 +135,15 @@ for D in DS:
         odd=[r for r in es if r['parity']=='-1']
         rows.append([D,kind,N,len(es),len(neg),','.join(r['X'] for r in odd) or 'none',last['epsE'],last['epsO']])
 table(['D','protocol','N','knots','indefinite knots','odd-minimum cutoffs','final epsE','final epsO'],rows)
+print('# FLOATING fixed-resolution slopes and loss relative to final-N proxy\n')
+rows=[]
+for D in DS:
+    for N in [60,120]:
+        p=OUT/f'rtp2_dirichlet_D{D}_axisx_ccm_N{N}.txt'
+        if not p.exists() or '# checks:' not in p.read_text():continue
+        d=parse(p);es={int(r['x']):r for r in d['EIG']};xm=max(es)
+        s1=fmt(slope(es[13],es[25]))
+        s2=fmt(slope(es[25],es[50])) if 50 in es else '—'
+        loss=fmt(mp.log10(num(es[xm]['epsE'])/num(data[D,xm]['end']['epsE']))) if (D,xm) in data else 'pending'
+        rows.append([D,N,s1,s2,xm,loss])
+table(['D','N fixed','slope 13–25','slope 25–50','terminal x','decimal digits lost vs final-N proxy'],rows)

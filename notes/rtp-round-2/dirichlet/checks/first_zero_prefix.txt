@@ -1,0 +1,10 @@
+D=-4: first positive Hardy-Z certificate PASS
+D=-3: first positive Hardy-Z certificate PASS
+D=5: first positive Hardy-Z certificate PASS
+D=8: first positive Hardy-Z certificate PASS
+D=-7: first positive Hardy-Z certificate PASS
+D=12: first positive Hardy-Z certificate PASS
+D=-20: first positive Hardy-Z certificate PASS
+D=21: first positive Hardy-Z certificate PASS
+D=13: first positive Hardy-Z certificate PASS
+D=-8: first positive Hardy-Z certificate PASS

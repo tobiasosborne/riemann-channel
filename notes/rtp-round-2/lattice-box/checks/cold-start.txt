@@ -1,0 +1,7 @@
+PASS cold/warm exact audit identity x=13 N=20 n=2 sign=+1
+PASS cold/warm exact audit identity x=13 N=20 n=2 sign=-1
+PASS cold/warm exact audit identity x=13 N=20 n=12 sign=+1
+PASS cold/warm exact audit identity x=13 N=20 n=12 sign=-1
+PASS cold/warm exact audit identity x=25 N=134 n=24 sign=+1
+PASS cold/warm exact audit identity x=25 N=134 n=24 sign=-1
+CHECKS 6 0

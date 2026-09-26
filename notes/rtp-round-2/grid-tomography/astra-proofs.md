@@ -179,3 +179,93 @@ An exact-moment support certificate such as p in G2 is of this latter
 kind. Proof of all bounds: take the trace of the PSD inequality against Z,
 then use nonnegativity of the measure. These conditions, not the zeros of
 individual autocorrelations, are the appropriate position certificates.
+
+## G4. Uniform grids: an empty feasible set — NUMERICAL, ball-certified
+
+The experiment's first outcome is **infeasibility**, not a diffuse admissible
+measure. In every requested uniform-grid case, even the eigenvector LP
+relaxation is empty under H-SIGN. Consequently coordinate boxes, total-mass
+extrema, minimum-norm and maximum-entropy admissible measures, and distances
+of those nonexistent optimizers to a histogram are **undefined**. A negative
+LP upper bound must not be plotted as a recovered zero weight. No feasible
+SDP axis section exists on these uniform grids either.
+
+For cuts `G w+b>=0`, the displayed certificate is a nonnegative vector y
+with `G^T y<0` and `b^T y<0`. If `w>=0`, the inequalities would imply
+`0<=y^T(Gw+b)<0`. HiGHS proposes y using `sum y=1`; mpmath at 160 digits
+repairs its residual with the constant-test cut. A separate C verifier
+reconstructs the test vectors, their PSD positive combination, the
+pole/archimedean data, and every grid sensitivity in **1024-bit Arb balls**.
+All eleven strict contradictions certify. These certificates use no zero
+ordinates or RH. The normalization after the tiny repair differs slightly
+from one; these are certificate costs, not claimed optimal separating margins.
+
+| x | N | M (`h=L/M`, J=M−1) | certificate `b^T y` |
+|---:|---:|---:|---:|
+|13|20|64|−1.77218006360e−4|
+|13|20|128|−5.22841053980e−5|
+|13|20|256|−8.15313837417e−6|
+|13|40|64|−1.76874875812e−4|
+|13|40|128|−5.19936149409e−5|
+|13|40|256|−7.99157226501e−6|
+|13|60|64|−1.77041384553e−4|
+|13|60|128|−5.15631496452e−5|
+|13|60|256|−8.00093935025e−6|
+|25|60|128|−8.49321221948e−5|
+|25|134|128|−8.47189232157e−5|
+
+This is already a positional observation: the prescribed small displacement
+of all atoms onto any of these grids destroys feasibility. It is not a
+proof of global uniqueness of an unknown continuum support. A strictly
+positive finite true matrix permits sufficiently tiny changes in positions
+as well as weights, by the continuity bound in G1.
+
+### Feasible union grids and precision protocol
+
+The optional control uses the union of the grid with every `log n`,
+`2<=n<x`, not just the prime powers. It has M+10 positions at x=13.
+At x=25, `log 5=L/2` is already on the grid and is deduplicated, giving
+M+21 positions. The true visible measure is explicitly feasible; both true
+blocks are certified positive by 1280-bit Arb Cholesky. Its masses are
+4.260495442124349047 at x=13 and the value tabulated below at x=25.
+
+The box control deliberately distinguishes three convex sets: the full
+SDP, the LP with selected true eigenvector cuts, and the latter with sign
+constraints on the occupied true coordinates relaxed. We compute the
+third as an **outer bound for the first**: 20 smallest-eigenvector cuts
+at x=13, 30 at x=25; the other grid/composite weights remain nonnegative.
+This centered LP has the true displacement zero as a feasible initial
+basis. A deterministic 160-digit simplex avoids HiGHS tolerance artifacts
+when eigenvalues are below 1e−100. Every returned primal/dual basis is
+solved afresh and audited; the later 180-digit residual repair uses the
+independent constant-test bounds `0<=w_j<=H0_00/[2(1-t_j)]`.
+Thus the displayed bounds remain valid for the actual sign-constrained
+SDP even when the selected-cut relaxation is larger. These box numbers
+are high-precision numerics, not exact full-SDP projections or ball
+certificates. The uniform-grid **emptiness** results above are ball-certified.
+
+The eigenvectors are selected using true prime data. They are legal
+prime-side verification witnesses under the brief, but this selection is
+not a blind algorithm for discovering primes without using their locations.
+
+### Signed grid control — PROVED / NUMERICAL
+
+At x=13,N=20,M=64 the map has rank 41 and nullity 22. This rank also has
+an exact proof: group the 31 reflected pairs and midpoint by
+`c=cos(2πj/64)`. The invertible pair coordinates are the weighted sum
+`(1-t)w_t+t w_{1-t}` and difference `w_t-w_{1-t}`. The cosine block is a
+21-row Chebyshev Vandermonde on 32 distinct c's; the sine block is a
+20-row Chebyshev-U Vandermonde on 31 distinct c's with nonzero sine
+factors. Their ranks add. Symmetric pair perturbations have zero sine
+moments and give 32 cosine unknowns against 21 independent equations;
+every coordinate participates in a null vector, by Vandermonde independence.
+
+The script constructs signed weights with `M w=-M(H0)+M(I)`, giving
+`H(w)=I` with residual 8.90e−162 at 160 digits (seven negative weights).
+Every weight box is `(-∞,+∞)`. Surjectivity makes the projected set the
+entire translated positive kinematic cone: each diagonal prime moment
+has interval `[-a_n^0,+∞)` and each sine moment `(-∞,+∞)`. To attain the
+diagonal lower endpoint cancel all H0 entries and choose a diagonal PSD
+remainder with that diagonal zero; any sine datum can be made feasible
+by adding a sufficiently large identity. Thus projecting to moments
+removes the kernel ambiguity but does **not** restore bounded boxes.
