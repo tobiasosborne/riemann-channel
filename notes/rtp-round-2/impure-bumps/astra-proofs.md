@@ -56,3 +56,54 @@ Proof: the transform of `f^* * g` is `overline(hat f(conj z)) hat g(z)`; apply t
 A certified negative eigenvalue of the true matrix therefore gives a smooth compact test function with negative Weil value and refutes RH. This is precisely `metric-as-state.md` §7.2 on the impure lattice class. Positivity of this restricted family is necessary, not claimed sufficient for RH. The review's mpmath real-space checks are independent numerical evidence at their listed widths, not ball certificates of all impure widths. No unconditional all-width positivity theorem is claimed here.
 
 Even overlapping translates are linearly independent: a relation transforms into the nonzero entire bump transform times an exponential polynomial. The polynomial vanishes on an interval, hence identically, and distinct exponents force every coefficient to vanish. The L2 Gram matrix is `H_ab=R_delta(D_ab)/N_delta`; the generalised problem Gv=lambda Hv would be a different observable from A2's coefficient eigenvector.
+
+## I2. What the channel measures; quantitative bounds (SHARPENED; PROVED)
+
+**Proposition I2a (finite affine prime response, H-test).** Keep all positions log k, the lattice and delta fixed. For each prime q define
+
+`B_q=sum_(m>=1) log(q) q^(-m/2) P_(q^m)`.
+
+Then `G(theta)=pole-arch-sum_q theta_q B_q`, with only finitely many q. Equivalently its entries are affine functions of the independent weights `w_k=Lambda(k)/sqrt(k)` (linear after subtracting pole-arch); when a common local amplitude is varied they are affine in theta_q. Consequently an external prime's first-order contribution is its explicit-formula mass sampled near lattice ratios, not a correlation intrinsic to the places 2 and 3. This dependence is *exactly affine*, not merely first order. Eigenvalues and eigenvectors respond nonlinearly. The pattern matrices are generally high-rank, as I1 proves.
+
+*Proof.* Substitute the full finite prime sum and group powers by their unique base prime. The maximum power is bounded by exp(D_max+2delta), proving finiteness. With a simple normalised eigenpair `(lambda,v)`, differentiation gives
+
+`d lambda/d theta_q = -v* B_q v`,
+`d v/d theta_q = sum_(j>0) v_j (v_j* (-B_q)v)/(lambda-lambda_j)`, in the gauge v*v'=0.
+
+Mixed pole and archimedean entries remain genuine couplings of the chosen coordinates. Mixed leakage from the primes 2 and 3 also remains: the brief's exclusion of those first-order terms is false. Second-order spectral terms include products of local and external perturbations divided by gaps; they are spectral interactions of these data, not independent new arithmetic input. Removing one external prime means adding its full B_q, including any axis entries. Such a modified form need not be positive because B_q is not positive semidefinite.
+
+**Proposition I2b (rotation bounds, H-gap and H-small).** Set `Q=I-v0 v0*`, `B=Q(K-lambda0)Q` on ran Q, `b=QMv0`, `eta=||b||`, and `W=lambda_max(K)-lambda0`. Choose the ground vector v of K+M with `a=<v0,v>>0`; write v=a v0+u. Weyl bounds give `|Delta lambda|<=epsilon`, and
+
+`u=-a [B+QMQ-Delta lambda]^-1 b`.
+
+Thus, with t=||u||/a,
+
+`eta/(W+2epsilon) <= t <= eta/(g-2epsilon)`.
+
+Since `||u||^2=t^2/(1+t^2)`, this yields two-sided bounds for departure from the fixed v0. For any bipartition across which v0 is a product, its Schmidt defect obeys
+
+`defect(v) <= ||u||^2 <= eta^2/((g-2epsilon)^2+eta^2)`.
+
+*Proof.* Project the eigenvalue equation by Q and use that the inverse bracket is positive definite with spectrum between g-2epsilon and W+2epsilon. Compare its action on b using its extreme singular values. The best product overlap is at least the overlap with v0. Simplicity of the perturbed ground follows from g-2epsilon>0.
+
+There is no positive lower Schmidt bound in terms of eta and g alone: a perturbation `M_L tensor I` rotates a local ground vector while leaving the full ground vector a product. This refutes that reading of the brief's requested bound.
+
+**Proposition I2c (a finite lower bound that detects entanglement).** At a chosen cut, express the normalised coefficient vector as a matrix in local orthonormal bases beginning with the factors of v0:
+
+`C = [[a, y*], [x, Z]]`, `a>0`; let `T=Z-x y*/a`.
+
+If `a>=||T||_2`, then
+
+`||T||_F / [(1+||x||/a)(1+||y||/a)] <= sqrt(defect(v)) <= ||T||_F`.
+
+The upper bound remains valid without the displayed hypothesis. These are finite, non-asymptotic bounds; a lower bound exceeding sqrt(0.1) proves the requested O(1) coefficient observable. The condition holds, for example, under `epsilon<g/4`: I2b gives ||u||<1/sqrt(5), a>2/sqrt(5), and `||T||<=||u||+||u||^2/a<a`.
+
+*Proof.* The Schmidt defect is the squared Frobenius distance from C to the matrices of rank at most one. The rank-one matrix `[[a,y*],[x,xy*/a]]` proves the upper bound. Multiplication by `L=[[1,0],[-x/a,I]]` on the left and `R=[[1,-y*/a],[0,I]]` on the right takes C to diag(a,T). If a>=||T||_2, the squared distance of this diagonal matrix from rank one is ||T||_F^2, by the singular-value decomposition. For every rank-one C1, `||L(C-C1)R||_F<=||L||_2||R||_2||C-C1||_F`. Finally ||L||<=1+||x||/a and ||R||<=1+||y||/a. Infimise.
+
+For an explicitly small parameter s, `G(s)=K+sM`, write `z=B^-1 QMv0` and let `N=(I-|v_L><v_L|) tensor (I-|v_R><v_R|)` project normal to the product tangent space. Analytic simple-eigenpair perturbation and I2c give
+
+`defect(v(s)) = s^2 ||Nz||^2 + O(s^3)`.
+
+Indeed x,y,Z are O(s), a=1+O(s^2), and `Z=-s Nz+O(s^2)`; therefore T=-s Nz+O(s^2), while the two norm bounds differ by a factor 1+O(s). This is the precise quadratic law, with the normal excitation rather than eta as its coefficient. It does not force an O(1) defect at finite width. At the measured crossings we additionally evaluate the finite I2c bounds, without pretending H-small holds if its norm test fails.
+
+**Log-det statement (PROVED).** Where K and G are positive definite, `log det K-log det G` is a log-det gap. K is a Kronecker sum, not the direct sum of covariance principal blocks corresponding to a partition of variables. The Gaussian identity of A1.1(4), `2I=log det G_L+log det G_R-log det G`, therefore does not identify this gap as mutual information. It has no general nonnegativity guarantee. If K is indefinite, neither an absolute determinant nor an even number of negative eigenvalues repairs the covariance interpretation; we report the gap as undefined.

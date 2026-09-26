@@ -1,0 +1,252 @@
+RTP-2 lane L; codex:gpt-6-astra; no numerical zeros; deterministic
+CASE x=13 N=20 m=11 mp_dps=200 arb_bits=1280
+PASS ball Cholesky certifies both true finite blocks positive
+PASS prime-cutoff split reproduced, error=5.43e-200
+SPECTRUM eps=1.566107855e-39 lambda_m=2.417251944e-15 lambda_mplus1=1.26722226e-13
+PASS LP n=2 sign=+1: residual=3.1e-205, min_reduced=-2.3e-218, gap=3.3e-219
+PASS LP n=2 sign=-1: residual=5.7e-206, min_reduced=-1.4e-221, gap=2.3e-225
+WIDTH n=2 LP=2.9844301186e-25 lower=-2.97993504e-25 upper=4.495078117e-28 highs_width=6.80584e-14
+PASS LP n=3 sign=+1: residual=7.4e-203, min_reduced=-1.4e-221, gap=2.8e-222
+PASS LP n=3 sign=-1: residual=5.2e-204, min_reduced=-2.3e-218, gap=3.0e-223
+WIDTH n=3 LP=1.76226118295e-23 lower=-1.124857179e-25 upper=1.751012611e-23 highs_width=1.73211e-14
+PASS LP n=4 sign=+1: residual=3.5e-202, min_reduced=-2.3e-218, gap=5.1e-220
+PASS LP n=4 sign=-1: residual=8.1e-201, min_reduced=-1.4e-221, gap=1.1e-219
+WIDTH n=4 LP=1.52587759303e-21 lower=-1.502951174e-21 upper=2.292641936e-23 highs_width=4.36825e-13
+PASS LP n=5 sign=+1: residual=2.4e-198, min_reduced=-1.4e-221, gap=3.7e-218
+PASS LP n=5 sign=-1: residual=6.5e-201, min_reduced=-2.3e-218, gap=3.5e-220
+WIDTH n=5 LP=1.43346996146e-19 lower=-4.028477989e-21 upper=1.393185182e-19 highs_width=6.17571e-12
+PASS LP n=6 sign=+1: residual=7.6e-199, min_reduced=-2.3e-218, gap=9.6e-217
+PASS LP n=6 sign=-1: residual=1.1e-196, min_reduced=-1.4e-221, gap=5.0e-218
+WIDTH n=6 LP=1.36252636287e-17 lower=-1.299822372e-17 upper=6.270399125e-19 highs_width=1.93213e-10
+PASS LP n=7 sign=+1: residual=9.7e-196, min_reduced=-1.4e-221, gap=6.2e-215
+PASS LP n=7 sign=-1: residual=1.9e-197, min_reduced=-2.3e-218, gap=2.9e-216
+WIDTH n=7 LP=1.28925863797e-15 lower=-8.923896553e-17 upper=1.200019672e-15 highs_width=6.98175e-10
+PASS LP n=8 sign=+1: residual=1.6e-195, min_reduced=-2.3e-218, gap=2.8e-214
+PASS LP n=8 sign=-1: residual=3.1e-193, min_reduced=-1.4e-221, gap=1.5e-211
+WIDTH n=8 LP=1.23496401592e-13 lower=-1.113485864e-13 upper=1.214781524e-14 highs_width=5.66635e-10
+PASS LP n=9 sign=+1: residual=3.2e-191, min_reduced=-1.4e-221, gap=5.3e-210
+PASS LP n=9 sign=-1: residual=8.7e-194, min_reduced=-2.3e-218, gap=1.3e-209
+WIDTH n=9 LP=1.25919679207e-11 lower=-1.69476183e-12 upper=1.089720609e-11 highs_width=6.111e-09
+PASS LP n=10 sign=+1: residual=2.4e-192, min_reduced=-2.3e-218, gap=2.0e-207
+PASS LP n=10 sign=-1: residual=9.3e-189, min_reduced=-1.4e-221, gap=4.9e-207
+WIDTH n=10 LP=1.51365465373e-9 lower=-1.241387248e-9 upper=2.72267406e-10 highs_width=1.98942e-07
+PASS LP n=11 sign=+1: residual=1.5e-187, min_reduced=-1.4e-221, gap=4.3e-206
+PASS LP n=11 sign=-1: residual=7.6e-190, min_reduced=-2.3e-218, gap=1.0e-206
+WIDTH n=11 LP=2.6659994004e-7 lower=-6.347508903e-8 upper=2.03124851e-7 highs_width=9.7213e-06
+PASS LP n=12 sign=+1: residual=9.6e-188, min_reduced=-2.3e-218, gap=1.2e-202
+PASS LP n=12 sign=-1: residual=3.2e-184, min_reduced=-1.4e-221, gap=0.0
+WIDTH n=12 LP=0.000125286570504 lower=-8.532668285e-5 upper=3.995988765e-5 highs_width=0.00113501
+PASS ALL supported duals solved and certified nonnegative in 1280-bit balls
+CERT 0 1 1 [2.97993504048483947000662478507e-25 +/- 8.09e-56]
+CERT 0 -1 1 [4.49507811653075259563114518609e-28 +/- 9.96e-59]
+CERT 1 1 1 [1.12485717889433515764286062148e-25 +/- 1.11e-56]
+CERT 1 -1 1 [1.75101261116558013146858635130e-23 +/- 1.66e-53]
+CERT 2 1 1 [1.50295117367775073478515515402e-21 +/- 4.38e-51]
+CERT 2 -1 1 [2.29264193569134478301730776855e-23 +/- 4.97e-53]
+CERT 3 1 1 [4.02847798894895167393500482595e-21 +/- 1.61e-51]
+CERT 3 -1 1 [1.39318518156765360959634054697e-19 +/- 4.45e-49]
+CERT 4 1 1 [1.29982237161888122690453099924e-17 +/- 1.97e-48]
+CERT 4 -1 1 [6.27039912528949943233776124083e-19 +/- 1.60e-50]
+CERT 5 1 1 [8.92389655341717939063816081871e-17 +/- 8.06e-48]
+CERT 5 -1 1 [1.20001967243612647396979208689e-15 +/- 4.96e-45]
+CERT 6 1 1 [1.11348586351922449206215554584e-13 +/- 1.15e-43]
+CERT 6 -1 1 [1.21478152401305342872726433545e-14 +/- 2.71e-44]
+CERT 7 1 1 [1.69476183008893263759093067813e-12 +/- 2.01e-42]
+CERT 7 -1 1 [1.08972060906195789538748793947e-11 +/- 4.78e-41]
+CERT 8 1 1 [1.24138724768510878098063135837e-9 +/- 8.32e-40]
+CERT 8 -1 1 [2.72267406041915001545589243929e-10 +/- 2.27e-40]
+CERT 9 1 1 [6.34750890328147060169259316143e-8 +/- 1.04e-38]
+CERT 9 -1 1 [2.03124851007643364206906053941e-7 +/- 4.91e-37]
+CERT 10 1 1 [8.53266828492473415277674962561e-5 +/- 2.12e-35]
+CERT 10 -1 1 [3.99598876546455566983454562496e-5 +/- 3.56e-35]
+CASE x=13 N=40 m=11 mp_dps=200 arb_bits=1280
+PASS ball Cholesky certifies both true finite blocks positive
+PASS prime-cutoff split reproduced, error=1.53e-199
+SPECTRUM eps=9.462809848e-54 lambda_m=8.156818251e-25 lambda_mplus1=1.072626939e-22
+PASS LP n=2 sign=+1: residual=1.3e-206, min_reduced=-8.6e-233, gap=1.2e-230
+PASS LP n=2 sign=-1: residual=2.1e-207, min_reduced=-1.0e-230, gap=9.2e-238
+WIDTH n=2 LP=2.33295426546e-36 lower=-2.33162867e-36 upper=1.325595552e-39 highs_width=5.34958e-14
+PASS LP n=3 sign=+1: residual=1.6e-203, min_reduced=-1.0e-230, gap=1.1e-232
+PASS LP n=3 sign=-1: residual=1.2e-203, min_reduced=-8.6e-233, gap=1.3e-234
+WIDTH n=3 LP=1.6675667694e-34 lower=-4.296455551e-37 upper=1.663270314e-34 highs_width=1.0366e-12
+PASS LP n=4 sign=+1: residual=2.5e-202, min_reduced=-8.6e-233, gap=4.6e-228
+PASS LP n=4 sign=-1: residual=2.6e-201, min_reduced=-1.0e-230, gap=1.9e-231
+WIDTH n=4 LP=2.04841558639e-32 lower=-2.034774779e-32 upper=1.364080757e-34 highs_width=8.8721e-13
+PASS LP n=5 sign=+1: residual=5.3e-198, min_reduced=-1.0e-230, gap=2.1e-229
+PASS LP n=5 sign=-1: residual=2.7e-200, min_reduced=-8.6e-233, gap=5.6e-229
+WIDTH n=5 LP=3.36052992249e-30 lower=-4.646137873e-32 upper=3.314068544e-30 highs_width=1.89008e-12
+PASS LP n=6 sign=+1: residual=5.8e-198, min_reduced=-8.6e-233, gap=3.6e-224
+PASS LP n=6 sign=-1: residual=1.1e-196, min_reduced=-1.0e-230, gap=2.3e-223
+WIDTH n=6 LP=7.11364748262e-28 lower=-6.934068252e-28 upper=1.795792311e-29 highs_width=4.17284e-14
+PASS LP n=7 sign=+1: residual=4.3e-195, min_reduced=-1.0e-230, gap=2.1e-225
+PASS LP n=7 sign=-1: residual=3.3e-196, min_reduced=-8.6e-233, gap=0.0
+WIDTH n=7 LP=1.97726327132e-25 lower=-8.370469485e-27 upper=1.893558576e-25 highs_width=7.57339e-14
+PASS LP n=8 sign=+1: residual=8.1e-194, min_reduced=-8.6e-233, gap=3.4e-222
+PASS LP n=8 sign=-1: residual=6.2e-191, min_reduced=-1.0e-230, gap=2.2e-219
+WIDTH n=8 LP=7.63373182491e-23 lower=-7.1233676e-23 upper=5.10364225e-24 highs_width=1.51856e-13
+PASS LP n=9 sign=+1: residual=3.0e-188, min_reduced=-1.0e-230, gap=5.5e-221
+PASS LP n=9 sign=-1: residual=4.7e-191, min_reduced=-8.6e-233, gap=0.0
+WIDTH n=9 LP=4.55263078044e-20 lower=-4.603278363e-21 upper=4.092302944e-20 highs_width=1.57525e-12
+PASS LP n=10 sign=+1: residual=5.0e-188, min_reduced=-8.6e-233, gap=0.0
+PASS LP n=10 sign=-1: residual=4.3e-185, min_reduced=-1.0e-230, gap=2.9e-212
+WIDTH n=10 LP=5.10293123934e-17 lower=-4.345649605e-17 upper=7.572816343e-18 highs_width=5.93167e-11
+PASS LP n=11 sign=+1: residual=7.4e-182, min_reduced=-1.0e-230, gap=1.2e-212
+PASS LP n=11 sign=-1: residual=3.3e-185, min_reduced=-8.6e-233, gap=4.3e-213
+WIDTH n=11 LP=1.61023177117e-13 lower=-3.451366621e-14 upper=1.265095109e-13 highs_width=4.32824e-09
+PASS LP n=12 sign=+1: residual=3.7e-181, min_reduced=-8.6e-233, gap=4.3e-209
+PASS LP n=12 sign=-1: residual=7.1e-177, min_reduced=-1.0e-230, gap=2.1e-208
+WIDTH n=12 LP=4.24942711539e-9 lower=-2.923339221e-9 upper=1.326087894e-9 highs_width=2.70155e-06
+PASS ALL supported duals solved and certified nonnegative in 1280-bit balls
+CERT 0 1 1 [2.33162866990739865620242194847e-36 +/- 2.63e-66]
+CERT 0 -1 1 [1.32559555163020036232041800115e-39 +/- 3.91e-69]
+CERT 1 1 1 [4.29645555091921284812364331083e-37 +/- 2.67e-67]
+CERT 1 -1 1 [1.66327031384518355122851972900e-34 +/- 2.14e-64]
+CERT 2 1 1 [2.03477477882008884487718427088e-32 +/- 4.61e-62]
+CERT 2 -1 1 [1.36408075679213705428586238810e-34 +/- 4.26e-64]
+CERT 3 1 1 [4.64613787266047029418115531454e-32 +/- 1.55e-62]
+CERT 3 -1 1 [3.31406854376309510791867610235e-30 +/- 1.57e-60]
+CERT 4 1 1 [6.93406825156881494232639739085e-28 +/- 2.95e-58]
+CERT 4 -1 1 [1.79579231055388588485874914869e-29 +/- 1.29e-59]
+CERT 5 1 1 [8.37046948489994070971352697998e-27 +/- 3.42e-57]
+CERT 5 -1 1 [1.89355857646935233508467392289e-25 +/- 5.43e-57]
+CERT 6 1 1 [7.12336759991201346879960063091e-23 +/- 8.76e-54]
+CERT 6 -1 1 [5.10364224995736262749239545826e-24 +/- 4.46e-56]
+CERT 7 1 1 [4.60327836335584338822692077976e-21 +/- 2.41e-51]
+CERT 7 -1 1 [4.09230294410905257207011905626e-20 +/- 1.24e-50]
+CERT 8 1 1 [4.34564960508961896027588047016e-17 +/- 3.97e-47]
+CERT 8 -1 1 [7.57281634251594328172459694124e-18 +/- 6.3e-50]
+CERT 9 1 1 [3.45136662132216815633824782751e-14 +/- 4.93e-44]
+CERT 9 -1 1 [1.26509510903761368749907991945e-13 +/- 2.49e-43]
+CERT 10 1 1 [2.92333922138262234440988759709e-9 +/- 4.72e-40]
+CERT 10 -1 1 [1.32608789401179616457570186165e-9 +/- 9.65e-40]
+CASE x=13 N=56 m=11 mp_dps=200 arb_bits=1280
+PASS ball Cholesky certifies both true finite blocks positive
+PASS prime-cutoff split reproduced, error=1.9e-199
+SPECTRUM eps=1.95537724e-58 lambda_m=8.510881524e-27 lambda_mplus1=2.054916723e-24
+PASS LP n=2 sign=+1: residual=2.9e-206, min_reduced=-1.6e-232, gap=3.5e-236
+PASS LP n=2 sign=-1: residual=2.4e-207, min_reduced=-9.0e-235, gap=7.7e-240
+WIDTH n=2 LP=1.19265552404e-38 lower=-1.192369485e-38 upper=2.860393722e-42 highs_width=1.23757e-14
+PASS LP n=3 sign=+1: residual=6.8e-203, min_reduced=-9.0e-235, gap=5.7e-234
+PASS LP n=3 sign=-1: residual=1.4e-203, min_reduced=-1.6e-232, gap=9.6e-236
+WIDTH n=3 LP=8.63491274991e-37 lower=-9.4660628e-40 upper=8.625446687e-37 highs_width=2.01146e-13
+PASS LP n=4 sign=+1: residual=4.3e-202, min_reduced=-1.6e-232, gap=3.6e-231
+PASS LP n=4 sign=-1: residual=7.6e-201, min_reduced=-9.0e-235, gap=9.2e-233
+WIDTH n=4 LP=1.08788766628e-34 lower=-1.084761936e-34 upper=3.125730487e-37 highs_width=1.41724e-12
+PASS LP n=5 sign=+1: residual=9.0e-199, min_reduced=-9.0e-235, gap=1.2e-226
+PASS LP n=5 sign=-1: residual=1.0e-200, min_reduced=-1.6e-232, gap=5.1e-226
+WIDTH n=5 LP=1.86685265344e-32 lower=-1.136747589e-34 upper=1.855485178e-32 highs_width=1.48288e-11
+PASS LP n=6 sign=+1: residual=1.2e-198, min_reduced=-1.6e-232, gap=4.9e-227
+PASS LP n=6 sign=-1: residual=9.2e-197, min_reduced=-9.0e-235, gap=3.2e-232
+WIDTH n=6 LP=4.25126008489e-30 lower=-4.202621316e-30 upper=4.863876907e-32 highs_width=7.4752e-15
+PASS LP n=7 sign=+1: residual=1.7e-193, min_reduced=-9.0e-235, gap=2.4e-223
+PASS LP n=7 sign=-1: residual=1.1e-195, min_reduced=-1.6e-232, gap=4.7e-225
+WIDTH n=7 LP=1.32185886049e-27 lower=-2.635439513e-29 upper=1.295504465e-27 highs_width=3.76827e-14
+PASS LP n=8 sign=+1: residual=8.5e-194, min_reduced=-1.6e-232, gap=8.8e-224
+PASS LP n=8 sign=-1: residual=2.1e-190, min_reduced=-9.0e-235, gap=9.1e-224
+WIDTH n=8 LP=6.02614145758e-25 lower=-5.826641171e-25 upper=1.995002867e-26 highs_width=6.67732e-12
+PASS LP n=9 sign=+1: residual=3.1e-188, min_reduced=-9.0e-235, gap=2.6e-219
+PASS LP n=9 sign=-1: residual=1.7e-191, min_reduced=-1.6e-232, gap=6.9e-223
+WIDTH n=9 LP=4.57662767246e-22 lower=-2.443353338e-23 upper=4.332292339e-22 highs_width=2.24797e-13
+PASS LP n=10 sign=+1: residual=3.2e-188, min_reduced=-1.6e-232, gap=2.4e-215
+PASS LP n=10 sign=-1: residual=4.2e-185, min_reduced=-9.0e-235, gap=2.7e-220
+WIDTH n=10 LP=7.28310686888e-19 lower=-6.664163221e-19 upper=6.18943648e-20 highs_width=7.56516e-12
+PASS LP n=11 sign=+1: residual=1.6e-182, min_reduced=-9.0e-235, gap=6.6e-209
+PASS LP n=11 sign=-1: residual=2.9e-184, min_reduced=-1.6e-232, gap=2.3e-215
+WIDTH n=11 LP=3.86003656414e-15 lower=-5.250602098e-16 upper=3.334976354e-15 highs_width=8.88769e-10
+PASS LP n=12 sign=+1: residual=4.0e-180, min_reduced=-1.6e-232, gap=1.9e-211
+PASS LP n=12 sign=-1: residual=2.2e-177, min_reduced=-9.0e-235, gap=1.7e-208
+WIDTH n=12 LP=2.32801264888e-10 lower=-1.800908206e-10 upper=5.271044427e-11 highs_width=7.52662e-07
+PASS ALL supported duals solved and certified nonnegative in 1280-bit balls
+CERT 0 1 1 [1.19236948466902170054077839636e-38 +/- 1.85e-68]
+CERT 0 -1 1 [2.86039372210049253672322859419e-42 +/- 3.58e-72]
+CERT 1 1 1 [9.46606280046091956386586434598e-40 +/- 4.58e-70]
+CERT 1 -1 1 [8.62544668710540218638238794652e-37 +/- 9.88e-68]
+CERT 2 1 1 [1.08476193579304855001344013507e-34 +/- 1.64e-64]
+CERT 2 -1 1 [3.12573048711282106683650639966e-37 +/- 4.72e-67]
+CERT 3 1 1 [1.13674758883281308357963949741e-34 +/- 4.71e-64]
+CERT 3 -1 1 [1.85548517755492806732820170524e-32 +/- 3.21e-62]
+CERT 4 1 1 [4.20262131582392455162562220524e-30 +/- 4.53e-60]
+CERT 4 -1 1 [4.86387690702411651458009784469e-32 +/- 2.65e-62]
+CERT 5 1 1 [2.63543951282656447697801620173e-29 +/- 4.86e-59]
+CERT 5 -1 1 [1.29550446536623631875579459103e-27 +/- 1.57e-58]
+CERT 6 1 1 [5.82664117087699488612058719320e-25 +/- 7.71e-56]
+CERT 6 -1 1 [1.99500286705028894202201201519e-26 +/- 2.82e-56]
+CERT 7 1 1 [2.44335333769240850581965861778e-23 +/- 2.04e-53]
+CERT 7 -1 1 [4.33229233869352247436067470165e-22 +/- 1.69e-52]
+CERT 8 1 1 [6.66416322085334968062194607839e-19 +/- 4.58e-49]
+CERT 8 -1 1 [6.18943648024127983388697607612e-20 +/- 3.01e-50]
+CERT 9 1 1 [5.25060209828262700196863628806e-16 +/- 4.64e-46]
+CERT 9 -1 1 [3.33497635430744317066903025324e-15 +/- 1.94e-45]
+CERT 10 1 1 [1.80090820618520965015436480190e-10 +/- 3.81e-40]
+CERT 10 -1 1 [5.27104442693150485658459671655e-11 +/- 3.84e-41]
+CASE x=13 N=60 m=11 mp_dps=200 arb_bits=1280
+PASS ball Cholesky certifies both true finite blocks positive
+PASS prime-cutoff split reproduced, error=1.9e-199
+SPECTRUM eps=1.013562907e-58 lambda_m=7.221034348e-27 lambda_mplus1=1.677879734e-24
+PASS LP n=2 sign=+1: residual=5.8e-206, min_reduced=-1.4e-232, gap=2.0e-230
+PASS LP n=2 sign=-1: residual=3.1e-207, min_reduced=-1.1e-236, gap=3.6e-238
+WIDTH n=2 LP=1.00047232359e-38 lower=-1.000218605e-38 upper=2.537189988e-42 highs_width=7.18213e-17
+PASS LP n=3 sign=+1: residual=3.7e-203, min_reduced=-1.1e-236, gap=3.8e-236
+PASS LP n=3 sign=-1: residual=5.8e-204, min_reduced=-1.4e-232, gap=2.7e-234
+WIDTH n=3 LP=7.24563026562e-37 lower=-8.398643565e-40 upper=7.237231622e-37 highs_width=1.91439e-13
+PASS LP n=4 sign=+1: residual=2.1e-202, min_reduced=-1.4e-232, gap=1.6e-233
+PASS LP n=4 sign=-1: residual=1.4e-201, min_reduced=-1.1e-236, gap=1.1e-231
+WIDTH n=4 LP=9.13386922901e-35 lower=-9.106122784e-35 upper=2.774644467e-37 highs_width=1.02319e-13
+PASS LP n=5 sign=+1: residual=7.5e-199, min_reduced=-1.1e-236, gap=8.1e-231
+PASS LP n=5 sign=-1: residual=1.5e-200, min_reduced=-1.4e-232, gap=1.3e-227
+WIDTH n=5 LP=1.56905688547e-32 lower=-1.009927326e-34 upper=1.558957612e-32 highs_width=1.12365e-13
+PASS LP n=6 sign=+1: residual=1.8e-198, min_reduced=-1.4e-232, gap=4.9e-229
+PASS LP n=6 sign=-1: residual=3.5e-196, min_reduced=-1.1e-236, gap=6.3e-227
+WIDTH n=6 LP=3.5794174726e-30 lower=-3.53614564e-30 upper=4.327183234e-32 highs_width=6.61584e-15
+PASS LP n=7 sign=+1: residual=1.5e-193, min_reduced=-1.1e-236, gap=1.5e-225
+PASS LP n=7 sign=-1: residual=6.6e-196, min_reduced=-1.4e-232, gap=5.0e-225
+WIDTH n=7 LP=1.11610738764e-27 lower=-2.349667149e-29 upper=1.092610716e-27 highs_width=3.28278e-14
+PASS LP n=8 sign=+1: residual=1.0e-193, min_reduced=-1.4e-232, gap=1.4e-225
+PASS LP n=8 sign=-1: residual=1.2e-190, min_reduced=-1.1e-236, gap=6.2e-225
+WIDTH n=8 LP=5.11074841883e-25 lower=-4.932292671e-25 upper=1.784557474e-26 highs_width=6.35767e-12
+PASS LP n=9 sign=+1: residual=1.8e-187, min_reduced=-1.1e-236, gap=5.2e-220
+PASS LP n=9 sign=-1: residual=1.2e-190, min_reduced=-1.4e-232, gap=6.9e-223
+WIDTH n=9 LP=3.90849124816e-22 lower=-2.196817503e-23 upper=3.688809498e-22 highs_width=2.00141e-13
+PASS LP n=10 sign=+1: residual=8.0e-188, min_reduced=-1.4e-232, gap=5.8e-217
+PASS LP n=10 sign=-1: residual=6.4e-185, min_reduced=-1.1e-236, gap=1.8e-220
+WIDTH n=10 LP=6.28939892015e-19 lower=-5.728368579e-19 upper=5.610303407e-20 highs_width=6.76343e-12
+PASS LP n=11 sign=+1: residual=2.6e-181, min_reduced=-1.1e-236, gap=1.2e-212
+PASS LP n=11 sign=-1: residual=8.4e-185, min_reduced=-1.4e-232, gap=4.8e-212
+WIDTH n=11 LP=3.3962022332e-15 lower=-4.824678008e-16 upper=2.913734432e-15 highs_width=8.01205e-10
+PASS LP n=12 sign=+1: residual=5.7e-180, min_reduced=-1.4e-232, gap=1.9e-210
+PASS LP n=12 sign=-1: residual=5.0e-176, min_reduced=-1.1e-236, gap=3.7e-208
+WIDTH n=12 LP=2.12131770047e-10 lower=-1.624245761e-10 upper=4.970719392e-11 highs_width=6.91873e-07
+PASS ALL supported duals solved and certified nonnegative in 1280-bit balls
+CERT 0 1 1 [1.00021860458700483068653782847e-38 +/- 1.81e-68]
+CERT 0 -1 1 [2.53718998766951677375196420314e-42 +/- 4.82e-72]
+CERT 1 1 1 [8.39864356518189264735152366374e-40 +/- 2.59e-70]
+CERT 1 -1 1 [7.23723162205471936901236868766e-37 +/- 2.22e-67]
+CERT 2 1 1 [9.10612278434075963013009645546e-35 +/- 1.14e-65]
+CERT 2 -1 1 [2.77464446699414779862599492293e-37 +/- 4.31e-67]
+CERT 3 1 1 [1.00992732556301550111059805644e-34 +/- 4.85e-65]
+CERT 3 -1 1 [1.55895761221145477305756713775e-32 +/- 1.91e-63]
+CERT 4 1 1 [3.53614564026309336551458181689e-30 +/- 2.31e-60]
+CERT 4 -1 1 [4.32718323364480111516548362886e-32 +/- 2.25e-62]
+CERT 5 1 1 [2.34966714928226430425312884900e-29 +/- 4.00e-59]
+CERT 5 -1 1 [1.09261071614254957235157292980e-27 +/- 5.72e-58]
+CERT 6 1 1 [4.93229267138533326164424272874e-25 +/- 3.70e-55]
+CERT 6 -1 1 [1.78455747439883753131410849864e-26 +/- 4.02e-56]
+CERT 7 1 1 [2.19681750322724256244663728927e-23 +/- 3.82e-53]
+CERT 7 -1 1 [3.68880949783387212180733539890e-22 +/- 4.71e-52]
+CERT 8 1 1 [5.72836857949843630510801913389e-19 +/- 4.17e-51]
+CERT 8 -1 1 [5.61030340655811449397184890211e-20 +/- 4.47e-50]
+CERT 9 1 1 [4.82467800794095414476174286096e-16 +/- 2.03e-46]
+CERT 9 -1 1 [2.91373443240178028192225665650e-15 +/- 1.57e-45]
+CERT 10 1 1 [1.62424576122079237446928826083e-10 +/- 3.23e-40]
+CERT 10 -1 1 [4.97071939247787530885943233771e-11 +/- 4.87e-41]
+CASE x=17 N=81 m=15 mp_dps=200 arb_bits=1280
+PASS ball Cholesky certifies both true finite blocks positive
+PASS prime-cutoff split reproduced, error=9.55e-199
+SPECTRUM eps=2.537709355e-79 lambda_m=1.729398531e-34 lambda_mplus1=5.341694759e-32
+PASS LP n=2 sign=+1: residual=1.5e-204, min_reduced=-6.1e-238, gap=4.3e-243
+PASS LP n=2 sign=-1: residual=2.9e-206, min_reduced=-1.2e-240, gap=2.7e-250
+WIDTH n=2 LP=1.88491134138e-52 lower=-1.88468713e-52 upper=2.242114182e-56 highs_width=3.98637e-14
+PASS LP n=3 sign=+1: residual=5.1e-203, min_reduced=-1.2e-240, gap=2.8e-239
+PASS LP n=3 sign=-1: residual=5.4e-204, min_reduced=-6.1e-238, gap=2.3e-243
+WIDTH n=3 LP=1.31689934386e-50 lower=-7.07891609e-54 upper=1.316191452e-50 highs_width=4.87142e-16
+PASS LP n=4 sign=+1: residual=3.4e-202, min_reduced=-6.1e-238, gap=8.3e-240

@@ -169,3 +169,118 @@ In the above Loewner family the two old-to-new parity columns vanish simultaneou
 **Proof.** `c_{e,0}=√2 b_j/j=0` forces `b_j=0`. For `1<=i<=N`, the remaining entry is `2i b_i/(i²-j²)`. Its prefactor is nonzero, so every `b_i=0`. Conversely the displayed formulas make both columns zero if all these data vanish. This also covers `N=0`. For the unblocked addition of the pair `V_±j`, changing to parity bases is invertible, so vanishing of the full old-to-new block is equivalent. The statement is not that an isolated odd column can never vanish, nor that fixing `a_j` fixes both new parity diagonals while `b_j` varies. ∎
 
 **Relation to the extension disc.** A Toeplitz column `u(x)=bar(x)e_0+w` is a complex affine section of P1.1's ellipsoid; completing its square gives `c_K=-overline((W_K^{-1}w)_0)/(W_K^{-1})_{00}` in `report/sections/08g_weil_window_extension.tex:86–96,111–120`. The Loewner problem instead has one real parameter shared by two columns *and* two affine diagonals. The P1 proof does not establish all Toeplitz prediction/atom claims of `prop:extension-disc`, so that row is not upgraded here. The structured information deficit is `log[s_e(β_ME)s_o(β_ME)/(s_e(β_true)s_o(β_true))]>=0` when the true completion is positive definite; it need not be a mutual information with fixed marginals because these diagonals vary.
+
+## P2. What Baker does and does not grade
+
+### Hypothesis H-BAKER (named external input)
+
+If `λ_1,…,λ_r` are logarithms of nonzero algebraic numbers, linearly independent over `Q`, then `1,λ_1,…,λ_r` are linearly independent over `Q-bar`. This is the inhomogeneous linear-independence consequence of Baker's theorem (combining independence of algebraic logarithms with transcendence of every nonzero algebraic linear form). Standard reference: A. Baker, *Transcendental Number Theory* (1975), Chapter 2, linear forms in logarithms; theorem number **from memory, to be byte-cited**. We use only this stated consequence, not algebraic independence of logarithms or independence from `γ` and zeta values.
+
+### Proposition P2.1 — REFUTED (the proposed language and numerical blindness)
+
+Let `A` be the actual numbers named in `notes/metric-tomography/finite-prime-language.md:83–86`, including all logarithms of algebraic numbers. Then
+
+\[
+ L_S=\operatorname{span}_{\overline{\mathbb Q}}(1,A)=L_\varnothing
+ \quad\text{for every finite }S.
+\]
+
+In particular `log q∈L_S` even if `q∉S`. No `Q-bar`-linear map on `L_S` can both give `log p` coordinate one and give every archimedean generator coordinate zero.
+
+**Proof.** For every prime `p`, the number `p` is algebraic, so `log p∈A`. Adding these generators does not enlarge the span. For the second claim the same element `log p` would have to map both to one and zero. ∎
+
+This explicitly refutes the exclusion table at `finite-prime-language.md:116` and the implication at lines 151–152. Restricting the logarithms in `A` would not by itself settle independence from `γ` and all rational polygamma values. For example, `ψ(1)=-γ` and `ψ(1/2)=-γ-2 log 2` already put `log 2` in the span of the digamma values and `γ`. Thus even deleting the explicit “logs of algebraic numbers” does not repair this particular archimedean list. There is also a definitional inconsistency: the list at lines 85–86 does not explicitly contain `log π`, whereas lines 108–119 treat it as included. `π∈A` does not imply `log π∈A` in a vector space. We do not assert that it is outside the span; its claimed inclusion does not follow from the definition.
+
+### Proposition P2.2 — PROVED-conditional (H-BAKER): the genuine logarithmic direct sum
+
+Define the smaller numerical space
+
+\[
+ \mathcal B_S=\overline{\mathbb Q}\,1\ \oplus\
+ \overline{\mathbb Q}\,i\pi\ \oplus\
+ \bigoplus_{p\in S}\overline{\mathbb Q}\log p.
+                                                        \tag{P2.1}
+\]
+
+The indicated sum is direct. These spaces form an increasing filtration, and `B_S∩B_T=B_{S∩T}`. Each element of their union has a unique finite prime-coordinate vector. An element of `B_S` is **numerically q-blind** for `q∉S`, meaning its `log q` coordinate in `B_{S∪{q}}` is zero. This notion is narrower than any assertion about detecting zeros.
+
+**Proof.**
+
+1. Suppose `q_0 iπ+Σ q_p log p=0` with rational coefficients. Taking imaginary parts gives `q_0=0`. Clearing denominators in the remaining equation and exponentiating gives `prod p^{m_p}=1`, with integers `m_p`. Moving negative exponents to the other side and unique prime factorisation imply all `m_p=0`. Hence `iπ,log p` are `Q`-independent logarithms of the algebraic numbers `-1,p` (branch `log(-1)=iπ`).
+2. H-BAKER supplies independence after adjoining `1` and extending scalars to `Q-bar`. Uniqueness of coordinates follows. Apply this to the finite union `S∪T` to prove the intersection identity and the zero-coordinate claim. ∎
+
+A map from a full Weil value to these coordinates is **not** supplied by this theorem. It exists for its prime remainder under the next proposition. A formal external sum `A_formal⊕⊕_p Q-bar·[p]` has labels by construction, but evaluation in `C` is not injective: the archimedean symbol for `log p` and `[p]` have identical numerical value. These are provenance labels, not Baker coordinates of a number.
+
+### Proposition P2.3 — PROVED: why the point-mass theorem is undefined
+
+Use the CCM normalisation: if `g` is the logarithmic representative after the half-density change, set
+
+\[
+ F(y)=(g^**g)(y)=\int_{\mathbb R}\overline{g(x)}g(x+y)\,dx,
+ \quad g^*(x)=\overline{g(-x)}.
+\]
+
+This is the unitary version of the notebook's Mellin involution; the change `F(u)=u^{1/2}f(u)` is recorded in `refs/src/2511.22755/mc2arXiv.tex:430–450`. Then, with `c_R=log(4π)+γ` and `ρ(y)=e^{y/2}/(e^y-e^{-y})`,
+
+\[
+\begin{aligned}
+ W_{0,2}(F)&=\int_{\mathbb R}2\cosh(y/2)F(y)\,dy,\\
+ W_p(F)&=(\log p)\sum_{k\ge1}p^{-k/2}\{F(k\log p)+F(-k\log p)\},\\
+ W_{\mathbb R}(F)&=c_R F(0)+\int_0^\infty
+ [F(y)+F(-y)-2e^{-y/2}F(0)]\rho(y)\,dy,\\
+ Q(g)&=W_{0,2}(F)-W_{\mathbb R}(F)-\sum_pW_p(F).
+                                                        \tag{P2.2}
+\end{aligned}
+\]
+
+These formulas are direct changes of variables in CCM `:445–470`, not a new normalisation or a numerical implementation.
+
+**Proof of the obstruction.**
+
+1. For a nonzero finitely supported measure `μ=Σ c_n δ_{log n}`, combine coincident atoms first. Its convolution `μ* * μ` has at zero the positive mass `Σ|c_n|²`. Neither its value `F(0)` nor point evaluation at a coincident prime atom is defined as a function evaluation. Pairing an explicit-formula distribution with such a distribution has not been defined. The CCM domain is a function class (`:400–428`), not this measure class.
+2. At a nonzero rational displacement `D=log r`, `r>1` rational,
+
+\[
+ 2\cosh(D/2)=\sqrt r+1/\sqrt r\in\overline{\mathbb Q},\qquad
+ \rho(D)=\frac{\sqrt r}{r-r^{-1}}\in\overline{\mathbb Q}.
+\]
+
+There is **no extra factor of `D`** in either kernel. These algebraic off-diagonal kernel values do not define the diagonal or a product of coincident delta distributions. The pole, being a smooth kernel, can be paired with a measure; the whole Weil distribution cannot thereby be paired with it.
+3. The singularity is substantive. Choose a real even `φ∈C_c^∞(-1,1)` with `||φ||₂=1` and put `φ_δ(x)=δ^{-1/2}φ(x/δ)`. Write `R=φ* * φ`, so `R_δ(y)=R(y/δ)` and `R_δ(0)=1`. For one atom regularised by `φ_δ`, the interval `2δ<y<1` contributes
+`-2∫e^{-y/2}ρ(y)dy=log δ+O(1)` to `W_R`. On `0<y<2δ`, substitution `y=δt` and the smoothness `R(t)-1=O(t)` bound the regularised contribution uniformly; the tail past 1 is bounded. The pole is `O(δ)` and the prime terms vanish when `2δ<log 2`. Thus `Q(φ_δ)=log(1/δ)+O(1)→+∞`. For finitely many distinct translates, the diagonal coefficient becomes `Σ|c_n|²`; the other archimedean peaks are away from zero and are bounded, as are the finitely many admissible prime terms. There is no finite canonical point-mass value supplied by this limiting procedure. ∎
+
+A chosen subtraction of this divergence, or a chosen finite value for a formal diagonal, would define an additional renormalised model. Its arithmetic would depend on that prescription. We do not silently substitute such a model for `W`.
+
+### Theorem P2.4 — SHARPENED / PROVED-conditional (H-BAKER only for uniqueness): the exact prime remainder on admissible bumps
+
+Let `M` be a finite set of distinct `S`-smooth positive integers, `c_n∈Q-bar`, and `φ` a real even compactly supported smooth function with `||φ||₂=1`. Translate and scale it as above and set
+
+\[
+ g_\delta(x)=\sum_{n\in M}c_n\phi_\delta(x-\log n),\qquad
+ A_p(c)=\sum_{\substack{m,n\in M\ n/m=p^k,\ k\ge1}}
+ \frac{\overline{c_m}c_n+c_m\overline{c_n}}{p^{k/2}}.
+                                                        \tag{P2.3}
+\]
+
+Choose `δ>0` so that every peak of `F=g_δ* * g_δ`, supported within `2δ` of `log(n/m)`, meets a signed prime-power logarithm only when its centre is that logarithm; also ensure distinct centres are separated by more than `2δ`. Such a `δ` exists because there are finitely many ratio centres, finitely many prime powers in any fixed bounded neighbourhood of them, and positive distances between distinct points.
+
+Then the actual finite prime remainder satisfies
+
+\[
+ R_{\rm fin}(g_\delta):=Q(g_\delta)-W_{0,2}(F)+W_\mathbb R(F)
+       =-\sum_{p\in S}A_p(c)\log p\in\mathcal B_S.       \tag{P2.4}
+\]
+
+Its `p`-coordinate is **`-A_p(c)`** in the sign convention `Ψ=W02-WR-ΣWp`, whereas `Wp` has coordinate `+A_p(c)`. The support of this coordinate vector is the active prime content; it is contained in `S` and may be smaller by cancellation. It agrees with the arithmetic prime-content filtration of `metric-as-state.md:73–89` for the finite-place remainder, not with the uncorrected assertion at lines 66–71 that the restriction “contains no zeros”.
+
+**Proof.**
+
+1. Expanding the convolution gives `F(y)=Σ_{m,n}bar(c_m)c_n R_δ(y-log(n/m))`. At `y=k log p`, admissibility kills every summand except those with `n/m=p^k`, and each surviving autocorrelation factor equals one. At `-k log p` the conjugate terms occur. Therefore the coefficient of `log p` in (P2.2) is exactly (P2.3).
+2. A prime power ratio of `S`-smooth integers has its prime in `S`, by unique factorisation. Algebraic numbers are closed under conjugation and adjoining square roots, so `A_p(c)` is algebraic. Summing (P2.2) proves (P2.4); P2.2 makes the coefficients unique.
+3. If the prime comb weights are replaced by independent real parameters `t_p` with the pole and archimedean terms held fixed, the value on this family is `W02-WR-Σ A_p(c)t_p`, so every derivative with respect to `t_q`, `q∉S`, is zero. This is **operational blindness** to foreign comb weights. In particular the prime remainder is also numerically q-blind in (P2.1). Neither assertion follows merely from full values lying in the original `L_S`. ∎
+
+**Whole-value membership: exact hypotheses, not a blanket assertion.** Let `A_0⊂C` and put `U=span_Qbar(1,iπ,A_0)`. If a class of admissible test functions has algebraic local coefficients, no foreign local terms, and `W02-WR∈U`, then `Q(g)∈U+Σ_{p∈S}Q-bar log p`. Its local terms are numerical prime coordinates **only if** `U∩span_Qbar{log p:p prime}={0}` (or the corresponding finite-union version). This intersection hypothesis is not H-BAKER and is false for the `A` in the question. Without it, membership still holds but the coordinates need not be recoverable.
+
+For the notebook's bumps, membership of the archimedean integrals in its named `A` is **OPEN / unestablished**, as is algebraicity of the bump's exponential moment. For a real even bump the pole between translates at displacement `D` is `2 cosh(D/2)|∫φ_δ(x)e^{x/2}dx|²`; only the `2 cosh` factor is algebraic at a rational ratio. The diagonal contains `(log(4π)+γ)F(0)` **and** the integral in (P2.2); normalising `F(0)` does not evaluate that integral. The given exponential bump has no reduction to rational-argument polygamma values here. The Fourier-window formula itself involves `ψ(1/4-iπn/L)` and a Lerch function, not just rational arguments (`notes/zeta-spectral-triples/plan.md:84–107`). There is therefore no claimed nonzero point-mass class on which the requested whole-value theorem holds. The rigorous replacement on genuine smooth tests is (P2.4).
+
+**Other language corrections.** A finite Euler product at a rational argument is algebraic when defined. A Dirichlet polynomial at an arbitrary algebraic irrational argument need not have algebraic terms; a `Q-bar` vector space is not closed under exponentiation, multiplication, reciprocals, or arbitrary limits. The sweeping inclusion at `finite-prime-language.md:105–110` has not been proved by listing generators. Gauss's digamma formula may introduce logarithms of algebraic units as well as rational primes. None of these defects affects the finite matrix positivity theorem `thm:weil-positivity-finite`, which does not licence evaluating the analytic Weil distribution on delta functions.
