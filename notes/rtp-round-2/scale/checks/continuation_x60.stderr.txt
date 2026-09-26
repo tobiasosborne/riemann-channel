@@ -16,3 +16,8 @@ gap n=939 neg=1 seconds=219.092270
 row x=60 N=938 seconds=220.106504
 build x=60 N=978 seconds=0.969149
 factor n=979 p=5200 neg=0 seconds=17.447448
+iteration n=979 count=36 seconds=298.737971
+gap n=979 neg=1 seconds=318.272734
+row x=60 N=978 seconds=319.402143
+build x=60 N=1018 seconds=1.144575
+factor n=1019 p=5200 neg=0 seconds=24.000280

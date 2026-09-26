@@ -6,3 +6,9 @@ gap n=987 neg=1 seconds=172.302159
 row x=70 N=986 seconds=173.851602
 build x=70 N=1026 seconds=1.052251
 factor n=1027 p=4600 neg=0 seconds=0.000000
+iteration n=1027 count=40 seconds=130.518885
+gap n=1027 neg=1 seconds=260.884666
+row x=70 N=1026 seconds=262.104915
+build x=70 N=1066 seconds=1.581557
+factor n=1067 p=4600 neg=0 seconds=0.000000
+iteration n=1067 count=40 seconds=172.581484

@@ -8,6 +8,7 @@ import re,json,math
 import mpmath as mp
 import matplotlib
 matplotlib.use('Agg')
+matplotlib.rcParams['svg.hashsalt']='rtp2-scale'
 import matplotlib.pyplot as plt
 root=checks.parents[3];mp.mp.dps=60
 points=json.loads(checks.joinpath('points.json').read_text())

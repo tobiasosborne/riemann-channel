@@ -52,3 +52,12 @@ row x=85 N=1002 seconds=220.752996
 build x=85 N=1042 seconds=1.036708
 factor n=1043 p=5500 neg=0 seconds=0.000000
 iteration n=1043 count=48 seconds=166.615546
+gap n=1043 neg=1 seconds=257.941953
+row x=85 N=1042 seconds=259.097561
+build x=85 N=1082 seconds=1.328034
+factor n=1083 p=5500 neg=0 seconds=0.000000
+iteration n=1083 count=48 seconds=256.149090
+gap n=1083 neg=1 seconds=435.246193
+row x=85 N=1082 seconds=436.728076
+build x=85 N=1122 seconds=2.026745
+factor n=1123 p=5500 neg=0 seconds=0.000000
