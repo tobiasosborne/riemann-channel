@@ -9,9 +9,11 @@ TJO: use the codex quota before it resets, 100% RTP, up to four gpt-6-astra xhig
 finished, please no more codex usage in this session". Worklog `docs/worklog/2026-09-26.md`. Round directory
 `notes/rtp-round-2/` (brief, seven lane directories with `astra-brief.md` / `astra-proofs.md` / `progress.txt` /
 `session.id`, `quota.log`, `STOP`). Reviews `notes/reviews/rtp-round-2-*-2026-09-26.md` with scratch scripts.
-**Nothing registered; no shard yet; gate unchanged (8 Yoshida errors).** The branch `claude/project-familiarization-8gondy`
-(the tutorial "Weil Positivity, Contracted", 2026-09-26 morning, purely additive) is still unmerged; its
-`docs/worklog/2026-09-26.md` must be concatenated with this session's on merge.
+**Nothing registered; no shard yet.** Gate (corrected 2026-09-27): 13 errors, the 8 Yoshida rows and five round-2
+scripts not yet evidenced by a shard (`codex_quota.py`, `rtp2_blind_recovery.py`, `rtp2_grid_tomography.py`,
+`rtp2_impure_bumps.py`, `rtp2_lattice_box.py`); shard 08j's SHARD-SCRIPTS header clears the four `rtp2_*` ones. The
+branch `claude/project-familiarization-8gondy` (the tutorial "Weil Positivity, Contracted", 2026-09-26 morning) was
+merged into master on 2026-09-27 (next entry below; worklogs concatenated).
 
 **Infrastructure.** `scripts/codex_quota.py` (rate limits via `codex app-server`), `scripts/rtp2_watch.sh` (ten-minute
 checkpoint commits, reset detection), `rtp2_stop.sh` / `rtp2_adopt.sh` / `rtp2_map.sh` / `rtp2_launch.sh` /
@@ -95,7 +97,39 @@ Dirichlet and elliptic numerical rows; H-CONCENTRATION-TRANSFER as open), byte-c
 Waldschmidt, Hulthén, Carneiro–Chirre; regen, gate, rebuild report.pdf. (ii) Blind recovery: a REFUTE review of `notes/rtp-round-2/blind-recovery/lane.md` (unreviewed), then its row
 `num:rtp-grid-blind-recovery-certified` in 08j. (iii) LP/SDP width ratio at `x = 25` (port the reviewer's barrier to arb) to decide whether the 3.48-digit rate is the
 true box's. (iv) Finish lane S (`x = 60, 70, 85`; `zst/tools/rtp2_scale.c`, no codex needed) and the `8 pi` constant for
-weight two with `x > 250` (lift the driver cap). (v) Merge `claude/project-familiarization-8gondy`. (vi) Yoshida source.
+weight two with `x > 250` (lift the driver cap). (v) Merge `claude/project-familiarization-8gondy`: DONE 2026-09-27. (vi) Yoshida source.
+
+## Session 2026-09-26: tutorial "Weil Positivity, Contracted" (Weil positivity in tensor-network terms), Opus lanes, REFUTE review
+
+TJO: a tutorial artifact mirroring *The Weil Functional* that poses Weil positivity in MPS terms example by example
+(permutations, Ihara–Bass, ...), with animations and interactive demos, Opus helping. Built in
+`notes/weil-tn-tutorial/` (sources: `index.html`, `theme.css`, `core.js`, `tn.js`, `demos-*.js`, `data-riemann.js`;
+`build.py` → the published single file `weil-positivity-contracted.html`; `CONTRACT.md`; lane reports and numpy
+checks under `lanes/`, REFUTE review `lanes/review.md`). Published as a Claude artifact: https://claude.ai/artifact/RtYb5hLPebAZcnrCUUTz9m (Opus REFUTE review of the prose: 102 statements, 58 VALID / 35 MINOR / 9 INVALID, all applied before publication).
+
+**The spine of the page** (all quoted claims are `proved` rows): the Weil/Toeplitz form is the Gram matrix of open
+transfer strips, `T_{jk} = Tr((E^j)^♯ E^k) = t_{k−j}`, in a metric `G` with `E^*GE = G` (`prop:ccm-tn-operator-gram`);
+such a metric exists iff the retained transfer is semisimple on the circle (`prop:hp-inner-product-discrete`);
+positivity alone is the one-sided bound (`thm:weil-positivity-finite`), the reflection symmetry makes it the circle
+(`thm:weil-duality-pairing`). Stations: permutation with point letters (shard 03b; native metric), shift of finite
+type (the pole; the golden mean passes positivity and fails RH; `1 + C_4` satisfies both), regular graph (edge
+reversal = inverse pairing = functional equation; Ramanujan = Weil positivity, while the Hilbert–Pólya metric on the
+retained edge space also needs semisimplicity, which fails exactly at `a = ±2√q`; Huang's `h_k`), Kraus family on a 16-dimensional edge lift (the Kraus dichotomy, Hastings' bound), Artin–Schreier
+(`EE† = q`, RH manifest, sign law `thm:as-sign-law`), zeta (strips known from the explicit formula, metric unknown;
+lattice-bump Gram from primes vs zeros; the x = 13 CCM window from the notebook's data).
+
+**Worker and reviewer findings worth keeping.** The reviewer's counterexamples: the 5-regular `C_3 × C_6 × K_2` is Ramanujan with `a = ±2√q = ±4`, its Hashimoto matrix has 2×2 Jordan blocks at `±2` and a positive Weil form (`λ_min(T_16) = +0.31`), so no Hilbert–Pólya metric; a `Z_24` unitary family with letters `P(±1), P(±11)` meets Hastings' bound with equality and has Jordan blocks of `T` at `√3`. `Ad(P_i)` of permutation matrices is the graph on ordered pairs (`K_5`: `Tr T^3 = 300` vs `60`); the graph itself is Theorem 1 with `E_i = P_i`. With point letters the parity-twisted ring norm is still `Tr P^k` (`lem:sector-separating-letters`). With the correct bipartite trivial set the prism `C_16 × K_2`'s Weil form is
+positive at K = 12 and first negative at K = 14 (Huang's `h_k` first negative at k = 22; the Toeplitz form catches
+the failure earlier); Huang's literal formula uses `N_k = Tr B^k − (|E|−|V|)(1+(−1)^k)` and holds for non-bipartite
+graphs; for a perturbed Artin–Schreier matrix with `a = (0,1)` one eigenvalue stays on the circle and the rest move
+inside for every perturbation (observed, unexplained), so the Weil form stays positive while `N_m` stops being an
+integer; `charpoly + Durand–Kerner` is unreliable for repeated eigenvalues at dimension 25.
+
+**Nothing registered**; no shard; gate unchanged (the 256 "not present" errors in this container are the absent
+`refs/src/`; on the machine with the sources the count is the 8 Yoshida rows). Next, if wanted: (i) a shard
+distilling the "Weil form = Gram of strips" dictionary table as a citedfact/observation row set; (ii) the unexplained
+on-circle eigenvalue of the perturbed `a = (0,1)` Artin–Schreier matrix; (iii) the Weil–LPS channels as a preset in
+the Kraus demo (needs `n = p`, heavier numerics).
 
 ## Session 2026-09-25: branches merged onto master; the astra day (shards 04q_h_theta, 04r–04z) was orphaned on `claude/inspiring-ride-n5binf`
 
