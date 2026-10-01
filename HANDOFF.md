@@ -52,6 +52,12 @@ $Y_j^2-aY_jY_{j-1}+qY_{j-1}^2=\deg(m-nF)$, and RH (Hasse) is its positivity (pro
 kernel points on $E[n]$" (Weil pairing, Mumford's Heisenberg group over $\overline{\mathbb F}_q$). The fake curve $q=2$, $h=6$ has "an isogeny of degree
 $-1$". For $\mathbb Q$ the analogue of the form is the Wronskian/de Branges kernel of $\Xi$, so the target becomes a counting interpretation of
 that kernel: the operator-side shadow of Connes–Consani's Frobenius correspondence (`refs/src/2006.13771/weil-compo.tex:149-151`).
+**Then N1′ (§14).** The cokernel is the dual of the Frobenius algebra $\mathbb R[F]$, and its similitude metric is the Rosati form
+$\sum_i\varphi(\alpha_i)\varphi(q/\alpha_i)$. Positivity on $\mathbb R[F]$ is RH in every genus **with no tower**. This corrects the §13 remark: the tower is needed
+only if one restricts to $\mathbb Z+\mathbb ZF$. The positivity comes from the ampleness of $\Theta$. The dictionary is exact on the curve side: Rosati $\leftrightarrow h\mapsto\tilde h$,
+Lefschetz $\leftrightarrow$ explicit formula, and Hodge-index signature $\leftrightarrow\Pi_1$, so the pole plane is the plane of the two fibre classes. For $\mathbb Q$ the
+blocker is the absence of a polarisation, not of a tower. Next: (a) Mumford's $\Theta^{g-1}\cdot\varphi^*\Theta$ in class-group-bond coordinates for $g=1,2$;
+(b) its $\mathbb Q$-shaped reading ($\Theta\to\Phi$).
 Refined next steps: N1′ (genus two, Rosati form in recurrence coordinates, shard 04w), N2′ (the Wronskian kernel of $\Xi$ on the RTP prime-content
 windows).
 

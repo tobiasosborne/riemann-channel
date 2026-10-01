@@ -68,6 +68,11 @@ local form $\mathrm{Loc}(h)=\sum_v W_v(g)$; explicit formula $Z=P-\mathrm{Loc}$ 
   $Y_j^2-aY_jY_{j-1}+qY_{j-1}^2=\deg(m-nF)$. RH (Hasse) is positivity of that form. The single input missing from the bond is that this form is
   a count of kernel points on $E[n]$ (Weil pairing, Mumford's Heisenberg group). For $\mathbb Q$ the analogue of the form is the Wronskian kernel of
   L10. Proved (cokernel, Casoratian, equivalence) / cited, standard (degree identification).
+- **L13 (N1′; §14).** The cokernel is the dual of the Frobenius algebra $\mathbb R[F]$, and its natural similitude metric is the Rosati form
+  $\mathcal T(\varphi,\varphi)=\sum_i\varphi(\alpha_i)\varphi(q/\alpha_i)$. Positivity on $\mathbb R[F]$ is RH in every genus, with no tower (correcting §13), and it comes from
+  the ampleness of $\Theta$. Exact dictionary: $\mathbb R[F]\leftrightarrow$ test algebra, Rosati $\leftrightarrow h\mapsto\tilde h$, $\mathcal T\leftrightarrow$ Weil's $Z$, Lefschetz $\leftrightarrow$
+  explicit formula, and Hodge index $\leftrightarrow\Pi_1$, so the pole plane is the plane of the two fibre classes. For $\mathbb Q$ the blocker is a polarisation,
+  not a tower.
 - **The core blocker, restated.** The bond determines what is null in the Weil form (the theta orbit, §11.3) and its one negative
   direction (the pole plane, §6). Its own norms see only the harmonic-measure (Poisson) form (§§3–4). What remains is to show that the
   cutoff cokernel has no edge content beyond the pole plane: in function fields that is equivalent to RH and is supplied in Weil's proof by the
@@ -477,10 +482,9 @@ $\pm\sqrt q$, with jets but no edge mode. When $a^2>4q$ the real roots satisfy $
   $\deg\varphi$ under $\varphi$. This is the "second Heisenberg group" of the chat discussion, now pinned down. It is not on the adelic bond over
   $\mathbb F_q$: the bond sees $\mathrm{tr}F$ through $h$, and it sees $\det F=q$, but it does not see $F$ as an endomorphism whose integer
   combinations have kernels to count.
-- For $g\ge2$ the similitude forms of $M$ form a cone (`thm:arithmetic-metric`, `prop:hp-inner-product-discrete`). Weil's Rosati form
-  $\mathrm{Tr}(\varphi\varphi^\dagger)$ selects one but bounds only traces, so Weil needs the tower $\mathrm{Tr}\,F^r$, $r\to\infty$. Identifying the cokernel phase space
-  with $H^1$ carrying Rosati is the open comparison map `obs:bond-h1-comparison-open` (shard 04w). Genus one is the case where no tower is
-  needed: trace and determinant fix both roots.
+- For $g\ge2$ the similitude forms of $M$ form a cone (`thm:arithmetic-metric`, `prop:hp-inner-product-discrete`). *Corrected in §14:* the
+  earlier sentence here, that Weil's Rosati form bounds only traces and so needs the tower $r\to\infty$, holds only if the form is restricted to
+  $\mathbb Z+\mathbb ZF$. On all of $\mathbb R[F]$ the Rosati form gives RH directly, in every genus, with no tower.
 
 **What this says for $\mathbb Q$ (direction, not a result).**
 - The analogue of Theorem 12 is that the cutoff cokernel of the adelic bond is a cMPS whose generator has the zeros as spectrum. The
@@ -499,3 +503,80 @@ Next, refined:
   explicitly in the recurrence coordinates. Test whether a counting interpretation, $\deg$ of $m+nF+\ell V$ with $V$ the Verschiebung, survives without the tower.
 - **N2′.** For $\mathbb Q$: compute the Wronskian kernel $K$ in the dilation variable as an explicit functional of the theta orbit (Proposition 9), and
   look for a count it equals on the prime-content windows of RTP rounds 1–2.
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+## 14. N1′ (all genera): the cokernel metric is the Rosati form on $\mathbb R[F]$, the tower is not needed, and $\Pi_1$ is the Hodge-index signature
+
+Added 2026-10-01, the same session (TJO: "go for it", i.e. continue). Statuses are marked per item.
+
+**Proposition 14 (duality; proved here).** Let $\chi_F(\lambda)=\prod_i(\lambda-\alpha_i)$, with $\deg\chi_F=2g$. The solution space $C_N$ of Theorem 12 is
+canonically the dual of $\mathbb R[\lambda]/(\chi_F)$: a solution is $Y(j)=\ell(\lambda^j)$ for a linear functional $\ell$. Under this identification the
+window shift $M$ is the transpose of multiplication by $\lambda$. When $\chi_F$ is also the minimal polynomial of $F$ on $H^1$ (for instance, distinct
+$\alpha_i$), $\mathbb R[\lambda]/(\chi_F)\cong\mathbb R[F]\subset\mathrm{End}(J)\otimes\mathbb R$. So **the cutoff cokernel of the bond is the dual of the Frobenius algebra
+$\mathbb R[F]$, with the transfer matrix dual to multiplication by $F$.**
+
+*Proof.* The recurrence of Theorem 12 says exactly that $\ell(\lambda^{j-2g}\chi_F(\lambda))=0$. Both spaces have dimension $2g$. ∎
+
+**Proposition 15 (Rosati form; proved here, given Rosati positivity).** For $\varphi,\psi\in\mathbb R[F]$ put $\mathcal T(\varphi,\psi)=\mathrm{Tr}_{H^1}\big(\varphi(F)\,\psi(V)\big)$, with
+$V=qF^{-1}$ (the Verschiebung, the Rosati dual of $F$). Then:
+1. $\mathcal T(\varphi,\psi)=\sum_i\varphi(\alpha_i)\psi(q/\alpha_i)$, and $\mathcal T(F\varphi,F\psi)=q\,\mathcal T(\varphi,\psi)$: a similitude form for the transfer, with
+   multiplier $q$.
+2. $\mathcal T\ge0$ on $\mathbb R[F]$ $\iff$ every $|\alpha_i|=\sqrt q$ (RH for $C$).
+3. For $g=1$, $\mathcal T(m-nF,m-nF)=2\deg(m-nF)$, which is twice the Casoratian of Corollary 13.
+
+*Proof.*
+1. The eigenvalues of $\varphi(F)\psi(V)$ are $\varphi(\alpha_i)\psi(q/\alpha_i)$, and $F\cdot V=q$.
+2. ($\Leftarrow$) If $q/\alpha_i=\bar\alpha_i$, each term is $|\varphi(\alpha_i)|^2$.
+   ($\Rightarrow$) The multiset $\{\alpha_i\}$ is closed under $\alpha\mapsto q/\alpha$ (functional equation) and under conjugation, unconditionally.
+   - If $\alpha$ is real with $\alpha\ne\pm\sqrt q$: take a real interpolating $\varphi$ with $\varphi(\alpha)=1$, $\varphi(q/\alpha)=-1$, and $\varphi=0$ at the other
+     eigenvalues. Then $\mathcal T(\varphi,\varphi)=-2\cdot\mathrm{mult}<0$.
+   - If $\alpha$ is non-real with $|\alpha|\ne\sqrt q$: the four points $\alpha,\bar\alpha,q/\alpha,q/\bar\alpha$ are distinct. Take $\varphi$ real with $\varphi(\alpha)=1$,
+     $\varphi(q/\alpha)=-1$, and $0$ elsewhere. Then $\mathcal T(\varphi,\varphi)=-4\cdot\mathrm{mult}<0$.
+3. Here $q/\alpha_1=\alpha_2$. ∎
+
+Rosati positivity, $\mathrm{Tr}(\varphi\varphi^\dagger)>0$ on $\mathrm{End}(J)\otimes\mathbb Q\setminus0$ and so $\ge0$ on $\mathbb R[F]$, is a theorem. It comes from the ampleness of the theta
+divisor: $\mathrm{Tr}(\varphi\varphi^\dagger)=\frac{2g}{(\Theta^g)}(\Theta^{g-1}\cdot\varphi^*\Theta)$ (Mumford, *Abelian Varieties* §21; not byte-cited). So, in every genus:
+
+**RH for curves = positivity of the Rosati similitude form on the dual of the bond's cutoff cokernel, and that positivity is ampleness of $\Theta$.**
+
+**Correction (L12, §13).** The constant-field tower is *not* needed. Restricting to $\mathbb Z+\mathbb ZF$ bounds only $\mathrm{Tr}\,F$, which is why
+Castelnuovo–Severi-style arguments iterate over $F^r$. Using the whole commutative algebra $\mathbb R[F]$ gives RH at once (Proposition 15.2). So **the
+absence of the tower is not the blocker for $\mathbb Q$. The absence of a polarisation (an ample "$\Theta$") is.**
+
+**The dictionary, made exact by the calibration** (the analogy is classical, cf. Weil, Haran, Deninger, Connes–Consani; what is new here is
+that the left column is derived from the bond's cutoff):
+
+- **$\mathbb R[F]$ $\leftrightarrow$ the convolution algebra of test functions $h$ on $C_{\mathbb Q}$.** For curves, $\varphi=\sum c_kF^k$ is $h=\sum c_k\delta_{q^{-k}}$ on the degree
+  group.
+- **Rosati involution $\varphi(F)\mapsto\varphi(qF^{-1})$ $\leftrightarrow$ $h\mapsto\tilde h$, $\tilde h(x)=x^{-1}\overline{h(1/x)}$.**
+- **$\mathcal T(\varphi,\varphi)=\sum_i\varphi(\alpha_i)\varphi(q/\alpha_i)$ $\leftrightarrow$ Weil's $Z(h)=\sum_\rho\hat h(\rho)\overline{\hat h(1-\bar\rho)}$.** Under
+  $\alpha_i\leftrightarrow q^{\rho}$ these are the same formula.
+- **Lefschetz** $\mathrm{Tr}_{H^1}=\mathrm{Tr}_{H^0}+\mathrm{Tr}_{H^2}-\#\mathrm{Fix}$ $\leftrightarrow$ **the explicit formula** $Z=P-\mathrm{Loc}$. The pole form $P$ is $H^0\oplus H^2$, and $\mathrm{Loc}$
+  is the fixed-point count.
+- **Hodge index on $C\times C$** (signature $(1,\rho-1)$ on $NS$, the positive direction in the plane of the two fibre classes) $\leftrightarrow$
+  **Proposition 7** (the local form has negative index exactly $1$, the negative direction in the pole plane). Up to the overall sign
+  convention, **$\Pi_1$ is the Hodge-index signature, and the pole plane spanned by the two constant terms of $\Theta$ is the hyperbolic plane of the two
+  fibre classes.** Status: the correspondences are proved for curves by Propositions 14–15 and §6. For $\mathbb Q$ the right-hand column is the
+  definition, and the left-hand objects (a "surface" whose Néron–Severi carries the test algebra) do not exist. That is Connes–Consani's
+  square of the scaling site (`refs/src/2006.13771/weil-compo.tex:149-151`).
+
+**What changes for $\mathbb Q$ (N2′, revised).** The earlier target, a counting interpretation of the de Branges–Wronskian kernel (L10), is the
+reproducing-kernel shadow of the real target. Under RH, the Wronskian kernel of $\Xi$ is the reproducing kernel of a Hilbert space on which Weil's form
+is the norm, just as the Casoratian is the genus-one Rosati form. The primary target is the Rosati one:
+
+> Exhibit Weil's form $Z(h)$ as $\mathrm{Tr}(\varphi_h\varphi_h^\dagger)$ for an involutive algebra whose trace is positive for a *structural* reason: the
+> analogue of $\Theta$ being ample.
+
+In bond terms, the function-field $\Theta$ is the support $\{h^0>0\}\subset\mathrm{Pic}^{g-1}$ of the special part of the bond state $q^{h^0}$ (shard 04p). For
+$\mathbb Q$ the special part of the theta orbit is Riemann's $\Phi$ (the part of $\vartheta$ beyond the two constant terms). Heuristic, not a claim: the
+missing "ampleness" should be a positivity property of $\Phi$ as a divisor-like object on the adele class space, which the bond's
+$L^2$ structure does not see (§§3, 9). This is where the next round of thinking should go. Concretely:
+- **(a)** Write Mumford's formula $\mathrm{Tr}(\varphi\varphi^\dagger)\propto\Theta^{g-1}\cdot\varphi^*\Theta$ for genus one and two in class-group-bond coordinates, i.e. as sums over
+  $\mathrm{Pic}$ weighted by $q^{h^0}$. This is computable from the data of shard 04p.
+- **(b)** Read off the $\mathbb Q$-shaped expression, with $\Theta\to\Phi$, $\mathrm{Pic}\to C_{\mathbb Q}$, intersection $\to$ a two-point pairing on the orbit, and test it against
+  the explicit formula.
+
+Status of the new learning: Propositions 14 and 15 are proved (15 given the cited Rosati positivity). The dictionary is proved on the curve side and
+definitional on the $\mathbb Q$ side. The $\Theta\to\Phi$ "ampleness" reading is heuristic.
