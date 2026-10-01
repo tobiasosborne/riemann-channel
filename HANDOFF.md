@@ -2,6 +2,55 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-10-01: Weil positivity and the Weyl–Heisenberg bond, analytic arguments (Fable alone; record only)
+
+TJO: "My goal right now is to understand weil positivity 'the metric' ... best Ansatz for the bond space is still Weyl
+Heisenberg over the Adeles"; then "I dont want to work on the software ... analytical proof techniques to connect weil
+positivity with the bond space"; then "elaborate and investigate. Work alone this session, no subagents. Record
+learnings durably". Record `notes/weil-bond-analytic/analytic.md` (subdirectory, so the gate's notes parity is
+untouched); window checks `notes/weil-bond-analytic/checks/` (46/46 pass; written before TJO asked for no software
+work, kept as evidence). Worklog `docs/worklog/2026-10-01.md`. **Nothing registered; no REFUTE review; no shard.**
+Connes 1998 (`refs/src/math/9811068/main.tex`) byte-cited by line throughout.
+
+**Findings (statuses in the note).**
+- **The bond's positivity.** The weighted orbit norms $B_\sigma(f)=\frac1{2\pi}\int|Z(f,\sigma+it)|^2dt$ are log-convex and symmetric under the
+  functional equation, so they increase away from $\sigma=\frac12$, averaged over $t$ (proved). RH is the pointwise version, $\mathrm{Re}\,\xi'/\xi>0$ on
+  $\sigma>\frac12$ (proved).
+- **Blindness.** Every vertical-line norm satisfies the same averaged statement whatever the zeros are. Localising at width $\delta$ costs
+  $e^{\eta^2/\delta^2}$ against a gain of $(\delta/\eta)^2$ (proved). This covers Connes's polynomial weights, the energy metric and all
+  multiplier constructions.
+- **Correction of the chat claim "positivity is lost in the counterterm".** Connes's counterterm is the trace of a projection that dominates
+  the cutoff ($Q'\le S_\Lambda$, `main.tex:2589`), so the cutoff traces are of positive type for every $\Lambda$. Their limit is the
+  **harmonic-measure form** (Lemma 3, `:2644`), which is positive for every zero. RH $\iff$ it equals Weil's evaluation form. The open input is
+  the asymptotic trace formula (16), which Connes could not prove directly even in function fields (`:2508`).
+- **Off-line zeros are edge modes** of the cutoff. Their diagonal matrix elements are Poisson coefficients (proved). The pole pair is the
+  one permitted edge pair: Connes's $\mathbb C\oplus\mathbb C(1)$ (`:964`), and RH $\iff-\mathrm{Loc}\ge0$ on the kernel of *one* pole functional
+  ($\Pi_1$; proved).
+- **Compression lemma** (proved): for $U$ unitary and $P$ of rank $d$, $|\mathrm{Tr}(PU^kP)-\mathrm{Tr}\,T^k|\le\binom k2\ell\ell_*$ and every eigenvalue of
+  $T=PUP$ has $1-|\lambda|^2\le\ell^2$, where $\ell=\|(1-P)UP\|_{HS}$.
+- **Zero-free edge criterion for curves** (proved given Connes's description of the cokernel; multiplicities sketched): RH for $L(\chi)$
+  $\iff$ the degree shift leaks vanishing HS mass out of the Riemann–Roch cokernel $C_N$ $\iff$ $C_N$ has vanishing edge weight. The leakage
+  operator has **rank $\le3$**, with main term $(P_{C_N})_{NN}$, expressible through $h^0$ near the edge degree (the special part of the
+  class-group bond, 04p). Negative finding: the transfer maps between growing cokernels are unitary with or without RH.
+- **Archimedean blocker, sharpened.** There is no exact Riemann–Roch at $\infty$ (`:2746`). The LPS plunge has width $\asymp\log\Lambda$ (`:2810`),
+  the same order as the main term. So the $O(1)$ Weil term depends on where one cuts inside an $O(\log\Lambda)$ edge layer. Heuristic: the plunge
+  states sit at the corners of the time–frequency box, which is the window edge, exactly where off-line zeros would show.
+- **Group averages of $|\Theta|^2$ are blind** (torus: $B_{1/2}$; $\mathrm{Mp}_2$: Schur gives $L^2(\mathbb A)$; sketched). The "non-Mellin-diagonal
+  escape route" proposed in chat is Connes's cutoff pair, not new.
+- **Two-period metric** (proved): RH $\iff\Xi+i\Xi'$ is Hermite–Biehler $\iff$ the Wronskian kernel of the toric periods of $f_0$ and $(\log|x|)f_0$
+  is positive. By de Branges (cited, not byte-cited), RH $\iff\Xi$ is the corner entry of a positive $2\times2$ canonical system (bond dimension
+  two). The hyperbolic-versus-elliptic reading is heuristic.
+- **Positivity-free route** (proved): the Laguerre–Pólya growth lemma plus Hurwitz give RH if the CCM real-rooted window polynomials have
+  bounded $\sigma_2$ and $\sigma_{2k}\to\sigma_{2k}(\Xi)$ for $k\ge2$. The window $\sigma_2$ is one linear functional of the ground state. The theta
+  orbit is in the radical of $Z$ unconditionally; its jets explain the near-null ladder and rule out gap arguments.
+
+**Next (in order).** (N1) **Calibration**: a bond proof of RH for an elliptic curve, i.e. prove the edge criterion from Riemann–Roch plus one
+geometric input, and identify that input (expected: the polarisation of the theta divisor). (N2) $\mathbb Q$: the weighted edge content with the
+LPS cut, the archimedean part computed locally (Connes Theorem 3 is proved), RH as edge-content additivity over places; check the LPS
+corner-localisation claim against a source first. (N3) Compare the rank-$\le3$ leakage with the notebook's exits (`lem:exit-one-dimensional`,
+`thm:arithmetic-metric`). (N4) Two-period HB pairs and the canonical-system reading on the genus-one bond. Shard 08j (RTP round 2)
+remains pending from 2026-09-26.
+
 ## Session 2026-09-26: RTP round 2, the astra quota day (seven codex lanes, six Opus REFUTE reviews, three Opus follow-ups); codex finished
 
 TJO: use the codex quota before it resets, 100% RTP, up to four gpt-6-astra xhigh lanes at once, stop at the reset;

@@ -1,0 +1,89 @@
+
+## x = 13, N = 20, dps = 60
+PASS [l61] A1 x=13 N=20: Cholesky of the full window form succeeds at 60 digits (H > 0)
+PASS [l64] A2 pole form: rank 2, signature (1,1), eigenvalues -0.739388, 5.89315
+PASS [l68] A3 witness: v_+^T (H - P) v_+ = -5.8355669 < 0; with A1-A2 the local form has negative index exactly 1
+PASS [l72] A4 P = a b^T + b a^T with the two isotropic functionals a, b (real)
+PASS [l87] A5 local form restricted to ker a is >= -1e-50 (Cholesky of the shifted restriction)
+PASS [l87] A5 local form restricted to ker b is >= -1e-50 (Cholesky of the shifted restriction)
+PASS [l93] B0 lambda_min(H) ~ 1.5661e-39 (inverse iteration)
+PASS [l105] B1 log P_N is even at 0 (odd coefficients -3.1e-31, -2.2e-35)
+     sigma_2: window      0.0304389276015   Xi      0.0462099862308   rel.err 0.341
+     sigma_4: window     7.33235971156e-5   Xi     7.43451985705e-5   rel.err 0.0137
+     sigma_6: window     2.88192887745e-7   Xi     2.88347862802e-7   rel.err 0.000537
+     sigma_8: window     1.32603302315e-9   Xi     1.32606336051e-9   rel.err 2.29e-5
+PASS [l112] B2 sigma_2(window) = 0.0304389 in (0, sigma_2(Xi) = 0.04621); deficit 0.0158 vs Riemann-von Mangoldt tail above the cutoff T = 2 pi N / L = 48.993: 0.0198
+PASS [l113] B3 relative error of sigma_2k decreases with k (tail-dominated)
+PASS [l117] B4 LP growth bound |P(z)| <= P(0) exp(sigma_2|z|^2/2) at four complex points (max ratio 0.9893)
+
+## x = 13, N = 40, dps = 60
+PASS [l61] A1 x=13 N=40: Cholesky of the full window form succeeds at 60 digits (H > 0)
+PASS [l64] A2 pole form: rank 2, signature (1,1), eigenvalues -0.75117, 5.89315
+PASS [l68] A3 witness: v_+^T (H - P) v_+ = -5.8355289 < 0; with A1-A2 the local form has negative index exactly 1
+PASS [l72] A4 P = a b^T + b a^T with the two isotropic functionals a, b (real)
+PASS [l87] A5 local form restricted to ker a is >= -1e-50 (Cholesky of the shifted restriction)
+PASS [l87] A5 local form restricted to ker b is >= -1e-50 (Cholesky of the shifted restriction)
+PASS [l93] B0 lambda_min(H) ~ 9.4628e-54 (inverse iteration)
+PASS [l105] B1 log P_N is even at 0 (odd coefficients 4.5e-18, 1.0e-22)
+     sigma_2: window      0.0352537417924   Xi      0.0462099862308   rel.err 0.237
+     sigma_4: window       7.409044251e-5   Xi     7.43451985705e-5   rel.err 0.00343
+     sigma_6: window     2.88334928368e-7   Xi     2.88347862802e-7   rel.err 4.49e-5
+     sigma_8: window     1.32606254156e-9   Xi     1.32606336051e-9   rel.err 6.18e-7
+PASS [l112] B2 sigma_2(window) = 0.0352537 in (0, sigma_2(Xi) = 0.04621); deficit 0.011 vs Riemann-von Mangoldt tail above the cutoff T = 2 pi N / L = 97.985: 0.0122
+PASS [l113] B3 relative error of sigma_2k decreases with k (tail-dominated)
+PASS [l117] B4 LP growth bound |P(z)| <= P(0) exp(sigma_2|z|^2/2) at four complex points (max ratio 0.9892)
+
+## x = 13, N = 56, dps = 60
+PASS [l61] A1 x=13 N=56: Cholesky of the full window form succeeds at 60 digits (H > 0)
+PASS [l64] A2 pole form: rank 2, signature (1,1), eigenvalues -0.754591, 5.89315
+PASS [l68] A3 witness: v_+^T (H - P) v_+ = -5.835521 < 0; with A1-A2 the local form has negative index exactly 1
+PASS [l72] A4 P = a b^T + b a^T with the two isotropic functionals a, b (real)
+PASS [l87] A5 local form restricted to ker a is >= -1e-50 (Cholesky of the shifted restriction)
+PASS [l87] A5 local form restricted to ker b is >= -1e-50 (Cholesky of the shifted restriction)
+PASS [l93] B0 lambda_min(H) ~ 1.9594e-58 (inverse iteration)
+PASS [l105] B1 log P_N is even at 0 (odd coefficients -2.0e-12, -2.4e-17)
+     sigma_2: window      0.0372026705586   Xi      0.0462099862308   rel.err 0.195
+     sigma_4: window     7.42224762392e-5   Xi     7.43451985705e-5   rel.err 0.00165
+     sigma_6: window     2.88344314505e-7   Xi     2.88347862802e-7   rel.err 1.23e-5
+     sigma_8: window       1.326063234e-9   Xi     1.32606336051e-9   rel.err 9.54e-8
+PASS [l112] B2 sigma_2(window) = 0.0372027 in (0, sigma_2(Xi) = 0.04621); deficit 0.00901 vs Riemann-von Mangoldt tail above the cutoff T = 2 pi N / L = 137.18: 0.00948
+PASS [l113] B3 relative error of sigma_2k decreases with k (tail-dominated)
+PASS [l117] B4 LP growth bound |P(z)| <= P(0) exp(sigma_2|z|^2/2) at four complex points (max ratio 0.9892)
+
+## x = 25, N = 60, dps = 180
+PASS [l61] A1 x=25 N=60: Cholesky of the full window form succeeds at 180 digits (H > 0)
+PASS [l64] A2 pole form: rank 2, signature (1,1), eigenvalues -1.56387, 8.01888
+PASS [l68] A3 witness: v_+^T (H - P) v_+ = -7.9772617 < 0; with A1-A2 the local form has negative index exactly 1
+PASS [l72] A4 P = a b^T + b a^T with the two isotropic functionals a, b (real)
+PASS [l87] A5 local form restricted to ker a is >= -1e-170 (Cholesky of the shifted restriction)
+PASS [l87] A5 local form restricted to ker b is >= -1e-170 (Cholesky of the shifted restriction)
+PASS [l93] B0 lambda_min(H) ~ 1.0794e-91 (inverse iteration)
+PASS [l105] B1 log P_N is even at 0 (odd coefficients 5.6e-99, 8.6e-104)
+     sigma_2: window       0.037199920577   Xi      0.0462099862308   rel.err 0.195
+     sigma_4: window     7.42164728295e-5   Xi     7.43451985705e-5   rel.err 0.00173
+     sigma_6: window     2.88343825404e-7   Xi     2.88347862802e-7   rel.err 1.4e-5
+     sigma_8: window     1.32606320152e-9   Xi     1.32606336051e-9   rel.err 1.2e-7
+PASS [l112] B2 sigma_2(window) = 0.0371999 in (0, sigma_2(Xi) = 0.04621); deficit 0.00901 vs Riemann-von Mangoldt tail above the cutoff T = 2 pi N / L = 117.12: 0.0107
+PASS [l113] B3 relative error of sigma_2k decreases with k (tail-dominated)
+PASS [l117] B4 LP growth bound |P(z)| <= P(0) exp(sigma_2|z|^2/2) at four complex points (max ratio 0.9892)
+
+## C: the window spectrum, x = 13, N = 30
+PASS [l135] C1 spectrum of D' real (max |Im| 3.16e-28); D' xi = 0 accounts for the extra eigenvalue
+PASS [l137] C2 30 positive frequencies (expected N = 30)
+     comparison only (zeros used here and nowhere else):
+       1  window     14.1347251417347   gamma     14.1347251417347   diff 1.58e-39
+       2  window     21.0220396387716   gamma     21.0220396387716   diff -4.94e-39
+       3  window     25.0108575801457   gamma     25.0108575801457   diff 1.6e-38
+       4  window     30.4248761258595   gamma     30.4248761258595   diff 1.89e-35
+       5  window     32.9350615877392   gamma     32.9350615877392   diff 4.72e-34
+       6  window     37.5861781588257   gamma     37.5861781588257   diff 1.21e-31
+       7  window     40.9187190121475   gamma     40.9187190121475   diff 1.82e-29
+       8  window      43.327073280915   gamma      43.327073280915   diff 3.13e-28
+      10  window     49.7738324776723   gamma     49.7738324776723   diff 3.59e-24
+      15  window     65.1125440480816   gamma     65.1125440480816   diff 8.59e-15
+      20  window     77.1524029291179   gamma     77.1448400688748   diff 0.00756
+      25  window     112.021160339001   gamma     88.8091112076345   diff 23.2
+      30  window      1184.9486356322   gamma     101.317851005731   diff 1.08e+3
+     frequency cutoff 2 pi N / L = 73.489; unresolved roots escape upward
+
+# checks: 46 run, 0 failed
