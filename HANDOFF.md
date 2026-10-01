@@ -44,6 +44,17 @@ Connes 1998 (`refs/src/math/9811068/main.tex`) byte-cited by line throughout.
   bounded $\sigma_2$ and $\sigma_{2k}\to\sigma_{2k}(\Xi)$ for $k\ge2$. The window $\sigma_2$ is one linear functional of the ground state. The theta
   orbit is in the radical of $Z$ unconditionally; its jets explain the near-null ladder and rule out gap arguments.
 
+**Later the same session: N1 carried out (§13 of the note).** In every genus, the trivial-character Riemann–Roch cokernel of Connes's
+cutoff is exactly the solution space, on the window, of the order-$2g$ recurrence with characteristic roots the Frobenius eigenvalues. The
+cutoff kernel is the effective-divisor generating function $\frac{q-1}hZ(z)$, so this is derived from $h^0$ alone: **an MPS of bond dimension $2g$
+whose transfer matrix is the Frobenius companion matrix** (proved). For genus one the similitude form is the Casoratian
+$Y_j^2-aY_jY_{j-1}+qY_{j-1}^2=\deg(m-nF)$, and RH (Hasse) is its positivity (proved). The single input the bond lacks is "this form is a count of
+kernel points on $E[n]$" (Weil pairing, Mumford's Heisenberg group over $\overline{\mathbb F}_q$). The fake curve $q=2$, $h=6$ has "an isogeny of degree
+$-1$". For $\mathbb Q$ the analogue of the form is the Wronskian/de Branges kernel of $\Xi$, so the target becomes a counting interpretation of
+that kernel: the operator-side shadow of Connes–Consani's Frobenius correspondence (`refs/src/2006.13771/weil-compo.tex:149-151`).
+Refined next steps: N1′ (genus two, Rosati form in recurrence coordinates, shard 04w), N2′ (the Wronskian kernel of $\Xi$ on the RTP prime-content
+windows).
+
 **Next (in order).** (N1) **Calibration**: a bond proof of RH for an elliptic curve, i.e. prove the edge criterion from Riemann–Roch plus one
 geometric input, and identify that input (expected: the polarisation of the theta divisor). (N2) $\mathbb Q$: the weighted edge content with the
 LPS cut, the archimedean part computed locally (Connes Theorem 3 is proved), RH as edge-content additivity over places; check the LPS

@@ -62,6 +62,12 @@ local form $\mathrm{Loc}(h)=\sum_v W_v(g)$; explicit formula $Z=P-\mathrm{Loc}$ 
   $|P(z)|\le P(0)e^{\sigma_2|z|^2/2}$. Hence RH follows if $\sigma_2$ stays bounded and $\sigma_{2k}\to\sigma_{2k}(\Xi)$ for every $k\ge2$. The window
   $\sigma_2$ is one linear functional of the ground state. The ground state is, to overlap $1-6\cdot10^{-6}$, the truncated theta orbit
   function, which lies in the radical of $Z$ unconditionally. Proved (lemma, corollary, identity) / numerical (overlap) (§11).
+- **L12 (N1, the calibration; §13).** In every genus the trivial-character Riemann–Roch cokernel of Connes's cutoff is the solution space of
+  the order-$2g$ recurrence with characteristic roots the Frobenius eigenvalues: an MPS of bond dimension $2g$ with transfer matrix the
+  Frobenius companion matrix, derived from $h^0$ data alone. For genus one its invariant similitude form is the Casoratian
+  $Y_j^2-aY_jY_{j-1}+qY_{j-1}^2=\deg(m-nF)$. RH (Hasse) is positivity of that form. The single input missing from the bond is that this form is
+  a count of kernel points on $E[n]$ (Weil pairing, Mumford's Heisenberg group). For $\mathbb Q$ the analogue of the form is the Wronskian kernel of
+  L10. Proved (cokernel, Casoratian, equivalence) / cited, standard (degree identification).
 - **The core blocker, restated.** The bond determines what is null in the Weil form (the theta orbit, §11.3) and its one negative
   direction (the pole plane, §6). Its own norms see only the harmonic-measure (Poisson) form (§§3–4). What remains is to show that the
   cutoff cokernel has no edge content beyond the pole plane: in function fields that is equivalent to RH and is supplied in Weil's proof by the
@@ -399,3 +405,97 @@ Dead ends recorded by this investigation:
 - subgroup averages of $|\Theta|^2$ (§9);
 - transfer maps between growing cutoff cokernels (§7, negative finding);
 - Davis–Kahan around the theta vector (§11, radical ladder).
+
+---------------------------------------------------------------------------------------------------------------------
+
+## 13. N1 carried out: the Riemann–Roch cokernel is the Frobenius transfer matrix; for genus one the metric is the degree form
+
+Added 2026-10-01, the same session (TJO: "go for it" on N1). Everything below is **proved here** unless marked.
+
+Setting. $k$ is the function field of a smooth projective curve $C/\mathbb F_q$ of genus $g$ with class number $h$. We work in the
+units-invariant, trivial-character sector: functions on $C_k$ that depend only on the degree. Write $m=\log_q|g|$, so $S_N=\ell^2([-N,N])$. Let
+$a_n$ be the number of effective divisors of degree $n$, so $Z(T)=\sum a_nT^n=P(T)/((1-T)(1-qT))$ with $P(T)=\prod_{i=1}^{2g}(1-\alpha_iT)$
+(`prop:class-group-bond`). Let $K$ be a canonical divisor and choose $\psi$ with conductor $K$, so that $\widehat{1_{\mathcal O(D)}}=q^{\deg D+1-g}1_{\mathcal O(K-D)}$
+(Tate; not byte-cited).
+
+**Step 1 (the orbit transform of a divisor lattice).** For $f=1_{\mathcal O(D)}$ with $\deg D=j$, Connes's $Ef(g)=|g|^{1/2}\sum_{a\in k^\times}f(ag)$ counts
+$a\in L(D+\mathrm{div}\,g)\setminus0$, so $Ef(g)=|g|^{1/2}(q^{\ell(D+\mathrm{div}\,g)}-1)$. Averaged over the $\mathrm{Pic}^0$-fibre of fixed degree (the trivial-character
+projection),
+$$E1_{\mathcal O(D)}(m)=q^{m/2}\,A(j-m),\qquad A(n)=\frac1h\sum_{c\in\mathrm{Pic}^n}(q^{\ell(c)}-1)=\frac{q-1}h\,a_n .$$
+So **the cutoff kernel of the bond is the effective-divisor generating function**: $\sum_nA(n)z^n=\frac{q-1}hZ(z)$.
+
+**Step 2 (the cutoff image).** Take $f=\sum_jc_j1_{\mathcal O(jP_0)}$ with $j\in[2g-2-N,N]$. This range is exactly the condition that $f$ and $\hat f$ are supported in
+$|x|\le q^N$. Impose $f(0)=\sum c_j=0$ and $\hat f(0)\propto\sum c_jq^j=0$ (the pole plane, §6).
+- For $m<-N$, the Riemann–Roch value $A(n)=q^{n+1-g}-1$ ($n>2g-2$) and the two conditions give $Ef(m)=0$. For $m>N$, $A(j-m)=0$. So
+  $Ef\in S_N$.
+- These $f$ span a space of dimension $2N-2g+1$, of codimension $2g$ in $S_N$. The map $c\mapsto Ef$ is injective: it is triangular, with
+  diagonal entries $A(0)=(q-1)/h\ne0$. Connes's conditions (28) (`main.tex:2674-2684`, stated there for $\chi\ne1$; the
+  necessity part, via his Appendix 1 Lemma 3, does not depend on the character, so it applies here with the pole plane removed; sketch) give codimension at least $2g$. Hence **this family is all of $E(B_{q^N,0})$ in this sector.**
+
+**Theorem 12 (the cokernel; all genera).** Put $Y(m)=\overline{y(m)}\,q^{m/2}$. Then $y\in C_N:=S_N\ominus E(B_{q^N,0})$ if and only if
+$$\sum_{i=0}^{2g}p_i\,Y(j-i)=0\qquad\text{for all }j\in[2g-N,\,N],\qquad P(T)=\sum_{i=0}^{2g}p_iT^i .$$
+That is, the cutoff cokernel is the full solution space, on the window, of the order-$2g$ linear recurrence whose characteristic roots are the
+Frobenius eigenvalues $\alpha_i$. Equivalently, $Y(m)=\langle l|M^m|r\rangle$ with $M$ the companion matrix of $\prod(\lambda-\alpha_i)$. **The cokernel is an
+MPS of bond dimension $2g$ whose transfer matrix is the Frobenius companion matrix.**
+
+*Proof.* $y\perp Ef$ for all admissible $c$ means: $T(j):=\sum_mY(m)A(j-m)$ lies in $\mathrm{span}\{1,q^j\}$ on $j\in[2g-2-N,N]$. In generating functions,
+$$(1-z)(1-qz)\,\hat T(z)=\tfrac{q-1}h\,P(z)\,\hat Y(z).$$
+$(1-z)(1-qz)$ annihilates $\alpha+\beta q^j$, so the coefficients of $P\hat Y$ must vanish for $j\in[2g-N,N]$. Each such coefficient involves only
+$Y(j-2g),\dots,Y(j)$, all inside the window. That gives $2N-2g+1$ independent equations on $2N+1$ unknowns, so the solution space has dimension
+$2g=\operatorname{codim}$. ∎
+
+Remarks.
+- No zero was used. $P$ enters only through $Z(T)$, i.e. through $h^0$ of divisors: the special part of the class-group bond state of
+  shard 04p.
+- This derives Connes's description ($C_N=\mathrm{span}\,\eta_z$, $z=\bar\alpha_i/\sqrt q$) from Riemann–Roch for the trivial character.
+- The edge criterion of Theorem 8 becomes: **RH for $C$ $\iff$ $M/\sqrt q$ has all eigenvalues on the unit circle.** An eigenvalue with $|\alpha|>\sqrt q$ is a
+  top-edge mode; its partner $q/\bar\alpha$ is a bottom-edge mode.
+
+**Corollary 13 (genus one: the metric is the degree form).** Let $g=1$ and $a=q+1-h$, so the recurrence is $Y_j=aY_{j-1}-qY_{j-2}$. Define the
+Casoratian form
+$$\mathcal Q(Y_j,Y_{j-1})=Y_j^2-aY_jY_{j-1}+qY_{j-1}^2 .$$
+Then:
+1. **Similitude.** $\mathcal Q(Y_{j+1},Y_j)=q\,\mathcal Q(Y_j,Y_{j-1})$ along every solution. Equivalently,
+   $\mathcal Q(Y_j,Y_{j-1})=q\,(Y_{j-1}^2-Y_jY_{j-2})$, a discrete Turán/Laguerre expression.
+2. **Positivity.** $\mathcal Q$ is positive semidefinite $\iff a^2\le4q\iff$ the cokernel has no edge modes $\iff$ RH for $C$ (Hasse's bound).
+3. **Identification.** $\mathcal Q(m,n)=m^2-amn+qn^2=\deg(m-nF)$ on $\mathbb Z[F]\subset\mathrm{End}(E)$ (standard; not byte-cited): the degree is the
+   determinant of $m-nF$ on the Tate module. Positivity is "degree $\ge0$". For separable $m-nF$ this is $\#\ker(m-nF)\ge0$, and homogeneity and
+   density then give $\mathcal Q\ge0$ on $\mathbb R^2$.
+
+*Proof.* (1) Substitute $Y_j=aY_{j-1}-qY_{j-2}$ twice. (2) A binary form with positive leading coefficient is semidefinite iff its discriminant
+$a^2-4q\le0$. When $a^2<4q$ the roots of $\lambda^2-a\lambda+q$ are conjugate with product $q$, so of modulus $\sqrt q$. When $a^2=4q$ there is a double root
+$\pm\sqrt q$, with jets but no edge mode. When $a^2>4q$ the real roots satisfy $|\alpha_1|>\sqrt q>|\alpha_2|$. ∎
+
+**Calibration verdict.**
+- The adelic bond plus Riemann–Roch on $C$ yields the cokernel, the transfer matrix $M$, and the *formula* of the invariant metric, namely the
+  Casoratian $\mathcal Q$.
+- It does not yield positivity. The "fake curve" $q=2$, $h=6$ (`obs:gl1-bond-no-metric`) is consistent with every Riemann–Roch input used here,
+  and gives $\mathcal Q(m,n)=m^2+3mn+2n^2$ with $\mathcal Q(-3,2)=-1$: "an isogeny of degree $-1$". Its cokernel has edge weight $\to1-\alpha_2^2/q=\frac12$ at
+  each edge.
+- **The one missing input is: the Casoratian of the bond's Frobenius transfer matrix is a degree, i.e. a count.** That count lives on the
+  torsion $E[n]$ over $\overline{\mathbb F}_q$. There the Weil pairing, the commutator form of Mumford's finite Heisenberg group, has multiplier
+  $\deg\varphi$ under $\varphi$. This is the "second Heisenberg group" of the chat discussion, now pinned down. It is not on the adelic bond over
+  $\mathbb F_q$: the bond sees $\mathrm{tr}F$ through $h$, and it sees $\det F=q$, but it does not see $F$ as an endomorphism whose integer
+  combinations have kernels to count.
+- For $g\ge2$ the similitude forms of $M$ form a cone (`thm:arithmetic-metric`, `prop:hp-inner-product-discrete`). Weil's Rosati form
+  $\mathrm{Tr}(\varphi\varphi^\dagger)$ selects one but bounds only traces, so Weil needs the tower $\mathrm{Tr}\,F^r$, $r\to\infty$. Identifying the cokernel phase space
+  with $H^1$ carrying Rosati is the open comparison map `obs:bond-h1-comparison-open` (shard 04w). Genus one is the case where no tower is
+  needed: trace and determinant fix both roots.
+
+**What this says for $\mathbb Q$ (direction, not a result).**
+- The analogue of Theorem 12 is that the cutoff cokernel of the adelic bond is a cMPS whose generator has the zeros as spectrum. The
+  LPS plunge (§8) replaces the exact window equations.
+- The analogue of the Casoratian $\mathcal Q$ is the Wronskian kernel of Proposition 9, $K(w,z)\propto\big(\Xi'(z)\overline{\Xi(w)}-\Xi(z)\overline{\Xi'(w)}\big)/(\bar w-z)$. Its real
+  diagonal $\Xi'^2-\Xi\Xi''$ is the continuous form of $Y_{j-1}^2-Y_jY_{j-2}$.
+- So the genus-one calibration converts the $\mathbb Q$ question into: **find an arithmetic object whose "degree" (a positive count) is the
+  de Branges–Wronskian kernel of $\Xi$.** This is the operator-side shadow of Connes–Consani's programme: "the Schwartz kernel of the
+  scaling operator corresponds geometrically to the divisor of the Frobenius correspondence" (`refs/src/2006.13771/weil-compo.tex:151`), with an
+  intersection theory "on the square of the Scaling Site" still "not yet in shape to handle the delicate principal values"
+  (`:149`). What the present computation adds is the precise target: positivity of a two-point Casoratian/Wronskian form on the cokernel
+  phase space, with the genus-one degree form as the model.
+
+Next, refined:
+- **N1′.** Genus two, on a curve with known $P$ (shard 04w): write the Rosati-form candidate on the four-dimensional cokernel phase space
+  explicitly in the recurrence coordinates. Test whether a counting interpretation, $\deg$ of $m+nF+\ell V$ with $V$ the Verschiebung, survives without the tower.
+- **N2′.** For $\mathbb Q$: compute the Wronskian kernel $K$ in the dilation variable as an explicit functional of the theta orbit (Proposition 9), and
+  look for a count it equals on the prime-content windows of RTP rounds 1–2.
