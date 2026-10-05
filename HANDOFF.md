@@ -5,8 +5,8 @@
 ## Session 2026-10-05: the GKP reading tested on graphs; the super Ihara zeta has two lattice states; the tower of lattices (Fable alone; record only)
 
 Two parts. Morning (claude.ai sandbox): §14 of `notes/adelic-gkp/adelic-gkp.md`, the field extension $\mathbb Q(\sqrt2)$ (checks 14/14). Then a local session
-(Claude Code), seven companion pages in `notes/adelic-gkp/` with rendered HTML, indexed in §15 of the note; checks `notes/adelic-gkp/checks/`
-(`check_weil_qi.py` 29/29, `check_graph_gkp.py` 56/56, `check_super_gkp.py` 50/50, `check_lattice_tower.py` 45/45, `check_howe_positivity.py` 14/14, `check_sign_vector.py` 19/19). Worklog `docs/worklog/2026-10-05.md`.
+(Claude Code), eight companion pages in `notes/adelic-gkp/` with rendered HTML, indexed in §15 of the note; checks `notes/adelic-gkp/checks/`
+(`check_weil_qi.py` 29/29, `check_graph_gkp.py` 56/56, `check_super_gkp.py` 50/50, `check_lattice_tower.py` 45/45, `check_howe_positivity.py` 14/14, `check_sign_vector.py` 19/19, `check_locks.py` 7/7). Worklog `docs/worklog/2026-10-05.md`.
 **Nothing registered; no REFUTE review; no shard.** Gate unchanged: 13 errors (8 Yoshida rows, 5 round-2 scripts awaiting 08j).
 
 **Steer on method (TJO, verbatim; binding for the next sessions).** "Let us find the natural QI interpreations on the cases we understand *then* try to match
@@ -70,8 +70,21 @@ So: the overlap/filter reading of the standard zeta (`weil-positivity-spectrosco
   $-2$,4 locked; $q=7$: 1,5 locked, 1,4 anti-locked). Agrees with PARI on 13 spectra. Scan: 527 ordinary Ramanujan flux classes of $K_4$, $K_5$, cube, $K_6$;
   $\Omega$ is a polarisation only for 120 $K_6$ classes (spectrum $(x+1)^3(x^3-3x^2-9x+19)$ or its mirror: four groups, no locks, all 16 sign vectors).
 
-**Next.** (T-a′) A graph meaning for lock signs other than $\pm\lambda$; which fluxes have no locks; existence of the unit twist $P$ in general; Jacobian or
-Prym for the $K_4$ example; the non-ordinary examples. (T-a″) The matching question in the notebook's terms: an invariant vacuum on the odd bond of shard 04t. (T-b) REFUTE review of `graph-ihara.md` and `graph-super.md` before registering anything; byte-cite
+- `locks.md` (done the same session; `checks/check_locks.py`, 7/7, PARI and networkx). **A pairwise lock is a root-of-unity relation** (when $N^+$ has one
+  prime above $p$): locked iff $\mu'_+=\zeta\mu_\pm$; sign $+1$ for $\zeta\mu_+$ (rotation), $-1$ for $\zeta\mu_-$ (rotation and reflection); proved. Integer
+  eigenvalues: only half turn ($\pm\lambda$), quarter turn ($4q-\lambda^2=m^2$, partner $\pm m$; the Hadamard of the square GKP lattice) and sixth turn
+  ($4q-\lambda^2=3m^2$, partners $\pm\tfrac12(\lambda\pm3m)$); checked for $q<400$. Prime-dependent lock: $q=11$, $\lambda=\tfrac12(-1\pm\sqrt5)$, $\mathbb Q(\zeta_5)$, signs $-1,+1$ at the
+  two primes, no obstruction. **Bipartite graphs:** $D=\pm1$ by side, $\Gamma=\mathrm{diag}(D,-D)$ antisymplectic involution with $\Gamma M=-M\Gamma$; half lattice
+  $T_+=\mathbb Z^{A}\oplus\mathbb Z^{B}$ Lagrangian; $\omega_+=\Omega(\cdot,(F+V)\cdot)|_{T_+}=\bigl(\begin{smallmatrix}0&B_s\\-B_s^T&0\end{smallmatrix}\bigr)$ (signed biadjacency), compatible with
+  $F^2$, a GKP code of dimension $|\det B_s|$; for the cube all 31 ordinary Ramanujan fluxes are polarised by $\omega_+$ over $\mathbb F_4$ (15 principally). $K_4$:
+  the anticommuting signed permutations have order four, no real half. No graph symmetry found behind quarter and sixth turns. **Scan** of 21069 ordinary
+  Ramanujan flux classes (cubic $\le8$ vertices, 4-regular $\le7$, $K_7$): 8373 with a $\pm\lambda$ pair, 3274 lock-free, 1260 locked with all signs $+1$, 422 locked
+  with a $-1$ (in $K_7$: $-1$ with $\tfrac12(1\pm\sqrt{57})$ in $\mathbb Q(\sqrt{-3},\sqrt{-19})$), 7740 undecided (real field too large). Smallest lock-free
+  examples: a cubic graph on 8 vertices with one negative edge; the octahedron with three.
+
+**Next.** (T-a′) Redo tower and vacuum on the half lattice for bipartite graphs (one quadrature per vertex, form $B_s$, Frobenius two steps); fluxes with
+$\det B_s=\pm1$; the order-four symmetry of $K_4$ as a $\mathbb Z[i]$-structure; existence of the unit twist $P$ in general; Jacobian or Prym for the $K_4$
+example; the non-ordinary examples. (T-a″) The matching question in the notebook's terms: an invariant vacuum on the odd bond of shard 04t. (T-b) REFUTE review of `graph-ihara.md` and `graph-super.md` before registering anything; byte-cite
 Godsil–Gutman, Heilmann–Lieb, Marcus–Spielman–Srivastava. (T-c) The arithmetic graded examples (graded Weil–LPS of 03c): identify the flux and the
 torus. Earlier next steps (G-a, G-b, N1′ genus two, N2′, shard 08j) unchanged. `weil-bond-analytic.patch` in the repository root is untracked and
 redundant (its three patches are the three commits 5203468, 02d9eb2, 3e7ddb9 by patch-id).

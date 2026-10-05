@@ -1,0 +1,34 @@
+PARI stack size set to 2000000000 bytes, maximum size set to 2000003072
+== L1  a pairwise lock is a root-of-unity relation between Frobenius eigenvalues (one prime of N+ above p)
+PASS  in each locked pair mu'_+ = zeta mu_+ (lock +1) or zeta conj(mu_+) (lock -1), zeta a root of unity; signs match the residue rule  q=5: (2.000, 4.000) zeta of order 4, lock -1; q=5: (-2.000, 4.000) zeta of order 4, lock +1; q=7: (1.000, 5.000) zeta of order 6, lock +1; q=7: (1.000, 4.000) zeta of order 3, lock -1; q=7: (4.000, 5.000) zeta of order 6, lock -1; q=2: (1.000, -1.000) zeta of order 2, lock -1; q=2: (2.236, -2.236) zeta of order 2, lock -1; q=5: (4.464, -2.464) zeta of order 3, lock +1
+PASS  for the two irrational pairs the residue rule gives the same sign as the root-of-unity relation
+== L2  integer eigenvalues: locks other than +-lambda need the Gaussian or the Eisenstein field
+PASS  for all primes q < 400: several |lambda| share a field only for d = 1 (partner m) or d = 3 (partners |lambda +- 3m|/2)  examples (q, d, |lambda|): [(5, 1, [2, 4]), (7, 3, [1, 4, 5]), (13, 3, [2, 5, 7]), (13, 1, [4, 6]), (17, 1, [2, 8]), (19, 3, [1, 7, 8])]
+== L3  a lock that depends on the prime: a cyclic quartic field
+PASS  q = 11, eigenvalues (-1 +- sqrt5)/2: one relation, its sign differs at the two primes of Q(sqrt5) above 11, so all four sign vectors occur  tau = [-1, 1]; mu_+ = -0.8090+3.2164j lies in Q(zeta_5)
+== L4  bipartite base graphs: the step is a square root; the arithmetic lattice is one Lagrangian half
+      cube: 12 classes, |det B_s| = 1, two-step eigenvalues [np.float64(-3.962389), np.float64(-3.0), np.float64(-0.377784), np.float64(3.340173)], 0 relations, polarised by w_+: YES (rule only)
+      cube: 12 classes, |det B_s| = 3, two-step eigenvalues [np.float64(-3.828427), np.float64(-1.0), np.float64(1.828427)], 0 relations, polarised by w_+: YES (rule = PARI)
+      cube: 3 classes, |det B_s| = 5, two-step eigenvalues [np.float64(-3.0), np.float64(1.0)], 0 relations, polarised by w_+: YES (rule = PARI)
+      cube: 3 classes, |det B_s| = 1, two-step eigenvalues [np.float64(-3.828427), np.float64(1.828427)], 0 relations, polarised by w_+: YES (rule = PARI)
+      cube: 1 classes, |det B_s| = 9, two-step eigenvalues [np.float64(-1.0)], 0 relations, polarised by w_+: YES (rule = PARI)
+PASS  bipartite: D = +-1 by side gives D A_s D = -A_s for every flux; Gamma = diag(D,-D) is an antisymplectic involution anticommuting with the step; T_+ = (functions on one side) + (functions on the other) is Lagrangian, F^2 acts on it, and w_+ is the signed biadjacency form, positive for {Im phi(F^2) > 0}
+== L5  the fast relation finder agrees with the direct one
+PASS  same number of independent relations and same verdict on six spectra
+== L6  which fluxes have no locks: a scan of small regular graphs
+      cubic, 4 vertices: 1 graphs; ordinary Ramanujan flux classes 6 (on bipartite graphs: 0); with a +-lambda pair 6; no locks 0; locked, Omega still a polarisation 0; locked, not 0; undecided 0
+      cubic, 6 vertices: 2 graphs; ordinary Ramanujan flux classes 0 (on bipartite graphs: 0); with a +-lambda pair 0; no locks 0; locked, Omega still a polarisation 0; locked, not 0; undecided 0
+      cubic, 8 vertices: 5 graphs; ordinary Ramanujan flux classes 121 (on bipartite graphs: 31); with a +-lambda pair 87; no locks 2; locked, Omega still a polarisation 0; locked, not 2; undecided 30
+      4-regular, 5 vertices: 1 graphs; ordinary Ramanujan flux classes 20 (on bipartite graphs: 0); with a +-lambda pair 20; no locks 0; locked, Omega still a polarisation 0; locked, not 0; undecided 0
+      4-regular, 6 vertices: 1 graphs; ordinary Ramanujan flux classes 66 (on bipartite graphs: 0); with a +-lambda pair 58; no locks 8; locked, Omega still a polarisation 0; locked, not 0; undecided 0
+      4-regular, 7 vertices: 2 graphs; ordinary Ramanujan flux classes 186 (on bipartite graphs: 0); with a +-lambda pair 12; no locks 24; locked, Omega still a polarisation 0; locked, not 0; undecided 150
+      6-regular, 7 vertices: 1 graphs; ordinary Ramanujan flux classes 20670 (on bipartite graphs: 0); with a +-lambda pair 8190; no locks 3240; locked, Omega still a polarisation 1260; locked, not 420; undecided 7560
+      example (cubic, 8 vertices, lockfree): edges [(0, 2), (0, 4), (0, 7), (1, 3), (1, 5), (1, 6), (2, 6), (2, 7), (3, 5), (3, 6), (4, 5), (4, 7)], negative edges [(2, 6)], fermionic char poly (x + 1)**2*(x**3 - x**2 - 5*x + 1)**2
+      example (cubic, 8 vertices, lockfree): edges [(0, 2), (0, 4), (0, 7), (1, 3), (1, 5), (1, 6), (2, 6), (2, 7), (3, 5), (3, 6), (4, 5), (4, 7)], negative edges [(1, 3), (2, 6), (2, 7), (4, 7)], fermionic char poly (x - 1)**2*(x**3 + x**2 - 5*x - 1)**2
+      example (4-regular, 6 vertices, lockfree): edges [(0, 1), (0, 2), (0, 4), (0, 5), (1, 2), (1, 3), (1, 5), (2, 3), (2, 4), (3, 4), (3, 5), (4, 5)], negative edges [(2, 3), (3, 4), (4, 5)], fermionic char poly (x + 2)**2*(x**2 - 2*x - 2)**2
+      example (4-regular, 6 vertices, lockfree): edges [(0, 1), (0, 2), (0, 4), (0, 5), (1, 2), (1, 3), (1, 5), (2, 3), (2, 4), (3, 4), (3, 5), (4, 5)], negative edges [(1, 5), (2, 3), (2, 4), (3, 4), (4, 5)], fermionic char poly (x - 2)**2*(x**2 + 2*x - 2)**2
+      example (4-regular, 7 vertices, lockfree): edges [(0, 2), (0, 4), (0, 5), (0, 6), (1, 2), (1, 4), (1, 5), (1, 6), (2, 3), (2, 5), (3, 4), (3, 5), (3, 6), (4, 6)], negative edges [(1, 5), (2, 3)], fermionic char poly (x + 1)*(x**2 + x - 4)*(x**4 - 2*x**3 - 7*x**2 + 8*x + 8)
+      example (4-regular, 7 vertices, lockfree): edges [(0, 2), (0, 4), (0, 5), (0, 6), (1, 2), (1, 4), (1, 5), (1, 6), (2, 3), (2, 5), (3, 4), (3, 5), (3, 6), (4, 6)], negative edges [(1, 5), (2, 3), (3, 5), (4, 6)], fermionic char poly (x - 1)*(x**2 - x - 4)*(x**4 + 2*x**3 - 7*x**2 - 8*x + 8)
+PASS  scan completed; every ordinary Ramanujan class on a bipartite graph has a +-lambda pair  totals: {'classes': 21069, 'pm': 8373, 'lockfree': 3274, 'locked_yes': 1260, 'locked_no': 422, 'undecided': 7740}
+
+7 passed, 0 failed

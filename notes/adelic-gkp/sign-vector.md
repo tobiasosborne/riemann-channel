@@ -139,6 +139,5 @@ The proof of step 1 uses ordinariness only. For $p=2$ the residue is read throug
 
 ## 8. Next
 
-- **A graph meaning for the lock sign.** The rule is in terms of eigenvalues. For the lock $\pm\lambda$ there is a graph symmetry behind it (the signed permutation of `howe-positivity.md` §3). Is there one behind the lock of 2 and 4 at $q=5$?
-- **Which fluxes have no locks.** Characterise the signed graphs whose Weil-form determinants are independent modulo squares; these are the ones where the lattice with its standard form is an abelian variety.
+- **A graph meaning for the lock sign,** and **which fluxes have no locks:** taken up in `locks.md` (locks are root-of-unity relations; only the half turn comes from a graph symmetry; bipartite graphs resolve on a half lattice; a scan of small graphs).
 - **The arithmetic orientation as a second form.** When $\Omega$ fails, the twist $P$ of `howe-positivity.md` §4 is a unit with prescribed signs on the locked sets. Decide when such a unit exists in general.

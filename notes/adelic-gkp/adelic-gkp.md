@@ -13,7 +13,7 @@ dictionary entries. Checks: `checks/check_adelic_gkp.py`, output `checks/output.
 if I take a field extension of Q, eg sqrt2 and ask the same questions again"): `checks/check_quadratic.py`, output
 `checks/output_quadratic.txt` (14/14 pass).
 Companion pages (2026-10-05, local session; index in §15): `functional-equation-gate.md`, `weil-positivity-spectroscopy.md`, `graph-ihara.md`,
-`graph-super.md`, `lattice-tower.md`, `howe-positivity.md`, `sign-vector.md`.
+`graph-super.md`, `lattice-tower.md`, `howe-positivity.md`, `sign-vector.md`, `locks.md`.
 
 Conventions as in analytic.md. $\mathbb A$ the adeles of $\mathbb Q$, $\mathbb A_f$ the finite adeles, $\hat{\mathbb Z}=\prod_p\mathbb Z_p$.
 Tate's character $\psi=\psi_\infty\prod_p\psi_p$ with $\psi_\infty(x)=e^{-2\pi ix}$, $\psi_p(x)=e^{2\pi i\{x\}_p}$; it is trivial on $\mathbb Q$, so
@@ -92,6 +92,13 @@ $f_0=e^{-\pi x_\infty^2}\otimes1_{\hat{\mathbb Z}}$. $D_af(x)=|a|^{1/2}f(ax)$ fo
   $\tau_I$ is the residue of $(-1)^{|I|/2}\sqrt{\prod_ID_j}/\prod_I\lambda_j$ (proved). So $\Omega$ is a polarisation iff every lock sign is $+1$. Rational case:
   locked iff same squarefree part of $4q-\lambda^2=dm^2$, sign $+1$ iff $\lambda/m\equiv\lambda'/m'$ mod $p$ (e.g. $q=5$: 2 and 4 are anti-locked). Agrees with PARI on 13
   spectra; of the 527 ordinary Ramanujan flux classes of $K_4$, $K_5$, the cube and $K_6$ only 120 (one $K_6$ spectrum and its mirror) pass. Proved / computed (19/19).
+- **G16 (where locks come from; `locks.md`).** With one prime of $N^+$ above $p$, two ordinary modes are locked iff $\mu'_+=\zeta\mu_\pm$ for a root of unity $\zeta$;
+  sign $+1$ for a rotation, $-1$ for a rotation with a reflection (proved). Integer eigenvalues: only the half turn ($\pm\lambda$), the quarter turn ($\mathbb Q(i)$:
+  $\lambda^2+(\lambda')^2=4q$) and the sixth turn ($\mathbb Q(\sqrt{-3})$). A cyclic quartic field gives a lock whose sign depends on the prime and does not obstruct.
+  **Bipartite graphs:** $D=\pm1$ by side gives $\Gamma=\mathrm{diag}(D,-D)$, an antisymplectic involution anticommuting with the step; the half lattice (functions on
+  one side as positions, on the other as momenta) carries the signed biadjacency form $B_s$ and $F^2$ over $\mathbb F_{q^2}$; on it all 31 ordinary Ramanujan fluxes of
+  the cube are polarised, 15 principally. Scan (21069 classes on small regular graphs): lock-free fluxes exist from 8 vertices on; $K_7$ has third-turn locks of both
+  signs. Proved / computed (7/7); "no graph symmetry behind quarter and sixth turns" is a negative finding only.
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -445,7 +452,7 @@ statement uniform in the angular frequency that is easier than the trivial-chara
 
 ## 15. Companion pages of 2026-10-05 (local session), and a steer on method
 
-Seven pages written in one session with TJO, each with its own status table; rendered HTML next to each source.
+Eight pages written in one session with TJO, each with its own status table; rendered HTML next to each source.
 
 | file | question (TJO) | result in one line | checks |
 |---|---|---|---|
@@ -456,6 +463,7 @@ Seven pages written in one session with TJO, each with its own status table; ren
 | `lattice-tower.md` | investigate the tower of lattices | a tower of GKP codes with the step as a logical Clifford; blind to RH; RH is an invariant vacuum; ordinary case is a Deligne module | `checks/check_lattice_tower.py`, 45/45 |
 | `howe-positivity.md` | take the next step: Howe's positivity on the ordinary examples | $\Omega$ is a polarisation for one mode and for a $K_6$ flux, never when $\pm\lambda$ both occur; explicit principal polarisation $\Omega(x,Py)$ for $K_4$ with one negative edge; vacuum $\ne$ arithmetic complex structure in general | `checks/check_howe_positivity.py` (needs cypari2), 14/14 |
 | `sign-vector.md` | study what on the signed graph decides the per-mode sign | a single sign is free; the graph decides locks between modes whose Weil-form determinants agree up to squares, with an explicit residue sign; criterion for $\Omega$ to be a polarisation | `checks/check_sign_vector.py` (needs cypari2), 19/19 |
+| `locks.md` | investigate the two open questions: a symmetry behind the locks; which fluxes have none | locks are finite-order rotations (half, quarter, sixth turns for integer spectra); only the half turn is a graph symmetry; bipartite graphs resolve on a Lagrangian half lattice with the biadjacency form; scan of 21069 flux classes | `checks/check_locks.py` (needs cypari2, networkx), 7/7 |
 
 **Steer (TJO, 2026-10-05, verbatim).** "Let us find the natural QI interpreations on the cases we understand *then* try to match to corresponding analogous setting
 for standard RH. Not the other way around. I am not convincd by the overlap thing in the case of standard zeta." Consequences for this note: Part II (§§6–12)
