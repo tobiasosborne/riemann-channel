@@ -1,0 +1,83 @@
+== W1  the step and its adjoint
+PASS  E mode (lambda=-1, q=2): M^T Omega M = q Omega; V = q M^-1 is integral and is the Omega-adjoint of M
+PASS  Pauli six (lambda=-2, q=5): M^T Omega M = q Omega; V = q M^-1 is integral and is the Omega-adjoint of M
+PASS  K4, one negative edge (q=2): M^T Omega M = q Omega; V = q M^-1 is integral and is the Omega-adjoint of M
+PASS  hyperbolic step (lambda=5, q=5): M^T Omega M = q Omega; V = q M^-1 is integral and is the Omega-adjoint of M
+== W2  the point tower: codes, nesting, the Galois permutation
+PASS  E mode (lambda=-1, q=2): #Fix(M^k) = det(1 - M^k) = dim of the code with stabiliser lattice (1 - V^k)L; M permutes Fix(M^k); orbit sizes divide k  h_k = [4, 8, 4, 16, 44, 56, 116, 288]
+      k = 1: h = 4, group invariants [4], orbits of the step (size: number) {1: 4}
+      k = 2: h = 8, group invariants [8], orbits of the step (size: number) {1: 4, 2: 2}
+      k = 3: h = 4, group invariants [4], orbits of the step (size: number) {1: 4}
+      k = 4: h = 16, group invariants [16], orbits of the step (size: number) {1: 4, 2: 2, 4: 2}
+      k = 5: h = 44, group invariants [44], orbits of the step (size: number) {1: 4, 5: 8}
+      k = 6: h = 56, group invariants [56], orbits of the step (size: number) {1: 4, 2: 2, 6: 8}
+      k = 7: h = 116, group invariants [116], orbits of the step (size: number) {1: 4, 7: 16}
+      k = 8: h = 288, group invariants [3, 96], orbits of the step (size: number) {1: 4, 2: 2, 4: 2, 8: 34}
+PASS  E mode (lambda=-1, q=2): nesting Fix(M^d) < Fix(M^k) for d | k
+PASS  E mode (lambda=-1, q=2): Tr(Phi^j on the level-6 code) = h_gcd(j,k) for j = 1..6
+PASS  Pauli six (lambda=-2, q=5): #Fix(M^k) = det(1 - M^k) = dim of the code with stabiliser lattice (1 - V^k)L; M permutes Fix(M^k); orbit sizes divide k  h_k = [8, 32, 104, 640]
+      k = 1: h = 8, group invariants [8], orbits of the step (size: number) {1: 8}
+      k = 2: h = 32, group invariants [2, 16], orbits of the step (size: number) {1: 8, 2: 12}
+      k = 3: h = 104, group invariants [104], orbits of the step (size: number) {1: 8, 3: 32}
+      k = 4: h = 640, group invariants [4, 160], orbits of the step (size: number) {1: 8, 2: 12, 4: 152}
+PASS  Pauli six (lambda=-2, q=5): nesting Fix(M^d) < Fix(M^k) for d | k
+PASS  Pauli six (lambda=-2, q=5): Tr(Phi^j on the level-4 code) = h_gcd(j,k) for j = 1..4
+PASS  K4, one negative edge (q=2): #Fix(M^k) = det(1 - M^k) = dim of the code with stabiliser lattice (1 - V^k)L; M permutes Fix(M^k); orbit sizes divide k  h_k = [32, 1024, 4256]
+      k = 1: h = 32, group invariants [2, 2, 8], orbits of the step (size: number) {1: 32}
+      k = 2: h = 1024, group invariants [2, 2, 16, 16], orbits of the step (size: number) {1: 32, 2: 496}
+      k = 3: h = 4256, group invariants [2, 2, 1064], orbits of the step (size: number) {1: 32, 3: 1408}
+PASS  K4, one negative edge (q=2): nesting Fix(M^d) < Fix(M^k) for d | k
+PASS  K4, one negative edge (q=2): Tr(Phi^j on the level-3 code) = h_gcd(j,k) for j = 1..3
+PASS  hyperbolic step (lambda=5, q=5): #Fix(M^k) = det(1 - M^k) = dim of the code with stabiliser lattice (1 - V^k)L; M permutes Fix(M^k); orbit sizes divide k  h_k = [1, 11, 76, 451, 2501]
+      k = 1: h = 1, group invariants [], orbits of the step (size: number) {1: 1}
+      k = 2: h = 11, group invariants [11], orbits of the step (size: number) {1: 1, 2: 5}
+      k = 3: h = 76, group invariants [2, 38], orbits of the step (size: number) {1: 1, 3: 25}
+      k = 4: h = 451, group invariants [451], orbits of the step (size: number) {1: 1, 2: 5, 4: 110}
+      k = 5: h = 2501, group invariants [2501], orbits of the step (size: number) {1: 1, 5: 500}
+PASS  hyperbolic step (lambda=5, q=5): nesting Fix(M^d) < Fix(M^k) for d | k
+PASS  hyperbolic step (lambda=5, q=5): Tr(Phi^j on the level-5 code) = h_gcd(j,k) for j = 1..5
+== W5  logical operators of the level-k code: a Heisenberg group, and the step as a logical Clifford
+PASS  E mode (lambda=-1, q=2), level 4: 16 characters separate the 16 points (irreducible Heisenberg representation); X Z = phase Z X; the step maps Z_lambda to Z_(V^-1 lambda) and X_e to X_(Me), preserving the pairing
+PASS  E mode (lambda=-1, q=2), level 5: 44 characters separate the 44 points (irreducible Heisenberg representation); X Z = phase Z X; the step maps Z_lambda to Z_(V^-1 lambda) and X_e to X_(Me), preserving the pairing
+PASS  Pauli six (lambda=-2, q=5), level 2: 32 characters separate the 32 points (irreducible Heisenberg representation); X Z = phase Z X; the step maps Z_lambda to Z_(V^-1 lambda) and X_e to X_(Me), preserving the pairing
+PASS  K4, one negative edge (q=2), level 1: 32 characters separate the 32 points (irreducible Heisenberg representation); X Z = phase Z X; the step maps Z_lambda to Z_(V^-1 lambda) and X_e to X_(Me), preserving the pairing
+== W6  the kernel tower M^k L and the comparison of the two towers
+PASS  E mode (lambda=-1, q=2): [L : M^k L] = q^(nk)  L / M^3 L has invariants [8]
+      all |mu| = sqrt q: True;  h_k / q^(nk) for k = 1..6: [2.0, 2.0, 0.5, 1.0, 1.375, 0.875];  within (1 + q^(-k/2))^(2n) - 1: True
+PASS  E mode (lambda=-1, q=2): |h_k / q^(nk) - 1| <= (1 + q^(-k/2))^(2n) - 1 for k = 1..6
+PASS  Pauli six (lambda=-2, q=5): [L : M^k L] = q^(nk)  L / M^3 L has invariants [125]
+      all |mu| = sqrt q: True;  h_k / q^(nk) for k = 1..6: [1.6, 1.28, 0.832, 1.024, 1.0266, 0.9851];  within (1 + q^(-k/2))^(2n) - 1: True
+PASS  Pauli six (lambda=-2, q=5): |h_k / q^(nk) - 1| <= (1 + q^(-k/2))^(2n) - 1 for k = 1..6
+PASS  K4, one negative edge (q=2): [L : M^k L] = q^(nk)  L / M^3 L has invariants [8, 8, 8, 8]
+      all |mu| = sqrt q: True;  h_k / q^(nk) for k = 1..6: [2.0, 4.0, 1.0391, 2.25, 0.8899, 1.0797];  within (1 + q^(-k/2))^(2n) - 1: True
+PASS  K4, one negative edge (q=2): |h_k / q^(nk) - 1| <= (1 + q^(-k/2))^(2n) - 1 for k = 1..6
+PASS  hyperbolic step (lambda=5, q=5): [L : M^k L] = q^(nk)  L / M^3 L has invariants [5, 25]
+      all |mu| = sqrt q: False;  h_k / q^(nk) for k = 1..6: [0.2, 0.44, 0.608, 0.7216, 0.8003, 0.8561];  within (1 + q^(-k/2))^(2n) - 1: False
+PASS  hyperbolic step (lambda=5, q=5): the ratio h_k / q^(nk) leaves the Weil window
+== W7  the invariant vacuum, oscillator frequencies, and the shape of the lattice
+PASS  E mode (lambda=-1, q=2): Weil form positive and S-invariant; invariant complex structure J (J^2 = -1, JS = SJ, Omega(.,J.) > 0); invariant pure Gaussian state; normal-mode frequencies = angles of the lines  angles/pi: [0.615]
+PASS  E mode (lambda=-1, q=2): h_k = prod_j |1 - q^(k/2) e^(i k theta_j)|^2, k = 1..5
+PASS  Pauli six (lambda=-2, q=5): Weil form positive and S-invariant; invariant complex structure J (J^2 = -1, JS = SJ, Omega(.,J.) > 0); invariant pure Gaussian state; normal-mode frequencies = angles of the lines  angles/pi: [0.6476]
+PASS  Pauli six (lambda=-2, q=5): h_k = prod_j |1 - q^(k/2) e^(i k theta_j)|^2, k = 1..5
+PASS  K4, one negative edge (q=2): Weil form positive and S-invariant; invariant complex structure J (J^2 = -1, JS = SJ, Omega(.,J.) > 0); invariant pure Gaussian state; normal-mode frequencies = angles of the lines  angles/pi: [0.2098 0.385  0.615  0.7902]
+PASS  K4, one negative edge (q=2): h_k = prod_j |1 - q^(k/2) e^(i k theta_j)|^2, k = 1..5
+PASS  hyperbolic step (lambda=5, q=5): the Weil form is indefinite and S has an eigenvalue off the unit circle (no invariant vacuum)  eigenvalues of S: [0.618 1.618]
+PASS  E mode (lambda=-1, q=2): the lattice with the invariant form is the binary quadratic form q x^2 + lambda x y + y^2 of discriminant -7; L is a cyclic Z[M]-module  form (2, -1, 1); cyclic vector (0, -1)
+PASS  Pauli six (lambda=-2, q=5): the lattice with the invariant form is the binary quadratic form q x^2 + lambda x y + y^2 of discriminant -16; L is a cyclic Z[M]-module  form (5, -2, 1); cyclic vector (0, -1)
+PASS  hyperbolic step (lambda=5, q=5): the lattice with the invariant form is the binary quadratic form q x^2 + lambda x y + y^2 of discriminant 5; L is a cyclic Z[M]-module  form (5, 5, 1); cyclic vector (-1, 1)
+== W8  Deligne's conditions (Goresky-Tai, refs/src/1701.07742/main.tex:561-572)
+      E mode (lambda=-1, q=2): char poly coefficients [1, 1, 2]; (1) semisimple with |mu| = sqrt q: True; (3) middle coefficient 1 prime to 2: True; (4) V exists: True
+PASS  E mode (lambda=-1, q=2): a Deligne module of rank 2 over F_2
+      Pauli six (lambda=-2, q=5): char poly coefficients [1, 2, 5]; (1) semisimple with |mu| = sqrt q: True; (3) middle coefficient 2 prime to 5: True; (4) V exists: True
+PASS  Pauli six (lambda=-2, q=5): a Deligne module of rank 2 over F_5
+      K4, one negative edge (q=2): char poly coefficients [1, 0, 2, 0, 5, 0, 8, 0, 16]; (1) semisimple with |mu| = sqrt q: True; (3) middle coefficient 5 prime to 2: True; (4) V exists: True
+PASS  K4, one negative edge (q=2): a Deligne module of rank 8 over F_2
+      hyperbolic step (lambda=5, q=5): char poly coefficients [1, -5, 5]; (1) semisimple with |mu| = sqrt q: False; (3) middle coefficient -5 prime to 5: False; (4) V exists: True
+PASS  hyperbolic step (lambda=5, q=5): not a Deligne module (condition 1 fails)
+== W9  torsion syndromes split into a periodic part and a part killed by the step (E mode)
+PASS  N = 8: the N-torsion syndromes are (periodic) + (killed), a direct sum  8 periodic x 8 killed = 64
+PASS  N = 24: the N-torsion syndromes are (periodic) + (killed), a direct sum  72 periodic x 8 killed = 576
+== Figure  the lattice of the E mode in vacuum coordinates, with the two towers
+PASS  vacuum coordinate z = conj(mu) x1 + x2 turns the step into multiplication by mu = (-1 + sqrt(-7))/2
+
+45 passed, 0 failed

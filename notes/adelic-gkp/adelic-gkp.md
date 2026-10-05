@@ -13,7 +13,7 @@ dictionary entries. Checks: `checks/check_adelic_gkp.py`, output `checks/output.
 if I take a field extension of Q, eg sqrt2 and ask the same questions again"): `checks/check_quadratic.py`, output
 `checks/output_quadratic.txt` (14/14 pass).
 Companion pages (2026-10-05, local session; index in §15): `functional-equation-gate.md`, `weil-positivity-spectroscopy.md`, `graph-ihara.md`,
-`graph-super.md`.
+`graph-super.md`, `lattice-tower.md`.
 
 Conventions as in analytic.md. $\mathbb A$ the adeles of $\mathbb Q$, $\mathbb A_f$ the finite adeles, $\hat{\mathbb Z}=\prod_p\mathbb Z_p$.
 Tate's character $\psi=\psi_\infty\prod_p\psi_p$ with $\psi_\infty(x)=e^{-2\pi ix}$, $\psi_p(x)=e^{2\pi i\{x\}_p}$; it is trivial on $\mathbb Q$, so
@@ -73,6 +73,13 @@ $f_0=e^{-\pi x_\infty^2}\otimes1_{\hat{\mathbb Z}}$. $D_af(x)=|a|^{1/2}f(ax)$ fo
   fermionic Fock space, and for one fermionic mode the super zeta is the zeta of the toral map (the Pauli-qubit elliptic curve of shard 03c is the syndrome
   torus of one mode). (iii) The flux-averaged fermionic numerator is the matching polynomial, so RH holds on average over fluxes (Godsil–Gutman,
   Heilmann–Lieb, quoted from memory). Standard / reformulation / checked (50/50).
+- **G13 (the tower; `lattice-tower.md`).** For an integer step $M$ on $L=\mathbb Z^{2n}$ with $M^T\Omega M=q\Omega$ and $V=qM^{-1}$: the lattice $(1-V^k)L$ is the
+  stabiliser lattice of a GKP code with basis the qunaught displaced by the period-$k$ syndromes, dimension $\det(1-M^k)$, logical Paulis the Heisenberg group of
+  $L/(1-M^k)L$, and the step a logical Clifford of order $k$ whose orbits are the places; Lefschetz reads "code trace $=$ Fock supertrace". **The tower is blind to
+  RH** (a hyperbolic step has all of it). RH (with semisimplicity) $\iff$ the normalised step has an invariant Gaussian vacuum; then the zeros are oscillator
+  frequencies, the lattice has complex multiplication (one mode: the form $qx^2+\lambda xy+y^2$, discriminant $\lambda^2-4q$) and the tower is self-similar. In the
+  ordinary case $(L,M)$ is a Deligne module, hence an ordinary abelian variety over $\mathbb F_q$ (Goresky–Tai `1701.07742:main.tex:561-591`). Elementary / standard /
+  cited / checked (45/45); Howe's polarisation positivity not checked.
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -426,7 +433,7 @@ statement uniform in the angular frequency that is easier than the trivial-chara
 
 ## 15. Companion pages of 2026-10-05 (local session), and a steer on method
 
-Four pages written in one session with TJO, each with its own status table; rendered HTML next to each source.
+Five pages written in one session with TJO, each with its own status table; rendered HTML next to each source.
 
 | file | question (TJO) | result in one line | checks |
 |---|---|---|---|
@@ -434,9 +441,10 @@ Four pages written in one session with TJO, each with its own status table; rend
 | `weil-positivity-spectroscopy.md` | what does Weil positivity say in the most QI-friendly way? | the place-by-place echo is the autocorrelation of a unitary evolution; every line is sharp | `checks/check_weil_qi.py`, 29/29 |
 | `graph-ihara.md` | redo it for a Ramanujan graph and the Ihara zeta: does the analogy hold or break? | breaks at the code, holds after; the step is CZ·Hadamard·squeeze; Weil positivity is $A^2\le4q$; lines are bright | `checks/check_graph_gkp.py`, 56/56 |
 | `graph-super.md` | redo it for the super zeta, zeros from fermionic modes; find a lattice-like state in a bigger space | flux qubit on the period lattice; syndrome torus of the fermionic sector; RH on average over fluxes | `checks/check_super_gkp.py`, 50/50 |
+| `lattice-tower.md` | investigate the tower of lattices | a tower of GKP codes with the step as a logical Clifford; blind to RH; RH is an invariant vacuum; ordinary case is a Deligne module | `checks/check_lattice_tower.py`, 45/45 |
 
 **Steer (TJO, 2026-10-05, verbatim).** "Let us find the natural QI interpreations on the cases we understand *then* try to match to corresponding analogous setting
 for standard RH. Not the other way around. I am not convincd by the overlap thing in the case of standard zeta." Consequences for this note: Part II (§§6–12)
-and `weil-positivity-spectroscopy.md` §1 start from the standard zeta and are to be read as provisional; `graph-super.md` is the page to build on.
+and `weil-positivity-spectroscopy.md` §1 start from the standard zeta and are to be read as provisional; `graph-super.md` and `lattice-tower.md` are the pages to build on.
 
 Figures `fig_*.png` are written by the check scripts into this directory. Nothing registered; no REFUTE review; no shard.

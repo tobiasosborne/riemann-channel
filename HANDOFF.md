@@ -2,17 +2,17 @@
 
 # HANDOFF — riemann-channel
 
-## Session 2026-10-05: the GKP reading tested on graphs; the super Ihara zeta has two lattice states (Fable alone; record only)
+## Session 2026-10-05: the GKP reading tested on graphs; the super Ihara zeta has two lattice states; the tower of lattices (Fable alone; record only)
 
 Two parts. Morning (claude.ai sandbox): §14 of `notes/adelic-gkp/adelic-gkp.md`, the field extension $\mathbb Q(\sqrt2)$ (checks 14/14). Then a local session
-(Claude Code), four companion pages in `notes/adelic-gkp/` with rendered HTML, indexed in §15 of the note; checks `notes/adelic-gkp/checks/`
-(`check_weil_qi.py` 29/29, `check_graph_gkp.py` 56/56, `check_super_gkp.py` 50/50). Worklog `docs/worklog/2026-10-05.md`.
+(Claude Code), five companion pages in `notes/adelic-gkp/` with rendered HTML, indexed in §15 of the note; checks `notes/adelic-gkp/checks/`
+(`check_weil_qi.py` 29/29, `check_graph_gkp.py` 56/56, `check_super_gkp.py` 50/50, `check_lattice_tower.py` 45/45). Worklog `docs/worklog/2026-10-05.md`.
 **Nothing registered; no REFUTE review; no shard.** Gate unchanged: 13 errors (8 Yoshida rows, 5 round-2 scripts awaiting 08j).
 
 **Steer on method (TJO, verbatim; binding for the next sessions).** "Let us find the natural QI interpreations on the cases we understand *then* try to match
 to corresponding analogous setting for standard RH. Not the other way around. I am not convincd by the overlap thing in the case of standard zeta."
 So: the overlap/filter reading of the standard zeta (`weil-positivity-spectroscopy.md` §1, note Part II) is provisional and not to be built on;
-`graph-super.md` is the page to build on.
+`graph-super.md` and `lattice-tower.md` are the pages to build on.
 
 **Findings (statuses in the pages).**
 - `functional-equation-gate.md`: $\Theta$ is a qunaught because $\mathbb Q^2$ is Lagrangian; divisibility of $\mathbb Q$ is the separate rigidity statement. The gate
@@ -35,8 +35,21 @@ So: the overlap/filter reading of the standard zeta (`weil-positivity-spectrosco
   numerator is the matching polynomial (roots strictly in the band, Heilmann–Lieb); for $K_4$, Petersen, $K_5$ only the zero flux and the all-negative
   flux fail. Lines are dark again with the signs of $\zeta$; the fermionic Weil form is positive definite outright. Still no Tate-type formula.
 
-**Next.** (T-a) The tower of lattices $(1-M_s^k)\mathbb Z^{2n}$: GKP codes whose dimensions are the point counts over $\mathbb F_{q^k}$; compare with the level-$N$
-Bell pairs of note §4 (TJO asked for this next). (T-b) REFUTE review of `graph-ihara.md` and `graph-super.md` before registering anything; byte-cite
+- `lattice-tower.md` (T-a, done the same session; checks 45/45). For an integer step $M$ on $L=\mathbb Z^{2n}$, $M^T\Omega M=q\Omega$, $V=qM^{-1}$: $(1-V^k)L$ is the
+  stabiliser lattice of a GKP code $\mathcal C_k$ with basis $W(e)|L\rangle$, $e$ a syndrome of period $k$; $\dim=\det(1-M^k)$; logical Paulis $=$ Heisenberg group of
+  $L/(1-M^k)L$; the step is a logical Clifford $\Phi$ of order $k$ (the Galois group), its orbits are the places, $\mathrm{Tr}(\Phi^j|\mathcal C_k)=h_{\gcd(j,k)}$, and
+  Lefschetz reads "code trace $=$ Fock supertrace". Second tower $M^kL$ (index $q^{nk}$, the step nilpotent); torsion syndromes $=$ periodic $\oplus$ killed.
+  **The tower is blind to RH**: the hyperbolic step $\bigl(\begin{smallmatrix}0&-1\\5&5\end{smallmatrix}\bigr)$ has all of it; only $h_k/q^{nk}$ leaves the Weil window.
+  **RH is an invariant vacuum**: (RH, semisimple) $\iff$ Weil form $>0$ $\iff$ $S=M/\sqrt q$ fixes a pure Gaussian state (`thm:deninger-invariant-polarisation` with
+  polarisation $=$ vacuum); then the zeros are oscillator frequencies, the trivial pair is the inverted oscillator $\tfrac12(xp+px)$, the one-mode lattice is the
+  form $qx^2+\lambda xy+y^2$ (E mode: $\mathbb Z[\tfrac{1+\sqrt{-7}}2]$; Pauli six: $\mathbb Z+2i\mathbb Z$) and the tower is self-similar. **Ordinary case is a
+  theorem**: $(L,M)$ is a Deligne module, so an ordinary abelian variety over $\mathbb F_q$ (Goresky–Tai `1701.07742:main.tex:561-591`, on disk): E mode, Pauli
+  six, $K_4$ with one negative edge (rank 8 over $\mathbb F_2$); Petersen and $K_5$ examples are not ordinary. Not checked: Howe's positivity for $\Omega$; the group
+  isomorphism $A(\mathbb F_{q^k})\cong L/(1-M^k)L$ (from memory). **Reading to carry over (§7 of the page, not a result):** look for the vacuum, not the tower; in
+  the understood case the zeros are oscillator frequencies and the squeeze belongs to the poles, unlike the squeeze-frequency reading of the spectroscopy page.
+
+**Next.** (T-a′) Howe's positivity for $\Omega$ on the three ordinary examples; identify the abelian variety of $K_4$ with one negative edge (factors
+$(x^2\pm x+2)(x^4-x^2+4)$); the non-ordinary examples. (T-a″) The matching question in the notebook's terms: an invariant vacuum on the odd bond of shard 04t. (T-b) REFUTE review of `graph-ihara.md` and `graph-super.md` before registering anything; byte-cite
 Godsil–Gutman, Heilmann–Lieb, Marcus–Spielman–Srivastava. (T-c) The arithmetic graded examples (graded Weil–LPS of 03c): identify the flux and the
 torus. Earlier next steps (G-a, G-b, N1′ genus two, N2′, shard 08j) unchanged. `weil-bond-analytic.patch` in the repository root is untracked and
 redundant (its three patches are the three commits 5203468, 02d9eb2, 3e7ddb9 by patch-id).
