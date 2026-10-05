@@ -91,7 +91,7 @@ Consequences:
 
 - **Correction to `lattice-tower.md` §6.** "The vacuum is the complex structure of the lift" holds when $\sigma$ is constant: for one mode, and for the $K_6$ flux. For $K_4$ with one negative edge it is false for every $\varepsilon$. The lattice and the syndrome torus, as a real torus with the step, are those of the lift in all cases.
 - **Positivity is unaffected.** For the arithmetic polarisation the positive form of Howe's condition is $2\mathcal Q(x,\lvert P\rvert y)$: the Weil form composed with a positive operator that commutes with the step. The Rosati involution is the same for every $\omega_P$, namely $F\leftrightarrow V$. So Weil positivity and the positivity of the arithmetic polarisation are the same statement.
-- **A new invariant.** The sign vector $\sigma$, up to the choice of prime, compares an archimedean ordering (which eigenvalue is in the upper half-plane) with a $p$-adic one (which is the non-unit). It is forced to be odd under $\lambda\to-\lambda$ and is otherwise free in the examples.
+- **A new invariant.** The sign vector $\sigma$, up to the choice of prime, compares an archimedean ordering (which eigenvalue is in the upper half-plane) with a $p$-adic one (which is the non-unit). It is forced to be odd under $\lambda\to-\lambda$; the complete list of constraints is the locking rule of `sign-vector.md`.
 
 ## 6. Which abelian variety
 
@@ -114,6 +114,6 @@ Not done: the non-ordinary examples; whether the principal polarisation of §4 m
 
 ## 8. Next
 
-- **The sign vector $\sigma$ on the graph side.** Find what on the signed graph decides $\sigma$, beyond the oddness under $\lambda\to-\lambda$.
+- **The sign vector $\sigma$ on the graph side:** done, see `sign-vector.md` (a single mode's sign is free; locked sets of modes and their signs are decided by a residue rule).
 - **Jacobian or Prym.** With the principal polarisation of §4, decide whether the abelian fourfold of $K_4$ with one negative edge is the Jacobian of a genus-4 curve over $\mathbb F_2$ or the Prym of a double cover.
 - **The $K_6$ example.** It is the first several-mode case where the lattice with its standard form is a principally polarised abelian variety; it is the natural place to compare the vacuum picture with the arithmetic one mode by mode.

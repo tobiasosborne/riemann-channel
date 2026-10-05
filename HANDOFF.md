@@ -5,8 +5,8 @@
 ## Session 2026-10-05: the GKP reading tested on graphs; the super Ihara zeta has two lattice states; the tower of lattices (Fable alone; record only)
 
 Two parts. Morning (claude.ai sandbox): §14 of `notes/adelic-gkp/adelic-gkp.md`, the field extension $\mathbb Q(\sqrt2)$ (checks 14/14). Then a local session
-(Claude Code), six companion pages in `notes/adelic-gkp/` with rendered HTML, indexed in §15 of the note; checks `notes/adelic-gkp/checks/`
-(`check_weil_qi.py` 29/29, `check_graph_gkp.py` 56/56, `check_super_gkp.py` 50/50, `check_lattice_tower.py` 45/45, `check_howe_positivity.py` 14/14). Worklog `docs/worklog/2026-10-05.md`.
+(Claude Code), seven companion pages in `notes/adelic-gkp/` with rendered HTML, indexed in §15 of the note; checks `notes/adelic-gkp/checks/`
+(`check_weil_qi.py` 29/29, `check_graph_gkp.py` 56/56, `check_super_gkp.py` 50/50, `check_lattice_tower.py` 45/45, `check_howe_positivity.py` 14/14, `check_sign_vector.py` 19/19). Worklog `docs/worklog/2026-10-05.md`.
 **Nothing registered; no REFUTE review; no shard.** Gate unchanged: 13 errors (8 Yoshida rows, 5 round-2 scripts awaiting 08j).
 
 **Steer on method (TJO, verbatim; binding for the next sessions).** "Let us find the natural QI interpreations on the cases we understand *then* try to match
@@ -60,8 +60,18 @@ So: the overlap/filter reading of the standard zeta (`weil-positivity-spectrosco
   mode and for the $K_6$ flux, not for $K_4$ with one negative edge. Weil positivity is unaffected (the arithmetic Riemann form is $2\mathcal Q(x,|P|y)$).
   Isogeny class of the $K_4$ example over $\mathbb F_2$: $E_{2\,\rm pts}\times E_{4\,\rm pts}\times$ a simple surface; over $\mathbb F_4$: $E_1^2\times E_2^2$.
 
-**Next.** (T-a′) What on the signed graph decides the sign vector $\sigma$; Jacobian or Prym for the $K_4$ example with its principal polarisation; the $K_6$
-example mode by mode; the non-ordinary examples. (T-a″) The matching question in the notebook's terms: an invariant vacuum on the odd bond of shard 04t. (T-b) REFUTE review of `graph-ihara.md` and `graph-super.md` before registering anything; byte-cite
+- `sign-vector.md` (done the same session; `checks/check_sign_vector.py`, 19/19, PARI). **One mode: the sign is free** (it is Deligne's $\varepsilon$); it compares
+  the two ways of telling $\mu^\pm$ apart: the recursion $u\mapsto\lambda-q/u$ is a rotation at the real place ($+i0$ selects $\mu^+$, the vacuum) and a contraction
+  at $p$ (it converges to the unit root; $\mathbb Z_p^2$ splits; the step moves one edge along a line of the tree of $p$-adic lattices). **Several modes: locking
+  theorem (proved).** $D_j=\lambda_j^2-4q$ ($-D_j/4$ is the Weil-form determinant of mode $j$), $N^+$ the real field of the eigenvalues, $\mathrm{Rel}=\{I:\prod_ID_j\in(N^+)^{\times2}\}$;
+  above a prime $\mathfrak p^+$ the realised sign vectors are exactly the solutions of $\prod_I\sigma_j=\tau_I$, $\tau_I=+1$ iff
+  $\mathrm{val}(\rho_I-1)>\mathrm{val}(\rho_I+1)$, $\rho_I=(-1)^{|I|/2}\sqrt{\prod_ID_j}/\prod_I\lambda_j$. $\Omega$ is a polarisation iff all $\tau_I=+1$ at some
+  $\mathfrak p^+$. Rational eigenvalues: locked iff same squarefree part $d$ of $4q-\lambda^2=dm^2$; same sign iff $\lambda/m\equiv\lambda'/m'$ mod $p$ ($q=5$: 2,4 anti-locked,
+  $-2$,4 locked; $q=7$: 1,5 locked, 1,4 anti-locked). Agrees with PARI on 13 spectra. Scan: 527 ordinary Ramanujan flux classes of $K_4$, $K_5$, cube, $K_6$;
+  $\Omega$ is a polarisation only for 120 $K_6$ classes (spectrum $(x+1)^3(x^3-3x^2-9x+19)$ or its mirror: four groups, no locks, all 16 sign vectors).
+
+**Next.** (T-a′) A graph meaning for lock signs other than $\pm\lambda$; which fluxes have no locks; existence of the unit twist $P$ in general; Jacobian or
+Prym for the $K_4$ example; the non-ordinary examples. (T-a″) The matching question in the notebook's terms: an invariant vacuum on the odd bond of shard 04t. (T-b) REFUTE review of `graph-ihara.md` and `graph-super.md` before registering anything; byte-cite
 Godsil–Gutman, Heilmann–Lieb, Marcus–Spielman–Srivastava. (T-c) The arithmetic graded examples (graded Weil–LPS of 03c): identify the flux and the
 torus. Earlier next steps (G-a, G-b, N1′ genus two, N2′, shard 08j) unchanged. `weil-bond-analytic.patch` in the repository root is untracked and
 redundant (its three patches are the three commits 5203468, 02d9eb2, 3e7ddb9 by patch-id).
