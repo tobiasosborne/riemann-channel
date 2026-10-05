@@ -13,7 +13,7 @@ dictionary entries. Checks: `checks/check_adelic_gkp.py`, output `checks/output.
 if I take a field extension of Q, eg sqrt2 and ask the same questions again"): `checks/check_quadratic.py`, output
 `checks/output_quadratic.txt` (14/14 pass).
 Companion pages (2026-10-05, local session; index in §15): `functional-equation-gate.md`, `weil-positivity-spectroscopy.md`, `graph-ihara.md`,
-`graph-super.md`, `lattice-tower.md`.
+`graph-super.md`, `lattice-tower.md`, `howe-positivity.md`.
 
 Conventions as in analytic.md. $\mathbb A$ the adeles of $\mathbb Q$, $\mathbb A_f$ the finite adeles, $\hat{\mathbb Z}=\prod_p\mathbb Z_p$.
 Tate's character $\psi=\psi_\infty\prod_p\psi_p$ with $\psi_\infty(x)=e^{-2\pi ix}$, $\psi_p(x)=e^{2\pi i\{x\}_p}$; it is trivial on $\mathbb Q$, so
@@ -79,7 +79,13 @@ $f_0=e^{-\pi x_\infty^2}\otimes1_{\hat{\mathbb Z}}$. $D_af(x)=|a|^{1/2}f(ax)$ fo
   RH** (a hyperbolic step has all of it). RH (with semisimplicity) $\iff$ the normalised step has an invariant Gaussian vacuum; then the zeros are oscillator
   frequencies, the lattice has complex multiplication (one mode: the form $qx^2+\lambda xy+y^2$, discriminant $\lambda^2-4q$) and the tower is self-similar. In the
   ordinary case $(L,M)$ is a Deligne module, hence an ordinary abelian variety over $\mathbb F_q$ (Goresky–Tai `1701.07742:main.tex:561-591`). Elementary / standard /
-  cited / checked (45/45); Howe's polarisation positivity not checked.
+  cited / checked (45/45); Howe's polarisation positivity: G14.
+- **G14 (Howe's positivity; `howe-positivity.md`).** $\Omega$ is positive for the CM type $\Phi_+=\{\mathrm{Im}\,\varphi(F)>0\}$; it is a polarisation of Deligne's
+  abelian variety iff $\Phi_+=\Phi_\varepsilon=\{\mathrm{val}_p\varphi(F)>0\}$ for some $\varepsilon$. One mode: yes, up to the sign of $\Omega$. **If $\lambda$ and $-\lambda$ both
+  occur, never** (proved): $K_4$ with one negative edge fails at all four primes above 2. Repair: all compatible forms are $\Omega(x,p(A_s)y)$; $\Omega(x,A_sy)$ has
+  degree 25 (a GKP code of dimension 5); a unit $P\in\mathbb Q[A_s]\cap M_4(\mathbb Z)$ with eigenvalues $1,-1,\varphi^{-3},-\varphi^{3}$ gives a principal polarisation. A $K_6$
+  flux ($q=5$, six modes, no $\pm\lambda$ pair) is principally polarised by $\Omega$ itself at one of 16 primes. So the vacuum $J_+$ and the arithmetic complex
+  structure $J_\varepsilon$ differ by a sign per mode; this corrects one sentence of `lattice-tower.md` §6. Cited / proved / computed with PARI (14/14).
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -433,7 +439,7 @@ statement uniform in the angular frequency that is easier than the trivial-chara
 
 ## 15. Companion pages of 2026-10-05 (local session), and a steer on method
 
-Five pages written in one session with TJO, each with its own status table; rendered HTML next to each source.
+Six pages written in one session with TJO, each with its own status table; rendered HTML next to each source.
 
 | file | question (TJO) | result in one line | checks |
 |---|---|---|---|
@@ -442,6 +448,7 @@ Five pages written in one session with TJO, each with its own status table; rend
 | `graph-ihara.md` | redo it for a Ramanujan graph and the Ihara zeta: does the analogy hold or break? | breaks at the code, holds after; the step is CZ·Hadamard·squeeze; Weil positivity is $A^2\le4q$; lines are bright | `checks/check_graph_gkp.py`, 56/56 |
 | `graph-super.md` | redo it for the super zeta, zeros from fermionic modes; find a lattice-like state in a bigger space | flux qubit on the period lattice; syndrome torus of the fermionic sector; RH on average over fluxes | `checks/check_super_gkp.py`, 50/50 |
 | `lattice-tower.md` | investigate the tower of lattices | a tower of GKP codes with the step as a logical Clifford; blind to RH; RH is an invariant vacuum; ordinary case is a Deligne module | `checks/check_lattice_tower.py`, 45/45 |
+| `howe-positivity.md` | take the next step: Howe's positivity on the ordinary examples | $\Omega$ is a polarisation for one mode and for a $K_6$ flux, never when $\pm\lambda$ both occur; explicit principal polarisation $\Omega(x,Py)$ for $K_4$ with one negative edge; vacuum $\ne$ arithmetic complex structure in general | `checks/check_howe_positivity.py` (needs cypari2), 14/14 |
 
 **Steer (TJO, 2026-10-05, verbatim).** "Let us find the natural QI interpreations on the cases we understand *then* try to match to corresponding analogous setting
 for standard RH. Not the other way around. I am not convincd by the overlap thing in the case of standard zeta." Consequences for this note: Part II (§§6–12)

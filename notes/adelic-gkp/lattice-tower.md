@@ -127,13 +127,14 @@ Our $(L,M)$ always satisfies (4). Condition (1) is RH with semisimplicity. Condi
 So for these three the fermionic sector **is** an ordinary abelian variety over $\mathbb F_q$, of dimension 1, 1 and 4, and:
 
 - the GKP lattice is $H_1$ of its canonical lift, and the syndrome torus is the lift's complex points;
-- the vacuum is the complex structure of the lift, and the level-$k$ code is $\ell^2$ of its $\mathbb F_{q^k}$-points;
+- the level-$k$ code is $\ell^2$ of its $\mathbb F_{q^k}$-points;
+- the vacuum is the complex structure of the lift **only when a sign condition holds** (one mode: yes; $K_4$ with one negative edge: no). Corrected in `howe-positivity.md`, which carries out the check below;
 - the one-mode case is the leaf space of Deninger's elliptic solenoid, which the notebook already matched to its doubled Hodge bond (`prop:deninger-elliptic-hodge-ket`).
 
 Three limits of this identification:
 
 - Petersen with the dodecahedral flux and $K_5$ with the pentagon flux have the eigenvalue $0$, a supersingular factor, so they are not ordinary and Deligne's theorem does not cover them.
-- $\Omega$ satisfies Howe's adjunction condition $\omega(Fx,y)=\omega(x,Vy)$ (`:602`), but a polarisation also needs positivity for the CM type fixed by Deligne's embedding (`:604-607`). I have not checked that, so the claim is for the abelian variety, not for a polarised one.
+- $\Omega$ satisfies Howe's adjunction condition $\omega(Fx,y)=\omega(x,Vy)$ (`:602`), but a polarisation also needs positivity for the CM type fixed by Deligne's embedding (`:604-607`). **Checked afterwards in `howe-positivity.md`:** it holds (up to the sign of $\Omega$) for the two one-mode examples and fails for $K_4$ with one negative edge, where a twisted form $\Omega(x,Py)$ is the principal polarisation.
 - That the group of points is $L/(1-M^k)L$ as a group, and not only in order, is quoted from memory.
 
 Deninger's warning applies with a difference (`cit:deninger-lift-misleading`): a curve almost never lifts together with its Frobenius, but an ordinary abelian variety does, and it is the abelian variety that the lattice sees.
@@ -164,7 +165,7 @@ Checks: `checks/check_lattice_tower.py`, 45 of 45 pass, exact arithmetic except 
 
 ## 9. Next
 
-- **Howe's positivity.** Decide whether $\Omega$ is a polarisation for Deligne's CM type on the three ordinary examples. If it is, the fermionic sector of a Ramanujan flux is a principally polarised abelian variety and the Weil form is its Riemann form.
+- **Howe's positivity:** done, see `howe-positivity.md`.
 - **Which abelian variety.** For $K_4$ with one negative edge, the characteristic polynomial factors as $(x^4+3x^2+4)(x^4-x^2+4)$; identify the isogeny factors (two elliptic curves with traces $\pm1$ and an abelian surface) and whether the whole is a Jacobian or a Prym.
 - **The non-ordinary examples.** Petersen and $K_5$ need the description of abelian varieties over a prime field that allows supersingular factors.
 - **The matching question of §7.2,** in the notebook's own terms: an invariant vacuum on the odd bond of shard 04t.
