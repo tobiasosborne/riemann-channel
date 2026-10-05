@@ -88,7 +88,7 @@ $f_0=e^{-\pi x_\infty^2}\otimes1_{\hat{\mathbb Z}}$. $D_af(x)=|a|^{1/2}f(ax)$ fo
   structure $J_\varepsilon$ differ by a sign per mode; this corrects one sentence of `lattice-tower.md` §6. Cited / proved / computed with PARI (14/14).
 - **G15 (the per-mode sign; `sign-vector.md`).** One mode: the sign is free (it compares rotation at the real place with attraction at $p$: the recursion
   $u\mapsto\lambda-q/u$ is elliptic at $\infty$ and hyperbolic at $p$). Several modes: with $D_j=\lambda_j^2-4q$ and $N^+$ the real field of the eigenvalues, the sign
-  vectors realised above a prime $\mathfrak p^+$ are exactly the solutions of $\prod_{j\in I}\sigma_j=\tau_I$ over the sets $I$ with $\prod_ID_j$ a square in $N^+$, where
+  vectors realised above a prime $\mathfrak{p}^+$ are exactly the solutions of $\prod_{j\in I}\sigma_j=\tau_I$ over the sets $I$ with $\prod_ID_j$ a square in $N^+$, where
   $\tau_I$ is the residue of $(-1)^{|I|/2}\sqrt{\prod_ID_j}/\prod_I\lambda_j$ (proved). So $\Omega$ is a polarisation iff every lock sign is $+1$. Rational case:
   locked iff same squarefree part of $4q-\lambda^2=dm^2$, sign $+1$ iff $\lambda/m\equiv\lambda'/m'$ mod $p$ (e.g. $q=5$: 2 and 4 are anti-locked). Agrees with PARI on 13
   spectra; of the 527 ordinary Ramanujan flux classes of $K_4$, $K_5$, the cube and $K_6$ only 120 (one $K_6$ spectrum and its mirror) pass. Proved / computed (19/19).
