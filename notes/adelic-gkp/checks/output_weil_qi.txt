@@ -1,0 +1,39 @@
+== V1  the code is a filter: spectrum of the squeeze signal of the probe g4 is -Xi(E)/(6 pi)
+PASS  V1 probe has no zero modes: g4(0) = 0
+PASS  V1 probe has no zero modes: int g4 = 0  4.4e-18
+PASS  V1 signal spectrum at E = 0  num -2.637308e-02, -Xi/6pi -2.637308e-02
+PASS  V1 signal spectrum at E = 5  num -1.461838e-02, -Xi/6pi -1.461838e-02
+PASS  V1 signal spectrum at E = 10  num -2.014257e-03, -Xi/6pi -2.014257e-03
+PASS  V1 signal spectrum at E = 17  num +2.882713e-05, -Xi/6pi +2.882713e-05
+PASS  V1 signal spectrum at E = 23  num -2.982431e-07, -Xi/6pi -2.982431e-07
+PASS  V1 dark line at gamma_1 = 14.1347  |F| = 3.1e-18, vs 4.0e-05 one unit away
+PASS  V1 dark line at gamma_2 = 21.0220  |F| = 2.1e-18, vs 4.1e-07 one unit away
+== V2  explicit formula in echo form: zeros side = place-by-place side
+PASS  V2 echo, wide packet (E0 = 25, tau = 0.25), nine values of t  max |diff| = 1.8e-15, C(0) = 0.609106
+      at t = 0: zero modes +7.180e-20, primes +0.000090, real place +0.609016
+PASS  V2 echo, narrow packet (E0 = 21, tau = 1)  max |diff| = 9.4e-13
+PASS  V2 echo, packet near E = 0 (zero modes matter)  max |diff| = 2.0e-15; zero-mode term +0.8817, total +2.15e-23
+== V3  Weil positivity as a Gram matrix / echo bound, computed from the place side only
+PASS  V3 Gram matrix [C(t_j - t_k)] is Hermitian
+PASS  V3 Gram matrix is positive semidefinite (14 x 14, step 0.35)  eigenvalues in [-1.346e-14, 5.506]
+PASS  V3 echo bound |C(t)| <= C(0) on [0, 6]  max |C(t)|/C(0) for t >= 0.5: 0.9937
+== V4  a made-up line list with one off-line pair: Weil form versus Lorentzian form
+PASS  V4 true line list: Gram matrix PSD  min eigenvalue -1.522e-14
+PASS  V4 off-line pair, Weil (evaluation) form: Gram matrix has a negative eigenvalue  min eigenvalue -44.8026
+PASS  V4 off-line pair, Lorentzian (harmonic-measure) form: Gram matrix PSD  min eigenvalue 7.189e-04
+PASS  V4 off-line pair, Weil form: echo exceeds its initial value  max |C(t)|/C(0) on [0,4] = 11.94
+PASS  V4 off-line pair, Lorentzian form: echo bound holds
+PASS  V4 one off-line pair contributes a form of signature (1,1)  2 Re(z conj w) = -0.86 for a sample (z, w)
+== V5  response-function form and the real-place background
+PASS  V5 xi'/xi(s) = 1/s + 1/(s-1) - (log pi)/2 + psi(s/2)/2 - sum Lambda(n) n^-s at s = 2.5 + 3i  |diff| = 1.1e-10
+PASS  V5 Re xi'/xi > 0 at 15 sample points right of the line  min = 0.0005
+PASS  V5 real-place density at E = 10 is theta'(E)/pi  0.073894
+PASS  V5 real-place density at E = 30 is theta'(E)/pi  0.248803
+PASS  V5 Gamma_R(1/2+iE)/Gamma_R(1/2-iE) = exp(2 i theta(E)) at E = 12
+== Figure 1  dark-line density from the place-by-place budget
+PASS  Fig1 place-side density equals the smoothed line list (primes <= 3e6)  max |diff| = 3.5e-09
+PASS  Fig1 place-side density is nonnegative on [0, 52]  min = -3.5e-09
+PASS  Fig1 real place + zero modes alone go negative near E = 0  min = -0.614
+== Figure 2  the echo for the true line list and for a made-up off-line pair
+
+29 passed, 0 failed

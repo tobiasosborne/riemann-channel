@@ -2,6 +2,70 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-10-05: the GKP reading tested on graphs; the super Ihara zeta has two lattice states (Fable alone; record only)
+
+Two parts. Morning (claude.ai sandbox): §14 of `notes/adelic-gkp/adelic-gkp.md`, the field extension $\mathbb Q(\sqrt2)$ (checks 14/14). Then a local session
+(Claude Code), four companion pages in `notes/adelic-gkp/` with rendered HTML, indexed in §15 of the note; checks `notes/adelic-gkp/checks/`
+(`check_weil_qi.py` 29/29, `check_graph_gkp.py` 56/56, `check_super_gkp.py` 50/50). Worklog `docs/worklog/2026-10-05.md`.
+**Nothing registered; no REFUTE review; no shard.** Gate unchanged: 13 errors (8 Yoshida rows, 5 round-2 scripts awaiting 08j).
+
+**Steer on method (TJO, verbatim; binding for the next sessions).** "Let us find the natural QI interpreations on the cases we understand *then* try to match
+to corresponding analogous setting for standard RH. Not the other way around. I am not convincd by the overlap thing in the case of standard zeta."
+So: the overlap/filter reading of the standard zeta (`weil-positivity-spectroscopy.md` §1, note Part II) is provisional and not to be built on;
+`graph-super.md` is the page to build on.
+
+**Findings (statuses in the pages).**
+- `functional-equation-gate.md`: $\Theta$ is a qunaught because $\mathbb Q^2$ is Lagrangian; divisibility of $\mathbb Q$ is the separate rigidity statement. The gate
+  behind the functional equation is the Fourier gate: modular $S$, the GKP Hadamard, not the GKP phase gate (the note's "S-gate" is annotated).
+- `weil-positivity-spectroscopy.md`: explicit formula in echo form, $C_h(t)=$ zero modes $-$ primes $+$ real place (density $\theta'(E)/\pi$); seven equivalent forms of
+  Weil positivity; an off-line zero is a gain–loss pair, Weil form versus Lorentzian (harmonic-measure) form. Standard material reorganised; checked.
+- `graph-ihara.md`: a graph has no GKP code (its only lattice is $\pi_1$ in the tree, the analogue of the primes). What it has: on two quadratures per vertex the
+  non-backtracking step is $M=\bigl(\begin{smallmatrix}0&-1\\q&A\end{smallmatrix}\bigr)$, $M^T\Omega M=q\Omega$, $M/\sqrt q=$ CZ along every edge $\cdot$ Hadamard on every mode
+  $\cdot$ squeeze by $\sqrt q$ (the graph-state Clifford times a squeeze; literature not searched). Weil form $\mathcal Q=\bigl(\begin{smallmatrix}q&A/2\\A/2&1\end{smallmatrix}\bigr)=\tfrac12\Omega(M-qM^{-1})$,
+  positive off the uniform mode iff $A^2\le4q$; negative index $=$ trivial eigenvalues $+$ off-band eigenvalues. Lines are bright (ordinary trace).
+  $N_k(K_4)+3\,\#E(\mathbb F_{2^k})=4(2^k+1)+2(1+(-1)^k)$, $E:y^2+xy=x^3+1$ (spectral coincidence). Real violation: prism $C_{21}\times K_2$, invisible in Gram
+  matrices of size $\le9$. Negative finding: the lattice index $|\det(m-nM)|$ carries no sign, so the count mechanism of curves does not transfer.
+- `graph-super.md`: graph plus $\mathbb Z_2$ flux (a 2-cover; the notebook's graded quantum Ihara zeta in graph form, verified on the Pauli examples of 03c).
+  (i) **Flux qubit:** the period lattice $H_1(Y,\mathbb Z)$ of the maximal abelian cover; bosonic sector $=$ comb, fermionic $=$ comb displaced by half a reciprocal
+  vector, supertrace $=$ comb on the odd coset, so super counts $=2\times$ walks of odd flux; fermionic RH $\iff$ even and odd flux walks equinumerous up to
+  $2nq^{k/2}$. (ii) **Syndrome torus:** $M_s$ preserves $\mathbb Z^{2n}$ (the lattice of $n$ GKP qunaughts); points are periodic syndromes,
+  $\#=\det(1-M_s^k)$; $H^\bullet$ of the torus is the fermionic Fock space; for one fermionic mode the super zeta is the zeta of the toral map; the
+  Pauli-qubit elliptic curve of 03c is the syndrome torus of one mode ($M=\bigl(\begin{smallmatrix}0&-1\\5&-2\end{smallmatrix}\bigr)$: 8, 32, 104, 640);
+  $M=\bigl(\begin{smallmatrix}0&-1\\2&-1\end{smallmatrix}\bigr)$ gives $\#E(\mathbb F_{2^k})$. (iii) **RH on average over fluxes:** the flux-averaged fermionic
+  numerator is the matching polynomial (roots strictly in the band, Heilmann–Lieb); for $K_4$, Petersen, $K_5$ only the zero flux and the all-negative
+  flux fail. Lines are dark again with the signs of $\zeta$; the fermionic Weil form is positive definite outright. Still no Tate-type formula.
+
+**Next.** (T-a) The tower of lattices $(1-M_s^k)\mathbb Z^{2n}$: GKP codes whose dimensions are the point counts over $\mathbb F_{q^k}$; compare with the level-$N$
+Bell pairs of note §4 (TJO asked for this next). (T-b) REFUTE review of `graph-ihara.md` and `graph-super.md` before registering anything; byte-cite
+Godsil–Gutman, Heilmann–Lieb, Marcus–Spielman–Srivastava. (T-c) The arithmetic graded examples (graded Weil–LPS of 03c): identify the flux and the
+torus. Earlier next steps (G-a, G-b, N1′ genus two, N2′, shard 08j) unchanged. `weil-bond-analytic.patch` in the repository root is untracked and
+redundant (its three patches are the three commits 5203468, 02d9eb2, 3e7ddb9 by patch-id).
+
+## Session 2026-10-02: the theta state as an adelic GKP code; RH and Weil positivity in quantum-information language (Fable alone; record only)
+
+TJO: "the Theta state ... as a sum of deltas on the rationals ... is a Gottesman-Kitaev-Preskill state ... what are the errors this GKP state
+corrects? ... what is the corresponding gaussian version?"; then "write this up ... walk me through the RH approach, and weil positivity".
+Record `notes/adelic-gkp/adelic-gkp.md`; checks `notes/adelic-gkp/checks/` (73/73). Worklog `docs/worklog/2026-10-02.md`.
+**Nothing registered; no REFUTE review; no shard.**
+
+**Findings (statuses in the note).**
+- $\Theta$ = GKP qunaught of the Lagrangian $\mathbb Q^2\subset\mathbb A^2$ (standard). Rationals act as stabiliser-preserving Cliffords (product formula);
+  stabiliser-preserving Clifford group $H(\mathbb Q)\rtimes\mathrm{SL}_2(\mathbb Q)$; one-dimensional code, so no logical gates.
+- **Rigidity** (proved): the only lattice commensurable with $\mathbb Q^2$ is $\mathbb Q^2$ ($\mathbb Q$ divisible, $\mathbb A$ a $\mathbb Q$-vector space).
+- **Level $N$** (proved, checked): on $\mathcal S(\mathbb R)\otimes\mathcal C_N$, $\Theta$ is the Bell pair between a real GKP qudit (lattice $N\mathbb Z^2$) and the
+  finite-adelic qudit $\mathbb Z/N^2$ (lattice $N\hat{\mathbb Z}^2$); $\Theta$ is their inductive limit; $N=1$ gives the real qunaught.
+- $p$-adic GKP codes $p^a\mathbb Z_p\times p^b\mathbb Z_p$ encode exact normalisable $\mathbb Z/p^{a+b}$ qudits; the vacuum $1_{\mathbb Z_p}$ is the $a=b=0$ qunaught. The
+  real place has no compact open subgroup: that is the archimedean blocker (analytic L8) in GKP form. Overlaps with Gaussian states give
+  $\vartheta(\tau)$; $\Gamma_\theta$ is forced by the 2-adic vacuum.
+- Walkthrough: Weil positivity $\iff$ the squeeze correlation functional $\omega$ of the code (zero modes removed) is a state; metric = GNS
+  inner product; Hilbert–Pólya = squeeze generator; explicit formula = zero modes minus local single-mode squeeze traces. Curves: overlaps
+  with product stabiliser states are counts $q^{h^0(D)}$ and RR is the code's self-duality; for $\mathbb Q$ the real place gives Gaussian sums,
+  not counts.
+
+**Next (if wanted).** (G-a) Test the §4 heuristic: are the prime terms of the explicit formula the leakage between levels $N$ and $pN$ under
+$D_p$ (compression lemma, analytic §5)? (G-b) A REFUTE review of the note before registering Proposition 3 (rigidity), Theorem 4 (level-$N$
+Bell pair) and Proposition 5 ($p$-adic codes) in a shard next to 04p. Earlier next steps (N1′ genus two, N2′, shard 08j) unchanged.
+
 ## Session 2026-10-01: Weil positivity and the Weyl–Heisenberg bond, analytic arguments (Fable alone; record only)
 
 TJO: "My goal right now is to understand weil positivity 'the metric' ... best Ansatz for the bond space is still Weyl

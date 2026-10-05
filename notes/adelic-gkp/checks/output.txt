@@ -1,0 +1,78 @@
+PASS  C1 Poisson at level N=1, trial 0: err = 8.4159e-42
+PASS  C2 X_b(x)X_b invariance N=1, trial 0: err = 0.0
+PASS  C2 Z_b(x)Z_b^-1 invariance N=1, trial 0: err = 0.0
+PASS  C1 Poisson at level N=1, trial 1: err = 0.0
+PASS  C2 X_b(x)X_b invariance N=1, trial 1: err = 0.0
+PASS  C2 Z_b(x)Z_b^-1 invariance N=1, trial 1: err = 0.0
+PASS  C1 Poisson at level N=1, trial 2: err = 1.2072e-41
+PASS  C2 X_b(x)X_b invariance N=1, trial 2: err = 0.0
+PASS  C2 Z_b(x)Z_b^-1 invariance N=1, trial 2: err = 1.7072e-41
+PASS  C1 Poisson at level N=2, trial 0: err = 1.8154e-41
+PASS  C2 X_b(x)X_b invariance N=2, trial 0: err = 0.0
+PASS  C2 Z_b(x)Z_b^-1 invariance N=2, trial 0: err = 8.6111e-41
+PASS  C1 Poisson at level N=2, trial 1: err = 0.0
+PASS  C2 X_b(x)X_b invariance N=2, trial 1: err = 0.0
+PASS  C2 Z_b(x)Z_b^-1 invariance N=2, trial 1: err = 9.998e-41
+PASS  C1 Poisson at level N=2, trial 2: err = 7.8448e-42
+PASS  C2 X_b(x)X_b invariance N=2, trial 2: err = 0.0
+PASS  C2 Z_b(x)Z_b^-1 invariance N=2, trial 2: err = 2.8285e-41
+PASS  C1 Poisson at level N=3, trial 0: err = 1.3306e-41
+PASS  C2 X_b(x)X_b invariance N=3, trial 0: err = 9.4089e-42
+PASS  C2 Z_b(x)Z_b^-1 invariance N=3, trial 0: err = 5.6844e-40
+PASS  C1 Poisson at level N=3, trial 1: err = 1.6155e-41
+PASS  C2 X_b(x)X_b invariance N=3, trial 1: err = 8.0773e-42
+PASS  C2 Z_b(x)Z_b^-1 invariance N=3, trial 1: err = 7.4469e-41
+PASS  C1 Poisson at level N=3, trial 2: err = 1.6475e-41
+PASS  C2 X_b(x)X_b invariance N=3, trial 2: err = 2.3974e-41
+PASS  C2 Z_b(x)Z_b^-1 invariance N=3, trial 2: err = 2.9213e-40
+PASS  C1 Poisson at level N=6, trial 0: err = 0.0
+PASS  C2 X_b(x)X_b invariance N=6, trial 0: err = 0.0
+PASS  C2 Z_b(x)Z_b^-1 invariance N=6, trial 0: err = 6.6338e-40
+PASS  C1 Poisson at level N=6, trial 1: err = 0.0
+PASS  C2 X_b(x)X_b invariance N=6, trial 1: err = 7.7393e-42
+PASS  C2 Z_b(x)Z_b^-1 invariance N=6, trial 1: err = 1.8134e-40
+PASS  C1 Poisson at level N=6, trial 2: err = 3.3025e-42
+PASS  C2 X_b(x)X_b invariance N=6, trial 2: err = 0.0
+PASS  C2 Z_b(x)Z_b^-1 invariance N=6, trial 2: err = 7.7972e-41
+PASS  C1 Poisson at level N=12, trial 0: err = 1.8558e-42
+PASS  C2 X_b(x)X_b invariance N=12, trial 0: err = 5.5675e-42
+PASS  C2 Z_b(x)Z_b^-1 invariance N=12, trial 0: err = 3.6277e-40
+PASS  C1 Poisson at level N=12, trial 1: err = 3.2665e-41
+PASS  C2 X_b(x)X_b invariance N=12, trial 1: err = 2.0659e-41
+PASS  C2 Z_b(x)Z_b^-1 invariance N=12, trial 1: err = 1.581e-39
+PASS  C1 Poisson at level N=12, trial 2: err = 1.4219e-41
+PASS  C2 X_b(x)X_b invariance N=12, trial 2: err = 1.4219e-41
+PASS  C2 Z_b(x)Z_b^-1 invariance N=12, trial 2: err = 8.2912e-41
+PASS  C3 S law at tau=(0.2999999999999999888977697537484345957637+0.8000000000000000444089209850062616169453j): err = 0.0
+PASS  C3 T^2 law at tau=(0.2999999999999999888977697537484345957637+0.8000000000000000444089209850062616169453j): err = 0.0
+PASS  C3 T maps to (-1)^n twist at tau=(0.2999999999999999888977697537484345957637+0.8000000000000000444089209850062616169453j): err = 2.8699e-42
+      |theta(tau+1) - theta(tau)| = 0.32401 (nonzero: T is not a symmetry)
+PASS  C3 S law at tau=(-1.100000000000000088817841970012523233891+0.5j): err = 1.1479e-41
+PASS  C3 T^2 law at tau=(-1.100000000000000088817841970012523233891+0.5j): err = 0.0
+PASS  C3 T maps to (-1)^n twist at tau=(-1.100000000000000088817841970012523233891+0.5j): err = 5.7397e-42
+      |theta(tau+1) - theta(tau)| = 0.83152 (nonzero: T is not a symmetry)
+PASS  C3 S law at tau=(0.05000000000000000277555756156289135105908+1.699999999999999955591079014993738383055j): err = 0.0
+PASS  C3 T^2 law at tau=(0.05000000000000000277555756156289135105908+1.699999999999999955591079014993738383055j): err = 8.9683e-44
+PASS  C3 T maps to (-1)^n twist at tau=(0.05000000000000000277555756156289135105908+1.699999999999999955591079014993738383055j): err = 8.9683e-44
+      |theta(tau+1) - theta(tau)| = 0.01917 (nonzero: T is not a symmetry)
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=-7: err = 4.1341e-43
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=-6: err = 0.0
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=-5: err = 4.1341e-43
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=-4: err = 0.0
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=-3: err = 4.1341e-43
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=-2: err = 0.0
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=-1: err = 4.1341e-43
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=0: err = 0.0
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=1: err = 4.1341e-43
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=2: err = 0.0
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=3: err = 4.1341e-43
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=4: err = 0.0
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=5: err = 4.1341e-43
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=6: err = 0.0
+PASS  C4 psi_2(x^2/2) = (-1)^x at x=7: err = 4.1341e-43
+PASS  C5 Tate integral at s=3.0: err = 1.5001e-41
+PASS  C5 Tate integral at s=2.5: err = 0.0
+PASS  C5 Tate integral at s=(2+3j): err = 0.0
+PASS  C6 off-line pair form has signature (1,1): err = 4.5918e-41
+
+73 passed, 0 failed

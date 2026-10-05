@@ -1,0 +1,77 @@
+== H1  edge space, vertex-induced space, symplectic structure, Weil form
+PASS  K4: B [sigma tau] = [sigma tau] M
+PASS  K4: M^T Omega M = q Omega
+PASS  K4: M = C_A diag(q,1), C_A = Shear(-A) F integral symplectic
+PASS  K4: Weil form invariant, M^T Q M = q Q, and 2Q = Omega (M - q M^-1)
+PASS  K4: negative index of Q = (trivial eigenvalues) + (off-band eigenvalues)  n = 4, q = 2, Ramanujan = True, max nontrivial |lambda| = 1.0000 vs 2 sqrt q = 2.8284, negative index 1
+PASS  Petersen: B [sigma tau] = [sigma tau] M
+PASS  Petersen: M^T Omega M = q Omega
+PASS  Petersen: M = C_A diag(q,1), C_A = Shear(-A) F integral symplectic
+PASS  Petersen: Weil form invariant, M^T Q M = q Q, and 2Q = Omega (M - q M^-1)
+PASS  Petersen: negative index of Q = (trivial eigenvalues) + (off-band eigenvalues)  n = 10, q = 2, Ramanujan = True, max nontrivial |lambda| = 2.0000 vs 2 sqrt q = 2.8284, negative index 1
+PASS  cube: B [sigma tau] = [sigma tau] M
+PASS  cube: M^T Omega M = q Omega
+PASS  cube: M = C_A diag(q,1), C_A = Shear(-A) F integral symplectic
+PASS  cube: Weil form invariant, M^T Q M = q Q, and 2Q = Omega (M - q M^-1)
+PASS  cube: negative index of Q = (trivial eigenvalues) + (off-band eigenvalues)  n = 8, q = 2, Ramanujan = True, max nontrivial |lambda| = 1.0000 vs 2 sqrt q = 2.8284, negative index 2
+PASS  K5: B [sigma tau] = [sigma tau] M
+PASS  K5: M^T Omega M = q Omega
+PASS  K5: M = C_A diag(q,1), C_A = Shear(-A) F integral symplectic
+PASS  K5: Weil form invariant, M^T Q M = q Q, and 2Q = Omega (M - q M^-1)
+PASS  K5: negative index of Q = (trivial eigenvalues) + (off-band eigenvalues)  n = 5, q = 3, Ramanujan = True, max nontrivial |lambda| = 1.0000 vs 2 sqrt q = 3.4641, negative index 1
+PASS  prism21: B [sigma tau] = [sigma tau] M
+PASS  prism21: M^T Omega M = q Omega
+PASS  prism21: M = C_A diag(q,1), C_A = Shear(-A) F integral symplectic
+PASS  prism21: Weil form invariant, M^T Q M = q Q, and 2Q = Omega (M - q M^-1)
+PASS  prism21: negative index of Q = (trivial eigenvalues) + (off-band eigenvalues)  n = 42, q = 2, Ramanujan = False, max nontrivial |lambda| = 2.9777 vs 2 sqrt q = 2.8284, negative index 5
+PASS  with A = 0 the step (Fourier after squeeze) squares to -1
+== H5  walk counts, prime cycles, Ihara-Bass
+PASS  K4: Tr B^k equals a brute-force count of closed cyclically non-backtracking walks, k = 3..8  [24, 24, 0, 96, 168, 168]
+PASS  K4: numbers of prime cycles are nonnegative integers  pi(3..8) = [8, 6, 0, 12, 24, 18]
+PASS  K4: Tr B^k = (r-1)(1+(-1)^k) + sum mu^k (Ihara-Bass), k = 1..14
+PASS  Petersen: Tr B^k = (r-1)(1+(-1)^k) + sum mu^k (Ihara-Bass), k = 1..14
+PASS  prism21: Tr B^k = (r-1)(1+(-1)^k) + sum mu^k (Ihara-Bass), k = 1..14
+== H6  the tree term is n times the Kesten-McKay (Plancherel) measure
+PASS  q = 2: int 2cos(k theta) dKM = -(q-1) q^(-k/2) for even k, 0 for odd k (k = 1..8)
+PASS  q = 3: int 2cos(k theta) dKM = -(q-1) q^(-k/2) for even k, 0 for odd k (k = 1..8)
+PASS  q = 4: int 2cos(k theta) dKM = -(q-1) q^(-k/2) for even k, 0 for odd k (k = 1..8)
+== H7  Weil positivity in echo and Gram form, from walk counts only
+PASS  K4: echo from walk counts equals the sum over nontrivial lines, k = 0..40
+      K4: C(0) = 6, max |C(k)|/C(0) for 1 <= k <= 40: 0.9999, 31 x 31 Gram eigenvalues in [-9.767e-15, 93.66]
+PASS  Petersen: echo from walk counts equals the sum over nontrivial lines, k = 0..40
+      Petersen: C(0) = 18, max |C(k)|/C(0) for 1 <= k <= 40: 0.9316, 31 x 31 Gram eigenvalues in [-3.720e-14, 157.51]
+PASS  cube: echo from walk counts equals the sum over nontrivial lines, k = 0..40
+      cube: C(0) = 12, max |C(k)|/C(0) for 1 <= k <= 40: 0.9996, 31 x 31 Gram eigenvalues in [-1.476e-14, 103.65]
+PASS  K5: echo from walk counts equals the sum over nontrivial lines, k = 0..40
+      K5: C(0) = 8, max |C(k)|/C(0) for 1 <= k <= 40: 0.9986, 31 x 31 Gram eigenvalues in [-2.273e-14, 127.93]
+PASS  prism21: echo from walk counts equals the sum over nontrivial lines, k = 0..40
+      prism21: C(0) = 82, max |C(k)|/C(0) for 1 <= k <= 40: 10514.3320, 31 x 31 Gram eigenvalues in [-6.918e+04, 69409.91]
+PASS  K4 (Ramanujan): echo bound and Gram positivity
+PASS  Petersen (Ramanujan): echo bound and Gram positivity
+PASS  cube (Ramanujan): echo bound and Gram positivity
+PASS  K5 (Ramanujan): echo bound and Gram positivity
+PASS  prism21 (not Ramanujan): Gram matrix has a negative eigenvalue  min eigenvalue -69181.031
+PASS  prism21: echo exceeds its initial value  first at k = 10; |C(40)|/C(0) = 10514.3
+      prism21: smallest eigenvalue of the 9 x 9 Gram matrix: +6.0387
+      prism21: smallest eigenvalue of the 13 x 13 Gram matrix: -144.4253
+      prism21: smallest eigenvalue of the 17 x 17 Gram matrix: -689.4374
+      prism21: smallest eigenvalue of the 21 x 21 Gram matrix: -2662.6780
+      prism21: smallest eigenvalue of the 25 x 25 Gram matrix: -9891.2416
+PASS  prism21: Lorentzian (Poisson) form of the same lines is positive  off-circle lines: 8, rate eta = 0.3234, min eigenvalue 1.15e+00
+== H8  K4 and the elliptic curve y^2 + xy = x^3 + 1 over F_2
+PASS  E has 4 points over F_2 and 8 over F_4, so its L-polynomial is 1 + u + 2u^2  4, 8
+PASS  K4 has adjacency eigenvalues 3, -1, -1, -1: nontrivial factor (1 + u + 2u^2)^3
+PASS  #E(F_2^k) from the L-polynomial matches the brute-force counts at k = 1, 2
+PASS  N_k(K4) + 3 #E(F_2^k) = 4 (2^k + 1) + 2 (1 + (-1)^k), k = 1..12  N_k = [0, 0, 24, 24, 0, 96, 168, 168], #E = [4, 8, 4, 16, 44, 56, 116, 288]
+== H9  C_A is the graph-state Clifford: Hadamards, then CZ along every edge (qubits, K4)
+PASS  binary symplectic matrix of CZ_G H^(x4) equals [[0, 1], [1, A]] = C_A mod 2
+== H10  the p + 1 stabiliser bases of one qudit are mutually unbiased (one odd vertex of the tree)
+PASS  p = 3: 4 bases, all cross overlaps equal p^(-1/2)
+PASS  p = 5: 6 bases, all cross overlaps equal p^(-1/2)
+PASS  p = 7: 8 bases, all cross overlaps equal p^(-1/2)
+== Figure 1  line density of the Petersen graph from the walk side
+PASS  Fig1 walk-side density equals the smoothed line list  max |diff| = 2.1e-14
+PASS  Fig1 walk-side density is nonnegative on [0, pi]  min = -5.1e-15
+== Figure 2  echo: Ramanujan graphs versus the prism on 42 vertices
+
+56 passed, 0 failed

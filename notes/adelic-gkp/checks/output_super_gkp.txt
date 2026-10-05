@@ -1,0 +1,73 @@
+== S1  the notebook's graded quantum Ihara zeta (Pauli letters) and its signed-graph form
+PASS  six Pauli letters X,X,Y,Y,Z,Z: zeta = (1+2u+5u^2)/((1-u)(1-5u)), str T^k = 8, 32, 104, 640, ...  str T^k = [8, 32, 104, 640, 3208, 15392]
+PASS  ... the same function as the signed two-vertex multigraph (loops negative, four parallel edges with signs ++--)
+PASS  three Pauli letters X,Y,Z (K4 itself): zeta = (1-u)(1+u+2u^2)/((1+u)^2 (1-2u)); the zero pair is that of E over F_2
+== S2  super zeta of a graph with a Z_2 flux: sectors, supertrace, counts
+PASS  K4, one negative edge: Tr(tau Bhat^k) = Tr B^k - Tr B_s^k = (bosonic lines) - (fermionic lines), k = 1..14
+PASS  K4, one negative edge: super counts are nonnegative even integers  [0, 0, 24, 32, 0, 96, 168, 192]
+PASS  K4, one negative edge: det(1-uB_s)/det(1-uB) = det(1-A_s u+q u^2)/det(1-A u+q u^2)
+      fermionic eigenvalues {np.float64(-2.2361): np.int64(1), np.float64(-1.0): np.int64(1), np.float64(1.0): np.int64(1), np.float64(2.2361): np.int64(1)}; in band: True; det of signed Laplacian = 32
+PASS  K4, all edges negative: Tr(tau Bhat^k) = Tr B^k - Tr B_s^k = (bosonic lines) - (fermionic lines), k = 1..14
+PASS  K4, all edges negative: super counts are nonnegative even integers  [0, 0, 48, 0, 0, 0, 336, 0]
+PASS  K4, all edges negative: det(1-uB_s)/det(1-uB) = det(1-A_s u+q u^2)/det(1-A u+q u^2)
+      fermionic eigenvalues {np.float64(-3.0): np.int64(1), np.float64(1.0): np.int64(3)}; in band: False; det of signed Laplacian = 48
+PASS  Petersen, dodecahedral flux: Tr(tau Bhat^k) = Tr B^k - Tr B_s^k = (bosonic lines) - (fermionic lines), k = 1..14
+PASS  Petersen, dodecahedral flux: super counts are nonnegative even integers  [0, 0, 0, 0, 120, 240, 0, 0]
+PASS  Petersen, dodecahedral flux: det(1-uB_s)/det(1-uB) = det(1-A_s u+q u^2)/det(1-A u+q u^2)
+      fermionic eigenvalues {np.float64(-2.2361): np.int64(3), np.float64(-0.0): np.int64(4), np.float64(2.2361): np.int64(3)}; in band: True; det of signed Laplacian = 5184
+PASS  Petersen, all edges negative: Tr(tau Bhat^k) = Tr B^k - Tr B_s^k = (bosonic lines) - (fermionic lines), k = 1..14
+PASS  Petersen, all edges negative: super counts are nonnegative even integers  [0, 0, 0, 0, 240, 0, 0, 0]
+PASS  Petersen, all edges negative: det(1-uB_s)/det(1-uB) = det(1-A_s u+q u^2)/det(1-A u+q u^2)
+      fermionic eigenvalues {np.float64(-3.0): np.int64(1), np.float64(-1.0): np.int64(5), np.float64(2.0): np.int64(4)}; in band: False; det of signed Laplacian = 6144
+PASS  K5, pentagon negative: Tr(tau Bhat^k) = Tr B^k - Tr B_s^k = (bosonic lines) - (fermionic lines), k = 1..14
+PASS  K5, pentagon negative: super counts are nonnegative even integers  [0, 0, 60, 160, 120, 720, 2520, 5440]
+PASS  K5, pentagon negative: det(1-uB_s)/det(1-uB) = det(1-A_s u+q u^2)/det(1-A u+q u^2)
+      fermionic eigenvalues {np.float64(-2.2361): np.int64(2), np.float64(-0.0): np.int64(1), np.float64(2.2361): np.int64(2)}; in band: True; det of signed Laplacian = 484
+PASS  prism C21xK2, antiperiodic ring: Tr(tau Bhat^k) = Tr B^k - Tr B_s^k = (bosonic lines) - (fermionic lines), k = 1..14
+PASS  prism C21xK2, antiperiodic ring: super counts are nonnegative even integers  [0, 0, 0, 0, 0, 0, 0, 0]
+PASS  prism C21xK2, antiperiodic ring: det(1-uB_s)/det(1-uB) = det(1-A_s u+q u^2)/det(1-A u+q u^2)
+      fermionic eigenvalues {np.float64(-3.0): np.int64(1), np.float64(-2.9111): np.int64(2), np.float64(-2.6525): np.int64(2), np.float64(-2.247): np.int64(2), np.float64(-1.7307): np.int64(2), np.float64(-1.1495): np.int64(2), np.float64(-1.0): np.int64(1), np.float64(-0.9111): np.int64(2), np.float64(-0.6525): np.int64(2), np.float64(-0.555): np.int64(2), np.float64(-0.247): np.int64(2), np.float64(0.0): np.int64(2), np.float64(0.2693): np.int64(2), np.float64(0.4661): np.int64(2), np.float64(0.8019): np.int64(2), np.float64(0.8505): np.int64(2), np.float64(0.9777): np.int64(2), np.float64(1.445): np.int64(2), np.float64(2.0): np.int64(2), np.float64(2.4661): np.int64(2), np.float64(2.8019): np.int64(2), np.float64(2.9777): np.int64(2)}; in band: False; det of signed Laplacian = 4101648969816
+PASS  K4 with all edges negative has the cube as its 2-cover
+PASS  Petersen has exactly one flux class with the dodecahedron's spectrum, up to graph symmetry  2 of 64 classes
+PASS  K4, one negative edge: brute-force walk counts by flux parity, k = 3..8  (even, odd) = [(12, 12), (8, 16), (0, 0), (48, 48), (84, 84), (72, 96)]
+== S3  gauge invariance: switching does not change the fermionic spectrum
+PASS  spec(A_s) is invariant under random switchings, all six examples
+== S4  layer 1: the period lattice H_1(K4, Z) = Z^3 and Bloch combs
+      k = 6: 96 closed walks on 20 lattice points of Z^3
+PASS  overlap of the walk distribution with the Bloch comb at a generic flux equals Tr B_phi^k, k = 3..8
+PASS  a Z_2 flux is the half-period: sign of a closed walk = (-1)^(a.x) for its class x
+PASS  super count = 2 x (walks ending on the odd coset of the index-two sublattice ker s)
+== S5  layer 2: periodic syndromes of a GKP qunaught under the fermionic step
+PASS  M = [[0,-1],[2,-1]] on R^2/Z^2: number of period-k syndromes, brute force, k = 1..7, equals #E(F_2^k)  [4, 8, 4, 16, 44, 56, 116]
+PASS  M = [[0,-1],[5,-2]]: period-k syndromes 8, 32, 104, 640 = the notebook's str T^k  [8, 32, 104, 640]
+PASS  zeta of the toral map = (1+u+2u^2)/((1-u)(1-2u)) as power series to order 8
+PASS  K4, one negative edge: M_s symplectic similitude; det(1 - M_s) = det(signed Laplacian); det(1 - M_s^k) = prod (1 - mu^k)  step-invariant syndromes: 32, group invariants [2, 2, 8]
+PASS  K4, one negative edge: fermionic Weil form is positive definite (no pole plane in this sector)  smallest eigenvalue 0.2753
+PASS  Petersen, dodecahedral flux: M_s symplectic similitude; det(1 - M_s) = det(signed Laplacian); det(1 - M_s^k) = prod (1 - mu^k)  step-invariant syndromes: 5184, group invariants [2, 6, 6, 6, 12]
+PASS  Petersen, dodecahedral flux: fermionic Weil form is positive definite (no pole plane in this sector)  smallest eigenvalue 0.2753
+PASS  prism, antiperiodic ring: negative directions of the fermionic Weil form = off-band fermionic eigenvalues  5; extreme eigenvalues -3.0000, 2.9777
+== S6  Euler product over flux-odd prime cycles
+PASS  numbers of flux-odd prime cycles are nonnegative integers  lengths 3..8: [4, 4, 0, 8, 12, 12]
+PASS  Z_s(u) = prod over flux-odd prime cycles of (1+u^l)/(1-u^l), power series to order 14  coefficients [1, 0, 0, 8, 8, 0, 48, 88, 56]
+== S7  average over fluxes: the matching polynomial
+PASS  K4: average of det(x - A_s) over the 8 flux classes is the matching polynomial; its roots lie strictly inside the band  coefficients [1, 0, -6, 0, 3], largest root 2.3344 vs 2.8284; fluxes with all fermionic eigenvalues in band: 6 of 8
+PASS  Petersen: average of det(x - A_s) over the 64 flux classes is the matching polynomial; its roots lie strictly inside the band  coefficients [1, 0, -15, 0, 75, 0, -145, 0, 90, 0, -6], largest root 2.6314 vs 2.8284; fluxes with all fermionic eigenvalues in band: 62 of 64
+PASS  K5: average of det(x - A_s) over the 64 flux classes is the matching polynomial; its roots lie strictly inside the band  coefficients [1, 0, -10, 0, 15, 0], largest root 2.8570 vs 3.4641; fluxes with all fermionic eigenvalues in band: 62 of 64
+PASS  K4: the average over all 64 signings gives the same polynomial x^4 - 6x^2 + 3
+== S8  fermionic echo and the parity bias, from walk counts only
+PASS  K4, one negative edge: fermionic echo from walk counts = sum over fermionic lines, k = 0..40
+      max |C_F(k)|/C_F(0) = 0.9377; Gram eigenvalues in [-1.035e-14, 34.57]; parity bias at k = 10, 20, 30: +2.00e-01, +5.47e-03, +9.25e-05
+PASS  Petersen, dodecahedral flux: fermionic echo from walk counts = sum over fermionic lines, k = 0..40
+      max |C_F(k)|/C_F(0) = 0.9883; Gram eigenvalues in [-4.823e-14, 131.11]; parity bias at k = 10, 20, 30: +9.09e-02, +1.74e-02, -2.29e-05
+PASS  K5, pentagon negative: fermionic echo from walk counts = sum over fermionic lines, k = 0..40
+      max |C_F(k)|/C_F(0) = 0.9984; Gram eigenvalues in [-2.109e-14, 65.81]; parity bias at k = 10, 20, 30: -3.15e-02, +4.79e-05, +1.89e-07
+PASS  prism C21xK2, antiperiodic ring: fermionic echo from walk counts = sum over fermionic lines, k = 0..40
+      max |C_F(k)|/C_F(0) = 22747.0383; Gram eigenvalues in [-9.310e+04, 93333.15]; parity bias at k = 10, 20, 30: +1.00e+00, +1.00e+00, +1.00e+00
+PASS  K4, one negative edge: echo bound and Gram positivity
+PASS  Petersen, dodecahedral flux: echo bound and Gram positivity
+PASS  K5, pentagon negative: echo bound and Gram positivity
+PASS  prism, antiperiodic ring: Gram matrix has a negative eigenvalue and the echo passes its initial value  first k with |C| > C(0): 10
+== Figure 1  periodic syndromes of one GKP qunaught mode under M = [[0,-1],[2,-1]]
+== Figure 2  fermionic echo
+
+50 passed, 0 failed
