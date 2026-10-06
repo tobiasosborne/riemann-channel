@@ -256,6 +256,9 @@ A row for `data-ladder.md` §0 (proposed, not inserted):
 
 ## 6. Status and checks
 
+*Review correction 2026-10-06 (`notes/reviews/adelic-gkp-arithmetic-2026-10-06.md`, 37 VALID / 3 MINOR / 1 INVALID, none INVALID on this page):* Proposition 2.1(3), "the characteristic polynomial over $\mathbb Z$ is $P(x)^2$, each mode twice", holds for $N\ge3$; at $N=2$ ($K_4$ with one negative edge) the polynomial is squarefree.
+
+
 | statement | status | check |
 |---|---|---|
 | $q=2$ for $K_4$, cube, Petersen (brief said 3, 3, 2) | correction | — |
