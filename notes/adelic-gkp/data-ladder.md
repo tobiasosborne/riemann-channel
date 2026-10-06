@@ -186,7 +186,7 @@ Lane E's witness is a one-step statement, and lane G's qualification is what it 
   of the Rosati trace form comes from a polarisation (an ample divisor) and is carried by the lattice $H^1$; the CM field supplies that reason only
   for the local factors; for the global zeros of $L(\psi,s)$ it is as open as for $\zeta$.** The datum $\zeta$ lacks is a reason for that trace to be
   positive, and in every understood case with global zeros that reason is geometric and carried by the lattice, the item the ladder says $\zeta$ does
-  not have.
+  not have. Checked: `checks/check_step_powers.py` (38 of 38 pass): $W_k=\tfrac12\Omega(F^k-V^k)$ is $q^{k/2}\sin(k\theta)\,G_J$ per mode, positive for $k=1$ and indefinite already at $k=2$ on the genus-two curve and on $K_4$ (for later $k$ it is definite or indefinite according to the signs of $\sin k\theta_j$); for $\zeta$ the normalised Weil form of $e^{tD}$ tends to $\oplus\gamma_n I_2$ as $t\to0$ and is indefinite for every $t>\pi/\gamma_{200}\approx0.008$ tested (grid to $t=10$), so for every prime step $\log p$ with $p<10^5$.
 
 Checked: `checks/check_family_weil.py` (51 of 51 pass): the one-mode identity Weil form $=\sqrt q\sin\theta\,G_J$, its orientation dependence, the CM family's opposite signs on conjugate primes with one vacuum $J_K$ and the trace form a positive multiple of $G_{J_K}$, and the sign statistics of $\sin(\gamma\log p)$ over 200 zeros for $p=2,3,5$.
 
