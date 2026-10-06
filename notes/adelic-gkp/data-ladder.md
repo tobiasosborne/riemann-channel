@@ -147,6 +147,28 @@ cokernel on which the squeeze acts as a similitude; not on the tower, not on the
 list (`cm-lift.md` §4) states the three concrete versions of this: a lattice-with-step whose periodic-point counts give $L(\psi,s)$; an integral
 structure on the $\ell=1$ cokernel of $\mathcal O_K$; a positivity uniform over the $\ell$-tower of Hecke characters.
 
+## 4b. One step against a family: why the Weil form of $\zeta$ is the vacuum point
+
+Lane E's witness is a one-step statement, and lane G's qualification is what it becomes for a commuting family (*sketched*; the finite facts are
+elementary, the reading is mine).
+
+- One mode, one step. On a mode where $S=M/\sqrt q$ rotates by $\theta$, the Weil form is $\tfrac12\Omega(M-V)=\sqrt q\,\sin\theta\;\Omega(\cdot,J\cdot)$:
+  the vacuum form times $\sin\theta$. It is positive iff $\theta\in(0,\pi)$ for the orientation of $\Omega$, which is lane E's CM-type condition $\Phi_+$
+  and lane A's Howe sign. For one step the orientation can be chosen, so "Weil form positive" and "a vacuum exists" coincide.
+- One lattice, a family of steps (lane C). On $\mathcal O_K$ the Hecke steps $\psi(\mathfrak p)$ all commute with the one vacuum $J_K$, but their Weil forms
+  for a fixed $\Omega$ are $\mathrm{Im}\,\psi(\mathfrak p)$ times the vacuum form, and $\psi(\bar{\mathfrak p})=\overline{\psi(\mathfrak p)}$ gives the opposite sign:
+  for a family no orientation makes every Weil form positive, and this has nothing to do with RH. The family-invariant datum is the vacuum, or
+  equivalently the Rosati form $\mathrm{Tr}_{K/\mathbb Q}(x\bar y)$ of the family's algebra, positive because the Rosati involution is positive, i.e. because
+  $K$ is a CM field, i.e. RH for every $\mathfrak p$ at once.
+- $\zeta$ (lane G). The prime dilations are a commuting family; on the pair $\{\rho,1-\bar\rho\}$ the step $M_p$ rotates by $\gamma\log p$, so its Weil form
+  for $\Omega_{\rm FE}$ is $\sqrt p\,\sin(\gamma\log p)$ times the vacuum form, indefinite for every $p$, exactly as for the Hecke family; and Weil's form
+  $B=\omega(h*\tilde h)$ is the Rosati form of the family's algebra (the test-function algebra with the involution $\tilde{\ }$), i.e. the vacuum point.
+  So lane G's finding is the family version of lanes A and E, not a discrepancy, and it sharpens note §12.2: **in the finite cases the positivity of
+  the Rosati involution comes from a polarisation (an ample divisor); for $\zeta$ the positivity of the involution $h\mapsto\tilde h$ on the squeeze
+  algebra is Weil's criterion itself.** The datum $\zeta$ lacks is therefore not an $\Omega$ for one step (each prime has one, lane G) but a reason for
+  the family's involution to be positive; in every understood case that reason is geometric and global (ampleness on a Jacobian, the CM field of
+  the lift), and it is carried by the lattice, which is the item the ladder says $\zeta$ does not have.
+
 ## 5. Corrections to earlier pages (recorded here; the pages carry a one-line annotation)
 
 - `lattice-tower.md` §1 table and §6, `adelic-gkp.md` G12(ii): the Pauli-six lattice ($x^2+2x+5$, groups $\mathbb Z/8$) belongs to $y^2=x^3+4x\pm1$ over
