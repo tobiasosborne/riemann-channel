@@ -14,12 +14,14 @@ Status: **a record, not a round.** Nothing registered in `db/claims.tsv`; no REF
 
 Every understood case is a triple $(L,M,\Omega)$: an integral lattice $L$, an integral step $M$ of norm $q$ on it ($M^T\Omega M=q\Omega$, $V=qM^{-1}$ integral), and
 a symplectic form $\Omega$; and RH is one further datum, an invariant Gaussian vacuum $J$ (a complex structure with $\Omega(\cdot,J\cdot)>0$ and $JM=MJ$),
-equivalently the positivity of the Weil form $\tfrac12\Omega(M-V)$ (`lattice-tower.md` §5). The table says where each item comes from on each rung.
+for a step without real eigenvalues and an $\Omega$ of CM type $\Phi_+$ equivalently the positivity of the Weil form $\tfrac12\Omega(M-V)$ (`lattice-tower.md` §5 with the
+precisions of lane E and of the review: $M'=\bigl(\begin{smallmatrix}0&1\\-5&-2\end{smallmatrix}\bigr)$ has a vacuum and a negative Weil form; $B\oplus2B^{-T}$, $B=\bigl(\begin{smallmatrix}0&2\\1&0\end{smallmatrix}\bigr)$,
+has eigenvalues $\pm\sqrt2$, a vacuum, and every compatible Weil form zero). The table says where each item comes from on each rung.
 
 | rung | lattice $L$ | step | vacuum $J$ (= RH) | arithmetic $J$ (polarisation) | zeros | page |
 |---|---|---|---|---|---|---|
 | one mode $M=\bigl(\begin{smallmatrix}0&-1\\q&\lambda\end{smallmatrix}\bigr)$ | $\mathbb Z^2$, the form $qx^2+\lambda xy+y^2$ | $M$ | exists iff $\lambda^2<4q$ | Deligne/Howe, $=\pm J$; the sign cancels in the metric | two, $\mu^\pm$ | `lattice-tower.md`, `curve-bridge.md` |
-| ordinary elliptic curve $E/\mathbb F_q$ | $H_1$ of the canonical lift; **not determined by the counts** (class number) | lifted Frobenius | yes (Hasse) | Rosati form $=$ vacuum form $\times\sqrt{4q-a^2}$ (proved) | two | `curve-bridge.md` |
+| ordinary elliptic curve $E/\mathbb F_q$ | $H_1$ of the canonical lift; **not determined by the counts** (class number) | lifted Frobenius | yes (Hasse) | Rosati form $=$ vacuum form $\times\sqrt{4q-a^2}$ on the companion lattice $\mathbb Z[F]$ (proved); on a non-principal lattice the pull-back is doubled | two | `curve-bridge.md` |
 | $\mathbb Z_2$ flux on a graph, ordinary ($K_4$, one negative edge) | $\mathbb Z^{2n}$ from the graph $=H_1$ of the lift of $E_2\times E_4\times\mathrm{Jac}(y^2+(x^2+x)y=x^5+1)$ | $M_s$ | yes iff the flux is Ramanujan | exists; differs from the vacuum by a sign per mode; $\Omega$ itself fails Howe, a unit twist repairs it | $2n$ | `howe-positivity.md`, `no-lift.md` |
 | $\mathbb Z_2$ flux, non-ordinary (Petersen, $K_5$) | $\mathbb Z^{2n}$ from the graph; arithmetically from the Centeleghe–Stix category, **no canonical lift**; glued, not a product | $M_s$ | yes; on the supersingular block $J=M/\sqrt q$ (quarter turn) | ordinary block: as above; supersingular block: **none selected** | $2n$ | `no-lift.md` |
 | genus two over $\mathbb F_q$ ($y^2=x^5+x^3+x^2-2$, $\mathbb F_5$) | $\mathbb Z^4$ | Frobenius | yes; the positive similitude forms are a cone $\sum_jt_j\,(\text{vacuum form on mode }j)$ and **RH is the cone being non-empty** | a further point of the cone; Rosati transported is not proportional to the vacuum form (weights 10.870, 20.171); it settles integrality, not RH | four | `cone-bridge.md` |
@@ -47,7 +49,8 @@ Lane A's order for an ordinary elliptic curve (`curve-bridge.md` §6), extended 
    canonical lift is not what supplies the lattice (the Centeleghe–Stix category does, from linear-algebra data with $FV=p$), and that on a
    supersingular block the arithmetic supplies no $J$ at all: there the vacuum is the step itself.
 5. **The bridge is exact in genus one** (*proved*, lane A): the unimodular map $S=\bigl(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\bigr)$ carries the
-   Riemann–Roch cokernel state $(Y_j,Y_{j-1})$ of `analytic.md` §13 to the Deligne module, the window shift to $M$, the discrete Wronskian to $\Omega$, and
+   Riemann–Roch cokernel state $(Y_j,Y_{j-1})$ of `analytic.md` §13 to the companion lattice $\mathbb Z[F]$ (the Deligne module when the lattice is
+   principal; otherwise the smallest integral intertwiner has determinant 2 and the vacuum form pulls back doubled, review MINOR), the window shift to $M$, the discrete Wronskian to $\Omega$, and
    the Casoratian (the cokernel metric, the Rosati form) to the Weil form: $\Omega(Ss,J\,Ss)=2\mathcal Q(s)/\sqrt{4q-a^2}$. So the two lattice pictures of
    the notebook (the adelic qunaught's cokernel and the GKP syndrome torus) are one object in genus one. In genus $g\ge2$ the similitude forms form a
    cone of dimension $g$ and proportionality is not forced. Lane E (`cone-bridge.md`, *proved/checked*): for a fixed compatible $\Omega$ the positive
@@ -169,6 +172,12 @@ Lane E's witness is a one-step statement, and lane G's qualification is what it 
   the lift), and it is carried by the lattice, which is the item the ladder says $\zeta$ does not have.
 
 Checked: `checks/check_family_weil.py` (51 of 51 pass): the one-mode identity Weil form $=\sqrt q\sin\theta\,G_J$, its orientation dependence, the CM family's opposite signs on conjugate primes with one vacuum $J_K$ and the trace form a positive multiple of $G_{J_K}$, and the sign statistics of $\sin(\gamma\log p)$ over 200 zeros for $p=2,3,5$.
+
+## 4c. REFUTE reviews
+
+- `notes/reviews/adelic-gkp-lattice-2026-10-06.md` (lanes A, E, F): 22 VALID / 6 MINOR / 0 INVALID; the three headline claims of §1 stand; the six
+  precision faults are corrected above and annotated on the pages (the bridge lands on $\mathbb Z[F]$; the cone page's prime count; the general form of
+  the vacuum/Weil-form equivalence needs "no real eigenvalue"; Frobenius compatibility in lane F's lemma; this page's §0).
 
 ## 5. Corrections to earlier pages (recorded here; the pages carry a one-line annotation)
 
