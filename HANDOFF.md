@@ -2,35 +2,53 @@
 
 # HANDOFF — riemann-channel
 
-## Session 2026-10-06: orchestrated GKP session (Fable steering, Opus lanes); what data the zeros of ζ need (record only)
+## Session 2026-10-06: orchestrated GKP session (Fable steering, Opus lanes, four REFUTE reviews); what data the zeros of ζ need (record only)
 
-TJO: "orchestrate work ... explore the GKP connection comprehensively ... build up enough examples to understand what data we need for the classic
-Riemann zeta zeroes in the terms we discover here, ie the qunaught, gkp, weil positivity ... use [the quota] all up today ... work until the quota
-reset then stop". Worklog `docs/worklog/2026-10-06.md` (second entry). **Nothing registered; no REFUTE review; no shard.** Gate unchanged.
+TJO: "install what you need ... orchestrate work ... explore the GKP connection comprehensively and build on the ideas of the previous sessions
+... build up enough examples to understand what data we need for the classic Riemann zeta zeroes in the terms we discover here, ie the qunaught,
+gkp, weil positivity ... use [the quota] all up today ... work until the quota reset then stop". Worklog `docs/worklog/2026-10-06.md` (second entry).
+**Nothing registered; no shard; a draft shard exists.** Gate: 43 errors in this container with `refs/src/` fetched (5 script errors + 38 provenance
+rows whose non-arXiv sources are absent); unchanged by the session.
 
-**Pages** (`notes/adelic-gkp/`, each with `checks/check_<name>.py` and output; statuses inside): `curve-bridge.md` (lane A), `no-lift.md` (lane B),
-`cm-lift.md` (lane C), `cone-bridge.md` (lane E), `overlap-data.md` (lane F); synthesis `data-ladder.md`; corrections annotated in `lattice-tower.md` §8
-and note G12; note §16 indexes them. Container: PARI/GP installed by apt, `gp` by subprocess (cypari2 does not build); `refs/src/` absent, so every
-theorem in the lane pages is quoted from memory.
+**Read first:** `notes/adelic-gkp/data-ladder.md` ("The answer in one paragraph", then §§0–4d). Index of everything: `notes/adelic-gkp/adelic-gkp.md` §16.
 
-**Findings.** (A, proved/checked) The Riemann–Roch cokernel of the adelic qunaught maps by $S=\bigl(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\bigr)$ onto the
-Deligne module; Rosati form $=$ vacuum form $\times\sqrt{4q-a^2}$; the Howe sign flips $\Omega$ and $J$ together and cancels in the metric. The group
-identification $A(\mathbb F_{q^k})\cong L/(1-M^k)L$ holds for the curve's own Deligne module; the Pauli-six lattice is that of $y^2=x^3+4x\pm1$, not
-$y^2=x^3+4x$ (correction). Counts do not determine the lattice ($q=7$, $a=2$, class number 2: same counts and groups, different lattices).
-(B, checked) $K_4=E_2\times E_4\times\mathrm{Jac}(y^2+(x^2+x)y=x^5+1)$ over $\mathbb F_2$; Petersen $=S^3\times E_{ss}^4$; $K_5=S'^2\times E'_{ss}$ over $\mathbb F_3$
-($K_5$ is $q=3$); $K_4$ and Petersen are Weil restrictions from $\mathbb F_4$ up to isogeny; on the supersingular block the vacuum is $M/\sqrt q$ and the
-arithmetic selects no $J$; the lattice is supplied by the Centeleghe–Stix category, not a lift ("no canonical lift"); unit twists in $\mathbb Q[A_s]$ cannot
-repair $\Omega$ for Petersen or $K_5$. (C, checked) The E mode lifts to 441d1 (49a1 is its $\mathbb F_2$-twist); $\psi((\alpha))=(\alpha|\sqrt{-7})\alpha$;
-one lattice $\mathcal O_K$ and one vacuum serve every split prime (local RH free); explicit formula with no zero-mode term matches PARI zero sums to 15
-digits; windowed Gram form positive; **49a1 and 441d1 share lattice, vacuum and local steps up to sign but not their global zeros.**
-(Synthesis, `data-ladder.md`) The finite cases model the local level of $\zeta$-like $L$-functions; the zeros of $\zeta$ are entirely global; the missing
-datum is a global integral structure on Connes's cokernel on which the squeeze is a similitude, together with a polarisation, and it is not something
-the code's own data can be expected to contain (they do not fix the lattice even over $\mathbb F_q$). `lattice-tower.md` §7.3 is a reading of the local level.
+**Pages** (`notes/adelic-gkp/`, each with `checks/check_<name>.py` and output; all checks pass; statuses inside): A `curve-bridge.md` (82), B `no-lift.md` (50),
+C `cm-lift.md` (50), D `zn-flux.md` (87), E `cone-bridge.md` (42), F `overlap-data.md` (40), G `zeta-ingredients.md` (32), I `gate-phases.md` (32),
+J `ff-dirichlet.md` (118), M `family-vacuum.md` (39), R `window-similitude.md` (25), S `repeated-root.md` (31); Fable's checks `check_family_weil.py` (51),
+`check_step_powers.py` (38). Records: `citations-2026-10-06.md` (28 of 43 quoted theorems byte-cited after `refs/fetch_sources.sh`; five new sources in
+`refs/manifest-2026-10-06-pending.txt`, to merge into the script and manifest), `registered-record.md` (today against `db/claims.tsv`: no registered
+claim refuted or weakened; several items already registered, notably 04t `prop:weil-form-not-metric` for "Weil's form is the vacuum point"),
+`shard-draft/` (04za, 20 claim rows, dry-run gate clean; reviewed-VALID statements stay `sketched` because every reviewer was Opus on Opus pages,
+the gate's reviewer-equals-author rule). Reviews `notes/reviews/adelic-gkp-{lattice,arithmetic,zeta,ff-family}-2026-10-06.md`: 79 VALID / 17 MINOR /
+3 INVALID; all three INVALIDs were Fable's readings in the synthesis and are corrected there; every MINOR is annotated on its page.
 
-**Next (in order).** (i) Fold lanes E and F into `data-ladder.md` if they landed after the synthesis (check their status tables). (ii) Shard 08j
-(unchanged). (iii) REFUTE review of `graph-ihara.md`, `graph-super.md` and the lane pages before registering anything; fetch `refs/src/` and
-byte-cite (Lenstra 1996, Centeleghe–Stix 2015, Howe 1995, Tate, Deuring). (iv) A $\mathbb Z_N$ flux on a graph as the finite shadow of a Dirichlet
-family. (v) The Fourier-gate phases and the root number; the Petersen twist; a Howe-type criterion for Centeleghe–Stix objects.
+**Findings** (one line each; statuses on the pages). (A) The Riemann–Roch cokernel of the adelic qunaught maps by $S=\bigl(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\bigr)$
+onto the companion lattice $\mathbb Z[F]$; Rosati $=$ vacuum form $\times\sqrt{4q-a^2}$; the Howe sign cancels; counts do not fix the lattice (class number).
+Correction: the Pauli-six lattice is that of $y^2=x^3+4x\pm1$. (E) In genus $g$ the positive similitude forms are a cone; RH is its non-emptiness, witnessed by
+the Weil form (positive iff $\Omega$ has type $\Phi_+$ and no real eigenvalue); the polarisation is a further point deciding integrality. (F) Overlaps see the
+order, never the class; the Weil pairing sees the class. (B) Petersen and $K_5$ are Centeleghe–Stix objects with glued lattices and no arithmetic $J$ on the
+supersingular block; "no lift" means "no canonical lift". (D) $\mathbb Z_N$ fluxes: lattice over $\mathbb Z[\zeta_N]$, $N$-torsion average $=$ matching polynomial
+for every $N$. (C) The E mode lifts to 441d1; one lattice $\mathcal O_K$ and one vacuum for every Euler factor; 49a1 and 441d1 share them and differ in their
+zeros. (I) The root number is the product of local Fourier-gate phases; the twins differ by a charged local state at 3. (J) Dirichlet characters of
+$\mathbb F_q(t)$ have every ladder item at once (lattice, vacuum, charged states, gate phases, RH); needs $P_\chi$ squarefree. (M) Commuting similitudes share
+a vacuum iff each satisfies RH; the LPS Hecke family shares none; $\zeta$'s prime family does. (G, R) For $\zeta$ the steps have exact adjoints, $\Omega_{\rm FE}$
+and $\Omega_D$ are compatible with every step, Weil's form is the family-invariant point, the prime steps are exact similitudes (the window residual was an
+artefact), and what is missing is finite rank: one atom per zero on every window against $2g$. (S) Companion constructions need squarefree $P$; Connes's
+cokernel is of companion type (Jordan blocks for multiple zeros).
+
+**The answer** (`data-ladder.md`, head): the data for the zeros of $\zeta$ in these terms are a finite-rank-per-mode integral structure on a global $H^1$
+on which the squeeze generator acts integrally, plus a polarisation-type reason for its Lefschetz trace to be positive; the examples exclude the code's
+overlaps and level tower, local lattices and vacua, Connes's cokernel as constructed, and Hecke-type families as sources.
+
+**Next (in order).** (i) TJO's decision on registering `shard-draft/` (promotion to `proved` needs a reviewer of another model, per the gate). (ii) Merge
+`refs/manifest-2026-10-06-pending.txt`. (iii) Shard 08j (unchanged). (iv) Open items on the pages: which ideal class and principal form belong to
+$\mathrm{Jac}(C)$ for the genus-two curve (E); whether the Weil pairing is a datum of $\Theta_K$ (F); the Petersen twist and a Howe-type criterion for
+Centeleghe–Stix objects (B); the CM version of the vacuum-point reading (G); $J(\mathbb F_{5^k})$ of the Fermat quartic (S); the twist family and higher
+infinity types (I). (v) The one question the day leaves: what plays the finite-field geometry over $\mathbb Q$.
+
+**Environment this session.** numpy, scipy, mpmath, sympy, networkx, python-flint by pip; PARI/GP 2.15.4 with elldata by apt (cypari2 does not build;
+`gp` by subprocess); `refs/src/` fetched (125 arXiv sources plus five new ones). Quota: only the unified seven-day window is visible to the session
+(91% at 06:33 UTC, reset 16:00 UTC); no separate Fable line.
 
 ## Session 2026-10-05/06: the tutorial "super Ihara zeta from the ground up", Ihara–Bass by vectorisation, other gauge groups; everything merged onto master (Fable alone; record only)
 
