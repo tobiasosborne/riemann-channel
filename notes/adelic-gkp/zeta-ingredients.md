@@ -186,6 +186,9 @@ is consistent with this, because $\mathcal T$ is the Weil form for the generator
 
 ## 6. Status and checks
 
+*Follow-up 2026-10-06 (lane R, `window-similitude.md`):* the residual near 0.4 of §3.3 is the share of the window basis that the translation by $\log2$ pushes out of the window (exactly $\log2/L$ for a frame of translates; in the Frobenius norm it decays like $(\log2/L)^{1/2}$); the dilation itself is an exact similitude of Weil's form on both sides of the explicit formula, before RH. The negative finding of §5.8 is withdrawn as a statement about the dilation and stands only as a statement about hard-window compressions. What is missing is finite rank: $\zeta$'s Toeplitz form has full rank on every window, a curve's has rank $2g$.
+
+
 *Review 2026-10-06 (`notes/reviews/adelic-gkp-zeta-2026-10-06.md`, 6 VALID / 5 MINOR / 2 INVALID, both INVALIDs in the synthesis, none on this page):* G0, $F_h$ "(this is $\hat h(s)$)" is off by $s\mapsto s-\tfrac12$ from `analytic.md`'s $\hat h$ (§1.1 uses $\hat h$, §3.2 the normalised $h^\natural$). G3, "unaffected by normalisation" is false for "$B=G_J$": every positive form invariant under all steps is the vacuum form of some compatible $\Omega$ (04t `thm:bond-positive-metric-criterion`(d)), so "vacuum point" says that $B$ is invariant under the whole family and nothing more; indefiniteness, the singular weights and the absence of a common $\Omega_p$ are normalisation-independent.
 
 
