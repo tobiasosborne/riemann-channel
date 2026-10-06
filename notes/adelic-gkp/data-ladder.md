@@ -26,6 +26,7 @@ has eigenvalues $\pm\sqrt2$, a vacuum, and every compatible Weil form zero). The
 | $\mathbb Z_2$ flux, non-ordinary (Petersen, $K_5$) | $\mathbb Z^{2n}$ from the graph; arithmetically from the Centeleghe–Stix category, **no canonical lift**; glued, not a product | $M_s$ | yes; on the supersingular block $J=M/\sqrt q$ (quarter turn) | ordinary block: as above; supersingular block: **none selected** | $2n$ | `no-lift.md` |
 | genus two over $\mathbb F_q$ ($y^2=x^5+x^3+x^2-2$, $\mathbb F_5$) | $\mathbb Z^4$ | Frobenius | yes; the positive similitude forms are a cone $\sum_jt_j\,(\text{vacuum form on mode }j)$ and **RH is the cone being non-empty** | a further point of the cone; Rosati transported is not proportional to the vacuum form (weights 10.870, 20.171); it settles integrality, not RH | four | `cone-bridge.md` |
 | $\mathbb Z_N$ flux on a graph ($N=3,4,5,6$) | $\mathbb Z[\zeta_N]^{2n}$ by restriction of scalars; $\zeta_N$ is complex multiplication, not a lock | $M_\rho$, $M_\rho^\dagger\Omega M_\rho=q\Omega$ | yes iff every Galois-conjugate flux is in the band ($\rho$ and $\bar\rho$ have the same spectrum) | not run | $2n\varphi(N)$, each mode twice | `zn-flux.md` |
+| Dirichlet character $\chi$ of $\mathbb F_q(t)$ mod $f$ (order $N$) | $\mathbb Z[\zeta_N][F,V]$, the $\chi$-part of $\mathrm{Jac}(y^N=cf)$ | $F$ | yes (Weil); Weil form $\tfrac12\mathrm{Tr}(x\sigma y)$ positive | $\Omega_+$ from the functional equation alone; not principal | $\deg f-1$ or $\deg f-2$; **gate phases present and non-trivial**, product $=W$ | `ff-dirichlet.md` |
 | CM Hecke $L(\psi,s)$, $K=\mathbb Q(\sqrt{-7})$ (441d1, 49a1) | one lattice $\mathcal O_K$ for every split prime | one step $\psi(\mathfrak p)$ per prime, all commuting | one $J_K$ for all primes: **local RH free** | the complex structure of $K\otimes\mathbb R$ | infinitely many, **not determined by the local data** | `cm-lift.md` |
 | $\zeta$ | none known: $\mathbb Q^2$ is rigid and divisible (G3) | a flow (the squeeze group $C_{\mathbb Q}$), not an integral map | open (= RH) | none | infinitely many, all global | `adelic-gkp.md` §12 |
 
@@ -139,9 +140,15 @@ Absent, by the ladder:
    symplectic partner for one step but one $\Omega$ for the whole commuting family of prime steps; the Deninger metric cone of shard 04u remains the
    analogue of the cone, and the reason for positivity, ampleness through Rosati in the curve case, is for $\zeta$ the open statement itself.
 3. **The local charged states and their gate phases** (lane I): a separate item of the ladder, present for Hecke and Dirichlet $L$-functions
-   (Gauss sums at the conductor, the Hermite phase at $\infty$), trivial for curves over $\mathbb F_q$ (root number $+1$, squeezes only), for graphs
-   (the completed zeta is even) and for $\zeta$ (every phase is 1). It is the first global invariant assembled from local data that is not a
-   lattice or vacuum datum, and it does not carry RH.
+   (Gauss sums at the conductor, the Hermite phase at $\infty$), trivial for a curve's zeta as a whole (root number $+1$, squeezes only), for graphs
+   (the completed zeta is even) and for $\zeta$ (every phase is 1). Lane J (`ff-dirichlet.md`, *proved/checked* on six characters and a census of 532)
+   supplies the finite case that has this item together with everything else: a Dirichlet character $\chi$ of $\mathbb F_q(t)$ modulo $f$ has a lattice
+   $\mathbb Z[\zeta_N][F,V]$ with a similitude form from the functional equation alone, a positive Weil form, a vacuum, counts (the $\chi$-part of the
+   Jacobian of $y^N=cf$), charged local states at the places dividing $f$ (and at $\infty$ for odd $\chi$), and gate phases $\chi_P(P)G_P/\sqrt Q$ whose
+   product is the root number $W=(-1)^n\det F/q^{n/2}$; the phases of the $\chi^j$-parts of a cover multiply to 1, which is why a curve's own zeta shows
+   none. So the gate phases coexist with the lattice and do not enter the positivity: the item is the first global invariant assembled from local
+   data that is not a lattice or vacuum datum, and it does not carry RH. For Dirichlet $L$ over $\mathbb Q$ the only item missing is then the same one
+   as for $\zeta$, the global lattice, with the charged local states present on both sides.
 4. **Counts.** At the real place there is nothing to count (note §12.1); lane A shows that even where there are counts they fix only the isogeny
    class.
 
@@ -187,6 +194,8 @@ Checked: `checks/check_family_weil.py` (51 of 51 pass): the one-mode identity We
   Fourier gate maps the $\ell=1$ Gaussian to $\ell=-1$, not to itself (lane I).
 - `lattice-tower.md` §6, §9: "no lift" for the non-ordinary examples is "no canonical lift"; supersingular factors lift with Frobenius, not canonically (lane B).
 - `lattice-tower.md` §7.3 is a reading of the local level only (lane C, §3 above).
+- `zn-flux.md` §5 item 4 ("the finite rung has no non-self-dual character") holds for graphs, not for function-field characters: lane J's $N=3,4$
+  examples have $L(\chi)\ne L(\bar\chi)$.
 - `lattice-tower.md` §5: (i)$\Rightarrow$(ii) needs the CM type $\Phi_+$ for $\Omega$; it holds for the graph steps the page was written for and fails for
   $M'=\bigl(\begin{smallmatrix}0&1\\-5&-2\end{smallmatrix}\bigr)$ (RH, Weil form negative definite). General form: (i) $\Leftrightarrow$ (iii) $\Leftrightarrow$ the Weil form
   of some compatible form is positive (lane E).
@@ -196,8 +205,8 @@ Checked: `checks/check_family_weil.py` (51 of 51 pass): the one-mode identity We
 ## 6. Next
 
 - Lane G's next: a description of $\Omega_D$ that does not go through $B$; the prime-step similitude test in a smooth window basis; the CM version of the
-  vacuum-point reading. Lane J (`ff-dirichlet.md`, a Dirichlet character of $\mathbb F_q(t)$ with every ladder item) and the two REFUTE reviews
-  (`notes/reviews/adelic-gkp-*-2026-10-06.md`) are to be folded in when they land.
+  vacuum-point reading. The REFUTE reviews of the arithmetic quartet and of the $\zeta$ pages (`notes/reviews/adelic-gkp-*-2026-10-06.md`) are to be folded in when they
+  land. Lane J's open items: which lattice in the isogeny class is $H_1$ of the $\chi$-part and its polarisation ($\Omega_+$ is not principal); a twisted curve.
 - `notes/weil-bond-analytic/checks/metric_blocker_checks.py` imports `scripts/rtp2_blind_recovery.py`, which needs Python 3.12 (`math.sumprod`); it does not run on 3.11.
 - Lane I's open items: the full quadratic-twist family; Hecke characters of higher infinity type; a function-field shadow with a ramified twist.
 - Lane F's open items: whether the Weil pairing is expressible as a datum of $\Theta_K$ itself; the genus-blind case ($q=8$, $a=3$, discriminant $-23$, three
