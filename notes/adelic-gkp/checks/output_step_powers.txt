@@ -1,0 +1,74 @@
+== P1  one mode: W_k = q^{k/2} sin(k theta) G_J
+PASS  P1 (q,lambda)=(2,-1): Omega oriented so that W_1 > 0 (flipped: False); G_J = Omega J symmetric positive definite, M^T Omega M = q Omega, theta = 0.61503 pi
+PASS  P1 (q,lambda)=(2,-1): W_k = q^(k/2) sin(k theta) G_J for k = 1..6 to 1e-10; each W_k definite of the sign of sin(k theta)  max err 5.3e-15; sign sin(k theta), k=1..6: ['+', '-', '-', '+', '-', '-']
+PASS  P1 (q,lambda)=(5,-2): Omega oriented so that W_1 > 0 (flipped: False); G_J = Omega J symmetric positive definite, M^T Omega M = q Omega, theta = 0.64758 pi
+PASS  P1 (q,lambda)=(5,-2): W_k = q^(k/2) sin(k theta) G_J for k = 1..6 to 1e-10; each W_k definite of the sign of sin(k theta)  max err 7.1e-14; sign sin(k theta), k=1..6: ['+', '-', '-', '+', '-', '-']
+PASS  P1 (q,lambda)=(7,2): Omega oriented so that W_1 > 0 (flipped: False); G_J = Omega J symmetric positive definite, M^T Omega M = q Omega, theta = 0.37662 pi
+PASS  P1 (q,lambda)=(7,2): W_k = q^(k/2) sin(k theta) G_J for k = 1..6 to 1e-10; each W_k definite of the sign of sin(k theta)  max err 3.4e-13; sign sin(k theta), k=1..6: ['+', '+', '-', '-', '-', '+']
+PASS  P1 (q,lambda)=(13,3): Omega oriented so that W_1 > 0 (flipped: False); G_J = Omega J symmetric positive definite, M^T Omega M = q Omega, theta = 0.36342 pi
+PASS  P1 (q,lambda)=(13,3): W_k = q^(k/2) sin(k theta) G_J for k = 1..6 to 1e-10; each W_k definite of the sign of sin(k theta)  max err 6.4e-12; sign sin(k theta), k=1..6: ['+', '+', '-', '-', '-', '+']
+      sign of sin(k theta), k = 1..6:
+        (q,lambda)=(2, -1): + - - + - -
+        (q,lambda)=(5, -2): + - - + - -
+        (q,lambda)=(7, 2): + + - - - +
+        (q,lambda)=(13, 3): + + - - - +
+PASS  P1 W_1 is positive for all four (sin theta > 0 by construction of the orientation); in every case some k <= 6 has sign - (so W_k negative definite there)
+
+== P2a  genus-2 curve: companion step of P(T) = 1 - 3T + 7T^2 - 15T^3 + 25T^4 over F_5
+PASS  P2a companion matrix has characteristic polynomial x^4 - 3x^3 + 7x^2 - 15x + 25 and det = q^2 = 25
+PASS  P2a compatible alternating forms (M^T Omega M = q Omega) form a 2-dimensional space (g = 2)  dimension 2
+PASS  P2a a compatible alternating Omega exists whose Weil form (1/2)Omega(F - V) is positive definite (rational coefficients a1, a2 = 9/25, 93/100)  eigenvalues of W_1: [0.0156 0.1391 0.7906 4.8579]
+PASS  P2a the eigenvalues of M are sqrt(5) e^{+-i theta_j}, theta_j/pi = 0.17795, 0.55662; lambda_j = (3 +- sqrt 21)/2  theta/pi = [0.17795 0.55662]
+
+== P2b  K_4 with one negative edge (q = 2): M = [[0,-I],[2I,A_s]], standard Omega
+PASS  P2b M^T Omega M = 2 Omega; characteristic polynomial (x^4 + 3x^2 + 4)(x^4 - x^2 + 4)
+PASS  P2b the four angles are theta/pi = 0.210, 0.385, 0.615, 0.790 (lattice-tower.md section 5), all eigenvalues of modulus sqrt 2  theta/pi = [0.2098 0.385  0.615  0.7902]
+PASS  P2b W_1 = (1/2)Omega(F - V) = [[2I, A_s/2],[A_s/2, I]] is positive definite  min eigenvalue 0.2753
+
+  inertia of W_k = (1/2) Omega (F^k - V^k), k = 1..6, against the number of modes with sin(k theta_j) > 0 / < 0 (each mode is a plane: 2 dimensions)
+PASS  P2 curve: inertia (n+, n-, n0) of W_k equals 2 x (#modes with sin(k theta_j) >0, <0, =0) for k = 1..6
+PASS  P2 curve: the eigenvalues of W_1^(-1) W_k are q^((k-1)/2) sin(k theta_j)/sin(theta_j), each twice (W_k = sum_j q^(k/2) sin(k theta_j) G_J|_j), k = 1..6
+      curve: theta_j/pi = [0.178  0.5566]
+        k = 1: signs of sin(k theta_j) = ++; inertia (n+, n-, n0) = (4, 0, 0); predicted (4, 0, 0); definite
+        k = 2: signs of sin(k theta_j) = +-; inertia (n+, n-, n0) = (2, 2, 0); predicted (2, 2, 0); INDEFINITE
+        k = 3: signs of sin(k theta_j) = +-; inertia (n+, n-, n0) = (2, 2, 0); predicted (2, 2, 0); INDEFINITE
+        k = 4: signs of sin(k theta_j) = ++; inertia (n+, n-, n0) = (4, 0, 0); predicted (4, 0, 0); definite
+        k = 5: signs of sin(k theta_j) = ++; inertia (n+, n-, n0) = (4, 0, 0); predicted (4, 0, 0); definite
+        k = 6: signs of sin(k theta_j) = --; inertia (n+, n-, n0) = (0, 4, 0); predicted (0, 4, 0); definite
+PASS  P2 K_4: inertia (n+, n-, n0) of W_k equals 2 x (#modes with sin(k theta_j) >0, <0, =0) for k = 1..6
+PASS  P2 K_4: the eigenvalues of W_1^(-1) W_k are q^((k-1)/2) sin(k theta_j)/sin(theta_j), each twice (W_k = sum_j q^(k/2) sin(k theta_j) G_J|_j), k = 1..6
+      K_4: theta_j/pi = [0.2098 0.385  0.615  0.7902]
+        k = 1: signs of sin(k theta_j) = ++++; inertia (n+, n-, n0) = (8, 0, 0); predicted (8, 0, 0); definite
+        k = 2: signs of sin(k theta_j) = ++--; inertia (n+, n-, n0) = (4, 4, 0); predicted (4, 4, 0); INDEFINITE
+        k = 3: signs of sin(k theta_j) = +--+; inertia (n+, n-, n0) = (4, 4, 0); predicted (4, 4, 0); INDEFINITE
+        k = 4: signs of sin(k theta_j) = +-+-; inertia (n+, n-, n0) = (4, 4, 0); predicted (4, 4, 0); INDEFINITE
+        k = 5: signs of sin(k theta_j) = ----; inertia (n+, n-, n0) = (0, 8, 0); predicted (0, 8, 0); definite
+        k = 6: signs of sin(k theta_j) = -+-+; inertia (n+, n-, n0) = (4, 4, 0); predicted (4, 4, 0); INDEFINITE
+PASS  P2 curve: sin(2 theta_j) has both signs (2 theta_1 = 0.356 pi, 2 theta_2 = 1.113 pi), so W_2 is indefinite with inertia (2, 2, 0)  inertia (2, 2, 0)
+PASS  P2 K_4: sin(2 theta_j) has both signs (2 theta/pi = 0.42, 0.77, 1.23, 1.58), so W_2 is indefinite with inertia (4, 4, 0)  inertia (4, 4, 0)
+PASS  P2 W_1 positive (inertia (2g, 0, 0)) for both
+
+== P3  zeta in the spectral model: D = (+) gamma_n [[0,-1],[1,0]], Omega_FE = standard form per pair, vacuum G = (+) I_2
+PASS  P3 the first 200 zeros: gamma_1 = 14.1347, gamma_200 = 396.3819, increasing
+PASS  P3 e^{tD} is the pair-wise rotation by gamma_n t (scipy expm against the closed form) and its Weil form is (+) sin(gamma_n t) I_2
+PASS  P3a t = 1e-06: (1/t)(1/2)Omega(e^(tD) - e^(-tD)) -> (+) gamma_n I_2 (max relative deviation of the diagonal 2.6e-08), positive definite, off-diagonal blocks zero  min eigenvalue 14.1347 (gamma_1 = 14.1347), max 396.3818
+PASS  P3a t = 1e-08: (1/t)(1/2)Omega(e^(tD) - e^(-tD)) -> (+) gamma_n I_2 (max relative deviation of the diagonal 2.6e-12), positive definite, off-diagonal blocks zero  min eigenvalue 14.1347 (gamma_1 = 14.1347), max 396.3819
+PASS  P3a the weights are |gamma_n| > 0: D itself has a positive Weil form (t = 1e-8: eigenvalues are gamma_n, each twice)
+      t = log 2 = 0.6931: fraction of the first 200 pairs with sin(gamma_n t) > 0 = 0.490 (98 +, 102 -); over 3000 zeros: 0.498
+      t = log 3 = 1.0986: fraction of the first 200 pairs with sin(gamma_n t) > 0 = 0.500 (100 +, 100 -); over 3000 zeros: 0.503
+      t = log 5 = 1.6094: fraction of the first 200 pairs with sin(gamma_n t) > 0 = 0.490 (98 +, 102 -); over 3000 zeros: 0.502
+PASS  P3b fraction of pairs with sin(gamma_n log p) > 0 is near one half for p = 2, 3, 5 (within [0.4, 0.6])  p=2: 0.490, p=3: 0.500, p=5: 0.490
+PASS  P3b the Weil forms of e^{tD}, t = log 2, log 3, log 5, are indefinite (both signs among the 200 pairs, none zero), via inertia of the 400 x 400 matrices  p=2: inertia (196, 204, 0), p=3: inertia (200, 200, 0), p=5: inertia (196, 204, 0)
+PASS  P3c the Weil form of e^(tD) is positive definite for 0 < t < pi/gamma_200 = 0.007926 and the pair 200 turns negative just above it (sin(gamma_200 t) > 0 below, < 0 above, all other sin > 0 up to t*)  t* = pi/gamma_200 = 0.007926 (about 0.0079)
+PASS  P3c the Weil form of e^(tD) is indefinite (both signs, 200 pairs) at all 99921 grid points t in (pi/gamma_200, 10], step 1e-4  min #positive = 72, max #positive = 199 of 200
+      #positive pairs over the grid t in (t*, 10]: min 72, max 199; the grid point with fewest negative pairs is t = 0.0079 (1 negative)
+PASS  P3c no prime p < 10^5 (9592 primes) has a definite Weil form for e^(t D), t = log p, on the first 200 pairs (smallest prime-like t with definite form: none)  min #positive pairs 75 (p = 87973), max 123 (p = 88861) of 200; fraction positive over primes: mean 0.500
+PASS  P3c likewise for t = log n for every integer 2 <= n < 10^5 (prime powers and composites included): none definite  min #positive 75, max 125 of 200
+PASS  P3c the smallest t with an indefinite form is t* = pi/gamma_200 = 0.0079, 88 times smaller than log 2 = 0.693; log 2 > t* and every log p > log 2  log 2 / t* = 87.5
+
+== P4  smallest k >= 2 with W_k indefinite
+PASS  P4 curve: the smallest k >= 2 with W_k indefinite is k = 2 (numerical inertia up to k = 12; angle prediction k = 2)  numerical k_min = 2
+PASS  P4 K_4: the smallest k >= 2 with W_k indefinite is k = 2 (numerical inertia up to k = 12; angle prediction k = 2)  numerical k_min = 2
+PASS  P4 one mode (P1): W_k is never indefinite (scalar times G_J), but it is negative definite when sin(k theta) < 0 (see the sign table); indefiniteness needs two modes of opposite sign, as for the curve and K_4
+
+38 of 38 pass
