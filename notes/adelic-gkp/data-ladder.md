@@ -1,14 +1,16 @@
 # What data the zeros of $\zeta$ need, in the terms of the understood cases
 
-Author: `claude:fable-5.1`, 2026-10-06, synthesis of an orchestrated session (lanes A, B, C, E, F run by `claude:opus-5.5`; the lane pages are
-`curve-bridge.md`, `no-lift.md`, `cm-lift.md`, `cone-bridge.md`, `overlap-data.md`). TJO's brief: "explore the GKP connection comprehensively and
+Author: `claude:fable-5.1`, 2026-10-06, synthesis of an orchestrated session (lanes A–U run by `claude:opus-5.5`, two check scripts by
+`claude:sonnet-5.5`; the lane pages are listed in `adelic-gkp.md` §16; §§3, 4, 4b of this page are the orchestrator's own readings and were
+reviewed as such). TJO's brief: "explore the GKP connection comprehensively and
 build on the ideas of the previous sessions ... build up enough examples to understand what data we need for the classic Riemann zeta zeroes in
 the terms we discover here, i.e. the qunaught, GKP, Weil positivity". Method as steered on 2026-10-05: interpret the understood cases first, then
 match to $\zeta$, not the other way round.
 
-Status: **a record, not a round.** Nothing registered in `db/claims.tsv`; no REFUTE review; no shard. Statuses inside are those of the lane pages
-(*standard*, *proved here*, *checked*, *sketched*, *heuristic*, *open*, *negative finding*); a statement here is never stronger than on its lane page.
-`refs/src/` was absent in the container, so every theorem quoted in the lane pages is "from memory" and not byte-cited.
+Status: **a record, not a round.** Nothing registered in `db/claims.tsv`; a draft shard exists (`shard-draft/`); four REFUTE reviews cover lanes
+A–M and this page's §§3–4b (§4c); lanes R, S, U are unreviewed. Statuses inside are those of the lane pages (*standard*, *proved here*, *checked*,
+*sketched*, *heuristic*, *open*, *negative finding*); a statement here is never stronger than on its lane page. Theorems quoted from memory on the
+lane pages are byte-cited where an arXiv source exists (`citations-2026-10-06.md`, 28 of 43) and cited bibliographically otherwise.
 
 ## The answer in one paragraph (status: the facts are those of the lane pages, reviewed; the reading is mine)
 
@@ -158,7 +160,7 @@ Absent, by the ladder:
    $V_a=aM_a^{-1}$ by the involution) and Weil's form $B$ is a similitude form with adjunction for every $a$ before RH; by the converse of lane E's
    proposition ($\Omega=2G(M-V)^{-1}$ is alternating and compatible whenever $M$ is a similitude of $G$), $B$ is a Weil-form point for each prime step
    separately, but with a prime-dependent singular $\Omega_p$ (weights $1/(\sqrt p\sin(\gamma\log p))$, small divisors), and **no single compatible
-   $\Omega$ serves two primes**. Relative to the one pairing the notebook already has, the functional-equation pairing $\Omega_{\rm FE}$ of shard 04t,
+   $\Omega$ makes $B$ the Weil-form point of two primes at once** (forms compatible with every step do exist: $\Omega_{\rm FE}$, $\Omega_D$, below). Relative to the one pairing the notebook already has, the functional-equation pairing $\Omega_{\rm FE}$ of shard 04t,
    every prime step's Weil form is indefinite and $B$ is the **vacuum point**, the analogue of lane C's shared $G_{J_K}$; it is a Weil-form point
    only for the infinitesimal generator $D$, with Williamson weights $|\gamma|$, which is tautological (as $\mathcal T$ in analytic §14 is the Weil form
    for the generator $F$ only). In a window the prime steps survive exactly as the Toeplitz shift (lane R, `window-similitude.md`, *checked*, 25/25): Weil's form is invariant
@@ -185,8 +187,9 @@ Absent, by the ladder:
 4. **Counts.** At the real place there is nothing to count (note §12.1); lane A shows that even where there are counts they fix only the isogeny
    class.
 
-What the examples say about where the datum would have to sit (*heuristic*): on a global, integral, finite-rank-per-mode structure on Connes's
-cokernel on which the squeeze acts as a similitude; not on the tower, not on the local data (lane C), not on the code lattice (G3). Lane C's open
+What the examples say about where the datum would have to sit (*heuristic*): on a global, integral, finite-rank-per-mode structure of the kind
+Connes's cokernel approximates (itself a companion-type space, lane S) on which the squeeze acts as a similitude; not on the tower, not on the local
+data (lane C), not on the code lattice (G3). Lane C's open
 list (`cm-lift.md` §4) states the three concrete versions of this: a lattice-with-step whose periodic-point counts give $L(\psi,s)$; an integral
 structure on the $\ell=1$ cokernel of $\mathcal O_K$; a positivity uniform over the $\ell$-tower of Hecke characters.
 
@@ -263,6 +266,8 @@ multiplicity and stays positive, a unitary realisation is automatically semisimp
   contravariant with a covariant version; Oswal–Shankar need odd $p$ and a simple variety, Bergström–Karemaker–Marseglia a squarefree Weil
   polynomial, so neither covers $K_5$.
 
+- Lanes R, S, U (`window-similitude.md`, `repeated-root.md`, `tower-pairing.md`) are **unreviewed**: their review was stopped when TJO restricted the
+  session to Fable alone; the orchestrator's own reading pass is recorded on each page's status table where made.
 - `notes/reviews/adelic-gkp-ff-family-2026-10-06.md` (lanes J, M): 14 VALID / 3 MINOR / 0 INVALID; lane M entirely VALID; lane J's "positivity is RH"
   needs $P_\chi$ squarefree (the Fermat quartic $t^4+1$ at $q=5$, $N=4$ has a repeated root, a degenerate $\Omega_+$ and no vacuum although RH holds);
   its minor table is of the trace form on the companion lattice; X6's phases are trivial and the $N=2$ lattice is $H_1$ up to isogeny. Annotated on the pages.
@@ -279,7 +284,7 @@ $B$ only on the genus-one Hodge ket" (genus two now has principal forms, canonic
 integrality as its own item, the orientation condition $\Phi_+$, the genus-$g$ bridge, "overlaps see the order, not the class", the CM
 local-versus-global finding with the gate phases, shared vacua for families, lane G's prime-step analysis with $\Omega_D$. The page proposes 15 claim
 rows and one definition and recommends one new shard (`04za_adelic_gkp_ladder.tex`) rather than extending 04t or 08b, since "Weil form" names the
-trace form in 08b and $\tfrac12\Omega(M-V)$ here. Lanes B and D were not cross-checked; lanes J and M need their review before rows are written.
+trace form in 08b and $\tfrac12\Omega(M-V)$ here. Lanes B and D were cross-checked afterwards (§8 of that page, no contradictions); lanes J and M have their review; the draft rows are in `shard-draft/`.
 
 ## 5. Corrections to earlier pages (recorded here; the pages carry a one-line annotation)
 
@@ -288,29 +293,26 @@ trace form in 08b and $\tfrac12\Omega(M-V)$ here. Lanes B and D were not cross-c
 - The E mode lifts to 441d1; 49a1 reduces mod 2 to the $\mathbb F_2$-twist, step $-M$ (lane C). `cm-lift.md` §2.4: under the self-dual trace pairing the
   Fourier gate maps the $\ell=1$ Gaussian to $\ell=-1$, not to itself (lane I).
 - `lattice-tower.md` §6, §9: "no lift" for the non-ordinary examples is "no canonical lift"; supersingular factors lift with Frobenius, not canonically (lane B).
-- `lattice-tower.md` §7.3 is a reading of the local level only (lane C, §3 above).
+- `lattice-tower.md` §7.3 holds wherever the step group is discrete (the local level over $\mathbb Q$; the global level of function fields and graphs)
+  and has no established counterpart at the global level over $\mathbb Q$ (lane C, review S1, §3 above).
 - `zn-flux.md` §5 item 4 ("the finite rung has no non-self-dual character") holds for graphs, not for function-field characters: lane J's $N=3,4$
   examples have $L(\chi)\ne L(\bar\chi)$.
 - `lattice-tower.md` §5: (i)$\Rightarrow$(ii) needs the CM type $\Phi_+$ for $\Omega$; it holds for the graph steps the page was written for and fails for
-  $M'=\bigl(\begin{smallmatrix}0&1\\-5&-2\end{smallmatrix}\bigr)$ (RH, Weil form negative definite). General form: (i) $\Leftrightarrow$ (iii) $\Leftrightarrow$ the Weil form
-  of some compatible form is positive (lane E).
+  $M'=\bigl(\begin{smallmatrix}0&1\\-5&-2\end{smallmatrix}\bigr)$ (RH, Weil form negative definite). General form, for a step without real eigenvalues: (i) $\Leftrightarrow$ (iii)
+  $\Leftrightarrow$ the Weil form of some compatible form is positive (lane E; the real-eigenvalue exclusion is the lattice review's).
 - The lane B brief had $K_5$ at $q=4$ and the lane D brief had $K_4$ and the cube at $q=3$; all are 3-regular except $K_5$ (4-regular), so $q=2$ and $q=3$
   respectively, as the existing pages use.
 
 ## 6. Next
 
-- Lane R settles lane G's two next items: $\Omega_D(h,g)=B(h,H*g)$ with $H*g$ the antiderivative, kernel $K=\sum_\gamma2\sin(\gamma x)/\gamma$ with $K'=$ Weil's
-  distribution (prime part the weighted Chebyshev staircase), natural but no new datum; the smooth-window test is above. Remaining: the CM version of the
-  vacuum-point reading. The REFUTE reviews of the arithmetic quartet and of the $\zeta$ pages (`notes/reviews/adelic-gkp-*-2026-10-06.md`) are to be folded in when they
-  land. Lane J's open items: which lattice in the isogeny class is $H_1$ of the $\chi$-part and its polarisation ($\Omega_+$ is not principal); a twisted curve.
-- `notes/weil-bond-analytic/checks/metric_blocker_checks.py` imports `scripts/rtp2_blind_recovery.py`, which needs Python 3.12 (`math.sumprod`); it does not run on 3.11.
-- Lane I's open items: the full quadratic-twist family; Hecke characters of higher infinity type; a function-field shadow with a ramified twist.
-- Lane F's open item on the Weil pairing is answered by lane U (it is the tower's logical commutator with the step); still open: the genus-blind case ($q=8$, $a=3$, discriminant $-23$, three
-  curves in one genus), predicted and not checked.
-- Which of the four ideal classes of $\mathcal O_K$ and which principal form belong to $\mathrm{Jac}(C)$ itself for the curve over $\mathbb F_5$ (lane E).
-- A $\mathbb Z_N$ flux on a graph as the finite shadow of a Dirichlet family: lattice $\mathbb Z[\zeta_N]$, step, Hermitian Weil form, RH on average over the
-  Brillouin torus (`gauge-groups.md`), and the data ladder for Dirichlet $L$ against it.
-- The Fourier-gate phases (Gauss sums, Hermite phase) whose product is the root number; the GKP meaning of 441d1's forced central zero (lane C).
-- A Howe-type positivity criterion for Centeleghe–Stix objects with supersingular factors; the Petersen twist (lane B).
-- Before registering anything: the REFUTE review of `graph-ihara.md`, `graph-super.md` and the lane pages (HANDOFF T-b), and byte-citations once
-  `refs/src/` is fetched.
+- Register or not: `shard-draft/` (20 rows; reviewed-VALID statements stay `sketched` until a reviewer of another model, the gate's rule). Merge
+  `refs/manifest-2026-10-06-pending.txt`.
+- REFUTE review of lanes R, S, U (stopped on 2026-10-06 when the session went Fable-only).
+- The one-lattice version of lane U for the CM family: the steps $\psi(\mathfrak p)$ on $\mathcal O_K$ should reproduce the group structure and the Tate
+  pairing of every reduction of 441d1 under one choice of $\varepsilon$ (a check script was started and stopped; not done).
+- Open items on the pages: which ideal class and principal form belong to $\mathrm{Jac}(C)$ for the genus-two curve over $\mathbb F_5$ (E); the genus-blind
+  case $q=8$, $a=3$ (F); the Petersen twist and a Howe-type criterion for Centeleghe–Stix objects (B); the CM version of the vacuum-point reading (G);
+  $J(\mathbb F_{5^k})$ and the Tate module of the Fermat quartic (S); the quadratic-twist family and higher infinity types (I); whether the tower sees
+  the class only up to genus in general (U).
+- The question the day leaves: what plays the finite-field geometry over $\mathbb Q$, i.e. what supplies a finite-rank integral structure on a global
+  $H^1$ with the squeeze generator acting integrally, and the ampleness that makes its Lefschetz trace positive.
