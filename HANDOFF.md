@@ -41,11 +41,16 @@ separates the $q=7$ lattices at $N=8$: the tower is blind to RH but sees the lat
 on which the squeeze generator acts integrally, plus a polarisation-type reason for its Lefschetz trace to be positive; the examples exclude the code's
 overlaps and level tower, local lattices and vacua, Connes's cokernel as constructed, and Hecke-type families as sources.
 
+**Fable-only stretch (from 09:29 UTC, TJO: "Only use fable from now on. No other subagents").** The REFUTE review of lanes R, S, U and a
+Sonnet check of the one-lattice CM version of lane U were stopped unfinished and are listed under Next. Done by Fable alone: a coherence pass over
+`data-ladder.md`; all fifteen check scripts re-run from the committed tree (739 checks, all pass); independent spot checks of lanes S and U
+recorded on their pages.
+
 **Next (in order).** (i) TJO's decision on registering `shard-draft/` (promotion to `proved` needs a reviewer of another model, per the gate). (ii) Merge
-`refs/manifest-2026-10-06-pending.txt`. (iii) Shard 08j (unchanged). (iv) Open items on the pages: which ideal class and principal form belong to
+`refs/manifest-2026-10-06-pending.txt`. (iii) REFUTE review of lanes R, S, U; the one-lattice CM check of lane U (`check_cm_tower.py`, not done). (iv) Shard 08j (unchanged). (v) Open items on the pages: which ideal class and principal form belong to
 $\mathrm{Jac}(C)$ for the genus-two curve (E); the genus-blind case $q=8$, $a=3$ (F; the pairing question is answered by U); the Petersen twist and a Howe-type criterion for
 Centeleghe–Stix objects (B); the CM version of the vacuum-point reading (G); $J(\mathbb F_{5^k})$ of the Fermat quartic (S); the twist family and higher
-infinity types (I). (v) The one question the day leaves: what plays the finite-field geometry over $\mathbb Q$.
+infinity types (I). (vi) The one question the day leaves: what plays the finite-field geometry over $\mathbb Q$.
 
 **Environment this session.** numpy, scipy, mpmath, sympy, networkx, python-flint by pip; PARI/GP 2.15.4 with elldata by apt (cypari2 does not build;
 `gp` by subprocess); `refs/src/` fetched (125 arXiv sources plus five new ones). Quota: only the unified seven-day window is visible to the session

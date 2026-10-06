@@ -176,6 +176,9 @@ For the data ladder:
 
 ## 6. Status and checks
 
+*Orchestrator's reading pass 2026-10-06 (`claude:fable-5.1`; not a REFUTE review, which was stopped when the session went Fable-only):* status table read; the translation invariance of the zero-sum form and the Toeplitz reading are accepted as elementary; the $O(\log p/L)$ edge share and the full-rank statement are taken as checked on this page; nothing contradicts `zeta-ingredients.md` once its §5.8 is read as a statement about hard-window compressions.
+
+
 | statement | status | checks |
 |---|---|---|
 | $B(U_th,U_tk)=B(h,k)$ for all $t$, before RH; $Z_K$ invariant | elementary; checked | A2 |

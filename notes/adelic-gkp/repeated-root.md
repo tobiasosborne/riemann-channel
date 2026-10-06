@@ -204,6 +204,9 @@ algebra that actually acts.
 
 ## 5. Status and checks
 
+*Orchestrator's reading pass 2026-10-06 (`claude:fable-5.1`; not a REFUTE review, which was stopped when the session went Fable-only):* status table read; independent brute-force counts of $y^4=t^4+1$ over $\mathbb F_5$ and $\mathbb F_{25}$ (affine 4 and 40, plus four places at infinity) reproduce 8 and 44, and the $L$-polynomial's traces give the same; the Kani–Rosen step and Deligne's theorem are quoted, as the table says.
+
+
 | statement | status | checks |
 |---|---|---|
 | $c=1$; genus 3; $\infty$ unramified, four rational places; counts $k=1..6$ | proved here; checked | A1–A3, A9 |
