@@ -204,6 +204,15 @@ Hecke family of shard 04u a common vacuum, although each Hecke step has one. $\z
 modulus $\sqrt p$ (*checked*, 50 pairs, $p=2,3,5$). So the finite shadow of $\zeta$'s family is the CM family and the function-field characters (lanes
 C, J), families of complex multiplications in one structure, not the Hecke family on a graph, where each operator brings its own tree (*heuristic*).
 
+**Semisimplicity and repeated roots** (lane S, `repeated-root.md`, *checked/proved*). Where the Frobenius polynomial has a repeated root (the Fermat
+quartic $y^4=t^4+1$ over $\mathbb F_5$: $L_C=(1+2u+5u^2)^2(1-2u+5u^2)$, $J\sim E\times E'^2$ by Kani–Rosen) the Jacobian's lattice is semisimple ($F=\alpha I$ on
+$\mathbb Z[i]^2$, principal form, Weil form $2I_4$, vacuum $-i$) while the companion construction of lanes A and J gives an order with $F-\alpha$ nilpotent,
+a degenerate trace form and no definite Weil form for any compatible form. So the companion and cokernel constructions produce the geometric
+lattice only for squarefree $P$; "RH with semisimplicity" is one condition on the geometric lattice; a repeated Frobenius eigenvalue costs nothing
+geometrically and is seen by the group structures of the points, not by their counts. For $\zeta$ Weil's form weights a multiple zero by its
+multiplicity and stays positive, a unitary realisation is automatically semisimple, and Connes's cokernel realises a multiple zero as a Jordan block
+(`math/9811068:main.tex:949-952`), which makes it a construction of the companion type (*heuristic* as a reading).
+
 ## 4c. REFUTE reviews
 
 - `notes/reviews/adelic-gkp-zeta-2026-10-06.md` (lane G and this page's §§3–4b): 6 VALID / 5 MINOR / 2 INVALID. Lane G's mathematics reproduces;
