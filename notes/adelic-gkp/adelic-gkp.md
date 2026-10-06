@@ -480,7 +480,8 @@ local factors, global zeros not determined by them), `cone-bridge.md` (E: genus 
 `overlap-data.md` (F: overlaps see the order, the Weil pairing sees the class), `zn-flux.md` (D: $\mathbb Z_N$ fluxes, the $N$-torsion average is the
 matching polynomial), `gate-phases.md` (I: local Fourier-gate phases, product $=$ root number), `zeta-ingredients.md` (G: the three ingredients for
 $\zeta$ on Connes's cokernel), `ff-dirichlet.md` (J: Dirichlet characters of $\mathbb F_q(t)$, every ladder item at once), `family-vacuum.md` (M: which
-commuting families share a vacuum), `window-similitude.md` (R: the prime-dilation residual and the window). Records: `citations-2026-10-06.md`
+commuting families share a vacuum), `window-similitude.md` (R: the prime-dilation residual and the window), `repeated-root.md` (S: a repeated
+Frobenius root, the companion lattice against the Jacobian's), `tower-pairing.md` (U: the tower's logical commutator is the Weil/Tate pairing). Records: `citations-2026-10-06.md`
 (28 of 43 quoted theorems byte-cited), `registered-record.md` (today's ladder against the claims database; shard recommendation), `shard-draft/`
 (a draft shard and claim rows, not registered). Reviews: `notes/reviews/adelic-gkp-{lattice,arithmetic,zeta,ff-family}-2026-10-06.md`
 (79 VALID / 17 MINOR / 3 INVALID in all; the INVALIDs were in the synthesis and are corrected there). `data-ladder.md` is the synthesis: what data
