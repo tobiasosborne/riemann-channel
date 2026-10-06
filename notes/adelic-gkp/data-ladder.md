@@ -34,7 +34,12 @@ Lane A's order for an ordinary elliptic curve (`curve-bridge.md` §6), extended 
    the Frobenius polynomial $P$, and with it the isogeny class, $\Omega$ up to scale, the Weil form, and $J$ up to scale. So the counts *decide* RH.
 2. **The lattice.** $P$ does not determine $L$: at $q=7$, $a=2$ (discriminant $-24$, class number 2) two curves have the same counts, the same groups
    $E(\mathbb F_{7^k})$ for all $k\le24$, and non-isomorphic Deligne modules (*checked*, lane A). The trivial-character cokernel of Riemann–Roch gives only
-   the principal class $\mathbb Z[F]$. Whether the divisor-resolved overlaps see the class is lane F's question (`overlap-data.md`).
+   the principal class $\mathbb Z[F]$. Lane F (`overlap-data.md`, *proved/checked*) settles what the divisor-resolved overlaps see: the overlap function
+   $D\mapsto q^{h^0(D)}$ at all levels, up to Frobenius-compatible relabelling, is the $\mathbb Z[\pi]$-module $E(\bar{\mathbb F}_q)$, and two such modules
+   are isomorphic iff $\mathrm{End}(E)=\mathrm{End}(E')$: **the product-stabiliser overlaps of the code see the order, never the ideal class** (the
+   class is a global invariant, locally trivial at every $\ell$; the $q=5$ pair differs in the order, $\mathbb Z[i]$ against $\mathbb Z[2i]$, which is why
+   its groups differ). What does see the class is the Weil pairing, which is the commutator form of Mumford's theta group acting on $L(nO)$: an
+   operator-valued datum, not an overlap. Which of the two curves has the principal lattice depends on Howe's $\varepsilon$.
 3. **$\Omega$ on $L$**: the Weil pairing; fixed by $L$ up to Howe's sign $\varepsilon$. The sign flips $\Omega$ and the arithmetic $J_\varepsilon$ together, so
    $\Omega_\varepsilon(\cdot,J_\varepsilon\cdot)=\Omega(\cdot,J\cdot)$: the Riemann form is the vacuum form whichever $\varepsilon$ (*proved*, lane A).
 4. **$J$ from the polarisation.** This step carries RH, and it is the one `adelic-gkp.md` §12 says has no analogue for $\mathbb Q$. Lane B adds that a
@@ -58,7 +63,8 @@ Lane A's order for an ordinary elliptic curve (`curve-bridge.md` §6), extended 
 Each is *checked* on its page; together they say where not to look.
 
 - **The tower is blind** (`lattice-tower.md` §4): levels, codes, logical Cliffords and Lefschetz exist with or without RH.
-- **Counts do not determine the lattice** (lane A): the datum that carries RH sits on a lattice that the trivial-character data of the code do not fix.
+- **Counts do not determine the lattice** (lane A), and no overlap of the code with product stabiliser states does (lane F): the datum that carries RH
+  sits on a lattice whose class is fixed only by the Weil pairing, an operator-valued datum of the code.
 - **Local lattices and vacua do not determine global zeros** (lane C): 49a1 and 441d1 share $\mathcal O_K$, $J_K$ and every local step up to sign, and
   have different zeros; only 441d1 has a central zero (root number $-1$).
 - **No arithmetic $J$ on a supersingular block** (lane B): where $\mu$ and $-\mu$ have equal valuation, Deligne's rule selects no CM type; positivity
@@ -98,7 +104,9 @@ Absent, by the ladder:
 1. **A lattice with an integral step** whose Weil form is $\omega$. The code's own lattice $\mathbb Q^2$ cannot serve: it is rigid and divisible (G3),
    the squeezes $D_a$ act on it as automorphisms with $(1-D_a)\mathbb Q^2=\mathbb Q^2$, so there is no logical space and no counts. In the curve case the
    lattice is not the code's lattice either: it is $H_1$ of a lift, or a Centeleghe–Stix object, and the code's trivial-character data do not even
-   fix its class (lane A). So the missing datum is not something the code can be expected to contain; it is extra structure on the cokernel.
+   fix its class (lane A), nor do any of its product-stabiliser overlaps (lane F); the class is seen only by the Weil pairing, the commutator form
+   of the theta group (an operator datum of the code, not an overlap). So the missing datum is not something the overlaps can be expected to
+   contain; it is extra structure on the cokernel, of the kind the symplectic pairing supplies in the finite case.
 2. **A polarisation** on that lattice (note §12.2). In genus one lane A shows it is the vacuum form transported, so "polarisation" and "vacuum" are
    the same datum seen from the two sides; in several modes lane E separates them: the polarisation is one point of the cone and RH is the
    non-emptiness of the cone, witnessed by the Weil form alone. Lane E's reading for $\zeta$ (*heuristic*): Weil's quadratic form is the analogue of
@@ -127,7 +135,9 @@ structure on the $\ell=1$ cokernel of $\mathcal O_K$; a positivity uniform over 
 
 ## 6. Next
 
-- The lane F result (whether divisor-resolved overlaps see the lattice class) and lane D (a $\mathbb Z_N$ flux as the finite shadow of a Dirichlet family) are to be folded in here when they land.
+- Lane D (a $\mathbb Z_N$ flux as the finite shadow of a Dirichlet family) is to be folded in here when it lands.
+- Lane F's open items: whether the Weil pairing is expressible as a datum of $\Theta_K$ itself; the genus-blind case ($q=8$, $a=3$, discriminant $-23$, three
+  curves in one genus), predicted and not checked.
 - Which of the four ideal classes of $\mathcal O_K$ and which principal form belong to $\mathrm{Jac}(C)$ itself for the curve over $\mathbb F_5$ (lane E).
 - A $\mathbb Z_N$ flux on a graph as the finite shadow of a Dirichlet family: lattice $\mathbb Z[\zeta_N]$, step, Hermitian Weil form, RH on average over the
   Brillouin torus (`gauge-groups.md`), and the data ladder for Dirichlet $L$ against it.
