@@ -28,6 +28,7 @@ has eigenvalues $\pm\sqrt2$, a vacuum, and every compatible Weil form zero). The
 | $\mathbb Z_N$ flux on a graph ($N=3,4,5,6$) | $\mathbb Z[\zeta_N]^{2n}$ by restriction of scalars; $\zeta_N$ is complex multiplication, not a lock | $M_\rho$, $M_\rho^\dagger\Omega M_\rho=q\Omega$ | yes iff every Galois-conjugate flux is in the band ($\rho$ and $\bar\rho$ have the same spectrum) | not run | $2n\varphi(N)$, each mode twice | `zn-flux.md` |
 | Dirichlet character $\chi$ of $\mathbb F_q(t)$ mod $f$ (order $N$) | $\mathbb Z[\zeta_N][F,V]$, the $\chi$-part of $\mathrm{Jac}(y^N=cf)$ | $F$ | yes (Weil); Weil form $\tfrac12\mathrm{Tr}(x\sigma y)$ positive | $\Omega_+$ from the functional equation alone; not principal | $\deg f-1$ or $\deg f-2$; **gate phases present and non-trivial**, product $=W$ | `ff-dirichlet.md` |
 | CM Hecke $L(\psi,s)$, $K=\mathbb Q(\sqrt{-7})$ (441d1, 49a1) | one lattice $\mathcal O_K$ for every split prime | one step $\psi(\mathfrak p)$ per prime, all commuting | one $J_K$ for all primes: **local RH free** | the complex structure of $K\otimes\mathbb R$ | infinitely many, **not determined by the local data** | `cm-lift.md` |
+| LPS Hecke pair $A_{13},A_{17}$ on one $H_1$ | $\mathbb Z^{2n}$ | $M_{13}$, $M_{17}$: commuting Hecke operators, non-commuting steps | one per step; **none shared** ($M_{13}V_{17}$ has real eigenvalues) | both Weil forms positive for the shared $\Omega$ | Ramanujan | `family-vacuum.md` |
 | $\zeta$ | none known: $\mathbb Q^2$ is rigid and divisible (G3) | a flow (the squeeze group $C_{\mathbb Q}$), not an integral map | open (= RH) | none | infinitely many, all global | `adelic-gkp.md` §12 |
 
 ## 1. What determines what
@@ -166,7 +167,9 @@ Lane E's witness is a one-step statement, and lane G's qualification is what it 
   and lane A's Howe sign. For one step the orientation can be chosen, so "Weil form positive" and "a vacuum exists" coincide.
 - One lattice, a family of steps (lane C). On $\mathcal O_K$ the Hecke steps $\psi(\mathfrak p)$ all commute with the one vacuum $J_K$, but their Weil forms
   for a fixed $\Omega$ are $\mathrm{Im}\,\psi(\mathfrak p)$ times the vacuum form, and $\psi(\bar{\mathfrak p})=\overline{\psi(\mathfrak p)}$ gives the opposite sign:
-  for a family no orientation makes every Weil form positive, and this has nothing to do with RH. The family-invariant datum is the vacuum, or
+  for a family of complex multiplications no orientation makes every Weil form positive, and this has nothing to do with RH. (Lane M: this is not
+  general. The LPS pair $A_{13},A_{17}$ of shard 04u gives steps whose Weil forms are both positive for the shared $\Omega$ while the steps do not
+  commute and share no vacuum in any sense, the mirror image of the CM family.) The family-invariant datum is the vacuum, or
   equivalently the Rosati form $\mathrm{Tr}_{K/\mathbb Q}(x\bar y)$ of the family's algebra, positive because the Rosati involution is positive, i.e. because
   $K$ is a CM field, i.e. RH for every $\mathfrak p$ at once.
 - $\zeta$ (lane G). The prime dilations are a commuting family; on the pair $\{\rho,1-\bar\rho\}$ the step $M_p$ rotates by $\gamma\log p$, so its Weil form
@@ -179,6 +182,14 @@ Lane E's witness is a one-step statement, and lane G's qualification is what it 
   the lift), and it is carried by the lattice, which is the item the ladder says $\zeta$ does not have.
 
 Checked: `checks/check_family_weil.py` (51 of 51 pass): the one-mode identity Weil form $=\sqrt q\sin\theta\,G_J$, its orientation dependence, the CM family's opposite signs on conjugate primes with one vacuum $J_K$ and the trace form a positive multiple of $G_{J_K}$, and the sign statistics of $\sin(\gamma\log p)$ over 200 zeros for $p=2,3,5$.
+
+**Which families share a vacuum** (lane M, `family-vacuum.md`, *proved/checked*). Commuting similitudes of one $\Omega$ share a vacuum iff each is
+semisimple with all eigenvalues of modulus $\sqrt q$, i.e. iff RH holds for each step (average over the compact closure; $J=-A(-A^2)^{-1/2}$); so for
+a commuting family the shared vacuum is not extra data beyond one step's. Steps of different norms in the non-backtracking form $M_q=\bigl(\begin{smallmatrix}0&-1\\q&T_q\end{smallmatrix}\bigr)$
+never commute ($[M_q,M_{q'}]$ has diagonal $q-q'$), and $M_{13}V_{17}$ for the LPS pair has real eigenvalues 13 and 17, so no $\Omega$ gives the
+Hecke family of shard 04u a common vacuum, although each Hecke step has one. $\zeta$'s prime steps on the zero pairs commute, share $J$, and have
+modulus $\sqrt p$ (*checked*, 50 pairs, $p=2,3,5$). So the finite shadow of $\zeta$'s family is the CM family and the function-field characters (lanes
+C, J), families of complex multiplications in one structure, not the Hecke family on a graph, where each operator brings its own tree (*heuristic*).
 
 ## 4c. REFUTE reviews
 
