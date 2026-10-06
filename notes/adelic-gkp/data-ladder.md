@@ -99,14 +99,14 @@ frequencies at which the Mellin transform of every overlap profile in the angula
 of zeros: the local factor at $p$ is the Mellin profile of the local qunaught $1_{\mathbb Z_p}$ (`adelic-gkp.md` §7), the local squeeze trace is Lefschetz
 at the origin (§10), and there are only poles. Everything about the zeros of $\zeta$ is global.
 
-So the understood finite cases model the **local** level of $\zeta$-like $L$-functions, where RH is Hasse and Deligne, and the reading of
-`lattice-tower.md` §7.3 (zeros as oscillator frequencies, the squeeze as the trivial pair) is a reading of that level. At the global level the
-examples give no lattice. Lane C's phrase: in the CM case the oscillator frequencies are the local angles $\theta_{\mathfrak p}$, the global zeros are
-squeeze frequencies, and there are no poles (*heuristic*).
-
-The exception that keeps the programme alive is the graph itself read as a global field: its places are prime cycles and its zeros are global, and
-they are eigenvalues of an integral step because the graph's $H_1$ is of finite rank. The question "what data for $\zeta$" is therefore the question
-of what plays $H_1$ (with its integral step) for the global zeros of $\zeta$, which is Deninger's demand that the identities be realised on
+Each finite case has two readings (review S1). As a reduction it models the **local** level of an $L$-function over $\mathbb Q$: its zeros
+are the poles of an Euler factor and RH there is Hasse–Deligne. As a global field (the function field of a curve, the graph with its prime
+cycles, lane J's Dirichlet characters of $\mathbb F_q(t)$) its zeros are global and are eigenvalues of an integral step on a finite-rank $H^1$.
+`lattice-tower.md` §7.3 (zeros as oscillator frequencies, the squeeze as the trivial pair) holds wherever the step group is discrete: the local level
+over $\mathbb Q$ and the global level of function fields and graphs. It has no established counterpart at the global level over $\mathbb Q$, where
+the step group is $\mathbb R_+^\times$ and the zeros appear as squeeze frequencies (lane C: in the CM case the oscillator frequencies are the local
+angles $\theta_{\mathfrak p}$, the global zeros are squeeze frequencies, and there are no poles; *heuristic*). The question "what data for $\zeta$" is
+what plays $H^1$ of the function field, with its integral step, for the global zeros, which is Deninger's demand that the identities be realised on
 cohomology (`cit:deninger-conformal-metric`), now with the integrality made explicit.
 
 ## 4. The data for $\zeta$, item by item
@@ -114,18 +114,20 @@ cohomology (`cit:deninger-conformal-metric`), now with the integrality made expl
 In hand (*standard*, note §§1–10; inventory in `zeta-ingredients.md` §2): the qunaught $\Theta$ on the lattice $\mathbb Q^2\subset\mathbb A^2$; the product vacuum
 $f_0$ (Gaussian at $\infty$, qunaughts at $p$); the squeeze group $C_{\mathbb Q}$ with its Mellin transform, each prime step with its exact adjoint; the
 Fourier gate; Weil's functional $\omega$ with its explicit decomposition into two zero modes and local Lefschetz traces, a similitude form for every
-step before RH; the functional-equation pairing of shard 04t on finite spans of zeros; the pole plane as the one negative direction of the windowed
-form with poles kept (lane G, *checked* at 40–60 digits: $Z_N\mp P_N$ have inertia $(n-1,1,0)$, each off-line pair adds one); Connes's cokernel, an
-infinite-dimensional space with a unitary squeeze flow that sees only the critical zeros.
+step before RH; the functional-equation pairing of shard 04t on finite spans of zeros; the pole plane as the one negative direction of $Z_N\mp P_N$, Weil's windowed form $Z_N$ itself being positive (lane G, *checked* at 40–60
+digits: inertia $(n-1,1,0)$, each off-line pair adds one); Connes's cokernel, an infinite-dimensional space with a squeeze flow, non-unitary on Connes's weighted space $L^2_\delta$, that sees only the
+critical zeros.
 
 Absent, by the ladder:
 
-1. **A lattice with an integral step** whose Weil form is $\omega$. The code's own lattice $\mathbb Q^2$ cannot serve: it is rigid and divisible (G3),
-   the squeezes $D_a$ act on it as automorphisms with $(1-D_a)\mathbb Q^2=\mathbb Q^2$, so there is no logical space and no counts. In the curve case the
+1. **A lattice with an integral step** whose Weil form is $\omega$. The code's own lattice $\mathbb Q^2$ cannot serve: it is rigid and divisible (G3); the principal squeezes $D_a$,
+   $a\in\mathbb Q^\times$, preserve it with $(1-D_a)\mathbb Q^2=\mathbb Q^2$ but act trivially on $\Theta$ and are the identity of $C_{\mathbb Q}$, and the
+   idele-class steps that carry the zeros do not preserve it at all (review S2a); so there is no logical space and no counts. In the curve case the
    lattice is not the code's lattice either: it is $H_1$ of a lift, or a Centeleghe–Stix object, and the code's trivial-character data do not even
    fix its class (lane A), nor do any of its product-stabiliser overlaps (lane F); the class is seen only by the Weil pairing, the commutator form
    of the theta group (an operator datum of the code, not an overlap). So the missing datum is not something the overlaps can be expected to
-   contain; it is extra structure on the cokernel, of the kind the symplectic pairing supplies in the finite case.
+   contain; it is an integral structure on the cokernel on which the steps act. In the finite case the Weil pairing detects the class of such a
+   structure; it does not create it.
 2. **A polarisation** on that lattice (note §12.2). In genus one lane A shows it is the vacuum form transported, so "polarisation" and "vacuum" are
    the same datum seen from the two sides; in several modes lane E separates them: the polarisation is one point of the cone and RH is the
    non-emptiness of the cone, witnessed by the Weil form alone. Lane E read Weil's quadratic form for $\zeta$ as the analogue of that witness
@@ -137,9 +139,11 @@ Absent, by the ladder:
    every prime step's Weil form is indefinite and $B$ is the **vacuum point**, the analogue of lane C's shared $G_{J_K}$; it is a Weil-form point
    only for the infinitesimal generator $D$, with Williamson weights $|\gamma|$, which is tautological (as $\mathcal T$ in analytic §14 is the Weil form
    for the generator $F$ only). In the window the compressed dilation by 2 is a similitude of the Gram form only on functions supported away from
-   the edge; on the whole window the residual stays near $0.4$ for $N\le160$ and $x\le100$ (*negative finding*). So what $\zeta$ lacks is not a
-   symplectic partner for one step but one $\Omega$ for the whole commuting family of prime steps; the Deninger metric cone of shard 04u remains the
-   analogue of the cone, and the reason for positivity, ampleness through Rosati in the curve case, is for $\zeta$ the open statement itself.
+   the edge; on the whole window the residual stays near $0.4$ for $N\le160$ and $x\le100$ (*negative finding*). So what $\zeta$ lacks is neither a symplectic partner for one step ($\Omega_p$) nor a form compatible with the whole family: $\Omega_{\rm FE}$ on zero
+   spans and $\Omega_D=B(\cdot,D^{-1}\cdot)$ on the test algebra are compatible with every step (review S2b, checked for $a=2,3,5$ with an off-line
+   quartet), and no understood family has one $\Omega$ for which a fixed form is every step's Weil form. What is missing is a reason for the
+   family-invariant point $B$ to be positive; the Deninger metric cone of shard 04u remains the analogue of the cone, and that reason, ampleness
+   through Rosati in the curve case, is for $\zeta$ the open statement itself.
 3. **The local charged states and their gate phases** (lane I): a separate item of the ladder, present for Hecke and Dirichlet $L$-functions
    (Gauss sums at the conductor, the Hermite phase at $\infty$), trivial for a curve's zeta as a whole (root number $+1$, squeezes only), for graphs
    (the completed zeta is even) and for $\zeta$ (every phase is 1). Lane J (`ff-dirichlet.md`, *proved/checked* on six characters and a census of 532)
@@ -165,21 +169,24 @@ Lane E's witness is a one-step statement, and lane G's qualification is what it 
 - One mode, one step. On a mode where $S=M/\sqrt q$ rotates by $\theta$, the Weil form is $\tfrac12\Omega(M-V)=\sqrt q\,\sin\theta\;\Omega(\cdot,J\cdot)$:
   the vacuum form times $\sin\theta$. It is positive iff $\theta\in(0,\pi)$ for the orientation of $\Omega$, which is lane E's CM-type condition $\Phi_+$
   and lane A's Howe sign. For one step the orientation can be chosen, so "Weil form positive" and "a vacuum exists" coincide.
-- One lattice, a family of steps (lane C). On $\mathcal O_K$ the Hecke steps $\psi(\mathfrak p)$ all commute with the one vacuum $J_K$, but their Weil forms
-  for a fixed $\Omega$ are $\mathrm{Im}\,\psi(\mathfrak p)$ times the vacuum form, and $\psi(\bar{\mathfrak p})=\overline{\psi(\mathfrak p)}$ gives the opposite sign:
-  for a family of complex multiplications no orientation makes every Weil form positive, and this has nothing to do with RH. (Lane M: this is not
-  general. The LPS pair $A_{13},A_{17}$ of shard 04u gives steps whose Weil forms are both positive for the shared $\Omega$ while the steps do not
-  commute and share no vacuum in any sense, the mirror image of the CM family.) The family-invariant datum is the vacuum, or
-  equivalently the Rosati form $\mathrm{Tr}_{K/\mathbb Q}(x\bar y)$ of the family's algebra, positive because the Rosati involution is positive, i.e. because
-  $K$ is a CM field, i.e. RH for every $\mathfrak p$ at once.
-- $\zeta$ (lane G). The prime dilations are a commuting family; on the pair $\{\rho,1-\bar\rho\}$ the step $M_p$ rotates by $\gamma\log p$, so its Weil form
-  for $\Omega_{\rm FE}$ is $\sqrt p\,\sin(\gamma\log p)$ times the vacuum form, indefinite for every $p$, exactly as for the Hecke family; and Weil's form
-  $B=\omega(h*\tilde h)$ is the Rosati form of the family's algebra (the test-function algebra with the involution $\tilde{\ }$), i.e. the vacuum point.
-  So lane G's finding is the family version of lanes A and E, not a discrepancy, and it sharpens note §12.2: **in the finite cases the positivity of
-  the Rosati involution comes from a polarisation (an ample divisor); for $\zeta$ the positivity of the involution $h\mapsto\tilde h$ on the squeeze
-  algebra is Weil's criterion itself.** The datum $\zeta$ lacks is therefore not an $\Omega$ for one step (each prime has one, lane G) but a reason for
-  the family's involution to be positive; in every understood case that reason is geometric and global (ampleness on a Jacobian, the CM field of
-  the lift), and it is carried by the lattice, which is the item the ladder says $\zeta$ does not have.
+- One lattice, a family of steps (lane C). On $\mathcal O_K$ the Hecke steps $\psi(\mathfrak p)$ all commute with the one vacuum $J_K$, and their Weil
+  forms for a fixed $\Omega$ are $\mathrm{Im}\,\psi(\mathfrak p)$ times the vacuum form: for a family containing a conjugate pair $\psi(\mathfrak p),\psi(\bar{\mathfrak p})$
+  no orientation makes every Weil form positive, while with one step per split rational prime chosen with $\mathrm{Im}\,\psi>0$ one orientation makes
+  them all positive (review S3b, checked for ten primes); either way each step's Weil form is definite, and none of this is RH. The family-invariant
+  datum is the vacuum, or equivalently the Rosati form $\mathrm{Tr}_{K/\mathbb Q}(x\bar y)$ of the family's algebra, positive because $K$ is a CM field,
+  which is RH for every local factor at once and says nothing about the global zeros.
+- $\zeta$ (lane G). On the mode $\{\rho,1-\bar\rho\}$ the step $M_p$ rotates by $\gamma\log p$, so its $\Omega_{\rm FE}$-Weil form is $\sqrt p\sin(\gamma\log p)$
+  times the vacuum form: indefinite for *each single* $p$, and no compatible $\Omega$ makes even the steps at 2 and 3 both positive (their signs
+  disagree on 50.1% of the first 3000 zeros; review S3b). This is unlike the Hecke family (each step definite, lane M) and unlike the CM family. The
+  understood analogue is the curve's step group: the generator $D$ has a positive $\Omega_{\rm FE}$-Weil form (weights $|\gamma|$), as $F$ has for
+  $\Omega_+$, and the prime steps are large powers of it, as $F^2$ is of $F$ (lane E: $\tfrac12\Omega_+(F^2-V^2)$ is indefinite). Weil's form
+  $B=\omega(h*\tilde h)$ is the family-invariant point. So lane G's finding is the family version of lanes A and E, and it sharpens note §12.2 as
+  follows (review S3c): the involution $h\mapsto\tilde h$ is positive for the Plancherel trace unconditionally; what Weil's criterion asks is that the
+  functional $\omega$, the Lefschetz trace on "$H^1$", be a state on the squeeze $*$-algebra (`adelic-gkp.md` §10). **In the finite cases the positivity
+  of the Rosati trace form comes from a polarisation (an ample divisor) and is carried by the lattice $H^1$; the CM field supplies that reason only
+  for the local factors; for the global zeros of $L(\psi,s)$ it is as open as for $\zeta$.** The datum $\zeta$ lacks is a reason for that trace to be
+  positive, and in every understood case with global zeros that reason is geometric and carried by the lattice, the item the ladder says $\zeta$ does
+  not have.
 
 Checked: `checks/check_family_weil.py` (51 of 51 pass): the one-mode identity Weil form $=\sqrt q\sin\theta\,G_J$, its orientation dependence, the CM family's opposite signs on conjugate primes with one vacuum $J_K$ and the trace form a positive multiple of $G_{J_K}$, and the sign statistics of $\sin(\gamma\log p)$ over 200 zeros for $p=2,3,5$.
 
@@ -192,6 +199,13 @@ modulus $\sqrt p$ (*checked*, 50 pairs, $p=2,3,5$). So the finite shadow of $\ze
 C, J), families of complex multiplications in one structure, not the Hecke family on a graph, where each operator brings its own tree (*heuristic*).
 
 ## 4c. REFUTE reviews
+
+- `notes/reviews/adelic-gkp-zeta-2026-10-06.md` (lane G and this page's §§3–4b): 6 VALID / 5 MINOR / 2 INVALID. Lane G's mathematics reproduces;
+  both INVALIDs were this page's readings and are corrected above: "$\zeta$ lacks one $\Omega$ for the family" (false: $\Omega_{\rm FE}$ and $\Omega_D$ are
+  compatible with every step) and "indefinite for every $p$, exactly as for the Hecke family" (false: Hecke steps are definite, a CM family can be
+  oriented, $\zeta$'s cannot even for two primes). MINORs applied: the two readings of a finite case (§3); the principal squeezes versus the idele-class
+  steps, $L^2_\delta$, $Z_N\mp P_N$, and "detects, does not create" (§4); the Plancherel versus Weil positivity (§4b); lane G's $\hat h$ normalisation and
+  "vacuum point" meaning (annotated on `zeta-ingredients.md`).
 
 - `notes/reviews/adelic-gkp-lattice-2026-10-06.md` (lanes A, E, F): 22 VALID / 6 MINOR / 0 INVALID; the three headline claims of §1 stand; the six
   precision faults are corrected above and annotated on the pages (the bridge lands on $\mathbb Z[F]$; the cone page's prime count; the general form of
