@@ -1,0 +1,117 @@
+== 1. Ihara-Bass for Z_N fluxes (det(1-uB) = (1-u^2)^{|E|-|V|} det(1 - A u + q u^2))
+PASS  I1 K4: Ihara-Bass for 3 random fluxes each, N in [3, 4, 5, 6], 3 values of u  max rel. error 7.8e-16
+PASS  I1 cube: Ihara-Bass for 3 random fluxes each, N in [3, 4, 6], 3 values of u  max rel. error 1.0e-15
+PASS  I1 Petersen: Ihara-Bass for 3 random fluxes each, N in [3, 4, 6], 3 values of u  max rel. error 1.9e-15
+
+== 2. lattice state: L = Z[zeta_N]^{2n} restricted to Z
+PASS  L0 N=3: Gram of Tr(conj(a)b) on Z[zeta_N] has det |disc Q(zeta_N)| = 3; Smith invariants [1, 3]  T = [[2, -1], [-1, 2]]
+PASS  L0 N=4: Gram of Tr(conj(a)b) on Z[zeta_N] has det |disc Q(zeta_N)| = 4; Smith invariants [2, 2]  T = [[2, 0], [0, 2]]
+PASS  L0 N=5: Gram of Tr(conj(a)b) on Z[zeta_N] has det |disc Q(zeta_N)| = 125; Smith invariants [1, 5, 5, 5]  T = [[4, -1, -1, -1], [-1, 4, -1, -1], [-1, -1, 4, -1], [-1, -1, -1, 4]]
+PASS  L0 N=6: Gram of Tr(conj(a)b) on Z[zeta_N] has det |disc Q(zeta_N)| = 3; Smith invariants [1, 3]  T = [[2, 1], [1, 2]]
+PASS  L0' N=4: (1/2) Tr(conj(a) b) = Re(conj(a) b) is integral and unimodular on Z[i]
+-- integrality, similitude, characteristic polynomial, Weil form, vacuum
+PASS  L1 K4 N=3 flux (0, 2, 1) (Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 16
+PASS  L2 K4 N=3 flux (0, 2, 1) (Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 16, rounding residue 3.98e-58
+PASS  L3 K4 N=3 flux (0, 2, 1) (Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue 0.2961
+PASS  L4 K4 N=3 flux (0, 2, 1) (Galois-Ramanujan): J = (M-V)(4q - A^2)^(-1/2): J^2 = -1, JM = MJ, J zeta = zeta J, Omega_Z(.,J.) symmetric positive
+PASS  L1 K4 N=4 flux (3, 2, 1) (Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 16
+PASS  L2 K4 N=4 flux (3, 2, 1) (Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 16, rounding residue 3.19e-58
+PASS  L3 K4 N=4 flux (3, 2, 1) (Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue 0.1121
+PASS  L4 K4 N=4 flux (3, 2, 1) (Galois-Ramanujan): J = (M-V)(4q - A^2)^(-1/2): J^2 = -1, JM = MJ, J zeta = zeta J, Omega_Z(.,J.) symmetric positive
+PASS  L1 K4 N=4 flux (2, 2, 2) (not Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 16
+PASS  L2 K4 N=4 flux (2, 2, 2) (not Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 16, rounding residue 0.0
+PASS  L3 K4 N=4 flux (2, 2, 2) (not Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue -0.1623
+PASS  L1 K4 N=5 flux (3, 3, 1) (Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 32
+PASS  L2 K4 N=5 flux (3, 3, 1) (Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 32, rounding residue 2.85e-55
+PASS  L3 K4 N=5 flux (3, 3, 1) (Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue 0.1559
+PASS  L4 K4 N=5 flux (3, 3, 1) (Galois-Ramanujan): J = (M-V)(4q - A^2)^(-1/2): J^2 = -1, JM = MJ, J zeta = zeta J, Omega_Z(.,J.) symmetric positive
+PASS  L1 K4 N=5 flux (1, 1, 4) (not Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 32
+PASS  L2 K4 N=5 flux (1, 1, 4) (not Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 32, rounding residue 3.26e-55
+PASS  L3 K4 N=5 flux (1, 1, 4) (not Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue -0.1605
+PASS  L1 K4 N=6 flux (4, 2, 4) (Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 16
+PASS  L2 K4 N=6 flux (4, 2, 4) (Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 16, rounding residue 2.39e-58
+PASS  L3 K4 N=6 flux (4, 2, 4) (Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue 0.2447
+PASS  L4 K4 N=6 flux (4, 2, 4) (Galois-Ramanujan): J = (M-V)(4q - A^2)^(-1/2): J^2 = -1, JM = MJ, J zeta = zeta J, Omega_Z(.,J.) symmetric positive
+PASS  L1 K4 N=6 flux (1, 0, 5) (not Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 16
+PASS  L2 K4 N=6 flux (1, 0, 5) (not Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 16, rounding residue 3.98e-58
+PASS  L3 K4 N=6 flux (1, 0, 5) (not Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue -0.0450
+PASS  L1 cube N=3 flux (0, 0, 0, 2, 0) (Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 32
+PASS  L2 cube N=3 flux (0, 0, 0, 2, 0) (Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 32, rounding residue 1.14e-54
+PASS  L3 cube N=3 flux (0, 0, 0, 2, 0) (Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue 0.0109
+PASS  L4 cube N=3 flux (0, 0, 0, 2, 0) (Galois-Ramanujan): J = (M-V)(4q - A^2)^(-1/2): J^2 = -1, JM = MJ, J zeta = zeta J, Omega_Z(.,J.) symmetric positive
+PASS  L1 cube N=4 flux (0, 3, 3, 0, 1) (Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 32
+PASS  L2 cube N=4 flux (0, 3, 3, 0, 1) (Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 32, rounding residue 7.34e-55
+PASS  L3 cube N=4 flux (0, 3, 3, 0, 1) (Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue 0.1121
+PASS  L4 cube N=4 flux (0, 3, 3, 0, 1) (Galois-Ramanujan): J = (M-V)(4q - A^2)^(-1/2): J^2 = -1, JM = MJ, J zeta = zeta J, Omega_Z(.,J.) symmetric positive
+PASS  L1 cube N=4 flux (0, 1, 0, 0, 3) (not Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 32
+PASS  L2 cube N=4 flux (0, 1, 0, 0, 3) (not Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 32, rounding residue 2.85e-55
+PASS  L3 cube N=4 flux (0, 1, 0, 0, 3) (not Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue -0.0499
+PASS  L1 cube N=6 flux (1, 0, 2, 3, 0) (Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 32
+PASS  L2 cube N=6 flux (1, 0, 2, 3, 0) (Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 32, rounding residue 3.67e-55
+PASS  L3 cube N=6 flux (1, 0, 2, 3, 0) (Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue 0.0726
+PASS  L4 cube N=6 flux (1, 0, 2, 3, 0) (Galois-Ramanujan): J = (M-V)(4q - A^2)^(-1/2): J^2 = -1, JM = MJ, J zeta = zeta J, Omega_Z(.,J.) symmetric positive
+PASS  L1 cube N=6 flux (0, 0, 5, 5, 5) (not Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 32
+PASS  L2 cube N=6 flux (0, 0, 5, 5, 5) (not Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 32, rounding residue 1.26e-54
+PASS  L3 cube N=6 flux (0, 0, 5, 5, 5) (not Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue -0.0982
+PASS  L1 Petersen N=3 flux (0, 2, 0, 0, 2, 0) (Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 40
+PASS  L2 Petersen N=3 flux (0, 2, 0, 0, 2, 0) (Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 40, rounding residue 5.09e-53
+PASS  L3 Petersen N=3 flux (0, 2, 0, 0, 2, 0) (Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue 0.0407
+PASS  L4 Petersen N=3 flux (0, 2, 0, 0, 2, 0) (Galois-Ramanujan): J = (M-V)(4q - A^2)^(-1/2): J^2 = -1, JM = MJ, J zeta = zeta J, Omega_Z(.,J.) symmetric positive
+PASS  L1 Petersen N=3 flux (0, 1, 1, 1, 0, 2) (not Galois-Ramanujan): M_Z, V_Z integral with M_Z V_Z = q; M_Z^T Omega_Z M_Z = q Omega_Z, Omega_Z alternating integral  rank 40
+PASS  L2 Petersen N=3 flux (0, 1, 1, 1, 0, 2) (not Galois-Ramanujan): charpoly_Z(M_Z) = prod over Galois conjugates of det(x^2 - A x + q), exactly; it is a square  degree 40, rounding residue 6.33e-53
+PASS  L3 Petersen N=3 flux (0, 1, 1, 1, 0, 2) (not Galois-Ramanujan): Weil form (1/2) Omega_Z (M_Z - V_Z) symmetric; positive definite iff Galois-Ramanujan  min eigenvalue -0.0502
+-- the Weil form against Galois-Ramanujan on every flux class of K4 (N = 3,4,5,6) and the cube (N = 3)
+PASS  L5 K4 N=3: Weil form positive definite <=> Galois-Ramanujan, on all 27 flux classes
+PASS  L5 K4 N=4: Weil form positive definite <=> Galois-Ramanujan, on all 64 flux classes
+PASS  L5 K4 N=5: Weil form positive definite <=> Galois-Ramanujan, on all 125 flux classes
+PASS  L5 K4 N=6: Weil form positive definite <=> Galois-Ramanujan, on all 216 flux classes
+PASS  L5 cube N=3: Weil form positive definite <=> Galois-Ramanujan, on all 243 flux classes
+-- locks: root-of-unity relations between distinct modes
+     K4 N=3: 26 Galois-Ramanujan classes; lock orders found (order: #classes) {3: 6, 4: 6, 8: 6, 12: 6, 24: 6}; classes with a lock of order N: 6
+     K4 N=4: 62 Galois-Ramanujan classes; lock orders found (order: #classes) {2: 38}; classes with a lock of order N: 0
+     K4 N=5: 112 Galois-Ramanujan classes; lock orders found (order: #classes) {5: 16, 30: 16}; classes with a lock of order N: 16
+     K4 N=6: 190 Galois-Ramanujan classes; lock orders found (order: #classes) {2: 90, 3: 12, 4: 24, 6: 60, 8: 36, 12: 12, 24: 24}; classes with a lock of order N: 60
+     cube N=3: 242 Galois-Ramanujan classes; lock orders found (order: #classes) {2: 242, 3: 42, 4: 122, 6: 42, 8: 48, 12: 6, 24: 6}; classes with a lock of order N: 42
+     cube N=4: 993 Galois-Ramanujan classes; lock orders found (order: #classes) {2: 993, 4: 80}; classes with a lock of order N: 80
+     cube N=6: 7571 Galois-Ramanujan classes; lock orders found (order: #classes) {2: 7571, 3: 146, 4: 806, 5: 66, 6: 200, 8: 66, 10: 66, 12: 12, 24: 18}; classes with a lock of order N: 200
+PASS  K1 a Z_N flux does not force a lock of order N: on K4 (not bipartite) some Galois-Ramanujan class has no lock of order N, for N = 3,4,5,6
+PASS  K2 on the cube (bipartite) every Galois-Ramanujan class has the half-turn lock (order 2)
+
+== 3. census: Ramanujan, Galois-Ramanujan, ordinary (Deligne modules)
+     K4 N=3: classes 27, Ramanujan 26, Galois-Ramanujan 26, of which ordinary 12; abelian variety dimension n*phi(N) = 8; eigenvalue on the band edge in 0 classes
+     K4 N=4: classes 64, Ramanujan 62, Galois-Ramanujan 62, of which ordinary 62; abelian variety dimension n*phi(N) = 8; eigenvalue on the band edge in 0 classes
+     K4 N=5: classes 125, Ramanujan 118, Galois-Ramanujan 112, of which ordinary 88; abelian variety dimension n*phi(N) = 16; eigenvalue on the band edge in 0 classes
+     K4 N=6: classes 216, Ramanujan 190, Galois-Ramanujan 190, of which ordinary 78; abelian variety dimension n*phi(N) = 8; eigenvalue on the band edge in 0 classes
+     cube N=3: classes 243, Ramanujan 242, Galois-Ramanujan 242, of which ordinary 162; abelian variety dimension n*phi(N) = 16; eigenvalue on the band edge in 0 classes
+     cube N=4: classes 1024, Ramanujan 993, Galois-Ramanujan 993, of which ordinary 993; abelian variety dimension n*phi(N) = 16; eigenvalue on the band edge in 0 classes
+     cube N=6: classes 7776, Ramanujan 7571, Galois-Ramanujan 7571, of which ordinary 5065; abelian variety dimension n*phi(N) = 16; eigenvalue on the band edge in 0 classes
+     Petersen N=3: classes 729, Ramanujan 678, Galois-Ramanujan 678, of which ordinary 474; abelian variety dimension n*phi(N) = 20; eigenvalue on the band edge in 0 classes
+     Petersen N=4: classes 4096, Ramanujan 3914, Galois-Ramanujan 3914, of which ordinary 0; abelian variety dimension n*phi(N) = 20; eigenvalue on the band edge in 0 classes
+     Petersen N=6: classes 46656, Ramanujan 44286, Galois-Ramanujan 44286, of which ordinary 28656; abelian variety dimension n*phi(N) = 20; eigenvalue on the band edge in 0 classes
+PASS  D1 middle coefficient of charpoly_Z(M_Z) = (-1)^{n phi(N)} Norm(det A) mod p, on all detailed examples
+PASS  D2 every class has Ramanujan <=> Galois-Ramanujan when phi(N) = 2 (N = 3,4,6: the conjugate flux has the same spectrum)
+PASS  D3 no class has an eigenvalue on the band edge +-2 sqrt q (so the open/closed band distinction does not arise here)
+PASS  D4 N=4, p=2: a Galois-Ramanujan class is ordinary iff det A (untwisted) is odd, for every class (zeta = i = 1 mod (1+i))  det A: K4 -3, cube 9, Petersen 48; ordinary classes {'K4': 62, 'cube': 993, 'Petersen': 0}
+
+== 4. average of det(x - A_a) over the N-torsion of the Brillouin torus
+PASS  R1 K4 N=3: average of det(x - A) over all 27 classes = matching polynomial, exactly  mu = [1, 0, -6, 0, 3]; per-class det certified by det^2 = charpoly(A_Z)
+PASS  R1 K4 N=4: average of det(x - A) over all 64 classes = matching polynomial, exactly  mu = [1, 0, -6, 0, 3]; per-class det certified by det^2 = charpoly(A_Z)
+PASS  R1 K4 N=6: average of det(x - A) over all 216 classes = matching polynomial, exactly  mu = [1, 0, -6, 0, 3]; per-class det certified by det^2 = charpoly(A_Z)
+PASS  R1 cube N=3: average of det(x - A) over all 243 classes = matching polynomial, exactly  mu = [1, 0, -12, 0, 42, 0, -44, 0, 9]; per-class det certified by det^2 = charpoly(A_Z)
+PASS  R1 cube N=4: average of det(x - A) over all 1024 classes = matching polynomial, exactly  mu = [1, 0, -12, 0, 42, 0, -44, 0, 9]; per-class det certified by det^2 = charpoly(A_Z)
+PASS  R1 cube N=6: average of det(x - A) over all 7776 classes = matching polynomial, exactly  mu = [1, 0, -12, 0, 42, 0, -44, 0, 9]; per-class det certified by det^2 = charpoly(A_Z)
+PASS  R2 K4 N=5: average over 125 classes = matching polynomial (float)  max error 3.3e-16
+PASS  R3 K4 N=2 (Godsil-Gutman): the same polynomial
+PASS  R3 cube N=2 (Godsil-Gutman): the same polynomial
+PASS  R4 K4: det(x - A_z) is a Laurent polynomial of degree <= 1 in each cotree variable z_e^{+-1}; constant term = matching polynomial  17 monomials
+PASS  R5 K4: U(1) Haar average of det(x - A_phi) (Gauss-Legendre, 12 nodes per angle) = matching polynomial  max error 1.1e-14
+PASS  R5 cube: U(1) Haar average of det(x - A_phi) (Gauss-Legendre, 12 nodes per angle) = matching polynomial  max error 4.3e-12
+PASS  R6 K4: roots of the matching polynomial are real and inside (-2 sqrt q, 2 sqrt q)  largest root 2.3344 < 2.8284
+PASS  R6 cube: roots of the matching polynomial are real and inside (-2 sqrt q, 2 sqrt q)  largest root 2.5779 < 2.8284
+PASS  R6 Petersen: roots of the matching polynomial are real and inside (-2 sqrt q, 2 sqrt q)  largest root 2.6314 < 2.8284
+-- count-level orthogonality (the Dirichlet n = 1 mod N analogue)
+PASS  C1 K4 N=3: (1/N^g) sum over characters of Tr B_chi^k = #closed non-backtracking walks with class in N.H_1, k = 3..9  (k, all, class in 3H_1): [(3, 24, 0), (4, 24, 0), (5, 0, 0), (6, 96, 0), (7, 168, 0), (8, 168, 0), (9, 528, 24)]
+PASS  C2 K4 N=3: spectrum of the H_1/3H_1-cover (108 vertices) = union over all 27 characters of spec(A_chi) (Artin factorisation)
+PASS  C3 K4: average of det(1 - u B_chi) over the N-torsion is the same for N = 2..6 and equals (1-u^2)^{|E|-|V|} u^n mu((1+qu^2)/u)
+
+87 of 87 pass
