@@ -157,6 +157,9 @@ positivity is still RH for every step at once.
 
 ## 4. Status and checks
 
+*Review 2026-10-06 (`notes/reviews/adelic-gkp-ff-family-2026-10-06.md`):* all four statements VALID on independent rebuilds (10 joint eigenspaces, commutant dimension 1618, the ζ sign counts). Noted: $\max|J_{13}-J_{17}|=0.61$ is basis-dependent (0.614 in the vertex basis, 2.26 in the eigenbasis).
+
+
 | statement | status | checks |
 |---|---|---|
 | (1a) $J_q=J_{q'}$ iff $(q,\lambda)=(q',\lambda')$; $J_q\ne-J_{q'}$ | proved here; checked | M1 symbolic, numeric |

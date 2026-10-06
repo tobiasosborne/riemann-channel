@@ -350,6 +350,9 @@ $$
 
 ## 6. Status and checks
 
+*Review corrections 2026-10-06 (`notes/reviews/adelic-gkp-ff-family-2026-10-06.md`, 14 VALID / 3 MINOR / 0 INVALID):* (1) "positivity is RH" needs $P_\chi$ squarefree: for $q=5$, $N=4$, $f=t^4+1$ (the Fermat quartic) $P_\chi=(x+1+2i)^2$, RH holds, the trace form on $R$ has rank 2 of 4, $\Omega_+$ is degenerate, $F$ is not semisimple and there is no vacuum; repeated roots also at $(7,3,4)$, $(7,3,5)$, $(5,4,5)$, $(3,2,6)$, all with reducible $f$. (2) The leading-minor table of §2.3 lists minors of the trace form $\mathrm{Tr}(x\sigma y)$ (twice the Weil form) on the companion lattice $\mathbb Z[\zeta][F]$, not on $R$; on $R$ the determinants are 144, 256, 11163123, 3, 19, 8. (3) For $N=2$, X6's local phases are both 1, and "its lattice is $H_1$" holds up to isogeny only, failing when $\Lambda=(1+2u+3u^2)^2$.
+
+
 | statement | status | check |
 |---|---|---|
 | $L(u,\chi)$ is a polynomial of degree $d-1$ (odd) or $(1-u)\times$ degree $d-2$ (even); Euler product | standard; checked | A1, A2 |
