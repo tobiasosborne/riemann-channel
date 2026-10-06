@@ -67,7 +67,12 @@ Each is *checked* on its page; together they say where not to look.
 - **Counts do not determine the lattice** (lane A), and no overlap of the code with product stabiliser states does (lane F): the datum that carries RH
   sits on a lattice whose class is fixed only by the Weil pairing, an operator-valued datum of the code.
 - **Local lattices and vacua do not determine global zeros** (lane C): 49a1 and 441d1 share $\mathcal O_K$, $J_K$ and every local step up to sign, and
-  have different zeros; only 441d1 has a central zero (root number $-1$).
+  have different zeros; only 441d1 has a central zero (root number $-1$). Lane I (`gate-phases.md`, *proved/checked*) locates the difference: the
+  root number is the product of the local Fourier-gate phases ($-i$ at $\infty$ from the Hermite function, $i$ at 7 from the conductor squeeze, $\pm1$
+  at 3, $1$ at every unramified place, where the local state is a Fourier-invariant qunaught); the half turn that 49a1 spends in its Euler factor at 3
+  ($a_9=-3$), 441d1 spends in its gate phase, and at 3 the "step" stops being an invariant (it depends on the uniformiser). So the distinguishing
+  datum is a charged local state with its phase, in the Hilbert space of the local mode, not on the lattice or the vacuum; and the gate phases see
+  only the parity of the central zero, not the split-prime signs of the twist.
 - **No arithmetic $J$ on a supersingular block** (lane B): where $\mu$ and $-\mu$ have equal valuation, Deligne's rule selects no CM type; positivity
   there is $\Omega(x,Mx)>0$, a statement about the step alone.
 - **The lattice index is sign-blind** (`graph-ihara.md`): $|\det(m-nM)|$ carries no sign, so the count mechanism of curves does not transfer to a graph
@@ -120,7 +125,11 @@ Absent, by the ladder:
    that witness (analytic §14 matches it with $\mathcal T$, the unit of the test-function algebra being a canonical cyclic vector), the Deninger metric
    cone of shard 04u is the analogue of the cone, and on the evidence of the curve examples RH should not need a polarisation; what it needs is a
    reason for the one witness to be positive, which in the curve case is ampleness through Rosati and for $\zeta$ is the open statement itself.
-3. **Counts.** At the real place there is nothing to count (note §12.1); lane A shows that even where there are counts they fix only the isogeny
+3. **The local charged states and their gate phases** (lane I): a separate item of the ladder, present for Hecke and Dirichlet $L$-functions
+   (Gauss sums at the conductor, the Hermite phase at $\infty$), trivial for curves over $\mathbb F_q$ (root number $+1$, squeezes only), for graphs
+   (the completed zeta is even) and for $\zeta$ (every phase is 1). It is the first global invariant assembled from local data that is not a
+   lattice or vacuum datum, and it does not carry RH.
+4. **Counts.** At the real place there is nothing to count (note §12.1); lane A shows that even where there are counts they fix only the isogeny
    class.
 
 What the examples say about where the datum would have to sit (*heuristic*): on a global, integral, finite-rank-per-mode structure on Connes's
@@ -132,7 +141,8 @@ structure on the $\ell=1$ cokernel of $\mathcal O_K$; a positivity uniform over 
 
 - `lattice-tower.md` §1 table and §6, `adelic-gkp.md` G12(ii): the Pauli-six lattice ($x^2+2x+5$, groups $\mathbb Z/8$) belongs to $y^2=x^3+4x\pm1$ over
   $\mathbb F_5$ ($j=1$), not to $y^2=x^3+4x$ ($j=1728$, End $=\mathbb Z[i]$, groups $\mathbb Z/2\times\mathbb Z/4$); shard 03c lists all three equations (lane A).
-- The E mode lifts to 441d1; 49a1 reduces mod 2 to the $\mathbb F_2$-twist, step $-M$ (lane C).
+- The E mode lifts to 441d1; 49a1 reduces mod 2 to the $\mathbb F_2$-twist, step $-M$ (lane C). `cm-lift.md` §2.4: under the self-dual trace pairing the
+  Fourier gate maps the $\ell=1$ Gaussian to $\ell=-1$, not to itself (lane I).
 - `lattice-tower.md` §6, §9: "no lift" for the non-ordinary examples is "no canonical lift"; supersingular factors lift with Frobenius, not canonically (lane B).
 - `lattice-tower.md` §7.3 is a reading of the local level only (lane C, §3 above).
 - `lattice-tower.md` §5: (i)$\Rightarrow$(ii) needs the CM type $\Phi_+$ for $\Omega$; it holds for the graph steps the page was written for and fails for
@@ -143,8 +153,8 @@ structure on the $\ell=1$ cokernel of $\mathcal O_K$; a positivity uniform over 
 
 ## 6. Next
 
-- Lanes G (`zeta-ingredients.md`: which of the three ingredients exist for $\zeta$ on Connes's cokernel) and I (`gate-phases.md`: the local Fourier-gate
-  phases whose product is the root number) are to be folded in here when they land.
+- Lane G (`zeta-ingredients.md`: which of the three ingredients exist for $\zeta$ on Connes's cokernel) is to be folded in here when it lands.
+- Lane I's open items: the full quadratic-twist family; Hecke characters of higher infinity type; a function-field shadow with a ramified twist.
 - Lane F's open items: whether the Weil pairing is expressible as a datum of $\Theta_K$ itself; the genus-blind case ($q=8$, $a=3$, discriminant $-23$, three
   curves in one genus), predicted and not checked.
 - Which of the four ideal classes of $\mathcal O_K$ and which principal form belong to $\mathrm{Jac}(C)$ itself for the curve over $\mathbb F_5$ (lane E).
