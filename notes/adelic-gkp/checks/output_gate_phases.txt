@@ -1,0 +1,38 @@
+== A  root numbers from PARI: global, local over Q, and the L-functions
+PASS  A1 ellrootno: 49a1 has W = +1, 441d1 has W = -1; lfunrootres agrees  ellrootno 1, -1; lfunrootres 1, -1
+PASS  A2 local root numbers over Q [w_inf, w_3, w_7]: 49a1 [-1, +1, -1], 441d1 [-1, -1, -1]  49a1 [-1, 1, -1], 441d1 [-1, -1, -1]
+PASS  A3 Euler factor at 3: 49a1 a_9 = -3 (the inert step, factor (1 + 3^(1-2s))^-1); 441d1 a_(3^k) = 0 (factor 1)  49a1 [0, -3, 0, 9], 441d1 [0, 0, 0, 0, 0]; conductors [49, 441]
+== B  the local components of psi and the gate phases of 49a1 (places of K)
+PASS  B1 the idele class character is trivial on K^x with psi_inf(z) = |z|/z, psi_7 = eps on units, psi_7(sqrt-7) = i (301 elements, unramified part from the prime factorisation)  max |prod_v psi_v(alpha) - 1| = 6.5e-16; with psi_7(sqrt-7) = -i instead, 33 of 301 fail
+PASS  B2 Gauss sum at 7: sum_u (u/7) e^(2 pi i u/7) = i sqrt 7  |difference| = 7.02e-51
+PASS  B3 Fourier gate at 7: F[eps 1_{O^x}] = i * D_7[eps 1_{O^x}], D_7 f(y) = |7|^(1/2) f(7y), on all of p^-3/p^-1 (support on the shell v = -2 only)  max |diff| = 5.9e-17, 6 nonzero classes of 49
+PASS  B4 local functional equation at 7, s = 0.5: Z(Phi^, chi^-1, 1-s) / Z(Phi, chi, s) = i * 49^(1/2 - s)  ratio 0.000000000000+1.000000000000j, |diff| = 6.7e-16
+PASS  B4 local functional equation at 7, s = (0.3+0.7j): Z(Phi^, chi^-1, 1-s) / Z(Phi, chi, s) = i * 49^(1/2 - s)  ratio 0.882728323680-1.990996509383j, |diff| = 6.8e-16
+PASS  B4 local functional equation at 7, s = (1.7-0.4j): Z(Phi^, chi^-1, 1-s) / Z(Phi, chi, s) = i * 49^(1/2 - s)  ratio -0.009369614568+0.000131822379j, |diff| = 2.1e-18
+PASS  B5 Fourier gate at the complex place (kernel exp(-4 pi i Re zw), measure 2dxdy): F[z e^(-2pi|z|^2)] = -i * zbar e^(-2pi|z|^2)  max |diff| at 4 points = 4.5e-15
+PASS  B5 same state in the Euclidean picture of two real modes (kernel exp(-2 pi i (xu + yv))): F[z e^(-pi|z|^2)] = -i z e^(-pi|z|^2), the Hermite phase (-i)^1  max |diff| = 6.8e-15
+PASS  B6 local functional equation at infinity, s = 0.5: eps_inf = Z(Phi^, chi^-1, 1-s) L(s) / (Z(Phi, chi, s) L(1-s)) = -i  eps = (-3.82527048645646e-35 - 1.0j), |diff| = 3.8e-35
+PASS  B6 local functional equation at infinity, s = (0.3 + 0.7j): eps_inf = Z(Phi^, chi^-1, 1-s) L(s) / (Z(Phi, chi, s) L(1-s)) = -i  eps = (3.26856992202889e-27 - 1.0j), |diff| = 2.6e-26
+PASS  B6 sector selection: z e^(-2pi|z|^2) has zero overlap with the opposite character z/|z|  |Z| = 6.0e-27
+PASS  B7 49a1: product of the local gate phases over the places of K = (-i)(i) = +1 = ellrootno(49a1)  product = (1-0j)
+== C  the twist by -3: the local state at 3 (K_3 = Q_9, 3 inert in K)
+PASS  C1 eta(x) = (N x / 3) is the quadratic character of F_9^x = (O_K/3)^x (multiplicative, kernel = the 4 squares)  kernel size 4
+PASS  C2 Gauss sums: g(F_3) = sum (u/3) e^(2pi i u/3) = i sqrt3; g(F_9, eta) = 3; Hasse-Davenport g(F_9) = -g(F_3)^2  g3 = (-3.23117426779e-26 + 1.73205080757j), g9 = (3.0 + 9.99129494004e-26j)
+PASS  C3 Fourier gate at 3: F[eta 1_{O^x}] = + D_3[eta 1_{O^x}] on 3^-2 O / O (bare phase +1, the normalised F_9 Gauss sum)  max |diff| = 1.7e-16, 8 nonzero classes of 81
+PASS  C3 for 49a1 the state at 3 is the qunaught 1_{O_3}: F[1_{O_3}] = 1_{O_3} (phase 1)  max |diff| = 2.8e-16
+PASS  C4 local functional equation at 3 for psi' (psi'_3(3) = -1), s = 0.5: ratio = -9^(1/2 - s)  ratio -1.000000000000+0.000000000000j
+PASS  C4 local functional equation at 3 for psi' (psi'_3(3) = -1), s = (0.3+0.7j): ratio = -9^(1/2 - s)  ratio -0.050796986998+1.551013975241j
+PASS  C4 control: with psi'_3(3) = +1 (no half turn) the same state would give phase +1  ratio 1.000000000000+0.000000000000j
+PASS  C5 441d1: product of the local gate phases (-i)(i)(-1) = -1 = ellrootno(441d1)  product = (-1+0j)
+PASS  C6 over Q: w_inf = lambda_inf eps_inf = (-i)(-i) = -1; w_7 = lambda_7 eps_7 = (i)(i) = -1 (lambda_7 the normalised Gauss sum of chi_-7); w_3(441d1) = eps(chi_-3,3)^2 det(quarter turn) = (i)^2 (1) = -1; all equal PARI's ellrootno(E, p)  w_inf -1.000+0.000j, w_7 -1.000-0.000j, w_3 -1.000-0.000j; Hermite check 3.7e-15
+PASS  C7 the L-function built from the a_n with conductor prod_v N_v (49; 49 * 9 = 441) and W = prod of gate phases satisfies the functional equation; with -W it fails  lfuncheckfeq: 49a1 2^-139 (wrong sign 2^1); 441d1 2^-135 (wrong sign 2^0)
+PASS  C7 independent of PARI's functional equation: the overlap f(iy) = sum a_n e^(-2 pi n y) (3000 terms) satisfies f(i/(Ny)) = W N y^2 f(iy) with W = the product of gate phases, at y = 0.8/sqrt N and 1.25/sqrt N  relative error 49a1 7.5e-32 (31.1 digits), 441d1 2.4e-30 (29.6 digits); with -W: 3.13, 3.13
+== D  the ladder: zeta, Dirichlet, curves over F_q, graphs
+PASS  D1 zeta: the Gaussian is Fourier-invariant (phase 1), every finite state is the qunaught (phase 1); PARI root number 1  |F[e^(-pi x^2)] - e^(-pi y^2)| = 1.9e-14
+PASS  D2 L(s, chi_-3): eps_3 = i (normalised F_3 Gauss sum), eps_inf = -i (odd Hermite phase); product 1 = PARI  product 1.000+0.000j
+PASS  D3 L(s, chi mod 5 of order 4, chi(2) = i): eps_5 = tau(chi)/sqrt5, eps_inf = -i; product = PARI's root number (a phase, not +-1)  product 0.850650808352+0.525731112119j, PARI 0.850650808352+0.525731112119j
+PASS  D4 curves over F_q (E mode over F_2, genus-2 curve y^2 = x^5+x^3+x^2-2 over F_5): Z(1/(qu)) = q^(1-g) u^(2-2g) Z(u); xi(s) = q^((g-1)s) Z(q^-s) = xi(1-s), root number +1  max relative error 8.9e-16; P(u) = [1, -3, 7, -15, 25]
+PASS  D5 K_4 (q = 2, n = 4, m = 6): Ihara-Bass det(1 - uB) = (1-u^2)^(m-n) det(1 - uA + qu^2); Lambda(u) = (1-u^2)^(m-n+n/2) (1-q^2u^2)^(n/2) zeta(u) has Lambda(1/(qu)) = +Lambda(u); Xi(s) = q^(n(s-1/2)) det(1 - Aq^-s + q^(1-2s)) is even about 1/2  Bass 2.2e-16; sign (1+0j); Xi symmetric to 6.1e-16
+PASS  D5 K_5 (q = 3, n = 5): the same Lambda with principal branches has sign (-1)^n = -1, while Xi(s) stays even (+1): the graph sign is a convention of the trivial factor, not a local phase  sign (-1+0j); Xi symmetric to 2.3e-15
+
+32 of 32 pass
