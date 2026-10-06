@@ -1,0 +1,103 @@
+== S. Structure of the logical group of the level-k code
+      E1 (q = 2, M = companion of x^2 + x + 2): Lam_k = (1 - V^k)L, Lam_k^perp, Smith invariants
+      k  h_k  Lam_k basis (cols)        Lam_k^perp basis (cols)          A_k=Lam^perp/Lam  L/Lam_k  Lam^perp/L  L/(1-M^k)L  PARI E(F_2^k)
+      1    4  [[2, -1], [2, 1]]         [[-1/4, -1/2], [1/4, -1/2]]      [4, 4]            [4]      [4]         [4]         [4]
+      2    8  [[2, 1], [-2, 3]]         [[1/8, -1/4], [3/8, 1/4]]        [8, 8]            [8]      [8]         [8]         [8]
+      3    4  [[-2, 1], [-2, -1]]       [[1/4, 1/2], [-1/4, 1/2]]        [4, 4]            [4]      [4]         [4]         [4]
+      4   16  [[2, -3], [6, -1]]        [[-3/16, -1/8], [-1/16, -3/8]]   [16, 16]          [16]     [16]        [16]        [16]
+      5   44  [[6, 1], [-2, 7]]         [[1/44, -3/22], [7/44, 1/22]]    [44, 44]          [44]     [44]        [44]        [44]
+      6   56  [[-6, 5], [-10, -1]]      [[5/56, 3/28], [-1/56, 5/28]]    [56, 56]          [56]     [56]        [56]        [56]
+      7  116  [[-2, -7], [14, -9]]      [[-7/116, 1/58], [-9/116, -7/58]] [116, 116]        [116]    [116]       [116]       [116]
+      8  288  [[18, -3], [6, 15]]       [[-1/96, -1/16], [5/96, -1/48]]  [288, 288]        [3, 96]  [3, 96]     [3, 96]     [3, 96]
+PASS  S1 E1, k = 1..8: the Omega-dual of Lam_k = (1 - V^k)L is (1 - M^k)^{-1} L; L lies in it; and (Lam_k^perp)^perp = Lam_k (the commutator form is non-degenerate on A_k)
+PASS  S2 E1, k = 1..8: L/Lam_k (phases), Lam_k^perp/L (shifts = periodic syndromes), L/(1 - M^k)L and PARI's E(F_{2^k}) have the same invariants; A_k = Lam_k^perp/Lam_k has invariants [h_k, h_k]
+PASS  S3 one mode: (1 - M^k)(1 - V^k) = h_k * 1, so A_k = (1 - M^k)^{-1}L/(1 - V^k)L ~ L/h_k L = (Z/h_k)^2 with commutator Omega/h_k: the logical group of C_k is the Pauli group of one qudit of dimension h_k
+PASS  S4 E3 lattices (1,0,6), (2,0,3), k = 1..4: same statements; phases, shifts and PARI's E4(F_{7^k}), E5(F_{7^k}) all have invariants [6], [2,30], [3,126], [20,120]
+PASS  S5 L/Lam_k is isotropic (Omega is integral on L) and |L/Lam_k|^2 = |A_k|: the phase group is a Lagrangian subgroup, and the commutator pairs phases perfectly with shifts (phases = characters of the points)
+PASS  S6 A_k = G_k x G_k^dual (a split Heisenberg group of the points) iff G_k is cyclic: true for E1, k = 1..7; false at k = 8, where G_8 = Z3 x Z96 but A_8 = (Z/288)^2, and no lift of an order-3 shift has order 3 in A_8 (its cube is a non-trivial logical phase)  A_8 invariants [288, 288], G_8 [3, 96]
+PASS  S7 K4 with one negative edge (n = 4), k = 1: Lam^perp = (1 - M)^{-1} L, L inside it; A_1 = (1-M)^{-1}L/(1-V)L  G_1 = [2, 2, 8], A_1 = [2, 2, 2, 2, 8, 8], split: True
+
+== L. The two pairings on the lattice side (no curve)
+PASS  L1 the lattice Tate form Omega(P~, (1 - M^k) Q~) is well defined on Fix[N] x Fix/N exactly when N | q^k - 1 (the lattice shadow of mu_N in F_{q^k}): ill-defined for E1 at (k,N) = (1,2), (2,2), (4,4), well-defined at (6,7), (8,3) and for E3 at (2,4), (4,8)  [(1, 2, False, False), (2, 2, False, False), (4, 4, False, False), (6, 7, True, True), (8, 3, True, True), (2, 4, True, True), (4, 8, True, True)]
+PASS  L2 E[N] inside Fix(M^k) (E3 at (k,N) = (8,8), (4,4); E1 at (8,3)) and q^k = 1 mod N; the code-side Weil form c(N P~, Q~) = exp(2 pi i N Omega(P~,Q~)) is well defined on E[N] (independent of the lifts) and scales by q under the step
+
+== C. Curve against code: Frobenius-equivariant isomorphisms E(F_{q^k})_l -> Fix(M^k)_l and the two pairings
+      E1 k=6 N=7                         E_l = [7]       Frob cols [[3]]                  #equivariant isos    6   Weil scales -           Tate scales [3, 5, 6]
+      E1 k=8 N=3                         E_l = [3, 3]    Frob cols [[1, 1], [2, 1]]       #equivariant isos    8   Weil scales [1, 2]      Tate scales [1, 2]
+      E4 k=1 N=2 vs (1,0,6)              E_l = [2]       Frob cols [[1]]                  #equivariant isos    1   Weil scales -           Tate scales [1]
+      E4 k=1 N=2 vs (2,0,3)              E_l = [2]       Frob cols [[1]]                  #equivariant isos    1   Weil scales -           Tate scales [1]
+      E4 k=1 N=3 vs (1,0,6)              E_l = [3]       Frob cols [[1]]                  #equivariant isos    2   Weil scales -           Tate scales [1]
+      E4 k=1 N=3 vs (2,0,3)              E_l = [3]       Frob cols [[1]]                  #equivariant isos    2   Weil scales -           Tate scales [2]
+      E4 k=2 N=2 vs (1,0,6)              E_l = [2, 2]    Frob cols [[1, 0], [1, 1]]       #equivariant isos    2   Weil scales [1]         Tate scales [1]
+      E4 k=2 N=2 vs (2,0,3)              E_l = [2, 2]    Frob cols [[1, 0], [1, 1]]       #equivariant isos    2   Weil scales [1]         Tate scales [1]
+      E4 k=2 N=4 vs (1,0,6)              E_l = [2, 2]    Frob cols [[1, 1], [0, 1]]       #equivariant isos    2   Weil scales -           Tate scales [1, 3]
+      E4 k=2 N=4 vs (2,0,3)              E_l = [2, 2]    Frob cols [[1, 1], [0, 1]]       #equivariant isos    2   Weil scales -           Tate scales [1, 3]
+      E4 k=3 N=3 vs (1,0,6)              E_l = [9, 3]    Frob cols [[4, 1], [3, 1]]       #equivariant isos   18   Weil scales [2]         Tate scales [1]
+      E4 k=3 N=3 vs (2,0,3)              E_l = [9, 3]    Frob cols [[4, 1], [3, 1]]       #equivariant isos   18   Weil scales [1]         Tate scales [2]
+      E4 k=4 N=4 vs (1,0,6)              E_l = [8, 4]    Frob cols [[7, 3], [2, 3]]       #equivariant isos   16   Weil scales [1, 3]      Tate scales [1, 3]
+      E4 k=4 N=4 vs (2,0,3)              E_l = [8, 4]    Frob cols [[7, 3], [2, 3]]       #equivariant isos   16   Weil scales [1, 3]      Tate scales [1, 3]
+      E4 k=4 N=8 vs (1,0,6)              E_l = [8, 4]    Frob cols [[3, 1], [6, 3]]       #equivariant isos   16   Weil scales -           Tate scales [3, 5]
+      E4 k=4 N=8 vs (2,0,3)              E_l = [8, 4]    Frob cols [[3, 1], [6, 3]]       #equivariant isos   16   Weil scales -           Tate scales [1, 7]
+      E4 k=8 N=8 vs (1,0,6)              E_l = [16, 8]   Frob cols [[15, 1], [6, 3]]      #equivariant isos   64   Weil scales [3, 5]      Tate scales [3, 5]
+      E4 k=8 N=8 vs (2,0,3)              E_l = [16, 8]   Frob cols [[15, 1], [6, 3]]      #equivariant isos   64   Weil scales [1, 7]      Tate scales [1, 7]
+      E4 k=16 N=16 vs (1,0,6)            E_l = [32, 16]  Frob cols [[21, 1], [10, 13]]    #equivariant isos  256   Weil scales [3, 5, 11, 13]  Tate scales [3, 5, 11, 13]
+      E4 k=16 N=16 vs (2,0,3)            E_l = [32, 16]  Frob cols [[21, 1], [10, 13]]    #equivariant isos  256   Weil scales [1, 7, 9, 15]  Tate scales [1, 7, 9, 15]
+      E5 k=1 N=2 vs (1,0,6)              E_l = [2]       Frob cols [[1]]                  #equivariant isos    1   Weil scales -           Tate scales [1]
+      E5 k=1 N=2 vs (2,0,3)              E_l = [2]       Frob cols [[1]]                  #equivariant isos    1   Weil scales -           Tate scales [1]
+      E5 k=1 N=3 vs (1,0,6)              E_l = [3]       Frob cols [[1]]                  #equivariant isos    2   Weil scales -           Tate scales [2]
+      E5 k=1 N=3 vs (2,0,3)              E_l = [3]       Frob cols [[1]]                  #equivariant isos    2   Weil scales -           Tate scales [1]
+      E5 k=2 N=2 vs (1,0,6)              E_l = [2, 2]    Frob cols [[1, 1], [0, 1]]       #equivariant isos    2   Weil scales [1]         Tate scales [1]
+      E5 k=2 N=2 vs (2,0,3)              E_l = [2, 2]    Frob cols [[1, 1], [0, 1]]       #equivariant isos    2   Weil scales [1]         Tate scales [1]
+      E5 k=2 N=4 vs (1,0,6)              E_l = [2, 2]    Frob cols [[1, 1], [0, 1]]       #equivariant isos    2   Weil scales -           Tate scales [1, 3]
+      E5 k=2 N=4 vs (2,0,3)              E_l = [2, 2]    Frob cols [[1, 1], [0, 1]]       #equivariant isos    2   Weil scales -           Tate scales [1, 3]
+      E5 k=3 N=3 vs (1,0,6)              E_l = [9, 3]    Frob cols [[1, 2], [6, 1]]       #equivariant isos   18   Weil scales [1]         Tate scales [2]
+      E5 k=3 N=3 vs (2,0,3)              E_l = [9, 3]    Frob cols [[1, 2], [6, 1]]       #equivariant isos   18   Weil scales [2]         Tate scales [1]
+      E5 k=4 N=4 vs (1,0,6)              E_l = [8, 4]    Frob cols [[5, 3], [6, 1]]       #equivariant isos   16   Weil scales [1, 3]      Tate scales [1, 3]
+      E5 k=4 N=4 vs (2,0,3)              E_l = [8, 4]    Frob cols [[5, 3], [6, 1]]       #equivariant isos   16   Weil scales [1, 3]      Tate scales [1, 3]
+      E5 k=4 N=8 vs (1,0,6)              E_l = [8, 4]    Frob cols [[1, 3], [6, 1]]       #equivariant isos   16   Weil scales -           Tate scales [1, 7]
+      E5 k=4 N=8 vs (2,0,3)              E_l = [8, 4]    Frob cols [[1, 3], [6, 1]]       #equivariant isos   16   Weil scales -           Tate scales [3, 5]
+      E5 k=8 N=8 vs (1,0,6)              E_l = [16, 8]   Frob cols [[5, 1], [10, 5]]      #equivariant isos   64   Weil scales [1, 7]      Tate scales [1, 7]
+      E5 k=8 N=8 vs (2,0,3)              E_l = [16, 8]   Frob cols [[5, 1], [10, 5]]      #equivariant isos   64   Weil scales [3, 5]      Tate scales [3, 5]
+      E5 k=16 N=16 vs (1,0,6)            E_l = [32, 16]  Frob cols [[11, 3], [18, 7]]     #equivariant isos  256   Weil scales [1, 7, 9, 15]  Tate scales [1, 7, 9, 15]
+      E5 k=16 N=16 vs (2,0,3)            E_l = [32, 16]  Frob cols [[11, 3], [18, 7]]     #equivariant isos  256   Weil scales [3, 5, 11, 13]  Tate scales [3, 5, 11, 13]
+      E4 k=8 N=8 vs (1,0,6) [iota']      E_l = [16, 8]   Frob cols [[9, 7], [6, 1]]       #equivariant isos   64   Weil scales [1, 7]      Tate scales [1, 7]
+      E4 k=8 N=8 vs (2,0,3) [iota']      E_l = [16, 8]   Frob cols [[9, 7], [6, 1]]       #equivariant isos   64   Weil scales [3, 5]      Tate scales [3, 5]
+      E5 k=8 N=8 vs (1,0,6) [iota']      E_l = [16, 8]   Frob cols [[1, 1], [10, 1]]      #equivariant isos   64   Weil scales [3, 5]      Tate scales [3, 5]
+      E5 k=8 N=8 vs (2,0,3) [iota']      E_l = [16, 8]   Frob cols [[1, 1], [10, 1]]      #equivariant isos   64   Weil scales [1, 7]      Tate scales [1, 7]
+PASS  C1 in every case there are Frobenius-equivariant isomorphisms E(F_{q^k})_l -> Fix(M^k)_l, and for EACH of them the PARI Weil and Tate pairings equal the code-side forms c(N P~, Q~) and c(P~, (1-M^k) Q~) up to a unit s (an automorphism of mu_N): the commutator form is the pairing, up to Aut(mu_N)  42 cases
+PASS  C2 roots of unity: the chosen w has exact order N in every case
+
+      decisive table, N = 8 (iota: w + 1/w = 3 -> exp(2 pi i/8)); entries are scale sets s (curve exponent = s * code exponent)
+                        Weil, k = 8        Tate, k = 8        Tate, k = 4
+      E4 vs (1,0,6):     [3, 5]             [3, 5]             [3, 5]
+      E4 vs (2,0,3):     [1, 7]             [1, 7]             [1, 7]
+      E5 vs (1,0,6):     [1, 7]             [1, 7]             [1, 7]
+      E5 vs (2,0,3):     [3, 5]             [3, 5]             [3, 5]
+PASS  C3 (decisive) N = 8: with iota fixed, E5 matches (1,0,6) and E4 matches (2,0,3) with scale +-1 (scale set {1,7}); the crossed pairs need scale 3 or 5. Same for the Weil pairing on E[8] (k = 8) and the Tate pairing at k = 8 and already at k = 4, where E[8] is not rational
+PASS  C4 this agrees with overlap-data.md criterion 2 (j-invariant route): eps(sqrt 2) = +sqrt 2 for the 7-adic sqrt 2 = 3 makes j = 5 the principal curve; here the same eps, entering only through iota, makes E5 the curve whose Weil/Tate pairing is the commutator form of the (1,0,6) code
+PASS  C5 with the other normalisation iota' (w + 1/w = 4 -> exp(2 pi i/8), i.e. eps(sqrt 2) = -sqrt 2) the assignment swaps: E4 <-> (1,0,6), E5 <-> (2,0,3)
+PASS  C6 at N = 2, 4 every curve matches every lattice with scale +-1 (Aut(mu_4) = {+-1}): these levels cannot separate the classes
+PASS  C7 N = 3: every scale set is a single sign; E5-(1,0,6) and E4-(2,0,3) carry the same sign, the crossed pairs the opposite one (separation only once the orientation of Omega is fixed, as overlap-data.md section 4 found)  {('E4', '(1,0,6)'): ([2], [1], [1]), ('E4', '(2,0,3)'): ([1], [2], [2]), ('E5', '(1,0,6)'): ([1], [2], [2]), ('E5', '(2,0,3)'): ([2], [1], [1])}
+PASS  C8 N = 16 (Weil, k = 16): matched pairs have scales {1,7,9,15}, crossed pairs {3,5,11,13}  {('E4', '(1,0,6)'): [3, 5, 11, 13], ('E4', '(2,0,3)'): [1, 7, 9, 15], ('E5', '(1,0,6)'): [1, 7, 9, 15], ('E5', '(2,0,3)'): [3, 5, 11, 13]}
+PASS  C9 E1: the first levels with a non-trivial Tate pairing are k = 6 (N = 7, E(F_64) = Z56, E(F_64)[7] cyclic) and k = 8 (N = 3, E[3] rational). Both match the code forms up to Aut(mu_N). At N = 7 the 6 equivariant isomorphisms realise one coset of the squares (with the unnormalised root used here: the non-squares {3, 5, 6}); at N = 3 both signs occur. E1 has class number 1, so there is no class to separate  N = 7 scales [3, 5, 6]
+      N = 3 signs (Weil k=3, Tate k=3, Tate k=1): {('E4', '(1,0,6)'): ([2], [1], [1]), ('E4', '(2,0,3)'): ([1], [2], [2]), ('E5', '(1,0,6)'): ([1], [2], [2]), ('E5', '(2,0,3)'): ([2], [1], [1])}
+PASS  C10 Weil and Tate give the same scale sets at N = 8 and N = 16; at N = 3 the Weil sign is +1 and the Tate sign -1 for the matched pairs (t_N = c(P~, (M^k - 1) Q~) when e_N = c(N P~, Q~); a convention constant, the same for both curves)
+
+== K. Code against code: the two steps on the same (L, Omega)
+      k =  8, N =  8: code (1,0,6) -> code (1,0,6):   64 step-equivariant isomorphisms of the shift groups; Weil-form scales [1, 7], Tate-form scales [1, 7]
+      k =  8, N =  8: code (1,0,6) -> code (2,0,3):   64 step-equivariant isomorphisms of the shift groups; Weil-form scales [3, 5], Tate-form scales [3, 5]
+      k =  8, N =  8: code (2,0,3) -> code (1,0,6):   64 step-equivariant isomorphisms of the shift groups; Weil-form scales [3, 5], Tate-form scales [3, 5]
+      k =  8, N =  8: code (2,0,3) -> code (2,0,3):   64 step-equivariant isomorphisms of the shift groups; Weil-form scales [1, 7], Tate-form scales [1, 7]
+      k =  4, N =  8: code (1,0,6) -> code (1,0,6):   16 step-equivariant isomorphisms of the shift groups; Weil-form scales None, Tate-form scales [1, 7]
+      k =  4, N =  8: code (1,0,6) -> code (2,0,3):   16 step-equivariant isomorphisms of the shift groups; Weil-form scales None, Tate-form scales [3, 5]
+      k =  4, N =  8: code (2,0,3) -> code (1,0,6):   16 step-equivariant isomorphisms of the shift groups; Weil-form scales None, Tate-form scales [3, 5]
+      k =  4, N =  8: code (2,0,3) -> code (2,0,3):   16 step-equivariant isomorphisms of the shift groups; Weil-form scales None, Tate-form scales [1, 7]
+      k = 16, N = 16: code (1,0,6) -> code (1,0,6):  256 step-equivariant isomorphisms of the shift groups; Weil-form scales [1, 7, 9, 15], Tate-form scales [1, 7, 9, 15]
+      k = 16, N = 16: code (1,0,6) -> code (2,0,3):  256 step-equivariant isomorphisms of the shift groups; Weil-form scales [3, 5, 11, 13], Tate-form scales [3, 5, 11, 13]
+      k = 16, N = 16: code (2,0,3) -> code (1,0,6):  256 step-equivariant isomorphisms of the shift groups; Weil-form scales [3, 5, 11, 13], Tate-form scales [3, 5, 11, 13]
+      k = 16, N = 16: code (2,0,3) -> code (2,0,3):  256 step-equivariant isomorphisms of the shift groups; Weil-form scales [1, 7, 9, 15], Tate-form scales [1, 7, 9, 15]
+PASS  K1 step-equivariant isomorphisms between the shift groups of the (1,0,6) and (2,0,3) codes exist at every level, but scale the code's commutator-derived forms by 3 or 5 mod 8 (never +-1); from a code to itself the scales are {1, 7}
+PASS  K2 without equivariance every unit scale is realised by some group isomorphism (det over GL2(Z/8) = all units): the separation needs the step
+PASS  K3 consistency with overlap-data.md T2: det of intertwiners g M_(1,0,6) = M_(2,0,3) g mod 8 is {3, 5}
+
+22 of 22 pass   (16.2 s)
