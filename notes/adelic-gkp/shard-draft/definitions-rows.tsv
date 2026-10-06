@@ -1,0 +1,2 @@
+id	term	shard	status	provenance	merged_from
+def:gkp-ladder-rung	ladder rung: integral step on a symplectic lattice, similitude cone, compatible form, lattice Weil form, invariant vacuum, Krein sign, CM type	report/sections/04za_adelic_gkp_ladder.tex	stipulated	-	notes/adelic-gkp/data-ladder.md section 0; notes/adelic-gkp/cone-bridge.md section 1; notes/adelic-gkp/registered-record.md section 8.1 (def:lattice-weil-form)

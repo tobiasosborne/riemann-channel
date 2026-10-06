@@ -1,0 +1,4 @@
+id	key	file	lines	quote	used_by
+prov:cs15-anti-equivalence	1501.02446	AVFp_final_.tex	688-689	which induces an anti-equivalence between $\AV_p^{\rm com}$ and the category of pairs $(T, F)$ given by a finite, free $\bZ$-module $T$ and an endomorphism $F:T\to T$ satisfying the following properties.	cit:centeleghe-stix-lattice-pairs
+prov:cs15-pair-conditions	1501.02446	AVFp_final_.tex	691-692	\item $F\otimes\bQ$ is semisimple, and its eigenvalues are non-real Weil $p$--numbers. \item There exists a linear map $V:T\to T$ such that $FV=p$.	cit:centeleghe-stix-lattice-pairs
+prov:mss13-hl-bound	1304.4132	IF1.tex	362-363	For every graph $G$ of maximum degree $d$, all of the roots of $\mu_{G} (x)$ have absolute value at most $2 \sqrt{d-1}$.	cit:heilmann-lieb-mss
