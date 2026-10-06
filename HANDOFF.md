@@ -48,7 +48,7 @@ recorded on their pages; the reduced one-lattice CM check of lane U written and 
 errors, no undefined references; `shard-draft/README.md`).
 
 **Next (in order).** (i) TJO's decision on registering `shard-draft/` (promotion to `proved` needs a reviewer of another model, per the gate). (ii) Merge
-`refs/manifest-2026-10-06-pending.txt`. (iii) Full REFUTE review of lanes R, S, U (a partial one by Fable exists: `notes/reviews/adelic-gkp-rsu-fable-2026-10-06.md`, 10 VALID on the
+`refs/manifest-2026-10-06-pending.txt`. (iii) Full REFUTE review of lanes R, S, U (a partial one by Fable exists: `notes/reviews/adelic-gkp-rsu-fable-2026-10-06.md`, 12 VALID on the
 recomputable or derivable statements, the pairing identities included; the 42 comparisons and the $N=8$ separation of lane U are unadjudicated); the $\varepsilon$-uniform version of the one-lattice CM check (`check_cm_tower.py` does the reduced form, 27/27). (iv) Shard 08j (unchanged). (v) Open items on the pages: which ideal class and principal form belong to
 $\mathrm{Jac}(C)$ for the genus-two curve (E); the genus-blind case $q=8$, $a=3$ (F; the pairing question is answered by U); the Petersen twist and a Howe-type criterion for
 Centeleghe–Stix objects (B); the CM version of the vacuum-point reading (G); $J(\mathbb F_{5^k})$ of the Fermat quartic (S); the twist family and higher

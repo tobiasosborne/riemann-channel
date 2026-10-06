@@ -8,7 +8,7 @@
   Fable alone. This file records the statements the orchestrator re-derived or recomputed from the statements only, in
   `notes/reviews/scratch_gkp_rsu_fable.py`, and leaves the rest unadjudicated. Nothing below promotes a status beyond what the pages say.
 
-**Headline.** 10 statements adjudicated: 10 VALID / 0 MINOR / 0 INVALID (two by derivation from standard inputs, U-L1 and U-L2 below). Unadjudicated: lane R's edge-share numerics and its full-rank proof; lane S's
+**Headline.** 12 statements adjudicated: 12 VALID / 0 MINOR / 0 INVALID (two by derivation from standard inputs, U-L1 and U-L2 below). Unadjudicated: lane R's edge-share numerics and its full-rank proof; lane S's
 Kani–Rosen decomposition, the group-law check on $E'$, and the companion order's trace-form rank; lane U's 42 PARI comparisons and the $N=8$ separation (its pairing identities are adjudicated by derivation below).
 
 ---
@@ -56,6 +56,23 @@ $(V^k-1)\tilde P=(q^k-1)\tilde P-V^km$, which lies in $L$ iff $N\mid q^k-1$ when
 exactly when $N\mid q^k-1$, as the page states. What remains numerical is only the normalisation of $\mu_N$ (the page's $\iota$), which is where the
 $N=8$ separation lives; that part is not adjudicated here.
 
+## U-C9 — one of the 42 comparisons, recomputed without the page's code
+
+**Claim.** For E1 over $\mathbb F_{64}$ ($E(\mathbb F_{64})=\mathbb Z/56$, $N=7$) the Tate pairing agrees with $c(\tilde P,(M^6-1)\tilde Q)$ up to $\mathrm{Aut}(\mu_7)$, and the
+six equivariant isomorphisms realise one coset of the squares in $(\mathbb Z/7)^\times$.
+
+**VERDICT U-C9: VALID.** `scratch_gkp_rsu_fable_c9.py`: PARI gives $\#E(\mathbb F_{64})=56$, the 2-Frobenius acting as multiplication by $45\equiv3$ mod 7
+on the cyclic group, Tate exponent 2 for $P=8g$, $Q=g$ with the root $\omega_7=g_0^{9}$; the lattice side has six fixed 7-torsion points on which $M$ acts
+as multiplication by 3 (so equivariant isomorphisms exist), and the scales over the six isomorphisms are $\{1,2,4\}$, one coset of the squares (the
+page reports the other coset for its own root normalisation; the claim is the coset structure, which holds).
+
+## S-B1 — the Frobenius of $E':y^2=x^3+4x$ over $\mathbb F_5$
+
+**Claim.** $\pi_{E'}=-1-2\iota$ with $\iota(x,y)=(-x,2y)$.
+
+**VERDICT S-B1: VALID.** Checked by the group law in PARI on all 32 points of $E'(\mathbb F_{25})$ (31 affine plus $O$): $(x^5,y^5)=[-1]P+[-2]\iota P$ at every
+point; $\#E'(\mathbb F_5)=8$, $\#E'(\mathbb F_{25})=32$, consistent with $1+2u+5u^2$.
+
 ## R-C5 — full rank for $\zeta$, rank $2g$ for a curve
 
 **Claim.** In the critical-zero model the Toeplitz form of translates has full rank on every window for $\zeta$ and rank $2g$ for a curve.
@@ -94,6 +111,5 @@ Tate pairing up to $\mathrm{Aut}(\mu_N)$). Recorded as consistency, not separati
 
 ## Statements left unadjudicated
 
-Lane R: B1–B5, B7–B10, C2–C4, D1–D5 (edge-share numerics, Toeplitz digits, $\Omega_D$). Lane S: A11–A13, B1–B6, C1–C10 (Kani–Rosen, $\pi_{E'}=-1-2\iota$,
-the companion order). Lane U: C1–C10 (the 42 comparisons and the $N=8$ separation, which depend on the $\mu_N$ normalisation), K1. These keep the statuses
+Lane R: B1–B5, B7–B10, C2–C4, D1–D5 (edge-share numerics, Toeplitz digits, $\Omega_D$). Lane S: A11–A13, B2–B6, C1–C10 (Kani–Rosen, the companion order). Lane U: C1–C8, C10 (the remaining comparisons and the $N=8$ separation, which depend on the $\mu_N$ normalisation), K1. These keep the statuses
 their pages give them.
