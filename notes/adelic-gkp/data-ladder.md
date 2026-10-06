@@ -23,6 +23,7 @@ equivalently the positivity of the Weil form $\tfrac12\Omega(M-V)$ (`lattice-tow
 | $\mathbb Z_2$ flux on a graph, ordinary ($K_4$, one negative edge) | $\mathbb Z^{2n}$ from the graph $=H_1$ of the lift of $E_2\times E_4\times\mathrm{Jac}(y^2+(x^2+x)y=x^5+1)$ | $M_s$ | yes iff the flux is Ramanujan | exists; differs from the vacuum by a sign per mode; $\Omega$ itself fails Howe, a unit twist repairs it | $2n$ | `howe-positivity.md`, `no-lift.md` |
 | $\mathbb Z_2$ flux, non-ordinary (Petersen, $K_5$) | $\mathbb Z^{2n}$ from the graph; arithmetically from the Centeleghe–Stix category, **no canonical lift**; glued, not a product | $M_s$ | yes; on the supersingular block $J=M/\sqrt q$ (quarter turn) | ordinary block: as above; supersingular block: **none selected** | $2n$ | `no-lift.md` |
 | genus two over $\mathbb F_q$ ($y^2=x^5+x^3+x^2-2$, $\mathbb F_5$) | $\mathbb Z^4$ | Frobenius | yes; the positive similitude forms are a cone $\sum_jt_j\,(\text{vacuum form on mode }j)$ and **RH is the cone being non-empty** | a further point of the cone; Rosati transported is not proportional to the vacuum form (weights 10.870, 20.171); it settles integrality, not RH | four | `cone-bridge.md` |
+| $\mathbb Z_N$ flux on a graph ($N=3,4,5,6$) | $\mathbb Z[\zeta_N]^{2n}$ by restriction of scalars; $\zeta_N$ is complex multiplication, not a lock | $M_\rho$, $M_\rho^\dagger\Omega M_\rho=q\Omega$ | yes iff every Galois-conjugate flux is in the band ($\rho$ and $\bar\rho$ have the same spectrum) | not run | $2n\varphi(N)$, each mode twice | `zn-flux.md` |
 | CM Hecke $L(\psi,s)$, $K=\mathbb Q(\sqrt{-7})$ (441d1, 49a1) | one lattice $\mathcal O_K$ for every split prime | one step $\psi(\mathfrak p)$ per prime, all commuting | one $J_K$ for all primes: **local RH free** | the complex structure of $K\otimes\mathbb R$ | infinitely many, **not determined by the local data** | `cm-lift.md` |
 | $\zeta$ | none known: $\mathbb Q^2$ is rigid and divisible (G3) | a flow (the squeeze group $C_{\mathbb Q}$), not an integral map | open (= RH) | none | infinitely many, all global | `adelic-gkp.md` §12 |
 
@@ -71,6 +72,12 @@ Each is *checked* on its page; together they say where not to look.
   there is $\Omega(x,Mx)>0$, a statement about the step alone.
 - **The lattice index is sign-blind** (`graph-ihara.md`): $|\det(m-nM)|$ carries no sign, so the count mechanism of curves does not transfer to a graph
   without flux.
+
+**The family rung** (lane D, `zn-flux.md`, *proved/checked*). Over the $N$-torsion of the Brillouin torus the average of $\det(x-A_\rho)$ equals the
+U(1) Haar average, which is the matching polynomial, for every $N$ (the determinant has degree at most one in each cotree variable); so "RH on
+average" holds for every finite-order family by Heilmann–Lieb, and it is a statement about the family, not about any one member. The Dirichlet
+analogue of the average is a Hurwitz partial zeta, which has zeros off the line (Davenport–Heilbronn, from memory): the family rung transfers the
+count-level orthogonality and the Galois orbits, and does not transfer the lattice, the step, the vacuum, or the average theorem.
 
 ## 3. Two levels: local and global
 
@@ -131,11 +138,13 @@ structure on the $\ell=1$ cokernel of $\mathcal O_K$; a positivity uniform over 
 - `lattice-tower.md` §5: (i)$\Rightarrow$(ii) needs the CM type $\Phi_+$ for $\Omega$; it holds for the graph steps the page was written for and fails for
   $M'=\bigl(\begin{smallmatrix}0&1\\-5&-2\end{smallmatrix}\bigr)$ (RH, Weil form negative definite). General form: (i) $\Leftrightarrow$ (iii) $\Leftrightarrow$ the Weil form
   of some compatible form is positive (lane E).
-- The lane B brief had $K_5$ at $q=4$; it is 4-regular, $q=3$, as the existing pages use.
+- The lane B brief had $K_5$ at $q=4$ and the lane D brief had $K_4$ and the cube at $q=3$; all are 3-regular except $K_5$ (4-regular), so $q=2$ and $q=3$
+  respectively, as the existing pages use.
 
 ## 6. Next
 
-- Lane D (a $\mathbb Z_N$ flux as the finite shadow of a Dirichlet family) is to be folded in here when it lands.
+- Lanes G (`zeta-ingredients.md`: which of the three ingredients exist for $\zeta$ on Connes's cokernel) and I (`gate-phases.md`: the local Fourier-gate
+  phases whose product is the root number) are to be folded in here when they land.
 - Lane F's open items: whether the Weil pairing is expressible as a datum of $\Theta_K$ itself; the genus-blind case ($q=8$, $a=3$, discriminant $-23$, three
   curves in one genus), predicted and not checked.
 - Which of the four ideal classes of $\mathcal O_K$ and which principal form belong to $\mathrm{Jac}(C)$ itself for the curve over $\mathbb F_5$ (lane E).
