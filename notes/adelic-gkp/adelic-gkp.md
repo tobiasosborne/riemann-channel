@@ -473,4 +473,15 @@ Figures `fig_*.png` are written by the check scripts into this directory. Nothin
 
 ## 16. Pages of 2026-10-06 (orchestrated session; synthesis in `data-ladder.md`)
 
-`curve-bridge.md` (lane A: the Riemann–Roch cokernel of the adelic qunaught is the Deligne module, Rosati $=$ vacuum form; counts do not fix the lattice), `no-lift.md` (lane B: non-ordinary fluxes, isogeny classes, Centeleghe–Stix, the supersingular block has no arithmetic $J$), `cm-lift.md` (lane C: the E mode's CM lift 441d1; one lattice and vacuum for all local factors, global zeros not determined by them), `cone-bridge.md` (lane E: genus two, the cone of similitude forms), `overlap-data.md` (lane F: which overlap data of the code see the lattice class). `data-ladder.md` is the synthesis: what data the zeros of $\zeta$ need in these terms.
+Lane pages, each with `checks/check_<name>.py` and its output: `curve-bridge.md` (A: the Riemann–Roch cokernel of the adelic qunaught is the companion
+lattice of the Deligne module, Rosati $=$ vacuum form; counts do not fix the lattice), `no-lift.md` (B: non-ordinary fluxes as Centeleghe–Stix
+objects, glued lattices, no arithmetic $J$ on the supersingular block), `cm-lift.md` (C: the E mode's CM lift 441d1; one lattice and vacuum for all
+local factors, global zeros not determined by them), `cone-bridge.md` (E: genus two, the cone of similitude forms, RH as its non-emptiness),
+`overlap-data.md` (F: overlaps see the order, the Weil pairing sees the class), `zn-flux.md` (D: $\mathbb Z_N$ fluxes, the $N$-torsion average is the
+matching polynomial), `gate-phases.md` (I: local Fourier-gate phases, product $=$ root number), `zeta-ingredients.md` (G: the three ingredients for
+$\zeta$ on Connes's cokernel), `ff-dirichlet.md` (J: Dirichlet characters of $\mathbb F_q(t)$, every ladder item at once), `family-vacuum.md` (M: which
+commuting families share a vacuum), `window-similitude.md` (R: the prime-dilation residual and the window). Records: `citations-2026-10-06.md`
+(28 of 43 quoted theorems byte-cited), `registered-record.md` (today's ladder against the claims database; shard recommendation), `shard-draft/`
+(a draft shard and claim rows, not registered). Reviews: `notes/reviews/adelic-gkp-{lattice,arithmetic,zeta,ff-family}-2026-10-06.md`
+(79 VALID / 17 MINOR / 3 INVALID in all; the INVALIDs were in the synthesis and are corrected there). `data-ladder.md` is the synthesis: what data
+the zeros of $\zeta$ need in these terms.
