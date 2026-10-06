@@ -186,6 +186,9 @@ is consistent with this, because $\mathcal T$ is the Weil form for the generator
 
 ## 6. Status and checks
 
+*Review 2026-10-06 (`notes/reviews/adelic-gkp-zeta-2026-10-06.md`, 6 VALID / 5 MINOR / 2 INVALID, both INVALIDs in the synthesis, none on this page):* G0, $F_h$ "(this is $\hat h(s)$)" is off by $s\mapsto s-\tfrac12$ from `analytic.md`'s $\hat h$ (§1.1 uses $\hat h$, §3.2 the normalised $h^\natural$). G3, "unaffected by normalisation" is false for "$B=G_J$": every positive form invariant under all steps is the vacuum form of some compatible $\Omega$ (04t `thm:bond-positive-metric-criterion`(d)), so "vacuum point" says that $B$ is invariant under the whole family and nothing more; indefiniteness, the singular weights and the absence of a common $\Omega_p$ are normalisation-independent.
+
+
 *Citation correction 2026-10-06 (`notes/adelic-gkp/citations-2026-10-06.md`):* Connes's Theorem 1 (`math/9811068`) realises the critical zeros in the cokernel of a weighted space $L^2_\delta(C_k)$ with $\delta>1$, where the action is not unitary and multiplicities are capped at $n<(1+\delta)/2$; in plain $L^2(C_{\mathbb Q})$ there is no such statement (off-line zeros would appear as resonances). §§1–2 of this page say "$L^2$"; read $L^2_\delta$.
 
 
