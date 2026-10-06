@@ -203,6 +203,14 @@ C, J), families of complex multiplications in one structure, not the Hecke famil
   $N=2$); this page's "up to sign" is "at every $p\ne3$"; the phase at 7 is the normalised Gauss sum, the squeeze supplies the conductor. The reviewer
   recalls every "from memory" theorem the same way; the Centeleghe–Stix functor is contravariant.
 
+- `citations-2026-10-06.md` (lane N): of 43 theorems quoted from memory on the ten pages, 28 are now byte-cited (`id:file:line`, verified byte-exact)
+  against TeX sources on disk (six to the paper named, 22 to an arXiv paper restating a result whose own source is not on arXiv), 15 are cited
+  bibliographically; new sources are listed in `refs/manifest-2026-10-06-pending.txt` for merging into `refs/fetch_sources.sh` and the manifest.
+  Three discrepancies, annotated on the pages: 49a2 is not a twist of 49a1 (`cm-lift.md`); Connes's realisation lives in $L^2_\delta$, $\delta>1$, not
+  $L^2$ (`zeta-ingredients.md`); Chai–Conrad–Oort: CM lifts need no field extension (`no-lift.md`). Settled: the Centeleghe–Stix functor is
+  contravariant with a covariant version; Oswal–Shankar need odd $p$ and a simple variety, Bergström–Karemaker–Marseglia a squarefree Weil
+  polynomial, so neither covers $K_5$.
+
 ## 5. Corrections to earlier pages (recorded here; the pages carry a one-line annotation)
 
 - `lattice-tower.md` §1 table and §6, `adelic-gkp.md` G12(ii): the Pauli-six lattice ($x^2+2x+5$, groups $\mathbb Z/8$) belongs to $y^2=x^3+4x\pm1$ over

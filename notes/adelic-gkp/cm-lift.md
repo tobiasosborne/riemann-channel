@@ -193,6 +193,9 @@ This sits awkwardly with `lattice-tower.md` §7.3, which proposes to read zeros 
 
 ## 5. Status and checks
 
+*Citation correction 2026-10-06 (`notes/adelic-gkp/citations-2026-10-06.md`):* CM by the maximal order of $\mathbb Q(\sqrt{-7})$ means $j=-3375$, so every such curve over $\mathbb Q$ is a twist of 49a1; 49a2 has $j=255^3$ and CM by $\mathbb Z[\sqrt{-7}]$ (PARI), so the clause "or 49a2" in §1 is to be dropped.
+
+
 | statement | status | check |
 |---|---|---|
 | E mode: $a_2=-1$, polynomial $x^2+x+2$; 49a1 has $a_2=+1$ and reduces to the twist ($-M$) | standard; checked | A2, A3 |
