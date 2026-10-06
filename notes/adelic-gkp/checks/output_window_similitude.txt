@@ -1,0 +1,69 @@
+== A. The zero-sum model; translation is unitary for it
+PASS  A1 zeros file: 3000 increasing ordinates, gamma_1 = 14.134725..., K = 1000 used (gamma_1000 = 1419.4225)
+PASS  A2 Z_K(U_t h) = Z_K(h) for a random smooth h and t = log 2, log 3, 2 log 5, 0.37 (transforms by independent quadrature)  max relative difference 1.4e-15
+PASS  A3 hard window: closed-form transforms and the closed-form compressed translation M = P chi U_log2 agree with quadrature  transform 7.8e-15, M 3.7e-15
+PASS  A4 Hermite basis: hat(psi_k(u/s)/sqrt s)(g) = sqrt(2 pi s) i^k psi_k(s g), and the psi_k are orthonormal on the grid  3.5e-13
+      [9 s]
+
+== B. The compressed translation by log 2 in three bases
+      low block: |n| <= 3 in (a), k < 7 in (b); 'own' = lane G's best-c residual on the block, 'whole' = ||R_low||_2 / ||A||_2
+      basis  L      n    best c   residual  low: own / whole       interior frac  1 - log2/L  leading-10 res
+      a     2.56    81   0.613    0.477     3.8e-01 / 5.2e-02      0.642         0.730       5.98e-01
+      a     2.56   321   0.677    0.464     3.8e-01 / 3.6e-02      0.701         0.730       5.79e-01
+      a     4.61    81   0.723    0.439     3.9e-01 / 2.3e-02      0.765         0.849       5.29e-01
+      a     4.61   321   0.747    0.433     4.0e-01 / 1.5e-02      0.822         0.849       5.13e-01
+      a     8.00    81   0.844    0.355     6.2e-01 / 3.2e-03      0.840         0.913       3.54e-01
+      a     8.00   321   0.835    0.369     9.3e-01 / 4.5e-03      0.891         0.913       4.28e-01
+      a    16.00    81   0.915    0.226     3.7e-01 / 1.0e-03      0.901         0.957       1.98e-01
+      a    16.00   321   0.915    0.274     3.8e-01 / 5.8e-04      0.938         0.957       1.86e-01
+      a    16.00   641   0.914    0.278     4.3e-01 / 7.2e-04      0.945         0.957       nan
+      a    32.00   321   0.957    0.190     3.0e-01 / 1.7e-04      0.963         0.978       1.49e-01
+      b     2.56    81   0.548    0.491     1.8e-06 / 1.1e-06      0.580         0.730       6.18e-01
+      b     2.56   321   0.595    0.489     2.1e-15 / 1.6e-13      0.636         0.730       5.52e-01
+      b     4.61    81   0.669    0.465     6.4e-16 / 6.8e-14      0.728         0.849       5.16e-01
+      b     4.61   321   0.715    0.450     7.8e-16 / 9.4e-14      0.785         0.849       4.67e-01
+      b     8.00    81   0.793    0.409     9.2e-15 / 5.7e-16      0.827         0.913       3.39e-01
+      b     8.00   321   0.805    0.396     1.1e-15 / 4.4e-14      0.866         0.913       3.96e-01
+      b    16.00    81   0.876    0.324     2.5e-04 / 8.8e-29      0.889         0.957       2.11e-01
+      b    16.00   321   0.890    0.311     9.5e-15 / 3.0e-16      0.925         0.957       2.03e-01
+      b    16.00   641   0.895    0.306     1.1e-15 / 2.6e-14      0.933         0.957       nan
+      b    32.00   321   0.943    0.234     3.5e-04 / 2.4e-29      0.956         0.978       9.85e-02
+      c     2.56    59   0.535    0.499     interior block 5.3e-15   0.729 (L2 compression 0.729)  0.730
+      c     4.61   106   0.729    0.444     interior block 1.0e-14   0.849 (L2 compression 0.849)  0.849
+      c     8.00   185   0.836    0.371     interior block 2.2e-14   0.914 (L2 compression 0.914)  0.913
+      c    16.00   369   0.915    0.279     interior block 4.5e-14   0.957 (L2 compression 0.957)  0.957
+      c    32.00   739   0.957    0.202     interior block 1.1e-13   0.978 (L2 compression 0.978)  0.978
+PASS  B1 (a) the zero-sum model reproduces lane G's whole-window residuals (full Weil form, N = 160): 0.464 at x = 13, 0.433 at x = 100  0.464, 0.433
+PASS  B2 (a) on the low Fourier modes |n| <= 3 lane G's best-c residual on the block is O(1) (> 0.25) at every L from log 13 to 32 and both n: the hard edge is in every mode (against the whole form the block's defect shrinks with L, as its share of the form does)  own [0.38, 0.4, 0.93, 0.38, 0.3], whole [0.036, 0.015, 0.0045, 0.00058, 0.00017]
+PASS  B3 (a) the interior fraction (residual <= 1e-6) increases with L and lies in [1 - log2/L - 0.04, 1 - log2/L] at n = 321  [0.701, 0.822, 0.891, 0.938, 0.963] against [0.73, 0.849, 0.913, 0.957, 0.978]
+PASS  B4 (b) smooth window: on the first 7 Hermite functions the residual is below 1e-12 of the whole form at every L for n >= 321 (at n = 81 the largest is 1.1e-6, at L = log 13 where s sqrt(14) is comparable to log 2)  max over n >= 321: 1.6e-13; over n = 81: 1.1e-06
+PASS  B5 (b) the interior fraction increases with L, within 0.05 of the phase-space estimate 1 - (4/pi) log2/L (n = 321)  [0.636, 0.785, 0.866, 0.925, 0.956] against [0.656, 0.808, 0.89, 0.945, 0.972]
+PASS  B6 (c) Gaussian frame, d = log2/16: M^T G M = G exactly on the interior frame elements (all but the last m = 16), so the interior fraction is exactly 1 - m/J = 1 - log2/L; the L2-orthogonal compression agrees there  interior-block residual max 1.1e-13; fractions [0.729, 0.849, 0.914, 0.957, 0.978]
+PASS  B7 the whole-space best-c residual of the frame shift, which is exact on the interior, matches the hard window's at every L (within 0.04): the 'residual near 0.4' measures the edge share, not a failure of the dilation  frame [0.499, 0.444, 0.371, 0.279, 0.202], hard window [0.464, 0.433, 0.369, 0.274, 0.19]
+PASS  B8 the whole-space residual decreases from L = log 100 to 32 in all three bases, like (log2/L)^(1/2): residual * sqrt(L/log2) stays in [0.85, 1.7] (n = 321)  {'a': [0.89, 1.12, 1.25, 1.31, 1.29], 'b': [0.94, 1.16, 1.34, 1.49, 1.59], 'c': [0.96, 1.15, 1.26, 1.34, 1.38]}
+PASS  B9 the residual is not an N effect: at L = 16, n = 321 -> 641 changes the whole-space residual by < 0.01 in (a) and (b)  (a) 0.274 -> 0.278; (b) 0.311 -> 0.306
+PASS  B10 the leading 10 eigenvectors of the windowed form are not interior in (a) or (b): their residual is > 0.05 at every L and falls from L = log 13 to 32 (they fill the window, so they carry the edge share)  (a) [0.58, 0.51, 0.43, 0.19, 0.15], (b) [0.55, 0.47, 0.4, 0.2, 0.1]
+      [23 s]
+
+== C. The Gram matrix of translates by log 2 is Toeplitz, and its entries are the prime side's windowed Weil form
+PASS  C1 the zero-sum Gram matrix of the translates h(. - j log 2), j = 0..8, is Toeplitz (Gaussian and dyadic window): this is translation unitarity, i.e. the shift j -> j+1 is an exact similitude on the interior block  max |G[j+1,k+1] - G[j,k]| / max|G| = 7.7e-15
+PASS  C2 Gaussian window (tau = 0.1): the Toeplitz entries nu_d = Z(h, U_{d log 2} h), d = 0..8, from 1000 zeros equal the explicit formula (pole - primes - archimedean, no zeros used)  max relative difference 1.1e-14 (about 13 digits); nu_0..2 = 1.881161e-02, -1.650444e-02, 1.130336e-02
+      dyadic window h = 1_[0, log 2]: |zero sum - explicit formula| (raw / with smooth tail)
+      K =  500: d = 0: 4.98e-03 / 3.81e-04;  d = 1: 2.54e-03 / 2.45e-04;  max over d = 2..8: 3.48e-05 / 3.51e-05   (nu_0 = 0.12711)
+      K = 1000: d = 0: 3.10e-03 / 2.20e-04;  d = 1: 1.58e-03 / 1.42e-04;  max over d = 2..8: 1.52e-05 / 1.47e-05   (nu_0 = 0.12711)
+      K = 3000: d = 0: 1.41e-03 / 8.83e-05;  d = 1: 7.17e-04 / 5.69e-05;  max over d = 2..8: 3.37e-06 / 3.36e-06   (nu_0 = 0.12711)
+PASS  C3 dyadic window: the zero sum converges to the explicit-formula entries as K = 500, 1000, 3000; on d = 0, 1 the error is the smooth Riemann-von Mangoldt tail (removing it leaves < 15% of the raw error); for d >= 2 the raw error is < 4e-5  relative error on nu_0 at K = 1000: raw 2.4e-02, after tail 1.7e-03
+PASS  C4 the 9 x 9 Toeplitz matrices built from the prime side alone are positive definite (Weil positivity on the span of the translates), with the zero-sum Gram matrix as its spectral model  Gaussian: eigenvalues in [3.32e-08, 8.19e-02]; dyadic: [1.38e-03, 3.03e-01]
+PASS  C5 rank: a curve's Toeplitz form (trace sequence of 2g = 4 Frobenius angles) has rank 4 on every window of length >= 4; zeta's has full rank 9 (atoms gamma log 2 mod 2 pi, infinitely many)  ranks 4, dyadic 9, Gaussian 9
+      [23 s]
+
+== D. Omega_D(h, g) = Z(h, D^{-1} g) as a pairing on test functions
+      Omega_D(h, g) from the zero sum, K = 1000: +1.664480653814e-03 (imaginary part 0.0e+00)
+PASS  D1 kernel formula: Omega_D(h, g) = int int h(u) conj g(v) K(u - v) du dv with the odd kernel K(x) = sum_{gamma>0} 2 sin(gamma x)/gamma = (C * sgn/2)(x), C = sum_gamma e^{i gamma x} the zero distribution  kernel +1.664480653815e-03, |diff| 8.2e-16
+PASS  D2a the closed form of the antiderivative H * g (H the Heaviside function) is right: it vanishes at both ends (g has mean zero, so H * g = (sgn/2) * g) and matches direct integration  ends -1.5e-24, -1.5e-24
+PASS  D2b Omega_D(h, g) = Z_K(h, H * g): the zero-sum form against the antiderivative, transformed by quadrature  +1.664480653814e-03, |diff| 4.3e-19
+PASS  D3 Omega_D(h, g) = B(h, H * g) computed from the prime side (explicit formula on the pair function of h and H * g) equals the zero sum over 1000 zeros  explicit formula +1.664480653814e-03, |diff| 1.2e-17
+PASS  D4 antisymmetry from the prime side alone: Omega_D(h, g) + Omega_D(g, h) = 0 for real mean-zero h, g (the Loewner identity of lane G B5, on the line instead of the window)  +1.664481e-03 + (-1.664481e-03) = 2.4e-18
+PASS  D5 the kernel of Omega_D is the integrated Weil distribution, K' = W: for 0 < x1 < x2, K(x2) - K(x1) = [4 sinh(x/2)] - sum_{x1 < log n < x2} Lambda(n)/sqrt n - int dx/(e^{x/2} - e^{-3x/2}); its prime part is the weighted Chebyshev staircase (x1 = log 2.5, x2 = log 34.5, zero side smoothed at sigma = 0.005)  zeros -0.028783, primes -0.028805 (staircase 8.569395), |diff| 2.2e-05
+
+25 of 25 pass   [32 s]

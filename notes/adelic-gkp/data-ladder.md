@@ -138,8 +138,13 @@ Absent, by the ladder:
    $\Omega$ serves two primes**. Relative to the one pairing the notebook already has, the functional-equation pairing $\Omega_{\rm FE}$ of shard 04t,
    every prime step's Weil form is indefinite and $B$ is the **vacuum point**, the analogue of lane C's shared $G_{J_K}$; it is a Weil-form point
    only for the infinitesimal generator $D$, with Williamson weights $|\gamma|$, which is tautological (as $\mathcal T$ in analytic §14 is the Weil form
-   for the generator $F$ only). In the window the compressed dilation by 2 is a similitude of the Gram form only on functions supported away from
-   the edge; on the whole window the residual stays near $0.4$ for $N\le160$ and $x\le100$ (*negative finding*). So what $\zeta$ lacks is neither a symplectic partner for one step ($\Omega_p$) nor a form compatible with the whole family: $\Omega_{\rm FE}$ on zero
+   for the generator $F$ only). In a window the prime steps survive exactly as the Toeplitz shift (lane R, `window-similitude.md`, *checked*, 25/25): Weil's form is invariant
+   under every translation $u\mapsto u+\log p$ before RH, so the Gram matrix of the translates $h(\cdot-j\log p)$ is Toeplitz (its entries are the echo
+   $C_h(d\log p)$, the notebook's windowed Weil form; zero side against prime side to 13 digits for a Gaussian window), and the compressed step is an
+   exact similitude on all but a fraction $O(\log p/L)$ of any window basis (exactly $1-\log2/L$ for a frame of translates). Lane G's residual near
+   $0.4$ is that edge share in the Frobenius norm and decays roughly like $(\log p/L)^{1/2}$; the negative finding is withdrawn. What the prime steps
+   lack is not similitude but a finite-rank integral structure: $\zeta$'s Toeplitz form has full rank on every window, one atom $\gamma\log p$ mod
+   $2\pi$ per zero (Carathéodory–Toeplitz, from memory), where a curve's has rank $2g$, so there is no lattice for the shift to act on. So what $\zeta$ lacks is neither a symplectic partner for one step ($\Omega_p$) nor a form compatible with the whole family: $\Omega_{\rm FE}$ on zero
    spans and $\Omega_D=B(\cdot,D^{-1}\cdot)$ on the test algebra are compatible with every step (review S2b, checked for $a=2,3,5$ with an off-line
    quartet), and no understood family has one $\Omega$ for which a fixed form is every step's Weil form. What is missing is a reason for the
    family-invariant point $B$ to be positive; the Deninger metric cone of shard 04u remains the analogue of the cone, and that reason, ampleness
@@ -262,7 +267,8 @@ trace form in 08b and $\tfrac12\Omega(M-V)$ here. Lanes B and D were not cross-c
 
 ## 6. Next
 
-- Lane G's next: a description of $\Omega_D$ that does not go through $B$; the prime-step similitude test in a smooth window basis; the CM version of the
+- Lane R settles lane G's two next items: $\Omega_D(h,g)=B(h,H*g)$ with $H*g$ the antiderivative, kernel $K=\sum_\gamma2\sin(\gamma x)/\gamma$ with $K'=$ Weil's
+  distribution (prime part the weighted Chebyshev staircase), natural but no new datum; the smooth-window test is above. Remaining: the CM version of the
   vacuum-point reading. The REFUTE reviews of the arithmetic quartet and of the $\zeta$ pages (`notes/reviews/adelic-gkp-*-2026-10-06.md`) are to be folded in when they
   land. Lane J's open items: which lattice in the isogeny class is $H_1$ of the $\chi$-part and its polarisation ($\Omega_+$ is not principal); a twisted curve.
 - `notes/weil-bond-analytic/checks/metric_blocker_checks.py` imports `scripts/rtp2_blind_recovery.py`, which needs Python 3.12 (`math.sumprod`); it does not run on 3.11.
