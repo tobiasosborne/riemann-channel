@@ -162,6 +162,9 @@ sees.
 
 ## 7. Status and checks
 
+*Review corrections 2026-10-06 (`notes/reviews/adelic-gkp-lattice-2026-10-06.md`):* Lemma 1, bullet 2: base-change compatibility alone does not make a relabelling $\pi$-equivariant (it allows permutations inside a Frobenius orbit); the hypothesis is Frobenius compatibility. At $n=4$ the Weil pairing does not separate the two $q=7$ curves; the detecting level is 8.
+
+
 | statement | status | checks |
 |---|---|---|
 | E3: trace-2 curves are $j=4,5$; $\mathbb Z[\pi]=\mathcal O_K$, $h=2$, forms $(1,0,6),(2,0,3)$ | checked | C1, C2 |

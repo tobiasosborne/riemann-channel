@@ -189,6 +189,9 @@ Howe's unit $P$ takes the values $p(\lambda)=(-\varphi^3,-1,1,\varphi^{-3})$ on 
 
 ## 6. Status and checks
 
+*Review corrections 2026-10-06 (`notes/reviews/adelic-gkp-lattice-2026-10-06.md`):* (1) The headline's "four primes give $\Phi_+$" is wrong; PARI gives 2 of type $\Phi_+$, 2 of $\overline{\Phi_+}$, 2 of $\Omega_{\rm can}$'s type and 2 conjugate, as the body states. (2) §5.3: the counterexample $M'$ stands, but the proposed general form "(i) $\Leftrightarrow$ (iii) $\Leftrightarrow$ the Weil form of some compatible form is positive" is false without excluding real eigenvalues: $M_r=B\oplus2B^{-T}$ with $B=\bigl(\begin{smallmatrix}0&2\\1&0\end{smallmatrix}\bigr)$ has eigenvalues $\pm\sqrt2$, satisfies (i) and (iii), and every compatible Weil form vanishes identically. (3) The $K_4$ negative finding holds for every principal polarisation, not only for the unit $P$ used.
+
+
 | statement | status | checks |
 |---|---|---|
 | L-polynomial, counts, ordinariness, $\mathrm{disc}\,O_K$, $h_K=4$ | checked (PARI, brute force) | C1–C4 |

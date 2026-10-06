@@ -204,6 +204,9 @@ Ordered by what determines what, for an ordinary elliptic curve $E/\mathbb F_q$.
 
 ## 7. Status and checks
 
+*Review corrections 2026-10-06 (`notes/reviews/adelic-gkp-lattice-2026-10-06.md`, 22 VALID / 6 MINOR / 0 INVALID):* (1) $S$ maps the cokernel onto the companion lattice $\mathbb Z[F]$, not onto "the Deligne module" in general: for $y^2=x^3+4x$ over $\mathbb F_5$ and for one of the two $q=7$ curves the smallest integral intertwiner has determinant 2 and the vacuum form pulls back doubled, so the integral map and the exact scalar hold for $\mathbb Z[F]$. (2) The reviewer checked the $q=7$ groups on the curves themselves to $k\le24$ (this page: $k\le8$). (3) The count 22860 includes the diagonal $P=Q$; off the diagonal it is 21690.
+
+
 | statement | status | checks |
 |---|---|---|
 | Deligne modules of E1, E2, E3; the Weil form of a step is its Latimer–MacDuffee form; lattice classes = reduced positive forms | standard / proved here; checked | D1–D3 |
