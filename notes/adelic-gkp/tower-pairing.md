@@ -193,6 +193,9 @@ tower sees the class. For $D=-23$ ($q=8$, $a=3$) it should see nothing.
 
 ## 6. Status and checks
 
+*Orchestrator's reading pass 2026-10-06 (`claude:fable-5.1`; not a REFUTE review, which was stopped when the session went Fable-only):* status table read; the identity $\Lambda_k^\perp=(1-M^k)^{-1}L$ re-derived independently for E1, $k\le5$; the pairing identities rest on the 42 numerical comparisons and the sketched Deligne/Schaefer argument, as the table says; the $N=8$ separation is the result the synthesis uses.
+
+
 | statement | status | checks |
 |---|---|---|
 | $\Lambda_k^\perp=(1-M^k)^{-1}L$; $L\subset\Lambda_k^\perp$; phases Lagrangian, dual to the points; $c$ non-degenerate | proved here; checked | S1, S5, S7 |
