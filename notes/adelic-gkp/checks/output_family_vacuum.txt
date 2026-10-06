@@ -1,0 +1,47 @@
+== M1  two one-mode steps on Z^2; the commuting case; the proposition
+PASS  M1 symbolic: V_q = q M_q^{-1} = [[lambda,1],[-q,0]], M_q - V_q = [[-lambda,-2],[2q,lambda]]
+PASS  M1 symbolic: M_q M_q' - M_q' M_q = [[q - q', lambda - lambda'],[q' lambda - q lambda', q' - q]]  [[q - q', lambda - lambda'], [lambda*q' - lambda'*q, -q + q']]
+PASS  M1 symbolic: M_q V_q' = [[q', 0],[q lambda' - q' lambda, q]], lower triangular with eigenvalues q', q (real), whatever lambda, lambda'  [[q', 0], [-lambda*q' + lambda'*q, q]]
+PASS  M1 symbolic: J_q = J_q' (with d = sqrt(4q - lambda^2) > 0) forces (d', lambda', q') = (d, lambda, q); J_q = -J_q' has no solution with d, d' > 0  solutions: [{d': d, lambda': lambda, q': q}], []
+PASS  M1 numeric, 6 steps (q,lambda) in {(2,-1),(5,-2),(7,2),(13,3),(13,-3),(17,0)}: each J_q is a vacuum for Omega = [[0,1],[-1,0]]; for all 15 pairs J_q != +-J_q' and M_q, M_q' do not commute
+PASS  M1 2x2: a matrix with non-real eigenvalues determines its complex structure up to sign, so a common vacuum of two such steps exists iff they commute: here it fails for all 15 pairs; for some pairs the normalised product S_q S_q' is even hyperbolic (|tr| > 2), so no Omega at all admits a common vacuum  hyperbolic products: [((2, -1), (7, 2), np.float64(-2.9399)), ((2, -1), (13, 3), np.float64(-3.5301)), ((2, -1), (13, -3), np.float64(-2.3534)), ((2, -1), (17, 0), np.float64(-3.2585)), ((5, -2), (7, 2), np.float64(-2.7045)), ((5, -2), (13, 3), np.float64(-2.9768)), ((5, -2), (17, 0), np.float64(-2.3862)), ((7, 2), (13, -3), np.float64(-2.7255)), ((7, 2), (17, 0), np.float64(-2.2001)), ((13, 3), (13, -3), np.float64(-2.6923)), ((13, 3), (17, 0), np.float64(-2.018)), ((13, -3), (17, 0), np.float64(-2.018))]
+PASS  M1 CM family on O_K (lane C): the four Hecke steps commute, share the vacuum J_K, have |eigenvalue| = sqrt p, and their Weil forms for one Omega have both signs  Weil-form signs: {'psi(P_2) = w': 1, 'conj = 1 - w': -1, 'psi(P_11) = 1 + 2w': 1, 'conj = 3 - 2w': -1}
+PASS  M1 prop. setup: random P with P^T Omega P = Omega (n = 3 modes, block coordinates)
+PASS  M1 prop. family: three commuting steps of norms 2, 3, 5, each semisimple with |eigenvalues| = sqrt q, compatible with one Omega
+PASS  M1 prop. (iii)=>(i): the torus average G of a random positive form is invariant (M^T G M = q G); J = -A(-A^2)^{-1/2}, A = G^{-1} Omega, is a common vacuum (J^2 = -1, commutes with all three, Omega J > 0)
+PASS  M1 prop.: here the common vacuum is unique and equals P (+R(pi/2) per mode) P^{-1}, although the three Weil forms are indefinite
+PASS  M1 prop.: semisimplicity is needed: sqrt2 [[R,1],[0,R]] has |eigenvalues| = sqrt 2 but its normalised powers are unbounded (no vacuum for any Omega)
+== M2  the Hecke family of the (13,17;5) LPS complex at vertex level
+PASS  M2 |S_13| = 14, |S_17| = 18, |PGL_2(F_5)| = 120, phi multiplicative on the generators
+PASS  M2 A_13, A_17 symmetric 0/1 matrices, regular of degree 14 and 18, and they commute (exactly, integer arithmetic)
+PASS  M2 one orthogonal U diagonalises both (off-diagonal < 1e-9)
+      joint eigenvalues (lambda_13, lambda_17): multiplicity  (-14,-18): 1, (-4,-5): 12, (-4,-3): 4, (-4,0): 18, (-2,2): 15, (-2,6): 10, (2,-6): 10, (2,-2): 15, (4,0): 18, (4,3): 4, (4,5): 12, (14,18): 1
+PASS  M2 trivial (14, 18) and bipartite sign (-14, -18) eigenvalues have multiplicity one; the other 118 dimensions split into 10 joint eigenspaces, all integral eigenvalues
+PASS  M2 Ramanujan, strictly: |lambda_13| < 2 sqrt 13 = 7.211 and |lambda_17| < 2 sqrt 17 = 8.246 on the 118-dimensional part W
+PASS  M2 M_q = [[0,-I],[qI,A_q]] is integral with M_q^T Omega M_q = q Omega for Omega = [[0,I],[-I,0]], q = 13, 17 (one Omega for both)
+PASS  M2 the steps do not commute: M_13 M_17 - M_17 M_13 equals the block form of the 2x2 formula [[q - q', A - A'],[q' A - q A', q' - q]] = [[-4 I, A_13 - A_17],[17 A_13 - 13 A_17, 4 I]]  max |entry| = 17
+PASS  M2 (a) J_q = (M_q - V_q)(4q - A_q^2)^{-1/2} on W (x) R^2 (236 dims) is a vacuum of M_q for q = 13 and q = 17 (J^2 = -1 on W, commutes, Omega J > 0 on W)
+PASS  M2 (a) the Weil form (1/2) Omega (M_q - V_q) of each step is positive definite on W for the shared Omega (every mode has sin(theta) > 0): the mirror image of the CM family (shared vacuum, Weil forms of both signs)  min positive eigenvalue: 0.675, 0.456
+PASS  M2 (a) the vacua differ: ||J_13 - J_17|| > 0, J_17 does not commute with M_13 nor J_13 with M_17  max |J_13 - J_17| = 0.614
+PASS  M2 (b) commutant of {M_13, M_17} on W (x) R^2 has dimension sum_j m_j^2 = 1618, and every element is I_2 (x) X_j on each joint eigenspace  computed 1618; multiplicities [4, 4, 10, 10, 12, 12, 15, 15, 18, 18]
+PASS  M2 (b) for comparison the commutant of M_13 alone has dimension 2 sum m^2 over eigenvalues of A_13 (C-linear maps per eigenspace) = 7124  computed 7124; A_13 multiplicities [(np.float64(-4.0), 34), (np.float64(-2.0), 25), (np.float64(2.0), 25), (np.float64(4.0), 34)]
+PASS  M2 (b) no element of the commutant is positive for Omega: Omega(e (x) v, (I (x) X)(e (x) v)) = omega(e,e) v^T X v = 0 on every joint eigenspace
+PASS  M2 (b) two joint eigenspaces have odd multiplicity (15): there the commutant contains no complex structure at all  odd multiplicities: [15, 15]
+      normalised trace of S_13 S_17 per joint eigenspace: (-4,-5): -0.6727, (-4,-3): -1.2108, (-4,0): -2.018, (-2,2): -2.2871, (-2,6): -2.8252, (2,-6): -2.8252, (2,-2): -2.2871, (4,0): -2.018, (4,3): -1.2108, (4,5): -0.6727
+PASS  M2 (b) Omega-independent obstruction: on 6 of the 10 joint eigenspaces S_13 S_17 is hyperbolic (|tr| > 2: lambda_13 lambda_17 <= 0 gives tr <= -(r + 1/r) < -2, r = sqrt(13/17)); the integral product M_13 M_17 has eigenvalues off |mu| = sqrt 221, so no compatible form of any kind admits a vacuum invariant under the family  eigenvalues of M_13 M_17 (240 of them) with |mu| != sqrt 221: 176 (4 of these come from the trivial and sign modes)
+PASS  M2 (b) exact identity: V_17 = [[A_17, I],[-17 I, 0]] and M_13 V_17 = [[17 I, 0],[13 A_17 - 17 A_13, 13 I]] (integral, block lower triangular, eigenvalues 17 and 13, each 120 times): S_13 S_17^{-1} has real eigenvalues sqrt(17/13), sqrt(13/17) on every mode
+      shortest hyperbolic word per plane: (-4,-5): S13.S17^-1 tr 2.018; (-4,-3): S13.S17^-1 tr 2.018; (-4,0): S13.S17 tr -2.018; (-2,2): S13.S17 tr -2.287; (-2,6): S13.S17 tr -2.825; (2,-6): S13.S17 tr -2.825; (2,-2): S13.S17 tr -2.287; (4,0): S13.S17 tr -2.018; (4,3): S13.S17^-1 tr 2.018; (4,5): S13.S17^-1 tr 2.018
+PASS  M2 (b) on every one of the 10 joint eigenspaces some word of length <= 4 in S_13^{+-1}, S_17^{+-1} (integral up to scale: V_q = q M_q^{-1}) is hyperbolic, so the family has no common vacuum for any compatible Omega on any joint eigenspace
+PASS  M2 (c) on each joint eigenspace the normalised 2x2 steps S_13, S_17 do not commute (diagonal of [M,M'] is q - q' = -4 != 0), so no choice of plane coordinates makes both rotations of one plane  min ||[S_13, S_17]|| over the 10 planes = 0.4359
+PASS  M2 (c) the rotation family sqrt(q) R(+-theta_q^j) on each plane commutes and shares R(pi/2) for all four sign choices, with the same spectra as M_q; it is a different family (not simultaneously conjugate to (M_13, M_17), whose commutator is non-zero)
+== M3  the zeta family: prime steps on the first 50 zero pairs
+PASS  M3 data/zeros3000.npy: first 50 ordinates, gamma_1 = 14.1347, gamma_50 = 143.1118  gamma_50 = 143.111846
+PASS  M3 M_2, M_3, M_5 (100 x 100) commute pairwise
+PASS  M3 M_p^T Omega_FE M_p = p Omega_FE; M_p/sqrt(p) orthogonal; all eigenvalues of modulus sqrt(p)
+PASS  M3 J = R(pi/2) on every pair: J^2 = -1, Omega_FE J = I > 0, and J commutes with M_2, M_3, M_5: one vacuum for the family
+PASS  M3 the Weil form of each M_p for Omega_FE has eigenvalues sqrt(p) sin(gamma log p) (each twice): indefinite for p = 2, 3, 5 (lane G)  negative eigenvalues of 100: [(2, 52), (3, 48), (5, 46)]
+PASS  M3 M_p V_p' = sqrt(pp') R(gamma log(p/p')) on every pair: elliptic (contrast M2, where M_q V_q' has real eigenvalues q, q')
+PASS  M3 every product M_p M_p' is sqrt(pp') times a rotation (by gamma log pp'): the normalised semigroup is bounded, no hyperbolic element (contrast M2)
+PASS  M3 contrast: Bass-doubled steps [[0,-1],[p, 2 sqrt(p) cos(gamma log p)]] per zero have the same spectra as M_p but do not commute, and their products are hyperbolic on many zeros (and B_p B_p'^{-1} on all, by the M1 identity), exactly as the graph family: the difference is the realisation, not the spectral data  zeros (of 50) with S_p S_p' hyperbolic: {(2, 3): 26, (2, 5): 32, (3, 5): 31}
+
+39 of 39 pass  (3.9 s)
