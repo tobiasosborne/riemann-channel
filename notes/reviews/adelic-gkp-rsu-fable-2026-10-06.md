@@ -8,7 +8,7 @@
   Fable alone. This file records the statements the orchestrator re-derived or recomputed from the statements only, in
   `notes/reviews/scratch_gkp_rsu_fable.py`, and leaves the rest unadjudicated. Nothing below promotes a status beyond what the pages say.
 
-**Headline.** 9 statements adjudicated: 9 VALID / 0 MINOR / 0 INVALID (two by derivation from standard inputs, U-L1 and U-L2 below). Unadjudicated: lane R's edge-share numerics and its full-rank proof; lane S's
+**Headline.** 10 statements adjudicated: 10 VALID / 0 MINOR / 0 INVALID (two by derivation from standard inputs, U-L1 and U-L2 below). Unadjudicated: lane R's edge-share numerics and its full-rank proof; lane S's
 Kani–Rosen decomposition, the group-law check on $E'$, and the companion order's trace-form rank; lane U's 42 PARI comparisons and the $N=8$ separation (its pairing identities are adjudicated by derivation below).
 
 ---
@@ -56,6 +56,16 @@ $(V^k-1)\tilde P=(q^k-1)\tilde P-V^km$, which lies in $L$ iff $N\mid q^k-1$ when
 exactly when $N\mid q^k-1$, as the page states. What remains numerical is only the normalisation of $\mu_N$ (the page's $\iota$), which is where the
 $N=8$ separation lives; that part is not adjudicated here.
 
+## R-C5 — full rank for $\zeta$, rank $2g$ for a curve
+
+**Claim.** In the critical-zero model the Toeplitz form of translates has full rank on every window for $\zeta$ and rank $2g$ for a curve.
+
+**VERDICT R-C5: VALID as a model statement** (Carathéodory–Toeplitz, from memory): a Toeplitz form $\sum_\gamma m_\gamma e^{i\gamma(j-k)\log p}$ has
+rank equal to the number of distinct atoms $\gamma\log p$ mod $2\pi$ among those with $m_\gamma>0$, once the window exceeds that number. A curve
+has $2g$ atoms; $\zeta$'s atoms $\gamma\log p$ mod $2\pi$ are distinct for distinct $\gamma$ unless $(\gamma-\gamma')\log p\in2\pi\mathbb Z$, which for
+the computed zeros never happens and for all zeros is the unproved assumption the page flags. So "full rank on every window" is exact for the
+truncated model and conditional in general, as the page says.
+
 ## R-B6 — the frame fraction
 
 **Claim.** For a frame of Gaussians centred at $j\delta$ with $\delta=\log2/16$ spanning a window of length $L$, the translation by $\log2$ is exact on
@@ -84,6 +94,6 @@ Tate pairing up to $\mathrm{Aut}(\mu_N)$). Recorded as consistency, not separati
 
 ## Statements left unadjudicated
 
-Lane R: B1–B5, B7–B10, C2–C5, D1–D5 (edge-share numerics, Toeplitz digits, full rank, $\Omega_D$). Lane S: A11–A13, B1–B6, C1–C10 (Kani–Rosen, $\pi_{E'}=-1-2\iota$,
+Lane R: B1–B5, B7–B10, C2–C4, D1–D5 (edge-share numerics, Toeplitz digits, $\Omega_D$). Lane S: A11–A13, B1–B6, C1–C10 (Kani–Rosen, $\pi_{E'}=-1-2\iota$,
 the companion order). Lane U: C1–C10 (the 42 comparisons and the $N=8$ separation, which depend on the $\mu_N$ normalisation), K1. These keep the statuses
 their pages give them.

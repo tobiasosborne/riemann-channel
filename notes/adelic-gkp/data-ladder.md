@@ -267,7 +267,7 @@ multiplicity and stays positive, a unitary realisation is automatically semisimp
   polynomial, so neither covers $K_5$.
 
 - Lanes R, S, U (`window-similitude.md`, `repeated-root.md`, `tower-pairing.md`): the Opus review was stopped when TJO restricted the session to
-  Fable alone; `notes/reviews/adelic-gkp-rsu-fable-2026-10-06.md` is the orchestrator's partial review (9 VALID / 0 / 0 on the statements it could
+  Fable alone; `notes/reviews/adelic-gkp-rsu-fable-2026-10-06.md` is the orchestrator's partial review (10 VALID / 0 / 0 on the statements it could
   recompute or derive: the pairing identities of lane U from the Weil pairing on the lift, Deligne's dictionary and Schaefer's formula; the Fermat-quartic counts to $\mathbb F_{125}$, the Connes lines, the dual-lattice identity, the mod-8 intertwiner obstruction, translation
   invariance); the 42 comparisons and the $N=8$ separation, the edge-share numerics and the Kani–Rosen step remain unadjudicated.
 - `notes/reviews/adelic-gkp-ff-family-2026-10-06.md` (lanes J, M): 14 VALID / 3 MINOR / 0 INVALID; lane M entirely VALID; lane J's "positivity is RH"
