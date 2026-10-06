@@ -1,0 +1,59 @@
+== C. The curve y^2 = x^5 + x^3 + x^2 - 2 over F_5: L-polynomial, ordinariness, CM field
+PASS  C1 PARI hyperellcharpoly: chi(x) = x^4 - 3x^3 + 7x^2 - 15x + 25, i.e. P(T) = 1 - 3T + 7T^2 - 15T^3 + 25T^4 (shard 04w)  [1, -3, 7, -15, 25]
+PASS  C2 brute-force counts N_1 = 3, N_2 = 31 (one point at infinity) agree with a_1 = q + 1 - N_1, N_2 = q^2 + 1 - (a_1^2 - 2 a_2)  N1=3, N2=31
+PASS  C3 chi(x) = x^2 h(x + 5/x) with h(y) = y^2 - 3y - 3; ordinary (middle coefficient 7 prime to 5); roots of h real, distinct, inside (-2 sqrt5, 2 sqrt5)  lambda = (3 +- sqrt 21)/2 = [-0.791288, 3.791288]
+PASS  C4 PARI: disc O_K = 48069 = 21^2 * 109 (04w), class number h_K = 4  disc 48069, h_K 4
+PASS  C5 no symmetric integer 2x2 A has characteristic polynomial h: the graph convention [[0,-I],[qI,A]] cannot host this class ((a-c)^2 + 4b^2 = disc h = 21 has no solution)
+
+== K. The Deligne module O_K = Z[pi, 5/pi] with its canonical principal form, in a symplectic basis
+PASS  K1 multiplication by pi on (1, beta, pi, beta pi) has characteristic polynomial chi; V = beta - pi is integral; pi V = 5; conjugation is a ring map swapping pi and V
+PASS  K2 the companion lattice Z[pi] = span(1, pi, pi^2, pi^3) has index 5 in O_K and is not V-stable: Z[F] is not a Deligne module here (in genus one Z[F] = Z[F, V] automatically)  det = -5
+PASS  K3 Om_can(x, y) = Tr(x conj(y)/dd), dd = (pi - V) h'(beta): integral, alternating, unimodular (dd generates the different; Euler's lemma twice), and Om_can(pi x, pi y) = 5 Om_can(x, y)  Gram [[0, 0, 0, -1], [0, 0, -1, -3], [0, 1, 0, 0], [1, 3, 0, 0]]
+PASS  K4 Om_+(x, y) = Tr(x conj(y)/(V - pi)) is integral, alternating, a 5-similitude, of determinant disc(h)^2 = 441, and Om_+ = -Om_can(., h'(F+V) .)  det 441
+PASS  K5 a symplectic Z-basis of (O_K, Om_can) exists; in it M is an integer matrix with M^T Omega M = 5 Omega, V = 5 M^{-1} integral  M = [[-2, 17, 101, 32], [-1, 4, 29, 5], [0, 1, 7, 3], [0, -2, -19, -6]]
+
+== Q. The cone of similitude forms, the vacuum and the Weil form (example 1)
+PASS  Q1 the symmetric B with M^T B M = 5B form a 2-dimensional space (one weight per mode)
+PASS  Q2 mode projectors pi_j = (F + V - lam_k)/(lam_j - lam_k) are complementary idempotents commuting with M, and Omega-orthogonal
+PASS  Q3 vacuum of Om_can: J^2 = -1, JM = MJ, J symplectic, G_J = Omega J symmetric positive, a 5-similitude  Krein signs of the modes lam = [3.7913, -0.7913]: [-1, 1]
+PASS  Q4 the Weil form W = (1/2) Omega (M - V) of the principal form Om_can is symmetric and a 5-similitude (exact), but INDEFINITE, signature (2, 2)  W = [[0, 1/2, 9/2, 2], [1/2, -2, -18, -5], [9/2, -18, -101, -61/2], [2, -5, -61/2, -5]]
+PASS  Q5 W relative to the vacuum: weight eps_j sqrt(4q - lam_j^2)/2 = eps_j Im(alpha_j) on mode j (eps_j the Krein sign)  weights ['-1.18597390966', '2.20078756031']
+PASS  Q6 Williamson: symplectic spectrum of G_J is (1, 1) (a pure state); of the positive form |W| = sum_j eps_j W|_j it is sqrt(4q - lam_j^2)/2
+
+== R. The Rosati form on R[F], transported by the cyclic vector e = 1 of O_K
+PASS  R1 Rosati Gram T_ik = Tr(F^i V^k) = q^min(i,k) s_|i-k| on (1, F, F^2, F^3): integer, symmetric, positive definite, T(F., F.) = 5 T  T = [[4, 3, -5, 9], [3, 20, 15, -25], [-5, 15, 100, 75], [9, -25, 75, 500]]
+PASS  R2 transported T_L = Psi^{-T} T Psi^{-1} (Psi = [e, Me, M^2 e, M^3 e], e = 1): a 5-similitude, positive, and integral on O_K although Psi maps Z[F] onto Z[pi], of index 5  T_L = [[4, -11, -41, -8], [-11, 48, 188, 68], [-41, 188, 954, 327], [-8, 68, 327, 150]]
+PASS  R3 on O_K the transported form is the trace form: T_L = B^T (Tr(x conj y)) B
+PASS  R4 T_L is NOT proportional to G_J; T_L = sum_j |h'(lam_j)| sqrt(4q - lam_j^2) G_J|_j, i.e. the vacuum weight relative to Rosati is 1/(sqrt21 d_j) (04w's c_j^0 = 0.0919994481, 0.0495772273)  T/G_J weights ['10.8696304265', '20.1705511673']; 1/weights ['0.09199944807', '0.0495772273']
+PASS  R5 the ratio of the two weights is d_1/d_2 or its inverse = 04w's R_0 = (25 + 3 sqrt21)/(2 sqrt109) = 1.8556795747  ratio 1.85567957472
+PASS  R6 THE GENUS-g BRIDGE (exact): the Weil form of Om_+ = Tr(x conj y/(V - F)) is half the transported Rosati form, (1/2) Om_+ (M - V) = T_L / 2
+PASS  R7 the vacuum of Om_+ is the Rosati form with weight 1/sqrt(4q - lam_j^2) on mode j; Om_+ has the Krein signs (+, +) (type Phi_+)  Rosati/vacuum weights ['2.37194781932', '4.40157512062']
+PASS  R8 genus-two accident: |h'(lam_1)| = |h'(lam_2)| = sqrt(disc h), so the two vacua are proportional, G_{J_+} = sqrt21 G_{J_can}
+PASS  R9 genus one (E1, E2, E3 of curve-bridge.md): Om_+ = Om_can is unimodular on Z[F], its Weil form is T/2 and Rosati/vacuum = sqrt(4q - a^2): lane A's scalar  weights [sqrt(7), 4, 2*sqrt(6)]
+
+== U. Integral markings do not fix a point: the real unit eps = 1 + beta = (5 + sqrt21)/2
+PASS  U1 eps = 1 + beta is a unit of O_K (norm 1, both real embeddings positive); e' = eps.1 also generates O_K over Z[pi, V]
+PASS  U2 transporting by e' = eps e divides the weights by eps_j^2: a different point of the cone; the ratio moves by eps_1^4 = (527 + 115 sqrt21)/2 (04w)  new weights ['0.4734893907', '463.0440323']
+
+== H. Which CM type the arithmetic picks (PARI: primes above 5 in the Galois closure)
+PASS  H1 eight primes above 5; every S_P is a CM type; 4 of them give Phi_+ (or its conjugate), the other 4 the type of Om_can (or conjugate)  Phi_+ = [2, 3], Phi_can = [0, 2], S_P = [[2, 3], [1, 3], [0, 2], [0, 2], [2, 3], [0, 1], [1, 3], [0, 1]]
+PASS  H2 hence for half of the choices eps the arithmetic polarisation has the mixed type (its Weil form is indefinite, as Q4), for the other half it has type Phi_+ (its Weil form is positive); on O_K every principal form is +-eps^k Om_can, mixed type
+
+== G. Example 2: K_4 with one negative edge (q = 2, rank 8)
+PASS  G1 M^T Omega M = 2 Omega; char poly (x^4 + 3x^2 + 4)(x^4 - x^2 + 4); F + V = A_s (+) A_s with eigenvalues +-1, +-sqrt5
+PASS  G2 the similitude forms form a 4-dimensional space (four Williamson modes)
+PASS  G3 the Weil form of the standard Omega is [[qI, A/2],[A/2, I]], positive, a similitude; all Krein signs +; vacuum G_J positive; W = sum_j sqrt(8 - lam_j^2)/2 G_J|_j
+PASS  G4 Howe's unit P (howe-positivity.md section 4) commutes with A_s, det 1; its value on the modes lam = -sqrt5, -1, 1, sqrt5 is (-phi^3, -1, 1, phi^-3): opposite signs at lam and -lam  p(lam_j) = [-sqrt(5) - 2, -1, 1, -2 + sqrt(5)]
+PASS  G5 Om_P = Omega (P (+) P) is alternating, unimodular, a 2-similitude
+PASS  G6 the Riemann form Om_P(., J_P .) of the principal polarisation: J_P = sigma J with sigma = sign p(lam_j); weights |p(lam_j)| = (phi^3, 1, 1, phi^-3) relative to G_J  sigma = [-1, -1, 1, 1], weights ['4.236067977', '1.0', '1.0', '0.2360679775']
+PASS  G7 the Weil form of the principal polarisation, (1/2) Om_P (M - V), is a similitude but indefinite, signature (4, 4)
+PASS  G8 NOT the function of example 1: |p(lam_j)| is not c/|h'(lam_j)| (the principal-vs-Phi_+ weight of example 1); |p| |h'| is not constant  |p(lam)| |h'(lam)| = ['75.777088', '8.0', '8.0', '4.2229124']
+PASS  G9 P is not in Z[A_s] (coefficients not integral), so Z^8 is not a free Z[F, V]-module: no integral cyclic generator e exists  P = [1/2, 1, -1/2, 0] in the basis 1, A, A^2, A^3
+PASS  G10 Rosati transported by a rational cyclic vector e: a similitude, positive; weights relative to G_J are 2/G_J(pi_j e) (e-dependent)  e = [0, 0, 0, 0, 1, 2, 3, 5], weights ['1.266409', '1.3228757', '5.2915026', '0.04930079']
+
+== X. Item 3: RH, the cone, and the Weil form
+PASS  X1 for any compatible alternating Om, (1/2) Om (M - V) is symmetric and a q-similitude; Om -> W_Om is a linear isomorphism from the g-dim space of compatible forms onto the g-dim space of similitude forms (both examples)
+PASS  X2 RH failing (hyperbolic step x^2 - 5x + 5): the cone is empty (only similitude forms are indefinite) and the Weil form is indefinite
+PASS  X3 RH holding but the Weil form NEGATIVE definite: M' = [[0,1],[-5,-2]], M'^T Omega M' = 5 Omega, chi = x^2 + 2x + 5 (so lattice-tower section 5 (i) => (ii) needs the orientation: true for the graph steps, not for every compatible Omega)
+
+42 of 42 pass
