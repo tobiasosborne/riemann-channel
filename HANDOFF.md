@@ -44,7 +44,8 @@ overlaps and level tower, local lattices and vacua, Connes's cokernel as constru
 **Fable-only stretch (from 09:29 UTC, TJO: "Only use fable from now on. No other subagents").** The REFUTE review of lanes R, S, U and a
 Sonnet check of the one-lattice CM version of lane U were stopped unfinished and are listed under Next. Done by Fable alone: a coherence pass over
 `data-ladder.md`; all fifteen check scripts re-run from the committed tree (739 checks, all pass); independent spot checks of lanes S and U
-recorded on their pages; the reduced one-lattice CM check of lane U written and run (`checks/check_cm_tower.py`, 27/27).
+recorded on their pages; the reduced one-lattice CM check of lane U written and run (`checks/check_cm_tower.py`, 27/27); TeX Live installed and the lab book built in the dry-run copy with the draft shard registered (293 pages, no
+errors, no undefined references; `shard-draft/README.md`).
 
 **Next (in order).** (i) TJO's decision on registering `shard-draft/` (promotion to `proved` needs a reviewer of another model, per the gate). (ii) Merge
 `refs/manifest-2026-10-06-pending.txt`. (iii) REFUTE review of lanes R, S, U; the $\varepsilon$-uniform version of the one-lattice CM check (`check_cm_tower.py` does the reduced form, 27/27). (iv) Shard 08j (unchanged). (v) Open items on the pages: which ideal class and principal form belong to

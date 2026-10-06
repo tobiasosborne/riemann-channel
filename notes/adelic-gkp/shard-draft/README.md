@@ -149,3 +149,9 @@ Differences from lane O's list:
   - Keeping them would cap or condition the derived status without a logical reason.
 - **Numbers left out.** Two basis-dependent numbers are omitted: $\max|J_{13}-J_{17}|=0.61$ (review M3) and the least eigenvalues of the LPS Weil forms.
   So is the 5-adic count of E-H.
+
+## Build record (orchestrator, 2026-10-06, after TeX Live was installed in the container)
+
+`latexmk -pdf -interaction=nonstopmode -halt-on-error report.tex` in the dry-run copy with the shard included and the rows registered: exit 0,
+`report.pdf` 293 pages, no undefined references or citations, no LaTeX errors (284 overfull-box warnings across the whole book, as before).
+The shard renders as section 51, "The Phantasm XVII: the Adelic-GKP Ladder". So registration would also pass `make ci`'s build step.
