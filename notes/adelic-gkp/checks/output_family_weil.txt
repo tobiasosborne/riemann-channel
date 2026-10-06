@@ -1,0 +1,67 @@
+== F1  one mode: the Weil form is sqrt(q) sin(theta) times the vacuum metric
+PASS  F1 (q,lambda)=(2,-1): J^2 = -1, JM = MJ, M V = q, M + V = lambda
+PASS  F1 (q,lambda)=(2,-1): G_J = Omega J symmetric positive definite, Omega(x,Jx) > 0 for 2000 random x (s = +1, so J_vac = J_formula)  eigenvalues of G_J: [0.5994 1.6684]
+PASS  F1 (q,lambda)=(2,-1): (1/2) Omega (M - V) = sqrt(q) sin(theta) G_J to 1e-12, cos(theta) = lambda/(2 sqrt q), theta = 0.6150 pi  max |diff| = 0.0e+00; W = [[2.0, -0.5], [-0.5, 1.0]]
+PASS  F1 (q,lambda)=(2,-1): M = sqrt(q)(cos(theta) + sin(theta) J), the step is the rotation by theta about the vacuum
+PASS  F1 (q,lambda)=(5,-2): J^2 = -1, JM = MJ, M V = q, M + V = lambda
+PASS  F1 (q,lambda)=(5,-2): G_J = Omega J symmetric positive definite, Omega(x,Jx) > 0 for 2000 random x (s = +1, so J_vac = J_formula)  eigenvalues of G_J: [0.382 2.618]
+PASS  F1 (q,lambda)=(5,-2): (1/2) Omega (M - V) = sqrt(q) sin(theta) G_J to 1e-12, cos(theta) = lambda/(2 sqrt q), theta = 0.6476 pi  max |diff| = 8.9e-16; W = [[5.0, -1.0], [-0.9999999999999999, 1.0]]
+PASS  F1 (q,lambda)=(5,-2): M = sqrt(q)(cos(theta) + sin(theta) J), the step is the rotation by theta about the vacuum
+PASS  F1 (q,lambda)=(7,2): J^2 = -1, JM = MJ, M V = q, M + V = lambda
+PASS  F1 (q,lambda)=(7,2): G_J = Omega J symmetric positive definite, Omega(x,Jx) > 0 for 2000 random x (s = +1, so J_vac = J_formula)  eigenvalues of G_J: [0.342 2.924]
+PASS  F1 (q,lambda)=(7,2): (1/2) Omega (M - V) = sqrt(q) sin(theta) G_J to 1e-12, cos(theta) = lambda/(2 sqrt q), theta = 0.3766 pi  max |diff| = 1.8e-15; W = [[7.0, 1.0], [0.9999999999999998, 0.9999999999999999]]
+PASS  F1 (q,lambda)=(7,2): M = sqrt(q)(cos(theta) + sin(theta) J), the step is the rotation by theta about the vacuum
+PASS  F1 (q,lambda)=(13,3): J^2 = -1, JM = MJ, M V = q, M + V = lambda
+PASS  F1 (q,lambda)=(13,3): G_J = Omega J symmetric positive definite, Omega(x,Jx) > 0 for 2000 random x (s = +1, so J_vac = J_formula)  eigenvalues of G_J: [0.2487 4.0213]
+PASS  F1 (q,lambda)=(13,3): (1/2) Omega (M - V) = sqrt(q) sin(theta) G_J to 1e-12, cos(theta) = lambda/(2 sqrt q), theta = 0.3634 pi  max |diff| = 1.8e-15; W = [[13.0, 1.5], [1.5, 1.0]]
+PASS  F1 (q,lambda)=(13,3): M = sqrt(q)(cos(theta) + sin(theta) J), the step is the rotation by theta about the vacuum
+== F2  M -> -M (theta -> theta + pi) and Omega -> -Omega: the vacuum form is orientation-independent, the Weil form is not
+PASS  F2 (q,lambda)=(2,-1): M -> -M: V -> -V, J_formula -> -J_formula, Weil form -> -Weil form (rotation theta + pi: sin -> -sin)
+PASS  F2 (q,lambda)=(2,-1): M -> -M: the positive vacuum for Omega is still J (J_vac = -J_formula, s = -1) and G_J is unchanged  s = -1
+PASS  F2 (q,lambda)=(2,-1): Omega -> -Omega, same M: J_formula unchanged, Weil form -> -Weil form, but the positive vacuum flips (J_vac -> -J_vac) and G_J = (-Omega)(-J) is unchanged
+PASS  F2 (q,lambda)=(2,-1): both flipped: Weil form = + original, J_vac flips, G_J unchanged: the four (M, Omega) orientations share one vacuum metric, Weil form carries sign s
+PASS  F2 (q,lambda)=(5,-2): M -> -M: V -> -V, J_formula -> -J_formula, Weil form -> -Weil form (rotation theta + pi: sin -> -sin)
+PASS  F2 (q,lambda)=(5,-2): M -> -M: the positive vacuum for Omega is still J (J_vac = -J_formula, s = -1) and G_J is unchanged  s = -1
+PASS  F2 (q,lambda)=(5,-2): Omega -> -Omega, same M: J_formula unchanged, Weil form -> -Weil form, but the positive vacuum flips (J_vac -> -J_vac) and G_J = (-Omega)(-J) is unchanged
+PASS  F2 (q,lambda)=(5,-2): both flipped: Weil form = + original, J_vac flips, G_J unchanged: the four (M, Omega) orientations share one vacuum metric, Weil form carries sign s
+PASS  F2 (q,lambda)=(7,2): M -> -M: V -> -V, J_formula -> -J_formula, Weil form -> -Weil form (rotation theta + pi: sin -> -sin)
+PASS  F2 (q,lambda)=(7,2): M -> -M: the positive vacuum for Omega is still J (J_vac = -J_formula, s = -1) and G_J is unchanged  s = -1
+PASS  F2 (q,lambda)=(7,2): Omega -> -Omega, same M: J_formula unchanged, Weil form -> -Weil form, but the positive vacuum flips (J_vac -> -J_vac) and G_J = (-Omega)(-J) is unchanged
+PASS  F2 (q,lambda)=(7,2): both flipped: Weil form = + original, J_vac flips, G_J unchanged: the four (M, Omega) orientations share one vacuum metric, Weil form carries sign s
+PASS  F2 (q,lambda)=(13,3): M -> -M: V -> -V, J_formula -> -J_formula, Weil form -> -Weil form (rotation theta + pi: sin -> -sin)
+PASS  F2 (q,lambda)=(13,3): M -> -M: the positive vacuum for Omega is still J (J_vac = -J_formula, s = -1) and G_J is unchanged  s = -1
+PASS  F2 (q,lambda)=(13,3): Omega -> -Omega, same M: J_formula unchanged, Weil form -> -Weil form, but the positive vacuum flips (J_vac -> -J_vac) and G_J = (-Omega)(-J) is unchanged
+PASS  F2 (q,lambda)=(13,3): both flipped: Weil form = + original, J_vac flips, G_J unchanged: the four (M, Omega) orientations share one vacuum metric, Weil form carries sign s
+== F3  the CM family on O_K, K = Q(sqrt(-7)): conjugate primes give opposite Weil forms, one vacuum J_K
+PASS  F3 split primes p <= 100 ((-7|p) = (p|7) = +1)  [2, 11, 23, 29, 37, 43, 53, 67, 71, 79]
+PASS  F3 a_p = (x|7) x from 4p = x^2 + 7y^2 equals PARI ellap(ellinit("49a1"), p) for the 10 split primes p <= 100  formula [1, 4, 8, 2, -6, -12, -10, 4, 16, 8]
+PASS  F3 441d1 (the quadratic twist by -3, the E mode's lift): ellap = (p|3)(x|7) x  (PARI ellap(ellinit("441d1"), p))  PARI [-1, -4, -8, -2, -6, -12, 10, 4, -16, 8]
+PASS  F3 Omega(x,y) = Tr_{K/Q}(conj(x) y / sqrt(-7)) in the basis (1, w) is [[0,1],[-1,0]] (integral, unimodular)  [[0.0, 1.0], [-1.0, 0.0]]
+PASS  F3 J_K = multiplication by i = sqrt(-7)/sqrt(7) in the basis (1, w): J_K = mult(2w - 1)/sqrt 7, J_K^2 = -1  [[-0.377964, -1.511858], [0.755929, 0.377964]]
+PASS  F3 G_{J_K} = Omega J_K is symmetric positive definite (= -Omega^T J_K), Omega(x, ix) = 2|x|^2/sqrt 7 > 0  [[0.755929, 0.377964], [0.377964, 1.511858]]
+PASS  F3 Rosati/trace form Tr_{K/Q}(x conj(y)) = [[2,1],[1,4]] is a positive multiple of G_{J_K}: T = sqrt(7) G_{J_K}, positive definite  scalar sqrt 7 = 2.645751, det T = 7
+PASS  F3 psi(frak p) = (a_p + y sqrt(-7))/2 and its conjugate, as 2x2 matrices on O_K = Z + Z w: integral for all 10 split p <= 100
+PASS  F3 each has determinant p (norm), M^T Omega M = p Omega, and V_p = p M^{-1} equals the matrix of the conjugate prime
+PASS  F3 J_K commutes with every multiplication matrix M_frak p, M_frak pbar (10 split p, both primes)
+PASS  F3 Weil form (1/2) Omega (M_p - V_p) = Im psi(frak p) * G_{J_K} (the fixed positive scalar is exactly 1 for this Omega), with Im psi = y sqrt 7 / 2  for p, pbar: +y sqrt7/2 G and -y sqrt7/2 G
+PASS  F3 conjugate primes have opposite Weil forms: W(frak p) = -W(frak pbar) for every split p <= 100 (so for a fixed Omega no labelling of ideals makes both positive)
+PASS  F3 the multiplication matrices all commute pairwise (O_K commutative): one commuting family, one vacuum J_K, Weil forms vary in sign
+      p : sign Im psi for the generator with a_p = (x|7) x, y > 0 (and its conjugate is the opposite) / sign Im psi(P_+) for the ideal P_+ = ((x + y sqrt-7)/2), = (x|7)
+      2:+/+, 11:+/+, 23:+/+, 29:+/+, 37:+/-, 43:+/-, 53:+/-, 67:+/+, 71:+/+, 79:+/+
+      generator normalised by the character (a_p = (x|7)x, y > 0): Im psi = +y sqrt7/2 > 0 at all 10 primes; conjugate generator: < 0 at all 10
+      for the fixed ideal P_+ the sign of Im psi(P_+) is (x|7): 2:+, 11:+, 23:+, 29:+, 37:-, 43:-, 53:-, 67:+, 71:+, 79:+
+PASS  F3 sign of Im psi: + for the character's generator at every p; the sign attached to a fixed ideal P_+ = ((x+y sqrt-7)/2) is (x|7), taking both values among p <= 100
+== F4  the zeta family: sign statistics of sin(gamma log p) over the first 200 zeros
+PASS  F4 data/zeros3000.npy: 3000 positive increasing imaginary parts, gamma_1 = 14.1347
+      p = 2: fraction of the first 200 pairs with sin(gamma log p) > 0 = 0.490  (98 positive, 102 negative, min |sin| = 1.52e-02)
+      p = 3: fraction of the first 200 pairs with sin(gamma log p) > 0 = 0.500  (100 positive, 100 negative, min |sin| = 1.76e-02)
+      p = 5: fraction of the first 200 pairs with sin(gamma log p) > 0 = 0.490  (98 positive, 102 negative, min |sin| = 4.50e-02)
+PASS  F4 fraction with sin(gamma_n log p) > 0 is about one half for p = 2, 3, 5  p=2: 0.490, p=3: 0.500, p=5: 0.490
+PASS  F4 both signs occur for each p, so no global sign makes all sin(gamma_n log p) positive (or all negative) for even one p; no sin vanishes
+      p, p' = 2, 3: sign patterns agree on 98 of 200 zeros (equal would be 200, opposite 0)
+      p, p' = 2, 5: sign patterns agree on 100 of 200 zeros (equal would be 200, opposite 0)
+      p, p' = 3, 5: sign patterns agree on 102 of 200 zeros (equal would be 200, opposite 0)
+PASS  F4 for each pair of primes the sign patterns over n are neither equal nor opposite (0 < agreements < 200), so no per-pair orientation serves two primes  (2,3): 98/200, (2,5): 100/200, (3,5): 102/200
+PASS  F4 agreements are near 100 of 200 (independent-looking signs): within 30 of 100 for the three pairs
+
+51 of 51 pass
