@@ -1,0 +1,125 @@
+== A  the L-functions L(u, chi) = sum over monic m of chi(m) u^deg m: degree, Euler product, RH, functional equation, Gauss sum
+PASS  A1 X1 q=5, N=4, f=(t^3+t+1) (deg 3): chi = power-residue symbol is odd (non-trivial on F_q^x), Lambda = L; S_d = S_(d+1) = 0, Lambda a polynomial of degree 2  Lambda coefficients in Z[z]: (1), (-2+1z), (3-4z)
+PASS  A2 X1 the Euler product over monic irreducibles Q prime to f, prod (1 - chi(Q) u^deg Q)^-1, equals the sum over monics to u^3  max error 0.0
+PASS  A3 X1 RH: the 2 reciprocal roots alpha of Lambda have |alpha| = sqrt(q)  |alpha|/sqrt q - 1 <= 0.0; arg(alpha)/pi = 0.18575, -0.480917
+PASS  A4 X1 functional equation Lambda(u) = W (sqrt(q) u)^2 conj(Lambda)(1/(qu)) with W = (top coefficient)/q^(n/2); fails with -W  W = (0.6 - 0.8j), |W| - 1 = 0.0; residual 0.0 (exact); with -W 2.0
+PASS  A5 X1 root number from Gauss sums, W = [G(chi)/q^(d/2)] / [g(chi|F_q^x)/sqrt q], G(chi) = sum_(a mod f) chi(a) psi0(coef_(d-1) a), g = sum_(c in F_q^x) chi(c) psi0(c)  G = (11.1351636441 + 1.00405707943j) (|G|^2 = 125.0), W_G - W = 2.7e-51 (51 digits)
+PASS  A1 X2 q=5, N=4, f=(t)*(t^2+2) (deg 3): chi = power-residue symbol is odd (non-trivial on F_q^x), Lambda = L; S_d = S_(d+1) = 0, Lambda a polynomial of degree 2  Lambda coefficients in Z[z]: (1), 0, (-4-3z)
+PASS  A2 X2 the Euler product over monic irreducibles Q prime to f, prod (1 - chi(Q) u^deg Q)^-1, equals the sum over monics to u^3  max error 0.0
+PASS  A3 X2 RH: the 2 reciprocal roots alpha of Lambda have |alpha| = sqrt(q)  |alpha|/sqrt q - 1 <= 0.0; arg(alpha)/pi = -0.897584, 0.102416
+PASS  A4 X2 functional equation Lambda(u) = W (sqrt(q) u)^2 conj(Lambda)(1/(qu)) with W = (top coefficient)/q^(n/2); fails with -W  W = (-0.8 - 0.6j), |W| - 1 = 0.0; residual 0.0 (exact); with -W 2.0
+PASS  A5 X2 root number from Gauss sums, W = [G(chi)/q^(d/2)] / [g(chi|F_q^x)/sqrt q], G(chi) = sum_(a mod f) chi(a) psi0(coef_(d-1) a), g = sum_(c in F_q^x) chi(c) psi0(c)  G = (1.00405707943 - 11.1351636441j) (|G|^2 = 125.0), W_G - W = 1.9e-51 (51 digits)
+PASS  A1 X3 q=7, N=3, f=(t^4+t^3+1) (deg 4): chi = power-residue symbol is odd (non-trivial on F_q^x), Lambda = L; S_d = S_(d+1) = 0, Lambda a polynomial of degree 3  Lambda coefficients in Z[z]: (1), (2+2z), (-2-6z), (14-7z)
+PASS  A2 X3 the Euler product over monic irreducibles Q prime to f, prod (1 - chi(Q) u^deg Q)^-1, equals the sum over monics to u^4  max error 1.53e-48
+PASS  A3 X3 RH: the 3 reciprocal roots alpha of Lambda have |alpha| = sqrt(q)  |alpha|/sqrt q - 1 <= 6.06e-51; arg(alpha)/pi = -0.855562, 0.283715, -0.534301
+PASS  A4 X3 functional equation Lambda(u) = W (sqrt(q) u)^3 conj(Lambda)(1/(qu)) with W = (top coefficient)/q^(n/2); fails with -W  W = (0.944911182523068 - 0.327326835353989j), |W| - 1 = -1.1e-50; residual 2.3e-51 (51 digits); with -W 2.0
+PASS  A5 X3 root number from Gauss sums, W = [G(chi)/q^(d/2)] / [g(chi|F_q^x)/sqrt q], G(chi) = sum_(a mod f) chi(a) psi0(coef_(d-1) a), g = sum_(c in F_q^x) chi(c) psi0(c)  G = (34.3595112911 - 34.9345671768j) (|G|^2 = 2401.0), W_G - W = 3.2e-50 (49 digits)
+PASS  A1 X4 q=7, N=3, f=(t^3+t+1) (deg 3): chi = power-residue symbol is even (trivial on F_q^x), Lambda = L/(1-u); S_d = S_(d+1) = 0, Lambda a polynomial of degree 1  Lambda coefficients in Z[z]: (1), (3+2z)
+PASS  A2 X4 the Euler product over monic irreducibles Q prime to f, prod (1 - chi(Q) u^deg Q)^-1, equals the sum over monics to u^3  max error 1.66e-49
+PASS  A3 X4 RH: the 1 reciprocal roots alpha of Lambda have |alpha| = sqrt(q)  |alpha|/sqrt q - 1 <= 0.0; arg(alpha)/pi = -0.772814
+PASS  A4 X4 functional equation Lambda(u) = W (sqrt(q) u)^1 conj(Lambda)(1/(qu)) with W = (top coefficient)/q^(n/2); fails with -W  W = (0.755928946018454 + 0.654653670707977j), |W| - 1 = 0.0; residual 1.0e-51 (51 digits); with -W 2.0
+PASS  A5 X4 root number from Gauss sums, W = G(chi)/q^(d/2), G(chi) = sum_(a mod f) chi(a) psi0(coef_(d-1) a), g = sum_(c in F_q^x) chi(c) psi0(c)  G = (14.0 + 12.124355653j) (|G|^2 = 343.0), W_G - W = 8.1e-51 (50 digits)
+PASS  A1 X5 q=7, N=2, f=(t^3+t+1) (deg 3): chi = power-residue symbol is odd (non-trivial on F_q^x), Lambda = L; S_d = S_(d+1) = 0, Lambda a polynomial of degree 2  Lambda coefficients in Z[z]: 1, 3, 7
+PASS  A2 X5 the Euler product over monic irreducibles Q prime to f, prod (1 - chi(Q) u^deg Q)^-1, equals the sum over monics to u^3  max error 0.0
+PASS  A3 X5 RH: the 2 reciprocal roots alpha of Lambda have |alpha| = sqrt(q)  |alpha|/sqrt q - 1 <= 0.0; arg(alpha)/pi = -0.691875, 0.691875
+PASS  A4 X5 functional equation Lambda(u) = W (sqrt(q) u)^2 conj(Lambda)(1/(qu)) with W = (top coefficient)/q^(n/2); fails with -W  W = (1.0 + 0.0j), |W| - 1 = 0.0; residual 0.0 (exact); with -W 2.0
+PASS  A5 X5 root number from Gauss sums, W = [G(chi)/q^(d/2)] / [g(chi|F_q^x)/sqrt q], G(chi) = sum_(a mod f) chi(a) psi0(coef_(d-1) a), g = sum_(c in F_q^x) chi(c) psi0(c)  G = (4.67733824266e-50 + 18.5202591775j) (|G|^2 = 343.0), W_G - W = 8.2e-51 (50 digits)
+PASS  A1 X6 q=3, N=2, f=(t^4+t^3+t^2+1) (deg 4): chi = power-residue symbol is even (trivial on F_q^x), Lambda = L/(1-u); S_d = S_(d+1) = 0, Lambda a polynomial of degree 2  Lambda coefficients in Z[z]: 1, 2, 3
+PASS  A2 X6 the Euler product over monic irreducibles Q prime to f, prod (1 - chi(Q) u^deg Q)^-1, equals the sum over monics to u^4  max error 0.0
+PASS  A3 X6 RH: the 2 reciprocal roots alpha of Lambda have |alpha| = sqrt(q)  |alpha|/sqrt q - 1 <= 1.54e-51; arg(alpha)/pi = -0.695913, 0.695913
+PASS  A4 X6 functional equation Lambda(u) = W (sqrt(q) u)^2 conj(Lambda)(1/(qu)) with W = (top coefficient)/q^(n/2); fails with -W  W = (1.0 + 0.0j), |W| - 1 = 0.0; residual 0.0 (exact); with -W 2.0
+PASS  A5 X6 root number from Gauss sums, W = G(chi)/q^(d/2), G(chi) = sum_(a mod f) chi(a) psi0(coef_(d-1) a), g = sum_(c in F_q^x) chi(c) psi0(c)  G = (9.0 + 5.34552942018e-51j) (|G|^2 = 81.0), W_G - W = 5.9e-52 (51 digits)
+== B  the gate phases: local Fourier gate on the local states, local epsilon factors, product = W
+PASS  B1 X1 place P = t^3+t+1 (Q = 125): F(chi_P 1_(O^x)) = lam_P D_P(conj chi_P 1_(O^x)) on P^-1/O, lam_P = G_P/sqrt Q; Tate ratio = eps_P N_P^(1/2-s), N_P = Q  Fourier residual 4.9e-17; lam_P = (0.995959314 + 0.08980559532j), chi_P(P) = z^0, eps_P = (0.995959314 + 0.08980559532j); Tate residual 1.2e-50
+PASS  B2 X1 place inf (tamely ramified): charged conj(chi_inf) 1_(O^x): F Phi = lam_inf D_(1/pi) Phi^vee, eps_inf = conj(g)/sqrt q, N_inf = q^-1  Fourier residual on P^-1/P^3 1.4e-15; eps_inf = (0.5257311121 - 0.8506508084j); Tate residual 5.5e-51
+PASS  B3 X1 product of the local phases = W from the L-polynomial; conductor exponent sum_v (a_v + d_v) deg v = deg f + a_inf - 2 = 2 = deg Lambda  phases (0.99595931 + 0.089805595j) * (0.52573111 - 0.85065081j) = (0.6 - 0.8j); |prod - W| = 3.0e-51 (51 digits)
+PASS  B4 X1 Tate's global functional equation assembled from local data: Lambda(u) = (prod eps_v) (sqrt q u)^(sum log_q N_v) conj(Lambda)(1/(qu)) at 3 points  max relative error 3.0e-51
+PASS  B1 X2 place P = t (Q = 5): F(chi_P 1_(O^x)) = lam_P D_P(conj chi_P 1_(O^x)) on P^-1/O, lam_P = G_P/sqrt Q; Tate ratio = eps_P N_P^(1/2-s), N_P = Q  Fourier residual 2.0e-16; lam_P = (-0.5257311121 + 0.8506508084j), chi_P(P) = z^1, eps_P = (-0.8506508084 - 0.5257311121j); Tate residual 1.9e-51
+PASS  B1 X2 place P = t^2+2 (Q = 25): F(chi_P 1_(O^x)) = lam_P D_P(conj chi_P 1_(O^x)) on P^-1/O, lam_P = G_P/sqrt Q; Tate ratio = eps_P N_P^(1/2-s), N_P = Q  Fourier residual 1.2e-16; lam_P = (0.894427191 - 0.4472135955j), chi_P(P) = z^1, eps_P = (0.4472135955 + 0.894427191j); Tate residual 4.1e-51
+PASS  B2 X2 place inf (tamely ramified): charged conj(chi_inf) 1_(O^x): F Phi = lam_inf D_(1/pi) Phi^vee, eps_inf = conj(g)/sqrt q, N_inf = q^-1  Fourier residual on P^-1/P^3 1.4e-15; eps_inf = (0.5257311121 - 0.8506508084j); Tate residual 5.5e-51
+PASS  B3 X2 product of the local phases = W from the L-polynomial; conductor exponent sum_v (a_v + d_v) deg v = deg f + a_inf - 2 = 2 = deg Lambda  phases (-0.85065081 - 0.52573111j) * (0.4472136 + 0.89442719j) * (0.52573111 - 0.85065081j) = (-0.8 - 0.6j); |prod - W| = 1.3e-51 (51 digits)
+PASS  B4 X2 Tate's global functional equation assembled from local data: Lambda(u) = (prod eps_v) (sqrt q u)^(sum log_q N_v) conj(Lambda)(1/(qu)) at 3 points  max relative error 3.7e-51
+PASS  B1 X3 place P = t^4+t^3+1 (Q = 2401): F(chi_P 1_(O^x)) = lam_P D_P(conj chi_P 1_(O^x)) on P^-1/O, lam_P = G_P/sqrt Q; Tate ratio = eps_P N_P^(1/2-s), N_P = Q  Fourier residual 1.8e-16; lam_P = (0.7012145161 - 0.7129503505j), chi_P(P) = z^0, eps_P = (0.7012145161 - 0.7129503505j); Tate residual 7.2e-50
+PASS  B2 X3 place inf (tamely ramified): charged conj(chi_inf) 1_(O^x): F Phi = lam_inf D_(1/pi) Phi^vee, eps_inf = conj(g)/sqrt q, N_inf = q^-1  Fourier residual on P^-1/P^3 4.3e-15; eps_inf = (0.8959532197 + 0.4441484303j); Tate residual 5.1e-51
+PASS  B3 X3 product of the local phases = W from the L-polynomial; conductor exponent sum_v (a_v + d_v) deg v = deg f + a_inf - 2 = 3 = deg Lambda  phases (0.70121452 - 0.71295035j) * (0.89595322 + 0.44414843j) = (0.944911182523 - 0.327326835354j); |prod - W| = 3.7e-50 (49 digits)
+PASS  B4 X3 Tate's global functional equation assembled from local data: Lambda(u) = (prod eps_v) (sqrt q u)^(sum log_q N_v) conj(Lambda)(1/(qu)) at 3 points  max relative error 3.5e-50
+PASS  B1 X4 place P = t^3+t+1 (Q = 343): F(chi_P 1_(O^x)) = lam_P D_P(conj chi_P 1_(O^x)) on P^-1/O, lam_P = G_P/sqrt Q; Tate ratio = eps_P N_P^(1/2-s), N_P = Q  Fourier residual 1.5e-16; lam_P = (0.755928946 + 0.6546536707j), chi_P(P) = z^0, eps_P = (0.755928946 + 0.6546536707j); Tate residual 5.4e-51
+PASS  B2 X4 place inf (unramified): qunaught 1_O: F 1_O = D_(pi^-2) 1_O (squeeze by the different of dt), eps_inf = chi_inf(pi^-2) = 1, N_inf = q^-2  Fourier residual on P^-1/P^3 9.7e-16; eps_inf = (1.0 + 0.0j); Tate residual 2.7e-51
+PASS  B3 X4 product of the local phases = W from the L-polynomial; conductor exponent sum_v (a_v + d_v) deg v = deg f + a_inf - 2 = 1 = deg Lambda  phases (0.75592895 + 0.65465367j) * (1.0 + 0.0j) = (0.755928946018 + 0.654653670708j); |prod - W| = 8.1e-51 (50 digits)
+PASS  B4 X4 Tate's global functional equation assembled from local data: Lambda(u) = (prod eps_v) (sqrt q u)^(sum log_q N_v) conj(Lambda)(1/(qu)) at 3 points  max relative error 7.9e-51
+PASS  B1 X5 place P = t^3+t+1 (Q = 343): F(chi_P 1_(O^x)) = lam_P D_P(conj chi_P 1_(O^x)) on P^-1/O, lam_P = G_P/sqrt Q; Tate ratio = eps_P N_P^(1/2-s), N_P = Q  Fourier residual 6.4e-17; lam_P = (2.525525263e-51 + 1.0j), chi_P(P) = z^0, eps_P = (2.525525263e-51 + 1.0j); Tate residual 5.6e-51
+PASS  B2 X5 place inf (tamely ramified): charged conj(chi_inf) 1_(O^x): F Phi = lam_inf D_(1/pi) Phi^vee, eps_inf = conj(g)/sqrt q, N_inf = q^-1  Fourier residual on P^-1/P^3 4.9e-15; eps_inf = (1.010210105e-51 - 1.0j); Tate residual 2.2e-51
+PASS  B3 X5 product of the local phases = W from the L-polynomial; conductor exponent sum_v (a_v + d_v) deg v = deg f + a_inf - 2 = 2 = deg Lambda  phases (2.5255253e-51 + 1.0j) * (1.0102101e-51 - 1.0j) = (1.0 - 1.51531515769e-51j); |prod - W| = 8.2e-51 (50 digits)
+PASS  B4 X5 Tate's global functional equation assembled from local data: Lambda(u) = (prod eps_v) (sqrt q u)^(sum log_q N_v) conj(Lambda)(1/(qu)) at 3 points  max relative error 1.0e-50
+PASS  B1 X6 place P = t^4+t^3+t^2+1 (Q = 81): F(chi_P 1_(O^x)) = lam_P D_P(conj chi_P 1_(O^x)) on P^-1/O, lam_P = G_P/sqrt Q; Tate ratio = eps_P N_P^(1/2-s), N_P = Q  Fourier residual 6.4e-17; lam_P = (1.0 + 5.939477134e-52j), chi_P(P) = z^0, eps_P = (1.0 + 5.939477134e-52j); Tate residual 1.1e-50
+PASS  B2 X6 place inf (unramified): qunaught 1_O: F 1_O = D_(pi^-2) 1_O (squeeze by the different of dt), eps_inf = chi_inf(pi^-2) = 1, N_inf = q^-2  Fourier residual on P^-1/P^3 4.5e-16; eps_inf = (1.0 + 0.0j); Tate residual 3.3e-51
+PASS  B3 X6 product of the local phases = W from the L-polynomial; conductor exponent sum_v (a_v + d_v) deg v = deg f + a_inf - 2 = 2 = deg Lambda  phases (1.0 + 5.9394771e-52j) * (1.0 + 0.0j) = (1.0 + 5.93947713354e-52j); |prod - W| = 5.9e-52 (51 digits)
+PASS  B4 X6 Tate's global functional equation assembled from local data: Lambda(u) = (prod eps_v) (sqrt q u)^(sum log_q N_v) conj(Lambda)(1/(qu)) at 3 points  max relative error 2.0e-51
+PASS  B5 X2 the global Gauss sum factorises over the two charged places: G(chi) = chi_1(P_2) chi_2(P_1) G_1 G_2; the factors chi_j(P_i) are the values chi_(P_i)(P_i) of the ramified local characters on their own uniformisers (product formula)  G = (1.00405707943 - 11.1351636441j), product (1.00405707943 - 11.1351636441j)
+PASS  B8 X1 chi restricted to F_5^x is conj(chi_D), chi_D the quartic Dirichlet character mod 5 with chi_D(2) = i; eps_inf(X1) = conj(g)/sqrt 5 = -tau(chi_D)/sqrt 5 = -i W(chi_D), W(chi_D) = tau(chi_D)/(i sqrt 5) the root number over Q  chi(c) = z^[0, 3, 1, 2] for c = 1..4; W(chi_D) = (0.850650808352 + 0.525731112119j); eps_inf = (0.525731112119 - 0.850650808352j)
+== B'  census: every monic irreducible f (and every product deg 1 x deg 2 for q = 5, N = 4); chi = power-residue symbol
+PASS  B6 census q=5, N=4, deg f=3: 40 irreducible f; RH and prod_v eps_v = W for every one  0 even, 40 odd; max |prod eps - W| 9.4e-51; max ||alpha| - sqrt q| 0; 2 distinct W
+PASS  B6 census q=5, N=4, deg f=4: 150 irreducible f; RH and prod_v eps_v = W for every one  150 even, 0 odd; max |prod eps - W| 2.1e-50; max ||alpha| - sqrt q| 0; 2 distinct W
+PASS  B6 census q=7, N=3, deg f=3: 112 irreducible f; RH and prod_v eps_v = W for every one  112 even, 0 odd; max |prod eps - W| 3.7e-50; max ||alpha| - sqrt q| 5.3e-51; 3 distinct W
+PASS  B6 census q=7, N=3, deg f=4: 60 irreducible f (random sample); RH and prod_v eps_v = W for every one  0 even, 60 odd; max |prod eps - W| 5.0e-49; max ||alpha| - sqrt q| 4.8e-50; 3 distinct W
+PASS  B6 census q=7, N=2, deg f=3: 112 irreducible f; RH and prod_v eps_v = W for every one  0 even, 112 odd; max |prod eps - W| 1.4e-50; max ||alpha| - sqrt q| 0; 1 distinct W
+PASS  B6 census q=3, N=2, deg f=4: 18 irreducible f; RH and prod_v eps_v = W for every one  18 even, 0 odd; max |prod eps - W| 2.7e-51; max ||alpha| - sqrt q| 2.7e-51; 1 distinct W
+PASS  B6 census q=5, N=2, deg f=3: 40 irreducible f; RH and prod_v eps_v = W for every one  0 even, 40 odd; max |prod eps - W| 5.7e-51; max ||alpha| - sqrt q| 0; 1 distinct W
+PASS  B7 census q=5, N=4, f = P_1 P_2 (deg 1 x deg 2), 50 pairs: prod eps_v = W for all; dropping the factors chi_(P_i)(P_i) breaks it for some  max |prod eps - W| 2.7e-51; without chi_P(P): wrong for 30 of 50
+== C  the lattice: R = Z[zeta][F, V] in E = Q(zeta)[x]/(P_chi), sigma, Omega_+ = Tr(x sigma(y)/(V - F)), Weil form, vacuum
+PASS  C1 X1 rank 2 over Z[z_4], 4 over Z: F, V = qF^-1 and zeta preserve R; MV = q on R; companion lattice Z[z][F] V-stable: False; [R : Z[z][F]] = 5  W = (0.6 - 0.8j)
+PASS  C2 X1 sigma: zeta -> zeta^-1, F -> V is a well-defined involutive ring automorphism of E (this is the functional equation)
+PASS  C3 X1 Omega_+ is alternating, zeta-invariant, a q-similitude of F; on R its denominator is 11; the primitive integral multiple has elementary divisors [1, 1, 33, 33]  det = 1089
+PASS  C4 X1 Weil form 1/2 Omega_+(x, (F - V) y) = 1/2 Tr_(E/Q)(x sigma(y)) exactly, and it is positive definite (exact leading minors)  minors 4, 16, 240, 3600
+PASS  C5 X1 vacuum J = (F - V)(4q - (F+V)^2)^(-1/2) on R: spectrum of F+V real in (-2 sqrt q, 2 sqrt q); J^2 = -1, JF = FJ, J zeta = zeta J, Omega J symmetric positive  |J^2+1| 1.7e-15, commutators 3.1e-15, asym 5.6e-15, min eig of Omega J 0.662
+PASS  C6 X1 charpoly_Z(F) on R = prod over j in (Z/N)^x of P_(chi^j) (each L(u, chi^j) recomputed from its own character sums): [1, -4, 11, -20, 25]; middle coefficient 11 prime to p = 5  ordinary: True; residual 0.0
+PASS  C1 X2 rank 2 over Z[z_4], 4 over Z: F, V = qF^-1 and zeta preserve R; MV = q on R; companion lattice Z[z][F] V-stable: False; [R : Z[z][F]] = 5  W = (-0.8 - 0.6j)
+PASS  C2 X2 sigma: zeta -> zeta^-1, F -> V is a well-defined involutive ring automorphism of E (this is the functional equation)
+PASS  C3 X2 Omega_+ is alternating, zeta-invariant, a q-similitude of F; on R its denominator is 1; the primitive integral multiple has elementary divisors [1, 1, 2, 2]  det = 4
+PASS  C4 X2 Weil form 1/2 Omega_+(x, (F - V) y) = 1/2 Tr_(E/Q)(x sigma(y)) exactly, and it is positive definite (exact leading minors)  minors 4, 16, 320, 6400
+PASS  C5 X2 vacuum J = (F - V)(4q - (F+V)^2)^(-1/2) on R: spectrum of F+V real in (-2 sqrt q, 2 sqrt q); J^2 = -1, JF = FJ, J zeta = zeta J, Omega J symmetric positive  |J^2+1| 1.9e-15, commutators 5.3e-15, asym 9.1e-16, min eig of Omega J 0.206
+PASS  C6 X2 charpoly_Z(F) on R = prod over j in (Z/N)^x of P_(chi^j) (each L(u, chi^j) recomputed from its own character sums): [1, 0, -8, 0, 25]; middle coefficient -8 prime to p = 5  ordinary: True; residual 0.0
+PASS  C1 X3 rank 3 over Z[z_3], 6 over Z: F, V = qF^-1 and zeta preserve R; MV = q on R; companion lattice Z[z][F] V-stable: False; [R : Z[z][F]] = 7  W = (0.94491118 - 0.32732684j)
+PASS  C2 X3 sigma: zeta -> zeta^-1, F -> V is a well-defined involutive ring automorphism of E (this is the functional equation)
+PASS  C3 X3 Omega_+ is alternating, zeta-invariant, a q-similitude of F; on R its denominator is 29; the primitive integral multiple has elementary divisors [1, 1, 29, 29, 55941, 55941]  det = 2631821599521
+PASS  C4 X3 Weil form 1/2 Omega_+(x, (F - V) y) = 1/2 Tr_(E/Q)(x sigma(y)) exactly, and it is positive definite (exact leading minors)  minors 6, 27, 1062, 31329, 4780062, 546993027
+PASS  C5 X3 vacuum J = (F - V)(4q - (F+V)^2)^(-1/2) on R: spectrum of F+V real in (-2 sqrt q, 2 sqrt q); J^2 = -1, JF = FJ, J zeta = zeta J, Omega J symmetric positive  |J^2+1| 2.7e-13, commutators 8.3e-13, asym 6.6e-12, min eig of Omega J 2
+PASS  C6 X3 charpoly_Z(F) on R = prod over j in (Z/N)^x of P_(chi^j) (each L(u, chi^j) recomputed from its own character sums): [1, 2, 6, 19, 42, 98, 343]; middle coefficient 19 prime to p = 7  ordinary: True; residual 6.5e-48
+PASS  C1 X4 rank 1 over Z[z_3], 2 over Z: F, V = qF^-1 and zeta preserve R; MV = q on R; companion lattice Z[z][F] V-stable: True; [R : Z[z][F]] = 1  W = (0.75592895 + 0.65465367j)
+PASS  C2 X4 sigma: zeta -> zeta^-1, F -> V is a well-defined involutive ring automorphism of E (this is the functional equation)
+PASS  C3 X4 Omega_+ is alternating, zeta-invariant, a q-similitude of F; on R its denominator is 2; the primitive integral multiple has elementary divisors [1, 1]  det = 1
+PASS  C4 X4 Weil form 1/2 Omega_+(x, (F - V) y) = 1/2 Tr_(E/Q)(x sigma(y)) exactly, and it is positive definite (exact leading minors)  minors 2, 3
+PASS  C5 X4 vacuum J = (F - V)(4q - (F+V)^2)^(-1/2) on R: spectrum of F+V real in (-2 sqrt q, 2 sqrt q); J^2 = -1, JF = FJ, J zeta = zeta J, Omega J symmetric positive  |J^2+1| 1.1e-16, commutators 0.0e+00, asym 0.0e+00, min eig of Omega J 0.577
+PASS  C6 X4 charpoly_Z(F) on R = prod over j in (Z/N)^x of P_(chi^j) (each L(u, chi^j) recomputed from its own character sums): [1, 4, 7]; middle coefficient 4 prime to p = 7  ordinary: True; residual 2.1e-50
+PASS  C1 X5 rank 2 over Z[z_2], 2 over Z: F, V = qF^-1 and zeta preserve R; MV = q on R; companion lattice Z[z][F] V-stable: True; [R : Z[z][F]] = 1  W = (1.0 + 0.0j)
+PASS  C2 X5 sigma: zeta -> zeta^-1, F -> V is a well-defined involutive ring automorphism of E (this is the functional equation)
+PASS  C3 X5 Omega_+ is alternating, zeta-invariant, a q-similitude of F; on R its denominator is 1; the primitive integral multiple has elementary divisors [1, 1]  det = 1
+PASS  C4 X5 Weil form 1/2 Omega_+(x, (F - V) y) = 1/2 Tr_(E/Q)(x sigma(y)) exactly, and it is positive definite (exact leading minors)  minors 2, 19
+PASS  C5 X5 vacuum J = (F - V)(4q - (F+V)^2)^(-1/2) on R: spectrum of F+V real in (-2 sqrt q, 2 sqrt q); J^2 = -1, JF = FJ, J zeta = zeta J, Omega J symmetric positive  |J^2+1| 2.2e-16, commutators 1.1e-16, asym 0.0e+00, min eig of Omega J 0.296
+PASS  C6 X5 charpoly_Z(F) on R = prod over j in (Z/N)^x of P_(chi^j) (each L(u, chi^j) recomputed from its own character sums): [1, 3, 7]; middle coefficient 3 prime to p = 7  ordinary: True; residual 0.0
+PASS  C1 X6 rank 2 over Z[z_2], 2 over Z: F, V = qF^-1 and zeta preserve R; MV = q on R; companion lattice Z[z][F] V-stable: True; [R : Z[z][F]] = 1  W = (1.0 + 0.0j)
+PASS  C2 X6 sigma: zeta -> zeta^-1, F -> V is a well-defined involutive ring automorphism of E (this is the functional equation)
+PASS  C3 X6 Omega_+ is alternating, zeta-invariant, a q-similitude of F; on R its denominator is 1; the primitive integral multiple has elementary divisors [1, 1]  det = 1
+PASS  C4 X6 Weil form 1/2 Omega_+(x, (F - V) y) = 1/2 Tr_(E/Q)(x sigma(y)) exactly, and it is positive definite (exact leading minors)  minors 2, 8
+PASS  C5 X6 vacuum J = (F - V)(4q - (F+V)^2)^(-1/2) on R: spectrum of F+V real in (-2 sqrt q, 2 sqrt q); J^2 = -1, JF = FJ, J zeta = zeta J, Omega J symmetric positive  |J^2+1| 2.2e-16, commutators 0.0e+00, asym 0.0e+00, min eig of Omega J 0.414
+PASS  C6 X6 charpoly_Z(F) on R = prod over j in (Z/N)^x of P_(chi^j) (each L(u, chi^j) recomputed from its own character sums): [1, 2, 3]; middle coefficient 2 prime to p = 3  ordinary: True; residual 0.0
+PASS  C7 control: x^2 - 6x + 5 (roots 1 and 5, q = 5; functional equation yes, RH no): sigma still exists, Omega_+ still a similitude, but Tr(x sigma(y)) is indefinite  leading minors 2, -16
+PASS  C8 all six: W = (-1)^n det_(Q(zeta))(F) / q^(n/2), the root number is the phase of the determinant of the step on the chi-part; over Z the determinant is q^(D/2)  max error 2.7e-51
+== D  the cover y^N = c f(t): its zeta numerator is the product of the L(u, chi^j), j = 1..N-1; the chi-part is a factor
+PASS  D1 X1 cover y^4 = -1*f, genus 3 (point counts over F_(q^r), r <= 3): zeta numerator = prod_(j=1..3) Lambda(u, chi^j) = [1, -1, 4, -7, 20, -25, 125]; with c = 3 (a non-4-th power times the predicted c) it is not (the twist u -> zeta u)  c = 3 gives [1, -5, 10, -17, 50, -125, 125]
+PASS  D2 X1 the chi-part (charpoly of F on R, degree 4) divides the numerator: the lattice is H_1 of a factor of Jac(y^4 = -1 f) of dimension 2  cofactor [5, 3, 1]
+PASS  D1 X2 cover y^4 = -1*f, genus 3 (point counts over F_(q^r), r <= 3): zeta numerator = prod_(j=1..3) Lambda(u, chi^j) = [1, -4, -3, 32, -15, -100, 125]; with c = 3 (a non-4-th power times the predicted c) it is not (the twist u -> zeta u)  c = 3 gives [1, 4, 13, 32, 65, 100, 125]
+PASS  D2 X2 the chi-part (charpoly of F on R, degree 4) divides the numerator: the lattice is H_1 of a factor of Jac(y^4 = -1 f) of dimension 2  cofactor [5, -4, 1]
+PASS  D1 X3 cover y^3 = 1*f, genus 3 (point counts over F_(q^r), r <= 3): zeta numerator = prod_(j=1..2) Lambda(u, chi^j) = [1, 2, 6, 19, 42, 98, 343]; with c = 3 (a non-3-th power times the predicted c) it is not (the twist u -> zeta u)  c = 3 gives [1, -4, -6, 55, -42, -196, 343]
+PASS  D2 X3 the chi-part (charpoly of F on R, degree 6) divides the numerator: the lattice is H_1 of a factor of Jac(y^3 = 1 f) of dimension 3  cofactor [1]
+PASS  D1 X4 cover y^3 = 1*f, genus 1 (point counts over F_(q^r), r <= 1): zeta numerator = prod_(j=1..2) Lambda(u, chi^j) = [1, 4, 7]; with c = 3 (a non-3-th power times the predicted c) it is not (the twist u -> zeta u)  c = 3 gives [1, -5, 7]
+PASS  D2 X4 the chi-part (charpoly of F on R, degree 2) divides the numerator: the lattice is H_1 of a factor of Jac(y^3 = 1 f) of dimension 1  cofactor [1]
+PASS  D1 X5 cover y^2 = -1*f, genus 1 (hyperellcharpoly): zeta numerator = prod_(j=1..1) Lambda(u, chi^j) = [1, 3, 7]; with c = 4 (a non-2-th power times the predicted c) it is not (the twist u -> zeta u)  c = 4 gives [1, -3, 7]
+PASS  D2 X5 the chi-part (charpoly of F on R, degree 2) divides the numerator: the lattice is H_1 of a factor of Jac(y^2 = -1 f) of dimension 1  cofactor [1]
+PASS  D1 X6 cover y^2 = 1*f, genus 1 (hyperellcharpoly): zeta numerator = prod_(j=1..1) Lambda(u, chi^j) = [1, 2, 3]; with c = 2 (a non-2-th power times the predicted c) it is not (the twist u -> zeta u)  c = 2 gives [1, -2, 3]
+PASS  D2 X6 the chi-part (charpoly of F on R, degree 2) divides the numerator: the lattice is H_1 of a factor of Jac(y^2 = 1 f) of dimension 1  cofactor [1]
+PASS  D3 X1 the quadratic character chi^2 gives the elliptic curve y^2 = -1*f: Lambda(u, chi^2) = [1, 3, 5], hyperellcharpoly [1, 3, 5]
+PASS  D3 X2 the quadratic character chi^2 gives the elliptic curve y^2 = -1*f: Lambda(u, chi^2) = [1, -4, 5], hyperellcharpoly [1, -4, 5]
+PASS  D4 all six: prod_(j=1..N-1) W(chi^j) = 1, the root number of the cover's zeta (a curve: +1); the phases of the chi-parts cancel in the product  X1: (0.6 - 0.8j) * (1.0 + 0.0j) * (0.6 + 0.8j); X2: (-0.8 - 0.6j) * (1.0 + 0.0j) * (-0.8 + 0.6j); X3: (0.944911 - 0.327327j) * (0.944911 + 0.327327j); X4: (0.755929 + 0.654654j) * (0.755929 - 0.654654j); X5: (1.0 + 0.0j); X6: (1.0 + 0.0j); max |prod - 1| 2.0e-50
+
+118 of 118 pass
