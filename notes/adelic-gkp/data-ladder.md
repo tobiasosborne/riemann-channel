@@ -10,6 +10,25 @@ Status: **a record, not a round.** Nothing registered in `db/claims.tsv`; no REF
 (*standard*, *proved here*, *checked*, *sketched*, *heuristic*, *open*, *negative finding*); a statement here is never stronger than on its lane page.
 `refs/src/` was absent in the container, so every theorem quoted in the lane pages is "from memory" and not byte-cited.
 
+## The answer in one paragraph (status: the facts are those of the lane pages, reviewed; the reading is mine)
+
+In every understood case RH is the existence of an invariant vacuum for a triple $(L,M,\Omega)$: an integral lattice of finite rank, one integral
+step of norm $q$ for the global zeros, and a compatible alternating form; equivalently, the cone of positive similitude forms is non-empty, and
+its witness, the Weil form $\tfrac12\Omega(M-V)$, is polynomial in the step. The counts decide RH but fix only the isogeny class (lane A); the lattice's
+class is seen by the pairing, not by any overlap of the code with product states (lane F); the vacuum or polarisation carries RH and is supplied, in
+every case with global zeros, by geometry (ampleness through Rosati; lanes A, E, J); the gate phases are a separate item that does not enter the
+positivity (lanes I, J); commuting families of complex-multiplication type share the vacuum as soon as each member has one, while Hecke-type
+families do not (lane M); and semisimplicity is a condition on the geometric lattice that companion constructions miss (lane S). $\zeta$ has: the
+step group with exact adjoints; forms compatible with every step ($\Omega_{\rm FE}$, $\Omega_D$); the prime steps as exact similitudes of Weil's form
+(the Toeplitz shift; lane R); Weil's form as the family-invariant point; the explicit formula as Lefschetz; trivial gate phases; the pole plane as the
+one negative direction. $\zeta$ lacks: finite rank (one atom per zero on every window, against $2g$), hence any integral lattice for the shift to act
+on; counts at $\infty$; and the geometric reason for the invariant point to be positive. **So the data that the zeros of $\zeta$ need, in these
+terms, are a finite-rank-per-mode integral structure on a global "$H^1$" on which the squeeze generator acts integrally, together with a
+polarisation-type reason for its Lefschetz trace to be positive.** The examples say where this cannot come from: not from the code's overlaps or
+its level tower (lanes F, tower page), not from local lattices and vacua (lane C), not from Connes's cokernel as constructed (a companion-type
+space, lane S), and not from a Hecke-type family (lane M). Where it comes from in every understood case is the geometry of a global object over
+a finite field, and the question is what replaces that geometry over $\mathbb Q$.
+
 ## 0. The ladder
 
 Every understood case is a triple $(L,M,\Omega)$: an integral lattice $L$, an integral step $M$ of norm $q$ on it ($M^T\Omega M=q\Omega$, $V=qM^{-1}$ integral), and
