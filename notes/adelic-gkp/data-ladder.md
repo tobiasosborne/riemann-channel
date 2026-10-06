@@ -149,8 +149,7 @@ structure on the $\ell=1$ cokernel of $\mathcal O_K$; a positivity uniform over 
 
 ## 4b. One step against a family: why the Weil form of $\zeta$ is the vacuum point
 
-Lane E's witness is a one-step statement, and lane G's qualification is what it becomes for a commuting family (*sketched*; the finite facts are
-elementary, the reading is mine).
+Lane E's witness is a one-step statement, and lane G's qualification is what it becomes for a commuting family (*checked* for the identities, *heuristic* for the reading).
 
 - One mode, one step. On a mode where $S=M/\sqrt q$ rotates by $\theta$, the Weil form is $\tfrac12\Omega(M-V)=\sqrt q\,\sin\theta\;\Omega(\cdot,J\cdot)$:
   the vacuum form times $\sin\theta$. It is positive iff $\theta\in(0,\pi)$ for the orientation of $\Omega$, which is lane E's CM-type condition $\Phi_+$
@@ -168,6 +167,8 @@ elementary, the reading is mine).
   algebra is Weil's criterion itself.** The datum $\zeta$ lacks is therefore not an $\Omega$ for one step (each prime has one, lane G) but a reason for
   the family's involution to be positive; in every understood case that reason is geometric and global (ampleness on a Jacobian, the CM field of
   the lift), and it is carried by the lattice, which is the item the ladder says $\zeta$ does not have.
+
+Checked: `checks/check_family_weil.py` (51 of 51 pass): the one-mode identity Weil form $=\sqrt q\sin\theta\,G_J$, its orientation dependence, the CM family's opposite signs on conjugate primes with one vacuum $J_K$ and the trace form a positive multiple of $G_{J_K}$, and the sign statistics of $\sin(\gamma\log p)$ over 200 zeros for $p=2,3,5$.
 
 ## 5. Corrections to earlier pages (recorded here; the pages carry a one-line annotation)
 
