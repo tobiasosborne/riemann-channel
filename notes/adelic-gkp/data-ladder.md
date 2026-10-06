@@ -22,7 +22,7 @@ equivalently the positivity of the Weil form $\tfrac12\Omega(M-V)$ (`lattice-tow
 | ordinary elliptic curve $E/\mathbb F_q$ | $H_1$ of the canonical lift; **not determined by the counts** (class number) | lifted Frobenius | yes (Hasse) | Rosati form $=$ vacuum form $\times\sqrt{4q-a^2}$ (proved) | two | `curve-bridge.md` |
 | $\mathbb Z_2$ flux on a graph, ordinary ($K_4$, one negative edge) | $\mathbb Z^{2n}$ from the graph $=H_1$ of the lift of $E_2\times E_4\times\mathrm{Jac}(y^2+(x^2+x)y=x^5+1)$ | $M_s$ | yes iff the flux is Ramanujan | exists; differs from the vacuum by a sign per mode; $\Omega$ itself fails Howe, a unit twist repairs it | $2n$ | `howe-positivity.md`, `no-lift.md` |
 | $\mathbb Z_2$ flux, non-ordinary (Petersen, $K_5$) | $\mathbb Z^{2n}$ from the graph; arithmetically from the Centeleghe–Stix category, **no canonical lift**; glued, not a product | $M_s$ | yes; on the supersingular block $J=M/\sqrt q$ (quarter turn) | ordinary block: as above; supersingular block: **none selected** | $2n$ | `no-lift.md` |
-| genus two over $\mathbb F_q$ | $\mathbb Z^4$ | Frobenius | yes | the forms with $M^TBM=qB$ form a cone; see `cone-bridge.md` | four | `cone-bridge.md` |
+| genus two over $\mathbb F_q$ ($y^2=x^5+x^3+x^2-2$, $\mathbb F_5$) | $\mathbb Z^4$ | Frobenius | yes; the positive similitude forms are a cone $\sum_jt_j\,(\text{vacuum form on mode }j)$ and **RH is the cone being non-empty** | a further point of the cone; Rosati transported is not proportional to the vacuum form (weights 10.870, 20.171); it settles integrality, not RH | four | `cone-bridge.md` |
 | CM Hecke $L(\psi,s)$, $K=\mathbb Q(\sqrt{-7})$ (441d1, 49a1) | one lattice $\mathcal O_K$ for every split prime | one step $\psi(\mathfrak p)$ per prime, all commuting | one $J_K$ for all primes: **local RH free** | the complex structure of $K\otimes\mathbb R$ | infinitely many, **not determined by the local data** | `cm-lift.md` |
 | $\zeta$ | none known: $\mathbb Q^2$ is rigid and divisible (G3) | a flow (the squeeze group $C_{\mathbb Q}$), not an integral map | open (= RH) | none | infinitely many, all global | `adelic-gkp.md` §12 |
 
@@ -44,7 +44,14 @@ Lane A's order for an ordinary elliptic curve (`curve-bridge.md` §6), extended 
    Riemann–Roch cokernel state $(Y_j,Y_{j-1})$ of `analytic.md` §13 to the Deligne module, the window shift to $M$, the discrete Wronskian to $\Omega$, and
    the Casoratian (the cokernel metric, the Rosati form) to the Weil form: $\Omega(Ss,J\,Ss)=2\mathcal Q(s)/\sqrt{4q-a^2}$. So the two lattice pictures of
    the notebook (the adelic qunaught's cokernel and the GKP syndrome torus) are one object in genus one. In genus $g\ge2$ the similitude forms form a
-   cone of dimension $g$ and proportionality is not forced: lane E (`cone-bridge.md`).
+   cone of dimension $g$ and proportionality is not forced. Lane E (`cone-bridge.md`, *proved/checked*): for a fixed compatible $\Omega$ the positive
+   similitude forms are $\sum_jt_j\,G_j$ with $G_j$ the vacuum form on mode $j$; the Weil form $\tfrac12\Omega(M-V)$ is the point with weights
+   $\varepsilon_j\tfrac12\sqrt{4q-\lambda_j^2}$, $\varepsilon_j$ the Krein sign of $\Omega$ on mode $j$, so it is positive iff RH holds **and** $\Omega$ has CM type $\Phi_+$;
+   the Rosati form transported by a cyclic vector sweeps the cone (an infinite unit orbit in genus two), and the form $\Omega_+=\mathrm{Tr}(x\bar y/(V-F))$ on
+   $\mathbb Z[F,V]$ has Weil form exactly $\tfrac12\mathcal T$ with vacuum weights $1/\sqrt{4q-\lambda_j^2}$ per mode, the per-mode version of lane A's scalar,
+   but is principal only in genus one. On the curve over $\mathbb F_5$ and on $K_4$ the principal polarisation's own Weil form is indefinite. So in several
+   modes the lattice pictures share a cone, not a point: **RH is the non-emptiness of the cone, witnessed by the Weil form, which is polynomial in the
+   step and exists before RH is known; the polarisation is a further point that decides integrality (a qunaught, $\det=1$) and not RH.**
 
 ## 2. The negative findings that constrain the $\zeta$ side
 
@@ -92,8 +99,12 @@ Absent, by the ladder:
    the squeezes $D_a$ act on it as automorphisms with $(1-D_a)\mathbb Q^2=\mathbb Q^2$, so there is no logical space and no counts. In the curve case the
    lattice is not the code's lattice either: it is $H_1$ of a lift, or a Centeleghe–Stix object, and the code's trivial-character data do not even
    fix its class (lane A). So the missing datum is not something the code can be expected to contain; it is extra structure on the cokernel.
-2. **A polarisation** on that lattice (note §12.2); in the finite cases this is where positivity comes from (ampleness, Rosati), and lane A shows it is
-   the vacuum form transported, so "polarisation" and "vacuum" are the same datum seen from the two sides.
+2. **A polarisation** on that lattice (note §12.2). In genus one lane A shows it is the vacuum form transported, so "polarisation" and "vacuum" are
+   the same datum seen from the two sides; in several modes lane E separates them: the polarisation is one point of the cone and RH is the
+   non-emptiness of the cone, witnessed by the Weil form alone. Lane E's reading for $\zeta$ (*heuristic*): Weil's quadratic form is the analogue of
+   that witness (analytic §14 matches it with $\mathcal T$, the unit of the test-function algebra being a canonical cyclic vector), the Deninger metric
+   cone of shard 04u is the analogue of the cone, and on the evidence of the curve examples RH should not need a polarisation; what it needs is a
+   reason for the one witness to be positive, which in the curve case is ampleness through Rosati and for $\zeta$ is the open statement itself.
 3. **Counts.** At the real place there is nothing to count (note §12.1); lane A shows that even where there are counts they fix only the isogeny
    class.
 
@@ -109,11 +120,15 @@ structure on the $\ell=1$ cokernel of $\mathcal O_K$; a positivity uniform over 
 - The E mode lifts to 441d1; 49a1 reduces mod 2 to the $\mathbb F_2$-twist, step $-M$ (lane C).
 - `lattice-tower.md` §6, §9: "no lift" for the non-ordinary examples is "no canonical lift"; supersingular factors lift with Frobenius, not canonically (lane B).
 - `lattice-tower.md` §7.3 is a reading of the local level only (lane C, §3 above).
+- `lattice-tower.md` §5: (i)$\Rightarrow$(ii) needs the CM type $\Phi_+$ for $\Omega$; it holds for the graph steps the page was written for and fails for
+  $M'=\bigl(\begin{smallmatrix}0&1\\-5&-2\end{smallmatrix}\bigr)$ (RH, Weil form negative definite). General form: (i) $\Leftrightarrow$ (iii) $\Leftrightarrow$ the Weil form
+  of some compatible form is positive (lane E).
 - The lane B brief had $K_5$ at $q=4$; it is 4-regular, $q=3$, as the existing pages use.
 
 ## 6. Next
 
-- The lane E and lane F results (cone in genus two; whether divisor-resolved overlaps see the lattice class) are to be folded in here when they land.
+- The lane F result (whether divisor-resolved overlaps see the lattice class) and lane D (a $\mathbb Z_N$ flux as the finite shadow of a Dirichlet family) are to be folded in here when they land.
+- Which of the four ideal classes of $\mathcal O_K$ and which principal form belong to $\mathrm{Jac}(C)$ itself for the curve over $\mathbb F_5$ (lane E).
 - A $\mathbb Z_N$ flux on a graph as the finite shadow of a Dirichlet family: lattice $\mathbb Z[\zeta_N]$, step, Hermitian Weil form, RH on average over the
   Brillouin torus (`gauge-groups.md`), and the data ladder for Dirichlet $L$ against it.
 - The Fourier-gate phases (Gauss sums, Hermite phase) whose product is the root number; the GKP meaning of 441d1's forced central zero (lane C).
