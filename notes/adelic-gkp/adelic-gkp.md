@@ -71,7 +71,7 @@ $f_0=e^{-\pi x_\infty^2}\otimes1_{\hat{\mathbb Z}}$. $D_af(x)=|a|^{1/2}f(ax)$ fo
   Ihara zeta in graph form. (i) The flux is a GKP qubit on the period lattice $H_1(Y,\mathbb Z)$ of the maximal abelian cover; super count $=2\times$ walks of
   odd flux. (ii) The fermionic step preserves $\mathbb Z^{2n}$; points are periodic syndromes of $n$ qunaught modes, the cohomology of the syndrome torus is the
   fermionic Fock space, and for one fermionic mode the super zeta is the zeta of the toral map (the Pauli-qubit elliptic curve of shard 03c is the syndrome
-  torus of one mode). (iii) The flux-averaged fermionic numerator is the matching polynomial, so RH holds on average over fluxes (Godsil–Gutman,
+  torus of one mode; correction 2026-10-06: the curve with this lattice is $y^2=x^3+4x\pm1$, see `curve-bridge.md` §2). (iii) The flux-averaged fermionic numerator is the matching polynomial, so RH holds on average over fluxes (Godsil–Gutman,
   Heilmann–Lieb, quoted from memory). Standard / reformulation / checked (50/50).
 - **G13 (the tower; `lattice-tower.md`).** For an integer step $M$ on $L=\mathbb Z^{2n}$ with $M^T\Omega M=q\Omega$ and $V=qM^{-1}$: the lattice $(1-V^k)L$ is the
   stabiliser lattice of a GKP code with basis the qunaught displaced by the period-$k$ syndromes, dimension $\det(1-M^k)$, logical Paulis the Heisenberg group of
@@ -470,3 +470,7 @@ for standard RH. Not the other way around. I am not convincd by the overlap thin
 and `weil-positivity-spectroscopy.md` §1 start from the standard zeta and are to be read as provisional; `graph-super.md` and `lattice-tower.md` are the pages to build on.
 
 Figures `fig_*.png` are written by the check scripts into this directory. Nothing registered; no REFUTE review; no shard.
+
+## 16. Pages of 2026-10-06 (orchestrated session; synthesis in `data-ladder.md`)
+
+`curve-bridge.md` (lane A: the Riemann–Roch cokernel of the adelic qunaught is the Deligne module, Rosati $=$ vacuum form; counts do not fix the lattice), `no-lift.md` (lane B: non-ordinary fluxes, isogeny classes, Centeleghe–Stix, the supersingular block has no arithmetic $J$), `cm-lift.md` (lane C: the E mode's CM lift 441d1; one lattice and vacuum for all local factors, global zeros not determined by them), `cone-bridge.md` (lane E: genus two, the cone of similitude forms), `overlap-data.md` (lane F: which overlap data of the code see the lattice class). `data-ladder.md` is the synthesis: what data the zeros of $\zeta$ need in these terms.

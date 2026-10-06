@@ -2,6 +2,36 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-10-06: orchestrated GKP session (Fable steering, Opus lanes); what data the zeros of ζ need (record only)
+
+TJO: "orchestrate work ... explore the GKP connection comprehensively ... build up enough examples to understand what data we need for the classic
+Riemann zeta zeroes in the terms we discover here, ie the qunaught, gkp, weil positivity ... use [the quota] all up today ... work until the quota
+reset then stop". Worklog `docs/worklog/2026-10-06.md` (second entry). **Nothing registered; no REFUTE review; no shard.** Gate unchanged.
+
+**Pages** (`notes/adelic-gkp/`, each with `checks/check_<name>.py` and output; statuses inside): `curve-bridge.md` (lane A), `no-lift.md` (lane B),
+`cm-lift.md` (lane C), `cone-bridge.md` (lane E), `overlap-data.md` (lane F); synthesis `data-ladder.md`; corrections annotated in `lattice-tower.md` §8
+and note G12; note §16 indexes them. Container: PARI/GP installed by apt, `gp` by subprocess (cypari2 does not build); `refs/src/` absent, so every
+theorem in the lane pages is quoted from memory.
+
+**Findings.** (A, proved/checked) The Riemann–Roch cokernel of the adelic qunaught maps by $S=\bigl(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\bigr)$ onto the
+Deligne module; Rosati form $=$ vacuum form $\times\sqrt{4q-a^2}$; the Howe sign flips $\Omega$ and $J$ together and cancels in the metric. The group
+identification $A(\mathbb F_{q^k})\cong L/(1-M^k)L$ holds for the curve's own Deligne module; the Pauli-six lattice is that of $y^2=x^3+4x\pm1$, not
+$y^2=x^3+4x$ (correction). Counts do not determine the lattice ($q=7$, $a=2$, class number 2: same counts and groups, different lattices).
+(B, checked) $K_4=E_2\times E_4\times\mathrm{Jac}(y^2+(x^2+x)y=x^5+1)$ over $\mathbb F_2$; Petersen $=S^3\times E_{ss}^4$; $K_5=S'^2\times E'_{ss}$ over $\mathbb F_3$
+($K_5$ is $q=3$); $K_4$ and Petersen are Weil restrictions from $\mathbb F_4$ up to isogeny; on the supersingular block the vacuum is $M/\sqrt q$ and the
+arithmetic selects no $J$; the lattice is supplied by the Centeleghe–Stix category, not a lift ("no canonical lift"); unit twists in $\mathbb Q[A_s]$ cannot
+repair $\Omega$ for Petersen or $K_5$. (C, checked) The E mode lifts to 441d1 (49a1 is its $\mathbb F_2$-twist); $\psi((\alpha))=(\alpha|\sqrt{-7})\alpha$;
+one lattice $\mathcal O_K$ and one vacuum serve every split prime (local RH free); explicit formula with no zero-mode term matches PARI zero sums to 15
+digits; windowed Gram form positive; **49a1 and 441d1 share lattice, vacuum and local steps up to sign but not their global zeros.**
+(Synthesis, `data-ladder.md`) The finite cases model the local level of $\zeta$-like $L$-functions; the zeros of $\zeta$ are entirely global; the missing
+datum is a global integral structure on Connes's cokernel on which the squeeze is a similitude, together with a polarisation, and it is not something
+the code's own data can be expected to contain (they do not fix the lattice even over $\mathbb F_q$). `lattice-tower.md` §7.3 is a reading of the local level.
+
+**Next (in order).** (i) Fold lanes E and F into `data-ladder.md` if they landed after the synthesis (check their status tables). (ii) Shard 08j
+(unchanged). (iii) REFUTE review of `graph-ihara.md`, `graph-super.md` and the lane pages before registering anything; fetch `refs/src/` and
+byte-cite (Lenstra 1996, Centeleghe–Stix 2015, Howe 1995, Tate, Deuring). (iv) A $\mathbb Z_N$ flux on a graph as the finite shadow of a Dirichlet
+family. (v) The Fourier-gate phases and the root number; the Petersen twist; a Howe-type criterion for Centeleghe–Stix objects.
+
 ## Session 2026-10-05/06: the tutorial "super Ihara zeta from the ground up", Ihara–Bass by vectorisation, other gauge groups; everything merged onto master (Fable alone; record only)
 
 TJO (cloud session): familiarise; see the day's GKP work; "create me a detailed artifact explaining this stuff in totally elementary yet
