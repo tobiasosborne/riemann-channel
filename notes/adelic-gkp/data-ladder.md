@@ -22,7 +22,7 @@ has eigenvalues $\pm\sqrt2$, a vacuum, and every compatible Weil form zero). The
 |---|---|---|---|---|---|---|
 | one mode $M=\bigl(\begin{smallmatrix}0&-1\\q&\lambda\end{smallmatrix}\bigr)$ | $\mathbb Z^2$, the form $qx^2+\lambda xy+y^2$ | $M$ | exists iff $\lambda^2<4q$ | Deligne/Howe, $=\pm J$; the sign cancels in the metric | two, $\mu^\pm$ | `lattice-tower.md`, `curve-bridge.md` |
 | ordinary elliptic curve $E/\mathbb F_q$ | $H_1$ of the canonical lift; **not determined by the counts** (class number) | lifted Frobenius | yes (Hasse) | Rosati form $=$ vacuum form $\times\sqrt{4q-a^2}$ on the companion lattice $\mathbb Z[F]$ (proved); on a non-principal lattice the pull-back is doubled | two | `curve-bridge.md` |
-| $\mathbb Z_2$ flux on a graph, ordinary ($K_4$, one negative edge) | $\mathbb Z^{2n}$ from the graph $=H_1$ of the lift of $E_2\times E_4\times\mathrm{Jac}(y^2+(x^2+x)y=x^5+1)$ | $M_s$ | yes iff the flux is Ramanujan | exists; differs from the vacuum by a sign per mode; $\Omega$ itself fails Howe, a unit twist repairs it | $2n$ | `howe-positivity.md`, `no-lift.md` |
+| $\mathbb Z_2$ flux on a graph, ordinary ($K_4$, one negative edge) | $\mathbb Z^{2n}$ from the graph $=H_1$ of the lift of an abelian fourfold isogenous to $E_2\times E_4\times\mathrm{Jac}(y^2+(x^2+x)y=x^5+1)$, glued at 2 (index $2^4$ over the product; review INVALID corrected) | $M_s$ | yes iff the flux is Ramanujan | exists; differs from the vacuum by a sign per mode; $\Omega$ itself fails Howe, a unit twist repairs it | $2n$ | `howe-positivity.md`, `no-lift.md` |
 | $\mathbb Z_2$ flux, non-ordinary (Petersen, $K_5$) | $\mathbb Z^{2n}$ from the graph; arithmetically from the Centeleghe–Stix category, **no canonical lift**; glued, not a product | $M_s$ | yes; on the supersingular block $J=M/\sqrt q$ (quarter turn) | ordinary block: as above; supersingular block: **none selected** | $2n$ | `no-lift.md` |
 | genus two over $\mathbb F_q$ ($y^2=x^5+x^3+x^2-2$, $\mathbb F_5$) | $\mathbb Z^4$ | Frobenius | yes; the positive similitude forms are a cone $\sum_jt_j\,(\text{vacuum form on mode }j)$ and **RH is the cone being non-empty** | a further point of the cone; Rosati transported is not proportional to the vacuum form (weights 10.870, 20.171); it settles integrality, not RH | four | `cone-bridge.md` |
 | $\mathbb Z_N$ flux on a graph ($N=3,4,5,6$) | $\mathbb Z[\zeta_N]^{2n}$ by restriction of scalars; $\zeta_N$ is complex multiplication, not a lock | $M_\rho$, $M_\rho^\dagger\Omega M_\rho=q\Omega$ | yes iff every Galois-conjugate flux is in the band ($\rho$ and $\bar\rho$ have the same spectrum) | not run | $2n\varphi(N)$, each mode twice | `zn-flux.md` |
@@ -70,10 +70,10 @@ Each is *checked* on its page; together they say where not to look.
 - **The tower is blind** (`lattice-tower.md` §4): levels, codes, logical Cliffords and Lefschetz exist with or without RH.
 - **Counts do not determine the lattice** (lane A), and no overlap of the code with product stabiliser states does (lane F): the datum that carries RH
   sits on a lattice whose class is fixed only by the Weil pairing, an operator-valued datum of the code.
-- **Local lattices and vacua do not determine global zeros** (lane C): 49a1 and 441d1 share $\mathcal O_K$, $J_K$ and every local step up to sign, and
-  have different zeros; only 441d1 has a central zero (root number $-1$). Lane I (`gate-phases.md`, *proved/checked*) locates the difference: the
-  root number is the product of the local Fourier-gate phases ($-i$ at $\infty$ from the Hermite function, $i$ at 7 from the conductor squeeze, $\pm1$
-  at 3, $1$ at every unramified place, where the local state is a Fourier-invariant qunaught); the half turn that 49a1 spends in its Euler factor at 3
+- **Local lattices and vacua do not determine global zeros** (lane C): 49a1 and 441d1 share $\mathcal O_K$, $J_K$ and every local step up to sign at every $p\ne3$ (at 3, 441d1 has a
+  charged local state and no step), and have different zeros; only 441d1 has a central zero (root number $-1$). Lane I (`gate-phases.md`, *proved/checked*) locates the difference: the
+  root number is the product of the local Fourier-gate phases ($-i$ at $\infty$ from the Hermite function, $i$ at 7 the normalised Gauss sum $g_7/\sqrt7$, the squeeze
+  $D_7$ supplying only the conductor 49, $\pm1$ at 3, $1$ at every unramified place, where the local state is a Fourier-invariant qunaught); the half turn that 49a1 spends in its Euler factor at 3
   ($a_9=-3$), 441d1 spends in its gate phase, and at 3 the "step" stops being an invariant (it depends on the uniformiser). So the distinguishing
   datum is a charged local state with its phase, in the Hilbert space of the local mode, not on the lattice or the vacuum; and the gate phases see
   only the parity of the central zero, not the split-prime signs of the twist.
@@ -185,6 +185,12 @@ Checked: `checks/check_family_weil.py` (51 of 51 pass): the one-mode identity We
 - `notes/reviews/adelic-gkp-lattice-2026-10-06.md` (lanes A, E, F): 22 VALID / 6 MINOR / 0 INVALID; the three headline claims of §1 stand; the six
   precision faults are corrected above and annotated on the pages (the bridge lands on $\mathbb Z[F]$; the cone page's prime count; the general form of
   the vacuum/Weil-form equivalence needs "no real eigenvalue"; Frobenius compatibility in lane F's lemma; this page's §0).
+
+- `notes/reviews/adelic-gkp-arithmetic-2026-10-06.md` (lanes B, C, D, I): 37 VALID / 3 MINOR / 1 INVALID; the four lane pages hold; the INVALID was
+  this page's table row writing an isomorphism where `no-lift.md` says isogeny (corrected above: the $K_4$ fourfold is glued at 2, index $2^4$ over the
+  product, which partly answers `no-lift.md` §2's open question); the MINORs: `zn-flux.md` Prop. 2.1(3) "charpoly $=P^2$" needs $N\ge3$ (squarefree at
+  $N=2$); this page's "up to sign" is "at every $p\ne3$"; the phase at 7 is the normalised Gauss sum, the squeeze supplies the conductor. The reviewer
+  recalls every "from memory" theorem the same way; the Centeleghe–Stix functor is contravariant.
 
 ## 5. Corrections to earlier pages (recorded here; the pages carry a one-line annotation)
 
