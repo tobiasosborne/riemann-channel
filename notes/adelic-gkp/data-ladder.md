@@ -106,10 +106,12 @@ cohomology (`cit:deninger-conformal-metric`), now with the integrality made expl
 
 ## 4. The data for $\zeta$, item by item
 
-In hand (*standard*, note §§1–10): the qunaught $\Theta$ on the lattice $\mathbb Q^2\subset\mathbb A^2$; the product vacuum $f_0$ (Gaussian at $\infty$,
-qunaughts at $p$); the squeeze group $C_{\mathbb Q}$ with its Mellin transform; the Fourier gate; Weil's functional $\omega$ with its explicit decomposition
-into two zero modes and local Lefschetz traces; Connes's cokernel, an infinite-dimensional space with a unitary squeeze flow that sees only the
-critical zeros.
+In hand (*standard*, note §§1–10; inventory in `zeta-ingredients.md` §2): the qunaught $\Theta$ on the lattice $\mathbb Q^2\subset\mathbb A^2$; the product vacuum
+$f_0$ (Gaussian at $\infty$, qunaughts at $p$); the squeeze group $C_{\mathbb Q}$ with its Mellin transform, each prime step with its exact adjoint; the
+Fourier gate; Weil's functional $\omega$ with its explicit decomposition into two zero modes and local Lefschetz traces, a similitude form for every
+step before RH; the functional-equation pairing of shard 04t on finite spans of zeros; the pole plane as the one negative direction of the windowed
+form with poles kept (lane G, *checked* at 40–60 digits: $Z_N\mp P_N$ have inertia $(n-1,1,0)$, each off-line pair adds one); Connes's cokernel, an
+infinite-dimensional space with a unitary squeeze flow that sees only the critical zeros.
 
 Absent, by the ladder:
 
@@ -121,10 +123,18 @@ Absent, by the ladder:
    contain; it is extra structure on the cokernel, of the kind the symplectic pairing supplies in the finite case.
 2. **A polarisation** on that lattice (note §12.2). In genus one lane A shows it is the vacuum form transported, so "polarisation" and "vacuum" are
    the same datum seen from the two sides; in several modes lane E separates them: the polarisation is one point of the cone and RH is the
-   non-emptiness of the cone, witnessed by the Weil form alone. Lane E's reading for $\zeta$ (*heuristic*): Weil's quadratic form is the analogue of
-   that witness (analytic §14 matches it with $\mathcal T$, the unit of the test-function algebra being a canonical cyclic vector), the Deninger metric
-   cone of shard 04u is the analogue of the cone, and on the evidence of the curve examples RH should not need a polarisation; what it needs is a
-   reason for the one witness to be positive, which in the curve case is ampleness through Rosati and for $\zeta$ is the open statement itself.
+   non-emptiness of the cone, witnessed by the Weil form alone. Lane E read Weil's quadratic form for $\zeta$ as the analogue of that witness
+   (*heuristic*); lane G (`zeta-ingredients.md`, *proved/checked*) qualifies this. For $\zeta$ the step and its adjoint exist exactly ($M_a=\delta_a*$,
+   $V_a=aM_a^{-1}$ by the involution) and Weil's form $B$ is a similitude form with adjunction for every $a$ before RH; by the converse of lane E's
+   proposition ($\Omega=2G(M-V)^{-1}$ is alternating and compatible whenever $M$ is a similitude of $G$), $B$ is a Weil-form point for each prime step
+   separately, but with a prime-dependent singular $\Omega_p$ (weights $1/(\sqrt p\sin(\gamma\log p))$, small divisors), and **no single compatible
+   $\Omega$ serves two primes**. Relative to the one pairing the notebook already has, the functional-equation pairing $\Omega_{\rm FE}$ of shard 04t,
+   every prime step's Weil form is indefinite and $B$ is the **vacuum point**, the analogue of lane C's shared $G_{J_K}$; it is a Weil-form point
+   only for the infinitesimal generator $D$, with Williamson weights $|\gamma|$, which is tautological (as $\mathcal T$ in analytic §14 is the Weil form
+   for the generator $F$ only). In the window the compressed dilation by 2 is a similitude of the Gram form only on functions supported away from
+   the edge; on the whole window the residual stays near $0.4$ for $N\le160$ and $x\le100$ (*negative finding*). So what $\zeta$ lacks is not a
+   symplectic partner for one step but one $\Omega$ for the whole commuting family of prime steps; the Deninger metric cone of shard 04u remains the
+   analogue of the cone, and the reason for positivity, ampleness through Rosati in the curve case, is for $\zeta$ the open statement itself.
 3. **The local charged states and their gate phases** (lane I): a separate item of the ladder, present for Hecke and Dirichlet $L$-functions
    (Gauss sums at the conductor, the Hermite phase at $\infty$), trivial for curves over $\mathbb F_q$ (root number $+1$, squeezes only), for graphs
    (the completed zeta is even) and for $\zeta$ (every phase is 1). It is the first global invariant assembled from local data that is not a
@@ -153,7 +163,10 @@ structure on the $\ell=1$ cokernel of $\mathcal O_K$; a positivity uniform over 
 
 ## 6. Next
 
-- Lane G (`zeta-ingredients.md`: which of the three ingredients exist for $\zeta$ on Connes's cokernel) is to be folded in here when it lands.
+- Lane G's next: a description of $\Omega_D$ that does not go through $B$; the prime-step similitude test in a smooth window basis; the CM version of the
+  vacuum-point reading. Lane J (`ff-dirichlet.md`, a Dirichlet character of $\mathbb F_q(t)$ with every ladder item) and the two REFUTE reviews
+  (`notes/reviews/adelic-gkp-*-2026-10-06.md`) are to be folded in when they land.
+- `notes/weil-bond-analytic/checks/metric_blocker_checks.py` imports `scripts/rtp2_blind_recovery.py`, which needs Python 3.12 (`math.sumprod`); it does not run on 3.11.
 - Lane I's open items: the full quadratic-twist family; Hecke characters of higher infinity type; a function-field shadow with a ramified twist.
 - Lane F's open items: whether the Weil pairing is expressible as a datum of $\Theta_K$ itself; the genus-blind case ($q=8$, $a=3$, discriminant $-23$, three
   curves in one genus), predicted and not checked.
