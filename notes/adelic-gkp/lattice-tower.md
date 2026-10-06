@@ -150,6 +150,9 @@ Following the steer, these are the readings that are natural in the understood c
 
 ## 8. Status and checks
 
+*Correction 2026-10-06 (lane A, `curve-bridge.md` §2):* the Pauli-six lattice $x^2+2x+5$ is the Deligne module of $y^2=x^3+4x\pm1$ over $\mathbb F_5$ ($j=1$, groups $\mathbb Z/8$), not of $y^2=x^3+4x$ ($j=1728$, groups $\mathbb Z/2\times\mathbb Z/4$); the group identification $A(\mathbb F_{q^k})\cong L/(1-M^k)L$ holds for the curve's own Deligne module (Lenstra 1996, from memory). *Correction (lane B, `no-lift.md`):* in §6 and §9 "no lift" means "no canonical lift". See `data-ladder.md` §5.
+
+
 | statement | status |
 |---|---|
 | the point tower: codes, bases, dimensions, nesting, logical Heisenberg group, the step as a logical Clifford, places as orbits | elementary; checked exactly (W2, W5); the usual sign convention for the stabilisers of $L$ is assumed |
