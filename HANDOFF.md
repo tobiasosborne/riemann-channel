@@ -2,6 +2,47 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-10-05/06: the tutorial "super Ihara zeta from the ground up", Ihara–Bass by vectorisation, other gauge groups; everything merged onto master (Fable alone; record only)
+
+TJO (cloud session): familiarise; see the day's GKP work; "create me a detailed artifact explaining this stuff in totally elementary yet
+correct terms ... start with the graph, basic linear algebra ... animations, interactive demos"; "add a subsection that proves the ihara bass
+formula ... using vectorisation / choi superoperators"; "what happens if we add a U(1), or an SU(2), or ... SU(1,1)"; "create handoff and merge
+everything to main/master". Worklogs `docs/worklog/2026-10-05.md` (evening entry) and `2026-10-06.md`. **Nothing registered; no REFUTE
+review; no shard.** Gate unchanged: 13 real errors (8 Yoshida rows, 5 round-2 scripts awaiting 08j).
+
+**Merge.** `claude/weil-bond-analytic` (2026-10-01 analytic record; 2026-10-02/05 adelic-GKP note; the eight companion pages of 2026-10-05) was
+a clean fast-forward of master and is now on master together with this session's files. The untracked `weil-bond-analytic.patch` on TJO's
+machine is redundant with commits 5203468, 02d9eb2, 3e7ddb9.
+
+**The tutorial** (`notes/adelic-gkp/tutorial/`, artifact https://claude.ai/artifact/2KbsLkFaW2pBBHs5r1NQxc, private). Eighteen sections,
+fourteen live demos, every number computed in the browser from the chosen graph; the numerical core (`core.js`) is tested headlessly against
+the recorded check outputs (`test.js`, all pass) and the page was rendered headlessly at desktop and phone width with no errors. Route: graph
+and matrix → eigenvalues and walks → non-backtracking `B` → Ihara zeta and Ihara–Bass → the critical circle and RH for graphs → the phase-space
+step `M`, the Weil form and Ramanujan → the three-gate circuit → flux, double cover, bosons and fermions, the super zeta, dark lines → RH on
+average → GKP codes from scratch → the flux qubit on the cycle lattice → the syndrome torus and the E mode's counts → the tower and its
+blindness → RH as an invariant vacuum and Deligne modules → dictionary, status table, glossary. The status table repeats the record's statuses.
+
+**Ihara–Bass by vectorisation** (Section 4b of the page; elementary, standard in content, the shard-08 proof specialised). The edge space is the
+vectorised adjacency pattern `P_A(V ⊗ V)`; the Hashimoto operator is the superoperator `B(Ψ) = A ∘ ((J − 1)Ψ^T)`, i.e. `B = P_A (K ⊗ 1) F`
+with `K = J − 1` and `F` the swap; the rank-one `J` factors through the vertex space, so `B = τσ^T − F` with `σ^Tτ = A`, `τ^Tτ = σ^Tσ = D`,
+`F² = 1`; factoring `1 + uF` (determinant `(1 − u²)^{|E|}`) and one Sylvester step give `det(1 − uB) = (1 − u²)^{|E|−|V|} det(1 − Au + (D − 1)u²)`
+for any graph. Demo 4b checks each step on the running graph. Nothing used unitarity, so the identity holds for every gauge group.
+
+**Other gauge groups** (`notes/adelic-gkp/gauge-groups.md`; discussion, statuses inside). U(1): gauge classes are the Brillouin torus of lattice
+state 1 (Z_2 the half-periods, Z_N the N-th periods and GKP qudits); RH cannot hold near φ = 0 (continuity from q + 1; Kesten); RH on average
+survives (matching polynomial); lattice state 2 needs roots of unity (CM by Z[ζ_N]). Nonabelian: holonomy sees π_1 and the tree, not H_1; no
+comb; Fourier inversion over G replaces dark/bright by the phases χ_ρ(C); the U(d) Haar average is not the matching polynomial (balanced
+tree-like trails survive), SU(2) more so (pseudoreal); S_d is known (Hall–Puder–Sawin); lattice state 2 needs finite image with an integral
+representation. Noncompact SU(1,1): a squeeze on every edge; the Weil form becomes a Krein form (`η`-Hermitian `A_ρ`, similitude of `Ω ⊗ η`);
+**RH and positivity separate** (a mode on the circle with negative Krein signature: the Krein-definite distinction of 04q, on a finite graph);
+SL(2, Z) holonomy gives cat maps on the syndrome torus; no Haar average; temperedness (weak containment in the regular representation) is a
+sufficient condition for the band, never met by finite-dimensional ρ.
+
+**Next (in order).** (i) Shard 08j (unchanged, first). (ii) The record's T-a′, T-a″, T-b (REFUTE review of `graph-ihara.md`, `graph-super.md`
+before registering anything). (iii) If wanted: a Part E of the tutorial (the Ramanujan locus of K_4 on its three-torus; an SU(1,1) Krein mode);
+the exact SU(2)/U(2) Haar averages of `det(x − A_ρ)` for K_4 by Weingarten before any claim about their roots; byte-cite Stark–Terras,
+Godsil–Gutman, Heilmann–Lieb, Hall–Puder–Sawin, Kesten.
+
 ## Session 2026-10-05: the GKP reading tested on graphs; the super Ihara zeta has two lattice states; the tower of lattices (Fable alone; record only)
 
 Two parts. Morning (claude.ai sandbox): §14 of `notes/adelic-gkp/adelic-gkp.md`, the field extension $\mathbb Q(\sqrt2)$ (checks 14/14). Then a local session

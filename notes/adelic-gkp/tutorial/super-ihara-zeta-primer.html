@@ -1,0 +1,1010 @@
+<title>Super Ihara Zeta Primer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' }, options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] } };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+<style>
+/* Layout: a lab-notebook column with a sticky route map on the left at desktop width; demos are full-width panels. */
+:root {
+  --bg: #f4f5f1; --surface: #ffffff; --surface-2: #eceee7; --ink: #1b2230; --muted: #5a6373; --line: #d6d9d0;
+  --even: #3457d5; --even-soft: #dfe5fb; --odd: #d4782a; --odd-soft: #fbe8d6; --lat: #178b78; --lat-soft: #d5efe9; --bad: #c43d38; --bad-soft: #f9dcda;
+  --display: 'IBM Plex Serif', Georgia, 'Times New Roman', serif; --body: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif; --mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #141820; --surface: #1b2029; --surface-2: #232934; --ink: #e9ebee; --muted: #a0a8b6; --line: #303845; --even: #7f98ff; --even-soft: #26315a; --odd: #f0a054; --odd-soft: #4a321a; --lat: #41c3a8; --lat-soft: #173d36; --bad: #f07067; --bad-soft: #4a2220; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg: #141820; --surface: #1b2029; --surface-2: #232934; --ink: #e9ebee; --muted: #a0a8b6; --line: #303845; --even: #7f98ff; --even-soft: #26315a; --odd: #f0a054; --odd-soft: #4a321a; --lat: #41c3a8; --lat-soft: #173d36; --bad: #f07067; --bad-soft: #4a2220; color-scheme: dark; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; margin: 0; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 24px 80px; padding-inline: 16px; }
+@media (min-width: 980px) { .wrap { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; } }
+nav.route { font-size: 13px; }
+@media (min-width: 980px) { nav.route { position: sticky; top: env(safe-area-inset-top, 0px); align-self: start; max-height: calc(100vh - 20px); overflow-y: auto; padding-top: 8px; } }
+nav.route ol { list-style: none; margin: 0; padding: 0; }
+nav.route li { margin: 0; }
+nav.route a { color: var(--muted); text-decoration: none; display: block; padding: 4px 8px; border-left: 2px solid var(--line); }
+nav.route a:hover, nav.route a:focus-visible { color: var(--ink); border-left-color: var(--even); outline: none; }
+nav.route .part { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 14px 0 4px; }
+@media (max-width: 979px) { nav.route { margin-bottom: 24px; } nav.route ol { display: flex; flex-wrap: wrap; gap: 4px; } nav.route a { border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; } nav.route .part { width: 100%; } }
+main { min-width: 0; }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; margin: 0 0 10px; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 26px; line-height: 1.2; margin: 56px 0 10px; text-wrap: balance; scroll-margin-top: 16px; }
+h2 .num { font-family: var(--mono); font-weight: 400; font-size: 14px; color: var(--muted); display: block; margin-bottom: 6px; letter-spacing: 0.06em; }
+h3 { font-family: var(--body); font-weight: 600; font-size: 17px; margin: 26px 0 6px; }
+p, li { max-width: 68ch; overflow-wrap: anywhere; }
+p { margin: 0 0 14px; }
+.lede { font-size: 18px; color: var(--muted); max-width: 62ch; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+code, .mono { font-family: var(--mono); font-size: 0.92em; }
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; margin: 10px 0 16px !important; }
+.note { border-left: 3px solid var(--lat); background: var(--lat-soft); padding: 10px 14px; margin: 16px 0; border-radius: 0 6px 6px 0; max-width: 68ch; }
+.note.warn { border-left-color: var(--bad); background: var(--bad-soft); }
+.note.even { border-left-color: var(--even); background: var(--even-soft); }
+.note p:last-child { margin-bottom: 0; }
+.remember { margin: 18px 0 8px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 8px; max-width: 68ch; background: var(--surface); }
+.remember .eyebrow { margin-bottom: 4px; }
+.remember p { margin: 0; }
+.demo { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin: 20px 0 26px; overflow: hidden; }
+.demo-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+.demo-head .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--even); }
+.demo-head .title { font-weight: 600; }
+.demo-head .hint { color: var(--muted); font-size: 13px; }
+.demo-body { padding: 14px 16px 16px; display: grid; gap: 14px; }
+.demo-body > * { min-width: 0; }
+.row { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.row > * { min-width: 0; }
+.cols { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); align-items: start; }
+.cols > * { min-width: 0; }
+canvas { display: block; box-sizing: border-box; width: 100%; max-width: 100%; height: auto; border-radius: 6px; background: var(--surface); }
+canvas.frame { border: 1px solid var(--line); }
+button, select, input[type=number] { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 5px 10px; }
+button { cursor: pointer; }
+button:hover { border-color: var(--muted); }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--even); outline-offset: 1px; }
+button.primary { background: var(--even); color: #fff; border-color: var(--even); }
+button.on { background: var(--even-soft); border-color: var(--even); }
+label { font-size: 14px; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; }
+input[type=range] { width: 180px; max-width: 100%; accent-color: var(--even); }
+input[type=checkbox] { accent-color: var(--odd); }
+.readout { font-family: var(--mono); font-size: 13px; line-height: 1.6; background: var(--surface-2); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
+.readout b { font-weight: 500; color: var(--even); }
+.readout .odd { color: var(--odd); } .readout .even { color: var(--even); } .readout .lat { color: var(--lat); } .readout .bad { color: var(--bad); }
+table.data { border-collapse: collapse; font-family: var(--mono); font-size: 13px; font-variant-numeric: tabular-nums; }
+table.data th, table.data td { padding: 3px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+table.data th { font-weight: 500; color: var(--muted); }
+table.data th:first-child, table.data td:first-child { text-align: left; }
+.tablewrap { overflow-x: auto; }
+.matrix { font-family: var(--mono); font-size: 12px; border-collapse: collapse; }
+.matrix td { padding: 1px 6px; text-align: center; min-width: 14px; }
+.matrix td.neg { color: var(--odd); font-weight: 500; }
+.matrix td.one { color: var(--even); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); }
+.legend span::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+.dict { width: 100%; border-collapse: collapse; font-size: 14px; }
+.dict th, .dict td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.dict th { font-weight: 600; color: var(--muted); font-size: 13px; }
+.dict td:first-child { font-weight: 500; }
+.status { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
+.status.std { background: var(--even-soft); color: var(--even); } .status.chk { background: var(--lat-soft); color: var(--lat); } .status.read { background: var(--odd-soft); color: var(--odd); } .status.neg { background: var(--bad-soft); color: var(--bad); }
+.gloss dt { font-weight: 600; margin-top: 10px; } .gloss dd { margin: 2px 0 0; color: var(--muted); max-width: 68ch; }
+.srconly { position: absolute; left: -9999px; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+<nav class="route" aria-label="Route">
+  <div class="part">Part A · Graphs</div>
+  <ol>
+    <li><a href="#s1">1 A graph and its matrix</a></li>
+    <li><a href="#s2">2 Eigenvalues and walks</a></li>
+    <li><a href="#s3">3 Non-backtracking walks</a></li>
+    <li><a href="#s4">4 The Ihara zeta</a></li>
+    <li><a href="#s4b">4b Proof of Ihara–Bass</a></li>
+    <li><a href="#s5">5 Zeros and the RH for graphs</a></li>
+  </ol>
+  <div class="part">Part B · Phase space</div>
+  <ol>
+    <li><a href="#s6">6 Two numbers per vertex</a></li>
+    <li><a href="#s7">7 The Weil form</a></li>
+    <li><a href="#s8">8 The step as a circuit</a></li>
+  </ol>
+  <div class="part">Part C · Fermions</div>
+  <ol>
+    <li><a href="#s9">9 Flux and the double cover</a></li>
+    <li><a href="#s10">10 The super zeta</a></li>
+    <li><a href="#s11">11 RH on average</a></li>
+  </ol>
+  <div class="part">Part D · Lattice states</div>
+  <ol>
+    <li><a href="#s12">12 GKP states from scratch</a></li>
+    <li><a href="#s13">13 Lattice state 1: the flux qubit</a></li>
+    <li><a href="#s14">14 Lattice state 2: the syndrome torus</a></li>
+    <li><a href="#s15">15 The tower of codes</a></li>
+    <li><a href="#s16">16 Where RH lives</a></li>
+  </ol>
+  <div class="part">Appendix</div>
+  <ol>
+    <li><a href="#s17">17 Dictionary and status</a></li>
+    <li><a href="#s18">18 Glossary</a></li>
+  </ol>
+</nav>
+
+<main>
+<div class="eyebrow">riemann-channel · notes/adelic-gkp · graph-super, graph-ihara, lattice-tower</div>
+<h1>The super Ihara zeta and its two lattice states, from the ground up</h1>
+<p class="lede">A tutorial that starts with a graph and four by four matrices and ends at the statement "the Riemann hypothesis for a graph with a flux is an invariant vacuum of a Gaussian circuit acting on the syndromes of a GKP code". Every number on this page is computed live from the graph you pick; nothing is quoted.</p>
+<p>The route has four parts. <strong>A</strong> builds the Ihara zeta function of a regular graph and its Riemann hypothesis (the Ramanujan property) from walks and eigenvalues. <strong>B</strong> rewrites one non-backtracking step as a linear map on a phase space with two coordinates per vertex, and finds a conserved quadratic form whose positivity is exactly the Riemann hypothesis. <strong>C</strong> adds a sign on every edge, which splits the walks into bosonic and fermionic ones; the ratio of their zeta functions is the super Ihara zeta, and its zeros come from the fermionic modes. <strong>D</strong> explains GKP states and shows that the fermionic sector contains two lattice states: a qubit encoded on the cycle lattice of the graph, and a torus of syndromes on which the step acts, whose periodic points count the points of an elliptic curve.</p>
+<div class="note warn"><p><strong>Status.</strong> This page explains the record in <code>notes/adelic-gkp/graph-ihara.md</code>, <code>graph-super.md</code> and <code>lattice-tower.md</code> (2026-10-05). Those are records, not reviewed results: nothing is registered in the claims database and no REFUTE review has run. Section 17 lists each statement with its status. Standard facts (Ihara–Bass, Kesten–McKay, Heilmann–Lieb, Deligne) are standard; the GKP readings are the record's readings.</p></div>
+
+<!-- ================= PART A ================= -->
+<h2 id="s1"><span class="num">Part A · 1</span>A graph and its matrix</h2>
+<p>A <strong>graph</strong> is a finite set of vertices with some pairs joined by edges. Every graph on this page is <strong>regular</strong>: every vertex has the same number of neighbours, which we write as \(q+1\). The number \(q\) will be the "size of the field" in everything that follows, so keep an eye on it. For the tetrahedron \(K_4\), every vertex has three neighbours, so \(q = 2\).</p>
+<p>The <strong>adjacency matrix</strong> \(A\) records the graph: \(A_{ij} = 1\) if vertices \(i\) and \(j\) are joined, otherwise \(0\). It is symmetric, with zeros on the diagonal, and every row sums to \(q+1\).</p>
+
+<div class="demo" id="d1">
+  <div class="demo-head"><span class="tag">Demo 1</span><span class="title">The running example</span><span class="hint">Pick a graph. Every later demo in Parts A and B uses this choice.</span></div>
+  <div class="demo-body">
+    <div class="row" id="d1-pick"></div>
+    <div class="cols">
+      <div><canvas id="d1-canvas" class="frame"></canvas></div>
+      <div><div class="readout" id="d1-facts"></div><div class="tablewrap" id="d1-matrix" style="margin-top:10px"></div></div>
+    </div>
+  </div>
+</div>
+<p>Two of the examples are special. The <strong>cube</strong> is <em>bipartite</em>: its vertices split into two groups with every edge running between the groups; that gives it an extra trivial eigenvalue later. The <strong>prism</strong> \(C_{21}\times K_2\), a ring of 21 squares, is the one example that will <em>fail</em> the Riemann hypothesis; it is there so that failure can be watched.</p>
+
+<h2 id="s2"><span class="num">Part A · 2</span>Vectors on vertices, eigenvalues, and closed walks</h2>
+<p>A <strong>vector</strong> here is just a number attached to each vertex, \(f = (f_1,\dots,f_n)\). The matrix acts by summing over neighbours:
+\[ (Af)_i = \sum_{j\ \text{adjacent to}\ i} f_j . \]
+An <strong>eigenvector</strong> is a vector that \(A\) only rescales, \(Af = \lambda f\); the number \(\lambda\) is its eigenvalue. Because \(A\) is real and symmetric, there are \(n\) real eigenvalues (counted with multiplicity) and the eigenvectors can be chosen orthogonal, so any vector is a sum of eigenvectors.</p>
+<p>Two eigenvalues are always present and we call them <strong>trivial</strong>. The constant vector \((1,1,\dots,1)\) has eigenvalue \(q+1\), the degree. If the graph is bipartite, the vector that is \(+1\) on one side and \(-1\) on the other has eigenvalue \(-(q+1)\). All other eigenvalues are called non-trivial. Apply \(A\) over and over to a random vector and the constant component wins, because \(q+1\) is the largest eigenvalue in absolute value: that is the power iteration in the demo.</p>
+<p><strong>Traces count closed walks.</strong> The entry \((A^k)_{ii}\) counts walks of \(k\) steps that start and end at vertex \(i\), because each step chooses a neighbour. So the trace \(\operatorname{Tr}A^k = \sum_i (A^k)_{ii}\) counts all closed walks of length \(k\), and since the trace of a matrix is the sum of its eigenvalues,
+\[ \#\{\text{closed walks of length }k\} = \operatorname{Tr}A^k = \sum_{j=1}^{n}\lambda_j^{\,k}. \]
+This is the whole idea of a zeta function in one line: <em>a count of closed orbits on one side, a sum of powers of eigenvalues on the other.</em></p>
+
+<div class="demo" id="d2">
+  <div class="demo-head"><span class="tag">Demo 2</span><span class="title">Power iteration, the spectrum, and closed walks</span><span class="hint">Press "apply A" repeatedly: the vector on the vertices turns constant. The strip shows every eigenvalue.</span></div>
+  <div class="demo-body">
+    <div class="row"><button id="d2-apply" class="primary">apply A once</button><button id="d2-reset">new random vector</button><span class="mono" id="d2-k"></span></div>
+    <div class="cols">
+      <div><canvas id="d2-canvas" class="frame"></canvas></div>
+      <div><canvas id="d2-spec" class="frame"></canvas><div class="readout" id="d2-eig" style="margin-top:10px"></div></div>
+    </div>
+    <div class="tablewrap" id="d2-walks"></div>
+  </div>
+</div>
+<div class="remember"><div class="eyebrow">Keep</div><p>Eigenvalues come in a trivial part (\(q+1\), and \(-(q+1)\) for bipartite graphs) and a non-trivial part. Traces of powers count closed walks and equal sums of powers of eigenvalues.</p></div>
+
+<h2 id="s3"><span class="num">Part A · 3</span>Non-backtracking walks and the operator \(B\)</h2>
+<p>Ordinary closed walks are a poor analogue of prime numbers, because most of them are padding: step to a neighbour, step straight back. The right notion is a <strong>non-backtracking walk</strong>, one that never immediately reverses an edge. Closed non-backtracking walks that also do not reverse at the closing step are the "periodic orbits" of the graph.</p>
+<p>To count them we need a matrix on <strong>directed edges</strong>. Each edge \(\{a,b\}\) gives two directed edges \(a\to b\) and \(b\to a\), so a graph with \(|E|\) edges has \(2|E|\) of them. The <strong>non-backtracking operator</strong> (Hashimoto operator) is
+\[ B_{e,f} = 1 \quad\text{if the end of } e \text{ is the start of } f \text{ and } f \text{ is not the reverse of } e,\qquad\text{else } 0 . \]
+Then \(N_k = \operatorname{Tr}B^k\) counts closed non-backtracking walks of length \(k\), each counted once per choice of starting edge. \(B\) is not symmetric, so its eigenvalues can be complex; that is where the "critical circle" will come from.</p>
+<p>A <strong>prime cycle</strong> is a closed non-backtracking walk that is not a repetition of a shorter one, counted up to the choice of starting point (and with the two directions counted separately). Writing \(\pi_\ell\) for the number of prime cycles of length \(\ell\), each contributes \(\ell\) walks (the \(\ell\) starting points) to every \(N_k\) with \(\ell \mid k\):
+\[ N_k = \sum_{\ell\,\mid\,k} \ell\,\pi_\ell . \]
+For \(K_4\): four triangles times two directions give \(\pi_3 = 8\), and \(N_3 = 24\).</p>
+
+<div class="demo" id="d3">
+  <div class="demo-head"><span class="tag">Demo 3</span><span class="title">A non-backtracking walker, and the counts \(N_k\)</span><span class="hint">The walker never reverses. The table is computed from powers of \(B\).</span></div>
+  <div class="demo-body">
+    <div class="row"><button id="d3-play" class="primary">walk</button><button id="d3-step">one step</button><button id="d3-reset">reset</button><span class="mono" id="d3-info"></span></div>
+    <div class="cols">
+      <div><canvas id="d3-canvas" class="frame"></canvas></div>
+      <div class="tablewrap" id="d3-table"></div>
+    </div>
+  </div>
+</div>
+
+<h2 id="s4"><span class="num">Part A · 4</span>The Ihara zeta function and the Ihara–Bass formula</h2>
+<p>Package the prime cycles into one function of a variable \(u\), exactly as the Riemann zeta packages the primes into a product over \(p\):
+\[ \zeta_X(u) = \prod_{\text{prime cycles } C} \frac{1}{1-u^{\ell(C)}} . \]
+Taking the logarithm and expanding each factor as a geometric series turns the product into a sum over all closed walks, prime or not, and gives
+\[ \log\zeta_X(u) = \sum_{k\ge1}\frac{N_k}{k}\,u^k = \sum_{k\ge 1}\frac{\operatorname{Tr}B^k}{k}u^k = -\log\det(1-uB), \]
+so \(\zeta_X(u) = 1/\det(1-uB)\): the zeta function is the inverse of a characteristic polynomial, and its poles are the reciprocals of the eigenvalues of \(B\). (The last equality is the identity \(\log\det = \operatorname{Tr}\log\).)</p>
+<p>The matrix \(B\) is \(2|E|\times2|E|\), but the <strong>Ihara–Bass formula</strong> reduces everything to the \(n\times n\) adjacency matrix:
+\[ \det(1-uB) = (1-u^2)^{|E|-|V|}\,\det\!\big(1 - Au + q u^2\big). \]
+The factor \((1-u^2)^{|E|-|V|}\) is the "tree term": it only knows the number of independent cycles \(g = |E|-|V|+1\). All the structure sits in \(\det(1-Au+qu^2)\), which factors over the eigenvalues of \(A\):
+\[ \det(1-Au+qu^2) = \prod_{j=1}^n \big(1-\lambda_j u + q u^2\big). \]
+So each eigenvalue \(\lambda\) of \(A\) contributes one quadratic factor, hence two poles of \(\zeta_X\).</p>
+
+<div class="demo" id="d4">
+  <div class="demo-head"><span class="tag">Demo 4</span><span class="title">Ihara–Bass, checked numerically</span><span class="hint">Both sides computed independently: the left from the edge matrix \(B\), the right from the adjacency matrix.</span></div>
+  <div class="demo-body">
+    <div class="row"><label>u = <input type="range" id="d4-u" min="0" max="0.45" step="0.005" value="0.2"> <span class="mono" id="d4-uval"></span></label></div>
+    <div class="readout" id="d4-out"></div>
+  </div>
+</div>
+
+
+<h3 id="s4b" style="font-family:var(--display);font-size:21px;margin-top:34px;scroll-margin-top:16px">4b · A proof of Ihara–Bass by vectorisation</h3>
+<p>The formula looks like a miracle: a determinant on \(2|E|\) directed edges collapses to one on \(n\) vertices. Here is a proof that uses nothing beyond matrix multiplication and one identity about determinants, and that explains the exponent \(|E|-|V|\). It also proves the formula for an arbitrary graph, with the degree matrix \(D\) in place of \(q+1\). The idea is to stop thinking of edge functions as a list and think of them as <em>matrices</em>.</p>
+
+<p><strong>Step 0: the edge space is a vectorised matrix space.</strong> Let \(V = \mathbb C^n\) be the vertex space. A vector in \(V\otimes V\) has components \(\psi_{ab}\) indexed by ordered pairs of vertices, which is the same data as an \(n\times n\) matrix \(\Psi\) with entries \(\Psi_{ab}\): this identification of \(V\otimes V\) with matrices is vectorisation, and we use it freely. A directed edge \(a\to b\) is an ordered pair with \(A_{ab} = 1\). So the edge space is
+\[ \mathcal E = P_A\,(V\otimes V),\qquad P_A\Psi = A\circ\Psi\ \ (\text{entrywise product}), \]
+the matrices supported on the pattern of \(A\). The projector \(P_A\) is diagonal in the pair basis, with the vectorised adjacency matrix down its diagonal: it is the Schur multiplier by \(A\), and \(\dim\mathcal E = 2|E|\), one dimension per nonzero entry of \(A\). Three elementary operators on \(V\otimes V\) will do all the work:</p>
+<ul>
+  <li>the <strong>swap</strong> \(F\): \(\psi_{ab}\mapsto\psi_{ba}\), i.e. \(\Psi\mapsto\Psi^{T}\). It reverses every edge, and \(F^2 = 1\). Since \(A\) is symmetric, \(F\) commutes with \(P_A\).</li>
+  <li>the <strong>complete-graph adjacency</strong> \(K = J - 1\), where \(J = \mathbf 1\mathbf 1^{T}\) is the all-ones matrix, acting on the first factor as \(K\otimes 1\): it replaces the start vertex by any <em>other</em> vertex.</li>
+  <li>the <strong>pattern projector</strong> \(P_A\): keep what is an edge.</li>
+</ul>
+
+<p><strong>Step 1: the non-backtracking step is "reverse, re-aim, keep".</strong> For \(\psi\in\mathcal E\),
+\[ \big((K\otimes1)F\psi\big)_{ab} = \sum_{c}K_{ac}\,(F\psi)_{cb} = \sum_{c\ne a}\psi_{bc}, \]
+and after \(P_A\) only the pairs \(a\to b\) that are edges survive; the input vanishes off edges, so the sum runs over edges \(b\to c\) with \(c\ne a\). That is exactly the definition of \(B\) from Section 3. So, as an operator on \(\mathcal E\),
+\[ B = P_A\,(K\otimes 1)\,F,\qquad\text{in matrix language}\quad B(\Psi) = A\circ\big((J-1)\,\Psi^{T}\big). \]
+One line: the Hashimoto operator is the superoperator "transpose, multiply by the complete-graph adjacency, mask by the pattern".</p>
+
+<p><strong>Step 2: the all-ones matrix has rank one, so the step factors through the vertices.</strong> Write \(J\otimes 1 = (\mathbf 1\otimes 1)(\mathbf 1^{T}\otimes 1)\): a map \(V\otimes V\to V\) followed by a map \(V\to V\otimes V\). Composed with the projector these are the two lifts from Section 6,
+\[ \tau g = P_A(\mathbf 1\otimes g),\ \ (\tau g)_{a\to b} = g_b;\qquad \sigma f = P_A(f\otimes\mathbf 1),\ \ (\sigma f)_{a\to b} = f_a, \]
+so \(P_A(J\otimes1)P_A = \tau\tau^{T}\), while \(P_A(1\otimes 1)P_A = P_A\) is the identity of \(\mathcal E\). Hence, using \(F\tau = \sigma\) (reversing an edge swaps start and end) and therefore \(\tau^{T}F = \sigma^{T}\),
+\[ B = (\tau\tau^{T} - 1)\,F = \tau\,\sigma^{T} - F . \]
+This is the whole structure: <em>propagate through the vertex space, minus the backtrack.</em> The map \(\sigma^{T}\colon\mathcal E\to V\) sums an edge function over the edges leaving each vertex, and \(\tau\) spreads a vertex function onto the edges arriving there. The relations we need are read off in one line each:
+\[ F^2 = 1,\qquad \sigma^{T}\tau = A,\qquad \sigma^{T}\sigma = \tau^{T}\tau = D, \]
+where \(D\) is the diagonal matrix of degrees, \(D = (q+1)\,1\) for a regular graph: \(f^{T}\sigma^{T}\tau g = \sum_{a\to b}f_ag_b = f^{T}Ag\), and \(g^{T}\tau^{T}\tau g = \sum_{a\to b}g_b^2 = \sum_b \deg(b)\,g_b^2\).</p>
+
+<p><strong>Step 3: one determinant identity.</strong> For any \(X\colon V\to\mathcal E\) and \(Y\colon\mathcal E\to V\) (rectangular matrices),
+\[ \det\nolimits_{\mathcal E}(1 - XY) = \det\nolimits_{V}(1 - YX). \]
+Proof: the block matrix \(\begin{pmatrix}1_{\mathcal E}&X\\Y&1_V\end{pmatrix}\) has determinant \(\det(1_{\mathcal E})\det(1_V - Y1_{\mathcal E}^{-1}X)\) by eliminating the first block, and \(\det(1_V)\det(1_{\mathcal E} - X1_V^{-1}Y)\) by eliminating the second (Schur complements). This is Sylvester's identity. It is the step that trades the \(2|E|\)-dimensional space for the \(n\)-dimensional one.</p>
+
+<p><strong>Step 4: the computation.</strong> Take \(u\) with \(u^2\ne1\). Because \(F^2 = 1\), the operator \(1+uF\) is invertible with
+\[ (1+uF)^{-1} = \frac{1-uF}{1-u^2}, \]
+and its determinant is read off the eigenvalues of \(F\): the vectors \(e\pm\bar e\) show that \(F\) has eigenvalue \(+1\) on a space of dimension \(|E|\) and \(-1\) on one of dimension \(|E|\), so \(\det_{\mathcal E}(1+uF) = (1+u)^{|E|}(1-u)^{|E|} = (1-u^2)^{|E|}\). Now
+\[ \begin{aligned}
+\det\nolimits_{\mathcal E}(1-uB) &= \det\nolimits_{\mathcal E}\big(1 + uF - u\,\tau\sigma^{T}\big)
+ = \det\nolimits_{\mathcal E}(1+uF)\;\det\nolimits_{\mathcal E}\!\Big(1 - \underbrace{u(1+uF)^{-1}\tau}_{X}\;\underbrace{\sigma^{T}}_{Y}\Big)\\
+ &= (1-u^2)^{|E|}\;\det\nolimits_{V}\!\Big(1 - \frac{u}{1-u^2}\,\sigma^{T}(1-uF)\tau\Big)
+ \qquad\text{(Sylvester)}\\
+ &= (1-u^2)^{|E|}\;\det\nolimits_{V}\!\Big(1 - \frac{u}{1-u^2}\,(A - uD)\Big)
+ \qquad\text{(since } \sigma^{T}\tau = A,\ \sigma^{T}F\tau = \sigma^{T}\sigma = D)\\
+ &= (1-u^2)^{|E|-|V|}\;\det\nolimits_{V}\!\big((1-u^2) - uA + u^2D\big)
+ = (1-u^2)^{|E|-|V|}\;\det\nolimits_{V}\!\big(1 - uA + (D-1)u^2\big).
+\end{aligned} \]
+Both sides are polynomials in \(u\) and they agree for every \(u^2\ne1\), so they agree identically. For a \((q+1)\)-regular graph \(D - 1 = q\), which is the formula of Section 4. \(\blacksquare\)</p>
+
+<p><strong>What the proof says.</strong> The exponent \(|E|-|V|\) is \(|E|\) from the eigenvalues of the swap, minus \(|V|\) from pulling \((1-u^2)^{-1}\) out of the vertex determinant: the "tree term" is the part of the edge space that the vertex bottleneck cannot see, and \(B\) has \(|E|-|V|\) eigenvalues \(+1\) and \(|E|-|V|\) eigenvalues \(-1\) there, as Section 6 claimed. The two lifts \(\sigma,\tau\) are the same maps that gave the phase-space step \(M\) in Section 6: there we looked at what \(B\) does on \(\sigma V + \tau V\), here we take the determinant on all of \(\mathcal E\) and the complement contributes only \((1-u^2)\)-factors. Nothing in Steps 2 to 4 used that the entries of \(A\) are \(0\) or \(1\): with a signed matrix \(A_s\) in place of \(A\) (the signs attached to \(\tau\), so that \(\sigma^{T}\tau = A_s\) while \(\tau^{T}\tau\) is still \(D\)) the same lines give \(\det(1-uB_s) = (1-u^2)^{|E|-|V|}\det(1-A_su+qu^2)\), which is what Section 10 uses. The notebook's quantum Ihara–Bass theorem (shard 08) is this proof with the vertex space replaced by an operator space, itself a vectorised \(V\otimes V\), and \(\sigma^{T},\tau,F\) replaced by a start map, a propagation map and a backtracking map for an arbitrary family of superoperators; the Sylvester step is the same.</p>
+
+<div class="demo" id="d4b">
+  <div class="demo-head"><span class="tag">Demo 4b</span><span class="title">Every step of the proof, checked on the running graph</span><span class="hint">All matrices are built explicitly. Differences are maximum absolute entries; determinants are computed independently by LU elimination.</span></div>
+  <div class="demo-body">
+    <div class="row"><label>u = <input type="range" id="d4b-u" min="0.02" max="0.45" step="0.01" value="0.3"> <span class="mono" id="d4b-uval"></span></label></div>
+    <div class="readout" id="d4b-out"></div>
+  </div>
+</div>
+
+<h2 id="s5"><span class="num">Part A · 5</span>Zeros, the critical circle, and the Riemann hypothesis for graphs</h2>
+<p>Fix one eigenvalue \(\lambda\) of \(A\). Its factor \(1-\lambda u+qu^2\) vanishes at \(u = 1/\mu\) where \(\mu\) solves
+\[ \mu^2 - \lambda\mu + q = 0,\qquad \mu = \tfrac12\big(\lambda \pm \sqrt{\lambda^2-4q}\big). \]
+We call the two numbers \(\mu\) the <strong>lines</strong> of that mode (the word comes from spectroscopy: they are the frequencies that the counts \(N_k\) "emit"). Their product is \(q\). If \(\lambda^2 < 4q\) the square root is imaginary, the two lines are complex conjugates, and each has \(|\mu| = \sqrt q\). If \(\lambda^2 > 4q\) they are real, one bigger than \(\sqrt q\) and one smaller.</p>
+<p>So all lines of a mode sit on the circle \(|\mu| = \sqrt q\) exactly when \(|\lambda| \le 2\sqrt q\). The trivial eigenvalue \(\lambda = q+1\) always violates this (its lines are \(q\) and \(1\): these are the "poles" of the graph zeta, the analogues of the pole of Riemann's zeta at \(s=1\) and its partner at \(s=0\)). The <strong>Riemann hypothesis for the graph</strong> is the statement that every <em>non-trivial</em> line lies on the circle:
+\[ \text{RH}(X):\qquad |\lambda| \le 2\sqrt q \ \text{ for every non-trivial eigenvalue } \lambda \text{ of } A . \]
+A graph with this property is called <strong>Ramanujan</strong>. Why \(2\sqrt q\)? Because the infinite \((q+1)\)-regular tree, the universal cover of every such graph, has spectrum exactly \([-2\sqrt q, 2\sqrt q]\) (Kesten–McKay). Ramanujan means: no eigenvalue outside the tree's band, so no mode grows faster than the tree allows.</p>
+<p>Why is this the analogue of the Riemann hypothesis? For Riemann's zeta, write \(u = p^{-s}\) and the Euler factor is \(1/(1-p^{-s})\); the critical line \(\operatorname{Re}s = \tfrac12\) becomes \(|u| = p^{-1/2}\). For the graph, \(u = q^{-s}\) and the critical line is \(|u| = q^{-1/2}\), that is \(|\mu| = \sqrt q\). Same statement.</p>
+
+<div class="demo" id="d5">
+  <div class="demo-head"><span class="tag">Demo 5</span><span class="title">Where the two lines of a mode go</span><span class="hint">Slide \(\lambda\) through the band edge \(\pm2\sqrt q\) and watch the pair leave the circle. Right: all lines of the running graph.</span></div>
+  <div class="demo-body">
+    <div class="row"><label>q <select id="d5-q"><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label><label>λ <input type="range" id="d5-lam" min="-5" max="5" step="0.01" value="-1"> <span class="mono" id="d5-lamval"></span></label></div>
+    <div class="cols">
+      <div><canvas id="d5-one" class="frame"></canvas><div class="readout" id="d5-read"></div></div>
+      <div><canvas id="d5-all" class="frame"></canvas><div class="readout" id="d5-verdict"></div></div>
+    </div>
+  </div>
+</div>
+<div class="remember"><div class="eyebrow">Keep</div><p>Each eigenvalue \(\lambda\) of \(A\) gives two lines \(\mu\) with \(\mu\bar\mu\) or \(\mu_1\mu_2 = q\). RH for the graph: all non-trivial lines on \(|\mu| = \sqrt q\), equivalently \(|\lambda|\le2\sqrt q\). The trivial mode is the pole pair \(q, 1\). The prism violates it; the others on this page satisfy it.</p></div>
+
+<!-- ================= PART B ================= -->
+<h2 id="s6"><span class="num">Part B · 6</span>Phase space: two numbers per vertex</h2>
+<p>Everything so far lived on \(2|E|\) directed edges. There is a smaller space on which the non-backtracking step acts: pairs of vertex vectors. Given two vertex vectors \(f\) and \(g\), build an edge vector by putting \(f\) at the <em>start</em> of each directed edge and \(g\) at its <em>end</em>:
+\[ (\sigma f)(a\to b) = f_a,\qquad (\tau g)(a\to b) = g_b . \]
+Apply \(B\) and read off what happens (the computation is a few lines: \(B\sigma f\) at edge \(e\) sums \(f\) at the start of every allowed successor of \(e\), which is the end of \(e\), taken \(q\) times; \(B\tau g\) sums \(g\) over the \(q\) neighbours of the end of \(e\) other than the start of \(e\)):
+\[ B(\sigma f) = q\,\tau f,\qquad B(\tau g) = \tau(Ag) - \sigma g . \]
+So the \(2n\)-dimensional space spanned by \(\sigma f\) and \(\tau g\) is invariant, and on the pair \((f,g)\) the step is the block matrix
+\[ M = \begin{pmatrix} 0 & -1 \\ q & A \end{pmatrix},\qquad \begin{pmatrix} f \\ g\end{pmatrix}\mapsto \begin{pmatrix} -g \\ qf + Ag\end{pmatrix}. \]
+The eigenvalues of \(M\) are exactly the lines: \(\det(\mu - M) = \det(\mu^2 - \lambda\mu + q)\) over the eigenvalues \(\lambda\) of \(A\). The remaining \(2|E|-2n\) eigenvalues of \(B\) are \(\pm1\), the tree term.</p>
+<p>Now the key observation. Think of \(f\) as a <strong>position</strong> coordinate \(x\) and \(g\) as a <strong>momentum</strong> coordinate \(p\), one pair per vertex: a classical phase space of \(n\) oscillators. Let \(\Omega\) be the standard symplectic form, \(\Omega\big((x,p),(x',p')\big) = x\cdot p' - p\cdot x'\), the oriented area in each \((x_i,p_i)\) plane. A direct computation gives
+\[ M^{T}\Omega M = q\,\Omega . \]
+The step multiplies every oriented area by \(q\). Dividing by \(\sqrt q\), the matrix \(S = M/\sqrt q\) is <strong>symplectic</strong>: an area-preserving linear map of phase space, which in quantum optics is a <em>Gaussian unitary</em> on \(n\) modes. The factor \(\sqrt q\) is the same \(\sqrt q\) as the critical circle.</p>
+<p>For one mode (one eigenvalue \(\lambda\) of \(A\), after diagonalising \(A\)) the map is the \(2\times2\) matrix \(\begin{pmatrix}0&-1\\q&\lambda\end{pmatrix}/\sqrt q\), with determinant 1 and trace \(\lambda/\sqrt q\). A \(2\times2\) area-preserving map with \(|\text{trace}|<2\) is a rotation in suitable coordinates: orbits are ellipses. With \(|\text{trace}|>2\) it is a hyperbolic squeeze: orbits run off along a hyperbola. The threshold \(|\lambda/\sqrt q| = 2\) is the band edge again.</p>
+
+<div class="demo" id="d6">
+  <div class="demo-head"><span class="tag">Demo 6</span><span class="title">One mode of the step on its phase plane</span><span class="hint">The orbit of a point under \(S = M/\sqrt q\). Inside the band it circulates on an ellipse; outside it escapes along a hyperbola. The grey curves are level sets of the Weil form of Section 7.</span></div>
+  <div class="demo-body">
+    <div class="row"><label>q <select id="d6-q"><option value="2">2</option><option value="3">3</option><option value="5">5</option></select></label><label>λ <input type="range" id="d6-lam" min="-5" max="5" step="0.01" value="-1"> <span class="mono" id="d6-lamval"></span></label><button id="d6-restart">new start point</button></div>
+    <div class="cols">
+      <div><canvas id="d6-canvas" class="frame"></canvas></div>
+      <div class="readout" id="d6-read"></div>
+    </div>
+  </div>
+</div>
+
+<h2 id="s7"><span class="num">Part B · 7</span>The Weil form: a conserved energy whose positivity is RH</h2>
+<p>An area-preserving map of the plane that rotates must preserve some ellipse, hence some positive quadratic form, an "energy". Which form does the step preserve? Compute: with
+\[ \mathcal Q = \begin{pmatrix} q & A/2 \\ A/2 & 1\end{pmatrix},\qquad \mathcal Q(x,p) = q\,|x|^2 + x\cdot Ap + |p|^2 , \]
+one checks \(M^T\mathcal Q M = q\,\mathcal Q\), so \(S^T\mathcal QS = \mathcal Q\): <strong>the normalised step conserves \(\mathcal Q\)</strong>. (There is a cleaner formula: \(2\mathcal Q = \Omega\,(M - qM^{-1})\), the symplectic form composed with the step minus its "adjoint" \(qM^{-1}\). This is the Weil form of the explicit formula in disguise; the demo confirms the invariance numerically.)</p>
+<p>On a single mode with eigenvalue \(\lambda\) the form is the binary quadratic form \(q x^2 + \lambda xy + y^2\), whose discriminant is \(\lambda^2 - 4q\). A \(2\times 2\) symmetric matrix with positive trace is positive definite exactly when its determinant \(q - \lambda^2/4\) is positive. Therefore:</p>
+<div class="note even"><p><strong>Weil positivity for a graph.</strong> \(\mathcal Q\) is positive definite on the mode \(\lambda\) if and only if \(\lambda^2 < 4q\). It is positive on all non-trivial modes if and only if the graph is Ramanujan. On the trivial mode \(\lambda=q+1\) the determinant is \(-(q-1)^2/4 < 0\), so \(\mathcal Q\) always has exactly one negative direction there (two for a bipartite graph): this negative plane is the analogue of the "pole" terms in Weil's criterion for Riemann's zeta, which are also the only permitted negative contributions.</p></div>
+<p>The number of negative directions of \(\mathcal Q\) is a clean diagnostic: it equals (number of trivial eigenvalues) plus (number of non-trivial eigenvalues outside the band). For \(K_4\), Petersen and \(K_5\) it is 1; for the cube 2; for the prism it is 5, because four non-trivial eigenvalues (\(2.911\) twice and \(-2.978\) twice) lie outside \(\pm2\sqrt2 = \pm2.828\).</p>
+<p>Three things to notice. First, the form is written down <em>before</em> the spectrum is known: it is built from \(q\) and \(A\) only, the "arithmetic data". Second, it is not the obvious inner product on the edge space (\(B\) is not a normal operator there); it is the form singled out by the symplectic structure. Third, "the metric" that the notebook keeps looking for in the case of Riemann's zeta is, for a graph, just this \(\mathcal Q\): a Hilbert–Pólya inner product in which the step is unitary, which exists exactly when RH holds.</p>
+<div class="remember"><div class="eyebrow">Keep</div><p>The non-backtracking step is a symplectic similitude \(M^T\Omega M = q\Omega\). It conserves the Weil form \(\mathcal Q = q|x|^2 + x\cdot Ap + |p|^2\). RH for the graph \(\iff\) \(\mathcal Q\) is positive on the non-trivial modes \(\iff\) the normalised step rotates every non-trivial mode instead of squeezing it.</p></div>
+
+<h2 id="s8"><span class="num">Part B · 8</span>The step as a circuit of three gates</h2>
+<p>The symplectic matrix \(S\) factors into three elementary pieces:
+\[ S = \underbrace{\begin{pmatrix}1&0\\-A&1\end{pmatrix}}_{\text{shear by }A}\ \underbrace{\begin{pmatrix}0&-1\\1&0\end{pmatrix}}_{\text{quarter turn}}\ \underbrace{\begin{pmatrix}\sqrt q&0\\0&1/\sqrt q\end{pmatrix}}_{\text{squeeze}} . \]
+Check: squeeze first, \((x,p)\mapsto(\sqrt q\,x, p/\sqrt q)\); quarter turn, \((x,p)\mapsto(-p, x)\), which is the Fourier transform of a mode; shear, \((x,p)\mapsto(x, p - Ax)\), which couples neighbouring vertices. Multiply out and you get \(M/\sqrt q\). In quantum-optics language the three are a <strong>squeezer on every mode</strong>, a <strong>Hadamard (Fourier) on every mode</strong>, and a <strong>controlled-Z along every edge</strong>. The last two together are the circuit that prepares the <em>graph state</em> of \(X\) on qubits, and their product is an integer matrix, so it maps the lattice \(\mathbb Z^{2n}\) to itself. The squeeze is the only part that is not a lattice symmetry.</p>
+<p>One consequence worth seeing now, because it is the graph version of the functional equation \(\xi(s) = \xi(1-s)\). With no edges (\(A = 0\)) the step is "squeeze, then quarter turn", and it squares to \(-1\): the Fourier transform turns a squeeze by \(\sqrt q\) into a squeeze by \(1/\sqrt q\), so two steps undo the squeezing. Reversing every directed edge (the symmetry \(e\mapsto\bar e\) that sends \(B\) to \(B^T\)) is the time reversal that implements \(\mu \leftrightarrow q/\mu\), that is \(s \leftrightarrow 1-s\).</p>
+
+<!-- ================= PART C ================= -->
+<h2 id="s9"><span class="num">Part C · 9</span>Flux: a sign on every edge, and the double cover</h2>
+<p>Now the new ingredient. Give every edge a sign \(s_e = \pm1\). A walker picks up the product of the signs of the edges it uses; around a closed walk, that product is \(\pm1\) and depends only on which cycles the walk winds around. Think of \(-1\) as a half quantum of Aharonov–Bohm flux threading the cycle. Flipping all the signs at one vertex (a <em>gauge change</em>) changes no closed-walk product, so the physical data is the signing modulo gauge: this is what we call a <strong>flux</strong>. For a graph with \(g = |E|-|V|+1\) independent cycles there are exactly \(2^g\) fluxes; for \(K_4\), \(g = 3\) and there are 8.</p>
+<p>A flux is the same thing as a <strong>double cover</strong> \(\hat Y\) of the graph: take two copies of every vertex, \((v,+)\) and \((v,-)\), and join \((a,\pm)\) to \((b,\pm)\) for a positive edge, \((a,\pm)\) to \((b,\mp)\) for a negative one. Swapping the two copies is a symmetry \(\tau\) of \(\hat Y\) with \(\tau^2 = 1\). For \(K_4\) with every edge negative the double cover is the cube.</p>
+<p>Functions on \(\hat Y\) split into two sectors under \(\tau\):</p>
+<ul>
+  <li><strong>Bosonic (even) sector</strong>, \(\tau f = f\): these are functions on \(Y\) itself, and \(A\) acts on them by the plain adjacency matrix \(A\).</li>
+  <li><strong>Fermionic (odd) sector</strong>, \(\tau f = -f\): these are functions on \(Y\) too, but \(A\) acts by the <strong>signed adjacency matrix</strong> \(A_s\), with entries \(\pm1\). A walker in this sector has antiperiodic boundary conditions around every cycle of odd flux.</li>
+</ul>
+<p>The signed matrix \(A_s\) is still symmetric, so it has real eigenvalues, the <strong>fermionic eigenvalues</strong>; they are not the eigenvalues of \(A\). Whether they lie in the band \([-2\sqrt q, 2\sqrt q]\) is a new question, asked flux by flux. The same construction on directed edges gives a signed non-backtracking operator \(B_s\) (the sign of the edge being entered), and \(\operatorname{Tr}B_s^k\) counts closed non-backtracking walks <em>weighted by their sign</em>.</p>
+
+<div class="demo" id="d7">
+  <div class="demo-head"><span class="tag">Demo 7</span><span class="title">Choose a flux</span><span class="hint">Click an edge to flip its sign (orange = negative). The double cover, the fermionic spectrum and the signed walk counts update.</span></div>
+  <div class="demo-body">
+    <div class="row" id="d7-pick"></div>
+    <div class="row" id="d7-presets"></div>
+    <div class="cols">
+      <div><canvas id="d7-canvas" class="frame"></canvas><div class="legend" style="margin-top:6px"><span style="--c:var(--even)">positive edge</span><span style="--c:var(--odd)">negative edge</span></div></div>
+      <div><canvas id="d7-cover" class="frame"></canvas><div class="legend" style="margin-top:6px"><span style="--c:var(--even)">copy +</span><span style="--c:var(--odd)">copy −</span></div></div>
+    </div>
+    <div class="cols">
+      <div><canvas id="d7-spec" class="frame"></canvas><div class="readout" id="d7-read"></div></div>
+      <div class="tablewrap" id="d7-counts"></div>
+    </div>
+  </div>
+</div>
+
+<h2 id="s10"><span class="num">Part C · 10</span>Bosons, fermions, and the super zeta</h2>
+<p>Each sector has its own Ihara zeta: \(1/\det(1-uB)\) for the bosons and \(1/\det(1-uB_s)\) for the fermions. The <strong>super zeta</strong> is their ratio,
+\[ Z_s(u) = \frac{\det(1-uB_s)}{\det(1-uB)} = \frac{\det(1-A_su+qu^2)}{\det(1-Au+qu^2)} , \]
+the tree factors \((1-u^2)^{|E|-|V|}\) being identical in the two sectors and cancelling. Its <strong>zeros</strong> come from the fermionic eigenvalues (the numerator) and its <strong>poles</strong> from the bosonic ones (the denominator). This is exactly the shape of the zeta function of a curve over a finite field, \(L(u)/((1-u)(1-qu))\): a polynomial of zeros over a pair of poles. The bosonic trivial mode supplies the poles \(u=1\) and \(u=1/q\); the non-trivial bosonic modes are extra poles a curve does not have.</p>
+<p>Why "super"? Take the logarithm:
+\[ \log Z_s(u) = \sum_{k\ge1}\frac{u^k}{k}\big(\operatorname{Tr}B^k - \operatorname{Tr}B_s^k\big) . \]
+Write \(N_k^{\rm even}\) and \(N_k^{\rm odd}\) for the numbers of closed non-backtracking walks of length \(k\) whose sign product is \(+1\) and \(-1\). Then \(\operatorname{Tr}B^k = N^{\rm even}_k + N^{\rm odd}_k\) and \(\operatorname{Tr}B_s^k = N^{\rm even}_k - N^{\rm odd}_k\), so
+\[ \operatorname{Tr}B^k - \operatorname{Tr}B_s^k = 2N^{\rm odd}_k \ \ge 0 . \]
+The difference of the two traces is a <strong>supertrace</strong> on the double cover (the trace of \(\tau\hat B^k\)), and it is an honest count: twice the number of closed walks of odd flux. Expanding each eigenvalue contribution,
+\[ 2N^{\rm odd}_k = \underbrace{q^k + 1}_{\text{trivial pair}} + \sum_{\text{bosonic, non-trivial}}\mu^k \;-\; \sum_{\text{fermionic}}\mu^k . \]
+The fermionic lines enter the count with a <em>minus</em> sign. That is the sign with which the zeros of Riemann's zeta enter the explicit formula for the primes, and the sign with which Frobenius eigenvalues enter the point count of a curve. The record's phrase for it: in the plain Ihara zeta the lines are <em>bright</em> (emitted by the counts); in the super zeta the fermionic lines are <em>dark</em> (absorbed), as for \(\zeta\) and for curves. There is also an Euler product, now only over prime cycles of odd flux, each carrying a boson and a fermion:
+\[ Z_s(u) = \prod_{C\ \text{prime, odd flux}} \frac{1+u^{\ell(C)}}{1-u^{\ell(C)}} . \]</p>
+<p><strong>A concrete coincidence to carry forward.</strong> For \(K_4\) with one negative edge the fermionic eigenvalues are \(\pm\sqrt5\) and \(\pm1\) (Demo 7). The mode \(\lambda = -1\) with \(q = 2\) has lines \(\mu = \tfrac12(-1\pm\sqrt{-7})\), and its factor \(1 + u + 2u^2\) is precisely the numerator of the zeta function of the elliptic curve
+\[ E:\ y^2 + xy = x^3 + 1 \ \text{ over } \mathbb F_2, \]
+which has 4 points over \(\mathbb F_2\) (the point at infinity, \((0,1)\), \((1,0)\), \((1,1)\)) and \(\#E(\mathbb F_{2^k}) = 2^k + 1 - (\mu^k + \bar\mu^k) = 4, 8, 4, 16, 44, 56, 116, 288, \dots\). We will call this fermionic mode <strong>the E mode</strong>. Section 14 shows that it is not a coincidence of numbers only: the mode carries a torus whose periodic points <em>are</em> these counts.</p>
+<p><strong>Weil positivity in the fermionic sector.</strong> The fermionic Weil form \(\mathcal Q_s = \begin{pmatrix}q&A_s/2\\A_s/2&1\end{pmatrix}\) has no trivial mode, so for a flux whose fermionic eigenvalues all lie in the band it is <em>positive definite outright</em>, with no pole plane to subtract. For \(K_4\) with one negative edge its smallest eigenvalue is \(\tfrac12\big(3 - \sqrt{1+5}\big) = 0.2753\). The prism with one negative edge around each ring (an "antiperiodic ring") is the counterexample: fermionic eigenvalues from \(-3\) to \(2.978\), five negative directions, RH false in this sector while all the counts \(2N^{\rm odd}_k\) remain nonnegative. Nonnegative counts alone do not give RH.</p>
+<div class="remember"><div class="eyebrow">Keep</div><p>Flux \(\Rightarrow\) double cover \(\Rightarrow\) bosonic and fermionic sectors with matrices \(A\) and \(A_s\). The super zeta is zeros over poles; zeros from fermions, poles from bosons. Its supertrace is twice the count of odd-flux closed walks, in which fermionic lines are subtracted: the sign structure of curves and of \(\zeta\).</p></div>
+
+<h2 id="s11"><span class="num">Part C · 11</span>RH on average over all fluxes: the matching polynomial</h2>
+<p>A single flux may or may not be Ramanujan. Averaging over <em>all</em> fluxes gives a theorem. The fermionic characteristic polynomial \(\det(x - A_s)\), averaged over the \(2^g\) fluxes, is the <strong>matching polynomial</strong> of the graph (Godsil–Gutman):
+\[ \frac{1}{2^g}\sum_{\text{fluxes}}\det(x - A_s) = \sum_{k\ge0}(-1)^k m_k\,x^{\,n-2k}, \]
+where \(m_k\) is the number of ways to choose \(k\) edges with no shared vertex (a \(k\)-matching). The reason is elementary: expanding the determinant as a sum over permutations, every cycle of length three or more in a permutation picks up the product of the signs around that cycle, which averages to zero over fluxes, so only permutations made of fixed points and transpositions survive, and a set of disjoint transpositions is a matching. And the roots of the matching polynomial of a \((q+1)\)-regular graph are real and lie strictly inside \((-2\sqrt q, 2\sqrt q)\) (Heilmann–Lieb, from the theory of the monomer–dimer gas). So:</p>
+<div class="note even"><p><strong>The flux-averaged fermionic numerator has all its zeros on the critical circle, for every regular graph.</strong> RH holds on average over fluxes. This is the one positivity mechanism in Part C that is a theorem rather than a computation, and it is the mechanism behind the interlacing-families proof that bipartite Ramanujan graphs of every degree exist (Marcus–Spielman–Srivastava): some flux must be at least as good as the average. It proves RH for an average and for one unnamed flux, not for a given one.</p></div>
+
+<div class="demo" id="d8">
+  <div class="demo-head"><span class="tag">Demo 8</span><span class="title">The average over all fluxes</span><span class="hint">Both polynomials computed independently: the average of \(\det(x-A_s)\) over every flux, and the count of matchings.</span></div>
+  <div class="demo-body">
+    <div class="row" id="d8-pick"></div>
+    <div class="readout" id="d8-out"></div>
+    <canvas id="d8-roots" class="frame"></canvas>
+  </div>
+</div>
+<p>For \(K_4\): six edges give \(m_1 = 6\) and the three perfect matchings give \(m_2 = 3\), so the average is \(x^4 - 6x^2 + 3\), with roots \(\pm2.334\) and \(\pm0.742\), inside \(\pm2.828\). Six of the eight fluxes of \(K_4\) are Ramanujan in the fermionic sector; the two that fail are the zero flux (where \(A_s = A\) has the eigenvalue 3) and the all-negative flux (eigenvalue \(-3\), the cube's bipartite mode).</p>
+
+<!-- ================= PART D ================= -->
+<h2 id="s12"><span class="num">Part D · 12</span>Interlude: GKP states from scratch</h2>
+<p>Everything in Part D is about one quantum system: \(n\) harmonic oscillators, one per vertex, with position and momentum operators \(\hat x_i, \hat p_i\). We use units in which the <strong>displacement operators</strong> \(W(e) = \exp\big(i(e_p\cdot\hat x - e_x\cdot\hat p)\big)\), which shift the state by the phase-space vector \(e = (e_x, e_p)\), obey
+\[ W(e)\,W(f) = e^{2\pi i\,\Omega(e,f)}\,W(f)\,W(e),\qquad \Omega(e,f) = e_x\cdot f_p - e_p\cdot f_x . \]
+Two displacements commute exactly when the oriented area between them is an integer.</p>
+<p>A <strong>GKP code</strong> (Gottesman–Kitaev–Preskill) is defined by a lattice \(L\) in phase space whose vectors all have integer mutual areas, so that the displacements \(W(\lambda)\), \(\lambda\in L\), commute. The code space is the set of states fixed by all of them. The <strong>dual lattice</strong> \(L^\perp = \{e : \Omega(\lambda, e)\in\mathbb Z \text{ for all } \lambda\in L\}\) contains \(L\), and the dimension of the code is \(\sqrt{[L^\perp : L]}\). Two cases matter here:</p>
+<ul>
+  <li><strong>Qunaught.</strong> \(L = L^\perp = \mathbb Z^{2n}\) (the square lattice with our units). The code is one-dimensional: a single state, the ideal comb \(\sum_{m\in\mathbb Z^n}|x = m\rangle\), which is also a comb in momentum. It encodes nothing. It is the state the number theorist calls \(\Theta\): in the record, Riemann's theta function is the qunaught of the lattice of rational numbers inside the adeles.</li>
+  <li><strong>Qubit.</strong> \(L = \mathbb Z\times2\mathbb Z\) for one mode. Then \(L^\perp = \tfrac12\mathbb Z\times\mathbb Z\), the index is 4, and the code is a qubit. The displacements by \(L^\perp\) that are not in \(L\) commute with every stabiliser but act nontrivially: \((\tfrac12, 0)\) is the logical \(X\) and \((0,1)\) the logical \(Z\).</li>
+</ul>
+<p><strong>What the code does.</strong> An unknown displacement error \(W(e)\) changes the eigenvalue of each stabiliser \(W(\lambda)\) by the phase \(e^{2\pi i\Omega(\lambda,e)}\). Measuring all stabilisers therefore reveals \(e\) modulo \(L^\perp\): the <strong>syndrome</strong> is a point of the <strong>syndrome torus</strong> \(\mathbb R^{2n}/L^\perp\). The decoder shifts back by the nearest point of \(L^\perp\); if that point lies in \(L\) the state is restored, if it lies in \(L^\perp\setminus L\) a logical error has happened. For the qunaught, \(L^\perp = L = \mathbb Z^{2n}\): every displacement is detected modulo the lattice and nothing can be flipped, since nothing is encoded. The syndrome torus of \(n\) qunaughts is \(\mathbb R^{2n}/\mathbb Z^{2n}\), and that torus is where Section 14 happens.</p>
+
+<div class="demo" id="d9">
+  <div class="demo-head"><span class="tag">Demo 9</span><span class="title">A GKP lattice, a displacement, and its syndrome</span><span class="hint">Drag the error vector. Left: phase space with the stabiliser lattice (filled) and its dual (hollow). Right: the syndrome torus. Below: the comb in position.</span></div>
+  <div class="demo-body">
+    <div class="row"><button id="d9-qunaught" class="on">qunaught  L = ℤ²</button><button id="d9-qubit">qubit  L = ℤ × 2ℤ</button></div>
+    <div class="cols">
+      <div><canvas id="d9-phase" class="frame"></canvas></div>
+      <div><canvas id="d9-torus" class="frame"></canvas><div class="readout" id="d9-read"></div></div>
+    </div>
+    <canvas id="d9-comb" class="frame"></canvas>
+  </div>
+</div>
+<p>Ideal combs have infinite energy. A physical GKP state is the comb with a Gaussian envelope and Gaussian teeth, and the error correction is then approximate. Nothing on this page needs the physical version; the lattice, the syndrome torus and the logical group are the structures the arithmetic uses.</p>
+
+<h2 id="s13"><span class="num">Part D · 13</span>Lattice state 1: the flux is a GKP qubit on the cycle lattice</h2>
+<p>Return to the graph. Choose a spanning tree (for \(K_4\) drawn with vertex 0 in the centre: the three spokes). The remaining \(g\) edges, the <em>cotree</em> (for \(K_4\): the outer triangle), each close one independent cycle. Orient each cotree edge. A closed walk crosses cotree edge \(j\) some net number of times \(x_j\in\mathbb Z\) (forward minus backward), and the vector \(x = (x_1,\dots,x_g)\in\mathbb Z^g\) is the walk's <strong>cycle class</strong> (its homology class). Walks with the same class wind around the same cycles the same net number of times.</p>
+<p>Here is the picture that makes this a lattice state. Unroll the graph along all its cycles at once: this is the <em>maximal abelian cover</em>, an infinite periodic graph, a crystal in \(\mathbb R^g\) whose period lattice is \(\mathbb Z^g\). A closed walk of class \(x\) lifts to a walk in the crystal from the origin to the lattice point \(x\). Let \(W_k(x)\) be the number of closed non-backtracking walks of length \(k\) in class \(x\). The counts \(N_k = \sum_x W_k(x)\) are the overlap of the spreading walker with the comb \(\sum_x\delta_x\) on the period lattice.</p>
+<p>Now add a general flux: a phase \(e^{i\varphi_j}\) on cotree edge \(j\). A walk of class \(x\) picks up \(e^{i\varphi\cdot x}\), so the flux-twisted count is
+\[ \operatorname{Tr}B_\varphi^{\,k} = \sum_{x\in\mathbb Z^g} e^{i\varphi\cdot x}\,W_k(x) , \]
+the overlap with the <em>Bloch comb</em> \(\sum_x e^{i\varphi\cdot x}\delta_x\): the qunaught comb on \(\mathbb Z^g\) displaced in momentum by \(\varphi\). This is a GKP dictionary:</p>
+<div class="tablewrap"><table class="dict">
+<tr><th>GKP</th><th>graph</th></tr>
+<tr><td>position lattice</td><td>\(\mathbb Z^g\), the cycle classes (periods of the crystal)</td></tr>
+<tr><td>momentum lattice</td><td>the dual \(\mathbb Z^g\); a momentum displacement by a dual vector is a gauge change and does nothing to closed walks</td></tr>
+<tr><td>qunaught comb</td><td>zero flux: the bosonic sector</td></tr>
+<tr><td>momentum displacement by \(\varphi\)</td><td>an Aharonov–Bohm flux \(\varphi\)</td></tr>
+<tr><td>the probe state</td><td>the walker after \(k\) non-backtracking steps, \(W_k(x)\)</td></tr>
+</table></div>
+<p>A <strong>\(\mathbb Z_2\) flux is the half period</strong>: \(\varphi = \pi a\) with \(a\in\{0,1\}^g\), so the sign of a walk is \((-1)^{a\cdot x}\). The classes with \(a\cdot x\) even form a sublattice of index two in \(\mathbb Z^g\), and a sublattice of index two is the stabiliser lattice of a GKP <em>qubit</em> (Section 12, with the qubit lattice in \(g\) dimensions). Its logical states:</p>
+<ul>
+  <li>logical \(|{+}\rangle\): the comb over all of \(\mathbb Z^g\), the bosonic sector, overlap \(\operatorname{Tr}B^k\);</li>
+  <li>logical \(|{-}\rangle\): the comb with signs \((-1)^{a\cdot x}\), the fermionic sector, overlap \(\operatorname{Tr}B_s^k\);</li>
+  <li>logical \(|1\rangle\): the comb on the odd coset \(a\cdot x\) odd. The supertrace \(2N^{\rm odd}_k\) is twice the overlap with this state. That is why the super counts are counts.</li>
+</ul>
+<p><strong>What RH says here.</strong> The difference \(N^{\rm even}_k - N^{\rm odd}_k = \operatorname{Tr}B_s^k\) is the sum of the \(k\)-th powers of the fermionic lines plus the tree term, so the fermionic lines lie on the critical circle if and only if
+\[ \big|N^{\rm even}_k - N^{\rm odd}_k\big| \le 2n\,q^{k/2} + n(q-1)\qquad\text{for all } k. \]
+Walks of even and odd flux are equinumerous up to a square-root error. In qubit language: the walker's bias between the two logical values decays like \(q^{-k/2}\), the fastest rate the tree allows. <strong>Fermionic RH is optimal dephasing of the flux qubit by the walk.</strong> For \(K_4\) with one negative edge the bias is \(0.20\), \(5\times10^{-3}\), \(9\times10^{-5}\) at \(k = 10, 20, 30\).</p>
+
+<div class="demo" id="d10">
+  <div class="demo-head"><span class="tag">Demo 10</span><span class="title">Cycle classes of the closed walks of \(K_4\), and the flux qubit</span><span class="hint">Each dot is a point of \(\mathbb Z^3\) (drawn in projection) with area proportional to \(W_k(x)\). Tick cotree edges to set the \(\mathbb Z_2\) flux \(a\); dots turn orange on the odd coset.</span></div>
+  <div class="demo-body">
+    <div class="row"><label>k <input type="range" id="d10-k" min="3" max="10" step="1" value="6"> <span class="mono" id="d10-kval"></span></label><span id="d10-a" class="row"></span></div>
+    <div class="cols">
+      <div><canvas id="d10-graph" class="frame"></canvas></div>
+      <div><canvas id="d10-lattice" class="frame"></canvas></div>
+    </div>
+    <div class="readout" id="d10-read"></div>
+    <canvas id="d10-bias" class="frame"></canvas>
+  </div>
+</div>
+
+<h2 id="s14"><span class="num">Part D · 14</span>Lattice state 2: the fermionic sector is a syndrome torus</h2>
+<p>The first lattice state lived at the level of counts. The second lives inside the fermionic phase space of Part B, and it is where the elliptic curve appears. Put the signed adjacency matrix into the step:
+\[ M_s = \begin{pmatrix}0 & -1\\ q & A_s\end{pmatrix},\qquad M_s^T\Omega M_s = q\,\Omega . \]
+Its entries are integers. So \(M_s\) maps the lattice \(\mathbb Z^{2n}\) into itself. By Section 12, \(\mathbb Z^{2n}\) is the stabiliser lattice of \(n\) qunaughts, one per vertex, and \(\mathbb R^{2n}/\mathbb Z^{2n}\) is their syndrome torus. <strong>The fermionic step acts on syndromes.</strong> (So does the bosonic step; what singles out the fermionic sector is the sign with which its lines enter the counts, and the absence of the trivial mode.)</p>
+<p>Three facts, each elementary:</p>
+<ol>
+  <li><strong>Points are periodic syndromes.</strong> A syndrome \(e\) on the torus has period \(k\) if \(M_s^ke \equiv e \pmod{\mathbb Z^{2n}}\). The number of such \(e\) is the number of integer points of the parallelepiped spanned by the columns of \(M_s^k - 1\), which is
+  \[ h_k = \big|\det(1 - M_s^k)\big| = \prod_{\text{fermionic lines}}\big(1-\mu^k\big). \]</li>
+  <li><strong>The cohomology of the torus is the fermionic Fock space.</strong> The \(j\)-th cohomology of a \(2n\)-torus is the \(j\)-th exterior power of \(\mathbb R^{2n}\): the states of \(j\) fermions filling modes of phase space. Expanding the determinant is the Lefschetz fixed-point formula,
+  \[ \det(1-M_s^k) = \sum_{j=0}^{2n}(-1)^j\operatorname{Tr}\Lambda^jM_s^k : \]
+  empty state, minus one-fermion states, plus two-fermion states, and so on. The zeros of the super zeta are the eigenvalues of the step on the one-fermion states.</li>
+  <li><strong>For one fermionic mode the two zeta functions coincide.</strong> With \(n=1\), \(\det(1-M^k) = 1 - \operatorname{Tr}M^k + q^k\): the empty state, the two one-fermion states \(\mu^k, \bar\mu^k\) with a minus sign, and the filled state \(q^k\). For the E mode (\(q=2\), \(\lambda=-1\)) this is \(2^k + 1 - (\mu^k+\bar\mu^k) = 4, 8, 4, 16, 44, 56, \dots\): the periodic syndromes of one GKP mode <em>are</em> the points of \(E\) over \(\mathbb F_{2^k}\), and the zeta function of this map on the torus, \(\exp\sum_k h_ku^k/k\), is \(\dfrac{1+u+2u^2}{(1-u)(1-2u)}\), the zeta function of \(E\). The two poles are the empty and the filled state.</li>
+</ol>
+
+<div class="demo" id="d11">
+  <div class="demo-head"><span class="tag">Demo 11</span><span class="title">Periodic syndromes of one GKP mode</span><span class="hint">The unit square is the syndrome torus. Dots are the syndromes of period \(k\), coloured by orbit under the step. "Apply the step" moves a cloud of syndromes to show the map.</span></div>
+  <div class="demo-body">
+    <div class="row" id="d11-preset"></div>
+    <div class="row"><label>q <input type="number" id="d11-q" min="2" max="11" value="2" style="width:60px"></label><label>λ <input type="number" id="d11-lam" min="-12" max="12" value="-1" style="width:60px"></label><label>k <input type="range" id="d11-k" min="1" max="8" step="1" value="4"> <span class="mono" id="d11-kval"></span></label><button id="d11-step" class="primary">apply the step</button><button id="d11-cloud">reset cloud</button></div>
+    <div class="cols">
+      <div><canvas id="d11-canvas" class="frame"></canvas></div>
+      <div><div class="readout" id="d11-read"></div><div class="tablewrap" id="d11-table" style="margin-top:10px"></div></div>
+    </div>
+  </div>
+</div>
+<p>For several fermionic modes the super zeta keeps only the one-fermion states, while the torus counts the whole Fock space; the two differ the way a curve differs from its Jacobian. What survives in general: the step-invariant syndromes (\(k=1\)) form a finite abelian group of order \(\det(1-M_s) = \det\big((q+1)-A_s\big)\), the determinant of the signed Laplacian. For \(K_4\) with one negative edge it is \(\mathbb Z_2\times\mathbb Z_2\times\mathbb Z_8\), of order 32; for Petersen with its dodecahedral flux, order 5184. The record reads this group as the analogue of the rational points of a Prym variety (the odd part of a double cover of curves); that is an analogy, not a theorem.</p>
+
+<h2 id="s15"><span class="num">Part D · 15</span>The tower of codes, and what it does not see</h2>
+<p>The periodic syndromes organise themselves into GKP codes. Write \(V = qM_s^{-1}\), also an integer matrix (it is the adjoint of \(M_s\) for \(\Omega\), with \(M_sV = q\)). For each \(k\) the sublattice \(L_k = (1-V^k)\,\mathbb Z^{2n}\) has index \(h_k\) in \(\mathbb Z^{2n}\), and the GKP code \(\mathcal C_k\) it defines has:</p>
+<ul>
+  <li><strong>basis</strong>: the qunaught displaced by each syndrome of period \(k\), \(W(e)|L\rangle\); distinct periodic syndromes give orthogonal states;</li>
+  <li><strong>dimension</strong> \(h_k\), the number of points over \(\mathbb F_{q^k}\); and \(\mathcal C_d\subset\mathcal C_k\) when \(d\mid k\), so a field extension is a code extension;</li>
+  <li><strong>logical Paulis</strong>: displacements by periodic syndromes are the logical shifts, the stabilisers of \(\mathbb Z^{2n}\) modulo \(L_k\) the logical phases; together, the Heisenberg group of the finite group of points;</li>
+  <li><strong>the step as a logical Clifford</strong>: \(W(e)|L\rangle\mapsto W(M_se)|L\rangle\) permutes the basis and preserves the commutation pairing. On \(\mathcal C_k\) its order divides \(k\): it is the Galois group of \(\mathbb F_{q^k}\) over \(\mathbb F_q\), acting by Cliffords. Its orbits on the basis are the <em>places</em>: an orbit of size \(d\) is a point of degree \(d\).</li>
+</ul>
+<p>The two sides of the zeta function are two traces of the same step: on the code, \(\operatorname{Tr}(\Phi^j|_{\mathcal C_k}) = h_{\gcd(j,k)}\), a unitary permuting a basis, which gives the Euler product (the cycle decomposition of a permutation) and is positive for free; on the Fock space, the supertrace \(\sum_j(-1)^j\operatorname{Tr}\Lambda^jM_s^k\), where the zeros live. Lefschetz says the two agree.</p>
+<div class="note warn"><p><strong>The tower is blind to RH.</strong> Everything in the list above exists for <em>any</em> integer step with \(M^T\Omega M = q\Omega\). The record's test case is the hyperbolic step \(\begin{pmatrix}0&-1\\5&5\end{pmatrix}\), with real eigenvalues \(3.618\) and \(1.382\), so RH is false for it; it still has codes of dimensions \(1, 11, 76, 451, 2501\), logical Heisenberg groups, a Galois Clifford, places. What differs is only a ratio: RH says \(h_k/q^{nk}\to1\) with error \((1+q^{-k/2})^{2n}-1\), and the hyperbolic step leaves that window from \(k=2\) on. The tower is kinematics; positivity is not in it.</p></div>
+
+<div class="demo" id="d12">
+  <div class="demo-head"><span class="tag">Demo 12</span><span class="title">The ratio \(h_k/q^k\) against the window RH allows</span><span class="hint">Preset follows Demo 11. The shaded band is \(1 \pm \big((1+q^{-k/2})^2-1\big)\).</span></div>
+  <div class="demo-body"><canvas id="d12-canvas" class="frame"></canvas><div class="readout" id="d12-read"></div></div>
+</div>
+
+<h2 id="s16"><span class="num">Part D · 16</span>Where RH lives: an invariant vacuum</h2>
+<p>Normalise the step: \(S = M_s/\sqrt q\) is symplectic, a Gaussian unitary on \(n\) modes. Three statements are equivalent (this is a standard fact about symplectic matrices; the notebook has its abstract form as a theorem on invariant polarisations):</p>
+<ol>
+  <li>every eigenvalue of \(M_s\) has modulus \(\sqrt q\), and \(M_s\) is diagonalisable (RH with semisimplicity);</li>
+  <li>the fermionic Weil form \(\tfrac12\Omega(M_s - V)\) is positive definite;</li>
+  <li>there is a <strong>pure Gaussian state that \(S\) leaves invariant</strong>: a vacuum. Concretely, a complex structure \(J\) on phase space, \(J^2=-1\), with \(\Omega(\cdot, J\cdot) > 0\) and \(JS = SJ\).</li>
+</ol>
+<p>With the vacuum in hand everything becomes oscillators. In the vacuum's normal modes \(S\) is a rotation by an angle \(\theta_j\) in the \(j\)-th mode, so its Gaussian unitary is one period of \(n\) harmonic oscillators, \(\exp\big(-i\sum_j\theta_j(\hat n_j+\tfrac12)\big)\). <strong>The zeros are oscillator frequencies</strong>: \(\mu_j = \sqrt q\,e^{i\theta_j}\). The Hilbert–Pólya operator is the oscillator Hamiltonian, and its positivity is Weil positivity. For \(K_4\) with one negative edge the four frequencies are \(\theta/\pi = 0.210, 0.385, 0.615, 0.790\). In the bosonic sector the trivial mode is different: there \(S\) is a pure squeeze by \(\sqrt q\), generated by \(\tfrac12(\hat x\hat p+\hat p\hat x)\), an <em>inverted</em> oscillator. A step that violates RH has more inverted oscillators.</p>
+<p><strong>The lattice gets a shape.</strong> For one mode, the coordinate \(z = \bar\mu\,x + p\) turns the step into multiplication by the complex number \(\mu\): \(z\mapsto\mu z\). (Check: \((x,p)\mapsto(-p, qx+\lambda p)\) gives \(z' = -\bar\mu p + qx + \lambda p = \mu\bar\mu x + (\lambda-\bar\mu)p = \mu z\), using \(\mu\bar\mu = q\) and \(\mu+\bar\mu = \lambda\).) The stabiliser lattice \(\mathbb Z^2\) becomes a lattice in the complex plane with <em>complex multiplication</em>: the map \(z\mapsto\mu z\), a rotation by \(\theta\) and a dilation by \(\sqrt q\), sends the lattice into itself. The invariant quadratic form on it is \(qx^2+\lambda xp + p^2\) of discriminant \(\lambda^2 - 4q\). For the E mode this is the lattice \(\mathbb Z\big[\tfrac{1+\sqrt{-7}}2\big]\); for the Pauli-six mode (\(q=5\), \(\lambda=-2\)) it is the rectangle \(\mathbb Z + 2i\mathbb Z\). For the hyperbolic step the discriminant is \(+5\), the form is indefinite, and there is no such picture at all: RH for one mode is the statement that the discriminant is negative, so that the lattice is a lattice in the complex plane.</p>
+<p>And then every level of the tower is a scaled, rotated copy of the lattice: the point-tower lattices \((1-M^k)\mathbb Z^2\) and the kernel-tower lattices \(M^k\mathbb Z^2\) are \((1-\mu^k)L\) and \(\mu^kL\). The tower is self-similar. Without a vacuum there is no such statement.</p>
+
+<div class="demo" id="d13">
+  <div class="demo-head"><span class="tag">Demo 13</span><span class="title">The lattice in vacuum coordinates, and the step as a rotation</span><span class="hint">\(z = \bar\mu x + p\) for \((x,p)\in\mathbb Z^2\). Press "apply the step" to see \(z\mapsto\mu z\) carry the lattice onto the sublattice \(\mu L\) (shown in teal). Hollow dots: \((1-\mu)L\).</span></div>
+  <div class="demo-body">
+    <div class="row" id="d13-preset"></div>
+    <div class="row"><button id="d13-step" class="primary">apply the step</button><button id="d13-reset">reset</button><span class="mono" id="d13-info"></span></div>
+    <div class="cols"><div><canvas id="d13-canvas" class="frame"></canvas></div><div class="readout" id="d13-read"></div></div>
+  </div>
+</div>
+<div class="note"><p><strong>In the ordinary case this is a theorem.</strong> A free \(\mathbb Z\)-module with an endomorphism \(F\) satisfying (1) \(F\) semisimple with all eigenvalues of modulus \(\sqrt q\), (2) half the eigenvalues \(p\)-adic units and half divisible by \(q\), (3) the middle coefficient of its characteristic polynomial prime to \(p\), (4) an integer \(V\) with \(FV = q\), is a <em>Deligne module</em>, and Deligne's theorem says these are exactly the ordinary abelian varieties over \(\mathbb F_q\). Our \((\mathbb Z^{2n}, M_s)\) always has (4); (1) is RH; (3) is ordinariness and implies (2) when \(q\) is prime. The E mode (\(x^2+x+2\)), the Pauli-six mode (\(x^2+2x+5\)) and \(K_4\) with one negative edge (\(x^8+2x^6+5x^4+8x^2+16\), rank 8) all pass, so each fermionic sector <em>is</em> an ordinary abelian variety over \(\mathbb F_q\), of dimension 1, 1 and 4, with the GKP lattice as the first homology of its canonical lift and the level-\(k\) code as functions on its \(\mathbb F_{q^k}\)-points. Petersen and \(K_5\) with their in-band fluxes have the eigenvalue 0 and are not ordinary. Whether the vacuum's complex structure is the lift's complex structure is a separate sign question, settled in the record's later pages (<code>howe-positivity.md</code>, <code>sign-vector.md</code>): yes for one mode, no for \(K_4\) with one negative edge, where a twisted form supplies the polarisation instead.</p></div>
+<div class="remember"><div class="eyebrow">Keep</div><p>Tower, codes, logical Paulis and the Galois Clifford exist with or without RH. The datum that carries RH is a vacuum invariant under the normalised step, which lives on phase space (first homology), not on the space the points live in. In the understood case the zeros are oscillator frequencies and the squeeze belongs to the poles. The record's steer: carry the <em>vacuum</em>, not the tower, to the case of Riemann's zeta.</p></div>
+
+<!-- ================= APPENDIX ================= -->
+<h2 id="s17"><span class="num">Appendix · 17</span>Dictionary and status</h2>
+<div class="tablewrap"><table class="dict">
+<tr><th>step</th><th>plain Ihara zeta</th><th>super Ihara zeta</th><th>Riemann's zeta</th></tr>
+<tr><td>closed orbits</td><td>prime cycles</td><td>prime cycles of odd flux</td><td>prime powers</td></tr>
+<tr><td>the step</td><td>\(M=\begin{pmatrix}0&-1\\q&A\end{pmatrix}\), symplectic similitude</td><td>\(M_s\) with \(A_s\); integer, preserves \(\mathbb Z^{2n}\)</td><td>the squeeze \(D_\lambda\) on an adelic mode</td></tr>
+<tr><td>lines / zeros</td><td>bright (emitted by counts)</td><td>fermionic: dark; bosonic: bright</td><td>dark</td></tr>
+<tr><td>trivial pair</td><td>uniform mode, lines \(q,1\)</td><td>uniform bosonic mode; on the torus, empty and filled state</td><td>poles at \(s=1,0\)</td></tr>
+<tr><td>Weil form</td><td>\(\begin{pmatrix}q&A/2\\A/2&1\end{pmatrix}\), one negative direction</td><td>fermionic part positive definite for a Ramanujan flux</td><td>Weil's quadratic form, pole terms subtracted</td></tr>
+<tr><td>RH</td><td>\(A^2\le4q\) off the uniform mode</td><td>\(A_s^2\le4q\)</td><td>zeros on \(\operatorname{Re}s=\tfrac12\)</td></tr>
+<tr><td>a lattice state</td><td>none (only \(\pi_1\) in the tree, the analogue of the primes)</td><td>flux qubit on \(\mathbb Z^g\); syndrome torus of \(n\) qunaughts</td><td>\(\Theta\), the qunaught of \(\mathbb Q^2\subset\mathbb A^2\)</td></tr>
+<tr><td>points over \(\mathbb F_{q^k}\)</td><td>walk counts</td><td>periodic syndromes, \(h_k=\det(1-M_s^k)\)</td><td>no finite field</td></tr>
+<tr><td>mechanism for positivity</td><td>none uniform across graphs</td><td>on average over fluxes (matching polynomial)</td><td>unknown</td></tr>
+<tr><td>a real violation</td><td>prism \(C_{21}\times K_2\)</td><td>prism with antiperiodic ring</td><td>none known</td></tr>
+</table></div>
+<h3>Status of the statements used on this page</h3>
+<div class="tablewrap"><table class="dict">
+<tr><th>statement</th><th>status</th></tr>
+<tr><td>\(N_k=\operatorname{Tr}B^k\); Ihara–Bass; lines from eigenvalues; Ramanujan \(\iff\) RH; Kesten–McKay band</td><td><span class="status std">standard</span> checked live on this page</td></tr>
+<tr><td>Ihara–Bass by vectorisation (Section 4b): \(B = P_A(K\otimes1)F = \tau\sigma^T - F\), Sylvester</td><td><span class="status std">standard</span> (Bass; the shard-08 proof specialised) checked live (Demo 4b)</td></tr>
+<tr><td>\(B\) on \(\sigma f,\tau g\) is \(M\); \(M^T\Omega M=q\Omega\); invariance and positivity of \(\mathcal Q\); negative-index count</td><td><span class="status std">elementary</span> <span class="status chk">checked</span> (H1, 56/56)</td></tr>
+<tr><td>factorisation into squeeze, Hadamard, CZ; the graph-state reading</td><td><span class="status chk">checked</span> (H1, H9); literature not searched</td></tr>
+<tr><td>super zeta as a ratio of determinants; supertrace \(=2N^{\rm odd}_k\); Euler product over odd primes</td><td><span class="status std">elementary</span> <span class="status chk">checked</span> (S1, S2, S6)</td></tr>
+<tr><td>flux average = matching polynomial; roots in the band; interlacing families</td><td><span class="status std">standard</span> (Godsil–Gutman, Heilmann–Lieb, MSS; quoted from memory, table checked S7 and live here)</td></tr>
+<tr><td>cycle lattice, Bloch combs, \(\mathbb Z_2\) flux as half period</td><td><span class="status std">standard</span> (abelian covers); checked on \(K_4\) (S4); <span class="status read">the GKP reading is the record's</span></td></tr>
+<tr><td>periodic syndromes, Lefschetz, one-mode equality with the curve's zeta</td><td><span class="status std">standard</span> (toral endomorphisms) <span class="status chk">checked</span> (S5)</td></tr>
+<tr><td>tower of codes; step as logical Clifford; blindness to RH</td><td><span class="status std">elementary</span> <span class="status chk">checked</span> (W2, W5, W6); stabiliser sign convention assumed</td></tr>
+<tr><td>invariant vacuum \(\iff\) Weil positivity; oscillator frequencies; complex multiplication</td><td><span class="status std">standard</span> (Williamson; the notebook's invariant-polarisation theorem) <span class="status chk">checked</span> (W7)</td></tr>
+<tr><td>Deligne modules and ordinary abelian varieties</td><td><span class="status std">cited</span> (Goresky–Tai, on disk, by line); conditions checked (W8); group structure of the points from memory</td></tr>
+<tr><td>"Prym", "Tate module", "no Tate-type formula for a graph"</td><td><span class="status read">analogy</span> / <span class="status neg">negative finding</span>, not theorems</td></tr>
+<tr><td>Registration, review</td><td><span class="status neg">nothing registered; no REFUTE review</span></td></tr>
+</table></div>
+<p>Check labels (H, S, W) refer to <code>notes/adelic-gkp/checks/check_graph_gkp.py</code>, <code>check_super_gkp.py</code> and <code>check_lattice_tower.py</code> on the branch <code>claude/weil-bond-analytic</code>; their outputs are committed beside them.</p>
+
+<h2 id="s18"><span class="num">Appendix · 18</span>Glossary</h2>
+<dl class="gloss">
+<dt>\((q+1)\)-regular graph</dt><dd>Every vertex has \(q+1\) neighbours. \(q\) plays the role of the size of the finite field.</dd>
+<dt>Non-backtracking walk</dt><dd>A walk that never immediately reverses the edge it just used. Closed ones (also non-backtracking at the closing step) are the periodic orbits.</dd>
+<dt>Hashimoto operator \(B\)</dt><dd>The \(0/1\) matrix on directed edges that moves a walker one non-backtracking step. \(N_k=\operatorname{Tr}B^k\).</dd>
+<dt>Ihara zeta</dt><dd>\(\prod_C(1-u^{\ell(C)})^{-1}=1/\det(1-uB)\) over prime cycles \(C\).</dd>
+<dt>Ramanujan graph</dt><dd>All non-trivial adjacency eigenvalues satisfy \(|\lambda|\le2\sqrt q\). Equivalent to RH for the Ihara zeta.</dd>
+<dt>Lines</dt><dd>The eigenvalues \(\mu\) of the step \(M\), two per adjacency eigenvalue, \(\mu^2-\lambda\mu+q=0\). RH: \(|\mu|=\sqrt q\) off the trivial mode.</dd>
+<dt>Symplectic form \(\Omega\)</dt><dd>The oriented area \(x\cdot p'-p\cdot x'\) on phase space. \(M\) scales it by \(q\); \(S=M/\sqrt q\) preserves it.</dd>
+<dt>Weil form \(\mathcal Q\)</dt><dd>The quadratic form conserved by the step; \(q|x|^2+x\cdot Ap+|p|^2\). Its positivity off the trivial mode is RH.</dd>
+<dt>Flux</dt><dd>A choice of signs on the edges modulo gauge changes at vertices; equivalently a double cover; \(2^g\) of them.</dd>
+<dt>Bosonic / fermionic sector</dt><dd>Even / odd functions on the double cover; adjacency \(A\) / signed adjacency \(A_s\).</dd>
+<dt>Super zeta</dt><dd>\(\det(1-uB_s)/\det(1-uB)\). Zeros from fermions, poles from bosons.</dd>
+<dt>Supertrace</dt><dd>\(\operatorname{Tr}B^k-\operatorname{Tr}B_s^k=2N^{\rm odd}_k\), the trace weighted by the deck involution of the cover.</dd>
+<dt>Matching polynomial</dt><dd>\(\sum_k(-1)^km_kx^{n-2k}\), \(m_k\) the number of \(k\)-edge matchings; the flux average of \(\det(x-A_s)\).</dd>
+<dt>GKP code</dt><dd>The joint fixed space of the displacement operators of a lattice \(L\) with integer mutual areas; dimension \(\sqrt{[L^\perp:L]}\).</dd>
+<dt>Qunaught</dt><dd>A GKP code of dimension one (\(L=L^\perp\)); a single comb state that encodes nothing and detects every displacement modulo \(L\).</dd>
+<dt>Syndrome torus</dt><dd>\(\mathbb R^{2n}/L^\perp\), what the stabiliser measurements reveal about a displacement.</dd>
+<dt>Cycle lattice</dt><dd>\(\mathbb Z^g\) of cycle classes (first homology); the position lattice of the flux qubit.</dd>
+<dt>Period-\(k\) syndrome</dt><dd>\(e\) with \(M_s^ke\equiv e\) mod \(\mathbb Z^{2n}\); their number is \(h_k=\det(1-M_s^k)\), the point count over \(\mathbb F_{q^k}\).</dd>
+<dt>Vacuum</dt><dd>A pure Gaussian state, i.e. a complex structure \(J\) with \(\Omega(\cdot,J\cdot)>0\). RH \(\iff\) one is invariant under the normalised step.</dd>
+<dt>Deligne module</dt><dd>\((\mathbb Z^{2n},F)\) with RH, ordinariness and an adjoint \(V\); the same thing as an ordinary abelian variety over \(\mathbb F_q\).</dd>
+</dl>
+</main>
+</div>
+
+<script>
+// Numerical core for "Super Ihara Zeta Primer". No DOM. Every number on the page is computed here.
+const Core = (() => {
+  // ---------- graphs ----------
+  function completeEdges(n) { const e = []; for (let a = 0; a < n; a++) for (let b = a + 1; b < n; b++) e.push([a, b]); return e; }
+  function prismEdges(m) { const e = []; for (let i = 0; i < m; i++) { e.push([i, (i + 1) % m]); e.push([m + i, m + (i + 1) % m]); e.push([i, m + i]); } return e; }
+  function petersenEdges() { const e = []; for (let i = 0; i < 5; i++) { e.push([i, (i + 1) % 5]); e.push([i, i + 5]); e.push([5 + i, 5 + (i + 2) % 5]); } return e; }
+  function ring(n, r, off = -Math.PI / 2, start = 0) { const p = []; for (let i = 0; i < n; i++) { const t = off + 2 * Math.PI * i / n; p.push([r * Math.cos(t), r * Math.sin(t)]); } return p; }
+  function makeGraph(name, n, edges, pos, label) {
+    const A = Array.from({ length: n }, () => Array(n).fill(0));
+    for (const [a, b] of edges) { A[a][b] = 1; A[b][a] = 1; }
+    const deg = A[0].reduce((s, v) => s + v, 0);
+    return { name, label, n, edges, A, q: deg - 1, pos };
+  }
+  const GRAPHS = {
+    K4: () => makeGraph('K4', 4, [[0, 1], [0, 2], [0, 3], [1, 2], [2, 3], [3, 1]], [[0, 0.05], ...ring(3, 1)], 'K₄ (tetrahedron)'),
+    K5: () => makeGraph('K5', 5, completeEdges(5), ring(5, 1), 'K₅'),
+    cube: () => makeGraph('cube', 8, prismEdges(4), [...ring(4, 1, -Math.PI / 4), ...ring(4, 0.5, -Math.PI / 4)], 'cube (bipartite)'),
+    petersen: () => makeGraph('petersen', 10, petersenEdges(), [...ring(5, 1), ...ring(5, 0.5)], 'Petersen'),
+    prism6: () => makeGraph('prism6', 12, prismEdges(6), [...ring(6, 1), ...ring(6, 0.55)], 'prism C₆ × K₂'),
+    prism21: () => makeGraph('prism21', 42, prismEdges(21), [...ring(21, 1), ...ring(21, 0.7)], 'prism C₂₁ × K₂'),
+  };
+  function graph(name) { return GRAPHS[name](); }
+
+  // ---------- linear algebra ----------
+  function eigSym(A0) {
+    const n = A0.length; const A = A0.map(r => r.slice());
+    for (let sweep = 0; sweep < 60; sweep++) {
+      let off = 0; for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) off += A[i][j] * A[i][j];
+      if (off < 1e-24) break;
+      for (let p = 0; p < n; p++) for (let q = p + 1; q < n; q++) {
+        if (Math.abs(A[p][q]) < 1e-300) continue;
+        const th = (A[q][q] - A[p][p]) / (2 * A[p][q]);
+        const t = (th >= 0 ? 1 : -1) / (Math.abs(th) + Math.sqrt(th * th + 1));
+        const c = 1 / Math.sqrt(t * t + 1), s = t * c;
+        for (let k = 0; k < n; k++) { const akp = A[k][p], akq = A[k][q]; A[k][p] = c * akp - s * akq; A[k][q] = s * akp + c * akq; }
+        for (let k = 0; k < n; k++) { const apk = A[p][k], aqk = A[q][k]; A[p][k] = c * apk - s * aqk; A[q][k] = s * apk + c * aqk; }
+      }
+    }
+    return A.map((r, i) => r[i]).sort((a, b) => a - b);
+  }
+  function matmul(X, Y) { const n = X.length, m = Y[0].length, k = Y.length; const Z = Array.from({ length: n }, () => Array(m).fill(0)); for (let i = 0; i < n; i++) for (let l = 0; l < k; l++) { const x = X[i][l]; if (x === 0) continue; for (let j = 0; j < m; j++) Z[i][j] += x * Y[l][j]; } return Z; }
+  function matvec(X, v) { return X.map(r => r.reduce((s, x, j) => s + x * v[j], 0)); }
+  function identity(n) { return Array.from({ length: n }, (_, i) => Array.from({ length: n }, (_, j) => (i === j ? 1 : 0))); }
+  function trace(X) { let t = 0; for (let i = 0; i < X.length; i++) t += X[i][i]; return t; }
+  // det(xI - A) coefficients c[j] of x^j (Faddeev-LeVerrier; exact for small integer matrices)
+  function charpoly(A) {
+    const n = A.length; const c = Array(n + 1).fill(0); c[n] = 1;
+    let M = Array.from({ length: n }, () => Array(n).fill(0));
+    for (let k = 1; k <= n; k++) {
+      const AM = matmul(A, M); for (let i = 0; i < n; i++) AM[i][i] += c[n - k + 1];
+      M = AM; c[n - k] = -trace(matmul(A, M)) / k;
+    }
+    return c.map(x => Math.round(x));
+  }
+  function polyMul(a, b) { const out = Array(a.length + b.length - 1).fill(0); for (let i = 0; i < a.length; i++) for (let j = 0; j < b.length; j++) out[i + j] += a[i] * b[j]; return out; }
+  function polyAdd(a, b) { const out = Array(Math.max(a.length, b.length)).fill(0); a.forEach((v, i) => out[i] += v); b.forEach((v, i) => out[i] += v); return out; }
+  // ascending coefficients of det(1 - A u + q u^2)
+  function iharaPoly(A, q) {
+    const n = A.length, c = charpoly(A); let out = [0];
+    let pw = [1];
+    const pows = [pw]; for (let j = 1; j <= n; j++) { pw = polyMul(pw, [1, 0, q]); pows.push(pw); }
+    for (let j = 0; j <= n; j++) { const term = polyMul(Array(n - j).fill(0).concat([c[j]]), pows[j]); out = polyAdd(out, term); }
+    return out.map(x => Math.round(x));
+  }
+  function polyEval(p, u) { let s = 0; for (let i = p.length - 1; i >= 0; i--) s = s * u + p[i]; return s; }
+  function polyFormat(p, v = 'u') { // ascending coefficients -> string
+    const parts = [];
+    p.forEach((c, i) => { if (c === 0) return; const sgn = c < 0 ? '−' : '+'; const a = Math.abs(c); const coef = (a === 1 && i > 0) ? '' : String(a); const mono = i === 0 ? '' : (i === 1 ? v : v + '^' + i); parts.push([sgn, coef + mono]); });
+    if (!parts.length) return '0';
+    return parts.map(([s, t], i) => (i === 0 ? (s === '−' ? '−' : '') : ' ' + s + ' ') + t).join('');
+  }
+  // real roots of a polynomial with all-real simple roots (ascending coefficients), by sign scanning
+  function realRoots(p, lo, hi, grid = 4000) {
+    const roots = []; let x0 = lo, f0 = polyEval(p, x0);
+    for (let i = 1; i <= grid; i++) { const x1 = lo + (hi - lo) * i / grid, f1 = polyEval(p, x1); if (f0 === 0) roots.push(x0); else if (f0 * f1 < 0) { let a = x0, b = x1, fa = f0; for (let it = 0; it < 60; it++) { const m = (a + b) / 2, fm = polyEval(p, m); if (fa * fm <= 0) b = m; else { a = m; fa = fm; } } roots.push((a + b) / 2); } x0 = x1; f0 = f1; }
+    return roots;
+  }
+
+  // ---------- non-backtracking operator ----------
+  function directed(edges) { const d = []; edges.forEach(([a, b]) => { d.push([a, b]); d.push([b, a]); }); return d; } // rev(e) = e ^ 1
+  function hashimoto(g, signs) { // signs: array over undirected edges (+1/-1) or null
+    const d = directed(g.edges), m = d.length; const B = Array.from({ length: m }, () => Array(m).fill(0));
+    for (let e = 0; e < m; e++) for (let f = 0; f < m; f++) if (d[e][1] === d[f][0] && f !== (e ^ 1)) B[e][f] = signs ? signs[f >> 1] : 1;
+    return { d, B };
+  }
+  function traces(B, kmax) { const out = [B.length]; let P = identity(B.length); for (let k = 1; k <= kmax; k++) { P = matmul(P, B); out.push(trace(P)); } return out; }
+  function primeCounts(N) { // N[k] = Tr B^k -> number of (oriented) prime cycles of each length
+    const pi = [0]; for (let l = 1; l < N.length; l++) { let s = N[l]; for (let d = 1; d < l; d++) if (l % d === 0) s -= d * pi[d]; pi.push(s / l); } return pi;
+  }
+  // "lines": eigenvalues mu of M (mu^2 - lambda mu + q = 0) for each adjacency eigenvalue lambda
+  function lines(lams, q) { const out = []; for (const l of lams) { const D = l * l - 4 * q; if (D >= 0) { const r = Math.sqrt(D); out.push({ re: (l + r) / 2, im: 0, lam: l }); out.push({ re: (l - r) / 2, im: 0, lam: l }); } else { const r = Math.sqrt(-D); out.push({ re: l / 2, im: r / 2, lam: l }); out.push({ re: l / 2, im: -r / 2, lam: l }); } } return out; }
+  function isRamanujan(lams, q, n) { const band = 2 * Math.sqrt(q) + 1e-9; const nontriv = lams.filter(l => Math.abs(Math.abs(l) - (q + 1)) > 1e-9); return nontriv.every(l => Math.abs(l) <= band); }
+  function negIndexQ(lams, q) { return lams.filter(l => l * l > 4 * q + 1e-9).length; }
+
+  // ---------- flux ----------
+  function spanningTree(g) { const seen = new Set([0]), stack = [0], tree = new Set(); while (stack.length) { const v = stack.pop(); g.edges.forEach(([a, b], i) => { const w = a === v ? b : (b === v ? a : -1); if (w >= 0 && !seen.has(w)) { seen.add(w); tree.add(i); stack.push(w); } }); } return tree; }
+  function cotree(g) { const t = spanningTree(g); return g.edges.map((_, i) => i).filter(i => !t.has(i)); }
+  function signedA(g, signs) { const A = g.A.map(r => r.slice()); g.edges.forEach(([a, b], i) => { A[a][b] = signs[i]; A[b][a] = signs[i]; }); return A; }
+  function* fluxClasses(g) { const co = cotree(g); const m = co.length; for (let bits = 0; bits < (1 << m); bits++) { const s = Array(g.edges.length).fill(1); co.forEach((ei, j) => { if (bits & (1 << j)) s[ei] = -1; }); yield { bits, signs: s }; } }
+  function matchingPoly(g) { // ascending coefficients in x of sum_k (-1)^k m_k x^{n-2k}
+    const E = g.edges, m = E.length; const counts = Array(Math.floor(g.n / 2) + 1).fill(0);
+    function rec(i, used, k) { if (i === m) { counts[k]++; return; } rec(i + 1, used, k); const [a, b] = E[i]; if (!used.has(a) && !used.has(b)) { used.add(a); used.add(b); rec(i + 1, used, k + 1); used.delete(a); used.delete(b); } }
+    rec(0, new Set(), 0);
+    const p = Array(g.n + 1).fill(0); counts.forEach((c, k) => { p[g.n - 2 * k] = (k % 2 ? -1 : 1) * c; }); return p;
+  }
+  function fluxAverageCharpoly(g) { let tot = null, cnt = 0, inBand = 0; for (const { signs } of fluxClasses(g)) { const As = signedA(g, signs); const c = charpoly(As); tot = tot ? tot.map((v, i) => v + c[i]) : c; cnt++; if (isRamanujanSigned(eigSym(As), g.q)) inBand++; } return { avg: tot.map(v => v / cnt), count: cnt, inBand }; }
+  function isRamanujanSigned(lams, q) { const band = 2 * Math.sqrt(q) + 1e-9; return lams.every(l => Math.abs(l) <= band); }
+  function fermionicQmin(lams, q) { return Math.min(...lams.map(l => ((q + 1) - Math.sqrt((q - 1) * (q - 1) + l * l)) / 2)); }
+
+  // closed non-backtracking walks of K4 (centre vertex 0, spokes = tree) by homology class in Z^3
+  function homologyWalks(g, co, k) { // co: cotree edge indices (oriented as in g.edges)
+    const { d, B } = hashimoto(g, null); const m = d.length;
+    const cls = d.map(([a, b]) => co.map(ei => (g.edges[ei][0] === a && g.edges[ei][1] === b) ? 1 : ((g.edges[ei][0] === b && g.edges[ei][1] === a) ? -1 : 0)));
+    const hist = new Map();
+    for (let e0 = 0; e0 < m; e0++) {
+      let states = new Map(); states.set(e0 + '|' + cls[e0].join(','), { e: e0, x: cls[e0].slice(), c: 1 });
+      for (let j = 1; j < k; j++) { const nxt = new Map(); for (const st of states.values()) for (let f = 0; f < m; f++) if (B[st.e][f]) { const x = st.x.map((v, i) => v + cls[f][i]); const key = f + '|' + x.join(','); const o = nxt.get(key); if (o) o.c += st.c; else nxt.set(key, { e: f, x, c: st.c }); } states = nxt; }
+      for (const st of states.values()) if (B[st.e][e0]) { const key = st.x.join(','); hist.set(key, (hist.get(key) || 0) + st.c); }
+    }
+    return [...hist.entries()].map(([key, c]) => ({ x: key.split(',').map(Number), c }));
+  }
+
+  // ---------- one mode: M = [[0,-1],[q,lam]] on the torus ----------
+  function mat2pow(M, k) { let P = [[1, 0], [0, 1]]; for (let i = 0; i < k; i++) P = [[P[0][0] * M[0][0] + P[0][1] * M[1][0], P[0][0] * M[0][1] + P[0][1] * M[1][1]], [P[1][0] * M[0][0] + P[1][1] * M[1][0], P[1][0] * M[0][1] + P[1][1] * M[1][1]]]; return P; }
+  function periodicPoints(q, lam, k) { // points (a,b)/N on the torus with M^k e = e mod Z^2, grouped into orbits of M
+    const M = [[0, -1], [q, lam]]; const P = mat2pow(M, k); const C = [[P[0][0] - 1, P[0][1]], [P[1][0], P[1][1] - 1]];
+    const N = Math.abs(C[0][0] * C[1][1] - C[0][1] * C[1][0]);
+    const pts = []; const mod = (x, n) => ((x % n) + n) % n;
+    for (let a = 0; a < N; a++) for (let b = 0; b < N; b++) if (mod(C[0][0] * a + C[0][1] * b, N) === 0 && mod(C[1][0] * a + C[1][1] * b, N) === 0) pts.push([a, b]);
+    const idx = new Map(pts.map((p, i) => [p[0] + ',' + p[1], i])); const orbit = Array(pts.length).fill(-1); const orbits = [];
+    pts.forEach((p, i) => { if (orbit[i] >= 0) return; const o = []; let cur = p; while (true) { const j = idx.get(cur[0] + ',' + cur[1]); if (orbit[j] >= 0) break; orbit[j] = orbits.length; o.push(j); cur = [mod(-cur[1], N), mod(q * cur[0] + lam * cur[1], N)]; } orbits.push(o); });
+    return { N, pts, orbit, orbits, h: pts.length, det: C[0][0] * C[1][1] - C[0][1] * C[1][0] };
+  }
+  function pointCounts(q, lam, kmax) { // h_k = 1 - (mu^k + conj) + q^k via the recursion s_k = lam s_{k-1} - q s_{k-2}
+    const s = [2, lam]; for (let k = 2; k <= kmax; k++) s.push(lam * s[k - 1] - q * s[k - 2]); const h = [0]; for (let k = 1; k <= kmax; k++) h.push(Math.pow(q, k) + 1 - s[k]); return { s, h };
+  }
+
+  function detInt(A0) { // exact integer determinant (Bareiss, BigInt) returned as a Number string-safe integer
+    const n = A0.length; const A = A0.map(r => r.map(v => BigInt(Math.round(v)))); let sign = 1n, prev = 1n;
+    for (let k = 0; k < n - 1; k++) { if (A[k][k] === 0n) { let sw = -1; for (let i = k + 1; i < n; i++) if (A[i][k] !== 0n) { sw = i; break; } if (sw < 0) return 0; [A[k], A[sw]] = [A[sw], A[k]]; sign = -sign; }
+      for (let i = k + 1; i < n; i++) for (let j = k + 1; j < n; j++) A[i][j] = (A[i][j] * A[k][k] - A[i][k] * A[k][j]) / prev; prev = A[k][k]; }
+    const d = sign * A[n - 1][n - 1]; return Number(d) === Number(d) && Math.abs(Number(d)) < 9e15 ? Number(d) : d.toString();
+  }
+  function detLU(M0) { const n = M0.length; const M = M0.map(r => r.slice()); let det = 1; for (let k = 0; k < n; k++) { let p = k; for (let i = k + 1; i < n; i++) if (Math.abs(M[i][k]) > Math.abs(M[p][k])) p = i; if (Math.abs(M[p][k]) < 1e-300) return 0; if (p !== k) { [M[k], M[p]] = [M[p], M[k]]; det = -det; } det *= M[k][k]; for (let i = k + 1; i < n; i++) { const f = M[i][k] / M[k][k]; if (f === 0) continue; for (let j = k; j < n; j++) M[i][j] -= f * M[k][j]; } } return det; }
+  function transpose(X) { return X[0].map((_, j) => X.map(r => r[j])); }
+  function liftMaps(g) { // sigma, tau: V -> E (2|E| x n), F: edge reversal (2|E| x 2|E|)
+    const d = directed(g.edges), m = d.length; const sigma = d.map(([a]) => Array.from({ length: g.n }, (_, v) => (v === a ? 1 : 0))); const tau = d.map(([, b]) => Array.from({ length: g.n }, (_, v) => (v === b ? 1 : 0))); const F = Array.from({ length: m }, (_, e) => Array.from({ length: m }, (_, f) => (f === (e ^ 1) ? 1 : 0))); return { d, sigma, tau, F }; }
+  function iharaBassCheck(g, u) { // numerical verification of each step of the vectorised proof
+    const n = g.n, { d, B } = hashimoto(g, null), m = d.length; const { sigma, tau, F } = liftMaps(g); const sT = transpose(sigma), tT = transpose(tau);
+    const maxAbs = X => Math.max(...X.map(r => Math.max(...r.map(Math.abs))));
+    const sub = (X, Y) => X.map((r, i) => r.map((v, j) => v - Y[i][j]));
+    const out = {};
+    out.B_vs_tausigmaF = maxAbs(sub(B, sub(matmul(tau, sT), F)));
+    out.sigmaT_tau_vs_A = maxAbs(sub(matmul(sT, tau), g.A));
+    const D = identity(n).map(r => r.map(v => v * (g.q + 1))); out.tauT_tau_vs_D = maxAbs(sub(matmul(tT, tau), D)); out.sigmaT_sigma_vs_D = maxAbs(sub(matmul(sT, sigma), D));
+    out.F_tau_vs_sigma = maxAbs(sub(matmul(F, tau), sigma)); out.F2_vs_1 = maxAbs(sub(matmul(F, F), identity(m)));
+    if (n <= 10) { // the vectorised form B = P_A (K (x) 1) F on V (x) V, built as explicit n^2 x n^2 matrices
+      const N = n * n, idx = (a, b) => a * n + b; const P = Array.from({ length: N }, (_, i) => Array.from({ length: N }, (_, j) => (i === j && g.A[Math.floor(i / n)][i % n] ? 1 : 0)));
+      const K1 = Array.from({ length: N }, (_, i) => Array.from({ length: N }, (_, j) => { const a = Math.floor(i / n), b = i % n, x = Math.floor(j / n), y = j % n; return (b === y && a !== x) ? 1 : 0; }));
+      const Fv = Array.from({ length: N }, (_, i) => Array.from({ length: N }, (_, j) => (idx(j % n, Math.floor(j / n)) === i ? 1 : 0)));
+      const M = matmul(matmul(matmul(P, K1), Fv), P); let md = 0; for (let e = 0; e < m; e++) for (let f = 0; f < m; f++) md = Math.max(md, Math.abs(M[idx(d[e][0], d[e][1])][idx(d[f][0], d[f][1])] - B[e][f])); out.vectorised_vs_B = md; out.vectorised_dim = N; }
+    // the determinant steps at u
+    const I_E = identity(m), I_V = identity(n);
+    const left = detLU(I_E.map((r, i) => r.map((v, j) => v - u * B[i][j])));
+    const detF = detLU(I_E.map((r, i) => r.map((v, j) => v + u * F[i][j])));
+    const inv = I_E.map((r, i) => r.map((v, j) => (v - u * F[i][j]) / (1 - u * u))); // (1+uF)^{-1}
+    const X = matmul(inv, tau).map(r => r.map(v => u * v)); const XY = matmul(X, sT), YX = matmul(sT, X); const edgeSide = detLU(I_E.map((r, i) => r.map((v, j) => v - XY[i][j])));
+    const vertexSide = detLU(I_V.map((r, i) => r.map((v, j) => v - YX[i][j])));
+    const closed = Math.pow(1 - u * u, g.edges.length - n) * detLU(I_V.map((r, i) => r.map((v, j) => v - u * g.A[i][j] + (i === j ? g.q * u * u : 0))));
+    out.det = { left, detF, edgeSide, vertexSide, closed, pow: Math.pow(1 - u * u, g.edges.length) };
+    const trF = trace(F); out.F_plus = (m + trF) / 2; out.F_minus = (m - trF) / 2; // F^2 = 1 (checked above) so the eigenvalues are +-1 and the trace fixes the counts
+    return out;
+  }
+  return { GRAPHS, graph, detInt, detLU, transpose, liftMaps, iharaBassCheck, eigSym, matmul, matvec, identity, trace, charpoly, polyMul, iharaPoly, polyEval, polyFormat, realRoots, directed, hashimoto, traces, primeCounts, lines, isRamanujan, negIndexQ, spanningTree, cotree, signedA, fluxClasses, matchingPoly, fluxAverageCharpoly, isRamanujanSigned, fermionicQmin, homologyWalks, mat2pow, periodicPoints, pointCounts };
+})();
+
+</script>
+<script>
+(() => {
+'use strict';
+const C = Core;
+const $ = id => document.getElementById(id);
+const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const COL = () => ({ ink: css('--ink'), muted: css('--muted'), line: css('--line'), even: css('--even'), odd: css('--odd'), lat: css('--lat'), bad: css('--bad'), surface: css('--surface'), s2: css('--surface-2'), evenSoft: css('--even-soft'), oddSoft: css('--odd-soft'), latSoft: css('--lat-soft'), badSoft: css('--bad-soft') });
+const fmt = (x, d = 4) => (Math.abs(x) < 1e-12 ? 0 : x).toFixed(d).replace('-', '−');
+const sn = x => String(x).replace('-', '−');
+const lin = (c, sym) => c === 0 ? '' : (c > 0 ? ' + ' : ' − ') + (Math.abs(c) === 1 ? '' : Math.abs(c)) + sym;
+const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---------- canvas helper ----------
+function canvasOf(id, aspect, draw) {
+  const cv = $(id); const state = { cv, draw, aspect };
+  function resize() { const w = Math.max(200, cv.parentElement.clientWidth || cv.clientWidth || 300); const h = Math.round(w * aspect); const dpr = window.devicePixelRatio || 1; cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); cv.style.height = h + 'px'; const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); state.ctx = ctx; state.w = w; state.h = h; state.draw(ctx, w, h); }
+  state.redraw = () => { if (state.ctx) state.draw(state.ctx, state.w, state.h); };
+  new ResizeObserver(() => resize()).observe(cv.parentElement); resize();
+  return state;
+}
+function clear(ctx, w, h) { const c = COL(); ctx.fillStyle = c.surface; ctx.fillRect(0, 0, w, h); }
+function text(ctx, s, x, y, opt = {}) { ctx.font = (opt.weight || 400) + ' ' + (opt.size || 12) + 'px ' + (opt.mono ? css('--mono') : css('--body')); ctx.fillStyle = opt.color || COL().muted; ctx.textAlign = opt.align || 'left'; ctx.textBaseline = opt.base || 'alphabetic'; ctx.fillText(s, x, y); }
+
+// ---------- graph drawing ----------
+function layout(g, w, h, pad = 34) { const r = Math.min(w, h) / 2 - pad; return g.pos.map(([x, y]) => [w / 2 + x * r, h / 2 + y * r]); }
+function drawGraph(ctx, g, w, h, opt = {}) {
+  const c = COL(); const P = opt.P || layout(g, w, h, opt.pad); const small = g.n > 20;
+  ctx.lineWidth = small ? 1.2 : 2;
+  g.edges.forEach(([a, b], i) => { const s = opt.signs ? opt.signs[i] : 1; ctx.strokeStyle = opt.edgeColor ? opt.edgeColor(i) : (s < 0 ? c.odd : (opt.quiet ? c.line : c.even)); ctx.beginPath(); ctx.moveTo(P[a][0], P[a][1]); ctx.lineTo(P[b][0], P[b][1]); ctx.stroke(); if (opt.arrows && opt.arrows(i)) { const [x0, y0] = P[a], [x1, y1] = P[b]; const t = 0.62; const mx = x0 + (x1 - x0) * t, my = y0 + (y1 - y0) * t; const ang = Math.atan2(y1 - y0, x1 - x0); ctx.fillStyle = ctx.strokeStyle; ctx.beginPath(); ctx.moveTo(mx + 7 * Math.cos(ang), my + 7 * Math.sin(ang)); ctx.lineTo(mx + 7 * Math.cos(ang + 2.5), my + 7 * Math.sin(ang + 2.5)); ctx.lineTo(mx + 7 * Math.cos(ang - 2.5), my + 7 * Math.sin(ang - 2.5)); ctx.closePath(); ctx.fill(); } });
+  const R = small ? 4 : 11;
+  P.forEach(([x, y], i) => { ctx.beginPath(); ctx.arc(x, y, R, 0, 2 * Math.PI); ctx.fillStyle = opt.fill ? opt.fill(i) : c.surface; ctx.fill(); ctx.lineWidth = 1.5; ctx.strokeStyle = opt.ring ? opt.ring(i) : c.ink; ctx.stroke(); if (!small && opt.labels !== false) text(ctx, String(i), x, y + 0.5, { size: 11, mono: true, align: 'center', base: 'middle', color: c.ink }); });
+  return P;
+}
+function specStrip(ctx, w, h, lams, q, opt = {}) {
+  clear(ctx, w, h); const c = COL(); const lo = -(q + 1) - 0.6, hi = (q + 1) + 0.6; const X = v => 24 + (v - lo) / (hi - lo) * (w - 48); const y = h * 0.55;
+  const b = 2 * Math.sqrt(q);
+  ctx.fillStyle = c.latSoft; ctx.fillRect(X(-b), y - 22, X(b) - X(-b), 44);
+  ctx.strokeStyle = c.line; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X(lo), y); ctx.lineTo(X(hi), y); ctx.stroke();
+  for (let v = Math.ceil(lo); v <= Math.floor(hi); v++) { ctx.beginPath(); ctx.moveTo(X(v), y - 4); ctx.lineTo(X(v), y + 4); ctx.stroke(); text(ctx, String(v), X(v), y + 18, { size: 11, mono: true, align: 'center' }); }
+  text(ctx, '−2√q', X(-b), y - 27, { size: 11, mono: true, align: 'center', color: c.lat }); text(ctx, '+2√q', X(b), y - 27, { size: 11, mono: true, align: 'center', color: c.lat });
+  const counts = new Map(); lams.forEach(l => { const k = l.toFixed(3); counts.set(k, (counts.get(k) || 0) + 1); });
+  for (const [k, m] of counts) { const l = parseFloat(k); const triv = opt.triv !== false && Math.abs(Math.abs(l) - (q + 1)) < 1e-6; const out = Math.abs(l) > b + 1e-9; const col = triv ? c.muted : (out ? c.bad : (opt.color || c.even)); for (let i = 0; i < Math.min(m, 6); i++) { ctx.beginPath(); ctx.arc(X(l), y - (i * 7) - (m > 1 ? 0 : 0), 4, 0, 2 * Math.PI); ctx.fillStyle = col; ctx.fill(); } if (m > 6) text(ctx, '×' + m, X(l), y - 50, { size: 10, mono: true, align: 'center', color: col }); }
+  text(ctx, opt.title || 'eigenvalues of A', 24, 16, { size: 12, color: c.ink, weight: 500 });
+}
+
+// ---------- shared state ----------
+const state = { name: 'K4', g: C.graph('K4'), cache: new Map(), listeners: [] };
+function gdata(g) { // memoised per graph
+  const key = g.name; if (state.cache.has(key)) return state.cache.get(key);
+  const lams = C.eigSym(g.A); const { d, B } = C.hashimoto(g, null); const N = C.traces(B, 40); const pi = C.primeCounts(N);
+  const poly = g.n <= 12 ? C.iharaPoly(g.A, g.q) : null; const data = { lams, d, B, N, pi, poly }; state.cache.set(key, data); return data;
+}
+function setGraph(name) { state.name = name; state.g = C.graph(name); state.listeners.forEach(f => f()); document.querySelectorAll('[data-pick]').forEach(b => b.classList.toggle('on', b.dataset.pick === name)); }
+function pickButtons(container, names, onPick) { names.forEach(nm => { const b = document.createElement('button'); b.textContent = C.graph(nm).label; b.dataset.pick = nm; b.addEventListener('click', () => onPick(nm)); container.appendChild(b); }); }
+
+// ================= Demo 1 =================
+pickButtons($('d1-pick'), ['K4', 'K5', 'cube', 'petersen', 'prism6', 'prism21'], setGraph);
+const d1 = canvasOf('d1-canvas', 0.8, (ctx, w, h) => { clear(ctx, w, h); drawGraph(ctx, state.g, w, h); text(ctx, state.g.label, 12, 18, { size: 13, weight: 500, color: COL().ink }); });
+function d1Facts() { const g = state.g; const c = COL(); $('d1-facts').innerHTML = `<b>${g.label}</b><br>vertices n = ${g.n}, edges |E| = ${g.edges.length}<br>degree q+1 = ${g.q + 1}, so <b>q = ${g.q}</b><br>independent cycles g = |E| − |V| + 1 = ${g.edges.length - g.n + 1}<br>bipartite: ${isBip(g) ? 'yes' : 'no'}`;
+  const m = $('d1-matrix'); if (g.n > 12) { m.innerHTML = `<div class="readout">adjacency matrix ${g.n} × ${g.n}: too large to print; every row has ${g.q + 1} ones.</div>`; return; }
+  let s = '<table class="matrix"><tr><td></td>' + g.A.map((_, j) => `<td style="color:${c.muted}">${j}</td>`).join('') + '</tr>'; g.A.forEach((r, i) => { s += `<tr><td style="color:${c.muted}">${i}</td>` + r.map(v => `<td class="${v ? 'one' : ''}">${v}</td>`).join('') + '</tr>'; }); m.innerHTML = s + '</table>'; }
+function isBip(g) { const col = Array(g.n).fill(-1); col[0] = 0; const st = [0]; while (st.length) { const v = st.pop(); for (let w = 0; w < g.n; w++) if (g.A[v][w]) { if (col[w] < 0) { col[w] = 1 - col[v]; st.push(w); } else if (col[w] === col[v]) return false; } } return true; }
+state.listeners.push(() => { d1.redraw(); d1Facts(); });
+
+// ================= Demo 2 =================
+let d2v = null, d2k = 0;
+function d2Reset() { let seed = 7; const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647 - 0.5; }; d2v = state.g.A.map(() => rnd()); d2k = 0; d2Draw(); }
+function d2Apply() { d2v = C.matvec(state.g.A, d2v); const m = Math.max(...d2v.map(Math.abs)) || 1; d2v = d2v.map(x => x / m); d2k++; d2Draw(); }
+const d2c = canvasOf('d2-canvas', 0.8, (ctx, w, h) => { clear(ctx, w, h); if (!d2v) return; const g = state.g, c = COL(); const P = layout(g, w, h); const m = Math.max(...d2v.map(Math.abs)) || 1; drawGraph(ctx, g, w, h, { quiet: true, P, labels: false, fill: i => (d2v[i] >= 0 ? c.evenSoft : c.oddSoft), ring: i => (d2v[i] >= 0 ? c.even : c.odd) }); P.forEach(([x, y], i) => { const v = d2v[i] / m; const len = 28 * Math.abs(v); ctx.fillStyle = v >= 0 ? c.even : c.odd; ctx.fillRect(x - 3, v >= 0 ? y - 12 - len : y + 12, 6, len); }); text(ctx, 'vector f on the vertices (bar = value, blue +, orange −)', 12, 18, { size: 12, color: c.ink }); });
+const d2s = canvasOf('d2-spec', 0.34, (ctx, w, h) => { specStrip(ctx, w, h, gdata(state.g).lams, state.g.q); });
+function d2Draw() { d2c.redraw(); $('d2-k').textContent = `k = ${d2k} applications`; }
+function d2Info() { const g = state.g, D = gdata(g); const c = COL(); const cnt = new Map(); D.lams.forEach(l => { const k = l.toFixed(4); cnt.set(k, (cnt.get(k) || 0) + 1); }); const list = [...cnt.entries()].map(([k, m]) => `${(+k).toFixed(3).replace('-', '−')}${m > 1 ? ' (×' + m + ')' : ''}`).join(', '); const b = 2 * Math.sqrt(g.q); $('d2-eig').innerHTML = `eigenvalues of A: ${list}<br>trivial: ${g.q + 1}${isBip(g) ? ' and −' + (g.q + 1) : ''}; band edge 2√q = ${b.toFixed(3)}<br>largest non-trivial |λ| = <b>${Math.max(...D.lams.filter(l => Math.abs(Math.abs(l) - (g.q + 1)) > 1e-6).map(Math.abs)).toFixed(3)}</b> → ${C.isRamanujan(D.lams, g.q) ? '<span class="lat">Ramanujan</span>' : '<span class="bad">not Ramanujan</span>'}`;
+  // closed walks table
+  let rows = '<table class="data"><tr><th>k</th>'; const K = 6; for (let k = 1; k <= K; k++) rows += `<th>${k}</th>`; rows += '</tr><tr><td>Tr A^k</td>'; let P = C.identity(g.n); const tr = []; for (let k = 1; k <= K; k++) { P = C.matmul(P, g.A); tr.push(C.trace(P)); rows += `<td>${tr[k - 1]}</td>`; } rows += '</tr><tr><td>Σ λ^k</td>'; for (let k = 1; k <= K; k++) rows += `<td>${Math.round(D.lams.reduce((s, l) => s + Math.pow(l, k), 0))}</td>`; rows += '</tr>';
+  if (g.n <= 10) { rows += '<tr><td>direct count (dynamic programming)</td>'; for (let k = 1; k <= K; k++) rows += `<td>${bruteWalks(g, k)}</td>`; rows += '</tr>'; }
+  $('d2-walks').innerHTML = rows + '</table>'; }
+function bruteWalks(g, k) { // closed walks of length k (allowing backtracking), by DP over current vertex for each start
+  let tot = 0; for (let s = 0; s < g.n; s++) { let v = Array(g.n).fill(0); v[s] = 1; for (let i = 0; i < k; i++) v = C.matvec(g.A, v); tot += v[s]; } return tot; }
+$('d2-apply').addEventListener('click', d2Apply); $('d2-reset').addEventListener('click', d2Reset);
+state.listeners.push(() => { d2Reset(); d2s.redraw(); d2Info(); });
+
+// ================= Demo 3 =================
+const d3 = { e: 0, trail: [], t: 0, playing: false, raf: null };
+function d3Reset() { d3.e = 0; d3.trail = []; d3.t = 0; d3.playing = false; $('d3-play').textContent = 'walk'; d3c.redraw(); d3Info(); }
+function d3Next() { const D = gdata(state.g); const opts = []; for (let f = 0; f < D.d.length; f++) if (D.B[d3.e][f]) opts.push(f); d3.trail.push(d3.e); if (d3.trail.length > 14) d3.trail.shift(); d3.e = opts[Math.floor(Math.random() * opts.length)]; d3.t = 0; }
+const d3c = canvasOf('d3-canvas', 0.8, (ctx, w, h) => { clear(ctx, w, h); const g = state.g, D = gdata(g), c = COL(); const P = layout(g, w, h); drawGraph(ctx, g, w, h, { quiet: true, P }); ctx.lineWidth = 3; d3.trail.forEach((e, i) => { const [a, b] = D.d[e]; ctx.strokeStyle = c.even; ctx.globalAlpha = 0.15 + 0.6 * (i + 1) / d3.trail.length; ctx.beginPath(); ctx.moveTo(P[a][0], P[a][1]); ctx.lineTo(P[b][0], P[b][1]); ctx.stroke(); }); ctx.globalAlpha = 1; const [a, b] = D.d[d3.e]; const x = P[a][0] + (P[b][0] - P[a][0]) * d3.t, y = P[a][1] + (P[b][1] - P[a][1]) * d3.t; ctx.strokeStyle = c.odd; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(P[a][0], P[a][1]); ctx.lineTo(P[b][0], P[b][1]); ctx.stroke(); ctx.beginPath(); ctx.arc(x, y, 7, 0, 2 * Math.PI); ctx.fillStyle = c.odd; ctx.fill(); text(ctx, 'current directed edge ' + a + '→' + b + ' (orange); the reverse ' + b + '→' + a + ' is forbidden next', 12, 18, { size: 12, color: c.ink }); });
+function d3Tick() { if (!d3.playing) return; d3.t += reduced ? 1 : 0.04; if (d3.t >= 1) d3Next(); d3c.redraw(); d3.raf = requestAnimationFrame(d3Tick); }
+$('d3-play').addEventListener('click', () => { d3.playing = !d3.playing; $('d3-play').textContent = d3.playing ? 'pause' : 'walk'; if (d3.playing) d3Tick(); });
+$('d3-step').addEventListener('click', () => { d3.playing = false; $('d3-play').textContent = 'walk'; d3Next(); d3.t = 1; d3c.redraw(); });
+$('d3-reset').addEventListener('click', d3Reset);
+function d3Info() { const g = state.g, D = gdata(g); $('d3-info').textContent = `${D.d.length} directed edges; B is ${D.d.length} × ${D.d.length}`; let s = '<table class="data"><tr><th>k</th><th>N_k = Tr B^k</th><th>prime cycles π_k</th><th>Σ_{ℓ|k} ℓ π_ℓ</th></tr>'; for (let k = 1; k <= 10; k++) { let chk = 0; for (let l = 1; l <= k; l++) if (k % l === 0) chk += l * D.pi[l]; s += `<tr><td>${k}</td><td>${Math.round(D.N[k])}</td><td>${Math.round(D.pi[k])}</td><td>${Math.round(chk)}</td></tr>`; } $('d3-table').innerHTML = s + '</table>'; }
+state.listeners.push(d3Reset);
+
+// ================= Demo 4 =================
+function d4Draw() { const g = state.g, D = gdata(g); const u = parseFloat($('d4-u').value); $('d4-uval').textContent = u.toFixed(3);
+  // left: det(1-uB) via sum N_k u^k/k (truncated) is slow to converge; use exact eigen-product: det(1-uB) = (1-u^2)^{E-V} prod_lam (1 - lam u + q u^2) is what we are testing, so compute the left side from traces instead: log det(1-uB) = -sum N_k u^k / k, k up to 60 via more traces.
+  let logdet = 0; const KM = 40; for (let k = 1; k <= KM; k++) logdet -= D.N[k] * Math.pow(u, k) / k;
+  const left = Math.exp(logdet); const right = Math.pow(1 - u * u, g.edges.length - g.n) * D.lams.reduce((p, l) => p * (1 - l * u + g.q * u * u), 1);
+  const poly = D.poly ? C.polyFormat(D.poly) : '(not printed for n > 12)';
+  $('d4-out').innerHTML = `det(1 − uB) from the traces, exp(−Σ_{k≤${KM}} N_k u^k/k): <b>${left.toPrecision(8)}</b><br>(1 − u²)^{|E|−|V|} · Π_λ (1 − λu + qu²) from the adjacency eigenvalues: <b>${right.toPrecision(8)}</b><br>agreement to ${Math.abs(left - right) < 1e-12 ? 'machine precision' : (Math.abs(left - right) / Math.abs(right)).toExponential(1) + ' (the trace series is truncated; move u down to tighten it)'}<br><br>det(1 − Au + qu²) = ${poly}<br>tree factor (1 − u²)^{${g.edges.length - g.n}};  ζ_X(u) = 1 / [ (1 − u²)^{${g.edges.length - g.n}} · det(1 − Au + qu²) ]`; }
+$('d4-u').addEventListener('input', d4Draw); state.listeners.push(d4Draw);
+
+
+// ================= Demo 4b =================
+function d4bDraw() { const g = state.g; const u = parseFloat($('d4b-u').value); $('d4b-uval').textContent = u.toFixed(2); const r = C.iharaBassCheck(g, u); const z = x => (Math.abs(x) < 1e-9 ? '<span class="lat">0</span>' : '<span class="bad">' + x.toExponential(2) + '</span>');
+  const d = r.det; const rel = (a, b) => Math.abs(a - b) / Math.max(1e-300, Math.abs(b));
+  $('d4b-out').innerHTML = `<b>Step 1</b>  ${r.vectorised_vs_B !== undefined ? `B − P_A (K ⊗ 1) F on the edge pairs, as explicit ${r.vectorised_dim} × ${r.vectorised_dim} matrices on V ⊗ V:  ${z(r.vectorised_vs_B)}` : 'vectorised check skipped for n > 10 (n² × n² matrices); the Step 2 form is checked below'}<br><b>Step 2</b>  B − (τσ^T − F): ${z(r.B_vs_tausigmaF)};   σ^Tτ − A: ${z(r.sigmaT_tau_vs_A)};   τ^Tτ − D: ${z(r.tauT_tau_vs_D)};   σ^Tσ − D: ${z(r.sigmaT_sigma_vs_D)};   Fτ − σ: ${z(r.F_tau_vs_sigma)};   F² − 1: ${z(r.F2_vs_1)}<br><b>Step 4</b>  eigenvalues of F: +1 × ${r.F_plus}, −1 × ${r.F_minus}  (|E| = ${g.edges.length});   det(1 + uF) = ${d.detF.toPrecision(8)} = (1 − u²)^{|E|} = ${d.pow.toPrecision(8)}<br><b>Sylvester</b>  det_E(1 − XY) = ${d.edgeSide.toPrecision(10)}   det_V(1 − YX) = ${d.vertexSide.toPrecision(10)}   (relative difference ${rel(d.edgeSide, d.vertexSide).toExponential(1)})<br><b>Result</b>  det_E(1 − uB) = ${d.left.toPrecision(10)}   (1 − u²)^{|E|−|V|} det_V(1 − uA + qu²) = ${d.closed.toPrecision(10)}   (relative difference ${rel(d.left, d.closed).toExponential(1)})`; }
+$('d4b-u').addEventListener('input', d4bDraw); state.listeners.push(d4bDraw);
+
+// ================= Demo 5 =================
+function d5Vals() { return { q: parseInt($('d5-q').value), lam: parseFloat($('d5-lam').value) }; }
+function circlePlot(ctx, w, h, q, pts, opt = {}) { clear(ctx, w, h); const c = COL(); const cx = w / 2, cy = h / 2, R = Math.min(w, h) / 2 - 28; const sc = R / (opt.scale || 1.8); ctx.strokeStyle = c.line; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(cx - R - 10, cy); ctx.lineTo(cx + R + 10, cy); ctx.moveTo(cx, cy - R - 10); ctx.lineTo(cx, cy + R + 10); ctx.stroke(); ctx.strokeStyle = c.lat; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(cx, cy, Math.sqrt(q) * sc, 0, 2 * Math.PI); ctx.stroke(); text(ctx, '|μ| = √q', cx + Math.sqrt(q) * sc * 0.72, cy - Math.sqrt(q) * sc * 0.72, { size: 11, mono: true, color: c.lat }); pts.forEach(p => { const x = cx + p.re * sc, y = cy - p.im * sc; ctx.beginPath(); ctx.arc(x, y, p.r || 6, 0, 2 * Math.PI); ctx.fillStyle = p.col; ctx.fill(); }); text(ctx, opt.title || '', 10, 16, { size: 12, color: c.ink, weight: 500 }); }
+const d5one = canvasOf('d5-one', 0.9, (ctx, w, h) => { const { q, lam } = d5Vals(); const c = COL(); const L = C.lines([lam], q); const on = lam * lam <= 4 * q; circlePlot(ctx, w, h, q, L.map(m => ({ re: m.re, im: m.im, col: on ? c.even : c.bad })), { title: 'the two lines μ of one mode', scale: Math.max(1.8, Math.sqrt(q) + 0.8) }); });
+const d5all = canvasOf('d5-all', 0.9, (ctx, w, h) => { const g = state.g, D = gdata(g), c = COL(); const L = C.lines(D.lams, g.q); const pts = L.map(m => { const triv = Math.abs(Math.abs(m.lam) - (g.q + 1)) < 1e-6; const off = Math.abs(Math.hypot(m.re, m.im) - Math.sqrt(g.q)) > 1e-6; return { re: m.re, im: m.im, col: triv ? c.muted : (off ? c.bad : c.even), r: 5 }; }); circlePlot(ctx, w, h, g.q, pts, { title: 'all lines of ' + g.label + ' (grey: trivial pair q, 1)', scale: g.q + 0.8 }); });
+function d5Read() { const { q, lam } = d5Vals(); $('d5-lamval').textContent = lam.toFixed(2); const D = lam * lam - 4 * q; const L = C.lines([lam], q); const mod = L.map(m => Math.hypot(m.re, m.im)); $('d5-read').innerHTML = `λ² − 4q = ${fmt(D, 3)} → ${D <= 0 ? '<span class="lat">complex pair on the circle</span>' : '<span class="bad">real pair, off the circle</span>'}<br>μ = ${L.map(m => fmt(m.re, 3) + (m.im ? (m.im > 0 ? ' + ' : ' − ') + fmt(Math.abs(m.im), 3) + 'i' : '')).join(',  ')}<br>|μ| = ${mod.map(x => x.toFixed(3)).join(', ')};  √q = ${Math.sqrt(q).toFixed(3)};  μ₁μ₂ = ${(L[0].re * L[1].re - L[0].im * L[1].im).toFixed(3)}`; const g = state.g, Dg = gdata(g); const nout = C.negIndexQ(Dg.lams.filter(l => Math.abs(Math.abs(l) - (g.q + 1)) > 1e-6), g.q); $('d5-verdict').innerHTML = `${g.label}: ${nout === 0 ? '<span class="lat">every non-trivial line on the circle: RH holds (Ramanujan)</span>' : '<span class="bad">' + 2 * nout + ' non-trivial lines off the circle: RH fails</span>'}`; }
+['d5-q', 'd5-lam'].forEach(id => $(id).addEventListener('input', () => { d5one.redraw(); d5Read(); })); state.listeners.push(() => { d5all.redraw(); d5Read(); });
+
+// ================= Demo 6 =================
+const d6 = { v0: [1.1, 0.4] };
+function d6Vals() { return { q: parseInt($('d6-q').value), lam: parseFloat($('d6-lam').value) }; }
+const d6c = canvasOf('d6-canvas', 0.9, (ctx, w, h) => { clear(ctx, w, h); const { q, lam } = d6Vals(); const c = COL(); const cx = w / 2, cy = h / 2, sc = Math.min(w, h) / 7; const Q = (x, y) => q * x * x + lam * x * y + y * y;
+  // level sets of Q by marching on a grid (cheap contour: sample and draw dots)
+  ctx.strokeStyle = c.line; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke();
+  const levels = [0.5, 1, 2, 4, 8, -0.5, -1, -2, -4, -8]; ctx.fillStyle = c.line; const step = 2; for (let px = 0; px < w; px += step) for (let py = 0; py < h; py += step) { const x = (px - cx) / sc, y = (cy - py) / sc; const v = Q(x, y); for (const L of levels) { const dv = Math.abs(v - L); const grad = Math.hypot(2 * q * x + lam * y, lam * x + 2 * y) + 1e-9; if (dv / grad < 0.012 * Math.max(1, Math.sqrt(Math.abs(L)))) { ctx.fillRect(px, py, 1.5, 1.5); break; } } }
+  // orbit
+  const s = Math.sqrt(q); let v = d6.v0.slice(); const pts = [v]; for (let i = 0; i < 80; i++) { v = [-v[1] / s, (q * v[0] + lam * v[1]) / s]; pts.push(v); if (Math.hypot(v[0], v[1]) > 60) break; }
+  ctx.strokeStyle = c.evenSoft; ctx.lineWidth = 1; ctx.beginPath(); pts.forEach((p, i) => { const X = cx + p[0] * sc, Y = cy - p[1] * sc; if (i) ctx.lineTo(X, Y); else ctx.moveTo(X, Y); }); ctx.stroke();
+  pts.forEach((p, i) => { const X = cx + p[0] * sc, Y = cy - p[1] * sc; if (X < -10 || X > w + 10 || Y < -10 || Y > h + 10) return; ctx.beginPath(); ctx.arc(X, Y, i === 0 ? 6 : 3.5, 0, 2 * Math.PI); ctx.fillStyle = i === 0 ? c.odd : c.even; ctx.fill(); });
+  text(ctx, 'x (position)', w - 10, cy - 6, { size: 11, mono: true, align: 'right' }); text(ctx, 'p (momentum)', cx + 6, 14, { size: 11, mono: true }); text(ctx, 'orange: start; blue: successive steps of S', 10, h - 8, { size: 11, color: c.ink }); });
+function d6Read() { const { q, lam } = d6Vals(); $('d6-lamval').textContent = lam.toFixed(2); const s = Math.sqrt(q); let v = d6.v0.slice(); const Q = (x, y) => q * x * x + lam * x * y + y * y; const vals = [Q(v[0], v[1])]; for (let i = 0; i < 3; i++) { v = [-v[1] / s, (q * v[0] + lam * v[1]) / s]; vals.push(Q(v[0], v[1])); } const tr = lam / s; $('d6-read').innerHTML = `S = M/√q = [[0, −1/√q], [√q, λ/√q]];  det S = 1;  trace S = λ/√q = <b>${fmt(tr, 3)}</b><br>${Math.abs(tr) < 2 ? '<span class="lat">|trace| < 2: elliptic, a rotation on ellipses</span>' : '<span class="bad">|trace| > 2: hyperbolic, a squeeze along a hyperbola</span>'}<br><br>Weil form Q(x,p) = q x² + λ x p + p²,  discriminant λ² − 4q = ${fmt(lam * lam - 4 * q, 3)}<br>${lam * lam < 4 * q ? '<span class="lat">Q positive definite: level sets are ellipses</span>' : '<span class="bad">Q indefinite: level sets are hyperbolas</span>'}<br>Q along the orbit: ${vals.map(x => x.toFixed(4)).join(' → ')}  (conserved)`; }
+['d6-q', 'd6-lam'].forEach(id => $(id).addEventListener('input', () => { d6c.redraw(); d6Read(); })); $('d6-restart').addEventListener('click', () => { d6.v0 = [Math.random() * 2 - 1, Math.random() * 2 - 1]; d6c.redraw(); d6Read(); }); d6Read();
+
+// ================= Demo 7 =================
+const d7 = { name: 'K4', g: C.graph('K4'), signs: [1, 1, 1, -1, 1, 1] };
+const d7Presets = {
+  K4: [['one negative edge', g => g.edges.map((_, i) => (i === 3 ? -1 : 1))], ['all negative (cover = cube)', g => g.edges.map(() => -1)], ['no flux', g => g.edges.map(() => 1)]],
+  petersen: [['dodecahedral flux', g => dodecahedralFlux(g)], ['all negative', g => g.edges.map(() => -1)], ['no flux', g => g.edges.map(() => 1)]],
+  K5: [['pentagon negative', g => g.edges.map(([a, b]) => ((b - a === 1) || (a === 0 && b === 4)) ? -1 : 1)], ['all negative', g => g.edges.map(() => -1)], ['no flux', g => g.edges.map(() => 1)]],
+  cube: [['one negative edge', g => g.edges.map((_, i) => (i === 0 ? -1 : 1))], ['no flux', g => g.edges.map(() => 1)]],
+  prism6: [['antiperiodic ring', g => g.edges.map(([a, b]) => { const lo = Math.min(a, b), hi = Math.max(a, b); return ((lo === 0 && hi === 5) || (lo === 6 && hi === 11)) ? -1 : 1; })], ['no flux', g => g.edges.map(() => 1)]],
+  prism21: [['antiperiodic ring', g => g.edges.map(([a, b]) => { const lo = Math.min(a, b), hi = Math.max(a, b); return ((lo === 0 && hi === 20) || (lo === 21 && hi === 41)) ? -1 : 1; })], ['no flux', g => g.edges.map(() => 1)]],
+};
+function dodecahedralFlux(g) { const target = [-Math.sqrt(5), -Math.sqrt(5), -Math.sqrt(5), 0, 0, 0, 0, Math.sqrt(5), Math.sqrt(5), Math.sqrt(5)]; for (const { signs } of C.fluxClasses(g)) { const l = C.eigSym(C.signedA(g, signs)); if (l.every((v, i) => Math.abs(v - target[i]) < 1e-7)) return signs; } return g.edges.map(() => 1); }
+function d7Set(name) { d7.name = name; d7.g = C.graph(name); d7.signs = d7Presets[name][0][1](d7.g); document.querySelectorAll('#d7-pick button').forEach(b => b.classList.toggle('on', b.dataset.pick === name)); const pr = $('d7-presets'); pr.innerHTML = '<span style="font-size:13px;color:var(--muted)">presets:</span>'; d7Presets[name].forEach(([lab, fn]) => { const b = document.createElement('button'); b.textContent = lab; b.addEventListener('click', () => { d7.signs = fn(d7.g); d7Update(); }); pr.appendChild(b); }); d7Update(); }
+['K4', 'K5', 'cube', 'petersen', 'prism6', 'prism21'].forEach(nm => { const b = document.createElement('button'); b.textContent = C.graph(nm).label; b.dataset.pick = nm; b.addEventListener('click', () => d7Set(nm)); $('d7-pick').appendChild(b); });
+let d7P = null;
+const d7c = canvasOf('d7-canvas', 0.8, (ctx, w, h) => { clear(ctx, w, h); d7P = drawGraph(ctx, d7.g, w, h, { signs: d7.signs }); text(ctx, d7.g.label + ' with a flux (click edges)', 12, 18, { size: 12, weight: 500, color: COL().ink }); });
+$('d7-canvas').addEventListener('click', ev => { const r = $('d7-canvas').getBoundingClientRect(); const x = ev.clientX - r.left, y = ev.clientY - r.top; let best = -1, bd = 1e9; d7.g.edges.forEach(([a, b], i) => { const [x0, y0] = d7P[a], [x1, y1] = d7P[b]; const dx = x1 - x0, dy = y1 - y0; const t = Math.max(0.15, Math.min(0.85, ((x - x0) * dx + (y - y0) * dy) / (dx * dx + dy * dy))); const d = Math.hypot(x - x0 - t * dx, y - y0 - t * dy); if (d < bd) { bd = d; best = i; } }); if (best >= 0 && bd < 14) { d7.signs[best] *= -1; d7Update(); } });
+const d7cover = canvasOf('d7-cover', 0.8, (ctx, w, h) => { clear(ctx, w, h); const g = d7.g, c = COL(); const small = g.n > 20; const P = layout(g, w, h, small ? 30 : 40); const off = small ? 10 : 16; const Pp = P.map(([x, y]) => [x - off, y - off]), Pm = P.map(([x, y]) => [x + off, y + off]); ctx.lineWidth = small ? 1 : 1.5; g.edges.forEach(([a, b], i) => { const s = d7.signs[i]; const pairs = s > 0 ? [[Pp[a], Pp[b], c.even], [Pm[a], Pm[b], c.odd]] : [[Pp[a], Pm[b], c.muted], [Pm[a], Pp[b], c.muted]]; pairs.forEach(([u, v, col]) => { ctx.strokeStyle = col; ctx.beginPath(); ctx.moveTo(u[0], u[1]); ctx.lineTo(v[0], v[1]); ctx.stroke(); }); }); const R = small ? 3 : 6; [[Pp, c.even], [Pm, c.odd]].forEach(([Q, col]) => Q.forEach(([x, y]) => { ctx.beginPath(); ctx.arc(x, y, R, 0, 2 * Math.PI); ctx.fillStyle = col; ctx.fill(); })); text(ctx, 'the double cover: ' + 2 * g.n + ' vertices; grey edges cross between copies', 12, 18, { size: 12, weight: 500, color: c.ink }); });
+const d7s = canvasOf('d7-spec', 0.34, (ctx, w, h) => { const As = C.signedA(d7.g, d7.signs); specStrip(ctx, w, h, C.eigSym(As), d7.g.q, { color: COL().odd, triv: false, title: 'fermionic eigenvalues (of the signed matrix A_s)' }); });
+function d7Update() { d7c.redraw(); d7cover.redraw(); d7s.redraw(); const g = d7.g, q = g.q; const As = C.signedA(g, d7.signs); const lf = C.eigSym(As); const band = C.isRamanujanSigned(lf, q); const qmin = C.fermionicQmin(lf, q); const gen = g.edges.length - g.n + 1; const detL = C.detInt(As.map((r, i) => r.map((v, j) => (i === j ? q + 1 : 0) - v)));
+  const cnt = new Map(); lf.forEach(l => { const k = l.toFixed(3); cnt.set(k, (cnt.get(k) || 0) + 1); }); const list = [...cnt.entries()].slice(0, 12).map(([k, m]) => `${(+k).toFixed(3).replace('-', '−')}${m > 1 ? ' (×' + m + ')' : ''}`).join(', ') + (cnt.size > 12 ? ', …' : '');
+  const polyN = g.n <= 12 ? C.polyFormat(C.iharaPoly(As, q)) : '…'; const polyD = g.n <= 12 ? C.polyFormat(C.iharaPoly(g.A, q)) : '…';
+  $('d7-read').innerHTML = `negative edges: ${d7.signs.filter(s => s < 0).length} of ${g.edges.length};  fluxes of this graph: 2^${gen} = ${1 << gen}<br>fermionic eigenvalues: ${list}<br>all in the band ±2√q = ±${(2 * Math.sqrt(q)).toFixed(3)}: ${band ? '<span class="lat">yes, fermionic RH holds for this flux</span>' : '<span class="bad">no, fermionic RH fails for this flux</span>'}<br>smallest eigenvalue of the fermionic Weil form Q_s: <b>${qmin.toFixed(4)}</b> ${qmin > 0 ? '(positive definite)' : '(indefinite)'}<br>det((q+1) − A_s) = step-invariant syndromes (Section 14): <b>${detL}</b><br><br>super zeta Z_s(u) = <span class="odd">[${polyN}]</span> / <span class="even">[${polyD}]</span>`;
+  const { B } = C.hashimoto(g, null); const { B: Bs } = C.hashimoto(g, d7.signs); const K = 9; const N = C.traces(B, K), Ns = C.traces(Bs, K); let s = '<table class="data"><tr><th>k</th><th>Tr B^k</th><th>Tr B_s^k</th><th>N even</th><th>N odd</th><th>2N odd</th></tr>'; for (let k = 1; k <= K; k++) { const ev = Math.round((N[k] + Ns[k]) / 2), od = Math.round((N[k] - Ns[k]) / 2); s += `<tr><td>${k}</td><td>${Math.round(N[k])}</td><td>${Math.round(Ns[k])}</td><td style="color:var(--even)">${ev}</td><td style="color:var(--odd)">${od}</td><td>${2 * od}</td></tr>`; } $('d7-counts').innerHTML = s + '</table><div style="font-size:13px;color:var(--muted);margin-top:6px">N even / N odd: closed non-backtracking walks with sign product +1 / −1.</div>'; }
+d7Set('K4');
+
+// ================= Demo 8 =================
+const d8 = { name: 'K4' };
+['K4', 'K5', 'cube', 'petersen'].forEach(nm => { const b = document.createElement('button'); b.textContent = C.graph(nm).label; b.dataset.pick = nm; b.addEventListener('click', () => { d8.name = nm; d8Update(); }); $('d8-pick').appendChild(b); });
+let d8roots = [], d8q = 2;
+const d8c = canvasOf('d8-roots', 0.3, (ctx, w, h) => { specStrip(ctx, w, h, d8roots, d8q, { triv: false, color: COL().lat, title: 'roots of the matching polynomial' }); });
+function d8Update() { document.querySelectorAll('#d8-pick button').forEach(b => b.classList.toggle('on', b.dataset.pick === d8.name)); const g = C.graph(d8.name); const fa = C.fluxAverageCharpoly(g); const mp = C.matchingPoly(g); const b = 2 * Math.sqrt(g.q); d8roots = C.realRoots(mp, -b - 1, b + 1); d8q = g.q; d8c.redraw(); const same = fa.avg.every((v, i) => Math.abs(v - mp[i]) < 1e-6); const mk = []; mp.forEach((c, j) => { const k = (g.n - j) / 2; if (c !== 0 && Number.isInteger(k)) mk.push(`m_${k} = ${Math.abs(c)}`); }); $('d8-out').innerHTML = `${g.label}: ${fa.count} fluxes;  <b>${fa.inBand}</b> of them have all fermionic eigenvalues in the band<br>average of det(x − A_s) over all fluxes: ${C.polyFormat(fa.avg.map(Math.round), 'x')}<br>matching polynomial from counting matchings: ${C.polyFormat(mp, 'x')}   (${mk.join(', ')})<br>equal: ${same ? '<span class="lat">yes</span>' : '<span class="bad">no</span>'};  largest root ${Math.max(...d8roots.map(Math.abs)).toFixed(4)} < 2√q = ${b.toFixed(4)}: <span class="lat">RH on average</span>`; }
+d8Update();
+
+// ================= Demo 9 =================
+const d9 = { mode: 'qunaught', e: [0.7, 0.35], drag: false };
+function d9L() { return d9.mode === 'qunaught' ? { L: [[1, 0], [0, 1]], Ld: [[1, 0], [0, 1]] } : { L: [[1, 0], [0, 2]], Ld: [[0.5, 0], [0, 1]] }; }
+const d9ph = canvasOf('d9-phase', 0.9, (ctx, w, h) => { clear(ctx, w, h); const c = COL(); const cx = w / 2, cy = h / 2, sc = Math.min(w, h) / 5.2; const { L, Ld } = d9L(); ctx.strokeStyle = c.line; ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke();
+  for (let i = -6; i <= 6; i++) for (let j = -6; j <= 6; j++) { const x = i * Ld[0][0] + j * Ld[1][0], p = i * Ld[0][1] + j * Ld[1][1]; const X = cx + x * sc, Y = cy - p * sc; if (X < 0 || X > w || Y < 0 || Y > h) continue; const inL = Number.isInteger(x / L[0][0] + 1e-9) && Number.isInteger(p / L[1][1] + 1e-9) && Math.abs(x / L[0][0] - Math.round(x / L[0][0])) < 1e-9 && Math.abs(p / L[1][1] - Math.round(p / L[1][1])) < 1e-9; ctx.beginPath(); ctx.arc(X, Y, inL ? 5 : 3.5, 0, 2 * Math.PI); if (inL) { ctx.fillStyle = c.lat; ctx.fill(); } else { ctx.strokeStyle = c.lat; ctx.lineWidth = 1.5; ctx.stroke(); } }
+  // error vector
+  const ex = cx + d9.e[0] * sc, ey = cy - d9.e[1] * sc; ctx.strokeStyle = c.odd; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(ex, ey); ctx.stroke(); ctx.beginPath(); ctx.arc(ex, ey, 8, 0, 2 * Math.PI); ctx.fillStyle = c.odd; ctx.fill();
+  text(ctx, 'x', w - 10, cy - 6, { size: 11, mono: true, align: 'right' }); text(ctx, 'p', cx + 6, 14, { size: 11, mono: true }); text(ctx, 'filled: stabiliser lattice L; hollow: dual L⊥; orange: displacement e (drag)', 10, h - 8, { size: 11, color: c.ink }); });
+function d9Pointer(ev) { const r = $('d9-phase').getBoundingClientRect(); const w = r.width, h = r.height; const cx = w / 2, cy = h / 2, sc = Math.min(w, h) / 5.2; const x = ((ev.clientX - r.left) - cx) / sc, p = (cy - (ev.clientY - r.top)) / sc; d9.e = [Math.max(-2.4, Math.min(2.4, x)), Math.max(-2.4, Math.min(2.4, p))]; d9Draw(); }
+$('d9-phase').addEventListener('pointerdown', ev => { d9.drag = true; $('d9-phase').setPointerCapture(ev.pointerId); d9Pointer(ev); }); $('d9-phase').addEventListener('pointermove', ev => { if (d9.drag) d9Pointer(ev); }); $('d9-phase').addEventListener('pointerup', () => { d9.drag = false; }); $('d9-phase').addEventListener('pointercancel', () => { d9.drag = false; });
+const d9to = canvasOf('d9-torus', 0.9, (ctx, w, h) => { clear(ctx, w, h); const c = COL(); const { L, Ld } = d9L(); const ax = Ld[0][0], ap = Ld[1][1]; const side = Math.min(w, h) - 70; const sx = side / Math.max(ax, ap), ox = (w - ax * sx) / 2, oy = (h + ap * sx) / 2; ctx.fillStyle = c.latSoft; ctx.fillRect(ox, oy - ap * sx, ax * sx, ap * sx); ctx.strokeStyle = c.lat; ctx.lineWidth = 1.5; ctx.strokeRect(ox, oy - ap * sx, ax * sx, ap * sx); const m = (v, a) => ((v % a) + a) % a; const sx_ = m(d9.e[0], ax), sp = m(d9.e[1], ap); ctx.beginPath(); ctx.arc(ox + sx_ * sx, oy - sp * sx, 8, 0, 2 * Math.PI); ctx.fillStyle = c.odd; ctx.fill(); text(ctx, 'syndrome torus ℝ²/L⊥: the cell ' + ax + ' × ' + ap, 10, 16, { size: 12, weight: 500, color: c.ink }); text(ctx, 'syndrome = e mod L⊥ = (' + sx_.toFixed(2) + ', ' + sp.toFixed(2) + ')', 10, h - 8, { size: 11, mono: true, color: c.ink }); });
+function d9Read() { const { L, Ld } = d9L(); const ax = Ld[0][0], ap = Ld[1][1]; const nx = Math.round(d9.e[0] / ax) * ax, np = Math.round(d9.e[1] / ap) * ap; const inL = Math.abs(nx / L[0][0] - Math.round(nx / L[0][0])) < 1e-9 && Math.abs(np / L[1][1] - Math.round(np / L[1][1])) < 1e-9; const logical = d9.mode === 'qunaught' ? '' : (inL ? 'identity (no logical error)' : (Math.abs(nx / L[0][0] - Math.round(nx / L[0][0])) > 1e-9 && Math.abs(np / L[1][1] - Math.round(np / L[1][1])) > 1e-9 ? 'logical Y' : (Math.abs(nx / L[0][0] - Math.round(nx / L[0][0])) > 1e-9 ? 'logical X (shift by ½ in x)' : 'logical Z (shift by 1 in p)'))); $('d9-read').innerHTML = `${d9.mode === 'qunaught' ? 'L = L⊥ = ℤ²: index 1, code dimension 1 (a single state)' : 'L = ℤ × 2ℤ, L⊥ = ½ℤ × ℤ: index 4, code dimension √4 = 2 (a qubit)'}<br>displacement e = (${d9.e[0].toFixed(2)}, ${d9.e[1].toFixed(2)})<br>nearest dual point: (${nx.toFixed(2)}, ${np.toFixed(2)}) → decoder shifts back by it${d9.mode === 'qunaught' ? '; residual error ' + Math.hypot(d9.e[0] - nx, d9.e[1] - np).toFixed(2) + ' corrected' : '<br>that point lies in ' + (inL ? 'L: state restored' : 'L⊥ but not L: <span class="odd">' + logical + '</span>')}`; }
+const d9comb = canvasOf('d9-comb', 0.26, (ctx, w, h) => { clear(ctx, w, h); const c = COL(); const { L } = d9L(); const a = L[0][0]; const cx = w / 2, base = h - 24, sc = w / 9; ctx.strokeStyle = c.line; ctx.beginPath(); ctx.moveTo(0, base); ctx.lineTo(w, base); ctx.stroke(); for (let n = -6; n <= 6; n++) { const x0 = n * a; [[0, c.lat, 2.5], [d9.e[0], c.odd, 1.5]].forEach(([sh, col, lw]) => { const X = cx + (x0 + sh) * sc; if (X < 0 || X > w) return; const env = Math.exp(-0.5 * Math.pow((x0 + sh) / 2.6, 2)); ctx.strokeStyle = col; ctx.lineWidth = lw; ctx.beginPath(); ctx.moveTo(X, base); ctx.lineTo(X, base - env * (h - 40)); ctx.stroke(); }); } text(ctx, 'the comb in position (teal) with a Gaussian envelope, and the same comb displaced by e_x (orange). Spacing ' + a + '.', 10, 16, { size: 11, color: c.ink }); });
+function d9Draw() { d9ph.redraw(); d9to.redraw(); d9comb.redraw(); d9Read(); }
+$('d9-qunaught').addEventListener('click', () => { d9.mode = 'qunaught'; $('d9-qunaught').classList.add('on'); $('d9-qubit').classList.remove('on'); d9Draw(); }); $('d9-qubit').addEventListener('click', () => { d9.mode = 'qubit'; $('d9-qubit').classList.add('on'); $('d9-qunaught').classList.remove('on'); d9Draw(); }); d9Read();
+
+// ================= Demo 10 =================
+const gK4 = C.graph('K4'); const co = C.cotree(gK4); // edges 3,4,5 = the outer triangle 1→2, 2→3, 3→1
+const d10 = { k: 6, a: [1, 0, 0], hist: new Map() };
+function d10Hist(k) { if (!d10.hist.has(k)) d10.hist.set(k, C.homologyWalks(gK4, co, k)); return d10.hist.get(k); }
+co.forEach((ei, j) => { const lab = document.createElement('label'); const [a, b] = gK4.edges[ei]; lab.innerHTML = `<input type="checkbox" id="d10-a${j}" ${d10.a[j] ? 'checked' : ''}> a${j + 1}: edge ${a}→${b} negative`; $('d10-a').appendChild(lab); $('d10-a').querySelector('#d10-a' + j).addEventListener('change', ev => { d10.a[j] = ev.target.checked ? 1 : 0; d10Update(); }); });
+const d10g = canvasOf('d10-graph', 0.8, (ctx, w, h) => { clear(ctx, w, h); const c = COL(); drawGraph(ctx, gK4, w, h, { edgeColor: i => (co.includes(i) ? (d10.a[co.indexOf(i)] ? c.odd : c.lat) : c.line), arrows: i => co.includes(i) }); text(ctx, 'tree: spokes (grey). Cotree: the triangle, oriented; teal = positive, orange = negative', 10, 18, { size: 11, color: c.ink }); });
+const d10l = canvasOf('d10-lattice', 0.8, (ctx, w, h) => { clear(ctx, w, h); const c = COL(); const H = d10Hist(d10.k); const cx = w / 2, cy = h / 2; const sc = Math.min(w, h) / (2 * d10.k / 3 + 4); const proj = x => [cx + (x[0] - x[1]) * 0.866 * sc, cy + ((x[0] + x[1]) * 0.5 - x[2]) * sc]; // isometric
+  // axes
+  [[1, 0, 0, 'x₁'], [0, 1, 0, 'x₂'], [0, 0, 1, 'x₃']].forEach(([a, b, d, lab]) => { const p = proj([a * 2.2, b * 2.2, d * 2.2]); ctx.strokeStyle = c.line; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(p[0], p[1]); ctx.stroke(); text(ctx, lab, p[0] + 4, p[1], { size: 11, mono: true }); });
+  ctx.save(); ctx.beginPath(); ctx.rect(0, 26, w, h - 26); ctx.clip(); const mx = Math.max(...H.map(p => p.c)); H.slice().sort((p, q) => (p.x[2] - q.x[2]) || (p.x[0] + p.x[1] - q.x[0] - q.x[1])).forEach(p => { const [X, Y] = proj(p.x); const par = (d10.a[0] * p.x[0] + d10.a[1] * p.x[1] + d10.a[2] * p.x[2]) % 2 !== 0; const r = 3 + 9 * Math.sqrt(p.c / mx); ctx.beginPath(); ctx.arc(X, Y, r, 0, 2 * Math.PI); ctx.fillStyle = par ? c.odd : c.even; ctx.globalAlpha = 0.7; ctx.fill(); ctx.globalAlpha = 1; });
+  ctx.restore(); text(ctx, 'W_k(x): closed walks of length k by cycle class x ∈ ℤ³ (blue: a·x even, orange: a·x odd)', 10, 18, { size: 11, color: c.ink }); });
+const d10b = canvasOf('d10-bias', 0.3, (ctx, w, h) => { clear(ctx, w, h); const c = COL(); const g = gK4, q = g.q; const signs = g.edges.map(() => 1); co.forEach((ei, j) => { if (d10.a[j]) signs[ei] = -1; }); const { B } = C.hashimoto(g, null); const { B: Bs } = C.hashimoto(g, signs); const K = 30; const N = C.traces(B, K), Ns = C.traces(Bs, K); const pad = 36; const X = k => pad + (k - 1) / (K - 1) * (w - pad - 12); const Y = v => h - 24 - v / 1.25 * (h - 48); ctx.strokeStyle = c.line; ctx.beginPath(); ctx.moveTo(pad, Y(0)); ctx.lineTo(w - 12, Y(0)); ctx.moveTo(pad, Y(1)); ctx.lineTo(w - 12, Y(1)); ctx.stroke(); text(ctx, '1', pad - 6, Y(1) + 4, { size: 10, mono: true, align: 'right' }); text(ctx, '0', pad - 6, Y(0) + 4, { size: 10, mono: true, align: 'right' }); for (let k = 5; k <= K; k += 5) text(ctx, String(k), X(k), h - 8, { size: 10, mono: true, align: 'center' }); ctx.strokeStyle = c.odd; ctx.lineWidth = 2; ctx.beginPath(); let first = true; for (let k = 1; k <= K; k++) { const bound = 2 * g.n * Math.pow(q, k / 2) + g.n * (q - 1); const r = Math.min(1.2, Math.abs(Ns[k]) / bound); if (first) { ctx.moveTo(X(k), Y(r)); first = false; } else ctx.lineTo(X(k), Y(r)); } ctx.stroke(); text(ctx, '|N_even − N_odd| / (2n q^{k/2} + n(q−1)) against k: fermionic RH ⇔ this stays ≤ 1', 10, 14, { size: 11, color: c.ink }); });
+function d10Update() { $('d10-kval').textContent = String(d10.k); d10g.redraw(); d10l.redraw(); d10b.redraw(); const H = d10Hist(d10.k); const tot = H.reduce((s, p) => s + p.c, 0); let ev = 0, od = 0; H.forEach(p => { if ((d10.a[0] * p.x[0] + d10.a[1] * p.x[1] + d10.a[2] * p.x[2]) % 2 !== 0) od += p.c; else ev += p.c; }); const a = d10.a; const lat = a.some(v => v) ? `index-two sublattice {x : a·x even} with a = (${a.join(',')})` : 'no flux: a = 0, the whole lattice'; const top = H.slice().sort((p, q) => q.c - p.c).slice(0, 6).map(p => `(${p.x.join(',')}): ${p.c}`).join(';  '); $('d10-read').innerHTML = `k = ${d10.k}: <b>${tot}</b> closed walks on <b>${H.length}</b> lattice points of ℤ³  (largest: ${top})<br>${lat}<br>N_even = <span class="even">${ev}</span>,  N_odd = <span class="odd">${od}</span>;  Tr B_s^k = N_even − N_odd = ${ev - od};  supertrace 2N_odd = ${2 * od}`; }
+$('d10-k').addEventListener('input', ev => { d10.k = parseInt(ev.target.value); d10Update(); }); d10Update();
+
+// ================= Demo 11 / 12 =================
+const d11 = { q: 2, lam: -1, k: 4, cloud: null, anim: null };
+const d11Presets = [['E mode: q = 2, λ = −1', 2, -1], ['Pauli six: q = 5, λ = −2', 5, -2], ['hyperbolic: q = 5, λ = 5', 5, 5]];
+d11Presets.forEach(([lab, q, lam]) => { const b = document.createElement('button'); b.textContent = lab; b.addEventListener('click', () => { d11.q = q; d11.lam = lam; $('d11-q').value = q; $('d11-lam').value = lam; d11Update(); }); $('d11-preset').appendChild(b); });
+function d11Cloud() { const pts = []; let id = 0; for (let ring = 0; ring <= 7; ring++) { const m = ring === 0 ? 1 : 8 * ring; for (let i = 0; i < m; i++) { const t = 2 * Math.PI * i / m; const r = 0.016 * ring; pts.push([0.5 + r * Math.cos(t), 0.5 + r * Math.sin(t), id++]); } } d11.cloud = pts.map(p => ({ cur: [p[0], p[1]], from: [p[0], p[1]], to: [p[0], p[1]], id: p[2] })); }
+const ORBCOL = ['#3457d5', '#d4782a', '#178b78', '#c43d38', '#8a4fd3', '#b58a00', '#2a9bd6', '#d6469a', '#5b8f2b', '#7a5c3a'];
+let d11pp = null;
+const d11c = canvasOf('d11-canvas', 1, (ctx, w, h) => { clear(ctx, w, h); const c = COL(); const side = Math.min(w - 40, h - 62); const ox = (w - side) / 2, oy = 36 + side; const X = x => ox + x * side, Y = y => oy - y * side; ctx.fillStyle = c.s2; ctx.fillRect(ox, oy - side, side, side); ctx.strokeStyle = c.line; ctx.lineWidth = 1; ctx.strokeRect(ox, oy - side, side, side); [0.5].forEach(v => { ctx.beginPath(); ctx.moveTo(X(v), Y(0)); ctx.lineTo(X(v), Y(1)); ctx.moveTo(X(0), Y(v)); ctx.lineTo(X(1), Y(v)); ctx.stroke(); });
+  // cloud
+  if (d11.cloud) d11.cloud.forEach(p => { const m = v => ((v % 1) + 1) % 1; ctx.fillStyle = c.muted; ctx.globalAlpha = 0.45; ctx.fillRect(X(m(p.cur[0])) - 1, Y(m(p.cur[1])) - 1, 2.2, 2.2); ctx.globalAlpha = 1; });
+  if (d11pp) { const { N, pts, orbit } = d11pp; const r = pts.length > 300 ? 2.2 : (pts.length > 60 ? 3.5 : 5); pts.forEach((p, i) => { ctx.beginPath(); ctx.arc(X(p[0] / N), Y(p[1] / N), r, 0, 2 * Math.PI); ctx.fillStyle = ORBCOL[orbit[i] % ORBCOL.length]; ctx.fill(); }); }
+  text(ctx, 'position syndrome →', X(1), Y(0) + 16, { size: 11, mono: true, align: 'right' }); text(ctx, 'momentum ↑', X(0) - 2, Y(1) - 6, { size: 11, mono: true }); text(ctx, `${d11pp ? d11pp.h : 0} syndromes of period k = ${d11.k}, coloured by orbit of the step`, 10, 16, { size: 12, weight: 500, color: c.ink }); });
+function d11Step() { if (d11.anim) return; const M = [[0, -1], [d11.q, d11.lam]]; d11.cloud.forEach(p => { p.from = p.cur.slice(); p.to = [M[0][0] * p.cur[0] + M[0][1] * p.cur[1], M[1][0] * p.cur[0] + M[1][1] * p.cur[1]]; }); let t0 = null; const dur = reduced ? 1 : 700; const tick = ts => { if (!t0) t0 = ts; const t = Math.min(1, (ts - t0) / dur); const e = t * t * (3 - 2 * t); d11.cloud.forEach(p => { p.cur = [p.from[0] + (p.to[0] - p.from[0]) * e, p.from[1] + (p.to[1] - p.from[1]) * e]; }); d11c.redraw(); if (t < 1) d11.anim = requestAnimationFrame(tick); else { d11.cloud.forEach(p => { const m = v => ((v % 1) + 1) % 1; p.cur = [m(p.to[0]), m(p.to[1])]; }); d11.anim = null; d11c.redraw(); } }; d11.anim = requestAnimationFrame(tick); }
+$('d11-step').addEventListener('click', d11Step); $('d11-cloud').addEventListener('click', () => { d11Cloud(); d11c.redraw(); });
+$('d11-q').addEventListener('change', () => { d11.q = Math.max(2, parseInt($('d11-q').value) || 2); d11Update(); }); $('d11-lam').addEventListener('change', () => { d11.lam = parseInt($('d11-lam').value) || 0; d11Update(); }); $('d11-k').addEventListener('input', () => { d11.k = parseInt($('d11-k').value); d11Update(); });
+const d12c = canvasOf('d12-canvas', 0.42, (ctx, w, h) => { clear(ctx, w, h); const c = COL(); const q = d11.q, lam = d11.lam; const K = 8; const { h: hk } = C.pointCounts(q, lam, K); const pad = 40; const X = k => pad + (k - 1) / (K - 1) * (w - pad - 16); const ymax = 4.2; const Y = v => h - 26 - Math.min(ymax, Math.max(-0.2, v)) / ymax * (h - 50); // window
+  ctx.fillStyle = c.latSoft; ctx.beginPath(); for (let k = 1; k <= K; k++) { const win = Math.pow(1 + Math.pow(q, -k / 2), 2) - 1; const y = Y(1 + win); if (k === 1) ctx.moveTo(X(k), y); else ctx.lineTo(X(k), y); } for (let k = K; k >= 1; k--) { const win = Math.pow(1 + Math.pow(q, -k / 2), 2) - 1; ctx.lineTo(X(k), Y(Math.max(0, 1 - win))); } ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = c.line; ctx.beginPath(); ctx.moveTo(pad, Y(1)); ctx.lineTo(w - 16, Y(1)); ctx.stroke(); [0, 1, 2, 3, 4].forEach(v => text(ctx, String(v), pad - 6, Y(v) + 4, { size: 10, mono: true, align: 'right' })); for (let k = 1; k <= K; k++) text(ctx, String(k), X(k), h - 8, { size: 10, mono: true, align: 'center' });
+  const onRH = lam * lam < 4 * q; ctx.strokeStyle = onRH ? c.even : c.bad; ctx.lineWidth = 2; ctx.beginPath(); for (let k = 1; k <= K; k++) { const v = hk[k] / Math.pow(q, k); if (k === 1) ctx.moveTo(X(k), Y(v)); else ctx.lineTo(X(k), Y(v)); } ctx.stroke(); for (let k = 1; k <= K; k++) { const v = hk[k] / Math.pow(q, k); ctx.beginPath(); ctx.arc(X(k), Y(v), 4, 0, 2 * Math.PI); ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
+  text(ctx, `h_k / q^k for q = ${q}, λ = ${lam} (dots) and the window RH allows (shaded)`, 10, 16, { size: 12, weight: 500, color: c.ink }); });
+function d11Update() { $('d11-kval').textContent = String(d11.k); const q = d11.q, lam = d11.lam; let k = d11.k; // cap brute force size
+  let pp = null; for (let kk = k; kk >= 1; kk--) { const { h } = C.pointCounts(q, lam, kk); if (Math.abs(h[kk]) <= 3000) { pp = C.periodicPoints(q, lam, kk); k = kk; break; } } d11pp = pp; if (k !== d11.k) { d11.k = k; $('d11-k').value = k; $('d11-kval').textContent = String(k); } if (!d11.cloud) d11Cloud(); d11c.redraw(); d12c.redraw();
+  const { h } = C.pointCounts(q, lam, 8); const D = lam * lam - 4 * q; const sizes = new Map(); pp.orbits.forEach(o => sizes.set(o.length, (sizes.get(o.length) || 0) + 1)); const orb = [...sizes.entries()].sort((a, b) => a[0] - b[0]).map(([s, m]) => `size ${s}: ${m}`).join(', ');
+  $('d11-read').innerHTML = `M = [[0, −1], [${q}, ${sn(lam)}]],  characteristic polynomial x²${lin(-lam, 'x')} + ${q},  discriminant ${sn(D)}<br>${D < 0 ? '<span class="lat">lines on the circle |μ| = √q: RH holds</span>' : '<span class="bad">real lines: RH fails</span>'}<br>period-k syndromes h_k = det(1 − M^k) = 1 − (μ^k + μ̄^k) + q^k:<br><b>${h.slice(1).join(', ')}</b><br>at k = ${k}: ${pp.h} syndromes on the torus, in ${pp.orbits.length} orbits (${orb}); orbit sizes divide k`;
+  let s = '<table class="data"><tr><th>level k</th><th>h_k = dim of code C_k</th><th>h_k / q^k</th><th>RH window</th></tr>'; for (let kk = 1; kk <= 8; kk++) { const win = Math.pow(1 + Math.pow(q, -kk / 2), 2) - 1; const r = h[kk] / Math.pow(q, kk); s += `<tr><td>${kk}</td><td>${h[kk]}</td><td>${r.toFixed(4)}</td><td>${Math.abs(r - 1) <= win + 1e-12 ? '<span style="color:var(--lat)">inside</span>' : '<span style="color:var(--bad)">outside</span>'}</td></tr>`; } $('d11-table').innerHTML = s + '</table>';
+  $('d12-read').innerHTML = D < 0 ? `q = ${q}, λ = ${sn(lam)}: every ratio stays inside the window, as RH requires (the window is ±((1+q^{−k/2})² − 1)).` : `q = ${q}, λ = ${sn(lam)}: the tower exists (codes of dimensions ${h.slice(1, 6).join(', ')}, a logical Clifford, orbits) but the ratio leaves the window: the tower does not see RH, the ratio does.`;
+  d13Sync(); }
+
+// ================= Demo 13 =================
+const d13 = { t: 0, anim: null, applied: 0 };
+d11Presets.forEach(([lab, q, lam]) => { const b = document.createElement('button'); b.textContent = lab; b.addEventListener('click', () => { d11.q = q; d11.lam = lam; $('d11-q').value = q; $('d11-lam').value = lam; d11Update(); }); $('d13-preset').appendChild(b); });
+function mu() { const q = d11.q, lam = d11.lam; const D = lam * lam - 4 * q; if (D >= 0) return null; return { re: lam / 2, im: Math.sqrt(-D) / 2, abs: Math.sqrt(q), arg: Math.atan2(Math.sqrt(-D) / 2, lam / 2) }; }
+const d13c = canvasOf('d13-canvas', 0.9, (ctx, w, h) => { clear(ctx, w, h); const c = COL(); const m = mu(); const cx = w / 2, cy = h / 2; if (!m) { text(ctx, 'discriminant ≥ 0: the Weil form is indefinite, there is no complex structure and no lattice picture.', 16, cy, { size: 13, color: c.bad }); text(ctx, 'The step has two real eigenvalues; its orbits lie on hyperbolas (Demo 6).', 16, cy + 22, { size: 12, color: c.muted }); return; } const sc = Math.min(w, h) / 11; const R = 7; ctx.save(); ctx.beginPath(); ctx.rect(0, 26, w, h - 26); ctx.clip(); // z = conj(mu) x + p
+  const toZ = (x, p) => [m.re * x + p, -m.im * x]; const rot = (z, t) => { const r = Math.pow(m.abs, t), a = m.arg * t; return [r * (z[0] * Math.cos(a) - z[1] * Math.sin(a)), r * (z[0] * Math.sin(a) + z[1] * Math.cos(a))]; };
+  ctx.strokeStyle = c.line; ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke();
+  // sublattice mu L (image of L under the step) and (1-mu)L
+  const inMuL = (x, p) => { // (x,p) in M Z^2 iff M^{-1}(x,p) integer: M^{-1} = (1/q)[[lam, 1],[-q, 0]]
+    const a = (d11.lam * x + p) / d11.q, b = -x; return Math.abs(a - Math.round(a)) < 1e-9 && Math.abs(b - Math.round(b)) < 1e-9; };
+  const in1mM = (x, p) => { // (1-M) = [[1,1],[-q,1-lam]], det = 1 - lam + q = h_1; inverse = (1/h1)[[1-lam, -1],[q, 1]]
+    const h1 = 1 - d11.lam + d11.q; const a = ((1 - d11.lam) * x - p) / h1, b = (d11.q * x + p) / h1; return Math.abs(a - Math.round(a)) < 1e-9 && Math.abs(b - Math.round(b)) < 1e-9; };
+  for (let x = -R; x <= R; x++) for (let p = -R; p <= R; p++) { const z0 = toZ(x, p); const z = rot(z0, d13.t); const X = cx + z[0] * sc, Y = cy - z[1] * sc; if (X < -5 || X > w + 5 || Y < -5 || Y > h + 5) continue; const sub = inMuL(x, p), sub2 = in1mM(x, p); ctx.beginPath(); ctx.arc(X, Y, sub ? 5 : 3.5, 0, 2 * Math.PI); if (sub2 && !sub) { ctx.strokeStyle = c.odd; ctx.lineWidth = 1.8; ctx.stroke(); } else { ctx.fillStyle = sub ? c.lat : c.even; ctx.fill(); } }
+  // the vacuum disc (unit of the invariant form) and mu
+  ctx.strokeStyle = c.muted; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.arc(cx, cy, sc, 0, 2 * Math.PI); ctx.stroke(); ctx.setLineDash([]);
+  const zm = rot([1, 0], d13.t); ctx.strokeStyle = c.odd; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + zm[0] * sc, cy - zm[1] * sc); ctx.stroke();
+  ctx.restore(); text(ctx, 'ℤ² in vacuum coordinates z = μ̄x + p. teal: μL = M ℤ²; hollow: (1−μ)L; dashed: the vacuum disc', 10, 16, { size: 11, color: c.ink }); });
+function d13Sync() { d13.t = 0; d13.applied = 0; d13c.redraw(); const m = mu(); $('d13-info').textContent = m ? `μ = √${d11.q} · e^{iθ}, θ/π = ${(m.arg / Math.PI).toFixed(4)}; steps applied: 0` : 'no vacuum (discriminant ≥ 0)'; $('d13-read').innerHTML = m ? `μ = ${m.re.toFixed(3)} ${m.im >= 0 ? '+' : '−'} ${Math.abs(m.im).toFixed(3)} i,  |μ| = √q = ${m.abs.toFixed(4)},  θ = ${(m.arg / Math.PI).toFixed(4)} π<br>the step is z ↦ μz: rotate by θ, dilate by √q; the lattice maps onto the teal sublattice of index q = ${d11.q}<br>invariant form q x² + λ x p + p² = ${d11.q}x²${lin(d11.lam, 'xp')} + p², discriminant ${sn(d11.lam * d11.lam - 4 * d11.q)}<br>oscillator frequency of this mode: θ = ${(m.arg / Math.PI).toFixed(4)} π;  zeros μ, μ̄ = √q e^{±iθ}<br>h_1 = |1 − μ|² = ${(Math.pow(1 - m.re, 2) + m.im * m.im).toFixed(1)}: the hollow sublattice has index h_1` : `discriminant ${sn(d11.lam * d11.lam - 4 * d11.q)} ≥ 0: the form q x² + λ x p + p² is indefinite; no invariant vacuum, no complex multiplication. RH fails for this step.`; }
+$('d13-step').addEventListener('click', () => { if (d13.anim || !mu()) return; let t0 = null; const start = d13.t; const dur = reduced ? 1 : 900; const tick = ts => { if (!t0) t0 = ts; const t = Math.min(1, (ts - t0) / dur); const e = t * t * (3 - 2 * t); d13.t = start + e; d13c.redraw(); if (t < 1) d13.anim = requestAnimationFrame(tick); else { d13.anim = null; d13.applied++; $('d13-info').textContent = `θ/π = ${(mu().arg / Math.PI).toFixed(4)}; steps applied: ${d13.applied} (the lattice now sits on μ^${d13.applied} L)`; } }; d13.anim = requestAnimationFrame(tick); });
+$('d13-reset').addEventListener('click', () => { if (d13.anim) cancelAnimationFrame(d13.anim); d13.anim = null; d13Sync(); });
+
+// ---------- boot ----------
+setGraph('K4'); d11Update();
+window.addEventListener('resize', () => {});
+const mql = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)'); if (mql && mql.addEventListener) mql.addEventListener('change', () => { state.listeners.forEach(f => f()); d7Update(); d8Update(); d9Draw(); d10Update(); d11Update(); });
+})();
+</script>
