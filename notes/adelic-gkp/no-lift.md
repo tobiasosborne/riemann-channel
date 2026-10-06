@@ -257,6 +257,9 @@ $C$ is definite of opposite signs on $E(\sqrt5)$ and $E(-\sqrt5)$: that is the n
 
 ## 8. Status and checks
 
+*Citation correction 2026-10-06 (`notes/adelic-gkp/citations-2026-10-06.md`):* on CM lifts of the supersingular part, Chai–Conrad–Oort (Theorem 4.1.1, byte-cited in the citations page) show that no field extension is needed: every abelian variety over $\mathbb F_q$ is $\mathbb F_q$-isogenous to one with a CM lift; for a lift to a normal base the residual reflex condition decides. §4's "only non-canonical CM lifts over ramified bases" is to be read with that precision.
+
+
 | statement | status |
 |---|---|
 | $K_5$ has $q=3$ (the brief said 4) | checked (N1) |

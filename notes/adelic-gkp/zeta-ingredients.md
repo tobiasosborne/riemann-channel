@@ -186,6 +186,9 @@ is consistent with this, because $\mathcal T$ is the Weil form for the generator
 
 ## 6. Status and checks
 
+*Citation correction 2026-10-06 (`notes/adelic-gkp/citations-2026-10-06.md`):* Connes's Theorem 1 (`math/9811068`) realises the critical zeros in the cokernel of a weighted space $L^2_\delta(C_k)$ with $\delta>1$, where the action is not unitary and multiplicities are capped at $n<(1+\delta)/2$; in plain $L^2(C_{\mathbb Q})$ there is no such statement (off-line zeros would appear as resonances). §§1–2 of this page say "$L^2$"; read $L^2_\delta$.
+
+
 | statement | status | checks |
 |---|---|---|
 | zeros file; explicit formula with Weil's archimedean term, Gaussian tests to $4\cdot10^{-12}$ | checked | A1–A2 |
