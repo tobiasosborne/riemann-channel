@@ -26,7 +26,7 @@ has eigenvalues $\pm\sqrt2$, a vacuum, and every compatible Weil form zero). The
 | $\mathbb Z_2$ flux, non-ordinary (Petersen, $K_5$) | $\mathbb Z^{2n}$ from the graph; arithmetically from the Centeleghe–Stix category, **no canonical lift**; glued, not a product | $M_s$ | yes; on the supersingular block $J=M/\sqrt q$ (quarter turn) | ordinary block: as above; supersingular block: **none selected** | $2n$ | `no-lift.md` |
 | genus two over $\mathbb F_q$ ($y^2=x^5+x^3+x^2-2$, $\mathbb F_5$) | $\mathbb Z^4$ | Frobenius | yes; the positive similitude forms are a cone $\sum_jt_j\,(\text{vacuum form on mode }j)$ and **RH is the cone being non-empty** | a further point of the cone; Rosati transported is not proportional to the vacuum form (weights 10.870, 20.171); it settles integrality, not RH | four | `cone-bridge.md` |
 | $\mathbb Z_N$ flux on a graph ($N=3,4,5,6$) | $\mathbb Z[\zeta_N]^{2n}$ by restriction of scalars; $\zeta_N$ is complex multiplication, not a lock | $M_\rho$, $M_\rho^\dagger\Omega M_\rho=q\Omega$ | yes iff every Galois-conjugate flux is in the band ($\rho$ and $\bar\rho$ have the same spectrum) | not run | $2n\varphi(N)$, each mode twice | `zn-flux.md` |
-| Dirichlet character $\chi$ of $\mathbb F_q(t)$ mod $f$ (order $N$) | $\mathbb Z[\zeta_N][F,V]$, the $\chi$-part of $\mathrm{Jac}(y^N=cf)$ | $F$ | yes (Weil); Weil form $\tfrac12\mathrm{Tr}(x\sigma y)$ positive | $\Omega_+$ from the functional equation alone; not principal | $\deg f-1$ or $\deg f-2$; **gate phases present and non-trivial**, product $=W$ | `ff-dirichlet.md` |
+| Dirichlet character $\chi$ of $\mathbb F_q(t)$ mod $f$ (order $N$) | $\mathbb Z[\zeta_N][F,V]$, the $\chi$-part of $\mathrm{Jac}(y^N=cf)$ up to isogeny | $F$ | yes (Weil) when $P_\chi$ is squarefree; Weil form $\tfrac12\mathrm{Tr}(x\sigma y)$ positive then, degenerate for a repeated root ($t^4+1$ at $q=5$) | $\Omega_+$ from the functional equation alone; not principal | $\deg f-1$ or $\deg f-2$; **gate phases present and non-trivial**, product $=W$ | `ff-dirichlet.md` |
 | CM Hecke $L(\psi,s)$, $K=\mathbb Q(\sqrt{-7})$ (441d1, 49a1) | one lattice $\mathcal O_K$ for every split prime | one step $\psi(\mathfrak p)$ per prime, all commuting | one $J_K$ for all primes: **local RH free** | the complex structure of $K\otimes\mathbb R$ | infinitely many, **not determined by the local data** | `cm-lift.md` |
 | LPS Hecke pair $A_{13},A_{17}$ on one $H_1$ | $\mathbb Z^{2n}$ | $M_{13}$, $M_{17}$: commuting Hecke operators, non-commuting steps | one per step; **none shared** ($M_{13}V_{17}$ has real eigenvalues) | both Weil forms positive for the shared $\Omega$ | Ramanujan | `family-vacuum.md` |
 | $\zeta$ | none known: $\mathbb Q^2$ is rigid and divisible (G3) | a flow (the squeeze group $C_{\mathbb Q}$), not an integral map | open (= RH) | none | infinitely many, all global | `adelic-gkp.md` §12 |
@@ -225,6 +225,10 @@ C, J), families of complex multiplications in one structure, not the Hecke famil
   $L^2$ (`zeta-ingredients.md`); Chai–Conrad–Oort: CM lifts need no field extension (`no-lift.md`). Settled: the Centeleghe–Stix functor is
   contravariant with a covariant version; Oswal–Shankar need odd $p$ and a simple variety, Bergström–Karemaker–Marseglia a squarefree Weil
   polynomial, so neither covers $K_5$.
+
+- `notes/reviews/adelic-gkp-ff-family-2026-10-06.md` (lanes J, M): 14 VALID / 3 MINOR / 0 INVALID; lane M entirely VALID; lane J's "positivity is RH"
+  needs $P_\chi$ squarefree (the Fermat quartic $t^4+1$ at $q=5$, $N=4$ has a repeated root, a degenerate $\Omega_+$ and no vacuum although RH holds);
+  its minor table is of the trace form on the companion lattice; X6's phases are trivial and the $N=2$ lattice is $H_1$ up to isogeny. Annotated on the pages.
 
 ## 4d. Against the registered record (lane O, `registered-record.md`)
 
