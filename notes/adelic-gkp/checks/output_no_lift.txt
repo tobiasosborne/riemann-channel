@@ -1,0 +1,64 @@
+== N1  the examples: fluxes, spectra, the step
+PASS  Petersen: the dodecahedral spectrum (+-sqrt5 three times, 0 four times) occurs for 2 of 64 flux classes; the first is used  negative non-tree edges of the class used: [(1, 2), (3, 4), (4, 9), (7, 9)]
+PASS  K4, one negative edge: (q+1)-regular with q = 2; charpoly of A_s = (x - 1)*(x + 1)*(x**2 - 5); M^T Omega M = q Omega; V = qM^-1 = [[A_s, 1], [-q, 0]] integral
+PASS  Petersen, dodecahedral flux: (q+1)-regular with q = 2; charpoly of A_s = x**4*(x**2 - 5)**3; M^T Omega M = q Omega; V = qM^-1 = [[A_s, 1], [-q, 0]] integral
+PASS  K5, pentagon negative: (q+1)-regular with q = 3; charpoly of A_s = x*(x**2 - 5)**2; M^T Omega M = q Omega; V = qM^-1 = [[A_s, 1], [-q, 0]] integral
+== N2  characteristic polynomial of M, factored over Z
+PASS  K4, one negative edge: det(x - M) = (x**2 - x + 2) * (x**2 + x + 2) * (x**4 - x**2 + 4)
+PASS  Petersen, dodecahedral flux: det(x - M) = (x**2 + 2)^4 * (x**4 - x**2 + 4)^3
+PASS  K5, pentagon negative: det(x - M) = (x**2 + 3) * (x**4 + x**2 + 9)^2
+== N3  RH and semisimplicity: Weil form positive definite (exact), radical of the charpoly kills M
+PASS  K4, one negative edge: (1/2) Omega (M - V) = [[q, A_s/2], [A_s/2, 1]] is positive definite, so RH holds; the radical (x**2 - x + 2)*(x**2 + x + 2)*(x**4 - x**2 + 4) annihilates M (semisimple)  smallest eigenvalue 0.2753
+PASS  Petersen, dodecahedral flux: (1/2) Omega (M - V) = [[q, A_s/2], [A_s/2, 1]] is positive definite, so RH holds; the radical (x**2 + 2)*(x**4 - x**2 + 4) annihilates M (semisimple)  smallest eigenvalue 0.2753
+PASS  K5, pentagon negative: (1/2) Omega (M - V) = [[q, A_s/2], [A_s/2, 1]] is positive definite, so RH holds; the radical (x**2 + 3)*(x**4 + x**2 + 9) annihilates M (semisimple)  smallest eigenvalue 0.5000
+== N4  Centeleghe-Stix hypotheses over F_p (q prime): no eigenvalue +-sqrt(p); FV = VF = p with V integral
+PASS  K4, one negative edge: q = 2 is prime, gcd(det(x - M), x^2 - 2) = 1, MV = VM = 2
+PASS  Petersen, dodecahedral flux: q = 2 is prime, gcd(det(x - M), x^2 - 2) = 1, MV = VM = 2
+PASS  K5, pentagon negative: q = 3 is prime, gcd(det(x - M), x^2 - 3) = 1, MV = VM = 3
+== N5  Honda-Tate data for each irreducible factor (PARI): local invariants at the primes above p, e, Newton slopes
+PASS  over F_2: x**2 - x + 2: all local invariants 0 (e = 1), so a simple isogeny class of dimension 1 with exactly this Weil polynomial; slopes ['1', '0']: ordinary; #A(F_2) = 2  invariants [0, 0]
+PASS  over F_2: x**2 + x + 2: all local invariants 0 (e = 1), so a simple isogeny class of dimension 1 with exactly this Weil polynomial; slopes ['1', '0']: ordinary; #A(F_2) = 4  invariants [0, 0]
+PASS  over F_2: x**4 - x**2 + 4: all local invariants 0 (e = 1), so a simple isogeny class of dimension 2 with exactly this Weil polynomial; slopes ['1', '1', '0', '0']: ordinary; #A(F_2) = 4  invariants [0, 0]
+PASS  over F_2: x**2 + 2: all local invariants 0 (e = 1), so a simple isogeny class of dimension 1 with exactly this Weil polynomial; slopes ['1/2', '1/2']: supersingular; #A(F_2) = 3  invariants [0]
+PASS  over F_3: x**2 + 3: all local invariants 0 (e = 1), so a simple isogeny class of dimension 1 with exactly this Weil polynomial; slopes ['1/2', '1/2']: supersingular; #A(F_3) = 4  invariants [0]
+PASS  over F_3: x**4 + x**2 + 9: all local invariants 0 (e = 1), so a simple isogeny class of dimension 2 with exactly this Weil polynomial; slopes ['1', '1', '0', '0']: ordinary; #A(F_3) = 11  invariants [0, 0]
+PASS  K4, one negative edge: dimension 4, p-rank 4; #A(F_2) = det(1 - M) = det((q+1) - A_s) = 32  ordinary
+PASS  Petersen, dodecahedral flux: dimension 10, p-rank 6; #A(F_2) = det(1 - M) = det((q+1) - A_s) = 5184  neither ordinary nor almost ordinary
+PASS  K5, pentagon negative: dimension 5, p-rank 4; #A(F_3) = det(1 - M) = det((q+1) - A_s) = 484  almost ordinary (p-rank g - 1)
+== N6  the half turn: det(x - M) = Q(x^2), so up to isogeny a Weil restriction from F_{q^2} when Q is a Weil polynomial there
+PASS  K4, one negative edge: det(x - M) = Q(x^2) and every factor of Q over F_4 occurs to a multiple of its Honda-Tate e, so Q is a Weil polynomial over F_4  Q(y) = (y**2 - y + 4)*(y**2 + 3*y + 4), degree 4; y**2 - y + 4: e=1, mult 1; y**2 + 3*y + 4: e=1, mult 1
+PASS  Petersen, dodecahedral flux: det(x - M) = Q(x^2) and every factor of Q over F_4 occurs to a multiple of its Honda-Tate e, so Q is a Weil polynomial over F_4  Q(y) = (y + 2)**4*(y**2 - y + 4)**3, degree 10; y + 2: e=2, mult 4; y**2 - y + 4: e=1, mult 3
+PASS  K5, pentagon negative: spectrum of A_s symmetric, det(x - M) = Q(x^2); Q has odd degree, so it is not the Weil polynomial of any abelian variety over F_9  Q(y) = (y + 3)*(y**2 + y + 9)**2, degree 5
+== N7  genus-2 Jacobians (PARI hyperellcharpoly over all models y^2 + h y = f, deg h <= 3, deg f <= 6)
+PASS  over F_2: 768 smooth genus-2 models; 16 have Weil polynomial x^4 - x^2 + 4, so the simple surface of K4 and Petersen is a Jacobian  smooth 768, matching 16
+PASS  C: y^2 + (x^2 + x) y = x^5 + 1 over F_2 has charpoly x^4 - x^2 + 4; brute-force counts over F_2, F_4, F_8, F_16 agree  counts [3, 3, 9, 31], predicted [3, 3, 9, 31]
+PASS  over F_2: no smooth genus-2 model has Weil polynomial x^4 + 3x^2 + 4 = (x^2 - x + 2)(x^2 + x + 2) (the product E_2pts x E_4pts of K4)
+PASS  over F_3: 1296 squarefree models y^2 = f, deg f in (5, 6); 24 have Weil polynomial x^4 + x^2 + 9 (the ordinary surface of K5); y^2 = 2*x^6 + 2*x^5 + x^3 + x + 1 has brute-force counts [4, 12, 28] over F_3, F_9, F_27  predicted [4, 12, 28]
+== N8  the invariant vacuum J = (M - V)(D + D), D = (4q - A_s^2)^(-1/2); compared with the spectral construction
+PASS  K4, one negative edge: J^2 = -1, JM = MJ, J symplectic, Omega(x, Jx) > 0, and J equals U diag(i sign Im mu) U^-1  mode frequencies theta/pi = [0.2098, 0.385, 0.615, 0.7902]; min eigenvalue of Omega J = 0.3178
+PASS  Petersen, dodecahedral flux: J^2 = -1, JM = MJ, J symplectic, Omega(x, Jx) > 0, and J equals U diag(i sign Im mu) U^-1  mode frequencies theta/pi = [0.2098, 0.5, 0.7902]; min eigenvalue of Omega J = 0.3178
+PASS  K5, pentagon negative: J^2 = -1, JM = MJ, J symplectic, Omega(x, Jx) > 0, and J equals U diag(i sign Im mu) U^-1  mode frequencies theta/pi = [0.2767, 0.5, 0.7233]; min eigenvalue of Omega J = 0.3780
+== N9  the supersingular block: the vacuum is the normalised step; the p-adic valuation does not choose a CM type
+PASS  Petersen, dodecahedral flux: on ker(M^2 + 2) (rank 8) the vacuum is J = M/sqrt(2), a quarter turn
+PASS  Petersen, dodecahedral flux: 2 is ramified in Q(sqrt(-2)); mu = i sqrt(2) and its conjugate -mu have the same valuation (slope 1/2), so Deligne's rule val_p(phi(F)) > 0 selects neither embedding
+PASS  K5, pentagon negative: on ker(M^2 + 3) (rank 2) the vacuum is J = M/sqrt(3), a quarter turn
+PASS  K5, pentagon negative: 3 is ramified in Q(sqrt(-3)); mu = i sqrt(3) and its conjugate -mu have the same valuation (slope 1/2), so Deligne's rule val_p(phi(F)) > 0 selects neither embedding
+== N10  the ordinary block: every prime above p sees mu and -mu alike (Howe's half-turn obstruction)
+PASS  x**4 - x**2 + 4 over F_2: Galois quartic, roots +-mu, +-conj(mu); at each of the 2 primes above 2 the set of non-units is closed under mu -> -mu
+PASS  x**4 + x**2 + 9 over F_3: Galois quartic, roots +-mu, +-conj(mu); at each of the 2 primes above 3 the set of non-units is closed under mu -> -mu
+== N11  the lattice does not split: [L : L_ss + L_ord] and the forms on the pieces
+PASS  Petersen, dodecahedral flux: L_ss = L cap ker(x^2+2)(M), L_ord = L cap ker(x^4-x^2+4)(M): index [L : L_ss + L_ord] = 15625; det Omega on L_ss, L_ord = 15625, 15625
+PASS  K5, pentagon negative: L_ss = L cap ker(x^2+3)(M), L_ord = L cap ker(x^4+x^2+9)(M): index [L : L_ss + L_ord] = 25; det Omega on L_ss, L_ord = 25, 25
+PASS  (L_ord, M): characteristic polynomial (x**4 - x**2 + 4)^3, middle coefficient -25 prime to 2: a Deligne module of rank 12 over F_2
+PASS  (L_ord, M): characteristic polynomial (x**4 + x**2 + 9)^2, middle coefficient 19 prime to 3: a Deligne module of rank 8 over F_3
+== N12  twisted forms Omega(x, (C + C) y), C symmetric integral commuting with A_s
+PASS  Petersen, dodecahedral flux: R = Q[A_s] cap M_n(Z) has basis [1, 0, 0; 0, 1, 0; 0, 0, 1] in (1, A_s, A_s^2); among the 6 units with coordinates in [-30, 30], none has opposite signs at +-sqrt5
+PASS  K5, pentagon negative: R = Q[A_s] cap M_n(Z) has basis [1, 0, 0; 0, 1, 1/2; 0, 0, 1/2] in (1, A_s, A_s^2); among the 20 units with coordinates in [-30, 30], none has opposite signs at +-sqrt5
+PASS  K5: an integral symmetric C with CA_s = A_sC, det C = -1, positive definite on E(sqrt5), negative definite on E(-sqrt5); C is not in Q[A_s]  restricted eigenvalues: E(+) [ 0.084 82.2  ], E(-) [-26.604  -0.68 ], E(0) [-5.]
+PASS  K5: Omega_C(x, y) = Omega(x, (C + C) y) is unimodular, satisfies Omega_C(Mx, y) = Omega_C(x, Vy), and is NOT positive for the vacuum J (indefinite)
+PASS  Petersen: symmetric commutant of A_s has rank 22; in a sparse search on its LLL basis (2e5 samples, 4 terms, coefficients in [-3, 3]) no unimodular C is definite of opposite signs on E(sqrt5), E(-sqrt5)  unimodular samples 1634, sign-changing 0; (positive-count on E+, on E-) patterns realised: 14 of 16 (a search, not a proof)
+PASS  K4, one negative edge: Rosati-fixed commutant of M (all compatible forms Omega(x, Py)) has rank 4; the subfamily P = C + C has rank 4
+PASS  K5, pentagon negative: Rosati-fixed commutant of M (all compatible forms Omega(x, Py)) has rank 9; the subfamily P = C + C has rank 7
+PASS  Petersen, dodecahedral flux: Rosati-fixed commutant of M (all compatible forms Omega(x, Py)) has rank 34; the subfamily P = C + C has rank 22
+
+50 of 50 pass
