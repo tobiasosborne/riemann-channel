@@ -266,8 +266,10 @@ multiplicity and stays positive, a unitary realisation is automatically semisimp
   contravariant with a covariant version; Oswal–Shankar need odd $p$ and a simple variety, Bergström–Karemaker–Marseglia a squarefree Weil
   polynomial, so neither covers $K_5$.
 
-- Lanes R, S, U (`window-similitude.md`, `repeated-root.md`, `tower-pairing.md`) are **unreviewed**: their review was stopped when TJO restricted the
-  session to Fable alone; the orchestrator's own reading pass is recorded on each page's status table where made.
+- Lanes R, S, U (`window-similitude.md`, `repeated-root.md`, `tower-pairing.md`): the Opus review was stopped when TJO restricted the session to
+  Fable alone; `notes/reviews/adelic-gkp-rsu-fable-2026-10-06.md` is the orchestrator's partial review (7 VALID / 0 / 0 on the statements it could
+  recompute: the Fermat-quartic counts to $\mathbb F_{125}$, the Connes lines, the dual-lattice identity, the mod-8 intertwiner obstruction, translation
+  invariance); the pairing identities, the 42 comparisons, the edge-share numerics and the Kani–Rosen step remain unadjudicated.
 - `notes/reviews/adelic-gkp-ff-family-2026-10-06.md` (lanes J, M): 14 VALID / 3 MINOR / 0 INVALID; lane M entirely VALID; lane J's "positivity is RH"
   needs $P_\chi$ squarefree (the Fermat quartic $t^4+1$ at $q=5$, $N=4$ has a repeated root, a degenerate $\Omega_+$ and no vacuum although RH holds);
   its minor table is of the trace form on the companion lattice; X6's phases are trivial and the $N=2$ lattice is $H_1$ up to isogeny. Annotated on the pages.
