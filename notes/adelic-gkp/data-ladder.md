@@ -308,8 +308,9 @@ trace form in 08b and $\tfrac12\Omega(M-V)$ here. Lanes B and D were cross-check
 - Register or not: `shard-draft/` (20 rows; reviewed-VALID statements stay `sketched` until a reviewer of another model, the gate's rule). Merge
   `refs/manifest-2026-10-06-pending.txt`.
 - REFUTE review of lanes R, S, U (stopped on 2026-10-06 when the session went Fable-only).
-- The one-lattice version of lane U for the CM family: the steps $\psi(\mathfrak p)$ on $\mathcal O_K$ should reproduce the group structure and the Tate
-  pairing of every reduction of 441d1 under one choice of $\varepsilon$ (a check script was started and stopped; not done).
+- The one-lattice version of lane U for the CM family is checked in reduced form (`checks/check_cm_tower.py`, 27/27: one lattice $\mathcal O_K$, the
+  commuting steps $\psi(\mathfrak p)$, the groups of every reduction of 441d1 at $p\le37$, the Tate pairing up to $\mathrm{Aut}(\mu_N)$); the
+  $\varepsilon$-uniform identification of $\mu_N$ across primes, which would make it a separation statement, is not done.
 - Open items on the pages: which ideal class and principal form belong to $\mathrm{Jac}(C)$ for the genus-two curve over $\mathbb F_5$ (E); the genus-blind
   case $q=8$, $a=3$ (F); the Petersen twist and a Howe-type criterion for Centeleghe–Stix objects (B); the CM version of the vacuum-point reading (G);
   $J(\mathbb F_{5^k})$ and the Tate module of the Fermat quartic (S); the quadratic-twist family and higher infinity types (I); whether the tower sees
