@@ -1,0 +1,55 @@
+== A. Zeros and the explicit formula
+PASS  A1 data/zeros3000.npy agrees with mpmath zetazero(1..3); 3000 ordinates up to 3533.33  gamma_1 = 14.134725141735
+PASS  A2 explicit formula, Gaussian g = exp(-u^2/2s^2), s = 0.15: zero side (3000 zeros) = Pole - Prime - Arch  zeros 8.534554779440e-02, primes 8.534554779189e-02, diff 2.5e-12; prime part 2.262e-05
+PASS  A2 explicit formula, Gaussian g = exp(-u^2/2s^2), s = 0.25: zero side (3000 zeros) = Pole - Prime - Arch  zeros 2.436624856583e-03, primes 2.436624853316e-03, diff 3.3e-12; prime part 2.107e-02
+PASS  A2 explicit formula, Gaussian g = exp(-u^2/2s^2), s = 0.4: zero side (3000 zeros) = Pole - Prime - Arch  zeros 2.294819635263e-07, primes 2.294776542122e-07, diff 4.3e-12; prime part 2.498e-01
+
+== B. The window form G_N (CCM model, [0, L], L = log x)
+PASS  B1 G_N from the explicit formula equals the notebook's CCM window form (reviewer helper ab_true, x = 13, N = 10)  max |diff| = 1.1e-12, max |G| = 2.447
+PASS  B2 pole part = F(0)F(1)^+ + F(1)F(0)^+ (the two constant terms of the comb): rank 2, signature (1,1)  eigenvalues -0.7167, 5.8931
+PASS  B3 zero side (3000 critical zeros, sum F_m(rho) conj F_n(rho)) against the prime side: the diagonal deficit is positive and below the Riemann-von Mangoldt tail estimate 2(log(T/2pi)+1)/(pi L T)  max |G - G_zeros| = 5.65e-04, tail estimate 5.15e-04
+PASS  B4 Loewner identity (m-n) G[m,n] = m G[m,0] - n G[n,0] holds for the zero-side matrix built term by term (each critical zero's rank-one form is skew for the squeeze generator D)  max defect 1.0e-15
+PASS  B5 Omega_N(h,k) := G_N(h, D^{-1}k) is anti-Hermitian on the 2N-dimensional mean-zero window space (x = 13, N = 20): the infinitesimal step is an exact similitude on every window (notebook C3.2, restricted to the kernel of the boundary covector)  max |Om + Om^+| = 2.3e-17, max |Om| = 0.15
+
+== C. Item 3: inertia of the window form, the pole plane, and synthetic off-line pairs (mpmath, helper data)
+PASS  C1 x = 13, N = 5 (40 digits): Z_N > 0; pole form P_N signature (1,1); Z_N - P_N (= -Loc) and Z_N + P_N each have inertia (n-1, 1, 0), n = 11  min eig Z = 7.13e-17; negative eig of Z-P = -5.8417, of Z+P = -0.64788; next eig of Z-P = 2.42e-12
+PASS  C1 x = 13, N = 10 (50 digits): Z_N > 0; pole form P_N signature (1,1); Z_N - P_N (= -Loc) and Z_N + P_N each have inertia (n-1, 1, 0), n = 21  min eig Z = 2.83e-26; negative eig of Z-P = -5.8459, of Z+P = -0.69405; next eig of Z-P = 3.55e-21
+PASS  C1 x = 13, N = 15 (60 digits): Z_N > 0; pole form P_N signature (1,1); Z_N - P_N (= -Loc) and Z_N + P_N each have inertia (n-1, 1, 0), n = 31  min eig Z = 1.21e-33; negative eig of Z-P = -5.8488, of Z+P = -0.7042; next eig of Z-P = 3.57e-28
+PASS  C2 a synthetic off-line quartet rho = 0.75 +- 5.0 i (two pairs rho, 1 - conj rho) added to Z_N (x = 13, N = 10): negative index 2 for Z + Q, 3 for Z + Q - P (one hyperbolic plane per off-line pair, plus the pole plane)  negative eigenvalues of Z + Q: ['-0.158', '-0.152']
+PASS  C2 a synthetic off-line quartet rho = 0.6 +- 14.134725 i (two pairs rho, 1 - conj rho) added to Z_N (x = 13, N = 10): negative index 2 for Z + Q, 3 for Z + Q - P (one hyperbolic plane per off-line pair, plus the pole plane)  negative eigenvalues of Z + Q: ['-0.0228', '-0.0211']
+
+== D. Item 2: the prime-2 dilation compressed to the window
+PASS  D1 x = 13: the generic explicit-formula route (closed-form g, any frequencies) reproduces G_K on the lattice frequencies  max diff 2.3e-12
+      x =   13 N =   5: whole window best c = 0.1045, residual 0.4011 | modes |n| <= 3: c = 0.0178, residual 0.3278, distance to the cut limit 2.63e-02 | #(sing. values of M_N < 1/2) = 3, n log2 / L = 3.0
+      x =   13 N =  10: whole window best c = 0.4571, residual 0.4546 | modes |n| <= 3: c = 0.1435, residual 0.3572, distance to the cut limit 1.46e-02 | #(sing. values of M_N < 1/2) = 6, n log2 / L = 5.7
+      x =   13 N =  20: whole window best c = 0.5743, residual 0.4718 | modes |n| <= 3: c = 0.2180, residual 0.3770, distance to the cut limit 9.62e-03 | #(sing. values of M_N < 1/2) = 11, n log2 / L = 11.1
+      x =   13 N =  40: whole window best c = 0.6126, residual 0.4771 | modes |n| <= 3: c = 0.2768, residual 0.3753, distance to the cut limit 5.37e-03 | #(sing. values of M_N < 1/2) = 22, n log2 / L = 21.9
+      x =   13 N =  80: whole window best c = 0.6546, residual 0.4698 | modes |n| <= 3: c = 0.3156, residual 0.3777, distance to the cut limit 3.10e-03 | #(sing. values of M_N < 1/2) = 44, n log2 / L = 43.5
+      x =   13 N = 160: whole window best c = 0.6768, residual 0.4639 | modes |n| <= 3: c = 0.3393, residual 0.3786, distance to the cut limit 1.83e-03 | #(sing. values of M_N < 1/2) = 87, n log2 / L = 86.7
+PASS  D2 x = 13: on the whole window the best-c residual of M^T G M = c G stays above 0.35 for N = 5..160 (does not shrink)  residuals [0.401, 0.455, 0.472, 0.477, 0.47, 0.464]
+PASS  D3 x = 13: on the low modes |n| <= 3 the pulled-back form converges as N grows to the cut limit W(chi U e_m, chi U e_n) (a window of length L - log 2), whose best-c residual is 0.379 (c = 0.372): a nonzero limit  distances ['2.6e-02', '1.5e-02', '9.6e-03', '5.4e-03', '3.1e-03', '1.8e-03']
+PASS  D4 x = 13: the number of singular values of M_N below 1/2 is n log 2 / L to within 1 (the window loses that fraction of its dimension per step; M_N is never invertible in the limit)  [(3, 3.0), (6, 5.7), (11, 11.1), (22, 21.9), (44, 43.5), (87, 86.7)]
+PASS  D5 x = 13: on the 4-dim subspace of smooth functions supported in [0, L - log 2], M^T G M = G (c = 1, normalised; c = 2 unnormalised) with residual -> 0 as N grows (translation invariance survives compression away from the edge)  residuals at c = 1, N = 20, 40, 80, 160: ['1.3e-06', '6.6e-08', '1.7e-09', '5.5e-11']
+PASS  D1 x = 100: the generic explicit-formula route (closed-form g, any frequencies) reproduces G_K on the lattice frequencies  max diff 5.7e-12
+      x =  100 N =   5: whole window best c = 0.0086, residual 0.3667 | modes |n| <= 3: c = 0.0047, residual 0.2624, distance to the cut limit 1.69e-02 | #(sing. values of M_N < 1/2) = 2, n log2 / L = 1.7
+      x =  100 N =  10: whole window best c = 0.4851, residual 0.3999 | modes |n| <= 3: c = 0.0446, residual 0.4991, distance to the cut limit 1.32e-02 | #(sing. values of M_N < 1/2) = 3, n log2 / L = 3.2
+      x =  100 N =  20: whole window best c = 0.7219, residual 0.4513 | modes |n| <= 3: c = 0.1520, residual 0.3848, distance to the cut limit 8.14e-03 | #(sing. values of M_N < 1/2) = 6, n log2 / L = 6.2
+      x =  100 N =  40: whole window best c = 0.7224, residual 0.4394 | modes |n| <= 3: c = 0.2401, residual 0.3899, distance to the cut limit 4.82e-03 | #(sing. values of M_N < 1/2) = 12, n log2 / L = 12.2
+      x =  100 N =  80: whole window best c = 0.7317, residual 0.4410 | modes |n| <= 3: c = 0.2983, residual 0.3889, distance to the cut limit 3.08e-03 | #(sing. values of M_N < 1/2) = 24, n log2 / L = 24.2
+      x =  100 N = 160: whole window best c = 0.7468, residual 0.4331 | modes |n| <= 3: c = 0.3378, residual 0.3983, distance to the cut limit 1.57e-03 | #(sing. values of M_N < 1/2) = 48, n log2 / L = 48.3
+PASS  D2 x = 100: on the whole window the best-c residual of M^T G M = c G stays above 0.35 for N = 5..160 (does not shrink)  residuals [0.367, 0.4, 0.451, 0.439, 0.441, 0.433]
+PASS  D3 x = 100: on the low modes |n| <= 3 the pulled-back form converges as N grows to the cut limit W(chi U e_m, chi U e_n) (a window of length L - log 2), whose best-c residual is 0.395 (c = 0.393): a nonzero limit  distances ['1.7e-02', '1.3e-02', '8.1e-03', '4.8e-03', '3.1e-03', '1.6e-03']
+PASS  D4 x = 100: the number of singular values of M_N below 1/2 is n log 2 / L to within 1 (the window loses that fraction of its dimension per step; M_N is never invertible in the limit)  [(2, 1.7), (3, 3.2), (6, 6.2), (12, 12.2), (24, 24.2), (48, 48.3)]
+PASS  D5 x = 100: on the 4-dim subspace of smooth functions supported in [0, L - log 2], M^T G M = G (c = 1, normalised; c = 2 unnormalised) with residual -> 0 as N grows (translation invariance survives compression away from the edge)  residuals at c = 1, N = 20, 40, 80, 160: ['2.2e-03', '6.1e-05', '1.7e-06', '7.9e-08']
+PASS  D6 the cut-limit residual does not decrease from x = 13 (log2/L = 0.27) to x = 100 (log2/L = 0.15): the defect is an edge effect of size O(1) on Fourier modes, not a fraction log p / L  cut-limit residuals 0.379, 0.395
+
+== E. The spectral (cokernel) model and the Omega question
+PASS  E1 p = 2: the lane-E Weil form (1/2) Omega_FE(M_p - V_p) of the dilation by p, on the first 3000 critical modes, has weights sqrt(p) sin(gamma log p) relative to Weil's form: indefinite  fraction of negative weights 0.502
+PASS  E1 p = 3: the lane-E Weil form (1/2) Omega_FE(M_p - V_p) of the dilation by p, on the first 3000 critical modes, has weights sqrt(p) sin(gamma log p) relative to Weil's form: indefinite  fraction of negative weights 0.497
+PASS  E1 p = 5: the lane-E Weil form (1/2) Omega_FE(M_p - V_p) of the dilation by p, on the first 3000 critical modes, has weights sqrt(p) sin(gamma log p) relative to Weil's form: indefinite  fraction of negative weights 0.498
+PASS  E2 Omega_p := 2 B (M_p - V_p)^{-1} (diagonal in evaluation coordinates) is anti-Hermitian, compatible (|p^rho|^2 = p), and its Weil form is B exactly; its weights 1/(sqrt p sin(gamma log p)) have small divisors  max |weight| over 3000 zeros = 4393.1 (min |sin(gamma log 2)| = 1.61e-04)
+PASS  E3 no single compatible Omega makes B the Weil form of both p = 2 and p = 3: that needs sqrt2 sin(g log2) / (sqrt3 sin(g log3)) constant over the zeros, and it is not  ratio over the first 5 zeros [-1.666, -0.83, -1.14, 0.708, 0.608]
+PASS  E4 infinitesimal step: (1/2t) Omega_FE(e^{tD} - e^{-tD}) -> Omega_FE(., D .), weights |gamma| (positive); relative to Omega_D := B(., D^{-1} .) the Williamson weights of B are |gamma| (the analogue of Im alpha_j)  weights for the first three zeros [14.1347, 21.022, 25.0109]
+PASS  E5 Proposition 1 (random real example, q = 2, n = 6): if M^T G M = q G and M - V is invertible, then Omega := 2 G (M - V)^{-1} is alternating, compatible (M^T Omega M = q Omega), and (1/2) Omega (M - V) = G
+
+32 of 32 pass   [15 s]
