@@ -1,0 +1,310 @@
+% SHARD-ID: RC-04Z-ADELIC-GKP-LADDER
+% SHARD-TITLE: The Phantasm XVII: the Adelic-GKP Ladder. Integral Steps on Symplectic Lattices, the Lattice Weil Form and Its Orientation, the One-Mode and Genus-g Bridges, Overlaps See the Order and Not the Class, No Arithmetic J on a Supersingular Block, Z_N Fluxes and the Torsion Average, the CM Twins and Their Gate Phases, the Function-Field Dirichlet Rung, Shared Vacua of Commuting Families, and What zeta Has and Lacks
+% SHARD-SUMMARY: Every understood case is a rung (L, M, Omega): an integral step M of norm q on a symplectic lattice with integral adjoint V = qM^{-1}; RH is an invariant vacuum J, and the lattice Weil form (1/2)Omega(M - V) is positive iff RH holds and Omega has CM type Phi_+ (M' = [[0,1],[-5,-2]] and B + 2B^{-T} show both hypotheses are needed); the genus-one bridge carries the Riemann-Roch cokernel unimodularly onto Z[F] with scalar 1/sqrt(4q - a^2), the genus-g bridge gives Omega_+ = Tr(x conj y/(V - F)) with Weil form exactly half the Rosati form, and the principal form is never Phi_+ for g >= 2.
+% SHARD-SUMMARY: The overlaps q^{h^0(D)} see End(E), not the ideal class (the Weil pairing does); on a supersingular block the vacuum is M/sqrt q and no arithmetic J is selected (Centeleghe-Stix objects, glued at 5); Z_N fluxes give lattices over Z[zeta_N] whose N-torsion average is the matching polynomial; the CM twins 49a1 and 441d1 share O_K, J_K and every split step up to sign and differ in zeros, the difference sitting in a charged local state whose gate phase enters the root number; function-field Dirichlet characters carry all items at once and the phases do not enter positivity.
+% SHARD-SUMMARY: Commuting similitudes share a vacuum iff each is RH, while steps of different norm never commute and the LPS Hecke pair has no common vacuum; for zeta the steps with exact adjoints, Weil's form B as a similitude form for every step, and Omega_FE, Omega_D compatible with every step exist, B is the family-invariant point, each prime step's Omega_FE-Weil form is indefinite, and the compressed window dilation is a similitude only away from the edge (residual near 0.4): what zeta lacks is an integral structure with a step on the cokernel and a reason for B to be positive.
+% SHARD-KEYWORDS: GKP code, qunaught, adelic theta, integral step, symplectic lattice, similitude form, lattice Weil form, invariant vacuum, Krein sign, CM type, Deligne module, Centeleghe--Stix, Latimer--MacDuffee, Lenstra, Rosati form, Riemann--Roch cokernel, Casoratian, trace dual, Howe sign, Weil pairing, supersingular block, Z_N flux, matching polynomial, Heilmann--Lieb, CM elliptic curve, Hecke character, root number, local epsilon factor, Gauss sum, power-residue character, function field, LPS Hecke pair, shared vacuum, functional-equation pairing, prime dilation, CCM window
+% SHARD-NOTES: none
+% SHARD-SCRIPTS: notes/adelic-gkp/checks/check_curve_bridge.py, notes/adelic-gkp/checks/check_cone_bridge.py, notes/adelic-gkp/checks/check_overlap_data.py, notes/adelic-gkp/checks/check_no_lift.py, notes/adelic-gkp/checks/check_zn_flux.py, notes/adelic-gkp/checks/check_cm_lift.py, notes/adelic-gkp/checks/check_gate_phases.py, notes/adelic-gkp/checks/check_ff_dirichlet.py, notes/adelic-gkp/checks/check_family_vacuum.py, notes/adelic-gkp/checks/check_family_weil.py, notes/adelic-gkp/checks/check_step_powers.py, notes/adelic-gkp/checks/check_zeta_ingredients.py
+% DISTILLED-PAGES (prose only; SHARD-NOTES accepts top-level notes/*.md only): notes/adelic-gkp/data-ladder.md, curve-bridge.md, cone-bridge.md, overlap-data.md, no-lift.md, zn-flux.md, cm-lift.md, gate-phases.md, ff-dirichlet.md, family-vacuum.md, zeta-ingredients.md, citations-2026-10-06.md, registered-record.md; reviews notes/reviews/adelic-gkp-{lattice,arithmetic,zeta,ff-family}-2026-10-06.md
+% WANTED MACROS (not in db/notation.tsv; plain LaTeX used instead): field trace Tr_{K/Q} (\mathrm{Tr}); lattice Weil form W_\Omega; vacuum form G_J; CM type Phi_+; functional-equation pairing Omega_FE
+
+\section{The Phantasm XVII: the Adelic-GKP Ladder}
+\label{sec:adelic-gkp-ladder}
+
+Record of 2026-10-06: synthesis \texttt{notes/adelic-gkp/data-ladder.md} (\texttt{claude:fable-5.1}); lane pages and checks under \texttt{notes/adelic-gkp/}
+(\texttt{claude:opus-5.5}); REFUTE reviews \texttt{notes/reviews/adelic-gkp-\{lattice,arithmetic,zeta,ff-family\}-2026-10-06.md}; byte-citations \texttt{citations-2026-10-06.md};
+comparison with the record \texttt{registered-record.md}. The reviews are by the lane authors' model (\texttt{claude:opus-5.5}, separate contexts), so ``reviewer $\ne$ author''
+is not met: statements reviewed VALID are \texttt{sketched}, with the verdicts in the note column, until a review by another model; the exception is
+\cref{lem:gkp-one-mode-weil-sine} (orchestrator's, reviewed by Opus). Theorems the pages quote ``from memory'' are not byte-cited unless a cited fact below quotes them.
+
+Already registered and not repeated: RH $\Leftrightarrow$ an invariant positive metric (\cref{thm:deninger-invariant-polarisation}, \cref{thm:bond-positive-metric-criterion},
+\cref{prop:genus-two-metric-cone}); the certificate $G = \tfrac12\Omega_B(F_1-V_1)$ of \cref{thm:lps-bass-frobenius}(c), the $\Phi_+$ instance of % bare-ok
+\cref{prop:gkp-vacuum-weil-form-cm-type}; Weil's form as the family-invariant point (\cref{prop:weil-form-not-metric}, \cref{obs:deninger-same-gap});
+\cref{cit:latimer-macduffee}, \cref{cit:lenstra-structure}; \cref{obs:spt-protection-is-sign-data}. ``Weil form'' here is the lattice form of \cref{def:gkp-ladder-rung}, not the
+Toeplitz form of \cref{def:weil-form} (on a window of length $2g$ the latter is twice $W_{\Omega_+}$ of \cref{thm:gkp-genus-g-bridge}, a scratch check of lane O). % bare-ok
+
+\subsection{The rung, and the one-mode identity}
+
+\begin{definition}[Ladder rung: integral step, lattice Weil form, invariant vacuum]
+\label{def:gkp-ladder-rung}
+A \emph{rung} is a triple $(L,M,\Omega)$: a lattice $L\cong\mathbb Z^{2n}$ (a $\mathbb Z[\zeta_N]$-lattice is read over $\mathbb Z$ by restriction of scalars), a non-degenerate % bare-ok
+integral alternating form $\Omega$ on $L$, and an \emph{integral step of norm $q$}: $M\in\mathrm{End}(L)$ with $M^T\Omega M = q\Omega$ whose adjoint $V = qM^{-1}$ is again % bare-ok
+integral (the \emph{integrality condition}; $\Omega(Mx,y) = \Omega(x,Vy)$). A symmetric $G$ with $M^TGM = qG$ is a \emph{similitude form}; the positive ones form the \emph{cone} % bare-ok
+$\mathcal C(M)$. An alternating $\Omega'$ with $M^T\Omega'M = q\Omega'$ is \emph{compatible}, and its \emph{lattice Weil form} is $W_{\Omega'} = % bare-ok
+\tfrac12\Omega'(\cdot,(M-V)\cdot)$. An \emph{invariant vacuum} of $\Omega'$ is a real $J$ with $J^2 = -1$, $JM = MJ$ and vacuum form $G_J = \Omega'(\cdot,J\cdot)$ symmetric % bare-ok
+positive definite. With $\det(x-M) = x^nh(x+q/x)$, the \emph{modes} are $V_j = \ker(M^2-\lambda_jM+q)$ for the roots $\lambda_j$ of $h$; the \emph{Krein sign}
+$\varepsilon_j(\Omega')$ is the sign of $\Omega'(x,(M-V)x)$ on $V_j$, and $\Omega'$ has \emph{CM type $\Phi_+$} when every $\varepsilon_j = +1$. A \emph{family} is a set of steps % bare-ok
+$M_i$ of norms $q_i$ for one $\Omega$. % bare-ok
+\end{definition}
+\begin{lemma}[The lattice Weil form on one mode is $\sqrt q\sin\theta$ times the vacuum form] % bare-ok
+\label{lem:gkp-one-mode-weil-sine} \claimstatus{lem:gkp-one-mode-weil-sine}{proved}
+If $J$ is an invariant vacuum of $\Omega$ and $S = M/\sqrt q$ acts on a mode as $\cos\theta+\sin\theta\,J$, then $M-V = 2\sqrt q\sin\theta\,J$ there and $W_\Omega = \sqrt % bare-ok
+q\sin\theta\,G_J$: positive iff $\theta\in(0,\pi)$, and replacing $\Omega$ by $-\Omega$ flips the sign. For the commuting steps $\psi(\mathfrak p)$ of a CM Hecke character on % bare-ok
+$\mathcal O_K$ with the one vacuum $J_K$ of $K\otimes\mathbb R = \mathbb C$, $W_\Omega = \im\psi(\mathfrak p)\,G_{J_K}$ up to the orientation sign of $\Omega$, so conjugate % bare-ok
+primes give opposite signs, and the trace form $\mathrm{Tr}_{K/\mathbb Q}(x\bar y)$ is a positive multiple of $G_{J_K}$. For $\zeta$'s spectral model the step $M_p$ rotates the
+plane of $\{\zero,\bar\zero\}$ by $\gamma\log p$, so its $\Omega_{\mathrm{FE}}$-Weil form there is $\sqrt p\sin(\gamma\log p)$ times the vacuum form. % bare-ok
+\end{lemma}
+\begin{proof}[Proof] $V = qM^{-1} = \sqrt q(\cos\theta-\sin\theta\,J)$ since $J^2 = -1$; subtract and use $G_J = \Omega J$. For the CM family write $\psi(\mathfrak p) = % bare-ok
+\re\psi+\im\psi\,J_K$ on $\mathcal O_K\otimes\mathbb R$; for $\zeta$, $p^{\zero} = \sqrt p\,e^{i\gamma\log p}$ on the critical line. \texttt{data-ladder.md} \S4b; % bare-ok
+\texttt{check\_family\_weil.py} ($51/51$; one mode for $\theta = 0.4,2.0,4.0$, the CM signs, the $\sin(\gamma\log p)$ statistics over $200$ zeros for $p = 2,3,5$); zeta review % bare-ok
+S3a.
+\end{proof}
+
+\subsection{Bridges: one mode, $g$ modes, and the orientation}
+
+\begin{theorem}[The genus-one bridge lands on the companion lattice]
+\label{thm:gkp-genus-one-bridge} \claimstatus{thm:gkp-genus-one-bridge}{sketched}
+Let $E/\Fq$ have trace $a$ with $a^2<4q$. On the two-dimensional space of sequences $Y$ with $Y_j-aY_{j-1}+qY_{j-2} = 0$ (the Riemann--Roch cokernel of the trivial-character
+sector of the adelic qunaught), with shift $W = \begin{psmallmatrix}a&-q\\1&0\end{psmallmatrix}$, discrete Wronskian and Casoratian $\mathcal Q$, the unimodular $S =
+\begin{psmallmatrix}0&-1\\1&0\end{psmallmatrix}$ carries $W$ to the companion step $M = \begin{psmallmatrix}0&-1\\q&a\end{psmallmatrix}$ on $\mathbb Z[F] = \mathbb Z^2$, the Wronskian
+to $\Omega$, and $\mathcal Q$ to $W_\Omega$; with $J = (2M-a)/\sqrt{4q-a^2}$, $\Omega(Ss,JSs) = 2\mathcal Q(s)/\sqrt{4q-a^2} = \mathcal T(Cs,Cs)/\sqrt{4q-a^2}$, $\mathcal T$ the % bare-ok
+Rosati form, $C:s\mapsto Y_j-Y_{j-1}F$. Changing Howe's prime above $p$ replaces $(\Omega,J)$ by $(-\Omega,-J)$, so the Riemann form is the vacuum form for both choices. $\mathbb % bare-ok
+Z[F]$ is the curve's Deligne module $T$ exactly when $T\cong\mathbb Z[F]$; otherwise the smallest integral intertwiner has $|\det| = [\mathbb Z[F]:T]$ and the vacuum form of $T$
+pulls back to that index times the companion's.
+\end{theorem}
+\begin{proof}[Proof sketch] All identities are symbolic in $q,a$ (\texttt{curve-bridge.md} \S\S3--5; \texttt{check\_curve\_bridge.py}, $82/82$, on E1 $y^2+xy = x^3+1/\mathbb
+F_2$, E2 $y^2 = x^3+4x+b/\mathbb F_5$, E3 at $q = 7$, $a = 2$). In rank two $g^T\Omega g = \det(g)\,\Omega$ gives the index factor; the integral intertwiners of E2 ($b = 0$) and % bare-ok
+of one E3 curve have $|\det| = 2$. Lattice review A-5a, A-5d VALID; A-5b MINOR (the ``Deligne module'' overreach), corrected here.
+\end{proof}
+\begin{numerical}[Counts do not fix the lattice: two explicit pairs]
+\label{num:gkp-counts-not-lattice} \claimstatus{num:gkp-counts-not-lattice}{numerical}
+At $q = 7$, $a = 2$ (discriminant $-24$, class number $2$) the curves $y^2 = x^3+3x+3$ ($j = 4$) and $y^2 = x^3+x+3$ ($j = 5$) have equal counts and isomorphic groups $E(\mathbb
+F_{7^k})$ for every $k\le24$, and non-isomorphic Deligne modules (forms $(1,0,6)$ and $(2,0,3)$). For $y^2 = x^3+4x$ over $\mathbb F_5$ ($\mathrm{End} = \mathbb Z[i]$),
+$E(\mathbb F_5)\cong\mathbb Z/2\times\mathbb Z/4$ while $\mathbb Z^2/(1-M)$ for the companion step is $\mathbb Z/8$, and the two disagree at every $k = 1,\dots,8$; each curve
+matches $\mathbb Z^2/(1-M_T^k)$ for the step of its own form class.
+\end{numerical}
+\begin{proof}[Evidence] \texttt{check\_curve\_bridge.py} (PARI groups $k\le8$); lattice review A-G VALID (PARI on the curves, $k\le24$; Smith forms $k\le6$). The mechanism is
+\cref{cit:latimer-macduffee} and \cref{cit:lenstra-structure}.
+\end{proof}
+\begin{proposition}[RH, the vacuum, and the orientation of the lattice Weil form]
+\label{prop:gkp-vacuum-weil-form-cm-type} \claimstatus{prop:gkp-vacuum-weil-form-cm-type}{sketched}
+(a) $\mathcal C(M)\ne\emptyset$ iff $M$ is semisimple with every eigenvalue of modulus $\sqrt q$, iff some compatible $\Omega'$ has an invariant vacuum; the first equivalence % bare-ok
+involves no $\Omega$. (b) If $\det(x-M)$ is squarefree and every $|\lambda_j|<2\sqrt q$: the similitude forms are $\sum_jt_j\,G|_{V_j}$ with $\mathcal C(M)$ the open orthant; for % bare-ok
+compatible $\Omega'$ non-degenerate on every mode, $W_{\Omega'} = \sum_j\varepsilon_j\,\tfrac12\sqrt{4q-\lambda_j^2}\,G_{\Omega'}|_{V_j}$, so $W_{\Omega'}>0$ iff RH holds and % bare-ok
+$\Omega'$ has type $\Phi_+$; and $\Omega'\mapsto W_{\Omega'}$ is a linear isomorphism from compatible forms onto similitude forms, with inverse $G\mapsto2G(M-V)^{-1}$. (c) Both % bare-ok
+hypotheses are needed: $M' = \begin{psmallmatrix}0&1\\-5&-2\end{psmallmatrix}$ ($M'^T\Omega M' = 5\Omega$, eigenvalues $-1\pm2i$) has a vacuum and $W_\Omega = % bare-ok
+\begin{psmallmatrix}-5&-1\\-1&-1\end{psmallmatrix}<0$; $M_r = B\oplus2B^{-T}$, $B =
+\begin{psmallmatrix}0&2\\1&0\end{psmallmatrix}$, has $M_r^T\Omega M_r = 2\Omega$, eigenvalues $\pm\sqrt2$, a vacuum, and $M_r = V$, so every compatible Weil form % bare-ok
+vanishes.
+\end{proposition}
+\begin{proof}[Proof sketch] (a) Average a positive form over the compact closure of $\langle M/\sqrt q\rangle$. (b) A similitude form pairs $\mu$ only with $\bar\mu$; on $V_j$, % bare-ok
+$(M-V)^2 = -(4q-\lambda_j^2)$ and the commutant of an elliptic block is $\mathbb C$, so $J_{\Omega'}|_{V_j} = \varepsilon_j(M-V)/\sqrt{4q-\lambda_j^2}$; injectivity needs $M-V$ % bare-ok
+invertible, i.e.\ no real eigenvalue. \texttt{cone-bridge.md} Props.~1--3; \texttt{zeta-ingredients.md} Prop.~1 for the inverse; \texttt{check\_cone\_bridge.py} ($42/42$).
+Lattice review E-P1, E-P2, E-P3 VALID, E-X3 MINOR (the counterexample $M_r$ is the reviewer's).
+\end{proof}
+\begin{theorem}[The genus-$g$ bridge: $\Omega_+$ has Weil form half the Rosati form; the principal form is never $\Phi_+$] % bare-ok
+\label{thm:gkp-genus-g-bridge} \claimstatus{thm:gkp-genus-g-bridge}{sketched}
+On $L = \mathbb Z[F,V]$ with cyclic vector $e = 1$, $\bar F = V$, $\mathfrak d = (F-V)h'(F+V)$ and $\mathcal T_L$ the transported Rosati form: (1) $\Omega_+(x,y) = % bare-ok
+\mathrm{Tr}(x\bar y/(V-F))$ is integral, compatible, of type $\Phi_+$, of determinant $\mathrm{disc}(h)^2$, and $W_{\Omega_+} = \tfrac12\mathcal T_L$ exactly; (2) % bare-ok
+$\Omega_{\mathrm{can}}(x,y) = \mathrm{Tr}(x\bar y/\mathfrak d)$ is unimodular with Krein signs $-\mathrm{sgn}\,h'(\lambda_j)$, which alternate, so it is never of type $\Phi_+$ % bare-ok
+for $g\ge2$; (3) $\mathcal T_L = \sum_j\sqrt{4q-\lambda_j^2}\,G_{\Omega_+}|_{V_j} = \sum_j|h'(\lambda_j)|\sqrt{4q-\lambda_j^2}\,G_{\Omega_{\mathrm{can}}}|_{V_j}$, so the two % bare-ok
+vacua are proportional for $g\le2$ and never for $g\ge3$. For $y^2 = x^5+x^3+x^2-2$ over $\mathbb F_5$: $\mathbb Z[F,V] = \mathcal O_K$, $\det\Omega_+ = 441$, the weights against % bare-ok
+$G_{\Omega_{\mathrm{can}}}$ are $10.870$ and $20.171$ with ratio $R_0 = 1.8557$ of \cref{sec:genus-two-bond}, and the Weil form of $\Omega_{\mathrm{can}}$ has signature $(2,2)$; % bare-ok
+for $K_4$ with one negative edge the principal polarisation $P = \tfrac12(1+2A_s-A_s^2)$ has a Weil form of signature $(4,4)$.
+\end{theorem}
+\begin{proof}[Proof sketch] $\overline{(F-V)x} = (V-F)\bar x$ gives $\Omega_+(x,(F-V)x) = \mathrm{Tr}(x\bar x)$; the type from $\varphi(V-F) = -2i\im\varphi(F)$; unimodularity of % bare-ok
+$\Omega_{\mathrm{can}}$ from Euler's trace-dual lemma applied to the monogenic tower $\mathbb Z[F+V][F]$ (from memory; \texttt{citations-2026-10-06.md} row 20, no TeX source); % bare-ok
+(3) is (b) of \cref{prop:gkp-vacuum-weil-form-cm-type} with \cref{prop:gkp-rosati-cone-orbit}. \texttt{cone-bridge.md} Thm.~5, \S\S3--4; \texttt{check\_cone\_bridge.py} (K3--K4,
+R6--R9, exact in $\mathbb Q(\sqrt{21})$). Lattice review E-T5, E-C, E-G VALID (exact Gram matrices, $\det = 1$, $441$, $48069 = \mathrm{nfdisc}$; real-rooted $h$ with $g\ge3$
+never proportional); E-H MINOR (the 5-adic count).
+\end{proof}
+\begin{proposition}[The Rosati form transported by a cyclic vector sweeps the cone]
+\label{prop:gkp-rosati-cone-orbit} \claimstatus{prop:gkp-rosati-cone-orbit}{sketched}
+With $K = \mathbb Q[F]$, a cyclic $e$ and $\Omega'(ae,be) = \mathrm{Tr}_{K\otimes\mathbb R}(\zeta_e\bar ab)$, $\bar\zeta_e = -\zeta_e$: $\mathcal T_L = % bare-ok
+\sum_j|\varphi_j(\zeta_e)|^{-1}G_{\Omega'}|_{V_j}$ and $\zeta_{ue} = u\bar u\,\zeta_e$. As $u$ runs over $(K\otimes\mathbb R)^\times$ the point covers the open cone; among % bare-ok
+integral generators of a free $\mathbb Z[F,V]$-module it moves along the orbit of the real units, infinite for $g\ge2$ (for the $\mathbb F_5$ curve, $\eta = (5+\sqrt{21})/2$
+moves the weights to $0.4735$ and $463.04$). So ``the Rosati form on $L$'' is a point only after a marking, as in \cref{prop:no-rational-symmetric-marking}.
+\end{proposition}
+\begin{proof}[Proof sketch] In the coordinates $x_j = \varphi_j(a)$, $\varphi_j\in\Phi_+$: $\mathcal T = \sum2|x_j|^2$ and $\Omega'(x,Jx) = \sum2|\varphi_j(\zeta_e)||x_j|^2$. % bare-ok
+\texttt{cone-bridge.md} Prop.~4; checks U1--U2, G10. Lattice review E-P4 VALID.
+\end{proof}
+
+\subsection{What the code's overlaps see, and the non-ordinary rung}
+
+\begin{proposition}[The overlaps see the order, not the class; the Weil pairing sees the class]
+\label{prop:gkp-overlaps-see-order} \claimstatus{prop:gkp-overlaps-see-order}{sketched}
+Let $E,E'/\Fq$ be ordinary and isogenous (same $\pi$). The overlap function $D\mapsto q^{h^0(D)}$ of \cref{prop:theta-functional-bond-state} at all levels $\mathbb F_{q^k}$, up
+to a relabelling of places compatible with base change and with the Frobenius action on the places at each level, is the same datum as the $\mathbb Z[\pi]$-module
+$E(\overline{\mathbb F}_q)$; and $E(\overline{\mathbb F}_q)\cong E'(\overline{\mathbb F}_q)$ as $\mathbb Z[\pi]$-modules iff $\mathrm{End}(E) = \mathrm{End}(E')$. For $j = 4,5$
+over $\mathbb F_7$ (equal order $\mathcal O_K$, different classes) no Frobenius-equivariant isomorphism $E_4[8]\to E_5[8]$ respects $e_8^{\pm1}$, and every equivariant
+isomorphism $E_4[3]\to E_5[3]$ inverts $e_3$; at $n = 4$ the pairing does not separate them. Which of the two curves has the principal lattice depends on Deligne's embedding
+$\varepsilon$.
+\end{proposition}
+\begin{proof}[Proof sketch] $h^0$-preservation at all levels forces $\psi-\psi(O)$ additive and $\pi$-equivariant; $T_\ell E$ is proper over $\mathrm{End}(E)\otimes\mathbb % bare-ok
+Z_\ell$ (Tate), proper is invertible for quadratic orders, invertible over a semilocal ring is principal; the $p$-part depends only on $(a,q)$ (\cref{cit:lenstra-structure} for % bare-ok
+the level-one module). \texttt{overlap-data.md} Lemma~1, Thm.~2, Prop.~3; \texttt{check\_overlap\_data.py} ($40/40$). Lattice review F-T2, F-P3, F-O, F-C1, F-C2 VALID; F-L1 MINOR
+(``compatible with base change'' alone is too weak; the Frobenius clause is in the statement above).
+\end{proof}
+\begin{theorem}[Centeleghe--Stix: abelian varieties over $\Fp$ as lattices with a step]
+\label{cit:centeleghe-stix-lattice-pairs} \claimstatus{cit:centeleghe-stix-lattice-pairs}{cited}
+Centeleghe and Stix, \emph{Categories of abelian varieties over finite fields I}: for abelian varieties over $\Fp$ with no Frobenius eigenvalue $\pm\sqrt p$, a functor
+$A\mapsto(T(A),F)$ \texttt{\detokenize{which induces an anti-equivalence between $\AV_p^{\rm com}$ and the category of pairs $(T, F)$ given by a finite, free $\bZ$-module $T$ and
+an endomorphism $F:T\to T$ satisfying the following properties.}} (\texttt{1501.02446:AVFp\_final\_.tex:688-689}), namely \texttt{\detokenize{\item $F\otimes\bQ$ is semisimple,
+and its eigenvalues are non-real Weil $p$--numbers. \item There exists a linear map $V:T\to T$ such that $FV=p$.}} (\texttt{1501.02446:AVFp\_final\_.tex:691-692}). The functor is
+contravariant; a covariant version exists (l.~821).
+\end{theorem}
+\begin{proposition}[No arithmetic $J$ on a supersingular block; the lattice comes from the category, glued]
+\label{prop:gkp-supersingular-no-arithmetic-j} \claimstatus{prop:gkp-supersingular-no-arithmetic-j}{sketched}
+For the $\mathbb Z_2$ fluxes on Petersen (dodecahedral, $q = 2$) and on $K_5$ (pentagon negative, $q = 3$), with $M = \begin{psmallmatrix}0&-1\\q&A_s\end{psmallmatrix}$ on
+$\mathbb Z^{2n}$: $\det(x-M) = (x^2+2)^4(x^4-x^2+4)^3$, resp.\ $(x^2+3)(x^4+x^2+9)^2$; $M$ is semisimple, RH holds, and $J = (M-V)(D\oplus D)$, $D = (4q-A_s^2)^{-1/2}$, is the
+unique positive invariant vacuum. On the supersingular block $\ker(M^2+q)$ the vacuum is $M/\sqrt q$ itself, and Deligne's rule $\{\mathrm{val}_p\varphi(F)>0\}$ selects no CM % bare-ok
+type there ($\mu$ and $-\mu$ have equal valuation). Since $q$ is prime and no eigenvalue is $\pm\sqrt q$, $(\mathbb Z^{2n},M)$ is an object of % bare-ok
+\cref{cit:centeleghe-stix-lattice-pairs}, not a canonical lift; it is not the product of its parts: $[L:L_{\mathrm{ss}}\oplus L_{\mathrm{ord}}] = 5^6$, resp.\ $5^2$. In $R =
+\mathbb Q[A_s]\cap M_n(\mathbb Z)$ no unit has norm $-1$, so the sign on a block cannot be moved by an automorphism of $(L,M)$. For $K_4$ with one negative edge (ordinary) the
+lattice is glued at $2$ with index $2^4$ over the product of its $E_2\times E_4$ and surface blocks.
+\end{proposition}
+\begin{proof}[Proof sketch] $\mu = i\sqrt q$ and $-\mu$ generate the same ideal above the ramified $p$; gluing indices from $\det\Omega|_{L_{\mathrm{ss}}} = % bare-ok
+\det\Omega|_{L_{\mathrm{ord}}}$; units of $R$ satisfy $p(\sqrt5)\equiv p(0)\bmod\sqrt5$. \texttt{no-lift.md} \S\S1--5; \texttt{check\_no\_lift.py} ($50/50$). Arithmetic review % bare-ok
+B1--B12 VALID; the $K_4$ gluing is the reviewer's computation (S1, which found the synthesis's ``$=$ product'' INVALID).
+\end{proof}
+
+\subsection{$\mathbb Z_N$ fluxes: a lattice over $\mathbb Z[\zeta_N]$ and the torsion average}
+
+\begin{proposition}[The $\mathbb Z_N$ lattice state; RH for the Galois orbit; no lock of order $N$]
+\label{prop:gkp-zn-lattice-state} \claimstatus{prop:gkp-zn-lattice-state}{sketched}
+Let $Y$ be $(q+1)$-regular on $n$ vertices and $\hol$ a $\mathbb Z_N$ flux with Hermitian twisted adjacency $A_{\hol}$. Then $M_{\hol} =
+\begin{psmallmatrix}0&-1\\q&A_{\hol}\end{psmallmatrix}$ has $M_{\hol}^\dagger\Omega M_{\hol} = q\Omega$; on $L = \mathbb Z[\zeta_N]^{2n}\cong\mathbb Z^{2n\varphi(N)}$ % bare-ok
+the form $\Omega_{\mathbb Z}(x,y) = \mathrm{Tr}_{\mathbb Q(\zeta_N)/\mathbb Q}(x^\dagger\Omega y)$ is integral and alternating and $(L,M_{\hol},\Omega_{\mathbb Z})$ is a rung; % bare-ok
+$L(u,\bar\hol) = L(u,\hol)$, so for $N\ge3$ the integral characteristic polynomial is $P(x)^2$ (squarefree for $K_4$ at $N = 2$); the Weil form is positive definite iff every
+Galois conjugate $\hol^\sigma$ has spectrum in $(-2\sqrt q,2\sqrt q)$, and then $J = (M-V)((4q-A^2)^{-1/2})^{\oplus2}$ is a vacuum commuting with $\zeta_N$; % bare-ok
+$L^\perp/L\cong(\mathcal O/\mathfrak D)^{2n}$. Multiplication by $\zeta_N$ is complex multiplication: the only forced eigenvalue relation is the doubling.
+\end{proposition}
+\begin{proof}[Proof sketch] $A_{\bar\hol} = A_{\hol}^T$; restriction of scalars; the Weil form is $\mathrm{Tr}(x^\dagger W_{\hol}y)$ with $W_{\hol} =
+\tfrac12\begin{psmallmatrix}2q&A_{\hol}\\A_{\hol}&2\end{psmallmatrix}$. \texttt{zn-flux.md} Prop.~2.1, \S\S2--5; \texttt{check\_zn\_flux.py} ($87/87$, $K_4$, cube, Petersen, $N =
+3,\dots,6$). Arithmetic review D1, D2, D4--D9 VALID; D3 MINOR ($P^2$ needs $N\ge3$), applied.
+\end{proof}
+\begin{theorem}[Heilmann--Lieb, in Marcus--Spielman--Srivastava's statement]
+\label{cit:heilmann-lieb-mss} \claimstatus{cit:heilmann-lieb-mss}{cited}
+Heilmann and Lieb (Comm.\ Math.\ Phys.\ 25, 1972, Thm.~4.3), as restated by Marcus, Spielman and Srivastava: \texttt{\detokenize{For every graph $G$ of maximum degree $d$, all of
+the roots of $\mu_{G} (x)$ have absolute value at most $2 \sqrt{d-1}$.}} (\texttt{1304.4132:IF1.tex:362-363}); real-rootedness at l.~357. Secondary source; Heilmann--Lieb is not
+on arXiv.
+\end{theorem}
+\begin{theorem}[The $N$-torsion average is the matching polynomial for every $N$]
+\label{thm:gkp-torsion-average-matching} \claimstatus{thm:gkp-torsion-average-matching}{sketched}
+For every $N\ge2$ and every finite $(q+1)$-regular $Y$ (parallel edges allowed), the average of $\det(x-A_{\hol})$ over the $N$-torsion $H^1(Y,\mathbb Z/N)$ of the flux torus
+equals the $U(1)$ Haar average, which is the matching polynomial $\mu_Y(x)$; so by \cref{cit:heilmann-lieb-mss} ``RH on average'' holds for every finite-order flux family. It is % bare-ok
+a statement about the family, not about any member; the selection ``class in $N\cdot H_1$'' acts on the walk counts $\Tr B_{\hol}^k$, not on the determinant.
+\end{theorem}
+\begin{proof}[Proof sketch] In a spanning-tree gauge $\det(x-A_{\hol})$ has degree at most one in each cotree variable and its inverse (a parallel pair contributes $m+\sum_{e\ne
+f}z_ez_f^{-1}$), so the average over $\mu_N$ in each variable equals the Haar average for every $N\ge2$; Haar average $=$ matching polynomial is Godsil--Gutman (from memory). % bare-ok
+\texttt{zn-flux.md} \S4; \texttt{check\_zn\_flux.py}. Arithmetic review D7, D8 VALID.
+\end{proof}
+
+\subsection{The CM twins: local data agree, zeros differ, the gate phases carry the difference}
+
+\begin{proposition}[49a1 and 441d1: one lattice, one vacuum, the same local steps up to sign, different zeros]
+\label{prop:gkp-cm-local-not-global} \claimstatus{prop:gkp-cm-local-not-global}{sketched}
+Let $K = \mathbb Q(\sqrt{-7})$ and $\psi$ the Hecke character of 49a1, $\psi' = \psi\cdot(\chi_{-3}\circ N)$ that of its twist 441d1. Every split prime gives a step % bare-ok
+$\psi(\mathfrak p)\in\mathcal O_K$ of norm $p$ on the one lattice $\mathcal O_K$; these commute and share the vacuum $J_K$, so local RH holds at every split prime at once; at % bare-ok
+every split $p\ne3$, $\psi'(\mathfrak p) = \chi_{-3}(p)\psi(\mathfrak p)$, and at inert $p\ne3$ the two agree (over $K$ the step is $-p$; over $\mathbb Q$ the inert Frobenius is % bare-ok
+a quarter turn not acting on $\mathcal O_K$). Yet 49a1 has root number $+1$, rank $0$, $L(1) = 0.966656$, while 441d1 has root number $-1$ and a central zero ($L'(1) =
+1.294559$), and their zero lists differ. The E mode $\begin{psmallmatrix}0&-1\\2&-1\end{psmallmatrix}$ is the reduction of 441d1; 49a1 reduces to its negative.
+\end{proposition}
+\begin{proof}[Proof sketch] $\psi((\alpha)) = \varepsilon(\alpha)\alpha$ with $\varepsilon$ the Legendre symbol mod $\sqrt{-7}$; the twist at inert $p$ is $\chi_{-3}(p^2) = 1$. % bare-ok
+Zeros and the functional equation (to $2^{-135}$) from PARI; the explicit formula with Hecke prime kicks reproduces the zero sums to $15$ digits. \texttt{cm-lift.md} \S\S1--3.4;
+\texttt{check\_cm\_lift.py} ($50/50$). Arithmetic review C1--C9 VALID; S2 MINOR (``every local step'' holds at $p\ne3$ only; at $3$, 441d1 has a charged local state and no step).
+An instance of \cref{obs:prime-by-prime-blind} in which the local datum is a lattice with a vacuum, cf.\ \cref{thm:cm-torus-class-group-bond}.
+\end{proof}
+\begin{proposition}[The root number is the product of the local Fourier-gate phases]
+\label{prop:gkp-gate-phases-root-number} \claimstatus{prop:gkp-gate-phases-root-number}{sketched}
+With self-dual measures and the unitary normalisation, the local root numbers $\varepsilon_v(\tfrac12)$ of $\psi$ and $\psi'$ over the places of $K$ are $-i$ at $\infty$ (the % bare-ok
+Hermite phase of the angular-momentum-one Gaussian), $+i = g_7/\sqrt7$ at $7$ (the normalised Gauss sum; the squeeze $D_7$ supplies only $N_7 = 49$), $1$ resp.\ $-1$ at $3$ (for
+$\psi'$ the qunaught $1_{\mathcal O_3}$ is replaced by the charged state $\eta1_{\mathcal O_3^\times}$; uniformiser-free, $\varepsilon_3(\psi') = \psi_3(3)^{a(\eta)} = -1$), and % bare-ok
+$1$ at every unramified place, where the local state is a Fourier-invariant qunaught; the products $+1$, $-1$ are the root numbers. The phases live only at ramified places and
+$\infty$, so they fix the parity of the central zero and do not see the split-prime signs $\chi_{-3}(p)$.
+\end{proposition}
+\begin{proof}[Proof sketch] Tate's thesis read as Poisson summation for the global gate, each local test state a Fourier eigenvector up to a squeeze. \texttt{gate-phases.md};
+\texttt{check\_gate\_phases.py} ($32/32$; the theta functional equation to $30$--$31$ digits with $W$, failing at order one with $-W$). Arithmetic review I1--I8 VALID (phases
+recomputed from Tate's integral), S3 MINOR (the phase at $7$ is the Gauss sum, not the squeeze). Refines \cref{obs:spt-protection-is-sign-data} for this pair.
+\end{proof}
+
+\subsection{The function-field Dirichlet rung}
+
+\begin{proposition}[Power-residue characters of $\Fq(t)$ carry every item of the ladder; the phases do not enter positivity]
+\label{prop:gkp-ff-dirichlet-rung} \claimstatus{prop:gkp-ff-dirichlet-rung}{sketched}
+Let $q = p$, $N\mid q-1$, $f = \prod_iP_i$ squarefree monic, $\chi = \prod_i(\cdot/P_i)_N$, $\Lambda = L(u,\chi)$ (odd $\chi$) or $L/(1-u)$ (even), of degree $n$, $P_\chi(x) = % bare-ok
+x^n\Lambda(1/x)$. (a) $\Lambda(u) = W(\sqrt qu)^n\bar\Lambda(1/(qu))$ with $|W| = 1$ from the functional equation alone, and $W = \prod_v\varepsilon_v$ with $\varepsilon_P = % bare-ok
+\chi_P(P)G_P/\sqrt Q$ at $P\mid f$ and $\varepsilon_\infty = \bar g/\sqrt q$ for odd $\chi$ ($1$ for even); without the factors $\chi_P(P)$ the product is wrong for $30$ of the
+$50$ two-place moduli at $(q,N) = (5,4)$. (b) $R = \mathbb Z[\zeta_N][F,V]$ is an order with an involution $\sigma$ ($\zeta\mapsto\zeta^{-1}$, $F\mapsto q/F$) and an alternating % bare-ok
+$\zeta$-invariant similitude form $\Omega_+ = \mathrm{Tr}(x\sigma y/(V-F))$, both from the functional equation alone, and $W = (-1)^n\det_{\mathbb Q(\zeta_N)}F/q^{n/2}$. (c) If % bare-ok
+$P_\chi$ is squarefree, the Weil form $\tfrac12\mathrm{Tr}(x\sigma y)$ is positive definite iff $\sigma$ is complex conjugation in every embedding iff RH, and then $J = % bare-ok
+(F-V)(4q-(F+V)^2)^{-1/2}$ is a vacuum and $R$ is isogenous to the $\chi$-part of $H_1$ of $\mathrm{Jac}(y^N = cf)$, $c^{(q-1)/N} = (-1)^{(q-1)\deg f/N}$; if $P_\chi$ has a
+repeated root (at $q = 5$, $N = 4$, $f = t^4+1$: $P_\chi = (x+1+2i)^2$) RH holds but the forms are degenerate and $R$ has no vacuum. (d) For $N = 2$, $W = 1$; the phases of the
+$\chi^j$-parts of a cover multiply to $1$.
+\end{proposition}
+\begin{proof}[Proof sketch] $\{\bar\alpha_i\} = \{q/\alpha_i\}$ gives (a)'s normalisation; Gauss sums by splitting $a = cm$; positivity as a sum of $|x|^2$ over embeddings of the % bare-ok
+reduced algebra $\mathbb Q(\zeta_N)[x]/(P_\chi)$. \texttt{ff-dirichlet.md}; \texttt{check\_ff\_dirichlet.py} ($118/118$; six examples, $q = 3,5,7$, $N = 2,3,4$, $\deg f = 3,4$,
+census of $532$). FF-family review J1--J6, J9--J11, J13 VALID ; J7 MINOR (squarefree $P_\chi$; the Fermat quartic is the reviewer's), J8, J12 MINOR, applied.
+\end{proof}
+
+\subsection{Families: shared vacua}
+
+\begin{proposition}[Commuting similitudes share a vacuum iff each is RH; one-mode steps of different norm never do]
+\label{prop:gkp-commuting-shared-vacuum} \claimstatus{prop:gkp-commuting-shared-vacuum}{sketched}
+For pairwise commuting real $M_1,\dots,M_k$ with $M_i^T\Omega M_i = q_i\Omega$, the following are equivalent: (i) a common invariant vacuum exists; (ii) every $M_i$ is semisimple % bare-ok
+with all eigenvalues of modulus $\sqrt{q_i}$; (iii) $\langle M_i/\sqrt{q_i}\rangle$ is relatively compact. A unique vacuum of one step is the family's. For $M_q =
+\begin{psmallmatrix}0&-1\\q&\lambda\end{psmallmatrix}$, $\lambda^2<4q$, and $q\ne q'$: $[M_q,M_{q'}]$ has diagonal $(q-q',q'-q)$, $M_qV_{q'} =
+\begin{psmallmatrix}q'&0\\q\lambda'-q'\lambda&q\end{psmallmatrix}$ has real eigenvalues $q',q$, so $\langle S_q,S_{q'}\rangle$ is unbounded and no compatible $\Omega$ % bare-ok
+whatever admits a common vacuum.
+\end{proposition}
+\begin{proof}[Proof sketch] (iii)$\Rightarrow$(i): average a compatible positive form over the compact closure and put $J = -A(-A^2)^{-1/2}$; (ii)$\Rightarrow$(iii) by
+simultaneous diagonalisation into a torus. \texttt{family-vacuum.md} \S1; \texttt{check\_family\_vacuum.py} ($39/39$). FF-family review M1, M2 VALID (rebuilt on a three-step
+family with a Krein-indefinite mode).
+\end{proof}
+\begin{numerical}[The LPS Hecke pair: both Weil forms positive, no shared vacuum]
+\label{num:gkp-lps-pair-vacua} \claimstatus{num:gkp-lps-pair-vacua}{numerical}
+For the vertex Hecke pair $A_{13},A_{17}$ of the $(13,17;5)$ complex of \cref{thm:lps-bass-frobenius}: $A_{13}$ and $A_{17}$ commute and every non-trivial joint eigenspace is
+strictly Ramanujan; $M_{13},M_{17}$ are similitudes of one $\Omega$ that do not commute; both Weil forms are positive on the complement of the trivial and sign modes; % bare-ok
+$M_{13}V_{17} =
+\begin{psmallmatrix}17I&0\\13A_{17}-17A_{13}&13I\end{psmallmatrix}$ has eigenvalues $13$, $17$, so no compatible form has a common vacuum; $S_{13}S_{17}$ is hyperbolic on $6$ of the
+$10$ joint eigenspaces and $176$ of the $240$ eigenvalues of $M_{13}M_{17}$ lie off $|\mu| = \sqrt{221}$; the commutant of the pair has dimension $1618$ and no positive element. % bare-ok
+
+\end{numerical}
+\begin{proof}[Evidence] \texttt{family-vacuum.md} \S\S2--3; \texttt{check\_family\_vacuum.py}. FF-family review M3, M4 VALID (own labelling; the page's $\max|J_{13}-J_{17}|$ is
+basis-dependent and omitted).
+\end{proof}
+
+\subsection{$\zeta$: what exists, and what does not}
+
+\begin{proposition}[$\zeta$'s prime steps: adjoints, compatible forms for the whole family, and indefinite Weil forms]
+\label{prop:gkp-zeta-prime-steps} \claimstatus{prop:gkp-zeta-prime-steps}{sketched}
+(a) With $M_a = \delta_a*$ and $\tilde h(x) = x^{-1}\overline{h(1/x)}$, $V_a = \tilde\delta_a* = aM_a^{-1}$ and Weil's form $B(h,k) = \omega(h*\tilde k)$ has $B(M_ah,M_ak) =
+aB(h,k)$ and $B(M_ah,k) = B(h,V_ak)$ for every $a>0$, before RH. (b) For non-degenerate symmetric $G$ with $M^TGM = qG$ and $M-V$ invertible, $\Omega = 2G(M-V)^{-1}$ is % bare-ok
+alternating and compatible with $W_\Omega = G$; conversely every compatible $\Omega$ gives a similitude form. (c) In the diagonal spectral model, forms compatible with two % bare-ok
+multiplicatively independent dilations pair $\zero$ only with $1-\bar\zero$; relative to $\Omega_{\mathrm{FE}}$ of \cref{thm:fe-pairing-jets} the Weil form of $M_p$ has weights % bare-ok
+$\sqrt p\sin(\gamma\log p)$, indefinite for each single $p$, and no compatible $\Omega$ makes $M_2$ and $M_3$ both positive (the signs disagree on $50.1\%$ of the first $3000$ % bare-ok
+zeros); $\Omega_p = 2B(M_p-V_p)^{-1}$ has unbounded weights $1/(\sqrt p\sin(\gamma\log p))$. (d) $\Omega_{\mathrm{FE}}$ on zero spans and $\Omega_D = B(\cdot,D^{-1}\cdot)$ on the % bare-ok
+test algebra are compatible with every step, and $B$ is invariant under every step: the family-invariant point (it is $G_J$ for 04t's $J$ only in the evaluation normalisation,
+\cref{prop:weil-form-not-metric}); with $\Omega_D$, $B$ is the Weil form of the generator $D$, Williamson weights $|\gamma|$. The finite analogue is $F$ against $F^2$: % bare-ok
+$\tfrac12\Omega_+(F^2-V^2)$ is indefinite on the $\mathbb F_5$ curve and on $K_4$. % bare-ok
+\end{proposition}
+\begin{proof}[Proof sketch] (a) $\widehat{\tilde\delta_a}(s) = a\cdot a^{-s}$. (b) $M^T\Omega = \Omega V$ and $V^T\Omega = \Omega M$. (c), (d) $|a^{\zero}|$ and the Krein signs % bare-ok
+$\mathrm{sgn}\sin(\gamma\log p)$; every positive step-invariant diagonal form is the vacuum form of some compatible $\Omega$ (\cref{thm:bond-positive-metric-criterion}(d)). % bare-ok
+\texttt{zeta-ingredients.md} \S\S1--3.1; \texttt{family-vacuum.md} \S3; \texttt{check\_zeta\_ingredients.py} ($32/32$), \texttt{check\_step\_powers.py} ($38/38$). Zeta review G1,
+G2, G6 VALID, G0, G3 MINOR (normalisation; applied in (d)); S2b, S3b INVALID were the synthesis's readings, corrected in (d) and (c).
+\end{proof}
+\begin{numerical}[The window: only the infinitesimal step survives; the prime-step similitude residual]
+\label{num:gkp-window-prime-step} \claimstatus{num:gkp-window-prime-step}{numerical}
+On the CCM window $[0,L]$, $L = \log x$: $G_N(\cdot,D^{-1}\cdot)$ is anti-Hermitian on mean-zero window functions (the Loewner identity); the compressed dilation by $2$ is a
+similitude only on functions supported in $[0,L-\log2]$ (for a smooth bump the defect falls to $3\cdot10^{-12}$ at $x = 13$); on the whole window the best-$c$ residual
+$\|M^\dagger ZM-cZ\|_F/\|Z\|_F$ stays between $0.36$ and $0.48$ for $N = 5,\dots,160$ at $x = 13$ and $x = 100$, with a non-zero cut limit ($0.38$--$0.40$); $Z_N>0$ and $Z_N\mp
+P_N$ have inertia $(n-1,1,0)$ at $N = 5,10,15$, a synthetic off-line quartet adding two negative directions. The normalised Weil form of $e^{tD}$ tends to $\oplus_n\gamma_nI_2$
+as $t\to0$ and is indefinite for every tested $t>\pi/\gamma_{200}$ up to $t = 10$, hence for $t = \log p$, $p<10^5$.
+\end{numerical}
+\begin{proof}[Evidence] \texttt{zeta-ingredients.md} \S\S3.2, 4; \texttt{check\_zeta\_ingredients.py}; \texttt{check\_step\_powers.py}. Zeta review G4, G5 VALID (independent
+50-digit rebuild).  Cf.\ \cref{obs:window-is-compression}.
+\end{proof}
+\begin{observation}[What data the zeros of $\zeta$ need, in the terms of the ladder]
+\label{obs:gkp-missing-datum} \claimstatus{obs:gkp-missing-datum}{sketched}
+For $\zeta$ the steps with exact adjoints, Weil's form $B$ as a similitude form for every step before RH, the forms $\Omega_{\mathrm{FE}}$ and $\Omega_D$ compatible with every % bare-ok
+step, the family-invariant point $B$, the product vacuum and the Fourier gate (all phases $1$) exist. Absent, by the ladder: an integral structure on Connes's cokernel on which
+the steps act as integral similitudes (the code lattice $\mathbb Q^2$ is rigid and divisible, and the idele-class steps do not preserve it), and a reason for $\omega$ to be a
+state on the squeeze $*$-algebra, i.e.\ for $B$ to be positive; in function fields that reason is geometric (ampleness, carried by $H^1$), for CM characters it covers only the
+local factors. Excluded as sources of the datum: counts (\cref{num:gkp-counts-not-lattice}), product-stabiliser overlaps (\cref{prop:gkp-overlaps-see-order}), local lattices,
+steps and vacua (\cref{prop:gkp-cm-local-not-global}), gate phases (\cref{prop:gkp-ff-dirichlet-rung}), the GKP tower and the code lattice. Each finite rung has a reduction
+reading (the local level over $\mathbb Q$) and a global-field reading (zeros on a finite-rank $H^1$); the oscillator reading holds where the step group is discrete.
+\end{observation}
+\begin{proof}[Sketch] \texttt{data-ladder.md} \S\S3--4b (with the zeta review's S1, S2a, S3c corrections); \texttt{lattice-tower.md} \S4 for the tower (unreviewed);
+\texttt{registered-record.md} \S8 for the comparison with \cref{obs:deninger-same-gap}. A reading, not a theorem.
+\end{proof}
