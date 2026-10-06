@@ -175,12 +175,13 @@ Lane E's witness is a one-step statement, and lane G's qualification is what it 
   them all positive (review S3b, checked for ten primes); either way each step's Weil form is definite, and none of this is RH. The family-invariant
   datum is the vacuum, or equivalently the Rosati form $\mathrm{Tr}_{K/\mathbb Q}(x\bar y)$ of the family's algebra, positive because $K$ is a CM field,
   which is RH for every local factor at once and says nothing about the global zeros.
-- $\zeta$ (lane G). On the mode $\{\rho,1-\bar\rho\}$ the step $M_p$ rotates by $\gamma\log p$, so its $\Omega_{\rm FE}$-Weil form is $\sqrt p\sin(\gamma\log p)$
+- $\zeta$ (lane G). On the mode $\{\rho,\bar\rho\}$ (for a critical zero; $\{\rho,1-\bar\rho\}$ in general) the step $M_p$ rotates by $\gamma\log p$, so its $\Omega_{\rm FE}$-Weil form is $\sqrt p\sin(\gamma\log p)$
   times the vacuum form: indefinite for *each single* $p$, and no compatible $\Omega$ makes even the steps at 2 and 3 both positive (their signs
   disagree on 50.1% of the first 3000 zeros; review S3b). This is unlike the Hecke family (each step definite, lane M) and unlike the CM family. The
   understood analogue is the curve's step group: the generator $D$ has a positive $\Omega_{\rm FE}$-Weil form (weights $|\gamma|$), as $F$ has for
   $\Omega_+$, and the prime steps are large powers of it, as $F^2$ is of $F$ (lane E: $\tfrac12\Omega_+(F^2-V^2)$ is indefinite). Weil's form
-  $B=\omega(h*\tilde h)$ is the family-invariant point. So lane G's finding is the family version of lanes A and E, and it sharpens note §12.2 as
+  $B=\omega(h*\tilde h)$ is the family-invariant point ("vacuum point" means invariant under the whole family, in the evaluation normalisation;
+  review G3), which is already registered as 04t `prop:weil-form-not-metric`(a, c) with `obs:deninger-same-gap` (lane O). So lane G's finding is the family version of lanes A and E, and it sharpens note §12.2 as
   follows (review S3c): the involution $h\mapsto\tilde h$ is positive for the Plancherel trace unconditionally; what Weil's criterion asks is that the
   functional $\omega$, the Lefschetz trace on "$H^1$", be a state on the squeeze $*$-algebra (`adelic-gkp.md` §10). **In the finite cases the positivity
   of the Rosati trace form comes from a polarisation (an ample divisor) and is carried by the lattice $H^1$; the CM field supplies that reason only
@@ -224,6 +225,20 @@ C, J), families of complex multiplications in one structure, not the Hecke famil
   $L^2$ (`zeta-ingredients.md`); Chai–Conrad–Oort: CM lifts need no field extension (`no-lift.md`). Settled: the Centeleghe–Stix functor is
   contravariant with a covariant version; Oswal–Shankar need odd $p$ and a simple variety, Bergström–Karemaker–Marseglia a squarefree Weil
   polynomial, so neither covers $K_5$.
+
+## 4d. Against the registered record (lane O, `registered-record.md`)
+
+No registered claim is refuted or weakened (14 candidates tested, among them `thm:toral-frobenius-count`, `thm:lps-bass-frobenius`(c),
+`thm:weil-positivity-finite`, `thm:kraus-weil-criterion`, `prop:weil-form-not-metric`(b)). Already registered: RH $\Leftrightarrow$ invariant vacuum (04q,
+04t `thm:bond-positive-metric-criterion`, 04u, 04w/08c); the one-mode identity of §4b (04u's certificate $G=\tfrac12\Omega_B(F_1-V_1)$); "$B$ is the
+vacuum point" (04t `prop:weil-form-not-metric`(a, c), `obs:deninger-same-gap`); lane E's genus-two numbers (04w); the gate-phase verdict
+(`obs:spt-protection-is-sign-data`); "counts do not fix the lattice" (`cit:latimer-macduffee`, `cit:lenstra-structure`); 08b's trace Weil form on a
+window of length $2g$ is twice the lattice Weil form of $\Omega_+$ (checked to $10^{-15}$). Out of date, not wrong: `obs:deninger-same-gap`'s "a canonical
+$B$ only on the genus-one Hodge ket" (genus two now has principal forms, canonical only up to an infinite unit orbit). New relative to the record:
+integrality as its own item, the orientation condition $\Phi_+$, the genus-$g$ bridge, "overlaps see the order, not the class", the CM
+local-versus-global finding with the gate phases, shared vacua for families, lane G's prime-step analysis with $\Omega_D$. The page proposes 15 claim
+rows and one definition and recommends one new shard (`04za_adelic_gkp_ladder.tex`) rather than extending 04t or 08b, since "Weil form" names the
+trace form in 08b and $\tfrac12\Omega(M-V)$ here. Lanes B and D were not cross-checked; lanes J and M need their review before rows are written.
 
 ## 5. Corrections to earlier pages (recorded here; the pages carry a one-line annotation)
 
