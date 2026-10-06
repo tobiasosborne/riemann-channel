@@ -1,0 +1,32 @@
+441d1 a-invariants [1, -1, 1, -20, 46]  split primes and a_p: {2: -1, 11: -4, 23: -8, 29: -2, 37: -6}
+PASS  P0 the split primes below 40 are 2, 11, 23, 29, 37 (kronecker(-7, p) = 1)
+PASS  P1 p=2: 4p = a_p^2 + 7 y^2 has a solution (a_p = -1)
+PASS  P2 p=2: M = mult by (a_p + y sqrt(-7))/2 has det p and trace a_p; Omega-similitude M^T Omega M = p Omega
+PASS  P1 p=11: 4p = a_p^2 + 7 y^2 has a solution (a_p = -4)
+PASS  P2 p=11: M = mult by (a_p + y sqrt(-7))/2 has det p and trace a_p; Omega-similitude M^T Omega M = p Omega
+PASS  P1 p=23: 4p = a_p^2 + 7 y^2 has a solution (a_p = -8)
+PASS  P2 p=23: M = mult by (a_p + y sqrt(-7))/2 has det p and trace a_p; Omega-similitude M^T Omega M = p Omega
+PASS  P1 p=29: 4p = a_p^2 + 7 y^2 has a solution (a_p = -2)
+PASS  P2 p=29: M = mult by (a_p + y sqrt(-7))/2 has det p and trace a_p; Omega-similitude M^T Omega M = p Omega
+PASS  P1 p=37: 4p = a_p^2 + 7 y^2 has a solution (a_p = -6)
+PASS  P2 p=37: M = mult by (a_p + y sqrt(-7))/2 has det p and trace a_p; Omega-similitude M^T Omega M = p Omega
+PASS  P3 all the steps psi(p) commute with each other (one lattice, one commuting family)
+PASS  P4 the vacuum: I = mult by sqrt(-7) satisfies I^2 = -7 and commutes with every step (J_K = I/sqrt 7)
+
+== groups and pairings, reduction mod p against the lattice O_K with the step psi(p)
+PASS  G p=2 k=1: #E(F_{2^1}) = det(1 - M^k) = 4; group [4] = Smith form of 1 - M^k [4]
+PASS  G p=2 k=2: #E(F_{2^2}) = det(1 - M^k) = 8; group [8] = Smith form of 1 - M^k [8]
+PASS  G p=2 k=3: #E(F_{2^3}) = det(1 - M^k) = 4; group [4] = Smith form of 1 - M^k [4]
+PASS  G p=2 k=4: #E(F_{2^4}) = det(1 - M^k) = 16; group [16] = Smith form of 1 - M^k [16]
+PASS  G p=11 k=1: #E(F_{11^1}) = det(1 - M^k) = 16; group [2, 8] = Smith form of 1 - M^k [2, 8]
+PASS  T p=11 k=1 l=2 N=2: a Frobenius-equivariant isomorphism E(F_{p^k})_l -> O_K/(1-M^k) exists for the step psi and the Tate pairing equals the code commutator c(P~,(M^k-1)Q~) up to Aut(mu_N) (scales [1]; 16 isos)
+PASS  G p=11 k=2: #E(F_{11^2}) = det(1 - M^k) = 128; group [8, 16] = Smith form of 1 - M^k [8, 16]
+PASS  T p=11 k=2 l=2 N=8: a Frobenius-equivariant isomorphism E(F_{p^k})_l -> O_K/(1-M^k) exists for the step psi and the Tate pairing equals the code commutator c(P~,(M^k-1)Q~) up to Aut(mu_N) (scales [1, 3, 5, 7]; 128 isos)
+PASS  G p=23 k=1: #E(F_{23^1}) = det(1 - M^k) = 32; group [2, 16] = Smith form of 1 - M^k [2, 16]
+PASS  T p=23 k=1 l=2 N=2: a Frobenius-equivariant isomorphism E(F_{p^k})_l -> O_K/(1-M^k) exists for the step psi and the Tate pairing equals the code commutator c(P~,(M^k-1)Q~) up to Aut(mu_N) (scales [1]; 32 isos)
+PASS  G p=29 k=1: #E(F_{29^1}) = det(1 - M^k) = 32; group [4, 8] = Smith form of 1 - M^k [4, 8]
+PASS  T p=29 k=1 l=2 N=4: a Frobenius-equivariant isomorphism E(F_{p^k})_l -> O_K/(1-M^k) exists for the step psi and the Tate pairing equals the code commutator c(P~,(M^k-1)Q~) up to Aut(mu_N) (scales [1, 3]; 128 isos)
+PASS  G p=37 k=1: #E(F_{37^1}) = det(1 - M^k) = 44; group [2, 22] = Smith form of 1 - M^k [2, 22]
+PASS  T p=37 k=1 l=2 N=4: a Frobenius-equivariant isomorphism E(F_{p^k})_l -> O_K/(1-M^k) exists for the step psi and the Tate pairing equals the code commutator c(P~,(M^k-1)Q~) up to Aut(mu_N) (scales [1, 3]; 6 isos)
+
+27 of 27 pass   (0.3 s)
