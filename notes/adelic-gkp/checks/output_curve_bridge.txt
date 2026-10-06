@@ -1,0 +1,150 @@
+== D. The Deligne modules of the three examples (companion convention M = [[0,-1],[q,a]])
+PASS  D1 E1, the E mode: M^T Omega M = q Omega, charpoly x^2 - (-1)x + 2, ordinary (a != 0 mod q), a^2 < 4q  M = [[0, -1], [2, -1]]
+PASS  D2 E1, the E mode: Weil form of the companion step is the principal-class form q x^2 + a xy + y^2  disc -7; all lattice classes (reduced forms) = [(1, 1, 2)]
+PASS  D3 E1, the E mode: form (1, 1, 2) -> integer step [[-1, -2], [1, 0]], a symplectic similitude with Weil form = that form
+PASS  D1 E2, the Pauli six: M^T Omega M = q Omega, charpoly x^2 - (-2)x + 5, ordinary (a != 0 mod q), a^2 < 4q  M = [[0, -1], [5, -2]]
+PASS  D2 E2, the Pauli six: Weil form of the companion step is the principal-class form q x^2 + a xy + y^2  disc -16; all lattice classes (reduced forms) = [(1, 0, 4), (2, 0, 2)]
+PASS  D3 E2, the Pauli six: form (1, 0, 4) -> integer step [[-1, -4], [1, -1]], a symplectic similitude with Weil form = that form
+PASS  D3 E2, the Pauli six: form (2, 0, 2) -> integer step [[-1, -2], [2, -1]], a symplectic similitude with Weil form = that form
+PASS  D1 E3, class number two: M^T Omega M = q Omega, charpoly x^2 - (2)x + 7, ordinary (a != 0 mod q), a^2 < 4q  M = [[0, -1], [7, 2]]
+PASS  D2 E3, class number two: Weil form of the companion step is the principal-class form q x^2 + a xy + y^2  disc -24; all lattice classes (reduced forms) = [(1, 0, 6), (2, 0, 3)]
+PASS  D3 E3, class number two: form (1, 0, 6) -> integer step [[1, -6], [1, 1]], a symplectic similitude with Weil form = that form
+PASS  D3 E3, class number two: form (2, 0, 3) -> integer step [[1, -3], [2, 1]], a symplectic similitude with Weil form = that form
+
+== G. Group of points versus Z^2/(1 - M^k) Z^2, k = 1..8, every Weierstrass equation in the isogeny class
+   E1, the E mode: 4 Weierstrass equations with trace -1; j-invariants [1]
+     lattice (1, 1, 2): Z^2/(1-M^k)Z^2 = Z4, Z8, Z4, Z16, Z44, Z56, Z116, Z3xZ96
+PASS  G1 E1, the E mode: #E(F_q^k) = det(1 - M^k) for every equation, every lattice class, k = 1..8
+PASS  G2 E1, the E mode, j = 1: all equations with this j have the same group sequence
+     j = 1: E(F_q^k) = Z4, Z8, Z4, Z16, Z44, Z56, Z116, Z3xZ96   matches lattice classes [(1, 1, 2)]
+       first k where the lattice class fails: {(1, 1, 2): None}
+PASS  G3 E1, the E mode: every curve's group sequence equals Z^2/(1-M^k) for SOME lattice class of the isogeny class
+PASS  G4 E1, the E mode: the companion lattice alone matches every curve = True (expected)
+   E2, the Pauli six: 3 Weierstrass equations with trace -2; j-invariants [1, 3]
+     lattice (1, 0, 4): Z^2/(1-M^k)Z^2 = Z8, Z2xZ16, Z104, Z4xZ160, Z3208, Z2xZ7696, Z78184, Z24xZ16320
+     lattice (2, 0, 2): Z^2/(1-M^k)Z^2 = Z2xZ4, Z4xZ8, Z2xZ52, Z8xZ80, Z2xZ1604, Z4xZ3848, Z2xZ39092, Z48xZ8160
+PASS  G1 E2, the Pauli six: #E(F_q^k) = det(1 - M^k) for every equation, every lattice class, k = 1..8
+PASS  G2 E2, the Pauli six, j = 1: all equations with this j have the same group sequence
+     j = 1: E(F_q^k) = Z8, Z2xZ16, Z104, Z4xZ160, Z3208, Z2xZ7696, Z78184, Z24xZ16320   matches lattice classes [(1, 0, 4)]
+       first k where the lattice class fails: {(1, 0, 4): None, (2, 0, 2): 1}
+PASS  G2 E2, the Pauli six, j = 3: all equations with this j have the same group sequence
+     j = 3: E(F_q^k) = Z2xZ4, Z4xZ8, Z2xZ52, Z8xZ80, Z2xZ1604, Z4xZ3848, Z2xZ39092, Z48xZ8160   matches lattice classes [(2, 0, 2)]
+       first k where the lattice class fails: {(1, 0, 4): 1, (2, 0, 2): None}
+PASS  G3 E2, the Pauli six: every curve's group sequence equals Z^2/(1-M^k) for SOME lattice class of the isogeny class
+PASS  G4 E2, the Pauli six: the companion lattice alone matches every curve = False (expected)
+   E3, class number two: 6 Weierstrass equations with trace 2; j-invariants [4, 5]
+     lattice (1, 0, 6): Z^2/(1-M^k)Z^2 = Z6, Z2xZ30, Z3xZ126, Z20xZ120, Z16566, Z6xZ19530, Z824298, Z40xZ144240
+     lattice (2, 0, 3): Z^2/(1-M^k)Z^2 = Z6, Z2xZ30, Z3xZ126, Z20xZ120, Z16566, Z6xZ19530, Z824298, Z40xZ144240
+PASS  G1 E3, class number two: #E(F_q^k) = det(1 - M^k) for every equation, every lattice class, k = 1..8
+PASS  G2 E3, class number two, j = 4: all equations with this j have the same group sequence
+     j = 4: E(F_q^k) = Z6, Z2xZ30, Z3xZ126, Z20xZ120, Z16566, Z6xZ19530, Z824298, Z40xZ144240   matches lattice classes [(1, 0, 6), (2, 0, 3)]
+       first k where the lattice class fails: {(1, 0, 6): None, (2, 0, 3): None}
+PASS  G2 E3, class number two, j = 5: all equations with this j have the same group sequence
+     j = 5: E(F_q^k) = Z6, Z2xZ30, Z3xZ126, Z20xZ120, Z16566, Z6xZ19530, Z824298, Z40xZ144240   matches lattice classes [(1, 0, 6), (2, 0, 3)]
+       first k where the lattice class fails: {(1, 0, 6): None, (2, 0, 3): None}
+PASS  G3 E3, class number two: every curve's group sequence equals Z^2/(1-M^k) for SOME lattice class of the isogeny class
+PASS  G4 E3, class number two: the companion lattice alone matches every curve = True (expected)
+PASS  G5 E1: groups agree with the table of lattice-tower.md section 2 (Z4, Z8, Z4, Z16, Z44, Z56, Z116, Z3 x Z96)
+PASS  G6 E2: j = 287496 mod 5 = 1 curve has E(F_5) = Z8 (companion lattice Z[2i]); j = 1728 mod 5 = 3 curve has Z2 x Z4 (lattice Z[i])
+PASS  G7 E3: the two lattice classes of disc -24 have isomorphic groups Z^2/(1-M^k) for k = 1..24 (invertible ideals)
+PASS  G8 E3: the (2,0,3) step is not GL2(Z)-conjugate to the companion: no cyclic vector (|det(v, Mv)| = 2u^2+3v^2 >= 2)  min |det(v, M v)| on a box = 2
+
+== A. The adelic side on E1: y^2 + xy = x^3 + 1 over F_2; overlaps <Theta_K, 1_D> = #L(D) by brute force
+PASS  A1 E1: #E(F_2) = 4, #E(F_4) = 8, so 3 affine rational points and 2 places of degree 2  rational affine points [(0, 1), (1, 0), (1, 1)]
+   144 divisors D = nO - E (n = -1..6, E a reduced effective divisor of affine places of degree <= 2)
+     D = -1O - (0):  deg -1   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 0O - (0):  deg  0   #L(D) =   2 = 2^1   RR+Abel predicts h0 = 1
+     D = 0O - (P0):  deg -1   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 0O - (P1):  deg -1   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 0O - (P2):  deg -1   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 1O - (0):  deg  1   #L(D) =   2 = 2^1   RR+Abel predicts h0 = 1
+     D = 1O - (P0):  deg  0   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 1O - (P1):  deg  0   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 1O - (P2):  deg  0   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 2O - (Q0):  deg  0   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 2O - (Q1):  deg  0   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 2O - (P0 + P1):  deg  0   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 2O - (P0 + P2):  deg  0   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 2O - (P1 + P2):  deg  0   #L(D) =   2 = 2^1   RR+Abel predicts h0 = 1
+     D = 3O - (P0 + Q0):  deg  0   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 3O - (P0 + Q1):  deg  0   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 3O - (P1 + Q0):  deg  0   #L(D) =   2 = 2^1   RR+Abel predicts h0 = 1
+     D = 3O - (P1 + Q1):  deg  0   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 3O - (P2 + Q0):  deg  0   #L(D) =   1 = 2^0   RR+Abel predicts h0 = 0
+     D = 3O - (P2 + Q1):  deg  0   #L(D) =   2 = 2^1   RR+Abel predicts h0 = 1
+     D = 4O - (0):  deg  4   #L(D) =  16 = 2^4   RR+Abel predicts h0 = 4
+     D = 4O - (P0):  deg  3   #L(D) =   8 = 2^3   RR+Abel predicts h0 = 3
+     D = 4O - (P1):  deg  3   #L(D) =   8 = 2^3   RR+Abel predicts h0 = 3
+     D = 4O - (P2):  deg  3   #L(D) =   8 = 2^3   RR+Abel predicts h0 = 3
+     D = 4O - (Q0):  deg  2   #L(D) =   4 = 2^2   RR+Abel predicts h0 = 2
+     D = 4O - (Q1):  deg  2   #L(D) =   4 = 2^2   RR+Abel predicts h0 = 2
+     D = 4O - (P0 + P1):  deg  2   #L(D) =   4 = 2^2   RR+Abel predicts h0 = 2
+     D = 4O - (P0 + P2):  deg  2   #L(D) =   4 = 2^2   RR+Abel predicts h0 = 2
+     D = 4O - (P0 + Q0):  deg  1   #L(D) =   2 = 2^1   RR+Abel predicts h0 = 1
+     D = 4O - (P0 + Q1):  deg  1   #L(D) =   2 = 2^1   RR+Abel predicts h0 = 1
+     D = 4O - (P1 + P2):  deg  2   #L(D) =   4 = 2^2   RR+Abel predicts h0 = 2
+     D = 4O - (P1 + Q0):  deg  1   #L(D) =   2 = 2^1   RR+Abel predicts h0 = 1
+     D = 4O - (P1 + Q1):  deg  1   #L(D) =   2 = 2^1   RR+Abel predicts h0 = 1
+     D = 4O - (P2 + Q0):  deg  1   #L(D) =   2 = 2^1   RR+Abel predicts h0 = 1
+     D = 4O - (P2 + Q1):  deg  1   #L(D) =   2 = 2^1   RR+Abel predicts h0 = 1
+     D = 4O - (Q0 + Q1):  deg  0   #L(D) =   2 = 2^1   RR+Abel predicts h0 = 1
+PASS  A2 E1: <Theta_K, 1_D> = #L(D) is a power of q and h^0(D) agrees with Riemann-Roch + Abel-Jacobi on every divisor  144 divisors, 0 disagreements
+PASS  A3 E1: h^0(nO) = 1, 1, 2, 3, 4, 5, 6 for n = 0..6 and 0 for n = -1
+PASS  A4 E1: h^0 is a function of the class in Pic (degree, point of E(F_2)) on all divisors tested  29 classes met
+PASS  A5 E1: in degree 0, h^0 = 1 on the trivial class and 0 on the three others (Pic^0 = E(F_2), order 4)
+PASS  A6 E1: A(n) from the overlap table: A(-1) = 0, A(0) = (q-1)/h = 1/4, A(n) = q^n - 1 for n = 1..5  {-1: '0', 0: '1/4', 1: '1', 2: '3', 3: '7', 4: '15', 5: '31'}
+PASS  A7 E1: Z(T) = sum a_n T^n from the overlaps gives P(T) = Z (1-T)(1-qT) = 1 + T + 2T^2 (to order T^5)  a_n = [1, 4, 12, 28, 60, 124]
+PASS  A8 E1: a_n from the overlaps equals the number of effective divisors counted from places (Euler product)  places by degree {1: 4, 2: 2, 3: 0, 4: 2, 5: 8}; a_n = [1, 4, 12, 28, 60, 124]
+
+== R. The Riemann-Roch cokernel of analytic section 13 (Theorem 12), exactly, cutoff N = 5
+PASS  R1 E1, the E mode: Ef = sum_j c_j q^(m/2) A(j-m) vanishes outside [-N, N] for admissible c (image in S_N)
+PASS  R2 E1, the E mode: the cutoff cokernel has dimension 2g = 2
+PASS  R3 E1, the E mode: every cokernel vector satisfies Y_j - a Y_(j-1) + q Y_(j-2) = 0 on the whole window
+PASS  R4 E1, the E mode: transfer matrix on (Y_j, Y_(j-1)) is W = [[a, -q], [1, 0]]  W = [[-1, -2], [1, 0]]
+PASS  R5 E1, the E mode: Casoratian Q and the antisymmetric Casoratian (discrete Wronskian) both scale by q per step
+PASS  R1 E2, the Pauli six: Ef = sum_j c_j q^(m/2) A(j-m) vanishes outside [-N, N] for admissible c (image in S_N)
+PASS  R2 E2, the Pauli six: the cutoff cokernel has dimension 2g = 2
+PASS  R3 E2, the Pauli six: every cokernel vector satisfies Y_j - a Y_(j-1) + q Y_(j-2) = 0 on the whole window
+PASS  R4 E2, the Pauli six: transfer matrix on (Y_j, Y_(j-1)) is W = [[a, -q], [1, 0]]  W = [[-2, -5], [1, 0]]
+PASS  R5 E2, the Pauli six: Casoratian Q and the antisymmetric Casoratian (discrete Wronskian) both scale by q per step
+
+== B. The bridge: cokernel phase space -> R[F] -> the Deligne module
+PASS  B1 E1, the E mode: S = [[0,-1],[1,0]] intertwines the window shift with the step: S W S^-1 = M
+PASS  B2 E1, the E mode: S pulls back Omega to the antisymmetric Casoratian (S^T Omega S = Omega) and the Weil form to Q
+PASS  B3 E1, the E mode: Rosati Gram on (1, F) is [[2, a], [a, 2q]] (numerically, from the Frobenius eigenvalues)  max |imag| = 0.0e+00
+PASS  B4 E1, the E mode: (Y_j, Y_(j-1)) -> Y_j - Y_(j-1) F carries Q to (1/2) Rosati and W to multiplication by V
+PASS  B5 E1, the E mode: S = psi o (Rosati involution) o (cokernel -> R[F]); psi carries F to M and (1/2) Rosati to the Weil form
+PASS  B6 E1, the E mode: J = (2M - a)/sqrt(4q - a^2) has J^2 = -1, JM = MJ, and Omega(., J .) = 2 G / sqrt(4q - a^2) > 0
+PASS  B7 E1, the E mode: vacuum from the normal form of M/sqrt(q) agrees with the closed form
+PASS  B8 E1, the E mode: BRIDGE  Omega(Sy, J Sy) = (2/sqrt(4q-a^2)) Q(y) = Rosati(Cy)/sqrt(4q-a^2) on the cokernel phase space  scalar sqrt(4q - a^2) = sqrt(7)
+PASS  B9 E1, the E mode: the symmetric forms B with M^T B M = q B form a line (so any two such positive forms are proportional)
+PASS  B1 E2, the Pauli six: S = [[0,-1],[1,0]] intertwines the window shift with the step: S W S^-1 = M
+PASS  B2 E2, the Pauli six: S pulls back Omega to the antisymmetric Casoratian (S^T Omega S = Omega) and the Weil form to Q
+PASS  B3 E2, the Pauli six: Rosati Gram on (1, F) is [[2, a], [a, 2q]] (numerically, from the Frobenius eigenvalues)  max |imag| = 0.0e+00
+PASS  B4 E2, the Pauli six: (Y_j, Y_(j-1)) -> Y_j - Y_(j-1) F carries Q to (1/2) Rosati and W to multiplication by V
+PASS  B5 E2, the Pauli six: S = psi o (Rosati involution) o (cokernel -> R[F]); psi carries F to M and (1/2) Rosati to the Weil form
+PASS  B6 E2, the Pauli six: J = (2M - a)/sqrt(4q - a^2) has J^2 = -1, JM = MJ, and Omega(., J .) = 2 G / sqrt(4q - a^2) > 0
+PASS  B7 E2, the Pauli six: vacuum from the normal form of M/sqrt(q) agrees with the closed form
+PASS  B8 E2, the Pauli six: BRIDGE  Omega(Sy, J Sy) = (2/sqrt(4q-a^2)) Q(y) = Rosati(Cy)/sqrt(4q-a^2) on the cokernel phase space  scalar sqrt(4q - a^2) = sqrt(16)
+PASS  B9 E2, the Pauli six: the symmetric forms B with M^T B M = q B form a line (so any two such positive forms are proportional)
+PASS  B10 E2, the Pauli six: lattice class (2, 0, 2): its vacuum form pulled back to the companion lattice is a positive multiple  factor 2
+PASS  B1 E3, class number two: S = [[0,-1],[1,0]] intertwines the window shift with the step: S W S^-1 = M
+PASS  B2 E3, class number two: S pulls back Omega to the antisymmetric Casoratian (S^T Omega S = Omega) and the Weil form to Q
+PASS  B3 E3, class number two: Rosati Gram on (1, F) is [[2, a], [a, 2q]] (numerically, from the Frobenius eigenvalues)  max |imag| = 0.0e+00
+PASS  B4 E3, class number two: (Y_j, Y_(j-1)) -> Y_j - Y_(j-1) F carries Q to (1/2) Rosati and W to multiplication by V
+PASS  B5 E3, class number two: S = psi o (Rosati involution) o (cokernel -> R[F]); psi carries F to M and (1/2) Rosati to the Weil form
+PASS  B6 E3, class number two: J = (2M - a)/sqrt(4q - a^2) has J^2 = -1, JM = MJ, and Omega(., J .) = 2 G / sqrt(4q - a^2) > 0
+PASS  B7 E3, class number two: vacuum from the normal form of M/sqrt(q) agrees with the closed form
+PASS  B8 E3, class number two: BRIDGE  Omega(Sy, J Sy) = (2/sqrt(4q-a^2)) Q(y) = Rosati(Cy)/sqrt(4q-a^2) on the cokernel phase space  scalar sqrt(4q - a^2) = sqrt(24)
+PASS  B9 E3, class number two: the symmetric forms B with M^T B M = q B form a line (so any two such positive forms are proportional)
+PASS  B10 E3, class number two: lattice class (2, 0, 3): its vacuum form pulled back to the companion lattice is a positive multiple  factor 2
+
+== H. The Howe sign: which choice of prime above p makes Omega (rather than -Omega) a polarisation
+PASS  H1 E1, the E mode: two primes above 2; at each, exactly one of F, V is a non-unit; Omega for one, -Omega for the other  valuations (F, V) = [(1, 0), (0, 1)], signs = [1, -1]
+PASS  H2 E1, the E mode: Omega_eps = s Omega, J_eps = s J (s = +-1): Omega_eps(., iota_eps .) > 0 and Omega_eps(., J_eps .) = Omega(., J .)
+PASS  H1 E2, the Pauli six: two primes above 5; at each, exactly one of F, V is a non-unit; Omega for one, -Omega for the other  valuations (F, V) = [(1, 0), (0, 1)], signs = [1, -1]
+PASS  H2 E2, the Pauli six: Omega_eps = s Omega, J_eps = s J (s = +-1): Omega_eps(., iota_eps .) > 0 and Omega_eps(., J_eps .) = Omega(., J .)
+PASS  H1 E3, class number two: two primes above 7; at each, exactly one of F, V is a non-unit; Omega for one, -Omega for the other  valuations (F, V) = [(0, 1), (1, 0)], signs = [-1, 1]
+PASS  H2 E3, class number two: Omega_eps = s Omega, J_eps = s J (s = +-1): Omega_eps(., iota_eps .) > 0 and Omega_eps(., J_eps .) = Omega(., J .)
+
+82 of 82 pass
