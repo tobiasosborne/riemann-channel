@@ -1,0 +1,69 @@
+== A  which curve: the E mode, 49a1 and its twists (PARI)
+PASS  A1 49a1: j = -3375 (CM by Q(sqrt(-7))), conductor 49, root number +1, analytic rank 0  L(E,1) = 0.966655852808406
+PASS  A2 the E mode y^2 + xy = x^3 + 1 over F_2: 4 points, so a_2 = 3 - 4 = -1 and the Frobenius polynomial is x^2 + x + 2
+PASS  A2 the notebook's step M = [[0,-1],[2,-1]] has trace -1, det 2 (same polynomial)
+PASS  A3 49a1 mod 2 is y^2 + xy = x^3 + x^2 + 1 with a_2 = +1: the quadratic twist over F_2 of the E mode (step -M)  [1, 1, 0, 0, 1]
+PASS  A4 the twist of 49a1 by -3 (equivalently by 21) is 441d1  twist by 21 = 441d3 (same isogeny class)
+PASS  A4 441d1: j = -3375, conductor 441 = 3^2 7^2, root number -1, analytic rank 1  |L(1)| = 0.0, L'(1) = 1.2945586180599
+PASS  A4 441d1 has good reduction at 2 with j = 1, a_2 = -1, 4 points: over F_2 the only ordinary curve with j = 1 and a_2 = -1 is the E mode  [1, -1, 4]
+PASS  A4 the twist by 5 also has a_2 = -1 but conductor 1225 > 441
+PASS  A4 the twist by the CM discriminant -7 has the same a_p (p < 1000)  twist = 49a3
+PASS  A5 L(49a1) = L(psi): a_p = (x|7) x from 4p = x^2 + 7y^2 (split), 0 (inert, p = 7), all p < 10^4  1229 primes
+PASS  A5 L(441d1) = L(psi chi_{-3}oN): a_p = chi_{-3}(p)(x|7) x, all p < 10^4  1229 primes
+      split primes p <= 60: psi(p) = generator of the prime above p that is a square mod sqrt(-7)
+      p =  2: psi = (+1 +1*sqrt(-7))/2 = +0 +1w,  N = 2, a_p(49a1) = +1, a_p(441d1) = -1, arg/pi = +0.3850
+      p = 11: psi = (+4 +2*sqrt(-7))/2 = +1 +2w,  N = 11, a_p(49a1) = +4, a_p(441d1) = -4, arg/pi = +0.2940
+      p = 23: psi = (+8 +2*sqrt(-7))/2 = +3 +2w,  N = 23, a_p(49a1) = +8, a_p(441d1) = -8, arg/pi = +0.1860
+      p = 29: psi = (+2 +4*sqrt(-7))/2 = -1 +4w,  N = 29, a_p(49a1) = +2, a_p(441d1) = -2, arg/pi = +0.4405
+      p = 37: psi = (-6 -4*sqrt(-7))/2 = -1 -4w,  N = 37, a_p(49a1) = -6, a_p(441d1) = -6, arg/pi = -0.6642
+      p = 43: psi = (-12 -2*sqrt(-7))/2 = -5 -2w,  N = 43, a_p(49a1) = -12, a_p(441d1) = -12, arg/pi = -0.8678
+      p = 53: psi = (-10 -4*sqrt(-7))/2 = -3 -4w,  N = 53, a_p(49a1) = -10, a_p(441d1) = +10, arg/pi = -0.7410
+PASS  A6 each psi(p) has norm p, trace a_p, and is a square mod sqrt(-7)  7 split primes <= 60: 2, 11, 23, 29, 37, 43, 53
+PASS  A6 eps(-1) = (-1|7) = -1, so eps(alpha) alpha = eps(-alpha)(-alpha): psi is well defined on ideals
+PASS  A7 theta series (1/2) sum_{alpha in O_K} eps(alpha) alpha q^{N(alpha)} = q-expansion of 49a1 (n <= 3000)
+PASS  A7 without the 7-adic charge the overlap vanishes identically: sum_alpha alpha q^{N(alpha)} = 0  the angular-momentum-1 state is odd under the global unit -1
+== B  one lattice, one vacuum: the split steps on O_K
+PASS  B1 J_K (multiplication by i on C = K (x) R) is a complex structure on the lattice phase space: J^2 = -1, J^T Omega J = Omega
+PASS  B1 J_K is a vacuum: the metric G = Omega J_K is symmetric positive definite (orientation: Omega(1, w) = +1)  eigenvalues of Omega J_K: [0.5994 1.6684]
+PASS  B2 each split step mult(psi(p)) is an integer matrix with M^T Omega M = p Omega
+PASS  B2 every split step commutes with the same J_K, and M/sqrt(p) is an isometry of the same vacuum metric  local RH at every split p from one vacuum
+PASS  B2 the split steps commute pairwise (O_K is commutative)
+PASS  B3 the notebook's E mode M is GL_2(Z)-conjugate to multiplication by mu = (-1+sqrt(-7))/2 on O_K  P = [[0, -1], [1, 0]], P mu P^-1 = M
+PASS  B3 for 49a1, psi(p_2) = (1 + sqrt(-7))/2 = -mu-bar: the step at 2 is -M up to conjugation (a half turn of the E mode)
+PASS  B3 for 441d1, psi'(p_2) = -(1 + sqrt(-7))/2 = mu-bar: the step at 2 has the E-mode polynomial x^2 + x + 2
+PASS  B4 inert p <= 60: no alpha in O_K with trace 0 and norm p, so the Q-Frobenius x^2 + p has no K-linear step on O_K  inert: 3, 5, 13, 17, 19, 31, 41, 47, 59
+PASS  B4 inert p: psi((p)) = (p|7) p = -p, the K-step is -p (normalised: the half turn -1, which commutes with J_K)
+PASS  B4 inert p: the step [[0,-1],[p,0]] normalised is a quarter turn (S^2 = -1); its own vacuum is S, not J_K
+PASS  B4 inert p and p = 7 have a_p = 0 for 49a1 (p < 10^4); p = 3 is bad for 441d1
+PASS  B5 the ramified prime: sqrt(-7) = 2w - 1 is an integral step of norm 7 commuting with J_K (a quarter turn times sqrt 7)
+PASS  B5 ... but eps(sqrt(-7)) = 0: psi is ramified at (sqrt(-7)) and the Euler factor at 7 is 1 (a_7 = 0)
+== C  functional equation; Hecke/Tate: L is the Mellin transform of the theta overlap
+PASS  C1 lfuncheckfeq: functional equation holds to 2^-100 or better (49a1, 441d1)  -139 and -135 bits
+PASS  C1 Lambda(s) = eps Lambda(2 - s) at s = 0.3 + 5i (49a1, eps = +1) and 1.7 - 3i (441d1, eps = -1)  relative errors 6.3e-39, 0.0
+PASS  C2 theta overlap: f(i/(49y)) = +49 y^2 f(iy) (the Fourier/S-gate symmetry of code + charged vacuum), y = 0.08, 0.12  relative errors 1.8e-21
+PASS  C3 Mellin transform of the theta overlap = Gamma_C(s) N^(s/2) L(E,s) at s = 1.0  2.1538728014044 vs PARI 2.1538728014044
+PASS  C3 Mellin transform of the theta overlap = Gamma_C(s) N^(s/2) L(E,s) at s = (1.3 + 2.0j)  (0.6244365849683 + 0.25919315497732j) vs PARI (0.6244365849683 + 0.25919315497732j)
+      first 20 zeros 1 + i*gamma of L(49a1, s) (motivic s; 1/2 + i*gamma in the analytic normalisation):
+      3.457740, 5.086735, 6.478037, 8.498120, 9.489525, 11.308503, 12.279433, 13.558291, 14.367890, 15.256497, 16.914148, 17.589538, 18.933308, 19.892611, 21.085745, 22.036876, 22.847443, 23.469161, 24.705418, 25.492086
+      first 20 nonzero zeros of L(441d1, s), plus a simple zero at gamma = 0:
+      1.990687, 3.694984, 4.879149, 5.859345, 7.315046, 8.063481, 8.772289, 10.002161, 10.225577, 11.415262, 12.407372, 13.415103, 13.815652, 14.951187, 15.858625, 16.507437, 17.434017, 18.097020, 18.544250, 19.432609
+PASS  C4 |L(1 + i gamma)| < 1e-25 at the first 20 zeros of each curve (vs >= 1e-3 at gamma + 0.1 for 49a1)  max 2.7e-37; min off-zero 2.1e-01
+PASS  C4 zero counts below T = 70 agree with N(T) ~ (T/pi) log(sqrt(N) T / (2 pi e)) to within 2  49a1: 75 zeros, 441d1: 100 (incl. gamma = 0)
+PASS  C4 441d1 has a zero at the centre (gamma = 0), as root number -1 forces
+== D  explicit formula in echo form: zeros side = place-by-place side (no zero-mode term)
+PASS  D0 each split prime p < 2*10^6 has exactly one representation 4p = x^2 + 7y^2 with x, y > 0 (h_K = 1, units +-1)  74434 split primes
+PASS  D1 49a1: packet E0 = 12, tau = 0.25, 6 values of t: zero sum = prime kicks + real place  max |diff| = 1.8e-15, C(0) = 2.29132074 (primes +0.019980, real place +2.271341), 15.1 digits
+PASS  D1 49a1: packet E0 = 20, tau = 1, 2 values of t: zero sum = prime kicks + real place  max |diff| = 5.8e-15, C(0) = 10.27829387 (primes -0.722790, real place +11.001083), 15.2 digits
+PASS  D1 49a1: packet E0 = 2, tau = 0.6, 2 values of t: zero sum = prime kicks + real place  max |diff| = 2.2e-16, C(0) = 1.12751934 (primes -0.414269, real place +1.541789), 15.7 digits
+PASS  D1 441d1: packet E0 = 10, tau = 0.25, 4 values of t: zero sum = prime kicks + real place  max |diff| = 9.5e-16, C(0) = 3.10545345 (primes +0.035886, real place +3.069567), 15.5 digits
+PASS  D1 441d1: packet E0 = 1, tau = 0.6, 2 values of t: zero sum = prime kicks + real place  max |diff| = 1.3e-15, C(0) = 3.43404428 (primes +0.453047, real place +2.980998), 15.4 digits
+== E  windowed Weil form (Toeplitz Gram matrix of the echo) from the place side; an off-line pair
+PASS  E1 49a1: the 14 x 14 Gram matrix [C_h(t_j - t_k)] from the prime side is Hermitian and PSD (E0 = 20, tau = 0.25, step 0.35)  eigenvalues in [1.01e-01, 7.216]
+PASS  E1 49a1: echo bound |C_h(t)| <= C_h(0) on [0, 6]  max |C(t)|/C(0) for t >= 0.5: 0.5397
+PASS  E1 441d1: same Gram matrix (E0 = 10) is PSD  eigenvalues in [1.06e-01, 11.229]
+PASS  E2 49a1 with gamma = 19.8926, 21.0857 replaced by 20.4892 +- 0.5i, Weil form: Gram matrix has a negative eigenvalue  min eigenvalue -6.1883 (true list: 1.0e-01)
+PASS  E2 same pair, Lorentzian (width eta) form: Gram matrix PSD  min eigenvalue 1.02e-01
+PASS  E2 same pair, Weil form: the echo exceeds its initial value  max |C(t)|/C(0) on [0,6] = 2.70
+PASS  E2 one off-line pair {rho, 1 - rho-bar} contributes 2 Re(z w-bar): a block of signature (1,1)
+
+50 of 50 pass
