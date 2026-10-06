@@ -87,7 +87,11 @@ Lane A's order for an ordinary elliptic curve (`curve-bridge.md` §6), extended 
 
 Each is *checked* on its page; together they say where not to look.
 
-- **The tower is blind** (`lattice-tower.md` §4): levels, codes, logical Cliffords and Lefschetz exist with or without RH.
+- **The tower is blind to RH but not to the lattice class** (`lattice-tower.md` §4; lane U, `tower-pairing.md`, *proved/checked*): levels, codes,
+  logical Cliffords and Lefschetz exist with or without RH; but the logical commutator of the level-$k$ code together with the step's Clifford action
+  is the Weil and Tate pairing exactly ($e_N(P,Q)=c(NP̃,Q̃)$, $t_N(P,Q)=c(P̃,(M^k-1)Q̃)$; 42 PARI comparisons), and at $N=8$ it separates the two $q=7$
+  lattices as the Weil pairing separates the curves. So the class-detecting datum of lane F is a datum of the code with its step; the overlaps alone
+  do not carry it, and $\zeta$'s level-$N$ Bell pairs have a commutator but no step.
 - **Counts do not determine the lattice** (lane A), and no overlap of the code with product stabiliser states does (lane F): the datum that carries RH
   sits on a lattice whose class is fixed only by the Weil pairing, an operator-valued datum of the code.
 - **Local lattices and vacua do not determine global zeros** (lane C): 49a1 and 441d1 share $\mathcal O_K$, $J_K$ and every local step up to sign at every $p\ne3$ (at 3, 441d1 has a
@@ -143,8 +147,8 @@ Absent, by the ladder:
    $a\in\mathbb Q^\times$, preserve it with $(1-D_a)\mathbb Q^2=\mathbb Q^2$ but act trivially on $\Theta$ and are the identity of $C_{\mathbb Q}$, and the
    idele-class steps that carry the zeros do not preserve it at all (review S2a); so there is no logical space and no counts. In the curve case the
    lattice is not the code's lattice either: it is $H_1$ of a lift, or a Centeleghe–Stix object, and the code's trivial-character data do not even
-   fix its class (lane A), nor do any of its product-stabiliser overlaps (lane F); the class is seen only by the Weil pairing, the commutator form
-   of the theta group (an operator datum of the code, not an overlap). So the missing datum is not something the overlaps can be expected to
+   fix its class (lane A), nor do any of its product-stabiliser overlaps (lane F); the class is seen by the Weil pairing, which lane U identifies
+   with the logical commutator of the tower's codes together with the step (an operator datum of the code with its step, not an overlap). So the missing datum is not something the overlaps can be expected to
    contain; it is an integral structure on the cokernel on which the steps act. In the finite case the Weil pairing detects the class of such a
    structure; it does not create it.
 2. **A polarisation** on that lattice (note §12.2). In genus one lane A shows it is the vacuum form transported, so "polarisation" and "vacuum" are
@@ -301,7 +305,7 @@ trace form in 08b and $\tfrac12\Omega(M-V)$ here. Lanes B and D were not cross-c
   land. Lane J's open items: which lattice in the isogeny class is $H_1$ of the $\chi$-part and its polarisation ($\Omega_+$ is not principal); a twisted curve.
 - `notes/weil-bond-analytic/checks/metric_blocker_checks.py` imports `scripts/rtp2_blind_recovery.py`, which needs Python 3.12 (`math.sumprod`); it does not run on 3.11.
 - Lane I's open items: the full quadratic-twist family; Hecke characters of higher infinity type; a function-field shadow with a ramified twist.
-- Lane F's open items: whether the Weil pairing is expressible as a datum of $\Theta_K$ itself; the genus-blind case ($q=8$, $a=3$, discriminant $-23$, three
+- Lane F's open item on the Weil pairing is answered by lane U (it is the tower's logical commutator with the step); still open: the genus-blind case ($q=8$, $a=3$, discriminant $-23$, three
   curves in one genus), predicted and not checked.
 - Which of the four ideal classes of $\mathcal O_K$ and which principal form belong to $\mathrm{Jac}(C)$ itself for the curve over $\mathbb F_5$ (lane E).
 - A $\mathbb Z_N$ flux on a graph as the finite shadow of a Dirichlet family: lattice $\mathbb Z[\zeta_N]$, step, Hermitian Weil form, RH on average over the

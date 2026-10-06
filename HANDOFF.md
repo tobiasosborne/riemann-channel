@@ -14,7 +14,7 @@ rows whose non-arXiv sources are absent); unchanged by the session.
 
 **Pages** (`notes/adelic-gkp/`, each with `checks/check_<name>.py` and output; all checks pass; statuses inside): A `curve-bridge.md` (82), B `no-lift.md` (50),
 C `cm-lift.md` (50), D `zn-flux.md` (87), E `cone-bridge.md` (42), F `overlap-data.md` (40), G `zeta-ingredients.md` (32), I `gate-phases.md` (32),
-J `ff-dirichlet.md` (118), M `family-vacuum.md` (39), R `window-similitude.md` (25), S `repeated-root.md` (31); Fable's checks `check_family_weil.py` (51),
+J `ff-dirichlet.md` (118), M `family-vacuum.md` (39), R `window-similitude.md` (25), S `repeated-root.md` (31), U `tower-pairing.md` (22); Fable's checks `check_family_weil.py` (51),
 `check_step_powers.py` (38). Records: `citations-2026-10-06.md` (28 of 43 quoted theorems byte-cited after `refs/fetch_sources.sh`; five new sources in
 `refs/manifest-2026-10-06-pending.txt`, to merge into the script and manifest), `registered-record.md` (today against `db/claims.tsv`: no registered
 claim refuted or weakened; several items already registered, notably 04t `prop:weil-form-not-metric` for "Weil's form is the vacuum point"),
@@ -34,7 +34,8 @@ $\mathbb F_q(t)$ have every ladder item at once (lattice, vacuum, charged states
 a vacuum iff each satisfies RH; the LPS Hecke family shares none; $\zeta$'s prime family does. (G, R) For $\zeta$ the steps have exact adjoints, $\Omega_{\rm FE}$
 and $\Omega_D$ are compatible with every step, Weil's form is the family-invariant point, the prime steps are exact similitudes (the window residual was an
 artefact), and what is missing is finite rank: one atom per zero on every window against $2g$. (S) Companion constructions need squarefree $P$; Connes's
-cokernel is of companion type (Jordan blocks for multiple zeros).
+cokernel is of companion type (Jordan blocks for multiple zeros). (U) The tower's logical commutator with the step is the Weil/Tate pairing exactly and
+separates the $q=7$ lattices at $N=8$: the tower is blind to RH but sees the lattice class; $\zeta$'s level-$N$ Bell pairs have a commutator but no step.
 
 **The answer** (`data-ladder.md`, head): the data for the zeros of $\zeta$ in these terms are a finite-rank-per-mode integral structure on a global $H^1$
 on which the squeeze generator acts integrally, plus a polarisation-type reason for its Lefschetz trace to be positive; the examples exclude the code's
@@ -42,7 +43,7 @@ overlaps and level tower, local lattices and vacua, Connes's cokernel as constru
 
 **Next (in order).** (i) TJO's decision on registering `shard-draft/` (promotion to `proved` needs a reviewer of another model, per the gate). (ii) Merge
 `refs/manifest-2026-10-06-pending.txt`. (iii) Shard 08j (unchanged). (iv) Open items on the pages: which ideal class and principal form belong to
-$\mathrm{Jac}(C)$ for the genus-two curve (E); whether the Weil pairing is a datum of $\Theta_K$ (F); the Petersen twist and a Howe-type criterion for
+$\mathrm{Jac}(C)$ for the genus-two curve (E); the genus-blind case $q=8$, $a=3$ (F; the pairing question is answered by U); the Petersen twist and a Howe-type criterion for
 Centeleghe–Stix objects (B); the CM version of the vacuum-point reading (G); $J(\mathbb F_{5^k})$ of the Fermat quartic (S); the twist family and higher
 infinity types (I). (v) The one question the day leaves: what plays the finite-field geometry over $\mathbb Q$.
 
