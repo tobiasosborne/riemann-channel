@@ -2,6 +2,25 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-10-22: tutorial Section 6 expanded (the nullspace of the labelling, Ω as the Casoratian); record only
+
+TJO: stuck for weeks on "Part B · 6 Phase space: two numbers per vertex" of the super-Ihara tutorial; "I don't get the symplectic
+form, it seems like that there are nullspaces and stuff?" Worklog `docs/worklog/2026-10-22.md`. **Nothing registered; gate untouched.**
+
+**Review finding.** The page claimed the span of σf, τg is 2n-dimensional. It is 2n − 1 (2n − 2 bipartite): σ1 = τ1, and the label
+(1, −1) is an eigenvector of M with eigenvalue 1 (the trivial mode's line μ = 1), carried on the edge space by the cycle space instead.
+So the phase space is the label space R^{2n}, Ω lives there and does not descend to the edge space, where B is self-adjoint for u·Fv.
+Checked on all five graphs (ranks 7, 19, 14, 9, 83).
+
+**Expansion.** Section 6 is now 6a–6d (`notes/adelic-gkp/tutorial/page.html`): the nullspace; M as the second-order recurrence
+f_{k+2} = A f_{k+1} − q f_k (why two numbers per vertex); Ω as the Casoratian with M^T Ω M = qΩ as Abel's formula and S = M/√q as the
+damping-removed Chebyshev recurrence; rotation / shear / squeeze; a table of which form lives on which space. Demo 6 shades and prints
+the areas Ω(v_k, v_{k+1}). Built, tested (`test.js` all pass), rendered headlessly at 1280 and 390 px (no errors), artifact
+https://claude.ai/artifact/2KbsLkFaW2pBBHs5r1NQxc republished in place.
+
+**Next.** Unchanged from 2026-10-06 (below). Optional: carry the rank remark into `graph-ihara.md` §4, and decide whether that record's
+"Q is the Casoratian" (§9) should read "Ω is the Casoratian, Q = ½Ω(M − qM^{-1})".
+
 ## Session 2026-10-06: orchestrated GKP session (Fable steering, Opus lanes, four REFUTE reviews); what data the zeros of ζ need (record only)
 
 TJO: "install what you need ... orchestrate work ... explore the GKP connection comprehensively and build on the ideas of the previous sessions
