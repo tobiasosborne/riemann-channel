@@ -1,0 +1,20 @@
+Q1=T*Z + X*Y cubic quotient dimension=16
+  k=1 quadric_points=9; target=3; surviving cubic classes=10752
+  k=2 quadric_points=25; target=9; surviving cubic classes=2400
+  k=3 quadric_points=81; target=9; surviving cubic classes=480
+  k=4 quadric_points=289; target=29; surviving cubic classes=0
+  smooth matches=0
+Q2=T**2 + T*Z + X*Y + Z**2 cubic quotient dimension=16
+  k=1 quadric_points=5; target=3; surviving cubic classes=20480
+  k=2 quadric_points=25; target=9; surviving cubic classes=5580
+  k=3 quadric_points=65; target=9; surviving cubic classes=1320
+  k=4 quadric_points=289; target=29; surviving cubic classes=240
+  smooth matches=0
+Q3=X*Y + Z**2 cubic quotient dimension=16
+  k=1 quadric_points=7; target=3; surviving cubic classes=17920
+  k=2 quadric_points=21; target=9; surviving cubic classes=3240
+  k=3 quadric_points=73; target=9; surviving cubic classes=996
+  k=4 quadric_points=273; target=29; surviving cubic classes=72
+  smooth matches=24
+TOTAL smooth canonical equations=24
+WITNESS {'quadric': 3, 'mask': 9763, 'Q': 'X*Y + Z**2', 'C': 'T**3 + T**2*X + T**2*Z + T*X**2 + T*Y*Z + Y**3', 'counts': [3, 9, 9, 29]}

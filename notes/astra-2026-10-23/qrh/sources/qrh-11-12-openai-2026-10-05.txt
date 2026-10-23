@@ -1,0 +1,3075 @@
+                          The Quasi-Riemann Hypothesis
+                                               OpenAI
+
+                                          October 5, 2026
+
+
+                                              Abstract
+          We establish the quasi-Riemann hypothesis by proving that every Dirichlet L-function,
+      including Riemann’s zeta function, has no zeros in the half-plane Re s > 11/12. More
+              √ we prove the same zero-free half-plane for every finite-order Hecke L-function over
+      generally,
+      K = Q( −3). In particular, this rules out the existence of Landau–Siegel zeros.
+
+
+Contents
+1 Introduction                                                                                         1
+
+2 Outline of the argument                                                                              3
+
+3 From the mean-square estimate to the zero-free region                                               11
+
+4 Poisson summation and the dual mean square                                                          12
+
+5 Iteration of the dual mean-square estimate                                                          18
+
+6 Proof of the completed mean-square estimate                                                         22
+
+7 Proof of the transfer proposition                                                                   29
+
+A Arithmetic identities and theta calculations                                                        35
+
+B Separating variables in smooth weights                                                              44
+
+
+1    Introduction
+For a primitive Dirichlet character χ of conductor q, the associated Dirichlet L-function is defined
+for Re s > 1 by the formula
+                                           X χ(n)
+                                L(s, χ) =           ,     Re s > 1,
+                                                ns
+                                            n≥1
+
+and admits a meromorphic continuation to s ∈ C [22, §4.6]. When χ is the trivial character,
+L(s, χ) recovers the Riemann zeta function ζ(s) [41].
+    The zeros of Dirichlet L-functions are of significant interest, such as for their role in governing
+the distribution of primes in arithmetic progressions. The Generalized Riemann Hypothesis
+predicts that all zeros of L(s, χ) in the critical strip 0 < Re s < 1 satisfy Re s = 1/2. For ζ(s),
+the weaker assertion that there exists ε > 0 such that ζ(s) has no zeros in Re s > 1 − ε is called
+a quasi-Riemann Hypothesis (e.g., in [2, §1], [34, p. 274], and [4, §2]). For Dirichlet L-functions,
+we consider the analogous assertion with a single ε > 0 valid for every primitive character χ,
+independently of√both conductor and height.
+    Let K = Q( −3). The main result of this paper is the following.
+
+                                                   1
+Theorem 1.1. Every finite-order Hecke L-function over K has no zeros in the half-plane Re s >
+11/12. Thus every Dirichlet L-function, including ζ(s), has no zeros for Re s > 11/12.
+
+    Section 3 proves the theorem assuming Proposition 3.1, whose proof is completed in Sec-
+tion 5.6.
+    Theorem 1.1 is a natural intermediate step toward the stronger zero-free region Re s > 7/8
+established in [36, Theorem 1.1]. For simplicity, we have isolated Theorem 1.1 and its proof
+here. By a standard explicit-formula argument (see [6, Chapters 19–20]), Theorem 1.1 gives the
+following quantitative form of the prime number theorem in arithmetic progressions.
+
+Corollary 1.2. Let π(x; q, a) count the primes p ≤ x with p ≡ a (mod q). Write φ for Euler’s
+totient function. For x ≥ 2,
+                                               Z x
+                                           1         dt
+                         sup π(x; q, a) −                 ≪ x11/12 log x,
+                        1≤q≤x             φ(q)  2  log  t
+                        (a,q)=1
+
+where the implied constant is absolute and effective.
+
+     Theorem 1.1 has a number of additional arithmetic consequences. By the zero-free-region
+method originating with Rodosskiı̆ [42], in the form recorded in [33, Theorem 13.12], the least
+quadratic nonresidue modulo an odd prime p is bounded by a fixed power of log p, which in
+particular proves Vinogradov’s conjecture [49] that this nonresidue is ≪ε pε for every ε > 0.
+See also Bhargava, Ivanyos, Mittal, and Saxena [3, Theorem 6.7] for this consequence of a
+fixed zero-free half-plane. From a computational number theory perspective, this bound allows
+square roots modulo p to be extracted deterministically in time polynomial in log p using the
+Tonelli–Shanks algorithm (see [11, §2.9]). Theorem 1.1 also yields a deterministic polynomial-
+time implementation of Miller’s primality test [32]; note that polynomial-time primality testing
+was previously known unconditionally via the Agrawal–Kayal–Saxena algorithm [1]. For negative
+fundamental discriminants D, Littlewood’s short Euler-product argument [29], applied to the
+fixed zero-free half-plane in Theorem 1.1, together with Dirichlet’s
+                                                              p      class-number formula (see [6,
+Chapter 6]), yields the effective class-number bound h(D) ≫ |D|/ log log |D|, with an absolute
+computable implied constant. The class-group computations of Elsenhans, Klüners, and Nicolae
+[8, Theorem 2], building on Weinberger [50], give a complete list of imaginary quadratic fields
+with class-group exponent dividing two when there are no Landau–Siegel zeros. Together with
+Grube’s characterization of idoneal numbers and his reduction to fundamental discriminants [15]
+(see [23, Theorem 6 and §2.3]), this shows that Theorem 1.1 confirms the completeness of Euler’s
+list of 65 idoneal numbers.
+
+1.1   Prior work
+There is a long line of work establishing zero-free regions for Dirichlet L-functions. Hadamard
+and de la Vallée Poussin proved the Prime Number Theorem in 1896 by establishing that ζ(s) has
+no zeros on the line Re s = 1 [16, 46]. De la Vallée Poussin subsequently obtained a quantitative
+zero-free region to the left of this line [47]. For nonprincipal primitive Dirichlet characters, the
+classical zero-free-region theorem of Grönwall and Titchmarsh [14, 45], in the modern form given
+in [22, Theorem 5.26] (see also [6, Chapter 14]), gives an absolute, effective constant c0 > 0 such
+that
+                                                                 c0
+                            L(σ + it, χ) ̸= 0 if σ > 1 −                   ,                   (1.1)
+                                                           log(q(|t| + 3))
+with at most one exception for each primitive character. Any exception is a simple real zero,
+can occur only if χ is quadratic, and is called a Landau–Siegel zero. Theorem 1.1 rules out the
+existence of such a zero.
+
+
+
+                                                 2
+    There are two parameters in (1.1): the conductor q and the height |t|. Even when q is fixed,
+its width tends to zero with the height. Vinogradov and Korobov developed methods [48, 24] to
+prove that
+                                                         c1
+                ζ(σ + it) ̸= 0 if σ > 1 −                              , |t| ≥ 3,          (1.2)
+                                            (log |t|) (log log |t|)1/3
+                                                     2/3
+
+for an absolute c1 > 0 (Ford [9] gives an explicit value of c1 ). The assertion of Theorem 1.1 is a
+half-plane of fixed width, independent of both conductor and height.
+    As we will see in the outline, the proof of Theorem 1.1 draws on modern developments in
+character large sieves and metaplectic theta series. In particular, the connection between cubic
+Gauss sums and cubic theta coefficients [26, 38] links the argument to work on Patterson’s
+conjecture by Heath-Brown and Patterson [20], Heath-Brown [19], and Dunn and Radziwiłł [7].
+The recursive large-sieve arguments also build on Heath-Brown’s proof of the quadratic large
+sieve inequality [18].
+
+1.2   Organization
+Section 2 gives a high-level outline of the argument. Section 3 deduces the zero-free region from
+a mean-square estimate for twisted Möbius sums. Section 4 reduces this estimate to a dual
+mean square with cubic Gauss-sum coefficients. Section 5 states the completed mean-square
+and transfer estimates, combines them into a recursive inequality, and proves the required mean-
+square bound. Sections 6 and 7 prove the completed estimate and the bounds for the remaining
+cube-divisor sums, respectively. Appendix A supplies the arithmetic identities and the detailed
+theta calculation. Appendix B records the smooth separation lemma used throughout.
+
+1.3   Notation
+Write O = OK = Z[ω], where ω = e2πi/3 . For a ∈ K, write NK/Q (a) = aa = |a|2 for its norm.
+For a nonzero integral ideal a ⊆ O, write NK/Q (a) = #(O/a). We use 1C for the indicator of a
+condition C. For a prime ideal represented by p and a nonzero element or ideal a, write vp (a) for
+its exponent in the prime factorization of a.
+    We use standard asymptotic notation, writing f = O(g) or f ≪ g when |f | ≤ Cg, where
+g ≥ 0 and C > 0 is an absolute constant unless otherwise specified. Subscripts indicate possible
+dependence of the implied constant: for example, f ≪ν,W,ε g means |f | ≤ Cν,W,ε g, where the
+constant may depend on ν, W, ε but is uniform in all other varying parameters. For nonnegative
+f, g, we write f ≍ g when f ≪ g and g ≪ f . A dyadic norm range is an interval R ≤ NK/Q (a) <
+2R; a sum over dyadic scales uses R = 2j .
+    We use D ≥ 2 as an ambient size parameter; in the main argument, it is the original norm
+scale introduced in the outline below. Auxiliary scales may vary within ranges bounded by fixed
+powers of D. We write
+
+                          A≼B       if A ≪ε Dε B       for every ε > 0,
+
+uniformly in the varying parameters over their stated ranges. Implied constants may also depend
+on the fixed data specified in each statement.
+
+
+2     Outline of the argument
+In this section, we sketch the proof of Theorem 1.1, suppressing various coprimality conditions,
+local factors, and details of smoothing. The precise statements appear in Sections 3–7.
+
+
+
+
+                                                3
+2.1      Step 1: Reduction to power-saving estimates for twisted Möbius sums
+Fix a finite-order Hecke character ν of K. Let LK (s, ν) be the corresponding Hecke L-function.
+We extend ν by zero to ideals not coprime to its conductor. We will deduce Theorem 1.1 from
+a power-saving estimate for ν-twisted Möbius sums.
+    Let µ denote the ideal Möbius function on K. All original ideal sums run over nonzero
+integral ideals. As in Section 3, the ideals in these sums are understood to be prime to 2, 3, and
+the conductor of ν. For a norm scale D > 0, consider
+                                        X
+                              A1 (D) =       µ(n)ν(n)W (NK/Q (n)/D),
+                                              n
+
+where W ∈ Cc∞ ((0, ∞); C) is a smooth cutoff function. Thus A1 (D) is a smoothed ν-twisted
+Möbius sum over ideals of norm comparable to D, with roughly D terms. We seek a power
+saving over this size: for a fixed δ > 0 and every ε > 0,
+
+                        A1 (D) ≪ν,W,ε D1−δ+ε for every W ∈ Cc∞ ((0, ∞); C).                             (2.1)
+
+The implication from (2.1) to a zero-free half-plane is the smoothed Hecke version of the classical
+relation between Möbius sums and zero-free regions.P In the zeta-function case, the equivalence
+between the Riemann Hypothesis and the bound n≤x µ(n) ≪ε x1/2+ε is due to Littlewood [28];
+see also [31, §1]. Section 3 gives the complete argument needed here.
+
+2.2      Step 2: Embedding the sum in a family
+In order to estimate A1 (D), we embed it into a family of such sums, parametrized by u ∈ OK ,
+by introducing a sextic twist. We call an element of O primary if it is congruent to 1 modulo 3.
+The ring O = Z[ω] is Euclidean, so it has unique factorization and every ideal is principal; for an
+ideal coprime to 3, multiplying any generator by a unique unit gives n ≡ 1 (mod 3), since the
+six units represent the six invertible residue classes modulo 3. For a primary element n, we write
+µ(n) = µ((n)) and ν(n) = ν((n)); divisor sums count each ideal divisor once, using its primary
+generator. For an ideal n prime to 6, use its unique primary generator n and write
+
+                                        χn (u) = χn (u) = (u/n)6 .
+
+Here (u/n)6 is the sextic residue symbol, extended by zero when (u, n) ̸= 1.1 We also write (u/n)2
+and (u/n)3 for the quadratic and cubic residue symbols, defined by the same convention with 6
+replaced by 2 and 3, respectively. When (n, 6) = 1, they equal χn (u)3 and χn (u)2 . Restrictions
+that keep these symbols defined are understood when omitted in the outline. The family is
+                                     X
+                           Au (D) =     µ(n)ν(n)χn (u)W (NK/Q (n)/D).                         (2.2)
+                                          n
+
+       Fix 0 < ϑ ≤ 1/10. The crucial estimate, Proposition 3.1, is that
+                          X
+                                   |Au (D)|2 ≪ν,W,ϑ,ε D1+ε H,       H = D1+ϑ .                          (2.3)
+                       0<NK/Q (u)≤H
+
+In a mean square, we call the variable in the outer sum the row and the variable in the inner
+sum the column. In (2.3) these are u and n, respectively. Up to the factor of Dε , (2.3) can be
+thought of as saying that the family {Au (D)} exhibits “square-root cancellation” on average (in
+the L2 sense) over u.
+   1
+    For a primary prime p ∤ 6 and p ∤ u, (u/p)6 is the unique sixth root of unity congruent to u(NK/Q (p)−1)/6
+modulo p; set (u/p)6 = 0 when p | u. Extend multiplicatively in the denominator to define χn (u) = (u/n)6 for
+primary n coprime to 6. For the unit ideal, χ1 (u) = 1 for every u, including u = 0.
+
+
+                                                      4
+    The mean-square estimate (2.3) gives the desired power saving for A1 (D) because Ap6 (D) ≈
+A1 (D) for many primes p. For a primary prime p with Y /2 < NK/Q (p) ≤ Y , the identity
+χn (p6 ) = 1p∤n leaves only OW (D/Y ) differing terms and hence gives
+
+                                         Ap6 (D) = A1 (D) + OW (D/Y ).                                        (2.4)
+
+By Landau’s prime ideal theorem [27] (see [22, Theorem 5.33]), there are ≍ Y / log Y choices of
+such p. Taking Y = H 1/6 , considering the contribution of such terms to (2.3) and using (2.4)
+gives
+                             |A1 (D)|2 ≪ D1+ε H 5/6 + D2 H −1/3 .                         (2.5)
+With H = D1+ϑ , this gives A1 (D) ≪ D11/12+5ϑ/12+ε for every fixed 0 < ϑ ≤ 1/10. Choosing
+ϑ sufficiently small for each requested exponent loss yields A1 (D) ≪ν,W,ε D11/12+ε . Therefore it
+remains to establish (2.3).
+
+2.3      Step 3: Poisson summation
+We turn to the task of proving the mean-square estimate (2.3). Now that we have introduced
+the row variable u, we can apply Poisson summation in this variable. This introduces sextic
+Gauss sums, arising from the Fourier transforms of the sextic characters. Upon application of
+the Gauss–Jacobi identities, these sextic Gauss sums absorb the factor of µ and turn into cubic
+Gauss sums. We interpret the resulting cubic Gauss sums as coefficients of Kubota’s cubic theta
+function. In the next step, we use the automorphy of this theta function. For now, we explain
+the appearance of these Gauss sums in more detail.
+    Define the additive character
+                                                   √
+                              e(z) = exp(4πi Im z/ 3) (z ∈ C).
+
+For a squarefree Eisenstein integer n ≡ 1 (mod 3) prime to 6 and an integer j, define the
+normalized Gauss sums
+                                       1        X
+                          γj (n) = q                  χn (x)j e(x/n).                (2.6)
+                                     NK/Q (n) x mod n
+
+For j = −1, we interpret χ−1
+                           n as the conjugate character χn .
+   Consider the classical identity
+                                                                                !2
+                                       −1            1     X x
+                                                =   √            e2πix/m               ,
+                                       m              m       m
+                                                          x mod m
+
+where m is an odd squarefree positive integer and the symbols are Jacobi symbols. We would
+                                              −1
+like a similar decomposition for µ instead of m . Following the work of Hasse [17, pp. 443–445]
+and Heath-Brown [19, (2)], we derive the following identity in Appendix A.1, valid for squarefree
+primary n away from a fixed set of excluded primes:
+                                                                               n
+            µ(n)γ−1 (n) = χn (−1)G(n)−1 α(n)γ2 (n),                 α(n) =        ,    G(n) = χn (4)γ3 (n).
+                                                                              |n|
+
+Here G(n) is a fixed ray-class factor. The factor γ−1 (n) comes from Poisson summation; as
+promised, it combines with µ(n) to produce the cubic coefficient α(n)γ2 (n) (up to ray-class
+factors). Further details are given in Section 4.
+    We call the sums obtained after applying Poisson summation dual sums.2 Rearranging these
+dual sums reduces the problem of estimating u |Au (D)|2 to estimating the following family of
+                                               P
+
+  2
+      For this terminology, see [40, p. 440], [25, §2.3], and [10, arXiv abstract].
+
+
+                                                             5
+column sums (for clarity, we have suppressed auxiliary twists and coprimality conditions):
+                                X
+                   Bh (X) =            α(n)γ2 (n)ξ(n)χn (h)U (NK/Q (n)/X).                 (2.7)
+                                       n∈O
+                                      n≡1 (3)
+                                    n squarefree
+
+Here h is the new row variable, Fourier dual to u, while U is a smooth weight restricting the
+column variable n to norm comparable to X. We choose ξ to be either νη or νη, where η ranges
+over a finite set of ray class characters of fixed modulus.3 For each choice of ξ, this defines a
+family of sums Bh (X).
+    After treating the diagonal and separating the smooth weights, we roughly get that
+                             X                                  H        X
+                                       |Au (D)|2 ≼ DH +                            |Bh (D)|2 .            (2.8)
+                                                                D
+                       0<NK/Q (u)≤H                                 0<NK/Q (h)≪H
+
+Here H ≍ D2 /H is the dual norm scale. This schematic comparison suppresses the common
+factors arising when the square is expanded. Thus the desired estimate is
+                                      X
+                                              |Bh (D)|2 ≼ D2 .                     (2.9)
+                                            0<NK/Q (h)≪H
+
+
+2.4      Step 4: Relation to cubic Gauss sums and Kubota’s cubic theta function
+To estimate (2.9), we first identify the cubic Gauss coefficients with Fourier coefficients of a theta
+function. Its transformation law applies to a sum with extra cube factors, which we will remove
+in Step 5.
+     Let θ(z, v) be Kubota’s cubic theta function on hyperbolic three-space (z ∈ C, v ∈ R>0 ),
+obtained as a residue of a cubic metaplectic Eisenstein series [26, 38]. We use the normalization
+of [7, §5.1, (5.6)–(5.8)], recalled below in (6.1).
+     Put λ = 1 + 2ω. For primary elements n, b ∈ O = Z[ω], with n squarefree and (nb, 6) = 1, let
+cθ (nb3 ) denote the Fourier coefficient of θ indexed by λ−3 nb3 in its expansion in z. Patterson’s
+formula [38, Theorem 8.1], recorded in [7, (5.7)], gives
+
+                                           cθ (nb3 ) = 35/2 |b| χn (λ)2 γ2 (n).                          (2.10)
+
+Taking b = 1 in (2.10) and substituting into (2.7) yields
+                                X
+             Bh (X) = 3−5/2            cθ (n)α(n)χn (λ)2 ξ(n)χn (h)U (NK/Q (n)/X).                       (2.11)
+                                       n∈O
+                                      n≡1 (3)
+                                    n squarefree
+
+Thus (2.11) expresses Bh (X) as a smoothed, twisted sum of the squarefree-index coefficients of
+θ. This connection was used by Heath-Brown and Patterson to study Kummer sums [20].
+    To use the summation formula for theta coefficients, we embed the sum (2.11) in a completed
+sum, by including terms indexed by nb3 . This use of cube completion follows Dunn and Radziwiłł
+[7, Lemma 5.4 and Proposition 5.3], with the underlying theta coefficients given by Patterson
+[38, Theorem 8.1]. For fixed h, ξ, and U , define
+                       1       X
+       Th (X) :=       √                   cθ (nb3 )α(nb3 )χnb3 (λ)2 ξ(nb3 )χnb3 (h)U (NK/Q (nb3 )/X).   (2.12)
+                   35/2 X      n,b∈O
+                             n,b≡1 (3)
+                            n squarefree
+   3
+    The ray class group modulo an ideal m is the group of fractional ideals prime to m, modulo principal ideals
+generated by elements congruent to 1 modulo m. A ray class character is a character of this finite group. For an
+element prime to m, its ray class means the class of its principal ideal.
+
+
+                                                            6
+The b = 1 terms are exactly X −1/2 Bh (X); the other terms supply the cube indices in the theta
+expansion. The first goal is to bound the mean square of Th (X) over h.
+    The automorphy of θ gives a summation formula that transforms the completed column
+sum Th (X), with the row h held fixed, into dual sums of theta coefficients with new smooth
+weights and character twists. A cusp is represented by a boundary point in K ∪ {∞}. A cusp
+expansion is the Fourier expansion in the horizontal variable after a change of coordinates taking
+infinity to that point. We call its Fourier coefficients cusp coefficients. Our starting point is a
+variant (established in Appendix A.2) of the theta transformation of Dunn and Radziwiłł [7, §5],
+extending work of Patterson [38] and Yoshimoto [51]. The key point is how the character twists
+change. Suppose for illustration that h is squarefree and primary, with (h, 6) = 1. Then, by
+Proposition 6.2, the transformed expression is a finite linear combination of sums of the form
+                                                         N
+                                                            K/Q (m)X
+                             X dθ (m)α(m)                              
+                                              χh (m)3 V∗♯                .                   (2.13)
+                                                           NK/Q (h)2
+                                  q
+                          0̸=m∈O    NK/Q (m)
+
+The dual column index is m, while h remains the row index. Here dθ (m) denotes the coefficient
+at the Fourier index λ−4 m in a cusp expansion of θ, and V∗♯ is the transform in (6.6), applied to
+V∗ (y) = y 1/2 U (y). We have suppressed a finite sum over these cusp expansions, fixed periodic
+twists, bounded prefactors, and fixed scale constants. Within each fixed ray class of h, the coef-
+ficient sequences and transformed weights are independent of h by Lemma 6.3. Proposition 6.2
+gives the precise formula, writing d(ℓ) for the cusp coefficient at ℓ = λ−4 m.
+     Since V∗♯ decays rapidly at infinity, the effective norm range in (2.13) is NK/Q (m) ≪
+NK/Q (h)2 /X, in place of the original range NK/Q (nb3 ) ≍ X. These dual sums arise from the
+theta transformation and involve theta coefficients on the transformed scale, now twisted by
+the quadratic character χ3h . This character arises because, at each prime p | h, the Fourier and
+theta factors combine as
+                                       χ−1   −2    −3
+                                        p χp = χp = χp .
+                                                           3
+                                                                                            (2.14)
+Now a key point is that since χ3p is quadratic, Goldmakher and Louvel’s quadratic large sieve [13,
+Theorem 1.1 and Corollary 1.2] (a generalization of Heath-Brown’s quadratic large sieve [18] to
+number fields) bounds the mean square of the sums in (2.13) as h varies. For squarefree quadratic
+families with row and column norm ranges M, L, the quadratic large sieve gives the factor M +L,
+up to (M L)ε . Crucially, this avoids the additional term (M L)2/3 in Blomer, Goldmakher, and
+Louvel’s general higher-order large sieve [5, Theorem 1.3].
+   We then apply Cauchy–Schwarz in the cube variable and the quadratic large sieve in the
+squarefree column variable to estimate the mean square of Th (X). The details are given in the
+proof of Proposition 5.2, which gives, for H, X ≥ 1,
+                              X                                   H2 
+                                       |Th (X)|2 ≪ε,ξ,U (HX)ε H +       .                  (2.15)
+                                                                   X
+                        0<NK/Q (h)≪H
+                                                         √
+At X = D and H ≤ D, the heuristic comparison Bh (D) ≈ D Th (D) would therefore give the
+desired D2 bound. The remaining task is to justify the corresponding mean-square bound by
+removing the cube factors.
+
+2.5   Step 5: Removing the cube factors
+We now pass from a mean-square bound for Th (X) to one for X −1/2 Bh (X), with both averages
+taken over h. Note that one cannot simply discard the terms with b ̸= 1, because the contributions
+from different b can cancel. We begin by undoing the addition of cube factors using Möbius
+inversion. Related completions appear in Patterson [38, Theorem 6.1] and Heath-Brown [19,
+§3], with explicit removal of the cube factors by Möbius inversion in Dunn and Radziwiłł [7,
+Proposition 5.3 and (8.2)].
+
+                                                7
+    Fix h and ξ, and write Ph (X) = X −1/2 Bh (X) for the b = 1 part of Th (X). Substituting the
+coefficient formula (2.10) into (2.12) gives
+                                                   X        wh (b)       X       
+                                   Th (X) =                         Ph              ,                            (2.16)
+                                                           NK/Q (b)     NK/Q (b)3
+                                                  b∈O
+                                                 b≡1 (3)
+
+where
+                                                                 3
+                                               wh (b) = α(b) ξ(b)3 χb (h)3 .                                     (2.17)
+Each factor in (2.17) is completely multiplicative in b. Thus wh (bc) = wh (b)wh (c) even when b, c
+share prime factors, and |wh (b)| ≤ 1. Möbius inversion (cf. [22, §1.3]) gives
+                                                   X µ(d)wh (d)     X      
+                                  Ph (X) =                     Th             .                                  (2.18)
+                                                      NK/Q (d)    NK/Q (d)3
+                                                 d∈O
+                                                d≡1 (3)
+
+
+      Psubstituting (2.16) into (2.18) and grouping by the total cube index b gives the factor
+Indeed,
+wh (b) d|b µ(d), which is 1 for b = 1 and 0 otherwise.
+    The objective is now an estimate for Ph , rather than for the completed sum Th . For the
+simplified family and the parameter ranges arising from Step 3, the required bound is
+                                           X
+                                                      |Ph (X)|2 ≪ε,ξ,U (HX)ε X.                                  (2.19)
+                                      0<NK/Q (h)≪H
+                    √
+Since Bh (X) = X Ph (X), this is equivalent to a bound of size X 2 , up to the same small power,
+for the mean square of Bh (X).
+    For 1 ≤ Hc ≤ X 1/3 , let Ph,≤Hc (X) be the part of (2.18) with NK/Q (d) ≤ Hc . Applying
+weighted Cauchy–Schwarz for each fixed h, then summing over h and using (2.15), gives
+           X
+                   |Ph,≤Hc (X)|2
+        0<NK/Q (h)≪H
+                    X                1           X                1         X                            
+          ≤                                                                                 |Th X/NK/Q (d)3 |2
+                                NK/Q (e)                        NK/Q (d)
+                  NK/Q (e)≤Hc                   NK/Q (d)≤Hc                0<NK/Q (h)≪H
+                    X             1               H2 NK/Q (d)3      H2 Hc3
+          ≼                                   H+                  ≼H+        .
+                            NK/Q (d)                   X               X
+              NK/Q (d)≤Hc
+
+Thus
+                                X
+                                                            2                 ε
+                                                                                        H2 Hc3 
+                                              |Ph,≤Hc (X)| ≪ε,ξ,U (HX)                H+          .              (2.20)
+                                                                                          X
+                         0<NK/Q (h)≪H
+
+For H ≤ X, the estimate (2.20) is within the target (2.19) provided H2 Hc3 /X ≤ X. Thus we
+apply the completed mean-square bound directly only up to the cutoff
+                                                 X 2/3 
+                                             1/3
+                                Hc = min X ,                .                        (2.21)
+                                                   H
+
+At the basic scales from Step 3,
+
+                                  X ≍ D,             H ≍ D1−ϑ ,            Hc ≍ D2ϑ/3 .
+
+The inverse sum can extend to NK/Q (d) ≍ D1/3 , so we must still control the larger divisors.
+
+
+
+                                                                8
+    Write τdiv (b) for the number of nonzero integral ideal divisors of (b). Let Ph,>Hc (X) denote
+the terms with NK/Q (d) > Hc in (2.18), and put Lb = X/NK/Q (b)3 . Substituting (2.16) into the
+truncated inversion formula for Ph,>Hc (X) obtained from (2.18), and grouping by b = dc, gives
+                                       X       X µ(d)wh (d)wh (c)                 X       
+                 Ph,>Hc (X) =                                             Ph
+                                                c
+                                                    NK/Q (d)NK/Q (c)            NK/Q (dc)3
+                                 NK/Q (d)>Hc
+                                       X       β0 (b)χb (h)3
+                             =                               Ph (Lb ),
+                                                NK/Q (b)
+                                 NK/Q (b)>Hc
+
+where all indices are primary and
+                                   3            X
+                     β0 (b) = α(b) ξ(b)3                  µ(d),        |β0 (b)| ≤ τdiv (b).
+                                               d|b
+                                           NK/Q (d)>Hc
+
+
+The support of U restricts NK/Q (b) ≪U X 1/3 . Weighted Cauchy–Schwarz for each h, followed
+by summation, gives
+                                     X τ (b)  X τ (b)
+                                          div          div
+          X                                                        X
+                    |Ph,>Hc (X)|2 ≤                                         |Ph (Lb )|2
+                                         NK/Q (b)    NK/Q (b)
+     0<NK/Q (h)≪H                      b          b            0<NK/Q (h)≪H
+                                           X                                                      (2.22)
+                                                            2
+                                   ≼ sup          |Ph (Lb )| .
+                                       b
+                                           0<NK/Q (h)≪H
+
+
+Put aξ (n) = α(n)γ2 (n)ξ(n). Write
+                                                    ∗
+                               1           X        X                                         2
+                 E(H, X) :=                               aξ (n)χn (h)U (NK/Q (n)/X) .
+                               X                      n
+                                   0<NK/Q (h)≪H
+
+
+A star restricts an index to squarefree primary elements. By (2.7) and the definition of Ph , we
+have
+                              1      X                      X
+                  E(H, X) =                  |Bh (X)|2 =             |Ph (X)|2 .
+                              X
+                                 0<NK/Q (h)≪H                     0<NK/Q (h)≪H
+
+At the scales from Step 3, our goal is to prove
+
+                                               E(H, X) ≼ X.                                       (2.23)
+
+At X = D, this is precisely the bound (2.9) for the mean square of Bh (D). Substitution
+into the Poisson comparison (2.8) then gives the required original mean-square estimate (2.3).
+Combining (2.20) for Ph,≤Hc (the terms with NK/Q (d) ≤ Hc ) and (2.22) for Ph,>Hc (the terms
+with NK/Q (d) > Hc ), with the cutoff (2.21), gives
+
+                             E(H, X) ≼ X +                sup        E(H, Lb ).
+                                                    b: 1≤Lb ≤X/Hc3
+
+
+It therefore remains to prove E(H, Lb ) ≼ X for 1 < Lb ≤ X/Hc3 . Here the row range H stays
+fixed, and the required bound is still of size X even though the column scale has decreased to
+Lb .
+     We now expand the square and apply Poisson summation in h as before; we now record
+the proof in terms of E(H, Lb ). The Gauss-sum coefficients become Möbius coefficients, and
+
+
+
+
+                                                      9
+the new row variable y has norm at most about L2b /H. After separating the weights, this gives
+schematically
+                                   H       X
+                   E(H, Lb ) ≼ X + 2                  |M (y)|2 ,
+                                   Lb              2
+                                               0<NK/Q (y)≪Lb /H
+                                           ∗
+                                           X
+                        M (y) =                   µ(n)ξ1 (n)χn (y)U1 (NK/Q (n)/Lb ).
+                                  NK/Q (n)≍Lb
+
+Here ξ1 is another fixed ray class character and U1 is a smooth compactly supported weight
+produced by separating the variables. The term X includes the diagonal and zero-frequency
+contributions, using H ≤ X.
+   Since Lb = X/NK/Q (b)3 ≤ X, we may enlarge the nonnegative sum over y to
+
+                                                                 XLb  L2
+                               NK/Q (y) ≪ Y,               Y =       ≥ b.
+                                                                  H   H
+The purpose of this enlargement is that a second application of Poisson summation gives a shorter
+row range:
+                                              L2    HLb
+                                        H′ = b =         .
+                                               Y      X
+The coefficients return to cubic Gauss-sum coefficients, and
+                               X
+                                        |M (y)|2 ≼ Y Lb + Y E ′ (H′ , Lb ).
+                            0<NK/Q (y)≪Y
+
+
+Here E ′ has the same form as E, with possibly different smooth weights and fixed characters;
+Y Lb accounts for the zero-frequency contribution. Consequently,
+
+                               X ′ HLb                    E(H, Lb )     E ′ (HLb /X, Lb )
+            E(H, Lb ) ≼ X +       E     , Lb ,                        ≼1+                   .
+                               Lb    X                        X                  Lb
+Thus it suffices to prove
+                                           HL       
+                                               b
+                                        E′       , Lb ≼ Lb .
+                                             X
+This is the original type of estimate at smaller parameters:
+                                            H         X                 H′   H
+                       (H′ , X ′ ) =                ,            ,          ′
+                                                                              = .
+                                           NK/Q (b)3 NK/Q (b)3            X    X
+
+Both scales decrease while their ratio stays fixed. The factor X/Lb in the preceding inequality is
+exactly what converts the new target bound Lb into the required bound X. These two Poisson
+summations give the transfer estimate: a bound for the remaining mean square in terms of
+new mean squares of the same type. For related uses of an enlarged summation range, see
+Goldmakher–Louvel [13, Lemma 4.4 and the proof of Theorem 4.1], following Heath-Brown [18,
+Lemma 9].
+    Combining the bounds (2.20) and (2.22) from the first part of Step 5 with the transfer
+estimate above gives the recursive bound
+
+               E(H, X)                 E ′ (H′ , X ′ )                                   HLb
+                       ≼1+    sup                      ,             X ′ = Lb ,   H′ =       .
+                 X         NK/Q (b)>Hc      X′                                            X
+                                       Lb >1
+
+For each b in this supremum, the cutoff (2.21) gives H′ < H(H/X)2 ≪ D−2ϑ H. Since H′ /X ′ =
+H/X, the same contraction applies at every step. After Oϑ (1) steps, every resulting mean square
+either has an empty remainder or has row parameter at most 1, where counting gives the desired
+
+                                                      10
+bound at its reduced scales. Applying the recursive inequality back through these steps proves
+(2.23) for the original E(H, X), completing the sketch of the proof.
+    The preceding sketch suppresses auxiliary twists and common factors for the purpose of
+illustration. To carry out this argument with the auxiliary twists included, we use the family
+                              ∗                       ∗
+                      1       X              X        X                                         2
+       E(H, X, F ) =                                      aξ (n)χn (k)χn (f )4 U (NK/Q (n)/X)
+                     XF                               n
+                           NK/Q (f )≍F 0<NK/Q (k)≪H
+
+and prove E(H, X, F ) ≼ XF in the parameter ranges of Proposition 5.1. Unlike the sketch above,
+the full argument must also handle the common factors and the resulting dyadic ranges. The
+precise family is defined in (4.9), and Proposition 5.4 states the transfer estimate. Combining it
+with the bounds for the two parts of the inverse sum in Step 5 reduces the row range at each
+step. Section 5 proves the desired bound by a finite iteration, following the admissible-exponent
+method of Heath-Brown [18, Lemma 8 and §8], [19, Lemma 9]; see also [13, Theorem 4.1] and
+[5, §3.2].
+
+
+3    From the mean-square estimate to the zero-free region
+We first carry out Steps 1 and 2 of the outline: extract cancellation in A1 (D) from a mean-square
+estimate for the family, then use a Mellin transform to deduce nonvanishing. Fix a finite-order
+Hecke character ν of K and a finite set S of prime ideals that contains all prime ideals above
+2 or 3, as well as all prime ideals dividing the conductor of ν. For an ideal or element a, write
+(a, S) = 1 if no prime ideal in S divides a. An ideal is supported on S if all its prime factors
+belong to S. For W ∈ Cc∞ ((0, ∞); C), recall the family
+                                     X
+                         Au (D) :=         µ(n)ν(n)χn (u)W (NK/Q (n)/D),
+                                   (n,S)=1
+
+introduced in (2.2). Here and throughout the original family, n runs over ideals prime to S,
+represented by their primary generators. The key estimate is the following.
+Proposition 3.1. For every fixed 0 < ϑ ≤ 1/10 and ε > 0, there exists an integer k = k(ϑ, ε) ≥ 1
+such that, for every compact interval I ⊂ (0, ∞), all smooth W supported in I, and D ≥ 2,
+                       X                                          2
+                                 |Au (D)|2 ≪ν,S,I,ϑ,ε max ∥W (j) ∥∞ D2+ϑ+ε .               (3.1)
+                                                          0≤j≤k
+                 0<NK/Q (u)≤D1+ϑ
+
+   We first deduce Theorem 1.1 assuming Proposition 3.1. The proof of the proposition is
+completed in Section 5.6.
+
+Proof of Theorem 1.1 from Proposition 3.1. Fix 0 < ϑ ≤ 1/10, and put H = D1+ϑ and Y =
+H 1/6 = D(1+ϑ)/6 . For prime ideals Y /2 < NK/Q (p) ≤ Y , p ∈
+                                                            / S, let p be their primary generators,
+chosen with p ≡ 1 (mod 3). Then χn (p6 ) = 1p∤n and therefore
+
+         |A1 (D) − Ap6 (D)| ≤ ∥W ∥∞ #{n : (n, S) = 1, p | n, NK/Q (n) ≍ D} ≪W D/Y.
+
+For this fixed field, Landau’s prime ideal theorem [27] (see [22, Theorem 5.33]) gives J ≍ Y / log Y
+such primes. Their sixth powers are distinct rows of norm at most H. Apply (3.1) with loss ε/2
+and use log Y ≪ε Dε/2 to obtain
+                           2       X
+               |A1 (D)|2 ≤                   |Ap6 (D)|2 + OW (D2 /Y 2 )
+                           J
+                            Y /2<NK/Q (p)≤Y
+                                 (p,S)=1
+
+                       ≪ν,S,W,ϑ,ε D2+ϑ+ε /Y + D2 /Y 2 = D11/6+5ϑ/6+ε + D5/3−ϑ/3 .                   (3.2)
+
+
+                                                 11
+Thus A1 (D) ≪ν,S,W,ϑ,ε D11/12+5ϑ/12+ε . Given any requested exponent loss, choose ϑ > 0 and
+then the loss in Proposition 3.1 sufficiently small. Renaming the resulting loss ε, we obtain
+
+                                      A1 (D) ≪ν,S,W,ε D11/12+ε .                                   (3.3)
+
+    We now use (3.3) to rule out a zero of LK (s, ν) in Re s > 11/12. Suppose such a zero ϱ
+exists. Choose 0 ̸= ϕ ∈ Cc∞ ((1, 2)), ϕ ≥ 0, and W (y) = y −ϱ ϕ(y). With the Mellin convention
+c (s) = ∞ W (y)y s dy/y, we have W
+         R                                  R
+W          0
+                                    c (ϱ) = ϕ(y) dy/y > 0. The function
+                                            Z ∞
+                                                           dD
+                                 MW (s) =       A1 (D)D−s
+                                              0             D
+
+is holomorphic on Re s > 11/12: the estimate (3.3) controls the integral at infinity, and the
+compact support of W makes A1 (D) vanish for sufficiently small D. Termwise integration for
+Re s > 1 gives
+                                        X µ(n)ν(n)          Wc (s)
+                       MW (s) = W
+                                c (s)                   =             ,
+                                            NK/Q (n)s      LSK (s, ν)
+                                             (n,S)=1
+
+where LSK is the Euler product outside S:
+                                                     Y
+                           LSK (s, ν) := LK (s, ν)         (1 − ν(p)NK/Q (p)−s ).
+                                                     p∈S
+
+By Hecke’s meromorphic continuation theorem [21] (see [22, §5.10]) and the identity theorem,
+the identity LSK (s, ν)MW (s) = Wc (s) holds on Re s > 11/12. The omitted Euler factors are
+nonzero here, so evaluation at s = ϱ gives 0 = W
+                                               c (ϱ) > 0, a contradiction.
+    To deduce the assertion for Dirichlet L-functions in Theorem 1.1, let χ−3 be the nontrivial
+character modulo 3. For any Dirichlet character χ, quadratic base change gives, up to Euler
+factors nonzero in Re s > 0,
+
+                               LK (s, χ ◦ NK/Q ) = L(s, χ)L(s, χχ−3 ).
+
+The Hecke conclusion excludes zeros of either factor away from s = 1. At s = 1, the only possible
+pole–zero cancellation is ruled out by Dirichlet’s nonvanishing theorem, which gives L(1, χ−3 ) > 0
+(see [6, Chapters 4 and 6]).
+
+
+4    Poisson summation and the dual mean square
+We now turn to the mean-square estimate in Proposition 3.1. Following Step 3 of the outline,
+we expand the square and apply Poisson summation in the row variable u. The finite Fourier
+transforms of the characters supply Gauss sums. Arithmetic identities then combine these Gauss
+sums with the original Möbius coefficients to give the normalized cubic Gauss-sum coefficients
+that appear in the theta function.
+    The column indices produced by expanding the square need not be coprime. We first extract
+their common factor, then use Möbius inversion to separate the remaining coprimality condition.
+These operations introduce an auxiliary twisting index and an exclusion ideal. The comparison
+below removes the exclusion without changing the row range or the product of the column and
+auxiliary scales.
+    We record the arithmetic and Poisson identities first, then define this family. Proposition 4.5
+states the estimate for it that suffices to prove (3.1); the rest of the section proves that implication.
+
+
+
+
+                                                     12
+4.1    The arithmetic identities
+We first record the identities that convert between Möbius coefficients and normalized cubic
+Gauss sums. Recall that, for a squarefree primary element n with (n, S) = 1,
+                       n                    1       X
+              α(n) =      ,    γj (n) = q                 χn (x)j e(x/n) (j ∈ Z),
+                      |n|                NK/Q (n) x mod n
+                            √
+where e(z) = exp(4πi Im z/ 3), as in (2.6). Put
+                             aξ (n) = α(n)γ2 (n)ξ(n)       (n squarefree),
+where ξ is a fixed ray class character. The character ξ accounts for the original twist ν and for
+the residue-class factors in the identities below.
+    By character orthogonality [22, §3.1], we can absorb functions on a fixed ray class group into
+a finite sum of twists ξ. Choose a fixed modulus, supported on S, divisible by the conductor of
+ν and sufficiently large that all reciprocity factors below depend only on the corresponding ray
+classes. We then expand these factors in characters of this finite group.
+    The following lemma collects standard consequences of the Gauss–Jacobi identities, quadratic
+Gauss-sum evaluations, and reciprocity.
+Lemma 4.1. On a fixed ray class group, there are a function G with values in {z ∈ C : |z| =
+1} and a symmetric {±1}-valued bicharacter R. This means that R(a, b) = R(b, a) and R is
+multiplicative in each argument separately:
+                                     R(aa′ , b) = R(a, b)R(a′ , b),
+                                     R(a, bb′ ) = R(a, b)R(a, b′ ),
+for all classes a, a′ , b, b′ in the ray class group. These functions have the following properties. Let
+a, b, n be primary elements prime to S, with (a, b) = 1 and n squarefree. Then
+                χb (a) = R(a, b)χa (b),                        G(ab) = G(a)G(b)R(a, b),            (4.1)
+                    3
+               γ2 (n) = µ(n)α(n),                       γ1 (n)γ2 (n) = µ(n)α(n)G(n),               (4.2)
+                G(n) = χn (4)γ3 (n),                   γ1 (n)γ−1 (n) = χn (−1).                    (4.3)
+Consequently
+                                α(n)γ2 (n)γ1 (n) = µ(n)G(n),                                       (4.4)
+                                                                    −1
+                                     µ(n)γ−1 (n) = χn (−1)G(n)           α(n)γ2 (n),               (4.5)
+                                          aξ (ab) = aξ (a)aξ (b)χb (a)4 ,                          (4.6)
+                                                          −1
+                        χa (−1)G(a)G(b)R(a, b) = G(ba          ).                                  (4.7)
+In (4.6), a, b are also squarefree. The identity for G(ab) in (4.1) extends to all classes of the
+fixed ray class group; the quotient in (4.7) is taken in that group.
+    The proof, including the dependence of G and R on fixed ray classes, is given in Appendix A.1.
+Under Poisson summation, (4.5) converts the Möbius coefficients to aξ (n), up to fixed ray class
+factors, while (4.4) converts them back.
+
+4.2    Poisson summation with excluded primes
+The row sum to which we apply Poisson summation will have an additional coprimality restriction.
+We record the formula with that restriction included, so that its effect on the Fourier frequencies
+and the normalization is explicit.
+    For a nonzero ideal r, write rad r for the product of its distinct prime divisors. We use the
+additive character e introduced in Step 3. In quotients and Gauss sums, use a fixed generator
+for each ideal, chosen primary when the ideal is prime to 3.
+
+                                                  13
+Lemma 4.2. Let H > 0, let r be a nonzero ideal, and let Φ(NK/Q (k)/H) be a smooth radial
+Schwartz weight on the row lattice. Let χ be a primitive multiplicative character of (O/m)× ,
+viewed as a function on O by reduction modulo m and extension by zero on nonunits. Write
+                                                X
+                           γ(χ) = NK/Q (m)−1/2        χ(x)e(x/m)
+                                                               x mod m
+
+for its normalized Gauss sum. Since χ is primitive, its modulus m is determined by χ and is
+suppressed in the notation. Then
+                 X
+                    χ(k)1(k,r)=1 Φ(NK/Q (k)/H)
+                     k
+                            Hγ(χ)    X µ(d)χ(d) X              HNK/Q (h)                                      (4.8)
+                         =q                            χ(h)Φ
+                                                           b                     .
+                           NK/Q (m) d|rad r NK/Q (d) h        NK/Q (d)NK/Q (m)
+
+
+Here Φ
+     b is defined by
+                                          Z
+                               2     2
+                          Φ(|w|
+                          b      )= √          Φ(|z|2 )e(−zw) dx dy,                 z = x + iy.
+                                      3    C
+
+The measure is normalized so that O has covolume one. Here k, h ∈ O, and h is the Fourier
+frequency. We have
+                             χ nonprincipal =⇒ χ(0) = 0.
+For the principal primitive character (χ = 1, m = 1), the zero-frequency contribution is
+                                                  Y                 1       
+                                          HΦ(0)
+                                           b             1−                      .
+                                                                  NK/Q (p)
+                                                  p|r
+
+Proof. Inclusion–exclusion followed by k = dℓ gives
+                                                                                           N
+                                                                                              K/Q (ℓ)
+             X                                           X                   X                        
+                   χ(k)1(k,r)=1 Φ(NK/Q (k)/H) =                   µ(d)χ(d)           χ(ℓ)Φ              .
+                                                                                           H/NK/Q (d)
+               k                                        d|rad r                  ℓ
+
+Apply lattice Poisson summation [22, Theorem 4.5] in ℓ on residue classes modulo m, at scale
+H/NK/Q (d). The primitive Gauss-sum identity [22, (3.12)] evaluates the finite Fourier transform
+  q
+as NK/Q (m)γ(χ)χ(h) for every h, giving (4.8). For a nonprincipal primitive character, χ(0) = 0,
+so the zero-frequency term vanishes. For the principal character, sum µ(d)/NK/Q (d) over d | rad r
+to obtain the displayed zero-frequency contribution.
+
+4.3     The dual mean squares
+We use the following mean square of the column sums with coefficients aξ (n).
+
+Definition 4.3. The parameters H, X, and F are the norm scales of k, n, and f , respectively.
+Here k ranges over elements of O, and a star restricts a sum to squarefree ideals prime to S,
+represented by their primary generators. For a smooth compactly supported weight W on (0, ∞),
+define the dual mean square by
+
+      E(H, X, F ; ξ, W )
+                           ∗                            ∗
+                1          X              X             X                                                   2
+           =                                                      aξ (n)χn (k)χn (f )4 W (NK/Q (n)/X) .         (4.9)
+               XF
+                    F ≤NK/Q (f )<2F 0<NK/Q (k)≤H (n,S)=1
+                        (f,S)=1
+
+
+                                                          14
+   Below, ξ ranges over all characters of the fixed ray class group chosen above, through which
+ν, G, and R factor.
+   Write Er for the same expression with the additional restriction (n, r) = 1. This notation is
+only needed in the Poisson reductions; the following comparison returns to E.
+
+Lemma 4.4. Let r0 be the product of the primes dividing r outside S. For H, X > 0, F ≥ 1,
+and smooth compactly supported W ,
+                                                      X                   X                      
+                Er (H, X, F ; ξ, W ) ≤ τdiv (r0 )      E H,                     , F NK/Q (d); ξ, W .       (4.10)
+                                                                     NK/Q (d)
+                                                      d|r0
+
+Proof. Let Cr (X; k, f ) denote the inner column sum defining Er , with ξ, W fixed. Inclusion–
+exclusion, n = dm, and (4.6) give
+
+                                   X              ∗
+                                                  X
+                Cr (X; k, f ) =           µ(d)             aξ (n)χn (k)χn (f )4 W (NK/Q (n)/X)
+                                   d|r0          (n,S)=1
+                                                   d|n
+                                    X
+                               =              µ(d)aξ (d)χd (k)χd (f )4 C1 (X/NK/Q (d); k, df ).
+                                     d|r0
+                                   (d,f )=1
+
+
+Indeed, χm (d)4 enforces (m, d) = 1 and combines with χm (f )4 ; terms with (d, f ) ̸= 1 vanish.
+Each exterior coefficient has modulus at most one. Apply Cauchy–Schwarz in d, then enlarge
+the injective image f 7→ df to the squarefree range F NK/Q (d) ≤ NK/Q (df ) < 2F NK/Q (d). The
+normalizing product is unchanged: (X/NK/Q (d))(F NK/Q (d)) = XF .
+
+4.4     Reduction to the dual mean square
+The following proposition gives the dual estimate sufficient for (3.1). Its proof applies Poisson
+summation directly to the original Möbius sums.
+
+Proposition 4.5. Fix 0 < ϑ ≤ 1/10 and put H = D1+ϑ . For each fixed C ≥ 1 and all real
+B, F ≥ 1, consider the ranges
+
+                                    D                             CD2                 D
+                           X=          ,           0<H≤                ,       XF =     .                  (4.11)
+                                    BF                            HB 2                B
+Suppose that for every ε > 0 there exists an integer J = J(ϑ, ε) ≥ 1 such that, for every compact
+interval I ⊂ (0, ∞) and every smooth W supported in I,
+
+                           E(H, X, F ; ξ, W ) ≪ν,S,I,C,ϑ,ε ∥W ∥2C J (I) Dε XF,                             (4.12)
+
+where
+                                     ∥W ∥C J (I) = max sup |W (j) (x)|.
+                                                       0≤j≤J x∈I
+
+For functions of several variables, the norm uses all partial derivatives of total order at most J.
+Then the original mean-square estimate in Proposition 3.1 holds.
+
+Proof. Write I = [a0 , b0 ]. Choose a nonnegative radial Schwartz weight Φ such that Φ(x) ≥ 1
+on [0, 1] and supp Φ b ⊂ [0, CΦ ] for some fixed CΦ > 0. It suffices to prove MD ≪ν,S,I,ϑ,ε
+∥W ∥C J ′ (I) HD for some J ′ = J ′ (ϑ, ε), where
+     2          ε
+
+
+                      1 X                                  X                                           2
+            MD :=         Φ(NK/Q (u)/H)                           µ(n)ν(n)χn (u)W (NK/Q (n)/D) .           (4.13)
+                      D
+                         u∈O                          (n,S)=1
+
+
+                                                             15
+Conjugate the inner sum, expand the square, and put g = (n1 , n2 ) and nj = gzj . The squarefree
+indices satisfy (z1 , z2 ) = (z1 z2 , g) = 1, and
+                                  χn1 (u)χn2 (u) = 1(u,g)=1 χz1 (u)χz2 (u).
+Apply Lemma 4.2 with χ = χz1 χz2 and exclusion g:
+     X
+        Φ(NK/Q (u)/H)1(u,g)=1 χ(u)
+       u
+               X           Hµ(e)χ(e)γ(χ)            X               HNK/Q (h)                              (4.14)
+           =                q                         χ(h)Φ
+                                                          b                                 .
+                   N     (e) N     (z  )N     (z  )          NK/Q (e)NK/Q (z1 )NK/Q (z2 )
+               e|g   K/Q       K/Q   1    K/Q   2   h
+
+The zero frequency occurs only when z1 = z2 = 1 and contributes
+                          ∗
+                Hb      X                       Y         1    
+            Z = Φ(0)          |W (NK/Q (g)/D)|2    1−             ≪Φ,I H∥W ∥2∞ .
+                D                                      NK/Q (p)
+                            (g,S)=1                            p|g
+
+Retain all h ̸= 0, including those with z1 = z2 = 1. P
+   Expand the fixed ray class function ν(t)G(t−1 ) = ξ cξ ξ(t). The Chinese remainder theorem
+and (4.5)–(4.7) give
+                                                              X
+                        µ(z1 )µ(z2 )ν(z1 )ν(z2 )γ(χz1 χz2 ) =   cξ aξ (z1 )aξ (z2 ).    (4.15)
+                                                                          ξ
+
+Write N = NK/Q for the remainder of this proof, and put W0 (x) = x−1/2 W (x). Substituting
+(4.15) into (4.14), including the normalization 1/D in (4.13), gives
+                                     X
+                         MD − Z =       cξ Sξ ,   |MD − Z| ≪ max |Sξ |,
+                                                                                    ξ
+                                            ξ
+
+since the character sum is fixed and finite. Fix ξ. Using χz (e) = χz (e5 ), its contribution is
+                            ∗                             ∗
+                        H X X µ(e)N (g) X                 X
+                 Sξ =                                                 aξ (z1 )aξ (z2 )χz1 (he5 )χz2 (he5 )
+                        D2 g    N (e)                     z1 ,z2
+                                e|g             h̸=0
+                                                        (z1 ,z2 )=1
+                                                       (z1 z2 ,g)=1
+                               N (gz )   N (gz )        HN (h)         
+                                     1           2
+                          × W0           W0          Φ
+                                                     b                        .
+                                   D           D        N (e)N (z1 )N (z2 )
+Here and below every starred variable is squarefree, primary, and prime to S, while h, k range
+over nonzero elements of O. We must show |Sξ | ≪ν,S,I,ϑ,ε ∥W ∥2C J ′ (I) HDε .
+   Insert the coprimality identity and change variables:
+                                           X
+                            1(z1 ,z2 )=1 =     µ(v),      zj = vmj .
+                                                v|z1 , v|z2
+
+By (4.6), the common factor from the two columns satisfies
+                     aξ (vm) = aξ (v)aξ (m)χm (v)4 ,             |aξ (v)χv (he5 )|2 = 1(v,h)=1 ,
+where (v, e) = 1. Thus the same sum becomes
+                           ∗                                                  ∗
+                       H X X µ(e)µ(v)N (g) X                                  X
+                   Sξ = 2                                                               aξ (m1 )aξ (m2 )
+                       D  g,v    N (e)                                   m1 ,m2
+                                      e|g                       h̸=0
+                            (g,v)=1                           (h,v)=1 (m1 m2 ,gv)=1
+                                                            N (gvm )   N (gvm ) 
+                                                                   1            2
+                           × χm1 (he5 v 4 )χm2 (he5 v 4 )W0            W0
+                                                                 D            D
+                                          HN (h)            
+                           ×Φb                                 .
+                                N (e)N (v)2 N (m1 )N (m2 )
+
+                                                          16
+There is now no restriction (m1 , m2 ) = 1. Make the bijective change of variables
+
+                                            b = g/e,          f = ev,            k = eh,
+                            e = (f, k),             v = f /e,             g = be,         h = k/e.
+
+The resulting b, f are coprime and squarefree, k ̸= 0 is arbitrary, and
+                                                                                                N (g)
+                gv = bf,            he5 v 4 = kf 4 ,           µ(e)µ(v) = µ(f ),                      = N (b).
+                                                                                                N (e)
+Consequently,
+                   ∗                                         ∗
+                H X             X                            X
+            Sξ = 2   µ(f )N (b)                                          aξ (m1 )aξ (m2 )χm1 (kf 4 )χm2 (kf 4 )
+                D                                           m1 ,m2
+                            b,f                    k̸=0
+                         (b,f )=1                         (m1 m2 ,b)=1                                            (4.16)
+                               N (bf m )            N (bf m )           HN (k)         
+                                              1               2
+                     × W0                          W0             Φ
+                                                                  b                           .
+                                        D                  D         N (f )2 N (m1 )N (m2 )
+
+The characters enforce (mj , f ) = 1, leaving only the displayed exclusion (mj , b) = 1. The
+supports of W0 and Φ
+                   b give
+
+                                                                                      CΦ b20 D2
+                               N (b)N (f ) ≤ b0 D,                 0 < N (k) ≤                  .
+                                                                                      HN (b)2
+
+   Partition B ≤ N (b) < 2B and F ≤ N (f ) < 2F into dyadic ranges. Denote the corresponding
+contribution to (4.16) by Sξ;B,F , and put
+
+                               D                          CI,Φ D2
+                         X=       ,               H=              ,          CI,Φ = max(2, CΦ b20 ).
+                               BF                          HB 2
+These satisfy (4.11). In the variables xj = N (mj )/X, the coupled smooth weight is
+
+                                                                 b a ,
+                                                                         
+                           Kb,f,k (x1 , x2 ) = W0 (rx1 )W0 (rx2 )Φ
+                                                                    x1 x2
+                            N (b)N (f )                      HN (k)
+                       r=                 ∈ [1, 4),     a=              ≤ CI,Φ .
+                               BF                           N (f )2 X 2
+For every integer q ≥ 0, these kernels satisfy
+
+                                    sup ∥Kb,f,k ∥C q ([a0 /4,b0 ]2 ) ≪I,Φ,q ∥W ∥2C q (I) .
+                                    b,f,k
+
+For U ∈ Cc∞ (I∗ ), where I∗ = [a0 /8, 2b0 ], put
+                                                   ∗
+                                                   X
+                          SU (b, f, k) =                    aξ (n)χn (k)χn (f )4 U (N (n)/X).
+                                                  (n,S)=1
+                                                  (n,b)=1
+
+The shifts (X, F ) 7→ (X/N (d), F N (d)) preserve (4.11). Thus Lemma 4.4 and (4.12), with J =
+J(ϑ, ε/4), give
+                  X
+                      |SU (b, f, k)|2 = XF E(b) (H, X, F ; ξ, U )
+                   f,k
+                                                                  X
+                                              ≤ XF τdiv (b)              E(H, X/N (d), F N (d); ξ, U )
+                                                                  d|b
+                                                                ε/2
+                                              ≪ν,S,I,ϑ,ε D            (XF )2 ∥U ∥2C J (I∗ ) .
+
+                                                                 17
+Here N (b) ≪I D, so the divisor factors are absorbed in Dε/4 . We use the following smooth-weight
+principle, stated and proved in Lemma B.2: a mean-square bound valid for every common test
+function, with a C J norm, also bounds the corresponding quadratic sum with a kernel depending
+on the row, at a cost given by the kernel’s C 2J+4 norm. For each fixed b, apply Lemma B.2 with
+row index (f, k), coefficient µ(f )1(f,b)=1 , and kernel Kb,f,k . The larger row range 0 < N (k) ≤ H
+adds only terms whose original kernel vanishes. With q = 2J + 4, this gives
+                                                                    ∗
+                                            ε/2
+                                                                    X         HN (b)
+                   |Sξ;B,F | ≪ν,S,I,ϑ,ε D         ∥W ∥2C q (I)                       (XF )2
+                                                                               D2
+                                                                 B≤N (b)<2B                     (4.17)
+                                                HB
+                             ≪ Dε/2 ∥W ∥2C q (I) 2 B (XF )2 = Dε/2 ∥W ∥2C q (I) H,
+                                                D
+where XF = D/B and ideal counting gives O(B) choices of b. Summing the O((log D)2 )
+nonempty dyadic ranges bounds Sξ as required. Sum over the fixed finite set of ξ, include
+Z, and restore the factor D to obtain (3.1). The required derivative order depends only on ϑ, ε.
+
+
+
+5     Iteration of the dual mean-square estimate
+Put Σ = XF . We prove the following estimate for the family (4.9), with exclusions removed by
+Lemma 4.4. The two inputs are proved in Sections 6 and 7.
+Proposition 5.1. Fix κ > 0 and C0 ≥ 1. Suppose that
+
+                        H, X, F ≥ 1,         Σ = XF ≤ DC0 ,                   H ≤ ΣD−κ .         (5.1)
+
+For every ε > 0 there is an integer J = J(κ, C0 , ε) ≥ 1 such that
+
+                            E(H, X, F ; ξ, W ) ≪I,ν,S,κ,C0 ,ε ∥W ∥2C J (I) Dε Σ                  (5.2)
+
+for every compact interval I ⊂ (0, ∞) and smooth W supported in I.
+    The proof is given in Section 5.5, using Lemma 5.3 and Proposition 5.4.
+
+5.1   The completed sums
+Let Ψ be a completely multiplicative C-valued function on the nonzero integral ideals of OK =
+Z[ω] coprime to 3, vanishing on ideals divisible by a prime in S. For a primary element n, write
+Ψ(n) = Ψ((n)). Define
+                        ∗
+                        X        X α(n)γ2 (n)Ψ(n)α(b) 3 Ψ(b)3
+         T (X; Ψ) =                   q                       V∗ (NK/Q (n)NK/Q (b)3 /X),         (5.3)
+                      (n,S)=1    b∈O    NK/Q (n) NK/Q (b)
+                                b≡1 (3)
+                                (b,S)=1
+               √
+where V∗ (y) = y W (y). The extra index b supplies the cubes in the Fourier expansion of the
+                                     primary elements of O; only n is required to be squarefree.
+Kubota theta function. Here n, b are P
+   The b = 1 part is exactly X −1/2 ∗(n,S)=1 α(n)γ2 (n)Ψ(n)W (NK/Q (n)/X). To identify this
+with the normalized column sum in (4.9), fix a ray class character ξ. For a nonzero row k ∈ O
+and a squarefree primary f prime to S, set
+
+                      Ψk (n) := ξ(n)χn (k)χn (f )4 ,              T (X; k, f ) := T (X; Ψk ).    (5.4)
+
+The displayed product defines Ψk (n) for (n, S) = 1; set Ψk (n) = 0 otherwise. Thus the zero
+extension required in (5.3) is part of this definition.
+
+                                                         18
+5.2   The completed mean-square estimate
+For the twist (5.4), the theta transformation converts the relevant sextic twists into quadratic
+characters. Combining it with the quadratic large sieve gives the following estimate, proved in
+Section 6.
+
+Proposition 5.2. Fix ε > 0, C0 ≥ 1, and a character ξ of the fixed ray class group. There is
+J = J(ε, C0 ) ≥ 1 such that
+
+                  X                                                         H2 NK/Q (f ) 
+                             |T (X; k, f )|2 ≪I,ξ,S,ε,C0 Dε ∥W ∥2C J (I) H +                       (5.5)
+                                                                                 X
+              0<NK/Q (k)≪H
+
+whenever
+                                       1 ≤ H, X, NK/Q (f ) ≤ DC0 .
+Here f is squarefree and primary with (f, S) = 1, W is smooth and supported in a compact
+interval I ⊂ (0, ∞), and T is defined by (5.4).
+
+5.3   Cube inversion and the remaining sums
+Set                                     X2                               X
+                              Hc3 = min X, 2 ,                 Lb =                .               (5.6)
+                                          H                           NK/Q (b)3
+
+Lemma 5.3. Fix C0 ≥ 1 and ε > 0. Suppose 1 ≤ H, X, F ≤ DC0 and H ≤ Σ = XF . There is
+an integer J = J(ε, C0 ) ≥ 1 such that
+                                                                               
+                                      ε     2
+     E(H, X, F ; ξ, W ) ≪I,ν,S,C0 ,ε D Σ∥W ∥C J (I) + sup   E(H, Lb , F ; ξ, W )  (5.7)
+                                                                b≡1 (3), (b,S)=1
+                                                               NK/Q (b)>Hc , Lb >1
+
+
+for every compact interval I ⊂ (0, ∞) and W ∈ Cc∞ (I). An empty supremum is zero; in particular
+it is empty when H2 ≤ X.
+
+Proof. Write N = NK/Q and I = [u, v]. Complete multiplicativity in (5.3), including at the zeros
+of Ψk , gives
+                            X∗
+                    X −1/2        aξ (n)χn (k)χn (f )4 W (N (n)/X)
+                                (n,S)=1
+                                                                                                   (5.8)
+                                 X µ(h)α(h) 3 Ψk (h)3
+                               =                      T (X/N (h)3 ; k, f ).
+                                        N (h)
+                                 (h,S)=1
+                                                                                              P
+Indeed, after substitution of (5.3), the coefficient of the total cube index b contains       h|b µ(h) =
+1b=1 . This is Möbius inversion; compare [22, (1.18)] and [7, (8.2)].
+   Split the right-hand side of (5.8) into Pshort (k, f ) + Plong (k, f ), where
+                                                           3
+                                          X     µ(h)α(h) Ψk (h)3
+                   Pshort (k, f ) =                              T (X/N (h)3 ; k, f ),
+                                                     N (h)
+                                      (h,S)=1
+                                      N (h)≤Hc
+                                              ∗
+                                      1      X             X
+                         Eshort =                                   |Pshort (k, f )|2 .
+                                      F
+                                          F ≤N (f )<2F 0<N (k)≤H
+                                             (f,S)=1
+
+
+
+
+                                                      19
+Define Elong in the same way using Plong . Weighted Cauchy–Schwarz for each k, f , followed by
+Proposition 5.2, gives
+                                                                    ∗
+                 X            1         X          1 1            X             X
+     Eshort ≤                                                                             |T (X/N (h)3 ; k, f )|2
+                             N (h)                 N (h) F
+                  N (h)≤Hc            N (h)≤Hc                F ≤N (f )<2F 0<N (k)≤H
+                                                                 (f,S)=1                                             (5.9)
+                                                        H2 F Hc3 
+           ≪I,ν,S,C0 ,ε Dε/2 ∥W ∥2C J (I) H +                          ≪ Dε/2 Σ∥W ∥2C J (I) .
+                                                             X
+Here X/N (h)3 ≥ 1, and the reciprocal-norm sum contributes only a logarithm. We use Propo-
+sition 5.2 with exponent ε/4 and range C0 + 1, since N (f ) < 2DC0 . If Hc < 1, the sum is
+empty.
+    Expand T using (5.3) in the remaining terms, with cube index c:
+                                     1    X       X         p            3
+                    Plong (k, f ) = √                   µ(h) N (hc) α(hc) Ψk (hc)3
+                                      X (h,S)=1 (c,S)=1
+                                               N (h)>Hc
+                                                 X ∗                            N (n)N (hc)3 
+                                           ×             aξ (n)χn (k)χn (f )4 W                 .
+                                                                                      X
+                                               (n,S)=1
+
+
+Put b = hc; the pairs giving b are exactly (h, b/h) with h | b and N (h) > Hc . Since Ψk (b)3 =
+ξ(b)3 χb (k)3 1(b,f )=1 , this gives
+                                                            ∗
+                              X       β0 (b, f )χb (k)3 1   X
+        Plong (k, f ) =                                √      aξ (n)χn (k)χn (f )4 W (N (n)/Lb ),
+                                           N (b)         Lb
+                           (b,S)=1                                 (n,S)=1
+                           N (b)>Hc
+                                3                     X
+          β0 (b, f ) := α(b) ξ(b)3 1(b,f )=1                     µ(h),         |β0 (b, f )| ≤ τdiv (b).
+                                                       h|b
+                                                    N (h)>Hc
+
+The divisor function τdiv (b) counts ideal divisors. All these indices are primary and prime to
+S; b need not be squarefree. The support of W restricts the sum to N (b)3 ≤ vX. Weighted
+Cauchy–Schwarz now gives
+                              X              τdiv (b)            X             τdiv (b)
+          Elong ≤                                                                         E(H, Lb , F ; ξ, W ).
+                                          1/3
+                                               N (b)                         1/3
+                                                                                  N (b)
+                         Hc <N (b)≤(vX)                    Hc <N (b)≤(vX)
+                              (b,S)=1                           (b,S)=1
+
+
+The reciprocal divisor sum is ≪I log2 (2 + X), since
+         X τdiv (b)                 X          1         X  1 2
+                    =                                 ≤           ≪ log2 (2R)                             (R ≥ 1).
+            N (b)                          N (c)N (d)       N (c)
+        N (b)≤R                N (cd)≤R                          N (c)≤R
+
+If Lb ≤ 1, the column sum is empty unless Lb ≥ 1/v; otherwise it has OI (1) terms, so
+
+                                                                 H
+                               E(H, Lb , F ; ξ, W ) ≪I              ∥W ∥2∞ ≪I Σ∥W ∥2∞ .
+                                                                 Lb
+Absorb the logarithms in Dε and combine the two parts using E ≤ 2Eshort + 2Elong . This proves
+(5.7). If H2 ≤ X, then Hc = X 1/3 , so N (b) > Hc implies Lb < 1.
+
+
+
+
+                                                              20
+5.4    The transfer estimate
+Fix a nonnegative radial Schwartz weight Φ with Φ(t) ≥ 1 for 0 ≤ t ≤ 1 and supp Φ b ⊂ [0, CΦ ].
+Such a weight is obtained by squaring and rescaling a real radial Schwartz function with com-
+pactly supported Fourier transform. Write N = NK/Q . For fixed H, L, F, ξ, put
+                         ∗                             ∗
+                  1      X        X                    X                                        2
+      A(W ) :=                           Φ(N (k)/H)             aξ (n)χn (k)χn (f )4 W (N (n)/L) .   (5.10)
+                 LF
+                      F ≤N (f )<2F k∈O                (n,S)=1
+                         (f,S)=1
+
+Thus E(H, L, F ; ξ, W ) ≤ A(W ). In the following proposition Σ is an independent target scale;
+we will apply it at column scale Lb with Σ = XF .
+Proposition 5.4. Assume 1 ≤ H, L, F, Σ ≤ DC0 and max{H, LF } ≤ Σ, for fixed C0 ≥ 1. For
+every integer m ≥ 0 and ε > 0,
+                                                          E(H′ , X ′ , F ′ ; ξ ′ , U ) 
+                      A(W ) ≪ Dε Σ∥W ∥2C 4m+12 (I) 1 + sup                                           (5.11)
+                                                                    Σ′
+where the supremum is over the family (4.9), with Σ′ = X ′ F ′ , H′ , X ′ , F ′ ≥ 1, and
+
+                                          HL        H′   H
+                                 H′ ≤        ,        ′
+                                                        ≤ ,           Σ′ ≤ L.                        (5.12)
+                                          ΣF        Σ    Σ
+For I = [u, v], the tests satisfy U ∈ Cc∞ (I ′ ), I ′ = [u/16, 4v], and ∥U ∥C m (I ′ ) ≤ 1; an empty
+supremum is zero. The estimate holds for every compact I ⊂ (0, ∞) and W ∈ Cc∞ (I), with
+implied constant depending on m, C0 , ε, I, ν, S and the fixed ray class group.
+    The proof is given in Section 7, by combining Lemmas 7.1 and 7.3.
+
+5.5    Proof of Proposition 5.1
+Proof of Proposition 5.1. Fix κ > 0 and C0 ≥ 1. We prove by induction on j ≥ 0 that the
+proposition holds under the additional restriction H ≤ Djκ , with the derivative order and implied
+constant allowed to depend on j. More precisely, for every ε > 0 there is an integer J =
+J(j, κ, C0 , ε) ≥ 1 such that
+
+                             E(H, X, F ; ξ, W ) ≪I,ν,S,j,κ,C0 ,ε Dε Σ∥W ∥2C J (I)
+
+for every compact interval I = [u, v] ⊂ (0, ∞) and W ∈ Cc∞ (I), under the hypotheses of the
+proposition. The derivative order is independent of I; this allows us to apply the induction
+hypothesis on the enlarged interval in the transfer estimate. For the base case j = 0, we have
+H ≤ 1. In (4.9), the support of W restricts n to the OI (X) ideals with NK/Q (n) ∈ [uX, vX].
+The factors aξ (n), χn (k), and χn (f )4 have absolute value at most one, so the triangle inequality
+bounds each inner sum by OI (X∥W ∥∞ ). There are O(F ) choices of f and O(H) choices of k.
+Consequently,
+                                              FH            2
+                        E(H, X, F ; ξ, W ) ≪I      X∥W ∥∞ = HX∥W ∥2∞ .
+                                              XF
+Dividing by Σ = XF and using H ≤ 1 and F ≥ 1 proves the assertion for j = 0, with J = 1.
+    Suppose the assertion holds for j, and fix ε > 0. Let m be the derivative order supplied by the
+induction hypothesis with exponent ε/3. For H ≤ D(j+1)κ , apply Lemma 5.3 with exponent ε/3.
+We must bound the mean squares in its supremum uniformly in b. If this supremum is nonempty,
+then H2 > X and Hc3 = X 2 /H2 . For each such b, recall that Lb = X/NK/Q (b)3 > 1. Since
+Lb ≤ X and Σ ≥ max{H, Lb F }, Proposition 5.4 applies at column scale Lb , with derivative order
+m, and exponent ε/3. Its estimate also bounds E(H, Lb , F ; ξ, W ) because E(H, Lb , F ; ξ, W ) ≤
+A(W ).
+
+                                                      21
+   Let H′ , X ′ , F ′ be any parameters in the supremum in (5.11), with Σ′ = X ′ F ′ as in that
+proposition. By (5.12) and NK/Q (b) > Hc ,
+
+                           HLb       H              H 2
+                    H′ ≤       =               < H        ≤ D−2κ H ≤ Djκ ,
+                           ΣF    NK/Q (b)3 F 2       Σ
+                    H′    H
+                      ′
+                        ≤   ≤ D−κ ,          Σ′ ≤ Lb ≤ Σ ≤ DC0 .
+                    Σ     Σ
+Thus each of these mean squares is covered by the induction hypothesis. Its weight U is supported
+in [u/16, 4v] and has C m norm at most one. Applying the induction hypothesis on this interval
+gives
+                             E(H′ , X ′ , F ′ ; ξ ′ , U )
+                                                          ≪I,ν,S,j,κ,C0 ,ε Dε/3 .
+                                      Σ′
+The enlarged interval is determined by I, so the implied constant has only the permitted depen-
+dence on the support. Substituting into (5.11) yields, uniformly in b,
+
+                     E(H, Lb , F ; ξ, W ) ≪I,ν,S,j,κ,C0 ,ε D2ε/3 Σ∥W ∥2C 4m+12 (I) .
+
+Substitution into (5.7) contributes the remaining factor Dε/3 . Choose J at least 4m + 12 and at
+least the derivative order required by Lemma 5.3. We obtain
+
+                         E(H, X, F ; ξ, W ) ≪I,ν,S,j,κ,C0 ,ε Dε Σ∥W ∥2C J (I) .
+
+The choice of J depends only on j, κ, C0 , ε. If the supremum in (5.7) is empty, the same bound
+follows directly from that lemma. This completes the induction.
+    Finally, take j = ⌈C0 /κ⌉. The hypothesis H ≤ Σ ≤ DC0 ensures H ≤ Djκ , so the induction
+gives the proposition.
+
+5.6   The original mean square and the exponent 11/12
+Proof of Proposition 3.1. Fix 0 < ϑ ≤ 1/10 and put H = D1+ϑ . The ranges in (4.11) give
+
+                             CD1−ϑ                         D        H
+                       H≤          ,        Σ = XF =         ,        ≪ D−ϑ .              (5.13)
+                              B2                           B        Σ
+For large D, Proposition 5.1 applies with κ = ϑ/2 and C0 = 2. If X < 1, nonempty support
+forces X ≫I 1, and counting gives E ≪I H∥W ∥2∞ ≪ Σ∥W ∥2∞ ; if H < 1, the sum is empty.
+Thus (4.12) holds, with derivative order depending only on ϑ, ε, and Proposition 4.5 proves (3.1).
+Bounded D is again covered by counting.
+
+
+6     Proof of the completed mean-square estimate
+We prove Proposition 5.2. We first express the completed sum (5.3) using cubic theta coefficients
+and state the transformation formula. We then apply the quadratic large sieve and account for
+repeated prime factors in k.
+
+6.1   Realization by the cubic theta function
+With the row k and auxiliary index f fixed, we express T (X; k, f ) as a weighted sum of Fourier
+coefficients of the cubic theta function. Its automorphy then expresses this sum in terms of
+coefficients at other cusps, as in [7, §5 and Appendix A]. We use Ψk from (5.4), suppressing its
+dependence on the fixed f and ξ.
+
+
+
+                                                   22
+    Write (z, v) ∈ C × R>0 for upper half-space coordinates, with horizontal coordinate z and
+height v. We use Kubota’s cubic theta function in the normalization of [7, §5.1, (5.6)]:
+
+                              35/2 2/3 X                                      
+                θ(z, v) =         v +     τ (ℓ)vK1/3 (4π|ℓ|v) exp 2πi(ℓz + ℓz) .                         (6.1)
+                               2       −3  ℓ∈λ O
+                                             ℓ̸=0
+
+Here K1/3 is the modified Bessel function of the second kind, and τ (ℓ) is the coefficient sequence
+given explicitly in [7, (5.7)–(5.8)], following Patterson’s calculation [38, Theorem 8.1].
+    We define Θk (z, v) by twisting the Fourier coefficients of θ. First define ϕk : O → C by
+                               (
+                                 χn (λ)2 Ψk (n), n ≡ 1 (mod 3), (n, S) = 1,
+                     ϕk (n) =
+                                 0,              otherwise.
+
+Then we define Θk (z, v) by multiplying the Fourier coefficient of θ at ℓ, which is τ (−ℓ), by
+ϕk (λ3 ℓ):
+                                X
+                                         τ (−ℓ)ϕk (λ3 ℓ)vK1/3 (4π|ℓ|v) exp 2πi(ℓz + ℓz) .
+                                                                                       
+                Θk (z, v) =                                                                              (6.2)
+                               ℓ∈λ−3 O
+                                 ℓ̸=0
+
+Recall that cθ (nb3 ) is defined in (2.10). Choose a nonzero q ∈ O such that ϕk is periodic modulo
+(q), and put
+                                            1     X
+                               ϕbk (h) =               ϕk (n)e(−hn/q).
+                                         NK/Q (q)
+                                                        n mod q
+
+Lemma 6.1. With these definitions,
+                                                                                  N       3 
+                                 1                                                  K/Q (nb )
+                                             X
+             T (X; k, f ) =      √                      cθ (nb3 )ϕk (nb3 )α(nb3 )W             .         (6.3)
+                              35/2 X                                                  X
+                                            n,b∈O
+                                          n,b≡1 (3)
+                                         n squarefree
+                                          (nb,S)=1
+
+Moreover,                                        X
+                                Θk (z, v) =              ϕbk (h)θ(z + λ2 h/q, v).                        (6.4)
+                                              h∈O/(q)
+
+Proof. The coefficient formula (2.10) gives
+
+                              cθ (nb3 )ϕk (nb3 ) = 35/2 |b|γ2 (n)Ψk (n)Ψk (b)3 .
+                                             √
+Substitution into (5.3), using V∗ (y) =          y W (y), proves (6.3). Finite Fourier inversion gives
+                               X                                   X
+                  ϕk (n) =              ϕbk (h)e(nh/q),                     ϕbk (h) = ϕk (0) = 0.
+                              h∈O/(q)                             h∈O/(q)
+
+
+Multiplication of the ℓth Fourier mode by e(λ3 ℓh/q) translates z to z + λ2 h/q. The second
+identity cancels the constant term, proving (6.4).
+
+    The resulting transformation formula is stated in the next subsection; its automorphy calcu-
+lation is given in Appendix A.2.
+
+
+
+
+                                                         23
+6.2    The theta transformation
+Recall that, for a primary prime p ∈     / S, χp (x) = (x/p)6 is the sextic residue character on
+(O/(p)) . For every integer j, write χjp for its jth power on this group, extended by zero on
+       ×
+
+multiples of p; in particular, χ0p (x) = 1p∤x . Sextic reciprocity (4.1) expresses the factors of Ψk at
+primes outside S as such powers, with 0 ≤ j ≤ 5.
+   For a primary prime p ∈   / S, j ∈ {0, . . . , 5}, and x ∈ O, define the local factor
+                                
+                                         −j−2 ,                           j ̸= 0, 4,
+                                χp (x)
+                                
+                     Bp,j (x) = NK/Q (p)     −1/2   (−1 + NK/Q (p)1p|x ), j = 4,                   (6.5)
+                                
+                                
+                                    NK/Q (p) −1/2         −2
+                                                    χp (x) ,              j = 0.
+
+The key case is the quadratic character
+
+                                               Bp,1 (x) = χp (x)3 .
+
+                                                                    b∗ (s) = ∞ V∗ (x)xs dx/x. We write
+                                                                             R
+For
+R     the  smooth  compactly supported    weight V ∗ in  (5.3), put V          0
+  (σ)  for integration upwards  along  the  vertical  line with  real part  σ.   With Γ denoting Euler’s
+gamma function, the accompanying transform of the weight is
+
+                                         Γ(7/6 + t)Γ(5/6 + t)  (2π)4 x −t
+                           Z
+                 ♯       1
+               V∗ (x) =         Vb∗ (−t)                                       dt,    x > 0.       (6.6)
+                        2πi (0)          Γ(7/6 − t)Γ(5/6 − t)        27
+
+Here θ is Kubota’s cubic theta function, normalized in (6.1). The dual sums use the Fourier
+coefficients of θ at three cusps. Take the representatives
+                                                    1 0                 1    0
+                            γ0 = I,      γ+ =             ,        γ− =            ,                  (6.7)
+                                                    ω 1                    ω2   1
+
+acting on upper half-space. For σ ∈ {0, +, −}, define dσ (ℓ) by the Fourier expansion [7, (5.9),
+(5.15)]
+
+                           35/2                   X
+                                1σ=0 v 2/3 +
+                                                                                                 
+          θ(γσ (z, v)) =                                    dσ (ℓ)vK1/3 (4π|ℓ|v) exp 2πi(ℓz + ℓz) .   (6.8)
+                            2
+                                               0̸=ℓ∈λ−4 O
+
+
+Thus d0 (ℓ) = τ (−ℓ), with τ extended by zero outside λ−3 O. In particular, cθ (nb3 ) = d0 (λ−3 nb3 )
+for the indices in (2.10); the outline uses dθ (m) for dσ (λ−4 m) with one of these three choices of σ.
+The arithmetic formulas for all three sequences are given by (A.6) and (A.7) in Appendix A.2.
+    We state the formula for a general product of local twists. Fix a ray class character whose
+conductor is supported on S, and let Ψ0 be its extension by zero at every prime in S. Let P
+be a finite set of primes outside S, each represented by its primary generator in O, and choose
+integers 0 ≤ jp ≤ 5 for each p ∈ P. For primary n ∈ O, set
+                                                      Y jp
+                                      Ψ(n) = Ψ0 (n)        χp (n).
+                                                            p∈P
+
+    In the transformed sums, A will range over subsets satisfying
+
+                                       {p ∈ P : jp ̸= 0} ⊆ A ⊆ P.
+
+Thus only primes with jp = 0 may be omitted from A. We call the primes in A active and those
+in P \ A inactive. For such a subset and c0 ∈ O \ {0}, write
+                                                Y
+                                         c = c0     p.
+                                                         p∈A
+
+
+                                                       24
+Proposition 6.2. The quantity T (X; Ψ) defined in (5.3) is a sum of OΨ0 ,S (2|P| ) terms of the
+form
+                                                               N
+                           d(ℓ)α(ℓ)                               K/Q (ℓ)X
+                   X                          Y                            
+               C                      ψ(λ4 ℓ)   Bp,jp (λ4 ℓ)V∗♯              .            (6.9)
+                                                                NK/Q (c)2
+                         q
+                      −4
+                      0̸=ℓ∈λN  O  (ℓ) K/Q               p∈A
+
+   Here A and c are as above, and |C| ≪Ψ0 ,S 1. The triples (d, ψ, c0 ) belong to a fixed finite
+family depending only on Ψ0 , S, where d ∈ {d0 , d+ , d− }, c0 ∈ O \ {0}, and ψ is a unit-modulus
+additive character on O.
+   To average the transformed sums over k0 , we need to choose their cusp coefficients and
+additive characters consistently as k0 varies. Fix a finite set Pfix of primary primes outside S
+and exponents jp ∈ {0, . . . , 5}, and put
+                                                 Y jp      Y
+                                Ψk0 (n) = Ψ0 (n)   χp (n)     χp (n),
+                                                     p∈Pfix           p|k0
+                                                        Q
+where k0 is primary and squarefree, with (k0 , S p∈Pfix p) = 1. Let Afix range over the subsets
+satisfying
+                 {p ∈ Pfix : jp ̸= 0} ⊆ Afix ⊆ Pfix ,  A = Afix ∪ {p : p | k0 }.
+Every prime dividing k0 belongs to A, since its exponent is 1.
+Lemma 6.3 (Uniformity in the twist). For the family Ψk0 above, the summands in Proposi-
+tion 6.2 may be indexed by (h, Afix ), with h in a fixed finite set depending only on Ψ0 , S. Zero
+scalar coefficients are permitted. For each fixed index, the triple (d, ψ, c0 ) depends on k0 only
+through its ray class modulo a fixed ideal supported on S and depending only on Ψ0 , S.
+   To estimate the dual sums, we need bounds for the cusp coefficients and the transformed
+weight.
+Lemma 6.4. For each d ∈ {d0 , d+ , d− }, the coefficient d(ℓ) vanishes unless ℓ can be written as
+
+                                                 ℓ = uλm nb3 ,                                           (6.10)
+
+where u ∈ O× , m ∈ Z with m ≥ −4, and n, b ∈ O are primary with n squarefree.
+
+                                   |d(ℓ)| = |d(uλm nb3 )| ≤ 27 · 3m/6 |b|.                               (6.11)
+
+   For A > 0, integers j ≥ 0, and V∗ supported in a fixed compact interval I ⊂ (0, ∞), there is
+J = J(A, j) such that
+
+                     |(x∂x )j V∗♯ (x)| ≪A,j,I ∥V∗ ∥C J (I) min(x1/4 , x−A ),       x > 0.                (6.12)
+
+   Proposition 6.2 and Lemmas 6.3 and 6.4 are proved in Appendix A.2.
+
+6.3   The quadratic mean square on the dual side
+We record the quadratic large-sieve estimate needed below.
+Lemma 6.5. Let H, U ≥ 1, and let β(n) be complex coefficients on squarefree primary n with
+NK/Q (n) ≍ U . For every ε > 0,
+            ∗
+            X                  X                              2                          X
+                                               β(n)χk (n)3        ≪S,ε (HU )ε (H + U )       |β(n)|2 .   (6.13)
+      k≡1 (3), (k,S)=1 n≡1 (3), n squarefree                                             n
+        NK/Q (k)≤H         NK/Q (n)≍U
+
+The star restricts k to squarefree primary elements.
+
+                                                       25
+Proof. This is Goldmakher and Louvel’s quadratic large sieve [13, Theorem 1.1], after fixing the
+product of the prime factors of n lying in S, and finitely many ray classes. For completeness, let
+ek ∈ {0, 1} according as NK/Q (k) ≡ 1, 3 (mod 4), and let κλ be the nontrivial character modulo
+λ. The character x 7→ (x/k)2 κλ (x)ek is trivial on units and has primitive conductor kλek . When
+ek = 0, the factor κλ (x)ek is omitted. Classes modulo 24O fix the supplementary characters
+and reciprocity factors; for coprime k1 , k2 in the same class, the product character has conductor
+k1 k2 . These are the hypotheses in [13, Definition 1 and §2].
+
+6.4   Squarefree rows and the completed bound
+Write N (a) = NK/Q (a). In (5.4), allow any g ∈ O\{0} in place of f , so Ψk (n) = ξ(n)χn (k)χn (g)4 .
+The zero extension at S is retained. Choose prime-ideal generators, primary away from 3, and
+extend multiplicatively to all ideals. We first bound squarefree rows.
+
+Lemma 6.6. For every ε > 0 and C0 ≥ 1 there is J = J(ε, C0 ) ≥ 1 such that
+                   X                                                            H2 N (g) 
+                               |T (X; u0 s, g)|2 ≪I,ξ,S,ε,C0 Dε ∥W ∥2C J (I) H +                 (6.14)
+                                                                                    X
+                0<N (s)≤H
+                s squarefree
+
+for 1 ≤ H, X, N (g) ≤ DC0 , u0 ∈ O× , every compact interval I ⊂ (0, ∞), and W ∈ Cc∞ (I). The
+sum uses the chosen generators of squarefree ideals, including those meeting S.
+
+Proof. By homogeneity assume ∥W ∥C J (I) ≤ 1, with J chosen below. Write
+                                               Y                                   H
+                      s = tk0 ,        t=                p,    N (k0 ) ≤ H0 :=          .
+                                                                                  N (t)
+                                                p|s
+                                            p|g or p∈S
+
+Fix t; then k0 is squarefree and primary, with (k0 , g) = 1 and (k0 , S) = 1. Discard empty ranges,
+so H0 ≥ 1, and retain these restrictions below. For a coefficient function A(n, b), a positive scale
+Y , and an integer m ≥ −4, put
+                                        X           A(n, b)χk0 (nb)3 ♯ 3m N (n)N (b)3 H02 
+              Sm [A, Y ](k0 ) :=                                    V∗                       .   (6.15)
+                                                                            Y N (k0 )2
+                                                       p
+                                     n,b≡1 (3)
+                                                   3m/3 N (n) N (b)
+                                    n squarefree
+
+   We shall obtain, after partitioning k0 into fixed ray classes,
+                                          X X
+                      T (X; u0 tk0 , g) =         cι,m (k0 )Sm [Aι,m , Yι ](k0 ),
+                                              ι∈I m≥−4
+
+where I is independent of k0 , |I| ≼ 1, |cι,m (k0 )| ≪ 1, and Aι,m is independent of k0 . For some
+aι , Yι > 0, the coefficients and lengths satisfy
+
+                                                                          H02
+                    |Aι,m (n, b)| ≪ aι ,           a2ι ≤ 1,    a2ι Yι ≪       N (t)2 N (g).      (6.16)
+                                                                          X
+All column restrictions are included by extending Aι,m by zero. Put k = u0 tk0 . For P = {p ∈
+                                                                                            /
+S : p | kg}, sextic reciprocity (4.1) gives
+                        Y jp
+        Ψk (n) = Ψ0 (n)     χp (n),      jp ≡ vp (k) + 4vp (g) (mod 6), 0 ≤ jp ≤ 5.     (6.17)
+                       p∈P
+
+Even when jp = 0, the factor χ0p (n) = 1p∤n retains the zero extension at p | kg. The fixed factor Ψ0
+                                                                      vp (k) ). The fourth power at g
+                                                               Q
+contains ξ, the factors at S, the unit factors, and n 7→ R(n, p∈S / p
+
+
+                                                         26
+contributes no reciprocity sign, and the factors at S depend only on exponents modulo six. Thus
+Ψ0 ranges over a fixed finite family. In the notation of Lemma 6.3, take Pfix = {p ∈ / S : p | tg},
+so that P = Pfix ⊔ {p : p | k0 }; the exponents on Pfix are fixed with t, g. Partitioning k0 into
+fixed ray classes fixes Ψ0 and, by Lemma 6.3, the data d, ψ, c0 in each transformed term.
+                                                                                        Q
+    Fix one transformed term, with active primes Afix away from k0 , and put c∗ = c0 p∈Afix p.
+Thus c = c∗ k0 in (6.9). By (6.10), write ℓ = uλm nb3 , with u, m, n, b as there. Every prime
+dividing k0 has jp = 1, and hence
+
+                                   Bp,1 (uλm+4 nb3 ) = χp (uλm+4 )3 χp (nb)3 .                       (6.18)
+
+Indeed, the transformed exponent is −1 − 2 ≡ 3 (mod 6) and χp (b)9 = χp (b)3 , also when p | b by
+zero extension. The coefficient bound and rapid decay in Lemma 6.4 give absolute convergence
+of the transformed series, so we may regroup its terms below. Set
+
+                             d(uλm nb3 )α(uλm nb3 )ψ(uλm+4 nb3 )
+            Au,m (n, b) =                    p                   ,             |Au,m (n, b)| ≤ 27.
+                                         3m/6 N (b)
+
+The transformed term is therefore
+                       X X                             X       Au,m (n, b)χk0 (nb)3
+              C(k0 )                 χk0 (uλm+4 )3                  p
+                       u∈O× m≥−4                     n,b≡1 (3)
+                                                               3m/3 N (n) N (b)
+                                                   n squarefree
+                         Y                             3m N (n)N (b)3 X 
+                   ×             Bp,jp (uλm+4 nb3 )V∗♯                     ,       |C(k0 )| ≪ 1.
+                                                         N (c∗ )2 N (k0 )2
+                        p∈Afix
+
+The representation is unique: away from λ, the prime exponents of ℓ are 3vp (b) or 1 + 3vp (b).
+Apart from the quadratic character and weight, the k0 -dependence is a bounded scalar.
+   Fix u, m and write q = N (p) for an active prime p ∤ k0 . For jp = 4, the local identity is
+
+                         Bp,4 (uλm+4 nb3 ) = −q −1/2 + q 1/2 1p|n + q 1/2 1p∤n, p|b .
+
+To display the reindexing in (6.15), let A(p) (n, b) include all the other local factors and set
+
+                 A(p,n) (n, b) = 1p∤n A(p) (pn, b),         A(p,b) (n, b) = 1p∤n A(p) (n, pb).
+
+Then the changes n = pn′ and b = pb′ give the exact identity
+
+                   Sm [A(p) (n, b)Bp,4 (uλm+4 nb3 ), q 2 Y ](k0 )
+                        = −q −1/2 Sm [A(p) , q 2 Y ](k0 ) + χk0 (p)3 Sm [A(p,n) , qY ](k0 )
+                             + q −1/2 χk0 (p)3 Sm [A(p,b) , Y /q](k0 ).
+
+In the second term p ∤ n′ preserves squarefreeness; in the third, p ∤ n is retained and b′ is
+unrestricted at p. Both   p extracted phases−1/2 have modulus one. The factors q 1/2 in the local
+                                 ′
+identity cancel against N (pn ) or leave q          after division by N (pb′ ).
+     Let a track a bound |A(n, b)| ≤ 27a for the coefficient in (6.15), and let Y be its scale. Before
+inserting the active primes, these are a = 1 and Y = N (c0 )2 H02 /X. Each active prime contributes
+q 2 to the squared conductor norm. Including this factor, the updates are
+                               
+                                   2 2                                   jp ∈
+                                                                            / {0, 4},
+                               (a , q Y ),
+                               
+                     2
+                   (a , Y ) 7−→ (a2 /q, q 2 Y ),                         jp = 0,
+                               
+                                2        2       2         2
+                                (a /q, q Y ), (a , qY ), (a /q, Y /q), jp = 4.
+
+
+
+                                                       27
+Thus a2 never increases. If p | t and p ∈ / S, then jp is odd, so a2 Y costs at most N (p)2 . If p | g
+and p ∤ t, the cost is N (p) for jp = 0, 4 and N (p)2 for jp = 2; the latter case requires vp (g) ≥ 2.
+Hence
+                              H2 Y            Y                  H2 N (t)2 N (g)
+                      a2 Y ≪ 0       N (p)2        N (p)vp (g) ≤ 0               .
+                               X                                       X
+                                         p|t               p|g
+                                        p∈S
+                                          /             p∤t, p∈S
+                                                               /
+
+Reindexing at distinct primes preserves the form and zero extensions. By Lemma 6.3, the
+transformed terms, units, and at most three choices per prime p ∈ Afix with jp = 4 form an
+index set of divisor-bounded size in tg. Here and below, divisor-bounded in a means bounded
+by Cτdiv (a)A for fixed constants C, A; in particular, this is ≪ε NK/Q (a)ε for every ε > 0. For
+one index ι, abbreviate a = aι , Y = Yι , and Am = Aι,m . The local updates give Y ≪ DC1 for
+some fixed C1 = C1 (C0 ). Split b into B ≤ N (b) < 2B, and n by a smooth dyadic partition
+V (N (n)/U ), with U, B ≥ 1 and uniformly bounded cutoffs. For this part of (6.15), write
+                                              X         χk0 (b)3
+          Sm;U,B (k0 ) = 3−m/3                                   Fb (k0 ),
+                                                         N (b)
+                                       B≤N (b)<2B
+                                   X         Am (n, b)χk0 (n)3                 3m N (n)N (b)3 H2 
+                  Fb (k0 ) =                                   V (N (n)/U )V∗♯                  0
+                                                                                                    .
+                                                                                    Y N (k0 )2
+                                                 p
+                                n squarefree
+                                                    N (n)
+
+Here n, b remain primary. Put z∗ = 3m U B 3 /Y and fix a decay exponent A > 0. With m, U, B, Y
+fixed, Lemma B.1, applied only in N (n)/U , gives the following representation in a real Mellin
+variable s:                        Z
+                        Fb (k0 ) =   cb,k0 (s)Gb,s (k0 ) ds,
+                                               R
+                                                    X      Am (n, b)χk0 (n)3
+                               Gb,s (k0 ) =                    p             (N (n)/U )is ,                             (6.19)
+                                              n squarefree
+                                                                  N (n)
+                                               N (n)≍U
+
+                              |cb,k0 (s)| ≪I,A (1 + z∗ )−A (1 + |s|)−2 .
+Indeed, the scale R in (B.2) is 3m U N (b)3 H02 /(Y N (k0 )2 ) ≥ zP
+                                                                  ∗ . Lemma 6.4 supplies the required
+derivative bounds, independently of b, k0 , U, B, m. Since                        −1 ≪ 1, Lemma 6.5
+                                                                     N (n)≍U N (n)
+gives, for any σ > 0,
+                            X ∗
+                                   |Gb,s (k0 )|2 ≪S,σ a2 (H0 U )σ (H0 + U ).
+                                 N (k0 )≤H0
+
+Apply weighted Cauchy–Schwarz to the Mellin integral, as recorded
+                                                             P in (B.6), with  the common
+                                                                             −1
+majorant in (6.19), then weighted Cauchy–Schwarz in b, using B≤N (b)<2B N (b) ≪ 1:
+     ∗                                                                                          ∗
+     X                                               X          1          X        1         X
+               |Sm;U,B (k0 )|2 ≤ 3−2m/3                                                                   |Fb (k0 )|2
+                                                                N (b)                N (b)                              (6.20)
+  N (k0 )≤H0                                       B≤N (b)<2B           B≤N (b)<2B           N (k0 )≤H0
+
+                                 ≪I,S,A,σ a2 3−2m/3 (H0 U )σ (H0 + U )(1 + z∗ )−2A .
+
+Since m ≥ −4, we have U ≤ 81Y z∗ and hence H0 U ≪ DC0 +C1 (1 + z∗ ). Choose 0 < σ ≤ 1 small
+in terms of ε1 > 0, C0 and take A = 3. Taking square roots in (6.20) gives
+                 ∗
+                  X                           1/2                      √
+                                                     ≪ aDε1 3−m/3 ( H0 + U )(1 + 3m U B 3 /Y )−2 .
+                                                                   p
+                                          2
+                            |Sm;U,B (k0 )|
+               N (k0 )≤H0
+
+The infinite dyadic sums converge: for dyadic U, B ≥ 1 and every Z > 0,
+          X                                           X √                         √
+                (1 + U B 3 /Z)−2 ≪ log2 (2 + Z),              U (1 + U B 3 /Z)−2 ≪ Z.
+       U,B dyadic                                                    U,B dyadic
+
+
+                                                                28
+These estimates make the sum of ℓ2 (k0 ) norms finite. The triangle inequality and the geometric
+sum over m ≥ −4 therefore give
+            ∗                                                                       √ 
+        X        X                               2 1/2        p
+                      cι,m (k0 )Sm [Am , Y ](k0 )        ≪ aDε1  H0 log2 (2 + Y ) + Y .
+          N (k0 )≤H0 m≥−4
+
+Combine the divisor-bounded choices of ι and use (6.16) to obtain
+         ∗
+         X                                                              H02 N (t)2 N (g)     H2 N (g)
+                   |T (X; u0 tk0 , g)|2 ≼ max a2ι (H0 + Yι ) ≪ H0 +                      ≤H+          .
+                                           ι                                   X                X
+      N (k0 )≤H0
+                                                                        Q
+Sum the fixed ray classes and the divisor-bounded choices t | rad(g p∈S p), choosing ε1 and
+the other small-power losses in terms of ε. The weight estimates above require a fixed number
+J = J(ε, C0 ) of derivatives. Homogeneity restores ∥W ∥2C J (I) and proves (6.14).
+
+Proof of Proposition 5.2. Write uniquely k = u0 sv 2 , with s squarefree and s, v among the chosen
+ideal generators. No condition (s, v) = 1 is imposed. Since 8 ≡ 2 (mod 6), including the zero
+extensions,
+            χn (u0 sv 2 )χn (f )4 = χn (u0 s)χn (f v 2 )4 ,     T (X; u0 sv 2 , f ) = T (X; u0 s, f v 2 ).
+Apply Lemma 6.6 with row bound H/N (v)2 and auxiliary twist g = f v 2 . Here N (g) ≤ HN (f ) ≤
+D2C0 , so use that lemma with 2C0 . Summing its bounds gives
+                 X                       X   X         X
+                       |T (X; k, f )|2 =                      |T (X; u0 s, f v 2 )|2
+               0<N (k)≤H                        u0 ∈O× N (v)2 ≤H N (s)≤H/N (v)2
+                                                                  s squarefree
+                                                                      H2 N (f )  X 1
+                                               ≪ Dε ∥W ∥2C J (I) H +                        .
+                                                                          X        v
+                                                                                     N (v)2
+
+The last sum is ζK (2) < ∞, where ζK (s) = LK (s, 1) is the Dedekind zeta function of K. This
+proves (5.5).
+
+
+7     Proof of the transfer proposition
+We prove Proposition 5.4 for A(W ) defined in (5.10). Throughout this section, H, L, F, Σ, ξ
+satisfy the hypotheses of that proposition. We retain the fixed weight Φ and the support bound
+CΦ chosen before (5.10). The enlargement by Σ/(LF ) ≥ 1 in the intermediate mean square makes
+the second Poisson summation return to (4.9) with row range at most HL/(ΣF ). Lemma B.2
+separates the weights, and Lemma 4.4 removes the remaining exclusion.
+
+7.1    First application of Poisson summation
+Write N = NK/Q , I = [u, v], and I∗ = [u/2, 2v]. All ideal indices below are prime to S and
+represented by their primary generators; a star additionally requires squarefreeness. The variables
+k, h, y range over O. For squarefree C, t with (C, t) = 1, and for d | C, put
+                             L                          HN (C)                      ΣLF N (d)
+                    ℓ=              ,          wC,d =             ,     YC,d = cI             ,
+                         N (C)N (t)                     N (d)L2 F                   HN (C)2
+where cI ≥ max(1, 4CΦ v 2 ) is fixed. Retain only ℓ ≥ 1/(2v). For U ∈ Cc∞ (I∗ ) and a character ξ1
+of the fixed ray class group, define
+                                    py (n) = µ(n)ξ1 (n)1(n,t)=1 χn (y)χn (C)4 χn (d),
+                                              ∗
+                                             X                                                               (7.1)
+                            PC,d,t (y; U ) =    py (n)U (N (n)/ℓ).
+                                                 n
+
+
+                                                          29
+The notation py suppresses its dependence on C, d, t, ξ1 . The nonnegative form required in the
+second Poisson calculation is
+                              X       X        X
+               Qξ1 (U ) =                 wC,d     Φ(N (y)/YC,d )|PC,d,t (y; U )|2 .       (7.2)
+                                   C,t squarefree d|C         y
+                                 (Ct,S)=1,(C,t)=1
+                                  N (C)N (t)≤2vL
+
+
+The outer domain has no additional restriction coming from the support of Φ.b Here YC,d > 0
+may be smaller than 1; the outer sums are finite, and the y-sum converges absolutely.
+Lemma 7.1. Under the hypotheses of Proposition 5.4, fix an integer j ≥ 0 and ε0 > 0. If M ≥ 0
+satisfies Qξ1 (U ) ≤ M ∥U ∥2C j (I∗ ) for every U ∈ Cc∞ (I∗ ) and every ξ1 , then
+
+                                      A(W ) ≪ Dε0 (Σ + M )∥W ∥2C 2j+4 (I) .
+
+Proof. Expand the square defining A(W ), and write ni = Cui , where C = (n1 , n2 ) and (u1 , u2 ) =
+(u1 u2 , C) = 1. The row character is χu1 χu2 , primitive modulo u1 u2 , with the extra restriction
+(k, C) = 1. Lemma 4.2 introduces d | C and a frequency h. Let Z denote the zero-frequency
+contribution. It requires u1 = u2 = 1, so
+                                             ∗      ∗
+                               H             X      X
+                         |Z| ≪                          |W (N (C)/L)|2 ≪I H∥W ∥2∞ .
+                               LF
+                                       F ≤N (f )<2F C
+
+For the other frequencies, the Chinese remainder theorem, (4.4), and (4.7) give the paired identity
+
+                            aξ (u1 )aξ (u2 )γ(χu1 χu2 ) = µ(u1 )µ(u2 )(ξG)(u1 u−1
+                                                                               2 ).                                  (7.3)
+                     P                                                               P
+Expand (ξG)(z) = ξ1 ℓξ1 ξ1 (z) on the fixed ray class group. Insert 1(u1 ,u2 )=1 = t|u1 , t|u2 µ(t)
+and put ui = txi . The inverse is xi = ui /t; squarefreeness imposes (xi , t) = 1, but no condition
+(x1 , x2 ) = 1 remains. The factors at C, t cancel against their conjugates, leaving µ(d)µ(t) and
+the restrictions (f, Ct) = (h, t) = 1. Thus
+                    X             X       X
+       A(W ) − Z =      ℓξ1                   µ(d)µ(t)wC,d
+                       ξ1          C,t squarefree d|C
+                                 (Ct,S)=1,(C,t)=1
+                                  N (C)N (t)≤2vL
+                ∗
+                X                       X                ∗
+                                                         X
+        ×                                                         phf 2 (x1 )phf 2 (x2 )Kh (N (x1 )/ℓ, N (x2 )/ℓ),
+            F ≤N (f )<2F       h̸=0,(h,t)=1             x1 ,x2
+              (f,Ct)=1 N (h)≤CΦ v 2 L2 N (d)/(HN (C)2 )
+
+where, for each integer j0 ≥ 0,
+                                                                                      2
+                                                                     b HN (h)N (C) ,
+                                                                      
+                          Kh (z1 , z2 ) = (z1 z2 )−1/2 W (z1 )W (z2 )Φ
+                                                                        L2 N (d)z1 z2
+                     sup ∥Kh ∥C j0 (I 2 ) ≪I,Φ,j0 ∥W ∥2C j0 (I) .
+                    C,d,h
+
+Here χxi (C)4 supplies (xi , C) = 1; the other original zeros are supplied by phf 2 (xi ). The displayed
+frequency range follows from the support of Φ.    b
+    For fixed C, d, t, the map (f, h) 7→ y = hf 2 has divisor-bounded multiplicity in y. Since
+Σ/(LF ) ≥ 1, its nonzero image satisfies N (y) ≤ 4CΦ v 2 L2 F 2 N (d)/(HN (C)2 ) ≤ YC,d . Since
+Φ ≥ 1 on [0, 1] and is nonnegative,
+                    XX            X
+                             wC,d     |PC,d,t (hf 2 ; U )|2 ≼ Qξ1 (U ) ≤ M ∥U ∥2C j (I∗ ) ,
+                       C,t d|C         f,h
+
+
+                                                         30
+with the preceding ranges on the left. Apply Lemma B.2 to the full displayed expression for
+A(W ) − Z. The kernel bound gives
+                                   |A(W ) − Z| ≪ Dε0 /2 M ∥W ∥2C 2j+4 (I) .
+Together with H ≤ Σ, this proves the result after allocating the divisor losses within ε0 .
+
+7.2   Second application of Poisson summation
+Let C, t be coprime squarefree primary elements prime to S, and let d | C. Fix a character ξ1 of
+the ray class group. For arbitrary scales ℓ, Y > 0 and U ∈ Cc∞ (I∗ ), with I∗ = [a, b] ⊂ (0, ∞), put
+                               ∗
+                               X
+                 P (y) =               µ(n)ξ1 (n)1(n,t)=1 χn (y)χn (C)4 χn (d)U (N (n)/ℓ),
+                             (n,S)=1                                                                          (7.4)
+                              X
+                                                         2
+                   M=              Φ(N (y)/Y )|P (y)| .
+                             y∈O
+
+Here P (y) abbreviates PC,d,t (y; U ) from (7.1), with the scale ℓ now arbitrary.
+    The second Poisson summation turns the Möbius coefficients back into cubic Gauss-sum
+coefficients. To state the identity, put U0 (x) = x−1/2 U (x) and expand
+                                                       X
+                                      ξ1 (z)G(z −1 ) =   cξ′ ξ ′ (z)
+                                                              ξ′
+
+on the fixed ray class group.
+    On the transformed side, g is the common divisor of the original columns, e | g comes from the
+row exclusion, and w removes the remaining coprimality condition. The index h is the nonzero
+Fourier frequency. Let g, w range over squarefree primary elements prime to S, e over divisors
+of g, and h over O \ {0}, subject to
+                                                                                         CΦ b2 ℓ2 N (e)
+              (g, Ct) = (w, gCth) = 1,               N (gw) ≤ bℓ,             N (h) ≤                   .
+                                                                                          Y N (g)2
+These conditions ensure that tg/e and Cew are coprime and squarefree. For each such choice
+and each character ξ ′ , the new column scale, coefficient, and coupled smooth weight are
+                                                            ℓ
+                                                 X′ =           ,
+                                                         N (gw)
+                               a♯ (n) = aξ′ (n)1(n,tg/e)=1 χn (deh)χn (Cew)4 ,                                (7.5)
+                                                                             2
+                                                             b Y N (h)N (g) .
+                                                              
+                              K (x1 , x2 ) = U0 (x1 )U0 (x2 )Φ
+                                                                N (e)ℓ2 x1 x2
+Here K depends on U, Y, ℓ, g, e, h. A star on a sum over n1 , n2 restricts each index separately to
+squarefree primary elements. Define also
+                                             ∗
+                                             X                         Y           1 
+                            Z = Y Φ(0)
+                                  b                  |U (N (g)/ℓ)|2           1−         .
+                                                                                   N (p)
+                                          (g,Ct)=1                      p|g
+                                           (g,S)=1
+
+Lemma 7.2 (Second Poisson identity). With the notation and index ranges above,
+                                                        ∗
+                  X           Y µ(e)µ(w)cξ′ N (g)       X                                N (n ) N (n ) 
+                                                                                              1      2
+      M=Z+                                                          a♯ (n1 )a♯ (n2 )K           ,         .   (7.6)
+                            ′
+                                    N (e)ℓ                                                 X′     X′
+                g,e,w,h,ξ                            (n1 n2 ,S)=1
+
+The zero-frequency term satisfies
+                                             |Z| ≪I∗ ,Φ Y ℓ∥U ∥2∞ .
+
+                                                         31
+Proof. Expand the square, put g = (n1 , n2 ) and ni = gzi . The nonzero terms satisfy
+           (z1 , z2 ) = (z1 z2 , gCt) = (g, Ct) = 1,                     χn1 (y)χn2 (y) = 1(y,g)=1 χz1 (y)χz2 (y).
+Apply Lemma 4.2 to this last character, with exclusion g and divisor e | g. Its zero frequency
+occurs exactly when z1 = z2 = 1 and gives the displayed Z; counting g gives its bound. For the
+nonzero frequencies, (4.5)–(4.7) and the Chinese remainder theorem give
+                                                              X
+                    µ(z1 )µ(z2 )ξ1 (z1 )ξ1 (z2 )γ(χz1 χz2 ) =   cξ′ aξ′ (z1 )aξ′ (z2 ).
+                                                                                  ξ′
+
+Use also
+                                   χz (dh)χz (e)χz (C)4 = χz (deh)χz (Ce)4 ,
+                 U (N (gz1 )/ℓ)U (N (gz2 )/ℓ)   N (g)
+                       p                      =       U0 (N (gz1 )/ℓ)U0 (N (gz2 )/ℓ).
+                          N (z1 )N (z2 )           ℓ
+Thus the full nonzero contribution is
+                     X         X ∗    X Y µ(e)N (g) X
+          M−Z =           cξ′
+                        ′        g          N (e)ℓ
+                               ξ                    e|g                   h̸=0
+                                         (g,Ct)=1
+                                           X ∗
+                                   ×                    aξ′ (z1 )aξ′ (z2 )χz1 (deh)χz2 (deh)χz1 (Ce)4 χz2 (Ce)4
+                                            z1 ,z2
+                                         (z1 ,z2 )=1
+                                       (z1 z2 ,gCt)=1
+                                        N (gz )   N (gz )        Y N (h)        
+                                              1           2
+                                   × U0           U0          Φ
+                                                              b                        .
+                                            ℓ           ℓ        N (e)N (z1 )N (z2 )
+All starred ideal indices are prime to S. Insert
+                                            X
+                             1(z1 ,z2 )=1 =      µ(w),                                  zi = wni .
+                                                           w|z1 , w|z2
+
+Here (w, gCt) = 1. Equation (4.6) and the zero-extended characters give
+                                    aξ′ (wn) = aξ′ (w)aξ′ (n)χn (w)4                   ((w, n) = 1),
+                                                                            4 2
+                                           |aξ′ (w)χw (deh)χw (Ce) | = 1(w,h)=1 ,
+                     1(n,gCtw)=1 χn (deh)χn (Cew)4 = 1(n,tg/e)=1 χn (deh)χn (Cew)4 .
+Consequently the preceding full sum becomes
+                  X                      ∗
+                                         X              X Y µ(e)µ(w)N (g) X
+     M−Z =               cξ′
+                                      g,w                          N (e)ℓ
+                    ξ′                          e|g                                      h̸=0
+                               (g,Ct)=(w,gCt)=1                                        (h,w)=1
+               ∗                              N (gwn )   N (gwn )  
+               X                                     1            2              Y N (h)            
+        ×                  a♯ (n1 )a♯ (n2 )U0            U0           Φ
+                                                                      b                               .
+                                                   ℓ            ℓ        N (e)N (w)2 N (n1 )N (n2 )
+            (n1 n2 ,S)=1
+
+There is no remaining condition (n1 , n2 ) = 1. The column support gives N (gw) ≤ bℓ and
+N (z1 z2 ) ≤ b2 ℓ2 /N (g)2 ; the support of Φ
+                                            b therefore imposes the stated bound on N (h). Substi-
+tuting (7.5) gives (7.6), with only finitely many terms.
+Lemma 7.3. Return to I = [u, v] and I∗ = [u/2, 2v]. For an integer m ≥ 0, let Sm be the
+supremum in (5.11). Then, for every ε0 > 0,
+                         Qξ1 (U ) ≪ Dε0 Σ(1 + Sm )∥U ∥2C 2m+4 (I∗ )                        (U ∈ Cc∞ (I∗ )).
+The test functions in Sm are supported in I ′ = [u/16, 4v] and have C m (I ′ ) norm at most one; an
+empty supremum is zero.
+
+                                                                    32
+Proof. Write N = NK/Q . Apply Lemma 7.2 with input length ℓ, row scale YC,d , and the same
+C, d, t, using the character ξ1 . Here h is the new Fourier variable for the sum over y. Its nonzero
+output has squarefree g, w, e | g, and
+
+                  (g, Ct) = (w, gCth) = 1,                     r = tg/e,     f ′ = Cew,       k ′ = deh.
+
+Thus r, f ′ are coprime and squarefree, and the coefficient a♯ from (7.5) becomes
+
+                                    a♯ (n) = aξ′ (n)1(n,r)=1 χn (k ′ )χn (f ′ )4 .
+
+Write X0′ for the individual column scale X ′ in (7.5); below, X ′ will denote a common dyadic
+scale. The length, coefficient, and Fourier parameter simplify to
+                                                       ℓ                 L
+                                                    X0′ =       =                ,
+                                                  N (g)N (w)       N (r)N (f ′ )
+                                     YC,d N (g)   cI ΣN (r)
+                               wC,d             =           ,
+                                       N (e)ℓ         L2
+                              YC,d N (h)N (g)2    cI ΣF N (k ′ )N (r)2
+                                                =                      .
+                                   N (e)ℓ2               HL
+
+Put U0 (x) = x−1/2 U (x). The coupled kernel is therefore
+                                                                            ′      2
+                                                                b cI ΣF N (k )N (r) ,
+                                                                 
+                        Kr,f ′ ,k′ (x1 , x2 ) = U0 (x1 )U0 (x2 )Φ
+                                                                       HLx1 x2
+with both columns evaluated at xj = N (nj )/X0′ . In particular its nonzero support requires
+
+                                                                      4CΦ v 2 HL         HL
+               N (r)N (f ′ ) ≤ 2vL,             0 < N (k ′ ) ≤                     2
+                                                                                     ≤           ,
+                                                                        cI ΣF N (r)    ΣF N (r)2
+
+since CΦ (2v)2 /cI ≤ 1.
+    For fixed r, f ′ , k ′ , all preimages are obtained by choosing
+
+                   t | r,      f ′ = Cew,                 e | k′ ,     (w, k ′ ) = 1,      d | (C, k ′ ),
+
+and setting g = e(r/t), h = k ′ /(de). The factorization f ′ = Cew is disjoint and squarefree. All
+these preimages have the same kernel: Ctgw = rf ′ , and the Fourier parameter displayed above
+depends only on r, k ′ . Thus the support restrictions discard only zero kernels. The choices t | r
+contribute τdiv (r). At a prime p | f ′ , the choices p | C, p | e, and p | w, respectively, contribute
+                                              
+                                  1 + 1p|k′ − 1p|k′ − 1p∤k′ = 1p|k′
+
+to the sum of µ(e)µ(w) over the preimages; the two choices inside the first term are p ∤ d and
+p | d. Let Z be the total zero-frequency contribution: the sum of the terms Z from Lemma 7.2,
+with the outer weights wC,d and ranges in (7.2). Consequently, regrouping before taking absolute
+values gives
+                                 cI Σ X         X                    X
+                 Qξ1 (U ) − Z = 2        cξ′           N (r)τdiv (r)
+                                  L    ′      ′                      ′
+                                                ξ          r,f squarefree               k ̸=0
+                                                              (r,f ′ )=1                f ′ |k′
+                                                ∗                               N (n ) N (n ) 
+                                                                                      1     2
+                                                X
+                                            ×        a♯ (n1 )a♯ (n2 )Kr,f ′ ,k′      ′ , X′      .
+                                                n ,n
+                                                                                  X 0      0
+                                                 1    2
+
+   Fix R ≤ N (r) < 2R, F ′ ≤ N (f ′ ) < 2F ′ dyadically, and put
+                                    L                                  L                 HL
+                            X′ =        ,           Σ′ = X ′ F ′ =       ,      H′ =          .
+                                   RF ′                                R                ΣF R2
+
+                                                                 33
+Retain only those r for which a nonzero term occurs in these ranges. Since f ′ | k ′ , each such r
+satisfies
+                                                             HL
+                               F ′ ≤ N (f ′ ) ≤ N (k ′ ) ≤           .
+                                                           ΣF N (r)2
+In particular H′ ≥ 1. For every j | r, using H ≤ Σ, we also have
+                                           X′     ΣF N (r)2   FΣ
+                                                ≥           ≥    ≥ 1.                                                 (7.7)
+                                          N (j)   HRN (j)     H
+Moreover 1 ≤ X ′ /X0′ < 4. The rescaled kernels
+                                                                       X′        X′ 
+                                    Kr,f ′ ,k′ (x1 , x2 ) = Kr,f ′ ,k′      x 1 ,     x2
+                                                                        X0′       X0′
+have support in [u/8, 2v]2 ⊂ int(I ′2 ) and satisfy
+                               sup ∥Kr,f ′ ,k′ ∥C 2m+4 (I ′2 ) ≪I∗ ,m,Φ ∥U ∥2C 2m+4 (I∗ ) ,
+                              r,f ′ ,k′
+
+where the supremum is over the retained indices in the dyadic block. This follows from the
+Schwartz bounds for Φ.
+                    b The common parameters satisfy exactly
+                          H′      H       H                        HL
+                            ′
+                              =        ≤ ,         Σ′ ≤ L,   H′ ≤      .
+                          Σ     ΣF R      Σ                        ΣF
+   Fix δ > 0, to be chosen in terms of ε0 at the end. For each retained r, enlarge the f ′ , k ′
+ranges by positivity, keeping this set of r fixed. Lemma 4.4 then gives, for V ∈ Cc∞ (I ′ ),
+                  ∗                           ∗
+                  X               X           X                           2
+                                                   a♯ (n)V (N (n)/X ′ )       = Σ′ E(r) (H′ , X ′ , F ′ ; ξ ′ , V )
+            F ′ ≤N (f ′ )<2F ′ 0<N (k′ )≤H′    n
+
+                                                                              ≪δ Dδ (Σ′ )2 Sm ∥V ∥2C m (I ′ ) .
+Indeed exclusion removal replaces (X ′ , F ′ ) by (X ′ /N (j), F ′ N (j)), j | r, preserving H′ and Σ′ .
+Equation (7.7) gives X ′ /N (j) ≥ 1, and F ′ N (j) ≥ 1 as well. Thus every resulting mean square
+lies in the defining supremum.
+    There are O(R) ideals r in the dyadic range. Apply Lemma B.2 with row index (r, f ′ , k ′ ),
+the preceding mean-square bound, and the uniform kernel bound. The absolute contribution of
+this dyadic block is at most
+                         ΣR
+                       D2δ   R(Σ′ )2 Sm ∥U ∥2C 2m+4 (I∗ ) = D2δ ΣSm ∥U ∥2C 2m+4 (I∗ ) ,
+                         L2
+because (ΣR/L2 )R(L/R)2 = Σ.
+   Finally, the zero-frequency bound in Lemma 7.2 gives
+                                       X X
+                  |Z| ≪I∗ ,Φ ∥U ∥2∞                  wC,d YC,d ℓ
+                                              N (Ct)≤2vL d|C
+                                              X τdiv (C)       X         1
+                          ≪I∗ Σ∥U ∥2∞                                         ≪I∗ ,δ Dδ Σ∥U ∥2∞ .
+                                                   N (C)2               N (t)
+                                              C             N (t)≤2vL
+
+This uses only YC,d > 0, not YC,d ≥ 1. Sum the OI∗ ,C0 ((log(2D))2 ) dyadic blocks and the
+fixed finite character set, and take δ = ε0 /4. The stated bound follows, with implied constant
+depending only on I∗ , m, C0 , ε0 , the fixed cutoffs and arithmetic data.
+Proof of Proposition 5.4. Use Sm as in Lemma 7.3, with m as in the proposition. Lemma 7.3,
+with loss Dε/4 , supplies the hypothesis of Lemma 7.1 with j = 2m + 4 and M ≪ Dε/4 Σ(1 + Sm ).
+Applying that lemma with the same loss gives
+                                    A(W ) ≪ Dε/2 Σ(1 + Sm )∥W ∥2C 4m+12 (I) ,
+which proves (5.11).
+
+                                                            34
+A     Arithmetic identities and theta calculations
+A.1    Reciprocity and Gauss sums
+Proof of Lemma 4.1. Proof of (4.2). For squarefree n, set G(n) = χn (4)γ3 (n). Its dependence
+on a fixed ray class will be verified below. Fix a primary prime p ≡ 1 (mod 3) outside S. For
+multiplicative characters A, B of (O/(p))× , extended by zero at 0, write
+                                             X
+                                 J(A, B) =        A(x)B(1 − x).
+                                                      x mod p
+
+For each y ∈ O/(p), the substitution u = 2x − 1 gives
+
+            #{x mod p : 4x(1 − x) = y} = #{u mod p : u2 = 1 − y} = 1 + χ3p (1 − y),
+
+since p ∤ 2 and χ3p is the quadratic character, extended by zero at 0. Hence
+                              X                       X
+                                                        χp (y) 1 + χ3p (1 − y) = J(χp , χ3p ).
+                                                                             
+       χp (4)J(χp , χp ) =             χp 4x(1 − x) =
+                             x mod p                        y mod p
+
+The Gauss–Jacobi identity (cf. [22, (3.18)]) gives
+
+                   γ1 (p)γ3 (p)   J(χp , χ3p )          J(χp , χp )          γ1 (p)2
+                                = q            = χp (4) q           = χp (4)         .
+                      γ4 (p)       N      (p)            N      (p)          γ2 (p)
+                                             K/Q                         K/Q
+
+
+For j ̸≡ 0 (mod 6), the normalized Gauss sums satisfy
+
+                                              γj (p)γ−j (p) = χp (−1)j .
+
+Taking j = 2 gives γ2 (p)γ4 (p) = χ2p (−1) = 1, since χ2p is cubic. Combining this with the
+Gauss–Jacobi relation above gives, after cancelling γ1 (p) and rearranging,
+
+                                          γ1 (p)γ2 (p) = χp (4)γ3 (p)γ2 (p)3 .
+
+    To finish the prime case of (4.2), it remains to evaluate γ2 (p)3 . We do     so by computing
+J(χ2p , χ2p ). Put q = NK/Q (p). We have J(χ2p , χ2p ) ∈ O and NK/Q J(χ2p , χ2p ) = q. For 0 ≤ ℓ ≤
+(q − 1)/3, the exponent (q − 1)/3 + ℓ lies strictly between 0 and q − 1, so x mod p x(q−1)/3+ℓ = 0
+                                                                            P
+in O/(p). Reducing modulo p and expanding the binomial therefore gives
+                                 X
+                 J(χ2p , χ2p ) ≡   x(q−1)/3 (1 − x)(q−1)/3
+                              x mod p
+                              (q−1)/3                     X
+                                 X              (q − 1)/3
+                         =             (−1)ℓ                  x(q−1)/3+ℓ = 0                 (mod p).
+                                                    ℓ
+                                 ℓ=0                            x mod p
+
+Thus J(χ2p , χ2p )/p ∈ O has norm one, so J(χ2p , χ2p ) is a unit multiple of p. To determine the unit,
+write χ2p (x(1 − x)) = ω jx with jx ∈ {0, 1, 2} for x ∈ O/(p) \ {0, 1}. Then
+                             Y                                  X
+                                  x(1 − x) = 1         =⇒                jx ≡ 0   (mod 3).
+                         x̸=0,1                                 x̸=0,1
+
+Since (ω − 1)2 generates (3), expansion modulo this ideal gives
+                               X                          X
+               J(χ2p , χ2p ) =   ω jx ≡ (q − 2) + (ω − 1)    jx ≡ −1                     (mod 3).
+                                 x̸=0,1                                  x̸=0,1
+
+
+                                                          35
+Together with p ≡ 1 (mod 3), this fixes the unit:
+
+                                              J(χ2p , χ2p ) = −p.
+
+Consequently
+                                     3  γ2 (p)2   J(χ2p , χ2p )
+                               γ2 (p) =         = q             = −α(p).
+                                        γ4 (p)     N       (p) K/Q
+
+The Chinese remainder theorem extends these prime-modulus identities to (4.2) for squarefree
+n, with one minus sign for each prime factor accounting for µ(n).
+Proof of (4.6). For coprime squarefree primary a, b prime to S, the Chinese remainder theorem
+gives
+                               γ2 (ab) = γ2 (a)γ2 (b)χa (b)2 χb (a)2 ,
+and cubic reciprocity gives χa (b)2 = χb (a)2 . Multiplying by α(ab)ξ(ab) therefore proves (4.6).
+Proof of (4.1). We now prove (4.1) and the formula for G(n) in (4.3), including their dependence
+on a fixed ray class. We begin by evaluating the normalized quadratic Gauss sum. For c ∈ O
+coprime to 2, we will show that
+                                             X                     1     X
+                       Γquad (c) := |c|−1             e(x2 /c) =                  e(−cy 2 /4).       (A.1)
+                                                                   2
+                                            x mod c                    y mod 2O
+
+                                                                                             2
+To justify (A.1), apply Poisson summation over z ∈ O to e(z 2 /c)e−πη|z| , with η > 0. The
+Gaussian makes the sum convergent. The Fourier transform of the product is
+                |c| −πηNK/Q (c)|y|2 /(4rη )
+                √ e                         e(−cy 2 /(4rη )),           rη = 1 + 3NK/Q (c)η 2 /16.
+               2 rη
+
+Divide both sides by the Gaussian mass
+                                                           2
+                                     X
+                                                   e−πη|z| ≍ η −1 .
+                                             z∈O
+
+On the Fourier side, replacing rη by 1 has total error
+                                   X                     
+                                                        2
+                               Oc η 2     |y|2 e−Cc η|y| = Oc (1),
+                                            y∈O
+
+where Cc > 0 is fixed. The normalized error is therefore Oc (η) → 0. Grouping the original sum
+modulo c and the Fourier sum modulo 2O, then letting η ↓ 0, gives (A.1).
+   For c = a + bω, formula (A.1) becomes
+
+                                                         1 + i−b + ia + ib−a
+                                  Γquad (a + bω) =                           .
+                                                                  2
+Thus Γquad (c) depends only on c mod 4O and is invariant under multiplication by a square in
+(O/4O)× . Representatives for the four square classes and their values are
+
+                                            c      1 −1 λ −λ
+                                                             .
+                                         Γquad (c) 1  1 i −i
+Consequently the function
+                                                          Γquad (c1 c2 )
+                                     R(c1 , c2 ) :=
+                                                       Γquad (c1 )Γquad (c2 )
+on these square classes satisfies
+
+                    R((−1)e λf , (−1)g λh ) = (−1)eh+f g+f h ,             e, f, g, h ∈ {0, 1},
+
+                                                         36
+and is a symmetric bicharacter. For a prime p, each y ∈ O/(p) has 1 + χ3p (y) square roots.
+Grouping by y = x2 gives
+                                          1 X
+                                                       1 + χ3p (y) e(y/p) = γ3 (p),
+                                                                  
+                         Γquad (p) =
+                                         |p|
+                                             y mod p
+      P
+since y mod p e(y/p) = 0. The Chinese remainder theorem extends this equality to squarefree
+n. Together with cubic reciprocity, it identifies the above R with the quotient χb (a)/χa (b)
+for coprime primary a, b. Furthermore χc (4) = (−2/c)3 = (c/(−2))3 is a character modulo 2.
+Consequently G(c) = χc (4)Γquad (c) factors through a fixed ray class group and satisfies (4.1),
+with R(c, c) = χc (−1).
+Proof of (4.7). In the fixed ray class group, the multiplicative relation for G gives
+
+                                          G(a−1 ) = χa (−1)G(a).
+
+Using the symmetry and multiplicativity of R, we obtain
+
+                   G(ba−1 ) = G(b)G(a−1 )R(b, a−1 ) = χa (−1)G(a)G(b)R(a, b),
+
+which is (4.7).
+Proof of (4.4)–(4.5). The second identity in (4.3) follows from the inverse-character Gauss
+identity: γ1 (n)γ−1 (n) = χn (−1). It remains to prove (4.4)–(4.5). Multiplying the second identity
+in (4.2) by α(n) gives (4.4), and combining it with this inverse-character identity gives (4.5).
+
+A.2    The cubic theta transformation with fixed ray class twists
+We prove the transformation formula of Proposition 6.2 for the completed sum T (X; Ψ) in (5.3),
+together with the uniformity assertion of Lemma 6.3 and the coefficient and weight bounds of
+Lemma 6.4. The proof adapts the theta-transformation method of Dunn and Radziwiłł [7, §5
+and Appendix A], which extends Patterson [38] and Yoshimoto [51]. The treatment of the fixed
+ray class twists and the uniformity assertions are supplied below. We use the setup preceding
+the proposition and the dependence of constants specified in these three statements: Ψ0 , S are
+fixed, while P is the varying finite set of primes outside S and jp are the exponents of their
+character factors in Ψ. Character powers follow the zero-extension convention preceding (6.5);
+in particular, χ0p (x) = 1p∤x . This convention also applies when we write χp (x)j .
+    Write w = (z, v) ∈ C × R>0 , and use θ from (6.1). The three sequences dσ , σ ∈ {0, +, −},
+are defined by the Fourier expansions of θ(γσ w) in (6.8), with the representatives (6.7). For the
+additive characters, write ĕ(z) = exp(2πi(z + z̄)); thus e(z) = ĕ(z/λ), with e as in (2.6).
+
+Proof of Proposition 6.2 and Lemmas 6.3 and 6.4. Finite Fourier expansion. Define ϕ : O →
+C by                        (
+                             χn (λ)2 Ψ0 (n), n ≡ 1 (mod 3), (n, S) = 1,
+                    ϕ(n) =
+                             0,              otherwise.
+                          j
+For Ψ(n) = Ψ0 (n) p∈P χpp (n), define
+                   Q
+
+                                                     Y           
+                                                         j
+                               X
+                ΘΨ (z, v) =             τ (−ℓ)ϕ(λ3 ℓ)   χpp (λ3 ℓ) vK1/3 (4π|ℓ|v)ĕ(ℓz).        (A.2)
+                              ℓ∈λ−3 O                   p∈P
+                               ℓ̸=0
+
+
+When Ψ = Ψk , the multiplier of τ (−ℓ) is ϕk (λ3 ℓ), so this definition recovers Θk in (6.2). We first
+write ΘΨ as a finite sum of translates of θ and determine their reduced denominators. Choose
+once and for all a nonzero L ∈ O, with prime divisors in S, divisible by the conductor of Ψ0 , every
+prime in S, and sufficiently high powers of the primes above 2 and 3. The supplementary law of
+
+                                                       37
+cubic reciprocity for λ [7, (1.5)], which evaluates χn (λ)2 = (λ/n)3 , makes ϕ periodic modulo L.
+As before (6.4), define
+                                   1             X
+                   ϕ(h
+                   b 0) =                              ϕ(x)e(−h0 x/L),            h0 ∈ O/(L).
+                              NK/Q (L)
+                                             x mod L
+
+Since |ϕ| ≤ 1, we have |ϕ(h
+                          b 0 )| ≤ 1.
+    For p ∈ P and 0 ≤ j ≤ 5, we expand χjp on O/(p) in additive characters. Its Fourier
+coefficients are defined, for hp ∈ O/(p), by
+
+                                                  1         X
+                           Cp,j (hp ) :=                             χjp (y)e(−hp y/p).
+                                             NK/Q (p)
+                                                           y mod p
+
+Finite Fourier inversion then gives, for x ∈ O,
+                                         X
+                             χjp (x) =        Cp,j (hp )e(hp x/p).                                       (A.3)
+                                            hp ∈O/(p)
+
+   Multiplying (A.3) over the primes in P gives, for x ∈ O,
+                                                 X Y                       Xh 
+                               j                                                 p
+                         Y
+                              χpp (x) =                         Cp,jp (hp ) e x    .
+                                                                                p
+                        p∈P                 hp ∈O/(p) p∈P                       p∈P
+                                               p∈P
+
+                                                           3
+Each
+  2
+    P summand is indexed by a tuple (hp )p∈P . At x = λ ℓ, its additive character gives the shift
+λ    p∈P hp /p of θ. Writing h = (h0 , (hp )p∈P ) with h0 ∈ O/(L), we claim that
+                                                      X
+                                   ΘΨ (z, v) =             cF (h)θ(z + zh , v),
+                                                       h
+
+where                            X                                              Y
+                  zh = λ2 h0 /L +   hp /p ,                     cF (h) = ϕ(h
+                                                                         b 0)           Cp,jp (hp ).     (A.4)
+                                           p∈P                                    p∈P
+
+    To verify this identity, expand the fixed factor ϕ as well. The finite Fourier expansions identify
+all nonzero Fourier coefficients, and the constant terms of the translates cancel because
+                                  X                  Y jp
+                                      cF (h) = ϕ(0)      χp (0) = 0.
+                                       h                     p∈P
+
+For j ̸≡ 0 (mod 6), we use γj (p) from (2.6). Changing y to −y gives
+
+                   1        X
+                q                 χp (y)j e(−y/p) = χp (−1)j γj (p),                     |γj (p)| = 1.
+                 NK/Q (p) y mod p
+
+   For hp ̸= 0, substitute y = h−1p u in the definition of Cp,j (hp ). For hp = 0 and j ̸= 0, use
+character orthogonality; for j = 0, sum the additive character over nonzero residues directly.
+These calculations give
+                            
+                            
+                            
+                            NK/Q (p)−1/2 χp (−1)j γj (p)χp (hp )−j , j ̸= 0, hp ̸= 0,
+                            
+                            0,                                       j ̸= 0, hp = 0,
+               Cp,j (hp ) =             −1
+                                                                                            (A.5)
+                            
+                            
+                            −NK/Q (p) ,                              j = 0, hp ̸= 0,
+                                          −1
+                            
+                            1 − N
+                                   K/Q (p) ,                          j = 0, hp = 0.
+
+
+                                                           38
+    For the tuple h, define its set of active primes by A(h) := {p ∈ P : hp ̸= 0}. By (A.5),
+cF (h) ̸= 0 implies {p ∈ P : jp ̸= 0} ⊆ A(h).
+                                           Q     Thus only primes with jp = 0 can be inactive,
+as asserted in the proposition. Put r = p∈A(h) p, and let c0 be the reduced denominator of
+λ2 h0 /L. At each active prime p,
+                               vp (λ2 hp /p) = −1,           vp (zh − λ2 hp /p) ≥ 0,
+so the factor p cannot cancel from the denominator. At primes dividing L, all terms λ2 hp /p are
+integral. Thus the reduced denominator is c = c0 r up to a unit, including when (h0 , L) ̸= 1. The
+finite Fourier expansion has therefore expressed ΘΨ as OL (2|P| ) groups of translates θ(z + zh , v),
+with shifts zh and coefficients cF (h) given by (A.4). The groups are indexedQby h0 ∈ O/(L) and
+the active set A. Each group has a common reduced denominator c = c0 p∈A p up to a unit.
+For each translate θ(z + zh , v), we next identify which of the three Fourier expansions in (6.8)
+will be used after changing coordinates at zh .
+Reduced denominators and cusp coefficients. We next express each translate θ(z + zh , v) using
+one of the three cusp expansions identified above. Our representatives γ0 , γ+ , γ− correspond to
+γ1 , γ10 , γ19 , respectively, in the numbering of [7, §5.1], which follows [38, Table II]. We allow
+(h0 , L) ̸= 1 and keep the reduced denominator c0 of λ2 h0 /L in the calculation; this is the
+extension beyond [7, Corollary 5.1].
+     Set M = λ12 L4 . Since (p, M ) = 1 for p ∈ A(h), the Chinese remainder theorem lets us choose
+representatives hp ∈ O with hp ≡ 0 (mod M 2 ). Changing representatives modulo p changes zh
+by an element of λ2 O = 3O, under which θ is periodic. To track dependence on the primes in
+r, restrict r to a residue class modulo M 2 . For fixed h0 , active set, and this residue class, write
+zh = a/c in lowest terms, normalizing a ≡ 1 (mod 3) if λ | c, and c ≡ 1 (mod 3) otherwise.
+Since                                                  X        
+                                       a = λ2 c h0 /L +     hp /p ,
+                                                                 p|r
+
+these choices fix the residue of a modulo M c0 . Since (a, c) = 1 and (r, M ) = 1, the Chinese
+remainder theorem gives δ ′ ∈ O satisfying the following congruences, where q ranges over prime
+divisors of the indicated elements:
+                    aδ ′ ≡ 1     (mod q vq (M c0 ) )                           (q | c0 ),
+                      ′                   vq (M )
+                     δ ≡0        (mod q             )                          (q | M, q ∤ c0 ),
+                      ′
+                    aδ ≡ 1       (mod r).
+Put
+                                      aδ ′ − 1
+                                                                       
+                                                                 a bg
+                               bg =            ,        g=                  ∈ SL2 (O).
+                                          c                      c δ′
+The congruences for δ ′ give
+                                (
+                                 0,     q | c0 ,
+                           bg ≡                                         (mod q vq (M ) ).
+                                 −c−1 , q | M, q ∤ c0 ,
+
+   To choose the cusp expansion at a/c, put
+                    
+                    I, 
+                    
+                              3 | c,
+                       1  0
+               H=      u0 1 ,  vλ (c) = 1, u0 ∈ {λ, −λ}, u0 ≡ c                             (mod 3),
+                    
+                     u0 −1 , (c, λ) = 1, u ≡ a (mod 3).
+                    
+                          1     0                        0
+
+In the last case choose u0 ∈ O from a fixed set of representatives modulo 3. In each case, put
+g1 = gH −1 . Then g = g1 H and g1 ≡ I (mod 3), as in [7, §5.1]. The invariances
+              θ(γw) = θ(w) (γ ∈ SL2 (Z)),                θ(z + t, v) = θ(z, v) (t ∈ Z + 3O)
+
+                                                        39
+reduce θ(Hw) to one of the three functions θ(γσ w), σ ∈ {0, −, +}, with the matrices γσ from (6.7).
+These representatives give the infinity expansion and the two additional cusp expansions needed
+here: translating by ω or −ω, then applying inversion, gives the representatives labeled − and
++, respectively [7, (5.9)–(5.15), Appendix A]. Write tσ (ℓ) for the coefficient of vK1/3 (4π|ℓ|v)ĕ(ℓz)
+in θ(γσ w). Let τ1 , τ2 : λ−4 O \ {0} → C be the coefficient sequences defined in [7, (5.13), (5.14)].
+Patterson’s cusp calculation [38, Theorem 8.1 and Table III] then gives
+                t0 (ℓ) = τ (ℓ),      t− (ℓ) = ω 2 τ1 (ω 2 ℓ)ĕ(ℓ),      t+ (ℓ) = ωτ2 (ωℓ)ĕ(ℓ).   (A.6)
+Complex conjugation changes the Fourier frequency from ℓ to −ℓ. Thus the coefficients in the
+normalization (6.8) are
+                            dσ (ℓ) = tσ (−ℓ),   σ ∈ {0, +, −}.                         (A.7)
+For indices ℓ = uλm nb3 as in (6.10), the coefficient magnitudes satisfy
+                                     (
+                                      3k/2+2 |b|,   m = 3k − 4, k ≥ 1,
+                          |t0 (ℓ)| ≤   k/2+5/2
+                                      3        |b|, m = 3k − 3, k ≥ 0.
+
+The m = −4 coefficients of t− and t+ have magnitude at most 9|b|. For the chosen H, let
+σ ∈ {0, +, −} index the corresponding expansion in (6.8). For each translate θ(z + a/c, v), we
+have identified the Fourier expansion in z of θ(H(z, v)) as one of the three expansions in (6.8):
+
+                                  35/2                   X
+                 θ(H(z, v)) =          1σ=0 v 2/3 +                dσ (ℓ)vK1/3 (4π|ℓ|v)ĕ(ℓz).
+                                   2
+                                                      0̸=ℓ∈λ−4 O
+
+These coefficients satisfy the support restriction (6.10) and bound (6.11), proving the coefficient
+assertions of Lemma 6.4. The next step uses g = g1 H to express the original translate through
+this Fourier series evaluated at g −1 (z + a/c, v), and computes the accompanying multiplier and
+additive phase. The matrix g maps ∞ to a/c, which is why this is called an expansion at the
+cusp a/c.
+The local character transformation. The matrix factorization g = g1 H lets us apply the auto-
+morphy law
+                                                                a b 
+          θ(g1 w) = κ(g1 )θ(w),     κ(g1 ) = (c1 /a1 )3 ,  g1 = 1 1 ≡ I (mod 3),
+                                                                  c1 d1
+where κ is Kubota’s cubic character [7, (5.4), (5.6)]. We will combine its conjugate with the
+finite Fourier coefficients Cp,j (hp ) in (A.5) to obtain the factors Bp,j of (6.5). For the translated
+theta function, the automorphy law gives
+                                                                         
+                             θ(z + a/c, v) = κ(g1 ) θ Hg −1 (z + a/c, v) ,                        (A.8)
+where                                 δ′      z̄               v             
+                  g −1 (z + a/c, v) = − − 2 2          ,                        .                 (A.9)
+                                       c  c (v + |z|2 ) NK/Q (c)(v 2 + |z|2 )
+At z = 0, the term with Fourier index ℓ in the expansion of θ(Hw) therefore acquires the phase
+ĕ(−δ ′ ℓ/c). We claim that the multiplier is given by
+                            
+                            (c0 /a)3 (a/r)3 ,
+                                                                         3 | c,
+                    κ(g1 ) = (−u0 /(a − u0 bg ))3 ((c0 /u0 )/a)3 (a/r)3 , vλ (c) = 1,   (A.10)
+                            
+                              (a/c0 )3 (a/r)3 ,                           (c, λ) = 1.
+                            
+
+To verify (A.10), use the determinant equation and cubic reciprocity. For the case vλ (c) = 1, the
+required congruences are
+                  a(c − u0 δ ′ ) ≡ −u0     (mod a − u0 bg ),          bg c ≡ −1 (mod a).
+
+                                                       40
+For (c, λ) = 1, the congruence
+
+                                          −bg c = 1 − aδ ′ ≡ 1   (mod 9)
+
+removes the supplementary factors; reciprocity at the remaining primes then gives (δ ′ /(−bg c))3 =
+1. The factors other than (a/r)3 depend only on the fixed residues at primes in S. We may
+therefore write                                 Y
+                       κ(g1 ) = κ0 (a/r)3 = κ0     χp (a)2 ,   |κ0 | = 1,
+                                                         p|r
+
+where κ0 is fixed once h0 , the active set, and r mod M 2 are fixed.
+   Fix h0 and the active set, so that the denominator c = c0 r is fixed while the nonzero residues
+hp vary. Put D0 = λ3 c0 . For each active prime p, define in O/(p)
+                                                                           −1
+                                  σp = λ2 c/p,        ϵp = − (λ3 c/p)σp          .
+
+The inverse in ϵp is taken in the field O/(p); it exists because r is squarefree and p ∤ λc0 . The
+expression for a gives a ≡ σp hp (mod p). For a dual Fourier index ℓ ∈ λ−4 O, the additive form
+of the Chinese remainder theorem yields
+                                                     Y
+                              ĕ(−δ ′ ℓ/c) = ψ(λ4 ℓ)   e(ϵp h−1 4
+                                                             p λ ℓ/p),                      (A.11)
+                                                          p|r
+
+where
+                            ψ(λ4 ℓ) := e(−δ0′ r−1 λ4 ℓ/D0 ),      δ0′ = δ ′ mod D0 .
+The residues δ0′ and r−1 mod D0 are fixed by the choices above, so ψ ranges over a fixed finite
+family of additive characters of O. We claim the local transformation identity
+                   X
+                       Cp,j (hp )χp (a)−2 e(ϵp h−1 4               −2           4
+                                                p λ ℓ/p) = χp (σp ) ωp,j Bp,j (λ ℓ),    (A.12)
+                   hp ̸=0
+
+where Bp,j is defined in (6.5), and
+                            
+                                     j                      −j−2 , j ̸= 0, 4,
+                            χp (−1) γj (p)γj+2 (p)χp (ϵp )
+                            
+                      ωp,j = γ4 (p),                               j = 4,
+                            
+                                           −2
+                             −γ2 (p)χp (ϵp ) ,                     j = 0 active.
+
+The indices of γj (p) are read modulo six; in the second case, χp (−1)4 = 1. In each case |ωp,j | = 1.
+To prove (A.12), combine (A.5), the conjugate of (A.10), and (A.11). Setting y = h−1    p changes
+the character exponent as follows:
+
+           χp (hp )−j χp (a)−2 = χp (σp )−2 χp (hp )−j−2 = χp (σp )−2 χp (y)j+2 ,      y = h−1
+                                                                                            p .
+
+
+For j ̸= 0, 4, the character χj+2
+                              p    is nontrivial, and its Gauss sum gives the first case of Bp,j . For
+j = 4, it is trivial on nonzero residues; after rescaling by ϵp ̸= 0, the sum is
+                                X
+                                    e(λ4 ℓy/p) = −1 + NK/Q (p)1p|λ4 ℓ .
+                                   y̸=0
+
+For active j = 0, the coefficient −NK/Q (p)−1 combines with a cubic Gauss sum to give
+
+                                   Bp,0 (λ4 ℓ) = NK/Q (p)−1/2 χp (λ4 ℓ)−2 ,
+
+
+
+                                                        41
+with the unit factors included in ωp,0 . This proves (A.12) in every case. An inactive prime has
+j = 0 and contributes only the scalar 1 − NK/Q (p)−1 . Consequently, for each fixed h0 and active
+set A, combining the Fourier coefficients dσ (ℓ) of θ(H(z, v)) with the sums over hp ̸= 0 gives
+                                                 Y
+                                   dσ (ℓ)ψ(λ4 ℓ)     Bp,jp (λ4 ℓ),
+                                                        p∈A
+
+up to a scalar independent of ℓ. These are the arithmetic factors in the dual sum (6.9). In
+particular, Bp,1 (λ4 ℓ) = χp (λ4 ℓ)3 is the quadratic factor used in (6.18).
+The archimedean transform. We now derive the transformed weight V∗♯ in (6.6) and the scalar
+multiplying the dual sum. For Re s > 1, introduce the Dirichlet series associated with the
+completed sum (5.3):
+                       ∗
+                                                                               3
+                      X                                         X                                 
+       T (s, Ψ) =              α(n)γ2 (n)Ψ(n)NK/Q (n)−s                    α(b) Ψ(b)3 NK/Q (b)−3s+1/2 .
+                       n∈O                                         b∈O
+                     n≡1 (3)                                     b≡1 (3)
+                     (n,S)=1                                     (b,S)=1
+
+With V∗ from (5.3) and its Mellin transform defined before (6.6), Mellin inversion gives
+                                  Z
+                              1
+                  T (X; Ψ) =          Vb∗ (s − 21 )T (s, Ψ)X s−1/2 ds, σ > 1.            (A.13)
+                             2πi (σ)
+
+The identity (6.3), with Ψ in place of Ψk , identifies these coefficients with those of ΘΨ after
+inserting the factor α(nb3 ). We now compute the normalization relating T (s, Ψ) to the Mellin
+transform of the derivative of ΘΨ .
+    For z = x + iy, use ∂z̄ = (∂x + i∂y )/2 and ∂z = (∂x − i∂y )/2. Differentiation in z̄ supplies a
+factor ℓ̄ in each Fourier mode. Combined with the factor |ℓ|−1 from the Bessel integral below,
+this produces the required angular factor α(ℓ). We therefore define, initially for Re s > 1, the
+Mellin transform                       Z ∞
+                               J (s) =      ∂z̄ ΘΨ (z, v) v 2s−1 dv.
+                                              0                  z=0
+
+For each nonzero Fourier mode, differentiation and the Mellin integral for K1/3 (see [35,
+(10.43.19)]) give the following formulas:
+
+                                   ∂z̄ ĕ(ℓz) = 2πiℓ̄ ĕ(ℓz),                                             (A.14)
+                Z ∞
+                                                  22s−1 Γ(s + 1/3)Γ(s + 2/3)
+                      v 2s K1/3 (4π|ℓ|v) dv =                                         Re s > 0.           (A.15)
+                 0                                        (4π|ℓ|)2s+1
+    For Re s > 1, the coefficient formula (2.10) and (A.15) show that the sum of the integrals of
+the absolute values is finite. We may therefore integrate the differentiated Fourier series term by
+term.
+    For ℓ = λ−3 nb3 , the phase and scale simplify to
+                                                          3
+                          iα(ℓ)|ℓ|−2s = 27s α(n) α(b) NK/Q (n)−s NK/Q (b)−3s .
+
+Combining this with (2.10) gives
+
+                                   35/2  27 s
+                         J (s) =                Γ(s + 1/3)Γ(s + 2/3)T (s, Ψ).                             (A.16)
+                                    4 (2π)2
+We next show that J (s) is entire and use (A.16) to continue T (s, Ψ).
+   Write (z ′ , v ′ ) = g −1 (z + a/c, v). Differentiating (A.9) at z = 0 gives
+
+                        ∂z ′          1              ∂z ′                   ∂v ′
+                                 = − 2 2,                     = 0,                   = 0.
+                        ∂ z̄ z=0    c v              ∂ z̄ z=0               ∂ z̄ z=0
+
+                                                        42
+Thus the derivative in cusp coordinates is −(cv)−2 ∂z ′ , with no height-derivative term. The
+defining Fourier series (A.2) for ΘΨ controls v → ∞. For v → 0, use (A.8) and the cusp
+expansions (6.8). In each expansion the horizontal derivative removes the constant mode. The
+remaining modes decay exponentially as v → ∞; at v → 0, the transformed height 1/(NK/Q (c)v)
+tends to infinity, giving exponential decay in 1/v. Thus the integral defining J (s) converges for
+every s and defines an entire function. Equation (A.16), after division by its gamma factors, also
+continues T (s, Ψ) to an entire function.
+    For the term indexed by h in (A.4), write ch , δh′ , g1,h , Hh for the corresponding choices above.
+Let σh be the cusp index determined by Hh . Define its cusp Mellin transform by
+                                    Z ∞
+                          Jh∨ (s) =                                   v 2s−1 dv.
+                                          
+                                        ∂z θ(Hh (z, v))           ′
+                                                                                                 (A.17)
+                                       0                          z=−δh /ch
+
+Substituting v 7→ (NK/Q (ch )v)−1 in each translated term of J (s), using (A.8), gives
+                                X                           2
+                    J (s) = −        cF (h)κ(g1,h ) α(ch ) NK/Q (ch )1−2s Jh∨ (1 − s).                     (A.18)
+                                 h
+
+Here cF (h) is the coefficient in (A.4). The cusp coefficients dσh (ℓ) and (A.15) give, for Re s > 1,
+
+                            i Γ(s + 1/3)Γ(s + 2/3)          X         dσh (ℓ)α(ℓ)
+                Jh∨ (s) =                                                         ĕ(−δh′ ℓ/ch ).          (A.19)
+                                    4(2π)2s                            NK/Q (ℓ)s
+                                                        0̸=ℓ∈λ−4 O
+
+The Dirichlet series T (s, Ψ) converges absolutely for Re s > 1, while the series in (A.19) at
+1 − s converges absolutely for Re s < 0. The functional equation (A.18) and Stirling’s formula
+[22, §5.A.4] therefore give polynomial bounds in | Im s| for T (s, Ψ) on both sides of the strip
+0 ≤ Re s ≤ 1. Splitting the integral defining J (s) at v = 1 gives finite order; Phragmén–Lindelöf
+[22, Theorem 5.53] then gives the same type of bound inside the strip (compare the arguments
+of Dunn and Radziwiłł in [7, Propositions 5.1–5.2]). Together with the rapid decay of Vb∗ on
+vertical lines, these bounds justify moving the s-contour in (A.13) to Re s < 0. No poles are
+crossed, since T (s, Ψ) is entire. Setting t = 12 − s then gives a line Re t > 1/2, where the dual
+coefficient series converges absolutely.
+     For fixed h0 and active set, insert (A.19) into (A.18) and use (A.12) to sum over the nonzero
+hp . After the normalization in (A.16), the scalar C in (6.9) for this group of translates is
+
+              i     2              Y                               Y
+     C=−        α(c) ϕ(h
+                      b 0 )κ0                (1 − NK/Q (p)−1 )              χp (σp )−2 ωp,jp ,   |C| ≤ 1/81.
+             81
+                                p inactive                       p active
+
+
+Dividing (A.16) by its gamma factors and setting t = 21 −s produces the gamma quotient in (6.6).
+Its numerator gamma factors have their first pole at t = −5/6, and its reciprocal denominator
+gamma factors are entire. Thus no poles lie between the current contour Re t > 1/2 and Re t = 0.
+The rapid decay of Vb∗ , together with Stirling’s formula, allows us to shift each kernel contour to
+Re t = 0. This gives the weight V∗♯ defined in (6.6), evaluated at NK/Q (ℓ)X/NK/Q (c)2 . Together
+with (A.12), this gives the dual sum (6.9).
+    For k0 as in Lemma 6.3, fix h0 , the factors of Ψ other than χk0 , and the active/inactive
+choices at their primes. Every prime dividing k0 has exponent jp = 1 and is therefore active, so
+                                                    Y
+                                           r = k0       p.
+                                                        p∈Afix
+
+Thus r/k0 is fixed, and fixing k0 mod M 2 fixes r mod M 2 . The choices of H, c0 and the residues
+in (A.11) are therefore fixed in each such class. Thus d = dσ , ψ, and c0 have precisely the
+asserted dependence on k0 .
+
+                                                       43
+    It remains to bound the transformed weight. The first numerator pole of the gamma quotient
+in (6.6) is at t = −5/6. We may therefore shift the kernel contour to Re t = −1/4 for 0 < x ≤ 1,
+obtaining the factor x1/4 , and to Re t = A for x ≥ 1, obtaining x−A . Each application of x∂x
+introduces a factor −t. Stirling’s formula on −1/4 ≤ Re t ≤ A then gives, for every A > 0 and
+j ≥ 0,
+                  |(x∂x )j V∗♯ (x)| ≪A,j min{x1/4 , (1 + x)−A }
+                                                Z
+                                                                                          (A.20)
+                                     × sup           (1 + |u|)⌈4A⌉+j+2 |Vb∗ (η + iu)| du.
+                                      −A≤η≤1/4 R
+
+When V∗ is supported in a fixed compact interval I ⊂ (0, ∞), repeated integration by parts in its
+Mellin transform gives rapid decay in |u|, uniformly for −A ≤ η ≤ 1/4. Thus, for a sufficiently
+large J = J(A, j), the supremum of integrals in (A.20) is ≪A,j,I ∥V∗ ∥C J (I) . This proves (6.12).
+Thus (6.9) expresses T (X; Ψ) as OΨ0 ,S (2|P| ) dual sums with |C| ≤ 1/81, the asserted ray class
+dependence of (d, ψ, c0 ), and the weight decay just established. Together with the support and
+coefficient bounds proved above, this completes the proof of Proposition 6.2 and Lemmas 6.3
+and 6.4.
+
+
+B     Separating variables in smooth weights
+This appendix justifies the separation of smooth weights in the completed mean-square estimate
+of Section 6, and the treatment of kernels depending on the row in the Poisson reductions of
+Sections 4 and 7.
+
+B.1    Separating the variables
+We use Mellin inversion to separate the variables of a smooth weight, with coefficient bounds
+controlled by finitely many derivatives.
+
+Lemma B.1. Fix a box I = I1 × · · · × Id , where each Ij is a compact interval in (0, ∞). Every
+K ∈ Cc∞ ((0, ∞)d ) supported in I has a representation
+                                        Z            d
+                                                            it
+                                                     Y
+                               K(x) =         b(t)         xj j dt,   xj > 0.                (B.1)
+                                         Rd          j=1
+
+For J ≥ 0 and every even integer q > J + d, the coefficient satisfies
+                           Z
+                               |b(t)|(1 + |t|)J dt ≪I,J,q,d ∥K∥C q (I) .
+                                Rd
+
+Proof. Take the Fourier transform in logarithmic coordinates:
+                                        Z
+                                    1
+                           b(t) =           K(ey1 , . . . , eyd )e−it·y dy.
+                                  (2π)d Rd
+
+Applying Fourier inversion to this gives (B.1). Since the intervals Ij are fixed and bounded away
+from zero, the C q norm in logarithmic coordinates is bounded by a constant times ∥K∥C q (I) .
+Applying (1 − ∆y )q/2 under the integral therefore gives
+
+                         |b(t)| ≪I,q,d (1 + |t|)−q ∥K∥C q (I)         (q ≥ 0 even).
+
+Multiplication by (1 + |t|)J and integration proves the bound when q > J + d. See also the
+multivariable Mellin formulation in [39, §10.1, (130)–(131)].
+
+
+
+                                                      44
+    In our applications, the weight has the more specific form
+                                            d               Yd     
+                                                                 a
+                                            Y
+                                 KR (x) =         Wj (xj )F R   xj j ,              R > 0,
+                                            j=1                  j=1
+
+where the exponents aj are fixed real numbers and Wj ∈ Cc∞ ((0, ∞)) is supported in Ij . Assume
+that F ∈ C ∞ ((0, ∞)) satisfies
+
+              ∥F ∥A,q := max sup(1 + u)A (u∂u )m F (u) < ∞                            (A ≥ 0, q ∈ Z≥0 ).
+                             0≤m≤q u>0
+
+On the fixed box I, the argument of F is comparable to R. The chain rule and the pointwise
+bound in the proof give coefficients bR satisfying, for A ≥ 0 and even q ≥ 0,
+                                                                             d
+                                                                             Y
+                          |bR (t)| ≪ (1 + R)−A (1 + |t|)−q ∥F ∥A,q                 ∥Wj ∥C q (Ij ) .        (B.2)
+                                                                             j=1
+
+Consequently, for J ≥ 0 and even q > J + d,
+                      Z                                                           d
+                                                                                  Y
+                                              J                    −A
+                            |bR (t)|(1 + |t|) dt ≪ (1 + R)              ∥F ∥A,q         ∥Wj ∥C q (Ij ) .   (B.3)
+                       Rd                                                         j=1
+
+The constants depend only on A, J, q, d, the intervals Ij , and the exponents aj . Thus separation
+preserves the decay in R, and its cost is controlled by finitely many derivatives of the original
+weights.
+
+B.2     Weights depending on the row
+The next lemma extends mean-square bounds for a common test function to smooth kernels
+depending on the row, with losses controlled by uniform bounds on their derivatives.
+   Fix compact intervals I ⊂ int I∗ in (0, ∞) and an integer m ≥ 0.
+Lemma B.2. Consider two families of finite sums
+                           X
+               Sj,r (U ) =   aj,r (n)U (xj,r,n ),                       j = 1, 2,       xj,r,n > 0,
+                                      n
+
+with a finite set of rows r and nonnegative weights wr . Suppose that, for every U ∈ Cc∞ (I∗ ),
+                           X
+                              wr |Sj,r (U )|2 ≤ Mj ∥U ∥2C m (I∗ ) , j = 1, 2.
+                                 r
+
+Then for any |cr | ≤ wr and smooth kernels Kr supported in I 2 ,
+     X X                                                            p
+         cr     a1,r (n1 )a2,r (n2 )Kr (x1,r,n1 , x2,r,n2 ) ≪I,I∗ ,m M1 M2 sup ∥Kr ∥C 2m+4 (I 2 ) .        (B.4)
+       r     n1 ,n2                                                                          r
+
+
+Proof. Choose a real V ∈ Cc∞ (I∗ ) equal to one on I, and set Ut (x) = V (x)xit . Apply (B.1) of
+Lemma B.1 to each Kr with d = 2 and I = I 2 . Replacing the second Mellin variable by its
+negative and multiplying by V (x)V (y), which equals one on the support of Kr , gives
+                                        Z
+                            Kr (x, y) =     br (s, t)Us (x)Ut (y) ds dt,
+                                                     R2
+
+with the following uniform bound, obtained from the pointwise coefficient estimate in the proof
+of Lemma B.1 with d = 2 and I = I 2 :
+                                                    supr ∥Kr ∥C q (I 2 )
+                            sup |br (s, t)| ≪I,q                              (q ≥ 0 even).
+                             r                       (1 + |s| + |t|)q
+
+                                                            45
+The hypothesis applies to each Ut , and ∥Ut ∥C m (I∗ ) ≪I,I∗ ,m (1 + |t|)m . Taking the common bound
+for br before integrating and applying Cauchy–Schwarz in r therefore bounds the absolute value
+in (B.4) by a constant depending on I, I∗ , m, q times
+                                                       (1 + |s|)m (1 + |t|)m
+                       p                           Z
+                         M1 M2 sup ∥Kr ∥C q (I 2 )                           ds dt.             (B.5)
+                                r                   R2    (1 + |s| + |t|)q
+Taking q = 2m + 4 makes the integral converge and proves the claim.
+
+B.3    Recombining the separated sums
+We use weighted Cauchy–Schwarz to pass from mean-square bounds for the separated sums to
+a bound for their weighted integral.
+Lemma B.3. Let r, ι range over finite sets, let d ≥ 1, and let wr ≥ 0. Suppose the measurable
+coefficients cι,r satisfy
+                                                    XZ
+                          |cι,r (t)| ≤ bι (t), M :=      bι (t) dt < ∞,
+                                                      ι    Rd
+
+
+where bι : Rd → [0, ∞). For measurable Fι,t (r), whenever the right-hand side is finite, one has
+               X      XZ                       2    XZ           X
+                   wr       cι,r (t)Fι,t (r) dt ≤ M       bι (t)   wr |Fι,t (r)|2 dt.        (B.6)
+                 r      ι                              ι           r
+
+The same assertion holds for finite sums with the integrals omitted.
+Proof. For each fixed r, weighted Cauchy–Schwarz gives
+                      XZ                        2    XZ
+                             cι,r (t)Fι,t (r) dt ≤ M    bι (t)|Fι,t (r)|2 dt.
+                        ι                              ι
+
+Multiply by wr and sum over r to obtain (B.6). The same argument with sums in place of
+integrals proves the finite version.
+
+
+References
+ [1] M. Agrawal, N. Kayal, and N. Saxena, PRIMES is in P, Ann. of Math. (2) 160 (2004), no. 2,
+     781–793.
+
+ [2] S. Bettin and S. M. Gonek, The θ = ∞ conjecture implies the Riemann hypothesis, Mathe-
+     matika 63 (2017), no. 1, 29–33. doi:10.1112/S0025579316000139.
+
+ [3] V. Bhargava, G. Ivanyos, R. Mittal, and N. Saxena, Irreducibility and deterministic r-th
+     root finding over finite fields, in Proceedings of ISSAC 2017, ACM, 2017, 37–44.
+
+ [4] G. Bhowmik and I. Z. Ruzsa, Average Goldbach and the quasi-Riemann hypothesis, Anal.
+     Math. 44 (2018), no. 1, 51–56.
+
+ [5] V. Blomer, L. Goldmakher, and B. Louvel, L-functions with n-th-order twists, Int. Math.
+     Res. Not. (2014), no. 7, 1925–1955. doi:10.1093/imrn/rns257.
+
+ [6] H. Davenport, Multiplicative Number Theory, 3rd ed., revised by H. L. Montgomery, Grad-
+     uate Texts in Mathematics 74, Springer, New York, 2000.
+
+ [7] A. Dunn and M. Radziwiłł, Bias in cubic Gauss sums: Patterson’s conjecture, Ann. of Math.
+     (2) 200 (2024), no. 3, 967–1057. doi:10.4007/annals.2024.200.3.3.
+
+                                                 46
+ [8] A.-S. Elsenhans, J. Klüners, and F. Nicolae, Imaginary quadratic number fields with class
+     groups of small exponent, Acta Arith. 193 (2020), no. 3, 217–233.
+ [9] K. Ford, Zero-free regions for the Riemann zeta function, in Number Theory for the Mil-
+     lennium, II (Urbana, IL, 2000), A K Peters, Natick, MA, 2002, 25–56. Corrected version:
+     arXiv:1910.08205.
+[10] E. Frenkel, R. Langlands, and B. C. Ngô, Formule des traces et fonctorialité: le début d’un
+     programme, Ann. Sci. Math. Québec 34 (2010), no. 2, 199–243. arXiv:1003.4578.
+[11] S. D. Galbraith, Mathematics of Public Key Cryptography, Cambridge University Press,
+     2012.
+[12] P. Gao and L. Zhao, Mean squares of quadratic twists of the Möbius function, J. Number
+     Theory 247 (2023), 1–14. doi:10.1016/j.jnt.2022.12.007.
+[13] L. Goldmakher and B. Louvel, A quadratic large sieve inequality over number fields, Math.
+     Proc. Cambridge Philos. Soc. 154 (2013), no. 2, 193–212. doi:10.1017/S0305004112000370.
+[14] T. H. Grönwall, Sur les séries de Dirichlet correspondant à des caractères complexes, Rend.
+     Circ. Mat. Palermo 35 (1913), 145–159. doi:10.1007/BF03015596.
+[15] F. Grube, Ueber einige Euler’sche Sätze aus der Theorie der quadratischen Formen, Z. Math.
+     Phys. 19 (1874), 492–519.
+[16] J. Hadamard, Sur la distribution des zéros de la fonction ζ(s) et ses conséquences arithmé-
+     tiques, Bull. Soc. Math. France 24 (1896), 199–220. doi:10.24033/bsmf.545.
+[17] H. Hasse, Vorlesungen über Zahlentheorie, Grundlehren der mathematischen
+     Wissenschaften 59, Springer, Berlin, 1950. doi:10.1007/978-3-642-52795-1.
+[18] D. R. Heath-Brown, A mean value estimate for real character sums, Acta Arith. 72 (1995),
+     no. 3, 235–275.
+[19] D. R. Heath-Brown, Kummer’s conjecture for cubic Gauss sums, Israel J. Math. 120 (2000),
+     97–124. doi:10.1007/s11856-000-1273-y.
+[20] D. R. Heath-Brown and S. J. Patterson, The distribution of Kummer sums at prime argu-
+     ments, J. Reine Angew. Math. 310 (1979), 111–130. doi:10.1515/crll.1979.310.111.
+[21] E. Hecke, Eine neue Art von Zetafunktionen und ihre Beziehungen zur Verteilung der
+     Primzahlen, I, II, Math. Z. 1 (1918), 357–376; 6 (1920), 11–51.
+[22] H. Iwaniec and E. Kowalski, Analytic Number Theory, American Mathematical Soci-
+     ety Colloquium Publications 53, American Mathematical Society, Providence, RI, 2004.
+     doi:10.1090/coll/053.
+[23] E. Kani, Idoneal numbers and some generalizations, Ann. Sci. Math. Québec 35 (2011),
+     no. 2, 197–227.
+[24] N. M. Korobov, Estimates of trigonometric sums and their applications, Uspekhi Mat. Nauk
+     13 (1958), no. 4(82), 185–192 (Russian). Math-Net.Ru: rm7458.
+[25] E. Kowalski, Y. Lin, Ph. Michel, and W. Sawin, Periodic twists of GL3 -automorphic forms,
+     Forum Math. Sigma 8 (2020), e15. doi:10.1017/fms.2020.7. Author version.
+[26] T. Kubota, On automorphic functions and the reciprocity law in a number field, Lectures in
+     Mathematics, Department of Mathematics, Kyoto University, No. 2, Kinokuniya Book-Store,
+     Tokyo, 1969. Kyoto University repository.
+
+                                              47
+[27] E. Landau, Neuer Beweis des Primzahlsatzes und Beweis des Primidealsatzes, Math. Ann.
+     56 (1903), 645–670. doi:10.1007/BF01444310.
+
+[28] J. E. Littlewood, Quelques conséquences de l’hypothèse que la fonction ζ(s) de Riemann
+     n’a pas de zéros dans le demi-plan R(s) > 1/2, C. R. Acad. Sci. Paris 154 (1912), 263–266.
+                                                            √
+[29] J. E. Littlewood, On the class-number of the corpus P ( −k), Proc. London Math. Soc. (2)
+     27 (1928), no. 1, 358–372.
+
+[30] R. F. Lu, A. Zaman, and H. Zhao, Numerical computations concerning Landau–Siegel zeros,
+     preprint, 2026. arXiv:2602.03626.
+
+[31] H. Maier and H. L. Montgomery, The sum of the Möbius function, Bull. London Math. Soc.
+     41 (2009), no. 2, 213–226. doi:10.1112/blms/bdn119.
+
+[32] G. L. Miller, Riemann’s hypothesis and tests for primality, J. Comput. System Sci. 13 (1976),
+     no. 3, 300–317.
+
+[33] H. L. Montgomery and R. C. Vaughan, Multiplicative Number Theory I: Classical Theory,
+     Cambridge Studies in Advanced Mathematics 97, Cambridge University Press, 2007.
+
+[34] M. Ram Murty and A. Sankaranarayanan, Averages of exponential twists of the Liouville
+     function, Forum Math. 14 (2002), no. 2, 273–291.
+
+[35] NIST Digital Library of Mathematical Functions, §10.43, equation (10.43.19).
+     https://dlmf.nist.gov/10.43.E19.
+
+[36] OpenAI, The Quasi-Riemann Hypothesis: A Zero-Free Half-Plane Re(s) > 7/8, OpenAI
+     Math Release preprint OAI:The-Quasi-Riemann-Hypothesis-September-30-2026, 2026.
+
+[37] A. Page, On the number of primes in an arithmetic progression, Proc. London Math. Soc.
+     (2) 39 (1935), 116–141. doi:10.1112/plms/s2-39.1.116.
+
+[38] S. J. Patterson, A cubic analogue of the theta series, J. Reine Angew. Math. 296 (1977),
+     125–161. doi:10.1515/crll.1977.296.125.
+
+[39] I. Petrow and M. P. Young, A generalized cubic moment and the Petersson formula for
+     newforms, Math. Ann. 373 (2019), nos. 1–2, 287–353.
+
+[40] I. Petrow and M. P. Young, The Weyl bound for Dirichlet L-functions of cube-free conductor,
+     Ann. of Math. (2) 192 (2020), no. 2, 437–486. doi:10.4007/annals.2020.192.2.3.
+
+[41] B. Riemann, Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse, Monatsber.
+     Königl. Preuss. Akad. Wiss. Berlin (1859), 671–680. Original text and English translation.
+
+[42] K. A. Rodosskiı̆, On non-residues and zeros of L-functions, Izv. Akad. Nauk SSSR Ser. Mat.
+     20 (1956), no. 3, 303–306 (Russian).
+
+[43] C. L. Siegel, Über die Classenzahl quadratischer Zahlkörper, Acta Arith. 1 (1935), 83–86.
+     doi:10.4064/aa-1-1-83-86.
+
+[44] T. Tatuzawa, On a theorem of Siegel, Japan. J. Math. 21 (1951), 163–178.
+     doi:10.4099/jjm1924.21.0_163.
+
+[45] E. C. Titchmarsh, A divisor problem, Rend. Circ. Mat. Palermo 54 (1930), 414–429; cor-
+     rection, 57 (1933), 478–479. doi:10.1007/BF03021203; correction.
+
+
+
+
+                                               48
+[46] C.-J. de la Vallée Poussin, Recherches analytiques sur la théorie des nombres premiers.
+     Première partie: La fonction ζ(s) de Riemann et les nombres premiers en général, Ann. Soc.
+     Sci. Bruxelles, deuxième partie, 20 (1896), 183–256.
+
+[47] C.-J. de la Vallée Poussin, Sur la fonction ζ(s) de Riemann et le nombre des nombres
+     premiers inférieurs à une limite donnée, Mém. Couronnés Autres Mém. Acad. Roy. Sci.
+     Lettres Beaux-Arts Belgique, collection in-8◦ , 59 (1899), 1–74. doi:10.3406/marb.1899.2449.
+
+[48] I. M. Vinogradov, A new estimate of the function ζ(1 + it), Izv. Akad. Nauk SSSR Ser. Mat.
+     22 (1958), no. 2, 161–164 (Russian). Math-Net.Ru: im3962.
+
+[49] I. M. Vinogradov, Selected Works, edited by L. D. Faddeev et al., Springer, Berlin, 1985.
+
+[50] P. J. Weinberger, Exponents of the class groups of complex quadratic fields, Acta Arith. 22
+     (1973), 117–124. doi:10.4064/aa-22-2-117-124.
+
+[51] A. Yoshimoto, On the cubic theta function, Nagoya Math. J. 105 (1987), 153–167.
+
+
+
+
+                                               49
+

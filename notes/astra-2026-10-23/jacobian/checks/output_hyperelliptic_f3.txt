@@ -1,0 +1,17 @@
+FIELD degree=1 modulus=[0, 1]
+FIELD degree=2 modulus=[1, 0, 1]
+FIELD degree=3 modulus=[1, 2, 0, 1]
+FIELD degree=4 modulus=[2, 1, 0, 0, 1]
+FIELD degree=5 modulus=[1, 2, 0, 0, 0, 1]
+degree12 equations considered=1062882
+successive point-count prefix survivors=[236196, 10368, 4320, 312, 120]
+K5:1 target=[4, 20, 4, 68, 244]; smooth matching equations=6; singular matches=0
+  witness coefficients low-to-high=[1, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1]
+K5:3 target=[4, 20, 16, 100, 284]; smooth matching equations=42; singular matches=0
+  witness coefficients low-to-high=[1, 0, 0, 0, 2, 0, 2, 0, 2, 0, 0, 0, 1]
+K5:11 target=[4, 20, 52, 68, 244]; smooth matching equations=6; singular matches=0
+  witness coefficients low-to-high=[1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1]
+K5:12 target=[4, 20, 40, 100, 204]; smooth matching equations=42; singular matches=0
+  witness coefficients low-to-high=[2, 2, 0, 2, 2, 1, 0, 0, 1, 0, 0, 0, 1]
+K5:13 target=[4, 20, 28, 132, 244]; smooth matching equations=24; singular matches=0
+  witness coefficients low-to-high=[2, 2, 1, 0, 2, 0, 2, 1, 1, 1, 0, 1, 1]

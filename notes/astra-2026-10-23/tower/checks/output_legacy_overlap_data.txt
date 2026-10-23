@@ -1,0 +1,26 @@
+Original source: notes/adelic-gkp/checks/check_overlap_data.py
+SHA256: a6698a39813b9defdc595dfaa6778d4f33339a11dd670e206458690cbbd51ae5
+Backend: original gp subprocess; cypari2 absent
+== C. The two curves over F_7 with a = 2, and which lattice class each carries
+Traceback (most recent call last):
+  File "/home/tobias/Projects/riemann-channel/notes/astra-2026-10-23/tower/checks/rerun_legacy.py", line 54, in main
+    ns=runpy.run_path(str(src),run_name='__main__')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 286, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/tobias/Projects/riemann-channel/notes/adelic-gkp/checks/check_overlap_data.py", line 222, in <module>
+    out = gp(r"""
+          ^^^^^^^
+  File "/home/tobias/Projects/riemann-channel/notes/adelic-gkp/checks/check_overlap_data.py", line 125, in gp
+    r = subprocess.run(["gp", "-q", "-f", "-s", "1000000000"], input=GP_LIB + body, capture_output=True, text=True,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'gp'
+RERUN INCOMPLETE — do not count historical passes as new verification.

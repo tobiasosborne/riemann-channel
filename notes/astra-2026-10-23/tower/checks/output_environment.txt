@@ -1,0 +1,9 @@
+Python: 3.12.3
+python-flint: 0.8.0
+sympy: 1.14.0
+gp executable: None
+cypari2 import specification: None
+Attempted setup: /tmp/claude-1000/-home-tobias-Projects-riemann-channel/venv-astra
+Observed pip install cypari2 failure in this session: Failed to establish a new connection: [Errno -2] Name or service not known; ERROR: No matching distribution found for cypari2.
+The final pip message follows connection failures; it is not evidence that cypari2 lacks a compatible distribution.
+All completed new finite-field computations used FLINT; no PARI run is represented as completed.

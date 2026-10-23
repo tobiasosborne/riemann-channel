@@ -2,6 +2,41 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-10-23: eight astra lanes (six conjectures from the record, two quasi-RH digests); all finished; record only
+
+TJO: six ambitious directions from the whole repo, one `codex:gpt-6-astra` xhigh lane each; then two more to digest the
+quasi-Riemann hypothesis (OpenAI 2026-09-30 / 10-05: every Dirichlet L-function zero-free in Re s > 7/8, statement Lean-formalised;
+Kintali 47/48; Liu 0.874957…; Cureton–Thorner 31/32 for Dedekind zetas). Worklog `docs/worklog/2026-10-23.md` (headlines per lane).
+Round directory `notes/astra-2026-10-23/` (`brief.md` binding; lanes `krein`, `haar`, `canonical`, `jacobian`, `average`, `tower`,
+`qrh-digest`, `qrh-transpose`; each has `astra-proofs.md`, `progress.txt`, `checks/` with printed outputs). Sources in
+`notes/astra-2026-10-23/qrh/sources/`. All eight exited 0 between 12:46 and 13:35 UTC. **Nothing registered; gate untouched; no
+REFUTE review; no record page edited.** Every result is `codex:gpt-6-astra` on its own page.
+
+**Headlines.** Five of the six brief conjectures were refuted with exact certificates, each leaving a sharper theorem: SU(1,1)
+rigidity false (nonelementary Ramanujan holonomy exists; κ = half the real in-band multiplicity); RH on average fails for every
+quaternionic irrep (Kramers squares) and holds for U(d) (= Hall–Puder–Sawin); Schur coordinates are not the "finite rank per
+mode" datum (probe-dependent on the zeta window); the K₄ Ramanujan flux is a trigonal genus-4 Jacobian class over F₂ and every K₅
+orbit a hyperelliptic genus-5 Jacobian class over F₃, but the unit-in-Z[F,V] and count-positivity conjectures fail; the hyperelliptic
+average is on the circle for g ≤ 3 (all odd q) and reduces to an exact half-coefficient inequality, while cubic isotypic averages
+fail; the torsion tower sees the order, the strict tower exactly the genus — lane U's q = 7 pair is Q(√−6), D = −24, h = 2, so its
+separation stands as a genus separation. Quasi-RH: the fixed gap to 1/2 is the sparse amplifier (6/7 even with an unrestricted
+mean square); Poisson is the Fourier gate exactly; the cubic theta is not a Z₃ qunaught; the large sieve is Gram positivity, not
+Weil positivity; on F_q(t) the mechanism gives θ = 11/12 conditional on H-MS; on graphs the amplifier is refuted by equidistribution.
+
+**Corrections the record needs (not yet applied; see each lane's closing section).** HANDOFF 2026-10-06 finding (F): "the Weil
+pairing sees the class" → "the strict pairing tower sees the genus; class here because h = 2"; `tower-pairing.md` and
+`overlap-data.md` likewise; `cm-lift.md`/`check_cm_tower.py` is the Q(√−7) example, lane U's is Q(√−6). `gauge-groups.md`: the
+SU(1,1) and U(d)/SU(2) paragraphs (replacement text in lanes K and H). `graph-ihara.md` §8/§9: "Ω is the Casoratian,
+Q = ½Ω(M − qM^{-1})". `data-ladder.md` §0: "the graph supplies an abelian-variety module; its isogeny class may or may not be a
+Jacobian class"; §2: the failed geometric/level dichotomy as a negative finding; §§2, 4: the metaplectic family route to a strip
+is a different kind of statement from the ladder's positivity. `shard-draft/` row `prop:gkp-overlaps-see-order`: wording only.
+
+**Next (in order).** (i) REFUTE review (another model) of the PROVED items, lane by lane, starting with T1/T2 (the genus
+theorem), J (the trigonal curve and the K₅ census), H (exterior-kernel formula, Pfaffian identity), K (Pfaffian/anti-isometry
+argument). (ii) Apply the corrections above to the record pages. (iii) Open conjectures with finite tests: hyperelliptic-average
+H-half for all (q, g); J2′ for Petersen, K₃,₃, cube (Huang–Kedlaya–Lau genus-6 census for K₃,₃); Q1-TRACE, Q1-EVAL,
+Q2-THETA-SECTORS, C-SURF; the ε-uniform CM comparison of lane U with cypari2. (iv) Then the list of 2026-10-22 below.
+
 ## Session 2026-10-22: tutorial Section 6 expanded (the nullspace of the labelling, Ω as the Casoratian); record only
 
 TJO: stuck for weeks on "Part B · 6 Phase space: two numbers per vertex" of the super-Ihara tutorial; "I don't get the symplectic

@@ -1,0 +1,20 @@
+Occurrence count: 225
+Artin-survey 2
+algorithmic-GRH 2
+broad-db-hit 19
+classical-input 14
+critical-line 19
+current-round 20
+density-or-count 14
+finite-check 3
+full-GRH 4
+function-field 2
+hierarchy-survey 11
+homonym 61
+infinity-type 10
+logical-GRH 1
+other-transform 13
+other-use 16
+zero-independent 14
+Detailed occurrence IDs and all duplicate locations: output_record_classification.tsv
+Source fingerprint file: output_source_sha256.txt

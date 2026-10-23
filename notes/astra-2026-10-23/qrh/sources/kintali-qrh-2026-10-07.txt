@@ -1,0 +1,1570 @@
+                   A Short Proof of the Quasi-Riemann Hypothesis
+                                                   Shiva Kintali∗
+
+                                                 October 7, 2026
+
+
+                                                      Abstract
+              We prove that the Riemann
+                                      √       zeta function, all Dirichlet L-functions, and all finite-order
+          Hecke L-functions over Q( −3) are zero-free in Re s > 47/48. Our proof combines cubic theta
+          reflection, a quadratic large sieve, and Hecke zero-density estimates with Mellin continuation.
+
+
+1        Introduction
+The Quasi-Riemann Hypothesis asserts that there exists a constant c > 0 such that every nontrivial
+zero ρ of the Riemann zeta function satisfies Re ρ ≤ 1 − c. Here a nontrivial zero means a zero
+in 0 < Re s < 1. We give an argument with √ c = 1/48 that also treats Dirichlet L-functions and
+finite-order Hecke L-functions over F = Q( −3).
+Theorem 1. The Riemann zeta function has no zeros in Re s > 47/48. More generally, every
+finite-order Hecke L-function over F , and every Dirichlet L-function, is zero-free in this half-plane,
+whether its character is primitive or imprimitive. For a principal character, the L-function has its
+usual simple pole at s = 1; this pole is allowed in the assertion.
+    The boundary Re s = 47/48 is not included in the zero-free assertion. Throughout, L-functions
+are uncompleted, with their usual meromorphic continuations; a zero is a point where the function
+is holomorphic and vanishes.
+    The supplied manuscript [1] states the stronger zero-free half-plane Re s > 7/8. We adapt
+its probe and Mellin-continuation framework, in particular the constructions in its Sections 4, 6,
+and 7, to give a shorter argument for the weaker half-plane in Theorem 1. The inputs are the
+unconditional cubic theta formulas in [2, Section 5 and Appendix A], the quadratic Hecke large sieve
+in [3, Theorem 1.1 and Corollary 1.2], and the general Hecke zero-density estimate in [4, Lemma 3.3].
+The conditional prime-sum and dispersion estimates in [2] are not used. Appendices A and B give
+the arithmetic and reflection calculations for the probe used here.
+    Poisson summation introduces finite-order twists over F , so we work with one zero supremum
+for this family. The norm pullback transfers the result to Dirichlet functions in Subsection 5.2.
+    Write LF (s, η) for the Hecke L-function of a character η over F , and let PF be the set of
+primitive finite-order Hecke characters over F . Define the family zero supremum
+                                                                                  
+                 β∗ = sup {1/2} ∪ {Re ρ : η ∈ PF , LF (ρ, η) = 0, 1/2 ≤ Re ρ ≤ 1} .
+This set is nonempty and contained in [1/2, 1], so 1/2 ≤ β∗ ≤ 1. Absolute convergence of the Euler
+products also excludes zeros in Re s > 1. Poles, including the principal pole at 1, are excluded from
+the definition. We do not assume that any zero or any character attains the supremum. Put
+                     47                   2               1             m0       1
+                 b= ,         C(r) = r − ,       m0 =        ,    δ0 =      =       .
+                     48                   3             1200             4     4800
+    ∗
+        Email: shiva.kintali@gmail.com     Homepage: shivakintali.github.io
+
+
+                                                          1
+1.1   Proof overview
+Suppose, for a contradiction, that β∗ > b, and fix a primitive finite-order target character η over F ,
+including the principal character. Section 2 constructs a normalized probe Jη , a principal signal fη ,
+and a holomorphic correction Hη . Their defining formulas and normalization appear together in
+Subsection 2.5. The proof has three ingredients:
+
+   1. A small probe: Jη (Z) η,ε Z 1/4+ε for every ε > 0 and Z ≥ 2 (Section 3).
+
+   2. An accurate comparison: Jη (Z) − fη (Z) η Z β∗ −2/3−δ0 for Z ≥ 2 (Section 4).
+
+   3. A nonvanishing numerator: |Hη (s) − 1| ≤ 1/2 on Re s > 11/12 (Subsection 2.5).
+
+The saving δ0 is independent of the target; the implied constants and the finite set of excluded
+primes may depend on it.
+    The first two estimates bound the signal; its decay at zero then continues its Mellin transform
+        2
+e(s−5/6) Hη (s)/LSF (s, η) to Re s > β∗ − δ0 . The third permits division by Hη . The same positive
+improvement for every target contradicts the supremum. Section 5 supplies the analytic details.
+
+1.2   Notation
+                                                                                                  √
+Use the complex embedding specified by ω = e2πi/3 , and write O = Z[ω] and λ = 1 + 2ω = −3.
+For a ∈ O put qa = NF/Q (a) = |a|2 ; explicitly, qa1 +a2 ω = a21 − a1 a2 + a22 . For a nonzero integral
+ideal a, put qa = N a = |O/a|. In particular, q(a) = qa for a 6= 0. The ring is norm-Euclidean and
+hence every nonzero ideal is principal. Every nonzero ideal prime to 3O has a unique generator
+congruent to 1 modulo 3O, which we call primary: reduction identifies the six units with (O/3O)× .
+The unit group is µ6 = {±1, ±ω, ±ω 2 }. Lattice counting gives O(X) elements of norm at most X
+for X ≥ 1, and therefore O(X) nonzero integral ideals of norm at most X.
+    A finite-order Hecke character modulo a nonzero integral ideal f means a character of the ray
+class group modulo f; its continuous infinite type is trivial because C× is connected. Extend its
+ideal values by zero to ideals not prime to f, and use
+                            X                  Y
+                LF (s, η) =     η(a)(N a)−s =    (1 − η(p)(N p)−s )−1      (Re s > 1).
+                           a6=0                 p
+
+For an imprimitive presentation, this includes its prescribed deleted Euler factors. A superscript S
+means further deletion of the Euler factors at primes in S.
+    For each fixed target, the excluded set S contains the primes above six, the target conductor
+primes, and a fixed small-prime cutoff specified below. A good prime lies outside S.
+    Unqualified sums over a, b, c, n, s are ideal sums represented by their unique primary generators
+and avoid S, unless expressly stated otherwise. The variables m and u range over elements,
+including their unit factors. The superscript sf means squarefree, and (a, S) = 1 means that no
+prime ideal in S divides (a) (or the ideal a, when a denotes an ideal). We use the Mellin transform
+c (t) = ∞ W (r)rt−1 dr; an integral over (σ) runs upward on Re t = σ. For Z > 0, powers Z s
+         R
+W          0
+use the real logarithm. An annular smooth weight belongs to Cc∞ ((0, ∞)). Implied constants may
+depend on the fixed target, S, the weights, and displayed small parameters; uniformity in moving
+rows and scales will be stated where needed.
+
+
+
+
+                                                    2
+2     The probe and its principal signal
+Fix a primitive finite-order target η. Choose a cutoff P0 large enough for the uniform product bound
+in Subsection 2.5, and let S contain the primes above six, the conductor primes of η, and all primes
+of norm at most P0 . Fix this finite set before defining the probe. The constructions in this section,
+and the estimates in Sections 3 and 4, use this fixed target.
+    The cubic Gauss coefficients connect the probe to theta reflection, while Poisson summation
+exposes the reciprocal target L-function. Annular weights and a Mellin Gaussian control both
+representations.
+
+2.1    Arithmetic and Fourier conventions
+For a 6= 0 set α(a) = a/|a|, and for z ∈ F set e(z) = exp(2πi TrF/Q (z/λ)). For planar Fourier
+                                                                                  √
+transforms, extend the trace by Tr(w) = w + w̄ for w ∈ C. The covolume of O ⊂ C is 3/2, and its
+trace-pairing matrix in the basis 1, ω is
+                                                   
+                                      2        0 1
+                        (Tr(vi vj /λ))i,j=1 =         ,   (v1 , v2 ) = (1, ω).
+                                               1 −1
+
+This integer matrix has determinant −1, so the √lattice is self-dual for the pairing e(zy). The
+corresponding
+            R    self-dual measure is dµ(z) = (2/ 3) dx dy, with z = x + iy; our transform is
+FC f (y) = C f (z)e(−zy) dµ(z). In particular, an O fundamental parallelogram has measure one. In
+                                                                      √
+real coordinates the pairing is Tr(zy/λ) = 2(Re z =y + =z Re y)/ 3; its matrix has determinant
+−4/3, giving precisely this self-dual measure.
+    For a good prime p one has qp ≡ 1 (mod 6), and reduction embeds µ6 into (O/p)× . If a ∈             / p,
+define χp (a) = (a/p)   to be the unique root in µ  whose reduction  is a(qp −1)/6 ; set χ (a) = 0 if a ∈ p.
+                   Q6                             6                                       p
+For an ideal a = p pkp prime to S, define χa (v) = p|a χp (v)kp . For every integer j, the notation
+                                                      Q
+
+χa (v)j means the usual power when v is a unit modulo a, and means zero otherwise, including when
+j = 0 or j < 0. At the unit ideal the empty product is χ1 (v) = 1 for every v.
+    We distinguish the two orientations of the symbol: χa (v) is a residue character in the element v,
+whereas, for u ∈ O \ {0}, ψu (n) = χn (u) is the Kummer Hecke character in the ideal n, on ideals
+prime to S and (u). Our Artin convention uses arithmetic Frobenius: at a prime not dividing 6u, its
+action on u1/6 has ratio (u/p)6 . This specifies the character of F (u1/6 )/F , even when its order is a
+proper divisor of six. We retain the prescribed value zero on ideals meeting (u), even if the primitive
+inducing character is unramified at such a prime. In expressions such as χR (n), the argument is the
+chosen primary generator of the ideal n.
+
+2.2    Definition of the probe
+For a nonzero modulus c, a residue character ψ modulo c extended by zero on nonunits, and k ∈ O,
+put                     X
+            gψ (c, k) =      ψ(d)e(kd/c),      γj (c) = qc−1/2 gχjc (c, 1) (c squarefree).
+                         d mod c
+
+In the definition of γj , we take j ∈ Z and (c, S) = 1. At modulus one these functions equal one.
+The additive character d 7→ e(d/c) is primitive: by self-duality, e(hd/c) = 1 for every d ∈ O holds
+exactly when h ∈ cO. For squarefree c prime to S, each local cubic character χ2p is nonprincipal.
+                                                1/2
+The prime Gauss-sum identity |gχ2p (p, 1)| = qp       and CRT therefore give |γ2 (c)| = 1, including c = 1.
+
+
+
+                                                      3
+A finite phase correction.            For odd c = a + bω (meaning (c, 2) = 1), define
+
+                       1 + i−b + ia + ib−a                                                     Γq (vw)
+            Γq (c) =                       ,        G(c) = χc (4)Γq (c),        R(v, w) =                 .           (1)
+                                2                                                            Γq (v)Γq (w)
+
+Here G(c) is used only for primary c prime to six, and R(v, w) is defined for all odd v, w. Appendix A
+proves that |G| = 1 and that R is a symmetric sign-valued bicharacter. On primary arguments they
+descend to the ray class group T modulo 36O. The formula for R applies also to noncoprime pairs.
+                                                         Q
+The physical probe. Let b∗ be any fixed generator of p∈S p. By CRT choose a residue character
+ξ modulo b∗ , extended by zero on nonunits, nonprincipal at every prime, and of order dividing six:
+use a quadratic character at odd residue characteristic and a cubic character at the prime of norm
+four. Define
+                           −1/2
+                     τ = qb∗ gξ (b∗ , 1),   Ξ(A) = ξ(A)χA (b∗ ),      |τ | = 1.
+Here Ξ is a fixed finite ray character supported on S. To see this, evaluate ξ on primary generators
+and use the Kummer character A 7→ χA (b∗ ); their conductors involve only primes in S. The local
+choices make ξ primitive modulo the squarefree modulus b∗ , so the primitive Gauss-sum formula
+gives |τ | = 1. For A = cn3 set
+                            X
+               Tm,s,η (t) =    γ2 (c)α(A) G(A)η(A)Ξ(A)−1 R(A, s)χA (m)qc−1/2−t qn−1−3t .
+                           c sf,n
+
+                                                                                         2
+Choose nonnegative nonzero smooth annular W0 , W1 and put Φ(t) = et . Extend the weights by
+zero at zero. For X, Y, Z > 0 define the probe by
+                                                                                            
+                          1 X W1 (qs /Y )χs (b∗ ) X          −1/2                     qm
+           Iη (X, Y, Z) =             p               ξ(m)qs gχs (s, −m)W0
+                          Y s τ ξ(s) qb∗ qs X                                      qb ∗ qs X
+                                                  m∈O Z
+                                                   1
+                                              ×           Z t Φ(t)Tm,s,η (t) dt.               (2)
+                                                  2πi (4)
+
+All inverse character values are evaluated only on elements prime to S. This expression is absolutely
+convergent. The annular weights leave only finitely many s and m, with m =       6 0. On Re t = 4,
+                    −9/2 −13                                                   2
+                         qn < ∞, uniformly in =t, and |Φ(4 + iv)| = e16−v . Thus the defining
+              P
+|Tm,s,η (t)| ≤ c,n qc
+sums and integral may be interchanged.
+
+2.3   Exact representations
+Completed rows.         Put
+                                                          2
+                                                 e−(log x) /4                     2
+                                     VG (x) =        √        ,       VbG (t) = et .
+                                                    2 π
+For V = VG and a fixed finite-order ray character ν supported on S, define
+
+                                                              γ2 (c)α(cb3 )ν(cb3 )χcb3 (m)           qc qb3
+                                             X                                                               
+              CV (Z; m, ν) =                                              1/2
+                                                                                             V                    .   (3)
+                                                                        qc qb                         Z
+                                    c squarefree, b primary
+                                           (cb,S)=1
+
+The variables c, b may share primes. The Gaussian integral gives the Mellin formula; for A > 1/2,
+                                                           −1/2−A −1−3A
+the bound VG (x) A x−A majorizes the series by Z A c,b qc
+                                                     P
+                                                                  qb      < ∞, locally uniformly
+in Z > 0.
+
+                                                              4
+Exact low separation. For a class σ ∈ T , choose a primary representative sσ prime to S. Such
+representatives exist by CRT, including the conditions of avoiding the finitely many additional
+primes in S. Use the finite Fourier expansion and character
+                              X
+                      G(A) =      aθ θ(A),    νσ (A) = η(A)Ξ(A)−1 R(A, sσ ).
+                                  θ∈Tb
+                −1
+                   P
+Here aθ = |T |      γ∈T G(γ) θ(γ). The bicharacter property makes A 7→ R(A, sσ ) a character,
+independent of the chosen representative. Put
+                                           X
+                                Bm,σ (Z) =    aθ CVG (Z; m, νσ θ).
+                                                       θ
+                                                       1         t
+                                                           R
+Applying Mellin inversion to Φ term by term gives 2πi       (4) Z Φ(t)Tm,s,η (t) dt = Bm,σ (Z) for s ∈ σ.
+The characters νσ θ form a fixed finite family supported on S, so the completed-row estimate applies
+with every original zero mask. For Q0 = qb∗ XY define
+                              1 X W1 (qs /Y )χs (b∗ )
+                Am,σ,v (Y ) =                         (qs /Y )−1/2+iv qs−1/2 gχs (s, −m).
+                              Y s∈σ        τ ξ(s)
+
+Choose Ω ∈ Cc∞ ((0, ∞)) equal to one on supp(W0 ) supp(W1 ), the set of products of points in the
+two supports. On the original support, qm /Q0 = (qm /(qb∗ qs X))(qs /Y ) lies in this fixed compact set.
+Mellin inversion gives the exact identity
+                 −1/2 X Z
+                Q0                    X
+          Iη =                W
+                              c0 (iv)     Ω(qm /Q0 )ξ(m)(qm /Q0 )−iv Am,σ,v (Y )Bm,σ (Z) dv.        (4)
+                 2π     σ   R            m6=0
+                                                                              −1/2
+Indeed, qm /(qb∗ qs X) = (qm /Q0 )/(qs /Y ) and (qb∗ qs X)−1/2 = Q0 (qs /Y )−1/2 . Insert W0 (r) =
+(2π)−1 R W
+         c0 (iv)r−iv dv. Rapid Mellin decay and the finite m support justify all interchanges;
+      R
+
+annular support removes m = 0.
+
+Exact Poisson separation. Let W f0 (|y|2 ) be the planar Fourier transform of W0 (|y|2 ) and set
+                        Z ∞                               Z ∞
+                                    z−1
+                M (z) =     W0 (r)r
+                            f           dr,     W1 (w) =
+                                                c             W1 (r)rw−1 dr.
+                              0                                           0
+The planar transform is radial and Schwartz. Consequently M is holomorphic on Re z > 0, and
+integration by parts gives rapid vertical decay on compact substrips of that half-plane. The transform
+c1 is entire with the same vertical decay on every fixed strip. The same probe has the following
+W
+representation, where u ranges over nonzero sixth-power-free elements prime to S, including all six
+units. On the lines Re x = 3, Re w = 3, and Re z = 2, one has
+                             Z Z Z
+                        1
+               Iη =                       X 1/2−z Z x+z−1 Y w−1 Φ(x + z − 1)M (z)Wc1 (w)
+                     (2πi)3 (3) (3) (2)
+                                             (6)
+                                             X
+                                         ×         qu−z ξ(u)Fη,u (x, w, z) dz dw dx.                 (5)
+                                              u
+
+Here Fη,u factors as
+                                                   ζFS (6z)LSF (w, ψu )
+                           Fη,u (x, w, z) =                             Hη,u (x, w, z).              (6)
+                                                       LSF (x, ηψu )
+The Euler product Hη,u is given in Subsection A.3. Appendix A derives (5)–(6) from (2) and justifies
+absolute convergence on these initial lines. The row u = 1 has target denominator LSF (x, η).
+
+                                                           5
+2.4   Row characters and their conductors
+Choose a finite conjugation-stable family Θ of finite-order Hecke characters presented with moduli
+supported in S, containing 1, η, η. For a sixth-power-free element u prime to S, let Xu consist of
+the presentations
+                         ψu,ν, (n) = ν(n)ψu (n) ,   ν ∈ Θ,  ∈ {1, −1}.
+All prescribed zero extensions are retained. If ψ ∗ is the primitive inducing character, then
+                                        Y
+              Lorig (s, ψ) = L(s, ψ ∗ )   (1 − ψ ∗ (p)(N p)−s ),   Eψ ⊂ S ∪ {p : p | u}.
+                                     p∈Eψ
+
+Lemma 2 (Conductor and multiplicity). For each presentation in Xu with U ≤ N u < 2U , the
+primitive conductor has norm OS,Θ (U ). For any fixed primitive character, there are at most twelve
+distinct elements u for which some member of Xu induces it. This counts physical rows, not
+presentations (u, ν, ). No member of a nonunit row Xu induces the principal character.
+
+Proof. At p ∈  / S, put q = N p and let λp (x) = (x/p)6 on local units, using the lift from the residue
+field to µ6 fixed above. This character has exact order six. Tame local reciprocity identifies the
+                                                                    κv (u)
+restriction of the Kummer character of u to local units with λp p , where the sign κ ∈ {1, −1}
+depends only on the Artin convention. The unit part of u does not enter this restriction. Twists in Θ
+are unramified there. For orientation , the exponent is multiplied by . These characters are trivial
+on the principal units 1 + p. Thus the conductor exponent is one precisely when 1 ≤ vp (u) ≤ 5, and
+zero otherwise.
+    The conductor at S is uniformly bounded: if m > 2vp (6), Hensel’s lemma, applied to X 6 − a
+at X = 1, shows that every a ∈ 1 + pm is a sixth power. Every local Kummer character is trivial
+there; the remaining twists have fixed conductors. The conductor therefore divides a fixed ideal
+times rad(u), whose norm is at most N u.
+    For a fixed inducing character and orientation , its inertia restrictions determine each valuation
+vp (u) ∈ {0, . . . , 5} uniquely. There are no S-prime factors. Hence they determine at most one ideal
+(u), which has six generators. This conclusion is independent of ν ∈ Θ, since those twists have
+trivial inertia outside S; there is no additional |Θ| factor in the count of distinct rows. The two
+orientations give the bound twelve. Nontrivial inertia at any prime of a nonunit proves the last
+assertion.
+
+2.5   The principal row and the numerator
+We identify the principal numerator row and prove that its correction Hη is nonvanishing on the
+half-plane needed for continuation.
+    Lemma 2 excludes nonunit rows with principal numerator. To exclude the five nonidentity units,
+take the element π = −2 − 3ω, which is primary and has norm seven. By CRT choose
+
+                     n≡π      (mod 36O),       n≡1      (mod p)   (p ∈ S, p - 6).
+
+Then n is primary, prime to S, and N
+                 (N p−1)/6
+                                       Qn k≡  7 (mod 36). For a unit u ∈ µ6 , the defining symbol
+gives χp (u)P = u          . If (n)P =   p , write N p = 1 + 6hp . Reduction modulo 36 gives
+                                           p
+
+N n ≡ 1 + 6 kp hp , so χn (u) = u kp hp = u(N n−1)/6 = u. This calculation applies to composite n as
+well. Thus each of the five nonidentity units has a nonprincipal numerator, even after an arbitrary
+finite enlargement of S.
+
+
+
+                                                  6
+   Thus u = 1 is the only principal numerator row. To prove positivity of M (1/6), use, for
+0 < σ < 1,                                    Z ∞
+                                         1                  2
+                           |y| 2σ−2
+                                    =             t−σ e−t|y| dt.
+                                      Γ(1 − σ) 0
+                        f0 (|y|2 ) using dµ(y). Absolute integrability follows near zero from σ > 0
+Pair this identity with W                                                             √
+and at infinity from Schwartz decay, and justifies the first interchange. Put κF = 2π/ 3. With our
+Fourier convention,
+                                              2        κF −κ2 |x|2 /t
+                                    FC (e−t|·| )(x) =     e F         .
+                                                        t
+Fourier duality and then Tonelli’s theorem on the nonnegative side give, in polar coordinates,
+                                                      Z ∞
+                                       1−2σ Γ(σ)
+                          M (σ) = κF                       W0 (r)r−σ dr > 0.
+                                           Γ(1 − σ) 0
+
+The last integral is finite by annular support and positive because W0 is nonnegative and nonzero.
+In particular M (1/6) > 0. The zeta residue is
+                                                  π Y
+                               ρS = Res ζFS (s) = √      (1 − qp−1 ) > 0.
+                                     s=1         3 3 p∈S
+                                                                                    √        √
+Indeed, lattice counting and division by the six units give #{a : N a ≤ X} = πX/(3 3) + O( X);
+partial summation gives the undeleted residue, and deletion supplies the displayed finite factors.
+Thus cS = Wc1 (1)M (1/6)ρ2 /6 > 0. Both zeta residues contribute to this constant. At the balanced
+                          S
+scales we write
+                         Iη (Z) = Iη (Z 1/2 , Z 1/2 , Z), Jη (Z) = c−1
+                                                                    S Iη (Z).                  (7)
+    Define Hη (s) by substituting (x, w, z) = (s, 1, 1/6) into the local correction factors and taking
+their product. Thus it is the restriction Hη,1 (s, 1, 1/6) on the continuation domain established in
+Subsection 4.2. The calculation below proves convergence of this restricted product directly. For a
+        / S, put Q = N p and α(p) = α(p) for its primary generator p. With t = Q−1 , D = η(p)Q−s ,
+prime p ∈
+              6
+and R = α(p) η(p)6 Q3−6s , the local factor simplifies to
+
+                                           1 − t2
+                                                                 
+                                                         t(D − R)
+                                 Hp (s) =            1+              .                             (8)
+                                           1−R             1−D
+
+For example, the j = 0 line of the local table has V = W = t, ρ = 1, and R = R. Its full factor is
+Pp = (1 + t)/(1 − t) + (1 + t)(R − D)/(1 − R); multiplying by (1 − t)2 /(1 − D) gives (8).
+    On Re s ≥ 11/12 we have |D| ≤ Q−11/12 < 1/2 and |R| ≤ Q−5/2 < 1/2, since every good prime
+has Q ≥ 7. Subtracting one in (8) consequently gives the uniform bound
+
+                          |Hp (s) − 1| ≤ 4 Q−2 + Q−23/12 + Q−5/2 =: aQ .
+                                                                 
+
+                                                                          P
+All three prime sums converge. Choose the initial cutoff P0 so that         N p>P0 aN p ≤ log(3/2).
+This choice is independent of the target and of S. The product converges locally  Q uniformly to
+a holomorphic
+    P           function  on Re  s >  11/12, and the finite-product inequality  |  (1 + hp ) − 1| ≤
+exp( |hp |) − 1 passes to its limit, giving
+                                                 1
+                                |Hη (s) − 1| ≤           (Re s > 11/12).                          (9)
+                                                 2
+Additional conductor-prime deletions only reduce the majorant sum.
+
+                                                     7
+The principal signal. With this correction define
+                                   Z
+                                1                       2 Hη (x)
+                      fη (Z) =          Z x−2/3 e(x−5/6) S         dx.                           (10)
+                               2πi (2)                   LF (x, η)
+
+The integral is absolutely convergent for every Z > 0, since the Gaussian decays on the line Re x = 2
+and both Hη and the reciprocal Euler product are bounded there. The double residue of the
+principal row will be shown to equal cS fη (Z) in Subsection 4.3.
+
+
+3     The low estimate
+Reflection replaces the cubic coefficients by moving quadratic characters χ3R . We apply the quadratic
+large sieve with the remaining prime-power factors frozen, then sum those factors.
+
+3.1   Reflection and the quadratic large sieve
+                                                      2
+Use the completed row (3) with V = VG , so Vb (t) = et . The dual variables introduced by reflection
+may meet S.
+    For K, N ≥ 1, the quadratic Hecke large sieve [3, Definition 1 and Theorem 1.1], after a fixed
+finite ray subdivision, gives
+                                                   2
+                         sf
+                         X     sf
+                               X                                            X
+                                      an χR (n)3       ε (KN )ε (K + N )       |an |2 .         (11)
+                        qR ≤K qn ≤N                                         n
+
+Both indices in this inequality are squarefree and prime to S; the coefficients an are arbitrary
+complex numbers. Here is the conductor check for the cited theorem. On ideals prime to λR, let
+θR ((x)) = (xprim /R)2 , where xprim is the primary generator of (x). Write λ for the nontrivial
+character of (O/λ)× , and put e(R) = (qR − 1)/2 (mod 2). Adjusting x to its primary generator
+gives
+                                    θR ((x)) = λ (x)e(R) (x/R)2 .
+Indeed, the powers of ω are squares, and the sign of the adjusting unit is determined by x mod λ. By
+CRT, the primitive inducing character has exact conductor Rλe(R) and trivial infinite type. When
+e(R) = 0 its factor at λ is absent. A fixed ray subdivision, including the residue modulo 4, fixes
+e(R). Thus coprime members in one class have primitive product conductor exactly their product:
+the two factors at λ cancel. The reciprocity factor is the cube of the finite bicharacter R in (1), by
+the sextic reciprocity law proved in Appendix A. These are the Hecke-family hypotheses of the cited
+theorem; reciprocity, or transpose duality, gives the displayed orientation. On the indicated support
+the primitive characters have exactly the values χR (n)3 , including zeros. Restricting the outer row
+set decreases the nonnegative left-hand side; a fixed coefficient-support restriction is imposed by
+setting the excluded coefficients to zero before applying the inequality.
+Lemma 3 (Weak reflection). Factor a nonzero row as (m) = P sR, where P is the product of
+the prime-power factors with exponent at least two, s is squarefree and supported on S, and R
+is squarefree and prime to SP . Freeze P, s and the unit of m. The completed row is a sum of
+OS,ν (2ω(P ) ) expressions of the form
+                                                                             !
+                          X d(µ)α(µ)ϑ(λ4 µ)            Y               q µ Z
+                       ζR            1/2
+                                            χR (λ4 µ)3   Bp (λ4 µ)V ] 2        .          (12)
+                                    qµ                                qcF DR
+                       µ6=0                                 p|D
+
+
+                                                        8
+Here ω(P ) counts the distinct prime divisors of P , D | rad(P ) is prime to S, cF has finitely many
+possibilities depending only on the fixed data, and |ζR | ≤ 1/81. After a fixed finite ray subdivision of
+R, both d and ϑ are independent of R. The function d(µ) is the conjugate cusp coefficient defined
+in Appendix B; ϑ is its fixed additive phase. The frozen factors are independent of R and satisfy
+             1/2
+|Bp (x)| ≤ qp . The cusp support is
+                                                                                    1/2
+                  µ = uλk nb3 ,   k ≥ −4,     n squarefree,        |d(µ)| ≤ 27 3k/6 qb .
+
+The dual n, b are primary, may share primes, and need not avoid S. For every A ≥ 0 and integer
+j ≥ 0, the kernel satisfies
+
+                             |(x∂x )j V ] (x)| A,j min(1, x−A )     (x > 0).
+
+These bounds are uniform in the rows and reflection branches.
+
+   The proof, including the fixed cusp choices and the local zero masks, is given in Appendix B.
+
+3.2    Balanced row energy
+Lemma 4 (Balanced energy). For every fixed C > 0, every fixed finite family of ν, and ε > 0,
+uniformly for Z ≥ 2,          X
+                                    |CV (Z; m, ν)|2  Z 1+ε .
+                                   0<qm ≤CZ
+
+Proof. Freeze P, s, the unit of m, a reflection branch and a ray sector. Then each ideal R specifies
+                                                    √
+at most one row. Put p0 = N P and D0 = N D ≤ p0 ; the inequality follows because every prime
+in P has exponent at least two. Place R in an annulus qR  K ≤ Kmax , where Kmax  Z/p0 .
+Use smooth dyadic partitions, including the bounded ranges, for qn  N and qb  B. For a fixed
+                                                                                   1/2
+unit and k ≥ −4, Lemma 3 bounds the coefficient by a fixed constant times D0 3−k/3 N −1/2 B −1 .
+After this normalization, the remaining column coefficient is bounded by one and independent of
+R. The factor ζR is a bounded row scalar and can be removed from the positive row norm. Keep
+the kernel and the three annular cutoffs as one smooth profile in (qR /K, qn /N, qb /B). Simultaneous
+logarithmic Fourier inversion has a single common coefficient density with uniformly bounded L1
+norm. Indeed, in logarithmic coordinates its kernel is V ] (t0 exp(ξn + 3ξb − 2ξR )), multiplied by
+three fixed compactly supported cutoffs. Its derivatives through order four are uniformly bounded
+for every t0 > 0, by the Euler-derivative bounds. Applying (1 − ∆)2 bounds its Fourier transform
+by C(1 + |t|2 )−2 , which is integrable on R3 . The constant is independent of P and every block
+parameter. Apply Minkowski to this common density before enlarging any positive row norm.
+    In each separated mode, freeze b first. The factors χR (uλk+4 )3 and χR (b)3 are then bounded
+row factors, including their zeros. Apply (11) in the squarefree n variable, separating its finitely
+many squarefree S-parts: writing n = nS n0 makes χR (nS )3 another bounded row factor and leaves
+squarefree n0 prime to S. A condition involving the now fixed b is a fixed coefficient-support
+restriction. With coefficients bounded by one, the squared norm is δ (KN )δ (K + N )N for every
+δ > 0. Minkowski over the O(B) choices of b and the displayed normalization give
+
+                             kdual blockk22 δ (KN )δ D0 3−2k/3 (K + N ).                           (13)
+
+   Here is a uniform truncation of the dual sum. For a fixed row let
+                                                qc2F D02 qR
+                                                          2
+                                         LR =                Z.
+                                                     Z
+
+                                                    9
+Fix τ > 0 and discard whole blocks with 3k N B 3 > Z τ D02 K 2 /Z. On such a block the kernel
+argument qµ /LR is at least a fixed positive multiple of Z τ . The cusp support lies in λ−4 O \ {0},
+            1/2
+and |d(µ)|/qµ  1. Lattice counting gives
+                                   X
+                                          (1 + qµ /LR )−2  1 + LR .
+                                     µ∈λ−4 O\{0}
+
+For any fixed A > 0, rapid decay therefore bounds the discarded part of one branch in one row by
+                                      1/2
+                                  OA D0 (1 + LR )Z −Aτ = OA (Z 5/4−Aτ ).
+                                                      
+
+
+The dyadic partitions have bounded overlap, and the representation µ = uλk nb3 on this support is
+unique. There are O(Z) rows, and the number of branches per row is Oη (Z η ) for every η > 0. Thus
+the total discarded row norm is OA,η (Z 7/4+η−Aτ ), which is smaller than any prescribed negative
+power by choosing A sufficiently large. Discarding whole blocks preserves the common coefficient
+profile used above.
+   For a retained block,
+
+                                Z τ D02 K 2
+                         N                 ,       3k N B 3  Z 1+τ ,          KN  Z 2+τ .
+                                 3k ZB 3
+There are O(log(2Z)) choices for each annulus and for k. On taking square roots in (13), the two
+terms have k factors 3−k/3 and 3−5k/6 , respectively; both are summable for k ≥ −4. The row-space
+triangle inequality over the remaining annuli consequently gives, for one fixed branch,
+
+                                                                        D02 Kmax
+                                                                              2
+                X                                                               
+                                2        τ +(2+τ )δ          6
+                    |branch(R)| δ,τ Z              (log(2Z)) D0 Kmax +            .
+                                                                            Z
+                    R
+             √
+Since D0 ≤       p0 , the last factor is
+
+                                                    D0 D03
+                                                              
+                                                                         −1/2
+                                           Z          + 2          Zp0        .
+                                                    p0   p0
+
+Choose τ, δ small enough that the preliminary losses, including the logarithm, are at most Z ε/3 . If
+there are B(P ) branches, rowwise Cauchy and summation over branches cost at most B(P )2 ε,S,ν
+ ε/3
+p0 . Finally every powerful ideal is uniquely x2 y3 with y squarefree. Hence
+                                  X                             X
+         #{P : N P ≤ X}  X 1/2       (N y)−3/2  X 1/2 ,            (N P )−1/2  log(2Z).
+                                           y                               N P ≤CZ
+
+The convergent ideal sum uses the O(T ) ideal count from Section 1. Sum the fixed-P bounds and
+absorb this final logarithm into Z ε/3 . The S-parts, units and ray sectors have only finitely many
+possibilities. This proves the lemma.
+
+3.3   From row energy to the probe
+                                                                                 P
+The additive norm. For Y, Q ≥ 1, the Gauss expansion writes Am,σ,v = s,d as,d e(−md/s),
+where d is a unit modulo s, qs  Y , and |as,d |  Y −3/2 . These fractions are distinct: equality
+modulo O implies s | s0 and s0 | s, hence equality of the primary denominators and residue classes.
+Distinct fractions modulo O are separated by δ  Y −1 , since their difference has a nonzero integral
+
+                                                          10
+numerator and denominator of absolute value O(Y ). There are O(Y 2 ) pairs, so            |as,d |2  Y −1 ,
+                                                                                      P
+uniformly in real v: its contribution (qs /Y )iv has modulus one. To bound their row norm, majorize
+the ball qm ≤ CQ by a fixed P multiple    of e−cqm /Q . Poisson summation gives a Gram kernel bounded
+                          0         −c 0 Q|n−z +z |2
+in absolute value by C Q n∈O e                j  k . The lifts to C, including all lattice translates of
+
+each fraction, are still separated by a constant times Y −1 . They have at most O(1 + r2 /δ 2 ) points
+in a radius-r disk; summing Gaussian shells bounds every matrix row sum by O(Q + δ −2 ). The
+elementary Schur bound therefore gives
+                                       X                          Q+Y2
+                                               |Am,σ,v (Y )|2         .                                 (14)
+                                                                   Y
+                                      qm ≤CQ
+
+
+   Apply the exact separation (4) with X = Y = Z 1/2 , so Q0 = qb∗ Z. The factor B is a fixed finite
+combination of completed rows (3). The fixed compact support in the low formula restricts qm  Z.
+Thus (14) gives squared additive norm O(Z 1/2 ), uniformly in the Mellin height. Cauchy, Lemma 4,
+                         c0 (iv) now yield |Iη (Z 1/2 , Z 1/2 , Z)|  Z −1/2 Z 1/4 Z 1/2+ε = Z 1/4+ε . Division
+and the integrability of W
+by the fixed positive principal-residue normalizer cS of Subsection 2.5 gives the same bound for Jη .
+
+
+4     The comparison estimate
+Throughout this section assume β∗ > b = 47/48, and fix the target η and the data of Section 2.
+Implied constants may depend on these fixed data and on the explicitly chosen contour buffers.
+
+4.1    Buffered rows and zero density
+We bin rows by their rightmost zero up to a finite height. Buffered contours control reciprocals
+within each bin, and zero density bounds the number of rows requiring the costlier contours.
+   Use the fixed families Θ and Xu from Subsection 2.4, retaining their prescribed zero extensions.
+Lemma 2 supplies the conductor and multiplicity bounds used below.
+
+Lemma 5 (A zero-free disk). Let ψ be a primitive nonprincipal finite-order Hecke character of
+conductor norm Q. Fix 0 < e < 10−3 , 51/100 ≤ a ≤ 1, and put Rj = 2 − a − je. If the disk
+|s − (2 + it)| < R2 has no zero, then for every δ > 0,
+
+                 |L(s, ψ)| + |L(s, ψ)−1 | e,δ {2Q(3 + |t|)2 }δ        (|s − (2 + it)| ≤ R6 ).
+
+The constants are uniform in a, Q, t, ψ.
+
+Proof. For a primitive finite-order character the standard completion and functional equation are
+
+                                  Λ(s, ψ) = (3Q)s/2 (2π)−s Γ(s)L(s, ψ),
+                                  Λ(s, ψ) = ψ Λ(1 − s, ψ̄),        |ψ | = 1.
+
+This equation, Stirling’s formula, and Euler convergence give the deliberately weak strip estimate
+L(σ+iv, ψ)  Q3/5 (3+|v|)2 for −1/10 ≤ σ ≤ 11/10; farther right use Euler convergence. Phragmén–
+Lindelöf follows from the usual theta integral, or by multiplying the normalized strip function by
+         2
+eδ(s−1/2) and letting the height tend to infinity before δ ↓ 0.
+    Choose g = log L in the zero-free disk, normalized by the Euler logarithm at its center. Write
+C = 2Q(3 + |t|)2 . The disk of radius R3 is compactly contained in the assumed zero-free disk.
+The growth estimate bounds Re g = log |L| there by O(log C), and the Euler logarithm gives
+
+                                                      11
+|g(2 + it)|  1. Borel–Carathéodory on radii R3 , R4 therefore gives maxR4 |g| e log C. On the
+inner disk of radius r0 = 49/100, Euler convergence gives |g|  1. Three circles therefore gives
+                                                           log(R6 /r0 )
+                             max |g| e (log C)θe ,                     ≤ θe < 1.
+                               R6                          log(R4 /r0 )
+Indeed r0 < R6 < R4 < R3 < R2 ; the strict uniform inequality follows by compactness in
+a ∈ [51/100, 1] for fixed e. Exponentiating g and −g, and using exp(Ce (log C)θe ) e,δ C δ , proves
+the result.
+
+    The products of deleted factors, and their inverses, are Oσ0 ,δ,S ((N rad(u))δ ) on any fixed half-
+plane Re s ≥ σ0 > 0. Indeed each logarithm is Oσ0 ((N p)−σ0 ), which is at most δ log N p outside
+a fixed finite set. On Re s ≥ −v for fixed v ≥ 0, only the direct product is needed, and it costs
+(N rad(u))v+δ .
+
+Global reciprocal bounds. For a principal denominator apply the same disk proof to the
+holomorphic regularization Z(s) = (s − 1)ζF (s)/(s + 1) on Re s > 0, with its removable value at
+one, and then use 1/ζF = (s − 1)/(s + 1) · [(s − 1)ζF /(s + 1)]−1 . The regularized value at one is
+nonzero. Its logarithm is uniformly bounded on the inner Euler disk, and it has polynomial growth
+on the larger disk. Given a fixed κ > 0, apply the disk argument with a = β∗ and a buffer smaller
+than κ/6; these disks are zero-free at every height. Euler convergence covers the part farther to the
+right. After restoring the deleted factors, for every δ > 0 this gives
+
+                       |Lorig (σ + it)−1 | κ,δ,S,Θ quδ (3 + |t|)δ    (σ ≥ β∗ + κ).                 (15)
+
+At a principal pole the reciprocal is interpreted by its holomorphic continuation, with value zero.
+The same estimate holds for unit rows, whose conductors and deleted primes are fixed.
+Lemma 6 (Fixed-height bins). Fix 0 < e < 10−3 and assume β∗ ≥ 51/100. For U ≥ 1 and T ≥ 3,
+each nonunit row with U ≤ qu < 2U can be assigned one of Oe (1) labels a ∈ [51/100, β∗ ] with the
+following properties. The bounds hold for every δ > 0, uniformly in the row, label and height; their
+constants may depend on e, δ and the fixed data.
+   1. If a > 51/100, some inducing function in Xu has a zero with real part at least a and imaginary
+      part of absolute value at most 2T .
+
+   2. For every presentation in Xu ,
+
+                 |Lorig (σ + it)| + |Lorig (σ + it)−1 |  U δ (3 + T )δ   (σ ≥ a + 6e, |t| ≤ T ).
+
+   3. On the reflected line,
+
+                          |Lorig (1 − a − 6e + it)|  U a−1/2+12e+δ (3 + T )A       (|t| ≤ T ),
+
+      where A is fixed.
+Proof. All inducing characters in a nonunit row are nonprincipal by Lemma 2. Let Mu be the
+maximum of 51/100 and the real parts of all zeros of the finite inducing family with Re ρ ≥ 51/100
+and |=ρ| ≤ 2T . Put a = 51/100 + eb(Mu − 51/100)/ec. Euler convergence bounds these real parts
+by one, so the maximum exists by discreteness of zeros in a compact rectangle. Thus a ≤ Mu < a + e
+and a ≤ β∗ . If the label is above the floor, the maximum is supplied by an actual zero, proving the
+first claim.
+
+                                                      12
+    For |t| ≤ T , the disk centered at 2 + it of radius 2 − a − 2e has real part greater than a + 2e > Mu
+and height less than T + 3/2 < 2T . Apply Lemma 5, the conductor bound, and the deleted-factor
+estimate. The disk conclusion covers the real segment from a + 6e to 2 + R6 , and Euler convergence
+covers larger real parts. Shrinking preliminary losses gives the stated direct and reciprocal bounds.
+The functional equation reflects the other line to a + 6e − it for the conjugate primitive character,
+which also belongs to the inducing family because Θ is closed under conjugation. It costs Qa−1/2+6e
+and a fixed height power. Its deleted factors cost at most U 6e+δ . This proves the last bound.
+
+    The published general Hecke zero-density theorem [4, Lemma 3.3], restricted to angular type
+zero over our degree-two field, states, uniformly for 1/2 ≤ σ < 1, Q > 1, and T > 2,
+               ∗                                                                                
+        X      X
+                                       2   2 h(σ)(1−σ)           B                       3   2        5
+                       N (σ, T, ψ)  (Q T )              (log QT ) ,   h(σ) = min          ,         ≤ .
+                                                                                        2−σ σ         2
+       N f≤Q ψ mod f
+
+Here N counts zeros with real part at least σ and |=ρ| ≤ T , with multiplicity, and the star means
+primitive. The published theorem also sums over angular parameters; retaining only angular type
+zero decreases its nonnegative left-hand side. For a > 51/100, assign to each row a character and
+zero supplied by Lemma 6. Its conductor is OS,Θ (U ), and a fixed primitive character occurs in at
+most twelve physical rows by Lemma 2. Apply the density theorem at height 2T , use 2h(a) ≤ 5,
+and absorb its logarithm into U δ (3 + T )A . Let Ba denote the set of nonunit rows with U ≤ qu < 2U
+assigned label a. Together with the trivial O(U ) lattice count, this gives
+
+                         #Ba  U R(a)+δ (3 + T )A ,         R(a) = min{1, 5(1 − a)}.                       (16)
+
+The floor uses only the trivial count. At a possible label a = 1, take σ ↑ 1 in the uniform theorem
+for fixed conductor and height ranges.
+
+4.2   Euler-product domains and contour tails
+Local domains. Write xr = Re x, wr = Re w, and zr = Re z. Here is the local verification needed
+for all contour paths. For a good prime of norm Q, put
+
+               d = η(p)Q−x ,      h = Q−w ,    E = dh,       V = Q−6z ,    R = a2p Q4−6x−6z ,
+
+where ap is the modulus-one arithmetic phase defined in Subsection A.3. At a prime p - u, ρ = χp (u)
+satisfies ρ6 = 1, and the finite Euler identity is
+
+                          B0 + dV ρ−1 + A1 ρ + A2 ρ2
+                                                    
+                1
+   Hp (ρ) =           1+                               ,                                       (17)
+              1−R                  1 − dρ−1
+      B0 = E(1 − QV ) − R/Q,            A1 = h[−V + R/Q + E(Q − 1)V ],              A2 = −R(1 − V )h2 .
+
+For j = vp (u) ≥ 1, reset ρ = χp (u/πpj ) for the fixed primary generator πp , so that ρ6 = 1; the full
+ramified factors are
+                                1 − R/Q + E(1 − QV )
+                         Hp,1 =                      ,
+                                       1−R
+                                1 − R/Q − E(Q − 1) + (1 − V )Jj
+                         Hp,j =                                             (j ≥ 2),                       (18)
+                                            1−R
+These formulas follow by multiplying the full factor Pp of Subsection A.3 by (1−V )(1−ρh)/(1−dρ−1 )
+at unramified primes, and by 1 − V at ramified primes. Here J1 = E and J2 , . . . , J5 are given in
+
+                                                      13
+(A.4), with |ap | = |bp | = 1; only 1 ≤ j ≤ 5 occurs. The factor V 1j≤1 accounts for the term −E(Q − 1)
+for every j ≥ 2.
+    On the domain
+                         51             17                 1
+                  xr ≥       ,   zr ≥      ,     wr ≥ −       ,   xr + wr ≥ 1 + δ,    δ > 0,            (19)
+                         100            50                100
+we have |d| < 1 and |R| ≤ Q−11/10 . In (17), the unit monomials have decay exponent greater than
+one: E has exponent at least 1 + δ, and the other monomials have a fixed margin. Their decay
+exponents have the following lower bounds:
+
+                         monomial lower bound                  monomial lower bound
+                            R         11/10                       E        1+δ
+                          EQV       51/25 + δ                    R/Q       21/10
+                           dV         51/20                      hV       203/100
+                          hR/Q    259/100 + δ                   hEQV    203/100 + δ
+                           Rh2     52/25 + 2δ
+
+The remaining terms contain an extra factor V or Q−1 . In (18), the additional E(Q − 1) has
+exponent at least δ. The monomials in J2 , J3 , J4 , J5 have respective lower bounds 3/100, 1/50 + δ
+and 1/25, 3/100 + δ, and 3/50. Thus the unramified factors are 1 + Oδ (Q−1−min(δ,1/10) ), while the
+ramified factors are 1 + Oδ (Q− min(δ,1/50) ). The denominators 1 − dρ−1 and 1 − R do not vanish.
+Normal convergence at the unramified primes and the elementary divisor bound at the finitely many
+ramified primes prove holomorphy on a neighborhood of each fixed real box in this domain and the
+bound
+                          Hη,u δ, qu on every fixed real box in (19),                        (20)
+uniformly in all heights.
+    We also use the separate principal box
+                                               15         3              1
+                                    xr ≥          ,   wr ≥ ,         zr ≥ .                             (21)
+                                               16         4              8
+Here |d| ≤ Q−15/16 and |R| ≤ Q−19/8 . All unit monomials in (17) have exponent at least 23/16; the
+limiting one is EQV . Consequently Hη,1  1 on this whole box. The unramified decay exponents
+increase with xr , wr , zr , so the bound holds throughout the principal contour paths. For the separate
+large-row domain xr , wr , zr ≥ 2, the ramified term E(Q − 1) has decay exponent at least three, and
+every Jj has exponent greater than one. Thus Hη,u  1 uniformly for all rows on that domain.
+
+A common tail bound. On fixed real strips, W     c1 is Schwartz, and M is holomorphic and Schwartz
+on compact positive real strips. For M , integrate by parts in the logarithmic radial variable; the
+endpoint at zero is integrable because zr > 0. The independent height coordinates are (tx + tz , tz , tw ).
+Hence for every L,
+                                  2
+                                        c1 (w)| L (1 + |tx | + |tz | + |tw |)−L .
+                         |e(x+z−1) M (z)W
+If the arithmetic factor on a specified domain is bounded by Z B (1 + |t|)A , integration outside the
+box |tx |, |tz |, |tw | ≤ T /4, or on a horizontal face at height T /4, is ON (Z B T −N ): take L > N + A + 3.
+The same proof applies to the two variables remaining after the w residue. The finite real length of
+a horizontal join costs only a constant. Increasing N changes only external test seminorms, not the
+arithmetic growth orders A or B. Before a reciprocal contour is moved into a finite-height region,
+(15) supplies its all-height bound. Afterwards, only faces and segments inside that region are used.
+
+                                                          14
+4.3    Contour shifts and row estimates
+Use the balanced specialization (7) in (5)–(6), with principal signal (10). The physical probe is
+independent of the contour height chosen below.
+
+Nonunit rows below the large-row cutoff. For Z ≥ 2, take a dyadic U ≥ 1 and write U = Z d
+with 0 ≤ d ≤ 501/1000. Fix T ≥ 3 and a bin B = Ba (U, T ) of nonunit rows with U ≤ qu < 2U
+before moving any variable. The sets in this partition may depend on T ; the original sum over all
+rows does not. Set z0 = 17/50 and choose a fixed small 0 < e < 10−3 . Starting in (5)–(6), move z
+to z0 and x to β∗ + 20e, with w = 3; then move w to 1 − a − 6e. Throughout, xr + wr ≥ 1 + 14e,
+the numerator is nonprincipal, the reciprocal remains to the right of β∗ , and 6zr > 1. The paths lie
+in (19), so no pole is crossed and the tail bound justifies the infinite horizontal limits.
+    While x is still global, discard the complement of |tx |, |tw |, |tz | ≤ T /4. Its cost is ON (Z B T −N ).
+Move only the retained x segment to a+16e. Its rectangle has a+16e ≤ xr ≤ β∗ +20e and |tx | ≤ T /4,
+so it lies strictly inside the region covered by Lemma 6. On the new segment xr + wr = 1 + 10e,
+and the same lower bound holds on the two horizontal joins. To estimate those joins, extend the
+absolute integrals in (tw , tz ) to R2 and use global polynomial numerator bounds. This is valid
+because the reciprocal depends only on the still-buffered x, not on w or z. The face bound again
+gives ON (Z B T −N ). The global polynomial conductor costs of the numerators are absorbed into Z B ,
+since U ≤ Z 501/1000 . These growth orders are uniform in the labels and dyads. No moved reciprocal
+axis is extended beyond its zero-free rectangle. Write Ed,a (Z, T ) for the retained integral on the
+new vertical segment. The original bin contribution equals this integral plus the discarded tails and
+horizontal joins just bounded.
+    On the retained contour the buffered functional equation gives LSF (w, ψu )  U a−1/2+12e+ (1+T )A .
+The balanced outside power and the row weight are respectively
+                    Z xr +zr /2+wr /2−5/4 = Z a/2−3/4+17/100+13e ,     qu−zr  U −17/50 .
+The reciprocal and (20) cost arbitrarily small powers of U and T , and the external kernel has
+a bounded integral over the three heights. Thus the conductor power is U a−21/25+12e+1 for an
+arbitrarily small 1 > 0. Since U ≤ Z 501/1000 , taking e and 1 sufficiently small for a prescribed
+ > 0 proves
+                     |Ed,a (Z, T )| η, Z a/2−3/4+17/100+ U a−21/25 #B (1 + T )A .            (22)
+
+Principal, other unit, and large rows. For the principal row first move to (xr , wr , zr ) =
+(β∗ + e, 1 + e, 1/6 + e), then move w to 3/4, crossing its pole at 1. In that residue move z to 1/8,
+crossing its pole at 1/6; the unresidued integral keeps zr = 1/6 + e. All paths lie in (21); M has
+no pole and the reciprocal stays global. The double residue is cS fη (Z), moving the remaining x
+line to 2 without crossing a pole (also for principal η). The common tail bound applies before and
+after taking residues. For the other five units, the numerator is nonprincipal by Subsection 2.5;
+move through (19) to the contours below, crossing no pole. For large dyads U > Z 501/1000 , move to
+(2, 2, v) with fixed v > 2, within the absolute Euler domain.
+     The outside power Z xr +zr /2+wr /2−5/4 , polynomial height bounds, and (20) give the following
+estimates, with a common factor Z  suppressed. The value wr = 1 denotes a residue.
+                        remainder            (xr , wr , zr )        bound
+                           Ew           (β∗ + e, 3/4, 1/6 + e) Z ∗ )−1/8+3e/2
+                                                                 C(β
+
+                           Ez              (β∗ + e, 1, 1/8)     Z C(β∗ )−1/48+e                         (23)
+                                         (β∗ + e, 1/2, 17/50) Z C(β∗ )−49/300+e
+                       P
+                        u∈µ6 \{1} |Eu |
+                          |EU |                (2, 2, v)       Z 7/4+v/2 U 1−v+
+
+                                                     15
+  In the last row P
+                  the uniform all-row Euler bound from Subsection 4.2 and dyadic counting are used.
+                                                                0
+Summing gives U >Z 501/1000 |EU |  Z 7/4+501/1000−v/1000+ . With v = 4000 the exponent before
+0 is −1749/1000, so 0 < 749/1000 gives O(Z −1 ). Initial absolute convergence and this summable
+bound justify summing the dyadic contour identities.
+     Consequently Jη − fη is the sum of the normalized retained bin integrals, the principal, other-unit
+and large-row remainders, and the finite-contour errors. Equation (23) and the tail estimates, after
+division by cS , bound all but the retained bin integrals by
+
+                               Oη,,N Z C(β∗ )−m0 + (1 + T )A + Z B T −N .
+                                                                         
+
+
+The Oe (log(2Z)) tail terms may be absorbed by increasing B once. The exponents A, B are
+independent of N ; we choose the losses, T , and N in the next proof.
+
+4.4   Combining the estimates
+The cutoff exponent 501/1000 > 1/2 permits the large-row shift above. The proof below absorbs its
+extra cost and the contour, height, and logarithmic losses into m0 = 1/1200, retaining δ0 = m0 /4.
+
+Lemma 7. Suppose β∗ > b. For Z ≥ 2, |Jη (Z) − fη (Z)| η Z C(β∗ )−1/4800 . The saving 1/4800 is
+independent of the target.
+
+Proof. Insert (16) in (22). Before the adjustable losses and height factor, the exponent relative to
+Z C(β∗ ) is                                                           
+                                     a         13                   21
+                           E(d, a) = − β∗ +        + d R(a) + a −        .
+                                     2        150                   25
+At d = 1/2, this is a − β∗ + R(a)/2 − 1/3. The two cases give
+                                      (
+                           R(a) 1       4/5 + 1/2 − 1/3 = 29/30,         a ≤ 4/5,
+                       a+       − ≤
+                            2     3     13/6 − 3a/2 ≤ 29/30,             a ≥ 4/5.
+
+Since β∗ > 47/48, we obtain E(1/2, a) < −1/80. Also 0 < R(a) + a − 21/25 ≤ 1 throughout
+51/100 ≤ a ≤ 1. Thus E(d, a) increases with d, and throughout 0 ≤ d ≤ 501/1000,
+                                             1     1   1      23      1
+                   E(d, a) ≤ E(1/2, a) +        <− +      =−      <−     .
+                                           1000   80 1000    2000    100
+This saving for all nonunit dyads below the cutoff is larger than m0 . First choose the buffer e and
+all preliminary conductor losses, and absorb the logarithmic number of terms, so that the total real
+loss is at most m0 /4. This is possible because the combined buffer loss in a nonunit dyad is at most
+(13 + 12 · 501/1000)e, which tends to zero with e. The principal and other-unit losses are smaller
+fixed multiples of e. These choices fix the arithmetic growth orders A, B before any tail order is
+chosen. The row count and contour comparison now give, for every fixed N ,
+
+                          |Jη − fη | η,N Z C(β∗ )−3m0 /4 (1 + T )A + Z B T −N .
+
+After fixing the target, choose 0 < τ ≤ m0 /[4(A + 1)] and T = 3Z τ , so the hypothesis T ≥ 3 in
+Lemma 6 always holds. The first term is Oη (Z C(β∗ )−m0 /2 ). Choose N so large that B − N τ <
+C(b) − m0 /4. The second term is then Oη (Z C(β∗ )−m0 /4 ). The external-tail argument permits
+this late choice without changing the previously fixed orders. Since m0 /4 = 1/4800, the result
+follows.
+
+
+                                                   16
+5     Proof of the main theorem
+5.1   Mellin continuation and the Hecke conclusion
+Suppose β∗ > b and fix a primitive finite-order target η, including the principal character. Section 3,
+with ε = 1/32, gives Jη (Z) η Z 9/32 . Since C(b) − δ0 − 9/32 = 149/4800 > 0, Lemma 7 gives
+
+                                 fη (Z) η Z β∗ −2/3−δ0     (Z ≥ 1).                              (24)
+
+Here continuity of the absolutely and locally uniformly convergent integral (10) extends the estimate
+from Z ≥ 2 to Z ≥ 1. For 0 < Z ≤ 1, shift that integral from Re x = 2 to any fixed M > 2. On
+this strip Hη and 1/LSF (x, η) are holomorphic and bounded, by (9) and absolute Euler convergence.
+Gaussian decay removes the horizontal joins, giving fη (Z) η,M Z M −2/3 .
+    Put r∗ = β∗ − δ0 . The Mellin transform
+                                             Z ∞
+                                                                dZ
+                                    Fη (s) =     fη (Z)Z −s+2/3
+                                              0                  Z
+
+is holomorphic on Re s > r∗ . Indeed, on a compact subset with real parts in [σ− , σ+ ], its endpoint
+majorants are Z r∗ −σ− dZ/Z at infinity and Z M −σ+ dZ/Z at zero, where M > max(2, σ+ ). These are
+integrable even after insertion of any fixed power of | log Z|, justifying differentiation. To identify
+                                    2
+the transform, set Aη (s) = e(s−5/6) Hη (s)/LSF (s, η) for Re s > 1. The defining signal integral gives
+                                                         Z
+                                     −4u/3      u     1
+                          gη (u) := e      fη (e ) =        eitu Aη (2 + it) dt.
+                                                     2π R
+
+The density is continuous and integrable by Gaussian decay. Also gη (u) = Oη (e(β∗ −2−δ0 )u ) at +∞
+and Oη,M (e(M −2)u ) at −∞, so gη ∈ L1 (R). Fourier inversion therefore gives Fη (2 + it) = Aη (2 + it)
+for every real t. Since r∗ < 1, both functions are holomorphic on Re s > 1; the identity theorem
+identifies them there.
+                                                                                          2
+     Now r∗ > b − δ0 = 4699/4800 > 11/12, where |Hη | ≥ 1/2. Thus Gη (s) = e−(s−5/6) Fη (s)/Hη (s)
+is holomorphic on Re s > r∗ and satisfies Gη LSF (·, η) = 1 there by meromorphic continuation. This
+excludes zeros of LSF (s, η) in that half-plane; the principal pole at 1 does not affect the argument.
+The same r∗ works for every target, although the constants may depend on it. As 1/2 < r∗ < β∗ ,
+the definition of the supremum supplies a primitive target and a zero with real part greater than r∗ ,
+without requiring attainment. Deleted Euler factors are nonzero on Re s > 0 and hence retain this
+zero, a contradiction. Therefore β∗ ≤ 47/48.
+     Absolute Euler convergence covers Re s > 1. For a character η modulo f induced by the primitive
+η ∗ of conductor f∗ ,                                  Y
+                              LF (s, η) = LF (s, η ∗ )   1 − η ∗ (p)(N p)−s .
+                                                                           
+
+                                                   p|f
+                                                  p-f∗
+
+Since these finite factors are nonzero on Re s > 0, they introduce no zeros there and preserve the
+principal pole. This proves the Hecke assertion of Theorem 1.
+
+5.2   Transfer to Dirichlet functions
+Let χ be primitive of conductor q, and let χ−3 be the quadratic character modulo 3. On ideals prime
+to qO, the norm pullback η(a) = χ(N a) is a finite-order Hecke character, possibly imprimitive: if
+α ≡ 1 (mod qO), then αᾱ ≡ 1 (mod q), so η is trivial on ray principal ideals. For fractional α,
+
+
+                                                  17
+these congruences are interpreted locally. Define ΣQ = {p : p | 3q} and let ΣF contain all primes
+above them; these deletion sets are independent of S. With χχ−3 presented modulo lcm(q, 3),
+
+                                  LΣF          ΣQ      ΣQ
+                                   F (s, η) = L (s, χ)L (s, χχ−3 ).                                 (25)
+
+At p - 3q the split case has local factor (1 − χ(p)p−s )−2 ; in the inert case the identity is (1 −
+χ(p)2 p−2s ) = (1 − χ(p)p−s )(1 + χ(p)p−s ). This proves the formula on Re s > 1, hence everywhere
+by meromorphic continuation. Its left side is zero-free on Re s > 47/48 by the Hecke conclusion and
+nonvanishing of the deleted factors.
+   Away from s = 1, both Dirichlet factors are holomorphic, so neither can vanish in this region.
+At 1 the same argument applies unless one character is principal. Primitivity and uniqueness of the
+primitive inducer show that the exceptions are exactly χ = 1 and χ = χ−3 . The other factor is then
+induced by χ−3 , and
+                               X 1                   Z 1
+                                                 1                dt        π
+                  L(1, χ−3 ) =              −           =               2
+                                                                          = √ > 0.
+                                    3n + 1 3n + 2          0  1 + t + t    3 3
+                               n≥0
+
+Partial summation with bounded
+                            R 1 3n character sums identifies the convergent series at 1 with L(1, χ−3 );
+each paired summand is 0 t (1 − t) dt, so nonnegativity justifies the interchange. Nonzero
+finite Euler factors preserve this value’s nonvanishing and the principal pole, excluding pole-zero
+cancellation. Finally, imprimitive Dirichlet functions differ from their primitive inducers by such
+finite factors. The conductor-one case gives the Riemann zeta function, completing Theorem 1.
+
+
+A     Arithmetic identities and Euler factors
+This appendix proves the exact high representation (5)–(6) for the physical probe (2), with the
+definitions of Section 2.
+
+A.1    Gauss sums and the fixed phase correction
+For every odd nonzero c, includingPnonsquarefree c, the function Γq in (1) is the normalized
+quadratic Gauss sum: Γq (c) = |c|−1 x mod c e(x2 /c). To verify this with the self-dual measure of
+                                                           2
+Subsection 2.1, apply Poisson summation to e(z 2 /c)e−πδ|z| : its transform is
+
+                         |c| −πδqc |y|2 /(4r)
+                         √ e                  e(−cy 2 /(4r)),         r = 1 + 3qc δ 2 /16.
+                        2 r
+
+The phase on the original side is periodic √
+                                           modulo cO; after replacing r by one, the transformed
+    Pis periodic modulo 2O. Divide by 2/( 3δ) and let δ ↓ 0. ThePoriginal periodic mean tends to
+phase
+qc−1 x mod c e(x2 /c), and the transformed mean tends to (2|c|)−1 y mod 2O e(−cy 2 /4). Hence
+
+                                                 1     X
+                                      Γq (c) =                  e(−cy 2 /4),
+                                                 2
+                                                     y mod 2O
+
+which P  is (1), using the representatives 0, 1, ω, 1 + ω. The phase error from replacing r by one is
+                        2
+Oc (δ 2 y |y|2 e−c1 δ|y| ) = Oc (1), where c1 > 0 depends on c; the amplitude and damping errors are
+Oc (δ). All vanish after the preceding division.
+     In the quotient of (O/4O)× by its subgroup of squares, the four classes 1, −1, λ, −λ have Γq -values
+1, 1, i, −i. Thus R is a symmetric sign-valued bicharacter; explicitly its value on (−1)e λf , (−1)g λh
+
+                                                        18
+is (−1)eh+f g+f h . For primary c prime to S, cubic reciprocity gives χc (4) = (c/(−2))3 , a character
+modulo 2. Consequently, for primary v, w prime to S and p ∈    / S,
+
+             G(vw) = G(v)G(w)R(v, w),          G(p3 ) = γ3 (p),       R(p, p) = γ3 (p)2 = χp (−1).      (A.1)
+
+For the middle identity, χp3 (4) = 1 and Γq (p3 ) = Γq (p), since p2 is a square unit modulo 4O. At a
+prime the quadratic exponential sum equals the quadratic character Gauss sum, so Γq (p) = γ3 (p).
+Also Γq (p2 ) = 1, and the usual quadratic Gauss identity γ3 (p)2 = χp (−1) ∈ {1, −1} gives the last
+equality. These formulas descend to the ray group modulo 36O: χc (4) depends only on c mod 2,
+and Γq (c) only on c mod 4. A unit relating primary representatives of the same ray class is 1 mod 3,
+hence is 1. For later use we record the corresponding sextic reciprocity law: for coprime primary
+v, w prime to S,
+                                       χv (w) = R(v, w)χw (v).                                  (A.2)
+First take distinct primary primes v, w. Cubic reciprocity makes the square of χv (w)/χw (v) equal
+to one. The quadratic Gauss sum and CRT give R(v, w) = χv (w)3 χw (v)3 , which is the cube of that
+quotient. A sign equals its cube, proving the prime case. Multiplicativity of the residue symbols and
+the bicharacter property of R extend the formula to arbitrary coprime v, w, including nonsquarefree
+arguments.
+    The prime Gauss–Jacobi identities, with these phases, are
+
+                               γ2 (p)3 = −α(p),          γ1 (p)γ2 (p) = −α(p)G(p).
+
+Indeed, write Q = N p and J(ψ, ψ) = x∈O/p ψ(x)ψ(1 − x), with ψ = χ2p . Reduction modulo p
+                                               P
+
+makes the summand x(Q−1)/3 (1 − x)(Q−1)/3 ; its degree is less          √ than Q − 1, so the finite-field sum
+is zero. Thus p | J. The Gauss–Jacobi identity gives |J| = Q. On FQ \ {0, 1}, the order-three
+map x 7→ 1/(1 − x) preserves the summand. Its two fixed points satisfy x(1 − x) = 1, and all
+other orbits have size three. Hence J ≡ 2 ≡ −1 (mod 3). Since J/p ∈ O has norm one, it is a
+unit. The congruence J ≡ −1 (mod 3O) and p ≡ 1 (mod 3O) force that unit to be −1, so J = −p.
+Since gχ2p (p, 1)2 = Jgχ4p (p, 1) and gχ2p (p, 1)gχ4p (p, 1) = Q, division by Q3/2 gives γ2 (p)3 = −α(p). For
+χ = χp , the substitutions x = (1 + y)/2 and y 7→ y/(y − 1) in the Jacobi sums give
+                                                 2                         2
+                               J(χ2 , χ2 ) = χ(4) J(χ3 , χ2 ) = χ(4) J(χ, χ2 ).
+
+Since χ(4)3 = 1, this and gχ gχ2 = J(χ, χ2 )gχ3 give the second formula. Writing µ(c) for the ideal
+Möbius function, CRT then gives
+                              µ(c)α(c)G(c)                  Y                  Y
+                   γ2 (c) =                ,     γ1 (c) =         γ1 (p)                χp (r)χr (p).   (A.3)
+                                  γ1 (c)
+                                                            p|c            p<r, p,r|c
+
+Here (A.3) is used only for squarefree c. For an arbitrary primary index A prime to S, G(A) is still
+defined by the finite calibration (1), not by a sextic Gauss sum at modulus A.
+
+A.2    Poisson summation and the moving-prime phases
+All ideal variables in this subsection are represented by their primary generators and avoid S, and c
+is squarefree. For a nonzero sixth-power-free u prime to S, including its unit, put
+                                                                            
+                                          X                        H − b∗ Ad
+                         F (s, A, H) =            χs (d)gξχA b∗ A,             ,
+                                                                      s
+                                         d mod s
+                                        H≡b∗ Ad (s)
+
+
+                                                      19
+                             F (s, cn3 , ua6 )χs (b∗ )
+        Kη (c, n, s, a; u) =    √                      γ2 (c)α(cn3 ) G(cn3 )η(cn3 )Ξ(cn3 )−1 R(cn3 , s),
+                                   qb∗ τ ξ(s)ξ(u)
+                                          X
+                    Fη,u (x, w, z) =           Kη (c, n, s, a; u)qc−1/2−x qn−1−3x qs−w qa−6z .
+                                       c sf,n,s,a
+
+To prove (5), use the full modulus sb∗ A, even when s, A share primes. With the positive sign for
+the finite Fourier coefficient, the required transform is
+                                                                 
+                     X
+                                          −1/2              Hm
+                             ξ(m)χA (m)qs gχs (s, −m)e              = qs1/2 F (s, A, H).
+                                                            sb∗ A
+                 m mod sb∗ A
+
+To see this, write m = r +b∗ A`, with r mod b∗ A and ` mod s, and expand the s-Gauss sum. Additive
+orthogonality in ` imposes H ≡ b∗ Ad (mod s); the remaining sum in r is the Gauss sum in the
+definition of F . No coprimality between s and A is used. The planar dilation contributes X/qA ;
+                                                   √
+including the outer square root leaves X 1/2 /( qb∗ qA ). The radial Fourier argument is XqH /qA .
+Primitivity of each local component of ξ removes all frequencies meeting S, including zero: at a
+prime in S, its Gauss frequency is a unit multiple of H. Write uniquely H = ua6 , with a primary
+and u retaining the unit of H; thus this change of variables introduces no factor six. Mellin inversion
+and x = t + 1 − z give (5); the initial lines Re t = 4 and Re z = 2 give Re x = 3 without a contour
+shift. The trivial bound |F | ≤ qs qb∗ qA gives the summable majorant
+                                          X
+                                    CS          qu−2 qc−5/2 qn−7 qs−2 qa−12
+                                            u,c,n,s,a
+
+on (Re x, Re w, Re z) = (3, 3, 2). Together with the Gaussian and Mellin-weight decay, this justifies
+all sums and integrals used in the Poisson representation.
+
+Fixed and moving phase cancellation. CRT gives
+
+                               gξχA (b∗ A, K) = ξ(A)χA (b∗ )gξ (b∗ , K)gχA (A, K).
+                                               √
+At S, K = (H − b∗ Ad)/s ≡ H/s, so its factor is qb∗ τ ξ(A)ξ(u)ξ(s).
+                                                                  Q The denominator     in Kη and
+     −1
+Ξ(A) cancel all ξ factors. The remaining b∗ symbols cancel as p χp (b∗ )  tp −k p = χA (b∗ )/χs (b∗ ).
+Here tp = vp (A) and kp = vp (s).
+   For the other CRT units write hp = H/pvp (H) , sp = s/pkp , and Ap = A/ptp . Their factor is
+
+                           Up = χp (hp )kp −tp χp (sp )tp χp (Ap )tp −kp χp (b∗ )tp −kp .
+
+Applying (A.2) to distinct primes cancels the off-diagonal A, s phases exactly:
+                                  Y                          Y
+                          R(A, s)   χp (sp )tp χp (Ap )−kp =   R(p, p)tp kp .
+                                        p                             p
+
+Writing tp = ep + 3lp with ep = vp (c), division by the pair factors of γ1 (c) leaves a product over
+p < r, with factor R(p, r)ep lr +er lp +lp lr . The refinement law (A.1) expresses that product as
+                                                Y        lp
+                           R(c, n)G(n3 )           G(p3 ) R(p, p)−ep lp −lp (lp −1)/2 .
+                                                p
+
+                                                                                                           3
+Its first two factors combine with G(c) to cancel the inserted G(cn3 ). Also α(c)α(cn3 ) = α(n) .
+These identities hold even when c, n share primes.
+
+                                                        20
+A.3     Local Euler factors
+      / S set Q = N p, j = vp (u), ρ = χp (u/pj ), ωp = χp (−1), and
+For p ∈
+                3                      2
+      ap = α(p) η(p)3 ,      bp = α(p) η(p)2 χp (4),        V = Q−6z ,   R = a2p Q4−6x−6z ,   W` = ρQ−w .
+
+Thus b3p = a2p . The factor of Fη,u at p is
+
+                                R(1 − Q−1 ) − η(p)(Q − 1)Q−x−w V 1j≤1
+                                                                         
+                           1
+                     Pp∗ =                                            + Jj ,
+                          1−R                   1−V
+                           1           W`
+                     Pp =     + 1j=0        + Pp∗ ,
+                          1−V        1 − W`
+where
+                                   j   Jj
+                                   0   −η(p)ρ−1 Q−x + W` R
+                                   1   η(p)Q−x−w
+                                   2   ap ρ−3 Q3/2−3x                                                    (A.4)
+                                   3   −η(p)bp ρ−2 Q2−3x−w + b2p ρ−4 Q2−4x
+                                   4   −η(p)ap ρ−3 Q5/2−4x−w
+                                   5   −a2p Q3−6x .
+Here is a direct finite verification of the table. For t ≥ 1, summing over lifts of a residue modulo p
+gives, for any integer h,
+                                             (
+                                              Qt−1 gχhp (p, K/pt−1 ), pt−1 | K,
+                             gχhp (pt , K) =
+                                              0,                      pt−1 - K.
+
+At prime modulus, a unit frequency κ contributes χp (κ)−h gχhp (p, 1); a zero frequency contributes 0
+for h 6≡ 0 (mod 6) and Q − 1 otherwise. In the latter case the unit-frequency sum is −1. Before
+restoring the units, the local convolution is
+                                                                          !
+                                                                 j0     t
+                                                             t p −p d
+                                          X
+                                    0                 k
+                         Cp (t, k, j ) =        χp (d) gχtp p ,             .
+                                              k
+                                                                    pk
+                                             d mod p
+                                             0
+                                           pj ≡pt d (pk )
+
+When k = 0, the absent character factor is defined to be one; when t = 0, the modulus-one Gauss
+factor is one. These empty factors are distinct from zeroth powers at positive modulus, which
+                                                                                                     0
+retain their zero values at nonunits. It equals 1 for t = k = 0, 1j 0 =0 for t = 0 < k, gχtp (pt , pj ) for
+                                       0
+k = 0 < t, and ωp−1 G1 gχt−1
+                          p
+                             (pt , pj −1 ) for t > 0, k = 1, j 0 ≥ 1, where G1 = gχp (p, 1). For the last
+formula,   expand the inner Gauss sum and sum over d: at a unit y modulo p the resulting factor is
+                              −1        −1                         0
+P
+   d mod p χp (d)e(−dy/p) = ωp χp (y) G1 . If t > 0, k = 1, j = 0, the congruence has no solution.
+All other cases vanish. For t > 0 and k ≥ 2, write d = d0 + pk−1 h. The congruence
+                                                                                P          and character
+are unchanged, while expanding the inner Gauss sum at a unit y produces h mod p e(−hy/p) = 0.
+The restored summand, with t = e + 3l, is
+
+      (−1)e γ1 (p)−e η(p)e (ap γ3 (p))l ρk−t ωptk−el−l(l−1)/2 Cp (t, k, j + 6m)Q−(x+1/2)e−(1+3x)l−wk−6zm .
+
+
+
+
+                                                            21
+The possible positive exponents are t = 6r + 6, 6r + 1, 6r + 3, 6r + 4, with r ≥ 0. The lifting formula
+gives the following complete list of frequencies for which Cp (t, k, j 0 ) can be nonzero:
+
+                                          t       k=0       k=1
+                                       6r + 6   j0 ≥ t − 1  j0 = t
+                                       6r + 1   j = t − 1 j0 ≥ t
+                                                  0
+
+                                       6r + 3   j0 = t − 1 j0 = t
+                                       6r + 4   j 0 = t − 1 j 0 = t.
+
+The equality at the lower endpoint uses a unit-frequency Gauss sum; the strict inequalities in the
+first two rows use the principal character’s zero-frequency value Q − 1. Insert j 0 = j + 6m. Increasing
+r, m together by one multiplies a surviving summand by R. The two strict-inequality tails give
+respectively
+                             R(1 − Q−1 )            η(p)(Q − 1)Q−x−w V 1j≤1
+                                           ,     −                           .
+                           (1 − R)(1 − V )               (1 − R)(1 − V )
+For the second tail the first m is r + 1 if j ≤ 1, and r otherwise; this explains the indicator in its
+power of V . The remaining equality cases, evaluated at r = 0 with the displayed restored summand,
+give Jj /(1 − R) using the prime Gauss identities and γ2 (p)γ4 (p) = 1. For example, j = 2 has
+t = 3, k = 0, m = 0 and gives ap ρ−3 Q3/2−3x ; j = 3 has the two cases (t, k, m) = (3, 1, 0), (4, 0, 0),
+giving the two terms in J3 . The t = 0 terms give the two geometric terms outside Pp∗ . This proves
+the table for all exponents, including shared primes.
+    Finally, with the original zeros at p | u, put
+                                                             (1 − V )(1 − W )                Y
+      W = χp (u)Q−w ,      D = η(p)χp (u)Q−x ,     Hp = Pp                    ,     Hη,u =         Hp .
+                                                                  1−D
+                                                                                             p∈S
+                                                                                              /
+
+    Absolute convergence on the initial lines permits multiplication of the Euler factors. The factors
+(1 − V )−1 , (1 − W )−1 , and 1 − D give the zeta, numerator, and reciprocal factors in (6). At p | u,
+W = D = 0, retaining the prescribed deletions. This completes the proof of (5)–(6).
+
+
+B     The weak reflection formula
+Proof of Lemma 3. Freeze P, s, the unit of m, and ν as in the lemma.
+
+Theta coefficients and finite masks. Write H3 = {(z, v) : z ∈ C, v > 0}, with its standard
+SL2 (C) action, and put ě(z) = exp(2πi(z + z̄)) = e(λz), L(t) = ( 1t 01 ), and E = 01 −1
+                                                                                       0 . We use the
+cubic theta function of [2, (5.6)–(5.8)], normalized by
+
+                                      35/2 2/3 X
+                          θ(z, v) =       v +    tθ (µ)vK1/3 (4π|µ|v)ě(µz).
+                                       2
+                                                 µ6=0
+
+Here K1/3 is the modified Bessel function of the second kind. Its coefficients are those of the cited
+formula (5.7); in particular, tθ (λ−3 cb3 ) = 35/2 |b| ge3 (c) for primary squarefree c and primary b. Here
+                                                        X
+                                    ge3 (c) = qc−1/2          (v/c)3 ě(v/c)
+                                                   v mod c
+
+uses the ordinary cubic residue symbol, extended by zero on nonunits. It is defined even when
+c meets S, including the prime above 2, and has modulus one for squarefree c prime to λ, with
+
+                                                    22
+ge3 (1) = 1. The infinity coefficients are even, so conjugation replaces tθ (µ) by tθ (−µ) = tθ (µ). For
+each cusp representative H, define the dual coefficients by
+                                                 X
+                         θ(H(z, v)) = σH v 2/3 +     dH (µ)vK1/3 (4π|µ|v)ě(µz).                   (B.1)
+                                                     µ6=0
+
+For H = I, L(λ), L(−λ) these are respectively the conjugate expansions with indices j = 1, 19, 10 in
+[2, (5.9), (5.12), (5.16) and Appendix A]. More precisely, dH (µ) = dDRj (−µ). The coefficient d(µ) in
+each reflection branch is this dH (µ).
+    Sextic reciprocity, including its zeros, writes the character of the completed index A as
+                                              Y
+                ν(A)χA (m) = Ψ0 (A)χR (A)            χp (A)jp ,   jp ≡ vp (P ) (mod 6).
+                                               p|P, p∈S
+                                                     /
+
+Here Ψ0 ranges over a fixed finite family: it includes ν, the unit and S-prime symbols (with
+exponents modulo six), and the reciprocity factors involving P, R. A fixed ray subdivision of R fixes
+the latter. Choose a sufficiently divisible fixed modulus L, supported exactly on S and divisible
+by 18, for this family, the primary condition, and the cubic supplementary symbol. The function
+φ(x) = χx (λ)2 Ψ0 (x) on primary elements prime to S, zero elsewhere, is L-periodic. For h0 ∈ O/LO,
+put                          X                                   X
+               b 0 ) = q −1
+              φ(h                 φ(x)e(−h  0 x/L),    φ(x) =          φ(h
+                                                                        b 0 )e(h0 x/L).
+                         L
+                            x mod L                                     h0 mod L
+
+The pairing is nondegenerate and |φ(h b 0 )| ≤ 1. At the moving primes, finite Fourier inversion gives
+                                                      
+                                                         −1/2 −
+                                                      
+                                                      
+                                                       qp τp,j   χp (h)−j , j 6= 0, h 6= 0,
+                                                      
+                             X                         0,                   j 6= 0, h = 0,
+           Cp,j (h) = qp−1         χp (x)j e(−hx/p) =      −1
+                           x mod p
+                                                      
+                                                      
+                                                       −qp ,                j = 0, h 6= 0,
+                                                      1 − q −1 ,
+                                                      
+                                                                             j = 0, h = 0,
+                                                             p
+
+        −      −1/2 P                j
+where τp,j = qp        x mod p χp (x) e(−x/p) for 1 ≤ j ≤ 5. These normalized Gauss factors have
+modulus one. Here j is represented by one of 0, . . . , 5, and the power with j = 0 remains
+                                                                                        Q zero at
+x = 0. Thus even a principal local mask has a nonconstant Fourier expansion. Put T = R p|P, p∈S
+                                                                                             / p,
+and set jp = 1 for p | R. The masked conjugate theta function is explicitly
+                                                                                                       
+                      X           X                 Y                                     X
+      Θm (z, v) =                            φ(h
+                                             b 0)         Cp,jp (hp ) θz + λ2 h0 /L +         hp /p , v .
+                    h0 mod L (hp mod p)p|T          p|T                                   p|T
+
+
+Indeed, a translate by λ2 h/p multiplies the coefficient at µ by e(λ3 µh/p), as required. Group these
+terms according to the active frozen primes p | D. Each group consists of translates by
+                                                         
+                                                X
+                             zh = λ2 h0 /L +        hp /p ,     hp 6= 0.
+                                                     p|DR
+
+All primes of R are active; a frozen prime can be inactive only if jp = 0. For each h0 there are at
+most 2ω(P ) active sets; the hp sums are evaluated as Gauss sums within each branch.
+    The primary mask on x = λ3 µ retains precisely µ = λ−3 cb3 : other ramified exponents have
+λ | x, and the negative branch has x ≡ −1 (mod 3). The retained coefficient is 35/2 |b|eg3 (c) with
+
+                                                          23
+ge3 (c) = χc (λ)−2 γ2 (c). Since χb (λ)6 = 1, the supplementary factor in φ cancels this symbol. The
+whole-index mask excludes exactly the indices meeting S; the moving characters act on cb3 with
+their zeros.
+      By [2, (5.2)–(5.5)], the theta function satisfies θ(gw) = κ(g)θ(w) on Γ2 = hSL2 (Z), Γ1 (3)i, where
+Γ1 (3) = {g ∈ SL2 (O) : g ≡ I (mod 3)} and κ(g) = (c/a)3 on Γ1 (3) for c 6= 0; it is one when c = 0
+and on SL2 (Z).
+
+Rational cusps and the multiplier. Reduce λ2 h0 /L = aF /cF . Multiply this fixed pair by a
+unit so that aF ≡ 1 (mod 3) if λ | cF , and cF ≡ 1 (mod 3) otherwise. This is possible because
+reduction identifies µ6 with (O/3O)× ; the selected entry is a unit modulo 3. The choice depends
+only on h0 . Put r = DR, and write
+                                                                 X
+                        zh = a/c, c = cF r,     a = aF r + λ2 cF    (r/p)hp .
+                                                                        p|r
+
+The fraction is reduced: its numerator is aF r modulo primes of cF and λ2 cF (r/p)hp modulo p | r,
+both units. Take M = λ12 L4 , lift hp ≡ 0 (mod M 2 ), and fix R mod M 2 , hence r = DR mod M 2
+since D is frozen. The lifts change zh only by λ2 O = 3O, a period with multiplier one. Complete a/c
+to g = c δ : choose δ ≡ a−1 at the prime-power parts of M cF supported on cF , δ ≡ 0 at the other
+           a b0
+                
+
+prime-power parts of M , and δ ≡ a−1 (mod p) for p | r. Then b0 = (aδ − 1)/c, and all fixed-prime
+matrix residues are independent of the active hp . Since r is primary and the moving terms contain
+λ2 , a is primary when λ | c, and c is primary otherwise. The CRT choices then give g ≡ I (mod 3) if
+λ2 | c, g ≡ L(u0 ) (mod 3) with u0 = ±λ ≡ c (mod 3) if vλ (c) = 1, and g ≡ u10 −1  0    (mod 3) with
+u0 ≡ a (mod 3) otherwise. Use these as H; hence gH −1 ∈ Γ1 (3). In the last case H = EL(−u0 )
+and its theta function is one of the same three, since E ∈ SL2 (Z) and lower translations by Z + 3O
+have multiplier one. All cusp coefficients and phases use this fixed normalized pair.
+     The published automorphy multiplier and cubic reciprocity give
+                                                        Y
+                                       κ(gH −1 ) = κfix   χp (a)2 .                            (B.2)
+                                                          p|r
+
+Here κfix has modulus one and is constant on the fixed sector. The three theta expansions are those
+of I, L(λ), L(−λ), since λ − ω 2 , −λ − ω ∈ Z + 3O. For explicit verification, the fixed factors in the
+cases vλ (c) ≥ 2, vλ (c) = 1, and vλ (c) = 0 are respectively
+                       (cF /a)3 ,   (−u0 /(a − u0 b0 ))3 ((cF /u0 )/a)3 ,     (a/cF )3 .
+In the middle case u0 = ±λ is congruent to c modulo 3; use a(c − u0 δ) = c(a − u0 b0 ) − u0 and
+b0 c ≡ −1 (mod a). In detail, with A0 = a − u0 b0 and C0 = c − u0 δ, both a, A0 are primary and
+                     (C0 /A0 )3 = (−u0 /A0 )3 (a/A0 )−1
+                                                     3 = (−u0 /A0 )3 ((c/u0 )/a)3 .
+
+Factoring c/u0 = (cF /u0 )r and applying cubic reciprocity to a, r gives the stated fixed factor times
+(a/r)3 . In the last case the CRT choice gives δ ≡ 0 (mod 9), hence −b0 c = 1 − aδ ≡ 1 (mod 9).
+Factor δ into its unit, λ-power, and primary part. Against the denominator 1−aδ, the supplementary
+laws make the first two factors trivial; reciprocity makes the primary part trivial because 1 − aδ ≡ 1
+(mod δ). Thus (δ/(−b0 c))3 = 1, and
+                    κ(gH −1 ) = (δ/(−b0 ))3 = (δ/c)−1
+                                                   3 = (a/c)3 = (a/cF )3 (a/r)3 .
+
+The chosen residues make each fixed factor independent of the active frequencies. Periodic changes
+of the cusp representative and of δ avoid zero matrix entries in these symbol formulas without
+changing any congruence.
+
+                                                     24
+The derivative and the reflected local characters. Write kg = gH −1 ∈ Γ1 (3). Since g = kg H,
+θ(w) = κ(kg ) θ(Hg −1 w). For w = (a/c + z, v) the coordinates of g −1 w are
+                                   δ       z̄                               v
+                             z0 = − − 2 2           ,         v0 =                      .
+                                   c c (|z| + v 2 )                  qc (|z|2 + v 2 )
+At z = 0, differentiation in z̄ gives ∂z̄ z 0 = −(cv)−2 and ∂z̄ z̄ 0 = ∂z̄ v 0 = 0. It therefore becomes the z 0
+derivative of the dual cusp series, at height 1/(qc v), and kills every cusp constant: its derivative
+through v 0 is zero at z = 0. Termwise differentiation is valid by the locally uniform convergence of
+the exponentially decaying Bessel series for v > 0.
+    Put x = λ4 µ and f = λ3 cF . Let δF be the residue of δ modulo f , and let r−1 denote the inverse
+of r modulo f . For p | r, put p ≡ −(λ5 c2F (r/p)2 )−1 (mod p). Since a ≡ λ2 cF (r/p)hp (mod p) and
+δ ≡ a−1 (mod p), additive CRT gives
+                                                                                 δF r−1 x
+                                       Y                                                 
+                                                    −1
+                    ě(−δµ/c) = ϑ(x)          e(p hp x/p),    ϑ(x) = e −                   .
+                                                                                     f
+                                         p|r
+
+The residue δF and r−1 modulo f are fixed in the chosen sector, and x ∈ O on the entire dual
+support because µ ∈ λ−4 O. Thus this is a common column phase, including indices that meet S.
+Conjugating (B.2) contributes χp (hp )−2 . Combining with Cp,j and putting y = h−1   p gives a Gauss
+sum of exponent j + 2. If this exponent is nonzero modulo six, the sum is zero at p | x and is a
+                            1/2
+unit-modulus scalar times qp χp (x)−j−2 otherwise. If the exponent is zero, the sum is −1 + qp 1p|x .
+At a prime of R, j = 1, so its column factor is exactly χp (x)−3 = χp (x)3 . At a frozen active prime
+it is                               
+                                             −jp −2 ,        jp ∈
+                                                                / {0, 4},
+                                    χp (x)
+                                    
+                                        −1/2
+                            Bp (x) = qp (−1 + qp 1p|x ), jp = 4,
+                                     −1/2
+                                    
+                                       qp χp (x)−2 ,         jp = 0.
+The factors involving the units p contribute only scalars of modulus one, absorbed into ζR ; in a
+Ramanujan sum they leave the condition p | x unchanged. Thus the displayed Bp are independent
+of R, include all collisions, and satisfy the asserted bound.
+
+Mellin normalization and convergence. Put Dm (v) = ∂z̄ Θm (0, v), and let Dm (t) denote            √     the
+series in (3) with V (qc qb3 /Z) replaced by (qc qb3 )−t . At µ = λ−3 cb3 , µ̄ = −i|cb3 |α(cb3 )/(3 3). The
+differentiated
+       R∞      coefficient is consequently 6π|cb3 ||b|γ2 (c)α(cb3 ) times the original character masks.
+Using 0 K1/3 (y)y w−1 dy = 2w−2 Γ((w − 1/3)/2)Γ((w + 1/3)/2) for Re w > 1/3 gives
+                                              81 27 t Y
+                       Z ∞                               
+                              Dm (v)v 2t dv =                  Γ(1 + t ± 1/6) Dm (t)                   (B.3)
+                         0                    8π 4π 2        ±
+
+first for Re t > 1/2, where both the coefficient series and the integrated Bessel series converge
+absolutely. In the reflected integral write ccusp = cF DR to distinguish the cusp denominator from
+the squarefree summation variable c. The substitution v 0 = 1/(qccusp v) contributes qc1−2t
+                                                                                        cusp
+                                                                                             , and the
+                                                  −2
+differentiated automorphy factor contributes −ccusp . The absolute conductor factor cancels because
+                        2
+c−2
+ cusp qccusp = α(ccusp ) . More explicitly, the moment of the derivative of a single translate, before
+inserting its finite Fourier weight, is
+       Z ∞
+             ∂z̄ θ(a/ccusp + z, v)  v 2t dv
+        0                         z=0
+                i              2                Y                X
+            = − κ(kg )α(ccusp ) (4π 2 )t qc−2t
+                                           cusp
+                                                  Γ(1 − t ± 1/6)   dH (µ)α(µ)qµt−1/2 ě(−δµ/ccusp ),
+               8π                               ±                    µ6=0
+
+
+                                                      25
+initially for Re t < −1/2. Indeed, the published coefficient bound gives, for σ > 1/2,
+                  X                     X               X           X
+                     |dH (µ)|qµ−σ−1/2       3−k(σ+1/3)    qn−σ−1/2    qb−3σ−1 < ∞.
+                 µ6=0                     k≥−4                n            b
+
+The differentiated translates decay exponentially at both endpoints of the height integral, up to
+fixed powers of the height. At infinity this follows from the direct Bessel expansion; at zero it follows
+from the rational-cusp expansion after the derivative has removed the constant. Hence their Mellin
+moments are entire and bounded on each closed vertical strip. Dividing (B.3) by its gamma factors
+continues Dm (t) to an entire function, with strip bound Cm (1 + |=t|)A eπ|=t| by Stirling’s formula.
+                                                                                                        2
+The constant may depend on the fixed row, which suffices for the identity. Multiplication by et
+makes the horizontal integrals tend to zero and justifies the following shift.
+    Divide by (B.3), shift the primal Mellin line to Re t = −σ with σ > 1/2, and replace t by −t.
+The dual series is absolutely convergent on that line, so it may be interchanged with the integral.
+This gives the kernel
+
+                                 1
+                                      Z          Y Γ(1 + t ± 1/6)  (2π)4 x −t
+                         ]                  t2
+                        V (x) =             e                                     dt.
+                                2πi   (σ)        ±
+                                                     Γ(1 − t ± 1/6)   27
+
+The integral defining the kernel alone can then be moved to any fixed σ ≥ 0; no interchange with a
+dual Dirichlet series on the line σ = 0 is required. The prefactor from the two Mellin normalizations
+              2
+is −iα(ccusp ) /81; the remaining conductor power is entirely inside V ] (qµ Z/qc2cusp ). Every remaining
+scalar is a residue-symbol unit, a normalized Gauss sum, φ(h   b 0 ) of modulus at most one, or an
+inactive factor 1 − qp−1 . This proves |ζR | ≤ 1/81. The cusp formulas in [2, (5.7), (5.13), (5.14) and
+                                                                                        1/2
+Appendix A] give the stated support. Their coefficient magnitudes, after removing qb , are 3k/6+8/3
+for k = 3n − 4 (n ≥ 1), 3k/6+3 for k = 3n − 3 (n ≥ 0), and 9 for k = −4 at the two other cusps.
+Each is at most 27 3k/6 , proving the uniform bound.
+    For the kernel, the numerator gamma factors have their first poles at t = −5/6 and t = −7/6,
+while reciprocal gamma factors are entire. There are therefore no poles in Re t ≥ 0. On Re t = σ ≥ 0,
+                                                                          2
+Stirling bounds the gamma quotient by Oσ ((1 + |=t|)4σ ); the factor et supplies Gaussian decay.
+Euler differentiation only inserts powers of −t. The line σ = 0 gives boundedness, and the line
+σ = A gives OA,j (x−A ) for the jth Euler derivative. This proves the asserted uniform kernel bounds.
+The weighted dual sums in the reflection formula are absolutely convergent by these bounds and
+lattice counting.
+
+
+
+
+                                                       26
+Use of AI: The author’s main contributions are the following insights:
+
+   • Replace collision estimates with cubic theta reflection and quadratic Hecke mean-square bound.
+
+   • Replace the detector construction with fixed-height zero bins and Hecke zero-density theorem.
+
+   • Identify the principal row using CRT and conductor analysis. Avoid Chebotarev.
+
+   • Extract the principal signal through two successive residues. Control the remaining terms
+     with uniform contour and tail estimates.
+
+The author used Claude and ChatGPT to summarize and understand OpenAI’s proof and then
+prompted his insights to work out the details interactively and simply the proofs one by one. Proofs
+generated by Claude were verified by Codex and vice-versa. The author verified the outputs from
+both and combined them into one unified proof using ChatGPT.
+
+
+References
+[1] OpenAI, The Quasi-Riemann Hypothesis: A Zero-Free Half-Plane Re s > 7/8, September
+    30, 2026, supplied manuscript. https://github.com/openai/math/blob/main/preprints/
+    The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf.
+
+[2] A. Dunn and M. Radziwill, Bias in cubic Gauss sums: Patterson’s conjecture, Annals of
+    Mathematics 200 (2024), 967–1057. https://arxiv.org/abs/2109.07463v3.
+
+[3] L. Goldmakher and B. Louvel, A quadratic large sieve inequality over number fields, Mathematical
+    Proceedings of the Cambridge Philosophical Society 154 (2013), no. 2, 193–212. https://arxiv.
+    org/abs/1112.1642v2.
+
+[4] T. Khale, C. O’Kuhn, A. Panidapu, A. Sun, and S. Zhang, A Bombieri–Vinogradov theorem for
+    primes in short intervals and small sectors, Journal of Number Theory 229 (2021), 142–167;
+    https://arxiv.org/abs/2008.09677v3, Lemma 3.3.
+
+
+
+
+                                                27
+

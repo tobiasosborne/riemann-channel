@@ -1,0 +1,6 @@
+Q8 order 8 exterior kernel exactly [[1, 0, 0, 0, 0, 1], [0, 1/2, 0, 0, 0, 0], [0, 0, 1/2, 0, 0, 0], [0, 0, 0, 1/2, 0, 0], [0, 0, 0, 0, 1/2, 0], [1, 0, 0, 0, 0, 1]]
+2T defining order 24 exterior kernel exactly [[1, 0, 0, 0, 0, 1], [0, 1/2, 0, 0, 0, 0], [0, 0, 1/2, 0, 0, 0], [0, 0, 0, 1/2, 0, 0], [0, 0, 0, 0, 1/2, 0], [1, 0, 0, 0, 0, 1]]
+2T twist 1 order 24 exterior kernel exactly [[1, 0, 0, 0, 0, 0], [0, 1/2, 0, 0, 0, 0], [0, 0, 1/2, 0, 0, 0], [0, 0, 0, 1/2, 0, 0], [0, 0, 0, 0, 1/2, 0], [0, 0, 0, 0, 0, 1]]
+2T twist 2 order 24 exterior kernel exactly [[1, 0, 0, 0, 0, 0], [0, 1/2, 0, 0, 0, 0], [0, 0, 1/2, 0, 0, 0], [0, 0, 0, 1/2, 0, 0], [0, 0, 0, 0, 1/2, 0], [0, 0, 0, 0, 0, 1]]
+2O defining order 48 exterior kernel exactly [[1, 0, 0, 0, 0, 1], [0, 1/2, 0, 0, 0, 0], [0, 0, 1/2, 0, 0, 0], [0, 0, 0, 1/2, 0, 0], [0, 0, 0, 0, 1/2, 0], [1, 0, 0, 0, 0, 1]]
+PASS: 2T quotient character checked on all 576 products; all exterior kernels exact.

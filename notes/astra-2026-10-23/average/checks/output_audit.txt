@@ -1,0 +1,19 @@
+full-direct-Jacobi q=3 g=1 even=False H=18 P=3*u**2 + 1 agrees_with_brute_Euler_and_full_A2=True
+full-direct-Jacobi q=3 g=2 even=False H=162 P=9*u**4 + 62*u**2/27 + 1 agrees_with_brute_Euler_and_full_A2=True
+full-direct-Jacobi q=5 g=1 even=False H=100 P=5*u**2 + 1 agrees_with_brute_Euler_and_full_A2=True
+full-direct-Jacobi q=5 g=2 even=False H=2500 P=25*u**4 + 524*u**2/125 + 1 agrees_with_brute_Euler_and_full_A2=True
+full-direct-Jacobi q=3 g=1 even=True H=54 P=3*u**2 + 8*u/9 + 1 agrees_with_brute_Euler_and_full_A2=True
+Eq7 g=1..10 and even genera 1,2 exact formulas pass for q=3
+Eq7 g=1..10 and even genera 1,2 exact formulas pass for q=5
+Eq7 g=1..10 and even genera 1,2 exact formulas pass for q=7
+Eq7 g=1..10 and even genera 1,2 exact formulas pass for q=11
+Eq7 g=1..10 and even genera 1,2 exact formulas pass for q=13
+cubic direct-resultant q=7 d=3 raw=1 - u**2 completed=u + 1 agrees_with_Euler=True
+cubic direct-resultant q=7 d=4 raw=7*u**3 + 1 completed=7*u**3 + 1 agrees_with_Euler=True
+common-vacuum counterexample: average of det(I-zI_4), det(I+zI_4) = z**4 + 6*z**2 + 1; radii=sqrt(2)-1,sqrt(2)+1
+  u=+0.000000000000-2.414213562373i |u|sqrt(q)=2.414213562373
+  u=+0.000000000000-0.414213562373i |u|sqrt(q)=0.414213562373
+  u=+0.000000000000+0.414213562373i |u|sqrt(q)=0.414213562373
+  u=+0.000000000000+2.414213562373i |u|sqrt(q)=2.414213562373
+common vacuum max_radial_deviation=1.41421356237309505 numpy_radial_deviation=1.414e+00 max_kappa=1.06066 max_np_to_80d=2.371e-15 max_relative_residual=1.507e-82
+ALL INDEPENDENT AUDITS PASS.

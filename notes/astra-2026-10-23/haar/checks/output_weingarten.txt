@@ -1,0 +1,28 @@
+Exact exterior-moment Weingarten integration; Python/SymPy/FLINT; no random input.
+U(2): E minor_r(U) conjugate(minor_s(U)) = delta_rs delta_indices / binomial(2,r).
+SU(2): same for r=s; plus the 0<->2 determinant-one contractions.
+Raw U(2) fourth moments: Wg(id)=1/3, Wg(transposition)=-1/6.
+mu_K4 = x**4 - 6*x**2 + 3
+mu_K4^2 = x**8 - 12*x**6 + 42*x**4 - 36*x**2 + 9
+cycle census: {'simple_cycles': 7, 'cycle_collections': 8, 'spanning_cycle_collections': 3}
+SU(2) K4 = x**8 - 12*x**6 + 42*x**4 - 32*x**2 + 12
+roots (decimal approximations): -2.368004478439-0.207526808432i -2.368004478439+0.207526808432i -0.724113899080-0.297856966561i -0.724113899080+0.297856966561i 0.724113899080-0.297856966561i 0.724113899080+0.297856966561i 2.368004478439-0.207526808432i 2.368004478439+0.207526808432i
+exact real-root isolation: 0/8 real, 0/8 certified in band; band=2.828427124746
+real-rooted: False all roots in band: False
+K4 certified complex isolating rectangles: [((-635656371/268435456 - 55707561*I/268435456, -317828175/134217728 - 13926885*I/67108864), 1), ((-635656371/268435456 + 13926885*I/67108864, -317828175/134217728 + 55707561*I/268435456), 1), ((-24297231/33554432 - 79955379*I/268435456, -194377827/268435456 - 39977679*I/134217728), 1), ((-24297231/33554432 + 39977679*I/134217728, -194377827/268435456 + 79955379*I/268435456), 1), ((194377827/268435456 - 79955379*I/268435456, 24297231/33554432 - 39977679*I/134217728), 1), ((194377827/268435456 + 39977679*I/134217728, 24297231/33554432 + 79955379*I/268435456), 1), ((317828175/134217728 - 55707561*I/268435456, 635656371/268435456 - 13926885*I/67108864), 1), ((317828175/134217728 + 13926885*I/67108864, 635656371/268435456 + 55707561*I/268435456), 1)]
+U(2) K4 = HPS 2-matching = S3 standard = x**8 - 12*x**6 + 42*x**4 - 40*x**2 + 6
+roots (decimal approximations): -2.523255734295+0.000000000000i -2.058689321989+0.000000000000i -1.100650424837+0.000000000000i -0.428424342420+0.000000000000i 0.428424342420+0.000000000000i 1.100650424837+0.000000000000i 2.058689321989+0.000000000000i 2.523255734295+0.000000000000i
+exact real-root isolation: 8/8 real, 8/8 certified in band; band=2.828427124746
+real-rooted: True all roots in band: True
+independent exact S3 sum: x**8 - 12*x**6 + 42*x**4 - 40*x**2 + 6
+independent exact Q8 sum: x**8 - 12*x**6 + 42*x**4 - 32*x**2 + 12
+C3 SU(2) = Q8 = x**6 - 6*x**4 + 9*x**2 + 1
+roots (decimal approximations): -1.754380959784-0.161092677313i -1.754380959784+0.161092677313i 0.000000000000-0.322185354626i 0.000000000000+0.322185354626i 1.754380959784-0.161092677313i 1.754380959784+0.161092677313i
+exact real-root isolation: 0/6 real, 0/6 certified in band; band=2.000000000000
+real-rooted: False all roots in band: False
+positivity certificates: C3 = (x^3-3x)^2+1 >= 1; K4 = (x^4-6x^2+3)^2+4x^2+3 >= 3
+C3 imaginary-root certificate y^3+3y-1: f(8/25)= -113/15625 f(33/100)= 25937/1000000 f-prime=3y^2+3>0
+If loops allowed: one vertex and one loop, q=1, SU2/Q8: x^2+1, roots +-i.
+If parallel edges allowed: two vertices, three edges, q=2, SU2/Q8: (x^2-3)^2+3, no real roots.
+degenerate q=0: K2, sign representation of Z2: x^2-1, roots -1,1, band {0}
+PASS all exact identities
