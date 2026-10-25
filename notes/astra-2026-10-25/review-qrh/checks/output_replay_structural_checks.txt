@@ -1,0 +1,15 @@
+Integral rank-two counterexample: M = [5, -5, 1, 0]
+M.T Omega M - 5 Omega = [0, 0, 0, 0]
+Eigenvalues = (5 +/- sqrt(5))/2; larger/sqrt(5) = (1+sqrt(5))/2 > 1
+K4 all-negative reciprocal Ihara polynomial degree = 12
+P(-1/2) = 0 ; coefficient z^13 = 0
+Thus eventual coefficient cancellation does not exclude an off-circle pole at z=-1/2.
+Gauss identity numerical precision = 80 decimal digits
+Correct conjugated identity residual = 9.550003662e-81
+Unconjugated brief identity residual = 1.30930734141595428759658491249
+Cubic charge support over F7 = 6; prime-qudit stabilizer supports = {1,7}.
+F(z)=z+z^-1 Haar energy = 2
+F(z)=z+z^-1 torsion energy, N=2: 4
+F(z)=z+z^-1 torsion energy, N=3: 2
+F(z)=z+z^-1 torsion energy, N=6: 2
+All structural checks passed.

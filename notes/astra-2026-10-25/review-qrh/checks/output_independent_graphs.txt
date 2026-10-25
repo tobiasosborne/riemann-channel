@@ -1,0 +1,69 @@
+K4 chords= [(1, 2), (1, 3), (2, 3)] Laurent monomials= 47 degree= 12
+degree: Haar, N=2, N=3, N=4, N=5 (all normalized)
+0 : [1, 1, 1, 1, 1]
+1 : [0, 0, 0, 0, 0]
+2 : [0, 0, 0, 0, 0]
+3 : [8, 16, 8, 8, 8]
+4 : [6, 12, 6, 6, 6]
+5 : [0, 0, 0, 0, 0]
+6 : [40, 64, 40, 40, 40]
+7 : [72, 144, 72, 72, 72]
+8 : [15, 21, 15, 15, 15]
+9 : [32, 64, 32, 32, 32]
+10 : [576, 576, 576, 576, 576]
+11 : [0, 0, 0, 0, 0]
+12 : [256, 256, 256, 256, 256]
+13 : [0, 0, 0, 0, 0]
+mixed coefficients F=sum 2^d a_d: [1766223873, 1769707521, 1766223873, 1766223873, 1766223873]
+unsigned total C0..16: [1, 0, 0, 8, 6, 0, 40, 72, 33, 208, 552, 576, 1368, 3840, 5952, 11008, 27216]
+K4 D= 12 S= 2048 diagonal= 10944 offdiagonal= -8896
+K4 D= 13 S= 0 diagonal= 30720 offdiagonal= -30720
+flux= (0, 0, 0) counts D13,D16= [3840, 27216] fractions= [Fraction(1, 1), Fraction(1, 1)]
+flux= (0, 0, 1) counts D13,D16= [1920, 13520] fractions= [Fraction(1, 2), Fraction(845, 1701)]
+flux= (0, 1, 0) counts D13,D16= [1920, 13520] fractions= [Fraction(1, 2), Fraction(845, 1701)]
+flux= (0, 1, 1) counts D13,D16= [1920, 13520] fractions= [Fraction(1, 2), Fraction(845, 1701)]
+flux= (1, 0, 0) counts D13,D16= [1920, 13520] fractions= [Fraction(1, 2), Fraction(845, 1701)]
+flux= (1, 0, 1) counts D13,D16= [1920, 13520] fractions= [Fraction(1, 2), Fraction(845, 1701)]
+flux= (1, 1, 0) counts D13,D16= [1920, 13520] fractions= [Fraction(1, 2), Fraction(845, 1701)]
+flux= (1, 1, 1) counts D13,D16= [0, 27216] fractions= [Fraction(0, 1), Fraction(1, 1)]
+Q0 coefficients: [1, 0, 0, -8, -6, 0, 16, 24, -3, -16, -24, 0, 16]
+Q0(1/2)= 0
+projected surface D= 8 zero= 3 total= 33 D*Pr0= 8/11 Cov/D= [[Fraction(3, 22), Fraction(-3, 44)], [Fraction(-3, 44), Fraction(3, 22)]]
+projected surface D= 12 zero= 84 total= 1368 D*Pr0= 14/19 Cov/D= [[Fraction(103, 513), Fraction(-103, 1026)], [Fraction(-103, 1026), Fraction(103, 513)]]
+projected surface D= 16 zero= 1188 total= 27216 D*Pr0= 44/63 Cov/D= [[Fraction(1555, 6804), Fraction(-1555, 13608)], [Fraction(-1555, 13608), Fraction(1555, 6804)]]
+cube chords= [(2, 3), (4, 5), (4, 7), (5, 6), (6, 7)] Laurent monomials= 429 degree= 24
+degree: Haar, N=2, N=3, N=4, N=5 (all normalized)
+0 : [1, 1, 1, 1, 1]
+1 : [0, 0, 0, 0, 0]
+2 : [0, 0, 0, 0, 0]
+3 : [0, 0, 0, 0, 0]
+4 : [12, 24, 12, 12, 12]
+5 : [0, 0, 0, 0, 0]
+6 : [32, 64, 32, 32, 32]
+7 : [0, 0, 0, 0, 0]
+8 : [84, 156, 84, 84, 84]
+9 : [0, 0, 0, 0, 0]
+10 : [960, 2304, 960, 960, 960]
+11 : [0, 0, 0, 0, 0]
+12 : [1452, 3512, 1452, 1452, 1452]
+13 : [0, 0, 0, 0, 0]
+14 : [7584, 13248, 7584, 7584, 7584]
+15 : [0, 0, 0, 0, 0]
+16 : [33969, 60393, 33969, 33969, 33969]
+17 : [0, 0, 0, 0, 0]
+18 : [30464, 58624, 30464, 30464, 30464]
+19 : [0, 0, 0, 0, 0]
+20 : [454656, 457728, 454656, 454656, 454656]
+21 : [0, 0, 0, 0, 0]
+22 : [589824, 589824, 589824, 589824, 589824]
+23 : [0, 0, 0, 0, 0]
+24 : [65536, 65536, 65536, 65536, 65536]
+25 : [0, 0, 0, 0, 0]
+mixed coefficients F=sum 2^d a_d: [3095992247647606785, 3096563027085108225, 3095992247647606785, 3095992247647606785, 3095992247647606785]
+unsigned total C0..16: [1, 0, 0, 0, 12, 0, 32, 0, 102, 0, 624, 0, 1788, 0, 8448, 0, 33153]
+surface N= 2 rows= 4 distinct= 1 kernel= 4
+surface N= 3 rows= 9 distinct= 1 kernel= 9
+surface N= 6 rows= 36 distinct= 1 kernel= 36
+surface N= 7 rows= 49 distinct= 49 kernel= 1
+surface N= 12 rows= 144 distinct= 4 kernel= 36
+PASS: exact integer permutation enumeration and series division.

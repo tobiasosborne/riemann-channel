@@ -1,0 +1,22 @@
+Liu source definition: notes/astra-2026-10-23/qrh/sources/liu-2610.12234.txt line 130 1188ξ 3 − 2160ξ 2 + 171ξ + 190 = 0.
+eliminated primitive cubic: -1188*x**3 + 2160*x**2 - 171*x - 190
+root certified interval: 1391710319507136216047650876232305564/3581497519717053337168708994731093101 112044859876857247413527266536868525/288341892792835145585381058495781766
+xi midpoint: 0.38858335426603466679742799106489281739967506593540066794114907949
+B midpoint: 0.87495701942009894612860385056145298230715187418763281010257134487
+B interval width: 1.3626639e-73
+7/8 - B: 0.000042980579901053871396149438547017693
+amplifier at H=D squared exponents: 11/6 5/3
+balanced alpha, theta: 6/7 6/7
+O7 low exponent: 3/16 boundary: 7/8
+mode-depth interval: 1/16 7/16
+F7 cubic charge: x=0 -> 0; exponents of omega for x=1..6: [0, 2, 1, 1, 2, 0]
+charge support: [1, 2, 3, 4, 5, 6] size= 6
+Fourier charge support size: 6
+rank counterexample characteristic polynomial: lambda**2 - 5*lambda + 5
+rank counterexample similitude residual: [0, 0, 0, 0]
+O11 four exact Gauss identity residuals: 0,0,0,0
+O11 unbarred identity exact nonzero residual: -6*z**11 + 2*z**7 - 6*z**5 + 6*z**4 + 6*z**3 + 6*z**2 - 4
+O7 endpoint expanded identity residual: 0; margin= 49/440640
+Q1 prose P_x error, at delta=2/5,x=1/2: correct E= -41/155760 printed E= 6709/207600
+Kintali central margin: 1/80
+PASS: exact algebra and root isolation; no floating decision or L-zero input.

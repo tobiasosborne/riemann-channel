@@ -1,0 +1,21 @@
+notes/astra-2026-10-23/qrh-digest/checks/output_exponents.txt : lines= 23 byte-identical= True
+notes/astra-2026-10-23/qrh-digest/checks/output_structural_checks.txt : lines= 15 byte-identical= True
+notes/astra-2026-10-23/qrh-transpose/checks/output_ff.txt : lines= 107 byte-identical= True
+notes/astra-2026-10-23/qrh-transpose/checks/output_graph.txt : lines= 1429 byte-identical= True
+notes/astra-2026-10-23/qrh-transpose/checks/output_ff_run.txt : lines= 107 byte-identical= True
+notes/astra-2026-10-23/qrh-transpose/checks/output_graph_run.txt : lines= 1429 byte-identical= True
+record scan rows: archived= 225 replayed= 249
+archived file/text pairs missing= 0 new file/text pairs= 24
+source sha256 QuasiRiemannHypothesis.lean match= True
+source sha256 cureton-thorner-hexagon-2610.00200.txt match= True
+source sha256 dunn-radziwill-2109.07463.pdf match= True
+source sha256 dunn-radziwill-2109.07463.txt match= True
+source sha256 kintali-qrh-2026-10-07.pdf match= True
+source sha256 kintali-qrh-2026-10-07.txt match= True
+source sha256 liu-2610.12234.pdf match= True
+source sha256 liu-2610.12234.txt match= True
+source sha256 qrh-11-12-openai-2026-10-05.pdf match= True
+source sha256 qrh-11-12-openai-2026-10-05.txt match= True
+source sha256 qrh-7-8-openai-2026-09-30.pdf match= True
+source sha256 qrh-7-8-openai-2026-09-30.txt match= True
+PASS: all mathematical replay outputs match; scan growth is inventory, not a changed theorem.

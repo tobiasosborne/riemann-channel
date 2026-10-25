@@ -1,0 +1,29 @@
+F7 D=2 squarefree columns= 42 weighted diagonal= 1764
+h= 0 rows= 7 S= 24 complete formula= 252 agrees= False
+h= 1 rows= 49 S= 1080 complete formula= 1764 agrees= False
+h= 2 rows= 343 S= 11844 complete formula= 12348 agrees= False
+h= 3 rows= 2401 S= 86436 complete formula= 86436 agrees= True
+h= 4 rows= 16807 S= 605052 complete formula= 605052 agrees= True
+u=0 row= (0, 0) A1= (2, 0)
+linear p= (0, 1) A_p6= (6, 0) deleted= -4 two-scale identity=PASS
+linear p= (1, 1) A_p6= (0, 0) deleted= 2 two-scale identity=PASS
+linear p= (2, 1) A_p6= (0, 0) deleted= 2 two-scale identity=PASS
+linear p= (3, 1) A_p6= (0, 0) deleted= 2 two-scale identity=PASS
+linear p= (4, 1) A_p6= (0, 0) deleted= 2 two-scale identity=PASS
+linear p= (5, 1) A_p6= (6, 0) deleted= -4 two-scale identity=PASS
+linear p= (6, 1) A_p6= (0, 0) deleted= 2 two-scale identity=PASS
+pi_7( 1 )= 7 ratio to 7^k/k= 1
+pi_7( 2 )= 21 ratio to 7^k/k= 6/7
+pi_7( 3 )= 112 ratio to 7^k/k= 48/49
+pi_7( 4 )= 588 ratio to 7^k/k= 48/49
+pi_7( 5 )= 3360 ratio to 7^k/k= 2400/2401
+pi_7( 6 )= 19544 ratio to 7^k/k= 16752/16807
+power-reciprocity coprime ordered pairs deg<=2: 2688
+Gauss degree= 1 all squarefree monics= 7 characters per modulus=5
+Gauss degree= 2 all squarefree monics= 42 characters per modulus=5
+Gauss degree= 3 all squarefree monics= 294 characters per modulus=5
+factorization types= {(1,): 7, (1, 1): 21, (1, 1, 1): 35, (1, 2): 147, (2,): 21, (3,): 112}
+exact Gauss comparisons= 1715 absorption comparisons= 343
+omitting Hasse-Davenport sign fails= 840 using disc in place of Res fails= 1008
+unit modulus n=1: five Gauss formulas and absorption are the one-term identity 1=1
+PASS: all computations exact; Gauss normalization q^(-D/2) cancels on both sides.
