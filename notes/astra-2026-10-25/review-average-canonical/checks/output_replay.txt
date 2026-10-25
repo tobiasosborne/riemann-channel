@@ -1,0 +1,11 @@
+average/avg_hyperelliptic: exit=0 seconds=81.0
+average/avg_cubic: exit=0 seconds=6.7
+average/avg_level: exit=0 seconds=0.5
+average/audit_identities: exit=0 seconds=5.0
+average/avg_extended: exit=0 seconds=1203.2
+average/summarize_outputs: exit=0 seconds=0.5
+canonical/check_ff_all: exit=0 seconds=43.5
+canonical/check_ff_examples: exit=0 seconds=1.5
+canonical/check_graph: exit=0 seconds=2.7
+canonical/check_zeta: exit=0 seconds=17.7
+canonical/check_zeta_gaussian: exit=0 seconds=49.4

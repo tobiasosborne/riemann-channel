@@ -1,0 +1,8 @@
+q=3 d=5 H=162 affine_orbits=29
+direct_sums=162,0,372,0,1458,
+average=1/1,0/1,62/27,0/1,9/1,
+posterior_FE_failures=0
+q=7 d=7 H=705894 affine_orbits=16865
+direct_sums=705894,0,4324110,0,30268770,0,242121642,
+average=1/1,0/1,102955/16807,0/1,102955/2401,0/1,343/1,
+posterior_FE_failures=0

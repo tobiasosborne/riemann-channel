@@ -1,0 +1,10 @@
+K4 0 Hashimoto traces k0..4= [12, 0, 0, 24, 24] retained unnormalized traces= [6, -3, -9, 15, 3, -33, 27, 39, -93, 15, 171, -201, -141, 543, -261, -825, 1347]
+alpha= [-sqrt(2)/4, -1] status= terminal last index= 1
+prism 16 Hashimoto traces k0..4= [96, 0, 0, 0, 128] retained unnormalized traces= [60, 0, -42, 0, 62, 0, 30, 0, 94, 0, 798, 0, 926, 0, 3934, 0, 6814]
+alpha= [0, -7/20, 0, 163/1053, 0, 1525/6764, 0, 21349/123721, 0, 396933/731870, 0, 11257789/12223564, 0, 43707967/3998190] status= bad last index= 13
+exact out-of-band adjacency multiplicity= 4
+prism 17 Hashimoto traces k0..4= [102, 0, 0, 0, 136] retained unnormalized traces= [66, -3, -39, -9, 85, -33, 105, -129, 389, -513, 2001, -2049, 5593, -8193, 22613, -32769, 80901]
+alpha= [-sqrt(2)/44, -287/967, -31*sqrt(2)/570, 42/167, -13*sqrt(2)/165, 37/92, -1459*sqrt(2)/7525, 1631494/2276881, -413023893*sqrt(2)/312857602] status= bad last index= 8
+exact out-of-band adjacency multiplicity= 4
+conjugate label M= Matrix([[0, -1], [q, lambda]]) Q= Matrix([[1, -lambda/2], [-lambda/2, q]]) old-label Q= Matrix([[q, lambda/2], [lambda/2, 1]])
+universal alternating identity T^t J T=det(T) J; Szego det= -z*(a*b - 1)

@@ -1,0 +1,15 @@
+q= 7 d= 1 H= 7 raw= [Fraction(1, 1)] completed= [Fraction(1, 1)] whole= [Fraction(1, 1)]
+q= 7 d= 2 H= 42 raw= [Fraction(1, 1), Fraction(0, 1)] completed= [Fraction(1, 1), Fraction(0, 1)] whole= [Fraction(1, 1), Fraction(0, 1), Fraction(7, 1)]
+whole curve band certificate R= x PASS
+q= 7 d= 3 H= 294 raw= [Fraction(1, 1), Fraction(0, 1), Fraction(-1, 1)] completed= [Fraction(1, 1), Fraction(1, 1)] whole= [Fraction(1, 1), Fraction(2, 1), Fraction(7, 1)]
+whole curve band certificate R= x + 2 PASS
+q= 7 d= 4 H= 2058 raw= [Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(7, 1)] completed= [Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(7, 1)] whole= [Fraction(1, 1), Fraction(0, 1), Fraction(43, 7), Fraction(14, 1), Fraction(43, 1), Fraction(0, 1), Fraction(343, 1)]
+whole curve band certificate R= x**3 - 104*x/7 + 14 PASS
+q= 13 d= 1 H= 13 raw= [Fraction(1, 1)] completed= [Fraction(1, 1)] whole= [Fraction(1, 1)]
+q= 13 d= 2 H= 156 raw= [Fraction(1, 1), Fraction(0, 1)] completed= [Fraction(1, 1), Fraction(0, 1)] whole= [Fraction(1, 1), Fraction(0, 1), Fraction(13, 1)]
+whole curve band certificate R= x PASS
+q= 13 d= 3 H= 2028 raw= [Fraction(1, 1), Fraction(0, 1), Fraction(-1, 1)] completed= [Fraction(1, 1), Fraction(1, 1)] whole= [Fraction(1, 1), Fraction(2, 1), Fraction(13, 1)]
+whole curve band certificate R= x + 2 PASS
+q= 13 d= 4 H= 26364 raw= [Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(13, 1)] completed= [Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(13, 1)] whole= [Fraction(1, 1), Fraction(0, 1), Fraction(157, 13), Fraction(26, 1), Fraction(157, 1), Fraction(0, 1), Fraction(2197, 1)]
+whole curve band certificate R= x**3 - 350*x/13 + 26 PASS
+ALL direct cubic sums and whole-curve certificates PASS

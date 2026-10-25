@@ -1,0 +1,14 @@
+Euler (1)-(2) direct checks: 448 nonzero negative reciprocity-sign cases: 128
+Euler (5) q=3 d=5 m=2 pair_count= 1086 density= 181/243
+H-half exact degree 4..8 search (integer b0=1..5): {4: 90, 5: 55, 6: 195, 7: 125, 8: 377} weak p0=p1 controls: {4: 35, 5: 20, 6: 90, 7: 55, 8: 195} off_circle=0
+Warning if even central coefficient is omitted: B= z**4 + 3*z**2 + 1 first coefficients [1,0]; y-polynomial= y**2 + 1 off_circle=True; H-half FAILS [1,0,3/2]
+b1 bracket bound base slack= (q - 1)*(q + 1)*(2*q**2 - 1)/2 induction increment= (q - 1)*(q + 1)*(g*q**2 - g + q**2)/2
+Eq7 q= 3 g=1,2,3: [Fraction(1, 1), Fraction(62, 81), Fraction(551, 729)] inequality g=2..30 PASS
+Eq7 q= 5 g=1,2,3: [Fraction(1, 1), Fraction(524, 625), Fraction(13029, 15625)] inequality g=2..30 PASS
+Eq7 q= 7 g=1,2,3: [Fraction(1, 1), Fraction(2106, 2401), Fraction(102955, 117649)] inequality g=2..30 PASS
+Eq7 q= 9 g=1,2,3: [Fraction(1, 1), Fraction(5912, 6561), Fraction(478313, 531441)] inequality g=2..30 PASS
+Eq7 q= 11 g=1,2,3: [Fraction(1, 1), Fraction(13430, 14641), Fraction(1623951, 1771561)] inequality g=2..30 PASS
+Eq7 q= 25 g=1,2,3: [Fraction(1, 1), Fraction(375624, 390625), Fraction(234750649, 244140625)] inequality g=2..30 PASS
+cubic q=7 d=3 H= 294 one-symbol raw= [Fraction(1, 1), Fraction(0, 1), Fraction(-1, 1)] completed= [Fraction(1, 1), Fraction(1, 1)] whole= [Fraction(1, 1), Fraction(2, 1), Fraction(7, 1)]
+cubic completed linear coefficient histogram (a+b*omega): [((-3, -2), 21), ((-2, 1), 14), ((-1, -3), 56), ((1, 3), 42), ((2, -1), 84), ((3, 2), 77)]
+vacuum average= z**4 + 6*z**2 + 1 root radii=sqrt(2)-1,sqrt(2)+1

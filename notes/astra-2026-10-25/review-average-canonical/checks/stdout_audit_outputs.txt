@@ -1,0 +1,54 @@
+unchanged script average avg_extended.py 8afc7eb6c5047c0cec6cd2dddfbf0787f133e1bb6280f3538349a40b9211eea7
+unchanged script average audit_identities.py 030014d4eb20a20d57b3489c26a54562a2857e679032c33474bee0041d8d2e62
+unchanged script average avg_hyperelliptic.py a3d60d839d2ce5baa38f9a9fdc40c748f96aad8143cca36d2c71978cfde6dd82
+unchanged script average avg_cubic.py 3e7c1ef25b3d24b6318771aca0bd6ee1912c477a859cb1c4ce433b0990746105
+unchanged script average summarize_outputs.py 1b743d85f4ecf89a9f7dc69a5a45ad2da72febd401aeab5bde59237638b6f443
+unchanged script average common.py 3d4c4003f6c94712682483b2ebf4181072ed63ebc641286d7248c06eb16dd8f4
+unchanged script average avg_level.py 305d951a618a289f0b9e0a93126db1e6731edcbcf887dd785cd1e3a3f30fa348
+compare average output_audit.txt saved_lines= 19 replayed_lines= 19 equal_except_timing= True diff_lines= 0
+compare average output_cubic.txt saved_lines= 70 replayed_lines= 70 equal_except_timing= True diff_lines= 0
+compare average output_extended.txt saved_lines= 486 replayed_lines= 486 equal_except_timing= True diff_lines= 0
+compare average output_hyperelliptic.txt saved_lines= 131 replayed_lines= 131 equal_except_timing= True diff_lines= 0
+compare average output_level.txt saved_lines= 144 replayed_lines= 144 equal_except_timing= True diff_lines= 0
+compare average output_summary.txt saved_lines= 17 replayed_lines= 17 equal_except_timing= True diff_lines= 0
+unchanged script canonical check_ff_examples.py be1e8e1e3eb458dbc521167e29912808dcde4796bea02fd0409971bb2801a22d
+unchanged script canonical check_zeta_gaussian.py 3ddfec8fd6bb843f8f61c7ed2a98aae81d7bd86a10ea9f8941277d58319dab4e
+unchanged script canonical check_graph.py c31f40fa57f9f8bdc9db33664c34f12d7b1146ffd8894b1f993b0879700055b8
+unchanged script canonical check_zeta.py 41ab70398d54c93d0144e94102ca3c9732953662fc502e550838b238468586ca
+unchanged script canonical check_ff_all.py 8939988b9caa6887e208d2d5020794cf7a737d155498f795dcd2a5678c672eef
+compare canonical output_ff_all.txt saved_lines= 264595 replayed_lines= 264595 equal_except_timing= True diff_lines= 0
+compare canonical output_ff_examples.txt saved_lines= 11 replayed_lines= 11 equal_except_timing= True diff_lines= 0
+compare canonical output_ff_summary.txt saved_lines= 34 replayed_lines= 34 equal_except_timing= True diff_lines= 0
+compare canonical output_graph.txt saved_lines= 66 replayed_lines= 66 equal_except_timing= True diff_lines= 0
+compare canonical output_zeta.txt saved_lines= 181 replayed_lines= 181 equal_except_timing= True diff_lines= 0
+compare canonical output_zeta_gaussian.txt saved_lines= 32 replayed_lines= 32 equal_except_timing= True diff_lines= 0
+compare canonical output_zeta_table.txt saved_lines= 37 replayed_lines= 37 equal_except_timing= True diff_lines= 0
+independent conductor count 3 1 3
+independent conductor count 3 2 36
+independent conductor count 3 3 324
+independent conductor count 3 4 2916
+independent conductor count 5 1 15
+independent conductor count 5 2 400
+independent conductor count 5 3 10000
+independent conductor count 5 4 250000
+independent discriminant census 263694 maximum repeated discriminant residual= 1.7888487491291016e-07 minimum nonzero discriminant magnitude= 1.339745961713711
+independent support rank (3, 1, 0, 0) 3
+independent support rank (3, 2, 0, 0) 18
+independent support rank (3, 2, 1, 1) 18
+independent support rank (3, 3, 1, 1) 162
+independent support rank (3, 3, 2, 2) 162
+independent support rank (3, 4, 2, 2) 1458
+independent support rank (3, 4, 3, 3) 1458
+independent support rank (5, 1, 0, 0) 15
+independent support rank (5, 2, 0, 0) 100
+independent support rank (5, 2, 1, 1) 300
+independent support rank (5, 3, 1, 1) 2500
+independent support rank (5, 3, 2, 2) 7500
+independent support rank (5, 4, 2, 1) 30
+independent support rank (5, 4, 2, 2) 62470
+independent support rank (5, 4, 3, 2) 80
+independent support rank (5, 4, 3, 3) 187420
+zeta source imports check_zeta.py ['os', 'functools', 'pathlib', 'numpy', 'scipy.signal', 'scipy.interpolate', 'scipy.linalg', 'numpy.polynomial.legendre']
+zeta file/zero-like calls check_zeta.py ['np.flatnonzero(sieve)', 'np.zeros_like(x)', 'np.zeros_like(x, dtype=float)', "(HERE / 'output_zeta_table.txt').open('w')"]
+zeta source imports check_zeta_gaussian.py ['os', 'functools', 'mpmath', 'numpy']
+zeta file/zero-like calls check_zeta_gaussian.py ['np.flatnonzero(s)']

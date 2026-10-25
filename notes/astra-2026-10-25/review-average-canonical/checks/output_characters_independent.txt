@@ -1,0 +1,18 @@
+q=5 f= (1, 1, 0, 1) raw= [1, -2 + I, 3 - 4*I] completed= [1, -2 + I, 3 - 4*I] moments= {0: 2, 1: sqrt(5)*(2 - I)/5, -1: sqrt(5)*(2 + I)/5, 2: -3/5 + 4*I/5, -2: -3/5 - 4*I/5} alpha= [sqrt(5)*(2 + I)/10, -3/5 - 4*I/5] first_norm2= 1/4
+q=5 f= (1, 0, 0, 0, 1) raw= [1, 1 - 4*I, -5, 3 + 4*I] completed= [1, 2 - 4*I, -3 - 4*I] moments= {0: 2, 1: 2*sqrt(5)*(-1 + 2*I)/5, -1: 2*sqrt(5)*(-1 - 2*I)/5, 2: -6/5 - 8*I/5, -2: -6/5 + 8*I/5} alpha= [sqrt(5)*(-1 - 2*I)/5] first_norm2= 1
+quadratic f= (0, 2, 1, 2, 1, 1) L= [1, -1, 2, -3, 9] prime sums= (-1, 1) squarefree= (-1, 1) linear_square_sum= 1 W= 1 alpha= [sqrt(3)/12, -13/47, 8*sqrt(3)/45, -1]
+quadratic f= (1, 0, 0, 0, 2, 1) L= [1, -1, 3, -3, 9] prime sums= (-1, 1) squarefree= (-1, 0) linear_square_sum= 3 W= 1 alpha= [sqrt(3)/12, -21/47, 5*sqrt(3)/34, -1]
+quadratic f= (0, 2, 0, 0, 0, 1) L= [1, 0, -2, 0, 9] prime sums= (0, -2) squarefree= (0, -2) linear_square_sum= 0 W= 1 alpha= [0, 1/3, 0, -1]
+quadratic f= (0, 2, 1, 1, 2, 1) L= [1, 0, 0, 0, 9] prime sums= (0, -1) squarefree= (0, -2) linear_square_sum= 2 W= 1 alpha= [0, 0, 0, -1]
+level q= 3 f=x^2+ 1 generator= (1, 1) raw_sum= 7 - 3*u completed_sum= 7
+order= 2 count= 1 raw_average= 1 - u completed_average= 1 Ramanujan PASS
+order= 4 count= 2 raw_average= 1 - u completed_average= 1 Ramanujan PASS
+order= 8 count= 4 raw_average= 1 completed_average= 1 Ramanujan PASS
+level q= 5 f=x^2+ 2 generator= (1, 1) raw_sum= 23 - 5*u completed_sum= 23
+order= 2 count= 1 raw_average= 1 - u completed_average= 1 Ramanujan PASS
+order= 3 count= 2 raw_average= 1 - u completed_average= 1 Ramanujan PASS
+order= 4 count= 2 raw_average= 2*u + 1 completed_average= 2*u + 1 Ramanujan PASS
+order= 6 count= 2 raw_average= 1 - u completed_average= 1 Ramanujan PASS
+order= 8 count= 4 raw_average= 1 completed_average= 1 Ramanujan PASS
+order= 12 count= 4 raw_average= 1 - u completed_average= 1 - u Ramanujan PASS
+order= 24 count= 8 raw_average= 1 completed_average= 1 Ramanujan PASS

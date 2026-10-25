@@ -1,0 +1,70 @@
+Cubic character from the product residue symbol; omega^2+omega+1=0. Exact coefficient pairs.
+q=7 d=1 H=7 raw=1 completed_isotypic=1 expected_degree=0
+isotypic q=7 d=1 constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  whole_curve_average=1
+  whole_curve_exact_Sturm_band=True R(x)=1
+whole curve q=7 d=1 constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+q=7 d=2 H=42 raw=1 completed_isotypic=1 expected_degree=1
+isotypic q=7 d=2 constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  whole_curve_average=7*u**2 + 1
+  whole_curve_exact_Sturm_band=True R(x)=x
+  u=+0.000000000000-0.377964473009i |u|sqrt(q)=1.000000000000
+  u=+0.000000000000+0.377964473009i |u|sqrt(q)=1.000000000000
+whole curve q=7 d=2 max_radial_deviation=0.0 numpy_radial_deviation=3.331e-16 max_kappa=1 max_np_to_80d=3.331e-16 max_relative_residual=0.000e+00
+q=7 d=3 H=294 raw=1 - u**2 completed_isotypic=u + 1 expected_degree=1
+  u=-1.000000000000+0.000000000000i |u|sqrt(q)=2.645751311065
+isotypic q=7 d=3 max_radial_deviation=1.64575131106459059 numpy_radial_deviation=1.646e+00 max_kappa=2 max_np_to_80d=3.184e-16 max_relative_residual=0.000e+00
+  whole_curve_average=7*u**2 + 2*u + 1
+  whole_curve_exact_Sturm_band=True R(x)=x + 2
+  u=-0.142857142857-0.349927106112i |u|sqrt(q)=1.000000000000
+  u=-0.142857142857+0.349927106112i |u|sqrt(q)=1.000000000000
+whole curve q=7 d=3 max_radial_deviation=0.0 numpy_radial_deviation=1.110e-16 max_kappa=1.48837 max_np_to_80d=1.562e-16 max_relative_residual=0.000e+00
+q=7 d=4 H=2058 raw=7*u**3 + 1 completed_isotypic=7*u**3 + 1 expected_degree=3
+  u=-0.522757958575+0.000000000000i |u|sqrt(q)=1.383087554268
+  u=+0.261378979287-0.452721672156i |u|sqrt(q)=1.383087554268
+  u=+0.261378979287+0.452721672156i |u|sqrt(q)=1.383087554268
+isotypic q=7 d=4 max_radial_deviation=0.383087554268488493 numpy_radial_deviation=3.831e-01 max_kappa=0.666667 max_np_to_80d=2.789e-15 max_relative_residual=1.065e-81
+  whole_curve_average=343*u**6 + 43*u**4 + 14*u**3 + 43*u**2/7 + 1
+  whole_curve_exact_Sturm_band=True R(x)=x**3 - 104*x/7 + 14
+  u=-0.304254408063-0.224246288779i |u|sqrt(q)=1.000000000000
+  u=-0.304254408063+0.224246288779i |u|sqrt(q)=1.000000000000
+  u=+0.072291806796-0.370986573244i |u|sqrt(q)=1.000000000000
+  u=+0.072291806796+0.370986573244i |u|sqrt(q)=1.000000000000
+  u=+0.231962601267-0.298413294728i |u|sqrt(q)=1.000000000000
+  u=+0.231962601267+0.298413294728i |u|sqrt(q)=1.000000000000
+whole curve q=7 d=4 max_radial_deviation=1.05421979432305232e-81 numpy_radial_deviation=1.776e-15 max_kappa=1.36501 max_np_to_80d=1.908e-15 max_relative_residual=2.902e-82
+q=13 d=1 H=13 raw=1 completed_isotypic=1 expected_degree=0
+isotypic q=13 d=1 constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  whole_curve_average=1
+  whole_curve_exact_Sturm_band=True R(x)=1
+whole curve q=13 d=1 constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+q=13 d=2 H=156 raw=1 completed_isotypic=1 expected_degree=1
+isotypic q=13 d=2 constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  whole_curve_average=13*u**2 + 1
+  whole_curve_exact_Sturm_band=True R(x)=x
+  u=+0.000000000000-0.277350098113i |u|sqrt(q)=1.000000000000
+  u=+0.000000000000+0.277350098113i |u|sqrt(q)=1.000000000000
+whole curve q=13 d=2 max_radial_deviation=0.0 numpy_radial_deviation=3.331e-16 max_kappa=1 max_np_to_80d=3.331e-16 max_relative_residual=1.054e-81
+q=13 d=3 H=2028 raw=1 - u**2 completed_isotypic=u + 1 expected_degree=1
+  u=-1.000000000000+0.000000000000i |u|sqrt(q)=3.605551275464
+isotypic q=13 d=3 max_radial_deviation=2.60555127546398929 numpy_radial_deviation=2.606e+00 max_kappa=2 max_np_to_80d=1.683e-16 max_relative_residual=0.000e+00
+  whole_curve_average=13*u**2 + 2*u + 1
+  whole_curve_exact_Sturm_band=True R(x)=x + 2
+  u=-0.076923076923-0.266469355011i |u|sqrt(q)=1.000000000000
+  u=-0.076923076923+0.266469355011i |u|sqrt(q)=1.000000000000
+whole curve q=13 d=3 max_radial_deviation=1.05421979432305232e-81 numpy_radial_deviation=2.220e-16 max_kappa=1.32951 max_np_to_80d=2.056e-16 max_relative_residual=3.067e-83
+q=13 d=4 H=26364 raw=13*u**3 + 1 completed_isotypic=13*u**3 + 1 expected_degree=3
+  u=-0.425290370283+0.000000000000i |u|sqrt(q)=1.533406237016
+  u=+0.212645185141-0.368312264650i |u|sqrt(q)=1.533406237016
+  u=+0.212645185141+0.368312264650i |u|sqrt(q)=1.533406237016
+isotypic q=13 d=4 max_radial_deviation=0.533406237016387478 numpy_radial_deviation=5.334e-01 max_kappa=0.666667 max_np_to_80d=5.192e-16 max_relative_residual=2.108e-81
+  whole_curve_average=2197*u**6 + 157*u**4 + 26*u**3 + 157*u**2/13 + 1
+  whole_curve_exact_Sturm_band=True R(x)=x**3 - 350*x/13 + 26
+  u=-0.216042267884-0.173921865821i |u|sqrt(q)=1.000000000000
+  u=-0.216042267884+0.173921865821i |u|sqrt(q)=1.000000000000
+  u=+0.038585258964-0.274652971427i |u|sqrt(q)=1.000000000000
+  u=+0.038585258964+0.274652971427i |u|sqrt(q)=1.000000000000
+  u=+0.177457008921-0.213148039888i |u|sqrt(q)=1.000000000000
+  u=+0.177457008921+0.213148039888i |u|sqrt(q)=1.000000000000
+whole curve q=13 d=4 max_radial_deviation=1.05421979432305232e-81 numpy_radial_deviation=1.110e-15 max_kappa=1.2117 max_np_to_80d=1.105e-15 max_relative_residual=5.841e-82
+ALL EXACT CUBIC ENUMERATIONS COMPLETE.

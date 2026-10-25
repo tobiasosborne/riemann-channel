@@ -1,0 +1,11 @@
+X1 exact Lambda= [1, -2 + I, 3 - 4*I]
+X1 exact alpha= [sqrt(5)*(2 + I)/10, -3/5 - 4*I/5]
+X1 exact |alpha0|^2= 1/4
+DEGREE TWO REPEATED 5 | (1, 0, 0, 0, 1) | (6, 6) | even | 1,2-4i,-3-4i | -0.4472135955-0.894427191i
+REPEATED local generators/orders [((2, 0, 1), ((1, 1),), (24,)), ((3, 0, 1), ((1, 2),), (24,))]
+REPEATED exact completed coefficients in Q[Z]/Phi_D; D= 24 coeff= [1, 2 - 4*Z**6, -4*Z**6 - 3]
+REPEATED discriminant reduced= 0
+AGGREGATE q= 3 fields=(f,S1,S2,prime2,linear_squares,squarefree2,alpha0,alpha1)
+PRIME (((0, 2, 1, 2, 1, 1), -1, 2, 1, 1, 1, sqrt(3)/12, -13/47), ((1, 0, 0, 0, 2, 1), -1, 3, 1, 3, 0, sqrt(3)/12, -21/47))
+SQUAREFREE (((0, 2, 0, 0, 0, 1), 0, -2, -2, 0, -2, 0, 1/3), ((0, 2, 1, 1, 2, 1), 0, 0, -1, 2, -2, 0, 0))
+PASS exact X1, repeated-root discriminant, and two same-root-number ambiguity counterexamples

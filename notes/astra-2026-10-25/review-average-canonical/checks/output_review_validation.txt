@@ -1,0 +1,4 @@
+Review structure PASS: 16 original candidate IDs, 12 body aliases, mandatory final sections; all 12 progress items DONE.
+Candidate verdicts: 14 VALID, 1 MINOR, 1 UNVERIFIED (OPEN).
+Recomputation PASS: 11 commands exit 0; 13 saved outputs match apart from timing; 9 independent output files present.
+All check scripts parse; math delimiters balanced; no control characters.

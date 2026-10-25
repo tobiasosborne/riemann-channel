@@ -1,0 +1,131 @@
+Exact enumeration, A2 Euler-product formula, and functional equation; roots refined at 80 decimal digits.
+q=3 g=1 d=3 H=18 completed_average=3*u**2 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(7, 3), Fraction(2, 3))]
+  exact H-half certificate=[Fraction(1, 1)]
+  u=+0.000000000000-0.577350269190i |u|sqrt(q)=1.000000000000
+  u=+0.000000000000+0.577350269190i |u|sqrt(q)=1.000000000000
+q=3 g=1 even=False max_radial_deviation=0.0 numpy_radial_deviation=3.331e-16 max_kappa=1 max_np_to_80d=3.331e-16 max_relative_residual=0.000e+00
+  seconds=0.042
+q=3 g=2 d=5 H=162 completed_average=9*u**4 + 62*u**2/27 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(61, 27), Fraction(1, 27)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(181, 27), Fraction(62, 27))]
+  exact H-half certificate=[Fraction(1, 1), Fraction(31, 81)]
+  u=-0.320750149550-0.480054866549i |u|sqrt(q)=1.000000000000
+  u=-0.320750149550+0.480054866549i |u|sqrt(q)=1.000000000000
+  u=+0.320750149550-0.480054866549i |u|sqrt(q)=1.000000000000
+  u=+0.320750149550+0.480054866549i |u|sqrt(q)=1.000000000000
+q=3 g=2 even=False max_radial_deviation=0.0 numpy_radial_deviation=1.110e-15 max_kappa=0.748331 max_np_to_80d=1.071e-15 max_relative_residual=3.170e-82
+  seconds=0.016
+q=3 g=3 d=7 H=1458 completed_average=27*u**6 + 551*u**4/81 + 551*u**2/243 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(547, 243), Fraction(4, 243)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(538, 81), Fraction(13, 81)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(4826, 243), Fraction(1735, 243))]
+  exact H-half certificate=[Fraction(1, 1), Fraction(551, 729)]
+  u=-0.432451355263-0.382516873699i |u|sqrt(q)=1.000000000000
+  u=-0.432451355263+0.382516873699i |u|sqrt(q)=1.000000000000
+  u=+0.000000000000-0.577350269190i |u|sqrt(q)=1.000000000000
+  u=-0.000000000000+0.577350269190i |u|sqrt(q)=1.000000000000
+  u=+0.432451355263-0.382516873699i |u|sqrt(q)=1.000000000000
+  u=+0.432451355263+0.382516873699i |u|sqrt(q)=1.000000000000
+q=3 g=3 even=False max_radial_deviation=0.0 numpy_radial_deviation=1.776e-15 max_kappa=0.782396 max_np_to_80d=1.781e-15 max_relative_residual=8.650e-82
+  seconds=0.111
+q=5 g=1 d=3 H=100 completed_average=5*u**2 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(21, 5), Fraction(4, 5))]
+  exact H-half certificate=[Fraction(1, 1)]
+  u=+0.000000000000-0.447213595500i |u|sqrt(q)=1.000000000000
+  u=+0.000000000000+0.447213595500i |u|sqrt(q)=1.000000000000
+q=5 g=1 even=False max_radial_deviation=0.0 numpy_radial_deviation=3.331e-16 max_kappa=1 max_np_to_80d=3.331e-16 max_relative_residual=1.054e-81
+  seconds=0.005
+q=5 g=2 d=5 H=2500 completed_average=25*u**4 + 524*u**2/125 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(521, 125), Fraction(3, 125)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(2593, 125), Fraction(532, 125))]
+  exact H-half certificate=[Fraction(1, 1), Fraction(262, 625)]
+  u=-0.240997925302-0.376722709695i |u|sqrt(q)=1.000000000000
+  u=-0.240997925302+0.376722709695i |u|sqrt(q)=1.000000000000
+  u=+0.240997925302-0.376722709695i |u|sqrt(q)=1.000000000000
+  u=+0.240997925302+0.376722709695i |u|sqrt(q)=1.000000000000
+q=5 g=2 even=False max_radial_deviation=1.05421979432305232e-81 numpy_radial_deviation=6.661e-16 max_kappa=0.781589 max_np_to_80d=7.626e-16 max_relative_residual=7.763e-82
+  seconds=0.066
+q=5 g=3 d=7 H=62500 completed_average=125*u**6 + 13029*u**4/625 + 13029*u**2/3125 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(13021, 3125), Fraction(8, 3125)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(64772, 3125), Fraction(373, 3125)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(64746, 625), Fraction(13379, 625))]
+  exact H-half certificate=[Fraction(1, 1), Fraction(13029, 15625)]
+  u=-0.329100592525-0.302808190114i |u|sqrt(q)=1.000000000000
+  u=-0.329100592525+0.302808190114i |u|sqrt(q)=1.000000000000
+  u=-0.000000000000-0.447213595500i |u|sqrt(q)=1.000000000000
+  u=-0.000000000000+0.447213595500i |u|sqrt(q)=1.000000000000
+  u=+0.329100592525-0.302808190114i |u|sqrt(q)=1.000000000000
+  u=+0.329100592525+0.302808190114i |u|sqrt(q)=1.000000000000
+q=5 g=3 even=False max_radial_deviation=1.05421979432305232e-81 numpy_radial_deviation=1.776e-15 max_kappa=0.846599 max_np_to_80d=1.913e-15 max_relative_residual=6.660e-82
+  seconds=4.435
+q=7 g=1 d=3 H=294 completed_average=7*u**2 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(43, 7), Fraction(6, 7))]
+  exact H-half certificate=[Fraction(1, 1)]
+  u=+0.000000000000-0.377964473009i |u|sqrt(q)=1.000000000000
+  u=+0.000000000000+0.377964473009i |u|sqrt(q)=1.000000000000
+q=7 g=1 even=False max_radial_deviation=0.0 numpy_radial_deviation=3.331e-16 max_kappa=1 max_np_to_80d=3.331e-16 max_relative_residual=0.000e+00
+  seconds=0.007
+q=7 g=2 d=5 H=14406 completed_average=49*u**4 + 2106*u**2/343 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(2101, 343), Fraction(5, 343)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(14677, 343), Fraction(2130, 343))]
+  exact H-half certificate=[Fraction(1, 1), Fraction(1053, 2401)]
+  u=-0.200255682345-0.320553902715i |u|sqrt(q)=1.000000000000
+  u=-0.200255682345+0.320553902715i |u|sqrt(q)=1.000000000000
+  u=+0.200255682345-0.320553902715i |u|sqrt(q)=1.000000000000
+  u=+0.200255682345+0.320553902715i |u|sqrt(q)=1.000000000000
+q=7 g=2 even=False max_radial_deviation=0.0 numpy_radial_deviation=1.110e-15 max_kappa=0.800362 max_np_to_80d=1.036e-15 max_relative_residual=6.990e-82
+  seconds=0.287
+q=7 g=3 d=7 H=705894 completed_average=343*u**6 + 102955*u**4/2401 + 102955*u**2/16807 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(102943, 16807), Fraction(12, 16807)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(719058, 16807), Fraction(1627, 16807)), (Fraction(0, 1), Fraction(0, 1)), (Fraction(5032970, 16807), Fraction(731831, 16807))]
+  exact H-half certificate=[Fraction(1, 1), Fraction(102955, 117649)]
+  u=-0.275479901989-0.258781696526i |u|sqrt(q)=1.000000000000
+  u=-0.275479901989+0.258781696526i |u|sqrt(q)=1.000000000000
+  u=+0.000000000000-0.377964473009i |u|sqrt(q)=1.000000000000
+  u=+0.000000000000+0.377964473009i |u|sqrt(q)=1.000000000000
+  u=+0.275479901989-0.258781696526i |u|sqrt(q)=1.000000000000
+  u=+0.275479901989+0.258781696526i |u|sqrt(q)=1.000000000000
+q=7 g=3 even=False max_radial_deviation=0.0 numpy_radial_deviation=7.772e-16 max_kappa=0.882444 max_np_to_80d=7.658e-16 max_relative_residual=1.391e-81
+  seconds=72.618
+q=3 g=1 d=4 H=54 completed_average=3*u**2 + 8*u/9 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(-1, 9)), (Fraction(20, 9), Fraction(-1, 9)), (Fraction(0, 1), Fraction(-3, 1))]
+  u=-0.148148148148-0.558019228641i |u|sqrt(q)=1.000000000000
+  u=-0.148148148148+0.558019228641i |u|sqrt(q)=1.000000000000
+q=3 g=1 even=True max_radial_deviation=0.0 numpy_radial_deviation=2.220e-16 max_kappa=1.30013 max_np_to_80d=1.728e-16 max_relative_residual=0.000e+00
+  raw_Dirichlet_average=-3*u**3 + 19*u**2/9 - u/9 + 1; additional root u=1, |u|sqrt(q)=1.732050807569
+  seconds=0.004
+q=3 g=2 d=6 H=486 completed_average=9*u**4 + 80*u**3/27 + 86*u**2/27 + 80*u/81 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(-1, 81)), (Fraction(182, 81), Fraction(-4, 81)), (Fraction(0, 1), Fraction(-2, 9)), (Fraction(536, 81), Fraction(-47, 81)), (Fraction(0, 1), Fraction(-9, 1))]
+  u=-0.373789235670-0.440016977662i |u|sqrt(q)=1.000000000000
+  u=-0.373789235670+0.440016977662i |u|sqrt(q)=1.000000000000
+  u=+0.209180182172-0.538123577554i |u|sqrt(q)=1.000000000000
+  u=+0.209180182172+0.538123577554i |u|sqrt(q)=1.000000000000
+q=3 g=2 even=True max_radial_deviation=0.0 numpy_radial_deviation=8.882e-16 max_kappa=1.36514 max_np_to_80d=8.753e-16 max_relative_residual=5.325e-82
+  raw_Dirichlet_average=-9*u**5 + 163*u**4/27 - 2*u**3/9 + 178*u**2/81 - u/81 + 1; additional root u=1, |u|sqrt(q)=1.732050807569
+  seconds=0.017
+q=5 g=1 d=4 H=500 completed_average=5*u**2 + 24*u/25 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(-1, 25)), (Fraction(104, 25), Fraction(-3, 25)), (Fraction(0, 1), Fraction(-5, 1))]
+  u=-0.096000000000-0.436788278231i |u|sqrt(q)=1.000000000000
+  u=-0.096000000000+0.436788278231i |u|sqrt(q)=1.000000000000
+q=5 g=1 even=True max_radial_deviation=1.05421979432305232e-81 numpy_radial_deviation=1.110e-16 max_kappa=1.24365 max_np_to_80d=1.977e-16 max_relative_residual=2.561e-83
+  raw_Dirichlet_average=-5*u**3 + 101*u**2/25 - u/25 + 1; additional root u=1, |u|sqrt(q)=2.236067977500
+  seconds=0.011
+q=5 g=2 d=6 H=12500 completed_average=25*u**4 + 624*u**3/125 + 644*u**2/125 + 624*u/625 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(-1, 625)), (Fraction(2604, 625), Fraction(-8, 625)), (Fraction(0, 1), Fraction(-4, 25)), (Fraction(12952, 625), Fraction(-447, 625)), (Fraction(0, 1), Fraction(-25, 1))]
+  u=-0.275689808433-0.352129421557i |u|sqrt(q)=1.000000000000
+  u=-0.275689808433+0.352129421557i |u|sqrt(q)=1.000000000000
+  u=+0.175849808433-0.411189548595i |u|sqrt(q)=1.000000000000
+  u=+0.175849808433+0.411189548595i |u|sqrt(q)=1.000000000000
+q=5 g=2 even=True max_radial_deviation=2.10843958864610464e-81 numpy_radial_deviation=2.220e-16 max_kappa=1.23377 max_np_to_80d=6.885e-16 max_relative_residual=9.879e-82
+  raw_Dirichlet_average=-25*u**5 + 2501*u**4/125 - 4*u**3/25 + 2596*u**2/625 - u/625 + 1; additional root u=1, |u|sqrt(q)=2.236067977500
+  seconds=0.268
+q=7 g=1 d=4 H=2058 completed_average=7*u**2 + 48*u/49 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(-1, 49)), (Fraction(300, 49), Fraction(-5, 49)), (Fraction(0, 1), Fraction(-7, 1))]
+  u=-0.069970845481-0.371431317527i |u|sqrt(q)=1.000000000000
+  u=-0.069970845481+0.371431317527i |u|sqrt(q)=1.000000000000
+q=7 g=1 even=True max_radial_deviation=0.0 numpy_radial_deviation=3.331e-16 max_kappa=1.20597 max_np_to_80d=3.464e-16 max_relative_residual=0.000e+00
+  raw_Dirichlet_average=-7*u**3 + 295*u**2/49 - u/49 + 1; additional root u=1, |u|sqrt(q)=2.645751311065
+  seconds=0.013
+q=7 g=2 d=6 H=100842 completed_average=49*u**4 + 2400*u**3/343 + 2442*u**2/343 + 2400*u/2401 + 1 A2_agrees=True
+  A2 (square,nonsquare) coefficients through raw degree d-1: [(Fraction(1, 1), Fraction(0, 1)), (Fraction(0, 1), Fraction(-1, 2401)), (Fraction(14706, 2401), Fraction(-12, 2401)), (Fraction(0, 1), Fraction(-6, 49)), (Fraction(102720, 2401), Fraction(-1871, 2401)), (Fraction(0, 1), Fraction(-49, 1))]
+  u=-0.226431864202-0.302631382594i |u|sqrt(q)=1.000000000000
+  u=-0.226431864202+0.302631382594i |u|sqrt(q)=1.000000000000
+  u=+0.155033042283-0.344705524553i |u|sqrt(q)=1.000000000000
+  u=+0.155033042283+0.344705524553i |u|sqrt(q)=1.000000000000
+q=7 g=2 even=True max_radial_deviation=0.0 numpy_radial_deviation=8.882e-16 max_kappa=1.16714 max_np_to_80d=1.071e-15 max_relative_residual=1.061e-81
+  raw_Dirichlet_average=-49*u**5 + 14407*u**4/343 - 6*u**3/49 + 14694*u**2/2401 - u/2401 + 1; additional root u=1, |u|sqrt(q)=2.645751311065
+  seconds=2.491
+ALL REQUESTED ENUMERATIONS AND INDEPENDENT A2 COMPARISONS PASS.
