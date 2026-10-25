@@ -2,6 +2,19 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-10-25: six astra lanes (three REFUTE reviews of the 2026-10-23 round, three new conjectures); IN PROGRESS
+
+Round directory `notes/astra-2026-10-25/` (`brief.md` binding; lanes `review-tower`, `review-jacobian`, `review-gauge`, `hhalf`,
+`census`, `shortrow`; each has `astra-brief.md`, writes `astra-proofs.md` incrementally, `progress.txt`, `checks/`). Launched
+06:06 UTC+1 2026-10-25. Worklog `docs/worklog/2026-10-25.md`. **If this entry still says IN PROGRESS, the session was cut off:**
+check `notes/astra-2026-10-25/*/astra.stdout` for `codex exit:`; a lane without it can be resumed with
+`scripts/astra_lane.sh notes/astra-2026-10-25/<lane>` (it resumes the session in `session.id`). Then land: read each
+`astra-proofs.md` closing sections, write the headlines here and in the worklog, commit. Nothing registered; gate untouched.
+The census lane needs `notes/astra-2026-10-25/census/sources/hkl-genus-6/` (git clone of github.com/junbolau/genus-6; gitignored).
+The venv `/tmp/claude-1000/-home-tobias-Projects-riemann-channel/venv-astra` (cypari2, python-flint) is recreated with
+`python3 -m venv … && pip install cypari2 python-flint`.
+
+
 ## Session 2026-10-23: eight astra lanes (six conjectures from the record, two quasi-RH digests); all finished; record only
 
 TJO: six ambitious directions from the whole repo, one `codex:gpt-6-astra` xhigh lane each; then two more to digest the
