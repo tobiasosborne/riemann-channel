@@ -1,0 +1,30 @@
+RECON q=7 D=1 h=0 S=54
+RECON q=7 D=2 h=0 S=24
+RECON q=7 D=3 h=0 S=1350
+RECON_STAGE q=7 h=0 rows=1 parity_even=False omitted_Euler_rows=0 metadata_and_FE_and_samples=PASS elapsed=1.677
+RECON q=7 D=1 h=1 S=294
+RECON q=7 D=2 h=1 S=1080
+RECON q=7 D=3 h=1 S=12828
+RECON_STAGE q=7 h=1 rows=7 parity_even=False omitted_Euler_rows=0 metadata_and_FE_and_samples=PASS elapsed=1.684
+RECON q=7 D=1 h=2 S=2058
+RECON q=7 D=2 h=2 S=11844
+RECON q=7 D=3 h=2 S=78774
+RECON_STAGE q=7 h=2 rows=49 parity_even=False omitted_Euler_rows=0 metadata_and_FE_and_samples=PASS elapsed=1.721
+RECON q=7 D=1 h=3 S=14406
+RECON q=7 D=2 h=3 S=86436
+RECON q=7 D=3 h=3 S=641214
+RECON_STAGE q=7 h=3 rows=343 parity_even=True omitted_Euler_rows=0 metadata_and_FE_and_samples=PASS elapsed=1.809
+RECONSTRUCTION PASS 7 seconds 1.8095458369998596
+RECON q=13 D=1 h=0 S=300
+RECON q=13 D=2 h=0 S=1728
+RECON q=13 D=3 h=0 S=300
+RECON_STAGE q=13 h=0 rows=1 parity_even=False omitted_Euler_rows=0 metadata_and_FE_and_samples=PASS elapsed=0.005
+RECON q=13 D=1 h=1 S=2028
+RECON q=13 D=2 h=1 S=23040
+RECON q=13 D=3 h=1 S=257784
+RECON_STAGE q=13 h=1 rows=13 parity_even=False omitted_Euler_rows=0 metadata_and_FE_and_samples=PASS elapsed=0.035
+RECON q=13 D=1 h=2 S=26364
+RECON q=13 D=2 h=2 S=318240
+RECON q=13 D=3 h=2 S=4244436
+RECON_STAGE q=13 h=2 rows=169 parity_even=False omitted_Euler_rows=0 metadata_and_FE_and_samples=PASS elapsed=0.466
+RECONSTRUCTION PASS 13 seconds 0.46589083600019876

@@ -1,0 +1,5 @@
+LOCAL_MASK_AUDIT q= 7 physical_rows= P^6 degrees=1.. 7 complex_coefficients= 49 PASS
+LOCAL_MASK_AUDIT q= 7 physical_rows= P^6*(P+2) degrees=1.. 7 complex_coefficients= 49 PASS
+LOCAL_MASK_AUDIT q= 13 physical_rows= P^6 degrees=1.. 5 complex_coefficients= 65 PASS
+LOCAL_MASK_AUDIT q= 13 physical_rows= P^6*(P+2) degrees=1.. 5 complex_coefficients= 65 PASS
+LOCAL_MASK_AUDIT_TOTAL 228 complex coefficients PASS

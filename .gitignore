@@ -44,3 +44,5 @@ notes/astra-2026-10-25/census/checks/ruled_nodes
 notes/astra-2026-10-25/census/checks/trigonal_search
 notes/astra-2026-10-25/census/checks/plane_nodes
 notes/astra-2026-10-25/review-average-canonical/checks/direct_average.bin
+notes/astra-2026-10-25/shortrow/checks/numba_cache/
+notes/astra-2026-10-25/shortrow/checks/numba_cache_q2/

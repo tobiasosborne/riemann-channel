@@ -1,0 +1,107 @@
+EXACT ARITHMETIC: F_q[t], integer pairs in Z[zeta_6], integer mean squares.
+Rows include zero and all leading coefficients; h means degree <=h, row count=q^(h+1).
+nu is the quadratic character of an explicitly printed irreducible cubic f.
+Direct h limits: q7 [2,3,4,5,4]; q13 [2,3,4,3,2] for D=1..5.
+All D=1..5 also use the EXACT complete-residue formula at h=2D-1 and h=2D.
+These long-row values do not test H-MS at h~D for D=4,5 at q13.
+
+FIELD q=7, generator=3, conductor f=x^3 + x + 1, nu(n)=(n/f)_2
+L coefficients (constant first), computed from characters= [1, 3, 7]
+D=1 squarefree_columns=7 A1=-3 formal_inverse_check=PASS
+DIRECT D=1 h=0 rows=7 S=54 S/q^(D+h)=54/7 ratio_per_row=54/49 beta=(log_q(S)-h)/D=2.049932289 beta_per_row=1.049932289
+DIRECT D=1 h=1 rows=49 S=294 S/q^(D+h)=6 ratio_per_row=6/7 beta=(log_q(S)-h)/D=1.920782221 beta_per_row=0.920782221
+DIRECT D=1 h=2 rows=343 S=2058 S/q^(D+h)=6 ratio_per_row=6/7 beta=(log_q(S)-h)/D=1.920782221 beta_per_row=0.920782221
+AMPLIFIER D=1: all 7 linear primes p, exact A_(p^6)=A1-removed PASS
+COMPLETE D=1 h=1 rows=49 weighted_diagonal=42 S=294 S/q^(D+h)=6 ratio_per_row=6/7 beta=1.920782221 beta_per_row=0.920782221
+COMPLETE D=1 h=2 rows=343 weighted_diagonal=42 S=2058 S/q^(D+h)=6 ratio_per_row=6/7 beta=1.920782221 beta_per_row=0.920782221
+D=2 squarefree_columns=42 A1=2 formal_inverse_check=PASS
+DIRECT D=2 h=0 rows=7 S=24 S/q^(D+h)=24/49 ratio_per_row=24/343 beta=(log_q(S)-h)/D=0.816598298 beta_per_row=0.316598298
+DIRECT D=2 h=1 rows=49 S=1080 S/q^(D+h)=1080/343 ratio_per_row=1080/2401 beta=(log_q(S)-h)/D=1.294717069 beta_per_row=0.794717069
+DIRECT D=2 h=2 rows=343 S=11844 S/q^(D+h)=1692/343 ratio_per_row=1692/2401 beta=(log_q(S)-h)/D=1.410074456 beta_per_row=0.910074456
+DIRECT D=2 h=3 rows=2401 S=86436 S/q^(D+h)=36/7 ratio_per_row=36/49 beta=(log_q(S)-h)/D=1.420782221 beta_per_row=0.920782221
+AMPLIFIER D=2: all 7 linear primes p, exact A_(p^6)=A1-removed PASS
+COMPLETE D=2 h=3 rows=2401 weighted_diagonal=1764 S=86436 S/q^(D+h)=36/7 ratio_per_row=36/49 beta=1.420782221 beta_per_row=0.920782221
+COMPLETE D=2 h=4 rows=16807 weighted_diagonal=1764 S=605052 S/q^(D+h)=36/7 ratio_per_row=36/49 beta=1.420782221 beta_per_row=0.920782221
+D=3 squarefree_columns=294 A1=15 formal_inverse_check=PASS
+DIRECT D=3 h=0 rows=7 S=1350 S/q^(D+h)=1350/343 ratio_per_row=1350/2401 beta=(log_q(S)-h)/D=1.234702413 beta_per_row=0.901369080
+DIRECT D=3 h=1 rows=49 S=12828 S/q^(D+h)=12828/2401 ratio_per_row=12828/16807 beta=(log_q(S)-h)/D=1.287054187 beta_per_row=0.953720853
+DIRECT D=3 h=2 rows=343 S=78774 S/q^(D+h)=78774/16807 ratio_per_row=78774/117649 beta=(log_q(S)-h)/D=1.264621250 beta_per_row=0.931287916
+DIRECT D=3 h=3 rows=2401 S=641214 S/q^(D+h)=13086/2401 ratio_per_row=13086/16807 beta=(log_q(S)-h)/D=1.290465217 beta_per_row=0.957131883
+DIRECT D=3 h=4 rows=16807 S=4238010 S/q^(D+h)=86490/16807 ratio_per_row=86490/117649 beta=(log_q(S)-h)/D=1.280628465 beta_per_row=0.947295132
+AMPLIFIER D=3: all 7 linear primes p, exact A_(p^6)=A1-removed PASS
+COMPLETE D=3 h=5 rows=117649 weighted_diagonal=87858 S=30135294 S/q^(D+h)=87858/16807 ratio_per_row=87858/117649 beta=1.283316680 beta_per_row=0.949983347
+COMPLETE D=3 h=6 rows=823543 weighted_diagonal=87858 S=210947058 S/q^(D+h)=87858/16807 ratio_per_row=87858/117649 beta=1.283316680 beta_per_row=0.949983347
+D=4 squarefree_columns=2058 A1=-59 formal_inverse_check=PASS
+DIRECT D=4 h=0 rows=7 S=20886 S/q^(D+h)=20886/2401 ratio_per_row=20886/16807 beta=(log_q(S)-h)/D=1.277915422 beta_per_row=1.027915422
+DIRECT D=4 h=1 rows=49 S=94518 S/q^(D+h)=94518/16807 ratio_per_row=94518/117649 beta=(log_q(S)-h)/D=1.221874945 beta_per_row=0.971874945
+DIRECT D=4 h=2 rows=343 S=568266 S/q^(D+h)=568266/117649 ratio_per_row=568266/823543 beta=(log_q(S)-h)/D=1.202332570 beta_per_row=0.952332570
+DIRECT D=4 h=3 rows=2401 S=4796166 S/q^(D+h)=4796166/823543 ratio_per_row=4796166/5764801 beta=(log_q(S)-h)/D=1.226366614 beta_per_row=0.976366614
+DIRECT D=4 h=4 rows=16807 S=28877436 S/q^(D+h)=4125348/823543 ratio_per_row=4125348/5764801 beta=(log_q(S)-h)/D=1.207009801 beta_per_row=0.957009801
+DIRECT D=4 h=5 rows=117649 S=211302504 S/q^(D+h)=4312296/823543 ratio_per_row=4312296/5764801 beta=(log_q(S)-h)/D=1.212703808 beta_per_row=0.962703808
+AMPLIFIER D=4: all 7 linear primes p, exact A_(p^6)=A1-removed PASS
+COMPLETE D=4 h=7 rows=5764801 weighted_diagonal=4296852 S=10316741652 S/q^(D+h)=613836/117649 ratio_per_row=613836/823543 beta=1.212242864 beta_per_row=0.962242864
+COMPLETE D=4 h=8 rows=40353607 weighted_diagonal=4296852 S=72217191564 S/q^(D+h)=613836/117649 ratio_per_row=613836/823543 beta=1.212242864 beta_per_row=0.962242864
+D=5 squarefree_columns=14406 A1=72 formal_inverse_check=PASS
+DIRECT D=5 h=0 rows=7 S=31104 S/q^(D+h)=31104/16807 ratio_per_row=31104/117649 beta=(log_q(S)-h)/D=1.063265096 beta_per_row=0.863265096
+DIRECT D=5 h=1 rows=49 S=494688 S/q^(D+h)=494688/117649 ratio_per_row=494688/823543 beta=(log_q(S)-h)/D=1.147614385 beta_per_row=0.947614385
+DIRECT D=5 h=2 rows=343 S=3036612 S/q^(D+h)=3036612/823543 ratio_per_row=3036612/5764801 beta=(log_q(S)-h)/D=1.134115333 beta_per_row=0.934115333
+DIRECT D=5 h=3 rows=2401 S=33478266 S/q^(D+h)=33478266/5764801 ratio_per_row=33478266/40353607 beta=(log_q(S)-h)/D=1.180802368 beta_per_row=0.980802368
+DIRECT D=5 h=4 rows=16807 S=208944348 S/q^(D+h)=208944348/40353607 ratio_per_row=208944348/282475249 beta=(log_q(S)-h)/D=1.169009567 beta_per_row=0.969009567
+AMPLIFIER D=5: all 7 linear primes p, exact A_(p^6)=A1-removed PASS
+COMPLETE D=5 h=9 rows=282475249 weighted_diagonal=210808584 S=3543059871288 S/q^(D+h)=4302216/823543 ratio_per_row=4302216/5764801 beta=1.169922517 beta_per_row=0.969922517
+COMPLETE D=5 h=10 rows=1977326743 weighted_diagonal=210808584 S=24801419099016 S/q^(D+h)=4302216/823543 ratio_per_row=4302216/5764801 beta=1.169922517 beta_per_row=0.969922517
+GAUSS exact cyclotomic checks=30 (D<=3); absorption and discriminant formula PASS
+COMPARISON STEP ONLY: zeros of L, AFTER all family calculations; mpmath 80 digits.
+root= (-0.214285714285714285714285714285714285714285714 - 0.311349924538619539445498713132829689938357423j) modulus= 0.377964473009227227214516536234180060815751312 polynomial_residual= 1.4908919e-81
+root= (-0.214285714285714285714285714285714285714285714 + 0.311349924538619539445498713132829689938357423j) modulus= 0.377964473009227227214516536234180060815751312 polynomial_residual= 1.4908919e-81
+Weil radius= 0.377964473009227227214516536234180060815751312 11/12 disk radius= 0.16800677551135922849052341247305441410534351
+Exact comparison certificate: L2=q: True quadratic discriminant= -19
+
+FIELD q=13, generator=2, conductor f=x^3 + x + 5, nu(n)=(n/f)_2
+L coefficients (constant first), computed from characters= [1, -5, 13]
+D=1 squarefree_columns=13 A1=5 formal_inverse_check=PASS
+DIRECT D=1 h=0 rows=13 S=300 S/q^(D+h)=300/13 ratio_per_row=300/169 beta=(log_q(S)-h)/D=2.223740776 beta_per_row=1.223740776
+DIRECT D=1 h=1 rows=169 S=2028 S/q^(D+h)=12 ratio_per_row=12/13 beta=(log_q(S)-h)/D=1.968793650 beta_per_row=0.968793650
+DIRECT D=1 h=2 rows=2197 S=26364 S/q^(D+h)=12 ratio_per_row=12/13 beta=(log_q(S)-h)/D=1.968793650 beta_per_row=0.968793650
+AMPLIFIER D=1: all 13 linear primes p, exact A_(p^6)=A1-removed PASS
+COMPLETE D=1 h=1 rows=169 weighted_diagonal=156 S=2028 S/q^(D+h)=12 ratio_per_row=12/13 beta=1.968793650 beta_per_row=0.968793650
+COMPLETE D=1 h=2 rows=2197 weighted_diagonal=156 S=26364 S/q^(D+h)=12 ratio_per_row=12/13 beta=1.968793650 beta_per_row=0.968793650
+D=2 squarefree_columns=156 A1=12 formal_inverse_check=PASS
+DIRECT D=2 h=0 rows=13 S=1728 S/q^(D+h)=1728/169 ratio_per_row=1728/2197 beta=(log_q(S)-h)/D=1.453190475 beta_per_row=0.953190475
+DIRECT D=2 h=1 rows=169 S=23040 S/q^(D+h)=23040/2197 ratio_per_row=23040/28561 beta=(log_q(S)-h)/D=1.458125817 beta_per_row=0.958125817
+DIRECT D=2 h=2 rows=2197 S=318240 S/q^(D+h)=24480/2197 ratio_per_row=24480/28561 beta=(log_q(S)-h)/D=1.469943716 beta_per_row=0.969943716
+DIRECT D=2 h=3 rows=28561 S=4112784 S/q^(D+h)=144/13 ratio_per_row=144/169 beta=(log_q(S)-h)/D=1.468793650 beta_per_row=0.968793650
+AMPLIFIER D=2: all 13 linear primes p, exact A_(p^6)=A1-removed PASS
+COMPLETE D=2 h=3 rows=28561 weighted_diagonal=24336 S=4112784 S/q^(D+h)=144/13 ratio_per_row=144/169 beta=1.468793650 beta_per_row=0.968793650
+COMPLETE D=2 h=4 rows=371293 weighted_diagonal=24336 S=53466192 S/q^(D+h)=144/13 ratio_per_row=144/169 beta=1.468793650 beta_per_row=0.968793650
+D=3 squarefree_columns=2028 A1=-5 formal_inverse_check=PASS
+DIRECT D=3 h=0 rows=13 S=300 S/q^(D+h)=300/2197 ratio_per_row=300/28561 beta=(log_q(S)-h)/D=0.741246925 beta_per_row=0.407913592
+DIRECT D=3 h=1 rows=169 S=257784 S/q^(D+h)=257784/28561 ratio_per_row=257784/371293 beta=(log_q(S)-h)/D=1.285915960 beta_per_row=0.952582627
+DIRECT D=3 h=2 rows=2197 S=4244436 S/q^(D+h)=4244436/371293 ratio_per_row=4244436/4826809 beta=(log_q(S)-h)/D=1.316623889 beta_per_row=0.983290555
+DIRECT D=3 h=3 rows=28561 S=54675660 S/q^(D+h)=4205820/371293 ratio_per_row=4205820/4826809 beta=(log_q(S)-h)/D=1.315436124 beta_per_row=0.982102791
+DIRECT D=3 h=4 rows=371293 S=701860380 S/q^(D+h)=4153020/371293 ratio_per_row=4153020/4826809 beta=(log_q(S)-h)/D=1.313794311 beta_per_row=0.980460978
+AMPLIFIER D=3: all 13 linear primes p, exact A_(p^6)=A1-removed PASS
+COMPLETE D=3 h=5 rows=4826809 weighted_diagonal=4134924 S=9084428028 S/q^(D+h)=4134924/371293 ratio_per_row=4134924/4826809 beta=1.313226811 beta_per_row=0.979893477
+COMPLETE D=3 h=6 rows=62748517 weighted_diagonal=4134924 S=118097564364 S/q^(D+h)=4134924/371293 ratio_per_row=4134924/4826809 beta=1.313226811 beta_per_row=0.979893477
+D=4 squarefree_columns=26364 A1=-181 formal_inverse_check=PASS
+DIRECT D=4 h=0 rows=13 S=393132 S/q^(D+h)=393132/28561 ratio_per_row=393132/371293 beta=(log_q(S)-h)/D=1.255570668 beta_per_row=1.005570668
+DIRECT D=4 h=1 rows=169 S=4122156 S/q^(D+h)=4122156/371293 ratio_per_row=4122156/4826809 beta=(log_q(S)-h)/D=1.234618677 beta_per_row=0.984618677
+DIRECT D=4 h=2 rows=2197 S=56631756 S/q^(D+h)=56631756/4826809 ratio_per_row=56631756/62748517 beta=(log_q(S)-h)/D=1.240003208 beta_per_row=0.990003208
+DIRECT D=4 h=3 rows=28561 S=721223688 S/q^(D+h)=721223688/62748517 ratio_per_row=721223688/815730721 beta=(log_q(S)-h)/D=1.237998304 beta_per_row=0.987998304
+AMPLIFIER D=4: all 13 linear primes p, exact A_(p^6)=A1-removed PASS
+COMPLETE D=4 h=7 rows=815730721 weighted_diagonal=698538672 S=19950963010992 S/q^(D+h)=53733744/4826809 ratio_per_row=53733744/62748517 beta=1.234883351 beta_per_row=0.984883351
+COMPLETE D=4 h=8 rows=10604499373 weighted_diagonal=698538672 S=259362519142896 S/q^(D+h)=53733744/4826809 ratio_per_row=53733744/62748517 beta=1.234883351 beta_per_row=0.984883351
+D=5 squarefree_columns=342732 A1=-840 formal_inverse_check=PASS
+DIRECT D=5 h=0 rows=13 S=8467200 S/q^(D+h)=8467200/371293 ratio_per_row=8467200/4826809 beta=(log_q(S)-h)/D=1.243822642 beta_per_row=1.043822642
+DIRECT D=5 h=1 rows=169 S=53682048 S/q^(D+h)=53682048/4826809 ratio_per_row=53682048/62748517 beta=(log_q(S)-h)/D=1.187831627 beta_per_row=0.987831627
+DIRECT D=5 h=2 rows=2197 S=703737648 S/q^(D+h)=703737648/62748517 ratio_per_row=703737648/815730721 beta=(log_q(S)-h)/D=1.188484866 beta_per_row=0.988484866
+AMPLIFIER D=5: all 13 linear primes p, exact A_(p^6)=A1-removed PASS
+COMPLETE D=5 h=9 rows=137858491849 weighted_diagonal=118065422592 S=43836864950451456 S/q^(D+h)=698611968/62748517 ratio_per_row=698611968/815730721 beta=1.187914862 beta_per_row=0.987914862
+COMPLETE D=5 h=10 rows=1792160394037 weighted_diagonal=118065422592 S=569879244355868928 S/q^(D+h)=698611968/62748517 ratio_per_row=698611968/815730721 beta=1.187914862 beta_per_row=0.987914862
+GAUSS exact cyclotomic checks=37 (D<=3); absorption and discriminant formula PASS
+COMPARISON STEP ONLY: zeros of L, AFTER all family calculations; mpmath 80 digits.
+root= (0.192307692307692307692307692307692307692307692 - 0.199852016257947380022397654789139119262631375j) modulus= 0.27735009811261456100917086672849968817317666 polynomial_residual= 4.6122116e-82
+root= (0.192307692307692307692307692307692307692307692 + 0.199852016257947380022397654789139119262631375j) modulus= 0.27735009811261456100917086672849968817317666 polynomial_residual= 4.6122116e-82
+Weil radius= 0.27735009811261456100917086672849968817317666 11/12 disk radius= 0.0952544470693494701733937876423811017272717454
+Exact comparison certificate: L2=q: True quadratic discriminant= -27
+PASS. Short-row H-MS remains unproved; finite tables are not asymptotic estimates.

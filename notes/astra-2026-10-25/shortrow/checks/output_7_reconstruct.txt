@@ -1,0 +1,43 @@
+RECON q=7 D=1 h=0 S=54
+RECON q=7 D=2 h=0 S=24
+RECON q=7 D=3 h=0 S=1350
+RECON q=7 D=4 h=0 S=20886
+RECON q=7 D=5 h=0 S=31104
+RECON q=7 D=6 h=0 S=232854
+RECON_STAGE q=7 h=0 rows=1 parity_even=False metadata_and_FE_and_samples=PASS elapsed=0.133
+RECON q=7 D=1 h=1 S=294
+RECON q=7 D=2 h=1 S=1080
+RECON q=7 D=3 h=1 S=12828
+RECON q=7 D=4 h=1 S=94518
+RECON q=7 D=5 h=1 S=494688
+RECON q=7 D=6 h=1 S=4530672
+RECON_STAGE q=7 h=1 rows=7 parity_even=False metadata_and_FE_and_samples=PASS elapsed=0.149
+RECON q=7 D=1 h=2 S=2058
+RECON q=7 D=2 h=2 S=11844
+RECON q=7 D=3 h=2 S=78774
+RECON q=7 D=4 h=2 S=568266
+RECON q=7 D=5 h=2 S=3036612
+RECON q=7 D=6 h=2 S=27465210
+RECON_STAGE q=7 h=2 rows=49 parity_even=False metadata_and_FE_and_samples=PASS elapsed=0.240
+RECON q=7 D=1 h=3 S=14406
+RECON q=7 D=2 h=3 S=86436
+RECON q=7 D=3 h=3 S=641214
+RECON q=7 D=4 h=3 S=4796166
+RECON q=7 D=5 h=3 S=33478266
+RECON q=7 D=6 h=3 S=251476158
+RECON_STAGE q=7 h=3 rows=343 parity_even=True metadata_and_FE_and_samples=PASS elapsed=0.341
+RECON q=7 D=1 h=4 S=100842
+RECON q=7 D=2 h=4 S=605052
+RECON q=7 D=3 h=4 S=4238010
+RECON q=7 D=4 h=4 S=28877436
+RECON q=7 D=5 h=4 S=208944348
+RECON q=7 D=6 h=4 S=1500817896
+RECON_STAGE q=7 h=4 rows=2401 parity_even=False metadata_and_FE_and_samples=PASS elapsed=0.805
+RECON q=7 D=1 h=5 S=705894
+RECON q=7 D=2 h=5 S=4235364
+RECON q=7 D=3 h=5 S=30135294
+RECON q=7 D=4 h=5 S=211302504
+RECON q=7 D=5 h=5 S=1485729210
+RECON q=7 D=6 h=5 S=10555782234
+RECON_STAGE q=7 h=5 rows=16807 parity_even=False metadata_and_FE_and_samples=PASS elapsed=2.668
+RECONSTRUCTION PASS 7 seconds 2.668051599999899
