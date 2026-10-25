@@ -1,0 +1,13 @@
+PASS jac_fluxes.py
+PASS jac_hyperelliptic.py
+PASS jac_howe.py
+PASS jac_trigonal.py
+PASS jac_hyperelliptic_f3.py
+PASS jac_genus6.py
+PASS jac_verify.py
+17 Ramanujan orbits / 176 switching classes; 13 count-positive orbits / 145 switching classes
+2a7bac45442d226577db9b8ae88dc456a1f68524a73f2f88a884326e5f753e99  output_fluxes.json.txt
+379f04ede9cb92f526bca04f8737d5e0d84a880fe1976adda627ae69147eb4c1  output_genus6.json.txt
+e58ccd53bbf919887256cc815c15da0941d4d2d9e2b27a16d45aa170462790e9  output_hyperelliptic.json.txt
+d8efca787760586e1aa422336e33ea523fdadad50353f46da69a3d5c6f954bbe  output_hyperelliptic_f3.json.txt
+b036aae3b28e4b75dc506c83d6e7a465273a13b0bca78491f28eeedf0363397f  output_trigonal.json.txt

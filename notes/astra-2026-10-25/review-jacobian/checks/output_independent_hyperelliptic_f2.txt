@@ -1,0 +1,5 @@
+raw_smooth_equations=49152 y_shift_classes=1536 full_isomorphism_classes=264
+orbit_size_histogram=[(96, 16), (192, 248)]
+distinct_L_polynomials=217 K4_matches=0
+N1_histogram=[(0, 9), (1, 32), (2, 58), (3, 66), (4, 58), (5, 32), (6, 9)] N2_histogram=[(3, 5), (4, 24), (5, 46), (6, 44), (7, 31), (8, 36), (9, 48), (10, 30)]
+All 264 canonical representatives, point counts and L-polynomials equal original JSON: PASS

@@ -1,0 +1,29 @@
+plane quintic coefficient dimension=21
+ k=1 survivors={1: 573440, 6: 573440}
+ k=2 survivors={1: 33600, 6: 33600}
+ k=3 survivors={1: 9688, 6: 9688}
+ k=4 survivors={1: 672, 6: 924}
+ k=5 survivors={1: 504, 6: 924}
+ k=6 survivors={1: 0, 6: 0}
+ plane quintic K33:1 smooth matching equations=0
+ plane quintic K33:6 smooth matching equations=0
+bidegree 3,4 coefficient dimension=20
+ k=1 survivors={1: 172032, 6: 172032}
+ k=2 survivors={1: 16965, 6: 16965}
+ k=3 survivors={1: 4518, 6: 4518}
+ k=4 survivors={1: 666, 6: 162}
+ k=5 survivors={1: 342, 6: 162}
+ k=6 survivors={1: 72, 6: 0}
+ bidegree 3,4 K33:1 smooth matching equations=0
+ bidegree 3,4 K33:6 smooth matching equations=0
+Maroni 2 coefficient dimension=20
+ k=1 survivors={1: 188416, 6: 188416}
+ k=2 survivors={1: 13056, 6: 13056}
+ k=3 survivors={1: 3648, 6: 3648}
+ k=4 survivors={1: 336, 6: 72}
+ k=5 survivors={1: 144, 6: 72}
+ k=6 survivors={1: 0, 6: 0}
+ Maroni 2 K33:1 smooth matching equations=0
+ Maroni 2 K33:6 smooth matching equations=0
+NO MATCH IN THESE THREE FAMILIES K33:1
+NO MATCH IN THESE THREE FAMILIES K33:6

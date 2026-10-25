@@ -1,0 +1,47 @@
+K4 saturated-order unit U=A+(I-A^2)/2=[[-1, -2, 1, 1], [-2, -1, 1, 1], [1, 1, -1, 0], [1, 1, 0, -1]]
+K4 det U=1; det(Omega_U)=1; integral, alternating and compatible: PASS
+K4 values at (1,-1,sqrt5,-sqrt5): 1,-1,-2+sqrt5,-2-sqrt5
+U polynomial=-x**2/2 + x + 1/2; not in Z[A]
+K4 obstruction a=0 mod4, a^2-5b^2=-1 mod16: solutions=[]
+(+/-1,+/-2) rational-unit sign congruences: solutions=[]
+(0,+/-sqrt5) central unit norm mod5=1; opposite signs require -1=4: impossible
+(+/-sqrt3) negative-norm unit: impossible mod3
+Q(sqrt33) least positive norm-one unit=23+4sqrt33=19+8theta; small solutions=[(23, 4)]
+K5 ordinary: epsilon residues at theta=1 mod8 and theta=-1 mod6 prohibit (1,-1): []
+cube1 square-class certificate: discr cubic=592; norm(lambda^2-8)=-23; unique common mod23 root=[10]
+cube1 extra rational discriminant=-7; 7 and23 unramified in real S3 splitting field: PASS
+cube9 square-class certificate: D1*D2=17, nonsquare in Q(sqrt2): PASS
+K4:1 NO in Z[F,V]: K4-mod16
+  distinct real factors=[x - 1, x + 1, x**2 - 5] pairwise absolute resultants=[[0, 2, 4], [2, 0, 4], [4, 4, 0]] resultant-one partitions=[]
+Petersen:1 NO in Z[F,V]: rational-mod3,4
+  distinct real factors=[x - 2, x + 1, x + 2, x - 1, x**3 - 7*x - 2] pairwise absolute resultants=[[0, 3, 4, 1, 8], [3, 0, 1, 2, 4], [4, 1, 0, 3, 4], [1, 2, 3, 0, 8], [8, 4, 4, 8, 0]] resultant-one partitions=[]
+Petersen:6 NO in Z[F,V]: K4-mod16
+  distinct real factors=[x - 1, x + 1, x, x**2 - x - 4, x**2 - 5, x**2 + x - 4] pairwise absolute resultants=[[0, 2, 1, 4, 4, 2], [2, 0, 1, 2, 4, 4], [1, 1, 0, 4, 5, 4], [4, 2, 4, 0, 4, 16], [4, 4, 5, 4, 0, 4], [2, 4, 4, 16, 4, 0]] resultant-one partitions=[]
+Petersen:10 NO in Z[F,V]: rational-mod3,4
+  distinct real factors=[x - 1, x + 2, x - 2, x + 1, x**3 - 7*x + 2] pairwise absolute resultants=[[0, 3, 1, 2, 4], [3, 0, 4, 1, 8], [1, 4, 0, 3, 4], [2, 1, 3, 0, 8], [4, 8, 4, 8, 0]] resultant-one partitions=[]
+Petersen:22 NO in Z[F,V]: gluing-mod5
+  distinct real factors=[x, x**2 - 5] pairwise absolute resultants=[[0, 5], [5, 0]] resultant-one partitions=[]
+K33:1 OPEN nonordinary polarization/duality normalization
+  distinct real factors=[x, x**2 - x - 4, x**2 + x - 4] pairwise absolute resultants=[[0, 4, 4], [4, 0, 16], [4, 16, 0]] resultant-one partitions=[]
+K33:6 NO in Z[F,V]: rational-mod3,4
+  distinct real factors=[x - 1, x + 1, x - 2, x + 2] pairwise absolute resultants=[[0, 2, 1, 3], [2, 0, 3, 1], [1, 3, 0, 4], [3, 1, 4, 0]] resultant-one partitions=[]
+cube:1 YES for a compatible embedding: u=F+V; det A=1
+  distinct real factors=[x - 1, x + 1, x**3 - x**2 - 5*x + 1, x**3 + x**2 - 5*x - 1] pairwise absolute resultants=[[0, 2, 4, 4], [2, 0, 4, 4], [4, 4, 0, 128], [4, 4, 128, 0]] resultant-one partitions=[]
+cube:3 NO in Z[F,V]: sqrt3-mod3
+  distinct real factors=[x**2 - 2*x - 1, x**2 + 2*x - 1, x**2 - 3] pairwise absolute resultants=[[0, 16, 8], [16, 0, 8], [8, 8, 0]] resultant-one partitions=[]
+cube:5 NO in Z[F,V]: K4-mod16
+  distinct real factors=[x - 1, x + 1, x**2 - 5] pairwise absolute resultants=[[0, 2, 4], [2, 0, 4], [4, 4, 0]] resultant-one partitions=[]
+cube:9 YES for a compatible embedding: u=F+V; det A=1
+  distinct real factors=[x**2 - 2*x - 1, x**2 + 2*x - 1] pairwise absolute resultants=[[0, 16], [16, 0]] resultant-one partitions=[]
+cube:23 NO in Z[F,V]: sqrt3-mod3
+  distinct real factors=[x**2 - 3] pairwise absolute resultants=[[0]] resultant-one partitions=[]
+K5:1 NO in Z[F,V]: sqrt33-unit-congruence
+  distinct real factors=[x - 1, x + 1, x**2 - x - 8] pairwise absolute resultants=[[0, 2, 8], [2, 0, 6], [8, 6, 0]] resultant-one partitions=[]
+K5:3 OPEN nonordinary polarization/duality normalization
+  distinct real factors=[x - 3, x + 1, x**2 + x - 4] pairwise absolute resultants=[[0, 4, 8], [4, 0, 4], [8, 4, 0]] resultant-one partitions=[]
+K5:11 NO in Z[F,V]: sqrt33-unit-congruence
+  distinct real factors=[x + 1, x - 1, x**2 + x - 8] pairwise absolute resultants=[[0, 2, 8], [2, 0, 6], [8, 6, 0]] resultant-one partitions=[]
+K5:12 OPEN nonordinary polarization/duality normalization
+  distinct real factors=[x + 3, x - 1, x**2 - x - 4] pairwise absolute resultants=[[0, 4, 8], [4, 0, 4], [8, 4, 0]] resultant-one partitions=[]
+K5:13 NO in Z[F,V]: gluing-mod5
+  distinct real factors=[x, x**2 - 5] pairwise absolute resultants=[[0, 5], [5, 0]] resultant-one partitions=[]

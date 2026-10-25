@@ -1,0 +1,122 @@
+[
+  {
+    "quadric": 3,
+    "mask": 4299,
+    "C": "T**3 + T**2*X + T**2*Z + T*X**2 + T*Y*Z + Y**3"
+  },
+  {
+    "quadric": 3,
+    "mask": 5603,
+    "C": "T**3 + T**2*X + T**2*Z + T*X**2 + T*X*Z + X*Y*Z + Y**3 + Y**2*Z"
+  },
+  {
+    "quadric": 3,
+    "mask": 8139,
+    "C": "T**3 + T**2*X + T**2*Z + T*X**2 + T*X*Y + T*X*Z + T*Y*Z + X*Y**2 + X*Y*Z + Y**3"
+  },
+  {
+    "quadric": 3,
+    "mask": 12745,
+    "C": "T**3 + T**2*X + T*X**2 + T*X*Z + T*Y*Z + X**2*Z + Y**3"
+  },
+  {
+    "quadric": 3,
+    "mask": 14305,
+    "C": "T**3 + T**2*X + T*X**2 + T*X*Y + T*X*Z + X**2*Z + X*Y*Z + Y**3 + Y**2*Z"
+  },
+  {
+    "quadric": 3,
+    "mask": 15037,
+    "C": "T**3 + T**2*X + T**2*Y + T*X**2 + T*X*Y + T*Y**2 + T*Y*Z + X**2*Z + X*Y**2 + Y**2*Z"
+  },
+  {
+    "quadric": 3,
+    "mask": 22687,
+    "C": "T**3 + T**2*X + T**2*Y + T**2*Z + T*X**2 + T*Y**2 + T*Y*Z + X**2*Y + X*Y**2"
+  },
+  {
+    "quadric": 3,
+    "mask": 22935,
+    "C": "T**3 + T**2*X + T**2*Y + T**2*Z + T*X**2 + T*X*Z + T*Y**2 + X**2*Y + X*Y**2"
+  },
+  {
+    "quadric": 3,
+    "mask": 23455,
+    "C": "T**3 + T**2*X + T**2*Y + T**2*Z + T*X**2 + T*X*Y + T*X*Z + T*Y**2 + T*Y*Z + X**2*Y + X*Y**2"
+  },
+  {
+    "quadric": 3,
+    "mask": 29621,
+    "C": "T**3 + T**2*X + T**2*Y + T*X**2 + T*X*Y + T*X*Z + T*Y**2 + X**2*Y + X**2*Z + Y**2*Z"
+  },
+  {
+    "quadric": 3,
+    "mask": 31433,
+    "C": "T**3 + T**2*X + T*X**2 + T*X*Y + T*Y*Z + X**2*Y + X**2*Z + X*Y**2 + Y**3"
+  },
+  {
+    "quadric": 3,
+    "mask": 32189,
+    "C": "T**3 + T**2*X + T**2*Y + T*X**2 + T*X*Z + T*Y**2 + T*Y*Z + X**2*Y + X**2*Z + X*Y**2 + X*Y*Z + Y**2*Z"
+  },
+  {
+    "quadric": 3,
+    "mask": 33047,
+    "C": "T**3 + T**2*Y + T**2*Z + T*X*Z + T*Y**2 + X**3"
+  },
+  {
+    "quadric": 3,
+    "mask": 33085,
+    "C": "T**3 + T**2*Y + T*X*Z + T*Y**2 + T*Y*Z + X**3 + Y**2*Z"
+  },
+  {
+    "quadric": 3,
+    "mask": 34121,
+    "C": "T**3 + T*X*Z + T*Y*Z + X**3 + X*Y*Z + Y**3"
+  },
+  {
+    "quadric": 3,
+    "mask": 34147,
+    "C": "T**3 + T**2*Z + T*X*Z + X**3 + X*Y*Z + Y**3 + Y**2*Z"
+  },
+  {
+    "quadric": 3,
+    "mask": 42015,
+    "C": "T**3 + T**2*Y + T**2*Z + T*Y**2 + T*Y*Z + X**3 + X**2*Z + X*Y*Z"
+  },
+  {
+    "quadric": 3,
+    "mask": 42059,
+    "C": "T**3 + T**2*Z + T*Y*Z + X**3 + X**2*Z + X*Y*Z + Y**3"
+  },
+  {
+    "quadric": 3,
+    "mask": 42557,
+    "C": "T**3 + T**2*Y + T*X*Y + T*Y**2 + T*Y*Z + X**3 + X**2*Z + X*Y*Z + Y**2*Z"
+  },
+  {
+    "quadric": 3,
+    "mask": 44617,
+    "C": "T**3 + T*X*Y + T*Y*Z + X**3 + X**2*Z + X*Y**2 + X*Y*Z + Y**3"
+  },
+  {
+    "quadric": 3,
+    "mask": 50975,
+    "C": "T**3 + T**2*Y + T**2*Z + T*X*Y + T*X*Z + T*Y**2 + T*Y*Z + X**3 + X**2*Y + X*Y*Z"
+  },
+  {
+    "quadric": 3,
+    "mask": 51041,
+    "C": "T**3 + T*X*Y + T*X*Z + X**3 + X**2*Y + X*Y*Z + Y**3 + Y**2*Z"
+  },
+  {
+    "quadric": 3,
+    "mask": 52021,
+    "C": "T**3 + T**2*Y + T*X*Y + T*X*Z + T*Y**2 + X**3 + X**2*Y + X*Y**2 + Y**2*Z"
+  },
+  {
+    "quadric": 3,
+    "mask": 52043,
+    "C": "T**3 + T**2*Z + T*X*Y + T*X*Z + T*Y*Z + X**3 + X**2*Y + X*Y**2 + Y**3"
+  }
+]

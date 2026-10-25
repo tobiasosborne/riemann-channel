@@ -1,0 +1,68 @@
+{
+  "fields": [
+    {
+      "k": 1,
+      "modulus": 3,
+      "count": 3,
+      "singular": []
+    },
+    {
+      "k": 2,
+      "modulus": 7,
+      "count": 9,
+      "singular": []
+    },
+    {
+      "k": 3,
+      "modulus": 13,
+      "count": 9,
+      "singular": []
+    },
+    {
+      "k": 4,
+      "modulus": 31,
+      "count": 29,
+      "singular": []
+    },
+    {
+      "k": 5,
+      "modulus": 61,
+      "count": 33,
+      "singular": []
+    },
+    {
+      "k": 6,
+      "modulus": 117,
+      "count": 69,
+      "singular": []
+    },
+    {
+      "k": 7,
+      "modulus": 253,
+      "count": 129,
+      "singular": []
+    },
+    {
+      "k": 8,
+      "modulus": 505,
+      "count": 285,
+      "singular": []
+    }
+  ],
+  "N": [
+    3,
+    9,
+    9,
+    29,
+    33,
+    69,
+    129,
+    285
+  ],
+  "P": "16*u**8 + 8*u**6 + 5*u**4 + 2*u**2 + 1",
+  "bezout": [
+    "z**3 + z**2",
+    "z**5 + z**3 + 1",
+    "1"
+  ]
+}

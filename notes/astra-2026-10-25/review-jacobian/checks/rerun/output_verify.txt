@@ -1,0 +1,27 @@
+K4 independent cone-parametrization counts k1..8=[3, 9, 9, 29, 33, 69, 129, 285]
+K4 witness smooth over algebraic closure on all four charts: PASS
+K5:1 direct (x,y) point counts=[4, 20, 4, 68, 244]; Newton L-polynomial matches: PASS
+K5:3 direct (x,y) point counts=[4, 20, 16, 100, 284]; Newton L-polynomial matches: PASS
+K5:11 direct (x,y) point counts=[4, 20, 52, 68, 244]; Newton L-polynomial matches: PASS
+K5:12 direct (x,y) point counts=[4, 20, 40, 100, 204]; Newton L-polynomial matches: PASS
+K5:13 direct (x,y) point counts=[4, 20, 28, 132, 244]; Newton L-polynomial matches: PASS
+K4:1 rank blocks=[2, 2, 4]; integral splitting index=16; restricted Omega determinants=[4, 4, 16]
+Petersen:22 rank blocks=[8, 12]; integral splitting index=15625; restricted Omega determinants=[15625, 15625]
+K5:13 rank blocks=[2, 8]; integral splitting index=25; restricted Omega determinants=[25, 25]
+K4:1 cycles(length:total,negative,signedsum)={3: (4, 2, 0), 4: (3, 2, -1), 5: (0, 0, 0)}
+Petersen:1 cycles(length:total,negative,signedsum)={3: (0, 0, 0), 4: (0, 0, 0), 5: (12, 4, 4)}
+Petersen:6 cycles(length:total,negative,signedsum)={3: (0, 0, 0), 4: (0, 0, 0), 5: (12, 6, 0)}
+Petersen:10 cycles(length:total,negative,signedsum)={3: (0, 0, 0), 4: (0, 0, 0), 5: (12, 8, -4)}
+Petersen:22 cycles(length:total,negative,signedsum)={3: (0, 0, 0), 4: (0, 0, 0), 5: (12, 6, 0)}
+K33:1 cycles(length:total,negative,signedsum)={3: (0, 0, 0), 4: (9, 4, 1), 5: (0, 0, 0)}
+K33:6 cycles(length:total,negative,signedsum)={3: (0, 0, 0), 4: (9, 6, -3), 5: (0, 0, 0)}
+cube:1 cycles(length:total,negative,signedsum)={3: (0, 0, 0), 4: (6, 2, 2), 5: (0, 0, 0)}
+cube:3 cycles(length:total,negative,signedsum)={3: (0, 0, 0), 4: (6, 4, -2), 5: (0, 0, 0)}
+cube:5 cycles(length:total,negative,signedsum)={3: (0, 0, 0), 4: (6, 4, -2), 5: (0, 0, 0)}
+cube:9 cycles(length:total,negative,signedsum)={3: (0, 0, 0), 4: (6, 2, 2), 5: (0, 0, 0)}
+cube:23 cycles(length:total,negative,signedsum)={3: (0, 0, 0), 4: (6, 6, -6), 5: (0, 0, 0)}
+K5:1 cycles(length:total,negative,signedsum)={3: (10, 3, 4), 4: (15, 6, 3), 5: (12, 6, 0)}
+K5:3 cycles(length:total,negative,signedsum)={3: (10, 4, 2), 4: (15, 8, -1), 5: (12, 8, -4)}
+K5:11 cycles(length:total,negative,signedsum)={3: (10, 7, -4), 4: (15, 6, 3), 5: (12, 6, 0)}
+K5:12 cycles(length:total,negative,signedsum)={3: (10, 6, -2), 4: (15, 8, -1), 5: (12, 4, 4)}
+K5:13 cycles(length:total,negative,signedsum)={3: (10, 5, 0), 4: (15, 10, -5), 5: (12, 6, 0)}

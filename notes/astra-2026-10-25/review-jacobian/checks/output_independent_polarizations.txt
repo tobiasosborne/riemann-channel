@@ -1,0 +1,30 @@
+K4 A² mod2 = [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
+K4 U=[[-1, -2, 1, 1], [-2, -1, 1, 1], [1, 1, -1, 0], [1, 1, 0, -1]] U_inverse=[[1, 0, 1, 1], [0, 1, 1, 1], [1, 1, 1, 2], [1, 1, 2, 1]]
+K4 repaired form: alternating, compatible, unimodular; positive H leading minors=[14, 52, 56, 16, 184, 1092, 1974, 441]
+K4 unique degree<4 repair polynomial=(1+2x-x²)/2; half-integral, hence outside Z[A].
+K4 full residue ring modulo16: admissible unit/sign candidates=0
+rational +/-1,+/-2 unit/sign value tuples=[]
+0,sqrt5: possible f(0)^2 mod5=[1]; required norm(-1) mod5=4
+sqrt3: possible squares mod3=[0, 1]; negative norm requires2
+sqrt33 continued fraction=[5, [1, 2, 1, 10]]; first norm+1 convergent=(23, 4)
+sqrt33 unit residues (sign,parity,at1 mod8,at-1 mod6)=[(-1, 0, 7, 5), (-1, 1, 5, 1), (1, 0, 1, 1), (1, 1, 3, 5)]
+NO K4:1: required real factors verified; k4
+NO Petersen:1: required real factors verified; rational
+NO Petersen:6: required real factors verified; k4
+NO Petersen:10: required real factors verified; rational
+NO Petersen:22: required real factors verified; zero5
+NO K33:6: required real factors verified; rational
+NO cube:3: required real factors verified; sqrt3
+NO cube:5: required real factors verified; k4
+NO cube:23: required real factors verified; sqrt3
+NO K5:1: required real factors verified; k5
+NO K5:11: required real factors verified; k5mirror
+NO K5:13: required real factors verified; zero5
+NO certificate count=12
+cube1 real cubic discriminant=592
+cube1 cubic mod23=(x - 10)*(x**2 + 9*x - 7)
+cube1 norm(lambda²-8)=-23; gcd mod23=x - 10
+cube1 primes7,23 unramified in real splitting field; discriminants have disjoint odd supports at conjugate primes above23 and at7.
+cube9 D1,D2 totally negative, product17; 17 nonsquare in Q(sqrt2).
+cube:1 det A=1; ordinary middle coefficient=1; U=A integral unit.
+cube:9 det A=1; ordinary middle coefficient=65; U=A integral unit.

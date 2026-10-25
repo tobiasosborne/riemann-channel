@@ -1,0 +1,13 @@
+K5:1 PARI W(x)=x^10 + 5*x^8 - 8*x^7 + 9*x^6 - 40*x^5 + 27*x^4 - 72*x^3 + 135*x^2 + 243; P(u) low-to-high=[1, 0, 5, -8, 9, -40, 27, -72, 135, 0, 243]; MATCH
+K5:3 PARI W(x)=x^10 + 5*x^8 - 4*x^7 + 17*x^6 - 12*x^5 + 51*x^4 - 36*x^3 + 135*x^2 + 243; P(u) low-to-high=[1, 0, 5, -4, 17, -12, 51, -36, 135, 0, 243]; MATCH
+K5:11 PARI W(x)=x^10 + 5*x^8 + 8*x^7 + 9*x^6 + 40*x^5 + 27*x^4 + 72*x^3 + 135*x^2 + 243; P(u) low-to-high=[1, 0, 5, 8, 9, 40, 27, 72, 135, 0, 243]; MATCH
+K5:12 PARI W(x)=x^10 + 5*x^8 + 4*x^7 + 17*x^6 + 12*x^5 + 51*x^4 + 36*x^3 + 135*x^2 + 243; P(u) low-to-high=[1, 0, 5, 4, 17, 12, 51, 36, 135, 0, 243]; MATCH
+K5:13 PARI W(x)=x^10 + 5*x^8 + 25*x^6 + 75*x^4 + 135*x^2 + 243; P(u) low-to-high=[1, 0, 5, 0, 25, 0, 75, 0, 135, 0, 243]; MATCH
+degree<9 residues with every F9 value a nonzero square=512
+N1=4,N2=20 equations=10368; singular=192; smooth PARI computations=10176
+K5:1 independent matching equations=6; complete set matches original
+K5:3 independent matching equations=42; complete set matches original
+K5:11 independent matching equations=6; complete set matches original
+K5:12 independent matching equations=42; complete set matches original
+K5:13 independent matching equations=24; complete set matches original
+Search covers all 2*3^12=1062882 degree-12 equations by unique quotient/remainder; degree 11 cannot have N2=20.

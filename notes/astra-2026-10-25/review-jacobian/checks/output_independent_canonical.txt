@@ -1,0 +1,16 @@
+Q1 k=1 direct surviving cubic classes=10752
+Q1 k=2 direct surviving cubic classes=2400
+Q1 k=3 direct surviving cubic classes=480
+Q1 k=4 direct surviving cubic classes=0
+Q1: smooth matches=0
+Q2 k=1 direct surviving cubic classes=20480
+Q2 k=2 direct surviving cubic classes=5580
+Q2 k=3 direct surviving cubic classes=1320
+Q2 k=4 direct surviving cubic classes=240
+Q2: smooth matches=0
+Q3 k=1 direct surviving cubic classes=17920
+Q3 k=2 direct surviving cubic classes=3240
+Q3 k=3 direct surviving cubic classes=996
+Q3 k=4 direct surviving cubic classes=72
+Q3: smooth matches=24
+TOTAL independent smooth matching cubic quotient classes=24

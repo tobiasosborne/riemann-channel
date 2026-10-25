@@ -1,0 +1,12 @@
+K4 k=1 field_modulus=3 projective_points=3 singular_points=0
+K4 k=2 field_modulus=7 projective_points=9 singular_points=0
+K4 k=3 field_modulus=13 projective_points=9 singular_points=0
+K4 k=4 field_modulus=31 projective_points=29 singular_points=0
+K4 k=5 field_modulus=61 projective_points=33 singular_points=0
+K4 k=6 field_modulus=117 projective_points=69 singular_points=0
+K4 k=7 field_modulus=253 projective_points=129 singular_points=0
+K4 k=8 field_modulus=505 projective_points=285 singular_points=0
+GLOBAL SMOOTHNESS Bezout: (z**3 + z**2) * (z**2*(z**4 + z**2 + 1)) + (z**5 + z**3 + 1) * (z**4 + z**3 + 1) = 1 mod 2
+X=0: Q forces Z=0; Y=1 gives T^3=1 and nonzero partial C_T=T^2. Vertex excluded.
+COUNTS N1..8=[3, 9, 9, 29, 33, 69, 129, 285]
+P(u)=16*u**8 + 8*u**6 + 5*u**4 + 2*u**2 + 1

@@ -1,0 +1,22 @@
+plane quintic k=1 prefix survivors (mask1,mask6)=[573440, 573440]
+plane quintic k=2 prefix survivors (mask1,mask6)=[33600, 33600]
+plane quintic k=3 prefix survivors (mask1,mask6)=[9688, 9688]
+plane quintic k=4 prefix survivors (mask1,mask6)=[672, 924]
+plane quintic k=5 prefix survivors (mask1,mask6)=[504, 924]
+plane quintic k=6 prefix survivors (mask1,mask6)=[0, 0]
+plane quintic: final raw matches=0, singular witnesses=0, smooth matches=0
+bidegree 3,4 k=1 prefix survivors (mask1,mask6)=[172032, 172032]
+bidegree 3,4 k=2 prefix survivors (mask1,mask6)=[16965, 16965]
+bidegree 3,4 k=3 prefix survivors (mask1,mask6)=[4518, 4518]
+bidegree 3,4 k=4 prefix survivors (mask1,mask6)=[666, 162]
+bidegree 3,4 k=5 prefix survivors (mask1,mask6)=[342, 162]
+bidegree 3,4 k=6 prefix survivors (mask1,mask6)=[72, 0]
+bidegree 3,4: final raw matches=72, singular witnesses=72, smooth matches=0
+Singularity witness degree histogram={1: 72, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+Maroni 2 k=1 prefix survivors (mask1,mask6)=[188416, 188416]
+Maroni 2 k=2 prefix survivors (mask1,mask6)=[13056, 13056]
+Maroni 2 k=3 prefix survivors (mask1,mask6)=[3648, 3648]
+Maroni 2 k=4 prefix survivors (mask1,mask6)=[336, 72]
+Maroni 2 k=5 prefix survivors (mask1,mask6)=[144, 72]
+Maroni 2 k=6 prefix survivors (mask1,mask6)=[0, 0]
+Maroni 2: final raw matches=0, singular witnesses=0, smooth matches=0

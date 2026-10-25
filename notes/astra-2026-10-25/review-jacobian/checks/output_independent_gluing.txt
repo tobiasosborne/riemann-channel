@@ -1,0 +1,3 @@
+K4:1 PARI integer-kernel ranks=[2, 2, 4]; splitting index=16; restricted Omega determinants=[4, 4, 16]
+Petersen:22 PARI integer-kernel ranks=[8, 12]; splitting index=15625; restricted Omega determinants=[15625, 15625]
+K5:13 PARI integer-kernel ranks=[2, 8]; splitting index=25; restricted Omega determinants=[25, 25]
