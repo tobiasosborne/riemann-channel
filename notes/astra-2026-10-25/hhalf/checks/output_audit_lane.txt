@@ -1,0 +1,22 @@
+prior_source_unchanged_copy=avg_extended.py sha256=8afc7eb6c5047c0cec6cd2dddfbf0787f133e1bb6280f3538349a40b9211eea7
+prior_source_unchanged_copy=audit_identities.py sha256=030014d4eb20a20d57b3489c26a54562a2857e679032c33474bee0041d8d2e62
+prior_source_unchanged_copy=avg_hyperelliptic.py sha256=a3d60d839d2ce5baa38f9a9fdc40c748f96aad8143cca36d2c71978cfde6dd82
+prior_source_unchanged_copy=avg_cubic.py sha256=3e7c1ef25b3d24b6318771aca0bd6ee1912c477a859cb1c4ce433b0990746105
+prior_source_unchanged_copy=summarize_outputs.py sha256=1b743d85f4ecf89a9f7dc69a5a45ad2da72febd401aeab5bde59237638b6f443
+prior_source_unchanged_copy=common.py sha256=3d4c4003f6c94712682483b2ebf4181072ed63ebc641286d7248c06eb16dd8f4
+prior_source_unchanged_copy=avg_level.py sha256=305d951a618a289f0b9e0a93126db1e6731edcbcf887dd785cd1e3a3f30fa348
+prior_hyperelliptic_rerun exact_lines_compared=45 identical=True completed=True
+prior_extended_rerun exact_lines_compared=80 identical=True completed=True
+prior_cubic_rerun exact_lines_compared=24 identical=True completed=True
+prior_level_rerun exact_lines_compared=50 identical=True completed=True
+prior_audit_rerun exact_lines_compared=13 identical=True completed=True
+independent_F9 g=1 D_degree=3 squarefree_count=648 direct_Euler_coefficients=[Fraction(1, 1), Fraction(0, 1), Fraction(9, 1)] agrees_dual=True
+independent_F9 g=2 D_degree=5 squarefree_count=52488 direct_Euler_coefficients=[Fraction(1, 1), Fraction(0, 1), Fraction(5912, 729)] agrees_dual=True
+optimized_dual_vs_original_dual_series=24 exact_full_series_agreements=True
+primitive_L_Euler_vs_direct_Jacobi q=3 degree=7 checked=100 exact=True
+primitive_L_Euler_vs_direct_Jacobi q=3 degree=8 checked=100 exact=True
+primitive_L_Euler_vs_direct_Jacobi q=5 degree=5 checked=100 exact=True
+primitive_L_Euler_vs_direct_Jacobi q=7 degree=5 checked=100 exact=True
+odd_raw_scaling_cancellation_vs_original_A2=18 exact=True
+large_series_full_family_functional_equation_checks=78 all=True; degree_vanishing_all=True
+ALL PRIOR EXACT OUTPUTS REPRODUCED; F9 DIRECT ENUMERATION AGREES; ALL SOURCES PARSE.

@@ -1,0 +1,144 @@
+q=3 d=2 f=x**2 + 1 nontrivial_count=7 raw_sum=7 - 3*u rational_function_check=True direct_orthogonality_check=True
+  u=+2.333333333333+0.000000000000i |u|sqrt(q)=4.041451884327
+all nontrivial raw max_radial_deviation=3.04145188432738035 numpy_radial_deviation=3.041e+00 max_kappa=2 max_np_to_80d=2.099e-16 max_relative_residual=5.271e-82
+  sum_of_completed_members=7
+all nontrivial completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=2 count=1 even=True raw_average=1 - u completed_average=1
+order 2 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=4 count=2 even=True raw_average=1 - u completed_average=1
+order 4 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=8 count=4 even=False raw_average=1 completed_average=1
+order 8 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+q=3 d=3 f=x**3 + 2*x + 1 nontrivial_count=25 raw_sum=-9*u**2 - 3*u + 25 rational_function_check=True direct_orthogonality_check=True
+  u=-1.841645936853+0.000000000000i |u|sqrt(q)=3.189824332183
+  u=+1.508312603520+0.000000000000i |u|sqrt(q)=2.612474062993
+all nontrivial raw max_radial_deviation=2.1898243321830146 numpy_radial_deviation=2.190e+00 max_kappa=1.0995 max_np_to_80d=1.824e-15 max_relative_residual=4.317e-82
+  sum_of_completed_members=9*u + 25
+  u=-2.777777777778+0.000000000000i |u|sqrt(q)=4.811252243247
+all nontrivial completed max_radial_deviation=3.81125224324688137 numpy_radial_deviation=3.811e+00 max_kappa=2 max_np_to_80d=4.614e-16 max_relative_residual=0.000e+00
+  exact_order=2 count=1 even=False raw_average=3*u**2 - 3*u + 1 completed_average=3*u**2 - 3*u + 1
+  u=+0.500000000000-0.288675134595i |u|sqrt(q)=1.000000000000
+  u=+0.500000000000+0.288675134595i |u|sqrt(q)=1.000000000000
+order 2 completed max_radial_deviation=0.0 numpy_radial_deviation=2.220e-16 max_kappa=3.73205 max_np_to_80d=3.386e-16 max_relative_residual=0.000e+00
+  exact_order=13 count=12 even=True raw_average=-3*u**2/4 - u/4 + 1 completed_average=3*u/4 + 1
+  u=-1.333333333333+0.000000000000i |u|sqrt(q)=2.309401076759
+order 13 completed max_radial_deviation=1.30940107675850306 numpy_radial_deviation=1.309e+00 max_kappa=2 max_np_to_80d=3.103e-16 max_relative_residual=0.000e+00
+  exact_order=26 count=12 even=False raw_average=-u**2/4 + u/4 + 1 completed_average=-u**2/4 + u/4 + 1
+  u=-1.561552812809+0.000000000000i |u|sqrt(q)=2.704688810487
+  u=+2.561552812809+0.000000000000i |u|sqrt(q)=4.436739618056
+order 26 completed max_radial_deviation=3.43673961805586365 numpy_radial_deviation=3.437e+00 max_kappa=1.24254 max_np_to_80d=4.863e-16 max_relative_residual=1.054e-81
+q=5 d=2 f=x**2 + 2 nontrivial_count=23 raw_sum=23 - 5*u rational_function_check=True direct_orthogonality_check=True
+  u=+4.600000000000+0.000000000000i |u|sqrt(q)=10.285912696499
+all nontrivial raw max_radial_deviation=9.2859126964990326 numpy_radial_deviation=9.286e+00 max_kappa=2 max_np_to_80d=2.108e-16 max_relative_residual=0.000e+00
+  sum_of_completed_members=23
+all nontrivial completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=2 count=1 even=True raw_average=1 - u completed_average=1
+order 2 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=3 count=2 even=True raw_average=1 - u completed_average=1
+order 3 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=4 count=2 even=False raw_average=2*u + 1 completed_average=2*u + 1
+  u=-0.500000000000+0.000000000000i |u|sqrt(q)=1.118033988750
+order 4 completed max_radial_deviation=0.118033988749894848 numpy_radial_deviation=1.180e-01 max_kappa=2 max_np_to_80d=5.432e-17 max_relative_residual=0.000e+00
+  exact_order=6 count=2 even=True raw_average=1 - u completed_average=1
+order 6 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=8 count=4 even=False raw_average=1 completed_average=1
+order 8 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=12 count=4 even=False raw_average=1 - u completed_average=1 - u
+  u=+1.000000000000+0.000000000000i |u|sqrt(q)=2.236067977500
+order 12 completed max_radial_deviation=1.2360679774997897 numpy_radial_deviation=1.236e+00 max_kappa=2 max_np_to_80d=1.086e-16 max_relative_residual=0.000e+00
+  exact_order=24 count=8 even=False raw_average=1 completed_average=1
+order 24 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+q=5 d=3 f=x**3 + x + 1 nontrivial_count=123 raw_sum=-25*u**2 - 5*u + 123 rational_function_check=True direct_orthogonality_check=True
+  u=-2.320360331117+0.000000000000i |u|sqrt(q)=5.188483432673
+  u=+2.120360331117+0.000000000000i |u|sqrt(q)=4.741269837173
+all nontrivial raw max_radial_deviation=4.18848343267254268 numpy_radial_deviation=4.188e+00 max_kappa=1.04504 max_np_to_80d=1.955e-15 max_relative_residual=1.054e-81
+  sum_of_completed_members=25*u + 123
+  u=-4.920000000000+0.000000000000i |u|sqrt(q)=11.001454449299
+all nontrivial completed max_radial_deviation=10.0014544492989653 numpy_radial_deviation=1.000e+01 max_kappa=2 max_np_to_80d=3.181e-16 max_relative_residual=0.000e+00
+  exact_order=2 count=1 even=False raw_average=5*u**2 + 3*u + 1 completed_average=5*u**2 + 3*u + 1
+  u=-0.300000000000-0.331662479036i |u|sqrt(q)=1.000000000000
+  u=-0.300000000000+0.331662479036i |u|sqrt(q)=1.000000000000
+order 2 completed max_radial_deviation=1.05421979432305232e-81 numpy_radial_deviation=2.220e-16 max_kappa=2.25293 max_np_to_80d=3.539e-16 max_relative_residual=2.234e-83
+  exact_order=4 count=2 even=False raw_average=3*u**2 - 2*u + 1 completed_average=3*u**2 - 2*u + 1
+  u=+0.333333333333-0.471404520791i |u|sqrt(q)=1.290994448736
+  u=+0.333333333333+0.471404520791i |u|sqrt(q)=1.290994448736
+order 4 completed max_radial_deviation=0.290994448735805628 numpy_radial_deviation=2.910e-01 max_kappa=1.93185 max_np_to_80d=3.399e-16 max_relative_residual=3.343e-82
+  exact_order=31 count=30 even=True raw_average=-5*u**2/6 - u/6 + 1 completed_average=5*u/6 + 1
+  u=-1.200000000000+0.000000000000i |u|sqrt(q)=2.683281573000
+order 31 completed max_radial_deviation=1.68328157299974764 numpy_radial_deviation=1.683e+00 max_kappa=2 max_np_to_80d=4.155e-17 max_relative_residual=0.000e+00
+  exact_order=62 count=30 even=False raw_average=-u**2/6 - u/10 + 1 completed_average=-u**2/6 - u/10 + 1
+  u=-2.767792535851+0.000000000000i |u|sqrt(q)=6.188972257778
+  u=+2.167792535851+0.000000000000i |u|sqrt(q)=4.847331471279
+order 62 completed max_radial_deviation=5.18897225777849481 numpy_radial_deviation=5.189e+00 max_kappa=1.12157 max_np_to_80d=5.614e-16 max_relative_residual=4.128e-82
+  exact_order=124 count=60 even=False raw_average=-u**2/10 + u/15 + 1 completed_average=-u**2/10 + u/15 + 1
+  u=-2.846464004723+0.000000000000i |u|sqrt(q)=6.364887010067
+  u=+3.513130671390+0.000000000000i |u|sqrt(q)=7.855598995067
+order 124 completed max_radial_deviation=6.85559899506711048 numpy_radial_deviation=6.856e+00 max_kappa=1.10483 max_np_to_80d=1.023e-15 max_relative_residual=0.000e+00
+q=7 d=2 f=x**2 + 1 nontrivial_count=47 raw_sum=47 - 7*u rational_function_check=True direct_orthogonality_check=True
+  u=+6.714285714286+0.000000000000i |u|sqrt(q)=17.764330231434
+all nontrivial raw max_radial_deviation=16.7643302314336797 numpy_radial_deviation=1.676e+01 max_kappa=2 max_np_to_80d=1.059e-15 max_relative_residual=0.000e+00
+  sum_of_completed_members=47
+all nontrivial completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=2 count=1 even=True raw_average=1 - u completed_average=1
+order 2 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=3 count=2 even=False raw_average=1 - 2*u completed_average=1 - 2*u
+  u=+0.500000000000+0.000000000000i |u|sqrt(q)=1.322875655532
+order 3 completed max_radial_deviation=0.322875655532295295 numpy_radial_deviation=3.229e-01 max_kappa=2 max_np_to_80d=1.592e-16 max_relative_residual=0.000e+00
+  exact_order=4 count=2 even=True raw_average=1 - u completed_average=1
+order 4 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=6 count=2 even=False raw_average=2*u + 1 completed_average=2*u + 1
+  u=-0.500000000000+0.000000000000i |u|sqrt(q)=1.322875655532
+order 6 completed max_radial_deviation=0.322875655532295295 numpy_radial_deviation=3.229e-01 max_kappa=2 max_np_to_80d=1.592e-16 max_relative_residual=0.000e+00
+  exact_order=8 count=4 even=True raw_average=1 - u completed_average=1
+order 8 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=12 count=4 even=False raw_average=2*u + 1 completed_average=2*u + 1
+  u=-0.500000000000+0.000000000000i |u|sqrt(q)=1.322875655532
+order 12 completed max_radial_deviation=0.322875655532295295 numpy_radial_deviation=3.229e-01 max_kappa=2 max_np_to_80d=1.592e-16 max_relative_residual=0.000e+00
+  exact_order=16 count=8 even=False raw_average=1 completed_average=1
+order 16 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=24 count=8 even=False raw_average=1 - u completed_average=1 - u
+  u=+1.000000000000+0.000000000000i |u|sqrt(q)=2.645751311065
+order 24 completed max_radial_deviation=1.64575131106459059 numpy_radial_deviation=1.646e+00 max_kappa=2 max_np_to_80d=3.184e-16 max_relative_residual=0.000e+00
+  exact_order=48 count=16 even=False raw_average=1 completed_average=1
+order 48 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+q=7 d=3 f=x**3 + 2 nontrivial_count=341 raw_sum=-49*u**2 - 7*u + 341 rational_function_check=True direct_orthogonality_check=True
+  u=-2.710421885987+0.000000000000i |u|sqrt(q)=7.171102258389
+  u=+2.567564743130+0.000000000000i |u|sqrt(q)=6.793137785380
+all nontrivial raw max_radial_deviation=6.1711022583890842 numpy_radial_deviation=6.171e+00 max_kappa=1.02707 max_np_to_80d=4.619e-16 max_relative_residual=1.054e-81
+  sum_of_completed_members=49*u + 341
+  u=-6.959183673469+0.000000000000i |u|sqrt(q)=18.412269328021
+all nontrivial completed max_radial_deviation=17.4122693280209264 numpy_radial_deviation=1.741e+01 max_kappa=2 max_np_to_80d=3.711e-15 max_relative_residual=0.000e+00
+  exact_order=2 count=1 even=False raw_average=7*u**2 - u + 1 completed_average=7*u**2 - u + 1
+  u=+0.071428571429-0.371153744479i |u|sqrt(q)=1.000000000000
+  u=+0.071428571429+0.371153744479i |u|sqrt(q)=1.000000000000
+order 2 completed max_radial_deviation=0.0 numpy_radial_deviation=0.000e+00 max_kappa=1.2108 max_np_to_80d=4.797e-17 max_relative_residual=8.867e-82
+  exact_order=3 count=2 even=True raw_average=-2*u**2 + u + 1 completed_average=2*u + 1
+  u=-0.500000000000+0.000000000000i |u|sqrt(q)=1.322875655532
+order 3 completed max_radial_deviation=0.322875655532295295 numpy_radial_deviation=3.229e-01 max_kappa=2 max_np_to_80d=1.592e-16 max_relative_residual=0.000e+00
+  exact_order=6 count=2 even=False raw_average=u**2 - 4*u + 1 completed_average=u**2 - 4*u + 1
+  u=+0.267949192431+0.000000000000i |u|sqrt(q)=0.708926927173
+  u=+3.732050807569+0.000000000000i |u|sqrt(q)=9.874078317085
+order 6 completed max_radial_deviation=8.87407831708502119 numpy_radial_deviation=8.874e+00 max_kappa=2.3094 max_np_to_80d=4.515e-15 max_relative_residual=7.062e-83
+  exact_order=9 count=6 even=False raw_average=1 completed_average=1
+order 9 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=18 count=6 even=False raw_average=1 completed_average=1
+order 18 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=19 count=18 even=True raw_average=-5*u**2/3 + 2*u/3 + 1 completed_average=5*u/3 + 1
+  u=-0.600000000000+0.000000000000i |u|sqrt(q)=1.587450786639
+order 19 completed max_radial_deviation=0.587450786638754354 numpy_radial_deviation=5.875e-01 max_kappa=2 max_np_to_80d=3.099e-17 max_relative_residual=0.000e+00
+  exact_order=38 count=18 even=False raw_average=2*u**2/3 - u + 1 completed_average=2*u**2/3 - u + 1
+  u=+0.750000000000-0.968245836552i |u|sqrt(q)=3.240370349204
+  u=+0.750000000000+0.968245836552i |u|sqrt(q)=3.240370349204
+order 38 completed max_radial_deviation=2.24037034920393012 numpy_radial_deviation=2.240e+00 max_kappa=2.03951 max_np_to_80d=5.613e-16 max_relative_residual=9.815e-83
+  exact_order=57 count=36 even=True raw_average=-5*u**2/12 - 7*u/12 + 1 completed_average=5*u/12 + 1
+  u=-2.400000000000+0.000000000000i |u|sqrt(q)=6.349803146555
+order 57 completed max_radial_deviation=5.34980314655501742 numpy_radial_deviation=5.350e+00 max_kappa=2 max_np_to_80d=1.240e-16 max_relative_residual=0.000e+00
+  exact_order=114 count=36 even=False raw_average=-7*u**2/12 + 3*u/4 + 1 completed_average=-7*u**2/12 + 3*u/4 + 1
+  u=-0.815755561190+0.000000000000i |u|sqrt(q)=2.158286345527
+  u=+2.101469846904+0.000000000000i |u|sqrt(q)=5.559966602610
+order 114 completed max_radial_deviation=4.55996660261012227 numpy_radial_deviation=4.560e+00 max_kappa=1.44073 max_np_to_80d=6.095e-16 max_relative_residual=5.271e-82
+  exact_order=171 count=108 even=False raw_average=1 completed_average=1
+order 171 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+  exact_order=342 count=108 even=False raw_average=1 completed_average=1
+order 342 completed constant polynomial; degree=0; no roots (degree collapse if positive degree expected)
+ALL LEVEL ORTHOGONALITY, RATIONAL-FUNCTION AND EXACT-ORDER CHECKS PASS.

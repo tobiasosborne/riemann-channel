@@ -1,0 +1,27 @@
+q=3 g=1 n=1 mean_normalized_trace=0 square=0 nonsquare=0 enumeration_agrees=True
+q=3 g=1 n=2 mean_normalized_trace=-10/9 square=-7/9 nonsquare=-1/3 enumeration_agrees=True
+q=3 g=1 [z^2]mean_det=1 [z^2]exp_mean_log=5/9 mean_trace1_squared=8/9; discrepancy=4/9
+q=3 g=2 n=1 mean_normalized_trace=0 square=0 nonsquare=0 enumeration_agrees=True
+q=3 g=2 n=2 mean_normalized_trace=-20/27 square=-61/81 nonsquare=1/81 enumeration_agrees=True
+q=3 g=2 n=3 mean_normalized_trace=0 square=0 nonsquare=0 enumeration_agrees=True
+q=3 g=2 n=4 mean_normalized_trace=-316/243 square=-208/243 nonsquare=-4/9 enumeration_agrees=True
+q=3 g=2 [z^2]mean_det=62/81 [z^2]exp_mean_log=10/27 mean_trace1_squared=64/81; discrepancy=32/81
+q=3 g=3 n=1 mean_normalized_trace=0 square=0 nonsquare=0 enumeration_agrees=True
+q=3 g=3 n=2 mean_normalized_trace=-550/729 square=-547/729 nonsquare=-1/243 enumeration_agrees=True
+q=3 g=3 n=3 mean_normalized_trace=0 square=0 nonsquare=0 enumeration_agrees=True
+q=3 g=3 n=4 mean_normalized_trace=-1858/2187 square=-1858/2187 nonsquare=0 enumeration_agrees=True
+q=3 g=3 n=5 mean_normalized_trace=0 square=0 nonsquare=0 enumeration_agrees=True
+q=3 g=3 n=6 mean_normalized_trace=-9310/6561 square=-6175/6561 nonsquare=-1045/2187 enumeration_agrees=True
+q=3 g=3 [z^2]mean_det=551/729 [z^2]exp_mean_log=275/729 mean_trace1_squared=184/243; discrepancy=92/243
+q=5 g=1 n=1 mean_normalized_trace=0 square=0 nonsquare=0 enumeration_agrees=True
+q=5 g=1 n=2 mean_normalized_trace=-26/25 square=-21/25 nonsquare=-1/5 enumeration_agrees=True
+q=5 g=1 [z^2]mean_det=1 [z^2]exp_mean_log=13/25 mean_trace1_squared=24/25; discrepancy=12/25
+q=5 g=2 n=1 mean_normalized_trace=0 square=0 nonsquare=0 enumeration_agrees=True
+q=5 g=2 n=2 mean_normalized_trace=-104/125 square=-521/625 nonsquare=1/625 enumeration_agrees=True
+q=5 g=2 n=3 mean_normalized_trace=0 square=0 nonsquare=0 enumeration_agrees=True
+q=5 g=2 n=4 mean_normalized_trace=-3676/3125 square=-2926/3125 nonsquare=-6/25 enumeration_agrees=True
+q=5 g=2 [z^2]mean_det=524/625 [z^2]exp_mean_log=52/125 mean_trace1_squared=528/625; discrepancy=264/625
+q=7 g=1 n=1 mean_normalized_trace=0 square=0 nonsquare=0 enumeration_agrees=True
+q=7 g=1 n=2 mean_normalized_trace=-50/49 square=-43/49 nonsquare=-1/7 enumeration_agrees=True
+q=7 g=1 [z^2]mean_det=1 [z^2]exp_mean_log=25/49 mean_trace1_squared=48/49; discrepancy=24/49
+ALL EXACT PRIME-POWER FORMULAS MATCH ENUMERATION. SINGLE TRACES DO NOT DETERMINE THE AVERAGED DETERMINANT.

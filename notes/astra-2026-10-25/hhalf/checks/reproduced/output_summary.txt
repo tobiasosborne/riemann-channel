@@ -1,0 +1,17 @@
+All five computation outputs end in success; all Python sources parse.
+Requested odd-degree grid: 9 exact brute-force/A2 agreements; total squarefree D enumerated = 787332
+requested_odd_grid_max_radial_deviation=1.054219794323052e-81
+requested_odd_grid_numpy_radial_deviation=1.776e-15
+requested_odd_grid_max_kappa=1
+requested_odd_grid_max_np_to_80d=1.913e-15
+requested_odd_grid_max_relative_residual=1.391e-81
+Exact odd-degree certificates: q=3 g=1..12; q=5 g=1..8; q=7 g=1..6 (26 cases).
+All 26 also have unhalved b_0 >= ... >= b_floor(g/2) > 0, checked as exact rational inequalities.
+Exact even-degree Sturm certificates: q=3 g=1..6; q=5,7 g=1..4 (14 cases).
+blind_check q=3 g=1 even=False max_radial_deviation=0.0 numpy_radial_deviation=3.331e-16 max_kappa=1 max_np_to_80d=3.331e-16 max_relative_residual=0.000e+00
+blind_check q=5 g=2 even=False max_radial_deviation=1.05421979432305232e-81 numpy_radial_deviation=6.661e-16 max_kappa=0.781589 max_np_to_80d=7.626e-16 max_relative_residual=7.763e-82
+blind_exact Lbar_3_1=1+3u^2; Lbar_5_2=1+(524/125)u^2+25u^4; exact maximum radial deviation = 0 for both.
+blind_counterexample cubic q=7 d=3 completed average=1+u; root=-1; normalized radius=sqrt(7)=2.645751311065.
+blind_counterexample cubic q=7 d=4 average=1+7u^3; normalized radius=7^(1/6)=1.383087554268.
+blind_counterexample level q=3 d=2 raw sum=7-3u; root=7/3; normalized radius=4.041451884327.
+ALL SUMMARY AND SAVED-CERTIFICATE AUDITS PASS.

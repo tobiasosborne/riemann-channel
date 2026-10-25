@@ -1,0 +1,10 @@
+  q=3 m=13 A=0 grouped_jobs=42385
+  q=3 m=13 A=1 grouped_jobs=89817
+  q=3 m=13 A=2 grouped_jobs=144909
+  q=3 m=13 A=3 grouped_jobs=199808
+  q=3 m=13 A=4 grouped_jobs=258150
+  q=3 m=13 A=5 grouped_jobs=316413
+  q=3 m=13 A=6 grouped_jobs=375188
+  q=3 m=13 A=7 grouped_jobs=435294
+  q=3 m=13 A=8 grouped_jobs=496085
+UNFINISHED: m=13 was interrupted before the final coefficient series; no genus 26 or 27 certificate is claimed.
