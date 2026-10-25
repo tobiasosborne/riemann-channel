@@ -2,18 +2,64 @@
 
 # HANDOFF — riemann-channel
 
-## Session 2026-10-25: six astra lanes (three REFUTE reviews of the 2026-10-23 round, three new conjectures); IN PROGRESS
+## Session 2026-10-25: nine astra lanes — five REFUTE reviews of the whole 2026-10-23 round, four new conjectures; all finished; record only
 
-Round directory `notes/astra-2026-10-25/` (`brief.md` binding; lanes `review-tower`, `review-jacobian`, `review-gauge`, `hhalf`,
-`census`, `shortrow`; each has `astra-brief.md`, writes `astra-proofs.md` incrementally, `progress.txt`, `checks/`). Launched
-06:06 UTC+1 2026-10-25. Worklog `docs/worklog/2026-10-25.md`. **If this entry still says IN PROGRESS, the session was cut off:**
-check `notes/astra-2026-10-25/*/astra.stdout` for `codex exit:`; a lane without it can be resumed with
-`scripts/astra_lane.sh notes/astra-2026-10-25/<lane>` (it resumes the session in `session.id`). Then land: read each
-`astra-proofs.md` closing sections, write the headlines here and in the worklog, commit. Nothing registered; gate untouched.
-The census lane needs `notes/astra-2026-10-25/census/sources/hkl-genus-6/` (git clone of github.com/junbolau/genus-6; gitignored).
-The venv `/tmp/claude-1000/-home-tobias-Projects-riemann-channel/venv-astra` (cypari2, python-flint) is recreated with
-`python3 -m venv … && pip install cypari2 python-flint`.
+TJO: exploit the codex quota before its reset; up to six astras concurrently; use astras to review; stop launching at the reset
+and land what was obtained; keep the work recoverable. Worklog `docs/worklog/2026-10-25.md` (one entry per lane, with numbers).
+Round directory `notes/astra-2026-10-25/` (`brief.md` binding, incorporating the 2026-10-23 rules and adding the REFUTE review
+protocol with `VERDICT <alias>: …` lines; lanes `review-tower`, `review-jacobian`, `review-gauge`, `review-average-canonical`,
+`review-qrh`, `hhalf`, `census`, `irreps`, `shortrow`; each has `astra-proofs.md`, `progress.txt`, `checks/`). Nine lanes launched
+06:06–06:36 UTC+1, all exited 0 by 07:02 (19–55 min), no resumes; each landed in its own commit as it finished. The HKL genus-6
+census clone (`census/sources/hkl-genus-6/`, 4.6 GB) and compiled search binaries are gitignored. **Nothing registered; gate
+untouched; no record page edited.** All reviews are SAME-FAMILY (`codex:gpt-6-astra` reviewing `codex:gpt-6-astra`); the gate
+still wants a second-family review before promotion.
 
+**Reviews of the 2026-10-23 round: 0 INVALID anywhere.** T: 13 VALID (the pending PARI rerun is done, 80/80 pairing values PARI =
+FLINT; new D = −84 four-genus and D = −32 isolated-level tests). J: 16 VALID. H + K: 31 VALID. A + C: 26 VALID, 1 MINOR (wording of the
+finite-certificate sentence), 1 UNVERIFIED (= the open all-genus row). Q1 + Q2: 32 VALID, 3 MINOR (Q1's 7/8 synopsis must read
+P_x = (2 − 8x/9)(1 − x); a stray comma; the Cureton–Thorner theorem numbering lacks local provenance), 5 UNVERIFIED (= the five
+OPEN proposals). Every record correction listed under 2026-10-23 below is endorsed (AGREE or AGREE-WITH-CHANGE with wording in
+each review's closing section); additional ones: the graph Schur moment is a trace of M/√q, not A/√q; tutorial §6d's unconditional
+endpoint sentence needs the parabolic-endpoint qualification; lane U's Tate "iff N | q^k − 1" needs exp(G_k[N]); delete lane U's
+CM "not its conjugate".
+
+**New results (all PROVED unless stated, none reviewed).**
+- `census`: **neither Ramanujan K₃,₃ flux class is a Jacobian class over F₂** (complete Huang–Kedlaya–Lau census, 38,327 classes,
+  cross-validated against the six strata; P₁ = 1 + 3T² + 4T⁴ + 8T⁶ + 16T⁸ + 48T¹⁰ + 64T¹², P₆ = 1 + 3T² + 12T⁴ + 24T⁶ + 48T⁸ +
+  48T¹⁰ + 64T¹²), so **J2′ (nonnegative a_k ⟹ Jacobian class) is REFUTED**; **Petersen mask 22 IS a Jacobian class** (genus-10
+  y³ = x¹² + x⁹ + x⁶ + x³ + 1, despite its supersingular factor); prism mask 6 (plane quintic) too, while K₃,₃ mask 6 shares its
+  genus, 2-rank and first five counts: Jacobian-ness is not determined by rank and five counts. Cube 3, 5 and Petersen 6, 10 OPEN.
+- `hhalf`: **RH on average for the hyperelliptic ensemble over F_q(t) for every odd prime power q and every genus g ≤ 7**, both
+  conductor parities, by universal symbolic certificates on exact degree-reduced formulas; exact certificates to g = 25 at q = 3;
+  fixed-genus large-q theorem. All-genus A1 / H-half OPEN (obstruction: adjacent nonsquare corrections at m ∝ g). Whole-cubic
+  averages on the circle in all five tested cells; `conj:whole-squarefree-cubic-average` stated.
+- `irreps`: the brief's classification refuted in every form; theorem: **the Haar average equals the HPS d-matching polynomial on all
+  finite simple graphs iff Hall–Puder–Sawin's P1, iff equality on the triangle alone**; for irreps of dimension ≤ 3, uniform
+  real-rootedness ⟺ matching equality ⟺ nontrivial determinant; every nontrivial real determinant-one representation fails on every
+  cycle; SU(3) defining fails on C₃ though all its balanced moments match U(3); SU(d) average = Σ_C [2(−1)^d]^{|C|} μ_{d, Y∖V(C)}.
+  **New OPEN `conj:conformal-sp4-average-real-rooted`:** the U(1)·USp(4) (= U(2) Sym³) average Σ_C μ_{4, Y∖V(C)} is real-rooted on
+  every graph — proved on cycles, exact on all 971 connected cyclic graphs ≤ 7 vertices plus cube and Petersen, and NOT a matching
+  polynomial: first candidate for a non-HPS universal RH-on-average family.
+- `shortrow`: exact short-row Poisson formula for the sextic Möbius family (signed divisor-norm sum with gcd masks); the missing
+  cell S(13, 5, 5) = 1 528 527 342 888 by two routes, 100 exact cells, ratio to the volume scale ≈ 0.85 with a small negative
+  off-diagonal; **Weil ⟹ H-MS** (labelled comparison), so H-MS is true over F_q(t) and only a Weil-free proof is open (the uniform
+  theta/transfer estimate); the proved complete-row estimate alone gives exponent 4/3 (nothing). Two shortcuts in the brief refuted.
+
+**Brief errors caught by the lanes** (ledger for future briefs): the theta graph with three parallel edges is 3-regular; SU(1,1)
+uses C² = +1 plus a separate Pfaffian doubling, not SU(2)'s J² = −1; both K₃,₃ masks are nonordinary; averaged traces are
+coefficients of the averaged logarithm, not of the logarithm of the average; HPS standard S_d has dimension d − 1; the
+simplified short-row diagonal holds only for h ≥ D − 1; lane T's same-order F₄₁ pair has no separating k.
+
+**Next (in order).** (i) Second-family REFUTE review (claude:opus or human) of the 2026-10-23 PROVED items, now with same-family
+reviews attached, starting with T1/T2, J, H + K; then of the four new lanes (census theorem and witnesses; genus ≤ 7 certificates;
+the P1 converse; the short-row formula). (ii) Apply the endorsed record corrections (2026-10-23 list plus the additions above) to
+`overlap-data.md`, `tower-pairing.md`, `cm-lift.md`, `gauge-groups.md` (wording in RG K6 and lane I §4), `graph-ihara.md` §8/§9,
+`data-ladder.md` §0/§2/§4, `no-lift.md`, `howe-positivity.md`, `graph-super.md` §6/§9, `ff-dirichlet.md`, tutorial §6d, HANDOFF
+2026-10-06 (F), `shard-draft/` row `prop:gkp-overlaps-see-order`; then register the reviewed rows. (iii) Open problems with finite
+tests: `conj:conformal-sp4-average-real-rooted` (prove interlacing, or search ≥ 8 vertices); H-half uniform in g (control the adjacent
+nonsquare corrections; compute m = 13 and genera 26–27 at q = 3); cube masks 3, 5 and Petersen 6, 10 (degree-2 covers of genus-4
+bases, tetragonal models); a Weil-free H-MS (function-field Prop. 6.2 / 5.4 analogues); the integral polarized lattice of the K₄
+trigonal and Petersen-22 Jacobians versus the graph Ω. (iv) Then the lists of 2026-10-23 and 2026-10-22 below.
 
 ## Session 2026-10-23: eight astra lanes (six conjectures from the record, two quasi-RH digests); all finished; record only
 
