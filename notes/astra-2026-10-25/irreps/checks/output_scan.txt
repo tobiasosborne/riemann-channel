@@ -1,0 +1,152 @@
+Exact rational arithmetic; rational Sturm isolation; no RH assumed.
+
+GRAPH C3 n= 3 m= 3 g= 1 q= 1
+Unoriented vertex-disjoint cycle-collection counts by size: {0: 1, 1: 1}
+A4 exact orbit reduction: 4 representatives, weight 12; elapsed 0.01s
+
+REP nontrivial U1, ZN(N>=2), Sn sign
+Phi = x**3 - 3*x
+EXACT {'degree': 3, 'real': 3, 'in_band': 3, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP U2 defining; S3 standard; dihedral irreducible doublets; twisted 2T
+Phi = x**6 - 6*x**4 + 9*x**2 - 1
+EXACT {'degree': 6, 'real': 6, 'in_band': 6, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP U3; O3; S4 standard; U2 det^a Sym2 (a!=-1)
+Phi = x**9 - 9*x**7 + 27*x**5 - 29*x**3 + 6*x
+EXACT {'degree': 9, 'real': 9, 'in_band': 9, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP SU2 doublet; Q8; untwisted 2T; defining 2O
+Phi = x**6 - 6*x**4 + 9*x**2 + 1
+EXACT {'degree': 6, 'real': 0, 'in_band': 0, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+
+REP SU3 defining
+Phi = x**9 - 9*x**7 + 27*x**5 - 29*x**3 + 6*x - 2
+EXACT {'degree': 9, 'real': 3, 'in_band': 3, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+
+REP SO3; SU2 spin1; A5 both triples; S4 standard times sign
+Phi = x**9 - 9*x**7 + 27*x**5 - 29*x**3 + 6*x - 4
+EXACT {'degree': 9, 'real': 3, 'in_band': 3, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+elapsed_seconds= 0.307
+
+GRAPH K4 n= 4 m= 6 g= 3 q= 2
+Unoriented vertex-disjoint cycle-collection counts by size: {0: 1, 1: 7}
+A4 exact orbit reduction: 178 representatives, weight 1728; elapsed 0.04s
+
+REP nontrivial U1, ZN(N>=2), Sn sign
+Phi = x**4 - 6*x**2 + 3
+EXACT {'degree': 4, 'real': 4, 'in_band': 4, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP U2 defining; S3 standard; dihedral irreducible doublets; twisted 2T
+Phi = x**8 - 12*x**6 + 42*x**4 - 40*x**2 + 6
+EXACT {'degree': 8, 'real': 8, 'in_band': 8, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP U3; O3; S4 standard; U2 det^a Sym2 (a!=-1)
+Phi = x**12 - 18*x**10 + 117*x**8 - 332*x**6 + 393*x**4 - 158*x**2 + 97/9
+EXACT {'degree': 12, 'real': 12, 'in_band': 12, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP SU2 doublet; Q8; untwisted 2T; defining 2O
+Phi = x**8 - 12*x**6 + 42*x**4 - 32*x**2 + 12
+EXACT {'degree': 8, 'real': 0, 'in_band': 0, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+
+REP SU3 defining
+Phi = x**12 - 18*x**10 + 117*x**8 - 332*x**6 + 393*x**4 - 8*x**3 - 158*x**2 + 43/9
+EXACT {'degree': 12, 'real': 8, 'in_band': 8, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+
+REP SO3; SU2 spin1; A5 both triples; S4 standard times sign
+Phi = x**12 - 18*x**10 + 117*x**8 - 332*x**6 + 393*x**4 - 16*x**3 - 158*x**2 - 11/9
+EXACT {'degree': 12, 'real': 4, 'in_band': 4, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+Lane H saved finite coefficients reproduced exactly for all three families.
+elapsed_seconds= 0.762
+
+GRAPH K33 n= 6 m= 9 g= 4 q= 2
+Unoriented vertex-disjoint cycle-collection counts by size: {0: 1, 1: 15}
+A4 exact orbit reduction: 1846 representatives, weight 20736; elapsed 0.32s
+
+REP nontrivial U1, ZN(N>=2), Sn sign
+Phi = x**6 - 9*x**4 + 18*x**2 - 6
+EXACT {'degree': 6, 'real': 6, 'in_band': 6, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP U2 defining; S3 standard; dihedral irreducible doublets; twisted 2T
+Phi = x**12 - 18*x**10 + 117*x**8 - 336*x**6 + 423*x**4 - 198*x**2 + 21
+EXACT {'degree': 12, 'real': 12, 'in_band': 12, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP U3; O3; S4 standard; U2 det^a Sym2 (a!=-1)
+Phi = x**18 - 27*x**16 + 297*x**14 - 1719*x**12 + 5652*x**10 - 10656*x**8 + 11086*x**6 - 5778*x**4 + 1228*x**2 - 1684/27
+EXACT {'degree': 18, 'real': 18, 'in_band': 18, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP SU2 doublet; Q8; untwisted 2T; defining 2O
+Phi = x**12 - 18*x**10 + 117*x**8 - 336*x**6 + 441*x**4 - 234*x**2 + 51
+EXACT {'degree': 12, 'real': 0, 'in_band': 0, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+
+REP SU3 defining
+Phi = x**18 - 27*x**16 + 297*x**14 - 1719*x**12 + 5652*x**10 - 10656*x**8 + 11068*x**6 - 5724*x**4 + 1174*x**2 - 1522/27
+EXACT {'degree': 18, 'real': 18, 'in_band': 18, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': False}
+
+REP SO3; SU2 spin1; A5 both triples; S4 standard times sign
+Phi = x**18 - 27*x**16 + 297*x**14 - 1719*x**12 + 5652*x**10 - 10656*x**8 + 11050*x**6 - 5670*x**4 + 1120*x**2 - 1360/27
+EXACT {'degree': 18, 'real': 10, 'in_band': 10, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+Lane H saved finite coefficients reproduced exactly for all three families.
+elapsed_seconds= 1.396
+
+GRAPH cube n= 8 m= 12 g= 5 q= 2
+Unoriented vertex-disjoint cycle-collection counts by size: {0: 1, 1: 28, 2: 3}
+A4 exact orbit reduction: 21154 representatives, weight 248832; elapsed 9.48s
+
+REP nontrivial U1, ZN(N>=2), Sn sign
+Phi = x**8 - 12*x**6 + 42*x**4 - 44*x**2 + 9
+EXACT {'degree': 8, 'real': 8, 'in_band': 8, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP U2 defining; S3 standard; dihedral irreducible doublets; twisted 2T
+Phi = x**16 - 24*x**14 + 228*x**12 - 1096*x**10 + 2832*x**8 - 3864*x**6 + 2556*x**4 - 672*x**2 + 42
+EXACT {'degree': 16, 'real': 16, 'in_band': 16, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP U3; O3; S4 standard; U2 det^a Sym2 (a!=-1)
+Phi = x**24 - 36*x**22 + 558*x**20 - 4884*x**18 + 26619*x**16 - 94008*x**14 + 217180*x**12 - 324088*x**10 + 301723*x**8 - 1479604*x**6/9 + 46830*x**4 - 50500*x**2/9 + 13297/81
+EXACT {'degree': 24, 'real': 24, 'in_band': 24, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP SU2 doublet; Q8; untwisted 2T; defining 2O
+Phi = x**16 - 24*x**14 + 228*x**12 - 1096*x**10 + 2844*x**8 - 3960*x**6 + 2828*x**4 - 912*x**2 + 126
+EXACT {'degree': 16, 'real': 0, 'in_band': 0, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+
+REP SU3 defining
+Phi = x**24 - 36*x**22 + 558*x**20 - 4884*x**18 + 26619*x**16 - 94008*x**14 + 217168*x**12 - 323944*x**10 + 301075*x**8 - 1467796*x**6/9 + 45630*x**4 - 46828*x**2/9 + 11353/81
+EXACT {'degree': 24, 'real': 24, 'in_band': 24, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': False}
+
+REP SO3; SU2 spin1; A5 both triples; S4 standard times sign
+Phi = x**24 - 36*x**22 + 558*x**20 - 4884*x**18 + 26619*x**16 - 94008*x**14 + 217156*x**12 - 323800*x**10 + 300427*x**8 - 1455988*x**6/9 + 44430*x**4 - 43156*x**2/9 + 11353/81
+EXACT {'degree': 24, 'real': 16, 'in_band': 16, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+Lane H saved finite coefficients reproduced exactly for all three families.
+elapsed_seconds= 11.955
+
+GRAPH Petersen n= 10 m= 15 g= 6 q= 2
+Unoriented vertex-disjoint cycle-collection counts by size: {0: 1, 1: 57, 2: 6}
+A4 exact orbit reduction: 250342 representatives, weight 2985984; elapsed 376.41s
+
+REP nontrivial U1, ZN(N>=2), Sn sign
+Phi = x**10 - 15*x**8 + 75*x**6 - 145*x**4 + 90*x**2 - 6
+EXACT {'degree': 10, 'real': 10, 'in_band': 10, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP U2 defining; S3 standard; dihedral irreducible doublets; twisted 2T
+Phi = x**20 - 30*x**18 + 375*x**16 - 2540*x**14 + 10155*x**12 - 24474*x**10 + 34815*x**8 - 27360*x**6 + 10335*x**4 - 1370*x**2 + 27
+EXACT {'degree': 20, 'real': 20, 'in_band': 20, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP U3; O3; S4 standard; U2 det^a Sym2 (a!=-1)
+Phi = x**30 - 45*x**28 + 900*x**26 - 10560*x**24 + 80820*x**22 - 424392*x**20 + 1566070*x**18 - 4091370*x**16 + 7525625*x**14 - 9571425*x**12 + 24433478*x**10/3 - 4394410*x**8 + 37203950*x**6/27 - 648190*x**4/3 + 341060*x**2/27 - 28132/243
+EXACT {'degree': 30, 'real': 30, 'in_band': 30, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP SU2 doublet; Q8; untwisted 2T; defining 2O
+Phi = x**20 - 30*x**18 + 375*x**16 - 2540*x**14 + 10155*x**12 - 24450*x**10 + 34595*x**8 - 26640*x**6 + 9345*x**4 - 790*x**2 + 57
+EXACT {'degree': 20, 'real': 0, 'in_band': 0, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+
+REP SU3 defining
+Phi = x**30 - 45*x**28 + 900*x**26 - 10560*x**24 + 80820*x**22 - 424392*x**20 + 1566070*x**18 - 4091370*x**16 - 24*x**15 + 7525625*x**14 + 360*x**13 - 9571445*x**12 - 2160*x**11 + 24434018*x**10/3 + 6600*x**9 - 4394950*x**8 - 10800*x**7 + 37217720*x**6/27 + 9048*x**5 - 647920*x**4/3 - 3280*x**3 + 338630*x**2/27 + 240*x - 15010/243
+EXACT {'degree': 30, 'real': 30, 'in_band': 30, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': False}
+
+REP SO3; SU2 spin1; A5 both triples; S4 standard times sign
+Phi = x**30 - 45*x**28 + 900*x**26 - 10560*x**24 + 80820*x**22 - 424392*x**20 + 1566070*x**18 - 4091370*x**16 - 48*x**15 + 7525625*x**14 + 720*x**13 - 9571465*x**12 - 4320*x**11 + 24434558*x**10/3 + 13200*x**9 - 4395490*x**8 - 21600*x**7 + 37231490*x**6/27 + 18096*x**5 - 647650*x**4/3 - 6560*x**3 + 336200*x**2/27 + 480*x + 9776/243
+EXACT {'degree': 30, 'real': 20, 'in_band': 20, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+Lane H saved finite coefficients reproduced exactly for all three families.
+elapsed_seconds= 382.104
+
+PASS exact comparisons and all asserted polynomial identities.

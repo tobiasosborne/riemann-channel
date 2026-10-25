@@ -1,0 +1,10 @@
+group_order= 24 orbit_reps= 681 weight= 13824
+S4 standard twist_by_sign= False Phi= x**12 - 18*x**10 + 117*x**8 - 332*x**6 + 393*x**4 - 158*x**2 + 97/9
+group_order= 24 orbit_reps= 681 weight= 13824
+A4 exact orbit reduction: 178 representatives, weight 1728; elapsed 0.02s
+S4 standard twist_by_sign= True Phi= x**12 - 18*x**10 + 117*x**8 - 332*x**6 + 393*x**4 - 16*x**3 - 158*x**2 - 11/9
+group_order= 27 orbit_reps= 11 weight= 27
+Delta27=SU3 on C3 Phi= x**9 - 9*x**7 + 27*x**5 - 29*x**3 + 6*x - 2
+group_order= 27 orbit_reps= 2835 weight= 19683
+Delta27=SU3 on K4 Phi= x**12 - 18*x**10 + 117*x**8 - 332*x**6 + 393*x**4 - 8*x**3 - 158*x**2 + 43/9
+PASS independent exact finite sums; every cyclotomic restriction square verified.

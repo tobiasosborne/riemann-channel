@@ -1,0 +1,112 @@
+{
+  "C3": {
+    "nontrivial U1, ZN(N>=2), Sn sign": {
+      "degree": 3,
+      "real": 3,
+      "in_band": 3,
+      "real_rooted": true,
+      "all_in_band": true,
+      "equals_mu_d": true,
+      "coefficients": [
+        "1",
+        "0",
+        "-3",
+        "0"
+      ]
+    },
+    "U2 defining; S3 standard; dihedral irreducible doublets; twisted 2T": {
+      "degree": 6,
+      "real": 6,
+      "in_band": 6,
+      "real_rooted": true,
+      "all_in_band": true,
+      "equals_mu_d": true,
+      "coefficients": [
+        "1",
+        "0",
+        "-6",
+        "0",
+        "9",
+        "0",
+        "-1"
+      ]
+    },
+    "U3; O3; S4 standard; U2 det^a Sym2 (a!=-1)": {
+      "degree": 9,
+      "real": 9,
+      "in_band": 9,
+      "real_rooted": true,
+      "all_in_band": true,
+      "equals_mu_d": true,
+      "coefficients": [
+        "1",
+        "0",
+        "-9",
+        "0",
+        "27",
+        "0",
+        "-29",
+        "0",
+        "6",
+        "0"
+      ]
+    },
+    "SU2 doublet; Q8; untwisted 2T; defining 2O": {
+      "degree": 6,
+      "real": 0,
+      "in_band": 0,
+      "real_rooted": false,
+      "all_in_band": false,
+      "equals_mu_d": false,
+      "coefficients": [
+        "1",
+        "0",
+        "-6",
+        "0",
+        "9",
+        "0",
+        "1"
+      ]
+    },
+    "SU3 defining": {
+      "degree": 9,
+      "real": 3,
+      "in_band": 3,
+      "real_rooted": false,
+      "all_in_band": false,
+      "equals_mu_d": false,
+      "coefficients": [
+        "1",
+        "0",
+        "-9",
+        "0",
+        "27",
+        "0",
+        "-29",
+        "0",
+        "6",
+        "-2"
+      ]
+    },
+    "SO3; SU2 spin1; A5 both triples; S4 standard times sign": {
+      "degree": 9,
+      "real": 3,
+      "in_band": 3,
+      "real_rooted": false,
+      "all_in_band": false,
+      "equals_mu_d": false,
+      "coefficients": [
+        "1",
+        "0",
+        "-9",
+        "0",
+        "27",
+        "0",
+        "-29",
+        "0",
+        "6",
+        "-4"
+      ]
+    }
+  }
+}

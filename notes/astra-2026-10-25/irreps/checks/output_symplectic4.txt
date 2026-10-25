@@ -1,0 +1,26 @@
+
+GRAPH path3
+mu4= x**12 - 8*x**10 + 24*x**8 - 32*x**6 + 16*x**4
+Phi = x**12 - 8*x**10 + 24*x**8 - 32*x**6 + 16*x**4
+EXACT {'degree': 12, 'real': 12, 'in_band': 12, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+GRAPH C3
+mu4= x**12 - 12*x**10 + 54*x**8 - 111*x**6 + 99*x**4 - 27*x**2 + 1
+Phi = x**12 - 12*x**10 + 54*x**8 - 111*x**6 + 99*x**4 - 27*x**2 + 2
+EXACT {'degree': 12, 'real': 12, 'in_band': 12, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': False}
+
+GRAPH C4
+mu4= x**16 - 16*x**14 + 104*x**12 - 352*x**10 + 661*x**8 - 680*x**6 + 356*x**4 - 80*x**2 + 5
+Phi = x**16 - 16*x**14 + 104*x**12 - 352*x**10 + 661*x**8 - 680*x**6 + 356*x**4 - 80*x**2 + 6
+EXACT {'degree': 16, 'real': 16, 'in_band': 16, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': False}
+
+GRAPH K4
+mu4= x**16 - 24*x**14 + 228*x**12 - 1092*x**10 + 2781*x**8 - 3654*x**6 + 2230*x**4 - 495*x**2 + 75/4
+Phi = x**16 - 24*x**14 + 228*x**12 - 1092*x**10 + 2781*x**8 - 3654*x**6 + 2234*x**4 - 495*x**2 + 87/4
+EXACT {'degree': 16, 'real': 16, 'in_band': 16, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': False}
+
+GRAPH diamond
+mu4= x**16 - 20*x**14 + 158*x**12 - 626*x**10 + 1306*x**8 - 1387*x**6 + 1367*x**4/2 - 127*x**2 + 5
+Phi = x**16 - 20*x**14 + 158*x**12 - 626*x**10 + 1306*x**8 - 1387*x**6 + 1371*x**4/2 - 127*x**2 + 6
+EXACT {'degree': 16, 'real': 16, 'in_band': 16, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': False}
+PASS tree, cycle Gram and P1 contraction controls.

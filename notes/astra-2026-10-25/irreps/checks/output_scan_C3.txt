@@ -1,0 +1,32 @@
+Exact rational arithmetic; rational Sturm isolation; no RH assumed.
+
+GRAPH C3 n= 3 m= 3 g= 1 q= 1
+Unoriented vertex-disjoint cycle-collection counts by size: {0: 1, 1: 1}
+A4 exact orbit reduction: 4 representatives, weight 12; elapsed 0.00s
+
+REP nontrivial U1, ZN(N>=2), Sn sign
+Phi = x**3 - 3*x
+EXACT {'degree': 3, 'real': 3, 'in_band': 3, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP U2 defining; S3 standard; dihedral irreducible doublets; twisted 2T
+Phi = x**6 - 6*x**4 + 9*x**2 - 1
+EXACT {'degree': 6, 'real': 6, 'in_band': 6, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP U3; O3; S4 standard; U2 det^a Sym2 (a!=-1)
+Phi = x**9 - 9*x**7 + 27*x**5 - 29*x**3 + 6*x
+EXACT {'degree': 9, 'real': 9, 'in_band': 9, 'real_rooted': True, 'all_in_band': True, 'equals_mu_d': True}
+
+REP SU2 doublet; Q8; untwisted 2T; defining 2O
+Phi = x**6 - 6*x**4 + 9*x**2 + 1
+EXACT {'degree': 6, 'real': 0, 'in_band': 0, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+
+REP SU3 defining
+Phi = x**9 - 9*x**7 + 27*x**5 - 29*x**3 + 6*x - 2
+EXACT {'degree': 9, 'real': 3, 'in_band': 3, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+
+REP SO3; SU2 spin1; A5 both triples; S4 standard times sign
+Phi = x**9 - 9*x**7 + 27*x**5 - 29*x**3 + 6*x - 4
+EXACT {'degree': 9, 'real': 3, 'in_band': 3, 'real_rooted': False, 'all_in_band': False, 'equals_mu_d': False}
+elapsed_seconds= 0.048
+
+PASS exact comparisons and all asserted polynomial identities.

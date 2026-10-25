@@ -1,0 +1,2 @@
+notes/astra-2026-10-25/irreps/checks/output_sp4_atlas.txt completed_graphs= 129 all_real= True completed_scan= True
+notes/astra-2026-10-25/irreps/checks/output_sp4_atlas7.txt completed_graphs= 971 all_real= True completed_scan= True
