@@ -1,0 +1,46 @@
+theta degree sequence [3,3], q=2; edges are three parallel length-one edges
+theta A over Q(i): [[0, 0, 33/20 + 4*I/5, 3/4], [0, 0, 3/4, 33/20 - 4*I/5], [33/20 - 4*I/5, -3/4, 0, 0], [-3/4, 33/20 + 4*I/5, 0, 0]]
+theta charpoly: (5*x**2 - 14)**2/25
+theta A^2=(14/5)I; semisimple; eigenvalues +/- 1.67332005306815109595634405157037497878563073859734439962238 each twice
+K4 A over Q(i): [[0, 0, 1, 0, 1, 0, 1, 0], [0, 0, 0, 1, 0, 1, 0, 1], [1, 0, 0, 0, -1, 0, 5/4, 3/4], [0, 1, 0, 0, 0, -1, 3/4, 5/4], [1, 0, -1, 0, 0, 0, -3/5 + 4*I/5, 0], [0, 1, 0, -1, 0, 0, 0, -3/5 - 4*I/5], [1, 0, 5/4, -3/4, -3/5 - 4*I/5, 0, 0, 0], [0, 1, -3/4, 5/4, 0, -3/5 + 4*I/5, 0, 0]]
+K4 charpoly factored: (x - 1)**2*(5*x**3 + 5*x**2 - 25*x - 29)**2/25
+K4 charpoly expanded: x**8 - 12*x**6 - 8*x**5/5 + 238*x**4/5 + 48*x**3/5 - 1724*x**2/25 - 232*x/25 + 841/25
+K4 p(A)=0 exactly; gcd(p,p-prime)= 1
+K4 eigenvalues, each twice: [-2.06049372360344689926602154954410952762599317262032793239231, -1.22930452222911100778706671294647822127255660494620069158094, 1.00000000000000000000000000000000000000000000000000000000000, 2.28979824583255790705308826249058774889854977756652862397326]
+K4 exact real-root intervals: [((-2507126065450847/1216759865235754, -3529103416256886/1712746501399235), 1), ((-3987539357494899/3243736019342263, -608661062942306/495126351474421), 1), ((1, 1), 1), ((2155284969204074/941255402359881, 6580392437089871/2873787002442775), 1)]
+g eigenvalues: {2: 1, 1/2: 1} g*h-h*g: [[0, -6*I/5], [6*I/5, 0]]
+h action on g boundary fixed pair is z -> -7/25 - 24*I/25 *z, hence does not preserve {+1,-1}
+K4 C^2=+1; C anti-isometric; A^T E=E A; rank Q=16; inertia by anti-isometry (8,8,0)
+Companion/Weil similitude and symplectic label change checked EXACT
+K4 family direct determinant in rational Cayley coordinate r=tanh(t/2): (x - 1)**2*(5*r**2*x**3 + 5*r**2*x**2 - 25*r**2*x + 7*r**2 - 5*x**3 - 5*x**2 + 25*x + 25)**2/(25*(r - 1)**2*(r + 1)**2)
+family reduced polynomial in c=cosh(t): (x - 1)*(-16*c/5 + x**3 + x**2 - 5*x - 9/5)
+family cubic discriminant: -64*(2*c + 3)*(54*c - 79)/25
+collision t*: 0.9285326263124587271950518935115887183017784437100838914086359679533358
+collision reduced polynomial: (x - 1)*(3*x - 7)*(3*x + 5)**2/27
+collision ranks: 6 4
+collision eigenspace Gram matrix: [[0, 0], [0, 0]]
+collision q=2: d0=0, rank Q=16, exact inertia (8,8,0); numerical (8, 8, 0)
+same defective A with external q=25/36: geometric d0=2 (algebraic 4), rank Q=14; inertia (7,7,2); numerical (7, 7, 2)
+later true K4 band edge cosh(t)= 31/16 + 15*sqrt(2)/8 rank Q=14; inertia (7,7,2)
+K4 unbounded isospectral family direct charpoly and annihilator PASS
+unicyclic case 0 cycle 3 edges [(0, 1), (0, 2), (1, 2), (1, 3), (1, 5), (3, 4)] Cayley r,u,v 2/7 5/7 4/11
+holonomy= [[-19292/45621 + 83581*I/76035, 24304/45621 + 8148*I/25345], [24304/45621 - 8148*I/25345, -19292/45621 - 83581*I/76035]] trace= -38584/45621
+chi_Y= x**6 - 6*x**4 - 2*x**3 + 6*x**2 + 2*x - 1 chi_F= x**3 - x reduced polynomial= (x - 1)*(x + 1)*(45621*x**4 - 228105*x**2 + 38584*x + 45621)/45621
+direct 2n-by-2n characteristic determinant equals predicted square EXACT
+unicyclic case 1 cycle 4 edges [(0, 1), (0, 3), (0, 5), (1, 2), (2, 3), (3, 4), (3, 6)] Cayley r,u,v 3/7 -3/7 -3/11
+holonomy= [[427/1300 - 459*I/325, 38073/37700 - 2709*I/9425], [38073/37700 + 2709*I/9425, 427/1300 + 459*I/325]] trace= 427/650
+chi_Y= x**7 - 7*x**5 + 8*x**3 - 2*x chi_F= x**3 reduced polynomial= x*(650*x**6 - 4550*x**4 + 6073*x**2 - 1300)/650
+direct 2n-by-2n characteristic determinant equals predicted square EXACT
+unicyclic case 2 cycle 5 edges [(0, 1), (0, 4), (0, 5), (1, 2), (2, 3), (2, 6), (3, 4), (3, 7)] Cayley r,u,v 4/7 5/7 -4/11
+holonomy= [[282100/167277 + 56745*I/55759, -101920/167277 + 88312*I/55759], [-101920/167277 - 88312*I/55759, 282100/167277 - 56745*I/55759]] trace= 564200/167277
+chi_Y= x**8 - 8*x**6 + 17*x**4 - 2*x**3 - 8*x**2 chi_F= x**3 reduced polynomial= x**2*(167277*x**6 - 1338216*x**4 + 2843709*x**2 - 564200*x - 1338216)/167277
+direct 2n-by-2n characteristic determinant equals predicted square EXACT
+parabolic C3 scalar charpoly x**3 - 3*x - 2 defective True
+parabolic C4 scalar charpoly x**4 - 4*x**2 defective True
+parabolic triangle-leaf scalar charpoly x**4 - 4*x**2 - 2*x + 1 defective False
+bounded theta nontrivial compact flux: delta=41/5 >8, kappa=0
+nilpotent theta S !=0, delta=0, rank A=2: two size-two blocks
+theta crossing cosh(t)= 31/4 delta= 8 closed-band kappa= 2
+theta crossing cosh(t)= 8 delta= 41/5 closed-band kappa= 0
+interior theta: A0=0 semisimple kappa=2; at t=log(2), A^2=-I/2 kappa=0
+PASS independent Krein checks

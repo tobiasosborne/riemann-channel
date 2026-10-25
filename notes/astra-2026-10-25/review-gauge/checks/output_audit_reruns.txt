@@ -1,0 +1,39 @@
+SOURCE BYTE-IDENTICAL haar haar_common.py 2723bba30edd8ff2ceff5d75b42b3faa58f8170bc066395a0622ddc00a602295
+SOURCE BYTE-IDENTICAL haar haar_finite.py c735f51544803ad74220192476b7a5cd4ed92951b13418a4e47aa4b0e0b7bdba
+SOURCE BYTE-IDENTICAL haar haar_kernels.py d52cdf4127e00138afe7183292c14580826ab7b29dcfcfbbcc6187a09cca9531
+SOURCE BYTE-IDENTICAL haar haar_limit.py 383ddb0ca14bd74d7b4bb73240f9e79ab203a17b44526a6fa20126dcd17e4fcf
+SOURCE BYTE-IDENTICAL haar haar_mc.py b4d1e4b875410095e156c771632a001e9747ff7e6a6f976cb825cc9eb3c1dddd
+SOURCE BYTE-IDENTICAL haar haar_weingarten.py 1b7b78e9981b6d6d9ebd91685e92ad238f507fc17d857e46276cb0e82f1a95a2
+JSON EXACTLY EQUAL haar output_finite.json
+JSON EXACTLY EQUAL haar output_limit.json
+TEXT EQUAL after elapsed-time normalization haar output_finite.txt
+TEXT EQUAL after elapsed-time normalization haar output_kernels.txt
+TEXT EQUAL after elapsed-time normalization haar output_limit.txt
+TEXT EQUAL after elapsed-time normalization haar output_mc.txt
+TEXT EQUAL after elapsed-time normalization haar output_weingarten.txt
+SOURCE BYTE-IDENTICAL krein krein_scan.py 0207d91186bc7d24722979a74332abf865dc22639f32bd7d66b6bc7165e5f222
+TEXT EQUAL after elapsed-time normalization krein output_krein_scan.txt
+KREIN ALL TEN ENSEMBLE SUMMARIES EXACTLY EQUAL
+SUMMARY ('K4', 'bounded', {'real': 64, 'inband': 62, 'diagonal': 64, 'ram': 62}, 0.96875)
+SUMMARY ('K4', 'unbounded', {'certified_unbounded': 64, 'real': 45, 'inband': 43, 'diagonal': 64, 'ram': 43, 'mp80_verified': 43}, 0.671875)
+SUMMARY ('Petersen', 'bounded', {'real': 64, 'inband': 63, 'diagonal': 64, 'ram': 63}, 0.984375)
+SUMMARY ('Petersen', 'unbounded', {'certified_unbounded': 64, 'real': 7, 'inband': 6, 'diagonal': 64, 'ram': 6, 'mp80_verified': 6}, 0.09375)
+SUMMARY ('K5', 'bounded', {'real': 64, 'inband': 61, 'diagonal': 64, 'ram': 61}, 0.953125)
+SUMMARY ('K5', 'unbounded', {'certified_unbounded': 64, 'real': 30, 'inband': 28, 'diagonal': 64, 'ram': 28, 'mp80_verified': 28}, 0.4375)
+SUMMARY ('cube', 'bounded', {'real': 64, 'inband': 64, 'diagonal': 64, 'ram': 64}, 1.0)
+SUMMARY ('cube', 'unbounded', {'certified_unbounded': 64, 'real': 26, 'inband': 22, 'diagonal': 64, 'ram': 22, 'mp80_verified': 22}, 0.34375)
+SUMMARY ('theta', 'bounded', {'real': 64, 'inband': 58, 'diagonal': 64, 'ram': 58}, 0.90625)
+SUMMARY ('theta', 'unbounded', {'certified_unbounded': 64, 'real': 57, 'inband': 50, 'diagonal': 64, 'ram': 50, 'mp80_verified': 50}, 0.78125)
+INDEPENDENT STURM CHECK K4 SU2-half degree 8 real roots with multiplicity 0 outside [-14/5,14/5] 0
+INDEPENDENT STURM CHECK K4 U2 degree 8 real roots with multiplicity 8 outside [-14/5,14/5] 0
+INDEPENDENT STURM CHECK K4 SU2-spin1 degree 12 real roots with multiplicity 4 outside [-14/5,14/5] 0
+INDEPENDENT STURM CHECK K33 SU2-half degree 12 real roots with multiplicity 0 outside [-14/5,14/5] 0
+INDEPENDENT STURM CHECK K33 U2 degree 12 real roots with multiplicity 12 outside [-14/5,14/5] 0
+INDEPENDENT STURM CHECK K33 SU2-spin1 degree 18 real roots with multiplicity 10 outside [-14/5,14/5] 0
+INDEPENDENT STURM CHECK cube SU2-half degree 16 real roots with multiplicity 0 outside [-14/5,14/5] 0
+INDEPENDENT STURM CHECK cube U2 degree 16 real roots with multiplicity 16 outside [-14/5,14/5] 0
+INDEPENDENT STURM CHECK cube SU2-spin1 degree 24 real roots with multiplicity 16 outside [-14/5,14/5] 0
+INDEPENDENT STURM CHECK Petersen SU2-half degree 20 real roots with multiplicity 0 outside [-14/5,14/5] 0
+INDEPENDENT STURM CHECK Petersen U2 degree 20 real roots with multiplicity 20 outside [-14/5,14/5] 0
+INDEPENDENT STURM CHECK Petersen SU2-spin1 degree 30 real roots with multiplicity 20 outside [-14/5,14/5] 0
+PASS source identity, output comparison and independent finite-table root counts

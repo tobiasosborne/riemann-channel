@@ -1,0 +1,14 @@
+Exact normalized S^3 moment: E product q_i^(2a_i) = product(2a_i-1)!!/[4*6*...*(2sum(a)+2)]
+S^3 raw Leibniz Haar 3 vertices: x**6 - 6*x**4 + 9*x**2 + 1 valid terms 265
+Q8 direct complex charpoly 3 vertices: x**6 - 6*x**4 + 9*x**2 + 1
+S^3 raw Leibniz Haar 4 vertices: x**8 - 12*x**6 + 42*x**4 - 32*x**2 + 12 valid terms 14833
+Q8 direct complex charpoly 4 vertices: x**8 - 12*x**6 + 42*x**4 - 32*x**2 + 12
+Q8 not a fourth-degree design: E q0^4 = 1/4; Haar = 1/8
+2T degree-six failure: E q0^6 = 3/32 ; Haar = 5/64
+Q8 all quaternion-coordinate monomials of total degree <= 3 match Haar EXACT
+2T all quaternion-coordinate monomials of total degree <= 5 match Haar EXACT
+Petersen SU2 constant via 2-regular edge subsets and perfect matchings: 57
+Petersen constant contributions grouped by cycle edges: {0: 36, 5: 0, 6: 0, 8: 15, 9: 0, 10: 6}
+K4 U2 from mean ordinary matching polynomial of all 2-covers: x**8 - 12*x**6 + 42*x**4 - 40*x**2 + 6
+K4 A4/SO3/A5 triple by direct full enumeration: x**12 - 18*x**10 + 117*x**8 - 332*x**6 + 393*x**4 - 16*x**3 - 158*x**2 - 11/9
+PASS independent Haar and finite-group computations
