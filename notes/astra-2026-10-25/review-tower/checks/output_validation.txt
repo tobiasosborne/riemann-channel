@@ -1,0 +1,2 @@
+Deliverables complete: 7 Python scripts parse; 13 unique verdict lines; five requested item sections; required ledger and closing sections present; RT1-RT5 and NUM all DONE.
+All computations succeeded except the deliberately retained original CM elldata lookup; its explicit-model arithmetic rerun passes 27/27.

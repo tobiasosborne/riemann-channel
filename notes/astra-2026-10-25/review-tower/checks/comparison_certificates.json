@@ -1,0 +1,992 @@
+{
+  "counts": {
+    "groups": 42,
+    "isomorphism_counts": 42,
+    "Weil_sets": 25,
+    "Tate_sets": 42,
+    "Frobenius_conjugacies": 42,
+    "Frobenius_matrices_exact": 13
+  },
+  "cases": [
+    {
+      "case": "E1 k=6 N=7",
+      "group": [
+        7
+      ],
+      "nphi": 6,
+      "Weil": null,
+      "Tate": [
+        3,
+        5,
+        6
+      ],
+      "basis_change": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E1 k=8 N=3",
+      "group": [
+        3,
+        3
+      ],
+      "nphi": 8,
+      "Weil": [
+        1,
+        2
+      ],
+      "Tate": [
+        1,
+        2
+      ],
+      "basis_change": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=1 N=2 vs (1,0,6)",
+      "group": [
+        2
+      ],
+      "nphi": 1,
+      "Weil": null,
+      "Tate": [
+        1
+      ],
+      "basis_change": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=1 N=2 vs (2,0,3)",
+      "group": [
+        2
+      ],
+      "nphi": 1,
+      "Weil": null,
+      "Tate": [
+        1
+      ],
+      "basis_change": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=1 N=3 vs (1,0,6)",
+      "group": [
+        3
+      ],
+      "nphi": 2,
+      "Weil": null,
+      "Tate": [
+        1
+      ],
+      "basis_change": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=1 N=3 vs (2,0,3)",
+      "group": [
+        3
+      ],
+      "nphi": 2,
+      "Weil": null,
+      "Tate": [
+        2
+      ],
+      "basis_change": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=2 N=2 vs (1,0,6)",
+      "group": [
+        2,
+        2
+      ],
+      "nphi": 2,
+      "Weil": [
+        1
+      ],
+      "Tate": [
+        1
+      ],
+      "basis_change": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=2 N=2 vs (2,0,3)",
+      "group": [
+        2,
+        2
+      ],
+      "nphi": 2,
+      "Weil": [
+        1
+      ],
+      "Tate": [
+        1
+      ],
+      "basis_change": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=2 N=4 vs (1,0,6)",
+      "group": [
+        2,
+        2
+      ],
+      "nphi": 2,
+      "Weil": null,
+      "Tate": [
+        1,
+        3
+      ],
+      "basis_change": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=2 N=4 vs (2,0,3)",
+      "group": [
+        2,
+        2
+      ],
+      "nphi": 2,
+      "Weil": null,
+      "Tate": [
+        1,
+        3
+      ],
+      "basis_change": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=3 N=3 vs (1,0,6)",
+      "group": [
+        9,
+        3
+      ],
+      "nphi": 18,
+      "Weil": [
+        2
+      ],
+      "Tate": [
+        1
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=3 N=3 vs (2,0,3)",
+      "group": [
+        9,
+        3
+      ],
+      "nphi": 18,
+      "Weil": [
+        1
+      ],
+      "Tate": [
+        2
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=4 N=4 vs (1,0,6)",
+      "group": [
+        8,
+        4
+      ],
+      "nphi": 16,
+      "Weil": [
+        1,
+        3
+      ],
+      "Tate": [
+        1,
+        3
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=4 N=4 vs (2,0,3)",
+      "group": [
+        8,
+        4
+      ],
+      "nphi": 16,
+      "Weil": [
+        1,
+        3
+      ],
+      "Tate": [
+        1,
+        3
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=4 N=8 vs (1,0,6)",
+      "group": [
+        8,
+        4
+      ],
+      "nphi": 16,
+      "Weil": null,
+      "Tate": [
+        3,
+        5
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          3
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=4 N=8 vs (2,0,3)",
+      "group": [
+        8,
+        4
+      ],
+      "nphi": 16,
+      "Weil": null,
+      "Tate": [
+        1,
+        7
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          3
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=8 N=8 vs (1,0,6)",
+      "group": [
+        16,
+        8
+      ],
+      "nphi": 64,
+      "Weil": [
+        3,
+        5
+      ],
+      "Tate": [
+        3,
+        5
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=8 N=8 vs (2,0,3)",
+      "group": [
+        16,
+        8
+      ],
+      "nphi": 64,
+      "Weil": [
+        1,
+        7
+      ],
+      "Tate": [
+        1,
+        7
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=16 N=16 vs (1,0,6)",
+      "group": [
+        32,
+        16
+      ],
+      "nphi": 256,
+      "Weil": [
+        3,
+        5,
+        11,
+        13
+      ],
+      "Tate": [
+        3,
+        5,
+        11,
+        13
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          24,
+          13
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=16 N=16 vs (2,0,3)",
+      "group": [
+        32,
+        16
+      ],
+      "nphi": 256,
+      "Weil": [
+        1,
+        7,
+        9,
+        15
+      ],
+      "Tate": [
+        1,
+        7,
+        9,
+        15
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          24,
+          13
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=1 N=2 vs (1,0,6)",
+      "group": [
+        2
+      ],
+      "nphi": 1,
+      "Weil": null,
+      "Tate": [
+        1
+      ],
+      "basis_change": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=1 N=2 vs (2,0,3)",
+      "group": [
+        2
+      ],
+      "nphi": 1,
+      "Weil": null,
+      "Tate": [
+        1
+      ],
+      "basis_change": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=1 N=3 vs (1,0,6)",
+      "group": [
+        3
+      ],
+      "nphi": 2,
+      "Weil": null,
+      "Tate": [
+        2
+      ],
+      "basis_change": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=1 N=3 vs (2,0,3)",
+      "group": [
+        3
+      ],
+      "nphi": 2,
+      "Weil": null,
+      "Tate": [
+        1
+      ],
+      "basis_change": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=2 N=2 vs (1,0,6)",
+      "group": [
+        2,
+        2
+      ],
+      "nphi": 2,
+      "Weil": [
+        1
+      ],
+      "Tate": [
+        1
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=2 N=2 vs (2,0,3)",
+      "group": [
+        2,
+        2
+      ],
+      "nphi": 2,
+      "Weil": [
+        1
+      ],
+      "Tate": [
+        1
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=2 N=4 vs (1,0,6)",
+      "group": [
+        2,
+        2
+      ],
+      "nphi": 2,
+      "Weil": null,
+      "Tate": [
+        1,
+        3
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=2 N=4 vs (2,0,3)",
+      "group": [
+        2,
+        2
+      ],
+      "nphi": 2,
+      "Weil": null,
+      "Tate": [
+        1,
+        3
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=3 N=3 vs (1,0,6)",
+      "group": [
+        9,
+        3
+      ],
+      "nphi": 18,
+      "Weil": [
+        1
+      ],
+      "Tate": [
+        2
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          2
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=3 N=3 vs (2,0,3)",
+      "group": [
+        9,
+        3
+      ],
+      "nphi": 18,
+      "Weil": [
+        2
+      ],
+      "Tate": [
+        1
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          3,
+          2
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=4 N=4 vs (1,0,6)",
+      "group": [
+        8,
+        4
+      ],
+      "nphi": 16,
+      "Weil": [
+        1,
+        3
+      ],
+      "Tate": [
+        1,
+        3
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          4,
+          3
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=4 N=4 vs (2,0,3)",
+      "group": [
+        8,
+        4
+      ],
+      "nphi": 16,
+      "Weil": [
+        1,
+        3
+      ],
+      "Tate": [
+        1,
+        3
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          4,
+          3
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=4 N=8 vs (1,0,6)",
+      "group": [
+        8,
+        4
+      ],
+      "nphi": 16,
+      "Weil": null,
+      "Tate": [
+        1,
+        7
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=4 N=8 vs (2,0,3)",
+      "group": [
+        8,
+        4
+      ],
+      "nphi": 16,
+      "Weil": null,
+      "Tate": [
+        3,
+        5
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=8 N=8 vs (1,0,6)",
+      "group": [
+        16,
+        8
+      ],
+      "nphi": 64,
+      "Weil": [
+        1,
+        7
+      ],
+      "Tate": [
+        1,
+        7
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=8 N=8 vs (2,0,3)",
+      "group": [
+        16,
+        8
+      ],
+      "nphi": 64,
+      "Weil": [
+        3,
+        5
+      ],
+      "Tate": [
+        3,
+        5
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=16 N=16 vs (1,0,6)",
+      "group": [
+        32,
+        16
+      ],
+      "nphi": 256,
+      "Weil": [
+        1,
+        7,
+        9,
+        15
+      ],
+      "Tate": [
+        1,
+        7,
+        9,
+        15
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          6,
+          11
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=16 N=16 vs (2,0,3)",
+      "group": [
+        32,
+        16
+      ],
+      "nphi": 256,
+      "Weil": [
+        3,
+        5,
+        11,
+        13
+      ],
+      "Tate": [
+        3,
+        5,
+        11,
+        13
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          6,
+          11
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=8 N=8 vs (1,0,6) [iota']",
+      "group": [
+        16,
+        8
+      ],
+      "nphi": 64,
+      "Weil": [
+        1,
+        7
+      ],
+      "Tate": [
+        1,
+        7
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          10,
+          7
+        ]
+      ]
+    },
+    {
+      "case": "E4 k=8 N=8 vs (2,0,3) [iota']",
+      "group": [
+        16,
+        8
+      ],
+      "nphi": 64,
+      "Weil": [
+        3,
+        5
+      ],
+      "Tate": [
+        3,
+        5
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          10,
+          7
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=8 N=8 vs (1,0,6) [iota']",
+      "group": [
+        16,
+        8
+      ],
+      "nphi": 64,
+      "Weil": [
+        3,
+        5
+      ],
+      "Tate": [
+        3,
+        5
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          10,
+          7
+        ]
+      ]
+    },
+    {
+      "case": "E5 k=8 N=8 vs (2,0,3) [iota']",
+      "group": [
+        16,
+        8
+      ],
+      "nphi": 64,
+      "Weil": [
+        1,
+        7
+      ],
+      "Tate": [
+        1,
+        7
+      ],
+      "basis_change": [
+        [
+          1,
+          0
+        ],
+        [
+          10,
+          7
+        ]
+      ]
+    }
+  ]
+}

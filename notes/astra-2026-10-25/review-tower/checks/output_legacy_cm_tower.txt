@@ -1,0 +1,21 @@
+Original source: notes/adelic-gkp/checks/check_cm_tower.py
+SHA256: f4f343734c5314a6f4b8d3d95b2f35f804ac943c6df34011b2d79904eae3256a
+Backend: cypari2 evaluating unchanged GP source
+PARI stack size set to 256000000 bytes, maximum size set to 1000001536
+Traceback (most recent call last):
+  File "/home/tobias/Projects/riemann-channel/notes/astra-2026-10-23/tower/checks/rerun_legacy.py", line 54, in main
+    ns=runpy.run_path(str(src),run_name='__main__')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 286, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/tobias/Projects/riemann-channel/notes/adelic-gkp/checks/check_cm_tower.py", line 20, in <module>
+    out = gp('E=ellinit("441d1"); print("ai|", vector(5,i,E[i])); forprime(p=2,40, if((-7)%p!=0 && kronecker(-7,p)==1, print("ap|", p, " ", ellap(E,p))));')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 80, in gp
+  File "/home/tobias/Projects/riemann-channel/notes/astra-2026-10-23/tower/checks/rerun_legacy.py", line 36, in via_cypari
+    pari.read(str(payload))
+  File "cypari2/auto_instance.pxi", line 34734, in cypari2.pari_instance.Pari_auto.read
+  File "cypari2/handle_error.pyx", line 211, in cypari2.handle_error._pari_err_handle
+cypari2.handle_error.PariError: ellinit: error opening elldata file: `/usr/share/pari/elldata/ell0'
+RERUN INCOMPLETE — do not count historical passes as new verification.

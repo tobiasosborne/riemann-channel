@@ -1,0 +1,23 @@
+CONVENTIONS q=7, trace=2: M=[[1, -6], [1, 1]], companion=[[2, -7], [1, 0]], U=[[1, -1], [0, 1]], det(U)=1, M U=U companion
+CONVENTIONS q=41, trace=12: M=[[6, -5], [1, 6]], companion=[[12, -41], [1, 0]], U=[[1, -6], [0, 1]], det(U)=1, M U=U companion
+CONVENTIONS q=37, trace=8: M=[[4, -21], [1, 4]], companion=[[8, -37], [1, 0]], U=[[1, -4], [0, 1]], det(U)=1, M U=U companion
+CONVENTIONS E1: U= [[0, -1], [1, 0]] det=1, M U=U companion
+TOPOLOGY D=-23 q=8 trace=3: all integral intertwiners G= [[a, -3*c], [c, 2*a + c]] det= 2*a**2 + a*c + 3*c**2
+  8 det = (4a+c)^2+23c^2; c=0 gives det=2a^2; |c|>=1 gives det>=23/8>1; so det cannot be +/-1
+  N=2 determinant-one local witness (a,c)=(0, 1)
+  N=3 determinant-one local witness (a,c)=(1, 2)
+  N=4 determinant-one local witness (a,c)=(2, 1)
+  N=8 determinant-one local witness (a,c)=(2, 3)
+  N=16 determinant-one local witness (a,c)=(6, 1)
+  N=23 determinant-one local witness (a,c)=(0, 10)
+MINIMAL_F4 D=-15 N=3 crossed determinants= [2]
+SMALLER_FIELD q=2 ordinary_traces=[-1, 1], discriminants/class_numbers={-7: 1}
+SMALLER_FIELD q=3 ordinary_traces=[-2, -1, 1, 2], discriminants/class_numbers={-11: 1, -8: 1}
+TATE_WELL_DEFINEDNESS q=2 k=1 N=3: Gfix vectors /4=[(0, 0), (1, 3), (2, 2), (3, 1)], G[N]=[(0, 0)], exp(G[N])=1, N does not divide q^k-1; zero pairing is well-defined
+CM_CONJUGATION p=2 trace=-1 u=-1 v=1 C M=Mbar C, det(C)=-1
+CM_CONJUGATION p=11 trace=-4 u=-3 v=2 C M=Mbar C, det(C)=-1
+CM_CONJUGATION p=23 trace=-8 u=-5 v=2 C M=Mbar C, det(C)=-1
+CM_CONJUGATION p=29 trace=-2 u=-3 v=4 C M=Mbar C, det(C)=-1
+CM_CONJUGATION p=37 trace=-6 u=-5 v=4 C M=Mbar C, det(C)=-1
+FORMAL_TOWER_WITHOUT_RH M= [[0, -1], [5, 5]] q=5 trace=5 trace_squared=25>20; det(1-M^k), k=1..5: [1, 11, 76, 451, 2501]
+PASS all independent linear derivations

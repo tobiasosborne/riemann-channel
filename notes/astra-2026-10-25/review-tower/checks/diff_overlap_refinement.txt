@@ -1,0 +1,11 @@
+--- saved
++++ rerun
+@@ -1,6 +1,6 @@
+ BACKEND: independent exact FLINT/Miller. Scope: F W1-W3, determinant/norm comparison; not the full original script.
+-  phi_2: kernel=[(1, 0)]; Velu quotient y^2=x^3+1x+3; target scale (u^2 x,u^3 y), u=1
+-  phi_3: kernel=[(3, 5), (3, 2)]; Velu quotient y^2=x^3+4x+3; target scale (u^2 x,u^3 y), u=2
++  phi_2: kernel=[(1, 0)]; Velu quotient y^2=x^3+1x+3; target scale (u^2 x,u^3 y), u=1, scalars=(1, 1)
++  phi_3: kernel=[(3, 5), (3, 2)]; Velu quotient y^2=x^3+4x+3; target scale (u^2 x,u^3 y), u=2, scalars=(4, 1)
+ W1 N=2 k=4: Frob=(1, 1, 0, 1), (1, 1, 0, 1); scales=[1]; isometry=True; anti-isometry=True
+ W3 phi_3 on E[2]: multiplier=1; images are equivariant and pairing functoriality holds.
+ W1 N=3 k=3: Frob=(1, 1, 0, 1), (1, 2, 0, 1); scales=[2]; isometry=False; anti-isometry=True

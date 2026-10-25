@@ -1,0 +1,5 @@
+tower_audit: exit=0, saved_lines=108, rerun_lines=108, exact_except_elapsed=True, sha256=4db32d82df7b017c49e501e0f079a04d3cf928e847b0870e25902b6254c14c40
+tower_strict: exit=0, saved_lines=71, rerun_lines=71, exact_except_elapsed=True, sha256=498d0441695391ad9fdcb207eac2a27f65f8b3e58d74032ce25b114341f125d6
+replay_tower_flint: exit=0, saved_lines=108, rerun_lines=108, exact_except_elapsed=True, sha256=58cb8b60f85137283d730640456e6ddbdfb96889878a5782b95542f8b10e1d78
+replay_cm_flint: exit=0, saved_lines=36, rerun_lines=36, exact_except_elapsed=True, sha256=45ee1dd7870e5b8eb3cc88b00300dd3ef3ab55a33fee7ce4684d278ba5d1a63e
+audit_overlap_refinement: exit=0, saved_lines=19, rerun_lines=19, exact_except_elapsed=False, sha256=7da7242418223aead01e7bc5bb8ef261c79e777ec08d989175b20d52b53bc4d0

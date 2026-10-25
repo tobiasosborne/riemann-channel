@@ -1,0 +1,60 @@
+PAIRING FAMILY p=37 trace=8 End_D=-84 j/models={7: [2, 2], 3: [2, 11], 2: [3, 14], 28: [5, 17]}
+ N=3 extension_k=3 field_minpoly=Mod(1, 37)*x^3 + Mod(1, 37)*x^2 + Mod(35, 37)*x + Mod(36, 37) common_w=26
+  E=[2, 2] j=7 N=3 torsion_count=9 basis=([7, 10],[3*z^2 + 20*z + 24, 14*z^2 + 7*z + 18]) Frob=(1, 1, 0, 1) e=26=w^1
+  E=[2, 11] j=3 N=3 torsion_count=9 basis=([26, 8],[16*z^2 + 2*z + 27, 2*z^2 + 28*z + 34]) Frob=(1, 1, 0, 1) e=26=w^1
+  E=[3, 14] j=2 N=3 torsion_count=9 basis=([9, 17],[16*z^2 + 14*z + 12, 29*z^2 + 30*z + 4]) Frob=(1, 2, 0, 1) e=26=w^1
+  E=[5, 17] j=28 N=3 torsion_count=9 basis=([33, 28],[z^2 + 35*z + 36, 35*z^2 + 4*z + 35]) Frob=(1, 1, 0, 1) e=10=w^2
+  PAIR j=7->28 N=3 isos=6 Weil_multiplier_set=[2] strict=False
+  PAIR j=3->7 N=3 isos=6 Weil_multiplier_set=[1] strict=True
+  PAIR j=3->28 N=3 isos=6 Weil_multiplier_set=[2] strict=False
+  PAIR j=2->7 N=3 isos=6 Weil_multiplier_set=[2] strict=False
+  PAIR j=2->3 N=3 isos=6 Weil_multiplier_set=[2] strict=False
+  PAIR j=2->28 N=3 isos=6 Weil_multiplier_set=[1] strict=True
+ N=4 extension_k=4 field_minpoly=Mod(1, 37)*x^4 + Mod(1, 37)*x^3 + Mod(1, 37)*x^2 + Mod(1, 37)*x + Mod(1, 37) common_w=31
+  E=[2, 2] j=7 N=4 torsion_count=16 basis=([11*z^3 + 11*z^2 + 13, 8*z^2 + 8*z + 4],[15*z^3 + 15*z^2 + 30, 8*z^3 + 23*z^2 + 31*z + 34]) Frob=(1, 2, 3, 3) e=31=w^1
+  E=[2, 11] j=3 N=4 torsion_count=16 basis=([4*z^3 + 4*z^2 + 23, 11*z^3 + 10*z^2 + 21*z + 29],[9*z^3 + 9*z^2 + 3, 4*z^3 + 21*z^2 + 25*z + 31]) Frob=(1, 2, 3, 3) e=6=w^3
+  E=[3, 14] j=2 N=4 torsion_count=16 basis=([7*z^3 + 7*z^2 + 15, 13*z^3 + 17*z^2 + 30*z + 15],[7*z^3 + 7*z^2 + 20, 21*z^3 + z^2 + 22*z + 11]) Frob=(3, 2, 3, 1) e=6=w^3
+  E=[5, 17] j=28 N=4 torsion_count=16 basis=([7*z^3 + 7*z^2 + 15, 28*z^3 + z^2 + 29*z + 33],[18*z^3 + 18*z^2 + 35, 25*z^3 + 22*z^2 + 10*z + 5]) Frob=(1, 2, 3, 3) e=31=w^1
+  PAIR j=7->28 N=4 isos=8 Weil_multiplier_set=[1] strict=True
+  PAIR j=3->7 N=4 isos=8 Weil_multiplier_set=[3] strict=False
+  PAIR j=3->28 N=4 isos=8 Weil_multiplier_set=[3] strict=False
+  PAIR j=2->7 N=4 isos=8 Weil_multiplier_set=[3] strict=False
+  PAIR j=2->3 N=4 isos=8 Weil_multiplier_set=[1] strict=True
+  PAIR j=2->28 N=4 isos=8 Weil_multiplier_set=[3] strict=False
+ ALL_DISTINCT_CURVES_STRICTLY_SEPARATED=True
+PAIRING FAMILY p=7 trace=2 End_D=-24 j/models={4: [3, 3], 5: [1, 3]}
+ N=3 extension_k=3 field_minpoly=Mod(1, 7)*x^3 + Mod(1, 7)*x^2 + Mod(3, 7)*x + Mod(1, 7) common_w=4
+  E=[3, 3] j=4 N=3 torsion_count=9 basis=([3, 2],[6*z + 1, 5*z + 6]) Frob=(1, 1, 0, 1) e=4=w^1
+  E=[1, 3] j=5 N=3 torsion_count=9 basis=([6, 1],[z + 3, z + 2]) Frob=(1, 2, 0, 1) e=4=w^1
+  PAIR j=4->5 N=3 isos=6 Weil_multiplier_set=[2] strict=False
+ N=8 extension_k=8 field_minpoly=Mod(1, 7)*x^8 + Mod(1, 7)*x^7 + Mod(1, 7)*x^5 + Mod(1, 7)*x^4 + Mod(3, 7)*x^3 + Mod(4, 7)*x^2 + Mod(3, 7)*x + Mod(1, 7) common_w=5*z^7 + 5*z^6 + 5*z^5 + 5*z^4 + z^3 + 3*z^2 + 3*z + 5
+  E=[3, 3] j=4 N=8 torsion_count=64 basis=([5*z^5 + 4*z^4 + z^3 + 5*z^2 + 1, 6*z^7 + 6*z^6 + 3*z^5 + z^4 + 2*z^3 + 4*z^2 + z],[2*z^6 + 4*z^5 + z^4 + 3*z^3 + 2*z + 4, 5*z^7 + 5*z^6 + z^5 + z^4 + 4*z^3 + 2*z^2 + 5*z + 3]) Frob=(1, 1, 2, 1) e=2*z^7 + 2*z^6 + 2*z^5 + 2*z^4 + 6*z^3 + 4*z^2 + 4*z + 6=w^7
+  E=[1, 3] j=5 N=8 torsion_count=64 basis=([2*z^5 + 3*z^4 + 6*z^3 + 2*z^2 + 1, z^7 + z^6 + 6*z^5 + z^4 + 4*z^3 + 2*z^2 + 5*z + 4],[2*z^6 + 4*z^4 + 4*z^3 + z^2 + 3*z + 1, 5*z^5 + 2*z^3 + 3*z^2 + 6*z + 5]) Frob=(3, 7, 2, 7) e=5*z^7 + 5*z^6 + 5*z^5 + 5*z^4 + z^3 + 3*z^2 + 3*z + 1=w^3
+  PAIR j=4->5 N=8 isos=32 Weil_multiplier_set=[3, 5] strict=False
+ ALL_DISTINCT_CURVES_STRICTLY_SEPARATED=True
+PAIRING FAMILY p=41 trace=12 End_D=-20 j/models={40: [1, 17], 12: [3, 11]}
+ N=4 extension_k=4 field_minpoly=Mod(1, 41)*x^4 + Mod(1, 41)*x^3 + Mod(2, 41)*x^2 + Mod(37, 41)*x + Mod(3, 41) common_w=9
+  E=[1, 17] j=40 N=4 torsion_count=16 basis=([2*z^3 + 39*z + 2, 34*z^3 + 16*z^2 + 31*z + 29],[8*z^3 + 33*z + 40, 9*z^3 + 7*z^2 + 38*z + 38]) Frob=(1, 2, 1, 3) e=32=w^3
+  E=[3, 11] j=12 N=4 torsion_count=16 basis=([17*z^3 + 24*z + 15, 26*z^3 + z^2 + 6*z + 25],[19*z^3 + 22*z + 35, 18*z^3 + 37*z^2 + 12*z + 26]) Frob=(3, 3, 2, 1) e=9=w^1
+  PAIR j=12->40 N=4 isos=8 Weil_multiplier_set=[3] strict=False
+ N=8 extension_k=4 field_minpoly=Mod(1, 41)*x^4 + Mod(1, 41)*x^3 + Mod(2, 41)*x^2 + Mod(37, 41)*x + Mod(3, 41) common_w=27
+  E=[1, 17] j=40 N=8 torsion_count=64 basis=([z^3 + 24*z^2 + 2*z + 9, 33*z^3 + 34*z^2 + 16*z + 23],[3*z^3 + 23*z^2 + 23*z + 25, 4*z^3 + 35*z^2 + 11*z + 22]) Frob=(6, 3, 1, 6) e=14=w^5
+  E=[3, 11] j=12 N=8 torsion_count=64 basis=([z^3 + 29*z^2 + 36*z + 35, z^3 + 25*z^2 + 17*z + 17],[6*z^3 + 7*z^2 + 29*z + 34, 25*z^3 + 11*z + 30]) Frob=(5, 3, 6, 7) e=38=w^7
+  PAIR j=12->40 N=8 isos=32 Weil_multiplier_set=[3, 7] strict=False
+ ALL_DISTINCT_CURVES_STRICTLY_SEPARATED=True
+PAIRING FAMILY p=41 trace=6 End_D=-32 j/models={22: [1, 13], 29: [2, 12]}
+ N=4 extension_k=4 field_minpoly=Mod(1, 41)*x^4 + Mod(1, 41)*x^3 + Mod(2, 41)*x^2 + Mod(37, 41)*x + Mod(3, 41) common_w=32
+  E=[1, 13] j=22 N=4 torsion_count=16 basis=([0, 28*z^3 + 13*z + 38],[7*z^3 + 34*z + 38, 24*z^3 + 17*z + 32]) Frob=(3, 2, 0, 3) e=9=w^3
+  E=[2, 12] j=29 N=4 torsion_count=16 basis=([1, 21*z^3 + 20*z + 8],[10*z^3 + 31*z + 35, 17*z^3 + 24*z + 27]) Frob=(3, 2, 0, 3) e=32=w^1
+  PAIR j=22->29 N=4 isos=32 Weil_multiplier_set=[1, 3] strict=True
+ N=8 extension_k=4 field_minpoly=Mod(1, 41)*x^4 + Mod(1, 41)*x^3 + Mod(2, 41)*x^2 + Mod(37, 41)*x + Mod(3, 41) common_w=27
+  E=[1, 13] j=22 N=8 torsion_count=64 basis=([7, 39*z^3 + 2*z + 9],[2*z^3 + 29*z^2 + 4*z + 29, 14*z^3 + 13*z^2 + 2*z + 30]) Frob=(7, 2, 0, 7) e=3=w^3
+  E=[2, 12] j=29 N=8 torsion_count=64 basis=([27, 35*z^3 + 6*z + 27],[25*z^2 + 33*z + 37, 35*z^3 + 21*z^2 + 4*z + 37]) Frob=(7, 6, 0, 7) e=38=w^7
+  PAIR j=22->29 N=8 isos=128 Weil_multiplier_set=[3, 7] strict=False
+ N=16 extension_k=8 field_minpoly=Mod(1, 41)*x^8 + Mod(1, 41)*x^7 + Mod(34, 41)*x^6 + Mod(35, 41)*x^5 + Mod(15, 41)*x^4 + Mod(10, 41)*x^3 + Mod(31, 41)*x^2 + Mod(37, 41)*x + Mod(1, 41) common_w=12*z^7 + 12*z^6 + 10*z^5 + 10*z^4 + 38*z^3 + 26*z^2 + 22*z + 23
+  E=[1, 13] j=22 N=16 torsion_count=256 basis=([13*z^5 + 35*z^4 + 30*z^3 + 24*z^2 + 20*z + 22, 29*z^7 + 29*z^6 + 17*z^5 + 39*z^4 + 18*z^3 + 24*z^2 + 40*z + 17],[21*z^6 + 23*z^5 + 10*z^4 + 32*z^3 + 12*z + 1, 7*z^7 + 16*z^6 + 35*z^5 + z^4 + 16*z^3 + 23*z^2 + 2*z + 1]) Frob=(11, 10, 0, 11) e=26*z^7 + 26*z^6 + 8*z^5 + 8*z^4 + 14*z^3 + 29*z^2 + 34*z + 2=w^5
+  E=[2, 12] j=29 N=16 torsion_count=256 basis=([z^6 + 37*z^5 + 25*z^4 + 5*z^3 + z^2 + 16*z + 15, 35*z^7 + 17*z^6 + 33*z^5 + 40*z^4 + 30*z^3 + 27*z^2 + 40*z + 37],[3*z^6 + 33*z^5 + 18*z^4 + 14*z^3 + 13*z^2 + 26*z + 8, 31*z^7 + 31*z^6 + 19*z^5 + 15*z^4 + 11*z^3 + 20*z^2 + 32*z + 6]) Frob=(9, 10, 6, 13) e=4*z^7 + 4*z^6 + 17*z^5 + 17*z^4 + 40*z^3 + 36*z^2 + 21*z + 35=w^7
+  PAIR j=22->29 N=16 isos=512 Weil_multiplier_set=[3, 11] strict=False
+ ALL_DISTINCT_CURVES_STRICTLY_SEPARATED=True
+ISOLATED_LEVEL q=128 trace=13 N=7 determinants= [1, 2, 3, 4, 5, 6] extendable_norms= [1, 2, 4]
+PASS all independent division-polynomial pairing checks

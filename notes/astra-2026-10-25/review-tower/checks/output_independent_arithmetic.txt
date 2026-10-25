@@ -1,0 +1,133 @@
+D=-24 bound=1024 invertible_HNF_ideals=1319 classes=[(1, 0, 6), (2, 0, 3)]
+  N=2 class=(1, 0, 6) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=2 class=(2, 0, 3) S=[1] minimal_norm/HNF_witnesses={1: [3, [3, 0, 1]]}
+  N=3 class=(1, 0, 6) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=3 class=(2, 0, 3) S=[2] minimal_norm/HNF_witnesses={2: [2, [2, 0, 1]]}
+  N=4 class=(1, 0, 6) S=[1, 3] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 3: [7, [7, 1, 1]]}
+  N=4 class=(2, 0, 3) S=[1, 3] minimal_norm/HNF_witnesses={1: [5, [5, 2, 1]], 3: [3, [3, 0, 1]]}
+  N=8 class=(1, 0, 6) S=[1, 7] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 7: [7, [7, 1, 1]]}
+  N=8 class=(2, 0, 3) S=[3, 5] minimal_norm/HNF_witnesses={3: [3, [3, 0, 1]], 5: [5, [5, 2, 1]]}
+  N=9 class=(1, 0, 6) S=[1, 4, 7] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 4: [4, [2, 0, 2]], 7: [7, [7, 1, 1]]}
+  N=9 class=(2, 0, 3) S=[2, 5, 8] minimal_norm/HNF_witnesses={2: [2, [2, 0, 1]], 5: [5, [5, 2, 1]], 8: [8, [4, 0, 2]]}
+  N=16 class=(1, 0, 6) S=[1, 7, 9, 15] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 7: [7, [7, 1, 1]], 9: [9, [3, 0, 3]], 15: [15, [15, 3, 1]]}
+  N=16 class=(2, 0, 3) S=[3, 5, 11, 13] minimal_norm/HNF_witnesses={3: [3, [3, 0, 1]], 5: [5, [5, 2, 1]], 11: [11, [11, 4, 1]], 13: [29, [29, 9, 1]]}
+  N=24 class=(1, 0, 6) S=[1, 7] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 7: [7, [7, 1, 1]]}
+  N=24 class=(2, 0, 3) S=[5, 11] minimal_norm/HNF_witnesses={5: [5, [5, 2, 1]], 11: [11, [11, 4, 1]]}
+D=-20 bound=1024 invertible_HNF_ideals=1436 classes=[(1, 0, 5), (2, 2, 3)]
+  N=2 class=(1, 0, 5) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=2 class=(2, 2, 3) S=[1] minimal_norm/HNF_witnesses={1: [3, [3, 1, 1]]}
+  N=3 class=(1, 0, 5) S=[1, 2] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 2: [5, [5, 0, 1]]}
+  N=3 class=(2, 2, 3) S=[1, 2] minimal_norm/HNF_witnesses={1: [7, [7, 3, 1]], 2: [2, [2, 1, 1]]}
+  N=4 class=(1, 0, 5) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=4 class=(2, 2, 3) S=[3] minimal_norm/HNF_witnesses={3: [3, [3, 1, 1]]}
+  N=5 class=(1, 0, 5) S=[1, 4] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 4: [4, [2, 0, 2]]}
+  N=5 class=(2, 2, 3) S=[2, 3] minimal_norm/HNF_witnesses={2: [2, [2, 1, 1]], 3: [3, [3, 1, 1]]}
+  N=8 class=(1, 0, 5) S=[1, 5] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 5: [5, [5, 0, 1]]}
+  N=8 class=(2, 2, 3) S=[3, 7] minimal_norm/HNF_witnesses={3: [3, [3, 1, 1]], 7: [7, [7, 3, 1]]}
+  N=9 class=(1, 0, 5) S=[1, 2, 4, 5, 7, 8] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 2: [20, [10, 0, 2]], 4: [4, [2, 0, 2]], 5: [5, [5, 0, 1]], 7: [16, [4, 0, 4]], 8: [80, [20, 0, 4]]}
+  N=9 class=(2, 2, 3) S=[1, 2, 4, 5, 7, 8] minimal_norm/HNF_witnesses={1: [10, [10, 5, 1]], 2: [2, [2, 1, 1]], 4: [40, [20, 10, 2]], 5: [23, [23, 8, 1]], 7: [7, [7, 3, 1]], 8: [8, [4, 2, 2]]}
+  N=16 class=(1, 0, 5) S=[1, 5, 9, 13] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 5: [5, [5, 0, 1]], 9: [9, [9, 2, 1]], 13: [29, [29, 13, 1]]}
+  N=16 class=(2, 2, 3) S=[3, 7, 11, 15] minimal_norm/HNF_witnesses={3: [3, [3, 1, 1]], 7: [7, [7, 3, 1]], 11: [27, [27, 7, 1]], 15: [15, [15, 5, 1]]}
+  N=20 class=(1, 0, 5) S=[1, 9] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 9: [9, [9, 2, 1]]}
+  N=20 class=(2, 2, 3) S=[3, 7] minimal_norm/HNF_witnesses={3: [3, [3, 1, 1]], 7: [7, [7, 3, 1]]}
+D=-84 bound=1024 invertible_HNF_ideals=1393 classes=[(1, 0, 21), (2, 2, 11), (3, 0, 7), (5, 4, 5)]
+  N=2 class=(1, 0, 21) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=2 class=(2, 2, 11) S=[1] minimal_norm/HNF_witnesses={1: [11, [11, 1, 1]]}
+  N=2 class=(3, 0, 7) S=[1] minimal_norm/HNF_witnesses={1: [3, [3, 0, 1]]}
+  N=2 class=(5, 4, 5) S=[1] minimal_norm/HNF_witnesses={1: [5, [5, 2, 1]]}
+  N=3 class=(1, 0, 21) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=3 class=(2, 2, 11) S=[2] minimal_norm/HNF_witnesses={2: [2, [2, 1, 1]]}
+  N=3 class=(3, 0, 7) S=[1] minimal_norm/HNF_witnesses={1: [7, [7, 0, 1]]}
+  N=3 class=(5, 4, 5) S=[2] minimal_norm/HNF_witnesses={2: [5, [5, 2, 1]]}
+  N=4 class=(1, 0, 21) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=4 class=(2, 2, 11) S=[3] minimal_norm/HNF_witnesses={3: [11, [11, 1, 1]]}
+  N=4 class=(3, 0, 7) S=[3] minimal_norm/HNF_witnesses={3: [3, [3, 0, 1]]}
+  N=4 class=(5, 4, 5) S=[1] minimal_norm/HNF_witnesses={1: [5, [5, 2, 1]]}
+  N=7 class=(1, 0, 21) S=[1, 2, 4] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 2: [9, [3, 0, 3]], 4: [4, [2, 0, 2]]}
+  N=7 class=(2, 2, 11) S=[1, 2, 4] minimal_norm/HNF_witnesses={1: [8, [4, 2, 2]], 2: [2, [2, 1, 1]], 4: [11, [11, 1, 1]]}
+  N=7 class=(3, 0, 7) S=[3, 5, 6] minimal_norm/HNF_witnesses={3: [3, [3, 0, 1]], 5: [12, [6, 0, 2]], 6: [27, [9, 0, 3]]}
+  N=7 class=(5, 4, 5) S=[3, 5, 6] minimal_norm/HNF_witnesses={3: [17, [17, 8, 1]], 5: [5, [5, 2, 1]], 6: [6, [6, 3, 1]]}
+  N=8 class=(1, 0, 21) S=[1, 5] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 5: [21, [21, 0, 1]]}
+  N=8 class=(2, 2, 11) S=[3, 7] minimal_norm/HNF_witnesses={3: [11, [11, 1, 1]], 7: [15, [15, 3, 1]]}
+  N=8 class=(3, 0, 7) S=[3, 7] minimal_norm/HNF_witnesses={3: [3, [3, 0, 1]], 7: [7, [7, 0, 1]]}
+  N=8 class=(5, 4, 5) S=[1, 5] minimal_norm/HNF_witnesses={1: [17, [17, 8, 1]], 5: [5, [5, 2, 1]]}
+  N=12 class=(1, 0, 21) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=12 class=(2, 2, 11) S=[11] minimal_norm/HNF_witnesses={11: [11, [11, 1, 1]]}
+  N=12 class=(3, 0, 7) S=[7] minimal_norm/HNF_witnesses={7: [7, [7, 0, 1]]}
+  N=12 class=(5, 4, 5) S=[5] minimal_norm/HNF_witnesses={5: [5, [5, 2, 1]]}
+  N=21 class=(1, 0, 21) S=[1, 4, 16] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 4: [4, [2, 0, 2]], 16: [16, [4, 0, 4]]}
+  N=21 class=(2, 2, 11) S=[2, 8, 11] minimal_norm/HNF_witnesses={2: [2, [2, 1, 1]], 8: [8, [4, 2, 2]], 11: [11, [11, 1, 1]]}
+  N=21 class=(3, 0, 7) S=[10, 13, 19] minimal_norm/HNF_witnesses={10: [10, [10, 3, 1]], 13: [34, [34, 9, 1]], 19: [19, [19, 6, 1]]}
+  N=21 class=(5, 4, 5) S=[5, 17, 20] minimal_norm/HNF_witnesses={5: [5, [5, 2, 1]], 17: [17, [17, 8, 1]], 20: [20, [10, 4, 2]]}
+  N=84 class=(1, 0, 21) S=[1, 25, 37] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 25: [25, [25, 2, 1]], 37: [37, [37, 4, 1]]}
+  N=84 class=(2, 2, 11) S=[11, 23, 71] minimal_norm/HNF_witnesses={11: [11, [11, 1, 1]], 23: [23, [23, 5, 1]], 71: [71, [71, 11, 1]]}
+  N=84 class=(3, 0, 7) S=[19, 31, 55] minimal_norm/HNF_witnesses={19: [19, [19, 6, 1]], 31: [31, [31, 14, 1]], 55: [55, [55, 12, 1]]}
+  N=84 class=(5, 4, 5) S=[5, 17, 41] minimal_norm/HNF_witnesses={5: [5, [5, 2, 1]], 17: [17, [17, 8, 1]], 41: [41, [41, 15, 1]]}
+D=-32 bound=1024 invertible_HNF_ideals=1138 classes=[(1, 0, 8), (3, 2, 3)]
+  N=4 class=(1, 0, 8) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=4 class=(3, 2, 3) S=[3] minimal_norm/HNF_witnesses={3: [3, [3, 1, 1]]}
+  N=8 class=(1, 0, 8) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=8 class=(3, 2, 3) S=[3] minimal_norm/HNF_witnesses={3: [3, [3, 1, 1]]}
+  N=16 class=(1, 0, 8) S=[1, 9] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 9: [9, [9, 1, 1]]}
+  N=16 class=(3, 2, 3) S=[3, 11] minimal_norm/HNF_witnesses={3: [3, [3, 1, 1]], 11: [11, [11, 5, 1]]}
+  N=32 class=(1, 0, 8) S=[1, 9, 17, 25] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 9: [9, [9, 1, 1]], 17: [17, [17, 3, 1]], 25: [25, [5, 0, 5]]}
+  N=32 class=(3, 2, 3) S=[3, 11, 19, 27] minimal_norm/HNF_witnesses={3: [3, [3, 1, 1]], 11: [11, [11, 5, 1]], 19: [19, [19, 7, 1]], 27: [27, [27, 10, 1]]}
+D=-36 bound=1024 invertible_HNF_ideals=1069 classes=[(1, 0, 9), (2, 2, 5)]
+  N=3 class=(1, 0, 9) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=3 class=(2, 2, 5) S=[2] minimal_norm/HNF_witnesses={2: [2, [2, 1, 1]]}
+  N=4 class=(1, 0, 9) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=4 class=(2, 2, 5) S=[1] minimal_norm/HNF_witnesses={1: [5, [5, 1, 1]]}
+  N=9 class=(1, 0, 9) S=[1, 4, 7] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 4: [4, [2, 0, 2]], 7: [16, [4, 0, 4]]}
+  N=9 class=(2, 2, 5) S=[2, 5, 8] minimal_norm/HNF_witnesses={2: [2, [2, 1, 1]], 5: [5, [5, 1, 1]], 8: [8, [4, 2, 2]]}
+  N=12 class=(1, 0, 9) S=[1] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]]}
+  N=12 class=(2, 2, 5) S=[5] minimal_norm/HNF_witnesses={5: [5, [5, 1, 1]]}
+  N=36 class=(1, 0, 9) S=[1, 13, 25] minimal_norm/HNF_witnesses={1: [1, [1, 0, 1]], 13: [13, [13, 2, 1]], 25: [25, [25, 4, 1]]}
+  N=36 class=(2, 2, 5) S=[5, 17, 29] minimal_norm/HNF_witnesses={5: [5, [5, 1, 1]], 17: [17, [17, 5, 1]], 29: [29, [29, 7, 1]]}
+PASS bounded actual-ideal enumeration exhausts all predicted norm residues
+PARI version [2, 17, 2]
+CENSUS p=41 trace=12 discZpi=-20 DK=-20 fpi=1 models=40 j/models={40: [1, 17], 12: [3, 11]}
+  conductor=1 M=(6, -5, 1, 6) groups_k1..6=[[30], [270, 6], [68670], [117720, 24], [23172150, 5], [37699830, 126]]
+  j=40 E=[1, 17] End_discriminant=-20 conductor=1 PARI_groups=[[30], [270, 6], [68670], [117720, 24], [23172150, 5], [37699830, 126]]; H_D(j)=0 mod p
+  j=12 E=[3, 11] End_discriminant=-20 conductor=1 PARI_groups=[[30], [270, 6], [68670], [117720, 24], [23172150, 5], [37699830, 126]]; H_D(j)=0 mod p
+  SMALLEST_SEPARATING_k: none for any two listed curves; End common, Lenstra applies for every k
+CENSUS p=7 trace=2 discZpi=-24 DK=-24 fpi=1 models=6 j/models={5: [1, 3], 4: [3, 3]}
+  conductor=1 M=(1, -6, 1, 1) groups_k1..6=[[6], [30, 2], [126, 3], [120, 20], [16566], [19530, 6]]
+  j=5 E=[1, 3] End_discriminant=-24 conductor=1 PARI_groups=[[6], [30, 2], [126, 3], [120, 20], [16566], [19530, 6]]; H_D(j)=0 mod p
+  j=4 E=[3, 3] End_discriminant=-24 conductor=1 PARI_groups=[[6], [30, 2], [126, 3], [120, 20], [16566], [19530, 6]]; H_D(j)=0 mod p
+  SMALLEST_SEPARATING_k: none for any two listed curves; End common, Lenstra applies for every k
+CENSUS p=41 trace=6 discZpi=-128 DK=-8 fpi=4 models=140 j/models={22: [1, 13], 33: [2, 2], 25: [2, 3], 29: [2, 12], 13: [6, 7], 35: [6, 10], 5: [6, 20]}
+  conductor=1 M=(3, -8, 4, 3) groups_k1..6=[[18, 2], [72, 24], [34722, 2], [58896, 48], [57921138, 2], [13194360, 360]]
+  conductor=2 M=(3, -16, 2, 3) groups_k1..6=[[18, 2], [144, 12], [34722, 2], [117792, 24], [57921138, 2], [26388720, 180]]
+  conductor=4 M=(3, -32, 1, 3) groups_k1..6=[[36], [288, 6], [69444], [235584, 12], [115842276], [52777440, 90]]
+  j=22 E=[1, 13] End_discriminant=-32 conductor=2 PARI_groups=[[18, 2], [144, 12], [34722, 2], [117792, 24], [57921138, 2], [26388720, 180]]; H_D(j)=0 mod p
+  j=33 E=[2, 2] End_discriminant=-128 conductor=4 PARI_groups=[[36], [288, 6], [69444], [235584, 12], [115842276], [52777440, 90]]; H_D(j)=0 mod p
+  j=25 E=[2, 3] End_discriminant=-128 conductor=4 PARI_groups=[[36], [288, 6], [69444], [235584, 12], [115842276], [52777440, 90]]; H_D(j)=0 mod p
+  j=29 E=[2, 12] End_discriminant=-32 conductor=2 PARI_groups=[[18, 2], [144, 12], [34722, 2], [117792, 24], [57921138, 2], [26388720, 180]]; H_D(j)=0 mod p
+  j=13 E=[6, 7] End_discriminant=-128 conductor=4 PARI_groups=[[36], [288, 6], [69444], [235584, 12], [115842276], [52777440, 90]]; H_D(j)=0 mod p
+  j=35 E=[6, 10] End_discriminant=-128 conductor=4 PARI_groups=[[36], [288, 6], [69444], [235584, 12], [115842276], [52777440, 90]]; H_D(j)=0 mod p
+  j=5 E=[6, 20] End_discriminant=-8 conductor=1 PARI_groups=[[18, 2], [72, 24], [34722, 2], [58896, 48], [57921138, 2], [13194360, 360]]; H_D(j)=0 mod p
+  SMALLEST_SEPARATING_k: conductors 1/2 => 2
+  SMALLEST_SEPARATING_k: conductors 1/4 => 1
+CENSUS p=7 trace=1 discZpi=-27 DK=-3 fpi=3 models=4 j/models={0: [0, 5], 3: [3, 5]}
+  conductor=1 M=(-1, -3, 3, 2) groups_k1..6=[[7], [21, 3], [182, 2], [777, 3], [16597], [3276, 36]]
+  conductor=3 M=(-1, -9, 1, 2) groups_k1..6=[[7], [63], [182, 2], [2331], [16597], [9828, 12]]
+  j=0 E=[0, 5] End_discriminant=-3 conductor=1 PARI_groups=[[7], [21, 3], [182, 2], [777, 3], [16597], [3276, 36]]; H_D(j)=0 mod p
+  j=3 E=[3, 5] End_discriminant=-27 conductor=3 PARI_groups=[[7], [63], [182, 2], [2331], [16597], [9828, 12]]; H_D(j)=0 mod p
+  SMALLEST_SEPARATING_k: conductors 1/3 => 2
+CENSUS p=37 trace=8 discZpi=-84 DK=-84 fpi=1 models=72 j/models={7: [2, 2], 3: [2, 11], 2: [3, 14], 28: [5, 17]}
+  conductor=1 M=(4, -21, 1, 4) groups_k1..6=[[30], [690, 2], [1890, 27], [46920, 40], [6304650, 11], [47512710, 54]]
+  j=7 E=[2, 2] End_discriminant=-84 conductor=1 PARI_groups=[[30], [690, 2], [1890, 27], [46920, 40], [6304650, 11], [47512710, 54]]; H_D(j)=0 mod p
+  j=3 E=[2, 11] End_discriminant=-84 conductor=1 PARI_groups=[[30], [690, 2], [1890, 27], [46920, 40], [6304650, 11], [47512710, 54]]; H_D(j)=0 mod p
+  j=2 E=[3, 14] End_discriminant=-84 conductor=1 PARI_groups=[[30], [690, 2], [1890, 27], [46920, 40], [6304650, 11], [47512710, 54]]; H_D(j)=0 mod p
+  j=28 E=[5, 17] End_discriminant=-84 conductor=1 PARI_groups=[[30], [690, 2], [1890, 27], [46920, 40], [6304650, 11], [47512710, 54]]; H_D(j)=0 mod p
+  SMALLEST_SEPARATING_k: none for any two listed curves; End common, Lenstra applies for every k
+CLASS_GROUP D=-24 h=2 forms=[(1, 0, 6), (2, 0, 3)] squares=['Qfb(1, 0, 6)', 'Qfb(1, 0, 6)']
+CLASS_GROUP D=-20 h=2 forms=[(1, 0, 5), (2, 2, 3)] squares=['Qfb(1, 0, 5)', 'Qfb(1, 0, 5)']
+CLASS_GROUP D=-84 h=4 forms=[(1, 0, 21), (2, 2, 11), (3, 0, 7), (5, 4, 5)] squares=['Qfb(1, 0, 21)', 'Qfb(1, 0, 21)', 'Qfb(1, 0, 21)', 'Qfb(1, 0, 21)']
+CLASS_GROUP D=-32 h=2 forms=[(1, 0, 8), (3, 2, 3)] squares=['Qfb(1, 0, 8)', 'Qfb(1, 0, 8)']
+CLASS_GROUP D=-36 h=2 forms=[(1, 0, 9), (2, 2, 5)] squares=['Qfb(1, 0, 9)', 'Qfb(1, 0, 9)']
+CLASS_GROUP D=-23 h=3 forms=[(1, 1, 6), (2, -1, 3), (2, 1, 3)] squares=['Qfb(1, 1, 6)', 'Qfb(2, 1, 3)', 'Qfb(2, -1, 3)']
+CLASS_GROUP D=-15 h=2 forms=[(1, 1, 4), (2, 1, 2)] squares=['Qfb(1, 1, 4)', 'Qfb(1, 1, 4)']
+MINIMAL_F4 c=z j=z + 1 points=[('0', 'z + 1'), ('z', '1'), ('z', 'z + 1')] plus O, card=4, trace=1, disc=-15
+MINIMAL_F4 c=z + 1 j=z points=[('0', 'z'), ('z + 1', '1'), ('z + 1', 'z')] plus O, card=4, trace=1, disc=-15
+PASS independent PARI census, every conductor, six extension groups, class squares, F4 minimal example

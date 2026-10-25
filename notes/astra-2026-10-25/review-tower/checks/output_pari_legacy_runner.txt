@@ -1,0 +1,4 @@
+notes/astra-2026-10-25/review-tower/checks/output_legacy_overlap_data.txt
+notes/astra-2026-10-25/review-tower/checks/output_legacy_tower_pairing.txt
+notes/astra-2026-10-25/review-tower/checks/output_legacy_cm_tower.txt
+INCOMPLETE: 1 requested legacy reruns; inspect the logs.

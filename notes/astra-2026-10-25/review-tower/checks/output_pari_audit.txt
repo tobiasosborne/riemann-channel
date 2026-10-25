@@ -1,0 +1,146 @@
+PARI stack size set to 256000000 bytes, maximum size set to 1000001536
+PARI/cypari2 backend: AVAILABLE [2, 17, 2]
+Independent backend: python-flint exact finite fields, group certificates, translated-divisor Miller pairings.
+
+ISOGENY CLASS p=7 a=2 discriminant(Z[pi])=-24 fundamental=-24; h(O_K)=2
+  all j -> representative short models: {5: (1, 3), 4: (3, 3)}; short models with this trace=6
+  End(E)=O_K on every listed curve: conductor=1, forced by the fundamental Frobenius discriminant.
+  forms= [(1, 0, 6), (2, 0, 3)]
+  PARI class polynomial: x^2 - 4834944*x + 14670139392
+  E=[3, 3] k=1 card=6 group=[6]; generator certificate=[(6, ((4,), (4,)))]
+  E=[3, 3] k=2 card=60 group=[30, 2]; generator certificate=[(30, ((5, 2), (0, 2))), (2, ((5, 3), (0, 0)))]
+  E=[3, 3] k=3 card=378 group=[126, 3]; generator certificate=[(126, ((2, 5, 6), (6, 1, 1))), (3, ((2, 0, 5), (1, 0, 3)))]
+  E=[3, 3] k=4 card=2400 group=[120, 20]; generator certificate=[(120, ((6, 1, 1, 1), (3, 4, 6, 3))), (20, ((0, 4, 2, 5), (5, 5, 4, 0)))]
+  E=[3, 3] k=5 card=16566 group=[16566]; generator certificate=[(16566, ((4, 0, 0, 2, 3), (2, 3, 4, 0, 1)))]
+  E=[3, 3] k=6 card=117180 group=[19530, 6]; generator certificate=[(19530, ((4, 2, 6, 6, 0, 3), (2, 6, 5, 5, 3, 6))), (6, ((4, 2, 6, 4, 2, 2), (2, 2, 5, 4, 3, 6)))]
+  E=[1, 3] k=1 card=6 group=[6]; generator certificate=[(6, ((4,), (1,)))]
+  E=[1, 3] k=2 card=60 group=[30, 2]; generator certificate=[(30, ((4, 6), (1, 5))), (2, ((5, 0), (0, 0)))]
+  E=[1, 3] k=3 card=378 group=[126, 3]; generator certificate=[(126, ((3, 4, 5), (0, 6, 1))), (3, ((2, 0, 2), (6, 0, 5)))]
+  E=[1, 3] k=4 card=2400 group=[120, 20]; generator certificate=[(120, ((4, 5, 0, 3), (4, 6, 5, 6))), (20, ((4, 1, 3, 2), (4, 5, 1, 0)))]
+  E=[1, 3] k=5 card=16566 group=[16566]; generator certificate=[(16566, ((4, 3, 1, 3, 5), (6, 1, 5, 1, 1)))]
+  E=[1, 3] k=6 card=117180 group=[19530, 6]; generator certificate=[(19530, ((3, 1, 5, 4, 4, 1), (3, 5, 6, 0, 3, 4))), (6, ((3, 4, 2, 4, 4, 4), (5, 2, 5, 5, 1, 6)))]
+  phi_2: kernel=[(1, 0)]; Velu quotient y^2=x^3+1x+3; target scale (u^2 x,u^3 y), u=1, scalars=(1, 1)
+    PARI ellisogeny: [[Mod(0, 7), Mod(0, 7), Mod(0, 7), Mod(1, 7), Mod(3, 7)], [Mod(1, 7)*x^3 + Mod(5, 7)*x^2 + Mod(1, 7), Mod(1, 7)*y*x^3 + Mod(4, 7)*y*x^2 + Mod(4, 7)*y*x + Mod(5, 7)*y, x - 1]]
+  phi_3: kernel=[(3, 5), (3, 2)]; Velu quotient y^2=x^3+4x+3; target scale (u^2 x,u^3 y), u=2, scalars=(4, 1)
+    PARI ellisogeny: [[Mod(0, 7), Mod(0, 7), Mod(0, 7), Mod(4, 7), Mod(3, 7)], [Mod(1, 7)*x^3 + Mod(1, 7)*x^2 + Mod(6, 7)*x + Mod(4, 7), Mod(1, 7)*y*x^3 + Mod(5, 7)*y*x^2 + Mod(2, 7)*y*x + Mod(2, 7)*y, x - 3]]
+  Compatible T1 map: phi_3 on the entire 2-primary tower; phi_2 on every odd-primary tower (including p).
+  N=2 full torsion field F_7^2, modulus=x^2 + 6*x + 3, primitive root w=6
+    source basis=[((1, 4), (0, 0)), ((5, 3), (0, 0))]; Frob row matrix=(0, 1, 1, 0); Weil e(P,Q)=6=w^1
+    target basis=[((2, 5), (0, 0)), ((0, 2), (0, 0))]; Frob row matrix=(0, 1, 1, 0); Weil e(P,Q)=6=w^1
+    all equivariant Weil multiplier residues=[1]; phi_3 matrix columns=[[1, 0], [0, 1]]
+    transported Weil value = (6)^3 = 6
+    reduced Tate exponents on E[N] x E(F)/N: source=[[1, 0], [0, 1]]; target=[[1, 0], [0, 1]]
+    transported Tate exponents=[[1, 0], [0, 1]]; degree-3 functoriality VERIFIED
+    PARI Weil agreement: exact; value=6
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+    PARI Weil agreement: exact; value=6
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+  N=3 full torsion field F_7^3, modulus=x^3 + 6*x^2 + 4, primitive root w=4
+    source basis=[((3, 0, 0), (5, 0, 0)), ((6, 2, 5), (2, 4, 3))]; Frob row matrix=(1, 2, 0, 1); Weil e(P,Q)=2=w^2
+    target basis=[((6, 0, 0), (1, 0, 0)), ((5, 5, 2), (3, 2, 5))]; Frob row matrix=(1, 1, 0, 1); Weil e(P,Q)=2=w^2
+    all equivariant Weil multiplier residues=[2]; phi_2 matrix columns=[[1, 0], [1, 2]]
+    transported Weil value = (2)^2 = 4
+    reduced Tate exponents on E[N] x E(F)/N: source=[[1, 0], [1, 1]]; target=[[2, 0], [1, 2]]
+    transported Tate exponents=[[2, 0], [2, 2]]; degree-2 functoriality VERIFIED
+    PARI Weil agreement: exact; value=2
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+    PARI Weil agreement: exact; value=2
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+  N=4 full torsion field F_7^4, modulus=x^4 + 5*x^2 + 4*x + 3, primitive root w=3*t^3 + 2*t^2 + 3*t
+    source basis=[((1, 4, 5, 4), (1, 0, 2, 1)), ((6, 6, 0, 1), (3, 0, 4, 1))]; Frob row matrix=(3, 3, 2, 3); Weil e(P,Q)=4*t^3 + 5*t^2 + 4*t=w^3
+    target basis=[((5, 3, 2, 3), (6, 4, 0, 2)), ((2, 2, 4, 4), (4, 3, 1, 5))]; Frob row matrix=(3, 1, 2, 3); Weil e(P,Q)=4*t^3 + 5*t^2 + 4*t=w^3
+    all equivariant Weil multiplier residues=[1, 3]; phi_3 matrix columns=[[3, 0], [2, 1]]
+    transported Weil value = (4*t^3 + 5*t^2 + 4*t)^3 = 3*t^3 + 2*t^2 + 3*t
+    reduced Tate exponents on E[N] x E(F)/N: source=[[3, 2], [1, 1]]; target=[[1, 2], [3, 3]]
+    transported Tate exponents=[[1, 2], [3, 3]]; degree-3 functoriality VERIFIED
+    PARI Weil agreement: exact; value=4*t^3 + 5*t^2 + 4*t
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+    PARI Weil agreement: exact; value=4*t^3 + 5*t^2 + 4*t
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+  N=8 full torsion field F_7^8, modulus=x^8 + 4*x^3 + 6*x^2 + 2*x + 3, primitive root w=4*t^7 + 3*t^5 + 2*t^4 + 4*t^3 + 4*t^2 + 2
+    source basis=[((2, 0, 2, 6, 4, 4, 3, 3), (6, 5, 3, 1, 5, 5, 4, 2)), ((6, 4, 4, 3, 4, 4, 3, 0), (0, 6, 0, 4, 0, 4, 1, 2))]; Frob row matrix=(3, 1, 6, 7); Weil e(P,Q)=4*t^7 + 3*t^5 + 2*t^4 + 4*t^3 + 4*t^2 + 6=w^3
+    target basis=[((1, 5, 5, 6, 3, 4, 1, 3), (5, 6, 4, 1, 4, 4, 4, 3)), ((5, 6, 2, 4, 0, 1, 2, 5), (5, 5, 1, 1, 5, 1, 4, 1))]; Frob row matrix=(1, 5, 2, 1); Weil e(P,Q)=4*t^7 + 3*t^5 + 2*t^4 + 4*t^3 + 4*t^2 + 6=w^3
+    all equivariant Weil multiplier residues=[3, 5]; phi_3 matrix columns=[[7, 0], [7, 5]]
+    transported Weil value = (4*t^7 + 3*t^5 + 2*t^4 + 4*t^3 + 4*t^2 + 6)^3 = 4*t^7 + 3*t^5 + 2*t^4 + 4*t^3 + 4*t^2 + 2
+    reduced Tate exponents on E[N] x E(F)/N: source=[[5, 2], [7, 3]]; target=[[7, 4], [2, 7]]
+    transported Tate exponents=[[7, 6], [5, 1]]; degree-3 functoriality VERIFIED
+    PARI Weil agreement: exact; value=4*t^7 + 3*t^5 + 2*t^4 + 4*t^3 + 4*t^2 + 6
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+    PARI Weil agreement: exact; value=4*t^7 + 3*t^5 + 2*t^4 + 4*t^3 + 4*t^2 + 6
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+  Pointwise mixed-primary Phi: 2400 distinct images, all on target, all commute with Frobenius; additivity sample PASS.
+
+ISOGENY CLASS p=41 a=12 discriminant(Z[pi])=-20 fundamental=-20; h(O_K)=2
+  all j -> representative short models: {40: (1, 17), 12: (3, 11)}; short models with this trace=40
+  End(E)=O_K on every listed curve: conductor=1, forced by the fundamental Frobenius discriminant.
+  forms= [(1, 0, 5), (2, 2, 3)]
+  PARI class polynomial: x^2 - 1264000*x - 681472000
+  E=[1, 17] k=1 card=30 group=[30]; generator certificate=[(30, ((29,), (32,)))]
+  E=[1, 17] k=2 card=1620 group=[270, 6]; generator certificate=[(270, ((30, 29), (1, 24))), (6, ((10, 12), (23, 27)))]
+  E=[1, 17] k=3 card=68670 group=[68670]; generator certificate=[(68670, ((31, 32, 5), (9, 30, 1)))]
+  E=[1, 17] k=4 card=2825280 group=[117720, 24]; generator certificate=[(117720, ((33, 5, 1, 15), (2, 29, 33, 22))), (24, ((29, 18, 15, 29), (33, 1, 21, 24)))]
+  E=[1, 17] k=5 card=115860750 group=[23172150, 5]; generator certificate=[(23172150, ((39, 27, 1, 21, 35), (2, 5, 38, 4, 25))), (5, ((30, 16, 13, 19, 19), (19, 23, 6, 12, 38)))]
+  E=[1, 17] k=6 card=4750178580 group=[37699830, 126]; generator certificate=[(37699830, ((16, 35, 25, 11, 15, 22), (17, 20, 34, 17, 27, 12))), (126, ((33, 11, 18, 17, 12, 13), (6, 7, 7, 26, 37, 25)))]
+  E=[3, 11] k=1 card=30 group=[30]; generator certificate=[(30, ((6,), (32,)))]
+  E=[3, 11] k=2 card=1620 group=[270, 6]; generator certificate=[(270, ((12, 36), (28, 5))), (6, ((29, 5), (27, 11)))]
+  E=[3, 11] k=3 card=68670 group=[68670]; generator certificate=[(68670, ((28, 23, 22), (1, 20, 9)))]
+  E=[3, 11] k=4 card=2825280 group=[117720, 24]; generator certificate=[(117720, ((10, 25, 13, 27), (35, 3, 12, 39))), (24, ((33, 23, 33, 19), (17, 37, 33, 1)))]
+  E=[3, 11] k=5 card=115860750 group=[23172150, 5]; generator certificate=[(23172150, ((34, 3, 11, 7, 0), (38, 30, 24, 10, 28))), (5, ((31, 26, 34, 31, 10), (30, 36, 25, 12, 31)))]
+  E=[3, 11] k=6 card=4750178580 group=[37699830, 126]; generator certificate=[(37699830, ((13, 32, 25, 35, 20, 21), (30, 14, 2, 11, 24, 38))), (126, ((30, 4, 21, 28, 14, 31), (28, 34, 13, 33, 29, 31)))]
+  phi_2: kernel=[(35, 0)]; Velu quotient y^2=x^3+30x+3; target scale (u^2 x,u^3 y), u=8, scalars=(23, 20)
+    PARI ellisogeny: [[Mod(0, 41), Mod(0, 41), Mod(0, 41), Mod(30, 41), Mod(3, 41)], [Mod(1, 41)*x^3 + Mod(12, 41)*x^2 + Mod(22, 41)*x + Mod(39, 41), Mod(1, 41)*y*x^3 + Mod(18, 41)*y*x^2 + Mod(40, 41)*y*x + Mod(13, 41)*y, x - 35]]
+  phi_3: kernel=[(34, 6), (34, 35)]; Velu quotient y^2=x^3+38x+24; target scale (u^2 x,u^3 y), u=14, scalars=(32, 38)
+    PARI ellisogeny: [[Mod(0, 41), Mod(0, 41), Mod(0, 41), Mod(38, 41), Mod(24, 41)], [Mod(1, 41)*x^3 + Mod(14, 41)*x^2 + Mod(17, 41)*x + Mod(2, 41), Mod(1, 41)*y*x^3 + Mod(21, 41)*y*x^2 + Mod(15, 41)*y*x + Mod(33, 41)*y, x - 34]]
+  Compatible T1 map: phi_3 on the entire 2-primary tower; phi_2 on every odd-primary tower (including p).
+  N=2 full torsion field F_41^2, modulus=x^2 + 38*x + 6, primitive root w=40
+    source basis=[((8, 24), (0, 0)), ((35, 0), (0, 0))]; Frob row matrix=(1, 0, 1, 1); Weil e(P,Q)=40=w^1
+    target basis=[((13, 36), (0, 0)), ((30, 0), (0, 0))]; Frob row matrix=(1, 0, 1, 1); Weil e(P,Q)=40=w^1
+    all equivariant Weil multiplier residues=[1]; phi_3 matrix columns=[[1, 1], [0, 1]]
+    transported Weil value = (40)^3 = 40
+    reduced Tate exponents on E[N] x E(F)/N: source=[[0, 1], [1, 0]]; target=[[0, 1], [1, 0]]
+    transported Tate exponents=[[0, 1], [1, 0]]; degree-3 functoriality VERIFIED
+    PARI Weil agreement: exact; value=40
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+    PARI Weil agreement: exact; value=40
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+  N=3 full torsion field F_41^2, modulus=x^2 + 38*x + 6, primitive root w=22*t + 28
+    source basis=[((23, 0), (33, 19)), ((26, 32), (8, 33))]; Frob row matrix=(2, 1, 0, 1); Weil e(P,Q)=22*t + 28=w^1
+    target basis=[((16, 0), (7, 9)), ((21, 9), (7, 37))]; Frob row matrix=(2, 1, 0, 1); Weil e(P,Q)=19*t + 12=w^2
+    all equivariant Weil multiplier residues=[1, 2]; phi_2 matrix columns=[[2, 0], [0, 2]]
+    transported Weil value = (22*t + 28)^2 = 19*t + 12
+    reduced Tate exponents on E[N] x E(F)/N: source=[[0, 1], [2, 1]]; target=[[2, 2], [0, 2]]
+    transported Tate exponents=[[0, 2], [1, 2]]; degree-2 functoriality VERIFIED
+    PARI Weil agreement: exact; value=22*t + 28
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+    PARI Weil agreement: exact; value=19*t + 12
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+  N=4 full torsion field F_41^4, modulus=x^4 + 23*x + 6, primitive root w=9
+    source basis=[((30, 13, 26, 5), (31, 26, 8, 22)), ((1, 28, 15, 36), (23, 9, 33, 15))]; Frob row matrix=(0, 1, 3, 0); Weil e(P,Q)=9=w^1
+    target basis=[((3, 12, 24, 33), (13, 28, 8, 37)), ((24, 13, 26, 5), (19, 1, 1, 32))]; Frob row matrix=(3, 2, 3, 1); Weil e(P,Q)=32=w^3
+    all equivariant Weil multiplier residues=[3]; phi_3 matrix columns=[[3, 3], [1, 0]]
+    transported Weil value = (9)^3 = 32
+    reduced Tate exponents on E[N] x E(F)/N: source=[[1, 0], [0, 1]]; target=[[3, 1], [1, 2]]
+    transported Tate exponents=[[3, 0], [0, 3]]; degree-3 functoriality VERIFIED
+    PARI Weil agreement: exact; value=9
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+    PARI Weil agreement: exact; value=32
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+  N=8 full torsion field F_41^4, modulus=x^4 + 23*x + 6, primitive root w=3
+    source basis=[((18, 26, 2, 34), (30, 31, 7, 9)), ((9, 6, 16, 31), (19, 16, 13, 30))]; Frob row matrix=(2, 3, 1, 2); Weil e(P,Q)=14=w^7
+    target basis=[((10, 13, 33, 24), (31, 1, 32, 3)), ((28, 31, 19, 23), (27, 5, 16, 0))]; Frob row matrix=(3, 2, 5, 1); Weil e(P,Q)=38=w^5
+    all equivariant Weil multiplier residues=[3, 7]; phi_3 matrix columns=[[7, 6], [3, 5]]
+    transported Weil value = (14)^3 = 38
+    reduced Tate exponents on E[N] x E(F)/N: source=[[1, 2], [6, 5]]; target=[[7, 3], [7, 2]]
+    transported Tate exponents=[[3, 6], [2, 7]]; degree-3 functoriality VERIFIED
+    PARI Weil agreement: exact; value=14
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+    PARI Weil agreement: exact; value=38
+    PARI ellcard, ellgroup, and all reduced Tate entries agree.
+  Pointwise mixed-primary Phi: 1620 distinct images, all on target, all commute with Frobenius; additivity sample PASS.
+
+PAULI PAIR p=5 a=-2 discriminant(Z[pi])=-16; maximal discriminant=-4, possible conductors 1,2
+  model=[4, 0] group=[4, 2], rational 2-torsion size=4, End discriminant=-4, conductor=1
+  model=[4, 1] group=[8], rational 2-torsion size=2, End discriminant=-16, conductor=2
+  Criterion: full E[2] rational iff (pi-1)/2 is integral; here this generates Z[i].
+
+PASS all constructive exact-arithmetic assertions.
