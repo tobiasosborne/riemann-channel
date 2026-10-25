@@ -40,3 +40,6 @@ notes/**/progress.txt
 notes/reviews/.ht_zeros_cache.json
 notes/**/astra-last.md
 notes/astra-2026-10-25/census/sources/hkl-genus-6/
+notes/astra-2026-10-25/census/checks/ruled_nodes
+notes/astra-2026-10-25/census/checks/trigonal_search
+notes/astra-2026-10-25/census/checks/plane_nodes

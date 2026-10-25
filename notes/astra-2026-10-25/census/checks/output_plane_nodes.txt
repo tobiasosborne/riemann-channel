@@ -1,0 +1,2 @@
+CUBE 3 cases=64 equations=4194304 staged survivors= [942080, 70930, 19440, 452, 108, 24, 0, 0] raw= 0 exactly two nodes= 0
+CUBE 5 cases=64 equations=4194304 staged survivors= [942080, 70930, 19440, 452, 108, 24, 0, 0] raw= 0 exactly two nodes= 0

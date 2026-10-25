@@ -1,0 +1,3100 @@
+[
+  {
+    "graph": "Petersen",
+    "mask": 6,
+    "p_rank": 6,
+    "band_minors": [
+      5,
+      25,
+      120,
+      551,
+      2523,
+      10701,
+      40152,
+      141120,
+      580608,
+      1806336
+    ],
+    "reduced_partitions": [
+      {
+        "left": "x - 1",
+        "right": "x**8 + x**7 - 14*x**6 - 14*x**5 + 61*x**4 + 61*x**3 - 80*x**2 - 80*x",
+        "reduced": 64,
+        "resultant": 64,
+        "bezout": [
+          "x**7 + 2*x**6 - 12*x**5 - 26*x**4 + 35*x**3 + 96*x**2 + 16*x - 64",
+          "-1"
+        ]
+      },
+      {
+        "left": "x + 1",
+        "right": "x**8 - x**7 - 14*x**6 + 14*x**5 + 61*x**4 - 61*x**3 - 80*x**2 + 80*x",
+        "reduced": 64,
+        "resultant": 64,
+        "bezout": [
+          "x**7 - 2*x**6 - 12*x**5 + 26*x**4 + 35*x**3 - 96*x**2 + 16*x + 64",
+          "-1"
+        ]
+      },
+      {
+        "left": "x**2 - 1",
+        "right": "x**7 - 14*x**5 + 61*x**3 - 80*x",
+        "reduced": 32,
+        "resultant": 1024,
+        "bezout": [
+          "x**6 - 13*x**4 + 48*x**2 - 32",
+          "-x"
+        ]
+      },
+      {
+        "left": "x",
+        "right": "x**8 - 15*x**6 + 75*x**4 - 141*x**2 + 80",
+        "reduced": 80,
+        "resultant": 80,
+        "bezout": [
+          "-x**7 + 15*x**5 - 75*x**3 + 141*x",
+          "1"
+        ]
+      },
+      {
+        "left": "x**2 - x",
+        "right": "x**7 + x**6 - 14*x**5 - 14*x**4 + 61*x**3 + 61*x**2 - 80*x - 80",
+        "reduced": 320,
+        "resultant": 5120,
+        "bezout": [
+          "x**6 + 6*x**5 - 4*x**4 - 74*x**3 - 69*x**2 + 236*x + 400",
+          "-x - 4"
+        ]
+      },
+      {
+        "left": "x**2 + x",
+        "right": "x**7 - x**6 - 14*x**5 + 14*x**4 + 61*x**3 - 61*x**2 - 80*x + 80",
+        "reduced": 320,
+        "resultant": 5120,
+        "bezout": [
+          "x**6 - 6*x**5 - 4*x**4 + 74*x**3 - 69*x**2 - 236*x + 400",
+          "4 - x"
+        ]
+      },
+      {
+        "left": "x**3 - x",
+        "right": "x**6 - 14*x**4 + 61*x**2 - 80",
+        "reduced": 160,
+        "resultant": 81920,
+        "bezout": [
+          "3*x**5 - 37*x**3 + 118*x",
+          "-3*x**2 - 2"
+        ]
+      },
+      {
+        "left": "x**2 - x - 4",
+        "right": "x**7 + x**6 - 10*x**5 - 6*x**4 + 29*x**3 + 5*x**2 - 20*x",
+        "reduced": 64,
+        "resultant": 2048,
+        "bezout": [
+          "-x**6 + 8*x**4 - 6*x**3 - 15*x**2 + 14*x - 16",
+          "x - 2"
+        ]
+      },
+      {
+        "left": "x**3 - 2*x**2 - 3*x + 4",
+        "right": "x**6 + 2*x**5 - 8*x**4 - 14*x**3 + 15*x**2 + 20*x",
+        "reduced": 32,
+        "resultant": 8192,
+        "bezout": [
+          "x**4 + x**3 - 9*x**2 - 9*x + 8",
+          "3 - x"
+        ]
+      },
+      {
+        "left": "x**3 - 5*x - 4",
+        "right": "x**6 - 10*x**4 + 4*x**3 + 25*x**2 - 20*x",
+        "reduced": 32,
+        "resultant": 32768,
+        "bezout": [
+          "-x**3 + 5*x - 8",
+          "1"
+        ]
+      },
+      {
+        "left": "x**4 - x**3 - 5*x**2 + x + 4",
+        "right": "x**5 + x**4 - 9*x**3 - 5*x**2 + 20*x",
+        "reduced": 64,
+        "resultant": 32768,
+        "bezout": [
+          "x**4 + 2*x**3 - 9*x**2 - 14*x + 16",
+          "-x**3 + 7*x + 2"
+        ]
+      },
+      {
+        "left": "x**3 - x**2 - 4*x",
+        "right": "x**6 + x**5 - 10*x**4 - 6*x**3 + 29*x**2 + 5*x - 20",
+        "reduced": 320,
+        "resultant": 10240,
+        "bezout": [
+          "-9*x**5 - 4*x**4 + 80*x**3 - 6*x**2 - 191*x + 50",
+          "9*x**2 - 14*x - 16"
+        ]
+      },
+      {
+        "left": "x**4 - 2*x**3 - 3*x**2 + 4*x",
+        "right": "x**5 + 2*x**4 - 8*x**3 - 14*x**2 + 15*x + 20",
+        "reduced": 160,
+        "resultant": 40960,
+        "bezout": [
+          "-2*x**4 + x**3 + 21*x**2 - 17*x - 75",
+          "2*x**3 - 9*x**2 + 9*x + 8"
+        ]
+      },
+      {
+        "left": "x**4 - 5*x**2 - 4*x",
+        "right": "x**5 - 10*x**3 + 4*x**2 + 25*x - 20",
+        "reduced": 160,
+        "resultant": 163840,
+        "bezout": [
+          "-2*x**4 + 15*x**2 - 8*x - 25",
+          "2*x**3 - 5*x - 8"
+        ]
+      },
+      {
+        "left": "x**5 - x**4 - 5*x**3 + x**2 + 4*x",
+        "right": "x**4 + x**3 - 9*x**2 - 5*x + 20",
+        "reduced": 320,
+        "resultant": 163840,
+        "bezout": [
+          "x**3 + 6*x**2 - 9*x - 50",
+          "-x**4 - 4*x**3 + 15*x**2 + 14*x + 16"
+        ]
+      },
+      {
+        "left": "x**2 - 5",
+        "right": "x**7 - 10*x**5 + 25*x**3 - 16*x",
+        "reduced": 80,
+        "resultant": 1280,
+        "bezout": [
+          "x**6 - 5*x**4 - 16",
+          "-x"
+        ]
+      },
+      {
+        "left": "x**3 - x**2 - 5*x + 5",
+        "right": "x**6 + x**5 - 9*x**4 - 9*x**3 + 16*x**2 + 16*x",
+        "reduced": 320,
+        "resultant": 5120,
+        "bezout": [
+          "9*x**5 + 14*x**4 - 51*x**3 - 96*x**2 - 16*x + 64",
+          "-9*x**2 + 4*x + 25"
+        ]
+      },
+      {
+        "left": "x**3 + x**2 - 5*x - 5",
+        "right": "x**6 - x**5 - 9*x**4 + 9*x**3 + 16*x**2 - 16*x",
+        "reduced": 320,
+        "resultant": 5120,
+        "bezout": [
+          "9*x**5 - 14*x**4 - 51*x**3 + 96*x**2 - 16*x - 64",
+          "-9*x**2 - 4*x + 25"
+        ]
+      },
+      {
+        "left": "x**4 - 6*x**2 + 5",
+        "right": "x**5 - 9*x**3 + 16*x",
+        "reduced": 160,
+        "resultant": 5120,
+        "bezout": [
+          "7*x**4 - 48*x**2 + 32",
+          "-7*x**3 + 27*x"
+        ]
+      },
+      {
+        "left": "x**3 - 5*x",
+        "right": "x**6 - 10*x**4 + 25*x**2 - 16",
+        "reduced": 16,
+        "resultant": 4096,
+        "bezout": [
+          "x**3 - 5*x",
+          "-1"
+        ]
+      },
+      {
+        "left": "x**4 - x**3 - 5*x**2 + 5*x",
+        "right": "x**5 + x**4 - 9*x**3 - 9*x**2 + 16*x + 16",
+        "reduced": 64,
+        "resultant": 16384,
+        "bezout": [
+          "x**4 + 2*x**3 - 3*x**2 - 12*x - 16",
+          "-x**3 + x + 4"
+        ]
+      },
+      {
+        "left": "x**4 + x**3 - 5*x**2 - 5*x",
+        "right": "x**5 - x**4 - 9*x**3 + 9*x**2 + 16*x - 16",
+        "reduced": 64,
+        "resultant": 16384,
+        "bezout": [
+          "x**4 - 2*x**3 - 3*x**2 + 12*x - 16",
+          "-x**3 + x - 4"
+        ]
+      },
+      {
+        "left": "x**5 - 6*x**3 + 5*x",
+        "right": "x**4 - 9*x**2 + 16",
+        "reduced": 32,
+        "resultant": 16384,
+        "bezout": [
+          "x**3 - 6*x",
+          "-x**4 + 3*x**2 + 2"
+        ]
+      },
+      {
+        "left": "x**4 - x**3 - 9*x**2 + 5*x + 20",
+        "right": "x**5 + x**4 - 5*x**3 - x**2 + 4*x",
+        "reduced": 320,
+        "resultant": 163840,
+        "bezout": [
+          "-x**4 + 4*x**3 + 15*x**2 - 14*x + 16",
+          "x**3 - 6*x**2 - 9*x + 50"
+        ]
+      },
+      {
+        "left": "x**5 - 2*x**4 - 8*x**3 + 14*x**2 + 15*x - 20",
+        "right": "x**4 + 2*x**3 - 3*x**2 - 4*x",
+        "reduced": 160,
+        "resultant": 40960,
+        "bezout": [
+          "2*x**3 + 9*x**2 + 9*x - 8",
+          "-2*x**4 - x**3 + 21*x**2 + 17*x - 75"
+        ]
+      },
+      {
+        "left": "x**5 - 10*x**3 - 4*x**2 + 25*x + 20",
+        "right": "x**4 - 5*x**2 + 4*x",
+        "reduced": 160,
+        "resultant": 163840,
+        "bezout": [
+          "2*x**3 - 5*x + 8",
+          "-2*x**4 + 15*x**2 + 8*x - 25"
+        ]
+      },
+      {
+        "left": "x**6 - x**5 - 10*x**4 + 6*x**3 + 29*x**2 - 5*x - 20",
+        "right": "x**3 + x**2 - 4*x",
+        "reduced": 320,
+        "resultant": 10240,
+        "bezout": [
+          "9*x**2 + 14*x - 16",
+          "-9*x**5 + 4*x**4 + 80*x**3 + 6*x**2 - 191*x - 50"
+        ]
+      },
+      {
+        "left": "x**5 - x**4 - 9*x**3 + 5*x**2 + 20*x",
+        "right": "x**4 + x**3 - 5*x**2 - x + 4",
+        "reduced": 64,
+        "resultant": 32768,
+        "bezout": [
+          "-x**3 + 7*x - 2",
+          "x**4 - 2*x**3 - 9*x**2 + 14*x + 16"
+        ]
+      },
+      {
+        "left": "x**6 - 2*x**5 - 8*x**4 + 14*x**3 + 15*x**2 - 20*x",
+        "right": "x**3 + 2*x**2 - 3*x - 4",
+        "reduced": 32,
+        "resultant": 8192,
+        "bezout": [
+          "x + 3",
+          "-x**4 + x**3 + 9*x**2 - 9*x - 8"
+        ]
+      },
+      {
+        "left": "x**6 - 10*x**4 - 4*x**3 + 25*x**2 + 20*x",
+        "right": "x**3 - 5*x + 4",
+        "reduced": 32,
+        "resultant": 32768,
+        "bezout": [
+          "1",
+          "-x**3 + 5*x + 8"
+        ]
+      },
+      {
+        "left": "x**7 - x**6 - 10*x**5 + 6*x**4 + 29*x**3 - 5*x**2 - 20*x",
+        "right": "x**2 + x - 4",
+        "reduced": 64,
+        "resultant": 2048,
+        "bezout": [
+          "x + 2",
+          "-x**6 + 8*x**4 + 6*x**3 - 15*x**2 - 14*x - 16"
+        ]
+      }
+    ],
+    "double_covers": {
+      "1": [
+        {
+          "coeff": [
+            1,
+            0,
+            2
+          ],
+          "N": [
+            3,
+            9,
+            9,
+            9,
+            33,
+            81
+          ],
+          "p_rank": 0,
+          "ramification_points": 7,
+          "different_half": 9,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=4: 27>2*9"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            1,
+            2
+          ],
+          "N": [
+            4,
+            8,
+            4,
+            16,
+            44,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 9,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            2
+          ],
+          "N": [
+            2,
+            8,
+            14,
+            16,
+            22,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 9,
+          "rejected": false,
+          "reasons": []
+        }
+      ],
+      "2": [
+        {
+          "coeff": [
+            1,
+            1,
+            0,
+            2,
+            4
+          ],
+          "N": [
+            4,
+            4,
+            16,
+            24,
+            24,
+            64
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            -1,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            3,
+            9,
+            31,
+            33,
+            87
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*3"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            0,
+            -2,
+            4
+          ],
+          "N": [
+            2,
+            4,
+            2,
+            24,
+            42,
+            64
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            4,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            13,
+            9,
+            1,
+            33,
+            97
+          ],
+          "p_rank": 0,
+          "ramification_points": 7,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=4: 27>2*1"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            1,
+            4,
+            2,
+            4
+          ],
+          "N": [
+            4,
+            12,
+            4,
+            8,
+            44,
+            72
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=3: 9>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            4,
+            -2,
+            4
+          ],
+          "N": [
+            2,
+            12,
+            14,
+            8,
+            22,
+            72
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=4: 27>2*8"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            3,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            33,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=6: 99>2*47"
+          ]
+        }
+      ],
+      "3": [
+        {
+          "coeff": [
+            1,
+            1,
+            2,
+            4,
+            4,
+            4,
+            8
+          ],
+          "N": [
+            4,
+            8,
+            16,
+            16,
+            24,
+            80
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": false,
+          "reasons": []
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            1,
+            0,
+            2,
+            0,
+            8
+          ],
+          "N": [
+            3,
+            7,
+            9,
+            23,
+            33,
+            103
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*7"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            2,
+            -4,
+            4,
+            -4,
+            8
+          ],
+          "N": [
+            2,
+            8,
+            2,
+            16,
+            42,
+            80
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*2"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            8,
+            8
+          ],
+          "N": [
+            5,
+            7,
+            11,
+            23,
+            35,
+            55
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*7"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            1,
+            1,
+            -1,
+            2,
+            4,
+            8
+          ],
+          "N": [
+            4,
+            6,
+            4,
+            30,
+            44,
+            78
+          ],
+          "p_rank": 3,
+          "ramification_points": 1,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*6"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            1,
+            -4,
+            2,
+            0,
+            8
+          ],
+          "N": [
+            3,
+            7,
+            -3,
+            23,
+            53,
+            55
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*7"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            1,
+            6,
+            4,
+            12,
+            4,
+            8
+          ],
+          "N": [
+            4,
+            16,
+            4,
+            0,
+            44,
+            88
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            1,
+            4,
+            2,
+            0,
+            8
+          ],
+          "N": [
+            3,
+            7,
+            21,
+            23,
+            13,
+            55
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*7"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            1,
+            1,
+            2,
+            -4,
+            8
+          ],
+          "N": [
+            2,
+            6,
+            14,
+            30,
+            22,
+            78
+          ],
+          "p_rank": 3,
+          "ramification_points": 1,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*6"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -2,
+            3,
+            -4,
+            6,
+            -8,
+            8
+          ],
+          "N": [
+            1,
+            7,
+            7,
+            23,
+            31,
+            55
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=1: 3>2*1"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            6,
+            -4,
+            12,
+            -4,
+            8
+          ],
+          "N": [
+            2,
+            16,
+            14,
+            0,
+            22,
+            88
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=4: 27>2*0"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            5,
+            0,
+            10,
+            0,
+            8
+          ],
+          "N": [
+            3,
+            15,
+            9,
+            7,
+            33,
+            63
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=4: 27>2*7"
+          ]
+        }
+      ]
+    },
+    "ppav_class": true,
+    "order_rank": 18,
+    "rational_centralizer_rank": 24
+  },
+  {
+    "graph": "Petersen",
+    "mask": 10,
+    "p_rank": 6,
+    "band_minors": [
+      5,
+      25,
+      120,
+      551,
+      2523,
+      10237,
+      38136,
+      130928,
+      351232,
+      614656
+    ],
+    "reduced_partitions": [
+      {
+        "left": "x - 1",
+        "right": "x**6 + x**5 - 11*x**4 - 9*x**3 + 30*x**2 + 20*x - 8",
+        "reduced": 24,
+        "resultant": 24,
+        "bezout": [
+          "-x**5 - 2*x**4 + 9*x**3 + 18*x**2 - 12*x - 32",
+          "1"
+        ]
+      },
+      {
+        "left": "x + 2",
+        "right": "x**6 - 2*x**5 - 8*x**4 + 18*x**3 + 3*x**2 - 16*x + 4",
+        "reduced": 96,
+        "resultant": 96,
+        "bezout": [
+          "x**5 - 4*x**4 + 18*x**2 - 33*x + 50",
+          "-1"
+        ]
+      },
+      {
+        "left": "x**2 + x - 2",
+        "right": "x**5 - x**4 - 9*x**3 + 9*x**2 + 12*x - 4",
+        "reduced": 32,
+        "resultant": 256,
+        "bezout": [
+          "-x**4 - x**3 + 11*x**2 + 5*x - 22",
+          "x + 3"
+        ]
+      },
+      {
+        "left": "x - 2",
+        "right": "x**6 + 2*x**5 - 8*x**4 - 14*x**3 + 11*x**2 + 12*x - 4",
+        "reduced": 48,
+        "resultant": 48,
+        "bezout": [
+          "x**5 + 4*x**4 - 14*x**2 - 17*x - 22",
+          "-1"
+        ]
+      },
+      {
+        "left": "x**2 - 3*x + 2",
+        "right": "x**5 + 3*x**4 - 5*x**3 - 19*x**2 - 8*x + 4",
+        "reduced": 48,
+        "resultant": 1152,
+        "bezout": [
+          "-x**4 - 3*x**3 + 7*x**2 + 31*x + 30",
+          "x - 3"
+        ]
+      },
+      {
+        "left": "x**2 - 4",
+        "right": "x**5 - 8*x**3 + 2*x**2 + 7*x - 2",
+        "reduced": 96,
+        "resultant": 288,
+        "bezout": [
+          "3*x**4 + 2*x**3 - 12*x**2 - 2*x - 23",
+          "-3*x - 2"
+        ]
+      },
+      {
+        "left": "x**3 - x**2 - 4*x + 4",
+        "right": "x**4 + x**3 - 7*x**2 - 5*x + 2",
+        "reduced": 96,
+        "resultant": 768,
+        "bezout": [
+          "-x**3 - 3*x**2 + 13*x + 31",
+          "x**2 + x - 14"
+        ]
+      },
+      {
+        "left": "x + 1",
+        "right": "x**6 - x**5 - 11*x**4 + 13*x**3 + 26*x**2 - 36*x + 8",
+        "reduced": 48,
+        "resultant": 48,
+        "bezout": [
+          "-x**5 + 2*x**4 + 9*x**3 - 22*x**2 - 4*x + 40",
+          "1"
+        ]
+      },
+      {
+        "left": "x**2 - 1",
+        "right": "x**5 - 11*x**3 + 2*x**2 + 28*x - 8",
+        "reduced": 48,
+        "resultant": 288,
+        "bezout": [
+          "-3*x**4 - x**3 + 30*x**2 + 4*x - 56",
+          "3*x + 1"
+        ]
+      },
+      {
+        "left": "x**2 + 3*x + 2",
+        "right": "x**5 - 3*x**4 - 5*x**3 + 23*x**2 - 20*x + 4",
+        "reduced": 96,
+        "resultant": 4608,
+        "bezout": [
+          "-x**4 + 3*x**3 + 7*x**2 - 35*x + 42",
+          "x + 3"
+        ]
+      },
+      {
+        "left": "x**3 + 2*x**2 - x - 2",
+        "right": "x**4 - 2*x**3 - 7*x**2 + 16*x - 4",
+        "reduced": 96,
+        "resultant": 3072,
+        "bezout": [
+          "-5*x**3 + 6*x**2 + 41*x - 58",
+          "5*x**2 + 14*x + 5"
+        ]
+      },
+      {
+        "left": "x**2 - x - 2",
+        "right": "x**5 + x**4 - 9*x**3 - 5*x**2 + 16*x - 4",
+        "reduced": 16,
+        "resultant": 256,
+        "bezout": [
+          "x**3 + 2*x**2 - 5*x - 6",
+          "-1"
+        ]
+      },
+      {
+        "left": "x**3 - 2*x**2 - x + 2",
+        "right": "x**4 + 2*x**3 - 7*x**2 - 12*x + 4",
+        "reduced": 48,
+        "resultant": 1536,
+        "bezout": [
+          "-2*x**3 - 3*x**2 + 17*x + 26",
+          "2*x**2 - 5*x - 1"
+        ]
+      },
+      {
+        "left": "x**3 + x**2 - 4*x - 4",
+        "right": "x**4 - x**3 - 7*x**2 + 9*x - 2",
+        "reduced": 96,
+        "resultant": 1536,
+        "bezout": [
+          "x**3 + 3*x**2 - x - 19",
+          "-x**2 - 5*x - 10"
+        ]
+      },
+      {
+        "left": "x**4 - 5*x**2 + 4",
+        "right": "x**3 - 7*x + 2",
+        "reduced": 32,
+        "resultant": 1024,
+        "bezout": [
+          "9 - x**2",
+          "x**3 - 7*x - 2"
+        ]
+      }
+    ],
+    "double_covers": {
+      "1": [
+        {
+          "coeff": [
+            1,
+            1,
+            2
+          ],
+          "N": [
+            4,
+            8,
+            4,
+            16,
+            44,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 9,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -2,
+            2
+          ],
+          "N": [
+            1,
+            5,
+            13,
+            25,
+            41,
+            65
+          ],
+          "p_rank": 0,
+          "ramification_points": 7,
+          "different_half": 9,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=1: 3>2*1"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            2,
+            2
+          ],
+          "N": [
+            5,
+            5,
+            5,
+            25,
+            25,
+            65
+          ],
+          "p_rank": 0,
+          "ramification_points": 7,
+          "different_half": 9,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*5"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            2
+          ],
+          "N": [
+            2,
+            8,
+            14,
+            16,
+            22,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 9,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=5: 73>2*22"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "coeff": [
+            1,
+            2,
+            5,
+            4,
+            4
+          ],
+          "N": [
+            5,
+            11,
+            -1,
+            15,
+            55,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=3: 9>2*-1"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            2,
+            -2,
+            4
+          ],
+          "N": [
+            2,
+            8,
+            8,
+            24,
+            52,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 7,
+          "rejected": false,
+          "reasons": []
+        },
+        {
+          "coeff": [
+            1,
+            -4,
+            8,
+            -8,
+            4
+          ],
+          "N": [
+            -1,
+            5,
+            17,
+            33,
+            49,
+            65
+          ],
+          "p_rank": 0,
+          "ramification_points": 7,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=1: 3>2*-1"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            3,
+            6,
+            6,
+            4
+          ],
+          "N": [
+            6,
+            8,
+            0,
+            24,
+            36,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=3: 9>2*0"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            0,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            5,
+            9,
+            33,
+            33,
+            65
+          ],
+          "p_rank": 0,
+          "ramification_points": 7,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*5"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            3,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            33,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=5: 73>2*33"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -3,
+            6,
+            -6,
+            4
+          ],
+          "N": [
+            0,
+            8,
+            18,
+            24,
+            30,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=1: 3>2*0"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            1,
+            2,
+            2,
+            4
+          ],
+          "N": [
+            4,
+            8,
+            10,
+            24,
+            14,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=5: 73>2*14"
+          ]
+        }
+      ],
+      "3": [
+        {
+          "coeff": [
+            1,
+            0,
+            -1,
+            2,
+            -2,
+            0,
+            8
+          ],
+          "N": [
+            3,
+            3,
+            15,
+            7,
+            43,
+            87
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*3"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            3,
+            9,
+            13,
+            18,
+            12,
+            8
+          ],
+          "N": [
+            6,
+            14,
+            -6,
+            14,
+            66,
+            38
+          ],
+          "p_rank": 3,
+          "ramification_points": 1,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*-6"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            3,
+            -2,
+            6,
+            0,
+            8
+          ],
+          "N": [
+            3,
+            11,
+            3,
+            23,
+            63,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*3"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -3,
+            6,
+            -8,
+            12,
+            -12,
+            8
+          ],
+          "N": [
+            0,
+            8,
+            12,
+            32,
+            60,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=1: 3>2*0"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            4,
+            11,
+            18,
+            22,
+            16,
+            8
+          ],
+          "N": [
+            7,
+            11,
+            -5,
+            23,
+            47,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*-5"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            1,
+            2,
+            0,
+            4,
+            4,
+            8
+          ],
+          "N": [
+            4,
+            8,
+            4,
+            32,
+            44,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -2,
+            2,
+            0,
+            4,
+            -8,
+            8
+          ],
+          "N": [
+            1,
+            5,
+            13,
+            41,
+            41,
+            65
+          ],
+          "p_rank": 0,
+          "ramification_points": 7,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "Deuring-Shafarevich/Riemann-Hurwitz r=7, delta=5",
+            "degree-2 point bound at k=1: 3>2*1"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            1,
+            5,
+            3,
+            10,
+            4,
+            8
+          ],
+          "N": [
+            4,
+            14,
+            4,
+            14,
+            44,
+            38
+          ],
+          "p_rank": 3,
+          "ramification_points": 1,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -2,
+            5,
+            -6,
+            10,
+            -8,
+            8
+          ],
+          "N": [
+            1,
+            11,
+            13,
+            23,
+            41,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=1: 3>2*1"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -5,
+            14,
+            -24,
+            28,
+            -20,
+            8
+          ],
+          "N": [
+            -2,
+            8,
+            22,
+            32,
+            38,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=1: 3>2*-2"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            2,
+            5,
+            6,
+            10,
+            8,
+            8
+          ],
+          "N": [
+            5,
+            11,
+            5,
+            23,
+            25,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=5: 73>2*25"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            2,
+            0,
+            4,
+            -4,
+            8
+          ],
+          "N": [
+            2,
+            8,
+            14,
+            32,
+            22,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=5: 73>2*22"
+          ]
+        }
+      ]
+    },
+    "ppav_class": true,
+    "order_rank": 14,
+    "rational_centralizer_rank": 36
+  },
+  {
+    "graph": "Petersen",
+    "mask": 22,
+    "p_rank": 6,
+    "band_minors": [
+      5,
+      25,
+      120,
+      551,
+      2523,
+      10701,
+      44064,
+      181440,
+      746496,
+      2985984
+    ],
+    "reduced_partitions": [
+      {
+        "left": "x",
+        "right": "x**2 - 5",
+        "reduced": 5,
+        "resultant": 5,
+        "bezout": [
+          "x",
+          "-1"
+        ]
+      }
+    ],
+    "double_covers": {
+      "1": [
+        {
+          "coeff": [
+            1,
+            0,
+            2
+          ],
+          "N": [
+            3,
+            9,
+            9,
+            9,
+            33,
+            81
+          ],
+          "p_rank": 0,
+          "ramification_points": 7,
+          "different_half": 9,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=4: 27>2*9"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "coeff": [
+            1,
+            0,
+            -1,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            3,
+            9,
+            31,
+            33,
+            87
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*3"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            4,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            13,
+            9,
+            1,
+            33,
+            97
+          ],
+          "p_rank": 0,
+          "ramification_points": 7,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=4: 27>2*1"
+          ]
+        }
+      ],
+      "3": [
+        {
+          "coeff": [
+            1,
+            0,
+            1,
+            0,
+            2,
+            0,
+            8
+          ],
+          "N": [
+            3,
+            7,
+            9,
+            23,
+            33,
+            103
+          ],
+          "p_rank": 2,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 15>2*7"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            6,
+            0,
+            12,
+            0,
+            8
+          ],
+          "N": [
+            3,
+            17,
+            9,
+            -7,
+            33,
+            113
+          ],
+          "p_rank": 0,
+          "ramification_points": 7,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "Deuring-Shafarevich/Riemann-Hurwitz r=7, delta=5",
+            "degree-2 point bound at k=4: 27>2*-7"
+          ]
+        }
+      ]
+    },
+    "ppav_class": true,
+    "order_rank": 6,
+    "rational_centralizer_rank": 68
+  },
+  {
+    "graph": "K33",
+    "mask": 1,
+    "p_rank": 2,
+    "band_minors": [
+      5,
+      24,
+      64,
+      320,
+      1536,
+      4096
+    ],
+    "reduced_partitions": [
+      {
+        "left": "x",
+        "right": "x**4 - 9*x**2 + 16",
+        "reduced": 16,
+        "resultant": 16,
+        "bezout": [
+          "-x**3 + 9*x",
+          "1"
+        ]
+      },
+      {
+        "left": "x**2 - x - 4",
+        "right": "x**3 + x**2 - 4*x",
+        "reduced": 32,
+        "resultant": 64,
+        "bezout": [
+          "x**2 - 3*x - 8",
+          "5 - x"
+        ]
+      },
+      {
+        "left": "x**3 - x**2 - 4*x",
+        "right": "x**2 + x - 4",
+        "reduced": 32,
+        "resultant": 64,
+        "bezout": [
+          "-x - 5",
+          "x**2 + 3*x - 8"
+        ]
+      }
+    ],
+    "double_covers": {
+      "1": [
+        {
+          "coeff": [
+            1,
+            0,
+            2
+          ],
+          "N": [
+            3,
+            9,
+            9,
+            9,
+            33,
+            81
+          ],
+          "p_rank": 0,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": false,
+          "reasons": []
+        }
+      ],
+      "2": [
+        {
+          "coeff": [
+            1,
+            1,
+            0,
+            2,
+            4
+          ],
+          "N": [
+            4,
+            4,
+            16,
+            24,
+            24,
+            64
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 11>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            0,
+            -2,
+            4
+          ],
+          "N": [
+            2,
+            4,
+            2,
+            24,
+            42,
+            64
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 11>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            4,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            13,
+            9,
+            1,
+            33,
+            97
+          ],
+          "p_rank": 0,
+          "ramification_points": 3,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=4: 15>2*1"
+          ]
+        }
+      ],
+      "3": [
+        {
+          "coeff": [
+            1,
+            1,
+            2,
+            4,
+            4,
+            4,
+            8
+          ],
+          "N": [
+            4,
+            8,
+            16,
+            16,
+            24,
+            80
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 1,
+          "rejected": false,
+          "reasons": []
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            2,
+            -4,
+            4,
+            -4,
+            8
+          ],
+          "N": [
+            2,
+            8,
+            2,
+            16,
+            42,
+            80
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 1,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*2"
+          ]
+        }
+      ]
+    },
+    "ppav_class": true,
+    "order_rank": 10,
+    "rational_centralizer_rank": 16
+  },
+  {
+    "graph": "K33",
+    "mask": 6,
+    "p_rank": 2,
+    "band_minors": [
+      5,
+      24,
+      112,
+      560,
+      2688,
+      12544
+    ],
+    "reduced_partitions": [
+      {
+        "left": "x - 1",
+        "right": "x**3 + x**2 - 4*x - 4",
+        "reduced": 6,
+        "resultant": 6,
+        "bezout": [
+          "x**2 + 2*x - 2",
+          "-1"
+        ]
+      },
+      {
+        "left": "x + 1",
+        "right": "x**3 - x**2 - 4*x + 4",
+        "reduced": 6,
+        "resultant": 6,
+        "bezout": [
+          "-x**2 + 2*x + 2",
+          "1"
+        ]
+      },
+      {
+        "left": "x**2 - 1",
+        "right": "x**2 - 4",
+        "reduced": 3,
+        "resultant": 9,
+        "bezout": [
+          "1",
+          "-1"
+        ]
+      },
+      {
+        "left": "x - 2",
+        "right": "x**3 + 2*x**2 - x - 2",
+        "reduced": 12,
+        "resultant": 12,
+        "bezout": [
+          "-x**2 - 4*x - 7",
+          "1"
+        ]
+      },
+      {
+        "left": "x**2 - 3*x + 2",
+        "right": "x**2 + 3*x + 2",
+        "reduced": 12,
+        "resultant": 72,
+        "bezout": [
+          "x + 3",
+          "3 - x"
+        ]
+      },
+      {
+        "left": "x**2 - x - 2",
+        "right": "x**2 + x - 2",
+        "reduced": 4,
+        "resultant": 8,
+        "bezout": [
+          "-x - 1",
+          "x - 1"
+        ]
+      },
+      {
+        "left": "x**3 - 2*x**2 - x + 2",
+        "right": "x + 2",
+        "reduced": 12,
+        "resultant": 12,
+        "bezout": [
+          "-1",
+          "x**2 - 4*x + 7"
+        ]
+      }
+    ],
+    "double_covers": {
+      "1": [
+        {
+          "coeff": [
+            1,
+            2,
+            2
+          ],
+          "N": [
+            5,
+            5,
+            5,
+            25,
+            25,
+            65
+          ],
+          "p_rank": 0,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 11>2*5"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -2,
+            2
+          ],
+          "N": [
+            1,
+            5,
+            13,
+            25,
+            41,
+            65
+          ],
+          "p_rank": 0,
+          "ramification_points": 3,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=1: 3>2*1"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            1,
+            2
+          ],
+          "N": [
+            4,
+            8,
+            4,
+            16,
+            44,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            2
+          ],
+          "N": [
+            2,
+            8,
+            14,
+            16,
+            22,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=4: 47>2*16"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "coeff": [
+            1,
+            4,
+            8,
+            8,
+            4
+          ],
+          "N": [
+            7,
+            5,
+            1,
+            33,
+            17,
+            65
+          ],
+          "p_rank": 0,
+          "ramification_points": 3,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=2: 11>2*5"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            0,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            5,
+            9,
+            33,
+            33,
+            65
+          ],
+          "p_rank": 0,
+          "ramification_points": 3,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 11>2*5"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -4,
+            8,
+            -8,
+            4
+          ],
+          "N": [
+            -1,
+            5,
+            17,
+            33,
+            49,
+            65
+          ],
+          "p_rank": 0,
+          "ramification_points": 3,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=1: 3>2*-1"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            3,
+            6,
+            6,
+            4
+          ],
+          "N": [
+            6,
+            8,
+            0,
+            24,
+            36,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=3: 9>2*0"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            2,
+            -2,
+            4
+          ],
+          "N": [
+            2,
+            8,
+            8,
+            24,
+            52,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 3,
+          "rejected": false,
+          "reasons": []
+        },
+        {
+          "coeff": [
+            1,
+            1,
+            2,
+            2,
+            4
+          ],
+          "N": [
+            4,
+            8,
+            10,
+            24,
+            14,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=5: 33>2*14"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -3,
+            6,
+            -6,
+            4
+          ],
+          "N": [
+            0,
+            8,
+            18,
+            24,
+            30,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=1: 3>2*0"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            3,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            33,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": -1,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "Deuring-Shafarevich/Riemann-Hurwitz r=-1, delta=3",
+            "degree-2 point bound at k=4: 47>2*15"
+          ]
+        }
+      ],
+      "3": [
+        {
+          "coeff": [
+            1,
+            2,
+            2,
+            0,
+            4,
+            8,
+            8
+          ],
+          "N": [
+            5,
+            5,
+            5,
+            41,
+            25,
+            65
+          ],
+          "p_rank": 0,
+          "ramification_points": 3,
+          "different_half": 1,
+          "rejected": true,
+          "reasons": [
+            "Deuring-Shafarevich/Riemann-Hurwitz r=3, delta=1",
+            "degree-2 point bound at k=2: 11>2*5"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -2,
+            2,
+            0,
+            4,
+            -8,
+            8
+          ],
+          "N": [
+            1,
+            5,
+            13,
+            41,
+            41,
+            65
+          ],
+          "p_rank": 0,
+          "ramification_points": 3,
+          "different_half": 1,
+          "rejected": true,
+          "reasons": [
+            "Deuring-Shafarevich/Riemann-Hurwitz r=3, delta=1",
+            "degree-2 point bound at k=1: 3>2*1"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            5,
+            14,
+            24,
+            28,
+            20,
+            8
+          ],
+          "N": [
+            8,
+            8,
+            -4,
+            32,
+            28,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 1,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*-4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            1,
+            2,
+            0,
+            4,
+            4,
+            8
+          ],
+          "N": [
+            4,
+            8,
+            4,
+            32,
+            44,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 1,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -3,
+            6,
+            -8,
+            12,
+            -12,
+            8
+          ],
+          "N": [
+            0,
+            8,
+            12,
+            32,
+            60,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 1,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=1: 3>2*0"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            3,
+            6,
+            8,
+            12,
+            12,
+            8
+          ],
+          "N": [
+            6,
+            8,
+            6,
+            32,
+            6,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 1,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=5: 33>2*6"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            2,
+            0,
+            4,
+            -4,
+            8
+          ],
+          "N": [
+            2,
+            8,
+            14,
+            32,
+            22,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 1,
+          "rejected": false,
+          "reasons": []
+        },
+        {
+          "coeff": [
+            1,
+            -5,
+            14,
+            -24,
+            28,
+            -20,
+            8
+          ],
+          "N": [
+            -2,
+            8,
+            22,
+            32,
+            38,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 1,
+          "different_half": 1,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=1: 3>2*-2"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            2,
+            5,
+            6,
+            10,
+            8,
+            8
+          ],
+          "N": [
+            5,
+            11,
+            5,
+            23,
+            25,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": -1,
+          "different_half": 1,
+          "rejected": true,
+          "reasons": [
+            "Deuring-Shafarevich/Riemann-Hurwitz r=-1, delta=1",
+            "degree-2 point bound at k=4: 47>2*23"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -2,
+            5,
+            -6,
+            10,
+            -8,
+            8
+          ],
+          "N": [
+            1,
+            11,
+            13,
+            23,
+            41,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": -1,
+          "different_half": 1,
+          "rejected": true,
+          "reasons": [
+            "Deuring-Shafarevich/Riemann-Hurwitz r=-1, delta=1",
+            "degree-2 point bound at k=1: 3>2*1"
+          ]
+        }
+      ]
+    },
+    "ppav_class": true,
+    "order_rank": 8,
+    "rational_centralizer_rank": 20
+  },
+  {
+    "graph": "cube",
+    "mask": 3,
+    "p_rank": 8,
+    "band_minors": [
+      5,
+      25,
+      125,
+      625,
+      2625,
+      13125,
+      53125,
+      180625
+    ],
+    "reduced_partitions": [
+      {
+        "left": "x**2 - 2*x - 1",
+        "right": "x**4 + 2*x**3 - 4*x**2 - 6*x + 3",
+        "reduced": 16,
+        "resultant": 128,
+        "bezout": [
+          "x**3 + x**2 - 7*x - 7",
+          "3 - x"
+        ]
+      },
+      {
+        "left": "x**2 + 2*x - 1",
+        "right": "x**4 - 2*x**3 - 4*x**2 + 6*x + 3",
+        "reduced": 16,
+        "resultant": 128,
+        "bezout": [
+          "-x**3 + x**2 + 7*x - 7",
+          "x + 3"
+        ]
+      },
+      {
+        "left": "x**4 - 6*x**2 + 1",
+        "right": "x**2 - 3",
+        "reduced": 8,
+        "resultant": 64,
+        "bezout": [
+          "-1",
+          "x**2 - 3"
+        ]
+      }
+    ],
+    "double_covers": {
+      "1": [],
+      "2": [
+        {
+          "coeff": [
+            1,
+            0,
+            1,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            7,
+            9,
+            31,
+            33,
+            43
+          ],
+          "p_rank": 2,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": false,
+          "reasons": []
+        },
+        {
+          "coeff": [
+            1,
+            2,
+            3,
+            4,
+            4
+          ],
+          "N": [
+            5,
+            7,
+            11,
+            15,
+            15,
+            91
+          ],
+          "p_rank": 2,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=4: 41>2*15"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -2,
+            3,
+            -4,
+            4
+          ],
+          "N": [
+            1,
+            7,
+            7,
+            15,
+            51,
+            91
+          ],
+          "p_rank": 2,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=1: 3>2*1"
+          ]
+        }
+      ],
+      "3": []
+    },
+    "ppav_class": true,
+    "order_rank": 12,
+    "rational_centralizer_rank": 24
+  },
+  {
+    "graph": "cube",
+    "mask": 5,
+    "p_rank": 8,
+    "band_minors": [
+      5,
+      25,
+      125,
+      625,
+      2625,
+      11025,
+      46305,
+      194481
+    ],
+    "reduced_partitions": [
+      {
+        "left": "x - 1",
+        "right": "x**3 + x**2 - 5*x - 5",
+        "reduced": 8,
+        "resultant": 8,
+        "bezout": [
+          "x**2 + 2*x - 3",
+          "-1"
+        ]
+      },
+      {
+        "left": "x + 1",
+        "right": "x**3 - x**2 - 5*x + 5",
+        "reduced": 8,
+        "resultant": 8,
+        "bezout": [
+          "-x**2 + 2*x + 3",
+          "1"
+        ]
+      },
+      {
+        "left": "x**2 - 1",
+        "right": "x**2 - 5",
+        "reduced": 4,
+        "resultant": 16,
+        "bezout": [
+          "1",
+          "-1"
+        ]
+      }
+    ],
+    "double_covers": {
+      "1": [
+        {
+          "coeff": [
+            1,
+            1,
+            2
+          ],
+          "N": [
+            4,
+            8,
+            4,
+            16,
+            44,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 7,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            2
+          ],
+          "N": [
+            2,
+            8,
+            14,
+            16,
+            22,
+            56
+          ],
+          "p_rank": 1,
+          "ramification_points": 7,
+          "different_half": 7,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=4: 41>2*16"
+          ]
+        }
+      ],
+      "2": [
+        {
+          "coeff": [
+            1,
+            0,
+            -1,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            3,
+            9,
+            31,
+            33,
+            87
+          ],
+          "p_rank": 2,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 13>2*3"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            2,
+            5,
+            4,
+            4
+          ],
+          "N": [
+            5,
+            11,
+            -1,
+            15,
+            55,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=3: 9>2*-1"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            0,
+            3,
+            0,
+            4
+          ],
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            33,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=4: 41>2*15"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -2,
+            5,
+            -4,
+            4
+          ],
+          "N": [
+            1,
+            11,
+            19,
+            15,
+            11,
+            47
+          ],
+          "p_rank": 2,
+          "ramification_points": 5,
+          "different_half": 5,
+          "rejected": true,
+          "reasons": [
+            "not a genus-2 Jacobian polynomial (complete hyperelliptic enumeration)",
+            "degree-2 point bound at k=1: 3>2*1"
+          ]
+        }
+      ],
+      "3": [
+        {
+          "coeff": [
+            1,
+            1,
+            1,
+            -1,
+            2,
+            4,
+            8
+          ],
+          "N": [
+            4,
+            6,
+            4,
+            30,
+            44,
+            78
+          ],
+          "p_rank": 3,
+          "ramification_points": 3,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 13>2*6"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            1,
+            1,
+            2,
+            -4,
+            8
+          ],
+          "N": [
+            2,
+            6,
+            14,
+            30,
+            22,
+            78
+          ],
+          "p_rank": 3,
+          "ramification_points": 3,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=2: 13>2*6"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            1,
+            5,
+            3,
+            10,
+            4,
+            8
+          ],
+          "N": [
+            4,
+            14,
+            4,
+            14,
+            44,
+            38
+          ],
+          "p_rank": 3,
+          "ramification_points": 3,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=3: 9>2*4"
+          ]
+        },
+        {
+          "coeff": [
+            1,
+            -1,
+            5,
+            -3,
+            10,
+            -4,
+            8
+          ],
+          "N": [
+            2,
+            14,
+            14,
+            14,
+            22,
+            38
+          ],
+          "p_rank": 3,
+          "ramification_points": 3,
+          "different_half": 3,
+          "rejected": true,
+          "reasons": [
+            "degree-2 point bound at k=4: 41>2*14"
+          ]
+        }
+      ]
+    },
+    "ppav_class": true,
+    "order_rank": 8,
+    "rational_centralizer_rank": 32
+  }
+]

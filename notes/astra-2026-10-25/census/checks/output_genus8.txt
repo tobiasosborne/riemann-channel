@@ -1,0 +1,41 @@
+TARGET cube:3
+F_0 b=5 genus=8 dimension=24 equations=16777216
+k=1 surface_closed_points=9 target_a=3 survivors=2752512
+k=2 surface_closed_points=8 target_a=5 survivors=68880
+k=3 surface_closed_points=24 target_a=2 survivors=19074
+k=4 surface_closed_points=66 target_a=7 survivors=504
+k=5 surface_closed_points=216 target_a=6 survivors=216
+k=6 surface_closed_points=688 target_a=9 survivors=0
+FINAL_MASKS
+SMOOTH MATCHES 0
+TARGET cube:5
+F_0 b=5 genus=8 dimension=24 equations=16777216
+k=1 surface_closed_points=9 target_a=3 survivors=2752512
+k=2 surface_closed_points=8 target_a=5 survivors=68880
+k=3 surface_closed_points=24 target_a=2 survivors=19074
+k=4 surface_closed_points=66 target_a=7 survivors=504
+k=5 surface_closed_points=216 target_a=6 survivors=216
+k=6 surface_closed_points=688 target_a=9 survivors=0
+FINAL_MASKS
+SMOOTH MATCHES 0
+TARGET cube:3
+F_2 b=8 genus=8 dimension=24 equations=16777216
+k=1 surface_closed_points=9 target_a=3 survivors=2752512
+k=2 surface_closed_points=8 target_a=5 survivors=76224
+k=3 surface_closed_points=24 target_a=2 survivors=20901
+k=4 surface_closed_points=66 target_a=7 survivors=504
+k=5 surface_closed_points=216 target_a=6 survivors=192
+k=6 surface_closed_points=688 target_a=9 survivors=0
+FINAL_MASKS
+SMOOTH MATCHES 0
+TARGET cube:5
+F_2 b=8 genus=8 dimension=24 equations=16777216
+k=1 surface_closed_points=9 target_a=3 survivors=2752512
+k=2 surface_closed_points=8 target_a=5 survivors=76224
+k=3 surface_closed_points=24 target_a=2 survivors=20901
+k=4 surface_closed_points=66 target_a=7 survivors=504
+k=5 surface_closed_points=216 target_a=6 survivors=192
+k=6 surface_closed_points=688 target_a=9 survivors=0
+FINAL_MASKS
+SMOOTH MATCHES 0
+VERDICT: no smooth match in these trigonal families

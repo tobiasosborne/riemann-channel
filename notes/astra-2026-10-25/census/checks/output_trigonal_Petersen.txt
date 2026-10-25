@@ -1,0 +1,98 @@
+TARGET Petersen:6
+F_0 b=6 genus=10 dimension=28 equations=268435456
+k=1 surface_closed_points=9 target_a=3 survivors=44040192
+k=2 surface_closed_points=8 target_a=6 survivors=286464
+k=3 surface_closed_points=24 target_a=2 survivors=77688
+k=4 surface_closed_points=66 target_a=3 survivors=12312
+k=5 surface_closed_points=216 target_a=6 survivors=2358
+k=6 surface_closed_points=688 target_a=13 survivors=144
+k=7 surface_closed_points=2376 target_a=18 survivors=0
+FINAL_MASKS
+SMOOTH MATCHES 0
+TARGET Petersen:10
+F_0 b=6 genus=10 dimension=28 equations=268435456
+k=1 surface_closed_points=9 target_a=3 survivors=44040192
+k=2 surface_closed_points=8 target_a=6 survivors=286464
+k=3 surface_closed_points=24 target_a=2 survivors=77688
+k=4 surface_closed_points=66 target_a=3 survivors=12312
+k=5 surface_closed_points=216 target_a=14 survivors=126
+k=6 surface_closed_points=688 target_a=5 survivors=0
+FINAL_MASKS
+SMOOTH MATCHES 0
+TARGET Petersen:22
+F_0 b=6 genus=10 dimension=28 equations=268435456
+k=1 surface_closed_points=9 target_a=3 survivors=44040192
+k=2 surface_closed_points=8 target_a=6 survivors=286464
+k=3 surface_closed_points=24 target_a=2 survivors=77688
+k=4 surface_closed_points=66 target_a=3 survivors=12312
+k=5 surface_closed_points=216 target_a=6 survivors=2358
+k=6 surface_closed_points=688 target_a=29 survivors=0
+FINAL_MASKS
+SMOOTH MATCHES 0
+TARGET Petersen:6
+F_2 b=9 genus=10 dimension=28 equations=268435456
+k=1 surface_closed_points=9 target_a=3 survivors=44040192
+k=2 surface_closed_points=8 target_a=6 survivors=291328
+k=3 surface_closed_points=24 target_a=2 survivors=77064
+k=4 surface_closed_points=66 target_a=3 survivors=11344
+k=5 surface_closed_points=216 target_a=6 survivors=2256
+k=6 surface_closed_points=688 target_a=13 survivors=336
+k=7 surface_closed_points=2376 target_a=18 survivors=96
+k=8 surface_closed_points=8220 target_a=32 survivors=0
+FINAL_MASKS
+SMOOTH MATCHES 0
+TARGET Petersen:10
+F_2 b=9 genus=10 dimension=28 equations=268435456
+k=1 surface_closed_points=9 target_a=3 survivors=44040192
+k=2 surface_closed_points=8 target_a=6 survivors=291328
+k=3 surface_closed_points=24 target_a=2 survivors=77064
+k=4 surface_closed_points=66 target_a=3 survivors=11344
+k=5 surface_closed_points=216 target_a=14 survivors=0
+FINAL_MASKS
+SMOOTH MATCHES 0
+TARGET Petersen:22
+F_2 b=9 genus=10 dimension=28 equations=268435456
+k=1 surface_closed_points=9 target_a=3 survivors=44040192
+k=2 surface_closed_points=8 target_a=6 survivors=291328
+k=3 surface_closed_points=24 target_a=2 survivors=77064
+k=4 surface_closed_points=66 target_a=3 survivors=11344
+k=5 surface_closed_points=216 target_a=6 survivors=2256
+k=6 surface_closed_points=688 target_a=29 survivors=0
+FINAL_MASKS
+SMOOTH MATCHES 0
+TARGET Petersen:6
+F_4 b=12 genus=10 dimension=28 equations=268435456
+k=1 surface_closed_points=9 target_a=3 survivors=44040192
+k=2 surface_closed_points=8 target_a=6 survivors=217088
+k=3 surface_closed_points=24 target_a=2 survivors=55424
+k=4 surface_closed_points=66 target_a=3 survivors=9344
+k=5 surface_closed_points=216 target_a=6 survivors=3296
+k=6 surface_closed_points=688 target_a=13 survivors=672
+k=7 surface_closed_points=2376 target_a=18 survivors=480
+k=8 surface_closed_points=8220 target_a=32 survivors=0
+FINAL_MASKS
+SMOOTH MATCHES 0
+TARGET Petersen:10
+F_4 b=12 genus=10 dimension=28 equations=268435456
+k=1 surface_closed_points=9 target_a=3 survivors=44040192
+k=2 surface_closed_points=8 target_a=6 survivors=217088
+k=3 surface_closed_points=24 target_a=2 survivors=55424
+k=4 surface_closed_points=66 target_a=3 survivors=9344
+k=5 surface_closed_points=216 target_a=14 survivors=0
+FINAL_MASKS
+SMOOTH MATCHES 0
+TARGET Petersen:22
+F_4 b=12 genus=10 dimension=28 equations=268435456
+k=1 surface_closed_points=9 target_a=3 survivors=44040192
+k=2 surface_closed_points=8 target_a=6 survivors=217088
+k=3 surface_closed_points=24 target_a=2 survivors=55424
+k=4 surface_closed_points=66 target_a=3 survivors=9344
+k=5 surface_closed_points=216 target_a=6 survivors=3296
+k=6 surface_closed_points=688 target_a=29 survivors=32
+k=7 surface_closed_points=2376 target_a=18 survivors=32
+k=8 surface_closed_points=8220 target_a=0 survivors=32
+k=9 surface_closed_points=29232 target_a=56 survivors=32
+k=10 surface_closed_points=104952 target_a=87 survivors=32
+FINAL_MASKS 134222409 138424904 142643777 146846278 151130633 155333148 159552049 163754530 168300617 172503040 176722145 180924590 185209225 189411796 193630481 197833034 203424329 207627096 211845121 216047894 220333833 224536076 228754801 232957042 237505609 241708304 245927585 250130430 254412937 258615748 262834769 267037466
+SMOOTH MATCHES 32
+WITNESSES [{'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 134222409, 'equation': 'x**12 + x**9 + x**6 + x**3 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 138424904, 'equation': 'x**12 + x**9 + x**6 + x**3 + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 142643777, 'equation': 'x**12 + x**9 + x**6 + x**2*y + x*y**2 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 146846278, 'equation': 'x**12 + x**9 + x**6 + x**2*y + x**2 + x*y**2 + x + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 151130633, 'equation': 'x**12 + x**9 + x**4*y + x**3 + x**2*y**2 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 155333148, 'equation': 'x**12 + x**9 + x**4*y + x**4 + x**3 + x**2*y**2 + x**2 + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 159552049, 'equation': 'x**12 + x**9 + x**5 + x**4*y + x**4 + x**2*y**2 + x**2*y + x*y**2 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 163754530, 'equation': 'x**12 + x**9 + x**5 + x**4*y + x**2*y**2 + x**2*y + x*y**2 + x + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 168300617, 'equation': 'x**12 + x**6*y + x**6 + x**3*y**2 + x**3 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 172503040, 'equation': 'x**12 + x**6*y + x**3*y**2 + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 176722145, 'equation': 'x**12 + x**7 + x**6*y + x**6 + x**5 + x**3*y**2 + x**2*y + x*y**2 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 180924590, 'equation': 'x**12 + x**7 + x**6*y + x**5 + x**3*y**2 + x**3 + x**2*y + x**2 + x*y**2 + x + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 185209225, 'equation': 'x**12 + x**8 + x**7 + x**6*y + x**4*y + x**3*y**2 + x**3 + x**2*y**2 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 189411796, 'equation': 'x**12 + x**8 + x**7 + x**6*y + x**6 + x**4*y + x**4 + x**3*y**2 + x**2*y**2 + x**2 + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 193630481, 'equation': 'x**12 + x**8 + x**6*y + x**4*y + x**4 + x**3*y**2 + x**2*y**2 + x**2*y + x*y**2 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 197833034, 'equation': 'x**12 + x**8 + x**6*y + x**6 + x**4*y + x**3*y**2 + x**3 + x**2*y**2 + x**2*y + x*y**2 + x + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 203424329, 'equation': 'x**9 + x**8*y + x**6 + x**4*y**2 + x**3 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 207627096, 'equation': 'x**9 + x**8*y + x**8 + x**6 + x**4*y**2 + x**4 + x**3 + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 211845121, 'equation': 'x**8*y + x**4*y**2 + x**2*y + x*y**2 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 216047894, 'equation': 'x**8*y + x**8 + x**4*y**2 + x**4 + x**2*y + x**2 + x*y**2 + x + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 220333833, 'equation': 'x**10 + x**9 + x**8*y + x**8 + x**4*y**2 + x**4*y + x**3 + x**2*y**2 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 224536076, 'equation': 'x**10 + x**9 + x**8*y + x**4*y**2 + x**4*y + x**3 + x**2*y**2 + x**2 + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 228754801, 'equation': 'x**10 + x**8*y + x**8 + x**6 + x**5 + x**4*y**2 + x**4*y + x**4 + x**2*y**2 + x**2*y + x*y**2 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 232957042, 'equation': 'x**10 + x**8*y + x**6 + x**5 + x**4*y**2 + x**4*y + x**4 + x**2*y**2 + x**2*y + x*y**2 + x + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 237505609, 'equation': 'x**11 + x**10 + x**8*y + x**6*y + x**6 + x**4*y**2 + x**3*y**2 + x**3 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 241708304, 'equation': 'x**11 + x**10 + x**8*y + x**8 + x**6*y + x**4*y**2 + x**4 + x**3*y**2 + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 245927585, 'equation': 'x**11 + x**10 + x**9 + x**8*y + x**7 + x**6*y + x**5 + x**4*y**2 + x**3*y**2 + x**2*y + x*y**2 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 250130430, 'equation': 'x**11 + x**10 + x**9 + x**8*y + x**8 + x**7 + x**6*y + x**6 + x**5 + x**4*y**2 + x**4 + x**3*y**2 + x**3 + x**2*y + x**2 + x*y**2 + x + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 254412937, 'equation': 'x**11 + x**8*y + x**7 + x**6*y + x**4*y**2 + x**4*y + x**3*y**2 + x**3 + x**2*y**2 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 258615748, 'equation': 'x**11 + x**8*y + x**8 + x**7 + x**6*y + x**6 + x**4*y**2 + x**4*y + x**3*y**2 + x**2*y**2 + x**2 + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 262834769, 'equation': 'x**11 + x**9 + x**8*y + x**6*y + x**6 + x**4*y**2 + x**4*y + x**4 + x**3*y**2 + x**2*y**2 + x**2*y + x*y**2 + y**3 + 1', 'smoothness': [['1'], ['1'], ['1'], ['1']]}, {'graph': 'Petersen', 'mask': 22, 'e': 4, 'b': 12, 'equation_mask': 267037466, 'equation': 'x**11 + x**9 + x**8*y + x**8 + x**6*y + x**4*y**2 + x**4*y + x**4 + x**3*y**2 + x**3 + x**2*y**2 + x**2*y + x*y**2 + x + y**3 + y**2 + y', 'smoothness': [['1'], ['1'], ['1'], ['1']]}]

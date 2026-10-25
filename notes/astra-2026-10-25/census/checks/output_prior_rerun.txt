@@ -1,0 +1,4 @@
+jac_fluxes.py: exact output byte match; SHA256=6ca53423a381242494da34b7d90b71dbdd1c489b705a0b0ddb774c925f4e9b95
+jac_trigonal.py: exact output byte match; SHA256=831017222ef9d561ac23ec43175c63b86b444c75ae0d582f2e0265b0dacca0f1
+jac_genus6.py: exact output byte match; SHA256=177b7eaf1a79e816b4ff38c75f926b5424928475f7c54dcbd5e5ccff99b6cfd9
+jac_verify.py: exact output byte match; SHA256=cd85fe1085b3afa6036229af2f811b7218e39596aaf9c89f14859c4beb2b5965

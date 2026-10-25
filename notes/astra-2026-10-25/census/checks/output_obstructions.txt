@@ -1,0 +1,77 @@
+AUDIT K4 1 rank 4 negative_closed [] all31_match=PASS real_band_principal_minors= [5, 25, 105, 441]
+AUDIT Petersen 1 rank 6 negative_closed [(5, -2)] all31_match=PASS real_band_principal_minors= [5, 25, 120, 551, 2523, 10701, 36792, 130928, 395136, 614656]
+AUDIT Petersen 6 rank 6 negative_closed [] all31_match=PASS real_band_principal_minors= [5, 25, 120, 551, 2523, 10701, 40152, 141120, 580608, 1806336]
+REDUCED RESULTANTS Petersen 6 {16: 1, 32: 6, 64: 8, 80: 2, 160: 6, 320: 8}
+PRINCIPALLY POLARIZABLE ISOGENY CLASS: YES (product of explicit Jacobian factors)
+DOUBLE COVER BASE genus 1 candidates 3 surviving 1 [{'coeff': (1, -1, 2), 'N': [2, 8, 14, 16, 22, 56], 'p_rank': 1, 'ramification_points': 5, 'different_half': 9, 'rejected': False, 'reasons': []}]
+DOUBLE COVER BASE genus 2 candidates 7 surviving 0 []
+DOUBLE COVER BASE genus 3 candidates 12 surviving 1 [{'coeff': (1, 1, 2, 4, 4, 4, 8), 'N': [4, 8, 16, 16, 24, 80], 'p_rank': 1, 'ramification_points': 5, 'different_half': 5, 'rejected': False, 'reasons': []}]
+ORDER RANK 18 RATIONAL CENTRALIZER RANK 24
+N1..12 [3, 15, 9, 27, 33, 99, 129, 283, 513, 1075, 2049, 3627] a1..12 [3, 6, 2, 3, 6, 13, 18, 32, 56, 103, 186, 293]
+N_{dk}>=N_k all dk<=31: PASS
+AUDIT Petersen 10 rank 6 negative_closed [] all31_match=PASS real_band_principal_minors= [5, 25, 120, 551, 2523, 10237, 38136, 130928, 351232, 614656]
+REDUCED RESULTANTS Petersen 10 {16: 1, 24: 1, 32: 2, 48: 5, 96: 6}
+PRINCIPALLY POLARIZABLE ISOGENY CLASS: YES (product of explicit Jacobian factors)
+DOUBLE COVER BASE genus 1 candidates 4 surviving 0 []
+DOUBLE COVER BASE genus 2 candidates 8 surviving 1 [{'coeff': (1, -1, 2, -2, 4), 'N': [2, 8, 8, 24, 52, 56], 'p_rank': 1, 'ramification_points': 5, 'different_half': 7, 'rejected': False, 'reasons': []}]
+DOUBLE COVER BASE genus 3 candidates 12 surviving 0 []
+ORDER RANK 14 RATIONAL CENTRALIZER RANK 36
+N1..12 [3, 15, 9, 27, 73, 51, 129, 283, 441, 835, 2225, 4587] a1..12 [3, 6, 2, 3, 14, 5, 18, 32, 48, 75, 202, 377]
+N_{dk}>=N_k all dk<=31: PASS
+AUDIT Petersen 22 rank 6 negative_closed [] all31_match=PASS real_band_principal_minors= [5, 25, 120, 551, 2523, 10701, 44064, 181440, 746496, 2985984]
+REDUCED RESULTANTS Petersen 22 {5: 1}
+PRINCIPALLY POLARIZABLE ISOGENY CLASS: YES (product of explicit Jacobian factors)
+DOUBLE COVER BASE genus 1 candidates 1 surviving 0 []
+DOUBLE COVER BASE genus 2 candidates 2 surviving 0 []
+DOUBLE COVER BASE genus 3 candidates 2 surviving 0 []
+ORDER RANK 6 RATIONAL CENTRALIZER RANK 68
+N1..12 [3, 15, 9, 27, 33, 195, 129, 27, 513, 915, 2049, 3627] a1..12 [3, 6, 2, 3, 6, 29, 18, 0, 56, 87, 186, 285]
+N_{dk}>=N_k all dk<=31: PASS
+AUDIT K33 1 rank 2 negative_closed [] all31_match=PASS real_band_principal_minors= [5, 24, 64, 320, 1536, 4096]
+REDUCED RESULTANTS K33 1 {16: 1, 32: 2}
+PRINCIPALLY POLARIZABLE ISOGENY CLASS: YES (product of explicit Jacobian factors)
+DOUBLE COVER BASE genus 1 candidates 1 surviving 1 [{'coeff': (1, 0, 2), 'N': [3, 9, 9, 9, 33, 81], 'p_rank': 0, 'ramification_points': 3, 'different_half': 5, 'rejected': False, 'reasons': []}]
+DOUBLE COVER BASE genus 2 candidates 3 surviving 0 []
+DOUBLE COVER BASE genus 3 candidates 2 surviving 1 [{'coeff': (1, 1, 2, 4, 4, 4, 8), 'N': [4, 8, 16, 16, 24, 80], 'p_rank': 1, 'ramification_points': 1, 'different_half': 1, 'rejected': False, 'reasons': []}]
+ORDER RANK 10 RATIONAL CENTRALIZER RANK 16
+N1..12 [3, 11, 9, 15, 33, 95, 129, 255, 513, 1311, 2049, 3519] a1..12 [3, 4, 2, 1, 6, 13, 18, 30, 56, 127, 186, 285]
+N_{dk}>=N_k all dk<=31: PASS
+AUDIT K33 6 rank 2 negative_closed [] all31_match=PASS real_band_principal_minors= [5, 24, 112, 560, 2688, 12544]
+REDUCED RESULTANTS K33 6 {3: 1, 4: 1, 6: 2, 12: 3}
+PRINCIPALLY POLARIZABLE ISOGENY CLASS: YES (product of explicit Jacobian factors)
+DOUBLE COVER BASE genus 1 candidates 4 surviving 0 []
+DOUBLE COVER BASE genus 2 candidates 8 surviving 1 [{'coeff': (1, -1, 2, -2, 4), 'N': [2, 8, 8, 24, 52, 56], 'p_rank': 1, 'ramification_points': 1, 'different_half': 3, 'rejected': False, 'reasons': []}]
+DOUBLE COVER BASE genus 3 candidates 10 surviving 1 [{'coeff': (1, -1, 2, 0, 4, -4, 8), 'N': [2, 8, 14, 32, 22, 56], 'p_rank': 1, 'ramification_points': 1, 'different_half': 1, 'rejected': False, 'reasons': []}]
+ORDER RANK 8 RATIONAL CENTRALIZER RANK 20
+N1..12 [3, 11, 9, 47, 33, 47, 129, 191, 513, 911, 2049, 4703] a1..12 [3, 4, 2, 9, 6, 5, 18, 18, 56, 87, 186, 385]
+N_{dk}>=N_k all dk<=31: PASS
+AUDIT cube 1 rank 8 negative_closed [(4, -1)] all31_match=PASS real_band_principal_minors= [5, 25, 125, 625, 2125, 8925, 16905, 25921]
+AUDIT cube 3 rank 8 negative_closed [] all31_match=PASS real_band_principal_minors= [5, 25, 125, 625, 2625, 13125, 53125, 180625]
+REDUCED RESULTANTS cube 3 {8: 1, 16: 2}
+PRINCIPALLY POLARIZABLE ISOGENY CLASS: YES (product of explicit Jacobian factors)
+DOUBLE COVER BASE genus 1 candidates 0 surviving 0 []
+DOUBLE COVER BASE genus 2 candidates 3 surviving 1 [{'coeff': (1, 0, 1, 0, 4), 'N': [3, 7, 9, 31, 33, 43], 'p_rank': 2, 'ramification_points': 5, 'different_half': 5, 'rejected': False, 'reasons': []}]
+DOUBLE COVER BASE genus 3 candidates 0 surviving 0 []
+ORDER RANK 12 RATIONAL CENTRALIZER RANK 24
+N1..12 [3, 13, 9, 41, 33, 73, 129, 185, 513, 1193, 2049, 3929] a1..12 [3, 5, 2, 7, 6, 9, 18, 18, 56, 115, 186, 319]
+N_{dk}>=N_k all dk<=31: PASS
+AUDIT cube 5 rank 8 negative_closed [] all31_match=PASS real_band_principal_minors= [5, 25, 125, 625, 2625, 11025, 46305, 194481]
+REDUCED RESULTANTS cube 5 {4: 1, 8: 2}
+PRINCIPALLY POLARIZABLE ISOGENY CLASS: YES (product of explicit Jacobian factors)
+DOUBLE COVER BASE genus 1 candidates 2 surviving 0 []
+DOUBLE COVER BASE genus 2 candidates 4 surviving 0 []
+DOUBLE COVER BASE genus 3 candidates 4 surviving 0 []
+ORDER RANK 8 RATIONAL CENTRALIZER RANK 32
+N1..12 [3, 13, 9, 41, 33, 73, 129, 313, 513, 553, 2049, 4313] a1..12 [3, 5, 2, 7, 6, 9, 18, 34, 56, 51, 186, 351]
+N_{dk}>=N_k all dk<=31: PASS
+AUDIT cube 9 rank 8 negative_closed [(4, -1)] all31_match=PASS real_band_principal_minors= [5, 25, 125, 625, 2125, 7225, 24565, 83521]
+AUDIT cube 23 rank 8 negative_closed [(6, -7)] all31_match=PASS real_band_principal_minors= [5, 25, 125, 625, 3125, 15625, 78125, 390625]
+AUDIT K5 1 rank 5 negative_closed [] all31_match=PASS real_band_principal_minors= [8, 63, 418, 2541, 5324]
+AUDIT K5 3 rank 4 negative_closed [] all31_match=PASS real_band_principal_minors= [8, 63, 490, 3157, 18876]
+AUDIT K5 11 rank 5 negative_closed [] all31_match=PASS real_band_principal_minors= [8, 63, 418, 1573, 5324]
+AUDIT K5 12 rank 4 negative_closed [] all31_match=PASS real_band_principal_minors= [8, 63, 490, 3157, 18876]
+AUDIT K5 13 rank 4 negative_closed [] all31_match=PASS real_band_principal_minors= [8, 63, 490, 3773, 28812]
+TAIL: k>=32, k*a_k >= 2^k-(20+11k)*2^(k/2)>0 for all these n<=10.
+Cyclic F2-Galois covers of degree 5 or 7 excluded: tame odd-order automorphism acts freely on C(F2), but N1=3.
+Pure Kummer degree 5 or 7 excluded: gcd(m,4-1)=1 forces N2=5 on the smooth model over P1, targets N2>5.
+Smooth CI (2,4) in P3 genus=9; smooth CI (2,2,2) in P4 genus=5: neither gives genus 8.

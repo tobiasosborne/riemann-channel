@@ -1,0 +1,19 @@
+DIVISOR {'P': None, 'Q': [2, 9], 'qpol': 19, 'dimension': 9, 'survivors': [224, 96, 32, 16, 0]}
+DIVISOR {'P': None, 'Q': [2, 14], 'qpol': 19, 'dimension': 9, 'survivors': [224, 96, 32, 16, 0]}
+DIVISOR {'P': None, 'Q': [8, 0], 'qpol': 31, 'dimension': 9, 'survivors': [224, 96, 32, 16, 0]}
+DIVISOR {'P': None, 'Q': [8, 5], 'qpol': 31, 'dimension': 9, 'survivors': [224, 96, 32, 16, 0]}
+DIVISOR {'P': None, 'Q': [9, 9], 'qpol': 25, 'dimension': 9, 'survivors': [224, 96, 32, 16, 0]}
+DIVISOR {'P': None, 'Q': [9, 12], 'qpol': 25, 'dimension': 9, 'survivors': [224, 96, 32, 16, 0]}
+DIVISOR {'P': (1, 0), 'Q': [2, 9], 'qpol': 19, 'dimension': 9, 'survivors': [256, 128, 32, 0]}
+DIVISOR {'P': (1, 0), 'Q': [2, 14], 'qpol': 19, 'dimension': 9, 'survivors': [256, 128, 32, 16, 0]}
+DIVISOR {'P': (1, 0), 'Q': [8, 0], 'qpol': 31, 'dimension': 9, 'survivors': [256, 128, 32, 16, 0]}
+DIVISOR {'P': (1, 0), 'Q': [8, 5], 'qpol': 31, 'dimension': 9, 'survivors': [256, 128, 64, 32, 16, 0]}
+DIVISOR {'P': (1, 0), 'Q': [9, 9], 'qpol': 25, 'dimension': 9, 'survivors': [256, 128, 32, 16, 0]}
+DIVISOR {'P': (1, 0), 'Q': [9, 12], 'qpol': 25, 'dimension': 9, 'survivors': [256, 128, 32, 32, 0]}
+DIVISOR {'P': (1, 1), 'Q': [2, 9], 'qpol': 19, 'dimension': 9, 'survivors': [256, 128, 32, 16, 0]}
+DIVISOR {'P': (1, 1), 'Q': [2, 14], 'qpol': 19, 'dimension': 9, 'survivors': [256, 128, 32, 0]}
+DIVISOR {'P': (1, 1), 'Q': [8, 0], 'qpol': 31, 'dimension': 9, 'survivors': [256, 128, 64, 32, 16, 0]}
+DIVISOR {'P': (1, 1), 'Q': [8, 5], 'qpol': 31, 'dimension': 9, 'survivors': [256, 128, 32, 16, 0]}
+DIVISOR {'P': (1, 1), 'Q': [9, 9], 'qpol': 25, 'dimension': 9, 'survivors': [256, 128, 32, 32, 0]}
+DIVISOR {'P': (1, 1), 'Q': [9, 12], 'qpol': 25, 'dimension': 9, 'survivors': [256, 128, 32, 16, 0]}
+TOTAL divisors 18 raw functions 9216 matches 0

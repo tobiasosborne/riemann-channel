@@ -1,0 +1,8411 @@
+{
+  "targets": [
+    {
+      "mask": 1,
+      "label": "6.2.a_d_a_e_a_i",
+      "coeff": [
+        1,
+        0,
+        3,
+        0,
+        4,
+        0,
+        8,
+        0,
+        16,
+        0,
+        48,
+        0,
+        64
+      ],
+      "N": [
+        3,
+        11,
+        9,
+        15,
+        33,
+        95,
+        129,
+        255,
+        513,
+        1311,
+        2049,
+        3519
+      ],
+      "verdict": "NO",
+      "near_misses": [
+        {
+          "label": "6.2.a_d_a_d_ae_b",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            13,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_ac_d",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            23,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_a_c",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            33,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_a_e",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            33,
+            89
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 2,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_b_c",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            38,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_c_b",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            43,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_c_d",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            43,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_d_d",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            48,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_f_e",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            58,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_g_e",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            63,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_i_f",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            73,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ag_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            3,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_af_g",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            8,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ae_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            13,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ad_f",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            18,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ad_h",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            18,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ac_c",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            23,
+            59
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ac_e",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            23,
+            71
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ac_g",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            23,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ac_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            23,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ab_h",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            28,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_a_h",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            33,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_b_f",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            38,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_b_g",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            38,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_b_h",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            38,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_c_c",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            43,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_c_f",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            43,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_c_g",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            43,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_c_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            43,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_e_g",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            53,
+            83
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_e_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            53,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "bielliptic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_f_h",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            58,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_g_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            63,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_h_h",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            68,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_i_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            73,
+            95
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ag_l",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            3,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_af_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            8,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ae_i",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            13,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ae_l",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            13,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ad_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            18,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ad_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            18,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ad_l",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            18,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ac_f",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            23,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ac_h",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            23,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ac_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            23,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ac_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            23,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ab_g",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            28,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ab_h",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            28,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ab_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            28,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_e",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            53
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_g",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_i",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            83
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_l",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_m",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_b_g",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            38,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_b_h",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            38,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_b_i",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            38,
+            77
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_b_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            38,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_b_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            38,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_c_g",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            43,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_c_i",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            43,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_c_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            43,
+            83
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_c_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            43,
+            89
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_d_i",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            48,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_d_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            48,
+            83
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_0": 2,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_e_h",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            53,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_e_i",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            53,
+            77
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_0": 2,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_e_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            53,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_e_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            53,
+            89
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_e_l",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            53,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_f_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            58,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_f_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            58,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_f_m",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            58,
+            101
+          ],
+          "curves": 3,
+          "strata": {
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_g_m",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            63,
+            101
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ag_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            3,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ag_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            3,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_af_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            8,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ae_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            13,
+            83
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ae_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            13,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ad_k",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            18,
+            71
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ad_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            18,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ad_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            18,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ad_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            18,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ac_i",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            23,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ac_k",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            23,
+            71
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ac_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            23,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ac_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            23,
+            83
+          ],
+          "curves": 3,
+          "strata": {
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ac_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            23,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ac_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            23,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_h",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            53
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_j",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_k",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            71
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            89
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "plane_quintic": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_p",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_h",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            53
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_j",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_k",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            71
+          ],
+          "curves": 7,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "plane_quintic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            95
+          ],
+          "curves": 6,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_p",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_b_i",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            38,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_b_j",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            38,
+            65
+          ],
+          "curves": 5,
+          "strata": {
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_b_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            38,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_b_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            38,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_b_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            38,
+            89
+          ],
+          "curves": 6,
+          "strata": {
+            "generic": 6
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_b_p",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            38,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_c_k",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            43,
+            71
+          ],
+          "curves": 8,
+          "strata": {
+            "trigonal_maroni_0": 2,
+            "generic": 6
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_c_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            43,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_c_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            43,
+            89
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_d_k",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            48,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_d_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            48,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_d_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            48,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_d_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            48,
+            89
+          ],
+          "curves": 8,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 7
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_d_p",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            48,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_e_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            53,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_e_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            53,
+            83
+          ],
+          "curves": 4,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_e_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            53,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_e_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            53,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_e_p",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            53,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_f_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            58,
+            89
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ae_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            13,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ae_p",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            13,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ae_q",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            13,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ae_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            13,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ad_m",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            18,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ad_n",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            18,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ad_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            18,
+            77
+          ],
+          "curves": 6,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ad_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            18,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ad_s",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            18,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_l",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            59
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_m",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_n",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            71
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            77
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_p",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            83
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "plane_quintic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_q",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_s",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            101
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_t",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            107
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_l",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_m",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_n",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            77
+          ],
+          "curves": 5,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_q",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            89
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_s",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_k",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            53
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_l",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            59
+          ],
+          "curves": 3,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_m",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            65
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_n",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            71
+          ],
+          "curves": 6,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_q",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_l",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_m",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            65
+          ],
+          "curves": 6,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_n",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_q",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_t",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            107
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_l",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            59
+          ],
+          "curves": 2,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_m",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_p",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            83
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_q",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_s",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_t",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            107
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_d_n",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            48,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_d_p",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            48,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_e_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            53,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_e_p",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            53,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ad_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            18,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ad_q",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            18,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ad_r",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            18,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ac_o",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            23,
+            59
+          ],
+          "curves": 5,
+          "strata": {
+            "trigonal_maroni_0": 2,
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ac_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            23,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ac_q",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            23,
+            71
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ac_r",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            23,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ac_s",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            23,
+            83
+          ],
+          "curves": 8,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 6
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ac_u",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            23,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_n",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            53
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            65
+          ],
+          "curves": 8,
+          "strata": {
+            "generic": 8
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_r",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_s",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_t",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_u",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_v",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_n",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            53
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_o",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            59
+          ],
+          "curves": 6,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "plane_quintic": 1,
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            65
+          ],
+          "curves": 5,
+          "strata": {
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_q",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            71
+          ],
+          "curves": 7,
+          "strata": {
+            "generic": 7
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_r",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_u",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            95
+          ],
+          "curves": 5,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_w",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            107
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_n",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            53
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_q",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_r",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_s",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_t",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_u",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_v",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            101
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_c_o",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            43,
+            59
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_c_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            43,
+            65
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_c_q",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            43,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "plane_quintic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_c_r",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            43,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_c_s",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            43,
+            83
+          ],
+          "curves": 7,
+          "strata": {
+            "generic": 7
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_c_u",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            43,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_d_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            48,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ad_s",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            18,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ac_q",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            23,
+            53
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ac_r",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            23,
+            59
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "plane_quintic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ac_s",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            23,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ac_t",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            23,
+            71
+          ],
+          "curves": 3,
+          "strata": {
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ac_u",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            23,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_q",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            53
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_r",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            59
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_s",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            65
+          ],
+          "curves": 5,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_t",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_u",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_v",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_w",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_p",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            47
+          ],
+          "curves": 2,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_q",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            53
+          ],
+          "curves": 8,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 6
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_r",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_s",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_t",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            71
+          ],
+          "curves": 8,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 7
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_u",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_v",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_w",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_x",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_p",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            47
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_q",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            53
+          ],
+          "curves": 3,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_r",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_s",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            65
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_t",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_u",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_v",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_c_q",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            43,
+            53
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_c_r",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            43,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_c_s",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            43,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_ac_u",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            23,
+            59
+          ],
+          "curves": 2,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_ab_s",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            28,
+            47
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_ab_t",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            28,
+            53
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_ab_u",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            28,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_ab_v",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            28,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_ab_w",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            28,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_a_q",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            33,
+            35
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_a_t",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            33,
+            53
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_a_u",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            33,
+            59
+          ],
+          "curves": 5,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_a_v",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            33,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_a_w",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            33,
+            71
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_a_x",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            33,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_b_s",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            38,
+            47
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_b_t",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            38,
+            53
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_b_u",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            38,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_c_t",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            43,
+            53
+          ],
+          "curves": 3,
+          "strata": {
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_ab_v",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            28,
+            47
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_a_t",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            33,
+            35
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_a_u",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            33,
+            41
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_a_v",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            33,
+            47
+          ],
+          "curves": 3,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_a_w",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            33,
+            53
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_a_x",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            33,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_b_u",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            38,
+            41
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_b_v",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            38,
+            47
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_m_a_u",
+          "N": [
+            3,
+            11,
+            9,
+            47,
+            33,
+            23
+          ],
+          "curves": 1,
+          "strata": {
+            "plane_quintic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_m_a_w",
+          "N": [
+            3,
+            11,
+            9,
+            47,
+            33,
+            35
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        }
+      ]
+    },
+    {
+      "mask": 6,
+      "label": "6.2.a_d_a_m_a_y",
+      "coeff": [
+        1,
+        0,
+        3,
+        0,
+        12,
+        0,
+        24,
+        0,
+        48,
+        0,
+        48,
+        0,
+        64
+      ],
+      "N": [
+        3,
+        11,
+        9,
+        47,
+        33,
+        47,
+        129,
+        191,
+        513,
+        911,
+        2049,
+        4703
+      ],
+      "verdict": "NO",
+      "near_misses": [
+        {
+          "label": "6.2.a_d_a_d_ae_b",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            13,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_ac_d",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            23,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_a_c",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            33,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_a_e",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            33,
+            89
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 2,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_b_c",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            38,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_c_b",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            43,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_c_d",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            43,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_d_d",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            48,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_f_e",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            58,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_g_e",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            63,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_d_i_f",
+          "N": [
+            3,
+            11,
+            9,
+            11,
+            73,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ag_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            3,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_af_g",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            8,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ae_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            13,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ad_f",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            18,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ad_h",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            18,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ac_c",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            23,
+            59
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ac_e",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            23,
+            71
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ac_g",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            23,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ac_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            23,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_ab_h",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            28,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_a_h",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            33,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_b_f",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            38,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_b_g",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            38,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_b_h",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            38,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_c_c",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            43,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_c_f",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            43,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_c_g",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            43,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_c_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            43,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_e_g",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            53,
+            83
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_e_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            53,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "bielliptic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_f_h",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            58,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_g_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            63,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_h_h",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            68,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_e_i_i",
+          "N": [
+            3,
+            11,
+            9,
+            15,
+            73,
+            95
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ag_l",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            3,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_af_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            8,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ae_i",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            13,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ae_l",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            13,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ad_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            18,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ad_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            18,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ad_l",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            18,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ac_f",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            23,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "bielliptic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ac_h",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            23,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ac_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            23,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ac_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            23,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ab_g",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            28,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ab_h",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            28,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_ab_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            28,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_e",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            53
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_g",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_i",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            83
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_l",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_a_m",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            33,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_b_g",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            38,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_b_h",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            38,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_b_i",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            38,
+            77
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_b_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            38,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_b_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            38,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_c_g",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            43,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_c_i",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            43,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_c_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            43,
+            83
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_c_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            43,
+            89
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_d_i",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            48,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_d_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            48,
+            83
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_0": 2,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_e_h",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            53,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_e_i",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            53,
+            77
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_0": 2,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_e_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            53,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_e_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            53,
+            89
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_e_l",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            53,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_f_j",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            58,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_f_k",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            58,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_f_m",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            58,
+            101
+          ],
+          "curves": 3,
+          "strata": {
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_f_g_m",
+          "N": [
+            3,
+            11,
+            9,
+            19,
+            63,
+            101
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ag_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            3,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ag_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            3,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_af_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            8,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ae_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            13,
+            83
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ae_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            13,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ad_k",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            18,
+            71
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ad_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            18,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ad_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            18,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ad_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            18,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ac_i",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            23,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ac_k",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            23,
+            71
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ac_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            23,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ac_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            23,
+            83
+          ],
+          "curves": 3,
+          "strata": {
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ac_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            23,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ac_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            23,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_h",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            53
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_j",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_k",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            71
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            89
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "plane_quintic": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_ab_p",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            28,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_h",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            53
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_j",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_k",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            71
+          ],
+          "curves": 7,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "plane_quintic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            95
+          ],
+          "curves": 6,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_a_p",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            33,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_b_i",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            38,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_b_j",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            38,
+            65
+          ],
+          "curves": 5,
+          "strata": {
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_b_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            38,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_b_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            38,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_b_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            38,
+            89
+          ],
+          "curves": 6,
+          "strata": {
+            "generic": 6
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_b_p",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            38,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_c_k",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            43,
+            71
+          ],
+          "curves": 8,
+          "strata": {
+            "trigonal_maroni_0": 2,
+            "generic": 6
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_c_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            43,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_c_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            43,
+            89
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_d_k",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            48,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_d_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            48,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_d_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            48,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_d_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            48,
+            89
+          ],
+          "curves": 8,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 7
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_d_p",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            48,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_e_l",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            53,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_e_m",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            53,
+            83
+          ],
+          "curves": 4,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_e_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            53,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_e_o",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            53,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_e_p",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            53,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_g_f_n",
+          "N": [
+            3,
+            11,
+            9,
+            23,
+            58,
+            89
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ae_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            13,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ae_p",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            13,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ae_q",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            13,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ae_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            13,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ad_m",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            18,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ad_n",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            18,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ad_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            18,
+            77
+          ],
+          "curves": 6,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ad_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            18,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ad_s",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            18,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_l",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            59
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_m",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_n",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            71
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            77
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_p",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            83
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "plane_quintic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_q",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_s",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            101
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ac_t",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            23,
+            107
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_l",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_m",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_n",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            77
+          ],
+          "curves": 5,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_q",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            89
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_ab_s",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            28,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_k",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            53
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_l",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            59
+          ],
+          "curves": 3,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_m",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            65
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_n",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            71
+          ],
+          "curves": 6,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_q",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_a_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            33,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_l",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_m",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            65
+          ],
+          "curves": 6,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_n",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_q",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_b_t",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            38,
+            107
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_l",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            59
+          ],
+          "curves": 2,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_m",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_p",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            83
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_q",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_r",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_s",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_c_t",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            43,
+            107
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_d_n",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            48,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_d_p",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            48,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_e_o",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            53,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_h_e_p",
+          "N": [
+            3,
+            11,
+            9,
+            27,
+            53,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ad_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            18,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ad_q",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            18,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ad_r",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            18,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ac_o",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            23,
+            59
+          ],
+          "curves": 5,
+          "strata": {
+            "trigonal_maroni_0": 2,
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ac_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            23,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ac_q",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            23,
+            71
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ac_r",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            23,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ac_s",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            23,
+            83
+          ],
+          "curves": 8,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 6
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ac_u",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            23,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_n",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            53
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            65
+          ],
+          "curves": 8,
+          "strata": {
+            "generic": 8
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_r",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_s",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_t",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_u",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_ab_v",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            28,
+            101
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_n",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            53
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_o",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            59
+          ],
+          "curves": 6,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "plane_quintic": 1,
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            65
+          ],
+          "curves": 5,
+          "strata": {
+            "generic": 5
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_q",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            71
+          ],
+          "curves": 7,
+          "strata": {
+            "generic": 7
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_r",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_u",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            95
+          ],
+          "curves": 5,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_a_w",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            33,
+            107
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_n",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            53
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_q",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_r",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_s",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_t",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_u",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_b_v",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            38,
+            101
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_c_o",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            43,
+            59
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_c_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            43,
+            65
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_c_q",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            43,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "plane_quintic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_c_r",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            43,
+            77
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_c_s",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            43,
+            83
+          ],
+          "curves": 7,
+          "strata": {
+            "generic": 7
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_c_u",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            43,
+            95
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_i_d_p",
+          "N": [
+            3,
+            11,
+            9,
+            31,
+            48,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ad_s",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            18,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ac_q",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            23,
+            53
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ac_r",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            23,
+            59
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "plane_quintic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ac_s",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            23,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ac_t",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            23,
+            71
+          ],
+          "curves": 3,
+          "strata": {
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ac_u",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            23,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_q",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            53
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_r",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            59
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_s",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            65
+          ],
+          "curves": 5,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_t",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_u",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            77
+          ],
+          "curves": 3,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_v",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_ab_w",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            28,
+            89
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_p",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            47
+          ],
+          "curves": 2,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_q",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            53
+          ],
+          "curves": 8,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "trigonal_maroni_2": 1,
+            "generic": 6
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_r",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_2": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_s",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_t",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            71
+          ],
+          "curves": 8,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 7
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_u",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_v",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            83
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_w",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            89
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_a_x",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            33,
+            95
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_p",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            47
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_q",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            53
+          ],
+          "curves": 3,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_r",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_s",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            65
+          ],
+          "curves": 4,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_t",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_u",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_b_v",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            38,
+            83
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_c_q",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            43,
+            53
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_c_r",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            43,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_j_c_s",
+          "N": [
+            3,
+            11,
+            9,
+            35,
+            43,
+            65
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_ac_u",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            23,
+            59
+          ],
+          "curves": 2,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_ab_s",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            28,
+            47
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_ab_t",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            28,
+            53
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_ab_u",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            28,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "trigonal_maroni_0": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_ab_v",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            28,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_ab_w",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            28,
+            71
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_a_q",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            33,
+            35
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_a_t",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            33,
+            53
+          ],
+          "curves": 4,
+          "strata": {
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_a_u",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            33,
+            59
+          ],
+          "curves": 5,
+          "strata": {
+            "trigonal_maroni_0": 1,
+            "generic": 4
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_a_v",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            33,
+            65
+          ],
+          "curves": 2,
+          "strata": {
+            "trigonal_maroni_2": 1,
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_a_w",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            33,
+            71
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_a_x",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            33,
+            77
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_b_s",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            38,
+            47
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_b_t",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            38,
+            53
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_b_u",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            38,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_k_c_t",
+          "N": [
+            3,
+            11,
+            9,
+            39,
+            43,
+            53
+          ],
+          "curves": 3,
+          "strata": {
+            "generic": 3
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_ab_v",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            28,
+            47
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_a_t",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            33,
+            35
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_a_u",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            33,
+            41
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_a_v",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            33,
+            47
+          ],
+          "curves": 3,
+          "strata": {
+            "plane_quintic": 1,
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_a_w",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            33,
+            53
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_a_x",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            33,
+            59
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_b_u",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            38,
+            41
+          ],
+          "curves": 1,
+          "strata": {
+            "generic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_l_b_v",
+          "N": [
+            3,
+            11,
+            9,
+            43,
+            38,
+            47
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        },
+        {
+          "label": "6.2.a_d_a_m_a_u",
+          "N": [
+            3,
+            11,
+            9,
+            47,
+            33,
+            23
+          ],
+          "curves": 1,
+          "strata": {
+            "plane_quintic": 1
+          }
+        },
+        {
+          "label": "6.2.a_d_a_m_a_w",
+          "N": [
+            3,
+            11,
+            9,
+            47,
+            33,
+            35
+          ],
+          "curves": 2,
+          "strata": {
+            "generic": 2
+          }
+        }
+      ]
+    }
+  ],
+  "sha256": {
+    "sources/hkl-genus-6/lmfdbgenus6_curves_F2.txt": "99d4894e8cdd12db26518b4e7016eb877dff3ad4e61a50d487523f1f92acc7f4",
+    "sources/hkl-genus-6/Census/hyperelliptic/data_hyperelliptic.txt": "ab954c3960efd4fdb4cf6d03547095ebab987dd0279cace33d7419824cbe1dc7",
+    "sources/hkl-genus-6/Census/trigonal_maroni_0/data_trigonal_maroni_0.txt": "f167a80c800152a2dd9ca9e157f7448e2b650de2b0827aeb06508f3e7cbc12ca",
+    "sources/hkl-genus-6/Census/trigonal_maroni_2/data_trigonal_maroni_2.txt": "398ad15e3a75a9fd31c08f49e0d96ebd48803db1348a2cbdfdd548fadb423a82",
+    "sources/hkl-genus-6/Census/bielliptic/data_bielliptic.txt": "45cde47aad4e3e20abd49973b7fb033ee26652bf3e00c4cbf2e6df79ea7b4837",
+    "sources/hkl-genus-6/Census/plane_quintic/data_plane_quintic.txt": "de9fbc14f462a68b5a4df45cfd58abe28e6b7fed9995818160f30f51dc8c4288",
+    "sources/hkl-genus-6/Census/generic/data_generic.txt": "d9fcc32eb8baabec390e8b6ab37c97754d2bb4d484f7d29164c2702990202822"
+  }
+}

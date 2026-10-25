@@ -1,0 +1,15 @@
+PASS census_lookup.py
+PASS lowgenus.py
+PASS obstructions.py
+PASS genus8_search.py
+PASS genus8_search.py --graph K33
+PASS genus8_search.py --graph Petersen
+PASS verify_petersen.py
+PASS plane_nodes.py
+PASS ruled_nodes.py
+PASS plane_smooth.py
+PASS double_covers.py
+PASS prism.py
+PASS rerun_prior.py
+PASS all expected verdicts, counts, witness and empty-search certificates
+SHA256 manifest: 40 source/output files; output_manifest.json.txt

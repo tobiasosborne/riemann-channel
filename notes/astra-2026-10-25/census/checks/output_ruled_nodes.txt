@@ -1,0 +1,17 @@
+TARGET 3 e 0 tangent 0 0 dim 19 survivors 16384 72 32 0 0 0 0 0 MASKS
+TARGET 3 e 0 tangent 0 1 dim 19 survivors 16384 444 144 0 0 0 0 0 MASKS
+TARGET 3 e 0 tangent 1 0 dim 19 survivors 16384 444 144 0 0 0 0 0 MASKS
+TARGET 3 e 0 tangent 1 1 dim 19 survivors 114688 12700 3720 84 16 0 0 0 MASKS
+TARGET 5 e 0 tangent 0 0 dim 19 survivors 16384 72 32 0 0 0 0 0 MASKS
+TARGET 5 e 0 tangent 0 1 dim 19 survivors 16384 444 144 0 0 0 0 0 MASKS
+TARGET 5 e 0 tangent 1 0 dim 19 survivors 16384 444 144 0 0 0 0 0 MASKS
+TARGET 5 e 0 tangent 1 1 dim 19 survivors 114688 12700 3720 84 16 0 0 0 MASKS
+TARGET 3 e 2 tangent 0 0 dim 19 survivors 40960 224 64 0 0 0 0 0 MASKS
+TARGET 3 e 2 tangent 0 1 dim 19 survivors 40960 976 296 4 0 0 0 0 MASKS
+TARGET 3 e 2 tangent 1 0 dim 19 survivors 40960 224 64 0 0 0 0 0 MASKS
+TARGET 3 e 2 tangent 1 1 dim 19 survivors 90112 7440 1976 40 8 0 0 0 MASKS
+TARGET 5 e 2 tangent 0 0 dim 19 survivors 40960 224 64 0 0 0 0 0 MASKS
+TARGET 5 e 2 tangent 0 1 dim 19 survivors 40960 976 296 4 0 0 0 0 MASKS
+TARGET 5 e 2 tangent 1 0 dim 19 survivors 40960 224 64 0 0 0 0 0 MASKS
+TARGET 5 e 2 tangent 1 1 dim 19 survivors 90112 7440 1976 40 8 0 0 0 MASKS
+GOOD NORMALIZATIONS 0

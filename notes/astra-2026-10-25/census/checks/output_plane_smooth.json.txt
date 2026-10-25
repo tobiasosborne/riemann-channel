@@ -1,0 +1,7 @@
+{
+  "logs": [
+    "CASE 6 dim 28 survivors 73400320 62720 14840 4704 1428 336 168 0 0 0 MASKS",
+    "CASE 10 dim 28 survivors 73400320 62720 14840 4704 0 0 0 0 0 0 MASKS"
+  ],
+  "hits": []
+}
