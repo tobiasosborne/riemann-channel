@@ -1,0 +1,19 @@
+PARI stack size set to 1000000000 bytes, maximum size set to 1000001536
+algebra (-2,-37): ramified places [1, [37, [37]~, 1, 1, 1]]
+maximal order O basis (rows, in 1,i,j,k): [['1/2', '0', '1/2', '1/2'], ['0', '1/4', '1/2', '3/4'], ['0', '0', '1', '0'], ['0', '0', '0', '1']]
+det(trd(e_a e_b)) = 1369 = p^2 ? True  -> O is maximal (reduced discriminant 37)
+class number h(O) = 3 (BFS at l = 2); norms of representatives: ['1', '2', '2']
+unit group orders |O_i^x| = [2, 2, 2] ; Eichler mass sum 1/|O_i^x| = 3/2 = (p-1)/24 ? True
+l = 2: ideal-class Brandt matrix B(l) = [[1, 1, 1], [1, 0, 2], [1, 2, 0]] ; half-loops f_l = 1 ; #elements of norm l in the orders: [2, 0, 0]
+l = 3: ideal-class Brandt matrix B(l) = [[2, 1, 1], [1, 0, 3], [1, 3, 0]] ; half-loops f_l = 0 ; #elements of norm l in the orders: [4, 0, 0]
+l = 5: ideal-class Brandt matrix B(l) = [[2, 2, 2], [2, 1, 3], [2, 3, 1]] ; half-loops f_l = 2 ; #elements of norm l in the orders: [4, 2, 2]
+l = 7: ideal-class Brandt matrix B(l) = [[2, 3, 3], [3, 2, 3], [3, 3, 2]] ; half-loops f_l = 0 ; #elements of norm l in the orders: [4, 4, 4]
+PARI stack size set to 2000000000 bytes, maximum size set to 2000003072
+Phi_l graphs (vertices = j-invariants ['30*t + 18', '7*t + 25', '8']):
+  l = 2: B_Phi(l) = [[0, 2, 1], [2, 0, 1], [1, 1, 1]]
+  l = 3: B_Phi(l) = [[0, 3, 1], [3, 0, 1], [1, 1, 2]]
+  l = 5: B_Phi(l) = [[1, 3, 2], [3, 1, 2], [2, 2, 2]]
+  l = 7: B_Phi(l) = [[2, 3, 3], [3, 2, 3], [3, 3, 2]]
+one vertex relabelling j_a -> ideal class (1, 2, 0) matches all four Brandt matrices: True
+half-loop counts from the quaternion side: {2: 1, 3: 0, 5: 2, 7: 0} (isogeny side, pizer_graph.py p = 37: l=2:1, l=3:0, l=5:2, l=7:0)
+Gamma = O[1/l]^x / Z[1/l]^x contains an element of odd norm valuation at l (an element of norm l in some O_i): {2: True, 3: True, 5: True, 7: True}

@@ -1,0 +1,7 @@
+Quaternion reduced-trace Gram determinant: -1369 ; absolute value: 1369
+p 11 weights [2, 3] weighted cycle determinant 5 Gram Smith [5] doubled alternating determinant 25
+p 37 weights [1, 1, 1] weighted cycle determinant 3 Gram Smith [1, -3] doubled alternating determinant 9
+p 73 weights [1, 1, 1, 1, 1, 1] weighted cycle determinant 6 Gram Smith [1, 1, 1, 1, 6] doubled alternating determinant 36
+p 101 weights [3, 1, 1, 1, 1, 1, 1, 1, 1] weighted cycle determinant 25 Gram Smith [1, 1, 1, 1, 1, 1, 1, -25] doubled alternating determinant 625
+p 109 weights [1, 1, 1, 1, 1, 1, 1, 1, 1] weighted cycle determinant 9 Gram Smith [1, 1, 1, 1, 1, 1, 1, -9] doubled alternating determinant 81
+Trivial-plane companion at ell=2: [[3, -2], [1, 0]] M(1,-1)= [5, 1] M(1,1)= [1, 1]

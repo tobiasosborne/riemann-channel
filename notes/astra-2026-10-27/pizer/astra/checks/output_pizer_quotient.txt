@@ -1,0 +1,134 @@
+duality p ell vertex= 13 2 0 j= 5 extension degree= 2 loop fixed flags= [True, False, False]
+ACTUAL DUALITY p= 13 ell= 2 B= [[3]] halfloops= [1] paired edges= 1 fixed darts= 1
+ACTUAL DUALITY BASS PASS; det(I-uH)= (u - 1)*(u + 1)*(2*u - 1)
+duality p ell vertex= 13 3 0 j= 5 extension degree= 4 loop fixed flags= [False, False, False, False]
+ACTUAL DUALITY p= 13 ell= 3 B= [[4]] halfloops= [0] paired edges= 2 fixed darts= 0
+ACTUAL DUALITY BASS PASS; det(I-uH)= -(u - 1)**2*(u + 1)*(3*u - 1)
+duality p ell vertex= 13 5 0 j= 5 extension degree= 8 loop fixed flags= [True, False, False, False, False, True]
+ACTUAL DUALITY p= 13 ell= 5 B= [[6]] halfloops= [2] paired edges= 2 fixed darts= 2
+ACTUAL DUALITY BASS PASS; det(I-uH)= -(u - 1)**2*(u + 1)**3*(5*u - 1)
+duality p ell vertex= 13 7 0 j= 5 extension degree= 2 loop fixed flags= [True, True, False, False, False, False, False, False]
+ACTUAL DUALITY p= 13 ell= 7 B= [[8]] halfloops= [2] paired edges= 3 fixed darts= 2
+ACTUAL DUALITY BASS PASS; det(I-uH)= (u - 1)**3*(u + 1)**4*(7*u - 1)
+duality p ell vertex= 37 2 0 j= 30*t + 18 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 37 2 1 j= 7*t + 25 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 37 2 2 j= 8 extension degree= 2 loop fixed flags= [True]
+ACTUAL DUALITY p= 37 ell= 2 B= [[0, 2, 1], [2, 0, 1], [1, 1, 1]] halfloops= [0, 0, 1] paired edges= 4 fixed darts= 1
+ACTUAL DUALITY BASS PASS; det(I-uH)= -(u - 1)**2*(u + 1)**2*(2*u - 1)*(2*u**2 + 1)*(2*u**2 + 2*u + 1)
+BIPARTITE DOUBLE ordinary Bass: vertices= 6 edges= 9 PASS; determinant= -(u - 1)**4*(u + 1)**4*(2*u - 1)*(2*u + 1)*(2*u**2 + 1)**2*(2*u**2 - 2*u + 1)*(2*u**2 + 2*u + 1)
+duality p ell vertex= 37 3 0 j= 30*t + 18 extension degree= 4 loop fixed flags= []
+duality p ell vertex= 37 3 1 j= 7*t + 25 extension degree= 4 loop fixed flags= []
+duality p ell vertex= 37 3 2 j= 8 extension degree= 4 loop fixed flags= [False, False]
+ACTUAL DUALITY p= 37 ell= 3 B= [[0, 3, 1], [3, 0, 1], [1, 1, 2]] halfloops= [0, 0, 0] paired edges= 6 fixed darts= 0
+ACTUAL DUALITY BASS PASS; det(I-uH)= -(u - 1)**4*(u + 1)**3*(3*u - 1)*(3*u**2 - u + 1)*(3*u**2 + 3*u + 1)
+BIPARTITE DOUBLE ordinary Bass: vertices= 6 edges= 12 PASS; determinant= (u - 1)**7*(u + 1)**7*(3*u - 1)*(3*u + 1)*(3*u**2 - 3*u + 1)*(3*u**2 - u + 1)*(3*u**2 + u + 1)*(3*u**2 + 3*u + 1)
+duality p ell vertex= 37 5 0 j= 30*t + 18 extension degree= 8 loop fixed flags= [True]
+duality p ell vertex= 37 5 1 j= 7*t + 25 extension degree= 8 loop fixed flags= [True]
+duality p ell vertex= 37 5 2 j= 8 extension degree= 8 loop fixed flags= [False, False]
+ACTUAL DUALITY p= 37 ell= 5 B= [[1, 3, 2], [3, 1, 2], [2, 2, 2]] halfloops= [1, 1, 0] paired edges= 8 fixed darts= 2
+ACTUAL DUALITY BASS PASS; det(I-uH)= -(u - 1)**6*(u + 1)**7*(5*u - 1)*(5*u**2 + 1)*(5*u**2 + 2*u + 1)
+BIPARTITE DOUBLE ordinary Bass: vertices= 6 edges= 18 PASS; determinant= (u - 1)**13*(u + 1)**13*(5*u - 1)*(5*u + 1)*(5*u**2 + 1)**2*(5*u**2 - 2*u + 1)*(5*u**2 + 2*u + 1)
+duality p ell vertex= 37 7 0 j= 30*t + 18 extension degree= 12 loop fixed flags= [False, False]
+duality p ell vertex= 37 7 1 j= 7*t + 25 extension degree= 12 loop fixed flags= [False, False]
+duality p ell vertex= 37 7 2 j= 8 extension degree= 12 loop fixed flags= [False, False]
+ACTUAL DUALITY p= 37 ell= 7 B= [[2, 3, 3], [3, 2, 3], [3, 3, 2]] halfloops= [0, 0, 0] paired edges= 12 fixed darts= 0
+ACTUAL DUALITY BASS PASS; det(I-uH)= -(u - 1)**10*(u + 1)**9*(7*u - 1)*(7*u**2 + u + 1)**2
+BIPARTITE DOUBLE ordinary Bass: vertices= 6 edges= 24 PASS; determinant= (u - 1)**19*(u + 1)**19*(7*u - 1)*(7*u + 1)*(7*u**2 - u + 1)**2*(7*u**2 + u + 1)**2
+duality p ell vertex= 73 2 0 j= 10*t + 44 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 73 2 1 j= 56 extension degree= 2 loop fixed flags= [False, False]
+duality p ell vertex= 73 2 2 j= 63*t + 34 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 73 2 3 j= 72*t + 44 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 73 2 4 j= 9 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 73 2 5 j= t + 45 extension degree= 2 loop fixed flags= []
+ACTUAL DUALITY p= 73 ell= 2 B= [[0, 0, 1, 1, 1, 0], [0, 2, 0, 0, 1, 0], [1, 0, 0, 0, 1, 1], [1, 0, 0, 0, 0, 2], [1, 1, 1, 0, 0, 0], [0, 0, 1, 2, 0, 0]] halfloops= [0, 0, 0, 0, 0, 0] paired edges= 9 fixed darts= 0
+ACTUAL DUALITY BASS PASS; det(I-uH)= -(u - 1)**4*(u + 1)**3*(2*u - 1)*(2*u**2 - u + 1)*(4*u**4 - 2*u**3 + u**2 - u + 1)*(4*u**4 + 6*u**3 + 5*u**2 + 3*u + 1)
+duality p ell vertex= 73 3 0 j= 10*t + 44 extension degree= 4 loop fixed flags= []
+duality p ell vertex= 73 3 1 j= 56 extension degree= 4 loop fixed flags= []
+duality p ell vertex= 73 3 2 j= 63*t + 34 extension degree= 4 loop fixed flags= []
+duality p ell vertex= 73 3 3 j= 72*t + 44 extension degree= 4 loop fixed flags= []
+duality p ell vertex= 73 3 4 j= 9 extension degree= 4 loop fixed flags= [False, False]
+duality p ell vertex= 73 3 5 j= t + 45 extension degree= 4 loop fixed flags= []
+ACTUAL DUALITY p= 73 ell= 3 B= [[0, 1, 2, 0, 0, 1], [1, 0, 1, 1, 0, 1], [2, 1, 0, 1, 0, 0], [0, 1, 1, 0, 1, 1], [0, 0, 0, 1, 2, 1], [1, 1, 0, 1, 1, 0]] halfloops= [0, 0, 0, 0, 0, 0] paired edges= 12 fixed darts= 0
+ACTUAL DUALITY BASS PASS; det(I-uH)= (u - 1)**7*(u + 1)**6*(3*u - 1)*(3*u**2 + 1)*(9*u**4 - 3*u**3 + 3*u**2 - u + 1)*(9*u**4 + 9*u**3 + 7*u**2 + 3*u + 1)
+duality p ell vertex= 73 5 0 j= 10*t + 44 extension degree= 8 loop fixed flags= [True]
+duality p ell vertex= 73 5 1 j= 56 extension degree= 8 loop fixed flags= []
+duality p ell vertex= 73 5 2 j= 63*t + 34 extension degree= 8 loop fixed flags= [True]
+duality p ell vertex= 73 5 3 j= 72*t + 44 extension degree= 8 loop fixed flags= []
+duality p ell vertex= 73 5 4 j= 9 extension degree= 8 loop fixed flags= [False, False]
+duality p ell vertex= 73 5 5 j= t + 45 extension degree= 8 loop fixed flags= []
+ACTUAL DUALITY p= 73 ell= 5 B= [[1, 1, 2, 1, 1, 0], [1, 0, 1, 2, 0, 2], [2, 1, 1, 0, 1, 1], [1, 2, 0, 0, 1, 2], [1, 0, 1, 1, 2, 1], [0, 2, 1, 2, 1, 0]] halfloops= [1, 0, 1, 0, 0, 0] paired edges= 17 fixed darts= 2
+ACTUAL DUALITY BASS PASS; det(I-uH)= -(u - 1)**12*(u + 1)**13*(5*u - 1)*(5*u**2 - 2*u + 1)*(25*u**4 + 5*u**3 + 7*u**2 + u + 1)*(25*u**4 + 15*u**3 + 11*u**2 + 3*u + 1)
+duality p ell vertex= 73 7 0 j= 10*t + 44 extension degree= 6 loop fixed flags= []
+duality p ell vertex= 73 7 1 j= 56 extension degree= 6 loop fixed flags= [True]
+duality p ell vertex= 73 7 2 j= 63*t + 34 extension degree= 6 loop fixed flags= []
+duality p ell vertex= 73 7 3 j= 72*t + 44 extension degree= 6 loop fixed flags= []
+duality p ell vertex= 73 7 4 j= 9 extension degree= 6 loop fixed flags= [True]
+duality p ell vertex= 73 7 5 j= t + 45 extension degree= 6 loop fixed flags= []
+ACTUAL DUALITY p= 73 ell= 7 B= [[0, 1, 3, 1, 2, 1], [1, 1, 1, 2, 1, 2], [3, 1, 0, 1, 2, 1], [1, 2, 1, 0, 1, 3], [2, 1, 2, 1, 1, 1], [1, 2, 1, 3, 1, 0]] halfloops= [0, 1, 0, 0, 1, 0] paired edges= 23 fixed darts= 2
+ACTUAL DUALITY BASS PASS; det(I-uH)= -(u - 1)**18*(u + 1)**19*(7*u - 1)*(7*u**2 - 2*u + 1)*(7*u**2 + u + 1)**2*(7*u**2 + 3*u + 1)**2
+duality p ell vertex= 109 2 0 j= 107*t + 97 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 2 1 j= 17 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 2 2 j= 2*t + 99 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 2 3 j= 32*t + 86 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 2 4 j= 41 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 2 5 j= 43 extension degree= 2 loop fixed flags= [True]
+duality p ell vertex= 109 2 6 j= 51*t + 104 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 2 7 j= 58*t + 53 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 2 8 j= 77*t + 54 extension degree= 2 loop fixed flags= []
+ACTUAL DUALITY p= 109 ell= 2 B= [[0, 0, 0, 0, 1, 1, 0, 0, 1], [0, 0, 0, 0, 1, 0, 1, 1, 0], [0, 0, 0, 1, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 1, 1], [1, 1, 1, 0, 0, 0, 0, 0, 0], [1, 0, 1, 0, 0, 1, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 1, 1], [0, 1, 0, 1, 0, 0, 1, 0, 0], [1, 0, 0, 1, 0, 0, 1, 0, 0]] halfloops= [0, 0, 0, 0, 0, 1, 0, 0, 0] paired edges= 13 fixed darts= 1
+ACTUAL DUALITY BASS PASS; det(I-uH)= (u - 1)**5*(u + 1)**5*(2*u - 1)*(2*u**2 - u + 1)*(8*u**6 + 8*u**5 + 10*u**4 + 7*u**3 + 5*u**2 + 2*u + 1)*(16*u**8 + 8*u**7 + 12*u**6 + 4*u**5 + 7*u**4 + 2*u**3 + 3*u**2 + u + 1)
+duality p ell vertex= 109 3 0 j= 107*t + 97 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 3 1 j= 17 extension degree= 4 loop fixed flags= []
+duality p ell vertex= 109 3 2 j= 2*t + 99 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 3 3 j= 32*t + 86 extension degree= 4 loop fixed flags= []
+duality p ell vertex= 109 3 4 j= 41 extension degree= 4 loop fixed flags= [False, False]
+duality p ell vertex= 109 3 5 j= 43 extension degree= 4 loop fixed flags= [False, False]
+duality p ell vertex= 109 3 6 j= 51*t + 104 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 3 7 j= 58*t + 53 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 3 8 j= 77*t + 54 extension degree= 4 loop fixed flags= []
+ACTUAL DUALITY p= 109 ell= 3 B= [[0, 1, 2, 1, 0, 0, 0, 0, 0], [1, 0, 1, 0, 0, 0, 1, 1, 0], [2, 1, 0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 1, 0, 1, 0, 1], [0, 0, 0, 1, 2, 0, 0, 0, 1], [0, 0, 0, 0, 0, 2, 1, 1, 0], [0, 1, 0, 1, 0, 1, 0, 1, 0], [0, 1, 0, 0, 0, 1, 1, 0, 1], [0, 0, 1, 1, 1, 0, 0, 1, 0]] halfloops= [0, 0, 0, 0, 0, 0, 0, 0, 0] paired edges= 18 fixed darts= 0
+ACTUAL DUALITY BASS PASS; det(I-uH)= -(u - 1)**10*(u + 1)**9*(3*u - 1)*(3*u**2 + 1)*(27*u**6 + 36*u**5 + 36*u**4 + 23*u**3 + 12*u**2 + 4*u + 1)*(81*u**8 - 108*u**7 + 99*u**6 - 63*u**5 + 40*u**4 - 21*u**3 + 11*u**2 - 4*u + 1)
+duality p ell vertex= 109 5 0 j= 107*t + 97 extension degree= 4 loop fixed flags= []
+duality p ell vertex= 109 5 1 j= 17 extension degree= 2 loop fixed flags= [False, False]
+duality p ell vertex= 109 5 2 j= 2*t + 99 extension degree= 4 loop fixed flags= []
+duality p ell vertex= 109 5 3 j= 32*t + 86 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 5 4 j= 41 extension degree= 2 loop fixed flags= [False, False]
+duality p ell vertex= 109 5 5 j= 43 extension degree= 2 loop fixed flags= []
+duality p ell vertex= 109 5 6 j= 51*t + 104 extension degree= 4 loop fixed flags= []
+duality p ell vertex= 109 5 7 j= 58*t + 53 extension degree= 4 loop fixed flags= []
+duality p ell vertex= 109 5 8 j= 77*t + 54 extension degree= 2 loop fixed flags= []
+ACTUAL DUALITY p= 109 ell= 5 B= [[0, 1, 2, 1, 0, 0, 0, 2, 0], [1, 2, 1, 0, 1, 1, 0, 0, 0], [2, 1, 0, 0, 0, 0, 2, 0, 1], [1, 0, 0, 0, 0, 1, 0, 1, 3], [0, 1, 0, 0, 2, 1, 1, 1, 0], [0, 1, 0, 1, 1, 0, 1, 1, 1], [0, 0, 2, 0, 1, 1, 0, 1, 1], [2, 0, 0, 1, 1, 1, 1, 0, 0], [0, 0, 1, 3, 0, 1, 1, 0, 0]] halfloops= [0, 0, 0, 0, 0, 0, 0, 0, 0] paired edges= 27 fixed darts= 0
+ACTUAL DUALITY BASS PASS; det(I-uH)= (u - 1)**19*(u + 1)**18*(5*u - 1)*(5*u**2 - 3*u + 1)*(125*u**6 + 150*u**5 + 100*u**4 + 47*u**3 + 20*u**2 + 6*u + 1)*(625*u**8 - 125*u**7 + 375*u**6 - 55*u**5 + 103*u**4 - 11*u**3 + 15*u**2 - u + 1)
+duality p ell vertex= 109 7 0 j= 107*t + 97 extension degree= 6 loop fixed flags= []
+duality p ell vertex= 109 7 1 j= 17 extension degree= 12 loop fixed flags= [False, False]
+duality p ell vertex= 109 7 2 j= 2*t + 99 extension degree= 6 loop fixed flags= []
+duality p ell vertex= 109 7 3 j= 32*t + 86 extension degree= 12 loop fixed flags= [False, False]
+duality p ell vertex= 109 7 4 j= 41 extension degree= 12 loop fixed flags= []
+duality p ell vertex= 109 7 5 j= 43 extension degree= 12 loop fixed flags= []
+duality p ell vertex= 109 7 6 j= 51*t + 104 extension degree= 6 loop fixed flags= []
+duality p ell vertex= 109 7 7 j= 58*t + 53 extension degree= 6 loop fixed flags= []
+duality p ell vertex= 109 7 8 j= 77*t + 54 extension degree= 12 loop fixed flags= [False, False]
+ACTUAL DUALITY p= 109 ell= 7 B= [[0, 0, 0, 0, 2, 1, 3, 0, 2], [0, 2, 0, 1, 2, 2, 0, 0, 1], [0, 0, 0, 2, 2, 1, 0, 3, 0], [0, 1, 2, 2, 0, 1, 1, 0, 1], [2, 2, 2, 0, 0, 0, 1, 1, 0], [1, 2, 1, 1, 0, 0, 1, 1, 1], [3, 0, 0, 1, 1, 1, 0, 2, 0], [0, 0, 3, 0, 1, 1, 2, 0, 1], [2, 1, 0, 1, 0, 1, 0, 1, 2]] halfloops= [0, 0, 0, 0, 0, 0, 0, 0, 0] paired edges= 36 fixed darts= 0
+ACTUAL DUALITY BASS PASS; det(I-uH)= -(u - 1)**28*(u + 1)**27*(7*u - 1)*(7*u**2 - 2*u + 1)*(343*u**6 + 49*u**5 + 35*u**4 + 27*u**3 + 5*u**2 + u + 1)*(2401*u**8 + 1029*u**7 + 882*u**6 + 280*u**5 + 152*u**4 + 40*u**3 + 18*u**2 + 3*u + 1)
+ALL NATURAL DUALITY / MODULAR POLYNOMIAL / BASS CHECKS PASS
+
+QUATERNION B=(-2,-37); maximal-order basis in PARI (1,i,j,ji)= [[1, 0, 1/2, 1/2], [0, 1, 1/2, 3/4], [0, 0, 1/2, 0], [0, 0, 0, 1/4]]
+norm Gram= [[1, 0, 1/2, 1/2], [0, 2, 1, 3/2], [1/2, 1, 10, 1], [1/2, 3/2, 1, 6]] reduced trace discriminant= -1369
+finite Hasse data= [[[2, [2]~, 1, 1, 1], [37, [37]~, 1, 1, 1]], Vecsmall([0, 1])] infinite= Vecsmall([1])
+ideal 0 basis= [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]] norm= 1
+left order 0 basis= [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]] norm Gram= [[1, 0, 1/2, 1/2], [0, 2, 1, 3/2], [1/2, 1, 10, 1], [1/2, 3/2, 1, 6]]
+ideal 1 basis= [[2, 0, 1, 1], [0, 2, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]] norm= 2
+left order 1 basis= [[1, 0, 0, 0], [0, 2, 0, 1], [0, 0, 1, 1/2], [0, 0, 0, 1/2]] norm Gram= [[1, 0, 1/2, 1/2], [0, 8, 2, 13/2], [1/2, 2, 10, 13/2], [1/2, 13/2, 13/2, 9]]
+ideal 2 basis= [[2, 0, 1, 0], [0, 2, 1, 0], [0, 0, 1, 0], [0, 0, 0, 1]] norm= 2
+left order 2 basis= [[1, 0, 0, 1/2], [0, 2, 1, 1/2], [0, 0, 1, 1/2], [0, 0, 0, 1/2]] norm Gram= [[1, 0, 1/2, 1], [0, 8, 6, 9/2], [1/2, 6, 14, 17/2], [1, 9/2, 17/2, 7]]
+direct ideal 2-neighbour matrix= [[1, 1, 1], [1, 0, 2], [1, 2, 0]]
+ideal classes -> modular-polynomial j indices= (2, 0, 1) j= ['8', '30*t + 18', '7*t + 25']
+THETA BRANDT ell= 2 B= [[1, 1, 1], [1, 0, 2], [1, 2, 0]] MODULAR POLYNOMIAL MATCH PASS
+trace-zero norm ell elements modulo +/- = [1, 0, 0] VELU DUALITY MATCH PASS
+THETA BRANDT ell= 3 B= [[2, 1, 1], [1, 0, 3], [1, 3, 0]] MODULAR POLYNOMIAL MATCH PASS
+trace-zero norm ell elements modulo +/- = [0, 0, 0] VELU DUALITY MATCH PASS
+THETA BRANDT ell= 5 B= [[2, 2, 2], [2, 1, 3], [2, 3, 1]] MODULAR POLYNOMIAL MATCH PASS
+trace-zero norm ell elements modulo +/- = [0, 1, 1] VELU DUALITY MATCH PASS
+THETA BRANDT ell= 7 B= [[2, 3, 3], [3, 2, 3], [3, 3, 2]] MODULAR POLYNOMIAL MATCH PASS
+trace-zero norm ell elements modulo +/- = [0, 0, 0] VELU DUALITY MATCH PASS
+ALL QUATERNION IDEAL / EXACT NORM-ENUMERATION CHECKS PASS

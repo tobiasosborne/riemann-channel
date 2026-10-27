@@ -1,0 +1,133 @@
+basis= [1, 0, 1/2, 1/2; 0, 1, 1/2, 1/4; 0, 0, 1/2, 0; 0, 0, 0, 1/4]
+disc= -21904 hassef= [[[2, [2]~, 1, 1, 1], [37, [37]~, 1, 1, 1]], Vecsmall([0, 1])] hassei= Vecsmall([1])
+multable= [[1, 0, 0, 0; 0, 1, 0, 0; 0, 0, 1, 0; 0, 0, 0, 1], [0, -2, 0, -1; 1, 0, 1, 0; 0, 0, 0, 1; 0, 0, -2, 0], [0, -2, -10, -1; 0, 0, 0, -5; 1, 0, 1, 1; 0, 2, 0, 1], [0, 0, 0, -5; 0, 1, 5, 0; 0, -1, 0, 0; 1, 0, 0, 1]]
+unit coord= [1, 0, 0, 0]~ norm= 1 trace= 2
+unit coord= [0, 1, 0, 0]~ norm= 2 trace= 0
+unit coord= [0, 0, 1, 0]~ norm= 10 trace= 1
+unit coord= [0, 0, 0, 1]~ norm= 5 trace= 1
+L= [[1, 0, 0, 0; 0, 1, 0, 0; 0, 0, 1, 0; 0, 0, 0, 1], 1] transporter= [[1, 0, 0, 0; 0, 1, 0, 0; 0, 0, 1, 0; 0, 0, 0, 1], 1]
+qfminim 
+        :math:`x` being a square and symmetric matrix of dimension :math:`d` representing
+        a positive definite quadratic form, this function deals with the vectors of
+        :math:`x` whose norm is less than or equal to :math:`B`, enumerated using the
+        Fincke-Pohst algorithm, storing at most :math:`m` pairs of vectors: only one
+        vector is given for each pair :math:`± v`. There is no limit if :math:`m` is omitted:
+        beware that this may be a huge vector! The vectors are returned in no
+        particular order.
+
+        The function searches for the minimal nonzero vectors if :math:`B` is omitted.
+        The behavior is undefined if :math:`x` is not positive definite (a "precision too
+        low" error is most likely, although more precise error messages are
+        possible). The precise behavior depends on :math:`flag`.
+
+        - If :math:`flag = 0` (default), return :math:`[N, M, V]`, where :math:`N` is the number of
+        vectors enumerated (an even number, possibly larger than :math:`2m`), :math:`M <= B`
+        is the maximum norm found, and :math:`V` is a matrix whose columns are found
+        vectors.
+
+        - If :math:`flag = 1`, ignore :math:`m` and return :math:`[M,v]`, where :math:`v` is a nonzero
+        vector of length :math:`M <= B`. If no nonzero vector has length :math:`<= B`,
+        return :math:`[]`. If no explicit :math:`B` is provided, return a vector of smallish
+        norm, namely the vector of smallest length (usually the first one but not
+        always) in an LLL-reduced basis for :math:`x`.
+
+        In these two cases, :math:`x` must have integral :emphasis:`small` entries: more
+        precisely, we definitely must have :math:`d.\|x\|_{ oo }^{2} < 2^{53}` but
+        even that may not be enough. The implementation uses low precision floating
+        point computations for maximal speed and gives incorrect results when :math:`x`
+        has large entries. That condition is checked in the code and the routine
+        raises an error if large rounding errors occur. A more robust, but much
+        slower, implementation is chosen if the following flag is used:
+
+        - If :math:`flag = 2`, :math:`x` can have non integral real entries, but this is also
+        useful when :math:`x` has large integral entries. Return :math:`[N, M, V]` as in case
+        :math:`flag = 0`, where :math:`M` is returned as a floating point number. If :math:`x` is
+        inexact and :math:`B` is omitted, the "minimal" vectors in :math:`V` only have
+        approximately the same norm (up to the internal working accuracy).
+        This version is very robust but still offers no hard and fast guarantee
+        about the result: it involves floating point operations performed at a high
+        floating point precision depending on your input, but done without rigorous
+        tracking of roundoff errors (as would be provided by interval arithmetic for
+        instance). No example is known where the input is exact but the function
+        returns a wrong result.
+
+        ::
+
+        ? x = matid(2);
+        ? qfminim(x) \\ 4 minimal vectors of norm 1: ±[0,1], ±[1,0]
+        %2 = [4, 1, [0, 1; 1, 0]]
+        ? { x = \\ The Leech lattice
+        [4, 2, 0, 0, 0,-2, 0, 0, 0, 0, 0, 0, 1,-1, 0, 0, 0, 1, 0,-1, 0, 0, 0,-2;
+        2, 4,-2,-2, 0,-2, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0, 0, 0,-1, 0, 1,-1,-1;
+        0,-2, 4, 0,-2, 0, 0, 0, 0, 0, 0, 0,-1, 1, 0, 0, 1, 0, 0, 1,-1,-1, 0, 0;
+        0,-2, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 1,-1, 0, 0, 0, 1,-1, 0, 1,-1, 1, 0;
+        0, 0,-2, 0, 4, 0, 0, 0, 1,-1, 0, 0, 1, 0, 0, 0,-2, 0, 0,-1, 1, 1, 0, 0;
+        -2, -2,0, 0, 0, 4,-2, 0,-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,-1, 1, 1;
+        0, 0, 0, 0, 0,-2, 4,-2, 0, 0, 0, 0, 0, 1, 0, 0, 0,-1, 0, 0, 0, 1,-1, 0;
+        0, 0, 0, 0, 0, 0,-2, 4, 0, 0, 0, 0,-1, 0, 0, 0, 0, 0,-1,-1,-1, 0, 1, 0;
+        0, 0, 0, 0, 1,-1, 0, 0, 4, 0,-2, 0, 1, 1, 0,-1, 0, 1, 0, 0, 0, 0, 0, 0;
+        0, 0, 0, 0,-1, 0, 0, 0, 0, 4, 0, 0, 1, 1,-1, 1, 0, 0, 0, 1, 0, 0, 1, 0;
+        0, 0, 0, 0, 0, 0, 0, 0,-2, 0, 4,-2, 0,-1, 0, 0, 0,-1, 0,-1, 0, 0, 0, 0;
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-2, 4,-1, 1, 0, 0,-1, 1, 0, 1, 1, 1,-1, 0;
+        1, 0,-1, 1, 1, 0, 0,-1, 1, 1, 0,-1, 4, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1,-1;
+        -1,-1, 1,-1, 0, 0, 1, 0, 1, 1,-1, 1, 0, 4, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1;
+        0, 0, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0, 1, 4, 0, 0, 0, 1, 0, 0, 0, 0, 0;
+        0, 0, 0, 0, 0, 0, 0, 0,-1, 1, 0, 0, 1, 1, 0, 4, 0, 0, 0, 0, 1, 1, 0, 0;
+        0, 0, 1, 0,-2, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0, 0, 4, 1, 1, 1, 0, 0, 1, 1;
+        1, 0, 0, 1, 0, 0,-1, 0, 1, 0,-1, 1, 1, 0, 0, 0, 1, 4, 0, 1, 1, 0, 1, 0;
+        0, 0, 0,-1, 0, 1, 0,-1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 4, 0, 1, 1, 0, 1;
+        -1, -1,1, 0,-1, 1, 0,-1, 0, 1,-1, 1, 0, 1, 0, 0, 1, 1, 0, 4, 0, 0, 1, 1;
+        0, 0,-1, 1, 1, 0, 0,-1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 4, 1, 0, 1;
+        0, 1,-1,-1, 1,-1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 4, 0, 1;
+        0,-1, 0, 1, 0, 1,-1, 1, 0, 1, 0,-1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 4, 1;
+        -2,-1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,-1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 4]; }
+        ? qfminim(x,,0) \\ 0: don't store minimal vectors
+        time = 121 ms.
+        %4 = [196560, 4, [;]] \\ 196560 minimal vectors of norm 4
+        ? qfminim(x) \\ store all minimal vectors !
+        time = 821 ms.
+        ? qfminim(x,,0,2); \\ safe algorithm. Slower and unnecessary here.
+        time = 5,540 ms.
+        %6 = [196560, 4.000061035156250000, [;]]
+        ? qfminim(x,,,2); \\ safe algorithm; store all minimal vectors
+        time = 6,602 ms.
+
+        In this example, storing 0 vectors limits memory use; storing all of them
+        requires a :literal:`parisize` about 50MB. All minimal vectors are nevertheless
+        enumerated in both cases of course, which means the speedup is likely to be
+        marginal.
+        
+alglatlefttransporter 
+        Given an algebra :emphasis:`al` and two lattices :emphasis:`lat1` and :emphasis:`lat2`
+        in :emphasis:`al`, computes the left transporter from :emphasis:`lat1` to :emphasis:`lat2`, i.e.
+        the set of :math:`x\in al` such that :math:`x.lat1 \subset lat2`.
+
+        ::
+
+        ? al = alginit(nfinit(y^2+7), [-1,-1]);
+        ? lat1 = alglathnf(al,[1,-1,0,1,2,0,5,2]~);
+        ? lat2 = alglathnf(al,[0,1,-2,-1,0,0,3,1]~);
+        ? tr = alglatlefttransporter(al,lat1,lat2);
+        ? a = alglatelement(al,tr,[0,0,0,0,0,0,1,0]~);
+        ? alglatsubset(al,alglatmul(al,a,lat1),lat2)
+        %6 = 1
+        ? alglatsubset(al,alglatmul(al,lat1,a),lat2)
+        %7 = 0
+        
+alglatelement 
+        Given an algebra :emphasis:`al`, a lattice :emphasis:`lat` and a :literal:`t_COL` :emphasis:`c`,
+        returns the element of :emphasis:`al` whose coordinates on the \mathbb{Z}-basis of :emphasis:`lat`
+        are given by :emphasis:`c`.
+
+        ::
+
+        ? al = alginit(nfinit(y^2+7), [-1,-1]);
+        ? a1 = [1,-1,0,1,2,0,1,2]~;
+        ? lat1 = alglathnf(al,a1);
+        ? c = [1..8]~;
+        ? elt = alglatelement(al,lat1,c);
+        ? alglatcontains(al,lat1,elt,&c2)
+        %6 = 1
+        ? c==c2
+        %7 = 1
+        

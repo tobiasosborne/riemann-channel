@@ -1,0 +1,11 @@
+Order reduced discriminant 37
+Stable 2-planes: [[0, 7, 10, 13], [0, 5, 11, 14], [0, 1, 8, 9]]
+Ideal bases: [['1/2', '0', '0', '0', '0', '1/4', '0', '0', '1/2', '1/2', '1', '0', '1/2', '3/4', '0', '1'], ['2', '0', '1/2', '3/2', '0', '2', '1/2', '5/4', '0', '0', '1/2', '0', '0', '0', '0', '1/4'], ['2', '0', '1/2', '1/2', '0', '2', '3/2', '5/4', '0', '0', '1/2', '0', '0', '0', '0', '1/4']]
+Unit counts / class distinction checked by norm-one Hom theta coefficients
+ell 2 B_theta [[1, 1, 1], [1, 0, 2], [1, 2, 0]] half_loops 1
+ell 3 B_theta [[2, 1, 1], [1, 0, 3], [1, 3, 0]] half_loops 0
+ell 5 B_theta [[2, 2, 2], [2, 1, 3], [2, 3, 1]] half_loops 2
+ell 7 B_theta [[2, 3, 3], [3, 2, 3], [3, 3, 2]] half_loops 0
+ell 11 B_theta [[6, 3, 3], [3, 2, 7], [3, 7, 2]] half_loops 0
+ell 139 B_theta [[44, 48, 48], [48, 48, 44], [48, 44, 48]] half_loops 0
+One permutation to all four saved Phi matrices: (1, 2, 0)

@@ -1,0 +1,4 @@
+tree_codes exit 0 seconds 0.28 exact_except_timing True
+mub exit 0 seconds 0.39 exact_except_timing True
+ihara_lefschetz exit 0 seconds 481.05 exact_except_timing True
+ihara_lefschetz_big exit 0 seconds 1478.09 exact_except_timing True

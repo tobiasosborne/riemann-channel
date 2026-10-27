@@ -1,0 +1,73 @@
+T1 exact rational arithmetic; equality means equality of Z_p modules
+p=3: 30 dual/normalisation/unique-unit-representative checks passed
+p=5: 30 dual/normalisation/unique-unit-representative checks passed
+p=7: 30 dual/normalisation/unique-unit-representative checks passed
+Homothety counterexample p=3: dim C_(Z_3^2)=1; dim C_(3 Z_3^2)=9
+D_3 sends Z_3^2 to diag(1/3,3) Z_3^2; determinant valuation=0, not 2
+Wrong-sign Weyl counterexample p=3, self-dual g=[[1/3,0],[1/3,3]], lambda=(1/3,1/3)
+W_minus(lambda)^2/W_minus(2lambda) exponent= 2/9 ; v_3= -2 ; nontrivial character
+Correct plus-sign Weyl cocycle: omega(lambda,mu)/2; on (lambda,lambda) exponent=0
+
+T3: Newton slopes, Hensel eigenlines, and exact local Hermite reduction
+Matrices are printed in row-major order. Inverted edges have vertex minimum 1, but metric-tree translation length 0.
+p=3, random 1: g=[8, -2, 8, 1]; v(tr)=2, v(det)=1; ELLIPTIC eigenvalue valuations=(1/2,1/2); v(ratio)=0; metric-tree translation length=0; inverted edge HNF=(0, 0, 0) <-> (1, 0, 1)
+p=3, random 2: g=[4, -8, 7, 9]; v(tr)=0, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 0, 0)
+p=3, random 3: g=[-1, -1, -6, 1]; v(tr)=inf, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 1, 0)
+p=3, random 4: g=[0, 4, -5, -5]; v(tr)=0, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 0, 0)
+p=3, random 5: g=[-4, -7, -9, 0]; v(tr)=0, v(det)=2; HYPERBOLIC length=2; eigenvalue valuations=(0,2); v(beta/alpha)=2
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(3, 0, 14), (2, 0, 5), (1, 0, 2), (0, 0, 0), (0, 1, 0), (0, 2, 0), (1, 2, 1)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=4
+p=3, random 6: g=[-5, 2, 5, 8]; v(tr)=1, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 0, 0)
+p=3, random 7: g=[4, 1, -7, -8]; v(tr)=0, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 0, 0)
+p=3, random 8: g=[6, 1, 3, 6]; v(tr)=1, v(det)=1; ELLIPTIC eigenvalue valuations=(1/2,1/2); v(ratio)=0; metric-tree translation length=0; inverted edge HNF=(0, 1, 0) <-> (0, 0, 0)
+p=3, random 9: g=[-4, -2, 0, 3]; v(tr)=0, v(det)=1; HYPERBOLIC length=1; eigenvalue valuations=(0,1); v(beta/alpha)=1
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(3, 0, 19), (2, 0, 1), (1, 0, 1), (0, 0, 0), (0, 1, 0), (0, 2, 0), (0, 3, 0)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=3
+p=3, random 10: g=[8, -5, -4, -9]; v(tr)=0, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 0, 0)
+p=3, random classification totals={'elliptic': 8, 'hyperbolic': 2}
+p=3, one-step non-Clifford: g=[1, 0, 0, 3]; v(tr)=0, v(det)=1; HYPERBOLIC length=1; eigenvalue valuations=(0,1); v(beta/alpha)=1
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(3, 0, 0), (2, 0, 0), (1, 0, 0), (0, 0, 0), (0, 1, 0), (0, 2, 0), (0, 3, 0)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=3
+p=3, two-step square: g=[1, 0, 0, 9]; v(tr)=0, v(det)=2; HYPERBOLIC length=2; eigenvalue valuations=(0,2); v(beta/alpha)=2
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(3, 0, 0), (2, 0, 0), (1, 0, 0), (0, 0, 0), (0, 1, 0), (0, 2, 0), (0, 3, 0)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=4
+p=3, quadratic irrational eigenlines: g=[1, 1, 3, 0]; v(tr)=0, v(det)=1; HYPERBOLIC length=1; eigenvalue valuations=(0,1); v(beta/alpha)=1
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(3, 0, 11), (2, 0, 2), (1, 0, 2), (0, 0, 0), (0, 1, 0), (1, 1, 1), (2, 1, 4)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=3
+p=3, edge inversion: g=[0, 1, 3, 0]; v(tr)=inf, v(det)=1; ELLIPTIC eigenvalue valuations=(1/2,1/2); v(ratio)=0; metric-tree translation length=0; inverted edge HNF=(0, 1, 0) <-> (0, 0, 0)
+p=3, unit squeeze a=1: g=[1, 0, 0, 1]; v(tr)=0, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 0, 0)
+p=5, random 1: g=[18, -12, -20, -18]; v(tr)=inf, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 1, 0)
+p=5, random 2: g=[11, 22, -16, 4]; v(tr)=1, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 0, 0)
+p=5, random 3: g=[16, -22, 15, 0]; v(tr)=0, v(det)=1; HYPERBOLIC length=1; eigenvalue valuations=(0,1); v(beta/alpha)=1
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(3, 0, 52), (2, 0, 2), (1, 0, 2), (0, 0, 0), (0, 1, 0), (1, 1, 2), (2, 1, 12)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=3
+p=5, random 4: g=[22, -2, -25, 20]; v(tr)=0, v(det)=1; HYPERBOLIC length=1; eigenvalue valuations=(0,1); v(beta/alpha)=1
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(3, 0, 51), (2, 0, 1), (1, 0, 1), (0, 0, 0), (0, 1, 0), (0, 2, 0), (1, 2, 3)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=3
+p=5, random 5: g=[-11, -9, 18, 25]; v(tr)=0, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 0, 0)
+p=5, random 6: g=[25, -1, 12, 13]; v(tr)=0, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 0, 0)
+p=5, random 7: g=[15, 5, 4, -6]; v(tr)=0, v(det)=1; HYPERBOLIC length=1; eigenvalue valuations=(0,1); v(beta/alpha)=1
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(2, 0, 4), (1, 0, 4), (0, 0, 0), (1, 0, 0), (2, 0, 20), (3, 0, 70), (4, 0, 70)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=3
+p=5, random 8: g=[12, 6, 8, -6]; v(tr)=0, v(det)=1; HYPERBOLIC length=1; eigenvalue valuations=(0,1); v(beta/alpha)=1
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(3, 0, 17), (2, 0, 17), (1, 0, 2), (0, 0, 0), (1, 0, 4), (2, 0, 4), (3, 0, 79)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=3
+p=5, random 9: g=[-1, 1, 5, -17]; v(tr)=0, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 1, 0)
+p=5, random 10: g=[17, 12, -13, -23]; v(tr)=0, v(det)=1; HYPERBOLIC length=1; eigenvalue valuations=(0,1); v(beta/alpha)=1
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(3, 0, 59), (2, 0, 9), (1, 0, 4), (0, 0, 0), (1, 0, 1), (2, 0, 11), (3, 0, 111)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=3
+p=5, random classification totals={'elliptic': 5, 'hyperbolic': 5}
+p=5, one-step non-Clifford: g=[1, 0, 0, 5]; v(tr)=0, v(det)=1; HYPERBOLIC length=1; eigenvalue valuations=(0,1); v(beta/alpha)=1
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(3, 0, 0), (2, 0, 0), (1, 0, 0), (0, 0, 0), (0, 1, 0), (0, 2, 0), (0, 3, 0)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=3
+p=5, two-step square: g=[1, 0, 0, 25]; v(tr)=0, v(det)=2; HYPERBOLIC length=2; eigenvalue valuations=(0,2); v(beta/alpha)=2
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(3, 0, 0), (2, 0, 0), (1, 0, 0), (0, 0, 0), (0, 1, 0), (0, 2, 0), (0, 3, 0)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=4
+p=5, quadratic irrational eigenlines: g=[1, 1, 5, 0]; v(tr)=0, v(det)=1; HYPERBOLIC length=1; eigenvalue valuations=(0,1); v(beta/alpha)=1
+  Hensel precision=40 digits; split-axis HNF classes k=-3..3: [(3, 0, 79), (2, 0, 4), (1, 0, 4), (0, 0, 0), (0, 1, 0), (1, 1, 1), (2, 1, 6)]
+  seven exact HNF translation checks passed; off-axis neighbour displacement=3
+p=5, edge inversion: g=[0, 1, 5, 0]; v(tr)=inf, v(det)=1; ELLIPTIC eigenvalue valuations=(1/2,1/2); v(ratio)=0; metric-tree translation length=0; inverted edge HNF=(0, 1, 0) <-> (0, 0, 0)
+p=5, unit squeeze a=1: g=[1, 0, 0, 1]; v(tr)=0, v(det)=0; ELLIPTIC eigenvalue valuations=(0,0); v(ratio)=0; metric-tree translation length=0; fixed vertex HNF=(0, 0, 0)
+Counterexample to no fixed vertex at m=0: a=1 gives D_1=identity, length=0.
+Square-class obstruction at p=3: diag(1,3) has odd determinant valuation; diag(1,18) has even valuation 2 but nonsquare unit 2 mod 3.
+For p=3, gamma=diag(1,9) has length=2; its SL2 lift diag(1/3,3) is implemented by D_3, not D_9.

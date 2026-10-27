@@ -1,0 +1,80 @@
+Cremona 37a1: y^2 + y = x^3 - x, conductor 37, a_2 = -2, a_3 = -3, a_5 = -2; 37b1: y^2 + y = x^3 + x^2 - 23x - 50, conductor 37, a_2 = 0, a_3 = 1, a_5 = 0
+rank 37a1 (analytic, ellanalyticrank) = 1 ; rank 37b1 = 0
+
+==== p = 37, n = 3, g = 2
+  -- l = 2: charpoly(M | L0) = x^4 + 2*x^3 + 4*x^2 + 4*x + 4 ; prod_f (x^2 - a_l(f) x + l) from Hecke: equal True
+     Omega|L0 = ((0, C), (-C, 0)) with C the A_{n-1} Gram matrix, det C = 3 = n, det Omega|L0 = 9 = n^2; index [Z^{2n} : L0 + L_triv] = n^2 = 9
+     k = 1: L0/(1-M^k)L0 = Z/15, order 15 ; #J_0(37)(F_{2^1}) from Hecke = 15 ; equal True ; E1(F) = [5], E2(F) = [3], E1 x E2 as SNF = [15] ; graph lattice = product group: True
+     k = 2: L0/(1-M^k)L0 = Z/3 x Z/15, order 45 ; #J_0(37)(F_{2^2}) from Hecke = 45 ; equal True ; E1(F) = [5], E2(F) = [3, 3], E1 x E2 as SNF = [3, 15] ; graph lattice = product group: True
+     k = 3: L0/(1-M^k)L0 = Z/45, order 45 ; #J_0(37)(F_{2^3}) from Hecke = 45 ; equal True ; E1(F) = [5], E2(F) = [9], E1 x E2 as SNF = [45] ; graph lattice = product group: True
+     k = 4: L0/(1-M^k)L0 = Z/15 x Z/15, order 225 ; #J_0(37)(F_{2^4}) from Hecke = 225 ; equal True ; E1(F) = [5, 5], E2(F) = [3, 3], E1 x E2 as SNF = [15, 15] ; graph lattice = product group: True
+  -- l = 3: charpoly(M | L0) = x^4 + 2*x^3 + 3*x^2 + 6*x + 9 ; prod_f (x^2 - a_l(f) x + l) from Hecke: equal True
+     Omega|L0 = ((0, C), (-C, 0)) with C the A_{n-1} Gram matrix, det C = 3 = n, det Omega|L0 = 9 = n^2; index [Z^{2n} : L0 + L_triv] = n^2 = 9
+     k = 1: L0/(1-M^k)L0 = Z/21, order 21 ; #J_0(37)(F_{3^1}) from Hecke = 21 ; equal True ; E1(F) = [7], E2(F) = [3], E1 x E2 as SNF = [21] ; graph lattice = product group: True
+     k = 2: L0/(1-M^k)L0 = Z/105, order 105 ; #J_0(37)(F_{3^2}) from Hecke = 105 ; equal True ; E1(F) = [7], E2(F) = [15], E1 x E2 as SNF = [105] ; graph lattice = product group: True
+     k = 3: L0/(1-M^k)L0 = Z/2 x Z/2 x Z/2 x Z/126, order 1008 ; #J_0(37)(F_{3^3}) from Hecke = 1008 ; equal True ; E1(F) = [14, 2], E2(F) = [18, 2], E1 x E2 as SNF = [2, 2, 2, 126] ; graph lattice = product group: True
+     k = 4: L0/(1-M^k)L0 = Z/5 x Z/1365, order 6825 ; #J_0(37)(F_{3^4}) from Hecke = 6825 ; equal True ; E1(F) = [91], E2(F) = [15, 5], E1 x E2 as SNF = [5, 1365] ; graph lattice = product group: True
+  -- l = 5: charpoly(M | L0) = x^4 + 2*x^3 + 10*x^2 + 10*x + 25 ; prod_f (x^2 - a_l(f) x + l) from Hecke: equal True
+     Omega|L0 = ((0, C), (-C, 0)) with C the A_{n-1} Gram matrix, det C = 3 = n, det Omega|L0 = 9 = n^2; index [Z^{2n} : L0 + L_triv] = n^2 = 9
+     k = 1: L0/(1-M^k)L0 = Z/48, order 48 ; #J_0(37)(F_{5^1}) from Hecke = 48 ; equal True ; E1(F) = [8], E2(F) = [6], E1 x E2 as SNF = [2, 24] ; graph lattice = product group: False
+     k = 2: L0/(1-M^k)L0 = Z/12 x Z/96, order 1152 ; #J_0(37)(F_{5^2}) from Hecke = 1152 ; equal True ; E1(F) = [16, 2], E2(F) = [6, 6], E1 x E2 as SNF = [2, 2, 6, 48] ; graph lattice = product group: False
+     k = 3: L0/(1-M^k)L0 = Z/13104, order 13104 ; #J_0(37)(F_{5^3}) from Hecke = 13104 ; equal True ; E1(F) = [104], E2(F) = [126], E1 x E2 as SNF = [2, 6552] ; graph lattice = product group: False
+     k = 4: L0/(1-M^k)L0 = Z/2 x Z/8 x Z/24 x Z/960, order 368640 ; #J_0(37)(F_{5^4}) from Hecke = 368640 ; equal True ; E1(F) = [160, 4], E2(F) = [24, 24], E1 x E2 as SNF = [4, 8, 24, 480] ; graph lattice = product group: False
+  -- l = 7: charpoly(M | L0) = x^4 + 2*x^3 + 15*x^2 + 14*x + 49 ; prod_f (x^2 - a_l(f) x + l) from Hecke: equal True
+     Omega|L0 = ((0, C), (-C, 0)) with C the A_{n-1} Gram matrix, det C = 3 = n, det Omega|L0 = 9 = n^2; index [Z^{2n} : L0 + L_triv] = n^2 = 9
+     k = 1: L0/(1-M^k)L0 = Z/9 x Z/9, order 81 ; #J_0(37)(F_{7^1}) from Hecke = 81 ; equal True ; E1(F) = [9], E2(F) = [3, 3], E1 x E2 as SNF = [3, 3, 9] ; graph lattice = product group: False
+     k = 2: L0/(1-M^k)L0 = Z/63 x Z/63, order 3969 ; #J_0(37)(F_{7^2}) from Hecke = 3969 ; equal True ; E1(F) = [63], E2(F) = [21, 3], E1 x E2 as SNF = [3, 21, 63] ; graph lattice = product group: False
+     k = 3: L0/(1-M^k)L0 = Z/6 x Z/6 x Z/54 x Z/54, order 104976 ; #J_0(37)(F_{7^3}) from Hecke = 104976 ; equal True ; E1(F) = [54, 6], E2(F) = [18, 18], E1 x E2 as SNF = [6, 18, 18, 54] ; graph lattice = product group: False
+     k = 4: L0/(1-M^k)L0 = Z/2331 x Z/2331, order 5433561 ; #J_0(37)(F_{7^4}) from Hecke = 5433561 ; equal True ; E1(F) = [2331], E2(F) = [777, 3], E1 x E2 as SNF = [3, 777, 2331] ; graph lattice = product group: False
+
+==== p = 73, n = 6, g = 5
+  -- l = 2: charpoly(M | L0) = x^10 + x^9 + 3*x^8 + 3*x^7 + 5*x^6 + 7*x^5 + 10*x^4 + 12*x^3 + 24*x^2 + 16*x + 32 ; prod_f (x^2 - a_l(f) x + l) from Hecke: equal True
+     Omega|L0 = ((0, C), (-C, 0)) with C the A_{n-1} Gram matrix, det C = 6 = n, det Omega|L0 = 36 = n^2; index [Z^{2n} : L0 + L_triv] = n^2 = 36
+     k = 1: L0/(1-M^k)L0 = Z/114, order 114 ; #J_0(73)(F_{2^1}) from Hecke = 114 ; equal True
+     k = 2: L0/(1-M^k)L0 = Z/3 x Z/1368, order 4104 ; #J_0(73)(F_{2^2}) from Hecke = 4104 ; equal True
+     k = 3: L0/(1-M^k)L0 = Z/2 x Z/2 x Z/2 x Z/2 x Z/2394, order 38304 ; #J_0(73)(F_{2^3}) from Hecke = 38304 ; equal True
+     k = 4: L0/(1-M^k)L0 = Z/3 x Z/3 x Z/3 x Z/46512, order 1255824 ; #J_0(73)(F_{2^4}) from Hecke = 1255824 ; equal True
+  -- l = 3: charpoly(M | L0) = x^10 + 2*x^9 + 10*x^8 + 14*x^7 + 42*x^6 + 48*x^5 + 126*x^4 + 126*x^3 + 270*x^2 + 162*x + 243 ; prod_f (x^2 - a_l(f) x + l) from Hecke: equal True
+     Omega|L0 = ((0, C), (-C, 0)) with C the A_{n-1} Gram matrix, det C = 6 = n, det Omega|L0 = 36 = n^2; index [Z^{2n} : L0 + L_triv] = n^2 = 36
+     k = 1: L0/(1-M^k)L0 = Z/1044, order 1044 ; #J_0(73)(F_{3^1}) from Hecke = 1044 ; equal True
+     k = 2: L0/(1-M^k)L0 = Z/4 x Z/88740, order 354960 ; #J_0(73)(F_{3^2}) from Hecke = 354960 ; equal True
+     k = 3: L0/(1-M^k)L0 = Z/5 x Z/2082780, order 10413900 ; #J_0(73)(F_{3^3}) from Hecke = 10413900 ; equal True
+     k = 4: L0/(1-M^k)L0 = Z/3 x Z/120 x Z/9406440, order 3386318400 ; #J_0(73)(F_{3^4}) from Hecke = 3386318400 ; equal True
+  -- l = 5: charpoly(M | L0) = x^10 + 2*x^9 + 18*x^8 + 30*x^7 + 158*x^6 + 206*x^5 + 790*x^4 + 750*x^3 + 2250*x^2 + 1250*x + 3125 ; prod_f (x^2 - a_l(f) x + l) from Hecke: equal True
+     Omega|L0 = ((0, C), (-C, 0)) with C the A_{n-1} Gram matrix, det C = 6 = n, det Omega|L0 = 36 = n^2; index [Z^{2n} : L0 + L_triv] = n^2 = 36
+     k = 1: L0/(1-M^k)L0 = Z/8580, order 8580 ; #J_0(73)(F_{5^1}) from Hecke = 8580 ; equal True
+     k = 2: L0/(1-M^k)L0 = Z/6 x Z/5868720, order 35212320 ; #J_0(73)(F_{5^2}) from Hecke = 35212320 ; equal True
+     k = 3: L0/(1-M^k)L0 = Z/27698067540, order 27698067540 ; #J_0(73)(F_{5^3}) from Hecke = 27698067540 ; equal True
+     k = 4: L0/(1-M^k)L0 = Z/3 x Z/3 x Z/780 x Z/13955816160, order 97969829443200 ; #J_0(73)(F_{5^4}) from Hecke = 97969829443200 ; equal True
+  -- l = 7: charpoly(M | L0) = x^10 + 6*x^9 + 41*x^8 + 148*x^7 + 577*x^6 + 1466*x^5 + 4039*x^4 + 7252*x^3 + 14063*x^2 + 14406*x + 16807 ; prod_f (x^2 - a_l(f) x + l) from Hecke: equal True
+     Omega|L0 = ((0, C), (-C, 0)) with C the A_{n-1} Gram matrix, det C = 6 = n, det Omega|L0 = 36 = n^2; index [Z^{2n} : L0 + L_triv] = n^2 = 36
+     k = 1: L0/(1-M^k)L0 = Z/99 x Z/594, order 58806 ; #J_0(73)(F_{7^1}) from Hecke = 58806 ; equal True
+     k = 2: L0/(1-M^k)L0 = Z/5 x Z/6930 x Z/20790, order 720373500 ; #J_0(73)(F_{7^2}) from Hecke = 720373500 ; equal True
+     k = 3: L0/(1-M^k)L0 = Z/6 x Z/12 x Z/252 x Z/8316 x Z/24948, order 3764291553792 ; #J_0(73)(F_{7^3}) from Hecke = 3764291553792 ; equal True
+     k = 4: L0/(1-M^k)L0 = Z/15 x Z/15 x Z/15 x Z/15 x Z/512820 x Z/3076920, order 79881497041500000 ; #J_0(73)(F_{7^4}) from Hecke = 79881497041500000 ; equal True
+
+==== p = 109, n = 9, g = 8
+  -- l = 2: charpoly(M | L0) = x^16 + 2*x^15 + 9*x^14 + 16*x^13 + 43*x^12 + 64*x^11 + 134*x^10 + 172*x^9 + 307*x^8 + 344*x^7 + 536*x^6 + 512*x^5 + 688*x^4 + 512*x^3 + 576*x^2 + 256*x + 256 ; prod_f (x^2 - a_l(f) x + l) from Hecke: equal True
+     Omega|L0 = ((0, C), (-C, 0)) with C the A_{n-1} Gram matrix, det C = 9 = n, det Omega|L0 = 81 = n^2; index [Z^{2n} : L0 + L_triv] = n^2 = 81
+     k = 1: L0/(1-M^k)L0 = Z/4428, order 4428 ; #J_0(109)(F_{2^1}) from Hecke = 4428 ; equal True
+     k = 2: L0/(1-M^k)L0 = Z/6 x Z/495936, order 2975616 ; #J_0(109)(F_{2^2}) from Hecke = 2975616 ; equal True
+     k = 3: L0/(1-M^k)L0 = Z/22968036, order 22968036 ; #J_0(109)(F_{2^3}) from Hecke = 22968036 ; equal True
+     k = 4: L0/(1-M^k)L0 = Z/12 x Z/683399808, order 8200797696 ; #J_0(109)(F_{2^4}) from Hecke = 8200797696 ; equal True
+  -- l = 3: charpoly(M | L0) = x^16 + 10*x^14 + (-2)*x^13 + 53*x^12 + (-16)*x^11 + 219*x^10 + (-46)*x^9 + 738*x^8 + (-138)*x^7 + 1971*x^6 + (-432)*x^5 + 4293*x^4 + (-486)*x^3 + 7290*x^2 + 6561 ; prod_f (x^2 - a_l(f) x + l) from Hecke: equal True
+     Omega|L0 = ((0, C), (-C, 0)) with C the A_{n-1} Gram matrix, det C = 9 = n, det Omega|L0 = 81 = n^2; index [Z^{2n} : L0 + L_triv] = n^2 = 81
+     k = 1: L0/(1-M^k)L0 = Z/2 x Z/10008, order 20016 ; #J_0(109)(F_{3^1}) from Hecke = 20016 ; equal True
+     k = 2: L0/(1-M^k)L0 = Z/2 x Z/2 x Z/8 x Z/13921128, order 445476096 ; #J_0(109)(F_{3^2}) from Hecke = 445476096 ; equal True
+     k = 3: L0/(1-M^k)L0 = Z/194 x Z/1243564056, order 241251426864 ; #J_0(109)(F_{3^3}) from Hecke = 241251426864 ; equal True
+     k = 4: L0/(1-M^k)L0 = Z/4 x Z/4 x Z/16 x Z/8133307664976, order 2082126762233856 ; #J_0(109)(F_{3^4}) from Hecke = 2082126762233856 ; equal True
+  -- l = 5: charpoly(M | L0) = x^16 + 2*x^15 + 19*x^14 + 44*x^13 + 217*x^12 + 458*x^11 + 1719*x^10 + 3192*x^9 + 9957*x^8 + 15960*x^7 + 42975*x^6 + 57250*x^5 + 135625*x^4 + 137500*x^3 + 296875*x^2 + 156250*x + 390625 ; prod_f (x^2 - a_l(f) x + l) from Hecke: equal True
+     Omega|L0 = ((0, C), (-C, 0)) with C the A_{n-1} Gram matrix, det C = 9 = n, det Omega|L0 = 81 = n^2; index [Z^{2n} : L0 + L_triv] = n^2 = 81
+     k = 1: L0/(1-M^k)L0 = Z/3 x Z/416223, order 1248669 ; #J_0(109)(F_{5^1}) from Hecke = 1248669 ; equal True
+     k = 2: L0/(1-M^k)L0 = Z/3 x Z/3 x Z/9 x Z/7821246393, order 633520957833 ; #J_0(109)(F_{5^2}) from Hecke = 633520957833 ; equal True
+     k = 3: L0/(1-M^k)L0 = Z/2 x Z/2 x Z/72 x Z/254240306357112, order 73221208230848256 ; #J_0(109)(F_{5^3}) from Hecke = 73221208230848256 ; equal True
+     k = 4: L0/(1-M^k)L0 = Z/3 x Z/3 x Z/9 x Z/327767369216876975025, order 26549156906567034977025 ; #J_0(109)(F_{5^4}) from Hecke = 26549156906567034977025 ; equal True
+  -- l = 7: charpoly(M | L0) = x^16 + 2*x^15 + 25*x^14 + 76*x^13 + 380*x^12 + 1176*x^11 + 4364*x^10 + 11386*x^9 + 36256*x^8 + 79702*x^7 + 213836*x^6 + 403368*x^5 + 912380*x^4 + 1277332*x^3 + 2941225*x^2 + 1647086*x + 5764801 ; prod_f (x^2 - a_l(f) x + l) from Hecke: equal True
+     Omega|L0 = ((0, C), (-C, 0)) with C the A_{n-1} Gram matrix, det C = 9 = n, det Omega|L0 = 81 = n^2; index [Z^{2n} : L0 + L_triv] = n^2 = 81
+     k = 1: L0/(1-M^k)L0 = Z/6 x Z/2215566, order 13293396 ; #J_0(109)(F_{7^1}) from Hecke = 13293396 ; equal True
+     k = 2: L0/(1-M^k)L0 = Z/2 x Z/2 x Z/6 x Z/3574339394310, order 85784145463440 ; #J_0(109)(F_{7^2}) from Hecke = 85784145463440 ; equal True
+     k = 3: L0/(1-M^k)L0 = Z/3 x Z/3 x Z/126 x Z/217022416825406598, order 246103420680011082132 ; #J_0(109)(F_{7^3}) from Hecke = 246103420680011082132 ; equal True
+     k = 4: L0/(1-M^k)L0 = Z/4 x Z/4 x Z/120 x Z/586581764025442920668280, order 1126236986928850407683097600 ; #J_0(109)(F_{7^4}) from Hecke = 1126236986928850407683097600 ; equal True

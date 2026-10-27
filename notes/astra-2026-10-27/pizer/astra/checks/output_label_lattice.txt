@@ -1,0 +1,106 @@
+ELLIPTIC 37a1 equation= [0, 0, 1, -1, 0] discriminant= 37 conductor= 37 a_ell= [-2, -3, -2, -1]
+Cremona table absent; equation verified directly: ellinit: error opening elldata file: `/usr/share/pari/elldata/ell0'
+ELLIPTIC 37b1 equation= [0, 1, 1, -23, -50] discriminant= 50653 conductor= 37 a_ell= [0, 1, 0, -1]
+Cremona table absent; equation verified directly: ellinit: error opening elldata file: `/usr/share/pari/elldata/ell0'
+
+p= 37 ell= 2 A_augmentation= [[-1, 1], [1, -1]]
+F characteristic polynomial= (x**2 + 2)*(x**2 + 2*x + 2) Omega determinant= 9 Omega SNF= [3, 3] trivial-plus-cusp index= 9
+symplectic reduction index= 3 charpoly match= True
+M_augmentation= [[-1, 1, -2, 0], [1, -1, 0, -2], [1, 0, 0, 0], [0, 1, 0, 0]] M_reduction= [[1, 3, -4, -2], [3, 1, -2, -4], [2, 1, -2, -2], [1, 2, -2, -2]] embedding= [[2, 1, 0, 0], [1, 2, 0, 0], [1, 1, 1, 0], [1, 1, 0, 1]]
+k= 1 augmentation SNF= [15] reduction SNF= [15] #J via P= 15
+elliptic groups= [[5], [3]] product invariant factors= [15] augmentation equal= True reduction equal= True
+k= 2 augmentation SNF= [3, 15] reduction SNF= [3, 15] #J via P= 45
+elliptic groups= [[5], [3, 3]] product invariant factors= [3, 15] augmentation equal= True reduction equal= True
+k= 3 augmentation SNF= [45] reduction SNF= [45] #J via P= 45
+elliptic groups= [[5], [9]] product invariant factors= [45] augmentation equal= True reduction equal= True
+
+p= 37 ell= 3 A_augmentation= [[-1, 2], [2, -1]]
+F characteristic polynomial= (x**2 - x + 3)*(x**2 + 3*x + 3) Omega determinant= 9 Omega SNF= [3, 3] trivial-plus-cusp index= 9
+symplectic reduction index= 3 charpoly match= True
+M_augmentation= [[-1, 2, -3, 0], [2, -1, 0, -3], [1, 0, 0, 0], [0, 1, 0, 0]] M_reduction= [[2, 5, -6, -3], [5, 2, -3, -6], [3, 2, -3, -3], [2, 3, -3, -3]] embedding= [[2, 1, 0, 0], [1, 2, 0, 0], [1, 1, 1, 0], [1, 1, 0, 1]]
+k= 1 augmentation SNF= [21] reduction SNF= [21] #J via P= 21
+elliptic groups= [[7], [3]] product invariant factors= [21] augmentation equal= True reduction equal= True
+k= 2 augmentation SNF= [105] reduction SNF= [105] #J via P= 105
+elliptic groups= [[7], [15]] product invariant factors= [105] augmentation equal= True reduction equal= True
+k= 3 augmentation SNF= [2, 2, 2, 126] reduction SNF= [2, 2, 2, 126] #J via P= 1008
+elliptic groups= [[14, 2], [18, 2]] product invariant factors= [2, 2, 2, 126] augmentation equal= True reduction equal= True
+
+p= 37 ell= 5 A_augmentation= [[-1, 1], [1, -1]]
+F characteristic polynomial= (x**2 + 5)*(x**2 + 2*x + 5) Omega determinant= 9 Omega SNF= [3, 3] trivial-plus-cusp index= 9
+symplectic reduction index= 3 charpoly match= True
+M_augmentation= [[-1, 1, -5, 0], [1, -1, 0, -5], [1, 0, 0, 0], [0, 1, 0, 0]] M_reduction= [[4, 6, -10, -5], [6, 4, -5, -10], [4, 3, -5, -5], [3, 4, -5, -5]] embedding= [[2, 1, 0, 0], [1, 2, 0, 0], [1, 1, 1, 0], [1, 1, 0, 1]]
+k= 1 augmentation SNF= [48] reduction SNF= [48] #J via P= 48
+elliptic groups= [[8], [6]] product invariant factors= [2, 24] augmentation equal= False reduction equal= False
+k= 2 augmentation SNF= [12, 96] reduction SNF= [12, 96] #J via P= 1152
+elliptic groups= [[16, 2], [6, 6]] product invariant factors= [2, 2, 6, 48] augmentation equal= False reduction equal= False
+k= 3 augmentation SNF= [13104] reduction SNF= [13104] #J via P= 13104
+elliptic groups= [[104], [126]] product invariant factors= [2, 6552] augmentation equal= False reduction equal= False
+
+p= 37 ell= 7 A_augmentation= [[-1, 0], [0, -1]]
+F characteristic polynomial= (x**2 + x + 7)**2 Omega determinant= 9 Omega SNF= [3, 3] trivial-plus-cusp index= 9
+symplectic reduction index= 3 charpoly match= True
+M_augmentation= [[-1, 0, -7, 0], [0, -1, 0, -7], [1, 0, 0, 0], [0, 1, 0, 0]] M_reduction= [[6, 7, -14, -7], [7, 6, -7, -14], [5, 4, -7, -7], [4, 5, -7, -7]] embedding= [[2, 1, 0, 0], [1, 2, 0, 0], [1, 1, 1, 0], [1, 1, 0, 1]]
+k= 1 augmentation SNF= [9, 9] reduction SNF= [3, 3, 9] #J via P= 81
+elliptic groups= [[9], [3, 3]] product invariant factors= [3, 3, 9] augmentation equal= False reduction equal= True
+k= 2 augmentation SNF= [63, 63] reduction SNF= [3, 21, 63] #J via P= 3969
+elliptic groups= [[63], [21, 3]] product invariant factors= [3, 21, 63] augmentation equal= False reduction equal= True
+k= 3 augmentation SNF= [6, 6, 54, 54] reduction SNF= [6, 18, 18, 54] #J via P= 104976
+elliptic groups= [[54, 6], [18, 18]] product invariant factors= [6, 18, 18, 54] augmentation equal= False reduction equal= True
+
+p= 73 ell= 2 A_augmentation= [[0, 0, 1, 1, 1], [0, 2, 0, 0, 1], [0, -1, -1, -1, 0], [-1, -2, -2, -2, -2], [1, 1, 1, 0, 0]]
+F characteristic polynomial= (x**2 - x + 2)*(x**4 - x**3 + x**2 - 2*x + 4)*(x**4 + 3*x**3 + 5*x**2 + 6*x + 4) Omega determinant= 36 Omega SNF= [6, 6] trivial-plus-cusp index= 36
+symplectic reduction index= 6 charpoly match= True
+k= 1 augmentation SNF= [114] reduction SNF= [114] #J via P= 114
+k= 2 augmentation SNF= [3, 1368] reduction SNF= [3, 1368] #J via P= 4104
+k= 3 augmentation SNF= [2, 2, 2, 2, 2394] reduction SNF= [2, 2, 2, 2, 2394] #J via P= 38304
+
+p= 73 ell= 3 A_augmentation= [[-1, 0, 1, -1, -1], [0, -1, 0, 0, -1], [2, 1, 0, 1, 0], [-1, 0, 0, -1, 0], [-1, -1, -1, 0, 1]]
+F characteristic polynomial= (x**2 + 3)*(x**4 - x**3 + 3*x**2 - 3*x + 9)*(x**4 + 3*x**3 + 7*x**2 + 9*x + 9) Omega determinant= 36 Omega SNF= [6, 6] trivial-plus-cusp index= 36
+symplectic reduction index= 6 charpoly match= True
+k= 1 augmentation SNF= [1044] reduction SNF= [2, 522] #J via P= 1044
+k= 2 augmentation SNF= [4, 88740] reduction SNF= [4, 88740] #J via P= 354960
+k= 3 augmentation SNF= [5, 2082780] reduction SNF= [10, 1041390] #J via P= 10413900
+
+p= 73 ell= 5 A_augmentation= [[1, 1, 2, 1, 1], [-1, -2, -1, 0, -2], [1, 0, 0, -1, 0], [-1, 0, -2, -2, -1], [0, -1, 0, 0, 1]]
+F characteristic polynomial= (x**2 - 2*x + 5)*(x**4 + x**3 + 7*x**2 + 5*x + 25)*(x**4 + 3*x**3 + 11*x**2 + 15*x + 25) Omega determinant= 36 Omega SNF= [6, 6] trivial-plus-cusp index= 36
+symplectic reduction index= 6 charpoly match= True
+k= 1 augmentation SNF= [8580] reduction SNF= [2, 4290] #J via P= 8580
+k= 2 augmentation SNF= [6, 5868720] reduction SNF= [12, 2934360] #J via P= 35212320
+k= 3 augmentation SNF= [27698067540] reduction SNF= [2, 13849033770] #J via P= 27698067540
+
+p= 73 ell= 7 A_augmentation= [[-1, 0, 2, 0, 1], [-1, -1, -1, 0, -1], [2, 0, -1, 0, 1], [-2, -1, -2, -3, -2], [1, 0, 1, 0, 0]]
+F characteristic polynomial= (x**2 - 2*x + 7)*(x**2 + x + 7)**2*(x**2 + 3*x + 7)**2 Omega determinant= 36 Omega SNF= [6, 6] trivial-plus-cusp index= 36
+symplectic reduction index= 6 charpoly match= True
+k= 1 augmentation SNF= [99, 594] reduction SNF= [3, 33, 594] #J via P= 58806
+k= 2 augmentation SNF= [5, 6930, 20790] reduction SNF= [15, 2310, 20790] #J via P= 720373500
+k= 3 augmentation SNF= [6, 12, 252, 8316, 24948] reduction SNF= [6, 36, 252, 2772, 24948] #J via P= 3764291553792
+
+p= 109 ell= 2 A_augmentation= [[-1, -1, -1, -1, 0, 0, -1, -1], [0, 0, 0, 0, 1, 0, 1, 1], [0, 0, 0, 1, 1, 1, 0, 0], [-1, -1, 0, -1, -1, -1, -1, 0], [1, 1, 1, 0, 0, 0, 0, 0], [1, 0, 1, 0, 0, 1, 0, 0], [-1, 0, -1, -1, -1, -1, -1, 0], [0, 1, 0, 1, 0, 0, 1, 0]]
+F characteristic polynomial= (x**2 - x + 2)*(x**6 + 2*x**5 + 5*x**4 + 7*x**3 + 10*x**2 + 8*x + 8)*(x**8 + x**7 + 3*x**6 + 2*x**5 + 7*x**4 + 4*x**3 + 12*x**2 + 8*x + 16) Omega determinant= 81 Omega SNF= [9, 9] trivial-plus-cusp index= 81
+symplectic reduction index= 9 charpoly match= True
+k= 1 augmentation SNF= [4428] reduction SNF= [4428] #J via P= 4428
+k= 2 augmentation SNF= [6, 495936] reduction SNF= [6, 495936] #J via P= 2975616
+k= 3 augmentation SNF= [22968036] reduction SNF= [22968036] #J via P= 22968036
+
+p= 109 ell= 3 A_augmentation= [[0, 1, 2, 1, 0, 0, 0, 0], [1, 0, 1, 0, 0, 0, 1, 1], [1, 0, -1, -1, -1, -1, -1, -1], [0, -1, -1, -1, 0, -1, 0, -1], [-1, -1, -1, 0, 1, -1, -1, -1], [0, 0, 0, 0, 0, 2, 1, 1], [0, 1, 0, 1, 0, 1, 0, 1], [-1, 0, -1, -1, -1, 0, 0, -1]]
+F characteristic polynomial= (x**2 + 3)*(x**6 + 4*x**5 + 12*x**4 + 23*x**3 + 36*x**2 + 36*x + 27)*(x**8 - 4*x**7 + 11*x**6 - 21*x**5 + 40*x**4 - 63*x**3 + 99*x**2 - 108*x + 81) Omega determinant= 81 Omega SNF= [9, 9] trivial-plus-cusp index= 81
+symplectic reduction index= 9 charpoly match= True
+k= 1 augmentation SNF= [2, 10008] reduction SNF= [2, 10008] #J via P= 20016
+k= 2 augmentation SNF= [2, 2, 8, 13921128] reduction SNF= [2, 2, 8, 13921128] #J via P= 445476096
+k= 3 augmentation SNF= [194, 1243564056] reduction SNF= [194, 1243564056] #J via P= 241251426864
+
+p= 109 ell= 5 A_augmentation= [[0, 1, 2, 1, 0, 0, 0, 2], [1, 2, 1, 0, 1, 1, 0, 0], [1, 0, -1, -1, -1, -1, 1, -1], [-2, -3, -3, -3, -3, -2, -3, -2], [0, 1, 0, 0, 2, 1, 1, 1], [-1, 0, -1, 0, 0, -1, 0, 0], [-1, -1, 1, -1, 0, 0, -1, 0], [2, 0, 0, 1, 1, 1, 1, 0]]
+F characteristic polynomial= (x**2 - 3*x + 5)*(x**6 + 6*x**5 + 20*x**4 + 47*x**3 + 100*x**2 + 150*x + 125)*(x**8 - x**7 + 15*x**6 - 11*x**5 + 103*x**4 - 55*x**3 + 375*x**2 - 125*x + 625) Omega determinant= 81 Omega SNF= [9, 9] trivial-plus-cusp index= 81
+symplectic reduction index= 9 charpoly match= True
+k= 1 augmentation SNF= [3, 416223] reduction SNF= [3, 416223] #J via P= 1248669
+k= 2 augmentation SNF= [3, 3, 9, 7821246393] reduction SNF= [3, 3, 9, 7821246393] #J via P= 633520957833
+k= 3 augmentation SNF= [2, 2, 72, 254240306357112] reduction SNF= [2, 2, 72, 254240306357112] #J via P= 73221208230848256
+
+p= 109 ell= 7 A_augmentation= [[-2, -2, -2, -2, 0, -1, 1, -2], [-1, 1, -1, 0, 1, 1, -1, -1], [0, 0, 0, 2, 2, 1, 0, 3], [-1, 0, 1, 1, -1, 0, 0, -1], [2, 2, 2, 0, 0, 0, 1, 1], [0, 1, 0, 0, -1, -1, 0, 0], [3, 0, 0, 1, 1, 1, 0, 2], [-1, -1, 2, -1, 0, 0, 1, -1]]
+F characteristic polynomial= (x**2 - 2*x + 7)*(x**6 + x**5 + 5*x**4 + 27*x**3 + 35*x**2 + 49*x + 343)*(x**8 + 3*x**7 + 18*x**6 + 40*x**5 + 152*x**4 + 280*x**3 + 882*x**2 + 1029*x + 2401) Omega determinant= 81 Omega SNF= [9, 9] trivial-plus-cusp index= 81
+symplectic reduction index= 9 charpoly match= True
+k= 1 augmentation SNF= [6, 2215566] reduction SNF= [3, 6, 738522] #J via P= 13293396
+k= 2 augmentation SNF= [2, 2, 6, 3574339394310] reduction SNF= [2, 6, 6, 1191446464770] #J via P= 85784145463440
+k= 3 augmentation SNF= [3, 3, 126, 217022416825406598] reduction SNF= [3, 9, 126, 72340805608468866] #J via P= 246103420680011082132
+
+ALL LABEL / SMITH / POINT-ORDER CHECKS PASS

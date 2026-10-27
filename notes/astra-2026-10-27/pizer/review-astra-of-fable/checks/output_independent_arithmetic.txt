@@ -1,0 +1,58 @@
+Quotient minimal-model substitutions checked: X=4u+3 or 4u+5; Y=8v+4.
+Quotient [0, -9, 0, 11, 37] minimal model [0, 0, 1, -1, 0] j 110592/37
+Quotient [0, -11, 0, -333, -1369] minimal model [0, 1, 1, -23, -50] j 1404928000/50653
+ell,k 2 1 E1 [5] E2 [3] product [15] order 15
+ell,k 2 2 E1 [5] E2 [3, 3] product [3, 15] order 45
+ell,k 2 3 E1 [5] E2 [9] product [45] order 45
+ell,k 2 4 E1 [5, 5] E2 [3, 3] product [15, 15] order 225
+ell,k 3 1 E1 [7] E2 [3] product [21] order 21
+ell,k 3 2 E1 [7] E2 [15] product [105] order 105
+ell,k 3 3 E1 [2, 14] E2 [2, 18] product [2, 2, 2, 126] order 1008
+ell,k 3 4 E1 [91] E2 [5, 15] product [5, 1365] order 6825
+ell,k 5 1 E1 [8] E2 [6] product [2, 24] order 48
+ell,k 5 2 E1 [2, 16] E2 [6, 6] product [2, 2, 6, 48] order 1152
+ell,k 5 3 E1 [104] E2 [126] product [2, 6552] order 13104
+ell,k 5 4 E1 [4, 160] E2 [24, 24] product [4, 8, 24, 480] order 368640
+ell,k 7 1 E1 [9] E2 [3, 3] product [3, 3, 9] order 81
+ell,k 7 2 E1 [63] E2 [3, 21] product [3, 21, 63] order 3969
+ell,k 7 3 E1 [6, 54] E2 [18, 18] product [6, 18, 18, 54] order 104976
+ell,k 7 4 E1 [2331] E2 [3, 777] product [3, 777, 2331] order 5433561
+Direct genus-2 points ell 3 N1 6 N2 12 P ascending [1, 2, 3, 6, 9] Hecke equal True #J(F_ell) 21
+/tmp/claude-1000/-home-tobias-Projects-riemann-channel/dcae8e10-414e-4cb4-8b95-d35e159cfb50/scratchpad/venv-astra/lib/python3.12/site-packages/sympy/polys/polytools.py:6282: SymPyDeprecationWarning: 
+
+Ordered comparisons with modular integers are deprecated.
+
+            Use e.g. int(a) < int(b) instead of a < b.
+
+See https://docs.sympy.org/latest/explanation/active-deprecations.html#modularinteger-compare
+for details.
+
+This has been deprecated since SymPy version 1.13. It
+will be removed in a future version of SymPy.
+
+  return sorted(factors, key=key)
+ell,k 3 1 branch factor degrees [3, 3] #J[2](F_ell^k) 1
+ell,k 3 2 branch factor degrees [3, 3] #J[2](F_ell^k) 1
+ell,k 3 3 branch factor degrees [3, 3] #J[2](F_ell^k) 16
+ell,k 3 4 branch factor degrees [3, 3] #J[2](F_ell^k) 1
+Direct genus-2 points ell 5 N1 8 N2 42 P ascending [1, 2, 10, 10, 25] Hecke equal True #J(F_ell) 48
+ell,k 5 1 branch factor degrees [1, 1, 4] #J[2](F_ell^k) 2
+ell,k 5 2 branch factor degrees [1, 1, 4] #J[2](F_ell^k) 4
+ell,k 5 3 branch factor degrees [1, 1, 4] #J[2](F_ell^k) 2
+ell,k 5 4 branch factor degrees [1, 1, 4] #J[2](F_ell^k) 16
+Direct genus-2 points ell 7 N1 10 N2 76 P ascending [1, 2, 15, 14, 49] Hecke equal True #J(F_ell) 81
+ell,k 7 1 branch factor degrees [3, 3] #J[2](F_ell^k) 1
+ell,k 7 2 branch factor degrees [3, 3] #J[2](F_ell^k) 1
+ell,k 7 3 branch factor degrees [3, 3] #J[2](F_ell^k) 16
+ell,k 7 4 branch factor degrees [3, 3] #J[2](F_ell^k) 1
+Direct genus-2 points ell 11 N1 14 N2 132 P ascending [1, 2, 7, 22, 121] Hecke equal True #J(F_ell) 153
+Direct genus-2 points ell 13 N1 20 N2 202 P ascending [1, 6, 34, 78, 169] Hecke equal True #J(F_ell) 288
+Direct genus-2 points ell 17 N1 12 N2 322 P ascending [1, -6, 34, -102, 289] Hecke equal True #J(F_ell) 216
+Direct genus-2 points ell 19 N1 18 N2 434 P ascending [1, -2, 38, -38, 361] Hecke equal True #J(F_ell) 360
+Direct genus-2 points ell 23 N1 16 N2 582 P ascending [1, -8, 58, -184, 529] Hecke equal True #J(F_ell) 396
+Direct genus-2 points ell 139 N1 140 N2 19846 P ascending [1, 0, 262, 0, 19321] Hecke equal True #J(F_ell) 19584
+ell,k 139 1 branch factor degrees [1, 1, 1, 1, 1, 1] #J[2](F_ell^k) 16
+New cell (p,ell,q)=(37,139,2): six branch roots [35, 37, 49, 90, 102, 104] J[2] rank 4; graph companion fixed rank <=2
+ell 2 Frobenius discriminant 2048 mod3 2 squarefree mod3 True
+ell 5 Frobenius discriminant 128000 mod3 2 squarefree mod3 True
+ell 11 Frobenius discriminant 329584640 mod3 2 squarefree mod3 True

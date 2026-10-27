@@ -1,0 +1,9 @@
+output_pizer_graph.txt lines= 207 sha256= dd42a45514fc7c7b2835e59b6a73c7ab960448410d1b118d7130ab1aa92d17e7
+output_pizer_quotient.txt lines= 134 sha256= ed7565806f7f040636ee86310cce3689f42fc92e8b82953dc4eb5e7a12e12829
+output_quaternion.txt lines= 21 sha256= 71d9f3d3d1984012fe636f171d0fdbc4006212d7d164c59e78c30e46e5c8467b
+output_label_lattice.txt lines= 106 sha256= b36fe18e9f1aed80bd149ab50f3b0b21abf12a6add2228a038dc9cafe0f3cfa4
+output_curve37.txt lines= 42 sha256= 446ebcd88ac4a94b4ee068da20f65671803ab7ccdd009ee628568b52d842735c
+CERTIFICATES: Brandt/Hecke cells=24; unweighted natural-reversal Bass cells=16; weighted cells=8
+CERTIFICATES: quaternion neighbour primes=4; bipartite-double Bass cells=4; Smith levels=36; elliptic-product comparisons=12
+CERTIFICATES: good model polynomials=4; independent point counts=8; full Mumford group enumeration at F5=48
+SAVED OUTPUT AUDIT PASS

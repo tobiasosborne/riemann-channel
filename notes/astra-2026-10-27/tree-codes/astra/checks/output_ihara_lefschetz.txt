@@ -1,0 +1,62 @@
+LOCAL FLAT TRACES: exact squared values and finite-rank compression traces
+p=3, a=1/9, tau(a)^2=1/9, tau(a)=0.33333333333333331, compression fixed cosets=1, compressed trace^2=1/9
+p=3, a=1/3, tau(a)^2=1/3, tau(a)=0.57735026918962573, compression fixed cosets=1, compressed trace^2=1/3
+p=3, a=3, tau(a)^2=1/3, tau(a)=0.57735026918962573, compression fixed cosets=1, compressed trace^2=1/3
+p=3, a=9, tau(a)^2=1/9, tau(a)=0.33333333333333331, compression fixed cosets=1, compressed trace^2=1/9
+p=3, a=4, tau(a)^2=9, tau(a)=3, compression fixed cosets=3, compressed trace^2=9
+p=5, a=1/25, tau(a)^2=1/25, tau(a)=0.20000000000000001, compression fixed cosets=1, compressed trace^2=1/25
+p=5, a=1/5, tau(a)^2=1/5, tau(a)=0.44721359549995793, compression fixed cosets=1, compressed trace^2=1/5
+p=5, a=5, tau(a)^2=1/5, tau(a)=0.44721359549995793, compression fixed cosets=1, compressed trace^2=1/5
+p=5, a=25, tau(a)^2=1/25, tau(a)=0.20000000000000001, compression fixed cosets=1, compressed trace^2=1/25
+p=5, a=6, tau(a)^2=25, tau(a)=5, compression fixed cosets=5, compressed trace^2=25
+T4b counterexample: p=3, gamma=diag(1,9), length=2, actual Clifford D_3
+actual Clifford flat trace=0.57735026918962573; graph orbit weight=1/3; auxiliary boundary D_9 trace=0.33333333333333331
+Squared actual Clifford trace equals graph weight: 1/3. D_9 acts on the original tree with length 4, not 2.
+Cocompact counterexample lattice at p=3: g1=diag(1,3), g2=[[2,1],[1,2]]; image lines of g1,g1^-1,g2,g2^-1= [(1, 0), (0, 1), (1, 2), (1, 1)]
+Four distinct neighbours prove a free simply transitive tree action. In its index-2 even-word subgroup, g1^2 is primitive of length 2.
+
+ARITHMETIC CONGRUENCE QUOTIENT: p=5, reduction q=3, PGL2(F3)
+Quaternion images I,J,K= (0, 1, 2, 0) (1, 1, 1, 2) (1, 2, 2, 2)
+Six generators 1 +/- 2I, 1 +/- 2J, 1 +/- 2K (projectively normalised)= [(1, 2, 1, 1), (1, 1, 2, 1), (0, 1, 1, 1), (1, 2, 2, 0), (0, 1, 1, 2), (1, 1, 1, 0)]
+Generated group order= 24 generator determinants mod 3= [2, 2, 2, 2, 2, 2]
+Generator orders in PGL2(F3)= [4, 4, 4, 4, 4, 4]
+Arithmetic prime cycle (1+2i)^4= (-7, -24, 0, 0) ; norm= 625
+SL2 lift trace= -14/25 valuation= -2 ; eigenvalue valuations= (-2, 2)
+This element is primitive in the congruence kernel, length=4; actual Clifford flat trace=1/5=0.2, graph weight=1/25=0.04.
+p=5 generator image lines mod 5= [(0, 1), (1, 0), (1, 3), (1, 2), (1, 4), (1, 1)] ; all 6 neighbours distinct
+
+GRAPH quaternion PGL2(F3) quotient: p=5, vertices=24, undirected edges=72, B size=144, bipartite=True
+Exact adjacency characteristic polynomial= t**4*(t - 6)*(t - 2)**9*(t + 2)**9*(t + 6)
+Ihara-Bass reciprocal zeta factorisation= (u - 1)**49*(u + 1)**49*(5*u - 1)*(5*u + 1)*(5*u**2 + 1)**4*(5*u**2 - 2*u + 1)**9*(5*u**2 + 2*u + 1)**9
+Numerical adjacency eigenvalues= [-6.0000000000e+00 -2.0000000000e+00 -2.0000000000e+00 -2.0000000000e+00 -2.0000000000e+00 -2.0000000000e+00 -2.0000000000e+00 -2.0000000000e+00
+ -2.0000000000e+00 -2.0000000000e+00 -4.2528209759e-16  4.1308715624e-16  5.8717885809e-16  9.2988216528e-16  2.0000000000e+00  2.0000000000e+00
+  2.0000000000e+00  2.0000000000e+00  2.0000000000e+00  2.0000000000e+00  2.0000000000e+00  2.0000000000e+00  2.0000000000e+00  6.0000000000e+00]
+Nontrivial max absolute adjacency eigenvalue= 2.0000000000000009 Ramanujan band= 4.4721359549995796
+k=1: Tr(B^k)=0, Bass N_k=0, primitive P_k=0, orbit=0, C_spectrum=-4.1078251911130792e-15+0j, C_formula=0, residual=4.11e-15
+k=2: Tr(B^k)=0, Bass N_k=0, primitive P_k=0, orbit=0, C_spectrum=-29.600000000000016+0j, C_formula=-29.600000000000001, residual=1.42e-14
+k=3: Tr(B^k)=0, Bass N_k=0, primitive P_k=0, orbit=0, C_spectrum=3.5527136788005009e-15+0j, C_formula=0, residual=3.55e-15
+k=4: Tr(B^k)=1296, Bass N_k=1296, primitive P_k=324, orbit=51.840000000000003, C_spectrum=-2.0799999999999974+0j, C_formula=-2.0799999999999947, residual=2.66e-15
+k=5: Tr(B^k)=0, Bass N_k=0, primitive P_k=0, orbit=0, C_spectrum=1.1546319456101628e-14+0j, C_formula=0, residual=1.15e-14
+k=6: Tr(B^k)=34560, Bass N_k=34560, primitive P_k=5760, orbit=276.48000000000002, C_spectrum=25.696000000000002+0j, C_formula=25.696000000000026, residual=2.49e-14
+k=7: Tr(B^k)=0, Bass N_k=0, primitive P_k=0, orbit=0, C_spectrum=-1.8346435481930712e-14+0j, C_formula=0, residual=1.83e-14
+k=8: Tr(B^k)=767376, Bass N_k=767376, primitive P_k=95760, orbit=1227.8016, C_spectrum=-22.3552+0j, C_formula=-22.355200000000099, residual=9.95e-14
+SUMMARY N_1..N_8= [0, 0, 0, 1296, 0, 34560, 0, 767376]
+SUMMARY P_1..P_8= [0, 0, 0, 324, 0, 5760, 0, 95760]
+max explicit-formula residual=9.9475983006414026e-14; float tolerance=1e-9; counts and polynomials exact
+
+GRAPH K5 (general regular graph comparison): p=3, vertices=5, undirected edges=10, B size=20, bipartite=False
+Exact adjacency characteristic polynomial= (t - 4)*(t + 1)**4
+Ihara-Bass reciprocal zeta factorisation= -(u - 1)**6*(u + 1)**5*(3*u - 1)*(3*u**2 + u + 1)**4
+Numerical adjacency eigenvalues= [-1. -1. -1. -1.  4.]
+Nontrivial max absolute adjacency eigenvalue= 1.0000000000000009 Ramanujan band= 3.4641016151377544
+k=1: Tr(B^k)=0, Bass N_k=0, primitive P_k=0, orbit=0, C_spectrum=-2.3094010767585029+0j, C_formula=-2.3094010767585029, residual=0
+k=2: Tr(B^k)=0, Bass N_k=0, primitive P_k=0, orbit=0, C_spectrum=-6.6666666666666661+0j, C_formula=-6.6666666666666661, residual=0
+k=3: Tr(B^k)=60, Bass N_k=60, primitive P_k=20, orbit=11.547005383792516, C_spectrum=6.1584028713560075+0j, C_formula=6.1584028713560093, residual=1.78e-15
+k=4: Tr(B^k)=120, Bass N_k=120, primitive P_k=30, orbit=13.333333333333332, C_spectrum=3.1111111111111107+0j, C_formula=3.1111111111111103, residual=4.44e-16
+k=5: Tr(B^k)=120, Bass N_k=120, primitive P_k=24, orbit=7.6980035891950092, C_spectrum=-7.9546037088348411+0j, C_formula=-7.9546037088348456, residual=4.44e-15
+k=6: Tr(B^k)=780, Bass N_k=780, primitive P_k=120, orbit=28.888888888888886, C_spectrum=1.4814814814814805+0j, C_formula=1.4814814814814774, residual=3.11e-15
+k=7: Tr(B^k)=2520, Bass N_k=2520, primitive P_k=360, orbit=53.886025124365069, C_spectrum=7.0992699767020637+0j, C_formula=7.0992699767020611, residual=2.66e-15
+k=8: Tr(B^k)=6120, Bass N_k=6120, primitive P_k=750, orbit=75.555555555555557, C_spectrum=-5.580246913580245+0j, C_formula=-5.5802469135802406, residual=4.44e-15
+SUMMARY N_1..N_8= [0, 0, 60, 120, 120, 780, 2520, 6120]
+SUMMARY P_1..P_8= [0, 0, 20, 30, 24, 120, 360, 750]
+max explicit-formula residual=4.44089209850062616e-15; float tolerance=1e-9; counts and polynomials exact

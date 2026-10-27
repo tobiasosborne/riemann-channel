@@ -1,0 +1,69 @@
+dual/parity p= 3 trial= 0 vdet= -2 canonical_k= 0 correct=True
+dual/parity p= 3 trial= 1 vdet= 2 canonical_k= 0 correct=True
+dual/parity p= 3 trial= 2 vdet= -1 canonical_k= 1 correct=True
+dual/parity p= 3 trial= 3 vdet= -2 canonical_k= 0 correct=True
+dual/parity p= 3 trial= 4 vdet= 0 canonical_k= 0 correct=True
+dual/parity p= 3 trial= 5 vdet= 1 canonical_k= 1 correct=True
+dual/parity p= 3 trial= 6 vdet= 0 canonical_k= 0 correct=True
+dual/parity p= 3 trial= 7 vdet= 1 canonical_k= 1 correct=True
+dual/parity p= 3 trial= 8 vdet= 0 canonical_k= 0 correct=True
+dual/parity p= 3 trial= 9 vdet= 0 canonical_k= 0 correct=True
+dual/parity p= 3 trial= 10 vdet= 2 canonical_k= 0 correct=True
+dual/parity p= 3 trial= 11 vdet= -2 canonical_k= 0 correct=True
+dual/parity p= 5 trial= 0 vdet= 0 canonical_k= 0 correct=True
+dual/parity p= 5 trial= 1 vdet= 0 canonical_k= 0 correct=True
+dual/parity p= 5 trial= 2 vdet= 0 canonical_k= 0 correct=True
+dual/parity p= 5 trial= 3 vdet= 3 canonical_k= 1 correct=True
+dual/parity p= 5 trial= 4 vdet= 1 canonical_k= 1 correct=True
+dual/parity p= 5 trial= 5 vdet= -3 canonical_k= 1 correct=True
+dual/parity p= 5 trial= 6 vdet= -1 canonical_k= 1 correct=True
+dual/parity p= 5 trial= 7 vdet= -2 canonical_k= 0 correct=True
+dual/parity p= 5 trial= 8 vdet= -3 canonical_k= 1 correct=True
+dual/parity p= 5 trial= 9 vdet= -4 canonical_k= 0 correct=True
+dual/parity p= 5 trial= 10 vdet= -4 canonical_k= 0 correct=True
+dual/parity p= 5 trial= 11 vdet= -2 canonical_k= 0 correct=True
+dual/parity p= 7 trial= 0 vdet= 0 canonical_k= 0 correct=True
+dual/parity p= 7 trial= 1 vdet= 0 canonical_k= 0 correct=True
+dual/parity p= 7 trial= 2 vdet= -1 canonical_k= 1 correct=True
+dual/parity p= 7 trial= 3 vdet= -3 canonical_k= 1 correct=True
+dual/parity p= 7 trial= 4 vdet= -3 canonical_k= 1 correct=True
+dual/parity p= 7 trial= 5 vdet= -2 canonical_k= 0 correct=True
+dual/parity p= 7 trial= 6 vdet= -1 canonical_k= 1 correct=True
+dual/parity p= 7 trial= 7 vdet= 1 canonical_k= 1 correct=True
+dual/parity p= 7 trial= 8 vdet= -1 canonical_k= 1 correct=True
+dual/parity p= 7 trial= 9 vdet= -1 canonical_k= 1 correct=True
+dual/parity p= 7 trial= 10 vdet= -3 canonical_k= 1 correct=True
+dual/parity p= 7 trial= 11 vdet= -1 canonical_k= 1 correct=True
+BFS HNF ball p= 3 radius=3 vertices= 53
+p= 3 G= [8, 5, 9, 0] tr= 8 det= -45 ell= 2 base_distances= [2, 4, 6, 8, 10] eigenvaluations=(0, 2) axis=7 projector_split=7
+p= 3 G= [-1, 12, 10, -6] tr= -7 det= -114 ell= 1 base_distances= [1, 2, 3, 4, 5] eigenvaluations=(0, 1) axis=7 projector_split=7
+p= 3 G= [6, -11, 12, 4] tr= 10 det= 156 ell= 1 base_distances= [1, 2, 3, 4, 5] eigenvaluations=(0, 1) axis=7 projector_split=7
+p= 3 G= [8, 7, 1, -4] tr= 4 det= -39 ell= 1 base_distances= [1, 2, 3, 4, 5] eigenvaluations=(0, 1) axis=7 projector_split=7
+p= 3 G= [7, 3, 11, -5] tr= 2 det= -68 ell= 0 base_distances= [0, 0, 0, 0, 0] elliptic geometric/stable length zero
+p= 3 G= [11, -7, 9, 9] tr= 20 det= 162 ell= 4 base_distances= [4, 8, 12, 16, 20] eigenvaluations=(0, 4) axis=7 projector_split=7
+p= 3 G= [3, 7, -8, 9] tr= 12 det= 83 ell= 0 base_distances= [0, 0, 0, 0, 0] elliptic geometric/stable length zero
+p= 3 G= [3, -12, -2, 0] tr= 3 det= -24 ell= 0 base_distances= [1, 0, 1, 0, 1] elliptic geometric/stable length zero
+p= 3 G= [-6, 3, -11, -2] tr= -8 det= 45 ell= 2 base_distances= [2, 4, 6, 8, 10] eigenvaluations=(0, 2) axis=7 projector_split=7
+p= 3 G= [-6, -2, 3, 8] tr= 2 det= -42 ell= 1 base_distances= [1, 2, 3, 4, 5] eigenvaluations=(0, 1) axis=7 projector_split=7
+p= 3 G= [5, 1, -7, 2] tr= 7 det= 17 ell= 0 base_distances= [0, 0, 0, 0, 0] elliptic geometric/stable length zero
+p= 3 G= [5, -7, -11, -5] tr= 0 det= -102 ell= 0 base_distances= [1, 0, 1, 0, 1] elliptic geometric/stable length zero
+p= 3 G= [-11, 7, -12, 2] tr= -9 det= 62 ell= 0 base_distances= [0, 0, 0, 0, 0] elliptic geometric/stable length zero
+p= 3 G= [1, 2/3, 0, 3] tr= 4 det= 3 ell= 1 base_distances= [3, 4, 5, 6, 7] eigenvaluations=(0, 1) axis=5 projector_split=5
+inversion p= 3 G^2= [3, 0, 0, 3] off-axis vertex= [1, 0, 0, 9] d(L,GL)= 3 d(L,G^2 L)= 0
+BFS HNF ball p= 5 radius=3 vertices= 187
+p= 5 G= [-2, -8, 4, -4] tr= -6 det= 40 ell= 1 base_distances= [1, 2, 3, 4, 5] eigenvaluations=(0, 1) axis=7 projector_split=7
+p= 5 G= [3, -10, 7, 12] tr= 15 det= 106 ell= 0 base_distances= [0, 0, 0, 0, 0] elliptic geometric/stable length zero
+p= 5 G= [-11, -5, 5, 12] tr= 1 det= -107 ell= 0 base_distances= [0, 0, 0, 0, 0] elliptic geometric/stable length zero
+p= 5 G= [-12, -5, -2, -12] tr= -24 det= 134 ell= 0 base_distances= [0, 0, 0, 0, 0] elliptic geometric/stable length zero
+p= 5 G= [-3, -7, 1, -10] tr= -13 det= 37 ell= 0 base_distances= [0, 0, 0, 0, 0] elliptic geometric/stable length zero
+p= 5 G= [4, -9, 12, -12] tr= -8 det= 60 ell= 1 base_distances= [1, 2, 3, 4, 5] eigenvaluations=(0, 1) axis=7 projector_split=7
+p= 5 G= [-5, 4, 3, -11] tr= -16 det= 43 ell= 0 base_distances= [0, 0, 0, 0, 0] elliptic geometric/stable length zero
+p= 5 G= [-8, 1, -10, -10] tr= -18 det= 90 ell= 1 base_distances= [1, 2, 3, 4, 5] eigenvaluations=(0, 1) axis=7 projector_split=7
+p= 5 G= [0, -5, 12, -2] tr= -2 det= 60 ell= 1 base_distances= [1, 2, 3, 4, 5] eigenvaluations=(0, 1) axis=7 projector_split=7
+p= 5 G= [7, -8, -5, -4] tr= 3 det= -68 ell= 0 base_distances= [0, 0, 0, 0, 0] elliptic geometric/stable length zero
+p= 5 G= [8, -1, 12, 10] tr= 18 det= 92 ell= 0 base_distances= [0, 0, 0, 0, 0] elliptic geometric/stable length zero
+p= 5 G= [1, 4/5, 0, 5] tr= 6 det= 5 ell= 1 base_distances= [3, 4, 5, 6, 7] eigenvaluations=(0, 1) axis=5 projector_split=5
+inversion p= 5 G^2= [5, 0, 0, 5] off-axis vertex= [1, 0, 0, 25] d(L,GL)= 3 d(L,G^2 L)= 0
+square-class counterexample p=3 gamma=diag(1,18), ell= 2 unit determinant mod 3= 2 unit squares mod 3= [1]
+code towers p=3 qunaught dims= [1, 9, 81, 729] qudit dims= [3, 27, 243, 2187]
+ALL INDEPENDENT LATTICE CHECKS PASSED

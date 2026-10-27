@@ -1,0 +1,21 @@
+
+QUATERNION B=(-2,-37); maximal-order basis in PARI (1,i,j,ji)= [[1, 0, 1/2, 1/2], [0, 1, 1/2, 1/4], [0, 0, 1/2, 0], [0, 0, 0, 1/4]]
+norm Gram= [[1, 0, 1/2, 1/2], [0, 2, 1, 1/2], [1/2, 1, 10, 1/2], [1/2, 1/2, 1/2, 5]] reduced trace discriminant= -1369
+finite Hasse data= [[[2, [2]~, 1, 1, 1], [37, [37]~, 1, 1, 1]], Vecsmall([0, 1])] infinite= Vecsmall([1])
+ideal 0 basis= [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]] norm= 1
+left order 0 basis= [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]] norm Gram= [[1, 0, 1/2, 1/2], [0, 2, 1, 1/2], [1/2, 1, 10, 1/2], [1/2, 1/2, 1/2, 5]]
+ideal 1 basis= [[2, 0, 0, 1], [0, 2, 0, 1], [0, 0, 1, 0], [0, 0, 0, 1]] norm= 2
+left order 1 basis= [[1, 0, 0, 1/2], [0, 2, 0, 1/2], [0, 0, 1, 1/2], [0, 0, 0, 1/2]] norm Gram= [[1, 0, 1/2, 1], [0, 8, 2, 7/2], [1/2, 2, 10, 6], [1, 7/2, 6, 6]]
+ideal 2 basis= [[2, 0, 0, 0], [0, 2, 1, 1], [0, 0, 1, 0], [0, 0, 0, 1]] norm= 2
+left order 2 basis= [[1, 0, 0, 0], [0, 2, 1, 0], [0, 0, 1, 1/2], [0, 0, 0, 1/2]] norm Gram= [[1, 0, 1/2, 1/2], [0, 8, 6, 3/2], [1/2, 6, 14, 6], [1/2, 3/2, 6, 4]]
+direct ideal 2-neighbour matrix= [[1, 1, 1], [1, 0, 2], [1, 2, 0]]
+ideal classes -> modular-polynomial j indices= (2, 0, 1) j= ['8', '30*t + 18', '7*t + 25']
+THETA BRANDT ell= 2 B= [[1, 1, 1], [1, 0, 2], [1, 2, 0]] MODULAR POLYNOMIAL MATCH PASS
+trace-zero norm ell elements modulo +/- = [1, 0, 0] VELU DUALITY MATCH PASS
+THETA BRANDT ell= 3 B= [[2, 1, 1], [1, 0, 3], [1, 3, 0]] MODULAR POLYNOMIAL MATCH PASS
+trace-zero norm ell elements modulo +/- = [0, 0, 0] VELU DUALITY MATCH PASS
+THETA BRANDT ell= 5 B= [[2, 2, 2], [2, 1, 3], [2, 3, 1]] MODULAR POLYNOMIAL MATCH PASS
+trace-zero norm ell elements modulo +/- = [0, 1, 1] VELU DUALITY MATCH PASS
+THETA BRANDT ell= 7 B= [[2, 3, 3], [3, 2, 3], [3, 3, 2]] MODULAR POLYNOMIAL MATCH PASS
+trace-zero norm ell elements modulo +/- = [0, 0, 0] VELU DUALITY MATCH PASS
+ALL QUATERNION IDEAL / EXACT NORM-ENUMERATION CHECKS PASS

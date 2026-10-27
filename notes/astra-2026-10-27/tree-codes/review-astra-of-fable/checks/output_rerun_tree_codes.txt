@@ -1,0 +1,67 @@
+== T1  L^perp = det(g)^{-1} L, colour = v_p(det g) mod 2
+p=3 g=(-7/3,7;-162,-54)  v(det g)=  2  L^perp == det^-1 L: True  [L^perp:L] = p^4 (claim p^4): True
+p=3 g=(-8,-29/9;3,-36)  v(det g)= -1  L^perp == det^-1 L: True  [L^perp:L] = p^-2 (claim p^-2): True
+p=3 g=(22/9,10/3;48,-48)  v(det g)= -1  L^perp == det^-1 L: True  [L^perp:L] = p^-2 (claim p^-2): True
+p=3 g=(17/3,-42;22/3,-54)  v(det g)=  0  L^perp == det^-1 L: True  [L^perp:L] = p^0 (claim p^0): True
+p=3 g=(19,-4/3;-14,26)  v(det g)= -1  L^perp == det^-1 L: True  [L^perp:L] = p^-2 (claim p^-2): True
+p=3 g=(-25/9,23/9;4,28)  v(det g)=  0  L^perp == det^-1 L: True  [L^perp:L] = p^0 (claim p^0): True
+p=3: all p+1 neighbours of the colour-k vertex (k=0,1) have v(det) of the other parity: True
+p=5 g=(28,150;2,-13/25)  v(det g)= -2  L^perp == det^-1 L: True  [L^perp:L] = p^-4 (claim p^-4): True
+p=5 g=(-11/5,15;-250,-175)  v(det g)=  1  L^perp == det^-1 L: True  [L^perp:L] = p^2 (claim p^2): True
+p=5 g=(29/25,-150;40,10)  v(det g)= -1  L^perp == det^-1 L: True  [L^perp:L] = p^-2 (claim p^-2): True
+p=5 g=(20,-3;8/5,-28/5)  v(det g)= -1  L^perp == det^-1 L: True  [L^perp:L] = p^-2 (claim p^-2): True
+p=5 g=(-150,21;-11/5,9/25)  v(det g)= -1  L^perp == det^-1 L: True  [L^perp:L] = p^-2 (claim p^-2): True
+p=5 g=(75,9/25;-16/25,0)  v(det g)= -4  L^perp == det^-1 L: True  [L^perp:L] = p^-8 (claim p^-8): True
+p=5: all p+1 neighbours of the colour-k vertex (k=0,1) have v(det) of the other parity: True
+p=7 g=(1029,15/7;-15,1)  v(det g)= -1  L^perp == det^-1 L: True  [L^perp:L] = p^-2 (claim p^-2): True
+p=7 g=(30,6/7;-1/49,1225)  v(det g)= -3  L^perp == det^-1 L: True  [L^perp:L] = p^-6 (claim p^-6): True
+p=7 g=(4,1127;-63,-35)  v(det g)=  1  L^perp == det^-1 L: True  [L^perp:L] = p^2 (claim p^2): True
+p=7 g=(14,11/49;-5,-84)  v(det g)= -2  L^perp == det^-1 L: True  [L^perp:L] = p^-4 (claim p^-4): True
+p=7 g=(1225,147;-30/49,-1127)  v(det g)=  0  L^perp == det^-1 L: True  [L^perp:L] = p^0 (claim p^0): True
+p=7 g=(-784,-1;0,1)  v(det g)=  2  L^perp == det^-1 L: True  [L^perp:L] = p^4 (claim p^4): True
+p=7: all p+1 neighbours of the colour-k vertex (k=0,1) have v(det) of the other parity: True
+
+== T1'  phase convention: W~(u,v) = psi(s uv) W(u,v) is a representation on an isotropic lattice iff s = +1/2
+   model: functions on Z_p/p^2 Z_p (support condition dropped), W(u,v)f(x) = psi(vx) f(x+u), psi(x) = e^{2 pi i {x}_p}
+p=3 s=+1/2: W~(1,1/p)^2 == W~(2,2/p): True
+p=3 s=-1/2: W~(1,1/p)^2 == W~(2,2/p): False
+p=5 s=+1/2: W~(1,1/p)^2 == W~(2,2/p): True
+p=5 s=-1/2: W~(1,1/p)^2 == W~(2,2/p): False
+
+== T3  classification of random integer matrices; translation length vs tree distances; axis = split lattices
+
+-- p = 3
+g=( -3,-11;  9, 12) tr=   9 det=   63 v(tr)=2 v(det)=2 elliptic   ell=0  d(v,g^k v)=[2, 0, 2, 0, 2]  increments=[-2, 2, -2, 2]
+g=( -2, -8; -5,-10) tr= -12 det=  -20 v(tr)=1 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=(  4, -5; -5, -6) tr=  -2 det=  -49 v(tr)=0 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=(  6,  4;  2, 11) tr=  17 det=   58 v(tr)=0 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=(  8, 11; -3, -8) tr=   0 det=  -31 v(tr)=1000000000 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=(  8,  5;  9,  0) tr=   8 det=  -45 v(tr)=0 v(det)=2 hyperbolic ell=2  d(v,g^k v)=[2, 4, 6, 8, 10]  increments=[2, 2, 2, 2] | v(eigs)=(0, 2); within radius 3: 53 vertices, 7 with displacement ell, 7 split, equal: True
+g=( -1, 12; 10, -6) tr=  -7 det= -114 v(tr)=0 v(det)=1 hyperbolic ell=1  d(v,g^k v)=[1, 2, 3, 4, 5]  increments=[1, 1, 1, 1] | v(eigs)=(0, 1); within radius 3: 53 vertices, 7 with displacement ell, 7 split, equal: True
+g=(  6,-11; 12,  4) tr=  10 det=  156 v(tr)=0 v(det)=1 hyperbolic ell=1  d(v,g^k v)=[1, 2, 3, 4, 5]  increments=[1, 1, 1, 1] | v(eigs)=(0, 1); within radius 3: 53 vertices, 7 with displacement ell, 7 split, equal: True
+g=( -4, -8;  9, -2) tr=  -6 det=   80 v(tr)=1 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=(  4,  9;  1, -7) tr=  -3 det=  -37 v(tr)=1 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+p=3: 3 hyperbolic of 10; every hyperbolic one: ell = v(det) - 2 v(tr) = v(lam2/lam1) = asymptotic increment of d(v, g^k v), and axis vertices (radius 3) = split lattices exactly
+
+-- p = 5
+g=( -5,  4;-12, -6) tr= -11 det=   78 v(tr)=0 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=( -2, 11; -1,-10) tr= -12 det=   31 v(tr)=0 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=( -7,  1;  3,  4) tr=  -3 det=  -31 v(tr)=0 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=(  6,-12; -8,  8) tr=  14 det=  -48 v(tr)=0 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=( -9,  7;  8,  9) tr=   0 det= -137 v(tr)=1000000000 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=( -1,  0; -9,-12) tr= -13 det=   12 v(tr)=0 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=( -2, -8;  4, -4) tr=  -6 det=   40 v(tr)=0 v(det)=1 hyperbolic ell=1  d(v,g^k v)=[1, 2, 3, 4, 5]  increments=[1, 1, 1, 1] | v(eigs)=(0, 1); within radius 3: 187 vertices, 7 with displacement ell, 7 split, equal: True
+g=( -7, -5; -7,  8) tr=   1 det=  -91 v(tr)=0 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=(  2, -7; -1,-11) tr=  -9 det=  -29 v(tr)=0 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+g=( -4, -3;  5,  9) tr=   5 det=  -21 v(tr)=1 v(det)=0 elliptic   ell=0  d(v,g^k v)=[0, 0, 0, 0, 0]  increments=[0, 0, 0, 0]
+p=5: 1 hyperbolic of 10; every hyperbolic one: ell = v(det) - 2 v(tr) = v(lam2/lam1) = asymptotic increment of d(v, g^k v), and axis vertices (radius 3) = split lattices exactly
+
+== T3'  squeeze diag(a^-1, a) with v(a) = m translates by 2m; diag(1,p) by one step and swaps colour
+p=3 m=1: d([Z_p^2], diag(p^-m,p^m)[Z_p^2]) = 2 (claim 2); d(v, diag(1,p) v) = 1, colour change: True
+p=3 m=2: d([Z_p^2], diag(p^-m,p^m)[Z_p^2]) = 4 (claim 4); d(v, diag(1,p) v) = 1, colour change: True
+p=3 m=3: d([Z_p^2], diag(p^-m,p^m)[Z_p^2]) = 6 (claim 6); d(v, diag(1,p) v) = 1, colour change: True
+p=5 m=1: d([Z_p^2], diag(p^-m,p^m)[Z_p^2]) = 2 (claim 2); d(v, diag(1,p) v) = 1, colour change: True
+p=5 m=2: d([Z_p^2], diag(p^-m,p^m)[Z_p^2]) = 4 (claim 4); d(v, diag(1,p) v) = 1, colour change: True
+p=5 m=3: d([Z_p^2], diag(p^-m,p^m)[Z_p^2]) = 6 (claim 6); d(v, diag(1,p) v) = 1, colour change: True
+
+ALL ASSERTIONS PASSED

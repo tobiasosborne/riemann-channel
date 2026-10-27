@@ -1,0 +1,7 @@
+Verdicts: 25
+Counts: {'VALID': 12, 'MINOR': 7, 'INVALID': 6}
+All required aliases exactly once: True
+Final sections in order: True
+Agreement after verdict lines: True
+Independent outputs complete: ['mub_trace', 'lattices', 'lps', 'boundary']
+Original comparisons exact except timing/shell-status lines: 4/4

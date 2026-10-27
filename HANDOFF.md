@@ -2,18 +2,36 @@
 
 # HANDOFF — riemann-channel
 
-## Session 2026-10-27: IN PROGRESS — round `notes/astra-2026-10-27/` (two topics, Fable + astra provers blind, then cross-family reviews)
+## Session 2026-10-27: new machine, the 2026-10-25 round pushed; round `notes/astra-2026-10-27/` (tree of local GKP codes; Pizer graph as H¹ of X₀(p)); HELD before the Fable reviews
 
-TJO: "i don't like the overlap interp ... What is powerful here is rationals as a lattice in adeles *and* symplectic geometry ... choose two fable
-subagents and two astra subagents. Each pair of fable+astra works out a proof, then they exchange and review." Earlier today: the old laptop's
-13 unpushed commits (astra round 2026-10-25) were fast-forwarded onto master and pushed. Topics: T `tree-codes/` (the tree at p as the space of
-local GKP codes, geodesics as transverse Lagrangians, the squeeze as the step, Ihara's Euler product as the zeta of the squeezes in Γ, orbit terms
-as p-adic Lefschetz traces) and P `pizer/` (the supersingular ℓ-isogeny graph mod p as Γ\T_ℓ, its Ihara zeta as the L-polynomial of X₀(p) over F_ℓ,
-the label phase space as H¹). Provers: `<topic>/astra/` (codex:gpt-6-astra, via `scripts/astra_lane.sh`) and `<topic>/fable/` (claude:fable-5.1
-agent). **Recovery:** if this session dies, each astra lane resumes with `scripts/astra_lane.sh notes/astra-2026-10-27/<topic>/astra` (session id in
-`session.id`); the Fable lanes must be relaunched from `lane-brief.md`. Then run the cross reviews per `brief.md` ("Design"). PARI venv:
-`/tmp/claude-1000/-home-tobias-Projects-riemann-channel/dcae8e10-414e-4cb4-8b95-d35e159cfb50/scratchpad/venv-astra` (uv; rebuild with
-`uv venv ... && uv pip install cypari2 python-flint numpy sympy mpmath networkx` after a reboot). Nothing registered; gate untouched.
+TJO: lattice Q² ⊂ A² and symplectic geometry yes, the overlap reading no; connect that space to the Ihara zeta; "two fable subagents and two astra
+subagents ... each pair works out a proof, then they exchange and review"; then "hold all claude work; we are on usage credits". Worklog
+`docs/worklog/2026-10-27.md`. Round `notes/astra-2026-10-27/` (`brief.md` binding; `tree-codes/lane-brief.md`, `pizer/lane-brief.md`; per topic a
+blind astra prover `astra/` and a blind Fable prover `fable/`, each with `*-proofs.md`, `progress.txt`, `checks/`). **Nothing registered; gate
+untouched; no record page edited.** Machine: PARI venv at `/tmp/claude-1000/-home-tobias-Projects-riemann-channel/dcae8e10-414e-4cb4-8b95-d35e159cfb50/scratchpad/venv-astra`
+(uv; rebuild after reboot); no `gp`; `refs/src/` not fetched; old home at `~/old` (SquashFS).
+
+**Done (all four provers and both astra cross-reviews finished; Fable reviews NOT run).**
+- T, Fable (`tree-codes/fable/fable-proofs.md`): colours = code dimensions, neighbours = the p + 1 WH mutually unbiased bases, geodesics = transverse
+  Lagrangian pairs, Ihara's Euler product over the primitive hyperbolic classes, the code-tower trace Tr(P_n D_a P_n) = |a|_p^{1/2} p^{min(v_p(1−a),2n)}
+  (the orbit weight p^{−ℓ/2} as a trace of the squeeze D_{λ(γ)} with λ the eigenvalue ratio), explicit formula checked on X^{5,11}, X^{5,13}, X^{5,29};
+  ledger: symmetric phase +uv/2; no Clifford implements a homothety; the squeeze belongs to γ²/det γ; X^{5,13} is bipartite. Astra review
+  (`tree-codes/review-astra-of-fable/`): 12 VALID / 7 MINOR / 6 INVALID — INVALID: `prop:geodesic-squeeze` (nonsquare determinant unit obstructs a
+  symplectic lift), `thm:ihara-zeta-squeeze-lefschetz` as displayed, the bundled claims of T4b (compression theorem VALID), the T5 sketch, C3, the
+  Casoratian–intertwiner conjecture. T, astra (`tree-codes/astra/astra-proofs.md`): T1–T4 DONE, T5 PARTIAL; **unreviewed**.
+- P, Fable (`pizer/fable/fable-proofs.md`): det(1 − B(ℓ)u + ℓu²) = (1−u)(1−ℓu) P_{X₀(p)/F_ℓ}(u) with every normalisation, 20 exact cells; Ramanujan =
+  Weil for J₀(p); Ihara–Bass corrected for half-loops; G(p, ℓ) = Γ\T_ℓ for all p; the label lattice L₀ = {Σf = Σg = 0} has det Ω = n² = |Φ_p|² and
+  is a third lattice in the isogeny class of J₀(37) (3-part at ℓ = 7), Ω|L₀ sketched as the doubled monodromy pairing. Astra review
+  (`pizer/review-astra-of-fable/`): 9 VALID / 13 MINOR / 1 INVALID (the "iff q ∤ (p−1)/12" conjecture, refuted both ways) / 2 UNVERIFIED;
+  `thm:pizer-ihara-zeta-x0p` and the half-loop lemma VALID; MINOR fixes listed in its verdict lines (displayed Weil form, #X₀(109)(F₇) = 10, edge
+  indices at nontrivial stabilisers, the explicit degree-four isogeny J₀(37) → E₁ × E₂). P, astra (`pizer/astra/astra-proofs.md`): all items DONE
+  (same half-loop and ℓ = 7 findings independently); **unreviewed**.
+
+**Next (in order), when Claude usage allows.** (i) The two Fable REFUTE reviews of the astra proofs (`<topic>/review-fable-of-astra.md`; protocol in
+`brief.md` "Design"). (ii) Apply the MINOR fixes of the astra reviews to the Fable pages (not record pages). (iii) Write the record page
+`notes/adelic-gkp/tree-of-codes.md` from the VALID items of both topics (T1, T2, T4a, the code-trace theorem; P1, P2, P3a, the half-loop lemma, the
+det Ω = n² obstruction) with the INVALID items as negative findings, then annotations to `graph-ihara.md` §2(b)/§3/§5, `data-ladder.md` §0 (a Pizer
+rung) and §1.2. (iv) Then the list of 2026-10-25 below.
 
 ## Session 2026-10-25: nine astra lanes — five REFUTE reviews of the whole 2026-10-23 round, four new conjectures; all finished; record only
 

@@ -1,0 +1,58 @@
+== T4(c)  LPS graphs X^{5,q}: walk counts, Ihara-Bass, explicit formula
+
+-- q = 11: (5/q) = +1 -> PSL_2(F_11), n = 660 vertices, 6-regular simple graph: True, bipartite expected: False
+   eigenvalues: max = 6.000000, min = -4.024349, largest nontrivial |lambda| = 4.372281, 2 sqrt(5) = 4.472136, Ramanujan: True
+   k   N_k (words)   N_k (Ihara-Bass)   diff      tailed closed reduced words   pi(k) primitive classes
+   1            0           0.000000   -1.65e-12          0          0
+   2            0          -0.000000   +4.55e-12          0          0
+   3            0           0.000000   -1.53e-11          0          0
+   4            0          -0.000000   +2.50e-11          0          0
+   5            0          -0.000000   +3.82e-11          0          0
+   6         3960        3960.000000   +2.16e-10          0        660
+   7       110880      110880.000000   +1.35e-09          0      15840
+   8       475200      475200.000000   +7.51e-09      15840      59400
+   explicit formula  sum_nontrivial w^k = q^(-k/2) sum_(l|k) l pi(l) - n(q-1)q^(-k/2)[k even] - trivial pair(s): max |lhs - rhs| over k<=8 = 3.41e-12
+   elements gamma of Gamma (quaternion products of the words), 5-adic translation length ell = v(det) - 2 v(tr):
+   k=1: 0 tailless closed words, all with ell(gamma) = k: True
+   k=2: 0 tailless closed words, all with ell(gamma) = k: True
+   k=3: 0 tailless closed words, all with ell(gamma) = k: True
+   k=4: 0 tailless closed words, all with ell(gamma) = k: True
+   k=5: 0 tailless closed words, all with ell(gamma) = k: True
+   k=6: 6 tailless closed words, all with ell(gamma) = k: True   example word (5, 5, 5, 5, 5, 5): quaternion (117, 0, 0, -44), tr = 234, det = 5^6, v_5(tr) = 0, ell = 6, weight 5^(-ell/2) = 0.008000
+   k=7: 168 tailless closed words, all with ell(gamma) = k: True   example word (5, 5, 3, 1, 4, 0, 3): quaternion (-171, -176, 132, 22), tr = -342, det = 5^7, v_5(tr) = 0, ell = 7, weight 5^(-ell/2) = 0.003578
+   k=8: 720 tailless closed words, all with ell(gamma) = k: True   example word (5, 5, 5, 3, 5, 5, 5, 3): quaternion (-383, -88, -484, -44), tr = -766, det = 5^8, v_5(tr) = 0, ell = 8, weight 5^(-ell/2) = 0.001600
+   k=8 closed reduced words WITH a tail: 24, their ell(gamma) values: [6] (all < 8: True)
+   all tailless closed words have ell(gamma) = walk length: True
+   dense Hashimoto route (|E_dir| = 3960): Tr B^k - N_k(words) for k=1..8 = [0, 0, 0, 0, 0, 0, 0, 0]
+   [367.4 s]
+
+-- q = 13: (5/q) = -1 -> PGL_2(F_13), n = 2184 vertices, 6-regular simple graph: True, bipartite expected: True
+   eigenvalues: max = 6.000000, min = -6.000000, largest nontrivial |lambda| = 4.249721, 2 sqrt(5) = 4.472136, Ramanujan: True
+   k   N_k (words)   N_k (Ihara-Bass)   diff      tailed closed reduced words   pi(k) primitive classes
+   1            0          -0.000000   +2.20e-12          0          0
+   2            0          -0.000000   +1.38e-10          0          0
+   3            0           0.000000   -1.38e-11          0          0
+   4            0           0.000000   +0.00e+00          0          0
+   5            0          -0.000000   +2.31e-10          0          0
+   6            0           0.000000   -7.91e-10          0          0
+   7            0          -0.000000   +3.07e-09          0          0
+   8      1048320     1048320.000000   -2.89e-08          0     131040
+   explicit formula  sum_nontrivial w^k = q^(-k/2) sum_(l|k) l pi(l) - n(q-1)q^(-k/2)[k even] - trivial pair(s): max |lhs - rhs| over k<=8 = 1.00e-11
+   [371.1 s]
+
+== T4(b)  Tr(P_n D_a P_n) on the code C_n of p^n Z_p^2 (dimension p^{2n}) against |a|^{1/2}/|1-a|, p = 5
+   a          n=0        n=1        n=2        n=3     Lefschetz |a|^(1/2)/|1-a|
+   5          0.44721    0.44721    0.44721    0.44721   0.447214  (v(1-a) = 0)
+   25         0.20000    0.20000    0.20000    0.20000   0.200000  (v(1-a) = 0)
+   125        0.08944    0.08944    0.08944    0.08944   0.089443  (v(1-a) = 0)
+   1/5        0.44721    0.44721    0.44721    0.44721   0.447214  (v(1-a) = -1)
+   1/25       0.20000    0.20000    0.20000    0.20000   0.200000  (v(1-a) = -2)
+   2          1.00000    1.00000    1.00000    1.00000   1.000000  (v(1-a) = 0)
+   6          1.00000    5.00000    5.00000    5.00000   5.000000  (v(1-a) = 1)
+   26         1.00000   25.00000   25.00000   25.00000   25.000000  (v(1-a) = 2)
+   126        1.00000   25.00000  125.00000  125.00000   125.000000  (v(1-a) = 3)
+   -4         1.00000    5.00000    5.00000    5.00000   5.000000  (v(1-a) = 1)
+   10         0.44721    0.44721    0.44721    0.44721   0.447214  (v(1-a) = 0)
+   7/5        0.44721    0.44721    0.44721    0.44721   0.447214  (v(1-a) = -1)
+   1          1.00000   25.00000  625.00000  15625.00000   infinite (a = 1: p^{2n}, the volume term)
+DONE

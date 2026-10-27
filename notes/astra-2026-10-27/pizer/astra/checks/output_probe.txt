@@ -1,0 +1,430 @@
+
+FUNCTION ellisogeny
+
+        Given an elliptic curve :math:`E`, a finite subgroup :math:`G` of :math:`E` is given either
+        as a generating point :math:`P` (for a cyclic :math:`G`) or as a polynomial whose roots
+        vanish on the :math:`x`-coordinates of the nonzero elements of :math:`G` (general case
+        and more efficient if available). This function returns the
+        :math:`[a_{1},a_{2},a_{3},a_{4},a_{6}]` invariants of the quotient elliptic curve
+        :math:`E/G` and (if :emphasis:`only_image` is zero (the default)) a vector of rational
+        functions :math:`[f, g, h]` such that the isogeny :math:`E \to E/G` is given by :math:`(x,y)
+        :---> (f(x)/h(x)^{2}, g(x,y)/h(x)^{3})`.
+
+        ::
+
+        ? E = ellinit([0,1]);
+        ? elltors(E)
+        %2 = [6, [6], [[2, 3]]]
+        ? ellisogeny(E, [2,3], 1) \\ Weierstrass model for E/<P>
+        %3 = [0, 0, 0, -135, -594]
+        ? ellisogeny(E,[-1,0])
+        %4 = [[0,0,0,-15,22], [x^3+2*x^2+4*x+3, y*x^3+3*y*x^2-2*y, x+1]]
+        
+
+FUNCTION ellisogenyapply
+
+        Given an isogeny of elliptic curves :math:`f:E'\to E` (being the result of a call
+        to :literal:`ellisogeny`), apply :math:`f` to :math:`g`:
+
+        - if :math:`g` is a point :math:`P` in the domain of :math:`f`, return the image :math:`f(P)`;
+
+        - if :math:`g:E"\to E'` is a compatible isogeny, return the composite
+        isogeny :math:`f o g: E"\to E`.
+
+        ::
+
+        ? one = ffgen(101, 't)^0;
+        ? E = ellinit([6, 53, 85, 32, 34] * one);
+        ? P = [84, 71] * one;
+        ? ellorder(E, P)
+        %4 = 5
+        ? [F, f] = ellisogeny(E, P); \\ f: E->F = E/<P>
+        ? ellisogenyapply(f, P)
+        %6 = [0]
+        ? F = ellinit(F);
+        ? Q = [89, 44] * one;
+        ? ellorder(F, Q)
+        %9 = 2
+        ? [G, g] = ellisogeny(F, Q); \\ g: F->G = F/<Q>
+        ? gof = ellisogenyapply(g, f); \\ gof: E -> G
+        
+
+FUNCTION elldivpol
+
+        :math:`n`-division polynomial :math:`f_{n}` for the curve :math:`E` in the
+        variable :math:`v`. In standard notation, for any affine point :math:`P = (X,Y)` on the
+        curve and any integer :math:`n >= 0`, we have
+
+        .. MATH::
+
+        [n]P = (\phi_{n}(P)\psi_{n}(P) : \omega_{n}(P) : \psi_{n}(P)^{3})
+
+        for some polynomials :math:`\phi_{n},\omega_{n},\psi_{n}` in
+        :math:`\mathbb{Z}[a_{1},a_{2},a_{3},a_{4},a_{6}][X,Y]`. We have :math:`f_{n}(X) = \psi_{n}(X)`
+        for :math:`n` odd, and
+        :math:`f_{n}(X) = \psi_{n}(X,Y) (2Y + a_{1}X+a_{3})` for :math:`n` even. We have
+
+        .. MATH::
+
+        f_{0} = 0, f_{1} = 1,
+        f_{2} = 4X^{3} + b_{2}X^{2} + 2b_{4} X + b_{6},
+        f_{3} = 3 X^{4} + b_{2} X^{3} + 3b_{4} X^{2} + 3 b_{6} X + b8,
+
+        .. MATH::
+
+        f_{4} = f_{2}(2X^{6} + b_{2} X^{5} + 5b_{4} X^{4} + 10 b_{6} X^{3}
+        + 10 b_{8} X^{2} + (b_{2}b_{8}-b_{4}b_{6})X + (b_{8}b_{4} - b_{6}^{2})),
+        ...
+
+        When :math:`n` is odd, the roots of :math:`f_{n}` are the :math:`X`-coordinates of the affine
+        points in the :math:`n`-torsion subgroup :math:`E[n]`; when :math:`n` is even, the roots
+        of :math:`f_{n}` are the :math:`X`-coordinates of the affine points in :math:`E[n] \
+        E[2]` when :math:`n > 2`, resp. in :math:`E[2]` when :math:`n = 2`.
+        For :math:`n < 0`, we define :math:`f_{n} := - f_{-n}`.
+        
+
+FUNCTION ffembed
+
+        Given two finite fields elements :math:`a` and :math:`b`, return a :emphasis:`map`
+        embedding the definition field of :math:`a` to the definition field of :math:`b`.
+        Assume that the latter contains the former.
+
+        ::
+
+        ? a = ffgen([3,5],'a);
+        ? b = ffgen([3,10],'b);
+        ? m = ffembed(a, b);
+        ? A = ffmap(m, a);
+        ? minpoly(A) == minpoly(a)
+        %5 = 1
+        
+
+FUNCTION ffmap
+
+        Given a (partial) map :math:`m` between two finite fields, return the image of
+        :math:`x` by :math:`m`. The function is applied recursively to the component of vectors,
+        matrices and polynomials. If :math:`m` is a partial map that is not defined at :math:`x`,
+        return :math:`[]`.
+
+        ::
+
+        ? a = ffgen([3,5],'a);
+        ? b = ffgen([3,10],'b);
+        ? m = ffembed(a, b);
+        ? P = x^2+a*x+1;
+        ? Q = ffmap(m,P);
+        ? ffmap(m,poldisc(P)) == poldisc(Q)
+        %6 = 1
+        
+
+FUNCTION algbasis
+
+        Given a central simple algebra :emphasis:`al` output by :literal:`alginit`, returns
+        a :math:`\mathbb{Z}`-basis of the order :math:`O_{0}` stored in :emphasis:`al` with respect to the
+        natural order in :emphasis:`al`. It is a maximal order if one has been computed.
+
+        ::
+
+        A = alginit(nfinit(y), [-1,-1]);
+        ? algbasis(A)
+        %2 =
+        [1 0 0 1/2]
+        
+        [0 1 0 1/2]
+        
+        [0 0 1 1/2]
+        
+        [0 0 0 1/2]
+        
+
+FUNCTION algdisc
+
+        Given a central simple algebra :emphasis:`al` output by :literal:`alginit`, computes
+        the discriminant of the order :math:`O_{0}` stored in :emphasis:`al`, that is the
+        determinant of the trace form :math:`\rm{Tr} : O_{0} x O_{0}
+        \to \mathbb{Z}`.
+
+        ::
+
+        ? nf = nfinit(y^2-5);
+        ? A = alginit(nf, [-3,1-y]);
+        ? [PR,h] = alghassef(A)
+        %3 = [[[2, [2, 0]~, 1, 2, 1], [3, [3, 0]~, 1, 2, 1]], Vecsmall([0, 1])]
+        ? n = algdegree(A);
+        ? D = algdim(A,1);
+        ? h = vector(#h, i, n - gcd(n,h[i]));
+        ? n^D * nf.disc^(n^2) * idealnorm(nf, idealfactorback(nf,PR,h))^n
+        %4 = 12960000
+        ? algdisc(A)
+        %5 = 12960000
+        
+
+FUNCTION algnorm
+
+        Given an element :emphasis:`x` in :emphasis:`al` (Hamilton quaternions if omitted),
+        computes its norm. If :emphasis:`al` is a table algebra output by :literal:`algtableinit`
+        or if :math:`abs = 1`, returns the absolute norm of :emphasis:`x`, which is an element of
+        :math:`\mathbb{F}_{p}`, :math:`\mathbb{Q}` or :math:`\mathbb{R}`; if :emphasis:`al` is omitted or a central simple algebra
+        output by :literal:`alginit` and :math:`abs = 0` (default), returns the reduced norm of
+        :emphasis:`x`, which is an element of the center of :emphasis:`al`.
+
+        ::
+
+        ? mt = [matid(3), [0,0,0; 1,1,0; 0,0,0], [0,0,1; 0,0,0; 1,0,1]];
+        ? A = algtableinit(mt,19);
+        ? algnorm(A,[0,-2,3]~)
+        %3 = 18
+        ? nf = nfinit(y^2-5);
+        ? B = alginit(nf,[-1,y]);
+        ? b = [x,1]~;
+        ? n = algnorm(B,b)
+        %7 = Mod(-y + 1, y^2 - 5)
+        ? algnorm(B,b,1)
+        %8 = 16
+        ? nfeltnorm(nf,n)^algdegree(B)
+        %9 = 16
+        ? algnorm(,[0,sqrt(3),0,sqrt(2)]~) \\ Hamilton quaternions
+        %10 = 5.0000000000
+
+        Also accepts a square matrix with coefficients in :emphasis:`al`.
+        
+
+FUNCTION algtrace
+
+        Given an element :emphasis:`x` in :emphasis:`al` (Hamilton quaternions if omitted),
+        computes its trace. If :emphasis:`al` is a table algebra output by :literal:`algtableinit`
+        or if :math:`abs = 1`, returns the absolute trace of :emphasis:`x`, which is an element of
+        :math:`\mathbb{F}_{p}`, :math:`\mathbb{Q}` or :math:`\mathbb{R}`; if :emphasis:`al` is omitted or the output of :literal:`alginit` and
+        :math:`abs = 0` (default), returns the reduced trace of :emphasis:`x`, which is an element of
+        the center of :emphasis:`al`.
+
+        ::
+
+        ? A = alginit(nfinit(y), [-1,-1]);
+        ? algtrace(A,[5,0,0,1]~)
+        %2 = 11
+        ? algtrace(A,[5,0,0,1]~,1)
+        %3 = 22
+        ? nf = nfinit(y^2-5);
+        ? A = alginit(nf,[-1,y]);
+        ? a = [1+x+y,2*y]~*Mod(1,y^2-5)*Mod(1,x^2+1);
+        ? t = algtrace(A,a)
+        %7 = Mod(2*y + 2, y^2 - 5)
+        ? algtrace(A,a,1)
+        %8 = 8
+        ? algdegree(A)*nfelttrace(nf,t)
+        %9 = 8
+        ? algtrace(,[1.,2,3,4]~) \\ Hamilton quaternions
+        %10 = 2.0000000000
+        ? algtrace(,[1.,2,3,4]~,0)
+        %11 = 4.0000000000
+
+        Also accepts a square matrix with coefficients in :emphasis:`al`.
+        
+
+FUNCTION alglathnf
+
+        Given an algebra :emphasis:`al` and a matrix :emphasis:`m` with columns representing
+        elements of :emphasis:`al`, returns the lattice :math:`L` generated by the columns of
+        :emphasis:`m`. If provided, :emphasis:`d` must be a rational number such that :math:`L` contains
+        :emphasis:`d` times the natural basis of :emphasis:`al`. The argument :emphasis:`m` is also
+        allowed to be a :literal:`t_VEC` of :literal:`t_MAT`, in which case :emphasis:`m` is replaced by
+        the concatenation of the matrices, or a :literal:`t_COL`, in which case :emphasis:`m` is
+        replaced by its left multiplication table as an element of :emphasis:`al`.
+
+        ::
+
+        ? al = alginit(nfinit(y^2+7), [-1,-1]);
+        ? a = [1,1,-1/2,1,1/3,-1,1,1]~;
+        ? mt = algtomatrix(al,a,1);
+        ? lat = alglathnf(al,mt);
+        ? lat[2]
+        %5 = 1/6
+        
+
+FUNCTION alglatrighttransporter
+
+        Given an algebra :emphasis:`al` and two lattices :emphasis:`lat1` and :emphasis:`lat2`
+        in :emphasis:`al`, computes the right transporter from :emphasis:`lat1` to :emphasis:`lat2`, i.e.
+        the set of :math:`x\in al` such that :math:`lat1.x \subset lat2`.
+
+        ::
+
+        ? al = alginit(nfinit(y^2+7), [-1,-1]);
+        ? lat1 = alglathnf(al,matdiagonal([1,3,7,1,2,8,5,2]));
+        ? lat2 = alglathnf(al,matdiagonal([5,3,8,1,9,8,7,1]));
+        ? tr = alglatrighttransporter(al,lat1,lat2);
+        ? a = alglatelement(al,tr,[0,0,0,0,0,0,0,1]~);
+        ? alglatsubset(al,alglatmul(al,lat1,a),lat2)
+        %6 = 1
+        ? alglatsubset(al,alglatmul(al,a,lat1),lat2)
+        %7 = 0
+        
+
+FUNCTION alginit
+
+        Initializes the central simple algebra defined by data :math:`B`, :math:`C` and
+        variable :math:`v`, as follows.
+
+        - (multiplication table) :math:`B` is the base number field :math:`K` in :literal:`nfinit`
+        form, :math:`C` is a "multiplication table" over :math:`K`.
+        As a :math:`K`-vector space, the algebra is generated by a basis
+        :math:`(e_{1} = 1,..., e_{n})`; the table is given as a :literal:`t_VEC` of :math:`n` matrices
+        in :math:`M_{n}(K)`, giving the left multiplication by the basis elements :math:`e_{i}`,
+        in the given basis.
+        Assumes that :math:`e_{1} = 1`, that the multiplication table is integral, and that
+        :math:`(\bigoplus_{i = 1}^{n}K e_{i},C)` describes a central simple algebra over :math:`K`.
+
+        ::
+
+        { mi = [0,-1,0, 0;
+        1, 0,0, 0;
+        0, 0,0,-1;
+        0, 0,1, 0];
+        mj = [0, 0,-1,0;
+        0, 0, 0,1;
+        1, 0, 0,0;
+        0,-1, 0,0];
+        mk = [0, 0, 0, -1;
+        0, 0,-1, 0;
+        0, 1, 0, 0;
+        1, 0, 0, 0];
+        A = alginit(nfinit(y), [matid(4), mi,mj,mk], , 0); }
+
+        represents (in a complicated way) the quaternion algebra :math:`(-1,-1)_{\mathbb{Q}}`.
+        See below for a simpler solution.
+
+        - (cyclic algebra) :math:`B` is an :literal:`rnf` structure attached to a cyclic
+        number field extension :math:`L/K` of degree :math:`d`, :math:`C` is a :literal:`t_VEC`
+        :literal:`[sigma,b]` with 2 components: :literal:`sigma` is a :literal:`t_POLMOD` representing
+        an automorphism generating :math:`Gal(L/K)`, :math:`b` is an element in :math:`K^{*}`.
+        This represents the cyclic algebra :math:`(L/K,\sigma,b)`. Currently the element
+        :math:`b` has to be integral.
+
+        ::
+
+        ? Q = nfinit(y); T = polcyclo(5, 'x); F = rnfinit(Q, T);
+        ? A = alginit(F, [Mod(x^2,T), 3]);
+
+        defines the cyclic algebra :math:`(L/\mathbb{Q}, \sigma, 3)`, where
+        :math:`L = \mathbb{Q} (\zeta_{5})` and :math:`\sigma:\zeta:--->\zeta^{2}` generates
+        :math:`Gal(L/\mathbb{Q})`.
+
+        - (quaternion algebra, special case of the above) :math:`B` is an :literal:`nf`
+        structure attached to a number field :math:`K`, :math:`C = [a,b]` is a vector
+        containing two elements of :math:`K^{*}` with :math:`a` not a square in :math:`K`, returns the
+        quaternion algebra :math:`(a,b)_{K}`.
+        The variable :math:`v` (:literal:`'x` by default) must have higher priority than the
+        variable of :math:`K`:literal:`.pol` and is used to represent elements in the splitting
+        field :math:`L = K[x]/(x^{2}-a)`.
+
+        ::
+
+        ? Q = nfinit(y); A = alginit(Q, [-1,-1]); \\ (-1,-1)_{Q}
+
+        - (algebra/:math:`K` defined by local Hasse invariants)
+        :math:`B` is an :literal:`nf` structure attached to a number field :math:`K`,
+        :math:`C = [d, [PR,h_{f}], h_{i}]` is a triple
+        containing an integer :math:`d > 1`, a pair :math:`[PR, h_{f}]` describing the
+        Hasse invariants at finite places, and :math:`h_{i}` the Hasse invariants
+        at archimedean (real) places. A local Hasse invariant belongs to :math:`(1/d)\mathbb{Z}/\mathbb{Z}
+        \subset \mathbb{Q}/\mathbb{Z}`, and is given either as a :literal:`t_FRAC` (lift to :math:`(1/d)\mathbb{Z}`),
+        a :literal:`t_INT` or :literal:`t_INTMOD` modulo :math:`d` (lift to :math:`\mathbb{Z}/d\mathbb{Z}`); a whole vector
+        of local invariants can also be given as a :literal:`t_VECSMALL`, whose
+        entries are handled as :literal:`t_INT` s. :literal:`PR` is a list of prime ideals
+        (:literal:`prid` structures), and :math:`h_{f}` is a vector of the same length giving the
+        local invariants at those maximal ideals. The invariants at infinite real
+        places are indexed by the real roots :math:`K`:literal:`.roots`: if the Archimedean
+        place :math:`v` is attached to the :math:`j`-th root, the value of
+        :math:`h_{v}` is given by :math:`h_{i}[j]`, must be :math:`0` or :math:`1/2` (or :math:`d/2` modulo :math:`d`), and
+        can be nonzero only if :math:`d` is even.
+
+        By class field theory, provided the local invariants :math:`h_{v}` sum to :math:`0`, up
+        to Brauer equivalence, there is a unique central simple algebra over :math:`K`
+        with given local invariants and trivial invariant elsewhere. In particular,
+        up to isomorphism, there is a unique such algebra :math:`A` of degree :math:`d`.
+
+        We realize :math:`A` as a cyclic algebra through class field theory. The variable :math:`v`
+        (:literal:`'x` by default) must have higher priority than the variable of
+        :math:`K`:literal:`.pol` and is used to represent elements in the (cyclic) splitting
+        field extension :math:`L/K` for :math:`A`.
+
+        ::
+
+        ? nf = nfinit(y^2+1);
+        ? PR = idealprimedec(nf,5); #PR
+        %2 = 2
+        ? hi = [];
+        ? hf = [PR, [1/3,-1/3]];
+        ? A = alginit(nf, [3,hf,hi]);
+        ? algsplittingfield(A).pol
+        %6 = x^3 - 21*x + 7
+
+        - (matrix algebra, toy example) :math:`B` is an :literal:`nf` structure attached
+        to a number field :math:`K`, :math:`C = d` is a positive integer. Returns a cyclic
+        algebra isomorphic to the matrix algebra :math:`M_{d}(K)`.
+
+        - (algebras over :math:`\mathbb{R}`) If :math:`B` is a :literal:`t_REAL` and :math:`C = 1/2`, returns
+        a structure representing the Hamilton quaternion algebra :math:`H =
+        (-1,-1)_{\mathbb{R}}`. If :math:`B` is a :literal:`t_REAL` and :math:`C = 0`, returns an algebra structure
+        representing :math:`\mathbb{R}`. If :math:`B` is a :literal:`t_COMPLEX` and :math:`C = 0`, returns an algebra
+        structure representing :math:`\mathbb{C}`.
+
+        In all cases over a number field, this function factors various discriminants
+        and computes a maximal order for the algebra by default, which may require a
+        lot of time. This can be controlled by :math:`flag`, whose binary digits mean:
+
+        - :math:`1`: compute a maximal order.
+
+        - :math:`2`: fully factor the discriminants instead of using a lazy
+        factorisation. If this digit of :math:`flag` is set to :math:`0`, the local Hasse invariants
+        are not computed.
+
+        If only a partial factorisation is known, the computed order is only guaranteed
+        to be maximal at the known prime factors.
+
+        The pari object representing such an algebra :math:`A` is a :literal:`t_VEC` with the
+        following data:
+
+        - A splitting field :math:`L` of :math:`A` of the same degree over :math:`K` as :math:`A`, in
+        :literal:`rnfinit` format, accessed with :literal:`algsplittingfield`.
+
+        - The Hasse invariants at the real places of :math:`K`, accessed with
+        :literal:`alghassei`.
+
+        - The Hasse invariants of :math:`A` at the finite primes of :math:`K` that ramify in
+        the natural order of :math:`A`, accessed with :literal:`alghassef`.
+
+        - A basis of an order :math:`O_{0}` expressed on the basis of the natural
+        order, accessed with :literal:`algbasis`.
+
+        - A basis of the natural order expressed on the basis of :math:`O_{0}`,
+        accessed with :literal:`alginvbasis`.
+
+        - The left multiplication table of :math:`O_{0}` on the previous basis,
+        accessed with :literal:`algmultable`.
+
+        - The characteristic of :math:`A` (always :math:`0`), accessed with :literal:`algchar`.
+
+        - The absolute traces of the elements of the basis of :math:`O_{0}`.
+
+        - If :math:`A` was constructed as a cyclic algebra :math:`(L/K,\sigma,b)` of degree
+        :math:`d`, a :literal:`t_VEC` :math:`[\sigma,\sigma^{2},...,\sigma^{d-1}]`. The function
+        :literal:`algaut` returns :math:`\sigma`.
+
+        - If :math:`A` was constructed as a cyclic algebra :math:`(L/K,\sigma,b)`, the
+        element :math:`b`, accessed with :literal:`algb`.
+
+        - If :math:`A` was constructed with its multiplication table :math:`mt` over :math:`K`,
+        the :literal:`t_VEC` of :literal:`t_MAT` :math:`mt`, accessed with :literal:`algrelmultable`.
+
+        - If :math:`A` was constructed with its multiplication table :math:`mt` over :math:`K`,
+        a :literal:`t_VEC` with three components: a :literal:`t_COL` representing an element of :math:`A`
+        generating the splitting field :math:`L` as a maximal subfield of :math:`A`, a :literal:`t_MAT`
+        representing an :math:`L`-basis :math:`B` of :math:`A` expressed on the :math:`\mathbb{Z}`-basis of
+        :math:`O_{0}`, and a :literal:`t_MAT` representing the :math:`\mathbb{Z}`-basis of :math:`O_{0}`
+        expressed on :math:`B`. This data is accessed with :literal:`algsplittingdata`.
+        
+TEST ff t
+TEST eigenbasis [[[Vecsmall([15]), [37, 2, [[[1, [0]], [1, [], []], [[]~, Vecsmall([])], [[], [], [;], [], [], []], [;]], []~, 1, t - 1], y]], [[[Vecsmall([9]), [37, 2, [[[1, [0]], [1, [], []], [[]~, Vecsmall([])], [[], [], [;], [], [], []], [;]], []~, 1, t - 1], y]], [[[1, [0]], [1, [], []], [[]~, Vecsmall([])], [[], [], [;], [], [], []], [;]], []~, 1, t - 1]], [[Vecsmall([20]), [37, 2, [[[1, [0]], [1, [], []], [[]~, Vecsmall([])], [[], [], [;], [], [], []], [;]], []~, 1, t - 1], y]], Vecsmall([2, 2, 37]), [[Vecsmall([9]), [37, 2, [[[1, [0]], [1, [], []], [[]~, Vecsmall([])], [[], [], [;], [], [], []], [;]], []~, 1, t - 1], y]], [[[1, [0]], [1, [], []], [[]~, Vecsmall([])], [[], [], [;], [], [], []], [;]], []~, 1, t - 1]]]], [2, 1]~, 2], [[Vecsmall([15]), [37, 2, [[[1, [0]], [1, [], []], [[]~, Vecsmall([])], [[], [], [;], [], [], []], [;]], []~, 1, t - 1], y]], [[[Vecsmall([20]), [37, 2, [[[1, [0]], [1, [], []], [[]~, Vecsmall([])], [[], [], [;], [], [], []], [;]], []~, 1, t - 1], y]], Vecsmall([2, 2, 37]), [[Vecsmall([9]), [37, 2, [[[1, [0]], [1, [], []], [[]~, Vecsmall([])], [[], [], [;], [], [], []], [;]], []~, 1, t - 1], y]], [[[1, [0]], [1, [], []], [[]~, Vecsmall([])], [[], [], [;], [], [], []], [;]], []~, 1, t - 1]]]], [-1], 2]]
+TEST Hecke [0, 0; 1, -2]

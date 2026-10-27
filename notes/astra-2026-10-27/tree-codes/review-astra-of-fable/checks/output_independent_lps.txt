@@ -1,0 +1,36 @@
+
+X^{5,11} n=660 degree=6 bipartite=False B_shape=(3960, 3960) B_nnz=19800
+N_k= [0, 0, 0, 0, 0, 3960, 110880, 475200] prime_cycle_counts= [0, 0, 0, 0, 0, 660, 15840, 59400]
+k= 1 spectral= -2.683281573 orbit_weight_sum= 0 correct_residual= 1.008e-13 Theorem4.3_residual= 1.00808250636e-13
+k= 2 spectral= -533.2 orbit_weight_sum= 0 correct_residual= 0.000e+00 Theorem4.3_residual= 0
+k= 3 spectral= -11.2697826066 orbit_weight_sum= 0 correct_residual= 3.553e-15 Theorem4.3_residual= 3.5527136788e-15
+k= 4 spectral= -130.64 orbit_weight_sum= 0 correct_residual= -1.137e-13 Theorem4.3_residual= -1.13686837722e-13
+k= 5 spectral= -55.9195879813 orbit_weight_sum= 0 correct_residual= 1.634e-13 Theorem4.3_residual= 1.63424829225e-13
+k= 6 spectral= -114.448 orbit_weight_sum= 31.68 correct_residual= 8.527e-14 Theorem4.3_residual= 8.52651282912e-14
+k= 7 spectral= 117.184272856 orbit_weight_sum= 396.696347752 correct_residual= -3.695e-13 Theorem4.3_residual= -3.69482222595e-13
+k= 8 spectral= 131.0944 orbit_weight_sum= 760.32 correct_residual= -4.832e-13 Theorem4.3_residual= -4.83169060317e-13
+largest nontrivial |lambda|= 4.372281323269031 max_correct_residual= 4.831690603168681e-13 max_printed_Theorem4.3_residual= 4.831690603168681e-13
+
+X^{5,13} n=2184 degree=6 bipartite=True B_shape=(13104, 13104) B_nnz=65520
+N_k= [0, 0, 0, 0, 0, 0, 0, 1048320] prime_cycle_counts= [0, 0, 0, 0, 0, 0, 0, 131040]
+k= 1 spectral= 0 orbit_weight_sum= 0 correct_residual= 0.000e+00 Theorem4.3_residual= 2.683281573
+k= 2 spectral= -1757.6 orbit_weight_sum= 0 correct_residual= 2.274e-13 Theorem4.3_residual= -5.2
+k= 3 spectral= 1.13686837722e-12 orbit_weight_sum= 0 correct_residual= 1.137e-12 Theorem4.3_residual= 11.2697826066
+k= 4 spectral= -399.52 orbit_weight_sum= 0 correct_residual= 8.527e-13 Theorem4.3_residual= -25.04
+k= 5 spectral= 2.84217094304e-13 orbit_weight_sum= 0 correct_residual= 2.842e-13 Theorem4.3_residual= 55.9195879813
+k= 6 spectral= -319.904 orbit_weight_sum= 0 correct_residual= 1.933e-12 Theorem4.3_residual= -125.008
+k= 7 spectral= -1.13686837722e-12 orbit_weight_sum= 0 correct_residual= -1.137e-12 Theorem4.3_residual= 279.512074896
+k= 8 spectral= 413.3312 orbit_weight_sum= 1677.312 correct_residual= -2.956e-12 Theorem4.3_residual= -625.0016
+largest nontrivial |lambda|= 4.249720849060811 max_correct_residual= 2.9558577807620168e-12 max_printed_Theorem4.3_residual= 625.001600000003
+
+X^{5,29} n=12180 degree=6 bipartite=False B_shape=(73080, 73080) B_nnz=365400
+N_k= [0, 0, 0, 0, 0, 0, 0, 0, 2630880, 13154400, 54663840, 251979840] prime_cycle_counts= [0, 0, 0, 0, 0, 0, 0, 0, 292320, 1315440, 4969440, 20998320]
+largest nontrivial |lambda|= 4.442016442593819 first nonzero N length= 9 claimed girth bound 2 log_5 n= 11.690479599844878
+
+MEET-IN-THE-MIDDLE INTEGER QUATERNION CHECK r=11
+k= 6 tailless= 6 ell_values= [6] tailed= 0 tailed_ell_values= []
+k= 7 tailless= 168 ell_values= [7] tailed= 0 tailed_ell_values= []
+k= 8 tailless= 720 ell_values= [8] tailed= 24 tailed_ell_values= [6]
+(1-2k)^6 = (117, 0, 0, -44) trace= 234 norm= 15625
+r=29 length-9 tailless identity words= 216 first witness= ((0, 0, 2, 5, 5, 0, 2, 2, 5), (549, -58, -406, 1218)) N9= 2630880
+ALL INDEPENDENT LPS CHECKS PASSED; seconds= 12.446122194000054

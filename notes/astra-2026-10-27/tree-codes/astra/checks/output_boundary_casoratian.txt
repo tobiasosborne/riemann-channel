@@ -1,0 +1,25 @@
+Binding convention M= Matrix([[lambda, -p], [1, 0]]) Omega= Matrix([[0, 1], [-1, 0]]) V= Matrix([[0, p], [-1, lambda]]) Weil Q= Matrix([[1, -lambda/2], [-lambda/2, p]])
+det(Q)= (-lambda**2 + 4*p)/4
+Characteristic-coordinate Omega= Matrix([[0, alpha - beta], [-alpha + beta, 0]])
+Characteristic-coordinate Q= Matrix([[0, -alpha**2/2 + alpha*beta - beta**2/2], [-alpha**2/2 + alpha*beta - beta**2/2, 0]])
+General Casoratian p^-n*(f_(n+1)g_n-f_n g_(n+1)) is constant; for alpha^n,beta^n it is alpha-beta.
+Endpoint p=3, lambda=2sqrt(3): Q= Matrix([[1, -sqrt(3)], [-sqrt(3), 3]]) rank= 1 det= 0
+Poisson inverse: p=3, lambda=-1, alpha=(-0.49999999999999994+1.6583123951777j), beta=(-0.49999999999999994-1.6583123951777j), radius=4, leaves=108, tested vertices=161
+reconstruction error=1.88819530585415123e-15; root mass error=4.71027737605132476e-16; cylinder additivity error=2.35513868802566238e-16
+Spherical P_alpha(visual)=P_beta(visual) error=3.2265856653168612e-16
+Radial spherical Casoratians (zero)= [5.204170427930429e-16j, 1.3075478200175169e-16j, -2.5097111888694476e-15j, 2.457018963286654e-15j]
+Horocyclic plane-wave Casoratians= [3.3166247903554j, 3.316624790355399j, 3.3166247903553985j, 3.3166247903553994j] expected alpha-beta= 3.3166247903554j
+Boundary kernel depth=0: L2 norm squared=1; L1 norm=1; exact L1 formula=1
+Boundary kernel depth=1: L2 norm squared=1.0000000000000002; L1 norm=0.86602540378443882; exact L1 formula=0.8660254037844386
+Boundary kernel depth=2: L2 norm squared=0.99999999999999989; L1 norm=0.66666666666666641; exact L1 formula=0.66666666666666663
+Boundary kernel depth=3: L2 norm squared=1.0000000000000002; L1 norm=0.48112522432468813; exact L1 formula=0.48112522432468818
+Boundary kernel depth=4: L2 norm squared=0.99999999999999944; L1 norm=0.33333333333333343; exact L1 formula=0.33333333333333331
+Squared L2 norms of depth-n conditional boundary densities for this graph mode, n=1..4= [1.6, 4.08888888888889, 15.111111111111102, 44.62222222222221]
+K5 nontrivial lambda=-1: 4p-lambda^2=11, ||F_plus||^2=2, direct Weil Q=22, boundary Q=(22.00000000000001-3.434752482434078e-15j), exact expected=22
+Poisson inverse: p=3, lambda=3.7320508075688772, alpha=(2.5603241921809596+0j), beta=(1.1717266153879176+0j), radius=4, leaves=108, tested vertices=161
+reconstruction error=3.85802501057241898e-15; root mass error=3.85802501057241898e-15; cylinder additivity error=4.85722573273505986e-17
+Spherical P_alpha(visual)=P_beta(visual) error=5.66213742558829836e-15
+Radial spherical Casoratians (zero)= [(-1.687538997430238e-14+0j), (8.644936618414552e-14+0j), (-1.6105635343895603e-13+0j), (8.421247238638224e-15+0j)]
+Horocyclic plane-wave Casoratians= [(1.388597576793042+0j), (1.3885975767930419+0j), (1.3885975767930425+0j), (1.3885975767930423+0j)] expected alpha-beta= (1.388597576793042+0j)
+Nontrivial counterexample to automatic boundary positivity: C12 x C3, vertices=36, degree=4, lambda=2+sqrt(3)= 3.7320508075688772
+Weil value for F_plus=F_minus=unit eigenvector: exact= 5 - 4*sqrt(3) decimal= -1.9282032302755088
