@@ -2,6 +2,19 @@
 
 # HANDOFF — riemann-channel
 
+## Session 2026-10-27: IN PROGRESS — round `notes/astra-2026-10-27/` (two topics, Fable + astra provers blind, then cross-family reviews)
+
+TJO: "i don't like the overlap interp ... What is powerful here is rationals as a lattice in adeles *and* symplectic geometry ... choose two fable
+subagents and two astra subagents. Each pair of fable+astra works out a proof, then they exchange and review." Earlier today: the old laptop's
+13 unpushed commits (astra round 2026-10-25) were fast-forwarded onto master and pushed. Topics: T `tree-codes/` (the tree at p as the space of
+local GKP codes, geodesics as transverse Lagrangians, the squeeze as the step, Ihara's Euler product as the zeta of the squeezes in Γ, orbit terms
+as p-adic Lefschetz traces) and P `pizer/` (the supersingular ℓ-isogeny graph mod p as Γ\T_ℓ, its Ihara zeta as the L-polynomial of X₀(p) over F_ℓ,
+the label phase space as H¹). Provers: `<topic>/astra/` (codex:gpt-6-astra, via `scripts/astra_lane.sh`) and `<topic>/fable/` (claude:fable-5.1
+agent). **Recovery:** if this session dies, each astra lane resumes with `scripts/astra_lane.sh notes/astra-2026-10-27/<topic>/astra` (session id in
+`session.id`); the Fable lanes must be relaunched from `lane-brief.md`. Then run the cross reviews per `brief.md` ("Design"). PARI venv:
+`/tmp/claude-1000/-home-tobias-Projects-riemann-channel/dcae8e10-414e-4cb4-8b95-d35e159cfb50/scratchpad/venv-astra` (uv; rebuild with
+`uv venv ... && uv pip install cypari2 python-flint numpy sympy mpmath networkx` after a reboot). Nothing registered; gate untouched.
+
 ## Session 2026-10-25: nine astra lanes — five REFUTE reviews of the whole 2026-10-23 round, four new conjectures; all finished; record only
 
 TJO: exploit the codex quota before its reset; up to six astras concurrently; use astras to review; stop launching at the reset
