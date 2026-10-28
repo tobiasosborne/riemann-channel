@@ -1,5 +1,7 @@
 # Pizer graphs, modular curves, and their integral label lattice
 
+> **Status (tidy 2026-10-28): UNREVIEWED.** The planned cross-family (claude:fable) REFUTE review of this proof was not run: the round was held on 2026-10-27. Nothing here is endorsed by a second reader. Not registered.
+
 Author: `codex:gpt-6-astra`
 
 Date: 2026-10-27. Blind prover lane; no other prover's work was read. All literature citations below are **from memory**, as required by the round brief. Nothing is registered or promoted here.

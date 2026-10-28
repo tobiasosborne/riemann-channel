@@ -1,5 +1,7 @@
 # Topic P (Fable lane): the Pizer graph as Γ\T_ℓ, its Ihara zeta as the L-polynomial of X₀(p) over F_ℓ, its label phase space as H¹
 
+> **Status (tidy 2026-10-28):** cross-family REFUTE-reviewed by codex:gpt-6-astra (`../review-astra-of-fable/astra-proofs.md`): 9 VALID / 13 MINOR / 1 INVALID / 2 UNVERIFIED. MINOR corrections applied below as marked annotations; INVALID and UNVERIFIED items flagged in place. Not registered in db/. Not yet turned into a record page.
+
 Author: `claude:fable-5.1`, 2026-10-27. Blind of `pizer/astra/`. Brief: `../lane-brief.md`; round brief `../../brief.md` (binding; the
 steer "lattice, symplectic form, map or identity; never an overlap" is followed: nothing below uses an overlap).
 Scripts: `checks/pizer_graph.py` (P1), `checks/pizer_quotient.py` (P2), `checks/label_lattice.py` (P3); outputs `checks/output_*.txt`.
@@ -20,6 +22,8 @@ and (at ℓ = 7, in the 3-part) **is not** H₁(J₀(37)) either — the graph p
 the primes dividing the component-group order n = (p−1)/12; P3(c) SKETCHED: Ω on the nontrivial label lattice is the doubled
 Grothendieck monodromy pairing of the toric reduction of J₀(p) at p (discriminant n² = |Φ_p|²), not the unimodular Weil pairing on
 H₁(X₀(p), Z). P4 written as HEURISTIC with one PROVED negative (the Tate module is not the completion of the label lattice).
+
+*Review 2026-10-28 (astra review, VERDICT conj:pizer-lattice-away-from-eisenstein: INVALID):* the headline claim that the obstruction sits at the primes dividing n is refuted in both directions: necessity fails at (p,ℓ,q) = (37,2,3), (37,5,3) (Frobenius polynomial squarefree mod 3, so the lattices agree although 3 | n); sufficiency fails at (37,139,2) (graph 2-torsion rank two in the cokernel Z/4 ⊕ Z/4896, Jacobian J(C)[2](F₁₃₉) ≅ (Z/2)⁴). The (37,7,3) refutation stands.
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -91,6 +95,8 @@ Jacobian. So G(p, ℓ) is Ramanujan for every p and ℓ ≠ p. In the record's l
 positive semidefinite on the nontrivial label modes iff B(ℓ)² ≤ 4ℓ there (`graph-ihara.md` §6), and that is exactly Weil's theorem for J₀(p)/F_ℓ.
 Table: max |a_ℓ(f)| at (p, ℓ) = (73, 2): 2.618 < 2.828; (101, 2): 2.763 < 2.828; (101, 7): 4.701 < 5.292 (all 20 cells printed; all pass).
 
+*Review correction 2026-10-28 (astra review, VERDICT P1: MINOR):* the displayed Weil form is for the wrong convention. For M = ((B,−ℓ),(1,0)) and V = ℓM⁻¹ = ((0,ℓ),(−1,B)) one has ½Ω(M−V) = ((I, −B/2),(−B/2, ℓI)) (old ((ℓ,B/2),(B/2,1)) → new ((1,−B/2),(−B/2,ℓ))); the old form belongs to the other convention of `graph-ihara.md`. The positivity criterion B² ≤ 4ℓ is unchanged. For unequal weights the function-side form must use Ω_{W⁻¹} (or symmetric coordinates); the ordinary Ω is not a symplectic similitude for nonsymmetric B.
+
 **Zeta.** Hence, for p ≡ 1 mod 12 (all w_i = 1) and with the Hashimoto operator of 1.3,
 
     ζ_{G(p,ℓ)}(u) = det(1 − uB_H)^{-1} = (1 + u)^{−f} (1 − u²)^{−((N−f)/2 − n)} / [(1 − u)(1 − ℓu) P_{p,ℓ}(u)],   N = (ℓ+1)n,
@@ -105,6 +111,8 @@ groups / tree lattice and proves the Ihara-type determinant formula with the sta
 structure). On the Brandt module with Gross's pairing ⟨e_i, e_j⟩ = w_i δ_{ij} the operator B(ℓ) is self-adjoint (that is (B2)), which is the
 invariant way to say "symmetric after weighting". I do not claim more than this for the weighted zeta (SKETCHED: the identification with
 Bass's zeta of the graph of groups is cited, not re-derived here).
+
+*Review 2026-10-28 (astra review, VERDICT P1-weighted-zeta: UNVERIFIED):* the weighted determinant identity (P1) is proved, but the identification with Bass's zeta of a graph of groups does not define the edge operator, its weights or its Euler factors, and a bibliography is not a verification. Do not register until these are supplied and tested, e.g. at (p,ℓ) = (11,2).
 
 ### 1.3 Ihara–Bass for the Pizer multigraph: loops, and half-loops. PROVED, and the brief's question settled.
 
@@ -128,6 +136,8 @@ contributes 1 to the degree, a loop pair 2, exactly as in B(ℓ)), and B_H = TS�
 SᵀK^{-1}T = (SᵀT − uSᵀJT)/(1−u²) = (A − u(ℓ+1))/(1−u²) because JT = S. So det(1_n − uSᵀK^{-1}T) = det((1−u²) − uA + (ℓ+1)u²)/(1−u²)^n =
 det(1 − Au + ℓu²)/(1−u²)^n. Finally J has f eigenvalues +1 from its fixed points and (N−f)/2 two-cycles each contributing (1+u)(1−u), so
 det K = (1+u)^f (1−u²)^{(N−f)/2}. ∎
+
+*Review correction 2026-10-28 (astra review, VERDICT lem:ihara-bass-half-loops: MINOR):* hypotheses. The lemma holds for a finite set of arcs with origin/terminus and an arc involution J (fixed arcs allowed, necessarily loops), each vertex having ℓ+1 outgoing arcs. The count f = #{trace-zero norm-ℓ elements}/2 holds only when all vertex weights w_i = 1 (p ≡ 1 mod 12); at vertices with larger automorphism groups it is not asserted, and weighted graphs of groups need a separate formula. Determinant derivation and exponents are correct. Degenerate checks: one vertex with one fixed arc gives 1; one vertex with one loop pair gives (1−u)².
 
 So: for a multigraph whose loops are oriented pairs (f = 0) the record's formula (1 − u²)^{|E|−|V|} det(1 − Au + ℓu²) holds with |E| = N/2 and the
 loop counted twice in the degree and twice in A_ii; for the Pizer graph with the dual-isogeny reversal the loop count in B(ℓ)_{ii} is *once per
@@ -172,11 +182,15 @@ p = 73: B(2) = [[2,0,0,1,0,0],[0,0,1,1,1,0],[0,1,0,1,0,1],[1,1,1,0,0,0],[0,1,0,0
 p = 109, ℓ = 7: B(7) 9 × 9 printed, P_{109,7} of degree 16 printed, #X₀(109)(F₇) = 8... see the output (the counts are 5, 4, 8, 14 for ℓ = 2, 3, 5, 7
 at p = 109; 3, 2, 10, 8 at p = 101; 4, 6, 8, 14 at p = 73; 5, 5, 5, 10 at p = 11).
 
+*Review correction 2026-10-28 (astra review, VERDICT P1-numerics: MINOR):* #X₀(109)(F₇) = 10, not 8 (and not 14, as in the list on the previous line): Tr B(7) = 6, Tr T₇ = −2, so 8 − (−2) = 10. The correct counts at p = 109 for ℓ = 2, 3, 5, 7 are 5, 4, 8, 10 (recomputed 2026-10-28 with PARI mfheckemat: confirmed). The saved script output is correct; only this prose is wrong.
+
 **The model of X₀(37).** The brief's model y² = −x⁶ − 9x⁴ − 11x² + 37 (from memory, Mazur–Swinnerton-Dyer 1974) is **confirmed**:
 `hyperellcharpoly` over F_ℓ equals ∏_f (x² − a_ℓ(f)x + ℓ) from `mfheckemat` for ℓ = 3, 5, 7, 11, 13, 17, 19, 23 (eight exact equalities of quartics,
 e.g. ℓ = 5: x⁴ + 2x³ + 10x² + 10x + 25 = (x² + 2x + 5)(x² + 5)), and a direct point count of the model (affine points plus the two points at
 infinity, y² = −1) gives 6, 8, 10, 14, 20, 12, 18, 16 = ℓ + 1 − Tr T_ℓ. At ℓ = 2 this model is singular (y² = (x³+x²+x+1)² mod 2); X₀(37) has good
 reduction at 2 and #X₀(37)(F₂) = 5 comes from the Hecke trace a₂(37a) + a₂(37b) = −2 + 0.
+
+*Review correction 2026-10-28 (astra review, VERDICT P1-numerics (ledger item 3): MINOR):* matching numerators over F_ℓ for a finite list of ℓ is a consistency check, not a proof that the genus-two model is X₀(37); the identification rests on the cited literature input (Mazur–Swinnerton-Dyer, from memory). Mass and tabulated weights/genus counts stand.
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -203,12 +217,16 @@ correspondence (from memory: Deuring 1941; Gross 1987 §2; Voight, *Quaternion a
 left ideal classes of O = End(E₀), and Cl(O) = B^×(Q)\B^×(A_f)/Ô^× (the adelic description of the class set; Voight Ch. 27, from memory). Under it
 the ℓ-isogenies E_I → E_I/C correspond to the ℓ + 1 left ideals J ⊂ I of index ℓ², and E_J = E_I/C; so B(ℓ)_{[I][J]} = #{J ⊂ I index ℓ² : [J] = [J′]}.
 
+*Review correction 2026-10-28 (astra review, VERDICT prop:pizer-tree-quotient: MINOR):* convention: Hom(E₀,E) is naturally a right End(E₀)-module. To use left ideals and right orders as here, take Hom(E,E₀), or reverse every ideal convention consistently.
+
 **Theorem (P2). PROVED.** For every p and every ℓ ≠ p, with Γ := O[1/ℓ]^×/Z[1/ℓ]^× acting on T_ℓ through O ⊗ Q_ℓ ≅ M₂(Q_ℓ):
 
     G(p, ℓ) ≅ Γ\T_ℓ   as quotient multigraphs (vertices = Γ-orbits of vertices, edges = Γ-orbits of edges, half-loops = edges inverted by Γ),
 
 with vertex stabilisers Γ_{[I]} ≅ O_R(I)^×/±1 of order w_{[I]}. It is **one** connected quotient for one order O (not a disjoint union over the
 class set, and not a two-colour cover): Γ always contains elements of odd norm valuation, so Γ\T_ℓ is not bipartite.
+
+*Review correction 2026-10-28 (astra review, VERDICT prop:pizer-tree-quotient: MINOR):* for general p the identification is with the edge-indexed quotient graph / graph of groups, not an ordinary orbit multigraph: at nontrivial stabilisers the stabiliser can identify distinct outgoing tree edges, and the Brandt entry is the sum of indices [Γ_v:Γ_e] over the corresponding edge orbits (e.g. B₁₁(2) = ((1,2),(3,0)) at p = 11 is asymmetric, so not an undirected adjacency matrix). The unweighted multigraph statement, with inversions, holds when all w_i = 1.
 
 *Proof.* (a) *Reduction to one place.* Claim: B^×(A_f) = B^×(Q) · B^×(Q_ℓ) · Ô^×. Given x ∈ B^×(A_f), write nrd(x) = r·t·v with r ∈ Q^×_{>0},
 t ∈ Q_ℓ^×, v ∈ Ẑ^× (possible: A_f^× = Q^×_{>0}·Q_ℓ^×·Ẑ^×, indeed A_f^× = Q^×_{>0}Ẑ^×). Choose γ ∈ B^×(Q) with nrd γ = r (Hasse–Schilling–Maass:
@@ -244,6 +262,8 @@ conjugates Γ inside B^× (O′ = αOα^{-1} need not hold — maximal orders fa
 isomorphic since both are G(p, ℓ)); the vertex Γ·[Z_ℓ²] is the class of O itself. (3) For p ≢ 1 mod 12 the quotient has vertex groups of order
 w_i and the "graph" is a graph of groups; its Ihara zeta in Bass's sense is the weighted object of §1.2.
 
+*Review correction 2026-10-28 (astra review, VERDICT prop:pizer-tree-quotient: MINOR):* Remark (2): the number of conjugacy types of maximal orders need not equal the class number, so "maximal orders fall into h types" is not justified. Localisations of different maximal orders can be related through an ℓ-supported ideal representative; the quotient then has the same class-set description. This does not imply the maximal orders are rationally conjugate.
+
 ### 2.3 Exact check at p = 37 (h = 3) on the quaternion side. `checks/pizer_quotient.py`, output `checks/output_pizer_quotient.txt`. NUMERICAL, all exact.
 
 B = (−2, −37)_Q, verified ramified exactly at {37, ∞} (`algramifiedplaces`). Maximal order O from `alginit`, Z-basis (rows in 1, i, j, k):
@@ -258,6 +278,8 @@ Half-loops from the orders, f_ℓ = Σ_i #{γ ∈ O_i : trd γ = 0, nrd γ = ℓ
 Elements of norm ℓ in the three orders: (2, 0, 0), (4, 0, 0), (4, 2, 2), (4, 4, 4) — consistent with the diagonal of B(ℓ) through
 #{γ ∈ O_i : nrd γ = ℓ} = |O_i^×|·B(ℓ)_{ii} = 2B(ℓ)_{ii} (e.g. ℓ = 7: 4 = 2·2 at every vertex). So the quotient-graph description and the Φ_ℓ graph
 agree exactly, including the inversion structure.
+
+*Review correction 2026-10-28 (astra review, VERDICT P2-quaternion: MINOR):* the reduced-trace Gram determinant of O is −1369 (signed), not 1369: the script computes the absolute value 37² = 1369 and labels it as the determinant (1369 → −1369). The reduced discriminant 37 and maximality are unchanged. All matrices and half-loop counts reproduce.
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -282,6 +304,8 @@ semisimple, Weil / Tate; from memory), so the isomorphism holds in all cases ove
 (both are ⊕ over the distinct irreducible factors with equal multiplicities; checked at the level of characteristic polynomials in all 12 cells:
 `output_label_lattice.txt`, "equal True"). The Weil form ½Ω(M − V) restricted to L₀ is positive semidefinite iff B(ℓ)² ≤ 4ℓ on L₀ iff Weil's theorem
 for J₀(p)/F_ℓ (§1.2). So **the graph's phase space is H¹ of the modular curve rationally, with M_ℓ = Frobenius at ℓ.** ∎
+
+*Review correction 2026-10-28 (astra review, VERDICT prop:pizer-label-space-h1 / P3-rational: MINOR):* "B symmetric, hence M|L₀ semisimple" is false in general (a scalar adjacency eigenvalue a = 2√ℓ gives a Jordan block in ((a,−ℓ),(1,0))). Repair: at every printed cell gcd(χ_{T_ℓ}(t), t²−4ℓ) = 1 (strict Weil inequality, rational interval isolation); in general, each quadratic factor has distinct roots because a_ℓ² = 4ℓ would force Frobenius scalar on crystalline H¹ and contradict weak admissibility (Fontaine, from memory). The comparison should be stated over Q_q, q ≠ ℓ (q = p allowed): (L₀⊗Q_q, M_ℓ) ≅ (V_q J₀(p)_{F_ℓ}, F_ℓ) as semisimple one-operator modules; it is a noncanonical rational realisation, not a canonical Betti/Galois identification, and not an integral one in general.
 
 ### 3.2 (a) Smith normal forms of 1 − M^k on L₀. NUMERICAL (exact), `checks/label_lattice.py`.
 
@@ -340,6 +364,10 @@ k = 3 on both sides), so the data are consistent with the conjecture that L₀ �
 this is OPEN (NUMERICAL at one prime p; see 3.4 for the mechanism and `data-ladder.md` §1.2 for why it matters: the counts fix the isogeny class,
 the graph fixes a lattice, and it is a different lattice from the one the Weil pairing on the curve fixes).
 
+*Review 2026-10-28 (astra review, VERDICT conj:pizer-lattice-away-from-eisenstein: INVALID):* printed cells refute necessity: at (p,ℓ,q) = (37,2,3), (37,5,3) the Frobenius polynomial is squarefree mod 3, so Z₃[t]/(χ_F) is étale, every F-stable lattice is free, and the graph and Jacobian Tate lattices agree although 3 | n (same for the new cell (37,11,3)). The independent cell (37,139,2) refutes sufficiency (graph cokernel Z/4 ⊕ Z/4896 has 2-torsion rank two; J(C)[2](F₁₃₉) ≅ (Z/2)⁴ since all six Weierstrass points are rational, so 2 ∤ 3 yet the modules differ). Status: REFUTED, not OPEN. The condition q ∤ n says only that the specified graph pairing is perfect at q.
+
+*Review correction 2026-10-28 (astra review, VERDICT num:pizer-label-lattice-smith / P3b: MINOR):* (1) "Ordinary at ℓ = 5, 7 since a_ℓ ≢ 0 mod ℓ" is false at ℓ = 5 (a₅(E₂) = 0), so the Deligne-module argument is not available there. Use instead, for q ≠ ℓ, T_qA/(1−F^k)T_qA ≅ A(F_{ℓ^k})[q^∞] (1−F^k is invertible on V_qA); this rigorously gives the refutations vs the product at (q,ℓ) = (2,5) and (3,7), and vs the Jacobian at (3,7). (2) "J₀(37) = (E₁×E₂)/(graph of E₁[2] ≅ E₂[2])" is a from-memory assertion superseded by an explicit one: C: y² = −x⁶−9x⁴−11x²+37 has elliptic quotients π₁(x,y) = (−x²,y) and π₂(x,y) = (37/x², 37y/x³) (not "the quotient by the hyperelliptic involution", which has genus 0) onto E₊: Y² = X³−9X²+11X+37 and E₋: Y² = X³−11X²−333X−1369, isomorphic via (X,Y) = (4u+3, 8v+4), (4u+5, 8v+4) to E₁: v²+v = u³−u and E₂: v²+v = u³+u²−23u−50. The induced α: E₁×E₂ → J(C), β: J(C) → E₁×E₂ satisfy βα = [2]×[2], so deg α = deg β = 4 with 2-primary kernels (conditional on the model being X₀(37)); odd-primary Tate modules and point groups are identified. This certifies the 3-part conclusion at ℓ = 7: graph (Z/9)², Jacobian Z/9 ⊕ (Z/3)². (3) The "undecidable" 2-part at ℓ = 5 is resolved: #J[2](F₅) = 2 and Frobenius mod 2 is one Jordan block (t+1)⁴, so it is cyclic on both sides and, lifting a cyclic vector, L₀⊗Z₂ ≅ T₂J₀(37)_{F₅} as Frobenius modules; the discrepancy with the product at 2 is genuine. (4) The third-lattice conclusion holds at (37,7,3) but is not universal in ℓ, nor confined to primes dividing n. All 48 invariant factors are correct.
+
 ### 3.4 (c) Ω on the label lattice versus the Weil pairing on H₁(X₀(p), Z). SKETCHED, with one PROVED obstruction.
 
 **Obstruction (PROVED).** In the basis (e_i − e_n, 0), (0, e_i − e_n), i < n, of L₀, Ω|L₀ = ((0, C), (−C, 0)) with C_{ij} = 1 + δ_{ij} the Gram matrix of
@@ -364,8 +392,12 @@ one-operator realisation, exactly as in 04z. When X ⊗ Z_q is free of rank one 
 Gorenstein maximal ideals; from memory) and T_q J₀(p) is free of rank 2 over T ⊗ Z_q with Frob_ℓ having a cyclic vector (e.g. ρ_m(Frob_ℓ) not scalar
 mod m), one gets L₀ ⊗ Z_q ≅ T_q J₀(p) as Z_q[Frob_ℓ]-modules; the Eisenstein primes q | n = |Φ_p| are where these hypotheses are delicate, and q = 3 at
 p = 37 is where 3.3 found the failure. I have not proved the conditional statement; it is the natural explanation of the table and is left OPEN.
+
+*Review 2026-10-28 (astra review, VERDICT P3c-freeness: UNVERIFIED):* the from-memory Mazur citation does not establish the freeness (X⊗Z_q free of rank one over T⊗Z_q, T_qJ free of rank two) and cyclicity hypotheses at the maximal ideals away from n; the cell (37,139,2) shows such an inference can fail. The conditional cyclic-basis criterion itself is VALID (P3c-cyclic-criterion); no unconditional freeness claim is established.
 The Weil pairing on T_q J₀(p) is perfect, Ω|L₀ ⊗ Z_q is perfect iff q ∤ n: so even where the modules might agree, the symplectic forms agree at most
 up to the index n, never integrally when q | n.
+
+*Review correction 2026-10-28 (astra review, VERDICT P3c: MINOR):* the monodromy obstruction det Ω|L₀ = n² holds but is an obstruction for the specified form only; it does not imply the conjectured criterion for unpaired Frobenius lattices (see INVALID verdict on `conj:pizer-lattice-away-from-eisenstein` above). Over Z_q the obstruction is exactly q | n. A rational identification of the alternating spaces and a separate rational identification of the one-operator modules do not give a simultaneous polarised identification. The weighted generalisation has Gram determinant (∏w_i)(Σ1/w_i), not n (5 at p = 11, 25 at p = 101); the unweighted hypothesis p ≡ 1 mod 12 must be kept.
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -382,6 +414,8 @@ Z[class set]. There is no ℓ-local reason for them to exist — they are the h 
 same lattice Z[S_p]^0 serves every ℓ at once (3.3 (iii)). HEURISTIC conclusion: a finite-rank H¹ for ζ would need a global, non-abelian class set
 with a Hecke action; the abelian double coset of G_m is a point.
 
+*Review correction 2026-10-28 (astra review, VERDICT P4: MINOR):* "genus 0, no finite-rank H¹" refers to the absence of nontrivial label modes after removing the Eisenstein plane. It is not a statement about ordinary graph cohomology (the one-loop graph has H₁ ≅ Z), nor does a trivial class set prove a nonexistence theorem for cohomological realisations of ζ. Also "the tree of G_m" needs the valuation/extended-building convention (Q_ℓ^×/Z_ℓ^× ≅ Z, a line; the reduced building of a torus is a point). The conclusion remains HEURISTIC.
+
 **(ii) The two qunaughts.** Local: T_ℓ(E) ⊂ V_ℓ(E), self-dual for the Weil pairing e_{ℓ^∞}, a vertex of T_ℓ; global: L₀ = Z[S_p]^0 ⊕ Z[S_p]^0 with Ω and
 M_ℓ, rationally H¹(X₀(p)) with Frob_ℓ. The brief's proposed identification "T_q(J₀(p)) is the q-adic completion of the global lattice" is: **true
 rationally** for every q ≠ ℓ, p (3.1: T_q J ⊗ Q ≅ L₀ ⊗ Q_q as Q_q[Frob_ℓ]-modules, semisimple with equal characteristic polynomials), **false
@@ -393,6 +427,8 @@ pairing at p, not the Weil pairing at ℓ. They meet only through the double cos
 space of the local qunaughts. In the record's terms (`data-ladder.md` §1.2): overlaps see the order, the Weil pairing sees the class, and the graph
 sees a third thing — the Hecke module X with its monodromy form — which fixes a lattice in the isogeny class that is in general neither the
 product nor the Jacobian.
+
+*Review correction 2026-10-28 (astra review, VERDICT P4-integral-negative: MINOR):* the integral negative at (p,ℓ,q) = (37,7,3) is correct once the remembered gluing assertion is replaced by the explicit degree-four isogeny of the annotation to §3.3 above, and the coefficient prime is distinct from the residue characteristic (q = 3 ≠ 7); at the characteristic prime the full-rank lattice should not be equated with the geometric Tate module. The refutation recurs at (37,139,2) (q = 2), away from the component-group prime. The comparison is true at other cells, e.g. (37,2,3), (37,5,3).
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -411,10 +447,12 @@ product nor the Jacobian.
    the quotient is a graph of groups with vertex groups of orders w_i when p ≢ 1 mod 12.
 5. **P3's premise "nontrivial label space ≅ H¹ of the modular curve"**: true over Q, false over Z (§3.3–3.4); the trivial mode does not split off
    integrally (index n²).
+   *Review correction 2026-10-28 (astra review, VERDICT prop:pizer-label-space-h1: MINOR; ledger item 5):* say "a noncanonical rational one-Frobenius realisation; not an integral identification in general". Do not assert failure at every good prime (the comparison holds at (37,2,3) and (37,5,3)). The specified direct sum with the trivial plane has index n².
 6. **P4(ii)'s "the Tate module of the Jacobian is the ℓ-adic completion of the global lattice"**: false integrally (§4(ii)).
 7. Environment: `elldata` is absent (the Cremona equations were used and their conductors/a_ℓ verified); `polmodular(ℓ, 0, j)` rejects j ∉ F_p, so Φ_ℓ
    is computed over Z and substituted; the ℓ-division polynomial over F_{p²} is *not* a product of kernel polynomials when p ≡ ±1 mod ℓ (p = 109,
    ℓ = 5), so subgroups must be built from points.
+   *Review correction 2026-10-28 (astra review, ledger item 7):* replace "the ℓ-division polynomial is not a product of kernel polynomials" by "its irreducible factors need not themselves be whole kernel polynomials". Over a suitable field the division polynomial always factors into the cyclic-subgroup kernel polynomials, which can themselves split; grouping torsion points is a valid implementation, not a theorem that no alternative exists.
 
 ## Numerical checks for the blind lane
 
@@ -427,6 +465,7 @@ Commands (venv python = the interpreter named in the brief):
    (1+u)(1−u²)·(1−u)(1−2u)·P_{37,2}(u).
 2. p = 109, ℓ = 7: #X₀(109)(F₇) = 8, N = 72, f = 0, the degree-72 polynomial det(1 − uB_H) equals (1 − u²)^{27} det(1 − B(7)u + 7u²) exactly;
    p = 73, ℓ = 7: f = 2, N = 48, (1+u)²(1−u²)^{17} det(1 − B(7)u + 7u²).
+   *Review correction 2026-10-28 (astra review, VERDICT P1-numerics: MINOR):* #X₀(109)(F₇) = 10, not 8 (old 8 → new 10; recomputed: 7+1−Tr T₇ = 8−(−2)).
 3. X₀(37): y² = −x⁶ − 9x⁴ − 11x² + 37 has Frobenius characteristic polynomial x⁴ + 2x³ + 10x² + 10x + 25 over F₅ and x⁴ − 8x³ + 58x² − 184x + 529
    over F₂₃, both equal to ∏_f (x² − a_ℓ(f)x + ℓ); point counts 8 and 16.
 4. Quaternion side p = 37: h = 3, |O_i^×| = (2, 2, 2), mass 3/2, ideal-class B(5) = [[2,2,2],[2,1,3],[2,3,1]] ↔ Φ₅ matrix [[1,3,2],[3,1,2],[2,2,2]] under
@@ -447,6 +486,10 @@ Candidate rows (none registered; cross-family review wanted):
 | `num:pizer-label-lattice-smith` | num | NUMERICAL / REFUTED | the graph lattice is not H₁(E₁)⊕H₁(E₂) (p = 37, ℓ = 5, 7) and not H₁(J₀(37)) (ℓ = 7, 3-part); 48 Smith forms printed |
 | `prop:pizer-omega-monodromy` | prop | PROVED (obstruction) / SKETCHED (identification) | det Ω|L₀ = n² = |Φ_p|²; Ω|L₀ is the doubled monodromy pairing on X = Z[S_p]^0, not the Weil pairing on H₁(X₀(p),Z) |
 | `conj:pizer-lattice-away-from-eisenstein` | conj | OPEN | L₀ ⊗ Z_q ≅ T_q J₀(p) as Z_q[Frob_ℓ]-modules iff q ∤ (p−1)/12 (p ≡ 1 mod 12) |
+
+*Review 2026-10-28 (astra review, VERDICT conj:pizer-lattice-away-from-eisenstein: INVALID):* status OPEN is wrong; REFUTED (necessity fails at (37,2,3), (37,5,3); sufficiency fails at (37,139,2)); see §3.3 annotation.
+
+*Review 2026-10-28 (astra review, candidate-row adjudications):* `thm:pizer-ihara-zeta-x0p` VALID ("graph" means the weighted Brandt operator at nontrivial stabilisers); `prop:pizer-omega-monodromy` VALID with the p ≡ 1 mod 12 context retained, and it gives no automatic Frobenius-compatible integral identification; `lem:ihara-bass-half-loops`, `prop:pizer-tree-quotient`, `prop:pizer-label-space-h1`, `num:pizer-label-lattice-smith` MINOR with the corrections annotated above. The `data-ladder.md` rung text above should say the Pizer form is the skew doubling of monodromy with discriminant n², not identified with the Jacobian's principal Weil pairing, and that differences from the Jacobian occur at (37,7,3) and at (37,139,2) (away from the component-group primes).
 
 One-line annotations: `graph-ihara.md` §2–§3: "the K₄/E coincidence of spectra is replaced, on the Pizer graph G(p, ℓ), by the exact identity
 det(1 − B(ℓ)u + ℓu²) = (1−u)(1−ℓu)P_{p,ℓ}(u) (Eichler + Eichler–Shimura), with the graph's phase space rationally H¹(X₀(p)) and Frobenius the step;
