@@ -2,7 +2,7 @@
 
 Author: `claude:opus-5.5`, 2026-10-06, lane C of an orchestrated session.
 
-Status: **a record, not a round; nothing registered in `db/claims.tsv`; no REFUTE review; no shard.** Each statement carries one of the labels *standard* (classical; quoted from memory, since `refs/src/` is absent in this container), *proved here*, *checked* (numerically, `checks/check_cm_lift.py`), *sketched*, *heuristic*, *open* or *negative finding*. Checks: `checks/check_cm_lift.py`, output `checks/output_cm_lift.txt` (50 of 50 pass; needs PARI/GP with elldata, about 15 s).
+Status: **a record, not a round; nothing registered in `db/claims.tsv`; no REFUTE review; no shard.** Each statement carries one of the labels *standard* (classical; quoted from memory, since `refs/src/` is absent in this container), *proved here*, *checked* (numerically, `checks/check_cm_lift.py`), *sketched*, *heuristic*, *open* or *negative finding*. Checks: `checks/check_cm_lift.py`, output `checks/output_cm_lift.txt` (50 of 50 pass; needs PARI/GP with elldata, about 15 s). Record corrections of 2026-10-28 annotated in place.
 
 Conventions as in `adelic-gkp.md` and `lattice-tower.md`. $K=\mathbb Q(\sqrt{-7})$, $\mathcal O_K=\mathbb Z[w]$ with $w=\tfrac{1+\sqrt{-7}}2$ and $w^2=w-2$, $h_K=1$, $\mathcal O_K^\times=\{\pm1\}$, $d_K=-7$. The E mode is the step $M=\begin{pmatrix}0&-1\\2&-1\end{pmatrix}$ of `lattice-tower.md`, with characteristic polynomial $x^2+x+2$ and eigenvalues $\mu,\bar\mu$, $\mu=\tfrac{-1+\sqrt{-7}}2$. $L(E,s)$ is in PARI's (motivic) normalisation, with centre $s=1$; $s'=s-\tfrac12$ is the analytic variable, with centre $\tfrac12$; a zero is written $s=1+i\gamma$, i.e. $s'=\tfrac12+i\gamma$.
 
@@ -127,6 +127,8 @@ checked for 49a1 at $y=0.08,\,0.12$ to $2\times10^{-21}$ (C2). PARI's `lfuncheck
 
 **What has no global analogue** (*negative finding*, within this picture): a lattice whose step has the global zeros as eigenvalue phases; a periodic-point count whose zeta function is $L(\psi,s)$; and a vacuum whose existence implies the zeros. The global object in this picture is a Mellin transform along the radial squeeze. The lattice, the steps and the vacuum enter it only through the Euler product.
 
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/qrh-digest/astra-proofs.md`; endorsed AGREE by `notes/astra-2026-10-25/review-qrh/astra-proofs.md`):* §2.5: An auxiliary family of character sums (the twisting family of the quasi-RH route) is not a commuting family of symplectic similitudes of one $\Omega$, so it does not enter the shared-vacuum mechanism of lane M. The finite-order Hecke theorem does not cover characters of nonzero elliptic infinity type (49a1, 441d1, $\psi$ of infinity type $(1,0)$); the local/global distinction of this page survives.
+
 ## 3. Numerics
 
 **3.1 Zeros (checked C4).** Values of $\gamma$, i.e. $s=1+i\gamma$ (motivic) or $s'=\tfrac12+i\gamma$ (analytic). Each was verified by $|L(1+i\gamma)|<10^{-25}$ (the largest value was $3\times10^{-37}$). The zero counts below $T=70$ (75 for 49a1, 100 for 441d1 including $\gamma=0$) agree with $N(T)\approx\tfrac T\pi\log\tfrac{\sqrt N\,T}{2\pi e}$ to within 2.
@@ -181,6 +183,8 @@ The agreement is at the float64 limit. The packet at $E_0=2$ is where, for $\zet
 In the finite case the datum that carries RH is a vacuum invariant under the integral step on a lattice (`lattice-tower.md` §5). In the CM case the same lattice $\mathcal O_K$ and the same vacuum $J_K$ handle every Euler factor at once, so local RH comes free at every prime (*standard*). The global zeros are a different kind of object. They are frequencies of the Mellin transform of the overlap along the radial squeeze, and in this picture there is no lattice behind them. §3.4 shows that the local data, taken up to half turns, do not determine them (*negative finding*).
 
 This sits awkwardly with `lattice-tower.md` §7.3, which proposes to read zeros as oscillator frequencies and to assign the squeeze to the poles. In the CM case the oscillator frequencies are the local angles $\theta_{\mathfrak p}$. The global zeros are squeeze frequencies, and there are no poles. So the two readings describe different levels, and the closest understood intermediate case gives no support for transferring the §7.3 reading to the global object (*heuristic*).
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/qrh-digest/astra-proofs.md`; endorsed AGREE by `notes/astra-2026-10-25/review-qrh/astra-proofs.md`):* §4: An auxiliary family of character sums (the twisting family of the quasi-RH route) is not a commuting family of symplectic similitudes of one $\Omega$, so it does not enter the shared-vacuum mechanism of lane M. The finite-order Hecke theorem does not cover characters of nonzero elliptic infinity type (49a1, 441d1, $\psi$ of infinity type $(1,0)$); the local/global distinction of this page survives.
 
 *Open*, in six sentences:
 

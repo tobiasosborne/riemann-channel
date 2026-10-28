@@ -5,7 +5,7 @@ Author: `claude:opus-5.5`, 2026-10-06, lane U of an orchestrated session.
 Status: **a record, not a round; nothing registered in db/claims.tsv; no REFUTE review; no shard.** Each statement is labelled *standard*,
 *proved here*, *checked*, *sketched*, *heuristic*, *open* or *negative finding*. Theorems quoted without a line reference are from memory;
 `refs/src/` was not consulted. Checks: `checks/check_tower_pairing.py`, output `checks/output_tower_pairing.txt` (22 of 22 pass; PARI/GP 2.15.4
-through the `gp` binary, sympy; about 16 s).
+through the `gp` binary, sympy; about 16 s). Record corrections of 2026-10-28 annotated in place.
 
 The question comes from `overlap-data.md` §3, items 6–8. That page found that the overlaps of the code see only the order $\mathrm{End}(E)$. The Weil
 pairing on $E[8]$ does separate the two $q=7$ curves of class number two, but it entered as an operator-valued datum, not as an overlap, and the page
@@ -31,6 +31,8 @@ lattice $\Lambda_k=(1-V^k)L$, and its logical group $A_k=\Lambda_k^\perp/\Lambda
 - **The assignment agrees with lane F's $j$-invariant route** (checked C4, C5). The embedding $\varepsilon$ with $\varepsilon(\sqrt2)=+\sqrt2$ for the 7-adic $\sqrt2\equiv3$ makes
   $j=5$ the principal curve in `overlap-data.md` §1. Here the same $\varepsilon$, entering only through $\iota$, pairs $E_5$ with $(1,0,6)$. Flipping $\varepsilon(\sqrt2)$
   swaps the assignment. The separation is intrinsic, while the assignment depends on $\varepsilon$.
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/tower/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-tower/astra-proofs.md`):* For ordinary elliptic curves with fixed order, the compatible fixed-centre Frobenius pairing tower distinguishes exactly the genus. The $D=-24$ separation remains valid. Arbitrary-unit consistency and equality or inversion-only code comparisons are distinct equivalences; the $N=8$ separation is of the second kind and stands.
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -97,10 +99,14 @@ $\Omega(\tilde P,M^kl)\equiv\Omega(M^k\tilde P,M^kl)=q^k\Omega(\tilde P,l)$. For
 
 L1 confirms both directions. The form is ill-defined for E1 at $(k,N)=(1,2),(2,2),(4,4)$, and well defined at $(6,7)$, $(8,3)$ and for E3 at $(2,4),(4,8)$.
 
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/tower/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-tower/astra-proofs.md`):* Use the full rational torsion $\times$ rational quotient Tate domain, the single $M^k-1$ convention, and the $\exp(G_k[N])$ well-definedness condition. (i) Sign: the legacy helper evaluated $\Omega(P,(1-M^k)Q)$ whereas the formula above is $\Omega(P,(M^k-1)Q)$; the two differ by one global inversion, which reconciles the Weil and Tate multiplier sets (at $N=3$ matched Weil set $\{1\}$, old-helper Tate set $\{2\}$); no curve-dependent adjustment is allowed. (ii) Well-definedness: changing the lift of $Q$ by $l$ changes the exponent mod $\mathbb Z$ by $(q^k-1)\Omega(P,l)$, which vanishes for all $P\in G_k[N]$ exactly when $\exp(G_k[N])\mid q^k-1$. So "iff $N\mid q^k-1$" above is sufficient, and necessary only when $G_k$ has a point of exact order $N$: for $q=2$, $k=1$, $N=3$ one has $G_k=\mathbb Z/4$, $G_k[3]=0$, and the zero pairing is well defined although $3\nmid1$. The Frey–Rück pairing remains defined under $N\mid q^k-1$; no audited separation case changes.
+
 *Why these are the curve's pairings* (sketched; standard inputs, from memory). Deligne/Serre–Tate: $E(\overline{\mathbb F}_q)_{\rm tors}\cong(L\otimes\mathbb Q)/L$ with $\pi\leftrightarrow M$,
 $L=T_\varepsilon(E)$. Analytically, $e_N=\exp(\pm2\pi iN\Omega)$ on $H_1$ of the lift, transported by $\varepsilon$ and the Teichmüller lift of $\mu_N$. That gives
 Proposition 3. Schaefer's description of the Tate pairing over a finite field is $t_N(P,Q)=e_N(P,\pi^kR-R)$ with $NR=Q$. Take $R=\tilde Q/N$. Then
 $e_N(P,(M^k-1)\tilde Q/N)=c(\tilde P,(M^k-1)\tilde Q)$, which is Proposition 4.
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/tower/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-tower/astra-proofs.md`):* The geometric-point/Deligne torsion identification excludes the connected $p$-primary half; the reduced Tate pairing is on rational $N$-torsion $\times$ rational points modulo $N$, and unqualified Tate pairings "on $E[N]$" are the wrong domain.
 
 ## 3. Curve against code (task item 2, the comparison)
 
@@ -172,6 +178,8 @@ needs $\varepsilon$.
 therefore polarised local data, and they see at most the genus of the Latimer–MacDuffee form. Discriminant $-24$ has one class per genus, so here the
 tower sees the class. For $D=-23$ ($q=8$, $a=3$) it should see nothing.
 
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/tower/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-tower/astra-proofs.md`):* The genus sketch is replaced by the theorem of lane T §2 (`thm:ordinary-strict-tower-genus`, reviewed VALID, same-family): within one ordinary isogeny class and order $\mathcal O$, strict compatible tower isomorphism holds exactly when the relative invertible ideal class lies in $\mathrm{Pic}(\mathcal O)^2$, including nonmaximal orders. Isolated finite levels can admit extra multipliers that do not extend to the compatible tower (the $D=-32$ pair over $\mathbb F_{41}$: strict $E[4]$ identification exists, strict $E[8]$ does not). The unpolarised torsion tower (similitude order) sees the isogeny class and $\mathrm{End}(E)$ (`thm:ordinary-torsion-similitude-order`). The $q=7$ pair is a same-order genus separation, not different orders.
+
 ## 5. Conclusion
 
 1. *Proved here, checked:* on its own, the logical commutator form of $\mathcal C_k$ is not a pairing on points; for one mode it is the standard form on
@@ -182,12 +190,16 @@ tower sees the class. For $D=-23$ ($q=8$, $a=3$) it should see nothing.
 3. *Checked:* PARI agrees in all 42 cases (E1 at $k=6,8$; the $q=7$ pair at $k=1,2,3,4,8,16$ and $N=2,3,4,8,16$).
 4. *Checked (decisive):* at $N=8$ the tower separates the lattices $(1,0,6)$ and $(2,0,3)$ exactly as the Weil pairing separates $j=5$ and $j=4$, since every
    step-equivariant identification scales the form by $3$ or $5$ and never by $\pm1$, and the Tate form does this already at $k=4$.
+
+   *Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/tower/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-tower/astra-proofs.md`):* Conclusion 4 stands as a separation of the two genera of $D=-24$ (class equals genus here because $\mathrm{Pic}(\mathcal O)^2=1$). It is not a general class-reconstruction statement: the strict tower sees the genus, and full class recovery needs $\mathrm{Pic}(\mathcal O)^2=1$.
 5. *Proved here, checked:* under lane F's $\varepsilon$, $j=5$ is the curve whose pairings are the commutator forms of the $(1,0,6)$ code, which confirms criterion 2 of
    `overlap-data.md` by an independent route; flipping $\varepsilon(\sqrt2)$ swaps the assignment but not the separation.
 6. *Proved here (lane F's open question, in this form):* the Weil pairing is a datum of the tower's codes, namely their logical commutator together with
    the step's Clifford action, so it belongs to the code with its step and not to the overlaps of the qunaught.
 7. *Checked here and in `lattice-tower.md` §4; sketched for the genus bound:* the tower is blind to RH but not to the lattice class (at most up to genus),
    so "tower" and "overlaps" are different data of the same code, the first seeing the polarised Galois module and the second only the order.
+
+   *Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/tower/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-tower/astra-proofs.md`):* "At most up to genus" is now a theorem for ordinary elliptic curves of fixed order (see the annotation to §4), not only a sketch. "Blind to RH" concerns existence of the formal tower, which does not enforce the spectral condition; the full count sequence still decides it. (For example $M=\bigl(\begin{smallmatrix}0&-1\\5&5\end{smallmatrix}\bigr)$ has $M^T\Omega M=5\Omega$ and integral $V$ but $\mathrm{tr}^2=25>20$.) Local nonuniqueness of the integral class in this elliptic model is not nonexistence of a global $H^1$.
 8. *Heuristic:* $\zeta$'s level-$N$ Bell pairs (`adelic-gkp.md` §4) carry a commutator form on $(\mathbb Z/N^2)^2$ but no step to make it a Galois module, so what they
    offer is of the overlap kind, and the class-type datum found here has no counterpart there.
 
@@ -223,3 +235,5 @@ tower sees the class. For $D=-23$ ($q=8$, $a=3$) it should see nothing.
 - **The step's own phases.** On $\mathcal C_k$, $\Phi^k$ acts by phases quadratic in the syndrome, through $\Omega(e,(M^k-1)e)$. Their polarisation is the symmetrised
   Tate form. Whether this quadratic refinement is the Lichtenbaum or Cassels–Tate refinement is *open* and was not pursued.
 - Checked afterwards by the orchestrator (`checks/check_cm_tower.py`, 27 of 27, reusing this page's functions): for 441d1 the single lattice $\mathcal O_K$ with the steps $\psi(\mathfrak p)$ for $p=2,11,23,29,37$ (all commuting, all commuting with $\sqrt{-7}$) reproduces $\#E(\mathbb F_{p^k})=\det(1-M^k)$ and the group structure (Smith form of $1-M^k$ against `ellgroup`) of every reduction, $k\le4$ at 2 and $k\le2$ at 11; a Frobenius-equivariant isomorphism exists for $\psi(\mathfrak p)$ (not its conjugate) in every case, and the Tate pairing agrees with $c(\tilde P,(M^k-1)\tilde Q)$ up to $\mathrm{Aut}(\mu_N)$ for $N=2,4,8$. At $N=4,8$ the union of scales over all equivariant isomorphisms is the whole unit group, so this is a consistency check and not a separation; the $\varepsilon$-uniform identification of $\mu_N$ across primes was not attempted.
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/tower/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-tower/astra-proofs.md`):* The CM test establishes consistency for $\psi$; its conjugate also works when root inversion is allowed (in the basis $(1,w)$, $w^2-w+2=0$, the matrix $C=\bigl(\begin{smallmatrix}1&1\\0&-1\end{smallmatrix}\bigr)$ of determinant $-1$ satisfies $CM_{u+vw}=M_{u+v\bar w}C$, checked for every listed reduction prime), so the legacy first-match loop never excludes the conjugate and "(not its conjugate)" above is withdrawn. Uniform $\varepsilon$-normalisation across primes is not checked and stays open. The CM arithmetic (441d1) has been rerun with PARI after substituting for the unavailable database lookup (27/27); the $42$ lane-U comparisons now also have an independent FLINT replay and a fresh PARI audit. The field here is $\mathbb Q(\sqrt{-7})$ (`check_cm_tower.py`); the $q=7$ pair of this page is $\mathbb Q(\sqrt{-6})$, $D=-24$.

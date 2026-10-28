@@ -5,7 +5,7 @@ Author: `claude:opus-5.5`, 2026-10-06, lane F of an orchestrated session.
 Status: **a record, not a round; nothing registered in db/claims.tsv; no REFUTE review; no shard.** Each statement is labelled *standard*,
 *proved here*, *checked*, *sketched*, *heuristic*, *open* or *negative finding*. Theorems quoted without a line reference are from memory;
 `refs/src/` was not on disk in this session. Checks: `checks/check_overlap_data.py`, output `checks/output_overlap_data.txt` (40 of 40 pass;
-PARI/GP 2.15.4 through the `gp` binary, sympy; about 40 s).
+PARI/GP 2.15.4 through the `gp` binary, sympy; about 40 s). Record corrections of 2026-10-28 annotated in place.
 
 The question comes from `curve-bridge.md` §6, step 3. There, for an ordinary elliptic curve $E/\mathbb F_q$, the counts fix the Frobenius polynomial but not
 the lattice $L=H_1$ of the canonical lift. At $q=7$, $a=2$ the curves $j=4$ and $j=5$ have the same counts and the same groups $E(\mathbb F_{7^k})$, yet their
@@ -24,6 +24,8 @@ Deligne modules are not isomorphic. That page left open whether the divisor-reso
   *unpolarised* local data, and those are what the overlaps are. Add the Weil pairing and it fails. No Frobenius-equivariant isomorphism
   $E_4[8]\to E_5[8]$ respects $e_8$, even up to inversion. Every equivariant isomorphism $E_4[3]\to E_5[3]$ inverts $e_3$. The polarised local data see the
   *genus* of the form. For discriminant $-24$ each genus holds one class, so here they see the class.
+
+  *Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/tower/astra-proofs.md`; endorsed AGREE by `notes/astra-2026-10-25/review-tower/astra-proofs.md`):* The full unpolarised Frobenius module determines the order within the isogeny class. The compatible strict polarised tower determines $\mathrm{Pic}(\mathcal O)/\mathrm{Pic}(\mathcal O)^2$ (the genus); for $D=-24$ each genus has one class. Allowing one arbitrary compatible cyclotomic automorphism removes this genus distinction. The original statement already mentions genus, so this is an exactness and scope annotation, not a retraction of the $q=7$ proof: the $N=3$ strict separation and the $N=8$ separation, even up to inversion, stand and are not to be replaced by an order difference.
 - **Which curve has the principal lattice depends on Deligne's embedding $\varepsilon$** (proved here, from standard inputs; checked). Only the difference
   is intrinsic: the two classes differ by $[\mathfrak p_2]$. With $\varepsilon(\sqrt2)=+\sqrt2$ for the 7-adic $\sqrt2\equiv3\bmod7$, the principal curve is $j=5$. With the other choice it
   is $j=4$.
@@ -107,6 +109,8 @@ when $h(\mathrm{End}\,E)=1$.
 3. *Proved here, checked (§4).* Adding the Weil pairing to the local data separates them already at $\ell=2$ (on $E[8]$), and at $\ell=3$ up to the sign of $e_3$.
 4. *Sketched (Gauss genus theory, from memory).* In general polarised local data see only the genus of the Latimer–MacDuffee form, i.e. the class
    modulo $\mathrm{Cl}^2$; here $(1,0,6)$ and $(2,0,3)$ lie in different genera (T4) because $\mathrm{Cl}=\mathbb Z_2$ has $\mathrm{Cl}^2=1$, while for $D=-23$ ($\mathrm{Cl}=\mathbb Z_3$, one genus) they would see nothing.
+
+   *Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/tower/astra-proofs.md`; endorsed AGREE by `notes/astra-2026-10-25/review-tower/astra-proofs.md`):* Items 3 and 4 as corrected: The full unpolarised Frobenius module determines the order within the isogeny class. The compatible strict polarised tower determines $\mathrm{Pic}(\mathcal O)/\mathrm{Pic}(\mathcal O)^2$ (the genus); for $D=-24$ each genus has one class. Allowing one arbitrary compatible cyclotomic automorphism removes this genus distinction. The original statement already mentions genus, so this is an exactness and scope annotation, not a retraction of the $q=7$ proof: the $N=3$ strict separation and the $N=8$ separation, even up to inversion, stand and are not to be replaced by an order difference.
 5. *Proved here.* Twisting the product states by characters of $\mathrm{Pic}^0$ adds nothing, because those overlaps are Fourier transforms of the
    divisor-resolved data of §2.
 6. *Standard, from memory (Mumford, "On the equations defining abelian varieties I", 1966).* $e_n$ is the commutator form of the theta group of
@@ -136,6 +140,8 @@ Weil pairing and $\Omega$. Finally $e(\varphi x,\varphi y)=e(x,y)^{\deg\varphi}$
 
 So the sentence "the lattice class is invisible to all local data" needs the word *unpolarised*. The overlaps of §2 are unpolarised; the Weil pairing is
 not among them (§3, items 6–7).
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/tower/astra-proofs.md`; endorsed AGREE by `notes/astra-2026-10-25/review-tower/astra-proofs.md`):* The full unpolarised Frobenius module determines the order within the isogeny class. The compatible strict polarised tower determines $\mathrm{Pic}(\mathcal O)/\mathrm{Pic}(\mathcal O)^2$ (the genus); for $D=-24$ each genus has one class. Allowing one arbitrary compatible cyclotomic automorphism removes this genus distinction. The original statement already mentions genus, so this is an exactness and scope annotation, not a retraction of the $q=7$ proof: the $N=3$ strict separation and the $N=8$ separation, even up to inversion, stand and are not to be replaced by an order difference.
 
 ## 5. The Pauli-six pair: different orders (task item 4)
 

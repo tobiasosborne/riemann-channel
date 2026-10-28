@@ -5,7 +5,7 @@ Author: `claude:opus-5.5`, 2026-10-06, lane B of an orchestrated session
 Status: a record, not a round; nothing registered in db/claims.tsv; no REFUTE review; no shard. Each statement carries one of
 *standard* (quoted from memory, not byte-cited: `refs/src/` is absent in this container), *proved here*, *checked*
 (`checks/check_no_lift.py`, output `checks/output_no_lift.txt`, 50 of 50 pass), *sketched*, *heuristic*, *open* or *negative finding*.
-Continues `lattice-tower.md` §§6, 9 and `howe-positivity.md`; uses `graph-super.md` §§1, 4, 5 and `locks.md` §§1–3.
+Continues `lattice-tower.md` §§6, 9 and `howe-positivity.md`; uses `graph-super.md` §§1, 4, 5 and `locks.md` §§1–3. Record corrections of 2026-10-28 annotated in place.
 
 **A correction to the brief, first.** $K_5$ is 4-regular, so $q=3$, not $4$. The existing pages and `check_super_gkp.py` use $q=3$
 (the band edge $2\sqrt3=3.464$ in `graph-super.md` §6). All three examples below therefore live over a prime field. *Checked (N1).*
@@ -109,6 +109,8 @@ The obstruction is the parity of the multiplicity of $\lambda=0$, which is $n$ m
 Whether the fourfold of $K_4$ itself (its isomorphism class, not its isogeny class) is a Jacobian or a Prym remains *open*. That is the
 question of `howe-positivity.md` §8, and it is not addressed here.
 
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/jacobian/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-jacobian/astra-proofs.md`):* Lane J constructs a genus-four trigonal Jacobian in the $K_4$ $\mathbb F_2$-isogeny class and genus-five hyperelliptic Jacobians in all five strict Ramanujan $K_5$ $\mathbb F_3$-isogeny classes. A supersingular factor does not by itself preclude Jacobian realization. These witnesses identify isogeny classes only: equality of the graph's particular polarised integral lattice with a constructed Jacobian lattice remains open, and the full Petersen principal-polarisation question remains open in that lane. The verified 5-gluing statement and "no canonical lift" are preserved.
+
 ## 3. The supersingular mode is the fixed point of the half turn
 
 The vacuum has a closed form. Because $M+V=A_s\oplus A_s$ and $(M-V)^2=-(4q-A_s^2)\oplus(4q-A_s^2)$,
@@ -162,6 +164,8 @@ Granting the theorem as recalled, $(\mathbb Z^{20},M_s)$ for Petersen **is** an 
 (not only isogeny), of dimension 10, isogenous to $S^3\times E_{ss}^4$, and not ordinary. Likewise $(\mathbb Z^{10},M_s)$ for $K_5$ is a fivefold
 over $\mathbb F_3$. In both cases the lattice on the arithmetic side is supplied by the category, not by a lift. For $K_4$, Deligne and
 Centeleghe–Stix both apply. I do not know whether the two lattices agree (they could differ by a duality).
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/jacobian/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-jacobian/astra-proofs.md`):* The Centeleghe–Stix anti-equivalence requires choices; its bare module dictionary does not identify the graph form with an arithmetic principal polarisation. The distinction between an ordinary canonical lift and other CM lifts is preserved. The prime-field and strictness hypotheses must remain visible (the lane's check covers strict prime-field Ramanujan fluxes).
 
 **"No lift" should read "no canonical lift" (*standard, from memory*).** By the Deuring lifting lemma (Deuring 1941; Lang, *Elliptic Functions*,
 ch. 13), a supersingular elliptic curve lifts to characteristic 0 together with any one endomorphism, Frobenius included. The lift is a
