@@ -5,9 +5,9 @@ Sorted by last activity, newest first. "Status" is the page's own status line, v
 
 | entry | active | main file | what | status (as claimed by the page) |
 |---|---|---|---|---|
-| `astra-2026-10-27/` | 2026-10-27 – 2026-10-27 | [brief.md](../notes/astra-2026-10-27/brief.md) | Brief: the 2026-10-27 round — the tree of local GKP codes and the Pizer graph as H¹ of X₀(p); two topics, four provers,… | — |
-| `astra-2026-10-25/` | 2026-10-25 – 2026-10-25 | [brief.md](../notes/astra-2026-10-25/brief.md) | Brief: the 2026-10-25 astra round — three REFUTE reviews of the 2026-10-23 lanes, three new conjectures | — |
-| `astra-2026-10-23/` | 2026-10-23 – 2026-10-23 | [brief.md](../notes/astra-2026-10-23/brief.md) | Brief: the 2026-10-23 astra round — six conjectures from the record, two digests of the quasi-Riemann hypothesis | — |
+| `astra-2026-10-27/` | 2026-10-27 – 2026-10-27 | [STATUS.md](../notes/astra-2026-10-27/STATUS.md), [brief.md](../notes/astra-2026-10-27/brief.md) | Brief: the 2026-10-27 round — the tree of local GKP codes and the Pizer graph as H¹ of X₀(p); two topics, four provers,… | — |
+| `astra-2026-10-25/` | 2026-10-25 – 2026-10-25 | [STATUS.md](../notes/astra-2026-10-25/STATUS.md), [brief.md](../notes/astra-2026-10-25/brief.md) | Brief: the 2026-10-25 astra round — three REFUTE reviews of the 2026-10-23 lanes, three new conjectures | — |
+| `astra-2026-10-23/` | 2026-10-23 – 2026-10-23 | [STATUS.md](../notes/astra-2026-10-23/STATUS.md), [brief.md](../notes/astra-2026-10-23/brief.md) | Brief: the 2026-10-23 astra round — six conjectures from the record, two digests of the quasi-Riemann hypothesis | — |
 | `adelic-gkp/` | 2026-10-05 – 2026-10-22 | [adelic-gkp.md](../notes/adelic-gkp/adelic-gkp.md) | The theta state as an adelic GKP code, and the RH programme in quantum-information language | Status: **a record, not a round.** Nothing is registered in `db/claims.tsv`; no REFUTE review has run; no shard. Each statement |
 | `reviews/` | 2026-09-12 – 2026-10-06 | [riemann-cmps-2026-09-12.md](../notes/reviews/riemann-cmps-2026-09-12.md) | Adversarial review: `notes/riemann-cmps/astra-proofs.md` | — |
 | `weil-bond-analytic/` | 2026-10-02 – 2026-10-02 | [analytic.md](../notes/weil-bond-analytic/analytic.md) | Weil positivity and the Weyl–Heisenberg bond: analytic arguments | Status: **a record, not a round.** Nothing is registered in `db/claims.tsv`; no REFUTE review has run. Each statement |
