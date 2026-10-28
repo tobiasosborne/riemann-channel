@@ -137,6 +137,8 @@ The Weil form of the fermionic sector is $\mathcal Q_s=\begin{pmatrix}q&A_s/2\\A
 
 The prism with antiperiodic flux around its ring is a real violation: its fermionic eigenvalues run from $-3$ to $2.978$, the fermionic Weil form has five negative directions, and the echo passes its initial value at $k=10$. Its super counts are still nonnegative.
 
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/jacobian/astra-proofs.md`; endorsed AGREE by `notes/astra-2026-10-25/review-jacobian/astra-proofs.md`, table row `graph-super.md`):* Distinguish the signed $H^1$ polynomial $P_s$, the full graph ratio $P_s/P_0$, the formal curve counts $p^k+1-\mathrm{Tr}\,F^k$, the odd-flux walk counts, and the abelian-variety counts $\det(I-F^k)$ in the strict prime-field case. Positivity of the last two does not imply positivity of formal curve or closed-point counts. Balanced signings retain $+d$ and antibalanced signings retain $-d$.
+
 ## 6. RH on average over fluxes
 
 Average the fermionic characteristic polynomial over all fluxes of a graph. The result is its matching polynomial (Godsil–Gutman), and the roots of a matching polynomial of a $(q+1)$-regular graph lie strictly inside $(-2\sqrt q,2\sqrt q)$ (Heilmann–Lieb, from the monomer–dimer model).
@@ -150,6 +152,10 @@ Average the fermionic characteristic polynomial over all fluxes of a graph. The 
 So **the flux-averaged fermionic numerator has all its zeros on the critical circle, for every graph** (S7). In fermionic language: the fermion determinant averaged over all spin structures is a monomer–dimer partition function, and its RH is a Lee–Yang-type theorem. For these three graphs the only fluxes that fail are the zero flux and the all-negative one.
 
 This is the mechanism behind the interlacing-families proof that bipartite Ramanujan graphs exist (Marcus–Spielman–Srivastava): some flux is at least as good as the average. It proves RH for an average and for one unnamed flux, not for a given one. The three results are quoted from memory and not byte-cited; the table is checked here.
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/haar/astra-proofs.md`; endorsed AGREE by `notes/astra-2026-10-25/review-gauge/astra-proofs.md` §K6):* The scalar averaging theorem survives: it holds for every nontrivial character (torsion order $N\ge2$), with normalized Haar measure over the full group of fluxes including the trivial assignment. It does not extend to arbitrary higher-dimensional representations (see the correction in `gauge-groups.md`: U(d) gives the Hall–Puder–Sawin $d$-matching polynomial, the SU(2) doublet gives a sum of squared matching polynomials with no real roots on $K_4$). Where Hall–Puder–Sawin is quoted, use the corrected cover-degree index and state that cover existence is one-sided in general and two-sided for bipartite graphs.
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/qrh-transpose/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-qrh/astra-proofs.md` §Q2-6):* The linear characteristic-polynomial average is the matching polynomial. The quadratic average of coefficients of $\det(1-zB_s)$ is a different signed-pair identity, with exact $N\ge3$ sampling and no large-degree spectral content. Interlacing selects an upper spectral bound; bipartite symmetry supplies a simultaneous lower bound. (Thresholds: $N\ge2$ for the linear determinant average, $N\ge3$ for arbitrary squared-coefficient averages; trace averages have no bounded Laurent-support theorem at fixed $N$.)
 
 ## 7. Against the previous page
 
@@ -177,10 +183,13 @@ This is the mechanism behind the interlacing-families proof that bipartite Raman
 | matching polynomial, Heilmann–Lieb, interlacing families | standard, quoted from memory; table checked (S7) |
 | dodecahedral flux on Petersen | 2 of the 64 flux classes have the dodecahedron's spectrum; I did not check the cover is the dodecahedron itself |
 
-Checks: `checks/check_super_gkp.py`, 50 of 50 pass. Nothing is registered and no REFUTE review has run.
+Checks: `checks/check_super_gkp.py`, 50 of 50 pass. Nothing is registered and no REFUTE review has run. Record corrections of 2026-10-28 annotated in place.
 
 ## 9. Three directions
 
 - **The level tower.** The lattices $(1-M_s^k)\mathbb Z^{2n}$ are stabiliser lattices of GKP codes whose dimensions are the point counts over $\mathbb F_{q^k}$, nested along divisibility of $k$. This is the counterpart of the level-$N$ Bell pairs of note §4 and looks like the place to search for the Tate-type formula.
 - **Averaging for $\zeta$.** The flux average is an average over characters of $H_1$. Ask what the analogue is for the adelic code: an average over a family of Hecke characters whose averaged zeta is manifestly on the line.
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/average/astra-proofs.md`; endorsed AGREE by `notes/astra-2026-10-25/review-average-canonical/astra-proofs.md` §C6):* The graph's full character average (nontrivial torsion order $N\ge2$) has a special multiaffine determinant cancellation. Over $\mathbb F_q(t)$, exact hyperelliptic averages satisfy RH in proved ranges and under an explicit half-coefficient condition, but cubic geometric isotypic averages and fixed-level averages can fail; a family of characters or covers alone does not supply an averaged RH theorem.
+
 - **The arithmetic examples.** For the notebook's graded Weil–LPS expanders, identify the flux and the syndrome torus, where Deligne supplies the positivity.

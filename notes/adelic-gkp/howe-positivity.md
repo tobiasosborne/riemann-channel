@@ -1,6 +1,6 @@
 # Is the natural symplectic form a polarisation?
 
-Author: `claude:fable-5.1`, 2026-10-05, at TJO's request ("Take this natural next step": Howe's positivity on the three ordinary examples of `lattice-tower.md`). Status: **a record, not a round.** Nothing is registered in `db/claims.tsv`; no REFUTE review has run; no shard. Checks: `checks/check_howe_positivity.py`, output `checks/output_howe_positivity.txt` (14/14; needs PARI through `cypari2`, see the script header).
+Author: `claude:fable-5.1`, 2026-10-05, at TJO's request ("Take this natural next step": Howe's positivity on the three ordinary examples of `lattice-tower.md`). Status: **a record, not a round.** Nothing is registered in `db/claims.tsv`; no REFUTE review has run; no shard. Checks: `checks/check_howe_positivity.py`, output `checks/output_howe_positivity.txt` (14/14; needs PARI through `cypari2`, see the script header). Record corrections of 2026-10-28 annotated in place.
 
 **Verdict.**
 
@@ -71,6 +71,8 @@ $$
 of determinant 1 and with opposite signs at $\pm1$ and at $\pm\sqrt5$. So $\Omega(x,Py)$ is unimodular and is a polarisation for one of the four primes (P5).
 
 So the abelian variety of $K_4$ with one negative edge is principally polarisable, by $\Omega$ twisted with a unit of the real algebra $\mathbb Q[A_s]$. This is the same kind of object as the unit squeezes of note §14.
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/jacobian/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-jacobian/astra-proofs.md`, table row `howe-positivity.md`):* The K4 repair is $U=A+(I-A^2)/2\in\mathbb Q[A]\cap M_4(\mathbb Z)$, outside $\mathbb Z[A]$; $\mathrm{diag}(U,U)$ lies outside $\mathbb Z[F,V]$. It gives a principal polarization for a compatible ordinary embedding, while no unit in $\mathbb Z[F,V]$ repairs $\Omega$ for any ordinary embedding. The isogeny class contains Lane J's trigonal curve; equality of the particular polarized lattices remains open.
 
 **In GKP terms.** A lattice with a symplectic form of determinant $d^2$ is the stabiliser lattice of a GKP code of dimension $d$; a principal polarisation is a qunaught. With $\Omega$ the lattice is a qunaught for the vacuum. With $\Omega(x,A_sy)$ it is a code of dimension 5 for the arithmetic structure. With $\Omega(x,Py)$ it is again a qunaught, for the arithmetic structure.
 

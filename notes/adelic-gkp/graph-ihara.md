@@ -154,6 +154,8 @@ The prism $C_{21}\times K_2$ is 3-regular with four eigenvalues outside the band
 
 1. **Having the Hilbert–Pólya space is not the difficulty.** The graph hands you the line space and the squeeze on it, and positivity is still a theorem for some graphs and false for others. The content is the positivity of one specific quadratic form.
 2. **The form comes from the symplectic structure, not from the Hilbert space you are given.** The edge space has its own inner product, and it is the wrong one: $B$ is not normal in it. The right form is the conserved energy fixed by the functional equation. For $\zeta$ the analogue is the Wronskian form of analytic §10; $\mathcal Q$ is its discrete version, the Casoratian of the recurrence $y_{k+1}=\lambda y_k-q\,y_{k-1}$, as found for genus one in analytic §13.
+
+   *Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/canonical/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-average-canonical/astra-proofs.md` §C6):* On the label space, the alternating form $\Omega$ is the recurrence Casoratian up to the stated ordering/sign convention; with the tutorial's labels $(x_k,-x_{k+1})$, $\Omega=-W_k$. The symmetric recurrence energy is $\mathcal Q=\tfrac12\Omega(M-qM^{-1})$. In-band endpoints give a degenerate energy and parabolic blocks; strict interior modes give rotations and a positive definite energy. So "$\mathcal Q$ is the Casoratian" above should read "$\Omega$ is the Casoratian, $\mathcal Q=\tfrac12\Omega(M-qM^{-1})$". The label form does not descend through the kernel of the label-to-edge map, and its matrix changes by the displayed symplectic conjugacy if the step convention changes.
 3. **Dark and bright are two views of one spectrum.** The $K_4$ identity shows a cavity and a code sharing their lines with opposite signs. A graph is a model of the code's dark space, not of the code.
 4. **The graph gives no mechanism for positivity.** For $K_4$ it is a computation; for LPS graphs it is Deligne through Eichler–Shimura (README table). Nothing in the graph plays the role that counting plays for curves.
 5. **A graph has no real place.** Every cycle behaves like a finite prime and the line space is finite-dimensional, as for a function field. The archimedean difficulty of note §12 has no counterpart here.
@@ -171,7 +173,7 @@ The prism $C_{21}\times K_2$ is 3-regular with four eigenvalues outside the band
 | tree vertices as $p$-adic qunaughts and qudit codes | standard lattice theory, reading mine; only the qudit statement is checked (H10); $p=2$ not worked out |
 | "no Tate-type code for a graph" | a negative finding from the candidates in §2, not a theorem |
 
-Checks: `checks/check_graph_gkp.py`, 56 of 56 pass, in exact integer arithmetic where possible. Nothing is registered and no REFUTE review has run.
+Checks: `checks/check_graph_gkp.py`, 56 of 56 pass, in exact integer arithmetic where possible. Nothing is registered and no REFUTE review has run. Record corrections of 2026-10-28 annotated in place.
 
 ## 10. Three directions
 

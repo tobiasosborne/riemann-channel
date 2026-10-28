@@ -155,3 +155,11 @@ Differences from lane O's list:
 `latexmk -pdf -interaction=nonstopmode -halt-on-error report.tex` in the dry-run copy with the shard included and the rows registered: exit 0,
 `report.pdf` 293 pages, no undefined references or citations, no LaTeX errors (284 overfull-box warnings across the whole book, as before).
 The shard renders as section 51, "The Phantasm XVII: the Adelic-GKP Ladder". So registration would also pass `make ci`'s build step.
+
+## Pending wording corrections (2026-10-28)
+
+Not applied: the `.tsv` and `.tex` files are untouched. Each is endorsed by a 2026-10-25 same-family review (the second-family gate still stands).
+
+- `prop:gkp-overlaps-see-order` (`claims-rows.tsv`; the same title/summary change in `04za_adelic_gkp_ladder.tex`). Proposed by `notes/astra-2026-10-23/tower/astra-proofs.md`; endorsed AGREE by `notes/astra-2026-10-25/review-tower/astra-proofs.md` §5 (table row). Keep the order theorem, the Frobenius-compatibility hypothesis, the explicit E[8]/E[3] statements, the failure at n=4, and epsilon-dependence. Replace "the Weil pairing sees the class" by "the strict Frobenius pairing tower sees genus; here genus equals class since Pic(O)^2=1" (the general parenthetical reads "strict genus; class here because h=2"). Product-stabiliser overlaps determine the ordinary isogeny class and endomorphism order with no further ideal-class information.
+- `obs:gkp-missing-datum`. Proposed by the same lane; endorsed AGREE-WITH-CHANGE by the same review: "These elliptic examples show that the indicated abstract local data need not select a unique global integral class or provide a positivity reason; they do not exclude all constructions of a global H^1 from those inputs." It remains an observation/reading, not a no-go theorem.
+- `num:gkp-counts-not-lattice` and the registered Lenstra / Latimer–MacDuffee citations: retain unchanged (AGREE: retain).

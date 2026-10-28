@@ -47,13 +47,17 @@ A gauge field is a holonomy homomorphism `ρ: π_1(Y) → G`, equivalently `g_e 
   lattice `graph-ihara.md` identified with the primes. No comb, no GKP structure. What remains is Fourier inversion
   over `G`: closed walks of length `k` with holonomy in a conjugacy class `C` number `(|C|/|G|) Σ_ρ χ_ρ(C)^* Tr B_ρ^k`
   (standard). "Dark" and "bright" generalise to the phases `χ_ρ(C)`; `Z_2` is `χ_sgn(−1) = −1`.
-- **The averaging theorem changes** (elementary for the mechanism; open for the conclusion): for U(d), `d ≥ 2`, the
+- *(Superseded 2026-10-28 by the correction below.)* **The averaging theorem changes** (elementary for the mechanism; open for the conclusion): for U(d), `d ≥ 2`, the
   U(1) centre still kills unbalanced terms, but a trail that goes out along a path and back using both spin indices
   (`a→b→c→b→a`) is balanced and survives with Weingarten weights, so the Haar average of `det(x − A_ρ)` is not the
   matching polynomial. For SU(2) there is no U(1) centre and more survives (the doublet is pseudoreal; for one edge
   `E[g_11 g_22] = E|α|² = 1/2 ≠ 0`). I know no Heilmann–Lieb theorem for these averages. For `S_d` (random `d`-covers)
   the answer is known: Hall–Puder–Sawin, the expected characteristic polynomial of the new part is the `d`-matching
   polynomial with roots in the band, giving Ramanujan `d`-covers of every graph (standard, from memory, not byte-cited).
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/haar/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-gauge/astra-proofs.md` §K6):* For a finite loopless (q+1)-regular graph with q>=1, the defining U(d) Haar average is the degree-nd d-matching polynomial of Hall–Puder–Sawin and has all roots in [-2 sqrt(q),2 sqrt(q)]. The standard representation of S_r gives the (r-1)-matching polynomial. The cover-existence theorem is one-sided in general and two-sided for bipartite graphs. For the defining SU(2) doublet on a simple graph, the average is the sum, over vertex-disjoint cycle collections, of the squared matching polynomial of the remaining graph. On K4 it is (x^4-6x^2+3)^2+4x^2+3, with no real roots. Every nontrivial quaternionic irreducible representation fails averaged real-rootedness on every simple graph containing a cycle.
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/qrh-transpose/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-qrh/astra-proofs.md` §Q2-6):* Hall–Puder–Sawin gives covers with a one-sided bound on the **new** adjacency spectrum for general loopless base graphs; bipartite symmetry gives a two-sided bound for a bipartite base. The cover retains the base spectrum. A real-rooted averaged polynomial alone does not select one member controlling both ends: the all-negative K4 has eigenvalues −3,1,1,1, so it satisfies the upper tree-band bound while violating the lower one. (The HPS source directory is absent in this checkout; this is a scope correction, not a newly byte-verified HPS theorem.)
 - **Lattice state 2 returns only for finite image with an integral representation** (elementary): binary polyhedral
   subgroups of SU(2) over their rings of integers; generic SU(2) holonomy preserves no lattice.
 
@@ -64,11 +68,13 @@ A gauge field is a holonomy homomorphism `ρ: π_1(Y) → G`, equivalently `g_e 
 - **The Weil form becomes a Krein form** (elementary): with `η = diag(1, −1)`, `ρ(g)^{-1} = η ρ(g)^† η`, so `A_ρ` is
   `η`-Hermitian, the step is a similitude of `Ω ⊗ η` (`M^† (Ω ⊗ η) M = q (Ω ⊗ η)`), and `Q_ρ` is Hermitian for the
   indefinite inner product on `C^n ⊗ C²`. Eigenvalues are real or in conjugate pairs.
-- **RH and positivity separate** (elementary): a positive invariant form still forces unimodular eigenvalues, but RH
+- *(Qualified 2026-10-28: survives only for the fixed canonical form; see the correction below.)* **RH and positivity separate** (elementary): a positive invariant form still forces unimodular eigenvalues, but RH
   no longer forces positivity. If `A_ρ` has an eigenvector `v` with `λ` in the band and `⟨v, ηv⟩ < 0`, the mode's two
   lines lie on the critical circle while `Q_ρ` is negative definite on that plane. This is the Krein-definite
   distinction of shard 04q (`thm:deninger-invariant-polarisation`) and the Pontryagin-index remark of HANDOFF
   2026-09-26, realised on a finite graph.
+
+*Record correction 2026-10-28 (proposed by `notes/astra-2026-10-23/krein/astra-proofs.md`; endorsed AGREE-WITH-CHANGE by `notes/astra-2026-10-25/review-gauge/astra-proofs.md` §K6):* Unbounded, even nonelementary, SU(1,1) holonomy can have real semisimple adjacency spectrum strictly inside the Ramanujan band. In the defining representation the characteristic polynomial is a real monic square, and every real semisimple eigenspace has equally many positive and negative directions for the inherited form H=I tensor diag(1,-1). The canonical Weil form Q is an ordinary Hermitian form; away from adjacency band edges it has inertia (2n,2n), even through an interior defective collision. It is therefore indefinite when the transfer spectrum lies strictly on the critical circle. Existence of some invariant positive metric for the normalized transfer is a separate question; real semisimple adjacency spectrum strictly inside the band does give such a metric. At the band edges the companion transfer is defective and Q is singular. (The superseded bullet survives only as a statement about this fixed canonical form.)
 - **Integral noncompact holonomy exists** (elementary): `SL(2, Z) ⊂ SL(2, R)`. The syndrome torus then exists and
   hyperbolic elements are cat maps, so the step generically violates RH on the edges; `lattice-tower.md`'s hyperbolic
   step is the one-mode case.
