@@ -1,5 +1,7 @@
 # Topic T, Fable lane: the tree of local GKP codes and the Ihara zeta as the zeta of the squeezes
 
+> **Status (tidy 2026-10-28):** cross-family REFUTE-reviewed by codex:gpt-6-astra (`../review-astra-of-fable/astra-proofs.md`): 12 VALID / 7 MINOR / 6 INVALID. MINOR corrections applied below as marked annotations; INVALID items flagged in place. Not registered in db/. Not yet turned into a record page.
+
 Author: `claude:fable-5.1`, 2026-10-27, blind of `tree-codes/astra/`. Brief: `notes/astra-2026-10-27/tree-codes/lane-brief.md` (binding,
 with `notes/astra-2026-10-27/brief.md`). Steer respected: every statement below is a map or an identity between a lattice, a symplectic
 form and a zeta function; no overlap is used. Checks: `checks/tree_codes.py` (T1, T3; output `checks/output_tree_codes.txt`),
@@ -70,6 +72,8 @@ representative of Prop. 1.4(iii); "the code of the vertex" means $\mathcal C_{L_
 Clifford iff $L'=\sigma L$ with $\sigma\in SL_2(\mathbb Q_p)$, iff $k(L)=k(L')$ (the $SL_2(\mathbb Q_p)$-orbits of lattices are the level sets of
 $k$, by the Smith form above). So all qunaught vertices have equivalent codes, all qudit vertices have equivalent codes, and the two colours are
 not equivalent (dimensions $1$ and $p$). The tower $\mathcal C_{p^n\mathbb Z_p^2}$ of the base vertex is exactly the cutoff used in §4 (T4b).
+
+*Review correction 2026-10-28 (astra review, VERDICT prop:tree-colours-code-dimension: MINOR; also VERDICT C2: MINOR):* scope. The nested tower, the strict inclusions and the homothety obstruction are proved; but "equivalent codes iff same colour" holds only for the minimal representatives $L_0$ (the $k\in\{0,1\}$ lattices) or for towers compared level by level. For arbitrary isotropic lattices the codes are Clifford-equivalent iff the determinant valuations $k(L)$ are equal (not merely congruent mod 2); counterexample: at $p=3$ levels 0 and 1 of the same even vertex have dimensions 1 and 9. The homotheties $c=\pm1$ are harmless exceptions to "no unitary normalising the Weyl operators implements a homothety" (a homothety with $c^2\ne1$ cannot preserve all commutators).
 
 ## §2. T2 — neighbours are MUB axes. PROVED
 
@@ -165,7 +169,11 @@ if $v(d)=0$, $\gamma^{-1}=(t-\gamma)/d\in\mathbb Z_p[\gamma]$ so $\gamma\Lambda=
 fixes no vertex, and $\gamma^2/p$ has unit determinant and integral trace $(t^2-2d)/p$ (as $2v(t)\ge1$), hence fixes a vertex $x$; $\gamma$
 then permutes the two vertices $x,\gamma x$ which are at distance $d(x,\gamma x)\equiv1$ mod 2 and, since $\gamma^2x=x$, at distance one: an
 inversion. The formula for $\ell$ follows. ∎
+
+*Review correction 2026-10-28 (astra review, VERDICT T3: MINOR):* proof of (ii), odd $v(d)$. The inference "$x,\gamma x$ at odd distance and $\gamma^2x=x$, hence at distance one" is false (old: distance one; new: $\gamma$ exchanges the endpoints of the odd-length segment $[x,\gamma x]$, so it inverts the central edge of that segment). Counterexample to the old step (recomputed 2026-10-28): $p=3,5$, $\gamma=\bigl(\begin{smallmatrix}0&1\\p&0\end{smallmatrix}\bigr)$, $\gamma^2=pI$, and $L=\mathrm{diag}(1,p^2)\mathbb Z_p^2$ has $d(L,\gamma L)=3$. The classification (fixed vertex iff $v(d)$ even, edge inversion iff odd) survives. The displayed $\ell(\gamma)=\max(v(\det)-2v(\operatorname{tr}),0)$ is the geometric (stable) translation length, allowing an edge midpoint; for an inversion the minimum vertex displacement is 1; the two notions coincide in the torsion-free, inversion-free $\Gamma$.
 In the brief's $\Gamma$ (torsion-free, no inversions, free action) every nontrivial element is hyperbolic.
+
+*Review correction 2026-10-28 (astra review, VERDICT C5: MINOR):* exclude the identity (an elliptic exception). In $\Gamma$ discreteness is essential: a nonidentity elliptic lies in a compact vertex stabiliser, whose intersection with the discrete $\Gamma$ is finite, so torsion-freeness removes it; inversions are excluded by hypothesis; the inversion step uses the central-edge argument of the annotation above.
 
 **"Every hyperbolic element is a squeeze along its axis composed with a unit" — the precise form (ledger C4).** In the symplectic eigenbasis,
 $\gamma\equiv\mathrm{diag}(1,p^\ell u)=\mathrm{diag}(1,p)^{\ell}\,\mathrm{diag}(1,u)$ in $PGL_2$, $u\in\mathbb Z_p^\times$. The unit factor
@@ -175,6 +183,10 @@ similitude of multiplier $p$, exchanging colours): it is $D_{p^{(\ell-1)/2}}$ co
 normalising the Weyl operators implements. So the brief's sentence is true verbatim for even $\ell$ and true for odd $\ell$ only with
 "squeeze" read as $\mathrm{diag}(1,p)^\ell$ in $PGL_2$. (The unit $u$ is a square iff $\gamma$ lies in the image of $SL_2\cdot$scalars when
 $\ell$ is even; this does not affect the tree.)
+
+*Review 2026-10-28 (astra review, VERDICT prop:geodesic-squeeze: INVALID):* even translation length does not make $\gamma$ a symplectic squeeze over $\mathbb Q_p$: the $PGL_2$ class lifts to $SL_2(\mathbb Q_p)$ iff its determinant square class is trivial, equivalently iff the eigenvalue ratio $\lambda$ is a square. Example: $p=3$, $\gamma=\mathrm{diag}(1,18)$ has $\ell=2$ but unit part $2$, a nonsquare mod 3, so $\sqrt\lambda\notin\mathbb Q_3$. The candidate-row clause "a symplectic squeeze iff $\ell$ even" (and "true verbatim for even $\ell$" above) is therefore false as stated; the body notices the unit obstruction only in the parenthetical. Survives: ends $=\mathbb P^1(\mathbb Q_p)$, apartments, $\ell(\gamma)=\max(v(\det)-2v(\operatorname{tr}),0)$, and the decomposition above (replace the last clause by that decomposition; an $SL_2$ lift needs square determinant).
+
+*Review correction 2026-10-28 (astra review, VERDICT T3: MINOR), second part:* distinguish the even translation factor from the determinant-square obstruction. For $\lambda=p^\ell u$: if $\ell=2m$ the translation factor alone is projectively $\mathrm{diag}(p^{-m},p^m)$ and $\gamma$ is this squeeze times the axis-fixing projective unit $\mathrm{diag}(1,u)$; if $\ell=2m+1$ it is that squeeze times $\mathrm{diag}(1,p)$ times the unit. These are identities of projective phase-space maps, not a product of two operators on one Hilbert space, and $\mathrm{diag}(1,p)$ is a similitude, so an odd step is not a Clifford. That $\gamma$ itself is a $\mathbb Q_p$ symplectic squeeze additionally needs the determinant square class trivial (above).
 
 **Numerical check** (`output_tree_codes.txt`, block T3; $p=3,5$, ten random integer matrices each, entries in $[-12,12]$). For every matrix:
 $v(\operatorname{tr})$, $v(\det)$, $\ell=\max(v(\det)-2v(\operatorname{tr}),0)$, and the tree distances $d(v,\gamma^kv)$, $k=1..5$, from the base vertex,
@@ -220,6 +232,8 @@ the exponent is the valuation of the eigenvalue ratio, i.e. the $p$-adic size of
 
 ### 4(b). The orbit term is a $p$-adic Lefschetz trace. PROVED, with the operator attribution corrected (ledger C3)
 
+*Review 2026-10-28 (astra review, VERDICT T4b: INVALID):* bundled item. The finite compression theorem (Theorem 4.2) survives (VALID, `thm:code-trace-of-squeeze`); the bundled bipartite, phase-space and Connes identity-point claims do not (in-place lines below: after Theorem 4.2, after the consequence of Theorem 4.3, after "Which operator (C3)"). The status "PROVED" in this heading applies to Theorem 4.2 only.
+
 **Theorem 4.2 (the distributional trace of the squeeze, exactly).** Let $\mathcal C_n=\mathcal C_{p^n\mathbb Z_p^2}$ be the GKP code of the lattice
 $p^n\mathbb Z_p^2$ (functions supported on $p^{-n}\mathbb Z_p$ and $p^n\mathbb Z_p$-periodic; dimension $p^{2n}$; the $n$-th level of the tower of
 §1 at the base vertex) and $P_n$ the orthogonal projector onto it. For $a\in\mathbb Q_p^\times$ and $n\ge0$,
@@ -236,6 +250,10 @@ $D_a^*=D_{a^{-1}}$ and $P_n$ is self-adjoint, so $\operatorname{Tr}(P_nD_aP_n)=\
 and $v(1-a^{-1})=v(a-1)-v(a)$, $|a|^{-1/2}p^{-v(a)}=|a|^{1/2}$. ∎
 Checked exactly (`output_ihara_lefschetz.txt`, block T4(b), $p=5$, $n=0..3$): e.g. $a=5,25,125$: $0.44721,0.20000,0.08944=5^{-1/2},5^{-1},5^{-3/2}$ at
 every $n$; $a=1/5$: $0.44721$; $a=126$ ($v(1-a)=3$): $1,25,125,125$ for $n=0,1,2,3$ (stabilising once $2n\ge3$); $a=-4$: $5$; $a=1$: $1,25,625,15625$.
+
+*Review correction 2026-10-28 (astra review, VERDICT C7: MINOR):* Theorem 4.2 is an identity of traces of the compression $C_n(a)=P_nD_aP_n|_{\mathcal C_n}$, not of a restriction of $D_a$ ($\mathcal C_n$ is not $D_a$-invariant for nonunit $a$). The flat trace $|a|^{1/2}/|1-a|$ at $a\ne1$ is well defined, distinct from an ordinary operator trace; the non-Hilbert–Schmidt statement of ledger C7 excludes the zero average of $h$.
+
+*Review 2026-10-28 (astra review, VERDICT T4b: INVALID, identity-point part):* the claim "at $a=1$ the trace is the volume $p^{2n}$ (Connes's $2h(1)\log\Lambda$ with $\Lambda=p^n$)" fails: $\operatorname{Tr}C_n(1)=p^{2n}$ is a rank, not $2h(1)\log\Lambda$ (at $p=5,n=1$: $25$ versus $2\log5=3.2189$, recomputed); a point value of a singular trace kernel is not the divergence of its integral. Survives (review's repair): with $\operatorname{vol}(\mathbb Z_p^\times)=1$, $\int_{\mathbb Z_p^\times}\operatorname{Tr}C_n(a)\,d^\times a=2n+1$ (the annulus $v(1-a)=r\ge1$ has measure $p^{-r}$ and trace $p^{\min(r,2n)}$; re-summed for $p=3,5$, $n=0..3$: $1,3,5,7$; equivalently a Burnside count of valuation orbits on $\mathbb Z/p^{2n}$); with $\operatorname{vol}(\mathbb Z_p^\times)=\log p$ it is $(2n+1)\log p$. The logarithm comes from integrating the cutoff kernel near the identity; this is a local computation, not a proof of Connes's global trace formula.
 
 **Theorem 4.3 (the orbit identity).** For hyperbolic $\gamma\in PGL_2(\mathbb Q_p)$ let $\lambda(\gamma)=\lambda_2/\lambda_1$ be its eigenvalue ratio
 (well defined up to inversion, $v_p(\lambda)=\ell(\gamma)$ by Thm 3.4) and $g_\gamma=\gamma/\sqrt{\det\gamma}$ its $SL_2$-normalisation (in
@@ -254,6 +272,8 @@ the eigenvalue ratio of $\gamma_0^m$)**, where $\ell(\gamma_0)=\#\big(\Gamma_\ga
 quotient (Thm 4.1(ii)), and $\lambda(\gamma_0^m)=\lambda(\gamma_0)^m$. Each term is a trace on a fixed finite-dimensional GKP code $\mathcal C_n$
 (any $n\ge0$); nothing distributional remains.
 
+*Review 2026-10-28 (astra review, VERDICT thm:ihara-zeta-squeeze-lefschetz: INVALID):* the displayed identity omits the bipartite alternating pair although it is stated for bipartite graphs too, and $\operatorname{Tr}_{\mathcal C_n}D_a$ must read $\operatorname{Tr}C_n(a)$, a compression trace, not an action on $\mathcal C_n$ ($D_a$ does not preserve $\mathcal C_n$: $D_p1_{\mathbb Z_p}=p^{-1/2}1_{p^{-1}\mathbb Z_p}\notin\mathcal C_0$; $C_0(p)C_0(p^{-1})=p^{-1}I\ne I=C_0(1)$). "Nothing distributional remains" holds only in this compression sense; no determinant formula $\zeta_Y=\det(1-uC_n)^{-1}$ and no common representation of $\Gamma$ follows. Corrected identity (review §5.4, from Ihara–Bass, no Ramanujan assumption; $N=|V(Y)|$, $\epsilon=1$ if $Y$ is bipartite and $0$ otherwise, both trivial adjacency eigenvalues $\pm(q+1)$ removed): $\sum_{\text{nontrivial}}w^k=\sum_{[\gamma_0],m:\ m\ell_0=k}\ell_0\operatorname{Tr}C_n(\lambda(\gamma_0)^m)-N(q-1)q^{-k/2}[k\ \text{even}]-(1+\epsilon(-1)^k)(q^{k/2}+q^{-k/2})$. For $X^{5,13}$ the printed display fails at $k=1$ (right side $-(\sqrt5+1/\sqrt5)=-2.683281573$, left side $0$ by symmetry of the spectrum) and at $k=8$ (error $625.0016=5^4+5^{-4}$); §4(c) and the scripts already use the corrected form. Survives: Theorem 4.1, the orbit term itself, and Theorem 4.2. Also, the two code colours descend to $\Gamma\backslash T$ only when $\Gamma$ preserves colour (bipartite quotient): the length-7 elements of $X^{5,11}$ exchange colours (minimal dimensions $1$ and $p$), so the local code dictionary does not define a Clifford action of $\Gamma$ on one family of minimal codes over a non-bipartite quotient.
+
 **Which operator (C3).** The brief says "the squeeze part of $\gamma\sim\mathrm{diag}(1,\lambda)$ is $D_{\lambda^{\pm1}}$". The number is right, the
 operator is not: $D_\lambda$ implements $\mathrm{diag}(\lambda^{-1},\lambda)\equiv\mathrm{diag}(1,\lambda^2)$, which translates the axis by
 $2\ell(\gamma)$, i.e. $D_{\lambda(\gamma)}$ is the Weil-representation image of $\gamma^2/\det\gamma\in SL_2(\mathbb Q_p)$ (exactly:
@@ -268,6 +288,8 @@ map $g_\gamma$ at its unique fixed point $0$, and for even $\ell$ this is proved
 $s=\tfrac12$, $\pi(\gamma)f(z)=|d(\gamma^{-1}z)/dz|^{1/2}f(\gamma^{-1}z)$ on $L^2(\mathbb P^1(\mathbb Q_p))$, has flat trace
 $\sum_{\text{fixed }z}|\gamma'(z)|^{1/2}/|1-\gamma'(z)|=|\lambda|^{1/2}/|1-\lambda|+|\lambda|^{-1/2}/|1-\lambda^{-1}|=2p^{-\ell/2}$: each of the two
 transverse Lagrangians of the axis contributes one orbit weight (PROVED as a computation; used in §5).
+
+*Review 2026-10-28 (astra review, VERDICT C3: INVALID):* correct: $\gamma^2/\det\gamma=\mathrm{diag}(\lambda^{-1},\lambda)$ in an eigenbasis (with $D_\lambda$ the chosen intertwiner; for general $\gamma$ a metaplectic lift/phase convention is needed, "the Weil image" is too strong) and the numerical identity of Theorem 4.3. Fails: (a) a fixed finite cutoff is not conjugacy invariant: conjugating by the shear $Q_tf=\psi_p(tx^2/2)f$, $t=1/p$, keeps $\lambda=p$ but $\operatorname{Tr}(P_0Q_tD_pQ_t^{-1}P_0)=p^{-1/2}\int_{\mathbb Z_p}\psi_p((1-p^2)x^2/2p)\,dx$, which is $-1/5$ at $p=5$ (recomputed from the Gauss sum) versus $\operatorname{Tr}(P_0D_5P_0)=1/\sqrt5$; the all-$n$ formula holds for the standardised ratio dilation or a cutoff transported with the eigenbasis. (b) Reading (2), the $\mathbb Q_p$ phase-space Lefschetz number, needs $\det\gamma$ a $\mathbb Q_p$-square; "even $\ell$" does not suffice ($\mathrm{diag}(1,18)$, $p=3$) and for odd $\ell$ $g_\gamma$ is not $\mathbb Q_p$-linear; over $K=\mathbb Q_p(\sqrt p)$ the Haar Jacobian is $|N_{K/\mathbb Q_p}\det(1-g_\gamma)|_p$ and the $K$-phase-space fixed-point trace is $p^{-\ell}$, not $p^{-\ell/2}$ (the equality $1/|\det(1-g_\gamma)|=p^{-\ell/2}$ stays a valid numerical equality over the extension). (c) $\gamma\mapsto\gamma^2/\det\gamma$ is not a homomorphism, and an "Euler product of the $D_\lambda$ with their own tree lengths" would give $\zeta_Y(u^2)$; the correct factor stays $(1-u^{\ell})^{-1}$, indexed by the original primitive $\gamma$.
 
 **Normalisation against Connes's local term (brief's question).** For $\zeta$ the prime side of Weil's explicit formula carries, at $t=\pm k\log p$,
 the weight $\log p\cdot p^{-k/2}$ (record convention, `adelic-gkp.md` §10: $\operatorname{Loc}=\sum_vW_v$, $W_p(h)=\sum_{k\ne0}\log p\,p^{-|k|/2}h(p^k)$ in the
@@ -322,6 +344,8 @@ $\mu\bar\mu=q$; from $\det(1-uB)=(1-u^2)^{n(q-1)/2}\prod_\lambda(1-\lambda u+qu^
 $1.00\cdot10^{-11}$ ($q=13$), and $2.67\cdot10^{-10}$ for $X^{5,29}$ ($12180$ vertices, non-bipartite, largest non-trivial $|\lambda|=4.442016$;
 its girth exceeds 8, consistent with the LPS bound $\ge2\log_5n\approx11.7$, so at $k\le8$ the identity there tests the spectrum against the
 tree term and the trivial pair only; `output_ihara_lefschetz_big.txt`, 964 s).
+
+*Review correction 2026-10-28 (astra review, VERDICT T4c: MINOR):* the incidental girth bound for $X^{5,29}$ is false. Old: "its girth exceeds 8, consistent with the LPS bound $\ge2\log_5n\approx11.7$"; new: $\operatorname{girth}(X^{5,29})=9$ ($N_9=2630880$, $\pi(9)=292320$; 216 tailless identity words of length 9 at a fixed vertex, e.g. the quaternion $(549,-58,-406,1218)$ of norm $5^9$). Delete the claimed lower bound; "girth $>8$" and all printed tables stand. (Recomputed 2026-10-28: $12180\cdot216=2630880$, $2630880/9=292320$, $549^2+58^2+406^2+1218^2=5^9$; the existence of the words and vanishing of $N_k$, $k\le8$, are the review's computation, not re-run here.)
 (a)/(b) on the lattice itself ($q=11$): for every closed tailless word the quaternion product $\alpha$ (norm $5^k$) is an element of $\Gamma$, and as a
 $5$-adic matrix $\bigl(\begin{smallmatrix}a+bi&c+di\\-c+di&a-bi\end{smallmatrix}\bigr)$ ($i=\sqrt{-1}\in\mathbb Z_5$) its translation length
 $\ell(\gamma)=v_5(\det)-2v_5(\operatorname{tr})=k-2v_5(2a)$ equals $k$ for **all** 6, 168, 720 tailless closed words of length 6, 7, 8 (so
@@ -340,6 +364,8 @@ formula ($M^T\Omega M=q\Omega$), and $\Omega(v_\mu,v_{q/\mu})^2=\lambda^2-4q=-4\
 the square root of minus the discriminant of the Weil form $\mathcal Q=\tfrac12\Omega(M-V)=\bigl(\begin{smallmatrix}q&\lambda/2\\\lambda/2&1\end{smallmatrix}\bigr)$
 on that plane; it is purely imaginary exactly in the Ramanujan band, where $\mathcal Q>0$ (tutorial §6, `graph-ihara.md` §6: unchanged).
 
+*Review correction 2026-10-28 (astra review, VERDICT T5: INVALID; this part survives with two endpoint corrections):* $\mathcal Q$ is positive definite only in the open band $|\lambda|<2\sqrt q$ (at the endpoints it has rank one, the two eigenvectors coincide and the pairing vanishes); the square root is of the discriminant $\lambda^2-4q$, not of its negative (review §7.1; the identity $\Omega(v_\mu,v_{q/\mu})^2=\lambda^2-4q=-4\det\mathcal Q$ itself is verified).
+
 **5.2 (PROVED, a computation; from 4(b)).** On the boundary $\mathbb P^1(\mathbb Q_p)=$ the Lagrangian Grassmannian of $(V,\omega)$, the unitary
 principal series $\pi_s(\gamma)f(z)=|(\gamma^{-1})'(z)|^{s}f(\gamma^{-1}z)$ has, for hyperbolic $\gamma$ with eigenvalue ratio $\lambda$ ($v_p(\lambda)=\ell$),
 flat trace $|\lambda|^{s}/|1-\lambda|+|\lambda|^{-s}/|1-\lambda^{-1}|=p^{-\ell s}+p^{-\ell(1-s)}$; with the normalisation
@@ -349,6 +375,8 @@ boundary, the pair of fixed points of the squeeze, and the symmetric point $s=\t
 This fixes the normalisation the brief left open: $\mu=p^{1-s}$, $\lambda=\mu+p/\mu=p^{1-s}+p^{s}$ is the eigenvalue of the adjacency operator
 on the Poisson transform $P_s\phi(x)=\int_{\mathbb P^1}P(x,z)^{s}\phi(z)\,dz$ of a boundary function (standard: Cartier 1972, Figà-Talamanca–Nebbia 1991,
 from memory; the radial Poisson kernel $P(x,z)=p^{-h(x,z)}$ with $h$ the horocycle index).
+
+*Review correction 2026-10-28 (astra review, VERDICT obs:boundary-lefschetz-two-lagrangians: MINOR):* (i) specify the density model: $\pi_s$ acts on $s$-densities in compatible local Haar coordinates (or via the Radon–Nikodym derivative of a fixed quasi-invariant measure); no PGL-invariant finite measure exists; $\mathrm{Re}\,s=\tfrac12$ is the unitary half-density model, a general $s$ is not unitary in the displayed $L^2$ norm. (ii) The two power assignments are swapped. Old: $p^{-\ell(1-s)}=p^{-\ell}\mu^{\ell}$ and $p^{-\ell s}=p^{-\ell}(p/\mu)^{\ell}$; new: $p^{-\ell s}=p^{-\ell}\mu^{\ell}$ and $p^{-\ell(1-s)}=p^{-\ell}(p/\mu)^{\ell}$ ($\mu=p^{1-s}$). The unordered sum and the Satake pair $\{\mu,p/\mu\}$ are unaffected. Recomputed at $p=5$, $s=3/4$, $\ell=1$: $p^{-\ell(1-s)}=0.66874\ne p^{-1}\mu=0.29907=p^{-\ell s}$. (iii) $|\mu|=\sqrt p$ holds on the whole line $\mathrm{Re}\,s=\tfrac12$, not only at $s=\tfrac12$; for $s=\tfrac12+it$ the trace is $2p^{-\ell/2}\cos(t\ell\log p)$, so equal positive contributions are special to $s=\tfrac12$. The complex Satake numbers are inducing-character contributions at the two fixed points, not literally the two boundary points.
 
 **5.3 (SKETCHED; the claim of T5).** The Poisson transforms $P_s\phi$ and $P_{1-s}\psi$ both satisfy the radial recurrence with the same $\lambda$;
 the standard intertwining operator $I_s:\pi_s\to\pi_{1-s}$, $I_s\phi(z)=\int|z-z'|^{-2(1-s)}\phi(z')dz'$ (normalised so that $P_{1-s}I_s=c(s)P_s$ with
@@ -366,6 +394,8 @@ series of $PGL_2(\mathbb Q_p)$ (complementary series $s\in(0,1)$ real have a pos
 normalisation, a two-line check on the spherical vector, and the identification of the label space coefficients with boundary functions on a finite
 quotient (through $\Gamma$-invariant boundary distributions, not functions, which is the real obstacle for a finite $Y$).
 
+*Review 2026-10-28 (astra review, VERDICT T5 and VERDICT conj:casoratian-is-intertwining-pairing: INVALID):* the exact Casoratian (5.1) and the flat trace (5.2) survive; the sketch 5.3 contains false assertions. (a) The map from label space to boundary (Poisson) data is unconstructed (UNVERIFIED); a radial adjacency eigenfunction satisfies $pf_{r+1}=\lambda f_r-f_{r-1}$ and one needs $F_r=p^rf_r$ to get $F_{r+2}=\lambda F_{r+1}-pF_r$; a Poisson kernel at $s=\tfrac12$ along a ray moving away from its boundary point (ratio $p^{-1/2}$) has defect $(p-1)^2/p$ in the unrescaled transfer recurrence; nonradial restrictions need satisfy neither. (b) The complex-linear $\Omega$ is bilinear, coefficient form $(\mu-\nu)(ab'-ba')$; the displayed conjugated form is not the same symplectic form without a specified real structure. (c) The positivity equivalence is false: for real $\tfrac12<s<1$ the form $\int\bar f\,I_sf$ is strictly positive (Fourier multiplier $\Gamma_p(\alpha)|\xi|^{-\alpha}$, $\alpha=2s-1$, $\Gamma_p(\alpha)=(1-p^{\alpha-1})/(1-p^{-\alpha})>0$), yet $\lambda=p^s+p^{1-s}>2\sqrt p$ and $\mathcal Q$ is indefinite (e.g. $p=5$, $s=3/4$: $\lambda=4.8390503$, $\det\mathcal Q=-0.8541020$, recomputed); a factor $(4p-\lambda^2)/4$ times a positive pairing would be negative definite there. (d) Coalescence $\mu=\pm\sqrt p$ is not reducibility of the normalised unramified principal series (reducible at $\lambda=\pm(p+1)$); the normalised Riesz intertwiner has multiplier $|\xi|^{1-2s}$ and is the identity at $s=\tfrac12$; a pole of an unnormalised $c$-function is not a singular normalised intertwiner; $c(s)$ was left unspecified. Survives only as an OPEN question: a specified map from automorphic boundary data and a specified pairing recovering the graph form without inserting the finite-quotient pairing. Next-step item (iii) below is likewise unverified (a complex Satake pair is not a pair of $\mathbb Q_p$ Lagrangian points).
+
 ## Correction ledger (what the brief got wrong, with the fix)
 
 | id | brief says | correction | where shown |
@@ -377,6 +407,14 @@ quotient (through $\Gamma$-invariant boundary distributions, not functions, whic
 | C5 | elliptic elements "fix a vertex or an edge" | correct as a statement about $PGL_2$ (edge = inversion, odd $v(\det)$); in $\Gamma$ (no inversions, torsion-free) there are none at all | Thm 3.4(ii) |
 | C6 | $X^{5,13}$ (2184 vertices) suggested for the non-bipartite explicit formula | $(5/13)=-1$: $X^{5,13}$ is the Cayley graph of $PGL_2(\mathbb F_{13})$ and bipartite; the formula needs the alternating pair; $X^{5,11}$, $X^{5,29}$ are the non-bipartite ones | §4(c) |
 | C7 | "Tr $D_a=|a|^{1/2}/|1-a|$" as a distributional trace on $L^2(\mathbb Q_p)$ | $D_a$ is not trace class and $\int h(a)D_ad^\times a$ is not Hilbert–Schmidt (scale invariance); the correct exact statement is Thm 4.2: the trace on the code $\mathcal C_n$ equals $|a|^{1/2}p^{\min(v(1-a),2n)}$, stabilising to the Lefschetz number once $2n\ge v(1-a)$, and diverging as $p^{2n}$ at $a=1$ | Thm 4.2; `output_ihara_lefschetz.txt` T4(b) |
+
+*Review correction 2026-10-28 (astra review, VERDICT C2: MINOR):* row C2, "codes equivalent iff same colour", holds for the minimal representatives $L_0$ (or equal tower levels); arbitrary isotropic lattices have Clifford-equivalent codes iff $k(L)$ is equal. Homotheties $\pm I$ are harmless exceptions to "no Clifford implements a homothety".
+
+*Review 2026-10-28 (astra review, VERDICT C3: INVALID):* row C3 as a bundled universal statement; see the in-place line after "Which operator (C3)" (§4(b)). The eigenbasis identity $\gamma^2/\det\gamma=\mathrm{diag}(\lambda^{-1},\lambda)$ survives.
+
+*Review correction 2026-10-28 (astra review, VERDICT C5: MINOR):* row C5: exclude the identity; discreteness of $\Gamma$ plus torsion-freeness removes nonidentity elliptics; the inversion step uses the central edge of $[x,\gamma x]$ (annotations after Theorem 3.4).
+
+*Review correction 2026-10-28 (astra review, VERDICT C7: MINOR):* row C7: the exact statement concerns compressions $P_nD_aP_n$; the flat trace at $a\ne1$ is well defined; the non-Hilbert–Schmidt assertion excludes the zero average; the rank $p^{2n}$ at $a=1$ is not Connes's logarithmic cutoff term (annotation after Theorem 4.2).
 
 ## Numerical checks for the blind lane
 
@@ -415,6 +453,8 @@ Candidate rows (none registered; cross-family REFUTE review pending per the roun
 | `obs:boundary-lefschetz-two-lagrangians` | flat trace of $\pi_{1/2}(\gamma)$ on $L^2(\mathbb P^1(\mathbb Q_p))$ is $2p^{-\ell/2}$, one orbit weight per fixed Lagrangian; $\mu=p^{1-s}$ fixes T5's normalisation | PROVED as a computation (§4b, §5.2) |
 | `conj:casoratian-is-intertwining-pairing` | $\Omega|_{\lambda\text{-plane}}=(\mu-p/\mu)\times$ the $I_s$-pairing of Poisson data; Weil positivity $=$ unitarity of $\pi_s$ | SKETCHED/OPEN (§5.3) |
 
+*Review 2026-10-28 (astra review): dispositions of the candidate rows above.* VALID: `prop:tree-dual-lattice`, `lem:symmetric-weyl-sign`, `prop:tree-neighbours-mub`, `thm:ihara-zeta-squeeze-euler`, `thm:code-trace-of-squeeze`, `obs:lps-words-translation-length`. MINOR: `prop:tree-colours-code-dimension` (annotation after §1 C2 paragraph), `obs:boundary-lefschetz-two-lagrangians` (annotation after §5.2). INVALID as stated: `prop:geodesic-squeeze` (§3, after the C4 paragraph), `thm:ihara-zeta-squeeze-lefschetz` (§4(b), after Theorem 4.3), `conj:casoratian-is-intertwining-pairing` (§5, end). The "PROVED" words in the Status column are superseded by these annotations.
+
 One-line annotations for record pages: `graph-ihara.md` §2(b): "the $p+1$ stabiliser axes are the lines of $M^\perp/M$ and are the standard WH
 MUBs (2026-10-27, T2); the vertex's code is the code of its unique representative with $k\in\{0,1\}$, the class carries a nested tower"; also
 replace "two qunaughts $2k$ steps apart have overlap $p^{-k/2}$" by "the squeeze $D_{p^k}$ of translation $2k$ has trace $p^{-k/2}$ on every code
@@ -424,6 +464,8 @@ hyperbolic class (not of $\gamma$ itself: that squeeze is $\gamma^2/\det\gamma$)
 `adelic-gkp.md` §10: "the distributional trace $|\lambda|^{1/2}/|1-\lambda|$ is the trace of $D_\lambda$ on the GKP code of $p^n\mathbb Z_p^2$ for
 $2n\ge v_p(1-\lambda)$ (exact, Thm 4.2 of the 2026-10-27 T lane), and the $2h(1)\log\Lambda$ term is its value $p^{2n}$ at $\lambda=1$". `adelic-gkp.md`
 §5 / Prop. 5: "the symmetric phase convention for $p$ odd is $\psi_p(+uv/2)W(u,v)$ (C1)".
+
+*Review 2026-10-28 (astra review, §9 adjudication of the annotations proposed above):* `graph-ihara.md` §2(b) MUB/tower annotation: AGREE (add: the minimal code uses the unique representative of determinant valuation 0 or 1; do not infer that both colours descend to a non-bipartite quotient). The two-qunaught replacement: AGREE-WITH-CHANGE, use "for $k\ge1$, $D_{p^k}$ implements a symplectic translation of length $2k$ on the standard apartment, and $\operatorname{Tr}(P_nD_{p^k}P_n)=p^{-k/2}$ for every $n\ge0$" (the word compression and $k\ge1$ are necessary; at $k=0$ the trace is $p^{2n}$). `graph-ihara.md` §5: AGREE-WITH-CHANGE, say $\ell_0\operatorname{Tr}(P_nD_{\lambda^m}P_n)=\ell_0p^{-k/2}$, that $D_\lambda$ intertwines the Weyl action of $\gamma^2/\det\gamma$ of tree length $2\ell_0$ while the orbit exponent stays $\ell_0$, and subtract $(-1)^k(q^{k/2}+q^{-k/2})$ in the bipartite case; not a representation of $\Gamma$ on $\mathcal C_n$, not an unrestricted $\mathbb Q_p$ phase-space trace. `adelic-gkp.md` §10: DISAGREE as written (its last clause equates $p^{2n}$ with $2h(1)\log\Lambda$); the review's replacement: "for $a\ne1$ the flat trace $|a|^{1/2}/|1-a|$ equals $\operatorname{Tr}(P_nD_aP_n)$ whenever $2n\ge v_p(1-a)$; at $a=1$ this compression has rank $p^{2n}$; integrating the cutoff traces over units with multiplicative unit volume $\log p$ gives $(2n+1)\log p$, exhibiting local logarithmic growth near the identity without identifying a pointwise rank with Connes's global cutoff term". `adelic-gkp.md` §5/Prop. 5 sign: AGREE.
 
 Next step: (i) the cross-family REFUTE review of this lane (the round design), with special attention to Thm 4.2's case $|a|>1$ and to C3; (ii)
 close T5: normalise $I_s$ on $\mathbb P^1(\mathbb Q_p)$ and test the Casoratian identity on the spherical vector numerically on a finite ball of the

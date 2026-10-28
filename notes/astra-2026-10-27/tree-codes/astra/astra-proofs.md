@@ -1,5 +1,7 @@
 # Local lattice codes, tree translations, and Ihara orbit traces
 
+> **Status (tidy 2026-10-28): UNREVIEWED.** The planned cross-family (claude:fable) REFUTE review of this proof was not run: the round was held on 2026-10-27. Nothing here is endorsed by a second reader. Not registered.
+
 Author: `codex:gpt-6-astra`
 
 Date: 2026-10-27. Blind prover, topic T. No other prover's work was consulted. This is a proposed proof record, not registration; cross-family review remains required.
