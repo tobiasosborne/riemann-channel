@@ -5,6 +5,7 @@ Sorted by last activity, newest first. "Status" is the page's own status line, v
 
 | entry | active | main file | what | status (as claimed by the page) |
 |---|---|---|---|---|
+| `cycle-deletion-2026-11-09/` | 2026-11-09 – 2026-11-09 | [note.md](../notes/cycle-deletion-2026-11-09/note.md) | The cycle-deletion polynomial: a sharp window, a proof on cactus graphs (on `conj:conformal-sp4-average-real-rooted`) | A record, not a round. Nothing registered; no REFUTE review. |
 | `astra-2026-10-27/` | 2026-10-27 – 2026-10-27 | [STATUS.md](../notes/astra-2026-10-27/STATUS.md), [brief.md](../notes/astra-2026-10-27/brief.md) | Brief: the 2026-10-27 round — the tree of local GKP codes and the Pizer graph as H¹ of X₀(p); two topics, four provers,… | — |
 | `astra-2026-10-25/` | 2026-10-25 – 2026-10-25 | [STATUS.md](../notes/astra-2026-10-25/STATUS.md), [brief.md](../notes/astra-2026-10-25/brief.md) | Brief: the 2026-10-25 astra round — three REFUTE reviews of the 2026-10-23 lanes, three new conjectures | — |
 | `astra-2026-10-23/` | 2026-10-23 – 2026-10-23 | [STATUS.md](../notes/astra-2026-10-23/STATUS.md), [brief.md](../notes/astra-2026-10-23/brief.md) | Brief: the 2026-10-23 astra round — six conjectures from the record, two digests of the quasi-Riemann hypothesis | — |

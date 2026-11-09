@@ -25,7 +25,7 @@ Recount from the verdict lines: 13, 16, 31, 28 (26/1/0/1) and 40 (32/3/0/5) line
 - HELD: cross-family review of the 2026-10-23 PROVED items (the five review lanes above are same-family only); see `2026-10-23/STATUS.md`.
 - PARTIAL: application of the endorsed record corrections to the record pages (some applied 2026-10-28 as annotations; unapplied ones in HANDOFF).
 - HELD: registration of reviewed rows in db/claims.tsv (needs the cross-family reviews and TJO's decision).
-- OPEN: `conj:conformal-sp4-average-real-rooted` (prove interlacing, or search graphs with >= 8 vertices).
+- PARTIAL (2026-11-09, `claude:fable-5.2`, UNREVIEWED): `conj:conformal-sp4-average-real-rooted` — proved on cactus graphs with cycle weights in [-1, 5/4]; exact finite evidence on 40 000 random sparse graphs with 8-11 vertices and complete graphs to K_11; open on graphs with two cycles sharing an edge. See `notes/cycle-deletion-2026-11-09/note.md`. (Was: OPEN, prove interlacing, or search graphs with >= 8 vertices.)
 - OPEN: H-half / A1 uniform in g (control the adjacent nonsquare corrections at m proportional to g; compute m = 13 and genera 26–27 at q = 3); `conj:whole-squarefree-cubic-average`.
 - OPEN: cube masks 3, 5 and Petersen masks 6, 10 as Jacobian classes (degree-2 covers of genus-4 bases, tetragonal models); the integral polarized lattice of the K4 trigonal and Petersen-22 Jacobians versus the graph's Omega.
 - OPEN: a Weil-free proof of H-MS (function-field analogues of source Prop. 6.2 / 5.4: the uniform theta/transfer estimate).

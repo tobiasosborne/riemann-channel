@@ -1,0 +1,5 @@
+graphs 917 with a failing weight vector: 0
+
+real	0m25.446s
+user	13m43.178s
+sys	0m1.958s

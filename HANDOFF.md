@@ -2,7 +2,7 @@
 
 # HANDOFF — riemann-channel
 
-## Start here (updated 2026-10-28)
+## Start here (updated 2026-11-09)
 
 A research notebook on the Riemann hypothesis through graphs (Ihara zeta), curves over finite fields, GKP codes and tensor networks; `README.md` has more.
 - **Reading order for state:** this register (below) → the round status files `notes/astra-2026-10-23/STATUS.md`, `notes/astra-2026-10-25/STATUS.md`, `notes/astra-2026-10-27/STATUS.md` → the session entries below (newest first) → `docs/handoff-archive.md` (sessions 2026-09-11 to 2026-10-02, verbatim). `docs/notes-index.md` maps `notes/`; `docs/worklog/` has the dated logs.
@@ -17,8 +17,9 @@ A research notebook on the Riemann hypothesis through graphs (Ihara zeta), curve
 - **Round 2026-10-25** (9 astra lanes; `notes/astra-2026-10-25/STATUS.md`): five reviews and four new lanes done; reviews are SAME-FAMILY; the four new lanes are unreviewed.
 - **Round 2026-10-27** (tree of codes, Pizer; `notes/astra-2026-10-27/STATUS.md`): Fable proofs CROSS-FAMILY REVIEWED (astra); both astra proofs UNREVIEWED (Fable reviews never run).
 - **Corrected pages** (endorsed record corrections annotated 2026-10-28) are endorsed same-family only; not cross-family reviewed.
-- **HELD:** all Claude work, by TJO on 2026-10-27 15:30 (Claude usage credits); lifting it is TJO's call. Codex lanes were not held. Registration in `db/claims.tsv` is also TJO's call.
-- **Pushed:** `master` pushed to origin at 6684aad on 2026-10-28 (TJO). The five stale remote branches (all contained in `master`): `ccr-2c2701e9-3nhoug`, `claude/beautiful-bohr-e84nm9`, `claude/inspiring-ride-n5binf`, `claude/project-familiarization-8gondy`, `claude/weil-bond-analytic` — deletion approved by TJO 2026-10-28, to be run by TJO (the agent's push --delete was blocked by the permission classifier).
+- **Session 2026-11-09** (Fable alone, at TJO's invitation; `notes/cycle-deletion-2026-11-09/note.md`): `conj:conformal-sp4-average-real-rooted` sharpened (window [−1, 5/4] for a cycle weight, exact on unicyclic graphs), PROVED-HERE on cactus graphs, exact finite evidence on all graphs tested; UNREVIEWED, nothing registered.
+- **HELD:** all Claude work, by TJO on 2026-10-27 15:30 (Claude usage credits); lifting it is TJO's call. TJO ran one Fable session on 2026-11-09 (entry below) without saying whether the hold on the items marked HELD is lifted: they stay HELD. Codex lanes were not held. Registration in `db/claims.tsv` is also TJO's call.
+- **Pushed:** `origin/master` was at f42c6b2 on 2026-11-09 (the local clone was 83 commits behind and was fast-forwarded); the 2026-11-09 commit is pushed on top. `git fetch --prune` on 2026-11-09 shows `origin/master` as the only remote branch: the stale remote branches are gone. A local branch `claude/beautiful-bohr-e84nm9` (upstream gone, contained in `master`) remains in this clone.
 
 ## Open-work register
 
@@ -41,6 +42,7 @@ Sources merged: the facts of the 2026-10-28 tidy, every "Next" list in this file
 - **HELD** — registration of reviewed rows of all three astra rounds in `db/claims.tsv` — TJO's decision, after cross-family review · origin: 2026-10-23, 2026-10-25, 2026-10-27 · where: `db/claims.tsv`
 - **HELD** — register `notes/adelic-gkp/shard-draft/` (shard 04za, 20 rows, dry-run gate clean); promotion to `proved` needs a reviewer of another model — TJO's decision · origin: 2026-10-06 · where: `notes/adelic-gkp/shard-draft/README.md`
 - **PARTIAL** — REFUTE review of lanes R, S, U: a partial one by Fable exists (12 VALID); the 42 lane-U comparisons got an independent FLINT replay and PARI audit in `2026-10-25/review-tower`, but lanes R and S have no full review · origin: 2026-10-06, 2026-10-23 · where: `notes/reviews/adelic-gkp-rsu-fable-2026-10-06.md`
+- **OPEN** — REFUTE review (another model) of the cactus proof: the Schur step with the symmetric Green's function, the claim that the frame average is the polarisation, the Grace–Walsh–Szegő hypothesis (half-plane, degree ≤ d); and of the unicyclic factorisation · origin: 2026-11-09 · where: `notes/cycle-deletion-2026-11-09/note.md` §3
 - **OPEN (unverified since 2026-10-05)** — REFUTE review of `graph-ihara.md` and `graph-super.md` before registering anything (T-b); the 2026-10-25 `review-gauge` covered the gauge pages only · origin: 2026-10-05 · where: `notes/adelic-gkp/graph-ihara.md`, `graph-super.md`
 - **OPEN (unverified since 2026-10-02)** — REFUTE review of `adelic-gkp.md` before registering Proposition 3 (rigidity), Theorem 4 (level-N Bell pair), Proposition 5 (p-adic codes) next to 04p (G-b) · origin: 2026-10-02 · where: `notes/adelic-gkp/adelic-gkp.md`
 - **OPEN (unverified since 2026-09-22)** — REFUTE reviews for shards 04v, 04y, 04z (`notes/reviews/<lane>-2026-09-22.md` with `VERDICT` lines, then restore `proved`); `db/claims.tsv` still has them `sketched`/`numerical` · origin: 2026-09-22, 2026-09-25 · where: `report/sections/04{v,y,z}_*.tex`
@@ -64,7 +66,9 @@ Sources merged: the facts of the 2026-10-28 tidy, every "Next" list in this file
 ### Open mathematical problems with finite tests
 - **PARTIAL** — hyperelliptic-average H-half / A1 / `conj:hyperelliptic-average-all-genus` for all (q, g): proved for odd q, g ≤ 7 (`hhalf`); remains control of the adjacent nonsquare corrections at m ∝ g, m = 13 and genera 26–27 at q = 3 · origin: 2026-10-23, 2026-10-25 · where: `notes/astra-2026-10-25/hhalf/`
 - **OPEN** — `conj:whole-squarefree-cubic-average` (on the circle in five tested cells) · origin: 2026-10-25 · where: `notes/astra-2026-10-25/hhalf/astra-proofs.md`
-- **OPEN** — `conj:conformal-sp4-average-real-rooted`: prove interlacing or search graphs with ≥ 8 vertices (true on cycles and 971 graphs ≤ 7 vertices) · origin: 2026-10-25 · where: `notes/astra-2026-10-25/irreps/`
+- **PARTIAL** — `conj:conformal-sp4-average-real-rooted`: proved on cactus graphs (every edge in at most one cycle) with independent cycle weights in [−1, 5/4], UNREVIEWED; exact finite evidence on all graphs tested (971 graphs ≤ 7 vertices, 40 000 random sparse graphs with 8–11 vertices; complete graphs to K₁₁); remains every graph with two cycles sharing an edge, first the theta graph (equal paths: Θ_d(s(x)) + Σw with Θ_d the expected characteristic polynomial of |U₁+U₂+U₃|²) · origin: 2026-10-25, 2026-11-09 · where: `notes/cycle-deletion-2026-11-09/note.md` §3, §5; `notes/astra-2026-10-25/irreps/`
+- **OPEN** — the sharpened conjecture of 2026-11-09: for d ≥ 3, every finite simple graph and every choice of cycle weights in the cycle window W_d, P_w = Σ_C Π w_c μ_{d,Y∖V(C)} is real-rooted (false for d = 1, 2 on dense graphs); a proof must use d ≥ 3: find the inequality that fails at d = 2 on K₆ · origin: 2026-11-09 · where: `notes/cycle-deletion-2026-11-09/note.md` §2
+- **OPEN** — is the U(2)⊗U(2) average on C²⊗C² the same polynomial as the U(1)·USp(4) average (Monte Carlo on K₄ consistent, three seeds; an exact kernel contraction as in `irreps/checks/symplectic4.py` settles it); all graphs on 8 vertices (needs nauty `geng`, not installed) · origin: 2026-11-09 · where: `notes/cycle-deletion-2026-11-09/note.md` §2 item 5, §5
 - **PARTIAL** — J2′ (nonnegative a_k ⟹ Jacobian class): refuted by the K₃,₃ census; cube masks 3, 5 and Petersen masks 6, 10 remain (degree-2 covers of genus-4 bases, tetragonal models) · origin: 2026-10-23, 2026-10-25 · where: `notes/astra-2026-10-25/census/`
 - **OPEN** — integral polarized lattice of the K₄ trigonal and Petersen-22 Jacobians versus the graph's Ω; whether the graph's lattice equals a constructed Jacobian lattice · origin: 2026-10-23, 2026-10-25 · where: `notes/astra-2026-10-25/census/`
 - **OPEN** — a Weil-free proof of H-MS (function-field analogues of source Prop. 6.2 / 5.4: the uniform theta/transfer estimate); Weil ⟹ H-MS is done · origin: 2026-10-25 · where: `notes/astra-2026-10-25/shortrow/`
@@ -107,13 +111,13 @@ Sources merged: the facts of the 2026-10-28 tidy, every "Next" list in this file
 - **OPEN (unverified since 2026-09-26)** — "Weil Positivity, Contracted" tutorial: a shard distilling the "Weil form = Gram of strips" dictionary table; the unexplained on-circle eigenvalue of the perturbed a = (0,1) Artin–Schreier matrix; Weil–LPS channels as a preset in the Kraus demo (needs n = p) · origin: 2026-09-26 · where: `notes/weil-tn-tutorial/`
 
 ### Housekeeping
-- **HELD** — push the 7 unpushed commits (and this HANDOFF commit) to `origin/master` — TJO's decision · origin: 2026-10-28
-- **HELD** — delete the five contained remote branches (list in State at a glance) — TJO's decision; all have 0 unique commits by `git cherry` · origin: 2026-10-28
+- **OPEN** — optional: delete the local branch `claude/beautiful-bohr-e84nm9` (upstream gone; contained in `master`) · origin: 2026-11-09
 - **HELD** — lift the hold on Claude work (usage credits) — TJO · origin: 2026-10-27
-- **OPEN** — rebuild the PARI venv after a reboot (uv: cypari2, python-flint); no `gp` · origin: 2026-10-27, 2026-10-28 · where: `notes/astra-2026-10-27/brief.md`
+- **OPEN** — rebuild the PARI venv after a reboot (uv: cypari2, python-flint); no `gp` · origin: 2026-10-27, 2026-10-28 · where: `notes/astra-2026-10-27/brief.md`. The 2026-11-09 checks need a venv with python-flint, networkx, sympy, numpy, mpmath (system python3 has neither python-flint nor networkx); the one used was in the session scratchpad and is gone
 - **OPEN** — gitignored local-only data (HKL clone, run artefacts, PDFs, `refs/src/`) exists only here and in `~/old`; keep `~/old` until backed up elsewhere · origin: 2026-10-28 · where: `notes/astra-2026-10-25/census/sources/`, `refs/src/`
 
 ### Done since listed
+- **DONE (seen 2026-11-09)** — `master` pushed (origin at f42c6b2 before this session); the stale remote branches no longer exist on origin (`git fetch --prune`: three were pruned in this clone, `origin/master` is the only remote branch). Both were HELD items of 2026-10-28.
 - **DONE 2026-10-28 (2b4deb6, bc3c9f5)** — astra reviews' MINOR fixes annotated on both 2026-10-27 Fable pages (2026-10-27 Next ii; INVALID/UNVERIFIED flagged in place, banners added).
 - **DONE 2026-10-28 (9cbbc47, 124f036)** — endorsed record corrections annotated on `gauge-groups`, `graph-ihara`, `howe-positivity`, `graph-super`, `overlap-data`, `tower-pairing`, `cm-lift`, `no-lift`, `data-ladder` (2026-10-23 and 10-25 Next ii; `ff-dirichlet.md` needed none; remainder in Record corrections). Includes "Ω is the Casoratian, Q = ½Ω(M − qM⁻¹)" (2026-10-22 optional).
 - **DONE 2026-10-28** — HANDOFF 2026-10-06 finding (F) correction annotated (below).
@@ -129,6 +133,37 @@ Sources merged: the facts of the 2026-10-28 tidy, every "Next" list in this file
 - **DONE 2026-09-12** — `prop:ringnorm-trace` restated in shard 04 (archive "Next useful steps" 1c).
 - **SUPERSEDED** — q = 8, a = 3 genus-blind case (F), 2026-10-06: pairing question answered by lane U.
 - **SUPERSEDED** — 2026-10-23 correction wording "the Weil pairing sees the class": replaced by the genus statement.
+
+## Session 2026-11-09: the cycle-deletion polynomial — a sharp window, a proof on cactus graphs (Fable alone; record only)
+
+TJO: "familiarise yourself briefly with this project ... see if you find anything interesting: if something does catch your interest/attention
+then please investigate further"; then "update all nec docs, commit and push". One `claude:fable-5.2` session, no subagents, no codex. Worklog
+`docs/worklog/2026-11-09.md`. Record `notes/cycle-deletion-2026-11-09/note.md` with `checks/` (scripts and printed outputs). **Nothing
+registered; `db/` and `report/` untouched; gate unchanged (13 errors); no REFUTE review.** The local clone was 83 commits behind origin and
+was fast-forwarded to f42c6b2 first.
+
+**Subject.** `conj:conformal-sp4-average-real-rooted` of the 2026-10-25 `irreps` lane: Φ(Y) = Σ_C μ_{4,Y∖V(C)} (C: collections of vertex-disjoint
+simple cycles) is real-rooted on every finite simple graph. Generalised here to P_w(Y) = Σ_C Π_{c∈C} w_c μ_{d,Y∖V(C)} with a weight on every cycle.
+
+**Findings (statuses as in the note).**
+- PROVED-HERE, unreviewed: on a unicyclic graph P_w = Π_i (μ(Y) − ρ_i μ(F)), ρ_i the roots of F_w(t) = U_d(t/2) + w, each factor a
+  characteristic polynomial with a U(1) flux. For d = 4 the window of real-rootedness is exactly [−1, 5/4]; the lane's w = 1 is inside.
+- PROVED-HERE, unreviewed: on every cactus graph (each edge in at most one cycle), every d ≥ 1 and independent cycle weights in the cycle
+  window W_d, P_w is real-rooted, and real stable in vertex potentials. Method: P_w is the polarisation of the d-th power of the flux
+  characteristic polynomial; Grace–Walsh–Szegő on the half-plane {Im σ(τ) < 0} given by the leaf cycle's self-energy.
+- EXACT (rigorous root counts, finite sets), d = 4: the common-w window contains [−1, 5/4] on all 971 connected cyclic graphs with ≤ 7 vertices,
+  with equality exactly on the 54 unicyclic ones (next smallest upper end 1.2532); per-cycle weights at corners of the box and at random interior
+  points: 0 failures on 917 graphs ≤ 7 vertices and on 40 000 random sparse graphs with 8–11 vertices (cycle rank 2–5); d = 3: 9 600, d = 5: 2 400.
+- EXACT, a dichotomy in d on complete graphs: for d = 1, 2 the window shrinks below the cycle window (d = 2: K₄ −1.55, K₆ −0.94, K₈ −0.83 against
+  −3); for d = 3, 4, 5 it grows with n (d = 4, K₁₁: [−358, 462]).
+- EXACT identities: d = 2, Σ_C μ_{2,Y∖V(C)} = μ(Y)² (143 graphs); windmills of triangles are finite free additive convolutions of the F_w.
+- MC only: the U(2)⊗U(2) average on K₄ agrees with Φ within the seed-to-seed scatter (three seeds); not proved.
+
+**Not established.** The conjecture on any graph with two cycles sharing an edge (theta graph, K₄, ...). The cactus proof has had no second
+reader. The window statement for all graphs is finite evidence only.
+
+**Next (in order).** (i) REFUTE review of note §3 by another model. (ii) The theta graph. (iii) The d ≥ 3 mechanism: the inequality that fails
+at d = 2 on K₆. (iv) The U(2)⊗U(2) identity by exact contraction; all graphs on 8 vertices. Then the register above.
 
 ## Session 2026-10-28: tidy-up after the 2026-10-27 hold (Haiku and Sonnet workers; no new mathematics)
 

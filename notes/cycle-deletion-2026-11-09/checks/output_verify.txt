@@ -1,0 +1,25 @@
+(a) cactus: definition == polarisation
+   bowtie                             d=1 cycles=2 weights=[-5/7, 9/7]  equal: True
+   bowtie                             d=2 cycles=2 weights=[-1, -1/7]  equal: True
+   bowtie                             d=3 cycles=2 weights=[-6/7, 6/7]  equal: True
+   bowtie                             d=4 cycles=2 weights=[5/7, 6/7]  equal: True
+   chain of 3 triangles               d=1 cycles=3 weights=[3/7, -3/7, -6/7]  equal: True
+   chain of 3 triangles               d=2 cycles=3 weights=[6/7, -9/7, 3/7]  equal: True
+   chain of 3 triangles               d=3 cycles=3 weights=[4/7, -9/7, 5/7]  equal: True
+   chain of 3 triangles               d=4 cycles=3 weights=[-1/7, -2/7, 9/7]  equal: True
+   triangle-bridge-square+pendant     d=1 cycles=2 weights=[-6/7, 1/7]  equal: True
+   triangle-bridge-square+pendant     d=2 cycles=2 weights=[-9/7, -9/7]  equal: True
+   triangle-bridge-square+pendant     d=3 cycles=2 weights=[-9/7, 8/7]  equal: True
+   triangle-bridge-square+pendant     d=4 cycles=2 weights=[-9/7, 3/7]  equal: True
+   square with two triangles          d=1 cycles=3 weights=[-3/7, 4/7, -9/7]  equal: True
+   square with two triangles          d=2 cycles=3 weights=[1, -2/7, 5/7]  equal: True
+   square with two triangles          d=3 cycles=3 weights=[6/7, 8/7, -2/7]  equal: True
+   square with two triangles          d=4 cycles=3 weights=[2/7, -2/7, -2/7]  equal: True
+(b) d=2 identity on the atlas (<= 6 vertices)
+   graphs 143 failures 0
+(c) windmills: finite free convolution
+   2 triangles at a hub, d=2: equal: True
+   2 triangles at a hub, d=3: equal: True
+   2 triangles at a hub, d=4: equal: True
+   3 triangles at a hub, d=2: equal: True
+   3 triangles at a hub, d=3: equal: True
